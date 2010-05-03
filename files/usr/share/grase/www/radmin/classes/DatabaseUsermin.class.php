@@ -27,7 +27,7 @@ class DatabaseUsermin
         
         foreach($results as $user)
         {
-            $users[$user['username']] = $user['value'];
+            $users[$user['UserName']] = $user['Value'];
         }
                 
         $this->users = $users;        
