@@ -1,0 +1,18 @@
+{include file="header.tpl" Name="Login" activepage="login"}
+
+<div id="loginForm">
+<h2>Login</h2>
+<div class="errorPage" style="display: {if $error}block;{else}none;{/if}"> <span id="errorMessage">{$error}</span> </div>
+Login is required to access the {$Application} section of this website.
+<form method='post' action="?">
+<table>
+<tr><td>Username</td><td> <input type="text" name="username" value='{$username}'/></td></tr>
+<tr><td>Password</td><td> <input type="password" name="password" value='{$password}'/></td></tr>
+<tr><td></td><td><button type="submit" class="positive" name="login" value="Login">Login</button></td></tr>
+</table>
+</form>
+
+</div>
+
+
+{include file="footer.tpl"}

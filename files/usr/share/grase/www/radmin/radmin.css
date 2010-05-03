@@ -1,0 +1,629 @@
+/* $Revision: 567 $
+ * $Version: 2.2.0 $
+ * $ApplicationName: RAFI $
+*/
+
+body table {
+	text-align: left;
+}
+
+#logo {
+	background: url('../images/grase.png') bottom left no-repeat;	
+	position: fixed;
+	bottom: 0;
+	left: 30px;
+	height: 240px;
+	width: 160px;
+z-index: -1;
+}
+
+/*input, select {
+	border: 1px solid orange;
+	margin-right: 4px;
+}*/
+
+/*#menubar {
+	color: blue;
+	width: 100%;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	padding: 0;
+	margin: 0;
+	height: 2.5em;
+}*/
+
+#menubar {
+	width: 12em;
+	float: left;
+	margin: 1em;
+	height: 100%;
+/*	background: white;*/
+/*	padding-bottom: 240px;*/
+}
+
+/*#menubar .buttons a:hover{
+    background-color:#dff4ff;
+    border:1px solid #c2e1ef;
+    color: black;
+}*/
+
+
+.menu ul {
+	list-style: none;
+/*	text-align: center;*/
+/*	padding: 0;*/
+/*	margin: 0.7em;*/
+	margin: 0;
+
+}
+
+#menubar a {
+/*	display: inline;*/
+	clear: left;
+
+}
+
+#menubar a {
+	font-family: "Lucida Sans", Arial, Helvetica, Geneva, sans-serif;  /* sets the font of the menu */
+/*	display: inline;  /* makes the menu items float beside each other */
+/*	margin: 0px 5px 0px 5px;  /* leaves 10px of space between the items */
+/*	font-weight: bolder;  /* makes the font bold */
+/*	background-color: lightblue;  
+	padding: 5px;   /* adds some space around the words */
+/*	border: 1px solid #000000;   /* makes the border black */
+	width: 10em;
+}
+
+
+
+#menubar .activemenuitem {
+    background-color:#6299c5;
+    border:1px solid #6299c5;
+    color:#fff;
+}
+
+#helplink a{
+/*	float: right;*/
+/*	position: relative;
+	top: -4em;*/
+	margin-top: 1em;
+}
+
+.helpbutton {
+    cursor:pointer;
+}
+
+#helpbox {
+      position:absolute; 
+/*      border: solid 1px grey; 
+      background-color: white; */
+      padding: 20px;
+
+    margin-bottom: 5px;
+    background-color:#f5f5f5;
+    border:1px solid #dedede;
+    border-top:1px solid #eee;
+    border-left:1px solid #eee;
+
+    font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+    font-size:130%;
+    line-height:130%;
+    text-decoration:none;
+    font-weight:bold;
+    color:#565656;
+    cursor:pointer;
+    margin-right: 5px;
+    z-index: 300;
+
+/*    background-color:#dff4ff;
+    border:1px solid #c2e1ef;
+    color:#336699;*/
+
+
+}
+
+/*
+#menubar #menuitems li {
+	display: inline;
+	padding: 0.5em;
+	border: 1px solid #0a57a9;
+	margin: 0;
+	margin-right: 1em;
+}*/
+
+#radminPage {
+/*	width: 70%;*/
+	width: auto;
+	margin: auto;
+	margin-top: 0.5em;
+	margin-bottom: 2em;
+	margin-right: 0;
+	margin-left: 13em;
+/*	border: 1px solid orange;*/
+	padding: 1em;
+}
+
+#messagebox {
+	background-color: lightblue;
+	border: 1px solid #0a57a9;
+	padding: 1em;
+	width: 50%;
+	margin: auto;
+}
+
+#loggedinusername {
+	color: grey;
+	padding: 0.5em;
+	padding-right: 1em;
+	display: block;
+	text-align: left;
+/*	float:right;*/
+}
+
+/* Status Monitor (Sold Data bars) */
+
+#StatusMonitors {
+/*	width: 100%;
+	color: white;*/
+	text-align: left;
+	float: left;
+	position: relative;
+	left: 50%;	
+	clear: both;
+}
+
+#MonitorBars {
+	position: relative;
+	left:-50%;
+}
+
+.DataBarsNew {
+	display: block;
+/*	width: 30%;
+	margin: auto;*/
+	float:left;position:relative;
+	text-align: center;
+/*	border: solid;*/
+	padding: 0 1em;
+}
+
+.DataBars {
+/*	clear: both;*/
+	background-color: #0a57a9;
+	display: block;
+	float:right;
+	width: 200px;
+	font-size:80%;
+	text-align: center;
+	margin: 1em;
+}
+
+#TotalSellableData {
+	text-align: center;
+}
+
+#SoldDataBar {
+	background-color: orange;
+	text-align: center;
+	font-size: 80%;
+	float: left;
+}
+
+#SellableDataOctets {
+	background-color: yellow;
+	color: black;
+}
+
+#SoldData {
+/*	position: relative;*/
+}
+
+#DataUsageBar {
+	background-color: red;
+	text-align: center;
+	font-size: 80%;
+	float: left;
+}
+#DataRemaining {
+	background-color: green;
+}
+
+#LastM_DataUsageBar {
+	background-color: red;
+	text-align: center;
+	font-size: 80%;
+	float: left;
+}
+#LastM_DataRemaining {
+	background-color: green;
+}
+
+/* END Status Monitor bars */
+
+.errorPage {
+	color: red;
+	border: red solid 1px;
+	padding: 1em;
+}
+
+/* Table */
+
+table td {
+	text-align: left;
+}
+
+table td.header {
+	font-size: 110%;
+}	
+
+table td.title {
+	padding-left: 1em;
+	padding-right: 1em;
+}	
+
+tr.alt td, tr.alt {
+    background-color:#f5f5f5;
+}
+
+tr.over td, tr.over {
+    background-color:#dff4ff;
+}
+
+thead td {
+    text-align: center;
+}
+
+/* Inital setup page items */
+
+.setup_item {
+}
+
+.setup_item input{
+	width: 20em;
+}
+
+.setup_item td {
+	text-align: left;
+	width: 50%;
+}
+
+.item_description {
+	font-size: 75%;
+	width: 50%;
+	color: purple;
+}
+
+.error {
+	color: red;
+	font-weight: bolder;
+}
+
+
+
+.good {
+	color: green;
+	font-weight: bold;
+}
+/* Not needed as setup not being used
+.configfile {
+	width: 90%;
+	margin: auto;
+	text-align: left;
+}
+
+.configfile .description {
+	display: block;
+	background: yellow;
+	font-weight: bold;
+	text-align: left;
+	padding-left: 1em;
+	margin-top: 2em;
+}
+
+.configfile .file_written {
+	background: green;
+	color: yellow;
+}
+
+.configfile pre {
+	display: block;
+	width: 100%;
+	border: dotted black 1px;
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -o-pre-wrap;
+}*/
+/* */
+
+/* Admin user forms/Password change forms */
+
+#DeleteAdminUserForm form {
+	display: inline;
+}
+
+#DeleteAdminUserForm label {
+	padding-right: 2em;
+	font-style: italic;
+	color: green;
+}
+
+/* */
+
+
+/* Log view page */
+
+#logtables table {
+	padding-bottom: 1em;
+}
+
+.domainattributesRow, .logattributesRow {
+	font-weight: bolder;
+	text-align: center;
+	background: #999999;
+	font-size: 120%;
+
+}
+
+/* */
+
+.sessionheader td {
+	text-align: center;
+	background: #999999;
+	padding: 0.1em 0.5em;
+	font-size: 120%;
+}
+.sessionrow td {
+	padding: 2px 10px;
+}
+
+.month_user_row td {
+	padding: 2px 10px;
+
+}
+
+.month_user_row .numbers, .totalrow .numbers {
+	text-align: right;
+}
+
+.totalrow td {
+	font-weight: bolder;
+}
+
+#userslist {
+	display: block;
+}
+
+#userslistTable {
+	font-size: 90%;
+	margin: auto;
+}
+
+#userslistTable .userrow td {
+	padding: 0.2em 0.6em;
+}
+
+#userslistTable #userattributesRow td {
+	text-align: center;
+	background: #999999;
+	padding: 0.5em;
+	font-size: 120%;
+}
+
+.groupheader {
+	font-weight: bolder;
+	background: lightblue;
+	background-image: url('images/minus.gif');
+	background-repeat: no-repeat;
+/*	background-attachment:fixed;*/
+	background-position: left center;
+	padding-left: 15px;
+}
+
+.monthheader {
+	font-weight: bolder;
+	background: lightblue;
+	background-image: url('images/minus.gif');
+	background-repeat: no-repeat;
+/*	background-attachment:fixed;*/
+	background-position: left center;
+	padding-left: 15px;
+}
+
+.switcher {
+	padding-left: 15px;
+}
+
+.even {
+	background: lightgrey;
+
+}
+.odd {
+
+}
+
+/*.normal, .normal a {
+	color: green;
+}*/
+
+.expired /*, .expired a*/ {
+	background: orange;
+	color: black;
+}
+.expired a {
+	color: black;
+}
+
+.expired .info_expiry {
+	background: red;
+	color: yellow;
+	font-weight: bolder;
+}
+
+.locked .info_datausage a, .locked .info_datalimit, .locked .info_timeusage a /*, .locked a */{
+	color: red;
+	font-weight: bolder;
+
+}
+
+.info_password span {
+	float: right;
+	display: inline;
+}
+/*.lowdata, .lowdata a {
+	color: red;
+
+}*/
+#Machine_body tr, #Machine_body tr a {
+	color: gray;
+}
+
+#Nogroup_body tr {
+	background: pink;
+	color: black;
+}
+
+.nogroup .even {
+/*	background: purple;*/
+	color: black;
+}
+
+/* HIGHT LIGHT TABLE ROWS */
+
+#userslistTable tr:hover {
+	background-color: yellow;
+}
+
+/* DONE */
+
+h1 {
+	margin: 0.2em;
+	margin-top: 0;
+	margin-bottom: 0.5em;
+}
+
+body {
+	color: #0a57a9;
+	background: white url("../images/grass.png") fixed bottom repeat-x;
+	margin-top: 0;
+	padding: 1em;
+	padding-top: 0;
+}
+
+ul {
+	text-align: left;
+}
+
+#sessionslistTable {
+	font-size: 80%;
+}
+
+ul#statusmon {
+	text-align: left;
+}
+
+ul#statusmon li {
+/*	display: block;*/
+	width: 30%;
+	margin-right: 1em;
+	margin-bottom: 0.5em;
+	padding: 0.2em;
+	padding-left: 1em;
+	padding-top: 1em;
+	padding-right: 0;
+	float: left;
+	border: 1px solid #0a57a9;
+	 list-style-position: inside;
+	 
+	 
+    background-color:#f5f5f5;
+    border:1px solid #dedede;
+    border-top:1px solid #eee;
+    border-left:1px solid #eee;
+
+    font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+/*    font-size:130%;
+    line-height:130%;
+    text-decoration:none;
+    font-weight:bold;*/
+/*    color:#565656;*/
+/*    cursor:pointer;
+    margin-right: 5px;
+    z-index: 300;*/
+    height: 3em;
+
+
+}
+
+.running {
+	color: green;
+    color:#565656;
+	list-style-type: circle;
+	list-style-image: url(images/green.gif);
+}
+.stopped {
+	color: red;
+	list-style-type: square;
+	list-style-image: url(images/red.gif);
+}
+.nomon {
+	color: blue;
+	list-style-image: url(images/blue.gif);
+}
+.warn {
+	color: orange;
+}
+
+.time {
+	color: black;
+	font-size: 80%;
+}
+
+/* Forms extra stuff */
+
+.datacost_list, .timecost_list {
+    padding: 0;
+    list-style: none;
+    display:block;
+    float:right;
+    margin-bottom: 5px;
+    background-color:#f5f5f5;
+    border:1px solid #dedede;
+    border-top:1px solid #eee;
+    border-left:1px solid #eee;
+
+    font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+    font-size:100%;
+
+    text-decoration:none;
+    font-weight:bold;
+    color:#565656;
+    cursor:pointer;
+    margin-right: 5px;
+
+}
+
+.datacost_item, .timecost_item {
+    display: block;
+    color:#565656;
+    padding-left: 0.5em;
+    padding-right: 1em;
+    width: 11em;
+    
+}
+
+.datacost_item:hover, .timecost_item:hover {
+    background-color:#dff4ff;
+    color:#336699;
+}
+/* end forms extra stuff */
+
+/* Cutout tickets stuff */
+.cutout_ticket {
+	outline: solid 1px black;
+	margin-top: 1.5em;
+
+
+
+}
+
+/* End Cutout Tickets stuff */

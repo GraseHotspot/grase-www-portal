@@ -1,0 +1,19 @@
+== To Do ==
+ 
+* Add php-mdb2-driver-mysql php-mdb2-mysql php-pear php-auth to install list
+
+* Paypal Integration
+* Auto Create accounts (with limited access before payment)
+* Move to money based limits
+* Accounting of all money
+* Logging of all admin actions
+* Ensure _SESSION vars aren't used
+* Better changing of limits for current user
+
+* What to do with old users data when deleted? (Previous months usage etc)
+
+* Allow more things to be changed through Radmin interface (site icon)
+* Let users change their password
+* Allow admin to manage mirrored files
+* Make mirrored files look pretty
+

@@ -1,0 +1,8 @@
+location_name = YWAM JBay
+
+; Set admin_users_passwd_file to a file outside of the web server, but writeable by the webserver
+admin_users_passwd_file = "../../admin_interface_passwds"
+
+; Database config file (copy and edit configs/radmin.conf.example to a location outside of the webserver and edit database_config_file to reflect this move)
+; NB: Most scripts in the scripts directory look for radmin.conf in /etc/radmin.conf
+database_config_file = "/etc/radmin.conf"

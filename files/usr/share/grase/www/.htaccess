@@ -1,0 +1,2 @@
+# serve first available alternate default index page from series
+#DirectoryIndex index.php

@@ -1,0 +1,39 @@
+== Changelog ==
+
+= 2.2.0 =
+ * Migrating to pear classes (apt-get install php-auth php-http php-log php-mdb2 php-mdb2driver-mysql php-pear)
+ * Adding reports (written new classes to handle functionality and using open-flash-charts)
+ * Using PEAR Auth module with DB backend for authentication and session handling
+ * Created My Account section for users to login and change password, and see sessions stats
+ * Fancy file display for public files
+ * Upgrade class for upgrading from old flatfile to new DB
+ * New OpenVPN Keys
+ * Restructure selectors for data and time limits to be more intutive
+ * Implemented Admin Log functions
+ * New error handling functions (instead of die function)
+ * Attempt to create RADMIN database when not existant
+ * Migration from flatfile to database fully automatic (if DB can be created or exists)
+ * Decrease use of globals by using getInstance calls on classes
+
+= 2.1.1beta =
+ * Formatting to Coding standards
+ * Fixing errors from WARNING_STRICT (i.e. using an undefined variable)
+ * Using Constants for data that shouldn't change
+ * New "progress bars" for data bars in radmin
+ * formatSeconds function changes
+ * Moved Admin Authentication to OO Class so it can be swapped later with a new module
+
+= 2.1.0 =
+ * New release. Major gui redesigns. Focus on buttons and menu.
+ * Help buttons and box (based on http://www.willmaster.com/blog/css/floating-layer-at-cursor- position.php, which seems to be based on Bontrager Connection, LLC // http://bontragerconnection.com/ and http://www.willmaster.com/)
+ * Using Silk icons from Mark James http://www.famfamfam.com/lab/icons/silk/
+ * Validated all XHTML code
+ * Documentation in progress (now out of date due to initial "radmin" documentation being based on previous 2.0.0 GUI version)
+ * Added "generator" meta tags to headers
+ * Logo created!
+ * IE6 warning for old IE browsers
+ * Usage monitor now has monthly usage, session usage, and "progress" bars showing remaining time/quota
+ * Chilli-Coova no longer counts traffic to local (web) server! (Locally hosted files are now free even when logged in)
+
+ * Needs more testing in other browsers. Chrome known to have issues.
+

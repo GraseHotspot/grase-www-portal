@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# Backup DB
+#
+
+sql_password=$(cat /etc/radmin.conf |grep sql_password|cut -f 2 -d :|cut -f 2 -d ' '|head -n 1)
+sql_username=$(cat /etc/radmin.conf |grep sql_username|cut -f 2 -d :|cut -f 2 -d ' '|head -n 1)
+sql_server=$(cat /etc/radmin.conf |grep sql_server|cut -f 2 -d :|cut -f 2 -d ' '|head -n 1)
+sql_database=$(cat /etc/radmin.conf |grep sql_database|cut -f 2 -d :|cut -f 2 -d ' '|head -n 1)
+
+if [ -n "$sql_password" ]; then sql_password="-p$sql_password"; fi
+
+backup_dir="/home/hotspotadmin/backups/database/"
+mkdir -p $backup_dir
+
+backup_file="mysql_backup_`date +%Y%m%d`.sql"
+
+mysqldump --force -h $sql_server -u $sql_username $sql_password $sql_database -r $backup_dir$backup_file
+gzip -f -9 $backup_dir$backup_file
+compressed_backup_file="$backup_file.gz"
+
+location=$(cat /var/www/radmin/configs/site_settings/location)
+hostname=$(hostname)
+
+(cat << EOM
+To: backup.hotspot@weirdo.bur.st
+Subject: MySQL Backup `date +%Y%m%d` ($location-$hostname)
+MIME-Version: 1.0
+Content-Disposition: attachment; filename=$compressed_backup_file
+Content-Type: application/x-gzip; name=$compressed_backup_file
+Content-Transfer-Encoding: base64
+
+EOM
+base64 $backup_dir$compressed_backup_file ) | sendmail backup.hotspot@weirdo.bur.st
+

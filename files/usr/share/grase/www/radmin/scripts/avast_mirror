@@ -1,0 +1,100 @@
+#!/bin/bash
+
+#### Avast Mirror
+#
+# Files that should be in mirror but won't be
+# 400.vps 400.vps.md5
+#
+# Extra files we need that aren't in mirror.def
+# jollyroger.vpu.stamp jollyroger.vpu servers.def servers.def.stamp servers.def.vpu.stamp servers.def.lkg  servers.def.vpu
+
+# BASEURL (Select a random from mirrors file? with fallback, currently just default)
+BASEURL="http://files.avast.com/iavs4x/"
+mirror_def=mirror.def
+BASEDIR=/home/mirror
+TMP_URL_LIST=/tmp/mirror_files
+
+# Filter for mirror.def
+restrict_products='av_pro'
+
+# Set DEBUG to anything other than '' to get debugging info
+DEBUG=''
+
+
+cd $BASEDIR || exit
+
+# Files updated from stamp files
+function stamp_update {
+	file=$1
+	stampfile=$1.stamp
+	old_stamp=$(cat $stampfile)
+	file_stamp=$file_stamp.new
+	wget -q -O $file_stamp $BASEURL$stampfile
+	new_stamp=$(cat $file_stamp)
+	if test "x$old_stamp" != "x$new_stamp" ; then
+		echo "$file out of date."
+		echo "Updating..."
+		mv $file_stamp $stampfile
+		mv -f $file $file.old
+		wget -nv $BASEURL$file
+		echo "$file updated"
+	else
+		if test -n "$DEBUG" ; then echo "$file up to date.";fi
+	fi
+}
+
+stamp_update mirror.def
+stamp_update jollyroger.vpu
+stamp_update servers.def
+stamp_update servers.def.vpu
+
+# Read in mirror.def, check all files and add out of date ones to queue
+	rm -f $TMP_URL_LIST
+	# Add "extra" files that are always downloaded here
+	#echo  $BASEURL"servers.def.lkg" > $TMP_URL_LIST
+	#egrep -v "=vps-.......\.vpu,"|
+	filelist=$(cat $mirror_def |grep $restrict_products|cut -f 2 -d =|cut -f 1-3 -d ,)
+	for file in $filelist
+	do
+		info=( `echo "$file" | tr -s ',' ' '` )
+		filename=${info[0]}
+		filesize=${info[1]}
+		filemd5=${info[2]}
+		if test ! -f $filename
+			then
+			if test -n "$DEBUG" ; then echo;fi
+			echo "Adding new $filename to download queue"
+			echo $BASEURL$filename >> $TMP_URL_LIST
+			continue
+		fi
+		curfilesize=$(stat -c%s "$filename")
+		if test "0$curfilesize" -lt "0$filesize" 
+			then
+			if test -n "$DEBUG" ; then echo;fi
+			echo "Adding incomplete $filename to download queue"
+			echo $BASEURL$filename >> $TMP_URL_LIST
+			continue
+		fi
+
+		curfilemd5=$(md5sum "$filename" | cut -f 1 -d ' '|tr [:lower:] [:upper:])
+		if test "x$filemd5" != "x$curfilemd5"
+			then
+			mv -f $filename $filename.old
+			if test -n "$DEBUG" ; then echo;fi
+			echo "Adding corrupt/changed $filename to download queue"
+			echo $BASEURL$filename >> $TMP_URL_LIST
+			continue
+		fi
+		if test -n "$DEBUG" ; then echo -n ".";fi
+		#echo "$filename already downloaded and complete"		
+	done
+	if test -n "$DEBUG" ; then echo;fi
+	if test -s $TMP_URL_LIST
+		then		
+		echo "Downloading out of date mirror files"
+		#Download files
+		# --no-dns-cache means it'll load balance randomly accross different servers for each file
+		wget -c -nv -N --no-dns-cache -i /tmp/mirror_files --progress=dot |tee -a mirror.log
+	fi
+
+

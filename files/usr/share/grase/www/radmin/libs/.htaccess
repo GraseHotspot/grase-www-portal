@@ -1,0 +1,3 @@
+# Prevent access to directory
+
+deny from all

@@ -1,0 +1,6 @@
+#<Files .htaccess|.svn>
+#order allow,deny
+#deny from all
+#</Files>
+
+#IndexIgnore *

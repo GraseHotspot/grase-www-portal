@@ -1,0 +1,143 @@
+<div id="Chilli">
+<div id="locationNameold" style="display:none;"></div>
+
+<div id="chilliPage">
+<div id="logonPage" style="display:none;">
+<form onSubmit="return false;" name="logon">
+
+<!--
+<div id="openIDSelect" style="font-size:70%;padding-top:4px;float:right;display:none;">
+<a href="#" onclick="javascript:return openID();"><img border="0" src="images/openid.gif"/></a>
+</div>
+
+<div id="openIDForm"
+style="display:none;background-color:white;position:absolute;padding:10px;border:solid 1px orange">
+OpenID URL: <input style="font-size:60%;" name="username" type="text" id="username" size="30" value="http://"/>
+</div>
+-->
+
+<table id="logonTable" border="0">
+<tr>
+<td colspan="2" style="font-size:120%;">
+<div id="logonMessage" style="font-size:70%;padding-top:4px;">Login:</div>
+</td>
+</tr>
+
+<tr id="usernameRow">
+<td id="usernameLabel"><b>Username</b></td>
+<td><input name="username" type="text" id="username" size="10"/></td>
+</tr>
+<tr id="passwordRow">
+<td id="passwordLabel"><b>Password</b></td>
+<td><input name="password" type="password" id="password" size="10"/></td>
+</tr>
+<tr>
+<td></td>
+<td class="buttons" style="text-align:right"><button class="positive" type="submit" value="Login" onClick="connect();"><img src="/images/icons/tick.png" alt=""/>Login</button></td>
+
+</tr>	
+<tr id="signUpRow" style="display:none;">
+<td id="signUp" colspan="2" style="font-size: 50%">
+<a target="_blank" href="https://coova.org/app/c/signup.html">Sign up</a> for an account
+</td>
+</tr>
+</table>		
+</form>
+</div>
+
+<div id="statusPage" style="display:none;">
+
+<p id="loggedinusername">You are logged in as: <span id="UserNameLink">Not available</span></p>
+<p id="myaccountlink"><a href="/radmin/usermin">Access My Account</a></p>
+
+<table border="0" id="statusTable" style="padding-top:4px;font-size:70%">
+<tr id="UserNameRow" class="chilliLabelhide">
+<td id="UserNameLabel" class="chilliLabel"><b>User</b></td>
+<td id="UserNameLinkCell" class="chilliValue"><span id="UserNameLink1">Not available</span></td>
+</tr>
+<tr id="sessionIdRow" class="chilliLabelhide">
+<td id="sessionIdLabel" class="chilliLabel"><b>Session ID</b></td>
+<td id="sessionId" class="chilliValue">Not available</td>
+</tr>
+<tr id="sessionUsageRow">
+<td id="sessionUsageLabel" class="chilliLabel"><b>Usage this session</b></td>
+<td id="sessionUsage" class="chilliValue">N/A</td>
+</tr>
+<tr id="maxRemainOctetsRow">
+<td id="maxRemainOctetsLabel" class="chilliLabel"><b>Remaining Quota</b></td>
+<td id="maxRemainOctets" class="chilliValue">Not available</td>
+</tr>
+<tr id="download_bar_row">
+<td></td><td id="download_bar_cell"><span id="download_bar" style="display:none;"> </span></td>
+</tr>
+<tr id="MonthlyUsageLimitRow">
+<td id="MonthlyUsageLimitRowLabel" class="chilliLabel"><b>Quota allocation</b></td>
+<td id="MonthlyUsageLimit" class="chilliValue">Not available</td>
+</tr>
+<tr id="sessionTimeoutRow" class="chilliLabelhide">
+<td id="sessionTimeoutLabel" class="chilliLabel"><b>Max Session Time</b></td>
+<td id="sessionTimeout" class="chilliValue">Not available</td>
+</tr>
+<tr id="idleTimeoutRow" class="chilliLabelhide">
+<td id="idleTimeoutLabel" class="chilliLabel"><b>Max Idle Time</b></td>
+<td id="idleTimeout" class="chilliValue">Not available</td>
+</tr>
+<tr id="startTimeRow" class="chilliLabelhide">
+<td id="startTimeLabel" class="chilliLabel"><b>Start Time</b></td>
+<td id="startTime" class="chilliValue">Not available</td>
+</tr>
+<tr id="sessionTimeRow">
+<td id="sessionTimeLabel" class="chilliLabel"><b>Session Time</b></td>
+<td id="sessionTime" class="chilliValue">Not available</td>
+</tr>
+<tr id="RemainsessionTimeRow">
+<td id="RemainsessionTimeLabel" class="chilliLabel"><b>Remaining Time</b></td>
+<td id="RemainsessionTime" class="chilliValue">Loading...</td>
+</tr>
+<tr id="time_bar_row">
+<td></td>
+<td id="time_bar_cell"><span id="time_bar" style="display:none;"> </span></td>
+</tr>
+<tr id="MonthlyTimeLimitRow">
+<td id="MonthlyTimeLimitLabel" class="chilliLabel"><b>Monthly Time Limit</b></td>
+<td id="MonthlyTimeLimit" class="chilliValue">Not available</td>
+</tr>
+<tr id="idleTimeRow" class="chilliLabelhide">
+<td id="idleTimeLabel" class="chilliLabel"><b>Idle Time</b></td>
+<td id="idleTime" class="chilliValue">Not available</td>
+</tr>
+<tr id="inputOctetsRow" class="chilliLabelhide">
+<td id="inputOctetsLabel" class="chilliLabel"><b>Downloaded</b></td>
+<td id="inputOctets" class="chilliValue">N/A</td>
+</tr>
+<tr id="outputOctetsRow" class="chilliLabelhide">
+<td id="outputOctetsLabel" class="chilliLabel"><b>Uploaded</b></td>
+<td id="outputOctets" class="chilliValue">N/A</td>
+</tr>
+<tr id="originalURLRow" class="chilliLabelhide">
+<td id="originalURLLabel" class="chilliLabel"><b>Original URL</b></td>
+<td id="originalURL" class="chilliValue">N/A</td>
+</tr>
+<tr id="connectRow">
+<td><span id="statusMessage">Connected</span></td>
+<td class="buttons"><a href="#" id="logoutlink" class="negative" onClick="return disconnect();"> <img src="/images/icons/cross.png" alt=""/>
+Logout</a></td>
+</tr>
+
+</table>
+</div>
+
+<div id="waitPage" style="">
+<img src="images/wait.gif"/> Please wait...
+</div>
+
+<div id="errorPage" style="display:none;">
+<span id="errorMessage">Error</span>
+</div>
+</div>
+<!--div id="debugPage" style="display:inline;">
+<textarea id="debugarea" rows="20" cols="60">
+</textarea>
+</div-->
+</div>
+
