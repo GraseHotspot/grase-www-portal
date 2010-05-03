@@ -1,0 +1,19 @@
+Source: grase-www-portal
+Section: config
+Priority: extra
+Maintainer: Tim White <tim@hotspot.purewhite.id.au>
+Build-Depends: @cdbs@, config-package-dev
+Standards-Version: 3.8.4
+Homepage: http://hotspot.purewhite.id.au/
+
+Package: grase-www-portal
+Architecture: all
+Depends: cdbs, ${misc:Depends}
+Provides: ${diverted-files}
+Conflicts: ${diverted-files}
+Description: Portal files for the GRASE Hotspot System
+ The GRASE Hotspot System binds together CoovaChilli, Freeradius, MySQL,
+ and other systems as well as providing an administrative frontend to managing
+ users and other hotspot related tasks.
+ .
+ This package provides the portal webapps

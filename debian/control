@@ -1,0 +1,13 @@
+Source: grase-conf-monit
+Section: unknown
+Priority: extra
+Maintainer: Tim White <tim@hotspot.purewhite.id.au>
+Build-Depends: debhelper (>= 7)
+Standards-Version: 3.8.3
+Homepage: <insert the upstream URL, if relevant>
+
+Package: grase-conf-monit
+Architecture: all
+Depends: ${misc:Depends}
+Description: <insert up to 60 chars description>
+ <insert long description, indented with spaces>

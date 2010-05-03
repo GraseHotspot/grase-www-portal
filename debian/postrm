@@ -1,0 +1,25 @@
+#!/bin/sh
+# postrm script for grase-www-portal
+
+set -e
+#set -u # Interfers with debconf
+
+
+if [ -f /usr/share/debconf/confmodule ]; then
+    . /usr/share/debconf/confmodule
+fi
+if [ -f /usr/share/dbconfig-common/dpkg/postrm.mysql ]; then
+    . /usr/share/dbconfig-common/dpkg/postrm.mysql
+    dbc_go grase-www-portal $@
+fi
+
+
+if [ "$1" = "purge" ]; then
+        rm -f /etc/grase/radmin.conf
+        if which ucf >/dev/null 2>&1; then
+                ucf --purge /etc/grase/radmin.conf
+                ucfr --purge grase-www-portal /etc/grase/radmin.conf
+        fi
+fi
+
+#DEBHELPER#

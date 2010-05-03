@@ -1,0 +1,16 @@
+#!/bin/sh -e
+# config maintainer script for grase-www-portal
+
+# source debconf stuff
+. /usr/share/debconf/confmodule
+# we support mysql and pgsql
+dbc_first_version=3.0
+dbc_dbtypes="mysql"
+dbc_dbname="radmin"
+dbc_dbuser="radmin"
+dbc_dbpassword=""
+# source dbconfig-common stuff
+. /usr/share/dbconfig-common/dpkg/config 
+dbc_go grase-www-portal $@
+
+

@@ -1,0 +1,20 @@
+#!/usr/bin/make -f
+
+DEB_AUTO_UPDATE_DEBIAN_CONTROL = true
+
+#DEB_DIVERT_EXTENSION = .grase
+# Replace some base files with simple replacements.
+#DEB_DIVERT_FIiLES_grase-monit-conf += \
+#	/etc/issue.net.debathena \
+#	/etc/mailname.debathena \
+#	/etc/papersize.debathena
+#DEB_TRANSFORM_FILES_grase-monit-conf += \
+#	/etc/default/monit.grase \
+#	/etc/monit/monitrc.grase
+
+# These files are installed via dh_install from the files/ directory
+# (see debian/grase-conf-monit.install)
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/rules/config-package.mk
+

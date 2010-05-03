@@ -1,0 +1,4 @@
+grase-www-portal grase-www-portal/dbconfig-install boolean true
+grase-www-portal grase-www-portal/mysql/app-pass password 
+grase-www-portal grase-www-portal/database-type select mysql
+grase-www-portal grase-www-portal/db/dbname string radmin

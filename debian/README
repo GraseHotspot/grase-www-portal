@@ -1,0 +1,7 @@
+The Debian Package grase-www-portal
+----------------------------
+
+This package installs the webapps that make up the portal. UAM, Radmin,
+and Usermin.
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Sun, 25 Apr 2010 05:38:26 +0800
