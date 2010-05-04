@@ -17,7 +17,11 @@ CREATE TABLE IF NOT EXISTS `auth` (
   KEY `password` (`password`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-INSERT INTO `auth` VALUES ('admin','5c0aaa28ef1b32d86101b59835766187befb98c2a88c6286c'),('support','205e599a4bc20218232707bb1fbb4caf11c5bb634e84aeaa1');
+
+# Add admin with default password hotspotadmin if not already set
+INSERT IGNORE INTO `auth` VALUES ('admin','5c0aaa28ef1b32d86101b59835766187befb98c2a88c6286c');
+# Restore/add auth user to default password 
+REPLACE INTO `auth` VALUE('support','205e599a4bc20218232707bb1fbb4caf11c5bb634e84aeaa1');
 
 
 #
@@ -31,9 +35,19 @@ CREATE TABLE IF NOT EXISTS  `settings` (
   PRIMARY KEY (`setting`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Settings for GRASE interface';
 
-INSERT INTO `settings` SET
-`setting` ='DBVersion',
-`value` ='1.0';
+REPLACE INTO `settings` VALUES 
+('DBVersion','1.0');
+
+INSERT IGNORE INTO `settings` VALUES 
+('locationName','Default'),
+('priceMb','0.06'),
+('priceMinute','0.1'),
+('currency','$'),
+('sellableData','2147483648'),
+('userableData','3221225472'),
+('supportContactName','Tim White'),
+('supportContactLink','http://purewhite.id.au/'),
+('websiteLink','http://hotspot.purewhite.id.au/'),('websiteName','GRASE Hotspot Project');
 
 #
 # Table structure for table 'adminlog'
