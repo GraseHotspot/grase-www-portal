@@ -4,6 +4,6 @@
 <p class="error">An Error has occured. Please report the error to the administrator<br/>
 {$error}
 </p>
-<p>{$memory_used}</p>
+<!--<p>{$memory_used}</p>-->
 
 {include file="footer.tpl" activepage="error"}
