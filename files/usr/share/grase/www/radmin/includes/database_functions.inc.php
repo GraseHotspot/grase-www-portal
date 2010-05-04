@@ -357,7 +357,7 @@ function getDBUserGroup($Username)
 
     // Get Users Group
     $query = "SELECT GroupName
-	          FROM usergroup
+	          FROM radusergroup
 	          WHERE UserName = '${Username}'
 	          ORDER BY priority
 	          LIMIT 1";
@@ -433,7 +433,7 @@ function database_delete_user($username)
     // Delete User
     $query = "DELETE from radcheck WHERE UserName='$username'";
     $result = mysql_db_query('radius', $query) or die("Deleting user $username failed: " . mysql_error());
-    $query = "DELETE from usergroup WHERE UserName='$username'";
+    $query = "DELETE from radusergroup WHERE UserName='$username'";
     $result = mysql_db_query('radius', $query) or die("Deleting user(group) $username failed: " . mysql_error());
     
     return true;
@@ -568,7 +568,7 @@ function database_change_group($username, $group)
     }
     else
     {
-        $query = sprintf("UPDATE usergroup SET GroupName='%s' WHERE Username='%s' AND priority = '1'", mysql_real_escape_string($group) , $username);
+        $query = sprintf("UPDATE radusergroup SET GroupName='%s' WHERE Username='%s' AND priority = '1'", mysql_real_escape_string($group) , $username);
         mysql_db_query('radius', $query) or die('Changing User Group Query failed: ' . mysql_error());
     }
     database_update_expirydate($username, expiry_for_group(getDBUserGroup($username)));
@@ -576,7 +576,7 @@ function database_change_group($username, $group)
 
 function database_user_add_group($username, $group) 
 {
-    $query = sprintf("INSERT into usergroup SET UserName='%s', GroupName='%s', Priority='%s'", mysql_real_escape_string($username) , mysql_real_escape_string($group) , mysql_real_escape_string('1'));
+    $query = sprintf("INSERT into radusergroup SET UserName='%s', GroupName='%s', Priority='%s'", mysql_real_escape_string($username) , mysql_real_escape_string($group) , mysql_real_escape_string('1'));
     mysql_db_query('radius', $query) or die('Adding User Group Query failed: ' . mysql_error());
 }
 
