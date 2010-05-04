@@ -22,37 +22,39 @@ class SettingsMySQL extends Settings
           KEY `password` (`password`)
         ) ENGINE=MyISAM DEFAULT CHARSET=latin1";
 
-    public function __construct($databaseSettingsFile = '/etc/radmin.conf', $db = false)
+    public function __construct($db)
     {
         if($db)
         {
             $this->db =& $db;
-        }else
+        }
+        /* * Old code to handle not depending on DatabaseConnections class
+        else
         {
-            $this->databaseSettings['sql_radmindatabase'] = 'radmin';
+            //$this->databaseSettings['sql_radmindatabase'] = 'radmin';
             $this->databaseSettingsFile = $databaseSettingsFile;
             $this->connectDatabase();
          
-        }
+        }*/
         if(! $this->checkTablesExist()) $this->createTables();
         //if($this->getSetting('DBVersion') == "" || $this->getSetting('DBVersion') < $this->dbSchemeVersion) $this->upgradeTables();
     }
         
-    private function connectDatabase()
-    {
-    
-        // Connecting, selecting database
-        $settings = file($this->databaseSettingsFile);
+#    private function connectDatabase()
+#    {
+#    
+#        // Connecting, selecting database
+#        $settings = file($this->databaseSettingsFile);
 
-        foreach($settings as $setting) 
-        {
-            list($key, $value) = split(":", $setting);
-            $this->databaseSettings[$key] = trim($value);
-        }
-        
-        $this->db = mysql_pconnect($this->databaseSettings['sql_server'], $this->databaseSettings['sql_username'], $this->databaseSettings['sql_password']) or ErrorHandling::fatal_error('Could not connect: ' . mysql_error());
-        mysql_select_db($this->databaseSettings['sql_radmindatabase'], $this->db) or ErrorHandling::fatal_error('Could not select database');
-    }
+#        foreach($settings as $setting) 
+#        {
+#            list($key, $value) = split(":", $setting);
+#            $this->databaseSettings[$key] = trim($value);
+#        }
+#        
+#        $this->db = mysql_pconnect($this->databaseSettings['sql_server'], $this->databaseSettings['sql_username'], $this->databaseSettings['sql_password']) or ErrorHandling::fatal_error('Could not connect: ' . mysql_error());
+#        mysql_select_db($this->databaseSettings['sql_radmindatabase'], $this->db) or ErrorHandling::fatal_error('Could not select database');
+#    }
     
     private function checkTablesExist()
     {

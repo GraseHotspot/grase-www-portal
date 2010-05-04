@@ -1,6 +1,6 @@
 <?php
 
-/*
+/* TODO Update this
 locationName
 
 admin_users_passwd_file (If using flat file for admin interface)

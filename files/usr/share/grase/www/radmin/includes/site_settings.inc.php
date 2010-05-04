@@ -1,7 +1,7 @@
 <?php
 
 /**** Site Settings ****/
-$Settings = new SettingsMySQL('', $DBs->getRadminDB());
+$Settings = new SettingsMySQL($DBs->getRadminDB());
 
 if($Settings->getSetting('locationName') == "") // Assume old settings and need to upgrade
 {

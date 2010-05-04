@@ -2,8 +2,10 @@
 
 class DatabaseConnections
 {
-    private $databaseSettingsFile;
-    private $databaseSettings;    
+    private $radiusDatabaseSettingsFile;
+    private $radminDatabaseSettingsFile;
+    private $radminDatabaseSettings;
+    private $radiusDatabaseSettings;            
     private $radminDB;
     private $radiusDB;
     private $radminDSN;
@@ -18,44 +20,69 @@ class DatabaseConnections
      * $DBs =& DatabaseConnections::getInstance($CONFIG['database_config_file']);
      */
      
-    public function &getInstance($databaseSettingsFile = '/etc/radmin.conf')
+    public function &getInstance($radiusDatabaseSettingsFile = '/etc/grase/radius.conf', $radminDatabaseSettingsFile = '/etc/grase/radmin.conf')
     {
         // Static reference of this class's instance.
         static $instance;
         if(!isset($instance)) {
-            $instance = new DatabaseConnections($databaseSettingsFile);
+            $instance = new DatabaseConnections($radiusDatabaseSettingsFile, $radminDatabaseSettingsFile);
         }
         return $instance;
     }    
     
-    private function __construct($databaseSettingsFile = '/etc/radmin.conf')
+    private function __construct($radiusDatabaseSettingsFile = '/etc/grase/radius.conf', $radminDatabaseSettingsFile = '/etc/grase/radmin.conf')
     {
-        $this->databaseSettings['sql_radmindatabase'] = 'radmin';
-        $this->databaseSettingsFile = $databaseSettingsFile;
+        //$this->databaseSettings['sql_radmindatabase'] = 'radmin';
+        $this->radiusDatabaseSettingsFile = $radiusDatabaseSettingsFile;
+        $this->radminDatabaseSettingsFile = $radminDatabaseSettingsFile;
         $this->connectDatabase();
+    }
+
+    private function loadSettingsFromFile($dbSettingsFile)
+    {
+
+        // Check that databaseSettingsFile is valid
+        if (!is_file($dbSettingsFile))
+        {
+            ErrorHandling::fatal_nodb_error('DB Config File(' . $dbSettingsFile . ') isn\'t a valid file.');
+        }
+    
+        $settings = file($dbSettingsFile);
+
+        foreach($settings as $setting) 
+        {
+            list($key, $value) = split(":", $setting);
+            $db_settings[$key] = trim($value);
+//            $this->databaseSettings[$key] = trim($value);
+        }
+//        $db_settings = $this->databaseSettings;        
+        return $db_settings;
     }
         
     private function connectDatabase()
     {
     
-        // Check that databaseSettingsFile is valid
-        if (!is_file($this->databaseSettingsFile))
-        {
-            ErrorHandling::fatal_nodb_error('DB Config File(' . $this->databaseSettingsFile . ') isn\'t a valid file.');
-        }
-    
-        // Connecting, selecting database
-        $settings = file($this->databaseSettingsFile);
+#        // Check that databaseSettingsFile is valid
+#        if (!is_file($this->databaseSettingsFile))
+#        {
+#            ErrorHandling::fatal_nodb_error('DB Config File(' . $this->databaseSettingsFile . ') isn\'t a valid file.');
+#        }
+#    
+#        // Connecting, selecting database
+#        $settings = file($this->databaseSettingsFile);
 
-        foreach($settings as $setting) 
-        {
-            list($key, $value) = split(":", $setting);
-            $this->databaseSettings[$key] = trim($value);
-        }
-        $db_settings = $this->databaseSettings;
+#        foreach($settings as $setting) 
+#        {
+#            list($key, $value) = split(":", $setting);
+#            $this->databaseSettings[$key] = trim($value);
+#        }
+#        $db_settings = $this->databaseSettings;
+
+        $this->radminDatabaseSettings = $this->loadSettingsFromFile($this->radminDatabaseSettingsFile);
+        $this->radiusDatabaseSettings = $this->loadSettingsFromFile($this->radiusDatabaseSettingsFile);
         
         // Set options and DSN
-        
+        $db_settings = $this->radiusDatabaseSettings;
         $this->radiusDSN = array(
             "phptype" => "mysql",
             "username" => $db_settings['sql_username'],
@@ -69,6 +96,7 @@ class DatabaseConnections
             'portability' => MDB2_PORTABILITY_ALL ^ MDB2_PORTABILITY_FIX_CASE,
             );            
 
+        $db_settings = $this->radminDatabaseSettings;
         $this->radminDSN = array(
             "phptype" => "mysql",
             "username" => $db_settings['sql_username'],

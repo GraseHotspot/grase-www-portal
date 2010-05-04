@@ -7,7 +7,7 @@ use POSIX;
 # Works only with mysql and postgresql
 #
 
-$conf=shift||'/etc/radmin.conf';
+$conf=shift||'/etc/grase/radius.conf';
 
 
 open CONF, "<$conf"
@@ -24,7 +24,7 @@ while(<CONF>){
 }
 close CONF;
 
-die "sql_command directive is not set in radmin.conf\n" if ($sqlcmd eq '');
+die "sql_command directive is not set in radius.conf\n" if ($sqlcmd eq '');
 die "Could not find sql binary. Please make sure that the \$sqlcmd variable points to the right location\n" if (! -x $sqlcmd);
 
 $sql_password = ($sql_password eq '') ? '' : "-p$sql_password";
