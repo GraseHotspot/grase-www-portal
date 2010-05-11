@@ -2,7 +2,7 @@
 
 /* Define all Constants here */
 
-define("APPLICATION_NAME", "RAFI");
+define("APPLICATION_NAME", "GRASE");
 define("USERMIN_APPLICATION_NAME", "My Account");
 
 // Account Status Constants (used in CSS)

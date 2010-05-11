@@ -5,7 +5,7 @@ require_once 'load_settings.inc.php';
 // MAJOR TODO Migrate all this to new DB stuff
 
 // Connecting, selecting database
-$settings = file($CONFIG['database_config_file']);
+$settings = file($CONFIG['radius_database_config_file']);
 
 foreach($settings as $setting) 
 {

@@ -10,10 +10,10 @@ $query = $loginurl['query'];
 parse_str($query, $uamopts);
 
 if(isset($_GET['loginurl'])){
-	$loginlink = "http://10.1.0.1/uam/mini?$query";
+	$loginlink = "http://10.1.0.1/grase/uam/mini?$query";
 	$loginlink2 = $_GET['loginurl'];
 }else{
-	$loginlink = "http://10.1.0.1/uam/mini";
+	$loginlink = "http://10.1.0.1/grase/uam/mini";
 	$loginlink2 = "http://10.1.0.1:3990/prelogin";
 }
 

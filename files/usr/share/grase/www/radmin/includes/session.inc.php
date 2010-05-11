@@ -65,7 +65,7 @@ function loginForm($username = null, $status = null, &$auth = null)
 $options = array(
     'dsn' => $DBs->getRadminDSN(),
     'cryptType' => 'sha1salt',
-    'sessionName' => 'RAFI Radius Admin For Internet'
+    'sessionName' => 'GRASE Radius Admin For Internet'
     );
     
 $Auth = new Auth("MDB2_Salt", $options, "loginForm");

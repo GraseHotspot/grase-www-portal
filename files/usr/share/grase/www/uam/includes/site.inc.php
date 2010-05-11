@@ -15,7 +15,7 @@ function __autoload($class_name) {
 }
 
 //require('/var/www/radmin/includes/site_settings.inc.php');
-require('/var/www/radmin/includes/load_settings.inc.php');
+require('../radmin/includes/load_settings.inc.php');
 
 // put full path to Smarty.class.php
 require('smarty/Smarty.class.php');

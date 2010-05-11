@@ -57,7 +57,7 @@ $options = array(
     );
     
 $Auth = new Auth("Array", $options, "loginForm");
-$Auth->setSessionName("RAFI Usermin");
+$Auth->setSessionName("GRASE Usermin");
 $Auth->setAdvancedSecurity(array(
     AUTH_ADV_USERAGENT => true,
     AUTH_ADV_IPCHECK   => true,
