@@ -12,7 +12,7 @@ umask 022
 
 dbc_first_version=3.0
 dbc_generate_include="template:/etc/grase/radmin.conf"
-dbc_generate_include_perm="660"
+dbc_generate_include_perms="660"
 dbc_generate_include_owner="root:www-data"
 dbc_generate_include_args="-o template_infile=/usr/share/grase/templates/radmin.conf -U"
 
@@ -25,8 +25,21 @@ if [ "$action" != configure ]
   exit 0
 fi
 
+fix_dir_perms(){
+	chgrp www-data -R /usr/share/grase/www/
+	chmod ag+rw -R /usr/share/grase/www/images/logo.png /usr/share/grase/www/radmin/templates_c /usr/share/grase/www/uam/templates_c
 
+}
 #DEBHELPER#
+
+fix_dir_perms
+
+if which invoke-rc.d >/dev/null 2>&1; then
+       invoke-rc.d apache2 restart 3>&- || true
+else
+       /etc/init.d/apache2 restart 3>&- || true
+fi
+
 
 exit 0
 
