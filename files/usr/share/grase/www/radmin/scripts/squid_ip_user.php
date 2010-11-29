@@ -1,6 +1,8 @@
 #!/usr/bin/php -q
 <?php
 
+/* Copyright 2008 Timothy White */
+
 /*
 external_acl_type IPUser ttl=300 %SRC /home/ywamadmin/public_html/radmin/squid_ip_user.php
 

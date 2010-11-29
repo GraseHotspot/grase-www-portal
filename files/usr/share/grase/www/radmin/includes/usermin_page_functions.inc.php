@@ -1,5 +1,6 @@
 <?php
 
+/* Copyright 2008 Timothy White */
 
 require_once 'includes/page_functions.inc.php';
 

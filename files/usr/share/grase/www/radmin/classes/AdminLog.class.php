@@ -1,5 +1,7 @@
 <?php
 
+/* Copyright 2008 Timothy White */
+
 class AnonAuth
 {
     public function getUsername()
@@ -133,7 +135,7 @@ class AdminLog
      
     }
     
-     
+     /* TODO Check where this code came from */
      private function ipCheck()
      {
         if (getenv('HTTP_CLIENT_IP'))

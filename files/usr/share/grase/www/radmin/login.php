@@ -1,4 +1,7 @@
 <?
+
+/* Copyright 2008 Timothy White */
+
 $from_page='login';
 require_once 'includes/session.inc.php';
 AdminLog::getInstance()->log("Log in");

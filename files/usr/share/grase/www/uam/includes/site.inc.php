@@ -1,5 +1,7 @@
 <?php
 
+/* Copyright 2008 Timothy White */
+
 // Page loading time
    $mtime = microtime();
    $mtime = explode(" ",$mtime);

@@ -1,4 +1,7 @@
 <?php
+
+/* Copyright 2008 Timothy White */
+
 require_once 'includes/usermin_session.inc.php';
 require_once 'includes/database_functions.inc.php';
 

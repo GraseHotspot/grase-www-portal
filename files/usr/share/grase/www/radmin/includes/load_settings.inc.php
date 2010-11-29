@@ -1,5 +1,7 @@
 <?php
 
+/* Copyright 2008 Timothy White */
+
 /* Application Description/Settings */
 require ('constants.inc.php');
 

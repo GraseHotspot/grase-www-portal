@@ -1,6 +1,8 @@
 #!/usr/bin/php -q
 <?php
 
+/* Copyright 2008 Timothy White */
+
 /*
 external_acl_type IPUser ttl=300 %SRC /var/www/radmin/scripts/squid_ip_user.php
 external_acl_type UserGroup ttl=300 %EXT_USER /var/www/radmin/scripts/squid_user_group.php

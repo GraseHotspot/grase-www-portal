@@ -1,5 +1,7 @@
 <?
 
+/* Copyright 2008 Timothy White */
+
 class DatabaseUsermin
 {
     private $db;

@@ -1,5 +1,7 @@
 <?
 
+/* Copyright 2008 Timothy White */
+
 class Formatting
 {
     public function formatBytes($bytes=0)

@@ -1,4 +1,7 @@
 <?
+
+/* Copyright 2008 Timothy White */
+
 // perl -ne ' print if ( $_ ge "2008.3.20 23:11:24" && $_ le "2008.3.21 00:30" ) ' <access.log.4
 //  perl -ne ' print if ( $_ ge "2008.3.20 23:11:24" && $_ le "2008.3.21 00:30" && /10.1.0.2/ ) ' <access.log.4|sed -r 's/(.*)\?[^\s]*(.*)/\1\2/'|grep POST
 // $_GET['acctid']

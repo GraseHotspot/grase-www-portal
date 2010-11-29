@@ -1,5 +1,7 @@
 <?php
 
+/* Copyright 2008 Timothy White */
+
 class AdminAuthSettings extends AdminAuth
 {
     private $userlogins;

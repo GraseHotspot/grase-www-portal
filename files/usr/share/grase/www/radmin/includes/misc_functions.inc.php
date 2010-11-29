@@ -1,5 +1,9 @@
 <?
 
+/* Copyright 2008 Timothy White */
+
+
+/* TODO Check where this code came from */
 function rand_password($len)
 {
 	$c = "bcdfghjklmnprstvwz";
@@ -30,6 +34,7 @@ function rand_password($len)
 	return $password;
 }
 
+/* TODO check where this code came from */
 function rand_username($len)
 {
 	$c = "bcdfghjklmnprstvwz";
@@ -70,6 +75,7 @@ function expiration_to_timestamp($date)
 	return l($year, $month, $day);
 }
 
+/* TODO check where this code came from */
 function makeTimeStamp($year='', $month='', $day='')
 {
    if(empty($year))
@@ -268,6 +274,7 @@ function clean_text($text)
 }
 
 
+/* TODO check where this code came from */
 function file_upload_error_message($error_code)
 {
     switch ($error_code)
@@ -297,6 +304,7 @@ function file_upload_error_message($error_code)
     }
 }
 
+/* TODO check where this code came from */
 function sha1salt($plainText, $salt = null) 
     {
         $SALT_LENGTH = 9;

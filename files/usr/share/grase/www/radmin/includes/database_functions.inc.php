@@ -1,4 +1,7 @@
 <?php
+
+/* Copyright 2008 Timothy White */
+
 require_once 'misc_functions.inc.php';
 require_once 'load_settings.inc.php';
 

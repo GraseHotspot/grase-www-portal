@@ -1,5 +1,7 @@
 <?php
 
+/* Copyright 2009 Timothy White */
+
 class DatabaseConnections
 {
     private $radiusDatabaseSettingsFile;

@@ -1,5 +1,7 @@
 <?php
 
+/* Copyright 2008 Timothy White */
+
 /* TODO Update this
 locationName
 

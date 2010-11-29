@@ -1,5 +1,7 @@
 <?
 
+/* Copyright 2009 Timothy White */
+
 ini_set('include_path', 
   ini_get('include_path') . PATH_SEPARATOR . '../ofc2/php5-ofc-library/lib/');
   

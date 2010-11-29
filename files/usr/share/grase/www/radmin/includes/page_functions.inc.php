@@ -1,5 +1,7 @@
 <?php
 
+/* Copyright 2008 Timothy White */
+
 require_once 'includes/database_functions.inc.php';
 require_once 'includes/load_settings.inc.php';
 require_once 'smarty_sortby.php';

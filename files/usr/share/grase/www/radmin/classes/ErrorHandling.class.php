@@ -1,5 +1,7 @@
 <?php
 
+/* Copyright 2008 Timothy White */
+
 class ErrorHandling
 {
     // ErrorHandling::fatal_error

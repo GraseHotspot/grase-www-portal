@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# /* Copyright 2008 Timothy White */
+
 # Mirrors common apps so that all users can download them from local mirror. Not all apps are automatically the latest version, some are "hard coded"
 
 # Download firefox "all" page

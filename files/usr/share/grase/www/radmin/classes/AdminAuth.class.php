@@ -1,5 +1,7 @@
 <?php
 
+/* Copyright 2008 Timothy White */
+
 /*abstract class AdminAuth
 {
     abstract protected function addUser($username, $password);

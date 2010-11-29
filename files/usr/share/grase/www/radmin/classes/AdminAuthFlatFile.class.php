@@ -1,4 +1,8 @@
 <?php
+
+/* Copyright 2008 Timothy White */
+
+
 /*function __autoload($class_name) {
     require_once $class_name . '.class.php';
 }*/

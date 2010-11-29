@@ -1,5 +1,9 @@
 <?php
 
+/* Copyright 2008 Timothy White */
+
+/* NO LONGER USING THIS. TO BE CLEANED UP OR REMOVED LATER */
+
 /* Initial setup page */
 
 // Report simple running errors

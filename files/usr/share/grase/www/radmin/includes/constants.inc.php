@@ -1,5 +1,7 @@
 <?php
 
+/* Copyright 2008 Timothy White */
+
 /* Define all Constants here */
 
 define("APPLICATION_NAME", "GRASE");

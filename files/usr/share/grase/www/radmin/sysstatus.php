@@ -10,6 +10,9 @@
 <ul id="statusmon">
 
 <?php
+
+/* Copyright 2008 Timothy White */
+
 // TODO Make this use templates too
 // ps -p 5437 -o lstart
 

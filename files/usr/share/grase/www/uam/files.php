@@ -1,5 +1,7 @@
 <?php
 
+/* Copyright 2008 Timothy White */
+
 require_once('/usr/share/grase/www/uam/includes/site.inc.php');
  
 $path = substr($_SERVER['PATH_INFO'], 1); // this will get rid of the leading slash

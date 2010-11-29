@@ -1,4 +1,7 @@
 <?php
+
+/* Copyright 2008 Timothy White */
+
 header("Content-Type: text/javascript;");
 
 if($_GET['username']){
