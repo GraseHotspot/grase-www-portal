@@ -5,7 +5,7 @@
 require_once 'misc_functions.inc.php';
 require_once 'load_settings.inc.php';
 
-// MAJOR TODO Migrate all this to new DB stuff
+// MAJOR TODO: Migrate all this to new DB stuff
 
 // Connecting, selecting database
 $settings = file($CONFIG['radius_database_config_file']);
@@ -88,7 +88,8 @@ function convertRadacctIPtoUsername($IP) // was database_radacct_ip_to_username
 
 function getDBUserDetails($username) // was database_get_user_details
 {
-    $Userdata['Username'] = $username;
+    return DatabaseFunctions::getInstance()->getUserDetails($username);
+/*    $Userdata['Username'] = $username;
 
     // Get radcheck attributes
     $query = "SELECT Attribute,Value
@@ -155,14 +156,16 @@ function getDBUserDetails($username) // was database_get_user_details
     // Get User Comment
     $Userdata['Comment'] = getDBComment($username);
     
-    return $Userdata;
+    return $Userdata;*/
 }
 
-/* Not in use yet. TODO move some of above into these functions and make them active */
+/* Not in use yet. TODO: move some of above into these functions and make them active */
 
 function getDBUserLastLogoutTime($username) 
 {
 
+    return DatabaseFunctions::getInstance()->getUserLastLogoutTime($username);
+/*
     // Get Last Logout
     $query = "SELECT AcctStopTime
 		          FROM radacct
@@ -181,14 +184,14 @@ function getDBUserLastLogoutTime($username)
     }
     mysql_free_result($result2);
     
-    return $Userdata['LastLogout'];
+    return $Userdata['LastLogout'];*/
 }
 
 function getDBUserTotalSessionTime($username) 
 {
-
+    return DatabaseFunctions::getInstance()->getUserTotalSessionTime($username);
     // Get Total Session Time
-    $query = "SELECT
+/*    $query = "SELECT
 		          SUM(AcctSessionTime)
 		          FROM radacct
 		          WHERE UserName='$username'
@@ -206,13 +209,14 @@ function getDBUserTotalSessionTime($username)
     }
     mysql_free_result($result2);
     
-    return $Userdata['TotalTimeMonth'];
+    return $Userdata['TotalTimeMonth'];*/
 }
 
 function getDBUserDataUsage($username) 
 {
+    return DatabaseFunctions::getInstance()->getUserDataUsage($username);
 
-    // Get Data usage
+/*    // Get Data usage
     $query = "SELECT (
 		            SUM(radacct.AcctInputOctets)+SUM(radacct.AcctOutputOctets)
 		          )
@@ -232,13 +236,14 @@ function getDBUserDataUsage($username)
     //$Userdata['AcctTotalFormatOctets'] = formatBytes($Userdata['AcctTotalOctets']);
     mysql_free_result($result2);
     
-    return $Userdata['AcctTotalOctets'];
+    return $Userdata['AcctTotalOctets'];*/
 }
 
 function getDBUserDataUsageTotal($username) // was database_get_user_datausage_total
 {
-
-    // Get Data usage (From all previous months as well) // TODO Add this current months usage too?
+        return DatabaseFunctions::getInstance()->getUserDataUsageTotal($username);
+/*
+    // Get Data usage (From all previous months as well) // TODO: Add this current months usage too?
     $query = "SELECT
 	          (
     	          SUM(mtotacct.InputOctets) + SUM(mtotacct.OutputOctets)
@@ -259,12 +264,14 @@ function getDBUserDataUsageTotal($username) // was database_get_user_datausage_t
     //$Userdata['TotalFormatOctets'] = formatBytes($Userdata['TotalOctets']);
     mysql_free_result($result2);
     
-    return $Userdata['TotalOctets'];
+    return $Userdata['TotalOctets'];*/
 }
 
 function getDBMonthlyAccounts() // database_get_monthly_accounts
 {
-    $query = "SELECT UserName,
+
+    return DatabaseFunctions::getInstance()->getMonthlyAccounts();
+/*    $query = "SELECT UserName,
 	                 AcctDate,
 	                 InputOctets,
 	                 OutputOctets
@@ -273,7 +280,8 @@ function getDBMonthlyAccounts() // database_get_monthly_accounts
     
     if (mysql_num_rows($result2) < 1) 
     {
-        die('No data in mtotacct'); // TODO change this
+        //die('No data in mtotacct'); // TODO: change this
+	return "";
 
         
     }
@@ -287,7 +295,7 @@ function getDBMonthlyAccounts() // database_get_monthly_accounts
             //$acct_data['InputFormatOctets'] = formatBytes($row['InputOctets']);
             $acct_data['OutputOctets'] = $row['OutputOctets'];
             //$acct_data['OutputFormatOctets'] = formatBytes($row['OutputOctets']);
-            $acct_data['TotalOctets'] = $row['InputOctets'] + $row['OutputOctets']; // TODO move back to SQL as below
+            $acct_data['TotalOctets'] = $row['InputOctets'] + $row['OutputOctets']; // TODO: move back to SQL as below
 
             //$acct_data['TotalFormatOctets'] = formatBytes($row['InputOctets'] + $row['OutputOctets']);
             $monthly_accounts[$row['AcctDate']][] = $acct_data;
@@ -298,13 +306,14 @@ function getDBMonthlyAccounts() // database_get_monthly_accounts
     
     return $monthly_accounts;
 
-    //	$month[''] = $username, $download, $upload, $total; // Format and raw
+    //	$month[''] = $username, $download, $upload, $total; // Format and raw*/
     
 }
 
 function getDBMonthlyAccountsTotals() // was database_get_monthly_accounts_totals
 {
-    $query = "SELECT AcctDate,
+    return DatabaseFunctions::getInstance()->getMonthlyAccountsTotals();
+/*    $query = "SELECT AcctDate,
 	                 SUM(InputOctets) as TotalInputOctets,
 	                 SUM(OutputOctets)as TotalOutputOctets,
 	                 SUM(InputOctets + OutputOctets) as TotalOctets
@@ -315,7 +324,8 @@ function getDBMonthlyAccountsTotals() // was database_get_monthly_accounts_total
     
     if (mysql_num_rows($result2) < 1) 
     {
-        die('No data in mtotacct'); // TODO change this
+        //die('No data in mtotacct'); // TODO: change this
+	return "";
 
         
     }
@@ -336,13 +346,13 @@ function getDBMonthlyAccountsTotals() // was database_get_monthly_accounts_total
     mysql_free_result($result2);
     krsort($monthly_accounts_totals);
     
-    return $monthly_accounts_totals;
+    return $monthly_accounts_totals;*/
 }
 
 function checkDBUniqueUsername($username) // was database_check_uniq_username
 {
     return DatabaseFunctions::getInstance()->checkUniqueUsername($username);
-    $query = sprintf("SELECT Username
+/*    $query = sprintf("SELECT Username
 	                  FROM radcheck
 	                  WHERE Username='%s'", mysql_real_escape_string($username));
     $result = mysql_db_query('radius', $query) or die('Checking Uniq Username Query failed: ' . mysql_error());
@@ -352,13 +362,13 @@ function checkDBUniqueUsername($username) // was database_check_uniq_username
     if ($result_num != 0) 
     return false;
     
-    return true;
+    return true;*/
 }
 
-function getDBUserGroup($Username) 
+function getDBUserGroup($username) 
 {
-
-    // Get Users Group
+    return DatabaseFunctions::getInstance()->getUserGroup($username);
+/*    // Get Users Group
     $query = "SELECT GroupName
 	          FROM radusergroup
 	          WHERE UserName = '${Username}'
@@ -376,7 +386,7 @@ function getDBUserGroup($Username)
     }
     mysql_free_result($result2);
     
-    return $group;
+    return $group;*/
 }
 
 function database_get_users($selectusers) 
@@ -395,8 +405,8 @@ function database_get_users($selectusers)
 
 function database_get_user_names() 
 {
-
-    // Get Users
+    return DatabaseFunctions::getInstance()->getAllUserNames();
+/*    // Get Users
     $query = "SELECT UserName
 	          FROM radcheck
 	          WHERE Attribute='Password'
@@ -414,7 +424,7 @@ function database_get_user_names()
     }
     mysql_free_result($result);
     
-    return $users;
+    return $users;*/
 }
 
 /* Modify User Functions
@@ -432,53 +442,57 @@ function database_get_user_names()
 
 function database_delete_user($username) 
 {
-
-    // Delete User
+    return DatabaseFunctions::getInstance()->deleteUser($username);
+/*    // Delete User
     $query = "DELETE from radcheck WHERE UserName='$username'";
     $result = mysql_db_query('radius', $query) or die("Deleting user $username failed: " . mysql_error());
     $query = "DELETE from radusergroup WHERE UserName='$username'";
     $result = mysql_db_query('radius', $query) or die("Deleting user(group) $username failed: " . mysql_error());
     
-    return true;
+    return true;*/
 }
 
 function database_increase_datalimit($username, $addmb) 
 {
-    $datalimitoctets = $addmb * 1024 * 1024;
+    return DatabaseFunctions::getInstance()->increaseUserDatalimit($username, $addmb);
+/*    $datalimitoctets = $addmb * 1024 * 1024;
     $query = sprintf("UPDATE radcheck
 	                  SET Value = Value + %s
 	                  WHERE Username = '%s'
 	                  AND Attribute='%s'", mysql_real_escape_string($datalimitoctets) , mysql_real_escape_string($username) , mysql_real_escape_string("Max-Octets"));
-    mysql_db_query('radius', $query) or die('Increasing User Datalimit Query failed: ' . mysql_error());
+    mysql_db_query('radius', $query) or die('Increasing User Datalimit Query failed: ' . mysql_error());*/
 }
 
 function database_increase_timelimit($username, $addmins) 
 {
-    $timelimitsecs = $addmins * 60;
+    return DatabaseFunctions::getInstance()->increaseUserTimelimit($username, $addmins);
+/*    $timelimitsecs = $addmins * 60;
     $query = sprintf("UPDATE radcheck
 	                  SET Value = Value + %s
 	                  WHERE Username='%s'
 	                  AND Attribute='%s'", mysql_real_escape_string($timelimitsecs) , mysql_real_escape_string($username) , mysql_real_escape_string("Max-All-Session"));
-    mysql_db_query('radius', $query) or die('Increasing User Timelimit Query failed: ' . mysql_error());
+    mysql_db_query('radius', $query) or die('Increasing User Timelimit Query failed: ' . mysql_error());*/
 }
 
 function database_change_password($username, $password) 
 {
-    $query = sprintf("UPDATE radcheck
+    return DatabaseFunctions::getInstance()->setUserPassword($username, $password);
+/*    $query = sprintf("UPDATE radcheck
 	                  SET Value='%s'
 	                  WHERE Username='%s'
 	                  AND Attribute='%s' ", mysql_real_escape_string($password) , $username, mysql_real_escape_string("Password"));
-    return mysql_db_query('radius', $query) or die('Adding User Password Query failed: ' . mysql_error());
+    return mysql_db_query('radius', $query) or die('Adding User Password Query failed: ' . mysql_error());*/
 }
 
 function database_change_datalimit($username, $limitmb) 
 {
-    $datalimitoctets = $limitmb * 1024 * 1024;
+    return DatabaseFunctions::getInstance()->setUserDataLimit($username, $limitmb);
+/*    $datalimitoctets = $limitmb * 1024 * 1024;
     $query = "SELECT UserName
 	          FROM radcheck
 	          WHERE Attribute = 'Max-Octets'
 	          AND UserName = '$username'";
-    $result2 = mysql_db_query('radius', $query) or die('Get User Expiration failed: ' . mysql_error());
+    $result2 = mysql_db_query('radius', $query) or die('Get User DataLimit failed: ' . mysql_error());
     $num_rows = mysql_num_rows($result2);
     mysql_free_result($result2);
     
@@ -501,12 +515,13 @@ function database_change_datalimit($username, $limitmb)
 		                  WHERE Username='%s'
 		                  AND Attribute='%s'", mysql_real_escape_string($datalimitoctets) , mysql_real_escape_string($username) , mysql_real_escape_string("Max-Octets"));
         mysql_db_query('radius', $query) or die('Setting User Datalimit Query failed: ' . mysql_error());
-    }
+    }*/
 }
 
 function database_change_timelimit($username, $limitmins) 
 {
-    $limitsecs = $limitmins * 60;
+    return DatabaseFunctions::getInstance()->setUserTimeLimit($username, $limitmins);
+/*    $limitsecs = $limitmins * 60;
     $query = "SELECT UserName FROM radcheck WHERE Attribute = 'Max-All-Session' AND UserName = '$username'";
     $result2 = mysql_db_query('radius', $query) or die('Get User Time Limit failed: ' . mysql_error());
     $num_rows = mysql_num_rows($result2);
@@ -523,12 +538,13 @@ function database_change_timelimit($username, $limitmins)
 
         $query = sprintf("UPDATE radcheck SET Value=%s WHERE Username='%s' AND Attribute='%s'", mysql_real_escape_string($limitsecs) , mysql_real_escape_string($username) , mysql_real_escape_string("Max-All-Session"));
         mysql_db_query('radius', $query) or die('Setting User Timelimit Query failed: ' . mysql_error());
-    }
+    }*/
 }
 
 function database_update_expirydate($username, $expirydate) 
 {
-    $query = "SELECT UserName FROM radcheck WHERE Attribute = 'Expiration' AND UserName = '$username'";
+    return DatabaseFunctions::getInstance()->setUserExpiry($username, $expirydate);
+/*    $query = "SELECT UserName FROM radcheck WHERE Attribute = 'Expiration' AND UserName = '$username'";
     $result2 = mysql_db_query('radius', $query) or die('Get User Expiration failed: ' . mysql_error());
     $num_rows = mysql_num_rows($result2);
     mysql_free_result($result2);
@@ -559,13 +575,14 @@ function database_update_expirydate($username, $expirydate)
         }
     }
     
-    return true;
+    return true;*/
 }
 
 function database_change_group($username, $group) 
 {
+    return DatabaseFunctions::getInstance()->setUserGroup($username, $group);
     
-    if (getDBUserGroup($username) == "") 
+/*    if (getDBUserGroup($username) == "") 
     {
         database_user_add_group($username, $group);
     }
@@ -574,28 +591,30 @@ function database_change_group($username, $group)
         $query = sprintf("UPDATE radusergroup SET GroupName='%s' WHERE Username='%s' AND priority = '1'", mysql_real_escape_string($group) , $username);
         mysql_db_query('radius', $query) or die('Changing User Group Query failed: ' . mysql_error());
     }
-    database_update_expirydate($username, expiry_for_group(getDBUserGroup($username)));
+    database_update_expirydate($username, expiry_for_group(getDBUserGroup($username)));*/
 }
 
-function database_user_add_group($username, $group) 
+/*function database_user_add_group($username, $group) 
 {
     $query = sprintf("INSERT into radusergroup SET UserName='%s', GroupName='%s', Priority='%s'", mysql_real_escape_string($username) , mysql_real_escape_string($group) , mysql_real_escape_string('1'));
     mysql_db_query('radius', $query) or die('Adding User Group Query failed: ' . mysql_error());
-}
+}*/
 
 /* New User Function
 * database_create_new_user($username, $password, $datalimitmb, $timelimitmins, $expirydate, $group, $comment)
 *
 */
 
-function database_create_new_user($username, $password, $datalimitmb, $timelimitmins, $expirydate, $group, $comment) // TODO Comment field
+function database_create_new_user($username, $password, $datalimitmb, $timelimitmins, $expirydate, $group, $comment) // TODO: Comment field
 
 
 {
-    $query = sprintf("INSERT into radcheck SET Username='%s', Attribute='%s', op='%s', Value='%s'", $username, mysql_real_escape_string("Password") , mysql_real_escape_string(":=") , mysql_real_escape_string($password));
-    mysql_db_query('radius', $query) or die('Adding User Password Query failed: ' . mysql_error());
+    /*$query = sprintf("INSERT into radcheck SET Username='%s', Attribute='%s', op='%s', Value='%s'", $username, mysql_real_escape_string("Password") , mysql_real_escape_string(":=") , mysql_real_escape_string($password));
+    mysql_db_query('radius', $query) or die('Adding User Password Query failed: ' . mysql_error());*/
     
-    if ($group) database_change_group($username, $group);
+    return DatabaseFunctions::getInstance()->createUser($username, $password, $datalimitmb, $timelimitmins, $expirydate, $group, $comment);
+    
+/*    if ($group) database_change_group($username, $group);
     
     if ($datalimitmb) database_change_datalimit($username, $datalimitmb);
     
@@ -603,28 +622,21 @@ function database_create_new_user($username, $password, $datalimitmb, $timelimit
     
     if (trim($expirydate) && trim($expirydate) != '--') database_update_expirydate($username, $expirydate);
     
-    if (trim($comment)) database_change_comment($username, $comment); // TODO Comment field
+    if (trim($comment)) database_change_comment($username, $comment); // TODO: Comment field
 
     
-    return true;
+    return true;*/
 }
 
 function database_change_comment($username, $comment)
 {
-
-    if (getDBComment($username) == "") 
-    {
-        database_user_add_comment($username, $comment);
-    }
-    else
-    {
-        database_user_change_comment($username, $comment);
-    }
+    return DatabaseFunctions::getInstance()->setUserComment($username, $comment);
 }
 
 function getDBComment($username)
 {
-    $query = "SELECT Value FROM radreply WHERE Attribute = 'Comment' AND UserName = '$username'";
+    return DatabaseFunctions::getInstance()->getUserComment($username);
+/*    $query = "SELECT Value FROM radreply WHERE Attribute = 'Comment' AND UserName = '$username'";
     $result2 = mysql_db_query('radius', $query) or die('Get User Comment failed: ' . mysql_error());
     $num_rows = mysql_num_rows($result2);
     if($num_rows == 0)
@@ -637,21 +649,8 @@ function getDBComment($username)
         $comment = mysql_result($result2, 0);
     }
     mysql_free_result($result2);
-    return $comment;
+    return $comment;*/
 }
-
-function database_user_add_comment($username, $comment)
-{
-    $query = sprintf("INSERT into radreply SET Username='%s', Attribute='%s', op='%s', Value='%s'", $username, mysql_real_escape_string("Comment") , mysql_real_escape_string(":=") , mysql_real_escape_string($comment));
-    mysql_db_query('radius', $query) or die('Adding User CommentQuery failed: ' . mysql_error());    
-}
-
-function database_user_change_comment($username, $comment)
-{
-    $query = sprintf("UPDATE radreply SET Value='%s' WHERE Username='%s' AND Attribute='%s'", mysql_real_escape_string($comment) , mysql_real_escape_string($username) , mysql_real_escape_string("Comment"));
-    mysql_db_query('radius', $query) or die('Updating User Comment Query failed: ' . mysql_error());
-}
-
 
 
 // Closing connection
