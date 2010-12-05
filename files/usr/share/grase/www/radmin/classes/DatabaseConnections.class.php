@@ -2,6 +2,8 @@
 
 /* Copyright 2009 Timothy White */
 
+require_once "MDB2.php";
+
 class DatabaseConnections
 {
     private $radiusDatabaseSettingsFile;
@@ -46,14 +48,16 @@ class DatabaseConnections
         // Check that databaseSettingsFile is valid
         if (!is_file($dbSettingsFile))
         {
-            ErrorHandling::fatal_nodb_error('DB Config File(' . $dbSettingsFile . ') isn\'t a valid file.');
+            ErrorHandling::fatal_nodb_error(
+		_("DB Config File isn't a valid file.") . "($dbSettingsFile)"
+	    );
         }
     
         $settings = file($dbSettingsFile);
 
         foreach($settings as $setting) 
         {
-            list($key, $value) = split(":", $setting);
+            list($key, $value) = explode(":", $setting);
             $db_settings[$key] = trim($value);
 //            $this->databaseSettings[$key] = trim($value);
         }
@@ -129,7 +133,7 @@ class DatabaseConnections
         $this->radminDB =& MDB2::connect($this->radminDSN);
         if (PEAR::isError($this->radminDB))
         {
-            // Attempt to create the radminDB? TODO Make nicer?
+            // Attempt to create the radminDB? TODO: Make nicer?
             $this->radiusDB->loadModule('Manager');
             $this->radiusDB->createDatabase($db_settings['sql_radmindatabase']);
             
