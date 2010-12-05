@@ -2,7 +2,7 @@
 
 /* Copyright 2008 Timothy White */
 
-/* TODO Check some of the code in here for origin */
+/* TODO: Check some of the code in here for origin */
 
 class NetworkInterface
 {
@@ -145,7 +145,7 @@ class SystemInformation
         $this->uptime = $up;
     }
 
-    /* TODO Check where this code came from */
+    /* TODO: Check where this code came from */
     private function cpu(){
 		if ($bufr = implode(file('/proc/cpuinfo'))) {
 		    $processors = preg_split('/\s?\n\s?\n/', trim($bufr));

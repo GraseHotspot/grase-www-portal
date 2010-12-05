@@ -28,7 +28,7 @@ class AdminAuthFlatFile extends AdminAuth
 	    $this->userlogins = unserialize(file_get_contents($this->userfile, FILE_SKIP_EMPTY_LINES));
 	    if(!is_array($this->userlogins))
 	    { // No users in admin file (TODO)
-		    $this->userlogins['admin'] = $this->generateHash("radmin"); // TODO check this default password
+		    $this->userlogins['admin'] = $this->generateHash("radmin"); // TODO: check this default password
 	    }
     //	Setup default username/password as $userlogins['user'] = "password";
     //	TODO
