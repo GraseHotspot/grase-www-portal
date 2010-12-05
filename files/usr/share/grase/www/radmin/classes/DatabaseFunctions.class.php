@@ -1,4 +1,4 @@
-<?
+<?php
 
 /* Copyright 2008 Timothy White */
 
@@ -430,11 +430,9 @@ class DatabaseFunctions
 
     public function getUserComment($username)
     {
-        $sql = sprintf("SELECT Value
-                         FROM radreply
-                         WHERE Attribute = %s
-                         AND UserName = %s",
-                         $this->db->quote('Comment'),
+        $sql = sprintf("SELECT Comment
+                         FROM radusercomment
+                         WHERE UserName = %s",
                          $this->db->quote($username));
         
         $results = $this->db->queryOne($sql);
@@ -474,12 +472,10 @@ class DatabaseFunctions
     {
         $fields = array (
             'Username'  => array ( 'value' => $username,    'key' => true),
-            'Attribute' => array ( 'value' => 'Comment',    'key' => true),
-            'op'        => array ( 'value' => ':='),
-            'Value'     => array ( 'value' => $comment . ' ' )
+            'Comment'     => array ( 'value' => $comment . ' ' )
             );
         
-        $result = $this->db->replace('radreply', $fields);
+        $result = $this->db->replace('radusercomment', $fields);
         
         if (PEAR::isError($result))
         {
@@ -658,6 +654,9 @@ class DatabaseFunctions
     
     public function deleteUser($username)
     {
+    
+        /* Remove data from radcheck */
+        // TODO: Remove from radreply?
         $sql = sprintf("DELETE from radcheck
                         WHERE UserName=%s",
                         $this->db->quote($username));
@@ -669,6 +668,7 @@ class DatabaseFunctions
             ErrorHandling::fatal_db_error(_('Deleting user failed: '). "($username) ", $result);
         }
 
+        /* Remove user from group */
         $sql = sprintf("DELETE from radusergroup
                         WHERE UserName=%s",
                         $this->db->quote($username));
@@ -679,7 +679,20 @@ class DatabaseFunctions
         {
             ErrorHandling::fatal_db_error(_('Deleting users group failed: '). "($username) ", $result);
         }
-                
+        
+        /* Remove user comment */
+        $sql = sprintf("DELETE from radusercomment
+                        WHERE UserName=%s",
+                        $this->db->quote($username));
+        
+        $result = $this->db->query($sql);
+        
+        if (PEAR::isError($result))
+        {
+            ErrorHandling::fatal_db_error(_('Deleting users comment failed: '). "($username) ", $result);
+        }
+                      
+                        
         return true;
     }
     
