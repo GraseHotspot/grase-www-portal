@@ -144,10 +144,10 @@ class SettingsMySQL extends Settings
         $sellable_data = trim(file_get_contents($sellable_data_file)); if($sellable_data == "") $sellable_data = "2147483648"; //2Gb
         $useable_data = trim(file_get_contents($useable_data_file)); if($useable_data == "") $useable_data = "3221225472"; //3Gb
         $support_contact = trim(file_get_contents($support_contact_file)); if($support_contact == "") $support_contact = "http://purewhite.id.au/ Tim White";
-        list($support_link, $support_name) = split(' ', $support_contact, 2);
+        list($support_link, $support_name) = explode(' ', $support_contact, 2);
 
         $website = trim(file_get_contents($website_file)); if($website == "") $website = "http://ywam.org/ YWAM";
-        list($website_link, $website_name) = split(' ', $website, 2);
+        list($website_link, $website_name) = explode(' ', $website, 2);
         error_reporting($old_error_level);        
 
         $this->setSetting('locationName', $location);                
