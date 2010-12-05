@@ -1,6 +1,8 @@
 {include file="header.tpl" Name="Monthly Accounts" activepage="monthly_accounts"}
 
+{if $monthly_accounts}
 <div id='yearlist'>
+
 {foreach from=$monthly_accounts item=month name=monthsloop key=date}
 	<div id='{$date}_accounts'>
 	<h3>{$date}</h3>
@@ -35,5 +37,9 @@
 	</div>
 {/foreach}
 </div>
+{else}
+	<h3>No Historic Data Exists yet.</h3>
+	<h4>Please wait until a month has passed</h4>
+{/if}
 
 {include file="footer.tpl"}

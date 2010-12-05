@@ -9,7 +9,8 @@
 <link rel="stylesheet" type="text/css" href="radmin.css?{$css_version}" id="radmin_css" />
 
 <link type="text/css" href="css/cupertino/jquery-ui-1.7.2.custom.css" rel="stylesheet" />       
-<link type="text/css" href="css/tablesorter/style.css" rel="stylesheet" />       
+
+<link rel="shortcut icon" href="/grase/favicon.ico" />
 
 <!-- jquery needed for custom functionality, must be loaded before prototype -->
 <script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
@@ -159,7 +160,7 @@ $j(document).ready(function(){
 
 </head>
 <body>
-{literal}<!--[if lte IE 6]><script src="/ie6/warning2.js"></script><![endif]-->{/literal}
+{literal}<!--[if lte IE 6]><script src="/grase/ie6/warning2.js"></script><![endif]-->{/literal}
 <div id="topbar">
 <h1>{$Title} (v{$application_version})</h1>
 {if ! $hidemenubar}{if $activepage != "login" && $activepage != "setup" && $activepage != "error"}{include file="menubar.tpl" }{/if}{/if}

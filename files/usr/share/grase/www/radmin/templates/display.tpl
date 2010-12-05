@@ -8,12 +8,12 @@
 			<td>Username</td>
 <!--			<td>Group</td>-->
 			<td>Data Limit</td>
-			<td>Data Usage (M)<a class="helpbutton" onclick="ShowContent('helpbox','Total Data usage for the current month');" ><img src="/images/icons/help.png" alt=""/></a></td>
-			<td>Data Usage (T)<a class="helpbutton" onclick="ShowContent('helpbox','Total Data usage, from previous months, excluding current month');" ><img src="/images/icons/help.png" alt=""/></a></td>
+			<td>Data Usage (M)<a class="helpbutton" onclick="ShowContent('helpbox','Total Data usage for the current month');" ><img src="/grase/images/icons/help.png" alt=""/></a></td>
+			<td>Data Usage (T)<a class="helpbutton" onclick="ShowContent('helpbox','Total Data usage, from previous months, excluding current month');" ><img src="/grase/images/icons/help.png" alt=""/></a></td>
 			<td>Time Limit</td>
 			<td>Time Usage(Month)</td>			
 			<td>Account Expiry</td>
-			<td>Last Logoff<a class="helpbutton" onclick="ShowContent('helpbox','Last Logoff timestamp from current month only');" ><img src="/images/icons/help.png" alt=""/></a></td>
+			<td>Last Logoff<a class="helpbutton" onclick="ShowContent('helpbox','Last Logoff timestamp from current month only');" ><img src="/grase/images/icons/help.png" alt=""/></a></td>
 			<td>Comment</td>
 		</tr>
 		</thead>

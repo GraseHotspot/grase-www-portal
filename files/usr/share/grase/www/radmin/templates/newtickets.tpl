@@ -46,7 +46,7 @@
 
 <table>
 
-<tr><td>Number of Tickets <a class="helpbutton" onclick="ShowContent('helpbox','Maximum of 50 tickets per batch');" > <img src="/images/icons/help.png" alt=""/></a></td><td><input type="text" name="numberoftickets" value='{$user.numberoftickets}'/></td></tr>
+<tr><td>Number of Tickets <a class="helpbutton" onclick="ShowContent('helpbox','Maximum of 50 tickets per batch');" > <img src="/grase/images/icons/help.png" alt=""/></a></td><td><input type="text" name="numberoftickets" value='{$user.numberoftickets}'/></td></tr>
 
 <tr><td>Group</td><td> {html_options name="Group" options=$Usergroups selected=$user.Group}</td></tr>
 <tr><td>Comment</td><td> <input type="text" name="Comment" value='{$user.Comment}'/></td></tr>
@@ -58,7 +58,7 @@
 <tr><td>Time Limit (Minutes)</td><td>{html_options name="Max_Time" options=$Timecosts selected=$user.Max_Time} <span class="form_or">OR</span> <input type="text" class="default_swap" id="MaxTime" name="MaxTime" value='{$user.MaxTime}' title="Type your own Time Limit"/></td></tr>
 
 
-<tr><td></td><td class="buttons"><button class="positive" type="submit" name="createticketssubmit" value="Create Tickets"><img src="/images/icons/tick.png" alt=""/>Create Tickets</button></td></tr>
+<tr><td></td><td class="buttons"><button class="positive" type="submit" name="createticketssubmit" value="Create Tickets"><img src="/grase/images/icons/tick.png" alt=""/>Create Tickets</button></td></tr>
 </table>
 </form>
 </div>

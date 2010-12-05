@@ -16,7 +16,7 @@
 <tr><td colspan="2">Logo file needs to be in png format, and relatively small (remember, every page has the logo). 10 Kilobytes maximum. It's physical size shouldn't be bigger than about 220px in both directions.</td></tr>
 <tr><td>Logo File</td><td> <input type="hidden" name="MAX_FILE_SIZE" value="20480" />
 <input type="file" name="newlogo" /><button type="submit" name="changelogosubmit" value="Upload New Logo">Upload New Logo</button></td></tr>
-<tr><td></td><td><img src="/images/logo.png" alt="Logo"/></td></tr>
+<tr><td></td><td><img src="/grase/images/logo.png" alt="Logo"/></td></tr>
 </table>
 </form> 
 

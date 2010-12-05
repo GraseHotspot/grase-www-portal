@@ -26,7 +26,7 @@
                         </div>
 
 	</td></tr>
-	<tr><td>Confirm Password</td><td> <input type="password" name="PasswordVerify"/ value=''/><button type="submit" name="changepasswordsubmit" value="Change Password"><img src="/images/icons/textfield_key.png" alt=""/>Change Password</button></form></td></tr>
+	<tr><td>Confirm Password</td><td> <input type="password" name="PasswordVerify"/ value=''/><button type="submit" name="changepasswordsubmit" value="Change Password"><img src="/grase/images/icons/textfield_key.png" alt=""/>Change Password</button></form></td></tr>
 	<tr><td>Group</td><td>{$user.Group}</td></tr>
 	
 	<tr><td>Data Limit (Mb)</td><td>{$user.MaxMb}</td></tr>

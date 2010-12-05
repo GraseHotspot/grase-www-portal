@@ -2,7 +2,7 @@
 
 <!-- Progress Bars -->
 	<!-- jsProgressBarHandler prerequisites : prototype.js -->
-	<script type="text/javascript" src="js/prototype/prototype.js"></script>
+	<script type="text/javascript" src="/javascript/prototype/prototype.js"></script>
 	<!-- jsProgressBarHandler core -->
 	<script type="text/javascript" src="js/bramus/jsProgressBarHandler.js"></script>
 <!-- /Progress bars -->

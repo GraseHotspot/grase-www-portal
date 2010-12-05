@@ -33,10 +33,10 @@
 <tr><td>Data Limit (Mb)</td><td>{html_options name="Max_Mb" options=$Datacosts selected=$user.Max_Mb} <span class="form_or">OR</span> <input type="text" class="default_swap" id="MaxMb" name="MaxMb" value='{$user.MaxMb}' title="Type your own Mb Limit"/>
 </td></tr>
 <tr><td>Time Limit (Minutes)</td><td>{html_options name="Max_Time" options=$Timecosts selected=$user.Max_Time} <span class="form_or">OR</span> <input type="text" class="default_swap" id="MaxTime" name="MaxTime" value='{$user.MaxTime}' title="Type your own Time Limit"/></td></tr>
-<tr><td>Expiry (Automatic)<a class="helpbutton" onclick="ShowContent('helpbox','Expiry is based on the Group.<br\/>1 Month for visitors<br\/>3 Months for students<br\/>6 Months for staff and ministry');" ><img src="/images/icons/help.png" alt=""/></a></td><td> {html_select_date disabled='disabled' prefix="Expirydate_" time=$user.Expiration end_year="+1" year_empty='' month_empty='' day_empty=''} </td></tr>
+<tr><td>Expiry (Automatic)<a class="helpbutton" onclick="ShowContent('helpbox','Expiry is based on the Group.<br\/>1 Month for visitors<br\/>3 Months for students<br\/>6 Months for staff and ministry');" ><img src="/grase/images/icons/help.png" alt=""/></a></td><td> {html_select_date disabled='disabled' prefix="Expirydate_" time=$user.Expiration end_year="+1" year_empty='' month_empty='' day_empty=''} </td></tr>
 
 
-<tr><td></td><td class="buttons"><button class="positive" type="submit" name="{$useraction}submit" value="{$useractionlabel}"><img src="/images/icons/tick.png" alt=""/>{$useractionlabel}</button></td></tr>
+<tr><td></td><td class="buttons"><button class="positive" type="submit" name="{$useraction}submit" value="{$useractionlabel}"><img src="/grase/images/icons/tick.png" alt=""/>{$useractionlabel}</button></td></tr>
 </table>
 </form>
 </div>
