@@ -6,7 +6,7 @@ require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
 require_once 'includes/database_functions.inc.php';
 
-// TODO Make a proper settings file?
+// TODO: Make a proper settings file?
 
 	$smarty->assign("location", $location);
 	$smarty->assign("pricemb", $pricemb);
@@ -20,7 +20,7 @@ require_once 'includes/database_functions.inc.php';
 	$smarty->assign("website_name", $website_name);
 	$smarty->assign("website_link", $website_link);
 
-//$old_error_level = error_reporting(1); // TODO Don't have this catching stuff
+//$old_error_level = error_reporting(1); // TODO: Don't have this catching stuff
 
 // Location
     $error_locationname = false;
@@ -70,7 +70,7 @@ require_once 'includes/database_functions.inc.php';
 				}else
 				{
 					//print "Attempting to move file";
-					if(move_uploaded_file($_FILES['newlogo']['tmp_name'], '/var/www/images/logo.png'))
+					if(move_uploaded_file($_FILES['newlogo']['tmp_name'], '/usr/share/grase/www/images/logo.png'))
 					{
 						$error_logo = "Logo Updated (you may need to refresh your browser to see the change)";
 						AdminLog::getInstance()->log("New Logo Uploaded");
@@ -181,7 +181,7 @@ require_once 'includes/database_functions.inc.php';
 		$new_usedata = trim(clean_text($_POST['newuseable_data']));
 		if($new_selldata != "" && is_numeric($new_selldata) && $new_usedata != "" && is_numeric($new_usedata) )
 		{
-			if($Settings->setSetting('sellableData', $new_selldata*1048576) && $Settings->setSetting('useableData', $new_usedata*1048576)) // TODO Make this octets properly and combine octets functions with other areas
+			if($Settings->setSetting('sellableData', $new_selldata*1048576) && $Settings->setSetting('useableData', $new_usedata*1048576)) // TODO: Make this octets properly and combine octets functions with other areas
 			{
 				$error_data = "Data Limits changed";
 				AdminLog::getInstance()->log("Graph Data Limits changed");

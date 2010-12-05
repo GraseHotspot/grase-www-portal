@@ -22,7 +22,7 @@ function array_sort_by_fields(&$data, $sortby)
     {
         $code = "\$c=0;";
         
-        foreach(split(',', $sortby) as $key) 
+        foreach(explode(',', $sortby) as $key) 
         {
             $d = '1';
             

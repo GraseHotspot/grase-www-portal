@@ -12,7 +12,7 @@ require_once 'includes/database_functions.inc.php';
 	$smarty->assign("monthly_accounts_totals", $monthly_accounts_totals);
 	$smarty->display('monthly_accounts.tpl');
 
-// TODO Data usage over "forever"
+// TODO: Data usage over "forever"
 	
 
 ?>

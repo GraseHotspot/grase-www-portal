@@ -21,8 +21,8 @@ function clean_dansguardian_log_array($loglines)
 	foreach($loglines as $line)
 	{
 		set_time_limit(2);
-		list($timestamp, $line) = split(" - ", $line, 2);
-		list($ip, $address, $params) = split(" ", $line, 3);
+		list($timestamp, $line) = explode(" - ", $line, 2);
+		list($ip, $address, $params) = explode(" ", $line, 3);
 		preg_match('@^(?:http://)?(www.|)([^/]*)(.*)@i', $address, $matches);
 		$host = $matches[2];
 		$query = $matches[3];		
@@ -47,7 +47,7 @@ function clean_squid_log_array($loglines)
 		$timestamp = trim(substr($line, 0, 14));
 		$elapsed = trim(substr($line, 14, 6));
 		$restofline = trim(substr($line, 20));
-		list($clientip, $status, $bytes, $method, $URL, $username, $peer, $type) = split(" ", $line, 8);
+		list($clientip, $status, $bytes, $method, $URL, $username, $peer, $type) = explode(" ", $line, 8);
 		preg_match('@^(?:http://)?(www.|)([^/]*)(.*)@i', $URL, $matches);
 		$host = $matches[2];
 		$query = $matches[3];		
@@ -83,12 +83,12 @@ function tally_http_traffic($size)
 function format_date($datestr)
 {
 	// Log format is YYYY.M.DD HH:MM:SS
-	list($date, $time) = split(" ", $datestr);
-	list($year, $month, $day) = split("-", $date);
+	list($date, $time) = explode(" ", $datestr);
+	list($year, $month, $day) = explode("-", $date);
 	$year = intval($year);
 	$month = intval($month);
 	$day = intval($day);
-	list($hour, $min, $sec) = split(":", $time);
+	list($hour, $min, $sec) = explode(":", $time);
 	$hour = intval($hour);
 	$time = "$hour:$min:$sec";
 	return "$year.$month.$day $time";

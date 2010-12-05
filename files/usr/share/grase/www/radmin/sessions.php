@@ -18,7 +18,7 @@ require_once 'includes/database_functions.inc.php';
 
 	display_page('sessions.tpl');
 
-// TODO Data usage over "forever"
+// TODO: Data usage over "forever"
 	
 
 ?>

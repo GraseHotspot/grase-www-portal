@@ -55,7 +55,7 @@ if(isset($_POST['createticketssubmit']))
 		$user['Comment'] = clean_text($_POST['Comment']);
 		$smarty->assign("user", $user);
 		$smarty->assign("error", "Error in data, please correct and try again<br/>$error");
-		display_page('newtickets.tpl'); //TODO What happens if this returns?
+		display_page('newtickets.tpl'); //TODO: What happens if this returns?
 	}else
 	{
 	    $user['numberoftickets'] = ereg_replace("[^0-9]", "", $_POST['numberoftickets'] );    

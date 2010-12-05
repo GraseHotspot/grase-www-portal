@@ -27,6 +27,7 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
 		}else
 		{
 			database_change_group($username, clean_text($_POST['Group']));
+			database_update_expirydate($username, expiry_for_group(getDBUserGroup($username)));
 			$error = "Group Changed";
 			AdminLog::getInstance()->log("Group changed for $username");
 		}
@@ -129,7 +130,7 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
 
 	if(isset($_POST['deleteusersubmit'])) // Delete User
 	{
-		if($_POST['DeleteUser'] == "Yes, I want to delete this user") //Really delete user (TODO DEFINE CONSTANTS)
+		if($_POST['DeleteUser'] == "Yes, I want to delete this user") //Really delete user (TODO: DEFINE CONSTANTS)
 		{
 			database_delete_user($username);
 			$error = "User '$username' Deleted";
@@ -152,7 +153,7 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
 	$smarty->display('edituser.tpl');
 
 }else
-{	# Display all users //TODO Redirect?
+{	# Display all users //TODO: Redirect?
 	require('display.php');	
 }
 

@@ -7,11 +7,11 @@
 /* Initial setup page */
 
 // Report simple running errors
-// TODO set this for release
+// TODO: set this for release
 //error_reporting(E_ERROR);
 
 require_once 'includes/constants.inc.php';
-//TODO load all this stuff in another file that has no DB/config file dependencies (and smarty stuff in it too)
+//TODO: load all this stuff in another file that has no DB/config file dependencies (and smarty stuff in it too)
 $config_file = dirname(__FILE__).'/configs/site.conf';
 $config_dir = dirname($config_file);
 
@@ -309,7 +309,7 @@ function create_database($username, $password, $server, $database, $poweruser = 
 		}
 		if($connect_username != $username){ // Need to grant $username privs
 			$sql = "GRANT ALL ON ".mysql_real_escape_string($database).".* TO '".mysql_real_escape_string($username)."'  IDENTIFIED BY '".mysql_real_escape_string($password)."'";
-/////////////////////// TODO TODO Working HERE
+/////////////////////// TODO: TODO: Working HERE
 		}
 	}
 
@@ -321,7 +321,7 @@ function create_database($username, $password, $server, $database, $poweruser = 
 }
 
 function generate_manual_database_create($username, $password, $database){
-	// TODO set a server to limit the user?
+	// TODO: set a server to limit the user?
 	$database_create = <<<EDBCREATE
 CREATE DATABASE IF NOT EXISTS $database;
 GRANT ALL ON $database.* TO '$username'  IDENTIFIED BY '$password';
