@@ -119,6 +119,22 @@ class AdminLog
      
     }
     
+    public function log_cron($action)
+    {
+        $affected =& $this->log_sql->execute(array(date('c' /*Y-m-d H:i:s'*/),
+                'CRON',
+                $this->ip,
+                $action));
+
+        // Always check that result is not an error
+        if (PEAR::isError($affected)) {
+            ErrorHandling::fatal_error('Creating CRON Log Entry failed: '. $affected->getMessage());
+        }
+        
+        return $affected;
+     
+    }    
+    
     public function log_error($action)
     {
         $affected =& $this->log_sql->execute(array(date('c' /*Y-m-d H:i:s'*/),
@@ -135,7 +151,7 @@ class AdminLog
      
     }
     
-     /* TODO Check where this code came from */
+     /* TODO: Check where this code came from */
      private function ipCheck()
      {
         if (getenv('HTTP_CLIENT_IP'))
