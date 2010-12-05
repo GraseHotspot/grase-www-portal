@@ -10,7 +10,7 @@ function css_file_version()
 {
 	//reading stream
 	$handle = fopen("radmin.css", "r");
-	//read first line, TODO: check if it's not empty, etc.
+	//read first line, TODO:  check if it's not empty, etc.
 	$first_line = fgets ($handle);
 	$second_line = fgets ($handle);
 	fclose($handle);
@@ -40,10 +40,10 @@ function createmenuitems()
 
 function createusefullinks()
 {
-	$links['radmin'] = array("href" => "/radmin", "label" => "Internet User Administration (Radmin, RADIUS Administration)");
+	#$links['radmin'] = array("href" => "/radmin", "label" => "Internet User Administration (Radmin, RADIUS Administration)");
 	#$links['dglog'] = array("href" => "/cgi-bin/dglog.pl", "label" => "Dansguardian Log Viewer, for checking logs for attempts to view blocked pages");
 	#$links['munin'] = array("href" => "/munin", "label" => "Munin, System Monitor Graphs");	
-	$links['sysstatus'] = array("href" => "/radmin/sysstatus", "label" => "System Status");		
+	$links['sysstatus'] = array("href" => "/grase/radmin/sysstatus", "label" => "System Status");		
 	return $links;
 }
 
@@ -80,7 +80,7 @@ function timecosts()
 function usergroups()
 {
 	global $Usergroups;
-	// TODO Move this stuff into database??
+	// TODO:  Move this stuff into database??
 	$Usergroups["Visitors"] = "Visitors";
 	$Usergroups["Students"] = "Students";
 	$Usergroups["Staff"] = "Staff";
@@ -92,7 +92,7 @@ function usergroups()
 function groupexpirys()
 {
 	global $Expiry;
-	// TODO Move this stuff into database??
+	// TODO: Move this stuff into database??
 	$Expiry["Staff"] = "+6 months";
 	$Expiry["Ministry"] = "+6 months";
 	$Expiry["Students"] = "+3 months";
@@ -105,7 +105,7 @@ function groupexpirys()
 function currency_symbols()
 {
 	global $CurrencySymbols;
-	// TODO install more locales and automate this?
+	// TODO: install more locales and automate this?
 	$CurrencySymbols['$'] = "$";
 	$CurrencySymbols['R'] = "R";
 	$CurrencySymbols['£'] = "&pound;";
@@ -120,7 +120,7 @@ function display_page($template)
 	return $smarty->display($template);
 }
 
-require_once 'libs/Smarty.class.php';
+require_once 'smarty/Smarty.class.php';
 
 
 
@@ -145,7 +145,7 @@ $smarty->assign("RealHostname", $realhostname);
 // Setup Menus
 $smarty->assign("MenuItems", createmenuitems());
 $smarty->assign("Usergroups", usergroups());
-// TODO remove _SESSION stuff
+// TODO: remove _SESSION stuff
 //isset($_SESSION['username']) && $smarty->assign("LoggedInUsername", $_SESSION['username']);
 
 // Costs
@@ -175,7 +175,7 @@ function assign_vars()
 
 
 	// last months usage
-	$used_data =  getMonthUsedData(); // TODO make it get last month that data is for?
+	$used_data =  getMonthUsedData(); // TODO: make it get last month that data is for?
 	$smarty->assign("LastM_DataUsageOctets", $used_data);
 	$smarty->assign("LastM_DataRemainingOctets", $total_useable_data - $used_data);
 	$smarty->assign("LastM_DataUsagePercent", $used_data/($total_useable_data)*100);
