@@ -1,3 +1,6 @@
-RewriteEngine on
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule ^(.*)$ /uam/files/$1
+
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^(.*)$ /grase/uam/files/$1
+</IfModule>    

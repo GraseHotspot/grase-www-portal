@@ -1,2 +1,8 @@
 # serve first available alternate default index page from series
 #DirectoryIndex index.php
+
+#<IfModule mod_rewrite.c>
+#    RewriteEngine on
+#    RewriteCond $0 !=grase/favicon.ico
+#    RewriteRule ^([^/]+/)*favicon\.ico$ /grase/favicon.ico [L]
+#</IfModule>    

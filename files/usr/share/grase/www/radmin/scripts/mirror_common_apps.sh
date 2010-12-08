@@ -26,10 +26,10 @@ wget -c -q "$winen" "$macen"
 # Opera Browser
 
 cd /var/www/public/Opera/Mac
-wget -c -q http://mirror.internode.on.net/pub/opera/mac/1000b2/Opera_10.00_b2_Setup.dmg
-wget -c -q http://mirror.internode.on.net/pub/opera/mac/1000b2/Opera_10.00_b2_Setup_Intel.dmg
+wget -c -q http://mirror.internode.on.net/pub/opera/mac/1063/Opera_10.63_Setup.dmg
+wget -c -q http://mirror.internode.on.net/pub/opera/mac/1063/Opera_10.63_Setup_Intel.dmg
 cd /var/www/public/Opera/Windows
-wget -c -q http://mirror.internode.on.net/pub/opera/win/1000b2/en/Opera_1000_en_b2_Setup.exe
+wget -c -q http://mirror.internode.on.net/pub/opera/win/1063/en/Opera_1063_en_Setup.exe
 
 # Chrome
 

@@ -1,5 +1,5 @@
 <?php
 
-header("Location: /uam/");
+header("Location: /grase/uam/");
 
 ?>

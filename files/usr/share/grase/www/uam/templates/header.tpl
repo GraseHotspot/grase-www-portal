@@ -16,5 +16,5 @@
 	<script type="text/javascript" src="/grase/js/bramus/jsProgressBarHandler.js"></script>
 </head>
 <body>
-{if $activepage != "mini"}{literal}<!--[if lte IE 6]><script src="/ie6/warning2.js"></script><![endif]-->{/literal}{/if}
+{if $activepage != "mini"}{literal}<!--[if lte IE 6]><script src="/grase/ie6/warning2.js"></script><![endif]-->{/literal}{/if}
 

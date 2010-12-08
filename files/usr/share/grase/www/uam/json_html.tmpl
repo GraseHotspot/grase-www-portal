@@ -33,7 +33,7 @@ OpenID URL: <input style="font-size:60%;" name="username" type="text" id="userna
 </tr>
 <tr>
 <td></td>
-<td class="buttons" style="text-align:right"><button class="positive" type="submit" value="Login" onClick="connect();"><img src="/images/icons/tick.png" alt=""/>Login</button></td>
+<td class="buttons" style="text-align:right"><button class="positive" type="submit" value="Login" onClick="connect();"><img src="/grase/images/icons/tick.png" alt=""/>Login</button></td>
 
 </tr>	
 <tr id="signUpRow" style="display:none;">
@@ -48,7 +48,7 @@ OpenID URL: <input style="font-size:60%;" name="username" type="text" id="userna
 <div id="statusPage" style="display:none;">
 
 <p id="loggedinusername">You are logged in as: <span id="UserNameLink">Not available</span></p>
-<p id="myaccountlink"><a href="/grase/radmin/usermin">Access My Account</a></p>
+<p id="myaccountlink"><a href="/grase/radmin/usermin" onclick="window.open(this.href,'_blank');return false;">Access My Account</a></p>
 
 <table border="0" id="statusTable" style="padding-top:4px;font-size:70%">
 <tr id="UserNameRow" class="chilliLabelhide">
@@ -120,7 +120,7 @@ OpenID URL: <input style="font-size:60%;" name="username" type="text" id="userna
 </tr>
 <tr id="connectRow">
 <td><span id="statusMessage">Connected</span></td>
-<td class="buttons"><a href="#" id="logoutlink" class="negative" onClick="return disconnect();"> <img src="/images/icons/cross.png" alt=""/>
+<td class="buttons"><a href="#" id="logoutlink" class="negative" onClick="return disconnect();"> <img src="/grase/images/icons/cross.png" alt=""/>
 Logout</a></td>
 </tr>
 

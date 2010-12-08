@@ -3,7 +3,7 @@
 body {
 	font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
 	color: #0a57a9;
-	background: white url("/images/grass.png") fixed bottom repeat-x;
+	background: white url("/grase/images/grass.png") fixed bottom repeat-x;
 	margin: 0;
 	padding: 0;
 	margin-bottom: 2em;
@@ -17,7 +17,7 @@ body {
 	border: 1px solid orange;
 	padding: 1em;
 	background: white;
-        background: url("/images/logo.png") right top no-repeat;
+        background: url("/grase/images/logo.png") right top no-repeat;
 	text-align: left;
 }
 

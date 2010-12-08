@@ -5,7 +5,7 @@
 
 <p><a href="?">Return to Welcome Page</a></p>
 <p>For payment and an account, please contact the Office during office hours. For support <a href="{$Support.link}">contact {$Support.name}</a></p>
-<p>For a quick logout, bookmark <a href="http://1.1.1.1/">LOGOUT</a>, this link will instantly log you out, and return you to the Welcome page.<br/>
+<p>For a quick logout, bookmark <a href="http://1.0.0.0/">LOGOUT</a>, this link will instantly log you out, and return you to the Welcome page.<br/>
 To get back to the status page, bookmark this page, then you can press the login button again to get the status window up.</p>
 <p>Your Internet usage is limit by the amount of data that flows to and from your computer, or the amount of time spent online (depending on what you have purchased from the office). To maximise your account, you may wish to do the following:</p>
 <ul>

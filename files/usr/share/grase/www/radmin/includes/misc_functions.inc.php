@@ -155,7 +155,7 @@ function validate_group($username, $group)
 	global $Usergroups;
 	if(isset($Usergroups[$group]))
 	{
-		if($group == MACHINE_GROUP_NAME && strpos($username, "-dev") === false)
+		if($group == MACHINE_GROUP_NAME && strpos($username, "-dev") === false) // TODO: This no longer works for newer coovachilli, check for mac address format 00-00-00-00-00-00
 			return _("Only Machines can be in the Machine group<br/>"); // TODO: Internationalsation of all strings
 		return "";
 	}else

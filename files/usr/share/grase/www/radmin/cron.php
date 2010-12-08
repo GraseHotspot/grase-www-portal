@@ -9,6 +9,7 @@ function __autoload($class_name) {
 AdminLog::getInstance()->log_cron("CRON");
 
 echo CronFunctions::getInstance()->clearStaleSessions();
+echo "\n";
 echo CronFunctions::getInstance()->deleteExpiredUsers();
-
+echo "\n";
 ?>

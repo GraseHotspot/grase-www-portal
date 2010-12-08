@@ -30,9 +30,17 @@ fix_dir_perms(){
 	chmod ag+rw -R /usr/share/grase/www/images/logo.png /usr/share/grase/www/radmin/templates_c /usr/share/grase/www/uam/templates_c
 
 }
+
+copy_favicon(){
+    cp -n /usr/share/grase/www/favicon.ico /var/www/favicon.ico || true
+}
 #DEBHELPER#
 
 fix_dir_perms
+
+copy_favicon
+
+a2enmod rewrite || true
 
 if which invoke-rc.d >/dev/null 2>&1; then
        invoke-rc.d apache2 restart 3>&- || true
