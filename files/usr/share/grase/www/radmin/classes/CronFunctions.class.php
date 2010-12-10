@@ -273,7 +273,7 @@ class CronFunctions extends DatabaseFunctions
             {
                 $sql = sprintf("DELETE FROM radacct
                                 WHERE AcctStopTime < %s",
-                                $this->db->quote($dateend)
+                                $this->db->quote($enddate)
                                 );
                                 
                 $result = $this->db->exec($sql);
