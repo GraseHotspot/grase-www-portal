@@ -56,8 +56,8 @@ function clean_squid_log_array($loglines)
 		preg_match('@^(?:http://)?(www.|)([^/]*)(.*)@i', $URL, $matches);
 		$host = $matches[2];
 		$query = $matches[3];		
-		tally_domains($host, $size);
-		tally_http_traffic($size);		
+		tally_domains($host, $bytes);
+		tally_http_traffic($bytes);		
 		$log[] = array("timestamp" => date('Y-m-d H:i:s',$timestamp), "URL" => $URL,"address" => $clientip, "username"=> $username, "host" => $host, "cached" => '', "request" => $method, "size" => Formatting::formatBytes($bytes));
 	}
 	return $log;
@@ -166,6 +166,7 @@ function build_perl_command($conditions)
 		//echo "<pre>Log lines
 		//";*/
 		// TODO: FIXME: Ensure this is squid3 logs
+		// TODO: Add www-data to proxy group so can access logs, ensure logs rotate not compressed
 		$command = "cat /var/log/squid3/access.log*  | $perlcommand ";
 	}else
 	{

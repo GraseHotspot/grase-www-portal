@@ -34,7 +34,17 @@ fix_dir_perms(){
 copy_favicon(){
     cp -n /usr/share/grase/www/favicon.ico /var/www/favicon.ico || true
 }
+
+link_logo(){
+    if [[ ! -a /usr/share/grase/www/images/logo.png ]]
+    then
+        ln -s graselogo.png /usr/share/grase/www/images/logo.png || true
+    fi
+
+}
 #DEBHELPER#
+
+link_logo
 
 fix_dir_perms
 
