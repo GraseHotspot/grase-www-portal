@@ -54,7 +54,7 @@ class CronFunctions extends DatabaseFunctions
                                      )
                             ) > 43200";
         
-        $result = $this->db->query($sql);
+        $result = $this->db->exec($sql);
         
         if (PEAR::isError($result))
         {
@@ -77,7 +77,7 @@ class CronFunctions extends DatabaseFunctions
         $months = array(-2, -3, -4, -5, -6, -7, -8, -9, -10, -11, -12);
         foreach($months as $month)
         {
-            $timepattern = strftime("%B __ %Y 00:00:00", strtotime("$months months"));
+            $timepattern = strftime("%B __ %Y 00:00:00", strtotime("$month months"));
             $sql = sprintf("SELECT UserName
                             FROM radcheck
                             WHERE Attribute = %s AND
@@ -102,6 +102,191 @@ class CronFunctions extends DatabaseFunctions
         
         return _('Expired users deleted');
          
+    }
+    
+    public function condensePreviousMonthsAccounting()
+    {
+        $months = array(-2, -3, -4, -5, -6, -7, -8, -9, -10, -11, -12);
+        foreach($months as $month)
+        {
+            // Generate start and end dates for each month in question        
+            $startdate = strftime("%Y-%m-%d", strtotime("first day $month months"));
+            $nextmonth = $month + 1;
+            $enddate = strftime("%Y-%m-%d", strtotime("first day $nextmonth months"));
+            
+            // Select all radacct data for month into mtotaccttmp
+            // (which totals it)            
+            $sql = sprintf("INSERT INTO mtotaccttmp
+                             (UserName,
+                             AcctDate,
+                             ConnNum,
+                             ConnTotDuration,
+                             ConnMaxDuration,
+                             ConnMinDuration,
+                             InputOctets,
+                             OutputOctets,
+                             NASIPAddress)
+                             SELECT UserName,
+                             %s,
+                             COUNT(*),
+                             SUM(AcctSessionTime),
+                             MAX(AcctSessionTime),
+                             MIN(AcctSessionTime),
+                             SUM(AcctInputOctets),
+                             SUM(AcctOutputOctets),
+                             NASIPAddress
+                             FROM radacct
+                             WHERE AcctStopTime >= %s AND
+                             AcctStopTime < %s
+                             GROUP BY UserName,NASIPAddress",
+                             $this->db->quote($startdate),
+                             $this->db->quote($startdate),
+                             $this->db->quote($enddate)
+                             );
+                             
+            $result = $this->db->exec($sql);
+            
+            if (PEAR::isError($result))
+            {
+                return _('Unable to insert data into mtotaccttmp: ') . $result->toString();
+            }
+                             
+
+            // Remove user details from radacct that we just put into mtotaccttmp
+        
+            $sql = sprintf("DELETE FROM radacct
+                            WHERE AcctStopTime >= %s
+                            AND AcctStopTime < %s",
+                            $this->db->quote($startdate),
+                            $this->db->quote($enddate)
+                            );
+                            
+            $result = $this->db->exec($sql);
+            
+            if (PEAR::isError($result))
+            {
+                return _('Unable to delete old radacct data: ') . $result->toString();
+            }                            
+        
+            // Update users details in radcheck for Max-octets and Max-All-Session
+            
+            $sql = sprintf("UPDATE radcheck, mtotaccttmp
+                            SET
+                            radcheck.value = radcheck.value - (mtotaccttmp.InputOctets + mtotaccttmp.OutputOctets)
+                            WHERE radcheck.Attribute=%s
+                            AND radcheck.UserName=mtotaccttmp.UserName
+                            AND mtotaccttmp.AcctDate=%s",
+                            $this->db->quote('Max-Octets'),
+                            $this->db->quote($startdate)
+                            );
+                            
+            $result = $this->db->exec($sql);
+            
+            if (PEAR::isError($result))
+            {
+                return _('Unable to update users Max-Octets: ') . $result->toString();
+            }                            
+                            
+            $sql = sprintf("UPDATE radcheck, mtotaccttmp
+                            SET
+                            radcheck.value = radcheck.value - mtotaccttmp.ConnTotDuration 
+                            WHERE radcheck.Attribute = %s
+                            AND radcheck.UserName = mtotaccttmp.UserName
+                            AND mtotaccttmp.AcctDate = %s",
+                            $this->db->quote('Max-All-Session'),
+                            $this->db->quote($startdate)
+                            );
+                            
+            $result = $this->db->exec($sql);
+            
+            if (PEAR::isError($result))
+            {
+                return _('Unable to update users Max-All-Session: ') . $result->toString();
+            }                            
+        
+            // Insert mtotaccttmp details into mtotacct (update what is already in there?)
+            // TODO: Do we need to do a select & delete from mtotacct into mtotaccttmp to ensure only a single line for each user per month in mtotacct?
+            
+            $sql = "INSERT INTO mtotacct (
+                    UserName,
+                    AcctDate,
+                    ConnNum,
+                    ConnTotDuration, 
+                    ConnMaxDuration, 
+                    ConnMinDuration, 
+                    InputOctets, 
+                    OutputOctets, 
+                    NASIPAddress
+                    )
+                    SELECT 
+                    UserName, 
+                    AcctDate, 
+                    ConnNum, 
+                    ConnTotDuration, 
+                    ConnMaxDuration, 
+                    ConnMinDuration, 
+                    InputOctets, 
+                    OutputOctets, 
+                    NASIPAddress
+                    FROM 
+                    mtotaccttmp";
+                    
+            $result = $this->db->exec($sql);
+            
+            if (PEAR::isError($result))
+            {
+                return _('Unable to move mtotaccttmp data to mtotacct: ') . $result->toString();
+            }                    
+        
+            // Clear mtotaccttmp
+            
+            $sql = "TRUNCATE mtotaccttmp";
+            
+            $result = $this->db->exec($sql);
+            
+            if (PEAR::isError($result))
+            {
+                return _('Unable to truncate mtotaccttmp: ') . $result->toString();
+            }            
+        
+            // Ensure all radcheck values are > 0 where appropriate
+            
+            $sql = sprintf("UPDATE radcheck 
+                            SET
+                            radcheck.value = 0 
+                            WHERE
+                            radcheck.Attribute = %s
+                            AND radcheck.value < 0",
+                            $this->db->quote('Max-Octets')
+                            );
+                            
+            $result = $this->db->exec($sql);
+            
+            if (PEAR::isError($result))
+            {
+                return _('Unable to ensure positive values in radcheck: ') . $result->toString();
+            }                            
+        
+            // Clear all data in radacct older than X months that has been missed?
+            
+            if($month == "-12")
+            {
+                $sql = sprintf("DELETE FROM radacct
+                                WHERE AcctStopTime < %s",
+                                $this->db->quote($dateend)
+                                );
+                                
+                $result = $this->db->exec($sql);
+                
+                if (PEAR::isError($result))
+                {
+                    return _('Unable to delete anchient radacct data: ') . $result->toString();
+                }                                
+                
+            }
+        }
+        
+        return _('Old Radius Accounting Data Archived');
     }
 }
 

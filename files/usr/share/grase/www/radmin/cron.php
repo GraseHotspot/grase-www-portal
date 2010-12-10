@@ -12,4 +12,6 @@ echo CronFunctions::getInstance()->clearStaleSessions();
 echo "\n";
 echo CronFunctions::getInstance()->deleteExpiredUsers();
 echo "\n";
+echo CronFunctions::getInstance()->condensePreviousMonthsAccounting();
+echo "\n";
 ?>

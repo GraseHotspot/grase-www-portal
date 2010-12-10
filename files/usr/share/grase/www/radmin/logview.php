@@ -15,6 +15,10 @@ require_once 'includes/database_functions.inc.php';
 
 $domain_tally = array();
 $domain_size = array();
+$domain_formatsize = array();
+$format_http_traffic_size = "";
+
+// TODO: Create class that handles all the log processing
 
 function clean_dansguardian_log_array($loglines)
 {
@@ -32,13 +36,14 @@ function clean_dansguardian_log_array($loglines)
 		$size = $matches[3];
 		tally_domains($host, $size);
 		tally_http_traffic($size);				
-		$log[] = array("timestamp" => $timestamp, "URL" => $address, "host" => $host, "cached" => $cached, "request" => $action, "size" => formatBytes($size));
+		$log[] = array("timestamp" => $timestamp, "URL" => $address, "host" => $host, "cached" => $cached, "request" => $action, "size" => Formatting::formatBytes($size));
 	}
 	return $log;
 }
 
 function clean_squid_log_array($loglines)
 {
+    $log = array();
 	foreach($loglines as $line)
 	{
 		set_time_limit(2);
@@ -46,14 +51,14 @@ function clean_squid_log_array($loglines)
 // time elapsed remotehost code/status bytes method URL rfc931 peerstatus/peerhost type
 		$timestamp = trim(substr($line, 0, 14));
 		$elapsed = trim(substr($line, 14, 6));
-		$restofline = trim(substr($line, 20));
-		list($clientip, $status, $bytes, $method, $URL, $username, $peer, $type) = explode(" ", $line, 8);
+		$restofline = trim(substr($line, 21));
+		list($clientip, $status, $bytes, $method, $URL, $username, $peer, $type) = explode(" ", $restofline, 8);
 		preg_match('@^(?:http://)?(www.|)([^/]*)(.*)@i', $URL, $matches);
 		$host = $matches[2];
 		$query = $matches[3];		
 		tally_domains($host, $size);
 		tally_http_traffic($size);		
-		$log[] = array("timestamp" => $timestamp, "URL" => $URL,"address" => $clientip, "username"=> $username, "host" => $host, "cached" => '', "request" => $method, "size" => formatBytes($bytes));
+		$log[] = array("timestamp" => date('Y-m-d H:i:s',$timestamp), "URL" => $URL,"address" => $clientip, "username"=> $username, "host" => $host, "cached" => '', "request" => $method, "size" => Formatting::formatBytes($bytes));
 	}
 	return $log;
 }
@@ -70,14 +75,14 @@ function tally_domains($domain, $size)
 	 	$domain_tally[$domain] = 1;
 		$domain_size[$domain] = $size;			 	
 	}
-	$domain_formatsize[$domain] = formatBytes($domain_size[$domain]);
+	$domain_formatsize[$domain] = Formatting::formatBytes($domain_size[$domain]);
 }
 
 function tally_http_traffic($size)
 {
 	global $http_traffic_size, $format_http_traffic_size;
 	$http_traffic_size = $http_traffic_size + $size;
-	$format_http_traffic_size = formatBytes($http_traffic_size);
+	$format_http_traffic_size = Formatting::formatBytes($http_traffic_size);
 }
 
 function format_date($datestr)
@@ -94,16 +99,64 @@ function format_date($datestr)
 	return "$year.$month.$day $time";
 }
 
+function format_unixtime($datestr)
+{
+    // Log format is unix time with milliseconds
+    return strtotime($datestr);
+
+}
+
+function build_perl_command($conditions)
+{
+    $perlcommand = "perl -ne ' print if ( %s )'";
+    $perlargs = array();
+    
+    $startarg = ' $_ ge "%s" ';
+    $finisharg = ' $_ le "%s" ';
+    $iparg = ' /%s/ ';
+    
+    foreach($conditions as $condition => $value)
+    {
+        switch ($condition)
+        {
+            case "starttime":
+                $perlargs[] = sprintf($startarg , $value);
+                break;
+            case "finishtime":
+                $perlargs[] = sprintf($finisharg , $value);            
+                break;
+            case "ipaddress":
+                $perlargs[] = sprintf($iparg , $value);            
+                break;       
+        }
+    
+    }
+    
+    $completeperlcommand = sprintf($perlcommand, implode(' && ', $perlargs));
+    
+    return $completeperlcommand;
+}
+
 	if(trim($_GET['acctid']) != '')
 	{
 
 		$session = getDBSessionAccounting($_GET['acctid']);
 		//print_r($session);
 
-		$starttime =  escapeshellcmd(format_date($session['AcctStartTime']));
-		$finishtime =  escapeshellcmd(format_date($session['AcctStopTime']));
-		if($finishtime == "0.0.0 0:00:00") $finishtime = '';else $finishtime = " && \$_ le \"$finishtime\" ";
-		$ipaddress = escapeshellcmd($session['FramedIPAddress']);
+
+        // Build up components for perl matching command
+//		$conditions['starttime'] =  escapeshellcmd(format_date($session['AcctStartTime']));
+		$conditions['starttime'] =  escapeshellcmd(format_unixtime($session['AcctStartTime']));		
+//		$finishtime =  escapeshellcmd(format_date($session['AcctStopTime']));
+		$finishtime =  escapeshellcmd(format_unixtime($session['AcctStopTime']));		
+		if($finishtime != "0.0.0 0:00:00")
+		{
+		    $conditions['finishtime'] = $finishtime;
+		}
+		$conditions['ipaddress'] = escapeshellcmd($session['FramedIPAddress']);
+		
+		$perlcommand = build_perl_command($conditions);
+		
 		$username = $session['Username'];
 
 		/* cat /var/log/dansguardian/access.log* |
@@ -112,7 +165,8 @@ function format_date($datestr)
 			 perl -ne ' print if ( \$_ ge \"$starttime\" && \$_ le \"$finishtime\" && /$ipaddress/ ) ' ";
 		//echo "<pre>Log lines
 		//";*/
-		$command = "cat /var/log/dansguardian/access.log*  | perl -ne ' print if ( \$_ ge \"$starttime\" $finishtime && /$ipaddress/ ) ' ";
+		// TODO: FIXME: Ensure this is squid3 logs
+		$command = "cat /var/log/squid3/access.log*  | $perlcommand ";
 	}else
 	{
 		$error = "Invalid Acctid";
@@ -120,9 +174,10 @@ function format_date($datestr)
 	}
 	if($command)
 	{
+	    $loglines = array();
 		//echo $command;
 		exec($command, $loglines) ;
-		$log = clean_dansguardian_log_array($loglines);
+		$log = clean_squid_log_array($loglines);
 		arsort($domain_tally, SORT_NUMERIC);
 		arsort($domain_size, SORT_NUMERIC);
 		//print_r($domain_tally);
@@ -131,7 +186,7 @@ function format_date($datestr)
 	}
 
 	$smarty->assign("loglines", $log);
-	$smarty->assign("ipaddress", $ipaddress);
+	$smarty->assign("ipaddress", $conditions['ipaddress']);
 	$smarty->assign("username", $username);	
 	$smarty->assign("session", $session);
 	$smarty->assign("domain_tally", $domain_tally);

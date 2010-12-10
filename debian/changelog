@@ -1,3 +1,15 @@
+grase-www-portal (3.0-2) purewhite; urgency=low
+
+  * Added radacct archiving to Cron class
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Fri, 10 Dec 2010 11:31:23 +1000
+
+grase-www-portal (3.0-1) purewhite; urgency=low
+
+  * Changes to log processing for squid3
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Thu, 09 Dec 2010 16:43:42 +1000
+
 grase-www-portal (3.0) purewhite; urgency=low
 
   [ Tim White ]
