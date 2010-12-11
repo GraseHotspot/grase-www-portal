@@ -14,6 +14,8 @@
 * modified by cablehead, messju and pscs at http://www.phpinsider.com/smarty-forum
 */
 
+// TODO: Sort out license for this file
+
 function array_sort_by_fields(&$data, $sortby) 
 {
     static $sort_funcs = array();

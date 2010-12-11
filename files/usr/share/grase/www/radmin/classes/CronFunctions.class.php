@@ -2,6 +2,24 @@
 
 /* Copyright 2010 Timothy White */
 
+/*  This file is part of GRASE Hotspot.
+
+    http://hotspot.purewhite.id.au/
+
+    GRASE Hotspot is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GRASE Hotspot is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 class CronFunctions extends DatabaseFunctions
 {
     /* Inherited from DatabaseFunctions
@@ -60,8 +78,12 @@ class CronFunctions extends DatabaseFunctions
         {
             return _('Clearing stale sessions failed: ') . $result->toString();
         }
+
+        if($result > 0)        
+            return _('Stale sessions cleared') . $result;
         
-        return _('Stale sessions cleared');
+        return false;
+
     }
     
     public function deleteExpiredUsers()
@@ -100,12 +122,16 @@ class CronFunctions extends DatabaseFunctions
             }
         }
         
-        return _('Expired users deleted');
+        if(sizeof($results) > 0)
+            return _('Expired users deleted') . sizeof($results);
+            
+        return false;
          
     }
     
     public function condensePreviousMonthsAccounting()
     {
+        $rowsaffected = 0;
         $months = array(-2, -3, -4, -5, -6, -7, -8, -9, -10, -11, -12);
         foreach($months as $month)
         {
@@ -151,6 +177,7 @@ class CronFunctions extends DatabaseFunctions
                 return _('Unable to insert data into mtotaccttmp: ') . $result->toString();
             }
                              
+            $rowsaffected += $result;
 
             // Remove user details from radacct that we just put into mtotaccttmp
         
@@ -166,7 +193,9 @@ class CronFunctions extends DatabaseFunctions
             if (PEAR::isError($result))
             {
                 return _('Unable to delete old radacct data: ') . $result->toString();
-            }                            
+            }          
+
+            $rowsaffected += $result;                              
         
             // Update users details in radcheck for Max-octets and Max-All-Session
             
@@ -185,7 +214,9 @@ class CronFunctions extends DatabaseFunctions
             if (PEAR::isError($result))
             {
                 return _('Unable to update users Max-Octets: ') . $result->toString();
-            }                            
+            }   
+            
+            $rowsaffected += $result;                                     
                             
             $sql = sprintf("UPDATE radcheck, mtotaccttmp
                             SET
@@ -202,7 +233,9 @@ class CronFunctions extends DatabaseFunctions
             if (PEAR::isError($result))
             {
                 return _('Unable to update users Max-All-Session: ') . $result->toString();
-            }                            
+            }   
+            
+            $rowsaffected += $result;                                     
         
             // Insert mtotaccttmp details into mtotacct (update what is already in there?)
             // TODO: Do we need to do a select & delete from mtotacct into mtotaccttmp to ensure only a single line for each user per month in mtotacct?
@@ -236,7 +269,9 @@ class CronFunctions extends DatabaseFunctions
             if (PEAR::isError($result))
             {
                 return _('Unable to move mtotaccttmp data to mtotacct: ') . $result->toString();
-            }                    
+            }   
+            
+            $rowsaffected += $result;                             
         
             // Clear mtotaccttmp
             
@@ -247,7 +282,9 @@ class CronFunctions extends DatabaseFunctions
             if (PEAR::isError($result))
             {
                 return _('Unable to truncate mtotaccttmp: ') . $result->toString();
-            }            
+            }   
+            
+            $rowsaffected += $result;                     
         
             // Ensure all radcheck values are > 0 where appropriate
             
@@ -265,7 +302,9 @@ class CronFunctions extends DatabaseFunctions
             if (PEAR::isError($result))
             {
                 return _('Unable to ensure positive values in radcheck: ') . $result->toString();
-            }                            
+            }
+            
+            $rowsaffected += $result;                                        
         
             // Clear all data in radacct older than X months that has been missed?
             
@@ -280,13 +319,18 @@ class CronFunctions extends DatabaseFunctions
                 
                 if (PEAR::isError($result))
                 {
-                    return _('Unable to delete anchient radacct data: ') . $result->toString();
-                }                                
+                    return _('Unable to delete ancient radacct data: ') . $result->toString();
+                }    
+                
+                $rowsaffected += $result;                                            
                 
             }
         }
         
-        return _('Old Radius Accounting Data Archived');
+        if($rowsaffected > 0)        
+            return _('Old Radius Accounting Data Archived') . $rowsaffected;
+        
+        return false;
     }
 }
 
