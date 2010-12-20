@@ -163,8 +163,7 @@ $smarty->assign("RealHostname", $realhostname);
 // Setup Menus
 $smarty->assign("MenuItems", createmenuitems());
 $smarty->assign("Usergroups", usergroups());
-// TODO: remove _SESSION stuff
-//isset($_SESSION['username']) && $smarty->assign("LoggedInUsername", $_SESSION['username']);
+
 
 // Costs
 $smarty->assign("CurrencySymbols", currency_symbols());

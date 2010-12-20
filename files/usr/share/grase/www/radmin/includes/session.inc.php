@@ -45,9 +45,6 @@ require_once 'page_functions.inc.php';
    $mtime = $mtime[1] + $mtime[0];
    $pagestarttime = $mtime; 
 
-$userfile = $CONFIG['admin_users_passwd_file']; // OBSOLETE
-
-
 
 function loginForm($username = null, $status = null, &$auth = null)
 {
