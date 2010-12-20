@@ -1,0 +1,34 @@
+Centre Report tables
+    Dates
+    Start collapsed
+AC: Comment (Hide/More info)
+Tickets
+    Print Data .vs. Time
+    Print info about connecting
+    Print multiple batches
+    print_r tickets
+Logo rewrite info "about" "everypage"
+Usage bars
+    off login
+    onto status page
+    Red
+Header
+    gray lighter
+    repeat
+    text valign
+expired help
+Red name on over limit
+Red name on time limit
+Help in menu list (where can it go? needs to be obvious somewhere, not menu item. Maybe next to the current page button?)
+Longer logout timeout
+Back to users list with anchor from edit user                
+
+Machine accounts - Autopassword, own page, no "machine" group
+
+Storing some coova-chilli stuff in database
+
+Change how error messages are done (into array)
+
+Internationalization
+
+Move validation functions to class?

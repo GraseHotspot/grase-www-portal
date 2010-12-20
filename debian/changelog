@@ -1,3 +1,15 @@
+grase-www-portal (3.0-6) purewhite; urgency=low
+
+  * Attempts to fix for iOS
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Sat, 18 Dec 2010 21:38:36 +1000
+
+grase-www-portal (3.0-5) purewhite; urgency=low
+
+  * Small bugfixes. Bump to 2.9.0 preparing for 3.0
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Mon, 13 Dec 2010 14:43:46 +1000
+
 grase-www-portal (3.0-4) purewhite; urgency=low
 
   * Licensing stuff
