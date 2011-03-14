@@ -201,7 +201,7 @@ class CronFunctions extends DatabaseFunctions
             
             $sql = sprintf("UPDATE radcheck, mtotaccttmp
                             SET
-                            radcheck.value = radcheck.value - (mtotaccttmp.InputOctets + mtotaccttmp.OutputOctets)
+                            radcheck.value = CAST((radcheck.value - (mtotaccttmp.InputOctets + mtotaccttmp.OutputOctets)) AS UNSIGNED)
                             WHERE radcheck.Attribute=%s
                             AND radcheck.UserName=mtotaccttmp.UserName
                             AND mtotaccttmp.AcctDate=%s",

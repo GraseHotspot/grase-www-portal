@@ -1,3 +1,27 @@
+grase-www-portal (3.0-10) purewhite; urgency=low
+
+  * Problem in cron functions
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Sat, 22 Jan 2011 17:46:45 +1000
+
+grase-www-portal (3.0-9) purewhite; urgency=low
+
+  * Fix in server monitor for squid3
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Wed, 19 Jan 2011 09:09:33 +1000
+
+grase-www-portal (3.0-8) purewhite; urgency=low
+
+  * Fix for Max-Octects not being an int
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Sat, 25 Dec 2010 15:04:14 +1000
+
+grase-www-portal (3.0-7) purewhite; urgency=low
+
+  * Changes to display of errors and messages
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Tue, 21 Dec 2010 19:44:52 +1000
+
 grase-www-portal (3.0-6) purewhite; urgency=low
 
   * Attempts to fix for iOS

@@ -24,31 +24,36 @@
 /* NOTE: This function is based on http://snipplr.com/view/5444/random-pronounceable-passwords-generator/ */
 function rand_password($len)
 {
+	$C = "BCDFGHJKLMNPRSTVWZ";
 	$c = "bcdfghjklmnprstvwz";
 	$v = "aeiou";
-	$password = "";
+	$V = "AEIOU";
 
-	#change 4 to how many sylabols
-	for($i=0;$i < ($len/3); $i++){
+	$password = "";
+	$syllables = 3; 
+
+	for($i=0;$i < ($len/$syllables); $i++){
 	    if(!rand(0,1))
 	    {
-            	
+
 		    $password.= $c[rand(0, strlen($c)-1)];
 		    $password.= $v[rand(0, strlen($v)-1)];
 		    $password.= $c[rand(0, strlen($c)-1)];
-		    if($i+1 < ($len/3)) $password.=rand(1,9);
-		    if($i+1 < ($len/3)) $password.=rand(1,9);		
+		    if($i+1 < ($len/$syllables)) $password.=rand(1,9);
+		    if($i+1 < ($len/$syllables)) $password.=rand(1,9);
+		    if($i+1 < ($len/$syllables)) $password.=rand(1,9);		    
 		}else{
 //		    if($i+1 < ($len/3)) $password.=rand(1,9);
-//		    if($i+1 < ($len/3)) $password.=rand(1,9);				
+//		    if($i+1 < ($len/3)) $password.=rand(1,9);
 		    $password.= $c[rand(0, strlen($c)-1)];
 		    $password.= $v[rand(0, strlen($v)-1)];
 		    $password.= $c[rand(0, strlen($c)-1)];
 		}
 	}
-    if(strlen($password) < $len + 2) $password.=rand(1,9);
-    if(strlen($password) < $len + 2) $password.=rand(1,9);				
-	
+    if(strlen($password) < $len + 3) $password.=rand(1,9);
+    if(strlen($password) < $len + 3) $password.=rand(1,9);
+    if(strlen($password) < $len + 3) $password.=rand(1,9);    
+
 	return $password;
 }
 
@@ -58,21 +63,21 @@ function rand_username($len)
 	$c = "bcdfghjklmnprstvwz";
 	$v = "aeiou";
 	$password = "";
+	$syllables = 2; // Short due to username
 
-	#change 4 to how many sylabols
-	for($i=0;$i < ($len/2); $i++){
+	for($i=0;$i < ($len/$syllables); $i++){
 	    if(rand(0,1))
 	    {
-		    if($i+1 < ($len/2)) $password.=rand(1,9);	    
+		    if($i+1 < ($len/$syllables)) $password.=rand(1,9);
 		    $password.= $c[rand(0, strlen($c)-1)];
-		    $password.= $v[rand(0, strlen($v)-1)];	    
+		    $password.= $v[rand(0, strlen($v)-1)];
 	    }else
-	    {	    
+	    {
     //		$password.= $c[rand(0, strlen($c)-1)];
 		    $password.= $v[rand(0, strlen($v)-1)];
 		    $password.= $c[rand(0, strlen($c)-1)];
-		    if($i+1 < ($len/2)) $password.=rand(1,9);
-        }		
+		    if($i+1 < ($len/$syllables)) $password.=rand(1,9);
+        }
 	}
 	return $password;
 }
@@ -104,7 +109,7 @@ function makeTimeStamp($year='', $month='', $day='')
    {
        $month = strftime('%m');
    }
-   if(empty($day)) 
+   if(empty($day))
    {
        $day = strftime('%d');
    }
@@ -118,15 +123,15 @@ function makeTimeStamp($year='', $month='', $day='')
 // Validation functions
 function validate_post_expirydate()
 {
-	$error='';
+	$error = array();
 	$expirydate ="${_POST['Expirydate_Year']}-${_POST['Expirydate_Month']}-${_POST['Expirydate_Day']}";
 	if ( ! $_POST['Expirydate_Day'] &&
 		 ! $_POST['Expirydate_Month'] &&
 		 ! $_POST['Expirydate_Year'])
 	{
-		$expirydate='';/* No Expiry */ 
+		$expirydate='';/* No Expiry */
 	}
-	
+
 	if ($expirydate &&
 	 	! (	$_POST['Expirydate_Day'] &&
 	 		$_POST['Expirydate_Month'] &&
@@ -134,9 +139,9 @@ function validate_post_expirydate()
 	 	)
 	{
 	 	/* Invalid date */
-	 	$error.="Invalid Expiry Date<br/>";
+	 	$error[] = _("Invalid Expiry Date");
 	}
-	
+
 	if( $expirydate &&
 		makeTimeStamp(
 			$_POST['Expirydate_Year'],
@@ -144,34 +149,34 @@ function validate_post_expirydate()
 			$_POST['Expirydate_Day'] ) < time()
 		)
 	{
-		$error.="Expiry Date in the past<br/>";
+		$error[] = _("Expiry Date in the past");
 	}
 	return array($error,$expirydate);
 }
 
 function validate_datalimit($limit)
 {
-	if ($limit && ! is_numeric($limit) ) return "Invalid value '$limit' for Data Limit<br/>";
+	if ($limit && ! is_numeric($limit) ) return printf(_("Invalid value '%s' for Data Limit"),$limit);
 	// TODO: Return what?
 }
 
 function validate_timelimit($limit)
 {
-	if ($limit && ! is_numeric($limit) ) return "Invalid value '$limit' for Time Limit<br/>";
+	if ($limit && ! is_numeric($limit) ) return printf(_("Invalid value '%s' for Time Limit"), $limit);
 	// TODO: Return what?
 }
 
 function validate_mac($macaddress)
 {
     // Check string is in format XX-XX-XX-XX-XX-XX (and upper case);
-    if(! preg_match('/([0-9A-F]{2}-){5}[0-9A-F]{2}/', $macaddress)) return "MAC Address not in correct format";
+    if(! preg_match('/([0-9A-F]{2}-){5}[0-9A-F]{2}/', $macaddress)) return _("MAC Address not in correct format");
     // TODO: Check that each XX pair is a valid hex number
 }
 
 function validate_int($number)
 {
 	if ($number && is_numeric($number) && trim($number) != "") return "";
-    return "Invalid number '$number' (Must be whole number)<br/>";
+    return printf(_("Invalid number '%s' (Must be whole number)"), $number);
 	// TODO: Return what?
 }
 
@@ -181,11 +186,11 @@ function validate_group($username, $group)
 	if(isset($Usergroups[$group]))
 	{
 		if($group == MACHINE_GROUP_NAME && strpos($username, "-dev") === false) // TODO: This no longer works for newer coovachilli, check for mac address format 00-00-00-00-00-00
-			return _("Only Machines can be in the Machine group<br/>"); // TODO: Internationalsation of all strings
+			return _("Only Machines can be in the Machine group"); // TODO: Internationalsation of all strings
 		return "";
 	}else
 	{
-		return "Invalid Group<br/>";
+		return _("Invalid Group");
 	}
 }
 
@@ -213,7 +218,7 @@ function expiry_for_group($group)
 	}
 	elseif($Userdata['Group'] == MACHINE_GROUP_NAME)
 	{
-	    $status = MACHINE_ACCOUNT; 
+	    $status = MACHINE_ACCOUNT;
 	}
 	elseif($Userdata['Group'] != "")
 	{
@@ -264,33 +269,33 @@ function file_upload_error_message($error_code)
         case UPLOAD_ERR_INI_SIZE:
         case UPLOAD_ERR_FORM_SIZE:
 		case 2:
-            return 'Uploaded Image was too big';
-            
+            return _('Uploaded Image was too big');
+
         case UPLOAD_ERR_PARTIAL:
-            return 'Error In Uploading';
-            
+            return _('Error In Uploading');
+
         case UPLOAD_ERR_NO_FILE:
-            return 'No file was uploaded';
-            
+            return _('No file was uploaded');
+
         case UPLOAD_ERR_NO_TMP_DIR:
-            return 'Missing a temporary folder';
-            
+            return _('Missing a temporary folder');
+
         case UPLOAD_ERR_CANT_WRITE:
-            return 'Failed to write file to disk';
-            
+            return _('Failed to write file to disk');
+
         case UPLOAD_ERR_EXTENSION:
-            return 'File upload stopped by extension';
-            
+            return _('File upload stopped by extension');
+
         default:
-            return 'Unknown upload error';
+            return _('Unknown upload error');
     }
 }
 
 /* TODO: check where this code came from */
-function sha1salt($plainText, $salt = null) 
+function sha1salt($plainText, $salt = null)
     {
         $SALT_LENGTH = 9;
-        if ($salt === null) 
+        if ($salt === null)
         {
             $salt = substr(md5(uniqid(rand() , true)) , 0, $SALT_LENGTH);
         }
@@ -298,7 +303,7 @@ function sha1salt($plainText, $salt = null)
         {
             $salt = substr($salt, 0, $SALT_LENGTH);
         }
-        
+
         return $salt . sha1($salt . $plainText);
     }
 

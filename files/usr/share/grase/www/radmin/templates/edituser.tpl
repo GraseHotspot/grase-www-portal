@@ -4,7 +4,8 @@
 <h2>Edit User</h2>
 
 {if $user.Group eq MACHINE_GROUP_NAME}
-<div class="errorPage" style="display: block;"> <span id="errorMessage">Machine Account Locked (Only comments can be changed){if $error}<br/>{$error}{/if}</span> </div>
+<div class="errorPage" style="display: block;"> <span id="errorMessage">Machine Account Locked (Only comments can be changed){if $error}<br/>{foreach from=$error item=msg}{$msg}<br/>{/foreach}{/if}</span> </div>
+
 <table>
 	<tr><td>Username</td><td>{$user.Username}</td></tr>
 	<!--<tr><td>Comment</td><td>{$user.Comment}</td></tr>	-->
@@ -19,10 +20,15 @@
 	<tr><td></td><td><form method='post'><input size='30' type="text" name="DeleteUser"/><button class="negative" type="submit" name="deleteusersubmit" value="Delete User"><img src="/grase/images/icons/cross.png" alt=""/>Delete User</button></form></td></tr>
 </table>
 {else}
-<div class="errorPage" style="display: {if $error}block;{else}none;{/if}"> <span id="errorMessage">{$error}</span> </div>
+<div class="errorPage" style="display: {if $error}block;{else}none;{/if}">Error in data, please correct and try again<br/><span id="errorMessage">{foreach from=$error item=msg}{$msg}<br/>{/foreach}</span> </div>
 <table>
 	<tr><td>Username</td><td>{$user.Username}</td></tr>
-	<tr><td>Password</td><td><form method='post'> <input type="text" name="Password"/ value=''/><button type="submit" name="changepasswordsubmit" value="Change Password"><img src="/grase/images/icons/textfield_key.png" alt=""/>Change Password</button></form></td></tr>
+	<tr><td>Password</td><td><form method='post'> <input type="text" name="Password"/ value='' onkeyup="runPassword(this.value, 'newpassword');" />
+	                        <div style="width: 200px;float: right;"> 
+                                <div id="newpassword_text" ></div>
+                                <div id="newpassword_bar" style="font-size: 1px; height: 2px; width: 0px; border: 1px solid white;"></div> 	
+	
+	<button type="submit" name="changepasswordsubmit" value="Change Password"><img src="/grase/images/icons/textfield_key.png" alt=""/>Change Password</button></form></td></tr>
 	<tr><td>Group</td><td><form method='post'> {html_options name="Group" options=$Usergroups selected=$user.Group}<button type="submit" name="changegroupsubmit" value="Change Group">Change Group</button></form></td></tr>
 	
 	<tr><td>Comment</td><td><form method='post'> <input type="text" name="Comment" value='{$user.Comment}'/><button type="submit" name="changecommentsubmit" value="Change Comment">Change Comment</button></form></td></tr>

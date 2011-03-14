@@ -17,3 +17,5 @@
 * Allow admin to manage mirrored files
 * Make mirrored files look pretty
 
+* "Splash" only setup (with limits)
+

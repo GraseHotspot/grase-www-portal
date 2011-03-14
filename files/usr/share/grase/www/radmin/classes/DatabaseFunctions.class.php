@@ -528,7 +528,7 @@ class DatabaseFunctions
             'Username'  => array ( 'value' => $username,    'key' => true),
             'Attribute' => array ( 'value' => 'Max-Octets',  'key' => true),
             'op'        => array ( 'value' => ':=' ),
-            'Value'     => array ( 'value' => $datalimitoctets)
+            'Value'     => array ( 'value' => intval($datalimitoctets))
             );   
         
         $result = $this->db->replace('radcheck', $fields);

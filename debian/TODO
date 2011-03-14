@@ -26,6 +26,12 @@ Back to users list with anchor from edit user
 Machine accounts - Autopassword, own page, no "machine" group
 
 Storing some coova-chilli stuff in database
+    * hidden input with old value
+    * values into array
+    * compare old->new arrays. Where diff, do update
+    * Where new array longer than old, do insert
+    * Where update would result in inserting blank value, do delete
+Settings, merge some site details into 1 section, move logo to its own update logo page    
 
 Change how error messages are done (into array)
 

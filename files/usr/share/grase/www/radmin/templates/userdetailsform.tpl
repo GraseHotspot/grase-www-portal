@@ -1,6 +1,6 @@
 <div id="{$useraction}Form">
 <h2>{$useractionTitle}</h2>
-<div class="errorPage" style="display: {if $error}block;{else}none;{/if}"> <span id="errorMessage">{$error}</span> </div>
+<div class="errorPage" style="display: {if $error}block;{else}none;{/if}">Error in data, please correct and try again<br/><span id="errorMessage">{foreach from=$error item=msg}{$msg}<br/>{/foreach}</span> </div>
 
 <!-- Not using this method, using OR method
 <ul class="timecost_list">
@@ -22,7 +22,11 @@
 
 <table>
 <tr><td>Username</td><td><input {if $usernamelock}disabled='disabled'{/if} type="text" name="Username" value='{$user.Username}'/></td></tr>
-<tr><td>Password</td><td> <input type="text" name="Password" value='{$user.Password}'/></td></tr>
+<tr><td>Password</td><td> <input type="text" name="Password" value='{$user.Password}' onkeyup="runPassword(this.value, 'newpassword');" />
+	                        <div style="width: 200px;float: right;"> 
+                                <div id="newpassword_text" ></div>
+                                <div id="newpassword_bar" style="font-size: 1px; height: 2px; width: 0px; border: 1px solid white;"></div> 	
+</td></tr>
 
 <tr><td>Group</td><td> {html_options name="Group" options=$Usergroups selected=$user.Group}</td></tr>
 <!--<tr><td>Group</td><td> <input type="select" name="group" value='{$user.group}'></td></tr>-->

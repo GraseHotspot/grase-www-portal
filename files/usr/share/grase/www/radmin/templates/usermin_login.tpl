@@ -2,7 +2,7 @@
 
 <div id="loginForm">
 <h2>Login</h2>
-<div class="errorPage" style="display: {if $error}block;{else}none;{/if}"> <span id="errorMessage">{$error}</span> </div>
+<div class="errorPage" style="display: {if $error}block;{else}none;{/if}"><span id="errorMessage">{foreach from=$error item=msg}{$msg}<br/>{/foreach}</span> </div>
 Login is required to access the {$Application} section of this website.
 <form method='post' action="?">
 <table>

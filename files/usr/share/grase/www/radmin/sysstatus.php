@@ -63,11 +63,11 @@ function proc_running_time($pid)
 }
 $monitored_processes[] = array("label" => "Load", "load" => '');
 $monitored_processes[] = array("label" => "Uptime", "uptime" => '');
-$monitored_processes[] = array("label" => "*HotSpot (Captive Portal, CoovaChilli)", "procname" => "chilli", "pid" => "/var/run/chilli.pid");
+$monitored_processes[] = array("label" => "*HotSpot (Captive Portal, CoovaChilli)", "procname" => "chilli", "pid" => "/var/run/chilli.eth1.pid");
 $monitored_processes[] = array("label" => "*Webserver (Apache2)", "procname" => "apache2", "pid" => "/var/run/apache2.pid");
 $monitored_processes[] = array("label" => "*Authentication (FreeRADIUS)", "procname" => "freeradius", "pid" => "/var/run/freeradius/freeradius.pid");
 $monitored_processes[] = array("label" => "*Database (MySQL)", "procname" => "mysqld", "pid_error" => "/var/run/mysqld/mysqld.pid");
-$monitored_processes[] = array("label" => "*Proxy (Squid)", "procname" => "squid", "pid" => "/var/run/squid.pid");
+$monitored_processes[] = array("label" => "*Proxy (Squid3)", "procname" => "squid3", "pid" => "/var/run/squid3.pid");
 $monitored_processes[] = array("label" => "*Filter (Dansguardian)", "procname" => "dansguardian", "pid" => "/var/run/dansguardian.pid");
 $monitored_processes[] = array("label" => "Ad Filter (Adzapper through Squid)", "procname" => "adzapper");
 $monitored_processes[] = array("label" => "*DNS (Dnsmasq)", "procname" => "dnsmasq", "pid" => "/var/run/dnsmasq.pid");

@@ -27,9 +27,9 @@ require_once 'includes/database_functions.inc.php';
 function validate_form()
 {
 	global $expirydate;
-	$error="";
-	if(! checkDBUniqueUsername($_POST['Username'])) $error.= "Username already taken<br/>";
-	if ( ! $_POST['Username'] || !$_POST['Password'] ) $error.="Username and Password are both Required<br/>";
+	$error = array();
+	if(! checkDBUniqueUsername($_POST['Username'])) $error[] = _("Username already taken");
+	if ( ! $_POST['Username'] || !$_POST['Password'] ) $error[] = _("Username and Password are both Required");
 	
 	$MaxMb = ereg_replace("[^\.0-9]", "", $_POST['MaxMb'] );
 	$Max_Mb = ereg_replace("[^\.0-9]", "", $_POST['Max_Mb'] );	
@@ -37,17 +37,17 @@ function validate_form()
 	$Max_Time = ereg_replace("[^\.0-9]", "", $_POST['Max_Time'] );	
 	
 
-	$error.= validate_datalimit($MaxMb);
-	$error.= validate_datalimit($Max_Mb);
-	$error.= validate_timelimit($MaxTime);
-	$error.= validate_timelimit($Max_Time);		
-	if($Max_Mb && $MaxMb) $error.="Only set one Data limit field";
-	if($Max_Time && $MaxTime) $error.="Only set one Time limit field";
+	$error[] = validate_datalimit($MaxMb);
+	$error[] = validate_datalimit($Max_Mb);
+	$error[] = validate_timelimit($MaxTime);
+	$error[] = validate_timelimit($Max_Time);		
+	if($Max_Mb && $MaxMb) $error[] = _("Only set one Data limit field");
+	if($Max_Time && $MaxTime) $error[] = _("Only set one Time limit field");
 
 	list($error2, $expirydate) = validate_post_expirydate();
-	$error.=$error2;
-	$error.= validate_group($_POST['Username'], $_POST['Group']);
-	return $error;
+	$error = array_merge($error, $error2); // validate_post_expirydate can return multiple errors
+	$error[] = validate_group($_POST['Username'], $_POST['Group']);
+	return array_filter($error);
 }
 
 
@@ -66,7 +66,7 @@ if(isset($_POST['newusersubmit']))
 		$user['Expiration'] = expiry_for_group(clean_text($_POST['Group'])); //"${_POST['Expirydate_Year']}-${_POST['Expirydate_Month']}-${_POST['Expirydate_Day']}";
 		$user['Comment'] = clean_text($_POST['Comment']);
 		$smarty->assign("user", $user);
-		$smarty->assign("error", "Error in data, please correct and try again<br/>$error");
+		$smarty->assign("error", $error);
 		display_page('adduser.tpl');
 	}else
 	{
@@ -87,8 +87,9 @@ if(isset($_POST['newusersubmit']))
 			clean_text($_POST['Group']),
 			clean_text($_POST['Comment'])
 		);
+		$message[] = _("User Successfully Created");
 		AdminLog::getInstance()->log("Created new user ${_POST['Username']}");
-		$smarty->assign("messagebox", "$message<br/>User Successfully Created");
+		$smarty->assign("messagebox", $message);
 		display_adduser_form();
 	}
 }else

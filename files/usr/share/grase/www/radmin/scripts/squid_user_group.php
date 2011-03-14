@@ -51,6 +51,8 @@ while($data = trim(fgets($fp, 4096))){
 		//print "OK\n";
 		print "ERR message='User Group not permitted to access this site'\n";
 	}
+	
+	// TODO: Is this debugging? Remove
 	file_put_contents("/tmp/usergroup", "$Username, $group, $usergroup\n", FILE_APPEND);
 }
 

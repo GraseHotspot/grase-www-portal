@@ -32,6 +32,7 @@ http_access deny Banned_Hosts
 $fp = fopen('php://stdin', 'r');
 while($IP = trim(fgets($fp, 4096))){
 //	echo "$IP ".database_radacct_ip_to_username($IP)."\n";
+    // TODO: See about converting this back to DB lookup
 	$username = chilli_ip_to_username($IP);
 	if($username){
 		print "OK user=$username\n";

@@ -17,6 +17,8 @@
 <script type="text/javascript" src="js/jquery.tablesorter.min.js"></script>
 <!--<script type="text/javascript" src="js/jquery-ui-1.7.2.custom.min.js"></script>-->
 
+<!-- Script for password strength checking -->
+<script type="text/javascript" src="js/pwd_strength.js"></script>
 
 <!-- / CSS Stylesheet -->
 <link rel="shortcut icon" href="/favicon.ico" />
@@ -167,4 +169,7 @@ $j(document).ready(function(){
 </div>
 <div id="helpbox" onclick="HideContent('helpbox');" style="display:none;">&nbsp;</div>
 <div id="radminPage">
-	<div id="messagebox" style="display: {if $messagebox}block;{else}none;{/if}">{$messagebox}</div>
+	<div id="messagebox" style="display: {if $messagebox}block;{else}none;{/if}">
+	{foreach from=$messagebox item=msg}{$msg}<br/>{/foreach}
+	</div>
+

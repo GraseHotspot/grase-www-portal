@@ -37,7 +37,7 @@
 
 <div id="createticketsForm">
 <h2>Create Tickets</h2>
-<div class="errorPage" style="display: {if $error}block;{else}none;{/if}"> <span id="errorMessage">{$error}</span> </div>
+<div class="errorPage" style="display: {if $error}block;{else}none;{/if}"><span id="errorMessage">{foreach from=$error item=msg}{$msg}<br/>{/foreach}</span> </div>
 
 
 

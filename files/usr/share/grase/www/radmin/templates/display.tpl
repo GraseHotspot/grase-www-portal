@@ -1,6 +1,7 @@
 {include file="header.tpl" Name="Display Users" activepage="users" helptext="Click on a username to edit that user.<br/>Click on the &nbsp;<u>*</u>&nbsp; to see the users password<br/>Click on ether the Data Usage or Time Usage to see the users sessions"}
 
-<div class="errorPage" style="display: {if $error}block;{else}none;{/if}"> <span id="errorMessage">{$error}</span> </div>
+<div class="errorPage" style="display: {if $error}block;{else}none;{/if}"><span id="errorMessage">{foreach from=$error item=msg}{$msg}<br/>{/foreach}</span> </div>
+
 <div id='userslist' >
 	<table border="0" id='userslistTable'>
 		<thead>

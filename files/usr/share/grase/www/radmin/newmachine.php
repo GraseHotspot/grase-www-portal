@@ -81,8 +81,9 @@ if(isset($_POST['newmachinesubmit']))
 			'Machine', // TODO: This needs to be linked to settings
 			clean_text($_POST['Comment'])
 		);
+		$message[] = _("User Successfully Created");
 		AdminLog::getInstance()->log("Created new machine $mac");
-		$smarty->assign("messagebox", "$message<br/>User Successfully Created");
+		$smarty->assign("messagebox", $message);
 		display_addmachine_form();
 	}
 }else

@@ -27,7 +27,7 @@ require_once 'includes/database_functions.inc.php';
 function validate_form()
 {
 	global $expirydate;
-	$error="";
+	$error = array();
 	//if(! checkDBUniqueUsername($_POST['Username'])) $error.= "Username already taken<br/>";
 	//if ( ! $_POST['Username'] || !$_POST['Password'] ) $error.="Username and Password are both Required<br/>";
 	
@@ -39,27 +39,27 @@ function validate_form()
 	$Max_Time = ereg_replace("[^\.0-9]", "", $_POST['Max_Time'] );	
 	
     
-    $error.= validate_int($NumberTickets);
-	$error.= validate_datalimit($MaxMb);
-	$error.= validate_datalimit($Max_Mb);
-	$error.= validate_timelimit($MaxTime);
-	$error.= validate_timelimit($Max_Time);		
-	if($Max_Mb && $MaxMb) $error.="Only set one Data limit field";
-	if($Max_Time && $MaxTime) $error.="Only set one Time limit field";
+    $error[] = validate_int($NumberTickets);
+	$error[] = validate_datalimit($MaxMb);
+	$error[] = validate_datalimit($Max_Mb);
+	$error[] = validate_timelimit($MaxTime);
+	$error[] = validate_timelimit($Max_Time);		
+	if($Max_Mb && $MaxMb) $error[] = _("Only set one Data limit field");
+	if($Max_Time && $MaxTime) $error[] = _("Only set one Time limit field");
 	
-	if($NumberTickets > 50) $error .= "Max of 50 tickets per batch"; // Limit due to limit in settings length which stores batch for printing
+	if($NumberTickets > 50) $error[] = _("Max of 50 tickets per batch"); // Limit due to limit in settings length which stores batch for printing
 
 	list($error2, $expirydate) = validate_post_expirydate();
-	$error.=$error2;
-	$error.= validate_group("", $_POST['Group']);
-	return $error;
+	$error = array_merge($error, $error2);
+	$error[] = validate_group("", $_POST['Group']);
+	return array_filter($error);
 }
 
 
 
 if(isset($_POST['createticketssubmit']))
 {
-	$error=validate_form();
+	$error = validate_form();
 	if($error ){
 		//$user['Username'] = clean_text($_POST['Username']);
 		//$user['Password'] = clean_text($_POST['Password']);
@@ -72,7 +72,7 @@ if(isset($_POST['createticketssubmit']))
 		$user['Expiration'] = expiry_for_group(clean_text($_POST['Group'])); //"${_POST['Expirydate_Year']}-${_POST['Expirydate_Month']}-${_POST['Expirydate_Day']}";
 		$user['Comment'] = clean_text($_POST['Comment']);
 		$smarty->assign("user", $user);
-		$smarty->assign("error", "Error in data, please correct and try again<br/>$error");
+		$smarty->assign("error", $error);
 		display_page('newtickets.tpl'); //TODO: What happens if this returns?
 	}else
 	{
@@ -107,7 +107,8 @@ if(isset($_POST['createticketssubmit']))
 		$Settings->setSetting('lastbatch', serialize($createdusernames));
 		$createdusers = database_get_users($createdusernames);
 		$smarty->assign("createdusers", $createdusers);
-	    $smarty->assign("messagebox", "$message<br/>Tickets Successfully Created");
+		$msgbox[] = _("Tickets Successfully Created");
+	    $smarty->assign("messagebox", $msgbox);
 		display_adduser_form();
 	}
 }else
