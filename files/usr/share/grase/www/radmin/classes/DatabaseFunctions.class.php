@@ -191,7 +191,7 @@ class DatabaseFunctions
         $sql = sprintf("SELECT UserName
 	            FROM radacct
 	            WHERE FramedIPAddress='%s'
-	            AND AcctStopTime=NULL
+	            AND AcctStopTime IS NULL
 	            ORDER BY AcctStartTime DESC LIMIT 1",
 	            $ipaddress);
         

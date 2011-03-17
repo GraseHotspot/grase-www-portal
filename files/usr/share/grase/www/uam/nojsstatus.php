@@ -9,7 +9,7 @@ require_once('includes/site.inc.php');
 
 $ipaddress = $_SERVER['REMOTE_ADDR'];
 
-$user = DatabaseFunctions::getInstance()->getUserDetails(getRadiusUserByCurrentSession($ipaddress));
+$user = DatabaseFunctions::getInstance()->getUserDetails(DatabaseFunctions::getInstance()->getRadiusUserByCurrentSession($ipaddress));
 
 print_r($user);
 
