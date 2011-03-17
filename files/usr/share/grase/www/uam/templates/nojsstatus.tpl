@@ -2,24 +2,24 @@
 
 <div id="statusPage">
 
-<p id="loggedinusername">You are logged in as: <span id="UserNameLink">{$user['Username']}</span></p>
+<p id="loggedinusername">You are logged in as: <span id="UserNameLink">{$user.Username}</span></p>
 <p id="myaccountlink"><a href="/grase/radmin/usermin" onclick="window.open(this.href,'_blank');return false;">Access My Account</a></p>
 
 <table border="0" id="statusTable" style="padding-top:4px;font-size:70%">
 <tr id="UserNameRow" class="chilliLabelhide">
 <td id="UserNameLabel" class="chilliLabel"><b>User</b></td>
-<td id="UserNameLinkCell" class="chilliValue"><span id="UserNameLink1">{$user['Username']}</span></td>
+<td id="UserNameLinkCell" class="chilliValue"><span id="UserNameLink1">{$user.Username}</span></td>
 </tr>
 <tr id="maxRemainOctetsRow">
 <td id="maxRemainOctetsLabel" class="chilliLabel"><b>Remaining Quota</b></td>
-<td id="maxRemainOctets" class="chilliValue">{$user['AcctMaxOctets'] - $user['TotalOctets']}</td>
+<td id="maxRemainOctets" class="chilliValue">{$user.AcctMaxOctets - $user.TotalOctets}</td>
 </tr>
 <tr id="download_bar_row">
 <td></td><td id="download_bar_cell"><span id="download_bar" style="display:none;"> </span></td>
 </tr>
 <tr id="MonthlyUsageLimitRow">
 <td id="MonthlyUsageLimitRowLabel" class="chilliLabel"><b>Quota allocation</b></td>
-<td id="MonthlyUsageLimit" class="chilliValue">{$user['AcctMaxOctets']}</td>
+<td id="MonthlyUsageLimit" class="chilliValue">{$user.AcctMaxOctets}</td>
 </tr>
 <tr id="sessionTimeoutRow" class="chilliLabelhide">
 <td id="sessionTimeoutLabel" class="chilliLabel"><b>Max Session Time</b></td>
