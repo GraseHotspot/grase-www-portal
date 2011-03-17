@@ -51,7 +51,7 @@ switch($res)
     case 'success':
         //Logged in. Try popup and redirect to userurl
         $smarty->display('loggedin.tpl');
-        exit 0;
+        exit;
         break;        
         
 }
@@ -61,7 +61,7 @@ function setup_login_form()
 {
     global $smarty;
     $smarty->display('portal.tpl');
-    exit 0;
+    exit;
 }
 
 $smarty->display('portal.tpl');
