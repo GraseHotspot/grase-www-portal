@@ -175,19 +175,20 @@ class DatabaseFunctions
             %s
             ORDER BY RadAcctId DESC",
             $where_clause);
+            
+        $sessions = $this->db->queryAll($sql);
         
-        $username = $this->db->queryOne($sql);
-        
-        if (PEAR::isError($username))
+        if (PEAR::isError($sessions))
         {
-            ErrorHandling::fatal_db_error(_('Retrieving Username by Active Session (ipadddress): '), $username);
+            ErrorHandling::fatal_db_error(_('Retrieving Sessions by Username failed: '), $sessions);
         }        
-        return $username;
+        return $sessions;            
+        
     }
     
     public function getRadiusUserByCurrentSession($ipaddress)
     {
-        // Gets an array of all usernames in radcheck table
+        // Gets the username for an active session based on ip address
         $sql = sprintf("SELECT UserName
 	            FROM radacct
 	            WHERE FramedIPAddress='%s'
@@ -195,19 +196,14 @@ class DatabaseFunctions
 	            ORDER BY AcctStartTime DESC LIMIT 1",
 	            $ipaddress);
         
-        $results = $this->db->queryAll($sql);
+        $username = $this->db->queryOne($sql);
         
-        if (PEAR::isError($results))
+        if (PEAR::isError($username))
         {
-            ErrorHandling::fatal_db_error(_('Get All Usernames Query Failed: '), $results);
+            ErrorHandling::fatal_db_error(_('Retrieving Username by Active Session (ipadddress): '), $username);
         }
         
-        foreach ($results as $user)
-        {
-            $users[] = $user['UserName'];
-        }
-        
-        return $users;
+        return $username;
     }        
 
     public function getUserDetails($username)
