@@ -10,6 +10,10 @@ $res = $_GET['res'];
 $userurl = $_GET['userurl'];
 $challenge = $_GET['challenge'];
 
+$smarty->assign("user_url", $userurl);
+$smarty->assign("challenge", $challenge);
+$smarty->assign("RealHostname", trim(file_get_contents('/etc/hostname')));
+
 /* Important parts of uamopts
     * challenge
     * userurl
@@ -46,6 +50,8 @@ switch($res)
         
     case 'success':
         //Logged in. Try popup and redirect to userurl
+        $smarty->display('loggedin.tpl');
+        exit 0;
         break;        
         
 }
@@ -54,9 +60,8 @@ switch($res)
 function setup_login_form()
 {
     global $smarty;
-    $smarty->assign("user_url", $userurl);
-    $smarty->assign("challenge", $challenge);
-    $smarty->assign("RealHostname", trim(file_get_contents('/etc/hostname')));
+    $smarty->display('portal.tpl');
+    exit 0;
 }
 
 $smarty->display('portal.tpl');
