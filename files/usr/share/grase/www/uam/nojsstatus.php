@@ -11,6 +11,10 @@ $ipaddress = $_SERVER['REMOTE_ADDR'];
 
 $user = DatabaseFunctions::getInstance()->getUserDetails(DatabaseFunctions::getInstance()->getRadiusUserByCurrentSession($ipaddress));
 
+$smarty->assign('user' $user);
+
+$smarty->display('nojsstatus.tpl');
+
 print_r($user);
 
 ?>
