@@ -145,7 +145,7 @@ require_once 'smarty/Smarty.class.php';
 $smarty = new Smarty;
 
 $smarty->compile_check = true;
-$smarty->register_outputfilter('smarty_outputfilter_strip');
+//$smarty->register_outputfilter('smarty_outputfilter_strip');
 $smarty->register_modifier('bytes', array("Formatting", "formatBytes"));
 $smarty->register_modifier('seconds', array("Formatting", "formatSec"));
 
