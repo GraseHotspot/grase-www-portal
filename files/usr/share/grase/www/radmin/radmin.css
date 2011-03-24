@@ -275,67 +275,7 @@ thead td {
     text-align: center;
 }
 
-/* Inital setup page items */
 
-.setup_item {
-}
-
-.setup_item input{
-	width: 20em;
-}
-
-.setup_item td {
-	text-align: left;
-	width: 50%;
-}
-
-.item_description {
-	font-size: 75%;
-	width: 50%;
-	color: purple;
-}
-
-.error {
-	color: red;
-	font-weight: bolder;
-}
-
-
-
-.good {
-	color: green;
-	font-weight: bold;
-}
-/* Not needed as setup not being used
-.configfile {
-	width: 90%;
-	margin: auto;
-	text-align: left;
-}
-
-.configfile .description {
-	display: block;
-	background: yellow;
-	font-weight: bold;
-	text-align: left;
-	padding-left: 1em;
-	margin-top: 2em;
-}
-
-.configfile .file_written {
-	background: green;
-	color: yellow;
-}
-
-.configfile pre {
-	display: block;
-	width: 100%;
-	border: dotted black 1px;
-	white-space: pre-wrap;
-	white-space: -moz-pre-wrap;
-	white-space: -o-pre-wrap;
-}*/
-/* */
 
 /* Admin user forms/Password change forms */
 
@@ -629,3 +569,89 @@ ul#statusmon li {
 }
 
 /* End Cutout Tickets stuff */
+
+/******* FORM *******/
+.generalForm{
+	padding: 0 10px 10px;
+	margin: 40px auto;
+	text-align: left;
+	line-height: 1.4em;	
+}
+.generalForm label{
+	display: block;
+	color: #797979;
+	font-weight: 700;
+	line-height: 1.4em;
+	clear: right;
+}
+.generalForm input, .generalForm select{
+	width: 220px;
+	padding: 6px;
+	color: #949494;
+	font-family: Arial,  Verdana, Helvetica, sans-serif;
+	font-size: 11px;
+	border: 1px solid #cecece;
+}
+.generalForm input.error{
+	background: #f8dbdb;
+	border-color: #e77776;
+}
+.generalForm textarea{
+	width: 550px;
+	height: 80px;
+	padding: 6px;
+	color: #adaeae;
+	font-family: Arial,  Verdana, Helvetica, sans-serif;
+	font-style: italic;
+	font-size: 12px;
+	border: 1px solid #cecece;
+}
+.generalForm textarea.error{
+	background: #f8dbdb;
+	border-color: #e77776;
+}
+.generalForm div{
+	margin-bottom: 15px;
+}
+.generalForm div span {
+	margin-left: 10px;
+	color: #b1b1b1;
+	font-size: 11px;
+	font-style: italic;
+}
+.generalForm div span.error{
+	color: #e46c6e;
+}
+.generalForm #send{
+	background: #6f9ff1;
+	color: #000;
+	font-weight: 700;
+	font-style: normal;
+	border: 0;
+	cursor: pointer;
+}
+
+.generalForm #send:hover{
+	background: #79a7f1;
+}
+#error{
+	margin-bottom: 20px;
+	border: 1px solid #efefef;
+}
+#error ul{
+	list-style: square;
+	padding: 5px;
+	font-size: 11px;
+}
+#error ul li{
+	list-style-position: inside;
+	line-height: 1.6em;
+}
+#error ul li strong{
+	color: #e46c6d;
+}
+#error.valid ul li strong{
+	color: #93d72e;
+}
+/******* /FORM *******/
+

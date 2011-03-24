@@ -1,6 +1,6 @@
 {include file="header.tpl" Name="Log" activepage="sessions"}
 
-{if $ipaddress}<h2>Session logs for {$username} on&nbsp;<a class="helpbutton" onclick="ShowContent('helpbox','Computers hardware (MAC) address is<br/>{$session.CallingStationId}')">{$ipaddress}</a>&nbsp;({$session.AcctTotalOctets|bytes})</h2>
+{if $ipaddress}<h2>Session logs for {$username} on&nbsp;<a class="helpbutton" title='Computers hardware (MAC) address is<br/>{$session.CallingStationId}'>{$ipaddress}</a>&nbsp;({$session.AcctTotalOctets|bytes})</h2>
 <h3>Between {$session.AcctStartTime} and {$session.AcctStopTime}</h3>{/if}
 
 Total HTTP (WWW) Traffic Size: {$http_traffic_size}<br/>

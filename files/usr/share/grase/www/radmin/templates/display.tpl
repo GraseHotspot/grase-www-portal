@@ -3,30 +3,29 @@
 <div class="errorPage" style="display: {if $error}block;{else}none;{/if}"><span id="errorMessage">{foreach from=$error item=msg}{$msg}<br/>{/foreach}</span> </div>
 
 <div id='userslist' >
-	<table border="0" id='userslistTable'>
+	<table id="userslistTable" class="tablesorter">
 		<thead>
 		<tr id='userattributesRow'>
-			<td>Username</td>
-<!--			<td>Group</td>-->
-			<td>Data Limit</td>
-			<td>Data Usage (M)<a class="helpbutton" onclick="ShowContent('helpbox','Total Data usage for the current month');" ><img src="/grase/images/icons/help.png" alt=""/></a></td>
-			<td>Data Usage (T)<a class="helpbutton" onclick="ShowContent('helpbox','Total Data usage, from previous months, excluding current month');" ><img src="/grase/images/icons/help.png" alt=""/></a></td>
-			<td>Time Limit</td>
-			<td>Time Usage(Month)</td>			
-			<td>Account Expiry</td>
-			<td>Last Logoff<a class="helpbutton" onclick="ShowContent('helpbox','Last Logoff timestamp from current month only');" ><img src="/grase/images/icons/help.png" alt=""/></a></td>
-			<td>Comment</td>
+			<th>Username</th>
+			<th>Group</th>
+			<th>Data Limit</th>
+			<th>Data Usage (M)<a class="helpbutton" title='Total Data usage for the current month'><img src="/grase/images/icons/help.png" alt=""/></a></th>
+			<th>Data Usage (T)<a class="helpbutton" title='Total Data usage, from previous months, excluding current month' ><img src="/grase/images/icons/help.png" alt=""/></a></th>
+			<th>Time Limit</th>
+			<th>Time Usage(Month)</th>			
+			<th>Account Expiry</th>
+			<th>Last Logoff<a class="helpbutton" title='Last Logoff timestamp from current month only' ><img src="/grase/images/icons/help.png" alt=""/></a></th>
+			<th>Comment</td>
 		</tr>
 		</thead>
-		{foreach from=$users_groups item=group name=grouploop key=id}
-		<tr><td id='{$id}_header' colspan='9' class='groupheader' onclick='switchMenu("{$id}")'>{$id}</td></tr>
-		<tbody id='{$id}_body'>	
+		<tbody>	
+		{foreach from=$users item=user name=usersloop}
 
-		{foreach from=$group|@sortby:"-Group,-#AcctTotalOctets,Username" item=user key=id name=usersloop}
-		<tr id="user_{$user.Username}_Row" class="userrow {if $smarty.foreach.usersloop.iteration is even}even{else}odd{/if} {$user.account_status}" >
+		<tr>
+		<!-- id="user_{$user.Username}_Row" class="userrow {if $smarty.foreach.usersloop.iteration is even}even{else}odd{/if} {$user.account_status}" > --!>
 			<td class='info_username'><span class='info_password'>{if $user.Group eq 'Machine'}<span title="Password Hidden">*</span>{else}<span title="{$user.Password}"><a href='javascript:alert("Password for {$user.Username} is {$user.Password}")'>*</a></span>{/if}</span><a href="edituser?username={$user.Username}">{$user.Username}</a></td>
 
-<!--			<td class='info_group'>{$user.Group}</td>-->
+			<td class='info_group'>{$user.Group}</td>
 			<td class='info_datalimit'>{$user.MaxOctets|bytes}</td>
 			<td class='info_datausage'><a href="sessions?username={$user.Username}">{$user.AcctTotalOctets|bytes}</a></td>			
 			<td class='info_datausage_t'>{$user.TotalOctets|bytes}</td>			
@@ -38,9 +37,9 @@
 		</tr>
 		{/foreach}
 		</tbody>
-		{/foreach}
 
 	</table>
+    	
 </div>
 
 {include file="footer.tpl"}

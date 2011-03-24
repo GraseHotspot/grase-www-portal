@@ -46,7 +46,7 @@
 
 <table>
 
-<tr><td>Number of Tickets <a class="helpbutton" onclick="ShowContent('helpbox','Maximum of 50 tickets per batch');" > <img src="/grase/images/icons/help.png" alt=""/></a></td><td><input type="text" name="numberoftickets" value='{$user.numberoftickets}'/></td></tr>
+<tr><td>Number of Tickets <a class="helpbutton" title='Maximum of 50 tickets per batch' > <img src="/grase/images/icons/help.png" alt=""/></a></td><td><input type="text" name="numberoftickets" value='{$user.numberoftickets}'/></td></tr>
 
 <tr><td>Group</td><td> {html_options name="Group" options=$Usergroups selected=$user.Group}</td></tr>
 <tr><td>Comment</td><td> <input type="text" name="Comment" value='{$user.Comment}'/></td></tr>

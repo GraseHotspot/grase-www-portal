@@ -39,7 +39,7 @@
 	<tr><td>Time Limit (Mins)</td><td><form method='post'> <input type="text" name="MaxTime" value='{$user.MaxTime}'/>{html_options name="MaxTime_" options=$Timecosts}<button type="submit" name="changetimelimitsubmit" value="Change Time Limit">Change Time Limit</button></form></td></tr>
 	<tr><td {if ! $user.MaxTime}style="color: gray"{/if}>Add Time (Mins)</td><td><form method='post'> <input {if ! $user.MaxTime}disabled='disabled'{/if} type="text" name="AddTime" value=''/>{html_options name="AddTime_" options=$Timecosts}<button {if ! $user.MaxTime}disabled='disabled'{/if} type="submit" name="addtimesubmit" value="Add more Time">Add Time to limit</button></form></td></tr>
 
-	<tr><td>Expiry (Automatic)<a class="helpbutton" onclick="ShowContent('helpbox','Expiry is based on the Group.<br\/>1 Month for visitors<br\/>3 Months for students<br\/>6 Months for staff and ministry');" ><img src="/grase/images/icons/help.png" alt=""/></a></td><td>{$user.FormatExpiration}
+	<tr><td>Expiry (Automatic)<a class="helpbutton" title='Expiry is based on the Group.<br\/>1 Month for visitors<br\/>3 Months for students<br\/>6 Months for staff and ministry' ><img src="/grase/images/icons/help.png" alt=""/></a></td><td>{$user.FormatExpiration}
 <!--<form method='post'> {html_select_date disabled='disabled' prefix="Expirydate_" time=$user.Expiration end_year="+1" year_empty='' month_empty='' day_empty=''} <input type="submit" name="changeexpirysubmit" value="Change Expiry"/></form>-->
 </td></tr>
 	<tr>&nbsp;</tr>

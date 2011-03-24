@@ -24,7 +24,7 @@
 			<td>{$session.AcctStartTime}</td>
 			<td>{$session.AcctStopTime}</td>			
 			<td>{$session.AcctSessionTime|seconds}</td>			
-			<td><a class="helpbutton" onclick="ShowContent('helpbox','Computers hardware (MAC) address is<br/>{$session.CallingStationId}')">{$session.FramedIPAddress}</a></td>
+			<td><a class="helpbutton" title='Computers hardware (MAC) address is<br/>{$session.CallingStationId}'>{$session.FramedIPAddress}</a></td>
 			<td><a href="?username={$session.Username}">{$session.Username}</a></td>
 			<td>{$session.AcctInputOctets|bytes}</td>
 			<td>{$session.AcctOutputOctets|bytes}</td>			
