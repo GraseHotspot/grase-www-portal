@@ -1,0 +1,11 @@
+Page with form in sidebar
+Form with hidden fields giving url
+Also link to goto page if logged in
+
+Non-JS
+Submit form loads in same window to check if correct.
+If correct, then redirect to URl and open popup? (Maybe can't open popup without clicking a link, will have to try)
+
+JS
+AJAX login, if correct the popup and redirect to URL
+May have to open popup first on mouse click?
