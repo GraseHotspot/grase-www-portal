@@ -173,7 +173,7 @@ class SettingsMySQL extends Settings
         $this->setSetting('priceMinute', $pricetime);
         $this->setSetting('currency', $currency);
         $this->setSetting('sellableData', $sellable_data);
-        $this->setSetting('userableData', $useable_data);
+        $this->setSetting('useableData', $useable_data);
         $this->setSetting('supportContactName', $support_name);
         $this->setSetting('supportContactLink', $support_link);
 

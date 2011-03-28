@@ -41,7 +41,7 @@ if(isset($_POST['submit']))
 	$newuseabledata     = trim(clean_text($_POST['useable_data']));	    
     // Check for changed items
     
-    if($newlocationname != $location) update_location($newlocation);
+    if($newlocationname != $location) update_location($newlocationname);
     if($newsupportcontact != $support_name) update_supportcontact($newsupportcontact);    
     if($newsupportlink != $support_link) update_supportlink($newsupportlink);    
     if($newpricemb != $pricemb) update_pricemb($newpricemb);
@@ -55,24 +55,28 @@ if(isset($_POST['submit']))
 }
 
 // TODO: Make a proper settings file?
+load_global_settings(); // Reloads settings
 
 	$smarty->assign("location", $location);
 	$smarty->assign("pricemb", $pricemb);
 	$smarty->assign("pricetime", $pricetime);
 	$smarty->assign("currency", $currency);
 	$smarty->assign("dispcurrency", $CurrencySymbols[$currency]);
-	$smarty->assign("sellable_data", $sellable_data/1048576);
-	$smarty->assign("useable_data", $useable_data/1048576);
+	$smarty->assign("sellable_data", $sellable_data);
+	$smarty->assign("useable_data", $useable_data);
 	$smarty->assign("support_name", $support_name);
 	$smarty->assign("support_link", $support_link);
 	$smarty->assign("website_name", $website_name);
 	$smarty->assign("website_link", $website_link);
+	
+if(sizeof($error) > 0) $smarty->assign("error", $error);	
+if(sizeof($success) > 0) $smarty->assign("success", $success);
 
 //$old_error_level = error_reporting(1); // TODO: Don't have this catching stuff
 
 // Location
 
-function update_locationname($location)
+function update_location($location)
 {
     global $error, $smarty, $Settings, $success;
     if($location == "") $error[] = _("Location name not valid");
@@ -132,7 +136,7 @@ function update_websitelink($websitelink)
 function update_pricemb($pricemb)
 {
     global $error, $smarty, $Settings, $success;
-	if($new_pricemb != "" && is_numeric($pricemb))
+	if($pricemb != "" && is_numeric($pricemb))
 	{
 		if($Settings->setSetting('priceMb', $pricemb))
 		{
@@ -171,13 +175,13 @@ function update_pricetime($pricetime)
 
 function update_currency($currency)
 {
-    global $error, $smarty, $Settings, $success;
+    global $error, $smarty, $Settings, $success, $CurrencySymbols;
 	if($currency != "" && strlen($currency) < 4)
 	{
 		if($Settings->setSetting('currency', $currency))
 		{
 			$success[] = _("Currency updated");
-			AdminLog::getInstance()->log(_("Currency updated to") ." ${CurrencySymbols[$new_currency]}");
+			AdminLog::getInstance()->log(_("Currency updated to") ." ${CurrencySymbols[$currency]}");
 		}
 		else
 		{
@@ -193,49 +197,87 @@ function update_currency($currency)
 
 
 // Data limits
+function update_sellabledata($sellabledata)
+{
+    global $error, $smarty, $Settings, $success;
+    if($sellabledata != "" && is_numeric($sellabledata))
+    {
+        if($Settings->setSetting('sellableData', $sellabledata))
+        {
+            $success[] = _("Sellable Data Limit Update");
+			AdminLog::getInstance()->log(_("Sellable Data Limit Update"));        
+        }
+        else
+        {
+            $error[] = _("Error updating Sellable Data Limit");
+        }
+    }
+    else
+    {
+        $error[] = _("Invalid value for Sellable Data");
+    }
+}
 
-    $error_data = false;
-	if(isset($_POST['changedatasubmit']))
-	{ 
-		$error_data = "Data Limits not valid";
-		$new_selldata = trim(clean_text($_POST['newsellable_data']));
-		$new_usedata = trim(clean_text($_POST['newuseable_data']));
-		if($new_selldata != "" && is_numeric($new_selldata) && $new_usedata != "" && is_numeric($new_usedata) )
-		{
-			if($Settings->setSetting('sellableData', $new_selldata*1048576) && $Settings->setSetting('useableData', $new_usedata*1048576)) // TODO: Make this octets properly and combine octets functions with other areas
-			{
-				$error_data = "Data Limits changed";
-				AdminLog::getInstance()->log("Graph Data Limits changed");
-				$smarty->assign("sellable_data", $new_selldata);
-				$smarty->assign("useable_data", $new_usedata);
-			}
-		}
-	}
-	$smarty->assign("error_data", $error_data);
+function update_useabledata($useabledata)
+{
+    global $error, $smarty, $Settings, $success;
+    if($useabledata != "" && is_numeric($useabledata))
+    {
+        if($Settings->setSetting('useableData', $useabledata))
+        {
+            $success[] = _("Useable Data Limit Update");
+			AdminLog::getInstance()->log(_("Useable Data Limit Update"));        
+        }
+        else
+        {
+            $error[] = _("Error updating Useable Data Limit");
+        }
+    }
+    else
+    {
+        $error[] = _("Invalid value for Useable Data");
+    }
+}
 
 // Support Contact
+function update_supportcontact($supportname)
+{
+    global $error, $smarty, $Settings, $success;
+    if($supportname == "") $error[] = _("Support name not valid");    
+    else
+    {
+        if($Settings->setSetting('supportContactName', $supportname))
+        {
+            $success[] = _("Support name updated");
+			AdminLog::getInstance()->log(_("Support name updated"));        
+        }
+        else
+        {
+            $error[] = _("Error Saving Support Name");
+        }
+    }
+}
 
-    $error_support = false;
-	if(isset($_POST['changesupportsubmit']))
-	{ 
-		$error_support = "Support Contact Details not valid";
-		$new_supportname = trim(clean_text($_POST['newsupportname']));
-		$new_supportlink = trim(clean_text($_POST['newsupportlink']));
-		if($new_supportname != "" && $new_supportlink != "" && strpos($new_supportlink, ' ') === false)
-		{
-			if($Settings->setSetting('supportContactLink', $new_supportlink) && $Settings->setSetting('supportContactName', $new_supportname))
-			{
-				$error_support = "Support Contact Details Updated";
-				AdminLog::getInstance()->log("Support Contact Details changed");
-				$smarty->assign("support_name", $new_supportname);
-				$smarty->assign("support_link", $new_supportlink);
-			}
-		}
-	}
-	$smarty->assign("error_support", $error_support);
+function update_supportlink($supportlink)
+{
+    global $error, $smarty, $Settings, $success;
+    if($supportlink == "" || strpos($supportlink, ' ') !== false) $error[] = _("Support link not valid");    
+    else
+    {
+        if($Settings->setSetting('supportContactLink', $supportlink))
+        {
+            $success[] = _("Support link updated");
+			AdminLog::getInstance()->log(_("Support link updated"));        
+        }
+        else
+        {
+            $error[] = _("Error Saving Support link");
+        }
+    }
+}
 
 //error_reporting($old_error_level);
-	require('includes/site_settings.inc.php'); // ReRead settings
+	//require('includes/site_settings.inc.php'); // ReRead settings
 	display_page('settings.tpl');
 
 ?>

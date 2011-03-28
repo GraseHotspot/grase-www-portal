@@ -149,6 +149,9 @@ $(document).ready(function(){
     
     <!-- Main content -->
     <div id="pagecontent">
+        {include file="errors.tpl"}
+
+        <!-- TODO: Migrate the below to errors handling template-->    
 	    <div id="messagebox" style="display: {if $messagebox}block;{else}none;{/if}">
 	    {foreach from=$messagebox item=msg}{$msg}<br/>{/foreach}
 	    </div>

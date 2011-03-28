@@ -167,10 +167,6 @@ $smarty->assign("css_version", $cssrevid);
 $smarty->assign("application_version", $application_version);
 $smarty->assign("Application", APPLICATION_NAME);
 
-$smarty->assign("Title", $location . " - " . APPLICATION_NAME);
-$smarty->assign("website_name", $website_name);
-$smarty->assign("website_link", $website_link);
-
 $smarty->assign("RealHostname", $realhostname);
 
 // Setup Menus
@@ -189,6 +185,7 @@ $smarty->assign('gbvalues', gboctects());
 function assign_vars()
 {
 	global $smarty, $sellable_data, $useable_data, $used_data, $sold_data;
+	global $location, $website_name, $website_link;
 
 	// Data
 	$total_sellable_data = $sellable_data; 
@@ -205,6 +202,11 @@ function assign_vars()
 	$smarty->assign("DataRemainingOctets", $total_useable_data - $used_data);
 	$smarty->assign("DataUsagePercent", $used_data/($total_useable_data)*100);
 
+    // Settings
+    $smarty->assign("Title", $location . " - " . APPLICATION_NAME);
+    $smarty->assign("website_name", $website_name);
+    $smarty->assign("website_link", $website_link);
+    
 
 	// last months usage
 	$used_data =  getMonthUsedData(); // TODO: make it get last month that data is for?
