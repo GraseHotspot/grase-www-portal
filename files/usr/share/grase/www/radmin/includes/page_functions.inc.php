@@ -52,6 +52,7 @@ function createmenuitems()
 	$menubar['passwd'] = array("href" => "passwd", "label" => "Admin Users" );
 	$menubar['adminlog'] = array("href" => "adminlog", "label" => "Admin Log" );	
 	$menubar['settings'] = array("href" => "settings", "label" => "Site Settings" );
+	$menubar['uploadlogo'] = array("href" => "uploadlogo", "label" => "Site Logo" );	
 	$menubar['logout'] = array("href" => "./?logoff", "label" => "Logoff" );
 	return $menubar;
 }
@@ -93,6 +94,18 @@ function timecosts()
 		$timecosts["$time"] = "$disp_currency$cost ($time mins)";
 	}
 	return $timecosts;
+}
+
+function gboctects()
+{
+    $gb_options = array(1, 2, 4, 5, 10, 100);
+    foreach($gb_options as $gb)
+    {
+        $octects = $gb*1024*1048576;
+        $label = "$gb Gb";
+        $options[$octects] = $label;
+    }
+    return $options;
 }
 
 function usergroups()
@@ -169,6 +182,8 @@ $smarty->assign("Usergroups", usergroups());
 $smarty->assign("CurrencySymbols", currency_symbols());
 $smarty->assign("Datacosts", datacosts());
 $smarty->assign("Timecosts", timecosts());
+
+$smarty->assign('gbvalues', gboctects());
 
 
 function assign_vars()

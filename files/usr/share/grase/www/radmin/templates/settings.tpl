@@ -1,73 +1,75 @@
 {include file="header.tpl" Name="Site Settings" activepage="settings" helptext="Use this page to change settings for this Hotspot Site"}
 
-<div id="LocationChangeForm">
-<h2>Location Name</h2>
-{if $error_locationname}<div class="errorPage" style="display:block;"> <span class="errorMessage">{$error_locationname}</span> </div>{/if}
-<form method='post' id='locationChange' action=''> 
-<table>
-<tr><td>Location Name</td><td><input type="text" name="newlocationname" value='{$location}'/><button type="submit" name="changelocationsubmit" value="Change Location Name">Change Location Name</button></td></tr>
-</table>
-</form> 
+<div id="SettingsForm">
+<form method="post" action="" class="generalForm">
 
-<h2>Logo</h2>
-{if $error_logo}<div class="errorPage" style="display:block;"> <span class="errorMessage">{$error_logo}</span> </div>{/if}
-<form method='post' enctype="multipart/form-data" id='logoChange' action=''> 
-<table>
-<tr><td colspan="2">Logo file needs to be in png format, and relatively small (remember, every page has the logo). 10 Kilobytes maximum. It's physical size shouldn't be bigger than about 220px in both directions.</td></tr>
-<tr><td>Logo File</td><td> <input type="hidden" name="MAX_FILE_SIZE" value="20480" />
-<input type="file" name="newlogo" /><button type="submit" name="changelogosubmit" value="Upload New Logo">Upload New Logo</button></td></tr>
-<tr><td></td><td><img src="/grase/images/logo.png" alt="Logo"/></td></tr>
-</table>
-</form> 
+    <div>
+        <label for='locationname'>Location Name</label>
+        <input type="text" name="locationname" value='{$location}'/>
+        <span id="locationnameInfo">Enter a name that identifies this Hotspot Location</span>
+    </div>
+        
+    <div>
+        <label for='supportcontact'>Support Contact Name</label>
+        <input type="text" name="supportcontact" value='{$support_name}'/>
+        <span id="supportcontactInfo">Enter the name of the Support Contact</span>
+    </div>
+    
+    <div>
+        <label for='supportlink'>Support Link</label>
+        <input type="text" name="supportlink" value='{$support_link}'/>
+        <span id="supportlinkInfo">This is the link for the support contact. http:// or mailto: are allowed. If using http:// ensure this is accessabile for users who aren't logged into the hotspot</span>
+    </div>    
 
-{if $error_website}<div class="errorPage" style="display:block;"> <span class="errorMessage">{$error_website}</span> </div>{/if}
-<form method='post' id='websiteChange' action=''> 
-<table>
-<tr><td>Website details for footer link</td><td></td></tr>
-<tr><td>Website Name</td><td><input type="text" name="newwebsitename" value='{$website_name}'/></td></tr>
-<tr><td>Website Link<br/>(http: but no spaces allowed)</td><td><input type="text" name="newwebsitelink" value='{$website_link}'/></td></tr>
-<tr><td></td><td><button type="submit" name="changewebsitesubmit" value="Change Website Details">Change Website Details</button></td></tr>
-</table>
-</form> 
+
+    <div>
+        <label for='currency'>Currency</label>
+        {html_options name=currency options=$CurrencySymbols selected=$currency}
+        <span id="currencyInfo">Select the appropriate symbol for your local currency</span>
+    </div>
+
+
+    <div>
+        <label for='pricemb'>Cost per Mb</label>
+        <input type="text" name="pricemb" value='{$pricemb}'/>
+        <span id="pricembInfo">How much to charge per Mb</span>
+    </div>
+
+
+    <div>
+        <label for='pricetime'>Cost per Minute</label>
+        <input type="text" name="pricetime" value='{$pricetime}'/>
+        <span id="pricetimeInfo">How much to charge per Minute</span>
+    </div>
+
+    <div>
+        <label for='websitename'>Website Name</label>
+        <input type="text" name="websitename" value='{$website_name}'/>
+        <span id="websitenameInfo">Label for Website Footer link</span>
+    </div>
+    
+    <div>
+        <label for='websitelink'>Website Link</label>
+        <input type="text" name="websitelink" value='{$website_link}'/>
+        <span id="websitelinkInfo">Link for Website Footer Link</span>
+    </div>   
+    
+    <div>
+        <label for='sellable_data'>Sellable Graph Max</label>
+        {html_options name=sellable_data options=$gbvalues selected=$sellable_data}
+        <span id="sellable_dataInfo">Select what is 100% on the Sellable Data Graph</span>
+    </div>     
+
+    <div>
+        <label for='useable_data'>Useable Graph Max</label>
+        {html_options name=useable_data options=$gbvalues selected=$useable_data}
+        <span id="useable_dataInfo">Select what is 100% on the Useable Data Graph</span>
+    </div>    
+   
+    <button type="submit" name="submit">Save Settings</button> 
+
+</form>
+
 </div>
-
-<div id="SupportContactForm">
-<h2>Support Contact</h2>
-{if $error_support}<div class="errorPage" style="display:block;"> <span class="errorMessage">{$error_support}</span> </div>{/if}
-<form method='post' id='supportChange' action=''> 
-<table>
-<tr><td>Support Contact Name</td><td><input type="text" name="newsupportname" value='{$support_name}'/></td></tr>
-<tr><td>Support Link<br/>(mailto: or http: but no spaces allowed)</td><td><input type="text" name="newsupportlink" value='{$support_link}'/></td></tr>
-<tr><td></td><td><button type="submit" name="changesupportsubmit" value="Change Support Contact Details">Change Support Contact Details</button></td></tr>
-</table>
-</form> 
-</div>
-
-<div id="MoneyChangeForm">
-<h2>Pricing</h2>
-{if $error_pricing}<div class="errorPage" style="display:block;"> <span class="errorMessage">{$error_pricing}</span> </div>{/if}
-<form method='post' id='pricingChange' action=''> 
-<table>
-<tr><td>Price/Mb</td><td><input type="text" name="newpricemb" value='{$pricemb}'/></td></tr>
-<tr><td>Price/Minute</td><td><input type="text" name="newpricetime" value='{$pricetime}'/></td></tr>
-<tr><td>Currency</td><td>{html_options name=newcurrency options=$CurrencySymbols selected=$currency}</td></tr>
-<tr><td colspan='2'><span>Current costs are {$dispcurrency}{$pricemb} per 1 Mb and {$dispcurrency}{$pricetime} per 1 minute</span></td></tr>
-<tr><td></td><td><button type="submit" name="changepricingsubmit" value="Change Pricing">Change Pricing</button></td></tr>
-</table>
-</form> 
-</div>
-
-<div id="DataChangeForm">
-<h2>Data "limits" (for graphs)</h2>
-{if $error_data}<div class="errorPage" style="display:block;"> <span class="errorMessage">{$error_data}</span> </div>{/if}
-<form method='post' id='dataChange' action=''> 
-<table>
-<tr><td>Sellable Data</td><td><input type="text" name="newsellable_data" value='{$sellable_data}'/></td></tr>
-<tr><td>Useable Data</td><td><input type="text" name="newuseable_data" value='{$useable_data}'/></td></tr>
-<tr><td></td><td><button type="submit" name="changedatasubmit" value="Change Data Limits">Change Data Limits</button></td></tr>
-</table>
-</form> 
-</div>
-
 
 {include file="footer.tpl"}

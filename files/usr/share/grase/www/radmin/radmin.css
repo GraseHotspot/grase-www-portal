@@ -34,11 +34,19 @@ z-index: -1;
 	height: 2.5em;
 }*/
 
-#menubar {
+#sidebar {
 	width: 12em;
 	float: left;
-	margin: 1em;
+/*	margin: 1em;*/
 	height: 100%;
+}
+
+#pagecontent {
+    margin: 1em;
+    margin-left: 13em;
+}
+
+#menubar {
 /*	background: white;*/
 /*	padding-bottom: 240px;*/
 }
@@ -573,7 +581,7 @@ ul#statusmon li {
 /******* FORM *******/
 .generalForm{
 	padding: 0 10px 10px;
-	margin: 40px auto;
+	margin: 0px auto;
 	text-align: left;
 	line-height: 1.4em;	
 }

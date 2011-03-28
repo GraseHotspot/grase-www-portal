@@ -5,8 +5,10 @@
 <title>{$Title} - {$Name}</title>
 <meta name="generator" content="{$Application} {$application_version}" />
 <!-- CSS Stylesheet -->
-<link rel="stylesheet" type="text/css" href="../hotspot.css" id="hotspot_css" />
+<link rel="stylesheet" type="text/css" href="/grase/hotspot.css" id="hotspot_css" />
 <link rel="stylesheet" type="text/css" href="radmin.css?{$css_version}" id="radmin_css" />
+
+
 
 <!--<link type="text/css" href="css/cupertino/jquery-ui-1.7.2.custom.css" rel="stylesheet" />       -->
 
@@ -109,7 +111,7 @@ $j(document).ready(function(){
 }) ;
 
 $(document).ready(function(){
-    $("button").button();
+
     
     $.tablesorter.defaults.widgets = ['zebra']; 
     
@@ -131,19 +133,23 @@ $(document).ready(function(){
 
 //--><!]]></script>{/literal}
 
-
-
-
 </head>
 <body>
-{literal}<!--[if lte IE 6]><script src="/grase/ie6/warning2.js"></script><![endif]-->{/literal}
-<div id="topbar">
-<h1>{$Title} (v{$application_version})</h1>
-{if ! $hidemenubar}{if $activepage != "login" && $activepage != "setup" && $activepage != "error"}{include file="menubar.tpl" }{/if}{/if}
-</div>
-<div id="helpbox" onclick="HideContent('helpbox');" style="display:none;">&nbsp;</div>
-<div id="radminPage">
-	<div id="messagebox" style="display: {if $messagebox}block;{else}none;{/if}">
-	{foreach from=$messagebox item=msg}{$msg}<br/>{/foreach}
-	</div>
+<div id="page">
+    {literal}<!--[if lte IE 6]><script src="/grase/ie6/warning2.js"></script><![endif]-->{/literal}
+    <div id="topbar">
+        <h1>{$Title} (v{$application_version})</h1>
+    </div>
+
+    <!-- Sidebar (Menu) -->
+    <div id="sidebar">
+        {if ! $hidemenubar && $activepage != "login" && $activepage != "setup" && $activepage != "error"}{include file="menubar.tpl" }{/if}
+        &nbsp;
+    </div>
+    
+    <!-- Main content -->
+    <div id="pagecontent">
+	    <div id="messagebox" style="display: {if $messagebox}block;{else}none;{/if}">
+	    {foreach from=$messagebox item=msg}{$msg}<br/>{/foreach}
+	    </div>
 

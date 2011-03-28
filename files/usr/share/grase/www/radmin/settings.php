@@ -24,6 +24,36 @@ require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
 require_once 'includes/database_functions.inc.php';
 
+$error = array();
+$success = array();
+
+if(isset($_POST['submit']))
+{
+    $newlocationname    = trim(clean_text($_POST['locationname']));
+    $newsupportcontact  = trim(clean_text($_POST['supportcontact']));    
+    $newsupportlink     = trim(clean_text($_POST['supportlink']));
+	$newpricemb         = trim(clean_text($_POST['pricemb']));
+	$newpricetime       = trim(clean_text($_POST['pricetime']));
+	$newcurrency        = trim(clean_text($_POST['currency']));    
+	$newwebsitename     = trim(clean_text($_POST['websitename']));
+	$newwebsitelink     = trim(clean_text($_POST['websitelink']));
+	$newsellabledata    = trim(clean_text($_POST['sellable_data']));
+	$newuseabledata     = trim(clean_text($_POST['useable_data']));	    
+    // Check for changed items
+    
+    if($newlocationname != $location) update_location($newlocation);
+    if($newsupportcontact != $support_name) update_supportcontact($newsupportcontact);    
+    if($newsupportlink != $support_link) update_supportlink($newsupportlink);    
+    if($newpricemb != $pricemb) update_pricemb($newpricemb);
+    if($newpricetime != $pricetime) update_pricetime($newpricetime);
+    if($newcurrency != $currency) update_currency($newcurrency);
+    if($newwebsitename != $website_name) update_websitename($newwebsitename);
+    if($newwebsitelink != $website_link) update_websitelink($newwebsitelink);
+    if($newsellabledata != $sellable_data) update_sellabledata($newsellabledata);
+    if($newuseabledata != $useable_data) update_useabledata($newuseabledata);    
+    // Call validate&change functions for changed items
+}
+
 // TODO: Make a proper settings file?
 
 	$smarty->assign("location", $location);
@@ -41,153 +71,126 @@ require_once 'includes/database_functions.inc.php';
 //$old_error_level = error_reporting(1); // TODO: Don't have this catching stuff
 
 // Location
-    $error_locationname = false;
-	if(isset($_POST['changelocationsubmit'])) // Change Location Name
-	{
-		$error_locationname = "Location Name not valid";
-		$new_location = trim(clean_text($_POST['newlocationname']));
-		if($new_location != "")
-		{
-			if($Settings->setSetting('locationName', $new_location))
-			{
-				$error_locationname = "Location Name Changed";
-				AdminLog::getInstance()->log("Location Name changed to $new_location");
-				$smarty->assign("location", $new_location);
-				$smarty->assign("Title", $new_location . " - " . APPLICATION_NAME);
-			}
-			else
-			{
-			    $error_locationname = "Error Saving Location Name to Setting files";
-			}
-		}
-	}
-	$smarty->assign("error_locationname", $error_locationname);
 
-// Logo
-    $error_logo = false;
-	if(isset($_POST['changelogosubmit'])) // Change Location Name
-	{
-
-		$error_logo = "Logo Image not valid";
-		$error_logo = file_upload_error_message($_FILES['newlogo']['error']);
-		if ($_FILES['newlogo']['error'] === UPLOAD_ERR_OK)
-		{
-			//print "Uploading image...";
-			if(!file_exists($_FILES['newlogo']['tmp_name']))
-			{
-				$error_logo = "Logo Failed to upload";
-			}elseif($_FILES['newlogo']['size'] > 20480)
-			{
-				$error_logo = "Logo too big";
-			}else
-			{
-				//print "Attempting to test if png";
-				if(exif_imagetype($_FILES['newlogo']['tmp_name']) != IMAGETYPE_PNG)
-				{
-					$error_logo = "Logo is not a png";
-				}else
-				{
-					//print "Attempting to move file";
-					if(move_uploaded_file($_FILES['newlogo']['tmp_name'], '/usr/share/grase/www/images/logo.png'))
-					{
-						$error_logo = "Logo Updated (you may need to refresh your browser to see the change)";
-						AdminLog::getInstance()->log("New Logo Uploaded");
-					}else
-					{			
-						$error_logo = "Unable to save new logo to server";
-					}
-				}
-			}
-		}
-	}
-	$smarty->assign("error_logo", $error_logo);
+function update_locationname($location)
+{
+    global $error, $smarty, $Settings, $success;
+    if($location == "") $error[] = _("Location name not valid");
+    else {
+	    if($Settings->setSetting('locationName', $location))
+	    {
+		    $success[] = _("Location name updated");
+		    AdminLog::getInstance()->log(_("Location Name changed to")." $new_location");
+		    $smarty->assign("Title", $location . " - " . APPLICATION_NAME); //TODO: remove need for this with setting reload function
+	    }
+	    else
+	    {
+	        $error[] = _("Error Saving Location Name");
+	    }    
+    }
+}
 
 // Website
+function update_websitename($websitename)
+{
+    global $error, $smarty, $Settings, $success;
+    if($websitename == "") $error[] = _("Website name not valid");    
+    else
+    {
+        if($Settings->setSetting('websiteName', $websitename))
+        {
+            $success[] = _("Website name updated");
+			AdminLog::getInstance()->log(_("Website name updated"));        
+        }
+        else
+        {
+            $error[] = _("Error Saving Website Name");
+        }
+    }
+}
 
-    $error_website = false;
-	if(isset($_POST['changewebsitesubmit']))
-	{ 
-		$error_website = "Website Details not valid";
-		$new_websitename = trim(clean_text($_POST['newwebsitename']));
-		$new_websitelink = trim(clean_text($_POST['newwebsitelink']));
-		if($new_websitename != "" && $new_websitelink != "" && strpos($new_websitelink, ' ') === false)
-		{
-		    $error_website = "Unabled to update website details";
-			if(
-			    $Settings->setSetting('websiteName', $new_websitename) > 0 &&
-			    $Settings->setSetting('websiteLink', $new_websitelink) > 0			    
-			)
-			{
-				$error_website = "Website Updated";
-				AdminLog::getInstance()->log("Website settings updated");
-				$smarty->assign("website_name", $new_websitename);
-				$smarty->assign("website_link", $new_websitelink);
-			}
-		}
-	}
-	$smarty->assign("error_website", $error_website);
+function update_websitelink($websitelink)
+{
+    global $error, $smarty, $Settings, $success;
+    if($websitelink == "" || strpos($websitelink, ' ') !== false) $error[] = _("Website link not valid");    
+    else
+    {
+        if($Settings->setSetting('websiteLink', $websitelink))
+        {
+            $success[] = _("Website link updated");
+			AdminLog::getInstance()->log(_("Website link updated"));        
+        }
+        else
+        {
+            $error[] = _("Error Saving Website link");
+        }
+    }
+}
 
 // Pricing
-    $error_price = false;
-	if(isset($_POST['changepricingsubmit']))
-	{ 
-		$error_price = "";
-		$new_pricemb = trim(clean_text($_POST['newpricemb']));
-		$new_pricetime = trim(clean_text($_POST['newpricetime']));
-		$new_currency = trim(clean_text($_POST['newcurrency']));
 
-		if($new_pricemb != "" && is_numeric($new_pricemb))
+function update_pricemb($pricemb)
+{
+    global $error, $smarty, $Settings, $success;
+	if($new_pricemb != "" && is_numeric($pricemb))
+	{
+		if($Settings->setSetting('priceMb', $pricemb))
 		{
-			if($Settings->setSetting('priceMb', $new_pricemb))
-			{
-				$error_price .= "Price/Mb Changed<br/>";
-				AdminLog::getInstance()->log("Price/Mb changed");
-				$smarty->assign("pricemb", $new_pricemb);
-			}else
-			{
-				$error_price .= "Unable to update Price/Mb<br/>";
-			}
-		}else
-		{
-			$error_price .= "Invalid Price/Mb<br/>";
+			$success[] = _("Price per Mb updated");
+			AdminLog::getInstance()->log(_("Price per Mb updated"));
 		}
-
-		if($new_pricetime != "" && is_numeric($new_pricetime))
+		else
 		{
-			if($Settings->setSetting('priceMinute', $new_pricetime))
-			{
-				$error_price .= "Price/Time Changed<br/>";
-				AdminLog::getInstance()->log("Price/Time changed");
-				$smarty->assign("pricetime", $new_pricetime);
-			}else
-			{
-				$error_price .= "Unable to update Price/Minute<br/>";
-			}
-		}else
-		{
-			$error_price .= "Invalid Price/Minute<br/>";
+			$error[] = _("Error saving Price per Mb");
 		}
-
-		if($new_currency != "" && strlen($new_currency) < 4)
-		{
-			if($Settings->setSetting('currency', $new_currency))
-			{
-				$error_price .= "Currency Changed";
-				AdminLog::getInstance()->log("Currency changed to ${CurrencySymbols[$new_currency]}");
-				$smarty->assign("currency", $new_currency);
-				$smarty->assign("dispcurrency", $CurrencySymbols[$new_currency]);
-			}else
-			{
-				$error_price .= "Unable to update Currency<br/>";
-			}
-		}else
-		{
-			$error_price .= "Invalid Currency<br/>";
-		}
-
-
 	}
-	$smarty->assign("error_pricing", $error_price);
+	else
+	{
+		$error[] = _("Invalid Price per Mb");
+	}
+}	
+
+function update_pricetime($pricetime)
+{
+    global $error, $smarty, $Settings, $success;
+	if($pricetime != "" && is_numeric($pricetime))
+	{
+		if($Settings->setSetting('priceMinute', $pricetime))
+		{
+			$success[] = _("Price per Minute Updated");
+			AdminLog::getInstance()->log(_("Price per Minute Updated"));
+		}else
+		{
+			$error[] = _("Error saving Price per Minute");
+		}
+	}else
+	{
+		$error[] = _("Invalid Price per Minute");
+	}
+}
+
+function update_currency($currency)
+{
+    global $error, $smarty, $Settings, $success;
+	if($currency != "" && strlen($currency) < 4)
+	{
+		if($Settings->setSetting('currency', $currency))
+		{
+			$success[] = _("Currency updated");
+			AdminLog::getInstance()->log(_("Currency updated to") ." ${CurrencySymbols[$new_currency]}");
+		}
+		else
+		{
+			$error[] = _("Error saving Currency");
+		}
+	}else
+	{
+		$error[] = _("Invalid Currency");
+	}
+
+
+}
+
 
 // Data limits
 

@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+    $("button").button();
+
     // Simple jQuery to create help dialogs out of all elements with class helpbutton and a title attribute		
 	$('.helpbutton[title]').each(function(index, element){
 	    content = $(element).attr('title');

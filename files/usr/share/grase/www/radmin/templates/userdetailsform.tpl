@@ -1,15 +1,7 @@
 <div id="{$useraction}Form">
 <h2>{$useractionTitle}</h2>
 
-{if $error}
-			<div class="ui-widget">
-				<div class="ui-state-error ui-corner-all" > 
-					<p class="errorMessage"><span class="ui-icon ui-icon-alert"></span> 
-					<strong>Error:</strong> <ul>{foreach from=$error item=msg}<li>{$msg}</li>{/foreach}</ul></p>
-
-				</div>
-			</div>
-{/if}
+{include file="errors.tpl"}
 
 
 <!-- Not using this method, using OR method
