@@ -22,7 +22,7 @@
 
 class DatabaseFunctions
 {
-    private $db; // Radius DB
+    public $db; // Radius DB
     
     public function &getInstance()
     {
@@ -34,7 +34,7 @@ class DatabaseFunctions
         return $instance;
     }    
     
-    private function __construct()
+    public function __construct()
     {
         $this->db =& DatabaseConnections::getInstance()->getRadiusDB();
     }
