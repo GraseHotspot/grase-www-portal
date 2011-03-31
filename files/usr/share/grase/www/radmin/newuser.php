@@ -44,8 +44,9 @@ function validate_form()
 	if($Max_Mb && $MaxMb) $error[] = _("Only set one Data limit field");
 	if($Max_Time && $MaxTime) $error[] = _("Only set one Time limit field");
 
+    /* // Expiry is not submitted anymore
 	list($error2, $expirydate) = validate_post_expirydate();
-	$error = array_merge($error, $error2); // validate_post_expirydate can return multiple errors
+	$error = array_merge($error, $error2); // validate_post_expirydate can return multiple errors*/
 	$error[] = validate_group($_POST['Username'], $_POST['Group']);
 	return array_filter($error);
 }
@@ -58,10 +59,10 @@ if(isset($_POST['newusersubmit']))
 	if($error ){
 		$user['Username'] = clean_text($_POST['Username']);
 		$user['Password'] = clean_text($_POST['Password']);
-		$user['MaxMb'] = ereg_replace("[^\.0-9]", "", clean_text($_POST['MaxMb']));
-		$user['Max_Mb'] = ereg_replace("[^\.0-9]", "",clean_text($_POST['Max_Mb']));		
-		$user['MaxTime'] = ereg_replace("[^\.0-9]", "",clean_text($_POST['MaxTime']));
-		$user['Max_Time'] = ereg_replace("[^\.0-9]", "",clean_text($_POST['Max_Time']));	
+		$user['MaxMb'] = clean_number($_POST['MaxMb']);
+		$user['Max_Mb'] = clean_number($_POST['Max_Mb']);		
+		$user['MaxTime'] = clean_number($_POST['MaxTime']);
+		$user['Max_Time'] = clean_number($_POST['Max_Time']);	
 		$user['Group'] = clean_text($_POST['Group']);
 		$user['Expiration'] = expiry_for_group(clean_text($_POST['Group'])); //"${_POST['Expirydate_Year']}-${_POST['Expirydate_Month']}-${_POST['Expirydate_Day']}";
 		$user['Comment'] = clean_text($_POST['Comment']);
@@ -70,14 +71,14 @@ if(isset($_POST['newusersubmit']))
 		display_page('adduser.tpl');
 	}else
 	{
-		if(ereg_replace("[^\.0-9]", "",clean_text($_POST['Max_Mb'])))
-		    $MaxMb = ereg_replace("[^\.0-9]", "",clean_text($_POST['Max_Mb']));
-		if(ereg_replace("[^\.0-9]", "", clean_text($_POST['MaxMb'])))
-		    $MaxMb = ereg_replace("[^\.0-9]", "", clean_text($_POST['MaxMb']));
-		if(ereg_replace("[^\.0-9]", "",clean_text($_POST['Max_Time'])))
-		    $MaxTime =  ereg_replace("[^\.0-9]", "",clean_text($_POST['Max_Time']));
-		if(ereg_replace("[^\.0-9]", "",clean_text($_POST['MaxTime'])))
-		    $MaxTime = ereg_replace("[^\.0-9]", "",clean_text($_POST['MaxTime']));
+		if(clean_number($_POST['Max_Mb']))
+		    $MaxMb = clean_number($_POST['Max_Mb']);
+		if(clean_number($_POST['MaxMb']))
+		    $MaxMb = clean_number($_POST['MaxMb']);
+		if(clean_number($_POST['Max_Time']))
+		    $MaxTime =  clean_number($_POST['Max_Time']);
+		if(clean_number($_POST['MaxTime']))
+		    $MaxTime = clean_number($_POST['MaxTime']);
 		database_create_new_user( // TODO: Check if valid
 			clean_text($_POST['Username']),
 			clean_text($_POST['Password']),

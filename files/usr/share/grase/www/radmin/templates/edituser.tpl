@@ -10,7 +10,7 @@
 	<tr><td>Username</td><td>{$user.Username}</td></tr>
 	<!--<tr><td>Comment</td><td>{$user.Comment}</td></tr>	-->
 	<tr><td>Group</td><td>{$user.Group}</td></tr>
-	<tr><td>Data Limit (Mb)</td><td>{$user.MaxMb}</td></tr>
+	<tr><td>Data Limit (MiB)</td><td>{$user.MaxMb}</td></tr>
 	<tr><td>Expiry</td><td>{$user.Expiration}</td></tr>
 	
 	<tr><td>Comment</td><td><form method='post'> <input type="text" name="Comment" value='{$user.Comment}'/><button type="submit" name="changecommentsubmit" value="Change Comment">Change Comment</button></form></td></tr>
@@ -20,7 +20,36 @@
 	<tr><td></td><td><form method='post'><input size='30' type="text" name="DeleteUser"/><button class="negative" type="submit" name="deleteusersubmit" value="Delete User"><img src="/grase/images/icons/cross.png" alt=""/>Delete User</button></form></td></tr>
 </table>
 {else}
-<div class="errorPage" style="display: {if $error}block;{else}none;{/if}">Error in data, please correct and try again<br/><span id="errorMessage">{foreach from=$error item=msg}{$msg}<br/>{/foreach}</span> </div>
+
+<form method='post' name='edituser' action='' class='generalForm'>
+<div>
+    <label for='Username'>Username</label>
+    <input disabled='disabled' type="text" name="Username" value='{$user.Username}'/>
+    <span id="UsernameInfo">&nbsp;</span>
+</div>
+
+<div>
+    <label for='Password'>Password</label>
+    <input type="text" name="Password" value='' onkeyup="runPassword(this.value, 'newpassword');" />
+    <span id='PasswordInfo'>Choose a secure password for the user. Leave blank to not change</span>
+                                <span id="newpassword_text" ></span>
+                                <span id="newpassword_bar" style="font-size: 1px; height: 2px; width: 0px; border: 1px solid white;"></span> 
+</div>
+<div>
+    <label for='Group'>Group</label>
+    {html_options name="Group" options=$Usergroups selected=$user.Group}    
+    <span id='GroupInfo'>Choose the users group (Expiry is based on the user group)</span>
+</div>
+    
+<div>
+    <label for='Comment'>Comment</label>
+    <input type="text" name="Comment" value='{$user.Comment}'/>
+    <span id='CommentInfo'>A comment about the user</span>
+</div>
+
+<button type="submit" name="updateusersubmit" value="Update User Details"><img src="/grase/images/icons/tick.png" alt=""/>Update User Details</button>
+</form>
+
 <table>
 	<tr><td>Username</td><td>{$user.Username}</td></tr>
 	<tr><td>Password</td><td><form method='post'> <input type="text" name="Password"/ value='' onkeyup="runPassword(this.value, 'newpassword');" />

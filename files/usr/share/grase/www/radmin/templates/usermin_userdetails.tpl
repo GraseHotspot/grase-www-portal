@@ -8,13 +8,12 @@
 <table>
 	<tr><td>Username</td><td>{$user.Username}</td></tr>
 	<tr><td>Group</td><td>{$user.Group}</td></tr>
-	<tr><td>Data Limit (Mb)</td><td>{$user.MaxMb}</td></tr>
+	<tr><td>Data Limit (MiB)</td><td>{$user.MaxMb}</td></tr>
 	<tr><td>Expiry</td><td>{$user.Expiration}</td></tr>
 </table>
 
 {else}
 
-<div class="errorPage" style="display: {if $error}block;{else}none;{/if}"><span id="errorMessage">{foreach from=$error item=msg}{$msg}<br/>{/foreach}</span> </div>
 <form method='post'>
 <table>
 	<tr><td>Username</td><td>{$user.Username}</td></tr>
@@ -28,7 +27,7 @@
 	<tr><td>Confirm Password</td><td> <input type="password" name="PasswordVerify" value=''/><button type="submit" name="changepasswordsubmit" value="Change Password"><img src="/grase/images/icons/textfield_key.png" alt=""/>Change Password</button></form></td></tr>
 	<tr><td>Group</td><td>{$user.Group}</td></tr>
 	
-	<tr><td>Data Limit (Mb)</td><td>{$user.MaxMb}</td></tr>
+	<tr><td>Data Limit (MiB)</td><td>{$user.MaxMb}</td></tr>
 	<tr><td>Time Limit (Mins)</td><td>{$user.MaxTime}</td></tr>
 
 	<tr><td>Expiry (Automatic)</td><td>{$user.FormatExpiration}</td></tr>

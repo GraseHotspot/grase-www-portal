@@ -30,51 +30,49 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
 	$error = array();
 	$success = array();
 	$username = mysql_real_escape_string($_GET['username']);
-	if(isset($_POST['changepasswordsubmit'])) // Change Password
-	{
-	    if(!$_POST['Password'])
+	$user = getDBUserDetails($_GET['username']);
+	
+	if(isset($_POST['updateusersubmit']))
+	{   // Process form for changed items and do updates
+
+        // Update password
+	    if(clean_text($_POST['Password']) && clean_text($_POST['Password']) != $user['Password'])
 	    {
-	        $error[] = _('A password is required');
-	    }else
-	    {	           
-	        database_change_password($username, $_POST['Password']);
+	        database_change_password($username, clean_text($_POST['Password']));
 	        // TODO: Check return for success		
 	        $success[] = _("Password Updated");
-	        AdminLog::getInstance()->log("Password changed for $username");
+	        AdminLog::getInstance()->log("Password changed for $username");	    
         }
-	}
-
-	if(isset($_POST['changegroupsubmit'])) // Change Group
-	{
-		$error2 = validate_group($username, clean_text($_POST['Group']));
-		if($error2)
-		{
-			$error[] = $error2;
-		}else
-		{
-			database_change_group($username, clean_text($_POST['Group']));
-			database_update_expirydate($username, expiry_for_group(getDBUserGroup($username)));
-			// TODO: Check return for success
-			$success[] = _("Group Changed");
-			AdminLog::getInstance()->log("Group changed for $username");
-		}
-	}
-	
-	if(isset($_POST['changecommentsubmit'])) // Change Group
-	{
-	    $error2 = '';
-		//$error2 = validate_comment($username, clean_text($_POST['Comment']));
-		if($error2)
-		{
-			$error[] = $error2;
-		}else
-		{
+        
+        // Update group if changed
+        if(clean_text($_POST['Group']) != $user['Group'])
+        {
+            $temperror =  validate_group($username, $_POST['Group']);
+            if($temperror)
+            {
+                $error = array_merge($error, $temperror);
+            }
+            else
+            {
+			    database_change_group($username, clean_text($_POST['Group']));
+			    database_update_expirydate($username,
+			        expiry_for_group(getDBUserGroup($username)));
+			    // TODO: Check return for success
+			    $success[] = _("Group Changed");
+			    AdminLog::getInstance()->log("Group changed for $username");                
+            }        
+        }
+        
+        // Update comment if changed
+        if(clean_text($_POST['Comment']) != $user['Comment'])
+        {
 			database_change_comment($username, clean_text($_POST['Comment']));
 			// TODO: Check return for success			
 			$success[] = _("Comment Changed");
-			AdminLog::getInstance()->log("Comment changed for $username");			
-		}
-	}	
+			AdminLog::getInstance()->log("Comment changed for $username");        
+        }
+	}
+	
 
 	if(isset($_POST['changedatalimitsubmit']))  // Change Max Data Limit
 	{
@@ -153,12 +151,6 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
 			$success[] = _("Time Limit Increased");	
 			AdminLog::getInstance()->log("Time Limit increased for $username");			
 		}
-	}
-
-	// Change Expiry (old code, this isn't permitted manually anymore)
-	if(isset($_POST['changeexpirysubmit'])) // Change Expiry
-	{
-		$error[] = _("Changing Expiry Not Permitted. Please add data to update expiry date");
 	}
 
 	if(isset($_POST['deleteusersubmit'])) // Delete User

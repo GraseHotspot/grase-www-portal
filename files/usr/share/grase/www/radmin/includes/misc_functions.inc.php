@@ -260,6 +260,11 @@ function clean_text($text)
 	return $text;
 }
 
+function clean_number($number)
+{
+    return ereg_replace("[^\.0-9]", "", clean_text($number));
+}
+
 
 /* TODO: check where this code came from */
 function file_upload_error_message($error_code)

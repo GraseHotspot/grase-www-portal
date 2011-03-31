@@ -140,17 +140,17 @@ function update_pricemb($pricemb)
 	{
 		if($Settings->setSetting('priceMb', $pricemb))
 		{
-			$success[] = _("Price per Mb updated");
-			AdminLog::getInstance()->log(_("Price per Mb updated"));
+			$success[] = _("Price per MiB updated");
+			AdminLog::getInstance()->log(_("Price per MiB updated"));
 		}
 		else
 		{
-			$error[] = _("Error saving Price per Mb");
+			$error[] = _("Error saving Price per MiB");
 		}
 	}
 	else
 	{
-		$error[] = _("Invalid Price per Mb");
+		$error[] = _("Invalid Price per MiB");
 	}
 }	
 
