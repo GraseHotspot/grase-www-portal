@@ -47,7 +47,7 @@ else
         {
             if(database_change_password($Auth->getUsername(), $newpass1))
             {
-                $msgbox[] = _("Password Changed");
+                $success[] = _("Password Changed");
             }else
             {
                 $error[] = _("Password not updated");            
@@ -57,7 +57,7 @@ else
     }
     
     $smarty->assign("error", array_filter($error));
-    $smarty->assign("messagebox", $msgbox);
+    $smarty->assign("success", $success);
     $smarty->assign("user", getDBUserDetails($Auth->getUsername()));
     $smarty->display('usermin_userdetails.tpl');
 

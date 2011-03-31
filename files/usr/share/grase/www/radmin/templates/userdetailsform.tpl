@@ -1,9 +1,6 @@
 <div id="{$useraction}Form">
 <h2>{$useractionTitle}</h2>
 
-{include file="errors.tpl"}
-
-
 <!-- Not using this method, using OR method
 <ul class="timecost_list">
 {foreach from=$Timecosts key=time item=label}
@@ -37,7 +34,7 @@
 <div>
     <label for='Group'>Group</label>
     {html_options name="Group" options=$Usergroups selected=$user.Group}    
-    <span id='GroupInfo'>Choose the users group</span>
+    <span id='GroupInfo'>Choose the users group (Expiry is based on the user group)</span>
 </div>
 <div>
     <label for='Comment'>Comment</label>

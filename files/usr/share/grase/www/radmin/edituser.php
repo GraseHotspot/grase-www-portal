@@ -28,7 +28,7 @@ require_once 'includes/database_functions.inc.php';
 if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Display single user, in detail
 {
 	$error = array();
-	$msgbox = array();
+	$success = array();
 	$username = mysql_real_escape_string($_GET['username']);
 	if(isset($_POST['changepasswordsubmit'])) // Change Password
 	{
@@ -39,7 +39,7 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
 	    {	           
 	        database_change_password($username, $_POST['Password']);
 	        // TODO: Check return for success		
-	        $msgbox[] = _("Password Updated");
+	        $success[] = _("Password Updated");
 	        AdminLog::getInstance()->log("Password changed for $username");
         }
 	}
@@ -55,7 +55,7 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
 			database_change_group($username, clean_text($_POST['Group']));
 			database_update_expirydate($username, expiry_for_group(getDBUserGroup($username)));
 			// TODO: Check return for success
-			$msgbox[] = _("Group Changed");
+			$success[] = _("Group Changed");
 			AdminLog::getInstance()->log("Group changed for $username");
 		}
 	}
@@ -71,7 +71,7 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
 		{
 			database_change_comment($username, clean_text($_POST['Comment']));
 			// TODO: Check return for success			
-			$msgbox[] = _("Comment Changed");
+			$success[] = _("Comment Changed");
 			AdminLog::getInstance()->log("Comment changed for $username");			
 		}
 	}	
@@ -91,7 +91,7 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
 			if(isset($_POST['MaxMb_']) && $_POST['MaxMb_'] != '') database_change_datalimit($username, clean_text($_POST['MaxMb_']));			
 			database_update_expirydate($username, expiry_for_group(getDBUserGroup($username)));
 			// TODO: Check return for success			
-			$msgbox[] = _("Max Data Limit Updated");	
+			$success[] = _("Max Data Limit Updated");	
 			AdminLog::getInstance()->log("Max Data Limit changed for $username");			
 		}
 
@@ -110,7 +110,7 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
 			if($_POST['AddMb']) database_increase_datalimit($username, clean_text($_POST['AddMb']));
 			if($_POST['AddMb_']) database_increase_datalimit($username, clean_text($_POST['AddMb_']));
 			database_update_expirydate($username, expiry_for_group(getDBUserGroup($username)));
-			$msgbox[] = _("Data Limit Increased");	
+			$success[] = _("Data Limit Increased");	
 			AdminLog::getInstance()->log("Data Limit increased for $username");			
 		}
 		
@@ -131,7 +131,7 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
 			if(isset($_POST['MaxTime']) && $_POST['MaxTime'] != '') database_change_timelimit($username, clean_text($_POST['MaxTime']));
 			if(isset($_POST['MaxTime_']) && $_POST['MaxTime_'] != '') database_change_timelimit($username, clean_text($_POST['MaxTime_']));			
 			database_update_expirydate($username, expiry_for_group(getDBUserGroup($username)));
-			$msgbox[] = _("Max Time Limit Updated");	
+			$success[] = _("Max Time Limit Updated");	
 			AdminLog::getInstance()->log("Max Time Limit changed for $username");			
 		}
 
@@ -150,7 +150,7 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
 			if($_POST['AddTime']) database_increase_timelimit($username, clean_text($_POST['AddTime']));
 			if($_POST['AddTime_']) database_increase_timelimit($username, clean_text($_POST['AddTime_']));
 			database_update_expirydate($username, expiry_for_group(getDBUserGroup($username)));
-			$msgbox[] = _("Time Limit Increased");	
+			$success[] = _("Time Limit Increased");	
 			AdminLog::getInstance()->log("Time Limit increased for $username");			
 		}
 	}
@@ -165,16 +165,16 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
 	{
 		if($_POST['DeleteUser'] == "Yes, I want to delete this user") //Really delete user (TODO: DEFINE CONSTANTS)
 		{
-			database_delete_user($username);
-			$msgbox = printf(_("User '%s' Deleted"),$username);
+			database_delete_user($username); // TODO: Check for success
+			$success[] = printf(_("User '%s' Deleted"),$username);
 			AdminLog::getInstance()->log("User $username deleted");			
 			//$users = database_get_user_names();
 			$smarty->assign("error", $error);
-			$smarty->assign("messagebox", $msgbox);
+			$smarty->assign("success", $success);
 			//$smarty->assign("users", $users);
 			//$smarty->display('listusers.tpl');
 			require('display.php');
-			die;
+			die; // TODO: Recode so don't need die (too many nests?)
 		}else
 		{
 			$error[] = _('Please type "Yes, I want to delete this user" (without the quotes) into the box before clicking delete user');
@@ -183,7 +183,7 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
 	}
 
 	$smarty->assign("error", $error);
-	$smarty->assign("messagebox", $msgbox);	
+	$smarty->assign("success", $success);	
 	$smarty->assign("user", getDBUserDetails($_GET['username']));
 	$smarty->display('edituser.tpl');
 

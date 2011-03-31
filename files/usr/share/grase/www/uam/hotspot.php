@@ -24,7 +24,7 @@ $smarty->assign("RealHostname", trim(file_get_contents('/etc/hostname')));
 if(!isset($_GET['res']))
 {
     // Redirect to prelogin
-	header("Location: http://10.1.0.1:3990/prelogin");
+        header("Location: http://10.1.0.1:3990/prelogin");
 }
 
 // Already been through prelogin
@@ -40,7 +40,8 @@ switch($res)
     
     case 'failed':
         // Login failed? Show error and display login again
-        break; // Fall through?
+        $smarty->assign("loginerror", "Login Failed");
+        //break; // Fall through?
         
     case 'notyet':
     case 'logoff':

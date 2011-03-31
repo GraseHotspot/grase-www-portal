@@ -78,7 +78,7 @@ if(isset($_POST['newusersubmit']))
 		    $MaxTime =  ereg_replace("[^\.0-9]", "",clean_text($_POST['Max_Time']));
 		if(ereg_replace("[^\.0-9]", "",clean_text($_POST['MaxTime'])))
 		    $MaxTime = ereg_replace("[^\.0-9]", "",clean_text($_POST['MaxTime']));
-		$success = database_create_new_user(
+		database_create_new_user( // TODO: Check if valid
 			clean_text($_POST['Username']),
 			clean_text($_POST['Password']),
 			$MaxMb,
@@ -87,9 +87,9 @@ if(isset($_POST['newusersubmit']))
 			clean_text($_POST['Group']),
 			clean_text($_POST['Comment'])
 		);
-		$message[] = _("User Successfully Created");
+		$success[] = _("User Successfully Created");
 		AdminLog::getInstance()->log("Created new user ${_POST['Username']}");
-		$smarty->assign("messagebox", $message);
+		$smarty->assign("success", $success);
 		display_adduser_form();
 	}
 }else

@@ -45,6 +45,7 @@ function createmenuitems()
 	$menubar['users'] = array("href" => "display", "label" => "Users");
 	$menubar['createuser'] = array("href" => "newuser", "label" => "Create New User");
 	$menubar['createtickets'] = array("href" => "newtickets", "label" => "Mass Create Users");	
+	$menubar['createmachine'] = array("href" => "newmachine", "label" => "Create New Machine");	
 	$menubar['sessions'] = array("href" => "sessions", "label" => "Monitor Sessions");
     $menubar['reports'] = array("href" => "reports", "label" => "Reports");
     $menubar['monthly_accounts'] = array("href" => "datausage", "label" => "Monthly Reports");
@@ -116,7 +117,7 @@ function usergroups()
 	$Usergroups["Students"] = "Students";
 	$Usergroups["Staff"] = "Staff";
 	$Usergroups["Ministry"] = "Ministry";
-	$Usergroups[MACHINE_GROUP_NAME] = "Machine (Locked)";
+//	$Usergroups[MACHINE_GROUP_NAME] = "Machine (Locked)";
 	return $Usergroups;
 }
 
@@ -128,7 +129,7 @@ function groupexpirys()
 	$Expiry["Ministry"] = "+6 months";
 	$Expiry["Students"] = "+3 months";
 	$Expiry["Visitors"] = "+1 months";
-	$Expiry[MACHINE_GROUP_NAME] = "--";
+//	$Expiry[MACHINE_GROUP_NAME] = "--";
 	$Expiry[DEFAULT_GROUP_NAME] = "+1 months";
 	return $Expiry;
 }

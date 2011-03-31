@@ -2,7 +2,6 @@
 
 <div id="loginForm">
 <h2>Login</h2>
-{include file="errors.tpl"}
 Login is required to access the Administration section of this website.
 
 <form method='post' action="login?page={$smarty.server.SCRIPT_NAME}" class='generalForm width2'>
