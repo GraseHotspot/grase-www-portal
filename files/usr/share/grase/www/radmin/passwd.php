@@ -38,58 +38,57 @@ require_once 'includes/database_functions.inc.php';
     
     $admin_users = getAdminUsers();
 
-	$error_passwd = "";
-	if(isset($_POST['changepasswordsubmit'])) $error_passwd = "Please fill in all password fields";
-	if(	isset($_POST['changepasswordsubmit']) &&
-		isset($_POST['OldPassword']) &&
-		$_POST['OldPassword'] &&
-		isset($_POST['NewPassword']) &&
-		$_POST['NewPassword'] &&
-		isset($_POST['ConfirmPassword']) &&
-		$_POST['ConfirmPassword']) // Change Password
-	{
-		if(! $Auth->storage->verifyPassword($_POST['OldPassword'],$admin_users[$Auth->getUsername()]))
-		{
-			$error_passwd = "Old Password incorrect";
-		}elseif($_POST['NewPassword'] != $_POST['ConfirmPassword'])
-		{
-			$error_passwd = "New passwords don't match";
-		}else
-		{
-			$error_passwd = "Password Changed";
-			$Auth->changePassword($Auth->getUsername(), $_POST['NewPassword']) or $error_passwd = "Error Changing Password";
-            AdminLog::getInstance()->log("Changed Password");
-		}
-	}
-	$smarty->assign("error_passwd", $error_passwd);
+	$errors = array();
+	
+	if(isset($_POST['changepasswordsubmit'])){
+	    if(	isset($_POST['OldPassword']) &&
+		    $_POST['OldPassword'] &&
+		    isset($_POST['NewPassword']) &&
+		    $_POST['NewPassword'] &&
+		    isset($_POST['ConfirmPassword']) &&
+		    $_POST['ConfirmPassword']) // Change Password
+	    {
+		    if(! $Auth->storage->verifyPassword($_POST['OldPassword'],$admin_users[$Auth->getUsername()]))
+		    {
+			    $errors[] = _("Old Password incorrect");
+		    }elseif($_POST['NewPassword'] != $_POST['ConfirmPassword'])
+		    {
+			    $errors[] = _("New passwords don't match");
+		    }else
+		    {
 
-	$error_user = "";
+			    $Auth->changePassword($Auth->getUsername(), $_POST['NewPassword']) or $error_passwd = "Error Changing Password"; // TODO: Check successful
+			    $success[] = _("Password Changed");			    
+                AdminLog::getInstance()->log(_("Changed Password"));
+		    }
+	    }else $errors[] = _("Please fill in all password fields");
+	}
+
 	if(isset($_POST['addadminusersubmit'])) // Add new admin user
 	{
-		$error_user = "Need both username and password";
 		if(isset($admin_users[$_POST['newUsername']]))
 		{
-			$error_user = "User ${_POST['Username']} already exists";
+			$errors[] = sprintf(_("User %s already exists"), $_POST['Username']);
 		}elseif($_POST['newPassword'] && $_POST['newUsername'])
 		{
-			$error_user = "User Created";
+			$success[] = _("User Created");
 			$Auth->addUser($_POST['newUsername'], $_POST['newPassword']) or $error_user = "Error Creating User";
 			AdminLog::getInstance()->log("New Admin User Created, ${_POST['newUsername']}");
-		}
+		}else $errors[] = _("Need both username and password");
 	}
-	$smarty->assign("error_user", $error_user);
 
-	$error_delete = "";
 	if(isset($_POST['deleteadminusersubmit'])) // Delete admin user
 	{
-		$error_delete = "Invalid Delete Request";
 		if($_POST['deleteusername']){
-			$error_delete = "User ${_POST['deleteusername']} Deleted";
+			$success[] = sprintf(_("User %s Deleted"), $_POST['deleteusername']);
 			$Auth->removeUser($_POST['deleteusername']) or $error_delete = "Error Deleting User";
 			AdminLog::getInstance()->log("Admin User Deleted, ${_POST['deleteusername']}");
-		}
+		}else $errors[] = _("Invalid Delete Request");
 	}
-	$smarty->assign("error_delete", $error_delete);
+	
+	
+	$smarty->assign("error", $errors);
+	$smarty->assign("success", $success);	
 
 
     $admin_users = getAdminUsers();

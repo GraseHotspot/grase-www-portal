@@ -185,11 +185,12 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
 	$smarty->assign("error", $error);
 	$smarty->assign("success", $success);	
 	$smarty->assign("user", getDBUserDetails($_GET['username']));
-	$smarty->display('edituser.tpl');
+	display_page('edituser.tpl');
 
 }else
 {	# Display all users //TODO: Redirect?
-	require('display.php');	
+	//require('display.php');	
+	header("Location: display");
 }
 
 ?>

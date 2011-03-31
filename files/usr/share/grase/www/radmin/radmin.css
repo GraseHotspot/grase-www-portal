@@ -285,18 +285,6 @@ thead td {
 
 
 
-/* Admin user forms/Password change forms */
-
-#DeleteAdminUserForm form {
-	display: inline;
-}
-
-#DeleteAdminUserForm label {
-	padding-right: 2em;
-	font-style: italic;
-	color: green;
-}
-
 /* */
 
 
