@@ -7,21 +7,18 @@
 <p><a href="?help">Information and Help</a></p>
 
 <p>For payment and an account, please contact the Office during office hours</p>
-<p>By clicking the below link to login, you agree to the following:</p>
+<p>By logging in, you are agreeing to the following:</p>
 <ul>
-	<li><strong>All your Internet activity will be monitored, including all websites visited, pages viewed, and traffic used</strong></li>
+	<li><strong>All network activity will be monitored, this includes: websites, bandwidth usage, protocols</strong></li>
 	<li><strong>You will not access sites containing explicit or inappropriate material</strong></li>
+	<li><strong>You will not attempt to access any system on this network</strong></li>
 </ul>
 <p>
-<span id="loginlink"><a class="positive" href="nojs.php" target="Login_iServe" onclick="loginwindow = window.open('{$loginlink2}', 'Login_iServe', 'width=300,height=400,location=no,directories=no,status=yes,menubar=no,toolbar=no');loginwindow.moveTo(100,100);return false;">Login</a></span><br/>
 {if $user_url}<span><a href="{$user_url}">If you are already logged in, continue to your site '{$user_url}'</a></span>{/if}
 
 
 </p>
-<div style="width: 45%; float: left">
-	{include file="laptop_req.tpl"}
-</div>
-<div style="width: 45%; float: right">
+<div>
     Login Form
     <form method="post" action="nojslogin.php"><!-- TODO: Make this submit over SSL --!>
         Username: <input type="text" name="username"/><br/>

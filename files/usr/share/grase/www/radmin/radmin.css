@@ -505,7 +505,7 @@ h1 {
 
 body {
 	color: #0a57a9;
-	background: white url("../images/grass.png") fixed bottom repeat-x;
+	background: white;
 	margin-top: 0;
 	padding: 1em;
 	padding-top: 0;
