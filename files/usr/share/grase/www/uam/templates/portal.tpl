@@ -6,7 +6,6 @@
 <p>Welcome to the {$Location} Hotspot. Please read the following before logging in.</p>
 <p><a href="?help">Information and Help</a></p>
 
-<p>For payment and an account, please contact the Office during office hours</p>
 <p>By logging in, you are agreeing to the following:</p>
 <ul>
 	<li><strong>All network activity will be monitored, this includes: websites, bandwidth usage, protocols</strong></li>
@@ -16,10 +15,8 @@
 <p>
 {if $user_url}<span><a href="{$user_url}">If you are already logged in, continue to your site '{$user_url}'</a></span>{/if}
 
-
 </p>
-<div>
-    Login Form
+<div style="float: right">
     <form method="post" action="nojslogin.php"><!-- TODO: Make this submit over SSL --!>
         Username: <input type="text" name="username"/><br/>
         Password: <input type="password" name="password"/><br/>
