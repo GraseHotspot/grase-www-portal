@@ -170,7 +170,7 @@ a {
 
 
 /* INPUTs */
-
+/*
 .form_or {
     float: left;
     padding-right: 0.5em;
@@ -187,19 +187,19 @@ input, select, button {
 
     font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
     font-size:100%;
-/*    line-height:130%;*/
+
     text-decoration:none;
     font-weight:bold;
     color:#565656;
     cursor:pointer;
     margin-right: 5px;
-/*    padding:5px 10px 6px 7px; /* Links */	
-}
 
-input:disabled, select:disabled, button:disabled, button:disabled:hover {
-    background-color: gray;
-	color: black;
 }
+*/
+/*input:disabled, select:disabled, button:disabled, button:disabled:hover {
+    background-color: lightgray;
+	color: white;
+}*/
 
 
 /* BUTTONS */

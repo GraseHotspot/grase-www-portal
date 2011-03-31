@@ -49,11 +49,12 @@ function createmenuitems()
 	$menubar['sessions'] = array("href" => "sessions", "label" => "Monitor Sessions");
     $menubar['reports'] = array("href" => "reports", "label" => "Reports");
     $menubar['monthly_accounts'] = array("href" => "datausage", "label" => "Monthly Reports");
+	$menubar['settings'] = array("href" => "settings", "label" => "Site Settings" );
+	$menubar['uploadlogo'] = array("href" => "uploadlogo", "label" => "Site Logo" );	
 	$menubar['links'] = array("href" => "links", "label" => "Useful Links");	
 	$menubar['passwd'] = array("href" => "passwd", "label" => "Admin Users" );
 	$menubar['adminlog'] = array("href" => "adminlog", "label" => "Admin Log" );	
-	$menubar['settings'] = array("href" => "settings", "label" => "Site Settings" );
-	$menubar['uploadlogo'] = array("href" => "uploadlogo", "label" => "Site Logo" );	
+	
 	$menubar['logout'] = array("href" => "./?logoff", "label" => "Logoff" );
 	return $menubar;
 }
@@ -77,7 +78,7 @@ function datacosts()
 	{
 		$disp_money = number_format($money, 2);
 		$data = round($money/$pricemb, 2);
-		$datacosts["$data"] = "$disp_currency$disp_money ($data Mb)";
+		$datacosts["$data"] = "$disp_currency$disp_money ($data MiB)";
 	}
 	return $datacosts;
 }
@@ -103,7 +104,7 @@ function gboctects()
     foreach($gb_options as $gb)
     {
         $octects = $gb*1024*1048576;
-        $label = "$gb Gb";
+        $label = "$gb GiB";
         $options[$octects] = $label;
     }
     return $options;

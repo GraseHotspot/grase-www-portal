@@ -20,7 +20,7 @@
     <span>When ether limit is reached, the user will be cut off. (i.e. after 1hour even if they still have data left)<br/><a class="helpbutton" title='Machine accounts are intended to be used for computers that need internet access at all times. For example, an office computer. Machine accounts login automatically as soon as they access the network, this will normally occur at startup. If a limit is set, when the limit is reached the computer will revert to the normal login screen for internet access. Machine accounts can not be edited to add more data or time, only deleted.'><img src="/grase/images/icons/help.png" alt=""/> It is not recommended setting a time or data limit for machine accounts.</a></span>
 
 <div>
-    <label for='Max_Mb'>Data Limit (Mb's)</label>
+    <label for='Max_Mb'>Data Limit (MiB)</label>
     {html_options name="Max_Mb" options=$Datacosts selected=$machine.Max_Mb}
     <span class="form_or">OR</span>
     <input type="text" class="default_swap" id="MaxMb" name="MaxMb" value='{$machine.MaxMb}' title="Type your own Mb Limit"/>

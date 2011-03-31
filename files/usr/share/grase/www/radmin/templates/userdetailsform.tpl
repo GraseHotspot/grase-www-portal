@@ -45,7 +45,7 @@
     <span>When ether limit is reached, the user will be cut off. (i.e. after 1hour even if they still have data left)</span>
 
 <div>
-    <label for='Max_Mb'>Data Limit (Mb's)</label>
+    <label for='Max_Mb'>Data Limit (MiB)</label>
     {html_options name="Max_Mb" options=$Datacosts selected=$user.Max_Mb}
     <span class="form_or">OR</span>
     <input type="text" class="default_swap" id="MaxMb" name="MaxMb" value='{$user.MaxMb}' title="Type your own Mb Limit"/>
@@ -63,8 +63,6 @@
     {html_select_date disabled='disabled' prefix="Expirydate_" time=$user.Expiration end_year="+1" year_empty='' month_empty='' day_empty=''}
     <span id='ExpirationInfo'>The expiry is automatically set based on the Group</span>
 </div>-->
-
         <button type="submit" name="{$useraction}submit" value="{$useractionlabel}"><img src="/grase/images/icons/tick.png" alt=""/>{$useractionlabel}</button>
-
 </form>
 </div>
