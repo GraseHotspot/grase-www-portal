@@ -1,6 +1,8 @@
 $(document).ready(function(){
 
-    $("button").button();
+    $("button").button(); // Turn buttons into buttons
+    
+    $('.autoDisable').attr('autocomplete','off'); // Turn off autocomplete based on class autoDisable
 
     // Simple jQuery to create help dialogs out of all elements with class helpbutton and a title attribute		
 	$('.helpbutton[title]').each(function(index, element){
