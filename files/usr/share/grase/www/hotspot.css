@@ -8,13 +8,7 @@
 */
 
 html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
+img, fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
 figure, figcaption, footer, header, hgroup, 
@@ -32,20 +26,7 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -56,7 +37,8 @@ table {
 body {
 	font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
 	color: #0a57a9;
-	background: white url("/grase/images/grass.png") fixed bottom repeat-x;
+/*	background: white url("/grase/images/grass.png") fixed bottom repeat-x; /* Not our image */
+    background: white;
 	margin: 0;
 	padding: 0;
 	margin-bottom: 2em;
@@ -66,8 +48,8 @@ body {
 #page {
 	width: 70%;
 	margin: auto;
-	margin-top: 1em;
-	border: 1px solid orange;
+	margin-top: 3em;
+	border: 1px solid blue;
 	padding: 1em;
 	background: white;
         background: url("/grase/images/logo.png") right top no-repeat;
