@@ -42,7 +42,8 @@
     <span id='CommentInfo'>A comment about the user</span>
 </div>
 
-    <span>When ether limit is reached, the user will be cut off. (i.e. after 1hour even if they still have data left)</span>
+    <span>When ether limit is reached, the user will be cut off. (i.e. after 1hour even if they still have data left)<br/>
+    A limit of 0 does not mean unlimited, it will immediately lock the user out. To have an unlimited user, the user must be created without any limits.</span>
 
 <div>
     <label for='Max_Mb'>Data Limit (MiB)</label>

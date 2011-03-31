@@ -27,8 +27,10 @@ class Formatting
         $kb = 1024;
         $mb = $kb*1024;
         $gb = $mb*1024;
+
+        if(!isset($bytes)) return ""; // Unlimited needs to display as blank
         
-        $bytes = $bytes + 0;
+        $bytes = $bytes + 0; // Should never be needed now as unlimited ^^
 
         if ($bytes >= $gb)
         {

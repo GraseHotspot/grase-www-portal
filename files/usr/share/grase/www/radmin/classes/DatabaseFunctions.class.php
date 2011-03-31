@@ -389,7 +389,7 @@ class DatabaseFunctions
             ErrorHandling::fatal_db_error(_('Get User Data Usage Query failed: '), $results);
         }
         
-        return $results;
+        return $results + 0; // Need to zero it if null
     }
     
     public function getUserDataUsageTotal($username)
@@ -409,7 +409,7 @@ class DatabaseFunctions
             ErrorHandling::fatal_db_error(_('Get User Data Usage (Total) Query failed: '), $results);
         }
         
-        return $results;
+        return $results + 0; // Need to zero it if null
     }    
     
     public function getMonthlyAccounts()

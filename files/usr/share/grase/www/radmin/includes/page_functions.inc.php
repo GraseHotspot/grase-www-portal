@@ -78,7 +78,8 @@ function datacosts()
 	{
 		$disp_money = number_format($money, 2);
 		$data = round($money/$pricemb, 2);
-		$datacosts["$data"] = "$disp_currency$disp_money ($data MiB)";
+		$disp_data = Formatting::formatBytes($data*1024*1024);
+		$datacosts["$data"] = "$disp_currency$disp_money ($disp_data)";
 	}
 	return $datacosts;
 }
