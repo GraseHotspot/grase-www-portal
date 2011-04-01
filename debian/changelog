@@ -1,3 +1,9 @@
+grase-www-portal (3.0-13) purewhite; urgency=low
+
+  * Fix for Database Backup script (backup both db, not just 1)
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Fri, 01 Apr 2011 13:26:30 +1000
+
 grase-www-portal (3.0-12) purewhite; urgency=low
 
   * Migration of forms to jQuery UI

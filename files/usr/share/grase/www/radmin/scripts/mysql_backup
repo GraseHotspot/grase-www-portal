@@ -3,33 +3,50 @@
 # Backup DB
 #
 
-sql_password=$(cat /etc/grase/radius.conf |grep sql_password|cut -f 2 -d :|cut -f 2 -d ' '|head -n 1)
-sql_username=$(cat /etc/grase/radius.conf |grep sql_username|cut -f 2 -d :|cut -f 2 -d ' '|head -n 1)
-sql_server=$(cat /etc/grase/radius.conf |grep sql_server|cut -f 2 -d :|cut -f 2 -d ' '|head -n 1)
-sql_database=$(cat /etc/grase/radius.conf |grep sql_database|cut -f 2 -d :|cut -f 2 -d ' '|head -n 1)
+radius_sql_password=$(cat /etc/grase/radius.conf |grep sql_password|cut -f 2 -d :|cut -f 2 -d ' '|head -n 1)
+radius_sql_username=$(cat /etc/grase/radius.conf |grep sql_username|cut -f 2 -d :|cut -f 2 -d ' '|head -n 1)
+radius_sql_server=$(cat /etc/grase/radius.conf |grep sql_server|cut -f 2 -d :|cut -f 2 -d ' '|head -n 1)
+radius_sql_database=$(cat /etc/grase/radius.conf |grep sql_database|cut -f 2 -d :|cut -f 2 -d ' '|head -n 1)
 
-if [ -n "$sql_password" ]; then sql_password="-p$sql_password"; fi
+radmin_sql_password=$(cat /etc/grase/radmin.conf |grep sql_password|cut -f 2 -d :|cut -f 2 -d ' '|head -n 1)
+radmin_sql_username=$(cat /etc/grase/radmin.conf |grep sql_username|cut -f 2 -d :|cut -f 2 -d ' '|head -n 1)
+radmin_sql_server=$(cat /etc/grase/radmin.conf |grep sql_server|cut -f 2 -d :|cut -f 2 -d ' '|head -n 1)
+radmin_sql_database=$(cat /etc/grase/radmin.conf |grep sql_radmindatabase|cut -f 2 -d :|cut -f 2 -d ' '|head -n 1)
 
-backup_dir="/home/hotspotadmin/backups/database/"
+
+if [ -n "$radius_sql_password" ]; then radius_sql_password="-p$radius_sql_password"; fi
+if [ -n "$radmin_sql_password" ]; then radmin_sql_password="-p$radmin_sql_password"; fi
+
+backup_dir="/var/backups/grase/database/"
 mkdir -p $backup_dir
 
-backup_file="mysql_backup_`date +%Y%m%d`.sql"
+cd $backup_dir
 
-mysqldump --force -h $sql_server -u $sql_username $sql_password $sql_database -r $backup_dir$backup_file
-gzip -f -9 $backup_dir$backup_file
-compressed_backup_file="$backup_file.gz"
+radius_backup_file="mysql_radius_backup_`date +%Y%m%d`.sql"
+radmin_backup_file="mysql_radmin_backup_`date +%Y%m%d`.sql"
+backup_file="backup_`date +%Y%m%d`.tgz"
 
-location=$(cat /var/www/radmin/configs/site_settings/location)
+mysqldump --force -h $radius_sql_server -u $radius_sql_username $radius_sql_password $radius_sql_database -r $radius_backup_file
+mysqldump --force -h $radmin_sql_server -u $radmin_sql_username $radmin_sql_password $radmin_sql_database -r $radmin_backup_file
+
+tar -zcvf $backup_file $radius_backup_file $radmin_backup_file
+#gzip -f -9 $backup_dir$backup_file 
+#compressed_backup_file="$backup_file.gz"
+
+#location=$(cat /var/www/radmin/configs/site_settings/location)
+MAC=$(ifconfig | grep -o -E '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}'|tr -d ":"| sed 's/0*//'| head -n1)
+#SELECT value FROM settings WHERE setting = 'locationName';
+location=$(echo "SELECT value FROM settings WHERE setting = 'locationName';" | mysql  -h $radmin_sql_server -u $radmin_sql_username $radmin_sql_password $radmin_sql_database -s)
 hostname=$(hostname)
 
 (cat << EOM
 To: backups+db@hotspot.purewhite.id.au
-Subject: MySQL Backup `date +%Y%m%d` ($location-$hostname)
+Subject: GRASE DB Backup `date +%Y%m%d` ($location - $hostname$MAC)
 MIME-Version: 1.0
-Content-Disposition: attachment; filename=$compressed_backup_file
-Content-Type: application/x-gzip; name=$compressed_backup_file
+Content-Disposition: attachment; filename=$backup_file
+Content-Type: application/x-gzip; name=$backup_file
 Content-Transfer-Encoding: base64
 
 EOM
-base64 $backup_dir$compressed_backup_file ) | sendmail backups+db@hotspot.purewhite.id.au
+base64 $backup_file ) | sendmail backups+db@hotspot.purewhite.id.au
 
