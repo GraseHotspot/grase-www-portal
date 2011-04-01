@@ -132,7 +132,8 @@ class SettingsMySQL extends Settings
 	        AdminLog::getInstance()->log("Setting $setting failed to update (to $value)");        
             ErrorHandling::fatal_error('Updating setting failed: '. $affected->getMessage());
         }
-        AdminLog::getInstance()->log("Setting $setting updated to $value");
+        if($setting != 'lastbatch') // lastbatch clogs admin log, filter it out
+            AdminLog::getInstance()->log("Setting $setting updated to $value");
         return true;
         
 
