@@ -32,14 +32,14 @@
 
 		</table>
 	</div>
-{if $valid_last_batch}<a href="printnewtickets" class="printlink">Print Last Batch of Tickets</a>{/if}
+{if $valid_last_batch}<a href="printnewtickets" class="printlink" target="_tickets">Print Last Batch of Tickets</a>{/if}
 {/if}
 
 <div id="createticketsForm">
 <h2>Create Tickets</h2>
 
 
-<form method='post' name='newtickets' action='' class='generalForm'>
+<form method='post' id='newticketsform' action='' class='generalForm'>
 
 <div>
     <label for='numberoftickets'>Number of Tickets</label>
@@ -57,7 +57,7 @@
     <span id='CommentInfo'>A comment that is applied to all tickets</span>
 </div>
 
-    <span>When ether limit is reached, the user will be cut off. (i.e. after 1hour even if they still have data left)</span>
+    <p><span>When ether limit is reached, the user will be cut off. (i.e. after 1hour even if they still have data left)</span></p>
 
 <div>
     <label for='Max_Mb'>Data Limit (MiB)</label>
@@ -74,7 +74,7 @@
     <span id='Max_TimeInfo'>Choose a Time Limit OR Type your own value</span>
 </div>
 
-        <button type="submit" name="createticketssubmit" value="Create Tickets"><img src="/grase/images/icons/tick.png" alt=""/>Create Tickets</button>
+       <p><button type="submit" name="createticketssubmit" value="Create Tickets"><img src="/grase/images/icons/tick.png" alt=""/>Create Tickets</button></p>
 
 </form>
 </div>

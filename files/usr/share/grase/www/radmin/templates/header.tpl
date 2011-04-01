@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <title>{$Title} - {$Name}</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 <meta name="generator" content="{$Application} {$application_version}" />
 <!-- CSS Stylesheet -->
 <link rel="stylesheet" type="text/css" href="/grase/hotspot.css" id="hotspot_css" />
@@ -11,16 +12,16 @@
 
 
 <!--<link type="text/css" href="css/cupertino/jquery-ui-1.7.2.custom.css" rel="stylesheet" />       -->
-	<link type="text/css" href="/javascript/jquery-ui/themes/base/jquery.ui.all.css" rel="stylesheet" />	
+<!--	<link type="text/css" href="/javascript/jquery-ui/themes/base/jquery.ui.all.css" rel="stylesheet" />	-->
 	<link type="text/css" href="/grase/css/cupertino/jquery-ui-1.8.11.custom.css" rel="stylesheet" />	
 
-    <script language="javascript" type="text/javascript" src="/javascript/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/javascript/jquery/jquery.js"></script>
 
-    <script language="javascript" type="text/javascript" src="/javascript/jquery-ui/jquery-ui.js"></script>
+    <script type="text/javascript" src="/javascript/jquery-ui/jquery-ui.js"></script>
     
-    <script language="javascript" type="text/javascript" src="/grase/js/jquery.tablesorter.min.js"></script>    
+    <script type="text/javascript" src="/grase/js/jquery.tablesorter.min.js"></script>    
     
-    <script language="javascript" type="text/javascript" src="/grase/js/grase.js"></script>        
+    <script type="text/javascript" src="/grase/js/grase.js"></script>        
 
 <link rel="shortcut icon" href="/grase/favicon.ico" />
 
@@ -32,26 +33,6 @@
 
 
 {literal}<script type="text/javascript"><!--//--><![CDATA[//><!--
-function switchMenu(obj) {
-	var el = document.getElementById(obj + '_body');
-	var header = document.getElementById(obj + '_header');
-	if(el != null){
-	if ( el.style.display != 'none' ) {
-		el.style.display = 'none';
-		header.style.backgroundImage = 'url(images/plus.gif)';
-	}
-	else {
-		el.style.display = '';
-		header.style.backgroundImage = 'url(images/minus.gif)';
-	}}
-}
-window.onload = function () {
-	switchMenu("Machine"); /* Need to make this get constant from php */
-/*	switchMenu("Ministry");
-	switchMenu("Visitors");
-	switchMenu("Staff");
-	switchMenu("Students");*/
-}
 
 // $.noConflict();
 var $j = jQuery;

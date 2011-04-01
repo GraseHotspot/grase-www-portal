@@ -48,7 +48,7 @@ function createmenuitems()
 	$menubar['createmachine'] = array("href" => "newmachine", "label" => "Create New Machine");	
 	$menubar['sessions'] = array("href" => "sessions", "label" => "Monitor Sessions");
     $menubar['reports'] = array("href" => "reports", "label" => "Reports");
-    $menubar['monthly_accounts'] = array("href" => "datausage", "label" => "Monthly Reports");
+    //$menubar['monthly_accounts'] = array("href" => "datausage", "label" => "Monthly Reports"); // Not working atm TODO:
 	$menubar['settings'] = array("href" => "settings", "label" => "Site Settings" );
 	$menubar['uploadlogo'] = array("href" => "uploadlogo", "label" => "Site Logo" );	
 	$menubar['links'] = array("href" => "links", "label" => "Useful Links");	

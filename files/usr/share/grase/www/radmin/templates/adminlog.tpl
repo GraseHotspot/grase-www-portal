@@ -4,6 +4,10 @@
 
 <div id='log' style='display:block;'>
 	<table border="0" id='AdminlogTable' class="stripeMe">
+	    <col style="width: 10em"/>
+	    <col style="width: 6em"/>
+	    <col style="width: 6em"/>	    	    
+	    <col />
 	    <thead>
 		<tr>
 			<td>Timestamp</td>

@@ -2,7 +2,7 @@
 
 <!-- Progress Bars -->
 
-  <script>
+  <script type="text/javascript">
   $(document).ready(function() {ldelim}
     $("#SoldData").progressbar({ldelim} value: {$SoldOctetsPercent+0} {rdelim});
     $("#UsedData").progressbar({ldelim} value: {$DataUsagePercent+0} {rdelim});

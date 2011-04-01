@@ -2,6 +2,11 @@
 
 <div id='userslist' >
 	<table id="userslistTable" class="tablesorter">
+	    <col style="width: 12em"/>
+	    <col style="width: 6em"/>
+	    <col span="5" style="width: 6em"/>	    	    
+	    <col span="2" style="width: 7em"/>
+	    <col />	
 		<thead>
 		<tr id='userattributesRow'>
 			<th>Username</th>
@@ -10,17 +15,17 @@
 			<th>Data Usage (M)<a class="helpbutton" title='Total Data usage for the current month'><img src="/grase/images/icons/help.png" alt=""/></a></th>
 			<th>Data Usage (T)<a class="helpbutton" title='Total Data usage, from previous months, excluding current month' ><img src="/grase/images/icons/help.png" alt=""/></a></th>
 			<th>Time Limit</th>
-			<th>Time Usage(Month)</th>			
+			<th>Time Usage (Month)</th>			
 			<th>Account Expiry</th>
 			<th>Last Logoff<a class="helpbutton" title='Last Logoff timestamp from current month only' ><img src="/grase/images/icons/help.png" alt=""/></a></th>
-			<th>Comment</td>
+			<th>Comment</th>
 		</tr>
 		</thead>
 		<tbody>	
 		{foreach from=$users item=user name=usersloop}
 
-		<tr>
-		<!-- id="user_{$user.Username}_Row" class="userrow {if $smarty.foreach.usersloop.iteration is even}even{else}odd{/if} {$user.account_status}" > --!>
+		<tr id="user_{$user.Username}_Row" class="userrow {$user.account_status}">
+		<!-- id="user_{$user.Username}_Row" class="userrow {if $smarty.foreach.usersloop.iteration is even}even{else}odd{/if} {$user.account_status}" > -->
 			<td class='info_username'><span class='info_password'>{if $user.Group eq 'Machine'}<span title="Password Hidden">*</span>{else}<span title="{$user.Password}"><a href='javascript:alert("Password for {$user.Username} is {$user.Password}")'>*</a></span>{/if}</span><a href="edituser?username={$user.Username}">{$user.Username}</a></td>
 
 			<td class='info_group'>{$user.Group}</td>

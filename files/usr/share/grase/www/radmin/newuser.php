@@ -100,10 +100,10 @@ if(isset($_POST['newusersubmit']))
 
 function display_adduser_form()
 {
-	global $smarty;
+	global $smarty, $pricemb;
 //    $user['Username'] = rand_username(5);	
 	$user['Password'] = rand_password(6);
-	$user['Max_Mb'] = 50;
+	$user['Max_Mb'] = round(10/$pricemb, 2); // TODO: Make a default setting for data and time and put in settings page
 	$user['Expiration'] = "--";//date('Y-m-d', strtotime('+3 month'));
 	$smarty->assign("user", $user);
 	display_page('adduser.tpl');

@@ -1,3 +1,10 @@
+grase-www-portal (3.0-12) purewhite; urgency=low
+
+  * Migration of forms to jQuery UI
+  * Small CSS and Bugs fixed
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Fri, 01 Apr 2011 11:11:08 +1000
+
 grase-www-portal (3.0-11) purewhite; urgency=low
 
   * Fix to ensure /etc/grase dir is present

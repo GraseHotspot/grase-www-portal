@@ -36,16 +36,8 @@
 <tr><td class="title">DNS 2</td><td colspan="2">{$Sysinfo->wan->dns_secondary}</td></tr>
 <tr><td class="title">MAC Address</td><td colspan="2">{$Sysinfo->wan->mac|upper}</td></tr>
 <tr><td class="title">Interface</td><td colspan="2">{$Sysinfo->wan->iface}</td></tr>
-
+</tbody>
 </table>
-<!--
-<div id="network">
-IP addresses
-Gateway
-</div>
-<div id="coovachilli">
-Current sessions
-</div>
--->
+
 
 {include file="footer.tpl"}

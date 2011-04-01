@@ -16,7 +16,7 @@
 
 -->
 
-<form method='post' name='newuser' action='' class='generalForm'>
+<form method='post' id='newuserform' action='' class='generalForm'>
 
 <div>
     <label for='Username'>Username</label>
@@ -25,7 +25,7 @@
 </div>
 <div>
     <label for='Password'>Password</label>
-    <input type="text" name="Password" value='{$user.Password}' onkeyup="runPassword(this.value, 'newpassword');" />
+    <input type="text" name="Password" id="Password" value='{$user.Password}' onkeyup="runPassword(this.value, 'newpassword');" />
     <span id='PasswordInfo'>Choose a secure password for the user</span>
                                 <span id="newpassword_text" ></span>
                                 <span id="newpassword_bar" style="font-size: 1px; height: 2px; width: 0px; border: 1px solid white;"></span> 
@@ -42,8 +42,8 @@
     <span id='CommentInfo'>A comment about the user</span>
 </div>
 
-    <span>When ether limit is reached, the user will be cut off. (i.e. after 1hour even if they still have data left)<br/>
-    A limit of 0 does not mean unlimited, it will immediately lock the user out. To have an unlimited user, the user must be created without any limits.</span>
+    <p><span>When ether limit is reached, the user will be cut off. (i.e. after 1hour even if they still have data left)<br/>
+    A limit of 0 does not mean unlimited, it will immediately lock the user out. To have an unlimited user, the user must be created without any limits.</span></p>
 
 <div>
     <label for='Max_Mb'>Data Limit (MiB)</label>
@@ -64,6 +64,6 @@
     {html_select_date disabled='disabled' prefix="Expirydate_" time=$user.Expiration end_year="+1" year_empty='' month_empty='' day_empty=''}
     <span id='ExpirationInfo'>The expiry is automatically set based on the Group</span>
 </div>-->
-        <button type="submit" name="{$useraction}submit" value="{$useractionlabel}"><img src="/grase/images/icons/tick.png" alt=""/>{$useractionlabel}</button>
+     <p><button type="submit" name="{$useraction}submit" value="{$useractionlabel}"><img src="/grase/images/icons/tick.png" alt=""/>{$useractionlabel}</button></p>
 </form>
 </div>

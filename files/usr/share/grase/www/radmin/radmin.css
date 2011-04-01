@@ -1,5 +1,5 @@
-/* $Revision: 35 $
- * $Version: 2.9.0 $
+/* $Revision: 59 $
+ * $Version: 3.0 $
  * $ApplicationName: GRASE $
 */
 
@@ -127,7 +127,7 @@ z-index: -1;
 }
 
 #loggedinusername {
-	color: grey;
+	color: gray;
 	padding: 0.5em;
 	padding-right: 1em;
 	display: block;
@@ -222,6 +222,13 @@ z-index: -1;
 }
 
 /* Table */
+
+table  {
+    table-layout:fixed;
+    width:100%;
+    word-wrap:break-word;
+}
+
 
 table td {
 	text-align: left;
@@ -339,7 +346,7 @@ thead td {
 }
 
 .even {
-	background: lightgrey;
+	background: #deedf7;
 
 }
 .odd {

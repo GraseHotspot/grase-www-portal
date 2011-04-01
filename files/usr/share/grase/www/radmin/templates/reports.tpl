@@ -1,6 +1,6 @@
 {include file="header.tpl" Name="Reports" activepage="reports"}
-
-<div id='reports'>
+<p>Reports are current a work in progress. All feedback about the kind of data you wish to see and how it is represented should be directed to <a href="http://hotspot.purewhite.id.au">Tim</a></p>
+<div id='reportspage'>
 <script type="text/javascript" src="js/json/json2.js"></script>
 <script type="text/javascript" src="js/swfobject.js"></script>
 <script type="text/javascript">
@@ -29,5 +29,6 @@ swfobject.embedSWF("open-flash-chart.swf", "daily_sessions", "500", "200", "9.0.
 <div id="daily_sessions"></div>
 
 </div>
+<p>&nbsp;</p>
 
 {include file="footer.tpl"}
