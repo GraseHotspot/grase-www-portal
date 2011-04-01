@@ -14,11 +14,11 @@
 
 	<link type="text/css" href="/grase/css/cupertino/jquery-ui-1.8.11.custom.css" rel="stylesheet" />	
 
-    <script language="javascript" type="text/javascript" src="/javascript/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/javascript/jquery/jquery.js"></script>
 
-    <script language="javascript" type="text/javascript" src="/javascript/jquery-ui/jquery-ui.js"></script>
+    <script type="text/javascript" src="/javascript/jquery-ui/jquery-ui.js"></script>
     
-    <script language="javascript" type="text/javascript" src="/grase/js/grase.js"></script>        
+    <script type="text/javascript" src="/grase/js/grase.js"></script>        
 	
 </head>
 <body>

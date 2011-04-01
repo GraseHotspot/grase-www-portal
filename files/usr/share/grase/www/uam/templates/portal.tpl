@@ -13,33 +13,36 @@
 	<li><strong>You will not attempt to access any system on this network</strong></li>
 </ul>
 <p>
-{if $user_url}<span><a href="{$user_url}">If you are already logged in, continue to your site '{$user_url}'</a></span>{/if}
+{if $user_url}<span id="userurlnojs"><a href="{$user_url}">If you are already logged in, continue to your site '{$user_url}'</a></span>{/if}
 </p>
 
 {$loginerror}
+
 <div>
-    <form method="post" action="nojslogin.php" class="generalForm"><!-- TODO: Make this submit over SSL --!>
-    
+
+    <form method="post" action="nojslogin.php" id="logonFormnojs" class="generalForm"><!-- TODO: Make this submit over SSL --!>
         <div>
             <label for='username'>Username</label>
-            <input type="text" name="username"/>
+            <input type="text" name="username" />
             <span id="UsernameInfo">&nbsp;</span>
         </div>
         <div>
             <label for='password'>Password</label>
-            <input type="text" name="password" />
+            <input type="password" name="password" />
             <span id='PasswordInfo'>&nbsp;</span>
             
         </div>    
             
         <input type="hidden" name="userurl" value="{$user_url}"/>
         <input type="hidden" name="challenge" value="{$challenge}"/>        
-        <button type="submit" name="submit">Login</button>        
+        <button type="submit" name="submit" id="submitbuttonnojs" onClick="connect();">Login</button>        
     </form>
+    
+
 </div>
 <div style="clear: left; clear: right">&nbsp;</div>
 
-
+<script id='chillijs' src='http://10.1.0.1/grase/uam/chilli.js'></script>
 
 
 {include file="footer.tpl"}

@@ -889,6 +889,15 @@ function updateUI (cmd ) {
 	    setElementValue('originalURL', '<a target="_blank" href="'+chilliController.redir.originalURL+
 			    '">'+chilliController.redir.originalURL+'</a>', true);
 	}
+	if (chilliController.redir.originalURL != null &&
+	    chilliController.redir.originalURL != '' && ! miniportal) {
+	    $('#userurl').html('<a href="'+chilliController.redir.originalURL+ '">Click here to continue to your site: '+chilliController.redir.originalURL+'</a>');
+	    $('#userurl').click(function(){
+    	    loginwindow = window.open("/grase/uam/mini", "grasestatus", "width=300,height=400,location=no,directories=no,status=yes,menubar=no,toolbar=no");
+    	    loginwindow.moveTo(100,100);
+    	    //return false;
+	    });
+	}	
 	if (chilliController.redir.redirectionURL != null &&
 	    chilliController.redir.redirectionURL != '') {
 	    setElementValue('redirectionURL', chilliController.redir.redirectionURL);
@@ -969,7 +978,7 @@ function showStatusPage() {
     hidePage("waitPage");
     hidePage("errorPage");
 
-    create_download_PB();
+    //create_download_PB();
     
     // Update message
     if ( chilliController.message ) { 
@@ -1016,19 +1025,18 @@ function showStatusPage() {
     }
 
 
-  
 
 	/* Progress bars */
 	    if(chilliController.session.maxTotalOctets && chilliController.user_details.monthlyusagelimit) {
 		document.getElementById('download_bar').style.display='inline';
-		download_PB.setPercentage(Math.round((chilliController.session.maxTotalOctets - chilliController.accounting.inputOctets - chilliController.accounting.outputOctets)/chilliController.user_details.monthlyusagelimit*100));
+		//download_PB.setPercentage(Math.round((chilliController.session.maxTotalOctets - chilliController.accounting.inputOctets - chilliController.accounting.outputOctets)/chilliController.user_details.monthlyusagelimit*100));
 	    }else{
 		document.getElementById('download_bar').style.display='none';
 	    }
 
 	    if(chilliController.session.sessionTimeout) {
 		document.getElementById('time_bar').style.display='inline';
-		time_PB.setPercentage(Math.round((chilliController.session.sessionTimeout - chilliController.accounting.sessionTime)/chilliController.user_details.monthlytimelimit*100));
+		//time_PB.setPercentage(Math.round((chilliController.session.sessionTimeout - chilliController.accounting.sessionTime)/chilliController.user_details.monthlytimelimit*100));
 	     }else{
 		document.getElementById('time_bar').style.display='none';
 	    }
@@ -1157,7 +1165,8 @@ window.onload = function() {
 	    logonForm.innerHTML='Error loading generic login form';
 	}
     }
-	    
-    showWaitPage(); 
+    showWaitPage();
+    $("#logonFormnojs").hide(); 
+    $("#userurlnojs").hide();    
     setTimeout('chilliController.refresh()', 500);
 }

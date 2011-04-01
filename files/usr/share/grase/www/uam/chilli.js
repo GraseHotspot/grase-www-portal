@@ -37,3 +37,21 @@ if (queryObj['uamip'] != null && queryObj['uamport'] != null)
        noLocation.style.display = 'inline';
     }
 }
+
+/*$(document).ready(function(){
+/*    var oldButton = $("#submitbutton");
+    var newButton = oldButton.clone();
+
+    newButton.attr("type", "button");
+    newButton.attr("id", "newSubmit");
+    newButton.insertBefore(oldButton);
+    oldButton.remove();
+    newButton.attr("id", "submitbutton");*/
+
+
+/*    $("#submitbutton").click(function() {
+        connect();
+        return false;
+    });*/
+    //$("#logonFormnojs").hide();
+//});

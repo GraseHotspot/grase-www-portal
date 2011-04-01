@@ -3,49 +3,28 @@
 
 <div id="chilliPage">
 <div id="logonPage" style="display:none;">
-<form onSubmit="return false;" name="logon">
-
-<!--
-<div id="openIDSelect" style="font-size:70%;padding-top:4px;float:right;display:none;">
-<a href="#" onclick="javascript:return openID();"><img border="0" src="images/openid.gif"/></a>
-</div>
-
-<div id="openIDForm"
-style="display:none;background-color:white;position:absolute;padding:10px;border:solid 1px orange">
-OpenID URL: <input style="font-size:60%;" name="username" type="text" id="username" size="30" value="http://"/>
-</div>
--->
-
-<table id="logonTable" border="0">
-<tr>
-<td colspan="2" style="font-size:120%;">
+<form onSubmit="return false;" name="logon" class="generalForm">
 <div id="logonMessage" style="font-size:70%;padding-top:4px;">Login:</div>
-</td>
-</tr>
+        <div>
+            <label for='username'>Username</label>
+            <input type="text" name="username" id="username" />
+            <span id="UsernameInfo">&nbsp;</span>
+        </div>
+        <div>
+            <label for='password'>Password</label>
+            <input type="password" name="password" id="password"/>
+            <span id='PasswordInfo'>&nbsp;</span>
+            
+        </div>    
+     
+        <button type="submit" name="submit" id="submitbutton" onClick="connect();">Login</button>        
+    </form>
 
-<tr id="usernameRow">
-<td id="usernameLabel"><b>Username</b></td>
-<td><input name="username" type="text" id="username" size="10"/></td>
-</tr>
-<tr id="passwordRow">
-<td id="passwordLabel"><b>Password</b></td>
-<td><input name="password" type="password" id="password" size="10"/></td>
-</tr>
-<tr>
-<td></td>
-<td class="buttons" style="text-align:right"><button class="positive" type="submit" value="Login" onClick="connect();"><img src="/grase/images/icons/tick.png" alt=""/>Login</button></td>
-
-</tr>	
-<tr id="signUpRow" style="display:none;">
-<td id="signUp" colspan="2" style="font-size: 50%">
-<a target="_blank" href="https://coova.org/app/c/signup.html">Sign up</a> for an account
-</td>
-</tr>
-</table>		
-</form>
 </div>
 
 <div id="statusPage" style="display:none;">
+
+<div id="userurl"></div>
 
 <p id="loggedinusername">You are logged in as: <span id="UserNameLink">Not available</span></p>
 <p id="myaccountlink"><a href="/grase/radmin/usermin" onclick="window.open(this.href,'_blank');return false;">Access My Account</a></p>
@@ -135,9 +114,9 @@ Logout</a></td>
 <span id="errorMessage">Error</span>
 </div>
 </div>
-<!--div id="debugPage" style="display:inline;">
+<!--<div id="debugPage" style="display:inline;">
 <textarea id="debugarea" rows="20" cols="60">
 </textarea>
-</div-->
+</div>-->
 </div>
 
