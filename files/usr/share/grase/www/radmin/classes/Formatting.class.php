@@ -27,27 +27,29 @@ class Formatting
         $kb = 1024;
         $mb = $kb*1024;
         $gb = $mb*1024;
+
+        if(!isset($bytes)) return ""; // Unlimited needs to display as blank
         
-        $bytes = $bytes + 0;
+        $bytes = $bytes + 0; // Should never be needed now as unlimited ^^
 
         if ($bytes >= $gb)
         {
-            $output = sprintf ("%01.2f",$bytes/$gb) . " GB";
+            $output = sprintf ("%01.2f",$bytes/$gb) . " GiB";
         }elseif ($bytes >= $mb)
         {
-            $output = sprintf ("%01.2f",$bytes/$mb) . " MB";
+            $output = sprintf ("%01.2f",$bytes/$mb) . " MiB";
         }
         elseif ( $bytes >= $kb )
         {
-            $output = sprintf ("%01.0f",$bytes/1024) . " Kb";
+            $output = sprintf ("%01.0f",$bytes/1024) . " KiB";
         }
         elseif ($bytes == 1 )
         {
-            $output = $bytes . " byte";        
+            $output = $bytes . " B";        
         }
         else
         {
-            $output = $bytes . " bytes";
+            $output = $bytes . " B";
         }
      
         return $output;

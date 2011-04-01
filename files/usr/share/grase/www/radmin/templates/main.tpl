@@ -3,7 +3,7 @@
 <h3>User Management Interface</h3>
 
 <table>
-<tbody><tr><td colspan="3" class="headline">Status</td></tr>
+<tbody><tr><td colspan="3" class="header">Status</td></tr>
 
 
 <tr><td class="header" colspan="3">Device Information</td></tr>

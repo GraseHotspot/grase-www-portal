@@ -36,11 +36,12 @@ class CronFunctions extends DatabaseFunctions
         }
         return $instance;
     }    
-    
+/*    
     private function __construct()
     {
+        //parent::__construct();
         $this->db =& DatabaseConnections::getInstance()->getRadiusDB();
-    }    
+    }   */ 
          
 
     public function clearStaleSessions()
@@ -95,7 +96,7 @@ class CronFunctions extends DatabaseFunctions
          
         //  SELECT UserName FROM radcheck WHERE Attribute = 'Expiration' AND Value LIKE 'January __ 2011 00:00:00'
          
-        // Loop through previous months incase they have been missed. Bit of overkill but works. Time is cheap
+        // Loop through previous months encase they have been missed. Bit of overkill but works. Time is cheap
         $months = array(-2, -3, -4, -5, -6, -7, -8, -9, -10, -11, -12);
         foreach($months as $month)
         {
@@ -120,10 +121,11 @@ class CronFunctions extends DatabaseFunctions
                 AdminLog::getInstance()->log_cron("Cron Deleting ${user['UserName']}");
                 $this->deleteUser($user['UserName']);
             }
+            $deleted_results += sizeof($results);
         }
-        
-        if(sizeof($results) > 0)
-            return _('Expired users deleted') . sizeof($results);
+
+        if($deleted_results)
+            return "($deleted_results) " . _('Expired users deleted');
             
         return false;
          

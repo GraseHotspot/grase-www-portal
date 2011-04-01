@@ -28,153 +28,143 @@ require_once 'includes/database_functions.inc.php';
 if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Display single user, in detail
 {
 	$error = array();
-	$msgbox = array();
+	$success = array();
 	$username = mysql_real_escape_string($_GET['username']);
-	if(isset($_POST['changepasswordsubmit'])) // Change Password
-	{
-	    if(!$_POST['Password'])
-	    {
-	        $error[] = _('A password is required');
-	    }else
-	    {	           
-	        database_change_password($username, $_POST['Password']);
-	        // TODO: Check return for success		
-	        $msgbox[] = _("Password Updated");
-	        AdminLog::getInstance()->log("Password changed for $username");
-        }
-	}
-
-	if(isset($_POST['changegroupsubmit'])) // Change Group
-	{
-		$error2 = validate_group($username, clean_text($_POST['Group']));
-		if($error2)
-		{
-			$error[] = $error2;
-		}else
-		{
-			database_change_group($username, clean_text($_POST['Group']));
-			database_update_expirydate($username, expiry_for_group(getDBUserGroup($username)));
-			// TODO: Check return for success
-			$msgbox[] = _("Group Changed");
-			AdminLog::getInstance()->log("Group changed for $username");
-		}
-	}
+	$user = getDBUserDetails($_GET['username']);
 	
-	if(isset($_POST['changecommentsubmit'])) // Change Group
-	{
-	    $error2 = '';
-		//$error2 = validate_comment($username, clean_text($_POST['Comment']));
-		if($error2)
-		{
-			$error[] = $error2;
-		}else
-		{
+	if(isset($_POST['updateusersubmit']))
+	{   // Process form for changed items and do updates
+
+        // Update password
+	    if(clean_text($_POST['Password']) && clean_text($_POST['Password']) != $user['Password'])
+	    {
+	        database_change_password($username, clean_text($_POST['Password']));
+	        // TODO: Check return for success		
+	        $success[] = _("Password Updated");
+	        AdminLog::getInstance()->log("Password changed for $username");	    
+        }
+        
+        // Update group if changed
+        if(clean_text($_POST['Group']) != $user['Group'])
+        {
+            $temperror =  validate_group($username, $_POST['Group']);
+            if(array_filter($temperror))
+            {
+                $error = array_merge($error, $temperror);
+            }
+            else
+            {
+			    database_change_group($username, clean_text($_POST['Group']));
+			    database_update_expirydate($username,
+			        expiry_for_group(getDBUserGroup($username)));
+			    // TODO: Check return for success
+			    $success[] = _("Group Changed");
+			    AdminLog::getInstance()->log("Group changed for $username");                
+            }        
+        }
+        
+        // Update comment if changed
+        if(clean_text($_POST['Comment']) != $user['Comment'])
+        {
 			database_change_comment($username, clean_text($_POST['Comment']));
 			// TODO: Check return for success			
-			$msgbox[] = _("Comment Changed");
-			AdminLog::getInstance()->log("Comment changed for $username");			
-		}
-	}	
-
-	if(isset($_POST['changedatalimitsubmit']))  // Change Max Data Limit
-	{
-	    $error2 = array();
-		$error2[] = validate_datalimit(clean_text($_POST['MaxMb']));
-		$error2[] = validate_datalimit(clean_text($_POST['MaxMb_']));
-		if($_POST['MaxMb'] && $_POST['MaxMb_']) $error2[] = _('Select an option OR type in a value');
-		if(array_filter($error2))
-		{
-			$error = array_merge($error, $error2);
-		}else
-		{
-			if(isset($_POST['MaxMb']) && $_POST['MaxMb'] != '') database_change_datalimit($username, clean_text($_POST['MaxMb']));
-			if(isset($_POST['MaxMb_']) && $_POST['MaxMb_'] != '') database_change_datalimit($username, clean_text($_POST['MaxMb_']));			
-			database_update_expirydate($username, expiry_for_group(getDBUserGroup($username)));
-			// TODO: Check return for success			
-			$msgbox[] = _("Max Data Limit Updated");	
-			AdminLog::getInstance()->log("Max Data Limit changed for $username");			
-		}
-
-	}
-	if(isset($_POST['adddatasubmit'])) // Change Max Data Limit (And expiry increase to be the groups expiry from today)
-	{
-	    $error2 = array();
-		$error2[] = validate_datalimit(clean_text($_POST['AddMb']));
-		$error2[] = validate_datalimit(clean_text($_POST['AddMb_']));		
-		if($_POST['AddMb'] && $_POST['AddMb_']) $error2[] = _('Select an option OR type in a value');	
-		if(array_filter($error2))
-		{
-			$error = array_merge($error, $error2);
-		}else
-		{
-			if($_POST['AddMb']) database_increase_datalimit($username, clean_text($_POST['AddMb']));
-			if($_POST['AddMb_']) database_increase_datalimit($username, clean_text($_POST['AddMb_']));
-			database_update_expirydate($username, expiry_for_group(getDBUserGroup($username)));
-			$msgbox[] = _("Data Limit Increased");	
-			AdminLog::getInstance()->log("Data Limit increased for $username");			
-		}
-		
-	}
-
-	// Change Time Limit
-	if(isset($_POST['changetimelimitsubmit'])) // Change Max Time Limit
-	{
-	    $error2 = array();
-		$error2[] = validate_timelimit(clean_text($_POST['MaxTime']));
-		$error2[] = validate_timelimit(clean_text($_POST['MaxTime_']));
-		if($_POST['MaxTime'] && $_POST['MaxTime_']) $error2[] = _('Select an option OR type in a value');
-		if(array_filter($error2))
-		{
-			$error = array_merge($error, $error2);
-		}else
-		{
-			if(isset($_POST['MaxTime']) && $_POST['MaxTime'] != '') database_change_timelimit($username, clean_text($_POST['MaxTime']));
-			if(isset($_POST['MaxTime_']) && $_POST['MaxTime_'] != '') database_change_timelimit($username, clean_text($_POST['MaxTime_']));			
-			database_update_expirydate($username, expiry_for_group(getDBUserGroup($username)));
-			$msgbox[] = _("Max Time Limit Updated");	
-			AdminLog::getInstance()->log("Max Time Limit changed for $username");			
-		}
-
-	}
-	if(isset($_POST['addtimesubmit'])) // Add Time to Limit
-	{
-	    $error2 = array();
-		$error2[] = validate_datalimit(clean_text($_POST['AddTime']));
-		$error2[] = validate_datalimit(clean_text($_POST['AddTime_']));		
-		if($_POST['AddTime'] && $_POST['AddTime_']) $error2[] = _('Select an option OR type in a value');	
-		if(array_filter($error2))
-		{
-			$error = array_merge($error, $error2);
-		}else
-		{
-			if($_POST['AddTime']) database_increase_timelimit($username, clean_text($_POST['AddTime']));
-			if($_POST['AddTime_']) database_increase_timelimit($username, clean_text($_POST['AddTime_']));
-			database_update_expirydate($username, expiry_for_group(getDBUserGroup($username)));
-			$msgbox[] = _("Time Limit Increased");	
-			AdminLog::getInstance()->log("Time Limit increased for $username");			
-		}
+			$success[] = _("Comment Changed");
+			AdminLog::getInstance()->log("Comment changed for $username");        
+        }
+        
+        // Increase Data Limit
+        if(clean_number($_POST['Add_Mb']))
+        {
+            $temperror[] = validate_datalimit(clean_number($_POST['Add_Mb']));
+            if(array_filter($temperror))
+            {
+                $error = array_merge($error, $temperror);
+            }
+            else            
+            {
+			    database_increase_datalimit($username, clean_number($_POST['Add_Mb']));
+    			database_update_expirydate($username, expiry_for_group(getDBUserGroup($username)));
+    			// TODO: Check return for success			
+    			$success[] = _("Data Limit Increased");	
+			AdminLog::getInstance()->log(sprintf(_("Data Limit increased for %s"), $username));            
+            }
+        }
+        
+        // If Data Limit is changed and Not added too, Change Data Limit
+        if(clean_number($_POST['MaxMb']) != ''
+           && ! clean_number($_POST['Add_Mb'])
+           && clean_number($_POST['MaxMb']) != $user['MaxMb'])
+        {
+            $temperror[] = validate_datalimit(clean_number($_POST['MaxMb']));
+            if(array_filter($temperror))
+            {
+                $error = array_merge($error, $temperror);
+            }
+            else
+    		{
+			    database_change_datalimit($username, clean_number($_POST['MaxMb']));
+			    database_update_expirydate($username, expiry_for_group(getDBUserGroup($username)));
+			    // TODO: Check return for success			
+			    $success[] = _("Max Data Limit Updated");	
+			    AdminLog::getInstance()->log(sprintf(_("Max Data Limit changed for %s"), $username));			
+		    }        
+        }
+        
+        // Increase Time Limit
+        if(clean_number($_POST['Add_Time']))
+        {
+            $temperror[] = validate_timelimit(clean_number($_POST['Add_Time']));
+            if(array_filter($temperror))
+            {
+                $error = array_merge($error, $temperror);
+            }
+            else            
+            {
+			    database_increase_timelimit($username, clean_number($_POST['Add_Time']));
+    			database_update_expirydate($username, expiry_for_group(getDBUserGroup($username)));
+    			// TODO: Check return for success			
+    			$success[] = _("Time Limit Increased");	
+			AdminLog::getInstance()->log(sprintf(_("Time Limit increased for %s"), $username));            
+            }
+        }        
+        
+        // If Time Limit is changed and Not added too, Change Time Limit        
+        if(clean_number($_POST['MaxTime']) != ''
+           && ! clean_number($_POST['Add_Time'])
+           && clean_number($_POST['MaxTime']) != $user['MaxTime'])
+        {
+            $temperror[] = validate_timelimit(clean_number($_POST['MaxTime']));
+            if(array_filter($temperror))
+            {
+                $error = array_merge($error, $temperror);
+            }
+            else
+    		{
+			    database_change_timelimit($username, clean_number($_POST['MaxTime']));
+			    database_update_expirydate($username, expiry_for_group(getDBUserGroup($username)));
+			    // TODO: Check return for success			
+			    $success[] = _("Max Time Limit Updated");	
+			    AdminLog::getInstance()->log(sprintf(_("Max Time Limit changed for %s"), $username));			
+		    }        
+        }        
+        
 	}
 
-	// Change Expiry (old code, this isn't permitted manually anymore)
-	if(isset($_POST['changeexpirysubmit'])) // Change Expiry
-	{
-		$error[] = _("Changing Expiry Not Permitted. Please add data to update expiry date");
-	}
 
 	if(isset($_POST['deleteusersubmit'])) // Delete User
 	{
 		if($_POST['DeleteUser'] == "Yes, I want to delete this user") //Really delete user (TODO: DEFINE CONSTANTS)
 		{
-			database_delete_user($username);
-			$msgbox = printf(_("User '%s' Deleted"),$username);
+			database_delete_user($username); // TODO: Check for success
+			$success[] = sprintf(_("User '%s' Deleted"),$username);
 			AdminLog::getInstance()->log("User $username deleted");			
 			//$users = database_get_user_names();
 			$smarty->assign("error", $error);
-			$smarty->assign("messagebox", $msgbox);
+			$smarty->assign("success", $success);
 			//$smarty->assign("users", $users);
 			//$smarty->display('listusers.tpl');
 			require('display.php');
-			die;
+			die; // TODO: Recode so don't need die (too many nests?)
 		}else
 		{
 			$error[] = _('Please type "Yes, I want to delete this user" (without the quotes) into the box before clicking delete user');
@@ -183,13 +173,14 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
 	}
 
 	$smarty->assign("error", $error);
-	$smarty->assign("messagebox", $msgbox);	
+	$smarty->assign("success", $success);	
 	$smarty->assign("user", getDBUserDetails($_GET['username']));
-	$smarty->display('edituser.tpl');
+	display_page('edituser.tpl');
 
 }else
 {	# Display all users //TODO: Redirect?
-	require('display.php');	
+	//require('display.php');	
+	header("Location: display");
 }
 
 ?>

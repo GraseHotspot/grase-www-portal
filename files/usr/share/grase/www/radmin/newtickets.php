@@ -89,7 +89,7 @@ if(isset($_POST['createticketssubmit']))
 		{
 		    $username =  rand_username(5);	
 		    $password =  rand_password(6);
-		    $success = database_create_new_user(
+		    database_create_new_user( // TODO: Check if successful
 			    $username,
 			    $password,
 			    $MaxMb,
@@ -107,8 +107,8 @@ if(isset($_POST['createticketssubmit']))
 		$Settings->setSetting('lastbatch', serialize($createdusernames));
 		$createdusers = database_get_users($createdusernames);
 		$smarty->assign("createdusers", $createdusers);
-		$msgbox[] = _("Tickets Successfully Created");
-	    $smarty->assign("messagebox", $msgbox);
+		$success[] = _("Tickets Successfully Created");
+	    $smarty->assign("success", $success);
 		display_adduser_form();
 	}
 }else

@@ -27,7 +27,7 @@ require_once 'includes/database_functions.inc.php';
 if(isset($_GET['history']))
 {
     $smarty->assign("sessions", getDBSessionsAccounting($Auth->getUsername()));
-    $smarty->display('usermin_history.tpl');
+    display_page('usermin_history.tpl');
 }
 else
 {
@@ -47,7 +47,7 @@ else
         {
             if(database_change_password($Auth->getUsername(), $newpass1))
             {
-                $msgbox[] = _("Password Changed");
+                $success[] = _("Password Changed");
             }else
             {
                 $error[] = _("Password not updated");            
@@ -57,9 +57,9 @@ else
     }
     
     $smarty->assign("error", array_filter($error));
-    $smarty->assign("messagebox", $msgbox);
+    $smarty->assign("success", $success);
     $smarty->assign("user", getDBUserDetails($Auth->getUsername()));
-    $smarty->display('usermin_userdetails.tpl');
+    display_page('usermin_userdetails.tpl');
 
 }
 ?>

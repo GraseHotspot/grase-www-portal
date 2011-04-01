@@ -27,8 +27,7 @@ $Sysinfo = new SystemInformation();
 
 $smarty->assign('Sysinfo', $Sysinfo);
 
-
-$smarty->display('main.tpl');
+display_page('main.tpl');
 
 ?>
 

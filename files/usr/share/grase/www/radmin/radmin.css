@@ -34,11 +34,19 @@ z-index: -1;
 	height: 2.5em;
 }*/
 
-#menubar {
+#sidebar {
 	width: 12em;
 	float: left;
-	margin: 1em;
+/*	margin: 1em;*/
 	height: 100%;
+}
+
+#pagecontent {
+    margin: 1em;
+    margin-left: 13em;
+}
+
+#menubar {
 /*	background: white;*/
 /*	padding-bottom: 240px;*/
 }
@@ -95,34 +103,7 @@ z-index: -1;
     cursor:pointer;
 }
 
-#helpbox {
-      position:absolute; 
-/*      border: solid 1px grey; 
-      background-color: white; */
-      padding: 20px;
 
-    margin-bottom: 5px;
-    background-color:#f5f5f5;
-    border:1px solid #dedede;
-    border-top:1px solid #eee;
-    border-left:1px solid #eee;
-
-    font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
-    font-size:130%;
-    line-height:130%;
-    text-decoration:none;
-    font-weight:bold;
-    color:#565656;
-    cursor:pointer;
-    margin-right: 5px;
-    z-index: 300;
-
-/*    background-color:#dff4ff;
-    border:1px solid #c2e1ef;
-    color:#336699;*/
-
-
-}
 
 /*
 #menubar #menuitems li {
@@ -143,14 +124,6 @@ z-index: -1;
 	margin-left: 13em;
 /*	border: 1px solid orange;*/
 	padding: 1em;
-}
-
-#messagebox {
-	background-color: lightblue;
-	border: 1px solid #0a57a9;
-	padding: 1em;
-	width: 50%;
-	margin: auto;
 }
 
 #loggedinusername {
@@ -252,6 +225,8 @@ z-index: -1;
 
 table td {
 	text-align: left;
+	padding: 0.3em;
+	line-height: 1.5;
 }
 
 table td.header {
@@ -259,7 +234,7 @@ table td.header {
 }	
 
 table td.title {
-	padding-left: 1em;
+	padding-left: 2em;
 	padding-right: 1em;
 }	
 
@@ -275,79 +250,7 @@ thead td {
     text-align: center;
 }
 
-/* Inital setup page items */
 
-.setup_item {
-}
-
-.setup_item input{
-	width: 20em;
-}
-
-.setup_item td {
-	text-align: left;
-	width: 50%;
-}
-
-.item_description {
-	font-size: 75%;
-	width: 50%;
-	color: purple;
-}
-
-.error {
-	color: red;
-	font-weight: bolder;
-}
-
-
-
-.good {
-	color: green;
-	font-weight: bold;
-}
-/* Not needed as setup not being used
-.configfile {
-	width: 90%;
-	margin: auto;
-	text-align: left;
-}
-
-.configfile .description {
-	display: block;
-	background: yellow;
-	font-weight: bold;
-	text-align: left;
-	padding-left: 1em;
-	margin-top: 2em;
-}
-
-.configfile .file_written {
-	background: green;
-	color: yellow;
-}
-
-.configfile pre {
-	display: block;
-	width: 100%;
-	border: dotted black 1px;
-	white-space: pre-wrap;
-	white-space: -moz-pre-wrap;
-	white-space: -o-pre-wrap;
-}*/
-/* */
-
-/* Admin user forms/Password change forms */
-
-#DeleteAdminUserForm form {
-	display: inline;
-}
-
-#DeleteAdminUserForm label {
-	padding-right: 2em;
-	font-style: italic;
-	color: green;
-}
 
 /* */
 
@@ -629,3 +532,89 @@ ul#statusmon li {
 }
 
 /* End Cutout Tickets stuff */
+
+/******* FORM *******/
+.generalForm{
+	padding: 0 10px 10px;
+	margin: 0px auto;
+	text-align: left;
+	line-height: 1.4em;	
+}
+.generalForm label{
+	display: block;
+	color: #797979;
+	font-weight: 700;
+	line-height: 1.4em;
+	clear: right;
+}
+.generalForm input, .generalForm select{
+	width: 220px;
+	padding: 6px;
+	color: #949494;
+	font-family: Arial,  Verdana, Helvetica, sans-serif;
+	font-size: 11px;
+	border: 1px solid #cecece;
+}
+.generalForm input.error{
+	background: #f8dbdb;
+	border-color: #e77776;
+}
+.generalForm textarea{
+	width: 550px;
+	height: 80px;
+	padding: 6px;
+	color: #adaeae;
+	font-family: Arial,  Verdana, Helvetica, sans-serif;
+	font-style: italic;
+	font-size: 12px;
+	border: 1px solid #cecece;
+}
+.generalForm textarea.error{
+	background: #f8dbdb;
+	border-color: #e77776;
+}
+.generalForm div{
+	margin-bottom: 15px;
+}
+.generalForm div span {
+	margin-left: 10px;
+	color: #b1b1b1;
+	font-size: 11px;
+	font-style: italic;
+}
+.generalForm div span.error{
+	color: #e46c6e;
+}
+.generalForm #send{
+	background: #6f9ff1;
+	color: #000;
+	font-weight: 700;
+	font-style: normal;
+	border: 0;
+	cursor: pointer;
+}
+
+.generalForm #send:hover{
+	background: #79a7f1;
+}
+#error{
+	margin-bottom: 20px;
+	border: 1px solid #efefef;
+}
+#error ul{
+	list-style: square;
+	padding: 5px;
+	font-size: 11px;
+}
+#error ul li{
+	list-style-position: inside;
+	line-height: 1.6em;
+}
+#error ul li strong{
+	color: #e46c6d;
+}
+#error.valid ul li strong{
+	color: #93d72e;
+}
+/******* /FORM *******/
+

@@ -5,16 +5,16 @@
 <title>{$Title} - Print Tickets</title>
 <meta name="generator" content="{$Application} {$application_version}" />
 <!-- CSS Stylesheet -->
-<link rel="stylesheet" type="text/css" href="../hotspot.css" id="hotspot_css" media="screen, projection" />
-<link rel="stylesheet" type="text/css" href="radmin.css?{$css_version}" id="radmin_css" media="screen, projection" />
+<link rel="stylesheet" type="text/css" href="/grase/hotspot.css" id="hotspot_css" media="screen, projection" />
+<link rel="stylesheet" type="text/css" href="/grase/radmin/radmin.css?{$css_version}" id="radmin_css" media="screen, projection" />
 
-<link rel="stylesheet" href="css/blueprint/screen.css" type="text/css" media="screen, projection" />
-<link rel="stylesheet" href="css/blueprint/print.css" type="text/css" media="print" />
+<link rel="stylesheet" href="/grase/radmin/css/blueprint/screen.css" type="text/css" media="screen, projection" />
+<link rel="stylesheet" href="/grase/radmin/css/blueprint/print.css" type="text/css" media="print" />
 <!--[if lt IE 8]>
-  <link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection" />
+  <link rel="stylesheet" href="/grase/radmin/css/blueprint/ie.css" type="text/css" media="screen, projection" />
 <![endif]-->
 
-<link rel="stylesheet" href="css/tickets_print.css" type="text/css" media="print" />
+<link rel="stylesheet" href="/grase/radmin/css/tickets_print.css" type="text/css" media="print" />
 
 <script language="Javascript1.2">
 {literal}

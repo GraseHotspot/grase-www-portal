@@ -1,6 +1,6 @@
 {include file="header.tpl" Name="Create Tickets" activepage="createtickets"}
 
-{if $valid_last_batch}<a href="printnewtickets" class="printlink">Print Last Batch of Tickets</a>{/if}
+{if $valid_last_batch}<a href="printnewtickets" class="printlink" target="_tickets">Print Last Batch of Tickets</a>{/if}
 {if $createdusers}
 <div id='createdtickets' class="" >
     <h2>Last Created Tickets</h2>
@@ -37,29 +37,45 @@
 
 <div id="createticketsForm">
 <h2>Create Tickets</h2>
-<div class="errorPage" style="display: {if $error}block;{else}none;{/if}"><span id="errorMessage">{foreach from=$error item=msg}{$msg}<br/>{/foreach}</span> </div>
 
 
+<form method='post' name='newtickets' action='' class='generalForm'>
 
-<form method='post' name='newtickets' action=''>
+<div>
+    <label for='numberoftickets'>Number of Tickets</label>
+    <input type="text" name="numberoftickets" value='{$user.numberoftickets}'/>
+    <span id="numberofticketsInfo">Maximum of 50 tickets per batch</span>
+</div>
+<div>
+    <label for='Group'>Group</label>
+    {html_options name="Group" options=$Usergroups selected=$user.Group}    
+    <span id='GroupInfo'>Choose the users group (Expiry is based on the user group)</span>
+</div>
+<div>
+    <label for='Comment'>Comment</label>
+    <input type="text" name="Comment" value='{$user.Comment}'/>
+    <span id='CommentInfo'>A comment that is applied to all tickets</span>
+</div>
 
+    <span>When ether limit is reached, the user will be cut off. (i.e. after 1hour even if they still have data left)</span>
 
-<table>
+<div>
+    <label for='Max_Mb'>Data Limit (MiB)</label>
+    {html_options name="Max_Mb" options=$Datacosts selected=$user.Max_Mb}
+    <span class="form_or">OR</span>
+    <input type="text" class="default_swap" id="MaxMb" name="MaxMb" value='{$user.MaxMb}' title="Type your own Mb Limit"/>
+    <span id='Max_MbInfo'>Choose a Data Limit OR Type your own value</span>
+</div>
+<div>
+    <label for='Max_Time'>Time Limit (Minutes)</label>
+    {html_options name="Max_Time" options=$Timecosts selected=$user.Max_Time}
+    <span class="form_or">OR</span>
+    <input type="text" class="default_swap" id="MaxTime" name="MaxTime" value='{$user.MaxTime}' title="Type your own Time Limit"/>
+    <span id='Max_TimeInfo'>Choose a Time Limit OR Type your own value</span>
+</div>
 
-<tr><td>Number of Tickets <a class="helpbutton" onclick="ShowContent('helpbox','Maximum of 50 tickets per batch');" > <img src="/grase/images/icons/help.png" alt=""/></a></td><td><input type="text" name="numberoftickets" value='{$user.numberoftickets}'/></td></tr>
+        <button type="submit" name="createticketssubmit" value="Create Tickets"><img src="/grase/images/icons/tick.png" alt=""/>Create Tickets</button>
 
-<tr><td>Group</td><td> {html_options name="Group" options=$Usergroups selected=$user.Group}</td></tr>
-<tr><td>Comment</td><td> <input type="text" name="Comment" value='{$user.Comment}'/></td></tr>
-
-
-<tr><td colspan='2'>When ether limit is reached, the user will be cut off. (i.e. after 1hour even if they still have data left)</td></tr>
-<tr><td>Data Limit (Mb)</td><td>{html_options name="Max_Mb" options=$Datacosts selected=$user.Max_Mb} <span class="form_or">OR</span> <input type="text" class="default_swap" id="MaxMb" name="MaxMb" value='{$user.MaxMb}' title="Type your own Mb Limit"/>
-</td></tr>
-<tr><td>Time Limit (Minutes)</td><td>{html_options name="Max_Time" options=$Timecosts selected=$user.Max_Time} <span class="form_or">OR</span> <input type="text" class="default_swap" id="MaxTime" name="MaxTime" value='{$user.MaxTime}' title="Type your own Time Limit"/></td></tr>
-
-
-<tr><td></td><td class="buttons"><button class="positive" type="submit" name="createticketssubmit" value="Create Tickets"><img src="/grase/images/icons/tick.png" alt=""/>Create Tickets</button></td></tr>
-</table>
 </form>
 </div>
 

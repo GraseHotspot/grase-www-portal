@@ -5,17 +5,24 @@
 <title>{$Title} - {$Name}</title>
 <meta name="generator" content="{$Application} {$application_version}" />
 <!-- CSS Stylesheet -->
-<link rel="stylesheet" type="text/css" href="../hotspot.css" id="hotspot_css" />
+<link rel="stylesheet" type="text/css" href="/grase/hotspot.css" id="hotspot_css" />
 <link rel="stylesheet" type="text/css" href="radmin.css?{$css_version}" id="radmin_css" />
 
-<link type="text/css" href="css/cupertino/jquery-ui-1.7.2.custom.css" rel="stylesheet" />       
+
+
+<!--<link type="text/css" href="css/cupertino/jquery-ui-1.7.2.custom.css" rel="stylesheet" />       -->
+	<link type="text/css" href="/javascript/jquery-ui/themes/base/jquery.ui.all.css" rel="stylesheet" />	
+	<link type="text/css" href="/grase/css/cupertino/jquery-ui-1.8.11.custom.css" rel="stylesheet" />	
+
+    <script language="javascript" type="text/javascript" src="/javascript/jquery/jquery.js"></script>
+
+    <script language="javascript" type="text/javascript" src="/javascript/jquery-ui/jquery-ui.js"></script>
+    
+    <script language="javascript" type="text/javascript" src="/grase/js/jquery.tablesorter.min.js"></script>    
+    
+    <script language="javascript" type="text/javascript" src="/grase/js/grase.js"></script>        
 
 <link rel="shortcut icon" href="/grase/favicon.ico" />
-
-<!-- jquery needed for custom functionality, must be loaded before prototype -->
-<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
-<script type="text/javascript" src="js/jquery.tablesorter.min.js"></script>
-<!--<script type="text/javascript" src="js/jquery-ui-1.7.2.custom.min.js"></script>-->
 
 <!-- Script for password strength checking -->
 <script type="text/javascript" src="js/pwd_strength.js"></script>
@@ -45,55 +52,6 @@ window.onload = function () {
 	switchMenu("Staff");
 	switchMenu("Students");*/
 }
-
-<!-- Copyright 2006,2007 Bontrager Connection, LLC
-// http://bontragerconnection.com/ and http://www.willmaster.com/
-// Version: July 28, 2007
-var cX = 0; var cY = 0; var rX = 0; var rY = 0;
-function UpdateCursorPosition(e){ cX = e.pageX; cY = e.pageY;}
-function UpdateCursorPositionDocAll(e){ cX = event.clientX; cY = event.clientY;}
-if(document.all) { document.onmousemove = UpdateCursorPositionDocAll; }
-else { document.onmousemove = UpdateCursorPosition; }
-function AssignPosition(d) {
-if(self.pageYOffset) {
-	rX = self.pageXOffset;
-	rY = self.pageYOffset;
-	}
-else if(document.documentElement && document.documentElement.scrollTop) {
-	rX = document.documentElement.scrollLeft;
-	rY = document.documentElement.scrollTop;
-	}
-else if(document.body) {
-	rX = document.body.scrollLeft;
-	rY = document.body.scrollTop;
-	}
-if(document.all) {
-	cX += rX; 
-	cY += rY;
-	}
-d.style.left = (cX+10) + "px";
-d.style.top = (cY+10) + "px";
-}
-function HideContent(d) {
-if(d.length < 1) { return; }
-document.getElementById(d).style.display = "none";
-}
-function ShowContent(d,content) {
-if(d.length < 1) { return; }
-var dd = document.getElementById(d);
-dd.innerHTML=content + "<br/><a onclick=\"HideContent('helpbox');\">[close]<\/a>";
-AssignPosition(dd);
-dd.style.display = "block";
-}
-function ReverseContentDisplay(d) {
-if(d.length < 1) { return; }
-var dd = document.getElementById(d);
-AssignPosition(dd);
-if(dd.style.display == "none") { dd.style.display = "block"; }
-else { dd.style.display = "none"; }
-}
-
-
 
 // $.noConflict();
 var $j = jQuery;
@@ -145,31 +103,51 @@ $j(document).ready(function(){
         $(".stripeMe").tablesorter(); // {sortList: [[0,0], [1,0]]});
 
 
-        $("#userslistTable").tablesorter(); 
 
+        
         $(".printlink").attr({ target: "_print"});
     });
 
 }) ;
 
+$(document).ready(function(){
 
+    
+    $.tablesorter.defaults.widgets = ['zebra']; 
+    
+    $("#userslistTable").tablesorter({
+        sortForce: [[1,0]], 
+        sortList: [[0,0],[1,0]] 
+    });     
+    $("#myTable2").tablesorter(); 
+    
+    $('.dialog').dialog({
+			autoOpen: false,
+			modal: true
+		});  
+
+
+
+}) ;
 
 
 //--><!]]></script>{/literal}
 
-
-
-
 </head>
 <body>
-{literal}<!--[if lte IE 6]><script src="/grase/ie6/warning2.js"></script><![endif]-->{/literal}
-<div id="topbar">
-<h1>{$Title} (v{$application_version})</h1>
-{if ! $hidemenubar}{if $activepage != "login" && $activepage != "setup" && $activepage != "error"}{include file="menubar.tpl" }{/if}{/if}
-</div>
-<div id="helpbox" onclick="HideContent('helpbox');" style="display:none;">&nbsp;</div>
-<div id="radminPage">
-	<div id="messagebox" style="display: {if $messagebox}block;{else}none;{/if}">
-	{foreach from=$messagebox item=msg}{$msg}<br/>{/foreach}
-	</div>
+<div id="page">
+    {literal}<!--[if lte IE 6]><script src="/grase/ie6/warning2.js"></script><![endif]-->{/literal}
+    <div id="topbar">
+        <h1>{$Title} (v{$application_version})</h1>
+    </div>
+
+    <!-- Sidebar (Menu) -->
+    <div id="sidebar">
+        {if ! $hidemenubar && $activepage != "login" && $activepage != "setup" && $activepage != "error"}{include file="menubar.tpl" }{/if}
+        &nbsp;
+    </div>
+    
+    <!-- Main content -->
+    <div id="pagecontent">
+        {include file="errors.tpl"}
 

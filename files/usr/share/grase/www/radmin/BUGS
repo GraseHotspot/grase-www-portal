@@ -1,0 +1,3 @@
+Known Bugs
+
+* User passwords are "trimmed". Leading or trailing spaces in the password are truncated off

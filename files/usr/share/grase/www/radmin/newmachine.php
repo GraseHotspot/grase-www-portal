@@ -27,7 +27,7 @@ require_once 'includes/database_functions.inc.php';
 function validate_form()
 {
 	$error = array();
-	if(! checkDBUniqueUsername($_POST['mac'])) $error[] = _("Username already taken");
+	if(! checkDBUniqueUsername($_POST['mac'])) $error[] = _("MAC Address already has an account");
 	
 	$MaxMb = ereg_replace("[^\.0-9]", "", $_POST['MaxMb'] );
 	$Max_Mb = ereg_replace("[^\.0-9]", "", $_POST['Max_Mb'] );	
@@ -72,7 +72,7 @@ if(isset($_POST['newmachinesubmit']))
 		if(ereg_replace("[^\.0-9]", "",clean_text($_POST['MaxTime'])))
 		    $MaxTime = ereg_replace("[^\.0-9]", "",clean_text($_POST['MaxTime']));
 		$mac = clean_text($_POST['mac']);
-		$success = database_create_new_user(
+		database_create_new_user( // TODO: Check if successful
 			$mac,
 			'password', // TODO: This needs to come from settings
 			$MaxMb,
@@ -81,9 +81,9 @@ if(isset($_POST['newmachinesubmit']))
 			'Machine', // TODO: This needs to be linked to settings
 			clean_text($_POST['Comment'])
 		);
-		$message[] = _("User Successfully Created");
+		$success[] = _("Machine Account Successfully Created");
 		AdminLog::getInstance()->log("Created new machine $mac");
-		$smarty->assign("messagebox", $message);
+		$smarty->assign("success", $success);
 		display_addmachine_form();
 	}
 }else

@@ -156,13 +156,13 @@ function validate_post_expirydate()
 
 function validate_datalimit($limit)
 {
-	if ($limit && ! is_numeric($limit) ) return printf(_("Invalid value '%s' for Data Limit"),$limit);
+	if ($limit && ! is_numeric($limit) ) return sprintf(_("Invalid value '%s' for Data Limit"),$limit);
 	// TODO: Return what?
 }
 
 function validate_timelimit($limit)
 {
-	if ($limit && ! is_numeric($limit) ) return printf(_("Invalid value '%s' for Time Limit"), $limit);
+	if ($limit && ! is_numeric($limit) ) return sprintf(_("Invalid value '%s' for Time Limit"), $limit);
 	// TODO: Return what?
 }
 
@@ -176,7 +176,7 @@ function validate_mac($macaddress)
 function validate_int($number)
 {
 	if ($number && is_numeric($number) && trim($number) != "") return "";
-    return printf(_("Invalid number '%s' (Must be whole number)"), $number);
+    return sprintf(_("Invalid number '%s' (Must be whole number)"), $number);
 	// TODO: Return what?
 }
 
@@ -258,6 +258,11 @@ function clean_text($text)
 #	$text = mysql_real_escape_string($text);
 
 	return $text;
+}
+
+function clean_number($number)
+{
+    return ereg_replace("[^\.0-9]", "", clean_text($number));
 }
 
 

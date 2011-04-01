@@ -45,13 +45,16 @@ function createmenuitems()
 	$menubar['users'] = array("href" => "display", "label" => "Users");
 	$menubar['createuser'] = array("href" => "newuser", "label" => "Create New User");
 	$menubar['createtickets'] = array("href" => "newtickets", "label" => "Mass Create Users");	
+	$menubar['createmachine'] = array("href" => "newmachine", "label" => "Create New Machine");	
 	$menubar['sessions'] = array("href" => "sessions", "label" => "Monitor Sessions");
     $menubar['reports'] = array("href" => "reports", "label" => "Reports");
     $menubar['monthly_accounts'] = array("href" => "datausage", "label" => "Monthly Reports");
+	$menubar['settings'] = array("href" => "settings", "label" => "Site Settings" );
+	$menubar['uploadlogo'] = array("href" => "uploadlogo", "label" => "Site Logo" );	
 	$menubar['links'] = array("href" => "links", "label" => "Useful Links");	
 	$menubar['passwd'] = array("href" => "passwd", "label" => "Admin Users" );
 	$menubar['adminlog'] = array("href" => "adminlog", "label" => "Admin Log" );	
-	$menubar['settings'] = array("href" => "settings", "label" => "Site Settings" );
+	
 	$menubar['logout'] = array("href" => "./?logoff", "label" => "Logoff" );
 	return $menubar;
 }
@@ -75,7 +78,8 @@ function datacosts()
 	{
 		$disp_money = number_format($money, 2);
 		$data = round($money/$pricemb, 2);
-		$datacosts["$data"] = "$disp_currency$disp_money ($data Mb)";
+		$disp_data = Formatting::formatBytes($data*1024*1024);
+		$datacosts["$data"] = "$disp_currency$disp_money ($disp_data)";
 	}
 	return $datacosts;
 }
@@ -95,6 +99,18 @@ function timecosts()
 	return $timecosts;
 }
 
+function gboctects()
+{
+    $gb_options = array(1, 2, 4, 5, 10, 100);
+    foreach($gb_options as $gb)
+    {
+        $octects = $gb*1024*1048576;
+        $label = "$gb GiB";
+        $options[$octects] = $label;
+    }
+    return $options;
+}
+
 function usergroups()
 {
 	global $Usergroups;
@@ -103,7 +119,7 @@ function usergroups()
 	$Usergroups["Students"] = "Students";
 	$Usergroups["Staff"] = "Staff";
 	$Usergroups["Ministry"] = "Ministry";
-	$Usergroups[MACHINE_GROUP_NAME] = "Machine (Locked)";
+//	$Usergroups[MACHINE_GROUP_NAME] = "Machine (Locked)";
 	return $Usergroups;
 }
 
@@ -115,7 +131,7 @@ function groupexpirys()
 	$Expiry["Ministry"] = "+6 months";
 	$Expiry["Students"] = "+3 months";
 	$Expiry["Visitors"] = "+1 months";
-	$Expiry[MACHINE_GROUP_NAME] = "--";
+//	$Expiry[MACHINE_GROUP_NAME] = "--";
 	$Expiry[DEFAULT_GROUP_NAME] = "+1 months";
 	return $Expiry;
 }
@@ -145,7 +161,7 @@ require_once 'smarty/Smarty.class.php';
 $smarty = new Smarty;
 
 $smarty->compile_check = true;
-$smarty->register_outputfilter('smarty_outputfilter_strip');
+//$smarty->register_outputfilter('smarty_outputfilter_strip');
 $smarty->register_modifier('bytes', array("Formatting", "formatBytes"));
 $smarty->register_modifier('seconds', array("Formatting", "formatSec"));
 
@@ -153,10 +169,6 @@ list($cssrevid, $application_version)=css_file_version();
 $smarty->assign("css_version", $cssrevid);
 $smarty->assign("application_version", $application_version);
 $smarty->assign("Application", APPLICATION_NAME);
-
-$smarty->assign("Title", $location . " - " . APPLICATION_NAME);
-$smarty->assign("website_name", $website_name);
-$smarty->assign("website_link", $website_link);
 
 $smarty->assign("RealHostname", $realhostname);
 
@@ -170,10 +182,13 @@ $smarty->assign("CurrencySymbols", currency_symbols());
 $smarty->assign("Datacosts", datacosts());
 $smarty->assign("Timecosts", timecosts());
 
+$smarty->assign('gbvalues', gboctects());
+
 
 function assign_vars()
 {
 	global $smarty, $sellable_data, $useable_data, $used_data, $sold_data;
+	global $location, $website_name, $website_link;
 
 	// Data
 	$total_sellable_data = $sellable_data; 
@@ -190,6 +205,11 @@ function assign_vars()
 	$smarty->assign("DataRemainingOctets", $total_useable_data - $used_data);
 	$smarty->assign("DataUsagePercent", $used_data/($total_useable_data)*100);
 
+    // Settings
+    $smarty->assign("Title", $location . " - " . APPLICATION_NAME);
+    $smarty->assign("website_name", $website_name);
+    $smarty->assign("website_link", $website_link);
+    
 
 	// last months usage
 	$used_data =  getMonthUsedData(); // TODO: make it get last month that data is for?

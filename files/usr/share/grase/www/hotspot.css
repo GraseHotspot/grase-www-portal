@@ -1,5 +1,39 @@
 /* Copyright 2008 Timothy White */
 
+/* CSS Reset */
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+img, fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* End CSS Reset */
+
 body {
 	font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
 	color: #0a57a9;
@@ -14,20 +48,13 @@ body {
 #page {
 	width: 70%;
 	margin: auto;
-	margin-top: 1em;
-	border: 1px solid orange;
+	margin-top: 3em;
+	border: 1px solid blue;
 	padding: 1em;
 	background: white;
         background: url("/grase/images/logo.png") right top no-repeat;
 	text-align: left;
 }
-
-h1 {
-	padding: 0;
-	margin: 0;
-}
-
-
 
 a {
 	color: green;
@@ -143,7 +170,7 @@ a {
 
 
 /* INPUTs */
-
+/*
 .form_or {
     float: left;
     padding-right: 0.5em;
@@ -160,19 +187,19 @@ input, select, button {
 
     font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
     font-size:100%;
-/*    line-height:130%;*/
+
     text-decoration:none;
     font-weight:bold;
     color:#565656;
     cursor:pointer;
     margin-right: 5px;
-/*    padding:5px 10px 6px 7px; /* Links */	
-}
 
-input:disabled, select:disabled, button:disabled, button:disabled:hover {
-    background-color: gray;
-	color: black;
 }
+*/
+/*input:disabled, select:disabled, button:disabled, button:disabled:hover {
+    background-color: lightgray;
+	color: white;
+}*/
 
 
 /* BUTTONS */

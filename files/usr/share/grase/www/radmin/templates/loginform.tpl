@@ -2,14 +2,23 @@
 
 <div id="loginForm">
 <h2>Login</h2>
-<div class="errorPage" style="display: {if $error}block;{else}none;{/if}"><span id="errorMessage">{foreach from=$error item=msg}{$msg}<br/>{/foreach}</span> </div>
 Login is required to access the Administration section of this website.
-<form method='post' action="login?page={$smarty.server.SCRIPT_NAME}">
-<table>
-<tr><td>Username</td><td> <input type="text" name="username" value='{$username}'/></td></tr>
-<tr><td>Password</td><td> <input type="password" name="password" value='{$password}'/></td></tr>
-<tr><td></td><td><button type="submit" class="positive" name="login" value="Login">Login</button></td></tr>
-</table>
+
+<form method='post' action="login?page={$smarty.server.SCRIPT_NAME}" class='generalForm width2'>
+
+<div>
+    <label for='username' class='width1>Username<input type="text" name="username" value='{$username}'/></label>
+    <input type="text" name="username" value='{$username}'/>
+    <span>Username for Admin interface (Different to internet access username)</span>
+</div>
+
+<div class='width1'>
+    <label for='password'>Password</label>
+    <input type="password" name="password" />
+    <span></span>    
+</div>
+<button type="submit" class="positive" name="login" value="Login">Login</button>
+
 </form>
 
 </div>

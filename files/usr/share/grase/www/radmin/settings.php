@@ -24,215 +24,260 @@ require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
 require_once 'includes/database_functions.inc.php';
 
+$error = array();
+$success = array();
+
+if(isset($_POST['submit']))
+{
+    $newlocationname    = trim(clean_text($_POST['locationname']));
+    $newsupportcontact  = trim(clean_text($_POST['supportcontact']));    
+    $newsupportlink     = trim(clean_text($_POST['supportlink']));
+	$newpricemb         = trim(clean_text($_POST['pricemb']));
+	$newpricetime       = trim(clean_text($_POST['pricetime']));
+	$newcurrency        = trim(clean_text($_POST['currency']));    
+	$newwebsitename     = trim(clean_text($_POST['websitename']));
+	$newwebsitelink     = trim(clean_text($_POST['websitelink']));
+	$newsellabledata    = trim(clean_text($_POST['sellable_data']));
+	$newuseabledata     = trim(clean_text($_POST['useable_data']));	    
+    // Check for changed items
+    
+    if($newlocationname != $location) update_location($newlocationname);
+    if($newsupportcontact != $support_name) update_supportcontact($newsupportcontact);    
+    if($newsupportlink != $support_link) update_supportlink($newsupportlink);    
+    if($newpricemb != $pricemb) update_pricemb($newpricemb);
+    if($newpricetime != $pricetime) update_pricetime($newpricetime);
+    if($newcurrency != $currency) update_currency($newcurrency);
+    if($newwebsitename != $website_name) update_websitename($newwebsitename);
+    if($newwebsitelink != $website_link) update_websitelink($newwebsitelink);
+    if($newsellabledata != $sellable_data) update_sellabledata($newsellabledata);
+    if($newuseabledata != $useable_data) update_useabledata($newuseabledata);    
+    // Call validate&change functions for changed items
+}
+
 // TODO: Make a proper settings file?
+load_global_settings(); // Reloads settings
 
 	$smarty->assign("location", $location);
 	$smarty->assign("pricemb", $pricemb);
 	$smarty->assign("pricetime", $pricetime);
 	$smarty->assign("currency", $currency);
 	$smarty->assign("dispcurrency", $CurrencySymbols[$currency]);
-	$smarty->assign("sellable_data", $sellable_data/1048576);
-	$smarty->assign("useable_data", $useable_data/1048576);
+	$smarty->assign("sellable_data", $sellable_data);
+	$smarty->assign("useable_data", $useable_data);
 	$smarty->assign("support_name", $support_name);
 	$smarty->assign("support_link", $support_link);
 	$smarty->assign("website_name", $website_name);
 	$smarty->assign("website_link", $website_link);
+	
+if(sizeof($error) > 0) $smarty->assign("error", $error);	
+if(sizeof($success) > 0) $smarty->assign("success", $success);
 
 //$old_error_level = error_reporting(1); // TODO: Don't have this catching stuff
 
 // Location
-    $error_locationname = false;
-	if(isset($_POST['changelocationsubmit'])) // Change Location Name
-	{
-		$error_locationname = "Location Name not valid";
-		$new_location = trim(clean_text($_POST['newlocationname']));
-		if($new_location != "")
-		{
-			if($Settings->setSetting('locationName', $new_location))
-			{
-				$error_locationname = "Location Name Changed";
-				AdminLog::getInstance()->log("Location Name changed to $new_location");
-				$smarty->assign("location", $new_location);
-				$smarty->assign("Title", $new_location . " - " . APPLICATION_NAME);
-			}
-			else
-			{
-			    $error_locationname = "Error Saving Location Name to Setting files";
-			}
-		}
-	}
-	$smarty->assign("error_locationname", $error_locationname);
 
-// Logo
-    $error_logo = false;
-	if(isset($_POST['changelogosubmit'])) // Change Location Name
-	{
-
-		$error_logo = "Logo Image not valid";
-		$error_logo = file_upload_error_message($_FILES['newlogo']['error']);
-		if ($_FILES['newlogo']['error'] === UPLOAD_ERR_OK)
-		{
-			//print "Uploading image...";
-			if(!file_exists($_FILES['newlogo']['tmp_name']))
-			{
-				$error_logo = "Logo Failed to upload";
-			}elseif($_FILES['newlogo']['size'] > 20480)
-			{
-				$error_logo = "Logo too big";
-			}else
-			{
-				//print "Attempting to test if png";
-				if(exif_imagetype($_FILES['newlogo']['tmp_name']) != IMAGETYPE_PNG)
-				{
-					$error_logo = "Logo is not a png";
-				}else
-				{
-					//print "Attempting to move file";
-					if(move_uploaded_file($_FILES['newlogo']['tmp_name'], '/usr/share/grase/www/images/logo.png'))
-					{
-						$error_logo = "Logo Updated (you may need to refresh your browser to see the change)";
-						AdminLog::getInstance()->log("New Logo Uploaded");
-					}else
-					{			
-						$error_logo = "Unable to save new logo to server";
-					}
-				}
-			}
-		}
-	}
-	$smarty->assign("error_logo", $error_logo);
+function update_location($location)
+{
+    global $error, $smarty, $Settings, $success;
+    if($location == "") $error[] = _("Location name not valid");
+    else {
+	    if($Settings->setSetting('locationName', $location))
+	    {
+		    $success[] = _("Location name updated");
+		    AdminLog::getInstance()->log(_("Location Name changed to")." $new_location");
+		    $smarty->assign("Title", $location . " - " . APPLICATION_NAME); //TODO: remove need for this with setting reload function
+	    }
+	    else
+	    {
+	        $error[] = _("Error Saving Location Name");
+	    }    
+    }
+}
 
 // Website
+function update_websitename($websitename)
+{
+    global $error, $smarty, $Settings, $success;
+    if($websitename == "") $error[] = _("Website name not valid");    
+    else
+    {
+        if($Settings->setSetting('websiteName', $websitename))
+        {
+            $success[] = _("Website name updated");
+			AdminLog::getInstance()->log(_("Website name updated"));        
+        }
+        else
+        {
+            $error[] = _("Error Saving Website Name");
+        }
+    }
+}
 
-    $error_website = false;
-	if(isset($_POST['changewebsitesubmit']))
-	{ 
-		$error_website = "Website Details not valid";
-		$new_websitename = trim(clean_text($_POST['newwebsitename']));
-		$new_websitelink = trim(clean_text($_POST['newwebsitelink']));
-		if($new_websitename != "" && $new_websitelink != "" && strpos($new_websitelink, ' ') === false)
-		{
-		    $error_website = "Unabled to update website details";
-			if(
-			    $Settings->setSetting('websiteName', $new_websitename) > 0 &&
-			    $Settings->setSetting('websiteLink', $new_websitelink) > 0			    
-			)
-			{
-				$error_website = "Website Updated";
-				AdminLog::getInstance()->log("Website settings updated");
-				$smarty->assign("website_name", $new_websitename);
-				$smarty->assign("website_link", $new_websitelink);
-			}
-		}
-	}
-	$smarty->assign("error_website", $error_website);
+function update_websitelink($websitelink)
+{
+    global $error, $smarty, $Settings, $success;
+    if($websitelink == "" || strpos($websitelink, ' ') !== false) $error[] = _("Website link not valid");    
+    else
+    {
+        if($Settings->setSetting('websiteLink', $websitelink))
+        {
+            $success[] = _("Website link updated");
+			AdminLog::getInstance()->log(_("Website link updated"));        
+        }
+        else
+        {
+            $error[] = _("Error Saving Website link");
+        }
+    }
+}
 
 // Pricing
-    $error_price = false;
-	if(isset($_POST['changepricingsubmit']))
-	{ 
-		$error_price = "";
-		$new_pricemb = trim(clean_text($_POST['newpricemb']));
-		$new_pricetime = trim(clean_text($_POST['newpricetime']));
-		$new_currency = trim(clean_text($_POST['newcurrency']));
 
-		if($new_pricemb != "" && is_numeric($new_pricemb))
+function update_pricemb($pricemb)
+{
+    global $error, $smarty, $Settings, $success;
+	if($pricemb != "" && is_numeric($pricemb))
+	{
+		if($Settings->setSetting('priceMb', $pricemb))
 		{
-			if($Settings->setSetting('priceMb', $new_pricemb))
-			{
-				$error_price .= "Price/Mb Changed<br/>";
-				AdminLog::getInstance()->log("Price/Mb changed");
-				$smarty->assign("pricemb", $new_pricemb);
-			}else
-			{
-				$error_price .= "Unable to update Price/Mb<br/>";
-			}
-		}else
-		{
-			$error_price .= "Invalid Price/Mb<br/>";
+			$success[] = _("Price per MiB updated");
+			AdminLog::getInstance()->log(_("Price per MiB updated"));
 		}
-
-		if($new_pricetime != "" && is_numeric($new_pricetime))
+		else
 		{
-			if($Settings->setSetting('priceMinute', $new_pricetime))
-			{
-				$error_price .= "Price/Time Changed<br/>";
-				AdminLog::getInstance()->log("Price/Time changed");
-				$smarty->assign("pricetime", $new_pricetime);
-			}else
-			{
-				$error_price .= "Unable to update Price/Minute<br/>";
-			}
-		}else
-		{
-			$error_price .= "Invalid Price/Minute<br/>";
+			$error[] = _("Error saving Price per MiB");
 		}
-
-		if($new_currency != "" && strlen($new_currency) < 4)
-		{
-			if($Settings->setSetting('currency', $new_currency))
-			{
-				$error_price .= "Currency Changed";
-				AdminLog::getInstance()->log("Currency changed to ${CurrencySymbols[$new_currency]}");
-				$smarty->assign("currency", $new_currency);
-				$smarty->assign("dispcurrency", $CurrencySymbols[$new_currency]);
-			}else
-			{
-				$error_price .= "Unable to update Currency<br/>";
-			}
-		}else
-		{
-			$error_price .= "Invalid Currency<br/>";
-		}
-
-
 	}
-	$smarty->assign("error_pricing", $error_price);
+	else
+	{
+		$error[] = _("Invalid Price per MiB");
+	}
+}	
+
+function update_pricetime($pricetime)
+{
+    global $error, $smarty, $Settings, $success;
+	if($pricetime != "" && is_numeric($pricetime))
+	{
+		if($Settings->setSetting('priceMinute', $pricetime))
+		{
+			$success[] = _("Price per Minute Updated");
+			AdminLog::getInstance()->log(_("Price per Minute Updated"));
+		}else
+		{
+			$error[] = _("Error saving Price per Minute");
+		}
+	}else
+	{
+		$error[] = _("Invalid Price per Minute");
+	}
+}
+
+function update_currency($currency)
+{
+    global $error, $smarty, $Settings, $success, $CurrencySymbols;
+	if($currency != "" && strlen($currency) < 4)
+	{
+		if($Settings->setSetting('currency', $currency))
+		{
+			$success[] = _("Currency updated");
+			AdminLog::getInstance()->log(_("Currency updated to") ." ${CurrencySymbols[$currency]}");
+		}
+		else
+		{
+			$error[] = _("Error saving Currency");
+		}
+	}else
+	{
+		$error[] = _("Invalid Currency");
+	}
+
+
+}
+
 
 // Data limits
+function update_sellabledata($sellabledata)
+{
+    global $error, $smarty, $Settings, $success;
+    if($sellabledata != "" && is_numeric($sellabledata))
+    {
+        if($Settings->setSetting('sellableData', $sellabledata))
+        {
+            $success[] = _("Sellable Data Limit Update");
+			AdminLog::getInstance()->log(_("Sellable Data Limit Update"));        
+        }
+        else
+        {
+            $error[] = _("Error updating Sellable Data Limit");
+        }
+    }
+    else
+    {
+        $error[] = _("Invalid value for Sellable Data");
+    }
+}
 
-    $error_data = false;
-	if(isset($_POST['changedatasubmit']))
-	{ 
-		$error_data = "Data Limits not valid";
-		$new_selldata = trim(clean_text($_POST['newsellable_data']));
-		$new_usedata = trim(clean_text($_POST['newuseable_data']));
-		if($new_selldata != "" && is_numeric($new_selldata) && $new_usedata != "" && is_numeric($new_usedata) )
-		{
-			if($Settings->setSetting('sellableData', $new_selldata*1048576) && $Settings->setSetting('useableData', $new_usedata*1048576)) // TODO: Make this octets properly and combine octets functions with other areas
-			{
-				$error_data = "Data Limits changed";
-				AdminLog::getInstance()->log("Graph Data Limits changed");
-				$smarty->assign("sellable_data", $new_selldata);
-				$smarty->assign("useable_data", $new_usedata);
-			}
-		}
-	}
-	$smarty->assign("error_data", $error_data);
+function update_useabledata($useabledata)
+{
+    global $error, $smarty, $Settings, $success;
+    if($useabledata != "" && is_numeric($useabledata))
+    {
+        if($Settings->setSetting('useableData', $useabledata))
+        {
+            $success[] = _("Useable Data Limit Update");
+			AdminLog::getInstance()->log(_("Useable Data Limit Update"));        
+        }
+        else
+        {
+            $error[] = _("Error updating Useable Data Limit");
+        }
+    }
+    else
+    {
+        $error[] = _("Invalid value for Useable Data");
+    }
+}
 
 // Support Contact
+function update_supportcontact($supportname)
+{
+    global $error, $smarty, $Settings, $success;
+    if($supportname == "") $error[] = _("Support name not valid");    
+    else
+    {
+        if($Settings->setSetting('supportContactName', $supportname))
+        {
+            $success[] = _("Support name updated");
+			AdminLog::getInstance()->log(_("Support name updated"));        
+        }
+        else
+        {
+            $error[] = _("Error Saving Support Name");
+        }
+    }
+}
 
-    $error_support = false;
-	if(isset($_POST['changesupportsubmit']))
-	{ 
-		$error_support = "Support Contact Details not valid";
-		$new_supportname = trim(clean_text($_POST['newsupportname']));
-		$new_supportlink = trim(clean_text($_POST['newsupportlink']));
-		if($new_supportname != "" && $new_supportlink != "" && strpos($new_supportlink, ' ') === false)
-		{
-			if($Settings->setSetting('supportContactLink', $new_supportlink) && $Settings->setSetting('supportContactName', $new_supportname))
-			{
-				$error_support = "Support Contact Details Updated";
-				AdminLog::getInstance()->log("Support Contact Details changed");
-				$smarty->assign("support_name", $new_supportname);
-				$smarty->assign("support_link", $new_supportlink);
-			}
-		}
-	}
-	$smarty->assign("error_support", $error_support);
+function update_supportlink($supportlink)
+{
+    global $error, $smarty, $Settings, $success;
+    if($supportlink == "" || strpos($supportlink, ' ') !== false) $error[] = _("Support link not valid");    
+    else
+    {
+        if($Settings->setSetting('supportContactLink', $supportlink))
+        {
+            $success[] = _("Support link updated");
+			AdminLog::getInstance()->log(_("Support link updated"));        
+        }
+        else
+        {
+            $error[] = _("Error Saving Support link");
+        }
+    }
+}
 
 //error_reporting($old_error_level);
-	require('includes/site_settings.inc.php'); // ReRead settings
+	//require('includes/site_settings.inc.php'); // ReRead settings
 	display_page('settings.tpl');
 
 ?>

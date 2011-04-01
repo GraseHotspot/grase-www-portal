@@ -71,7 +71,13 @@ class SystemInformation
 
     public function Hostname()
     {
-        $this->hostname = gethostbyaddr (gethostbyname ($_SERVER["SERVER_NAME"])); 
+        if(function_exists('gethostname'))
+        {
+            $this->hostname = gethostname();
+        }else{
+            $this->hostname = php_uname('n');
+        }
+        //$this->hostname = gethostbyaddr (gethostbyname ($_SERVER["SERVER_NAME"])); 
     }
     
     public function SoftwareVersion()
@@ -116,7 +122,8 @@ class SystemInformation
     {
         $nameservers = preg_split("/\n/", trim(shell_exec("grep nameserver /etc/resolv.conf")));
         $ifaceobj->dns_primary = end(preg_split("/\s+/", $nameservers[0],2));
-        $ifaceobj->dns_secondary = end(preg_split("/\s+/", $nameservers[1],2));        
+        if(isset($nameservers[1]))
+            $ifaceobj->dns_secondary = end(preg_split("/\s+/", $nameservers[1],2));        
 
     }
     
