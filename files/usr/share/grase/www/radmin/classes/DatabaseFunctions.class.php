@@ -307,7 +307,15 @@ class DatabaseFunctions
         $sql = "SELECT UserName
 	            FROM radcheck
 	            WHERE Attribute='Password'
+	            AND UserName NOT IN (
+	                SELECT UserName 
+	                FROM radcheck 
+	                WHERE Attribute='Service-Type' 
+	                AND Value='Administrative-User'
+	            )	                
 	            ORDER BY id";
+	            // Filters out Coova Chilli Config user.
+	            // Maybe just filter out groupless users?
         
         $results = $this->db->queryAll($sql);
         
