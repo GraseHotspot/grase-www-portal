@@ -341,7 +341,6 @@ chilliController.logoff = function () {
  *
  */
 chilliController.processReply = function ( resp ) {
-
 	if ( typeof (resp.message)  == 'string' ) {
 
 		/* The following trick will replace HTML entities with the corresponding
@@ -351,6 +350,7 @@ chilliController.processReply = function ( resp ) {
 		var fakediv = document.createElement('div');
 		fakediv.innerHTML = resp.message ;
 		chilliController.message = fakediv.innerHTML  ;
+
 	}
 
 	if ( typeof (resp.challenge) == 'string' ) {
@@ -389,6 +389,25 @@ chilliController.processReply = function ( resp ) {
 		/*if(chilliController.session.userName) // Assume will have username */
 		//alert("Loading user details initial time");
 		//chilliJSON.get('get_user_limits.php?username='+chilliController.session.userName);
+		//showStatusMessage("Logged In");
+		if(typeof( miniportal ) == 'undefined')
+		{
+    	    loginwindow = window.open("/grase/uam/mini", "grasestatus", "width=300,height=400,location=no,directories=no,status=yes,menubar=no,toolbar=no");
+    	    if(loginwindow)
+    	    {
+        	    loginwindow.moveTo(100,100);
+        	    loginwindow.focus();		
+    	    	window.location.href = chilliController.redir.originalURL;
+    	    }
+        	else
+        	{
+    	        showStatusMessage("Popup Blocked. Click link below to continue to your website and open the status window");
+    	    }
+    	}
+    	else
+    	{
+    	    showStatusMessage("Logged In");
+    	}
 	}
 
 	/* Update clientState */
@@ -471,7 +490,7 @@ chilliJSON.reply = function  ( raw ) {
 		var end = now.getTime() ;
 		 
 		if ( chilliJSON.timestamp ) {
-			log ( 'chilliJSON: JSON reply received in ' + ( end - chilliJSON.timestamp ) + ' ms\n' + dumpObject(raw) );
+			//log ( 'chilliJSON: JSON reply received in ' + ( end - chilliJSON.timestamp ) + ' ms\n' + dumpObject(raw) ); // Disabled due to dumpObject issues
 		}
 
 		if ( typeof (chilliJSON.node) !== 'number' ) {
@@ -601,8 +620,8 @@ function log( msg , messageLevel ) {
 
 /* Transform an object to a text representation */
 function dumpObject ( obj ) {
-
-	var str = '' ;
+    return 'dumpObject disabled';
+/*	var str = '' ;
 
 	for (var key in obj ) {
 		str = str + "    " + key + " = " + obj[key] + "\n" ;
@@ -613,7 +632,7 @@ function dumpObject ( obj ) {
 		}
 	}
 
-	return str;
+	return str;*/
 }
 
 /*
@@ -851,14 +870,16 @@ function ie_getElementsByTagName(str) {
 if (document.all) 
   document.getElementsByTagName = ie_getElementsByTagName;
 
-function hidePage(page) { 
-    var e = document.getElementById(page);
-    if (e != null) e.style.display='none';
+function hidePage(page) {
+    $("#"+page).hide(); 
+/*    var e = document.getElementById(page);
+    if (e != null) e.style.display='none';*/
 }
 
 function showPage(page) { 
-    var e = document.getElementById(page);
-    if (e != null) e.style.display='inline';
+    $("#"+page).show(); 
+/*    var e = document.getElementById(page);
+    if (e != null) e.style.display='inline';*/
 }
 
 function setElementValue(elem, val, forceHTML) {
@@ -874,8 +895,31 @@ function setElementValue(elem, val, forceHTML) {
     }
 }
 
+function showErrorMessage(message)
+{
+    if( message != "" ){
+        $("#errormessages").fadeIn(400).delay(10000).fadeOut(400);
+        $("#errormessageslist").html("<li>"+message+"</li>");
+        window.focus();
+    }else
+    {
+        $("#errormessages").hide();        
+    }
+}
+
+function showStatusMessage(message)
+{
+    if( message != "" ){
+        $("#successmessages").fadeIn(400).delay(5000).fadeOut(400);
+        $("#successmessageslist").html("<li>"+message+"</li>");
+    }else
+    {
+        $("#successmessages").hide();        
+    }
+}
+
 chilliClock.onChange = function ( newval ) {
-    setElementValue("sessionTime", chilliController.formatTime(newval));
+    $("#sessionTime").text(chilliController.formatTime(newval));
 }
     
 function updateUI (cmd ) {
@@ -886,15 +930,16 @@ function updateUI (cmd ) {
     if ( chilliController.redir ) {
 	if (chilliController.redir.originalURL != null &&
 	    chilliController.redir.originalURL != '') {
-	    setElementValue('originalURL', '<a target="_blank" href="'+chilliController.redir.originalURL+
-			    '">'+chilliController.redir.originalURL+'</a>', true);
+	        $("#originalURL").html('<a target="_blank" href="'+chilliController.redir.originalURL+
+			    '">'+chilliController.redir.originalURL+'</a>');
 	}
 	if (chilliController.redir.originalURL != null &&
-	    chilliController.redir.originalURL != '' && ! miniportal) {
-	    $('#userurl').html('<a href="'+chilliController.redir.originalURL+ '">Click here to continue to your site: '+chilliController.redir.originalURL+'</a>');
+	    chilliController.redir.originalURL != '' &&  typeof( miniportal ) == 'undefined' ) {
+	    $('#userurl').html('<a href="'+chilliController.redir.originalURL+ '">Click here to continue to your site (and open the status window)<br/> '+chilliController.redir.originalURL.substring(0,60)+'</a>');
 	    $('#userurl').click(function(){
     	    loginwindow = window.open("/grase/uam/mini", "grasestatus", "width=300,height=400,location=no,directories=no,status=yes,menubar=no,toolbar=no");
     	    loginwindow.moveTo(100,100);
+    	    loginwindow.focus();
     	    //return false;
 	    });
 	}	
@@ -905,14 +950,17 @@ function updateUI (cmd ) {
     }
 
     if ( chilliController.message ) {
-	setElementValue('logonMessage', chilliController.message);
+        //	setElementValue('logonMessage', chilliController.message);
+        $("#logonMessage").text(chilliController.message);
+        showErrorMessage(chilliController.message);
 	chilliController.message = null;
 	chilliController.refresh();
     }
 
     if ( chilliController.location ) {
-	setElementValue('locationName', chilliController.location.name);
-	chilliController.location = null;
+        $("#locationName").text(chilliController.location.name); // TODO: Find out where this is set and set it
+        //setElementValue('locationName', chilliController.location.name);
+    	chilliController.location = null;
     }
 
     if ( chilliController.clientState == 0 ) {
@@ -947,9 +995,13 @@ function connect() {
     var password =  document.getElementById('password').value ;
 
     if (username == null || username == '')
-	return setElementValue('logonMessage', 'Username is required');
+    {
+        showErrorMessage('Username is required');
+    	return $('#logonMessage').text('Username is required');
+	}
     
     showWaitPage(1000);
+    loginwindow = window.open("/grase/uam/mini", "grasestatus", "width=300,height=400,location=no,directories=no,status=yes,menubar=no,toolbar=no");    
     chilliController.logon( username , password ) ;
 }
 
@@ -964,8 +1016,6 @@ function disconnect() {
 
 /* User interface pages update */
 function showLogonPage() {
-    if (chilliController.openid) 
-        showPage('openIDSelect');
     showPage("logonPage");
     hidePage("statusPage");
     hidePage("waitPage");
@@ -983,10 +1033,12 @@ function showStatusPage() {
     // Update message
     if ( chilliController.message ) { 
 	setElementValue("statusMessage", chilliController.message);
+	showStatusMessage(chilliController.message);
     }
     
     // Update session
     setElementValue("sessionId",
+
 		    chilliController.session.sessionId ?
 		    chilliController.session.sessionId :
 		    "Not available");
@@ -1028,17 +1080,22 @@ function showStatusPage() {
 
 	/* Progress bars */
 	    if(chilliController.session.maxTotalOctets && chilliController.user_details.monthlyusagelimit) {
-		document.getElementById('download_bar').style.display='inline';
-		//download_PB.setPercentage(Math.round((chilliController.session.maxTotalOctets - chilliController.accounting.inputOctets - chilliController.accounting.outputOctets)/chilliController.user_details.monthlyusagelimit*100));
+    	    $("#download_bar").show().progressbar({ value: Math.round(
+    	        (chilliController.session.maxTotalOctets - 
+    	        chilliController.accounting.inputOctets - 
+    	        chilliController.accounting.outputOctets) / 
+    	       chilliController.user_details.monthlyusagelimit*100) });
 	    }else{
-		document.getElementById('download_bar').style.display='none';
+		    $("#download_bar").hide();
 	    }
 
-	    if(chilliController.session.sessionTimeout) {
-		document.getElementById('time_bar').style.display='inline';
-		//time_PB.setPercentage(Math.round((chilliController.session.sessionTimeout - chilliController.accounting.sessionTime)/chilliController.user_details.monthlytimelimit*100));
+	    if(chilliController.session.sessionTimeout && chilliController.user_details.monthlytimelimit) {
+	        $("#time_bar").show().progressbar({ value: Math.round(
+	            (chilliController.session.sessionTimeout - 
+	            chilliController.accounting.sessionTime) /
+	            chilliController.user_details.monthlytimelimit*100) });
 	     }else{
-		document.getElementById('time_bar').style.display='none';
+	        $("#time_bar").hide();
 	    }
     }
 
@@ -1059,42 +1116,6 @@ function showStatusPage() {
     setElementValue("RemainsessionTime", chilliController.formatTime(chilliController.session.sessionTimeout - chilliController.accounting.sessionTime, 'unlimited'));
     
     chilliClock.resync (chilliController.accounting.sessionTime);
-}
-
-function showOpenIDForm(e)
-{
-     var form = document.getElementById('openIDForm');
-     var x = document.createElement('div');
-     x.style.display = 'block';
-     x.style.position = 'absolute';
-     x.style.top = e.y - 25;
-     x.style.left = e.x + 25;
-     x.style.xIndex = 2;
-     x.innerHTML = form.innerHTML;
-     document.body.appendChild(x);
-}
-
-function openID() {
-  var openIDSelect = document.getElementById('openIDSelect');
-
-  openIDSelect.onclick = function(e) {
-     if (!e) e = window.event;
-     e.stopPropagation;
-     showOpenIDForm(e);
-  };
-
-  var openIDForm = document.getElementById('openIDForm');
-
-  openIDForm.onclick = function(e) {
-    if (!e) e = window.event;
-    e.stopPropagation;
-  };
-
-  document.onclick = closeOpenIDForm();
-}
-
-function closeOpenIDForm() {
-  hidePage('openIDForm');
 }
 
 function showWaitPage(delay) {
@@ -1124,7 +1145,7 @@ function showErrorPage( str )  {
 
 var chillijsWindowOnLoad = window.onload;
 var delayTimer; // global reference to delayTimer
-window.onload = function() {
+$(document).ready(function() {
     if (chillijsWindowOnLoad) 
 	chillijsWindowOnLoad();
 
@@ -1165,8 +1186,10 @@ window.onload = function() {
 	    logonForm.innerHTML='Error loading generic login form';
 	}
     }
-    showWaitPage();
+
     $("#logonFormnojs").hide(); 
+    $("#nojswarning").hide();     
     $("#userurlnojs").hide();    
+    showWaitPage();    
     setTimeout('chilliController.refresh()', 500);
-}
+});

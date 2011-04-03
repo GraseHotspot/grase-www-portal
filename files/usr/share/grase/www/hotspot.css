@@ -204,6 +204,17 @@ input, select, button {
 
 /* BUTTONS */
 
+.fg-button { 
+   outline: 0; 
+   margin:0 4px 0 0; 
+   padding: .4em 1em; 
+   text-decoration:none !important; 
+   cursor:pointer; 
+   position: relative; 
+   text-align: center; 
+   zoom: 1; 
+   }
+
 .buttons ul, .buttons li {
 	list-style: none;
 	margin: 0;

@@ -38,6 +38,8 @@ if (queryObj['uamip'] != null && queryObj['uamport'] != null)
     }
 }
 
+var loginwindow = false; // Define global for testing if popup blocked;
+
 /*$(document).ready(function(){
 /*    var oldButton = $("#submitbutton");
     var newButton = oldButton.clone();

@@ -1,10 +1,26 @@
 <div id="Chilli">
-<div id="locationNameold" style="display:none;"></div>
+<div id="locationName" style="display:inline;"></div>
 
 <div id="chilliPage">
+			<div class="ui-widget" id="errormessages" style="display:none;">
+				<div class="ui-state-error ui-corner-all"  style="margin-top: 20px; padding: 0pt 0.7em;" > 
+					<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: 0.3em;"></span>
+					<ul id="errormessageslist"></ul></p>
+
+				</div>
+			</div>
+			
+			<div class="ui-widget" id="successmessages" style="display:none;">
+				<div class="ui-state-highlight ui-corner-all"  style="margin-top: 20px; padding: 0pt 0.7em;" > 
+					<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: 0.3em;"></span>
+					<ul id="successmessageslist"></ul></p>
+
+				</div>
+			</div>	
+
 <div id="logonPage" style="display:none;">
 <form onSubmit="return false;" name="logon" class="generalForm">
-<div id="logonMessage" style="font-size:70%;padding-top:4px;">Login:</div>
+<div id="logonMessageold" class="ui-widget">Login:</div>
         <div>
             <label for='username'>Username</label>
             <input type="text" name="username" id="username" />
@@ -17,7 +33,7 @@
             
         </div>    
      
-        <button type="submit" name="submit" id="submitbutton" onClick="connect();">Login</button>        
+        <button type="submit" name="submit" id="submitbutton" onClick="connect();" class="fg-button ui-state-default ui-corner-all">Login</button>        
     </form>
 
 </div>
@@ -44,10 +60,7 @@
 </tr>
 <tr id="maxRemainOctetsRow">
 <td id="maxRemainOctetsLabel" class="chilliLabel"><b>Remaining Quota</b></td>
-<td id="maxRemainOctets" class="chilliValue">Not available</td>
-</tr>
-<tr id="download_bar_row">
-<td></td><td id="download_bar_cell"><span id="download_bar" style="display:none;"> </span></td>
+<td id="maxRemainOctetscell" class="chilliValue"><span id="maxRemainOctets">Not available</span><div id="download_bar" style="height: 10px"></div></td>
 </tr>
 <tr id="MonthlyUsageLimitRow">
 <td id="MonthlyUsageLimitRowLabel" class="chilliLabel"><b>Quota allocation</b></td>
@@ -71,11 +84,7 @@
 </tr>
 <tr id="RemainsessionTimeRow">
 <td id="RemainsessionTimeLabel" class="chilliLabel"><b>Remaining Time</b></td>
-<td id="RemainsessionTime" class="chilliValue">Loading...</td>
-</tr>
-<tr id="time_bar_row">
-<td></td>
-<td id="time_bar_cell"><span id="time_bar" style="display:none;"> </span></td>
+<td id="RemainsessionTimecell" class="chilliValue"><span id="RemainsessionTime">Loading...</span><div id="time_bar" style="height: 10px"></div></td>
 </tr>
 <tr id="MonthlyTimeLimitRow">
 <td id="MonthlyTimeLimitLabel" class="chilliLabel"><b>Monthly Time Limit</b></td>
