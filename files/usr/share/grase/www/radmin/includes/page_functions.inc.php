@@ -141,9 +141,12 @@ function currency_symbols()
 	global $CurrencySymbols;
 	// TODO: install more locales and automate this?
 	$CurrencySymbols['$'] = "$";
+	$CurrencySymbols['¢'] = "&#162;";
 	$CurrencySymbols['R'] = "R";
 	$CurrencySymbols['£'] = "&pound;";
 	$CurrencySymbols['€'] = "&euro;";
+	$CurrencySymbols['¥'] = "&#165;";
+	$CurrencySymbols['¤'] = "&#164;";
 	return $CurrencySymbols;
 }
 
