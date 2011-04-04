@@ -158,13 +158,13 @@ chilliController.formatBytes = function ( b , zeroReturn ) {
 	return zeroReturn;
     }
 
-    var kb = Math.round(b  / 10) / 100;
+    var kb = Math.round(b  / 10.24) / 100;
     if (kb < 1) return b  + ' Bytes';
 
-    var mb = Math.round(kb / 10) / 100;
+    var mb = Math.round(kb / 10.24) / 100;
     if (mb < 1)  return kb + ' Kilobytes';
 
-    var gb = Math.round(mb / 10) / 100;
+    var gb = Math.round(mb / 10.24) / 100;
     if (gb < 1)  return mb + ' Megabytes';
 
     return gb + ' Gigabytes';

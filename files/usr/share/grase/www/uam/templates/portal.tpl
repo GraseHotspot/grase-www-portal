@@ -4,7 +4,7 @@
 <h1>{$Location} Hotspot - Welcome</h1>
 
 <p>Welcome to the {$Location} Hotspot. Please read the following before logging in.</p>
-<p><a href="?help">Information and Help</a></p>
+<p><a href="help">Information and Help</a></p>
 
 <p>By logging in, you are agreeing to the following:</p>
 <ul>

@@ -1,1 +1,1 @@
-welcome.php
+hotspot.php
