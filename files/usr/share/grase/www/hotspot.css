@@ -165,6 +165,10 @@ a {
 
 /**** END CHILLI STUFF */
 
+#statusTable {
+    max-width: 250px;
+}
+
 /* END UAM*/
 
 
