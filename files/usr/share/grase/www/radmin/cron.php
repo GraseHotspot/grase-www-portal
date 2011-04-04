@@ -26,6 +26,9 @@ function __autoload($class_name) {
 
 AdminLog::getInstance()->log_cron("CRON");
 
+$upgradedb = CronFunctions::getInstance()->upgradeDB();
+if($upgradedb) echo "$upgradedb\n";
+
 $stalesessions = CronFunctions::getInstance()->clearStaleSessions();
 if($stalesessions) echo "$stalesessions\n";
 

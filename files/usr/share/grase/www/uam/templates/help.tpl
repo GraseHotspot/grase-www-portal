@@ -6,7 +6,7 @@
 <p><a href="hotspot">Return to Welcome Page</a></p>
 <p>For payment and an account, please contact the Office during office hours. For support <a href="{$Support.link}">contact {$Support.name}</a></p>
 <p>For a quick logout, bookmark <a href="http://1.0.0.0/">LOGOUT</a>, this link will instantly log you out, and return you to the Welcome page.<br/>
-To get back to the status page, bookmark ether the Non javascript version (<a href="nojsstatus" target="grasestatus">Hotspot Status nojs</a>), or the preferred javascript version (<a href="javascript: loginwindow = window.open('/grase/uam/mini', 'grasestatus', 'width=300,height=400,location=no,directories=no,status=yes,menubar=no,toolbar=no'); loginwindow.focus();">Hotspot Status</a>). You can just drag ether link to your bookmark bar to easily bookmark them.</p>
+To get back to the status page, bookmark ether the Non javascript version (<a href="nojsstatus" target="grasestatus">Hotspot Status nojs</a>), or the preferred javascript version (<a href="javascript: loginwindow = window.open('http://10.1.0.1/grase/uam/mini', 'grasestatus', 'width=300,height=400,location=no,directories=no,status=yes,menubar=no,toolbar=no'); loginwindow.focus();">Hotspot Status</a>). You can just drag ether link to your bookmark bar to easily bookmark them.</p>
 
 <p>Your Internet usage is limit by the amount of data that flows to and from your computer, or the amount of time spent online (depending on what you account type is). To maximise your account, you may wish to do the following:</p>
 <ul>

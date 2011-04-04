@@ -42,6 +42,29 @@ class CronFunctions extends DatabaseFunctions
         //parent::__construct();
         $this->db =& DatabaseConnections::getInstance()->getRadiusDB();
     }   */ 
+    
+    public function upgradeDB()
+    {
+        /* Upgrade different aspects of the Database as the scheme changes
+         * */
+        $sql = "UPDATE radcheck
+                SET Attribute='Cleartext-Password'
+                WHERE Attribute='Password'";
+        
+        $result = $this->db->exec($sql);
+        
+        if (PEAR::isError($result))
+        {
+            return _('Upgrading DB failed: ') . $result->toString();
+        }
+
+        if($result > 0)        
+            return _('Database upgraded') . $result;
+        
+        return false;
+
+    }
+        
          
 
     public function clearStaleSessions()
