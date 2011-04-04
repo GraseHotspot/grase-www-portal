@@ -30,6 +30,7 @@ fi
 fix_dir_perms(){
 	chgrp www-data -R /usr/share/grase/www/ || true
 	chmod ag+rw -R /usr/share/grase/www/images/logo.png /usr/share/grase/www/radmin/templates_c /usr/share/grase/www/uam/templates_c || true
+	chmod a+rw -R /usr/share/grase/www/public/* || true
 
 }
 
