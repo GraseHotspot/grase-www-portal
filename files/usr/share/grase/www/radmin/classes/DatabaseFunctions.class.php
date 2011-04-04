@@ -186,6 +186,26 @@ class DatabaseFunctions
         
     }
     
+    public function getRadiusIDCurrentSessionByUser($username)
+    {
+        // Gets the username for an active session based on ip address
+        $sql = sprintf("SELECT RadAcctId
+	            FROM radacct
+	            WHERE UserName='%s'
+	            AND AcctStopTime IS NULL
+	            ORDER BY AcctStartTime DESC LIMIT 1",
+	            $username);
+        
+        $radacctid = $this->db->queryOne($sql);
+        
+        if (PEAR::isError($radacctid))
+        {
+            ErrorHandling::fatal_db_error(_('Retrieving Current Session by Username failed: '), $radacctid);
+        }
+        
+        return $radacctid;    
+    }
+    
     public function getRadiusUserByCurrentSession($ipaddress)
     {
         // Gets the username for an active session based on ip address
@@ -228,6 +248,12 @@ class DatabaseFunctions
         foreach ($results as $attribute) 
         {
             $Userdata[$attribute['Attribute']] = $attribute['Value'];
+        }
+        
+        // User Password (Upgraded to Cleartext-Password, but smarty doesn't like - in names)
+        if(isset($Userdata['Cleartext-Password']) && !isset($Userdata['Password']))
+        {
+            $Userdata['Password'] = $Userdata['Cleartext-Password'];
         }
 
         // User Data Limit
@@ -306,7 +332,7 @@ class DatabaseFunctions
         // Gets an array of all usernames in radcheck table
         $sql = "SELECT UserName
 	            FROM radcheck
-	            WHERE Attribute='Password'
+	            WHERE Attribute='Cleartext-Password'
 	            AND UserName NOT IN (
 	                SELECT UserName 
 	                FROM radcheck 
@@ -642,7 +668,7 @@ class DatabaseFunctions
     {
         $fields = array (
             'Username'  => array ( 'value' => $username,    'key' => true),
-            'Attribute' => array ( 'value' => 'Password',  'key' => true),
+            'Attribute' => array ( 'value' => 'Cleartext-Password',  'key' => true),
             'op'        => array ( 'value' => ':=' ),
             'Value'     => array ( 'value' => $password)
             );   

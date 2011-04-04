@@ -1,5 +1,15 @@
 {include file="header.tpl" Name="" activepage="nojsstatus"}
 
+{if $error}
+			<div class="ui-widget" id="errormessages">
+				<div class="ui-state-error ui-corner-all"  style="margin-top: 20px; padding: 0pt 0.7em;" > 
+					<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: 0.3em;"></span>
+					<ul>{foreach from=$error item=msg}<li><strong>{$msg}</strong></li>{/foreach}</ul></p>
+
+				</div>
+			</div>
+{/if}
+
 <div id="statusPage">
 
 <p id="loggedinusername">You are logged in as: <span id="UserNameLink">{$user.Username}</span></p>
@@ -62,7 +72,7 @@
 <td id="outputOctets" class="chilliValue">{$session.AcctOutputOctets|bytes}</td>
 </tr>
 <tr id="connectRow">
-<td><span id="statusMessage">Connected</span></td>
+<td><span id="statusMessage"></span></td>
 <td class="buttons"><a href="http://10.1.0.1:3990/logoff" id="logoutlink" class="negative"> <img src="/grase/images/icons/cross.png" alt=""/>
 Logout</a></td>
 </tr>

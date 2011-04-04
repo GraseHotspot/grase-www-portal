@@ -34,7 +34,7 @@ class DatabaseUsermin
     
     private function loadusers()
     {
-        $sql = "SELECT UserName, Value FROM radcheck WHERE Attribute = 'password'";
+        $sql = "SELECT UserName, Value FROM radcheck WHERE Attribute = 'Cleartext-Password'";
                 
         $res =& $this->db->query($sql);
         

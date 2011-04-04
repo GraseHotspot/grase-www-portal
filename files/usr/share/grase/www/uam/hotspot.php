@@ -63,7 +63,7 @@ $nojsloginlink = $_GET['loginurl'];*/
 switch($res)
 {
     case 'already':
-        if ($userurl) header("Location: $userurl");
+        //if ($userurl) header("Location: $userurl");
         // Fall through to welcome page?
         break;
     

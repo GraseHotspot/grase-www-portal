@@ -9,20 +9,30 @@ require_once('includes/site.inc.php');
 
 $ipaddress = $_SERVER['REMOTE_ADDR'];
 
-$user = DatabaseFunctions::getInstance()->getUserDetails(DatabaseFunctions::getInstance()->getRadiusUserByCurrentSession($ipaddress));
+$username = DatabaseFunctions::getInstance()->getRadiusUserByCurrentSession($ipaddress);
 
-$smarty->register_modifier('bytes', array("Formatting", "formatBytes"));
-$smarty->register_modifier('seconds', array("Formatting", "formatSec"));
-$session = DatabaseFunctions::getInstance()->getRadiusSessionDetails(DatabaseFunctions::getInstance()->getRadiusIDCurrentSessionByUser($user['Username']));
-//print_r($user);
-//print_r($session);
+if($username != '')
+{
+    $user = DatabaseFunctions::getInstance()->getUserDetails($username);
 
-$user['RemainingQuota'] = $user['MaxOctets'] - $user['AcctTotalOctets'];
-$user['RemainingTime'] = $user['MaxAllSession'] - $user['TotalTimeMonth'];
-$smarty->assign('user', $user);
-$smarty->assign('session', $session);
+    $session = DatabaseFunctions::getInstance()->getRadiusSessionDetails(DatabaseFunctions::getInstance()->getRadiusIDCurrentSessionByUser($user['Username']));
+    //print_r($user);
+    //print_r($session);
 
-$smarty->display('nojsstatus.tpl');
+    $user['RemainingQuota'] = $user['MaxOctets'] - $user['AcctTotalOctets'];
+    $user['RemainingTime'] = $user['MaxAllSession'] - $user['TotalTimeMonth'];
+    $smarty->assign('user', $user);
+    $smarty->assign('session', $session);
+}else{
+    $error = array("You don't appear to be logged in. If you have just logged in, try refreshing the page.<br/>
+                    Otherwise, go back to the <a href='hotspot'>login form.</a>");
+    $smarty->assign("error", $error);
+}
+
+    $smarty->register_modifier('bytes', array("Formatting", "formatBytes"));
+    $smarty->register_modifier('seconds', array("Formatting", "formatSec"));
+
+    $smarty->display('nojsstatus.tpl');
 
 //print_r($user);
 

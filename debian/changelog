@@ -1,3 +1,11 @@
+grase-www-portal (3.0-14) purewhite; urgency=low
+
+  * New login system. Needs newer chilli to direct to correct page
+  * Lots of cleanup
+  * Changes to support db change to Cleartext-Password
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Mon, 04 Apr 2011 19:23:57 +1000
+
 grase-www-portal (3.0-13) purewhite; urgency=low
 
   * Fix for Database Backup script (backup both db, not just 1)
