@@ -1,21 +1,6 @@
 <div id="{$useraction}Form">
 <h2>{$useractionTitle}</h2>
 
-<!-- Not using this method, using OR method
-<ul class="timecost_list">
-{foreach from=$Timecosts key=time item=label}
-<li><a title="{$time}" class="timecost_item">{$label}</a></li>
-{/foreach}
-</ul>
-
-<ul class="datacost_list">
-{foreach from=$Datacosts key=mb item=label}
-<li><a title="{$mb}" class="datacost_item">{$label}</a></li>
-{/foreach}
-</ul>
-
--->
-
 <form method='post' id='newuserform' action='' class='generalForm'>
 
 <div>

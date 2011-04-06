@@ -1,6 +1,6 @@
 {include file="header.tpl" Name="Create Tickets" activepage="createtickets"}
 
-{if $valid_last_batch}<a href="printnewtickets" class="printlink" target="_tickets">Print Last Batch of Tickets</a>{/if}
+{if $valid_last_batch}<!--<a href="printnewtickets" class="printlink" target="_tickets">Print Last Batch of Tickets</a>-->{/if}
 {if $createdusers}
 <div id='createdtickets' class="" >
     <h2>Last Created Tickets</h2>

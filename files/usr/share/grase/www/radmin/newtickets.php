@@ -108,6 +108,7 @@ if(isset($_POST['createticketssubmit']))
 		$createdusers = database_get_users($createdusernames);
 		$smarty->assign("createdusers", $createdusers);
 		$success[] = _("Tickets Successfully Created");
+		$success[] = "<a target='_tickets' href='printnewtickets'>"._("Print Tickets")."</a>";				
 	    $smarty->assign("success", $success);
 		display_adduser_form();
 	}

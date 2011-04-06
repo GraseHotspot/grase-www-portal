@@ -88,8 +88,9 @@ if(isset($_POST['newusersubmit']))
 			clean_text($_POST['Group']),
 			clean_text($_POST['Comment'])
 		);
-		$success[] = _("User Successfully Created");
-		AdminLog::getInstance()->log("Created new user ${_POST['Username']}");
+		$success[] = sprintf(_("User %s Successfully Created"),clean_text($_POST['Username']));
+		$success[] = "<a target='_tickets' href='printnewtickets?user=". clean_text($_POST['Username']) ."'>".sprintf(_("Print Ticket for %s"), clean_text($_POST['Username']))."</a>";		
+		AdminLog::getInstance()->log(sprintf(_("Created new user %s"),clean_text($_POST['Username'])));
 		$smarty->assign("success", $success);
 		display_adduser_form();
 	}

@@ -1,3 +1,17 @@
+grase-www-portal (3.0-16) purewhite; urgency=low
+
+  * Package jQuery and jQuery UI due to old libs in some Ubuntu's
+  * Allow printing of ticket for single User ("Create User")
+  * Removed Dep on jquery-ui libs
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Wed, 06 Apr 2011 18:21:40 +1000
+
+grase-www-portal (3.0-15) purewhite; urgency=low
+
+  * Missing Dep on jquery-ui libs
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Mon, 04 Apr 2011 21:30:09 +1000
+
 grase-www-portal (3.0-14) purewhite; urgency=low
 
   * New login system. Needs newer chilli to direct to correct page
