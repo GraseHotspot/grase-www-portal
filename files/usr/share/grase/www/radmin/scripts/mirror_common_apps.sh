@@ -20,7 +20,7 @@ winen=$(cat /tmp/thunderbird.downloads | grep lang=en-GB |grep download-windows 
 macen=$(cat /tmp/thunderbird.downloads | grep lang=en-GB |grep download-osx-uni |grep -o http[^\"]* |sed 's/amp;//g')
 #winaf=$(cat /tmp/thunderbird.downloads | grep lang=af |grep download-windows |grep -o http[^\"]* |sed 's/amp;//g')
 #macaf=$(cat /tmp/thunderbird.downloads | grep lang=af |grep download-osx-uni |grep -o http[^\"]* |sed 's/amp;//g')
-cd /usr/share/grase/public/Thunderbird
+cd /usr/share/grase/www/public/Thunderbird
 wget -c $QUIET "$winen" "$macen"
 # "$winaf" "$macaf"
 
