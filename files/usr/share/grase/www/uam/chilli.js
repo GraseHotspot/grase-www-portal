@@ -1,6 +1,6 @@
 
 if (navigator.appVersion.indexOf("MSIE")!=-1)
-document.write("<script type='text/javascript' id='chillicontroller'></script>");
+document.write("<script type='text/javascript' id='chillicontroller' ></script>");
 
 if (!window.queryObj)
 {

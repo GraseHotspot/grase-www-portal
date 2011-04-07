@@ -5,6 +5,7 @@
 
 <p>Welcome to the {$Location} Hotspot. Please read the following before logging in.</p>
 <p><a href="help">Information and Help</a></p>
+<p>For a quick logout, bookmark <a href="http://1.0.0.0/">LOGOUT</a>
 
 <p>By logging in, you are agreeing to the following:</p>
 <ul>
@@ -26,7 +27,7 @@
 				</div>
 			</div>
 {/if}
-    <form method="post" action="nojslogin.php" id="logonFormnojs" class="generalForm"><!-- TODO: Make this submit over SSL --!>
+    <form method="post" action="nojslogin.php" id="logonFormnojs" class="generalForm"><!-- TODO: Make this submit over SSL -->
         <div class="ui-widget" id="jswarningwidget">
             <div id="nojswarning" class="ui-state-error ui-corner-all" style="margin-top: 20px; padding: 0pt 0.7em;"><p>You are using the less secure login method.<br/>{if ! $nojs}If you have javascript disabled, please try enabling it for the secure login method.<br/>{/if}Use this less secure login form if the javascript version is giving you trouble</p>
             {if $nojs}
@@ -56,8 +57,8 @@
 <div style="clear: left; clear: right">&nbsp;</div>
 
 {if $js}
-<script id='chillijs' src='http://10.1.0.1/grase/uam/chilli.js'></script>
+<script type="text/javascript" id='chillijs' src='http://10.1.0.1/grase/uam/chilli.js'></script>
 <p style="font-size: smaller">Trouble logging in? <a href="?disablejs">Click here to disable the javascript login forms.</a><br/>This will use a less secure login method</p>
 {/if}
-
+</div>
 {include file="footer.tpl"}
