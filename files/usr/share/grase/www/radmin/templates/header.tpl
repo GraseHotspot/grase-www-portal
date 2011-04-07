@@ -6,8 +6,8 @@
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 <meta name="generator" content="{$Application} {$application_version}" />
 <!-- CSS Stylesheet -->
-<link rel="stylesheet" type="text/css" href="/grase/hotspot.css" id="hotspot_css" />
-<link rel="stylesheet" type="text/css" href="radmin.css" id="radmin_css" />
+<link rel="stylesheet" type="text/css" href="/grase/hotspot.css?{$hotspotcssversion}" id="hotspot_css" />
+<link rel="stylesheet" type="text/css" href="radmin.css?{$radmincssversion}" id="radmin_css" />
 
 
 
@@ -21,7 +21,7 @@
     
     <script type="text/javascript" src="/grase/js/jquery.tablesorter.min.js"></script>    
     
-    <script type="text/javascript" src="/grase/js/grase.js"></script>        
+    <script type="text/javascript" src="/grase/js/grase.js?{$grasejsversion}"></script>        
 
 <link rel="shortcut icon" href="/grase/favicon.ico" />
 

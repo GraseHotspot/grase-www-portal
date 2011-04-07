@@ -62,6 +62,7 @@ copy_favicon
 call_cron
 
 a2enmod rewrite || true
+a2enmod headers || true
 
 if which invoke-rc.d >/dev/null 2>&1; then
        invoke-rc.d apache2 restart 3>&- || true

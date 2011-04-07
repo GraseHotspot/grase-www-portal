@@ -6,3 +6,12 @@
 #    RewriteCond $0 !=grase/favicon.ico
 #    RewriteRule ^([^/]+/)*favicon\.ico$ /grase/favicon.ico [L]
 #</IfModule>    
+
+<IfModule mod_headers.c>
+# any Header directives go here
+
+    # cache text, css, and javascript files for one week
+    <FilesMatch ".(js|css|pdf|txt)$">
+        Header set Cache-Control "max-age=604800"
+    </FilesMatch>
+</IfModule>

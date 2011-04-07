@@ -121,6 +121,7 @@ class CronFunctions extends DatabaseFunctions
          
         // Loop through previous months encase they have been missed. Bit of overkill but works. Time is cheap
         $months = array(-2, -3, -4, -5, -6, -7, -8, -9, -10, -11, -12);
+        $deleted_results = 0;
         foreach($months as $month)
         {
             $timepattern = strftime("%B __ %Y 00:00:00", strtotime("$month months"));

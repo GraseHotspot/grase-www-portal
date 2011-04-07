@@ -1,3 +1,10 @@
+grase-www-portal (3.0-17) purewhite; urgency=low
+
+  * Retry ?version on css and js files
+  * Enable apache headers mod, enable caching of js/css files
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Thu, 07 Apr 2011 14:10:05 +1000
+
 grase-www-portal (3.0-16) purewhite; urgency=low
 
   * Package jQuery and jQuery UI due to old libs in some Ubuntu's

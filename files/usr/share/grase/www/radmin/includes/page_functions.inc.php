@@ -33,9 +33,18 @@ function css_file_version()
 	$second_line = fgets ($handle);
 	fclose($handle);
 	//extract revision number, chosen format: "/* $Rev: 1424314 $ */"
-	$cssrevid = substr($first_line, 14, -3);
+	//$cssrevid = substr($first_line, 14, -3);
+	$resourcefiles = array(
+	    '/usr/share/grase/www/hotspot.css',
+	    '/usr/share/grase/www/radmin/radmin.css',
+	    '/usr/share/grase/www/js/grase.js');
+	foreach($resourcefiles as $file)
+	{
+	    $fileversions[basename($file)] = date("YmdHis",filemtime($file));	
+	}
+    //	$cssrevid = date("YmdHis",filemtime("radmin.css"));	
 	$application_version = substr($second_line, 13, -3);
-	return array($cssrevid, $application_version);
+	return array($fileversions, $application_version);
 }
 
 function createmenuitems()
@@ -168,8 +177,10 @@ $smarty->compile_check = true;
 $smarty->register_modifier('bytes', array("Formatting", "formatBytes"));
 $smarty->register_modifier('seconds', array("Formatting", "formatSec"));
 
-list($cssrevid, $application_version)=css_file_version();
-$smarty->assign("css_version", $cssrevid);
+list($fileversions, $application_version)=css_file_version();
+$smarty->assign("radmincssversion", $fileversions['radmin.css']);
+$smarty->assign("hotspotcssversion", $fileversions['hotspot.css']);
+$smarty->assign("grasejsversion", $fileversions['grase.js']);
 $smarty->assign("application_version", $application_version);
 $smarty->assign("Application", APPLICATION_NAME);
 
