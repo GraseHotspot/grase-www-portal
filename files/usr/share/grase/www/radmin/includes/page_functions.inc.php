@@ -22,7 +22,21 @@
 
 require_once 'includes/database_functions.inc.php';
 require_once 'includes/load_settings.inc.php';
+
+require_once 'smarty/Smarty.class.php';
 require_once 'smarty_sortby.php';
+
+require_once 'includes/smarty-gettext.php';
+/*ini_set('include_path', ini_get('include_path') . PATH_SEPARATOR . '/usr/share/grase/i18n/');
+
+include_once 'library/piins.smarty/prefilter.i18N.php';
+include_once 'library/piins.smarty/postfilter.i18n.php';
+include_once 'library/piins.smarty/prefilter.smartyTags.php';
+//include_once 'library/smarty/Smarty.class.php';
+require_once 'library/piins.utils/FileUtils.php';*/
+
+
+
 
 function css_file_version()
 {
@@ -102,7 +116,7 @@ function timecosts()
 	$time_options = array(5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 60, 90, 120, 180);
 	foreach($time_options as $time)
 	{
-		$cost = number_format(round($pricetime*$time, 2),2);
+		$cost = displayLocales(number_format(round($pricetime*$time, 2),2), TRUE);
 		$timecosts["$time"] = "$disp_currency$cost ($time mins)";
 	}
 	return $timecosts;
@@ -166,7 +180,7 @@ function display_page($template)
 	return $smarty->display($template);
 }
 
-require_once 'smarty/Smarty.class.php';
+
 
 
 
@@ -176,6 +190,18 @@ $smarty->compile_check = true;
 //$smarty->register_outputfilter('smarty_outputfilter_strip');
 $smarty->register_modifier('bytes', array("Formatting", "formatBytes"));
 $smarty->register_modifier('seconds', array("Formatting", "formatSec"));
+
+// i18n
+//$locale = (!isset($_GET["l"]))?"en_GB":$_GET["l"];  
+$smarty->register_block('t', 'smarty_translate');
+// TODO: Move this stuff to somewhere else?
+$locale = "fr_FR.utf8";
+//$locale = (!isset($_GET["l"]))?"en_AU.utf8":$_GET["l"];  
+putenv("LC_ALL=$locale");
+setlocale(LC_ALL, $locale);
+bindtextdomain("default", "/usr/share/grase/locale");
+textdomain("default");
+
 
 list($fileversions, $application_version)=css_file_version();
 $smarty->assign("radmincssversion", $fileversions['radmin.css']);
@@ -197,6 +223,7 @@ $smarty->assign("Datacosts", datacosts());
 $smarty->assign("Timecosts", timecosts());
 
 $smarty->assign('gbvalues', gboctects());
+
 
 
 function assign_vars()

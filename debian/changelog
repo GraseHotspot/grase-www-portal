@@ -1,3 +1,9 @@
+grase-www-portal (3.0-18) purewhite; urgency=low
+
+  * Added logout button to login page for bookmarking
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Thu, 07 Apr 2011 16:29:54 +1000
+
 grase-www-portal (3.0-17) purewhite; urgency=low
 
   * Retry ?version on css and js files

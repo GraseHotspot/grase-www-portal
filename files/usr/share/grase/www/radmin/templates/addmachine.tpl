@@ -1,23 +1,23 @@
 {include file="header.tpl" Name="Create New Machine Account" activepage="createmachine"}
 
 <div id="newMachineForm">
-<h2>Create New Machine Account</h2>
+<h2>{t}Create New Machine Account{/t}</h2>
 
 <form method='post' name='newmachine' action='' class='generalForm'>
 
 <div>
-    <label for='mac'>MAC Address</label>
+    <label for='mac'>{t}MAC Address{/t}</label>
     <input type="text" name="mac" value='{$machine.mac}'/>
-    <span id="macInfo">Machine Hardware Address <a class="helpbutton" title='The MAC address is the network hardware address of the computer. It needs to be of the format XX-XX-XX-XX-XX-XX where XX is a hex number, typed in all capitals'><img src="/grase/images/icons/help.png" alt=""/></a></span>
+    <span id="macInfo">Machine Hardware Address <a class="helpbutton" title='{t}The MAC address is the network hardware address of the computer. It needs to be of the format XX-XX-XX-XX-XX-XX where XX is a hex number, typed in all capitals{/t}'><img src="/grase/images/icons/help.png" alt=""/></a></span>
 </div>
 
 <div>
-    <label for='Comment'>Comment</label>
+    <label for='Comment'>{t}Comment{/t}</label>
     <input type="text" name="Comment" value='{$machine.Comment}'/>
-    <span id='CommentInfo'>Identify the machine. i.e. "Bob's computer"</span>
+    <span id='CommentInfo'>{t}Identify the machine. i.e. "Bob's computer"{/t}</span>
 </div>
 
-    <span>When ether limit is reached, the user will be cut off. (i.e. after 1hour even if they still have data left)<br/><a class="helpbutton" title='Machine accounts are intended to be used for computers that need internet access at all times. For example, an office computer. Machine accounts login automatically as soon as they access the network, this will normally occur at startup. If a limit is set, when the limit is reached the computer will revert to the normal login screen for internet access. Machine accounts can not be edited to add more data or time, only deleted.'><img src="/grase/images/icons/help.png" alt=""/> It is not recommended setting a time or data limit for machine accounts.</a></span>
+    <span>{t}When ether limit is reached, the user will be cut off. (i.e. after 1hour even if they still have data left){/t}<br/><a class="helpbutton" title='{t}Machine accounts are intended to be used for computers that need internet access at all times. For example, an office computer. Machine accounts login automatically as soon as they access the network, this will normally occur at startup. If a limit is set, when the limit is reached the computer will revert to the normal login screen for internet access. Machine accounts can not be edited to add more data or time, only deleted.{/t}'><img src="/grase/images/icons/help.png" alt=""/> {t}It is not recommended setting a time or data limit for machine accounts.{/t}</a></span>
 
 <div>
     <label for='Max_Mb'>Data Limit (MiB)</label>

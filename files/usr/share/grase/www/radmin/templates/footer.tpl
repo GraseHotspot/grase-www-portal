@@ -5,7 +5,7 @@
 {/if}
 
 <div id="return"><a href="/grase/uam/help">Help Page</a>&nbsp;|&nbsp;<a href="{$website_link}">{$website_name}</a>&nbsp;|&nbsp;<a href="/grase/radmin/usermin">My Account</a>&nbsp;|&nbsp;<a href="/grase/radmin/">Admin</a>
-<div id="copyright">&copy;&nbsp;{$smarty.now|date_format:'%Y'}&nbsp;<a href="http://www.purewhite.id.au/">Timothy White</a></div>
+<div id="copyright">&copy;&nbsp;{$smarty.now|date_format:'%Y'}&nbsp;<a href="http://hotspot.purewhite.id.au/">Timothy White</a></div>
 
 <div id="generated">
 {php}

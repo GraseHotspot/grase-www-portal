@@ -1,0 +1,621 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: GRASE Hotspot 3.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-04-08 21:31+1000\n"
+"PO-Revision-Date: 2011-04-08 21:31+1000\n"
+"Last-Translator: Timothy White <tim@purewhite.id.au>\n"
+"Language-Team:  <hotspot@purewhite.id.au>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: AUSTRALIA\n"
+"X-Poedit-SearchPath-0: /home/tim/grase/grase-www-portal/files/usr/share/grase/www\n"
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/templates/strings.c:1
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/templates/strings.c:6
+msgid "Login"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/templates/strings.c:2
+msgid "Login is required to access the Administration section of this website."
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/templates/strings.c:3
+msgid "Username"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/templates/strings.c:4
+msgid "Username for Admin interface (Different to internet access username)"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/templates/strings.c:5
+msgid "Password"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/templates/strings.c:7
+msgid "Create New Machine Account"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/templates/strings.c:8
+msgid "MAC Address"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/templates/strings.c:9
+msgid "The MAC address is the network hardware address of the computer. It needs to be of the format XX-XX-XX-XX-XX-XX where XX is a hex number, typed in all capitals"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/templates/strings.c:10
+msgid "Comment"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/templates/strings.c:11
+msgid "Identify the machine. i.e. \"Bob's computer\""
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/templates/strings.c:12
+msgid "When ether limit is reached, the user will be cut off. (i.e. after 1hour even if they still have data left)"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/templates/strings.c:13
+msgid "Machine accounts are intended to be used for computers that need internet access at all times. For example, an office computer. Machine accounts login automatically as soon as they access the network, this will normally occur at startup. If a limit is set, when the limit is reached the computer will revert to the normal login screen for internet access. Machine accounts can not be edited to add more data or time, only deleted."
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/templates/strings.c:14
+msgid "It is not recommended setting a time or data limit for machine accounts."
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/newmachine.php:30
+msgid "MAC Address already has an account"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/newmachine.php:43
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/newuser.php:44
+msgid "Only set one Data limit field"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/newmachine.php:44
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/newuser.php:45
+msgid "Only set one Time limit field"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/newmachine.php:84
+msgid "Machine Account Successfully Created"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/usermin.php:42
+msgid "New Passwords must match"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/usermin.php:45
+msgid "Password must not be blank"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/usermin.php:50
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/edituser.php:43
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/passwd.php:61
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/passwd.php:62
+msgid "Password Changed"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/usermin.php:53
+msgid "Password not updated"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/edituser.php:61
+msgid "Group Changed"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/edituser.php:71
+msgid "Comment Changed"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/edituser.php:88
+msgid "Data Limit Increased"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/edituser.php:89
+#, php-format
+msgid "Data Limit increased for %s"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/edituser.php:108
+msgid "Max Data Limit Updated"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/edituser.php:109
+#, php-format
+msgid "Max Data Limit changed for %s"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/edituser.php:126
+msgid "Time Limit Increased"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/edituser.php:127
+#, php-format
+msgid "Time Limit increased for %s"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/edituser.php:146
+msgid "Max Time Limit Updated"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/edituser.php:147
+#, php-format
+msgid "Max Time Limit changed for %s"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/edituser.php:159
+#, php-format
+msgid "User '%s' Deleted"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/edituser.php:170
+msgid "Please type \"Yes, I want to delete this user\" (without the quotes) into the box before clicking delete user"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/passwd.php:53
+msgid "Old Password incorrect"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/passwd.php:56
+msgid "New passwords don't match"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/passwd.php:64
+msgid "Please fill in all password fields"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/passwd.php:71
+#, php-format
+msgid "User %s already exists"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/passwd.php:74
+msgid "User Created"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/passwd.php:77
+msgid "Need both username and password"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/passwd.php:83
+#, php-format
+msgid "User %s Deleted"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/passwd.php:86
+msgid "Invalid Delete Request"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/newuser.php:31
+msgid "Username already taken"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/newuser.php:32
+msgid "Username and Password are both Required"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/newuser.php:91
+#, php-format
+msgid "User %s Successfully Created"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/newuser.php:92
+#, php-format
+msgid "Print Ticket for %s"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/newuser.php:93
+#, php-format
+msgid "Created new user %s"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/newtickets.php:50
+msgid "Max of 50 tickets per batch"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/newtickets.php:110
+msgid "Tickets Successfully Created"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/newtickets.php:111
+msgid "Print Tickets"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:82
+msgid "Location name not valid"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:86
+msgid "Location name updated"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:87
+msgid "Location Name changed to"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:92
+msgid "Error Saving Location Name"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:101
+msgid "Website name not valid"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:106
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:107
+msgid "Website name updated"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:111
+msgid "Error Saving Website Name"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:119
+msgid "Website link not valid"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:124
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:125
+msgid "Website link updated"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:129
+msgid "Error Saving Website link"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:143
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:144
+msgid "Price per MiB updated"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:148
+msgid "Error saving Price per MiB"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:153
+msgid "Invalid Price per MiB"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:164
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:165
+msgid "Price per Minute Updated"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:168
+msgid "Error saving Price per Minute"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:172
+msgid "Invalid Price per Minute"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:183
+msgid "Currency updated"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:184
+msgid "Currency updated to"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:188
+msgid "Error saving Currency"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:192
+msgid "Invalid Currency"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:207
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:208
+msgid "Sellable Data Limit Update"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:212
+msgid "Error updating Sellable Data Limit"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:217
+msgid "Invalid value for Sellable Data"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:228
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:229
+msgid "Useable Data Limit Update"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:233
+msgid "Error updating Useable Data Limit"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:238
+msgid "Invalid value for Useable Data"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:246
+msgid "Support name not valid"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:251
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:252
+msgid "Support name updated"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:256
+msgid "Error Saving Support Name"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:264
+msgid "Support link not valid"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:269
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:270
+msgid "Support link updated"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/settings.php:274
+msgid "Error Saving Support link"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/CronFunctions.class.php:58
+msgid "Upgrading DB failed: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/CronFunctions.class.php:62
+msgid "Database upgraded"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/CronFunctions.class.php:103
+msgid "Clearing stale sessions failed: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/CronFunctions.class.php:107
+msgid "Stale sessions cleared"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/CronFunctions.class.php:140
+msgid "Fetching users to delete failed"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/CronFunctions.class.php:152
+msgid "Expired users deleted"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/CronFunctions.class.php:203
+msgid "Unable to insert data into mtotaccttmp: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/CronFunctions.class.php:221
+msgid "Unable to delete old radacct data: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/CronFunctions.class.php:242
+msgid "Unable to update users Max-Octets: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/CronFunctions.class.php:261
+msgid "Unable to update users Max-All-Session: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/CronFunctions.class.php:297
+msgid "Unable to move mtotaccttmp data to mtotacct: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/CronFunctions.class.php:310
+msgid "Unable to truncate mtotaccttmp: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/CronFunctions.class.php:330
+msgid "Unable to ensure positive values in radcheck: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/CronFunctions.class.php:348
+msgid "Unable to delete ancient radacct data: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/CronFunctions.class.php:357
+msgid "Old Radius Accounting Data Archived"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/DatabaseConnections.class.php:70
+msgid "DB Config File isn't a valid file."
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/DatabaseFunctions.class.php:78
+msgid "Retrieving Sold Usage failed: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/DatabaseFunctions.class.php:110
+msgid "Retrieving Month Usage failed: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/DatabaseFunctions.class.php:126
+msgid "Retrieving Current Month Usage failed: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/DatabaseFunctions.class.php:154
+msgid "Retrieving Session by RadAcctID failed: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/DatabaseFunctions.class.php:183
+msgid "Retrieving Sessions by Username failed: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/DatabaseFunctions.class.php:203
+msgid "Retrieving Current Session by Username failed: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/DatabaseFunctions.class.php:223
+msgid "Retrieving Username by Active Session (ipadddress): "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/DatabaseFunctions.class.php:245
+msgid "Get User details Query failed: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/DatabaseFunctions.class.php:324
+msgid "Get User Group Query failed: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/DatabaseFunctions.class.php:350
+msgid "Get All Usernames Query Failed: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/DatabaseFunctions.class.php:375
+msgid "Get User Last Logout Query Failed: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/DatabaseFunctions.class.php:403
+msgid "Get User Total Session Time Query failed: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/DatabaseFunctions.class.php:423
+msgid "Get User Data Usage Query failed: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/DatabaseFunctions.class.php:443
+msgid "Get User Data Usage (Total) Query failed: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/DatabaseFunctions.class.php:462
+msgid "Get Monthly Data Usage Query failed: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/DatabaseFunctions.class.php:489
+msgid "Get Monthly Data Usage Totals Query failed: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/DatabaseFunctions.class.php:515
+msgid "Get User Comment failed: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/DatabaseFunctions.class.php:555
+msgid "Setting User Comment Query Failed: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/DatabaseFunctions.class.php:573
+msgid "Setting User Group Query Failed: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/DatabaseFunctions.class.php:593
+msgid "Setting User Datalimit Query Failed: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/DatabaseFunctions.class.php:616
+msgid "Getting User Current Data Limit to increase failed: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/DatabaseFunctions.class.php:637
+msgid "Setting User Timelimit Query Failed: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/DatabaseFunctions.class.php:660
+msgid "Getting User Current Time Limit to increase failed: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/DatabaseFunctions.class.php:680
+msgid "Setting User Password Query Failed: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/DatabaseFunctions.class.php:702
+msgid "Setting User Expiry Date Query Failed: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/DatabaseFunctions.class.php:721
+msgid "Deleting User Expiry Date Query Failed: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/DatabaseFunctions.class.php:741
+msgid "Deleting user failed: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/DatabaseFunctions.class.php:753
+msgid "Deleting users group failed: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/DatabaseFunctions.class.php:765
+msgid "Deleting users comment failed: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/DatabaseFunctions.class.php:784
+msgid "Checking Uniq Username failed: "
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/classes/DatabaseFunctions.class.php:809
+msgid "Problem With expiration Date Format"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/includes/misc_functions.inc.php:142
+msgid "Invalid Expiry Date"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/includes/misc_functions.inc.php:152
+msgid "Expiry Date in the past"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/includes/misc_functions.inc.php:159
+#, php-format
+msgid "Invalid value '%s' for Data Limit"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/includes/misc_functions.inc.php:165
+#, php-format
+msgid "Invalid value '%s' for Time Limit"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/includes/misc_functions.inc.php:172
+msgid "MAC Address not in correct format"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/includes/misc_functions.inc.php:179
+#, php-format
+msgid "Invalid number '%s' (Must be whole number)"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/includes/misc_functions.inc.php:189
+msgid "Only Machines can be in the Machine group"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/includes/misc_functions.inc.php:193
+msgid "Invalid Group"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/includes/misc_functions.inc.php:277
+msgid "Uploaded Image was too big"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/includes/misc_functions.inc.php:280
+msgid "Error In Uploading"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/includes/misc_functions.inc.php:283
+msgid "No file was uploaded"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/includes/misc_functions.inc.php:286
+msgid "Missing a temporary folder"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/includes/misc_functions.inc.php:289
+msgid "Failed to write file to disk"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/includes/misc_functions.inc.php:292
+msgid "File upload stopped by extension"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/includes/misc_functions.inc.php:295
+msgid "Unknown upload error"
+msgstr ""
+
+#: /home/tim/grase/grase-www-portal/files/usr/share/grase/www/radmin/includes/constants.inc.php:26
+msgid "My Account"
+msgstr ""
+

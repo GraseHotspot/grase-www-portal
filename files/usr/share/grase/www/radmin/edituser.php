@@ -40,7 +40,7 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
 	    {
 	        database_change_password($username, clean_text($_POST['Password']));
 	        // TODO: Check return for success		
-	        $success[] = _("Password Updated");
+	        $success[] = _("Password Changed");
 	        AdminLog::getInstance()->log("Password changed for $username");	    
         }
         

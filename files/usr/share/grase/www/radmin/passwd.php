@@ -59,7 +59,7 @@ require_once 'includes/database_functions.inc.php';
 
 			    $Auth->changePassword($Auth->getUsername(), $_POST['NewPassword']) or $error_passwd = "Error Changing Password"; // TODO: Check successful
 			    $success[] = _("Password Changed");			    
-                AdminLog::getInstance()->log(_("Changed Password"));
+                AdminLog::getInstance()->log(_("Password Changed"));
 		    }
 	    }else $errors[] = _("Please fill in all password fields");
 	}
