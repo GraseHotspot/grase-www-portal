@@ -195,12 +195,25 @@ $smarty->register_modifier('seconds', array("Formatting", "formatSec"));
 //$locale = (!isset($_GET["l"]))?"en_GB":$_GET["l"];  
 $smarty->register_block('t', 'smarty_translate');
 // TODO: Move this stuff to somewhere else?
-$locale = "fr_FR.utf8";
-//$locale = (!isset($_GET["l"]))?"en_AU.utf8":$_GET["l"];  
-putenv("LC_ALL=$locale");
-setlocale(LC_ALL, $locale);
-bindtextdomain("default", "/usr/share/grase/locale");
-textdomain("default");
+$locale = $Settings->getSetting('locale');
+//$locale = locale_accept_from_http("en_ZA");
+//echo $locale;
+if($locale == '') $locale = "en_AU";
+
+require_once('php-gettext/gettext.inc');
+
+
+Locale::setDefault($locale);
+//echo Locale::getDefault();
+$language =  locale_get_display_language($locale);
+$region = locale_get_display_region($locale);
+//print_r(displayLocales("-10000.11", TRUE)); 
+
+//putenv("LC_ALL=$locale");
+T_setlocale(LC_MESSAGES, $language);
+//print_r(setlocale(LC_MESSAGES, NULL));
+T_bindtextdomain("default", "/usr/share/grase/locale");
+T_textdomain("default");
 
 
 list($fileversions, $application_version)=css_file_version();

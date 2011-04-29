@@ -34,22 +34,22 @@ class Formatting
 
         if ($bytes >= $gb)
         {
-            $output = sprintf ("%01.2f",$bytes/$gb) . " GiB";
+            $output = displayLocales(sprintf ("%01.2f",$bytes/$gb)) . " GiB";
         }elseif ($bytes >= $mb)
         {
-            $output = sprintf ("%01.2f",$bytes/$mb) . " MiB";
+            $output = displayLocales(sprintf ("%01.2f",$bytes/$mb)) . " MiB";
         }
         elseif ( $bytes >= $kb )
         {
-            $output = sprintf ("%01.0f",$bytes/1024) . " KiB";
+            $output = displayLocales(sprintf ("%01.0f",$bytes/1024)) . " KiB";
         }
         elseif ($bytes == 1 )
         {
-            $output = $bytes . " B";        
+            $output = displayLocales($bytes) . " B";        
         }
         else
         {
-            $output = $bytes . " B";
+            $output = displayLocales($bytes) . " B";
         }
      
         return $output;

@@ -46,6 +46,7 @@ function clean_squid_log_array($loglines)
     $log = array();
 	foreach($loglines as $line)
 	{
+	    // Processing log file can take time, give us 2seconds per line
 		set_time_limit(2);
 // "%9d.%03d %6d %s %s/%03d %d %s %s %s %s%s/%s %s"
 // time elapsed remotehost code/status bytes method URL rfc931 peerstatus/peerhost type
@@ -60,6 +61,9 @@ function clean_squid_log_array($loglines)
 		tally_http_traffic($bytes);		
 		$log[] = array("timestamp" => date('Y-m-d H:i:s',$timestamp), "URL" => $URL,"address" => $clientip, "username"=> $username, "host" => $host, "cached" => '', "request" => $method, "size" => Formatting::formatBytes($bytes));
 	}
+	
+	// The time consuming part is done, no more than 5s should be needed now
+	set_time_limit(5);	
 	return $log;
 }
 
@@ -137,6 +141,9 @@ function build_perl_command($conditions)
     return $completeperlcommand;
 }
 
+
+/* Start Page Logic */
+
 	if(trim($_GET['acctid']) != '')
 	{
 
@@ -145,17 +152,20 @@ function build_perl_command($conditions)
 
 
         // Build up components for perl matching command
-//		$conditions['starttime'] =  escapeshellcmd(format_date($session['AcctStartTime']));
 		$conditions['starttime'] =  escapeshellcmd(format_unixtime($session['AcctStartTime']));		
-//		$finishtime =  escapeshellcmd(format_date($session['AcctStopTime']));
 		$finishtime =  escapeshellcmd(format_unixtime($session['AcctStopTime']));		
-		if($finishtime != "0.0.0 0:00:00")
+
+		if($finishtime != "0.0.0 0:00:00" && $finishtime != '')
 		{
 		    $conditions['finishtime'] = $finishtime;
 		}
+
 		$conditions['ipaddress'] = escapeshellcmd($session['FramedIPAddress']);
 		
+		/* We use a perl command as it's faster and easier to code the
+		 * matching logic than trying to process the entire log file in PHP */
 		$perlcommand = build_perl_command($conditions);
+		
 		
 		$username = $session['Username'];
 
@@ -166,7 +176,7 @@ function build_perl_command($conditions)
 		//echo "<pre>Log lines
 		//";*/
 		// TODO: FIXME: Ensure this is squid3 logs
-		// TODO: Add www-data to proxy group so can access logs, ensure logs rotate not compressed
+		// DONE: Add www-data to proxy group so can access logs, ensure logs rotate not compressed
 		$command = "cat /var/log/squid3/access.log*  | $perlcommand ";
 	}else
 	{

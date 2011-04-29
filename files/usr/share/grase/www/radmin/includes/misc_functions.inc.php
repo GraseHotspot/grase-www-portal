@@ -315,6 +315,22 @@ function sha1salt($plainText, $salt = null)
 function displayLocales($number, $isMoney, $lg='') {
     global $locale;
     if ( $lg == '') $lg = $locale;
+
+    if($isMoney)
+    {
+        $fmt = new NumberFormatter( $lg, NumberFormatter::CURRENCY );
+        return $fmt->format($number);    
+    }else
+    {
+        $fmt = new NumberFormatter( $lg, NumberFormatter::DECIMAL );
+        return $fmt->format($number);    
+    }
+}
+
+/* // This method uses locales complicated function. See above for Intl method 
+function displayLocales_old($number, $isMoney, $lg='') {
+    global $locale;
+    if ( $lg == '') $lg = $locale;
     $ret = setLocale(LC_ALL, $lg);
     setLocale(LC_TIME, 'Europe/Paris');
     if ($ret===FALSE) {
@@ -366,5 +382,5 @@ function displayLocales($number, $isMoney, $lg='') {
         default: $m = "$m [error sign_posn=$sign_posn&nbsp;!]";
     }
     if ($isMoney) return $m; else return $n;
-}
+}*/
 ?>
