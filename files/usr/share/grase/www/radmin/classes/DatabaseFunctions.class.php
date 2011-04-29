@@ -75,7 +75,7 @@ class DatabaseFunctions
         $result = $this->db->queryOne($sql);
         
         if (PEAR::isError($result)) {
-            ErrorHandling::fatal_db_error(_('Retrieving Sold Usage failed: '), $result);
+            ErrorHandling::fatal_db_error(T_('Retrieving Sold Usage failed: '), $result);
         }
         $soldoctets = $result;
         return $soldoctets + 0;
@@ -107,7 +107,7 @@ class DatabaseFunctions
         $usedoctets = $this->db->queryOne($sql);
         
         if (PEAR::isError($usedoctets)) {
-            ErrorHandling::fatal_db_error(_('Retrieving Month Usage failed: '), $usedoctets);
+            ErrorHandling::fatal_db_error(T_('Retrieving Month Usage failed: '), $usedoctets);
         }
         
         return $usedoctets;
@@ -123,7 +123,7 @@ class DatabaseFunctions
         $usedoctets = $this->db->queryOne($sql);
         
         if (PEAR::isError($usedoctets)) {
-            ErrorHandling::fatal_db_error(_('Retrieving Current Month Usage failed: '), $usedoctets);
+            ErrorHandling::fatal_db_error(T_('Retrieving Current Month Usage failed: '), $usedoctets);
         }
         
         return $usedoctets + 0;
@@ -151,7 +151,7 @@ class DatabaseFunctions
         $session = $this->db->queryRow($sql);
         
          if (PEAR::isError($session)) {
-            ErrorHandling::fatal_db_error(_('Retrieving Session by RadAcctID failed: '), $session);
+            ErrorHandling::fatal_db_error(T_('Retrieving Session by RadAcctID failed: '), $session);
         }
         
         return $session;
@@ -180,7 +180,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($sessions))
         {
-            ErrorHandling::fatal_db_error(_('Retrieving Sessions by Username failed: '), $sessions);
+            ErrorHandling::fatal_db_error(T_('Retrieving Sessions by Username failed: '), $sessions);
         }        
         return $sessions;            
         
@@ -200,7 +200,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($radacctid))
         {
-            ErrorHandling::fatal_db_error(_('Retrieving Current Session by Username failed: '), $radacctid);
+            ErrorHandling::fatal_db_error(T_('Retrieving Current Session by Username failed: '), $radacctid);
         }
         
         return $radacctid;    
@@ -220,7 +220,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($username))
         {
-            ErrorHandling::fatal_db_error(_('Retrieving Username by Active Session (ipadddress): '), $username);
+            ErrorHandling::fatal_db_error(T_('Retrieving Username by Active Session (ipadddress): '), $username);
         }
         
         return $username;
@@ -242,7 +242,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($results))
         {
-            ErrorHandling::fatal_db_error(_('Get User details Query failed: '), $results);
+            ErrorHandling::fatal_db_error(T_('Get User details Query failed: '), $results);
         }
         
         foreach ($results as $attribute) 
@@ -321,7 +321,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($results))
         {
-            ErrorHandling::fatal_db_error(_('Get User Group Query failed: '), $results);
+            ErrorHandling::fatal_db_error(T_('Get User Group Query failed: '), $results);
         }
         
         return $results;
@@ -347,7 +347,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($results))
         {
-            ErrorHandling::fatal_db_error(_('Get All Usernames Query Failed: '), $results);
+            ErrorHandling::fatal_db_error(T_('Get All Usernames Query Failed: '), $results);
         }
         
         foreach ($results as $user)
@@ -372,7 +372,7 @@ class DatabaseFunctions
 	
 	    if (PEAR::isError($results))
 	    {
-	        ErrorHandling::fatal_db_error(_('Get User Last Logout Query Failed: '), $results);
+	        ErrorHandling::fatal_db_error(T_('Get User Last Logout Query Failed: '), $results);
 	    }
         
         if (is_null($results)) 
@@ -400,7 +400,7 @@ class DatabaseFunctions
 		$results = $this->db->queryOne($sql);
 		if (PEAR::isError($results))
 		{
-            ErrorHandling::fatal_db_error(_('Get User Total Session Time Query failed: '), $results);
+            ErrorHandling::fatal_db_error(T_('Get User Total Session Time Query failed: '), $results);
         }
 
         return $results;
@@ -420,7 +420,7 @@ class DatabaseFunctions
 		$results = $this->db->queryOne($sql);
 		if (PEAR::isError($results))
 		{
-            ErrorHandling::fatal_db_error(_('Get User Data Usage Query failed: '), $results);
+            ErrorHandling::fatal_db_error(T_('Get User Data Usage Query failed: '), $results);
         }
         
         return $results + 0; // Need to zero it if null
@@ -440,7 +440,7 @@ class DatabaseFunctions
 		$results = $this->db->queryOne($sql);
 		if (PEAR::isError($results))
 		{
-            ErrorHandling::fatal_db_error(_('Get User Data Usage (Total) Query failed: '), $results);
+            ErrorHandling::fatal_db_error(T_('Get User Data Usage (Total) Query failed: '), $results);
         }
         
         return $results + 0; // Need to zero it if null
@@ -459,7 +459,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($results))
         {
-            ErrorHandling::fatal_db_error(_('Get Monthly Data Usage Query failed: '), $results);
+            ErrorHandling::fatal_db_error(T_('Get Monthly Data Usage Query failed: '), $results);
         }
         
         foreach($results as $result)
@@ -486,7 +486,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($results))
         {
-            ErrorHandling::fatal_db_error(_('Get Monthly Data Usage Totals Query failed: '), $results);
+            ErrorHandling::fatal_db_error(T_('Get Monthly Data Usage Totals Query failed: '), $results);
         }
         
         foreach($results as $result)
@@ -512,7 +512,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($results))
         {
-            ErrorHandling::fatal_db_error(_('Get User Comment failed: '), $results);
+            ErrorHandling::fatal_db_error(T_('Get User Comment failed: '), $results);
         }
         
         return trim($results);
@@ -552,7 +552,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(_('Setting User Comment Query Failed: '), $result);
+            ErrorHandling::fatal_db_error(T_('Setting User Comment Query Failed: '), $result);
         }
         
         return $result;
@@ -570,7 +570,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(_('Setting User Group Query Failed: '), $result);
+            ErrorHandling::fatal_db_error(T_('Setting User Group Query Failed: '), $result);
         }
         
         return $result;    
@@ -590,7 +590,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(_('Setting User Datalimit Query Failed: '), $result);
+            ErrorHandling::fatal_db_error(T_('Setting User Datalimit Query Failed: '), $result);
         }
         
         return $result;     
@@ -613,7 +613,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(_('Getting User Current Data Limit to increase failed: '), $result);
+            ErrorHandling::fatal_db_error(T_('Getting User Current Data Limit to increase failed: '), $result);
         }
         
         return $this->setUserDatalimit($username, ($result + $addoctets)/1024/1024);
@@ -634,7 +634,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(_('Setting User Timelimit Query Failed: '), $result);
+            ErrorHandling::fatal_db_error(T_('Setting User Timelimit Query Failed: '), $result);
         }
         
         return $result;     
@@ -657,7 +657,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(_('Getting User Current Time Limit to increase failed: '), $result);
+            ErrorHandling::fatal_db_error(T_('Getting User Current Time Limit to increase failed: '), $result);
         }
         
         return $this->setUserTimelimit($username, ($result + $addsecs)/60);
@@ -677,7 +677,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(_('Setting User Password Query Failed: '), $result);
+            ErrorHandling::fatal_db_error(T_('Setting User Password Query Failed: '), $result);
         }
         
         return $result;     
@@ -699,7 +699,7 @@ class DatabaseFunctions
             
             if (PEAR::isError($result))
             {
-                ErrorHandling::fatal_db_error(_('Setting User Expiry Date Query Failed: '), $result);
+                ErrorHandling::fatal_db_error(T_('Setting User Expiry Date Query Failed: '), $result);
             }
             
             return $result;     
@@ -718,7 +718,7 @@ class DatabaseFunctions
             
             if (PEAR::isError($result))
             {
-                ErrorHandling::fatal_db_error(_('Deleting User Expiry Date Query Failed: '), $result);
+                ErrorHandling::fatal_db_error(T_('Deleting User Expiry Date Query Failed: '), $result);
             }
             
             return $result;
@@ -738,7 +738,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(_('Deleting user failed: '). "($username) ", $result);
+            ErrorHandling::fatal_db_error(T_('Deleting user failed: '). "($username) ", $result);
         }
 
         /* Remove user from group */
@@ -750,7 +750,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(_('Deleting users group failed: '). "($username) ", $result);
+            ErrorHandling::fatal_db_error(T_('Deleting users group failed: '). "($username) ", $result);
         }
         
         /* Remove user comment */
@@ -762,7 +762,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(_('Deleting users comment failed: '). "($username) ", $result);
+            ErrorHandling::fatal_db_error(T_('Deleting users comment failed: '). "($username) ", $result);
         }
                       
                         
@@ -781,7 +781,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($results))
         {
-            ErrorHandling::fatal_db_error(_('Checking Uniq Username failed: '), $results);
+            ErrorHandling::fatal_db_error(T_('Checking Uniq Username failed: '), $results);
         }
         
         $unique = true;
@@ -806,7 +806,7 @@ class DatabaseFunctions
 	        return "";
 	        
 	    // Should never get here as Expiry date is now handled automatically and isn't user supplied
-	    ErrorHandling::fatal_error(_("Problem With expiration Date Format"));
+	    ErrorHandling::fatal_error(T_("Problem With expiration Date Format"));
     }
     
     private function _userAccountStatus($Userdata)

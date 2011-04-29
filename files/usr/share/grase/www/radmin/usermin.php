@@ -39,18 +39,18 @@ else
         // Work on changing password
         if($newpass1 != $newpass2)
         {
-            $error[] = _("New Passwords must match");
+            $error[] = T_("New Passwords must match");
         }elseif($newpass1 == '')
         {
-            $error[] = _("Password must not be blank");
+            $error[] = T_("Password must not be blank");
         }else
         {
             if(database_change_password($Auth->getUsername(), $newpass1))
             {
-                $success[] = _("Password Changed");
+                $success[] = T_("Password Changed");
             }else
             {
-                $error[] = _("Password not updated");            
+                $error[] = T_("Password not updated");            
             }
         }
 

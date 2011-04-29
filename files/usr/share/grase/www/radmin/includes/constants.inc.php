@@ -19,11 +19,12 @@
     You should have received a copy of the GNU General Public License
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
+require_once('php-gettext/gettext.inc');
 
 /* Define all Constants here */
 
 define("APPLICATION_NAME", "GRASE");
-define("USERMIN_APPLICATION_NAME", _("My Account"));
+define("USERMIN_APPLICATION_NAME", T_("My Account"));
 
 // Account Status Constants (used in CSS)
 

@@ -9,7 +9,7 @@
 	    <col />	
 		<thead>
 		<tr id='userattributesRow'>
-			<th>Username</th>
+			<th>{t}Username{/t}</th>
 			<th>Group</th>
 			<th>Data Limit</th>
 			<th>Data Usage (M)<a class="helpbutton" title='Total Data usage for the current month'><img src="/grase/images/icons/help.png" alt=""/></a></th>

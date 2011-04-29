@@ -139,7 +139,7 @@ function validate_post_expirydate()
 	 	)
 	{
 	 	/* Invalid date */
-	 	$error[] = _("Invalid Expiry Date");
+	 	$error[] = T_("Invalid Expiry Date");
 	}
 
 	if( $expirydate &&
@@ -149,34 +149,34 @@ function validate_post_expirydate()
 			$_POST['Expirydate_Day'] ) < time()
 		)
 	{
-		$error[] = _("Expiry Date in the past");
+		$error[] = T_("Expiry Date in the past");
 	}
 	return array($error,$expirydate);
 }
 
 function validate_datalimit($limit)
 {
-	if ($limit && ! is_numeric($limit) ) return sprintf(_("Invalid value '%s' for Data Limit"),$limit);
+	if ($limit && ! is_numeric($limit) ) return sprintf(T_("Invalid value '%s' for Data Limit"),$limit);
 	// TODO: Return what?
 }
 
 function validate_timelimit($limit)
 {
-	if ($limit && ! is_numeric($limit) ) return sprintf(_("Invalid value '%s' for Time Limit"), $limit);
+	if ($limit && ! is_numeric($limit) ) return sprintf(T_("Invalid value '%s' for Time Limit"), $limit);
 	// TODO: Return what?
 }
 
 function validate_mac($macaddress)
 {
     // Check string is in format XX-XX-XX-XX-XX-XX (and upper case);
-    if(! preg_match('/([0-9A-F]{2}-){5}[0-9A-F]{2}/', $macaddress)) return _("MAC Address not in correct format");
+    if(! preg_match('/([0-9A-F]{2}-){5}[0-9A-F]{2}/', $macaddress)) return T_("MAC Address not in correct format");
     // TODO: Check that each XX pair is a valid hex number
 }
 
 function validate_int($number)
 {
 	if ($number && is_numeric($number) && trim($number) != "") return "";
-    return sprintf(_("Invalid number '%s' (Must be whole number)"), $number);
+    return sprintf(T_("Invalid number '%s' (Must be whole number)"), $number);
 	// TODO: Return what?
 }
 
@@ -186,11 +186,11 @@ function validate_group($username, $group)
 	if(isset($Usergroups[$group]))
 	{
 		if($group == MACHINE_GROUP_NAME && strpos($username, "-dev") === false) // TODO: This no longer works for newer coovachilli, check for mac address format 00-00-00-00-00-00
-			return _("Only Machines can be in the Machine group"); // TODO: Internationalsation of all strings
+			return T_("Only Machines can be in the Machine group"); // TODO: Internationalsation of all strings
 		return "";
 	}else
 	{
-		return _("Invalid Group");
+		return T_("Invalid Group");
 	}
 }
 
@@ -274,25 +274,25 @@ function file_upload_error_message($error_code)
         case UPLOAD_ERR_INI_SIZE:
         case UPLOAD_ERR_FORM_SIZE:
 		case 2:
-            return _('Uploaded Image was too big');
+            return T_('Uploaded Image was too big');
 
         case UPLOAD_ERR_PARTIAL:
-            return _('Error In Uploading');
+            return T_('Error In Uploading');
 
         case UPLOAD_ERR_NO_FILE:
-            return _('No file was uploaded');
+            return T_('No file was uploaded');
 
         case UPLOAD_ERR_NO_TMP_DIR:
-            return _('Missing a temporary folder');
+            return T_('Missing a temporary folder');
 
         case UPLOAD_ERR_CANT_WRITE:
-            return _('Failed to write file to disk');
+            return T_('Failed to write file to disk');
 
         case UPLOAD_ERR_EXTENSION:
-            return _('File upload stopped by extension');
+            return T_('File upload stopped by extension');
 
         default:
-            return _('Unknown upload error');
+            return T_('Unknown upload error');
     }
 }
 

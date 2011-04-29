@@ -44,10 +44,10 @@ function validate_form()
 	$error[] = validate_datalimit($Max_Mb);
 	$error[] = validate_timelimit($MaxTime);
 	$error[] = validate_timelimit($Max_Time);		
-	if($Max_Mb && $MaxMb) $error[] = _("Only set one Data limit field");
-	if($Max_Time && $MaxTime) $error[] = _("Only set one Time limit field");
+	if($Max_Mb && $MaxMb) $error[] = T_("Only set one Data limit field");
+	if($Max_Time && $MaxTime) $error[] = T_("Only set one Time limit field");
 	
-	if($NumberTickets > 50) $error[] = _("Max of 50 tickets per batch"); // Limit due to limit in settings length which stores batch for printing
+	if($NumberTickets > 50) $error[] = T_("Max of 50 tickets per batch"); // Limit due to limit in settings length which stores batch for printing
 
 	list($error2, $expirydate) = validate_post_expirydate();
 	$error = array_merge($error, $error2);
@@ -107,8 +107,8 @@ if(isset($_POST['createticketssubmit']))
 		$Settings->setSetting('lastbatch', serialize($createdusernames));
 		$createdusers = database_get_users($createdusernames);
 		$smarty->assign("createdusers", $createdusers);
-		$success[] = _("Tickets Successfully Created");
-		$success[] = "<a target='_tickets' href='printnewtickets'>"._("Print Tickets")."</a>";				
+		$success[] = T_("Tickets Successfully Created");
+		$success[] = "<a target='_tickets' href='printnewtickets'>".T_("Print Tickets")."</a>";				
 	    $smarty->assign("success", $success);
 		display_adduser_form();
 	}

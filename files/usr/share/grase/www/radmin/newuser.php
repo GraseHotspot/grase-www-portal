@@ -28,8 +28,8 @@ function validate_form()
 {
 	global $expirydate;
 	$error = array();
-	if(! checkDBUniqueUsername($_POST['Username'])) $error[] = _("Username already taken");
-	if ( ! $_POST['Username'] || !$_POST['Password'] ) $error[] = _("Username and Password are both Required");
+	if(! checkDBUniqueUsername($_POST['Username'])) $error[] = T_("Username already taken");
+	if ( ! $_POST['Username'] || !$_POST['Password'] ) $error[] = T_("Username and Password are both Required");
 	
 	$MaxMb = ereg_replace("[^\.0-9]", "", $_POST['MaxMb'] );
 	$Max_Mb = ereg_replace("[^\.0-9]", "", $_POST['Max_Mb'] );	
@@ -41,8 +41,8 @@ function validate_form()
 	$error[] = validate_datalimit($Max_Mb);
 	$error[] = validate_timelimit($MaxTime);
 	$error[] = validate_timelimit($Max_Time);		
-	if($Max_Mb && $MaxMb) $error[] = _("Only set one Data limit field");
-	if($Max_Time && $MaxTime) $error[] = _("Only set one Time limit field");
+	if($Max_Mb && $MaxMb) $error[] = T_("Only set one Data limit field");
+	if($Max_Time && $MaxTime) $error[] = T_("Only set one Time limit field");
 
     /* // Expiry is not submitted anymore
 	list($error2, $expirydate) = validate_post_expirydate();
@@ -88,9 +88,9 @@ if(isset($_POST['newusersubmit']))
 			clean_text($_POST['Group']),
 			clean_text($_POST['Comment'])
 		);
-		$success[] = sprintf(_("User %s Successfully Created"),clean_text($_POST['Username']));
-		$success[] = "<a target='_tickets' href='printnewtickets?user=". clean_text($_POST['Username']) ."'>".sprintf(_("Print Ticket for %s"), clean_text($_POST['Username']))."</a>";		
-		AdminLog::getInstance()->log(sprintf(_("Created new user %s"),clean_text($_POST['Username'])));
+		$success[] = sprintf(T_("User %s Successfully Created"),clean_text($_POST['Username']));
+		$success[] = "<a target='_tickets' href='printnewtickets?user=". clean_text($_POST['Username']) ."'>".sprintf(T_("Print Ticket for %s"), clean_text($_POST['Username']))."</a>";		
+		AdminLog::getInstance()->log(sprintf(T_("Created new user %s"),clean_text($_POST['Username'])));
 		$smarty->assign("success", $success);
 		display_adduser_form();
 	}

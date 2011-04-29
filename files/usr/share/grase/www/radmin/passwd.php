@@ -50,40 +50,40 @@ require_once 'includes/database_functions.inc.php';
 	    {
 		    if(! $Auth->storage->verifyPassword($_POST['OldPassword'],$admin_users[$Auth->getUsername()]))
 		    {
-			    $errors[] = _("Old Password incorrect");
+			    $errors[] = T_("Old Password incorrect");
 		    }elseif($_POST['NewPassword'] != $_POST['ConfirmPassword'])
 		    {
-			    $errors[] = _("New passwords don't match");
+			    $errors[] = T_("New passwords don't match");
 		    }else
 		    {
 
 			    $Auth->changePassword($Auth->getUsername(), $_POST['NewPassword']) or $error_passwd = "Error Changing Password"; // TODO: Check successful
-			    $success[] = _("Password Changed");			    
-                AdminLog::getInstance()->log(_("Password Changed"));
+			    $success[] = T_("Password Changed");			    
+                AdminLog::getInstance()->log(T_("Password Changed"));
 		    }
-	    }else $errors[] = _("Please fill in all password fields");
+	    }else $errors[] = T_("Please fill in all password fields");
 	}
 
 	if(isset($_POST['addadminusersubmit'])) // Add new admin user
 	{
 		if(isset($admin_users[$_POST['newUsername']]))
 		{
-			$errors[] = sprintf(_("User %s already exists"), $_POST['Username']);
+			$errors[] = sprintf(T_("User %s already exists"), $_POST['Username']);
 		}elseif($_POST['newPassword'] && $_POST['newUsername'])
 		{
-			$success[] = _("User Created");
+			$success[] = T_("User Created");
 			$Auth->addUser($_POST['newUsername'], $_POST['newPassword']) or $error_user = "Error Creating User";
 			AdminLog::getInstance()->log("New Admin User Created, ${_POST['newUsername']}");
-		}else $errors[] = _("Need both username and password");
+		}else $errors[] = T_("Need both username and password");
 	}
 
 	if(isset($_POST['deleteadminusersubmit'])) // Delete admin user
 	{
 		if($_POST['deleteusername']){
-			$success[] = sprintf(_("User %s Deleted"), $_POST['deleteusername']);
+			$success[] = sprintf(T_("User %s Deleted"), $_POST['deleteusername']);
 			$Auth->removeUser($_POST['deleteusername']) or $error_delete = "Error Deleting User";
 			AdminLog::getInstance()->log("Admin User Deleted, ${_POST['deleteusername']}");
-		}else $errors[] = _("Invalid Delete Request");
+		}else $errors[] = T_("Invalid Delete Request");
 	}
 	
 	

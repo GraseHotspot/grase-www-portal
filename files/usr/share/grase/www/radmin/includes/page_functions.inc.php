@@ -19,6 +19,8 @@
     You should have received a copy of the GNU General Public License
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
+require_once('php-gettext/gettext.inc');
+
 
 require_once 'includes/database_functions.inc.php';
 require_once 'includes/load_settings.inc.php';
@@ -199,9 +201,6 @@ $locale = $Settings->getSetting('locale');
 //$locale = locale_accept_from_http("en_ZA");
 //echo $locale;
 if($locale == '') $locale = "en_AU";
-
-require_once('php-gettext/gettext.inc');
-
 
 Locale::setDefault($locale);
 //echo Locale::getDefault();

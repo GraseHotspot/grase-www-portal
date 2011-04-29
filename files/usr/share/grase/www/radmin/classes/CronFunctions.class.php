@@ -55,11 +55,11 @@ class CronFunctions extends DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            return _('Upgrading DB failed: ') . $result->toString();
+            return T_('Upgrading DB failed: ') . $result->toString();
         }
 
         if($result > 0)        
-            return _('Database upgraded') . $result;
+            return T_('Database upgraded') . $result;
         
         return false;
 
@@ -100,11 +100,11 @@ class CronFunctions extends DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            return _('Clearing stale sessions failed: ') . $result->toString();
+            return T_('Clearing stale sessions failed: ') . $result->toString();
         }
 
         if($result > 0)        
-            return _('Stale sessions cleared') . $result;
+            return T_('Stale sessions cleared') . $result;
         
         return false;
 
@@ -137,7 +137,7 @@ class CronFunctions extends DatabaseFunctions
             
             if (PEAR::isError($results))
             {
-                return _('Fetching users to delete failed') . $results->toString();
+                return T_('Fetching users to delete failed') . $results->toString();
             }
             
             foreach($results as $user)
@@ -149,7 +149,7 @@ class CronFunctions extends DatabaseFunctions
         }
 
         if($deleted_results)
-            return "($deleted_results) " . _('Expired users deleted');
+            return "($deleted_results) " . T_('Expired users deleted');
             
         return false;
          
@@ -200,7 +200,7 @@ class CronFunctions extends DatabaseFunctions
             
             if (PEAR::isError($result))
             {
-                return _('Unable to insert data into mtotaccttmp: ') . $result->toString();
+                return T_('Unable to insert data into mtotaccttmp: ') . $result->toString();
             }
                              
             $rowsaffected += $result;
@@ -218,7 +218,7 @@ class CronFunctions extends DatabaseFunctions
             
             if (PEAR::isError($result))
             {
-                return _('Unable to delete old radacct data: ') . $result->toString();
+                return T_('Unable to delete old radacct data: ') . $result->toString();
             }          
 
             $rowsaffected += $result;                              
@@ -239,7 +239,7 @@ class CronFunctions extends DatabaseFunctions
             
             if (PEAR::isError($result))
             {
-                return _('Unable to update users Max-Octets: ') . $result->toString();
+                return T_('Unable to update users Max-Octets: ') . $result->toString();
             }   
             
             $rowsaffected += $result;                                     
@@ -258,7 +258,7 @@ class CronFunctions extends DatabaseFunctions
             
             if (PEAR::isError($result))
             {
-                return _('Unable to update users Max-All-Session: ') . $result->toString();
+                return T_('Unable to update users Max-All-Session: ') . $result->toString();
             }   
             
             $rowsaffected += $result;                                     
@@ -294,7 +294,7 @@ class CronFunctions extends DatabaseFunctions
             
             if (PEAR::isError($result))
             {
-                return _('Unable to move mtotaccttmp data to mtotacct: ') . $result->toString();
+                return T_('Unable to move mtotaccttmp data to mtotacct: ') . $result->toString();
             }   
             
             $rowsaffected += $result;                             
@@ -307,7 +307,7 @@ class CronFunctions extends DatabaseFunctions
             
             if (PEAR::isError($result))
             {
-                return _('Unable to truncate mtotaccttmp: ') . $result->toString();
+                return T_('Unable to truncate mtotaccttmp: ') . $result->toString();
             }   
             
             $rowsaffected += $result;                     
@@ -327,7 +327,7 @@ class CronFunctions extends DatabaseFunctions
             
             if (PEAR::isError($result))
             {
-                return _('Unable to ensure positive values in radcheck: ') . $result->toString();
+                return T_('Unable to ensure positive values in radcheck: ') . $result->toString();
             }
             
             $rowsaffected += $result;                                        
@@ -345,7 +345,7 @@ class CronFunctions extends DatabaseFunctions
                 
                 if (PEAR::isError($result))
                 {
-                    return _('Unable to delete ancient radacct data: ') . $result->toString();
+                    return T_('Unable to delete ancient radacct data: ') . $result->toString();
                 }    
                 
                 $rowsaffected += $result;                                            
@@ -354,7 +354,7 @@ class CronFunctions extends DatabaseFunctions
         }
         
         if($rowsaffected > 0)        
-            return _('Old Radius Accounting Data Archived') . $rowsaffected;
+            return T_('Old Radius Accounting Data Archived') . $rowsaffected;
         
         return false;
     }

@@ -36,6 +36,8 @@ function __autoload($class_name) {
     require_once './classes/' . $class_name . '.class.php';
 }
 
+require_once('php-gettext/gettext.inc');
+
 require_once 'load_settings.inc.php';
 require_once 'page_functions.inc.php';
 

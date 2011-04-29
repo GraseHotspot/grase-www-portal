@@ -27,7 +27,7 @@ require_once 'includes/database_functions.inc.php';
 function validate_form()
 {
 	$error = array();
-	if(! checkDBUniqueUsername($_POST['mac'])) $error[] = _("MAC Address already has an account");
+	if(! checkDBUniqueUsername($_POST['mac'])) $error[] = T_("MAC Address already has an account");
 	
 	$MaxMb = ereg_replace("[^\.0-9]", "", $_POST['MaxMb'] );
 	$Max_Mb = ereg_replace("[^\.0-9]", "", $_POST['Max_Mb'] );	
@@ -40,8 +40,8 @@ function validate_form()
 	$error[] = validate_datalimit($Max_Mb);
 	$error[] = validate_timelimit($MaxTime);
 	$error[] = validate_timelimit($Max_Time);		
-	if($Max_Mb && $MaxMb) $error[] = _("Only set one Data limit field");
-	if($Max_Time && $MaxTime) $error[] = _("Only set one Time limit field");
+	if($Max_Mb && $MaxMb) $error[] = T_("Only set one Data limit field");
+	if($Max_Time && $MaxTime) $error[] = T_("Only set one Time limit field");
 
 	return array_filter($error);
 }
@@ -81,7 +81,7 @@ if(isset($_POST['newmachinesubmit']))
 			'Machine', // TODO: This needs to be linked to settings
 			clean_text($_POST['Comment'])
 		);
-		$success[] = _("Machine Account Successfully Created");
+		$success[] = T_("Machine Account Successfully Created");
 		AdminLog::getInstance()->log("Created new machine $mac");
 		$smarty->assign("success", $success);
 		display_addmachine_form();

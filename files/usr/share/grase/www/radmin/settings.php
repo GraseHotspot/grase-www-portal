@@ -79,17 +79,17 @@ if(sizeof($success) > 0) $smarty->assign("success", $success);
 function update_location($location)
 {
     global $error, $smarty, $Settings, $success;
-    if($location == "") $error[] = _("Location name not valid");
+    if($location == "") $error[] = T_("Location name not valid");
     else {
 	    if($Settings->setSetting('locationName', $location))
 	    {
-		    $success[] = _("Location name updated");
-		    AdminLog::getInstance()->log(_("Location Name changed to")." $new_location");
+		    $success[] = T_("Location name updated");
+		    AdminLog::getInstance()->log(T_("Location Name changed to")." $new_location");
 		    $smarty->assign("Title", $location . " - " . APPLICATION_NAME); //TODO: remove need for this with setting reload function
 	    }
 	    else
 	    {
-	        $error[] = _("Error Saving Location Name");
+	        $error[] = T_("Error Saving Location Name");
 	    }    
     }
 }
@@ -98,17 +98,17 @@ function update_location($location)
 function update_websitename($websitename)
 {
     global $error, $smarty, $Settings, $success;
-    if($websitename == "") $error[] = _("Website name not valid");    
+    if($websitename == "") $error[] = T_("Website name not valid");    
     else
     {
         if($Settings->setSetting('websiteName', $websitename))
         {
-            $success[] = _("Website name updated");
-			AdminLog::getInstance()->log(_("Website name updated"));        
+            $success[] = T_("Website name updated");
+			AdminLog::getInstance()->log(T_("Website name updated"));        
         }
         else
         {
-            $error[] = _("Error Saving Website Name");
+            $error[] = T_("Error Saving Website Name");
         }
     }
 }
@@ -116,17 +116,17 @@ function update_websitename($websitename)
 function update_websitelink($websitelink)
 {
     global $error, $smarty, $Settings, $success;
-    if($websitelink == "" || strpos($websitelink, ' ') !== false) $error[] = _("Website link not valid");    
+    if($websitelink == "" || strpos($websitelink, ' ') !== false) $error[] = T_("Website link not valid");    
     else
     {
         if($Settings->setSetting('websiteLink', $websitelink))
         {
-            $success[] = _("Website link updated");
-			AdminLog::getInstance()->log(_("Website link updated"));        
+            $success[] = T_("Website link updated");
+			AdminLog::getInstance()->log(T_("Website link updated"));        
         }
         else
         {
-            $error[] = _("Error Saving Website link");
+            $error[] = T_("Error Saving Website link");
         }
     }
 }
@@ -140,17 +140,17 @@ function update_pricemb($pricemb)
 	{
 		if($Settings->setSetting('priceMb', $pricemb))
 		{
-			$success[] = _("Price per MiB updated");
-			AdminLog::getInstance()->log(_("Price per MiB updated"));
+			$success[] = T_("Price per MiB updated");
+			AdminLog::getInstance()->log(T_("Price per MiB updated"));
 		}
 		else
 		{
-			$error[] = _("Error saving Price per MiB");
+			$error[] = T_("Error saving Price per MiB");
 		}
 	}
 	else
 	{
-		$error[] = _("Invalid Price per MiB");
+		$error[] = T_("Invalid Price per MiB");
 	}
 }	
 
@@ -161,15 +161,15 @@ function update_pricetime($pricetime)
 	{
 		if($Settings->setSetting('priceMinute', $pricetime))
 		{
-			$success[] = _("Price per Minute Updated");
-			AdminLog::getInstance()->log(_("Price per Minute Updated"));
+			$success[] = T_("Price per Minute Updated");
+			AdminLog::getInstance()->log(T_("Price per Minute Updated"));
 		}else
 		{
-			$error[] = _("Error saving Price per Minute");
+			$error[] = T_("Error saving Price per Minute");
 		}
 	}else
 	{
-		$error[] = _("Invalid Price per Minute");
+		$error[] = T_("Invalid Price per Minute");
 	}
 }
 
@@ -180,16 +180,16 @@ function update_currency($currency)
 	{
 		if($Settings->setSetting('currency', $currency))
 		{
-			$success[] = _("Currency updated");
-			AdminLog::getInstance()->log(_("Currency updated to") ." ${CurrencySymbols[$currency]}");
+			$success[] = T_("Currency updated");
+			AdminLog::getInstance()->log(T_("Currency updated to") ." ${CurrencySymbols[$currency]}");
 		}
 		else
 		{
-			$error[] = _("Error saving Currency");
+			$error[] = T_("Error saving Currency");
 		}
 	}else
 	{
-		$error[] = _("Invalid Currency");
+		$error[] = T_("Invalid Currency");
 	}
 
 
@@ -204,17 +204,17 @@ function update_sellabledata($sellabledata)
     {
         if($Settings->setSetting('sellableData', $sellabledata))
         {
-            $success[] = _("Sellable Data Limit Update");
-			AdminLog::getInstance()->log(_("Sellable Data Limit Update"));        
+            $success[] = T_("Sellable Data Limit Update");
+			AdminLog::getInstance()->log(T_("Sellable Data Limit Update"));        
         }
         else
         {
-            $error[] = _("Error updating Sellable Data Limit");
+            $error[] = T_("Error updating Sellable Data Limit");
         }
     }
     else
     {
-        $error[] = _("Invalid value for Sellable Data");
+        $error[] = T_("Invalid value for Sellable Data");
     }
 }
 
@@ -225,17 +225,17 @@ function update_useabledata($useabledata)
     {
         if($Settings->setSetting('useableData', $useabledata))
         {
-            $success[] = _("Useable Data Limit Update");
-			AdminLog::getInstance()->log(_("Useable Data Limit Update"));        
+            $success[] = T_("Useable Data Limit Update");
+			AdminLog::getInstance()->log(T_("Useable Data Limit Update"));        
         }
         else
         {
-            $error[] = _("Error updating Useable Data Limit");
+            $error[] = T_("Error updating Useable Data Limit");
         }
     }
     else
     {
-        $error[] = _("Invalid value for Useable Data");
+        $error[] = T_("Invalid value for Useable Data");
     }
 }
 
@@ -243,17 +243,17 @@ function update_useabledata($useabledata)
 function update_supportcontact($supportname)
 {
     global $error, $smarty, $Settings, $success;
-    if($supportname == "") $error[] = _("Support name not valid");    
+    if($supportname == "") $error[] = T_("Support name not valid");    
     else
     {
         if($Settings->setSetting('supportContactName', $supportname))
         {
-            $success[] = _("Support name updated");
-			AdminLog::getInstance()->log(_("Support name updated"));        
+            $success[] = T_("Support name updated");
+			AdminLog::getInstance()->log(T_("Support name updated"));        
         }
         else
         {
-            $error[] = _("Error Saving Support Name");
+            $error[] = T_("Error Saving Support Name");
         }
     }
 }
@@ -261,17 +261,17 @@ function update_supportcontact($supportname)
 function update_supportlink($supportlink)
 {
     global $error, $smarty, $Settings, $success;
-    if($supportlink == "" || strpos($supportlink, ' ') !== false) $error[] = _("Support link not valid");    
+    if($supportlink == "" || strpos($supportlink, ' ') !== false) $error[] = T_("Support link not valid");    
     else
     {
         if($Settings->setSetting('supportContactLink', $supportlink))
         {
-            $success[] = _("Support link updated");
-			AdminLog::getInstance()->log(_("Support link updated"));        
+            $success[] = T_("Support link updated");
+			AdminLog::getInstance()->log(T_("Support link updated"));        
         }
         else
         {
-            $error[] = _("Error Saving Support link");
+            $error[] = T_("Error Saving Support link");
         }
     }
 }
