@@ -1,16 +1,16 @@
 {include file="header.tpl" Name="Log" activepage="sessions"}
 
-{if $ipaddress}<h2>Session logs for {$username} on&nbsp;<a class="helpbutton" title='Computers hardware (MAC) address is<br/>{$session.CallingStationId}'>{$ipaddress}</a>&nbsp;({$session.AcctTotalOctets|bytes})</h2>
-<h3>Between {$session.AcctStartTime} and {$session.AcctStopTime}</h3>{/if}
+{if $ipaddress}<h2>{t 1=$username 2=$ipaddress}Session logs for %1 on %2{/t} &nbsp;<a class="helpbutton" title='{t}Computers hardware (MAC) address is{/t}<br/>{$session.CallingStationId}'>*</a>&nbsp;({$session.AcctTotalOctets|bytes})</h2>
+<h3>{t 1=$session.AcctStartTime 2=$session.AcctStopTime}Between %1 and %2{/t}</h3>{/if}
 
-Total HTTP (WWW) Traffic Size: {$http_traffic_size}<br/>
+{t}Total HTTP (WWW) Traffic Size:{/t} {$http_traffic_size}<br/>
 <div id='logtables'>
 <div id='domain' style='display:block;'>
 	<table border="0" id='domainTable'>
 		<tr class='domainattributesRow'>
-			<td>Domain</td>
-			<td>Count</td>
-			<td>Size</td>
+			<td>{t}Domain{/t}</td>
+			<td>{t}Count{/t}</td>
+			<td>{t}Size{/t}</td>
 		</tr>	
 
 		{counter assign=idx print=0 name=domaintally}
@@ -54,12 +54,12 @@ Total HTTP (WWW) Traffic Size: {$http_traffic_size}<br/>
 <div id='log' style='display:block;'>
 	<table border="0" id='logTable'>
 		<tr class='logattributesRow'>
-			<td>Timestamp</td>
-			<td>Address</td>
-<!--			<td>Host</td>-->
-			<td>Cached</td>
-			<td>Request Type</td>
-			<td>Size</td>
+			<td>{t}Timestamp{/t}</td>
+			<td>{t}Address{/t}</td>
+<!--			<td>{t}Host{/t}</td>-->
+			<td>{t}Cached{/t}</td>
+			<td>{t}Request Type{/t}</td>
+			<td>{t}Size{/t}</td>
 		</tr>	
 		{foreach from=$loglines item=logline}
 		<tr>

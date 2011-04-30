@@ -2,7 +2,7 @@
  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<title>{$Title} - {$Name}</title>
+<title>{$Title} - {t}{$Name}{/t}</title>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 <meta name="generator" content="{$Application} {$application_version}" />
 <!-- CSS Stylesheet -->

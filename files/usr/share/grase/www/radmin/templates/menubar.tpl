@@ -1,5 +1,5 @@
 <div id="menubar" class="buttons ui-widget-content">
-{if $LoggedInUsername}<span id="loggedinusername">Logged in as&nbsp;<b>{$LoggedInUsername}</b></span>{/if}
+{if $LoggedInUsername}<span id="loggedinusername">{t escape=no username=$LoggedInUsername}Logged in as <b>%1</b>{/t}</span>{/if}
 {foreach from=$MenuItems key=menuitemid item=menuitem}
 <a id="{$menuitemid}" class="
 {if $activepage == $menuitemid}ui-state-active{/if} 

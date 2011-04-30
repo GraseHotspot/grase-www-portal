@@ -1,35 +1,36 @@
-{include file="header.tpl" Name="Change Password" activepage="passwd" helptext="Use this page to create and delete Administration users. Adminstration users are only for this $Application interface, and are different to the internet users."}
+{include file="header.tpl" Name="Admin Users" activepage="passwd" helptext="Use this page to create and delete Administration users. Adminstration users are only for this $Application interface, and are different to the internet users."}
 
+<h2>{t}Admin Users{/t}</h2>
 <div id="passwdChangeForm">
 
 
 <form method='post' id='passwdChange' action='' class='generalForm'> 
-<h2>Change Password</h2>
+<h3>{t}Change Password{/t}</h3>
 <div>
-    <label for='Username'>Username</label>
+    <label for='Username'>{t}Username{/t}</label>
     <input disabled='disabled' type="text" name="Username" value='{$LoggedInUsername}'/>
     <span id="UsernameInfo"> </span>
 </div>
 
 <div>
-    <label for='OldPassword'>Old Password</label>
+    <label for='OldPassword'>{t}Old Password{/t}</label>
     <input type="password" name="OldPassword" value='' class="autoDisable"/>
     <span id="OldPasswordInfo"> </span>
 </div>
 
 <div>
-    <label for='NewPassword'>New Password</label>
+    <label for='NewPassword'>{t}New Password{/t}</label>
     <input type="password" name="NewPassword" value='' class="autoDisable"/>
     <span id="NewPasswordInfo"> </span>
 </div>
 
 <div>
-    <label for='ConfirmPassword'>Confirm New Password</label>
+    <label for='ConfirmPassword'>{t}Confirm New Password{/t}</label>
     <input type="password" name="ConfirmPassword" value='' class="autoDisable"/>
     <span id="ConfirmPasswordInfo"> </span>
 </div>
 <div>
-    <button type="submit" name="changepasswordsubmit" value="Change Password"><img src="/grase/images/icons/textfield_key.png" alt=""/>Change Password</button>
+    <button type="submit" name="changepasswordsubmit" value="{t}Change Password{/t}"><img src="/grase/images/icons/textfield_key.png" alt=""/>{t}Change Password{/t}</button>
     <span>&nbsp;</span>
 </div>
 </form> 
@@ -38,22 +39,22 @@
 <div id="AddAdminUserForm">
 
 <form method='post' id='AddUser' action='' class='generalForm'>
-<h2>Create new Admin User</h2>
+<h3>{t}Create new Admin User{/t}</h3>
 
 <div>
-    <label for='newUsername'>Username</label>
+    <label for='newUsername'>{t}Username{/t}</label>
     <input type="text" name="newUsername" value='' class="autoDisable"/>
     <span id="newUsernameInfo"> </span>
 </div>
 
 <div>
-    <label for='newPassword'>Password</label>
+    <label for='newPassword'>{t}Password{/t}</label>
     <input type="password" name="newPassword" value='' class="autoDisable"/>
     <span id="newPasswordInfo"> </span>
 </div>
 
 <div>
-    <button type="submit" name="addadminusersubmit" class="positive" value="Add new Admin User"><img src="/grase/images/icons/tick.png" alt=""/>Create new Admin User</button>
+    <button type="submit" name="addadminusersubmit" class="positive" value="Add new Admin User"><img src="/grase/images/icons/tick.png" alt=""/>{t}Create new Admin User{/t}</button>
     <span>&nbsp;</span>
 </div>
 
@@ -61,17 +62,17 @@
 </div>
 
 <div id="DeleteAdminUserForm">
-<h2>Delete Admin User</h2>
+<h3>{t}Delete Admin User{/t}</h3>
 
 {foreach from=$adminusers item=user}
 <form method='post' id='DeleteUser{$user}' action='' class='generalForm'>
 <div>
-    <label for='delete{$user}'>{$user}{if $user == 'support'}&nbsp;<a class="helpbutton" title='Deleting or modifying the support user will prevent remote assistance.' ><img src="/grase/images/icons/help.png" alt=""/></a>{/if}</label>
+    <label for='delete{$user}'>{$user}{if $user == 'support'}&nbsp;<a class="helpbutton" title='{t}Deleting or modifying the support user will prevent remote assistance.{/t}' ><img src="/grase/images/icons/help.png" alt=""/></a>{/if}</label>
     {if $LoggedInUsername != $user}
         <input type="hidden" value="{$user}" name="deleteusername"/>
-        <span><button class="negative" type="submit" name="deleteadminusersubmit" value="Delete {$user}" onclick="return confirm('Are you sure you want to delete {$user}?');"><img src="/grase/images/icons/cross.png" alt=""/>Delete {$user}</button></span>
+        <span><button class="negative" type="submit" name="deleteadminusersubmit" value="Delete {$user}" onclick="return confirm('{t}Are you sure you want to delete{/t} {$user}?');"><img src="/grase/images/icons/cross.png" alt=""/>{t}Delete{/t} {$user}</button></span>
     {else}
-        <span>Cannot delete current user</span>
+        <span>{t}Cannot delete current user{/t}</span>
     {/if}
     
 

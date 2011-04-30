@@ -1,6 +1,6 @@
 {include file="header.tpl" Name="Admin Log" activepage="adminlog"}
 
-<h2>Admin Log</h2>
+<h2>{t}Admin Log{/t}</h2>
 
 <div id='log' style='display:block;'>
 	<table border="0" id='AdminlogTable' class="stripeMe">
@@ -10,10 +10,10 @@
 	    <col />
 	    <thead>
 		<tr>
-			<td>Timestamp</td>
-			<td>Username</td>
-			<td>IP</td>
-			<td>Action</td>
+			<td>{t}Timestamp{/t}</td>
+			<td>{t}Username{/t}</td>
+			<td>{t}IP{/t}</td>
+			<td>{t}Action{/t}</td>
 		</tr>
 		</thead>
 		<tbody>

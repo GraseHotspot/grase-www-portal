@@ -1,0 +1,4 @@
+This directory contains all the templates for displaying the administration interface.
+WARNING: Any changes in here will be lost upon upgrades.
+All strings to be translated (hard coded into template, not coming from PHP) need to be in {t}{/t} blocks.
+tsmarty2c.php is for extracting these t blocks into _('String') format so that poedit can pick them up for translation.

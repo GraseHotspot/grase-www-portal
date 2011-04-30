@@ -1,20 +1,20 @@
 {include file="header.tpl" Name="Sessions" activepage="sessions"}
 
-{if $username}<h2>Sessions for {$username}</h2>{/if}
+{if $username}<h2>{t 1=$username}Sessions for %1{/t}</h2>{/if}
 
 <div id='sessionslist' style='display:block;'>
 	<table border="0" id='sessionslistTable'>
 		<thead>
 		<tr id='sessionsattributesRow' class="sessionheader">
 			<td>#</td>
-			<td><!--AcctStartTime-->Start Time</td>
-			<td><!--AcctStopTime-->Stop Time</td>
-			<td><!--AcctSessionTime-->Time</td>
-			<td><!--FramedIPAddress-->IP Address</td>
-			<td>Username</td>
-			<td>Download</td>
-			<td>Uploaded</td>
-			<td>Data Usage</td>
+			<td><!--AcctStartTime-->{t}Start Time{/t}</td>
+			<td><!--AcctStopTime-->{t}Stop Time{/t}</td>
+			<td><!--AcctSessionTime-->{t}Time{/t}</td>
+			<td><!--FramedIPAddress-->{t}IP Address{/t}</td>
+			<td>{t}Username{/t}</td>
+			<td>{t}Download{/t}</td>
+			<td>{t}Uploaded{/t}</td>
+			<td>{t}Data Usage{/t}</td>
 		</tr>	
 		</thead>
 		<tbody>
@@ -24,7 +24,7 @@
 			<td>{$session.AcctStartTime}</td>
 			<td>{$session.AcctStopTime}</td>			
 			<td>{$session.AcctSessionTime|seconds}</td>			
-			<td><a class="helpbutton" title='Computers hardware (MAC) address is<br/>{$session.CallingStationId}'>{$session.FramedIPAddress}</a></td>
+			<td><a class="helpbutton" title='{t mac=$session.CallingStationId}Computers hardware (MAC) address is %1{/t}'>{$session.FramedIPAddress}</a></td>
 			<td><a href="?username={$session.Username}">{$session.Username}</a></td>
 			<td>{$session.AcctInputOctets|bytes}</td>
 			<td>{$session.AcctOutputOctets|bytes}</td>			

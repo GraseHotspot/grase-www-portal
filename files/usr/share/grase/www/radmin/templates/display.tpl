@@ -1,4 +1,4 @@
-{include file="header.tpl" Name="Display Users" activepage="users" helptext="Click on a username to edit that user.<br/>Click on the &nbsp;<u>*</u>&nbsp; to see the users password<br/>Click on ether the Data Usage or Time Usage to see the users sessions"}
+{include file="header.tpl" Name="List Users" activepage="users" helptext="Click on a username to edit that user.<br/>Click on the &nbsp;<u>*</u>&nbsp; to see the users password<br/>Click on ether the Data Usage or Time Usage to see the users sessions"}
 
 <div id='userslist' >
 	<table id="userslistTable" class="tablesorter">
@@ -10,15 +10,15 @@
 		<thead>
 		<tr id='userattributesRow'>
 			<th>{t}Username{/t}</th>
-			<th>Group</th>
-			<th>Data Limit</th>
-			<th>Data Usage (M)<a class="helpbutton" title='Total Data usage for the current month'><img src="/grase/images/icons/help.png" alt=""/></a></th>
-			<th>Data Usage (T)<a class="helpbutton" title='Total Data usage, from previous months, excluding current month' ><img src="/grase/images/icons/help.png" alt=""/></a></th>
-			<th>Time Limit</th>
-			<th>Time Usage (Month)</th>			
-			<th>Account Expiry</th>
-			<th>Last Logoff<a class="helpbutton" title='Last Logoff timestamp from current month only' ><img src="/grase/images/icons/help.png" alt=""/></a></th>
-			<th>Comment</th>
+			<th>{t}Group{/t}</th>
+			<th>{t}Data Limit{/t}</th>
+			<th>{t}Data Usage (M){/t}<a class="helpbutton" title='{t}Total Data usage for the current month{/t}'><img src="/grase/images/icons/help.png" alt=""/></a></th>
+			<th>{t}Data Usage (T){/t}<a class="helpbutton" title='{t}Total Data usage, from previous months, excluding current month{/t}' ><img src="/grase/images/icons/help.png" alt=""/></a></th>
+			<th>{t}Time Limit{/t}</th>
+			<th>{t}Time Usage (Month){/t}</th>			
+			<th>{t}Account Expiry{/t}</th>
+			<th>{t}Last Logoff{/t}<a class="helpbutton" title='{t}Last Logoff timestamp from current month only{/t}' ><img src="/grase/images/icons/help.png" alt=""/></a></th>
+			<th>{t}Comment{/t}</th>
 		</tr>
 		</thead>
 		<tbody>	
@@ -26,7 +26,7 @@
 
 		<tr id="user_{$user.Username}_Row" class="userrow {$user.account_status}">
 		<!-- id="user_{$user.Username}_Row" class="userrow {if $smarty.foreach.usersloop.iteration is even}even{else}odd{/if} {$user.account_status}" > -->
-			<td class='info_username'><span class='info_password'>{if $user.Group eq 'Machine'}<span title="Password Hidden">*</span>{else}<span title="{$user.Password}"><a href='javascript:alert("Password for {$user.Username} is {$user.Password}")'>*</a></span>{/if}</span><a href="edituser?username={$user.Username}">{$user.Username}</a></td>
+			<td class='info_username'><span class='info_password'>{if $user.Group eq 'Machine'}<span title="{t}Password Hidden{/t}">*</span>{else}<span title="{$user.Password}"><a href='javascript:alert("Password for {$user.Username} is {$user.Password}")'>*</a></span>{/if}</span><a href="edituser?username={$user.Username}">{$user.Username}</a></td>
 
 			<td class='info_group'>{$user.Group}</td>
 			<td class='info_datalimit'>{$user.MaxOctets|bytes}</td>
