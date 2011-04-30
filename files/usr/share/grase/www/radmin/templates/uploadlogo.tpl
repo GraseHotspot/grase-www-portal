@@ -14,7 +14,7 @@
         <img src="/grase/images/logo.png" alt="Logo"/>                
     </div>
    
-    <button type="submit" name="newlogosubmit">{t}Upload New Logo{/t}</button> 
+    <button type="submit" name="newlogosubmit">{t}Upload Logo{/t}</button> 
 
 </form>
 

@@ -66,21 +66,21 @@ function css_file_version()
 function createmenuitems()
 {
 	//	$menubar['id'] = array("href" => , "label" => );
-	$menubar['main'] = array("href" => "./", "label" => "Status");
-	$menubar['users'] = array("href" => "display", "label" => "Users");
-	$menubar['createuser'] = array("href" => "newuser", "label" => "Create New User");
-	$menubar['createtickets'] = array("href" => "newtickets", "label" => "Mass Create Users");	
-	$menubar['createmachine'] = array("href" => "newmachine", "label" => "Create New Machine");	
-	$menubar['sessions'] = array("href" => "sessions", "label" => "Monitor Sessions");
-    $menubar['reports'] = array("href" => "reports", "label" => "Reports");
+	$menubar['main'] = array("href" => "./", "label" => T_("Status"));
+	$menubar['users'] = array("href" => "display", "label" => T_("List Users"));
+	$menubar['createuser'] = array("href" => "newuser", "label" => T_("New User"));
+	$menubar['createtickets'] = array("href" => "newtickets", "label" => T_("Mass New Users"));	
+	$menubar['createmachine'] = array("href" => "newmachine", "label" => T_("Computer Account"));	
+	$menubar['sessions'] = array("href" => "sessions", "label" => T_("Monitor Sessions"));
+    $menubar['reports'] = array("href" => "reports", "label" => T_("Reports"));
     //$menubar['monthly_accounts'] = array("href" => "datausage", "label" => "Monthly Reports"); // Not working atm TODO:
-	$menubar['settings'] = array("href" => "settings", "label" => "Site Settings" );
-	$menubar['uploadlogo'] = array("href" => "uploadlogo", "label" => "Site Logo" );	
-	$menubar['links'] = array("href" => "links", "label" => "Useful Links");	
-	$menubar['passwd'] = array("href" => "passwd", "label" => "Admin Users" );
-	$menubar['adminlog'] = array("href" => "adminlog", "label" => "Admin Log" );	
+	$menubar['settings'] = array("href" => "settings", "label" => T_("Site Settings") );
+	$menubar['uploadlogo'] = array("href" => "uploadlogo", "label" => T_("Site Logo") );	
+	$menubar['links'] = array("href" => "links", "label" => T_("Useful Links"));	
+	$menubar['passwd'] = array("href" => "passwd", "label" => T_("Admin Users") );
+	$menubar['adminlog'] = array("href" => "adminlog", "label" => T_("Admin Log") );	
 	
-	$menubar['logout'] = array("href" => "./?logoff", "label" => "Logoff" );
+	$menubar['logout'] = array("href" => "./?logoff", "label" => T_("Logoff") );
 	return $menubar;
 }
 
@@ -89,7 +89,7 @@ function createusefullinks()
 	#$links['radmin'] = array("href" => "/radmin", "label" => "Internet User Administration (Radmin, RADIUS Administration)");
 	#$links['dglog'] = array("href" => "/cgi-bin/dglog.pl", "label" => "Dansguardian Log Viewer, for checking logs for attempts to view blocked pages");
 	#$links['munin'] = array("href" => "/munin", "label" => "Munin, System Monitor Graphs");	
-	$links['sysstatus'] = array("href" => "/grase/radmin/sysstatus", "label" => "System Status");		
+	$links['sysstatus'] = array("href" => "/grase/radmin/sysstatus", "label" => T_("System Status"));		
 	return $links;
 }
 
@@ -140,10 +140,10 @@ function usergroups()
 {
 	global $Usergroups;
 	// TODO:  Move this stuff into database??
-	$Usergroups["Visitors"] = "Visitors";
-	$Usergroups["Students"] = "Students";
-	$Usergroups["Staff"] = "Staff";
-	$Usergroups["Ministry"] = "Ministry";
+	$Usergroups["Visitors"] = T_("Visitors");
+	$Usergroups["Students"] = T_("Students");
+	$Usergroups["Staff"] = T_("Staff");
+	$Usergroups["Ministry"] = T_("Ministry");
 //	$Usergroups[MACHINE_GROUP_NAME] = "Machine (Locked)";
 	return $Usergroups;
 }
@@ -200,19 +200,22 @@ $smarty->register_block('t', 'smarty_translate');
 $locale = $Settings->getSetting('locale');
 //$locale = locale_accept_from_http("en_ZA");
 //echo $locale;
+
 if($locale == '') $locale = "en_AU";
 
 Locale::setDefault($locale);
 //echo Locale::getDefault();
 $language =  locale_get_display_language($locale);
 $region = locale_get_display_region($locale);
+//echo "$language $region<br/>";
 //print_r(displayLocales("-10000.11", TRUE)); 
 
 //putenv("LC_ALL=$locale");
+//$language = "Leet";
 T_setlocale(LC_MESSAGES, $language);
 //print_r(setlocale(LC_MESSAGES, NULL));
-T_bindtextdomain("default", "/usr/share/grase/locale");
-T_textdomain("default");
+T_bindtextdomain("grase", "/usr/share/grase/locale");
+T_textdomain("grase");
 
 
 list($fileversions, $application_version)=css_file_version();

@@ -70,7 +70,7 @@
     <label for='delete{$user}'>{$user}{if $user == 'support'}&nbsp;<a class="helpbutton" title='{t}Deleting or modifying the support user will prevent remote assistance.{/t}' ><img src="/grase/images/icons/help.png" alt=""/></a>{/if}</label>
     {if $LoggedInUsername != $user}
         <input type="hidden" value="{$user}" name="deleteusername"/>
-        <span><button class="negative" type="submit" name="deleteadminusersubmit" value="Delete {$user}" onclick="return confirm('{t}Are you sure you want to delete{/t} {$user}?');"><img src="/grase/images/icons/cross.png" alt=""/>{t}Delete{/t} {$user}</button></span>
+        <span><button class="negative" type="submit" name="deleteadminusersubmit" value="Delete {$user}" onclick="return confirm('{t user=$user}Are you sure you want to delete %1?{/t}');"><img src="/grase/images/icons/cross.png" alt=""/>{t user=$user}Delete %1{/t}</button></span>
     {else}
         <span>{t}Cannot delete current user{/t}</span>
     {/if}

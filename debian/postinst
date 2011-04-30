@@ -51,6 +51,11 @@ link_logo(){
     #fi
 
 }
+
+www_proxy_group(){
+    # www-data needs to be in proxy for log processing
+    adduser www-data proxy > /dev/null || true
+}
 #DEBHELPER#
 
 link_logo
@@ -60,6 +65,8 @@ fix_dir_perms
 copy_favicon
 
 call_cron
+
+www_proxy_group
 
 a2enmod rewrite || true
 a2enmod headers || true
