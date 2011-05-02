@@ -27,6 +27,7 @@ $userurl = $_GET['userurl'];
 $challenge = $_GET['challenge'];
 
 if($userurl == 'http://logout/') $userurl = '';
+if($userurl == 'http://1.0.0.0/') $userurl = '';
 
 if(isset($_COOKIE['grasenojs']) && $_COOKIE['grasenojs'] == 'javascriptdisabled')
 {

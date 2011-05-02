@@ -396,8 +396,12 @@ chilliController.processReply = function ( resp ) {
     	    if(loginwindow)
     	    {
         	    loginwindow.moveTo(100,100);
-        	    loginwindow.focus();		
-    	    	window.location.href = chilliController.redir.originalURL;
+        	    loginwindow.focus();
+        	    if(chilliController.redir.originalURL)		
+        	    {
+    	    	    window.location.href = chilliController.redir.originalURL;
+    	    	    chilliController.redir.originalURL = null;
+    	    	}
     	    }
         	else
         	{
@@ -928,6 +932,8 @@ function updateUI (cmd ) {
     clearTimeout ( delayTimer );
 
     if ( chilliController.redir ) {
+    if (chilliController.redir.originalURL == 'http://1.0.0.0/')
+        chilliController.redir.originalURL = null;
 	if (chilliController.redir.originalURL != null &&
 	    chilliController.redir.originalURL != '') {
 	        $("#originalURL").html('<a target="_blank" href="'+chilliController.redir.originalURL+

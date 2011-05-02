@@ -5,7 +5,7 @@
 
 <p>Welcome to the {$Location} Hotspot. Please read the following before logging in.</p>
 <p><a href="help">Information and Help</a></p>
-<p>For a quick logout, bookmark <a href="http://1.0.0.0/">LOGOUT</a>
+<p>For a quick logout, bookmark <a href="http://10.1.0.1:3990/logoff">LOGOUT</a>
 
 <p>By logging in, you are agreeing to the following:</p>
 <ul>
