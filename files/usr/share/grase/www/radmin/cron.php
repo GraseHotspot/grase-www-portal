@@ -20,11 +20,16 @@
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+require_once('includes/constants.inc.php');
+
 function __autoload($class_name) {
     require_once './classes/' . $class_name . '.class.php';
 }
 
 AdminLog::getInstance()->log_cron("CRON");
+
+//$Settings = new SettingsMySQL(DatabaseConnections::getInstance()->getRadminDB());
+//$dbversion = $Settings->getSetting("DBVersion");
 
 $upgradedb = CronFunctions::getInstance()->upgradeDB();
 if($upgradedb) echo "$upgradedb\n";

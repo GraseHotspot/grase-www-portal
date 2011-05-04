@@ -47,19 +47,60 @@ class CronFunctions extends DatabaseFunctions
     {
         /* Upgrade different aspects of the Database as the scheme changes
          * */
-        $sql = "UPDATE radcheck
-                SET Attribute='Cleartext-Password'
-                WHERE Attribute='Password'";
-        
-        $result = $this->db->exec($sql);
-        
-        if (PEAR::isError($result))
+        $Settings = new SettingsMySQL(DatabaseConnections::getInstance()->getRadminDB());
+        $olddbversion = $Settings->getSetting("DBVersion");
+         
+        if($olddbversion < 1.1)
         {
-            return T_('Upgrading DB failed: ') . $result->toString();
+            $sql = "UPDATE radcheck
+                    SET Attribute='Cleartext-Password'
+                    WHERE Attribute='Password'";
+            
+            $result = $this->db->exec($sql);
+            
+            if (PEAR::isError($result))
+            {
+                return T_('Upgrading DB failed: ') . $result->toString();
+            }
+            
+            $results += $result;
+            $Settings->setSetting("DBVersion", 1.1);
+            
         }
+        
+        if($olddbversion < 1.2)
+        {
+            // Add Radius Config user for Coova Chilli Radconfig
+            $results += $this->setUserPassword(RADIUS_CONFIG_USER, RADIUS_CONFIG_PASSWORD);
+            
+            // Set Radius Config user Service-Type to filter it out of normal users
+            $result = $this->replace_radcheck_query(
+                RADIUS_CONFIG_USER, 
+                'Service-Type', 
+                ':=',
+                'Administrative-User');
+            
+            if (PEAR::isError($result))
+            {
+                return T_('Upgrading DB failed: ') . $result->toString();
+            }
+            
+            $results += $result;
+            
+            // Add default macpasswd string
+            $results += $this->setPortalConfigSingle('macpasswd', 'password');
+            
+            
+            // Upgrade DB version to next version
+            $Settings->setSetting("DBVersion", 1.2);
+            
+        }
+        
 
-        if($result > 0)        
-            return T_('Database upgraded') . $result;
+        if($results > 0)
+        {            
+            return T_('Database upgraded') . $results;
+        }
         
         return false;
 
