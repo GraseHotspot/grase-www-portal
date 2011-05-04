@@ -8,7 +8,7 @@
 <div>
     <label for='mac'>{t}MAC Address{/t}</label>
     <input type="text" name="mac" value='{$machine.mac}'/>
-    <span id="macInfo">Machine Hardware Address <a class="helpbutton" title='{t}The MAC address is the network hardware address of the computer. It needs to be of the format XX-XX-XX-XX-XX-XX where XX is a hex number, typed in all capitals{/t}'><img src="/grase/images/icons/help.png" alt=""/></a></span>
+    <span id="macInfo">Machine Hardware Address <a class="helpbutton  ui-icon ui-icon-info" title='{t}The MAC address is the network hardware address of the computer. It needs to be of the format XX-XX-XX-XX-XX-XX where XX is a hex number, typed in all capitals{/t}'><img src="/grase/images/icons/help.png" alt=""/></a></span>
 </div>
 
 <div>
@@ -17,7 +17,7 @@
     <span id='CommentInfo'>{t}Identify the machine. i.e. "Bob's computer"{/t}</span>
 </div>
 
-    <span>{t}When ether limit is reached, the user will be cut off. (i.e. after 1hour even if they still have data left){/t}<br/><a class="helpbutton" title='{t}Machine accounts are intended to be used for computers that need internet access at all times. For example, an office computer. Machine accounts login automatically as soon as they access the network, this will normally occur at startup. If a limit is set, when the limit is reached the computer will revert to the normal login screen for internet access. Machine accounts can not be edited to add more data or time, only deleted.{/t}'><img src="/grase/images/icons/help.png" alt=""/> {t}It is not recommended setting a time or data limit for machine accounts.{/t}</a></span>
+    <span>{t}When ether limit is reached, the user will be cut off. (i.e. after 1hour even if they still have data left){/t}<br/><a class="helpbutton ui-icon ui-icon-info" title='{t}Machine accounts are intended to be used for computers that need internet access at all times. For example, an office computer. Machine accounts login automatically as soon as they access the network, this will normally occur at startup. If a limit is set, when the limit is reached the computer will revert to the normal login screen for internet access. Machine accounts can not be edited to add more data or time, only deleted.{/t}'><img src="/grase/images/icons/help.png" alt=""/> {t}It is not recommended setting a time or data limit for machine accounts.{/t}</a></span>
 
 <div>
     <label for='Max_Mb'>{t}Data Limit (MiB){/t}</label>

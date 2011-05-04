@@ -8,9 +8,9 @@
 <div id='domain' style='display:block;'>
 	<table border="0" id='domainTable'>
 		<tr class='domainattributesRow'>
-			<td>{t}Domain{/t}</td>
-			<td>{t}Count{/t}</td>
-			<td>{t}Size{/t}</td>
+			<th>{t}Domain{/t}</th>
+			<th>{t}Count{/t}</th>
+			<th>{t}Size{/t}</th>
 		</tr>	
 
 		{counter assign=idx print=0 name=domaintally}
@@ -31,9 +31,9 @@
 <div id='domainsize' style='display:block;'>
 	<table border="0" id='domainsizeTable'>
 		<tr class='domainattributesRow'>
-			<td>Domain</td>
-			<td>Count</td>
-			<td>Size</td>
+			<th>Domain</th>
+			<th>Count</th>
+			<th>Size</th>
 		</tr>	
 
 		{counter assign=idy print=0 name=domainsizes}

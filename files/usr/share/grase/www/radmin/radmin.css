@@ -1,5 +1,5 @@
 /* $Revision: 59 $
- * $Version: 3.0 $
+ * $Version: 3.1 $
  * $ApplicationName: GRASE $
 */
 
@@ -36,14 +36,66 @@ z-index: -1;
 
 #sidebar {
 	width: 12em;
-	float: left;
-/*	margin: 1em;*/
+	float: left;/*
+	margin: 1em;*/
 	height: 100%;
+/*	position: absolute;*/
+
 }
+
+#menucontainer {
+    width: 10em;
+}
+
+#sidebartoggle {
+    margin-top: 2em;
+    height: 316px;
+    width: 16px;
+    text-align: center;
+    padding-top: 1em;
+    float: right;
+    font-size: 75%;
+	cursor: pointer;
+}
+
+#sidebartoggletext {
+
+    display: block;
+
+    margin-top: 50px;
+    background: url('/grase/radmin/images/hide.png') center no-repeat;
+    
+    width: 12px;
+    height: 100px;
+
+
+/*        height: 16px;
+    left: 0px;    
+    padding: 0;
+    
+
+    
+
+    
+    */
+
+}
+
+
+
+#sidebartogglebutton {
+    margin-top: 20px;
+}
+
+#sidebartogglebutton2 {
+    margin-top: 100px;
+}
+
 
 #pagecontent {
     margin: 1em;
     margin-left: 13em;
+    width: auto;
 }
 
 #menubar {
@@ -230,14 +282,18 @@ table  {
 }
 
 
-table td {
+table td, table th {
 	text-align: left;
 	padding: 0.3em;
 	line-height: 1.5;
 }
 
-table td.header {
-	font-size: 110%;
+table th {
+.	text-align: center;
+	padding: 0.1em 0.5em;
+	font-size: 120%;
+	font-weight: bolder;	
+	background: #deedf7;	
 }	
 
 table td.title {
@@ -245,19 +301,38 @@ table td.title {
 	padding-right: 1em;
 }	
 
-tr.alt td, tr.alt {
-    background-color:#f5f5f5;
+th.header { 
+    background-image: url(/grase/images/bg.gif); 
+    background-repeat: no-repeat;
+    background-position: center right;
+    cursor: pointer;
+    font-weight: bold; 
+    padding-right: 20px; 
+    border-right: 1px solid #dad9c7; 
+    margin-left: -1px; 
+} 
+
+th.headerSortDown { 
+    background-image: url(/grase/images/desc.gif); 
+    background-color: #3399FF; 
+} 
+
+th.headerSortUp { 
+    background-image: url(/grase/images/asc.gif); 
+    background-color: #3399FF; 
+} 
+
+#userslist table {
+    font-size: 80%;
 }
 
-tr.over td, tr.over {
-    background-color:#dff4ff;
+#sessionslistTable {
+	font-size: 80%;
 }
 
-thead td {
-    text-align: center;
+#AdminlogTable {
+/*    font-size: 80%;*/
 }
-
-
 
 /* */
 
@@ -278,12 +353,6 @@ thead td {
 
 /* */
 
-.sessionheader td {
-	text-align: center;
-	background: #999999;
-	padding: 0.1em 0.5em;
-	font-size: 120%;
-}
 .sessionrow td {
 	padding: 2px 10px;
 }
@@ -301,34 +370,19 @@ thead td {
 	font-weight: bolder;
 }
 
-#userslist {
-	display: block;
+
+
+.tabcontent {
+    padding: 5px !important; /* Override jQuery UI CSS */
 }
 
-#userslistTable {
+/*#userslistTable {
 	font-size: 90%;
 	margin: auto;
-}
+}*/
 
-#userslistTable .userrow td {
+.userslistTable .userrow td {
 	padding: 0.2em 0.6em;
-}
-
-#userslistTable #userattributesRow td {
-	text-align: center;
-	background: #999999;
-	padding: 0.5em;
-	font-size: 120%;
-}
-
-.groupheader {
-	font-weight: bolder;
-	background: lightblue;
-	background-image: url('images/minus.gif');
-	background-repeat: no-repeat;
-/*	background-attachment:fixed;*/
-	background-position: left center;
-	padding-left: 15px;
 }
 
 .monthheader {
@@ -336,14 +390,13 @@ thead td {
 	background: lightblue;
 	background-image: url('images/minus.gif');
 	background-repeat: no-repeat;
-/*	background-attachment:fixed;*/
 	background-position: left center;
 	padding-left: 15px;
 }
 
-.switcher {
+/*.switcher {
 	padding-left: 15px;
-}
+}*/
 
 .even {
 	background: #deedf7;
@@ -401,9 +454,9 @@ thead td {
 
 /* HIGHT LIGHT TABLE ROWS */
 
-#userslistTable tr:hover {
+/*.userslistTable tr:hover {
 	background-color: yellow;
-}
+}*/
 
 /* DONE */
 
@@ -423,10 +476,6 @@ body {
 
 ul {
 	text-align: left;
-}
-
-#sessionslistTable {
-	font-size: 80%;
 }
 
 ul#statusmon {
@@ -623,5 +672,14 @@ ul#statusmon li {
 #error.valid ul li strong{
 	color: #93d72e;
 }
+
+.messagewidget {
+    min-width: 15em;
+    width: 50%;
+    margin: auto;
+}
 /******* /FORM *******/
 
+.ui-icon {
+    display: inline-block !important; /* Override jQuery UI of display: block */
+}

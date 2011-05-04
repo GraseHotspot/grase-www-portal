@@ -1,34 +1,42 @@
-{include file="header.tpl" Name="List Users" activepage="users" helptext="Click on a username to edit that user.<br/>Click on the &nbsp;<u>*</u>&nbsp; to see the users password<br/>Click on ether the Data Usage or Time Usage to see the users sessions"}
+{include file="header.tpl" Name="List Users" activepage="users" helptext="Click on a username to edit that user.
+Click on the * to see the users password
+Click on ether the Data Usage or Time Usage to see the users sessions"}
 
-<div id='userslist' >
-	<table id="userslistTable" class="tablesorter">
-	    <col style="width: 12em"/>
+<div id='userslist' style="overflow:hidden;"><!-- jQuery UI bug #5601 requires overflow:hidden style due to float left menu -->
+    <ul id="tabselector">
+    {foreach from=$users_groups item=group key=groupname name=groupmenuloop}
+        <li><a href="#list{$groupname}">{$groupname}</a></li>
+    {/foreach}
+    </ul>
+    {foreach from=$users_groups item=group key=groupname name=grouploop}
+    <div id="list{$groupname}" class="tabcontent">
+	<table id="{$groupname}userslistTable" class="userslistTable stripeMe">
 	    <col style="width: 6em"/>
-	    <col span="5" style="width: 6em"/>	    	    
-	    <col span="2" style="width: 7em"/>
-	    <col />	
+	    {if $groupname == 'All'}<col style="width: 5em"/>{/if}
+	    <col span="4" style="width: 6em"/>	    	    
+	    <col span="3" style="width: 7em"/>
+	    <col span="1" style="width: 6em"/>	
 		<thead>
-		<tr id='userattributesRow'>
+		<tr id='{$groupname}userattributesRow' class="userattributesRow">
 			<th>{t}Username{/t}</th>
-			<th>{t}Group{/t}</th>
+		    {if $groupname == 'All'}<th>{t}Group{/t}</th>{/if}
 			<th>{t}Data Limit{/t}</th>
-			<th>{t}Data Usage (M){/t}<a class="helpbutton" title='{t}Total Data usage for the current month{/t}'><img src="/grase/images/icons/help.png" alt=""/></a></th>
-			<th>{t}Data Usage (T){/t}<a class="helpbutton" title='{t}Total Data usage, from previous months, excluding current month{/t}' ><img src="/grase/images/icons/help.png" alt=""/></a></th>
+			<th><a class="helpbutton ui-icon ui-icon-info" title='{t}Total Data usage for the current month{/t}'><img src="/grase/images/icons/help.png" alt=""/></a> {t}Data Usage (M){/t}</th>
+			<th><a class="helpbutton ui-icon ui-icon-info" title='{t}Total Data usage, from previous months, excluding current month{/t}' ><img src="/grase/images/icons/help.png" alt=""/></a> {t}Data Usage (T){/t}</th>
 			<th>{t}Time Limit{/t}</th>
 			<th>{t}Time Usage (Month){/t}</th>			
 			<th>{t}Account Expiry{/t}</th>
-			<th>{t}Last Logoff{/t}<a class="helpbutton" title='{t}Last Logoff timestamp from current month only{/t}' ><img src="/grase/images/icons/help.png" alt=""/></a></th>
+			<th><a class="helpbutton ui-icon ui-icon-info" title='{t}Last Logoff timestamp from current month only{/t}' ><img src="/grase/images/icons/help.png" alt=""/></a> {t}Last Logoff{/t}</th>
 			<th>{t}Comment{/t}</th>
 		</tr>
 		</thead>
 		<tbody>	
-		{foreach from=$users item=user name=usersloop}
+		{foreach from=$group item=user name=usersloop}
 
-		<tr id="user_{$user.Username}_Row" class="userrow {$user.account_status}">
-		<!-- id="user_{$user.Username}_Row" class="userrow {if $smarty.foreach.usersloop.iteration is even}even{else}odd{/if} {$user.account_status}" > -->
+		<tr id="user_{$user.Username}_{$groupname}_Row" class="userrow {$user.account_status}">
 			<td class='info_username'><span class='info_password'>{if $user.Group eq 'Machine'}<span title="{t}Password Hidden{/t}">*</span>{else}<span title="{$user.Password}"><a href='javascript:alert("Password for {$user.Username} is {$user.Password}")'>*</a></span>{/if}</span><a href="edituser?username={$user.Username}">{$user.Username}</a></td>
 
-			<td class='info_group'>{$user.Group}</td>
+			{if $groupname == 'All'}<td class='info_group'>{$user.Group}</td>{/if}
 			<td class='info_datalimit'>{$user.MaxOctets|bytes}</td>
 			<td class='info_datausage'><a href="sessions?username={$user.Username}">{$user.AcctTotalOctets|bytes}</a></td>			
 			<td class='info_datausage_t'>{$user.TotalOctets|bytes}</td>			
@@ -41,7 +49,10 @@
 		{/foreach}
 		</tbody>
 
-	</table>
+	</table>        
+    </div>
+    {/foreach}
+
     	
 </div>
 
