@@ -34,6 +34,7 @@ class ErrorHandling
         $smarty = new Smarty;
 
         $smarty->compile_check = true;
+        $smarty->register_block('t', 'smarty_translate'); // Needed even though message will be in English
         $smarty->assign("Application", APPLICATION_NAME);
         $smarty->assign("error", $error);
         
@@ -54,6 +55,7 @@ class ErrorHandling
         $smarty = new Smarty;
 
         $smarty->compile_check = true;
+        $smarty->register_block('t', 'smarty_translate'); // Needed even though message will be in English
         $smarty->assign("Application", APPLICATION_NAME);
         $smarty->assign("error", $error . $pear_error_obj->getMessage());
         
@@ -76,6 +78,7 @@ class ErrorHandling
         $smarty = new Smarty;
 
         $smarty->compile_check = true;
+        $smarty->register_block('t', 'smarty_translate'); // Needed even though message will be in English
         $smarty->assign("Application", APPLICATION_NAME);
         $smarty->assign("error", $error);
         $smarty->assign("memory_used", memory_get_usage());
