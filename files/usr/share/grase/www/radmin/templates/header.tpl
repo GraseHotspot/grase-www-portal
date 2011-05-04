@@ -20,8 +20,11 @@
     <script type="text/javascript" src="/grase/js/jquery/jquery-ui-1.8.11.custom.min.js"></script>
     
     <script type="text/javascript" src="/grase/js/jquery.tablesorter.min.js"></script>    
+    <script type="text/javascript" src="/grase/js/jquery.uitablefilter.js"></script>        
     
     <script type="text/javascript" src="/grase/js/grase.js?{$grasejsversion}"></script>        
+    <script type="text/javascript" src="/grase/radmin/js/radmin.js?{$radminjsversion}"></script>        
+    
 
 <link rel="shortcut icon" href="/grase/favicon.ico" />
 
@@ -79,38 +82,28 @@ $j(document).ready(function(){
 
 $j(document).ready(function(){
     jQuery(function($){
-        //$(".stripeMe tr").mouseover(function() {$(this).addClass("over");}).mouseout(function() {$(this).removeClass("over");});
+    
+        $(".printlink").attr({ target: "_print"});
+
+        // Sort and stripe tables 
+        $.tablesorter.defaults.widgets = ['zebra']; 
+        
+        $(".stripeMe tbody tr").mouseover(function() {$(this).addClass("ui-state-highlight");}).mouseout(function() {$(this).removeClass("ui-state-highlight");});
         //$(".stripeMe tr:even").addClass("alt");
         $(".stripeMe").tablesorter(); // {sortList: [[0,0], [1,0]]});
 
 
-
+        $("#userslist").tabs();
         
-        $(".printlink").attr({ target: "_print"});
-    });
+        
+        /*$("#userslistTable").tablesorter({
+            sortForce: [[1,0]], 
+            sortList: [[0,0],[1,0]] 
+        });     */
+        
+    });        
 
 }) ;
-
-$(document).ready(function(){
-
-    
-    $.tablesorter.defaults.widgets = ['zebra']; 
-    
-    $("#userslistTable").tablesorter({
-        sortForce: [[1,0]], 
-        sortList: [[0,0],[1,0]] 
-    });     
-    $("#myTable2").tablesorter(); 
-    
-    $('.dialog').dialog({
-			autoOpen: false,
-			modal: true
-		});  
-
-
-
-}) ;
-
 
 //--><!]]></script>{/literal}
 
@@ -127,6 +120,7 @@ $(document).ready(function(){
         {if ! $hidemenubar && $activepage != "login" && $activepage != "setup" && $activepage != "error"}{include file="menubar.tpl" }{/if}
         &nbsp;
     </div>
+
     
     <!-- Main content -->
     <div id="pagecontent">
