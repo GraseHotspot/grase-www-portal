@@ -26,7 +26,7 @@ require_once 'load_settings.inc.php';
 // MAJOR TODO: Migrate all this to new DB stuff
 
 // Connecting, selecting database
-$settings = file($CONFIG['radius_database_config_file']);
+/*$settings = file($CONFIG['radius_database_config_file']);
 
 foreach($settings as $setting) 
 {
@@ -35,7 +35,7 @@ foreach($settings as $setting)
 }
 $dblink = mysql_pconnect($db_settings['sql_server'], $db_settings['sql_username'], $db_settings['sql_password']) or die('Could not connect: ' . mysql_error());
 mysql_select_db($db_settings['sql_database']) or die('Could not select database');
-
+*/
 
 
 /* DATA Accounting Functions
@@ -77,6 +77,7 @@ function getDBSessionsAccounting($username = '')
     return DatabaseFunctions::getInstance()->getRadiusUserSessionsDetails($username);
 }
 
+/* OBSOLETE ?
 // Used by scripts/squid_user_group.php
 function convertRadacctIPtoUsername($IP) // was database_radacct_ip_to_username
 {
@@ -97,7 +98,7 @@ function convertRadacctIPtoUsername($IP) // was database_radacct_ip_to_username
     mysql_free_result($result2);
     
     return $username;
-}
+}*/
 
 /* USER DETAILS
 *

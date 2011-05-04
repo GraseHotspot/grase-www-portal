@@ -26,7 +26,7 @@ require_once('php-gettext/gettext.inc');
 define("APPLICATION_NAME", "GRASE");
 define("USERMIN_APPLICATION_NAME", T_("My Account"));
 
-// Account Status Constants (used in CSS)
+// Account Status Constants (used in CSS) TODO: Obsolete these?
 
 define("EXPIRED_ACCOUNT", "expired");
 define("LOCKED_ACCOUNT", "locked");
@@ -35,8 +35,13 @@ define("MACHINE_ACCOUNT", "machine");
 define("NORMAL_ACCOUNT", "normal");
 define("NOGROUP_ACCOUNT", "nogroup");
 
-// Group Constants
+// Group Constants TODO: Obsolete these?
 define("MACHINE_GROUP_NAME", "Machine");
 define("DEFAULT_GROUP_NAME", "Default");
+
+// RADIUS ChilliSpot Config Constants
+define("RADIUS_CONFIG_USER", "CoovaChilli");
+define("RADIUS_CONFIG_PASSWORD", "radmin");
+define("RADIUS_CONFIG_ATTRIBUTE", "ChilliSpot-Config");
 
 ?>

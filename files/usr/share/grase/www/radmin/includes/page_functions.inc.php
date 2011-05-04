@@ -53,7 +53,9 @@ function css_file_version()
 	$resourcefiles = array(
 	    '/usr/share/grase/www/hotspot.css',
 	    '/usr/share/grase/www/radmin/radmin.css',
-	    '/usr/share/grase/www/js/grase.js');
+	    '/usr/share/grase/www/js/grase.js',
+	    '/usr/share/grase/www/radmin/js/radmin.js'	    
+	    );
 	foreach($resourcefiles as $file)
 	{
 	    $fileversions[basename($file)] = date("YmdHis",filemtime($file));	
@@ -76,6 +78,9 @@ function createmenuitems()
     //$menubar['monthly_accounts'] = array("href" => "datausage", "label" => "Monthly Reports"); // Not working atm TODO:
 	$menubar['settings'] = array("href" => "settings", "label" => T_("Site Settings") );
 	$menubar['uploadlogo'] = array("href" => "uploadlogo", "label" => T_("Site Logo") );	
+	$menubar['groups'] = array("href" => "groupconfig", "label" => T_("Groups") );	
+	
+	$menubar['portalconfig'] = array("href" => "portalconfig", "label" => T_("Portal Settings") );	
 	$menubar['links'] = array("href" => "links", "label" => T_("Useful Links"));	
 	$menubar['passwd'] = array("href" => "passwd", "label" => T_("Admin Users") );
 	$menubar['adminlog'] = array("href" => "adminlog", "label" => T_("Admin Log") );	
@@ -138,26 +143,33 @@ function gboctects()
 
 function usergroups()
 {
-	global $Usergroups;
-	// TODO:  Move this stuff into database??
+	global $Usergroups, $Settings;
+	// Duplicate code to keep old code running. All this needs to be merged at some point
+	$groups = unserialize($Settings->getSetting("groups"));
+	foreach($groups as $group => $expiry)
+	{
+	    $Usergroups[$group] = $group;
+	}
+/*	// TODO:  Move this stuff into database??
 	$Usergroups["Visitors"] = T_("Visitors");
 	$Usergroups["Students"] = T_("Students");
 	$Usergroups["Staff"] = T_("Staff");
 	$Usergroups["Ministry"] = T_("Ministry");
-//	$Usergroups[MACHINE_GROUP_NAME] = "Machine (Locked)";
+//	$Usergroups[MACHINE_GROUP_NAME] = "Machine (Locked)";*/
 	return $Usergroups;
 }
 
 function groupexpirys()
 {
-	global $Expiry;
-	// TODO: Move this stuff into database??
+	global $Expiry, $Settings;
+	$Expiry = unserialize($Settings->getSetting("groups"));
+/*	// TODO: Move this stuff into database??
 	$Expiry["Staff"] = "+6 months";
 	$Expiry["Ministry"] = "+6 months";
 	$Expiry["Students"] = "+3 months";
 	$Expiry["Visitors"] = "+1 months";
 //	$Expiry[MACHINE_GROUP_NAME] = "--";
-	$Expiry[DEFAULT_GROUP_NAME] = "+1 months";
+//	$Expiry[DEFAULT_GROUP_NAME] = "+1 months";*/
 	return $Expiry;
 }
 
@@ -222,6 +234,7 @@ list($fileversions, $application_version)=css_file_version();
 $smarty->assign("radmincssversion", $fileversions['radmin.css']);
 $smarty->assign("hotspotcssversion", $fileversions['hotspot.css']);
 $smarty->assign("grasejsversion", $fileversions['grase.js']);
+$smarty->assign("radminjsversion", $fileversions['radmin.js']);
 $smarty->assign("application_version", $application_version);
 $smarty->assign("Application", APPLICATION_NAME);
 
@@ -276,4 +289,5 @@ function assign_vars()
 
 
 groupexpirys();
+
 ?>

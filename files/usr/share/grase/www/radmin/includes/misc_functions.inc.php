@@ -121,7 +121,7 @@ function makeTimeStamp($year='', $month='', $day='')
 
 
 // Validation functions
-function validate_post_expirydate()
+function validate_post_expirydate() // OBSOLETE ?
 {
 	$error = array();
 	$expirydate ="${_POST['Expirydate_Year']}-${_POST['Expirydate_Month']}-${_POST['Expirydate_Day']}";
@@ -244,6 +244,17 @@ function sort_users_into_groups($users)
 			$users_group['Nogroup'][] = $user;
 		}
 	}
+    
+    // Sort array alphabetically
+	ksort($users_group);
+	
+	// Remove machines from spot alphapbetically
+	$machines = $users_group[MACHINE_GROUP_NAME];
+	unset($users_group[MACHINE_GROUP_NAME]);
+	
+	// Insert machines at end of list (will appear before "All")
+	$users_group[MACHINE_GROUP_NAME] = $machines;
+	
 	return $users_group;
 }
 
@@ -263,6 +274,12 @@ function clean_text($text)
 function clean_number($number)
 {
     return ereg_replace("[^\.0-9]", "", clean_text($number));
+}
+
+
+function clean_int($number)
+{
+    return ereg_replace("[^0-9]", "", clean_text($number));
 }
 
 
@@ -312,7 +329,7 @@ function sha1salt($plainText, $salt = null)
         return $salt . sha1($salt . $plainText);
     }
 
-function displayLocales($number, $isMoney, $lg='') {
+function displayLocales($number, $isMoney=FALSE, $lg='') {
     global $locale;
     if ( $lg == '') $lg = $locale;
 
