@@ -37,6 +37,27 @@ class DatabaseFunctions
     public function __construct()
     {
         $this->db =& DatabaseConnections::getInstance()->getRadiusDB();
+        
+    	// Share SQL Query between functions
+        $this->insert_radius_values_sql = $this->db->prepare(
+            'INSERT INTO radreply
+        	(Username, Attribute, op, Value)
+        	VALUES (?, ?, ?, ?)',
+        	array('text', 'text', 'text', 'text'), MDB2_PREPARE_MANIP);        
+    }
+    
+    public function replace_radcheck_query($username, $attribute, $op = ':=', $value)
+    {
+        // Take out some of the duplicate code in below functions
+        $fields = array (
+            'Username'  => array ( 'value' => $username,    'key' => true),
+            'Attribute' => array ( 'value' => $attribute,  'key' => true),
+            'op'        => array ( 'value' => $op ),
+            'Value'     => array ( 'value' => $value)
+            );   
+        
+        // Error checking is left to calling function
+        return $this->db->replace('radcheck', $fields);
     }
     
     
@@ -75,7 +96,8 @@ class DatabaseFunctions
         $result = $this->db->queryOne($sql);
         
         if (PEAR::isError($result)) {
-            ErrorHandling::fatal_db_error(T_('Retrieving Sold Usage failed: '), $result);
+            ErrorHandling::fatal_db_error(
+                T_('Retrieving Sold Usage failed: '), $result);
         }
         $soldoctets = $result;
         return $soldoctets + 0;
@@ -101,13 +123,15 @@ class DatabaseFunctions
         $sql = sprintf("SELECT 
             SUM(InputOctets) + SUM(OutputOctets) AS TotalOctets
             FROM mtotacct
-            WHERE AcctDate='%s'",
-            mysql_real_escape_string($date));
+            WHERE AcctDate=%s",
+            $this->db->quote($date));
+
         
         $usedoctets = $this->db->queryOne($sql);
         
         if (PEAR::isError($usedoctets)) {
-            ErrorHandling::fatal_db_error(T_('Retrieving Month Usage failed: '), $usedoctets);
+            ErrorHandling::fatal_db_error(
+                T_('Retrieving Month Usage failed: '), $usedoctets);
         }
         
         return $usedoctets;
@@ -123,7 +147,8 @@ class DatabaseFunctions
         $usedoctets = $this->db->queryOne($sql);
         
         if (PEAR::isError($usedoctets)) {
-            ErrorHandling::fatal_db_error(T_('Retrieving Current Month Usage failed: '), $usedoctets);
+            ErrorHandling::fatal_db_error(
+                T_('Retrieving Current Month Usage failed: '), $usedoctets);
         }
         
         return $usedoctets + 0;
@@ -137,6 +162,8 @@ class DatabaseFunctions
             AcctStartTime,
             AcctStopTime,
             AcctSessionTime,
+            AcctTerminateCause,
+            ServiceType,
             FramedIPAddress,
             Username,
             AcctInputOctets,
@@ -144,14 +171,15 @@ class DatabaseFunctions
             SUM(AcctInputOctets + AcctOutputOctets) AS AcctTotalOctets,
             CallingStationId
             FROM radacct
-            WHERE RadAcctID = '%s'
+            WHERE RadAcctID = %s
             ORDER BY RadAcctId DESC",
-            mysql_real_escape_string($radacctid));
+            $this->db->quote($radacctid));
         
         $session = $this->db->queryRow($sql);
         
          if (PEAR::isError($session)) {
-            ErrorHandling::fatal_db_error(T_('Retrieving Session by RadAcctID failed: '), $session);
+            ErrorHandling::fatal_db_error(
+                T_('Retrieving Session by RadAcctID failed: '), $session);
         }
         
         return $session;
@@ -159,12 +187,14 @@ class DatabaseFunctions
     
     public function getRadiusUserSessionsDetails($username = '') 
     {
-        $where_clause = sprintf("WHERE Username = '%s'", mysql_real_escape_string($username));
+        $where_clause = sprintf("WHERE Username = %s", $this->db->quote($username));
         if($username == '') $where_clause = '';
         $sql = sprintf("SELECT RadAcctId,
             AcctStartTime,
             AcctStopTime,
             AcctSessionTime,
+            AcctTerminateCause,
+            ServiceType,            
             FramedIPAddress,
             Username,
             AcctInputOctets,
@@ -180,7 +210,8 @@ class DatabaseFunctions
         
         if (PEAR::isError($sessions))
         {
-            ErrorHandling::fatal_db_error(T_('Retrieving Sessions by Username failed: '), $sessions);
+            ErrorHandling::fatal_db_error(
+                T_('Retrieving Sessions by Username failed: '), $sessions);
         }        
         return $sessions;            
         
@@ -191,7 +222,7 @@ class DatabaseFunctions
         // Gets the username for an active session based on ip address
         $sql = sprintf("SELECT RadAcctId
 	            FROM radacct
-	            WHERE UserName='%s'
+	            WHERE UserName= %s
 	            AND AcctStopTime IS NULL
 	            ORDER BY AcctStartTime DESC LIMIT 1",
 	            $username);
@@ -200,7 +231,8 @@ class DatabaseFunctions
         
         if (PEAR::isError($radacctid))
         {
-            ErrorHandling::fatal_db_error(T_('Retrieving Current Session by Username failed: '), $radacctid);
+            ErrorHandling::fatal_db_error(
+                T_('Retrieving Current Session by Username failed: '), $radacctid);
         }
         
         return $radacctid;    
@@ -211,7 +243,7 @@ class DatabaseFunctions
         // Gets the username for an active session based on ip address
         $sql = sprintf("SELECT UserName
 	            FROM radacct
-	            WHERE FramedIPAddress='%s'
+	            WHERE FramedIPAddress= %s
 	            AND AcctStopTime IS NULL
 	            ORDER BY AcctStartTime DESC LIMIT 1",
 	            $ipaddress);
@@ -220,7 +252,9 @@ class DatabaseFunctions
         
         if (PEAR::isError($username))
         {
-            ErrorHandling::fatal_db_error(T_('Retrieving Username by Active Session (ipadddress): '), $username);
+            ErrorHandling::fatal_db_error(
+                T_('Retrieving Username by Active Session (ipadddress): '),
+                $username);
         }
         
         return $username;
@@ -242,7 +276,8 @@ class DatabaseFunctions
         
         if (PEAR::isError($results))
         {
-            ErrorHandling::fatal_db_error(T_('Get User details Query failed: '), $results);
+            ErrorHandling::fatal_db_error(
+                T_('Get User details Query failed: '), $results);
         }
         
         foreach ($results as $attribute) 
@@ -250,7 +285,7 @@ class DatabaseFunctions
             $Userdata[$attribute['Attribute']] = $attribute['Value'];
         }
         
-        // User Password (Upgraded to Cleartext-Password, but smarty doesn't like - in names)
+        // User Password (Upgraded to Cleartext-Password, but smarty doesn't like '-' in names)
         if(isset($Userdata['Cleartext-Password']) && !isset($Userdata['Password']))
         {
             $Userdata['Password'] = $Userdata['Cleartext-Password'];
@@ -269,7 +304,8 @@ class DatabaseFunctions
         if (isset($Userdata['Expiration'])) 
         {
             $Userdata['FormatExpiration'] = substr($Userdata['Expiration'], 0, -8);
-            $Userdata['ExpirationTimestamp'] = strtotime(substr($Userdata['Expiration'], 0, -8));
+            $Userdata['ExpirationTimestamp'] = strtotime(
+                substr($Userdata['Expiration'], 0, -8));
         }
         else
         {
@@ -321,7 +357,8 @@ class DatabaseFunctions
         
         if (PEAR::isError($results))
         {
-            ErrorHandling::fatal_db_error(T_('Get User Group Query failed: '), $results);
+            ErrorHandling::fatal_db_error(
+                T_('Get User Group Query failed: '), $results);
         }
         
         return $results;
@@ -347,7 +384,8 @@ class DatabaseFunctions
         
         if (PEAR::isError($results))
         {
-            ErrorHandling::fatal_db_error(T_('Get All Usernames Query Failed: '), $results);
+            ErrorHandling::fatal_db_error(
+                T_('Get All Usernames Query Failed: '), $results);
         }
         
         foreach ($results as $user)
@@ -357,6 +395,30 @@ class DatabaseFunctions
         
         return $users;
     }
+    
+    public function getUsersByGroup($groupname)
+    {
+        // Gets an array of all usernames in radcheck table
+        $sql = sprintf("SELECT UserName
+	            FROM radusergroup
+	            WHERE GroupName = %s",
+	            $this->db->quote($groupname));
+        
+        $results = $this->db->queryAll($sql);
+        
+        if (PEAR::isError($results))
+        {
+            ErrorHandling::fatal_db_error(
+                T_('Get Users By Group Query Failed: '), $results);
+        }
+        
+        foreach ($results as $user)
+        {
+            $users[] = $user['UserName'];
+        }
+        
+        return $users;
+    }    
     
     public function getUserLastLogoutTime($username)
     {
@@ -372,7 +434,8 @@ class DatabaseFunctions
 	
 	    if (PEAR::isError($results))
 	    {
-	        ErrorHandling::fatal_db_error(T_('Get User Last Logout Query Failed: '), $results);
+	        ErrorHandling::fatal_db_error(
+	            T_('Get User Last Logout Query Failed: '), $results);
 	    }
         
         if (is_null($results)) 
@@ -400,7 +463,8 @@ class DatabaseFunctions
 		$results = $this->db->queryOne($sql);
 		if (PEAR::isError($results))
 		{
-            ErrorHandling::fatal_db_error(T_('Get User Total Session Time Query failed: '), $results);
+            ErrorHandling::fatal_db_error(
+                T_('Get User Total Session Time Query failed: '), $results);
         }
 
         return $results;
@@ -420,7 +484,8 @@ class DatabaseFunctions
 		$results = $this->db->queryOne($sql);
 		if (PEAR::isError($results))
 		{
-            ErrorHandling::fatal_db_error(T_('Get User Data Usage Query failed: '), $results);
+            ErrorHandling::fatal_db_error(
+                T_('Get User Data Usage Query failed: '), $results);
         }
         
         return $results + 0; // Need to zero it if null
@@ -440,7 +505,8 @@ class DatabaseFunctions
 		$results = $this->db->queryOne($sql);
 		if (PEAR::isError($results))
 		{
-            ErrorHandling::fatal_db_error(T_('Get User Data Usage (Total) Query failed: '), $results);
+            ErrorHandling::fatal_db_error(
+                T_('Get User Data Usage (Total) Query failed: '), $results);
         }
         
         return $results + 0; // Need to zero it if null
@@ -459,7 +525,8 @@ class DatabaseFunctions
         
         if (PEAR::isError($results))
         {
-            ErrorHandling::fatal_db_error(T_('Get Monthly Data Usage Query failed: '), $results);
+            ErrorHandling::fatal_db_error(
+                T_('Get Monthly Data Usage Query failed: '), $results);
         }
         
         foreach($results as $result)
@@ -486,7 +553,8 @@ class DatabaseFunctions
         
         if (PEAR::isError($results))
         {
-            ErrorHandling::fatal_db_error(T_('Get Monthly Data Usage Totals Query failed: '), $results);
+            ErrorHandling::fatal_db_error(
+                T_('Get Monthly Data Usage Totals Query failed: '), $results);
         }
         
         foreach($results as $result)
@@ -518,7 +586,9 @@ class DatabaseFunctions
         return trim($results);
     }
     
-    public function createUser($username, $password, $datalimitmb, $timelimitmins, $expirydate, $group, $comment)
+    public function createUser(
+        $username, $password, $datalimitmb, $timelimitmins, $expirydate,
+        $group, $comment)
     {
         $this->setUserPassword($username, $password);
         
@@ -552,7 +622,8 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(T_('Setting User Comment Query Failed: '), $result);
+            ErrorHandling::fatal_db_error(
+                T_('Setting User Comment Query Failed: '), $result);
         }
         
         return $result;
@@ -570,7 +641,8 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(T_('Setting User Group Query Failed: '), $result);
+            ErrorHandling::fatal_db_error(
+                T_('Setting User Group Query Failed: '), $result);
         }
         
         return $result;    
@@ -590,7 +662,8 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(T_('Setting User Datalimit Query Failed: '), $result);
+            ErrorHandling::fatal_db_error(
+                T_('Setting User Datalimit Query Failed: '), $result);
         }
         
         return $result;     
@@ -599,7 +672,8 @@ class DatabaseFunctions
     public function increaseUserDatalimit($username, $addmb)
     {
         $addoctets = $addmb * 1024 * 1024;
-        // NOTE: This is a select and an replace (using setUserDataLimit) so that it can be called without worry for a missing field.
+        /* NOTE: This is a select and an replace (using setUserDataLimit) so
+         * that it can be called without worry for a missing field. */
  
         $sql = sprintf("SELECT Value
                         FROM radcheck
@@ -613,7 +687,8 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(T_('Getting User Current Data Limit to increase failed: '), $result);
+            ErrorHandling::fatal_db_error(
+                T_('Getting User Current Data Limit to increase failed: '), $result);
         }
         
         return $this->setUserDatalimit($username, ($result + $addoctets)/1024/1024);
@@ -634,7 +709,8 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(T_('Setting User Timelimit Query Failed: '), $result);
+            ErrorHandling::fatal_db_error(
+                T_('Setting User Timelimit Query Failed: '), $result);
         }
         
         return $result;     
@@ -657,7 +733,8 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(T_('Getting User Current Time Limit to increase failed: '), $result);
+            ErrorHandling::fatal_db_error(
+                T_('Getting User Current Time Limit to increase failed: '), $result);
         }
         
         return $this->setUserTimelimit($username, ($result + $addsecs)/60);
@@ -677,7 +754,8 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(T_('Setting User Password Query Failed: '), $result);
+            ErrorHandling::fatal_db_error(
+                T_('Setting User Password Query Failed: '), $result);
         }
         
         return $result;     
@@ -699,7 +777,8 @@ class DatabaseFunctions
             
             if (PEAR::isError($result))
             {
-                ErrorHandling::fatal_db_error(T_('Setting User Expiry Date Query Failed: '), $result);
+                ErrorHandling::fatal_db_error(
+                    T_('Setting User Expiry Date Query Failed: '), $result);
             }
             
             return $result;     
@@ -718,7 +797,8 @@ class DatabaseFunctions
             
             if (PEAR::isError($result))
             {
-                ErrorHandling::fatal_db_error(T_('Deleting User Expiry Date Query Failed: '), $result);
+                ErrorHandling::fatal_db_error(
+                    T_('Deleting User Expiry Date Query Failed: '), $result);
             }
             
             return $result;
@@ -738,7 +818,8 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(T_('Deleting user failed: '). "($username) ", $result);
+            ErrorHandling::fatal_db_error(
+                T_('Deleting user failed: '). "($username) ", $result);
         }
 
         /* Remove user from group */
@@ -750,7 +831,8 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(T_('Deleting users group failed: '). "($username) ", $result);
+            ErrorHandling::fatal_db_error(
+                T_('Deleting users group failed: '). "($username) ", $result);
         }
         
         /* Remove user comment */
@@ -762,7 +844,8 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(T_('Deleting users comment failed: '). "($username) ", $result);
+            ErrorHandling::fatal_db_error(
+                T_('Deleting users comment failed: '). "($username) ", $result);
         }
                       
                         
@@ -774,14 +857,15 @@ class DatabaseFunctions
         // TODO: Make this a COUNT() and then a queryOne
         $sql = sprintf("SELECT Username
             FROM radcheck
-            WHERE Username='%s'",
-            mysql_real_escape_string($username));
+            WHERE Username= %s",
+            $this->db->quote($username));
             
         $results = $this->db->query($sql);
         
         if (PEAR::isError($results))
         {
-            ErrorHandling::fatal_db_error(T_('Checking Uniq Username failed: '), $results);
+            ErrorHandling::fatal_db_error(
+                T_('Checking Uniq Username failed: '), $results);
         }
         
         $unique = true;
@@ -792,6 +876,143 @@ class DatabaseFunctions
         
         return $unique;
     }
+    
+    
+    /* Functions related to ChilliSpot Config attributes */
+    
+    public function getPortalConfigSingle($option)
+    {
+        $sql = sprintf("SELECT Value
+            FROM radreply
+            WHERE Username=%s
+            AND Attribute='ChilliSpot-Config'
+            AND Value LIKE %s",
+            $this->db->quote(RADIUS_CONFIG_USER),
+            $this->db->quote($option."%")
+            );
+        
+        $value = $this->db->queryOne($sql);
+        
+         if (PEAR::isError($value)) {
+            ErrorHandling::fatal_db_error(
+                T_('Retrieving Portal Config Single Value failed: '), $value);
+        }
+        
+        list($option, $value) = explode('=',$value);
+        
+        return $value;
+
+    }
+    
+    public function delPortalConfig($option, $value='')
+    {
+        if($value != '')
+        {
+            $test = "$option=$value";
+        }
+        else
+        {
+            $test = "$option";
+        }
+        
+        $sql = sprintf("DELETE
+            FROM radreply
+            WHERE Username= %s
+            AND Attribute='ChilliSpot-Config'
+            AND Value LIKE %s",
+            $this->db->quote(RADIUS_CONFIG_USER),
+            $this->db->quote($test."%")
+            );
+        
+        $result = $this->db->exec($sql);    
+        
+        if (PEAR::isError($result))
+        {
+            ErrorHandling::fatal_db_error(
+                T_('Deleting Portal Config Query Failed: '), $result);
+        }        
+        
+        return $result;
+    }
+    
+    public function setPortalConfigSingle($option, $value)
+    {
+    
+        /* Because of DB structure, we can't uniquely identify these items, so
+         * must delete then insert as they are single values */
+        $this->delPortalConfig($option, '');
+        // $value is '' so we delete any options as this is a single not multi
+    
+        $affected =& $this->insert_radius_values_sql->execute(
+            array(
+                RADIUS_CONFIG_USER,
+                RADIUS_CONFIG_ATTRIBUTE,
+                '+=',
+                "$option=$value"));
+        
+        if (PEAR::isError($affected))
+        {
+            ErrorHandling::fatal_db_error(
+                T_('Setting Portal Config Single Query Failed: '), $affected);
+        }
+        
+        return $affected;     
+    }
+    
+    public function setPortalConfigMulti($option, $value)
+    {
+    
+        /* Because it's multiple, we rely on other parts of the software to
+         * ensure no dupplicates */
+    
+        $affected =& $this->insert_radius_values_sql->execute(
+            array(
+                RADIUS_CONFIG_USER,
+                RADIUS_CONFIG_ATTRIBUTE,
+                '+=',
+                "$option=$value"));
+        
+        if (PEAR::isError($affected))
+        {
+            ErrorHandling::fatal_db_error(
+                T_('Setting Portal Config Multi Query Failed: '), $affected);
+        }
+        
+        return $affected;     
+    }    
+    
+    public function getPortalConfigMulti($option)
+    {
+        $sql = sprintf("SELECT Value
+            FROM radreply
+            WHERE Username= %s
+            AND Attribute='ChilliSpot-Config'
+            AND Value LIKE %s",
+            $this->db->quote(RADIUS_CONFIG_USER),
+            $this->db->quote($option."%")
+            );
+        
+        $values = $this->db->queryAll($sql);
+        
+         if (PEAR::isError($values)) {
+            ErrorHandling::fatal_db_error(
+                T_('Retrieving Portal Config Multi Value failed: '), $values);
+        }
+        $results = array();
+        foreach($values as $val)
+        {
+            list($option, $value) = explode("=",$val['Value']);
+            $results[] = $value;
+        }
+        
+        return $results;    
+    }
+    
+    
+    
+    
+    
+    /* Private functions */
     
     private function _expiryFormat($date)
     {
