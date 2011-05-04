@@ -74,11 +74,11 @@ if(isset($_POST['newmachinesubmit']))
 		$mac = clean_text($_POST['mac']);
 		database_create_new_user( // TODO: Check if successful
 			$mac,
-			'password', // TODO: This needs to come from settings
+			DatabaseFunctions::getInstance()->getPortalConfigSingle('macpasswd'), // DONE: macpasswd comes from DB
 			$MaxMb,
 			$MaxTime,
-			'--',
-			'Machine', // TODO: This needs to be linked to settings
+			'--', // No expiry for machine accounts
+			MACHINE_GROUP_NAME, // TODO: This needs to be linked to settings
 			clean_text($_POST['Comment'])
 		);
 		$success[] = T_("Machine Account Successfully Created");
