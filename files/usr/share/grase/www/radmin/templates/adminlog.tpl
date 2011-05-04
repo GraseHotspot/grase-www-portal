@@ -3,17 +3,18 @@
 <h2>{t}Admin Log{/t}</h2>
 
 <div id='log' style='display:block;'>
+<form id="filter-form">Filter: <input name="filter" id="filter" value="" maxlength="30" size="30" type="text"></form><br>
 	<table border="0" id='AdminlogTable' class="stripeMe">
 	    <col style="width: 10em"/>
-	    <col style="width: 6em"/>
+	    <col style="width: 9em"/>
 	    <col style="width: 6em"/>	    	    
 	    <col />
 	    <thead>
 		<tr>
-			<td>{t}Timestamp{/t}</td>
-			<td>{t}Username{/t}</td>
-			<td>{t}IP{/t}</td>
-			<td>{t}Action{/t}</td>
+			<th>{t}Timestamp{/t}</th>
+			<th>{t}Username{/t}</th>
+			<th>{t}IP{/t}</th>
+			<th>{t}Action{/t}</th>
 		</tr>
 		</thead>
 		<tbody>
