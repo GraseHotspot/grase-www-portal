@@ -130,19 +130,23 @@ if(isset($_POST['submit']))
             $success[] = sprintf(
                 T_("%s portal config option update"),
                 $attributes['label']);
+                
+
         
         }
 
         
     }
+
+    // Update last change timestamp if we actually changed something
+    if(sizeof($success) > 0)
+        $Settings->setSetting('lastchangeportalconf', time());
         
     // Call validate&change functions for changed items
     load_chillioptions(); // Reload due to changes in POST    
 }
 
 	
-if(sizeof($error) > 0) $smarty->assign("error", $error);	
-if(sizeof($success) > 0) $smarty->assign("success", $success);
 
 function load_chillioptions()
 {
@@ -168,7 +172,22 @@ function load_chillioptions()
 //    DatabaseFunctions::getInstance()->setPortalConfigSingle('macpasswd', 'passwords');
 //    DatabaseFunctions::getInstance()->setPortalConfigSingle('defidletimeout', '600');
 //    DatabaseFunctions::getInstance()->setPortalConfigMulti('uamallowed', 'google.com.au');    
+
+    // Check when /etc/chilli/local.conf was last updated and compare to $Settings->gettSetting('lastchangeportalconfig');
+    $localconfts = filemtime('/etc/chilli/local.conf');
+    $lastchangets = $Settings->getSetting('lastchangeportalconf');
+    if($localconfts < $lastchangets)
+    {
+        $error[] = T_("Changes pending Coova Chilli Reload");
+    }else{
+        $success[] = T_("Settings match running config");
+    }
     
+    $smarty->assign("chilliconfigstatus", date('r',$localconfts));
+    $smarty->assign("lastconfigstatus", date('r',$lastchangets));            
+    
+if(sizeof($error) > 0) $smarty->assign("error", $error);	
+if(sizeof($success) > 0) $smarty->assign("success", $success);
 
     $smarty->assign("singlechillioptions", $singlechillioptions);
     $smarty->assign("multichillioptions", $multichillioptions);    

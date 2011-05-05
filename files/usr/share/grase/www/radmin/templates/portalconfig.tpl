@@ -1,8 +1,11 @@
-{include file="header.tpl" Name="Portal Config" activepage="portalconfig" helptext="Use this page to change portal Settings"}
+{include file="header.tpl" Name="Portal Settings" activepage="portalconfig" helptext="Use this page to change portal Settings"}
 
-<h2>{t}Portal Config{/t}</h2>
+<h2>{t}Portal Settings{/t}</h2>
 
+<p>{t}These settings are used by Coova Chilli. Coova Chilli only reloads it's config roughly once an hour, or when it's restarted.{/t} {t}If you change the MAC Auth Password, no computer accounts will be able to login until Coova Chilli reloads it's config, or is manually restarted.{/t}</p>
 
+<p>{t one=$chilliconfigstatus}Chilli Config last updated %1{/t}<br/>
+{t one=$lastconfigstatus}Portal Config last updated %1{/t}</p>
 
 <div id="PortalConfigForm">
 <form method="post" action="" class="generalForm">
