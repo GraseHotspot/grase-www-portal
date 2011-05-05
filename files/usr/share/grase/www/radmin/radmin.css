@@ -109,6 +109,11 @@ z-index: -1;
     color: black;
 }*/
 
+.expand, .collapse {
+    float: right;
+    width: 1em;
+    display: none;
+}
 
 .menu ul {
 	list-style: none;
@@ -117,11 +122,46 @@ z-index: -1;
 /*	margin: 0.7em;*/
 	margin: 0;
 
+
 }
 
 #menubar a {
 /*	display: inline;*/
-	clear: left;
+/*	clear: left;*/
+    text-decoration: none;
+    padding: 2px;
+
+}
+
+#menubar li {
+    cursor: pointer;
+    margin: 2px;
+    padding: 0;    
+ 
+}
+
+#menucontainer > ul > li {
+    margin-bottom: 5px;
+    width: 11em;
+    border-top: dashed 1px black;
+    padding-top: 5px;
+}
+
+#menucontainer > ul > li > ul {
+    margin-bottom: 1em;
+}
+
+#menubar ul {
+/*    clear: left;
+    float: left;*/
+    list-style: none outside none;
+    padding: 0;
+    position: relative;
+
+}
+
+#menucontainer > ul {
+
 
 }
 
@@ -133,7 +173,14 @@ z-index: -1;
 /*	background-color: lightblue;  
 	padding: 5px;   /* adds some space around the words */
 /*	border: 1px solid #000000;   /* makes the border black */
+
+    display: block;
 	width: 10em;
+	margin: 0;
+	padding-left: 1em;
+	
+
+	
 }
 
 

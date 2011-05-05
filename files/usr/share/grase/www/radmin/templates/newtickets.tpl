@@ -32,8 +32,9 @@
 
 		</table>
 	</div>
-{if $valid_last_batch}<a href="printnewtickets" class="printlink" target="_tickets">Print Last Batch of Tickets</a>{/if}
 {/if}
+{if $valid_last_batch}<a href="printnewtickets" class="printlink" target="_tickets">Print Last Batch of Tickets</a>{/if}
+
 
 <div id="createticketsForm">
 <h2>Create Tickets</h2>

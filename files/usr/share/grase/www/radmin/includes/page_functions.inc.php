@@ -69,18 +69,26 @@ function createmenuitems()
 {
 	//	$menubar['id'] = array("href" => , "label" => );
 	$menubar['main'] = array("href" => "./", "label" => T_("Status"));
-	$menubar['users'] = array("href" => "display", "label" => T_("List Users"));
-	$menubar['createuser'] = array("href" => "newuser", "label" => T_("New User"));
-	$menubar['createtickets'] = array("href" => "newtickets", "label" => T_("Mass New Users"));	
-	$menubar['createmachine'] = array("href" => "newmachine", "label" => T_("Computer Account"));	
+	$menubar['users'] = array("href" => "display", "label" => T_("Users"),
+	    "submenu" => array(
+	        'createuser' => array("href" => "newuser", "label" => T_("New User")),
+	        'createtickets' => array("href" => "newtickets", "label" => T_("Mass New Users")),
+	        'createmachine' => array("href" => "newmachine", "label" => T_("Computer Account"))	
+	        )
+    	);
 	$menubar['sessions'] = array("href" => "sessions", "label" => T_("Monitor Sessions"));
     $menubar['reports'] = array("href" => "reports", "label" => T_("Reports"));
     //$menubar['monthly_accounts'] = array("href" => "datausage", "label" => "Monthly Reports"); // Not working atm TODO:
-	$menubar['settings'] = array("href" => "settings", "label" => T_("Site Settings") );
-	$menubar['uploadlogo'] = array("href" => "uploadlogo", "label" => T_("Site Logo") );	
-	$menubar['groups'] = array("href" => "groupconfig", "label" => T_("Groups") );	
+	$menubar['settings'] = array("href" => "settings", "label" => T_("Settings"),
+	    "submenu" => array(
+	        'uploadlogo' => array("href" => "uploadlogo", "label" => T_("Site Logo") ),
+            'portalconfig' => array("href" => "portalconfig", "label" => T_("Portal Settings") ),	
+            'groups' => array("href" => "groupconfig", "label" => T_("Groups") )	
+        )
+            
+	        		
+	 );
 	
-	$menubar['portalconfig'] = array("href" => "portalconfig", "label" => T_("Portal Settings") );	
 	$menubar['links'] = array("href" => "links", "label" => T_("Useful Links"));	
 	$menubar['passwd'] = array("href" => "passwd", "label" => T_("Admin Users") );
 	$menubar['adminlog'] = array("href" => "adminlog", "label" => T_("Admin Log") );	
