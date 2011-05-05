@@ -32,7 +32,7 @@ load_global_settings();
 
 function load_global_settings()
 {
-    global $Settings, $location, $pricemb, $pricetime, $currency, $sellable_data, $useable_data, $support_name, $support_link, $website_link, $website_name;
+    global $Settings, $location, $pricemb, $pricetime, $currency, $sellable_data, $useable_data, $support_name, $support_link, $website_link, $website_name, $DEMO_SITE;
     $location = $Settings->getSetting('locationName'); if($location == "") $location = "Default";
     $pricemb = $Settings->getSetting('priceMb'); if($pricemb == "") $pricemb = 0.6;
     $pricetime = $Settings->getSetting('priceMinute'); if($pricetime == "") $pricetime = 0.1;
@@ -44,6 +44,9 @@ function load_global_settings()
 
     $website_link = $Settings->getSetting('websiteLink'); if($website_link == "") $website_link = "http://ywam.org/";
     $website_name = $Settings->getSetting('websiteName'); if($website_name == "") $website_name = "YWAM";
+    
+    // Allow extra things on Demo site (piwik tracking of admin interface)
+    $DEMO_SITE = $Settings->getSetting('demosite');
 }
 
 /* */

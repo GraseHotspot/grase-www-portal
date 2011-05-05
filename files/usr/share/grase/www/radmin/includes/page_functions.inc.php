@@ -265,7 +265,7 @@ $smarty->assign('gbvalues', gboctects());
 function assign_vars()
 {
 	global $smarty, $sellable_data, $useable_data, $used_data, $sold_data;
-	global $location, $website_name, $website_link;
+	global $location, $website_name, $website_link, $DEMO_SITE;
 
 	// Data
 	$total_sellable_data = $sellable_data; 
@@ -293,6 +293,9 @@ function assign_vars()
 	$smarty->assign("LastM_DataUsageOctets", $used_data);
 	$smarty->assign("LastM_DataRemainingOctets", $total_useable_data - $used_data);
 	$smarty->assign("LastM_DataUsagePercent", $used_data/($total_useable_data)*100);
+	
+	// DEMO SITE flag
+	$smarty->assign("DEMOSITE", $DEMO_SITE);
 }
 
 
