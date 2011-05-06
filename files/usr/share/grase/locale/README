@@ -1,0 +1,4 @@
+Languages are stored based on English names. So Afrikaans is stored in the Afrikaans directory. English is stored in the English directory. Etc
+French is stored in the French directory, NOT the français directory.
+You can store things in the 2 letter coded directory, for example fr for French, en for English, but you must have a symlink to the English full name.
+This may change at a later date to just 2 letter coded directories, but for now this is easier to see visually which languages are what.
