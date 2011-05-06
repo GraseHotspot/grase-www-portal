@@ -29,10 +29,10 @@ function validate_form()
 	$error = array();
 	if(! checkDBUniqueUsername($_POST['mac'])) $error[] = T_("MAC Address already has an account");
 	
-	$MaxMb = ereg_replace("[^\.0-9]", "", $_POST['MaxMb'] );
-	$Max_Mb = ereg_replace("[^\.0-9]", "", $_POST['Max_Mb'] );	
-	$MaxTime = ereg_replace("[^\.0-9]", "", $_POST['MaxTime'] );
-	$Max_Time = ereg_replace("[^\.0-9]", "", $_POST['Max_Time'] );	
+	$MaxMb = clean_number( $_POST['MaxMb'] );
+	$Max_Mb = clean_number( $_POST['Max_Mb'] );	
+	$MaxTime = clean_int( $_POST['MaxTime'] );
+	$Max_Time = clean_int( $_POST['Max_Time'] );	
 	
 
     $error[] = validate_mac($_POST['mac']);
@@ -53,24 +53,24 @@ if(isset($_POST['newmachinesubmit']))
 	$error = validate_form();
 	if($error ){
 		$user['mac'] = clean_text($_POST['mac']);
-		$user['MaxMb'] = ereg_replace("[^\.0-9]", "", clean_text($_POST['MaxMb']));
-		$user['Max_Mb'] = ereg_replace("[^\.0-9]", "",clean_text($_POST['Max_Mb']));		
-		$user['MaxTime'] = ereg_replace("[^\.0-9]", "",clean_text($_POST['MaxTime']));
-		$user['Max_Time'] = ereg_replace("[^\.0-9]", "",clean_text($_POST['Max_Time']));	
+		$user['MaxMb'] = displayLocales(clean_number($_POST['MaxMb']));
+		$user['Max_Mb'] = displayLocales(clean_number($_POST['Max_Mb']));		
+		$user['MaxTime'] = displayLocales(clean_int($_POST['MaxTime']));
+		$user['Max_Time'] = displayLocales(clean_int($_POST['Max_Time']));	
 		$user['Comment'] = clean_text($_POST['Comment']);
 		$smarty->assign("machine", $user);
 		$smarty->assign("error", $error);
 		display_page('addmachine.tpl');
 	}else
 	{
-		if(ereg_replace("[^\.0-9]", "",clean_text($_POST['Max_Mb'])))
-		    $MaxMb = ereg_replace("[^\.0-9]", "",clean_text($_POST['Max_Mb']));
-		if(ereg_replace("[^\.0-9]", "", clean_text($_POST['MaxMb'])))
-		    $MaxMb = ereg_replace("[^\.0-9]", "", clean_text($_POST['MaxMb']));
-		if(ereg_replace("[^\.0-9]", "",clean_text($_POST['Max_Time'])))
-		    $MaxTime =  ereg_replace("[^\.0-9]", "",clean_text($_POST['Max_Time']));
-		if(ereg_replace("[^\.0-9]", "",clean_text($_POST['MaxTime'])))
-		    $MaxTime = ereg_replace("[^\.0-9]", "",clean_text($_POST['MaxTime']));
+		if(clean_number($_POST['Max_Mb']))
+		    $MaxMb = clean_number($_POST['Max_Mb']);
+		if(clean_number($_POST['MaxMb']))
+		    $MaxMb = clean_number($_POST['MaxMb']);
+		if(clean_int($_POST['Max_Time']))
+		    $MaxTime =  clean_int($_POST['Max_Time']);
+		if(clean_int($_POST['MaxTime']))
+		    $MaxTime = clean_int($_POST['MaxTime']);
 		$mac = clean_text($_POST['mac']);
 		database_create_new_user( // TODO: Check if successful
 			$mac,
@@ -81,8 +81,8 @@ if(isset($_POST['newmachinesubmit']))
 			MACHINE_GROUP_NAME, // TODO: This needs to be linked to settings
 			clean_text($_POST['Comment'])
 		);
-		$success[] = T_("Machine Account Successfully Created");
-		AdminLog::getInstance()->log("Created new machine $mac");
+		$success[] = T_("Computer Account Successfully Created");
+		AdminLog::getInstance()->log("Created new computer $mac");
 		$smarty->assign("success", $success);
 		display_addmachine_form();
 	}

@@ -4,7 +4,7 @@
 <h2>{t}Edit User{/t}</h2>
 
 {if $user.Group eq MACHINE_GROUP_NAME}
-<div class="errorPage" style="display: block;"> <span id="errorMessage">{t}Machine Account Locked (Only comments can be changed){/t}{if $error}<br/>{foreach from=$error item=msg}{$msg}<br/>{/foreach}{/if}</span> </div>
+<div class="errorPage" style="display: block;"> <span id="errorMessage">{t}Computer Account Locked (Only comments can be changed){/t}{if $error}<br/>{foreach from=$error item=msg}{$msg}<br/>{/foreach}{/if}</span> </div>
 
 <table>
 	<tr><td>{t}Username{/t}</td><td>{$user.Username}</td></tr>

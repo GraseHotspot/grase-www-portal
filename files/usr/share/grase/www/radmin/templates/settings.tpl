@@ -25,10 +25,19 @@
 
 
     <div>
+        <label for='currency'>{t}Locale{/t}</label>
+        <input name="locale" type="text" value="{$locale}"/>
+        <span id="localeInfo">{t}Select the appropriate Locale for your location{/t}
+        <span class="helptext">{t escape=no}A locale has 2 parts, the language and location.<br/><strong>en_AU</strong> for example has the Language set to English, and the location to Australia.<br/><strong>en_ZA</strong> has the language set to English, and the location to South Africa, while <strong>af_ZA</strong> has the language set to Afrikaans and the location to South Africa.{/t}</span>
+        <br/><strong>{t}The locale defines the number formats, currency and language. If the language selected is not available, it will fallback to English.{/t}</strong></span>
+        <br/><span>{t escape=no locale=$locale language=$language location=$region}Current locale is <strong>%1</strong>, which sets the language to <strong>%2</strong>, and location to <strong>%3</strong>.{/t} {t currency=$currency escape=no}Currency symbol is <strong>%1</strong>{/t}</span>
+    </div>
+
+<!-- Locale controls this now    <div>
         <label for='currency'>{t}Currency{/t}</label>
         {html_options name=currency options=$CurrencySymbols selected=$currency}
         <span id="currencyInfo">{t}Select the appropriate symbol for your local currency{/t}</span>
-    </div>
+    </div>-->
 
 
     <div>

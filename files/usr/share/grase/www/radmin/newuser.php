@@ -31,10 +31,10 @@ function validate_form()
 	if(! checkDBUniqueUsername($_POST['Username'])) $error[] = T_("Username already taken");
 	if ( ! $_POST['Username'] || !$_POST['Password'] ) $error[] = T_("Username and Password are both Required");
 	
-	$MaxMb = ereg_replace("[^\.0-9]", "", $_POST['MaxMb'] );
-	$Max_Mb = ereg_replace("[^\.0-9]", "", $_POST['Max_Mb'] );	
-	$MaxTime = ereg_replace("[^\.0-9]", "", $_POST['MaxTime'] );
-	$Max_Time = ereg_replace("[^\.0-9]", "", $_POST['Max_Time'] );	
+   	$MaxMb = clean_number($_POST['MaxMb'] );
+	$Max_Mb = clean_number($_POST['Max_Mb'] );	
+	$MaxTime = clean_int($_POST['MaxTime'] );
+	$Max_Time = clean_int($_POST['Max_Time'] );	
 	
 
 	$error[] = validate_datalimit($MaxMb);
@@ -59,10 +59,10 @@ if(isset($_POST['newusersubmit']))
 	if($error ){
 		$user['Username'] = clean_text($_POST['Username']);
 		$user['Password'] = clean_text($_POST['Password']);
-		$user['MaxMb'] = clean_number($_POST['MaxMb']);
-		$user['Max_Mb'] = clean_number($_POST['Max_Mb']);		
-		$user['MaxTime'] = clean_number($_POST['MaxTime']);
-		$user['Max_Time'] = clean_number($_POST['Max_Time']);	
+		$user['MaxMb'] = displayLocales(clean_number($_POST['MaxMb']));
+		$user['Max_Mb'] = displayLocales(clean_number($_POST['Max_Mb']));		
+		$user['MaxTime'] = displayLocales(clean_int($_POST['MaxTime']));
+		$user['Max_Time'] = displayLocales(clean_int($_POST['Max_Time']));	
 		$user['Group'] = clean_text($_POST['Group']);
 		$user['Expiration'] = expiry_for_group(clean_text($_POST['Group'])); //"${_POST['Expirydate_Year']}-${_POST['Expirydate_Month']}-${_POST['Expirydate_Day']}";
 		$user['Comment'] = clean_text($_POST['Comment']);
@@ -75,10 +75,10 @@ if(isset($_POST['newusersubmit']))
 		    $MaxMb = clean_number($_POST['Max_Mb']);
 		if(clean_number($_POST['MaxMb']))
 		    $MaxMb = clean_number($_POST['MaxMb']);
-		if(clean_number($_POST['Max_Time']))
-		    $MaxTime =  clean_number($_POST['Max_Time']);
-		if(clean_number($_POST['MaxTime']))
-		    $MaxTime = clean_number($_POST['MaxTime']);
+		if(clean_int($_POST['Max_Time']))
+		    $MaxTime =  clean_int($_POST['Max_Time']);
+		if(clean_int($_POST['MaxTime']))
+		    $MaxTime = clean_int($_POST['MaxTime']);
 		database_create_new_user( // TODO: Check if valid
 			clean_text($_POST['Username']),
 			clean_text($_POST['Password']),

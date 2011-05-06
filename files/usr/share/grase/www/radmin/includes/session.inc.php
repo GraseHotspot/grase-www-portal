@@ -94,7 +94,7 @@ $Auth->setAdvancedSecurity(array(
     AUTH_ADV_IPCHECK   => true,
     AUTH_ADV_CHALLENGE => false
 ));
-$Auth->setIdle(300);
+$Auth->setIdle(600);
 
 $AdminLog =& AdminLog::getInstance($DBs->getRadminDB(), $Auth);
 

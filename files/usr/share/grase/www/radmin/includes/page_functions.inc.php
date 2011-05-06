@@ -76,9 +76,15 @@ function createmenuitems()
 	        'createmachine' => array("href" => "newmachine", "label" => T_("Computer Account"))	
 	        )
     	);
-	$menubar['sessions'] = array("href" => "sessions", "label" => T_("Monitor Sessions"));
-    $menubar['reports'] = array("href" => "reports", "label" => T_("Reports"));
-    //$menubar['monthly_accounts'] = array("href" => "datausage", "label" => "Monthly Reports"); // Not working atm TODO:
+	$menubar['sessions'] = array("href" => "sessions", "label" => T_("Monitor Sessions"),
+	    "submenu" => array(
+            'reports' => array("href" => "reports", "label" => T_("Reports")),	    
+            //'monthly_accounts' => array("href" => "datausage", "label" => "Monthly Reports"); // Not working atm TODO:
+            
+	    )
+	    
+	    );
+    
 	$menubar['settings'] = array("href" => "settings", "label" => T_("Settings"),
 	    "submenu" => array(
 	        'uploadlogo' => array("href" => "uploadlogo", "label" => T_("Site Logo") ),
@@ -88,10 +94,16 @@ function createmenuitems()
             
 	        		
 	 );
+
+// TODO: Bring links page back when sysstatus is fixed and more links are active	
+//	$menubar['links'] = array("href" => "links", "label" => T_("Useful Links"));	
+	$menubar['passwd'] = array("href" => "passwd", "label" => T_("Admin Users"),
+	    "submenu" => array(
+    	    'adminlog' => array("href" => "adminlog", "label" => T_("Admin Log") ),
+	    )
 	
-	$menubar['links'] = array("href" => "links", "label" => T_("Useful Links"));	
-	$menubar['passwd'] = array("href" => "passwd", "label" => T_("Admin Users") );
-	$menubar['adminlog'] = array("href" => "adminlog", "label" => T_("Admin Log") );	
+	 );
+
 	
 	$menubar['logout'] = array("href" => "./?logoff", "label" => T_("Logoff") );
 	return $menubar;
@@ -108,31 +120,31 @@ function createusefullinks()
 
 function datacosts()
 {
-	global $datacosts, $pricemb, $currency, $CurrencySymbols;
-	$disp_currency = $CurrencySymbols[$currency];
+	global $datacosts, $pricemb, $currency;
+	//$disp_currency = $CurrencySymbols[$currency];
 	$datacosts[''] = '';
 	$money_options = array($pricemb, 5, 10, 15, 20, 25, 30, 40, 50, 75, 100);
 	foreach($money_options as $money)
 	{
-		$disp_money = number_format($money, 2);
+		$disp_money = displayLocales(number_format($money, 2), TRUE);
 		$data = round($money/$pricemb, 2);
 		$disp_data = Formatting::formatBytes($data*1024*1024);
-		$datacosts["$data"] = "$disp_currency$disp_money ($disp_data)";
+		$datacosts["$data"] = "$disp_money ($disp_data)";
 	}
 	return $datacosts;
 }
 
 function timecosts()
 {
-	global $timecosts, $pricetime, $currency, $CurrencySymbols;
-	$disp_currency = $CurrencySymbols[$currency];
+	global $timecosts, $pricetime, $currency;
+	//$disp_currency = $CurrencySymbols[$currency];
 	$timecosts[''] = '';
 	//$pricemb = $price; // 60c/Mb
 	$time_options = array(5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 60, 90, 120, 180);
 	foreach($time_options as $time)
 	{
 		$cost = displayLocales(number_format(round($pricetime*$time, 2),2), TRUE);
-		$timecosts["$time"] = "$disp_currency$cost ($time mins)";
+		$timecosts["$time"] = "$cost ($time mins)";
 	}
 	return $timecosts;
 }
@@ -181,10 +193,10 @@ function groupexpirys()
 	return $Expiry;
 }
 
-function currency_symbols()
+/*function currency_symbols()
 {
 	global $CurrencySymbols;
-	// TODO: install more locales and automate this?
+	// DONE: install more locales and automate this?
 	$CurrencySymbols['$'] = "$";
 	$CurrencySymbols['¢'] = "&#162;";
 	$CurrencySymbols['R'] = "R";
@@ -193,13 +205,42 @@ function currency_symbols()
 	$CurrencySymbols['¥'] = "&#165;";
 	$CurrencySymbols['¤'] = "&#164;";
 	return $CurrencySymbols;
-}
+}*/
 
 function display_page($template)
 {
 	global $smarty;
 	assign_vars();
 	return $smarty->display($template);
+}
+
+function apply_locale($newlocale)
+{
+    global $locale;
+    // TODO: Move this stuff to somewhere else?
+
+    //$locale = locale_accept_from_http("en_GB");
+    //echo $locale;
+    //echo	locale_accept_from_http($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+    //echo 	$_SERVER['HTTP_ACCEPT_LANGUAGE'];
+
+    //if($locale == '') $locale = "en_AU";
+    $locale = $newlocale;
+
+    Locale::setDefault($locale);
+    //echo Locale::getDefault();
+    $language =  locale_get_display_language($locale, 'en');
+    $region = locale_get_display_region($locale);
+    //echo "$language $region<br/>";
+    //print_r(displayLocales("-10000.11", TRUE)); 
+
+    //putenv("LC_ALL=$locale");
+    //$language = "Leet";
+    T_setlocale(LC_MESSAGES, $language);
+
+    //print_r(setlocale(LC_MESSAGES, NULL));
+    T_bindtextdomain("grase", "/usr/share/grase/locale");
+    T_textdomain("grase");
 }
 
 
@@ -216,26 +257,7 @@ $smarty->register_modifier('seconds', array("Formatting", "formatSec"));
 // i18n
 //$locale = (!isset($_GET["l"]))?"en_GB":$_GET["l"];  
 $smarty->register_block('t', 'smarty_translate');
-// TODO: Move this stuff to somewhere else?
-$locale = $Settings->getSetting('locale');
-//$locale = locale_accept_from_http("en_ZA");
-//echo $locale;
-
-if($locale == '') $locale = "en_AU";
-
-Locale::setDefault($locale);
-//echo Locale::getDefault();
-$language =  locale_get_display_language($locale);
-$region = locale_get_display_region($locale);
-//echo "$language $region<br/>";
-//print_r(displayLocales("-10000.11", TRUE)); 
-
-//putenv("LC_ALL=$locale");
-//$language = "Leet";
-T_setlocale(LC_MESSAGES, $language);
-//print_r(setlocale(LC_MESSAGES, NULL));
-T_bindtextdomain("grase", "/usr/share/grase/locale");
-T_textdomain("grase");
+apply_locale($locale);
 
 
 list($fileversions, $application_version)=css_file_version();
@@ -254,7 +276,7 @@ $smarty->assign("Usergroups", usergroups());
 
 
 // Costs
-$smarty->assign("CurrencySymbols", currency_symbols());
+//$smarty->assign("CurrencySymbols", currency_symbols());
 $smarty->assign("Datacosts", datacosts());
 $smarty->assign("Timecosts", timecosts());
 

@@ -113,6 +113,12 @@ z-index: -1;
     float: right;
     width: 1em;
     display: none;
+/*    position: relative;
+    top: 1.5em;
+    left: 10em;
+    line-height: 0 !important;
+    height: 0;
+    border: solid 1px black;*/
 }
 
 .menu ul {
@@ -130,25 +136,27 @@ z-index: -1;
 /*	clear: left;*/
     text-decoration: none;
     padding: 2px;
-
+    float: none;
 }
 
 #menubar li {
     cursor: pointer;
-    margin: 2px;
-    padding: 0;    
- 
+/*    margin: 2px;*/
+    padding: 0; 
+/*    padding-left: 2px;*/
+    display: block;
 }
 
 #menucontainer > ul > li {
-    margin-bottom: 5px;
+/*    margin-bottom: 5px;*/
     width: 11em;
-    border-top: dashed 1px black;
+/*    border-top: dashed 1px black;*/
     padding-top: 5px;
+
 }
 
 #menucontainer > ul > li > ul {
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
 }
 
 #menubar ul {
@@ -160,8 +168,7 @@ z-index: -1;
 
 }
 
-#menucontainer > ul {
-
+#menucontainer > ul > li > ul > li > a {
 
 }
 
@@ -183,6 +190,9 @@ z-index: -1;
 	
 }
 
+#menucontainer li .topmenu {
+    font-style: italic;
+}
 
 
 #menubar .activemenuitem {
@@ -645,7 +655,8 @@ ul#statusmon li {
 }
 .generalForm label{
 	display: block;
-	color: #797979;
+/*	color: #797979;*/
+    color: black;
 	font-weight: 700;
 	line-height: 1.4em;
 	clear: right;
@@ -653,7 +664,9 @@ ul#statusmon li {
 .generalForm input, .generalForm select{
 	width: 220px;
 	padding: 6px;
-	color: #949494;
+/*	color: #949494;*/
+    color: black;
+
 	font-family: Arial,  Verdana, Helvetica, sans-serif;
 	font-size: 11px;
 	border: 1px solid #cecece;
@@ -681,8 +694,9 @@ ul#statusmon li {
 }
 .generalForm div span {
 	margin-left: 10px;
-	color: #b1b1b1;
+/*	color: #b1b1b1;*/
 	font-size: 11px;
+
 	font-style: italic;
 }
 .generalForm div span.error{

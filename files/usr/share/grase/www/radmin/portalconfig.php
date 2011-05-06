@@ -101,13 +101,13 @@ if(isset($_POST['submit']))
             switch ($attributes['type'])
             {
                 case "string":
-                    $postvalue[] = trim(clean_text($value));
+                    $postvalue[] = clean_text($value);
                     break;
                 case "int":
-                    $postvalue[] = trim(clean_int($value));
+                    $postvalue[] = clean_int($value);
                     break;
                 case "number":
-                    $postvalue[] = trim(clean_number($value));
+                    $postvalue[] = clean_number($value);
                     break;
                     
             }

@@ -31,12 +31,12 @@ function validate_form()
 	//if(! checkDBUniqueUsername($_POST['Username'])) $error.= "Username already taken<br/>";
 	//if ( ! $_POST['Username'] || !$_POST['Password'] ) $error.="Username and Password are both Required<br/>";
 	
-	$NumberTickets = ereg_replace("[^0-9]", "", $_POST['numberoftickets'] );
+	$NumberTickets = clean_int($_POST['numberoftickets'] );
 	
-	$MaxMb = ereg_replace("[^\.0-9]", "", $_POST['MaxMb'] );
-	$Max_Mb = ereg_replace("[^\.0-9]", "", $_POST['Max_Mb'] );	
-	$MaxTime = ereg_replace("[^\.0-9]", "", $_POST['MaxTime'] );
-	$Max_Time = ereg_replace("[^\.0-9]", "", $_POST['Max_Time'] );	
+	$MaxMb = clean_number($_POST['MaxMb'] );
+	$Max_Mb = clean_number( $_POST['Max_Mb'] );	
+	$MaxTime = clean_int( $_POST['MaxTime'] );
+	$Max_Time = clean_int( $_POST['Max_Time'] );	
 	
     
     $error[] = validate_int($NumberTickets);
@@ -63,11 +63,12 @@ if(isset($_POST['createticketssubmit']))
 	if($error ){
 		//$user['Username'] = clean_text($_POST['Username']);
 		//$user['Password'] = clean_text($_POST['Password']);
-        $user['numberoftickets'] = ereg_replace("[^0-9]", "", $_POST['numberoftickets'] );    		
-		$user['MaxMb'] = ereg_replace("[^\.0-9]", "", clean_text($_POST['MaxMb']));
-		$user['Max_Mb'] = ereg_replace("[^\.0-9]", "",clean_text($_POST['Max_Mb']));		
-		$user['MaxTime'] = ereg_replace("[^\.0-9]", "",clean_text($_POST['MaxTime']));
-		$user['Max_Time'] = ereg_replace("[^\.0-9]", "",clean_text($_POST['Max_Time']));	
+        $user['numberoftickets'] = clean_int($_POST['numberoftickets'] );    		
+		$user['MaxMb'] = displayLocales(clean_number($_POST['MaxMb']));
+		$user['Max_Mb'] = displayLocales(clean_number($_POST['Max_Mb']));		
+		$user['MaxTime'] = displayLocales(clean_int($_POST['MaxTime']));
+		$user['Max_Time'] = displayLocales(clean_int($_POST['Max_Time']));	
+		
 		$user['Group'] = clean_text($_POST['Group']);
 		$user['Expiration'] = expiry_for_group(clean_text($_POST['Group'])); //"${_POST['Expirydate_Year']}-${_POST['Expirydate_Month']}-${_POST['Expirydate_Day']}";
 		$user['Comment'] = clean_text($_POST['Comment']);
@@ -76,15 +77,15 @@ if(isset($_POST['createticketssubmit']))
 		display_page('newtickets.tpl'); //TODO: What happens if this returns?
 	}else
 	{
-	    $user['numberoftickets'] = ereg_replace("[^0-9]", "", $_POST['numberoftickets'] );    
-		if(ereg_replace("[^\.0-9]", "",clean_text($_POST['Max_Mb'])))
-		    $MaxMb = ereg_replace("[^\.0-9]", "",clean_text($_POST['Max_Mb']));
-		if(ereg_replace("[^\.0-9]", "", clean_text($_POST['MaxMb'])))
-		    $MaxMb = ereg_replace("[^\.0-9]", "", clean_text($_POST['MaxMb']));
-		if(ereg_replace("[^\.0-9]", "",clean_text($_POST['Max_Time'])))
-		    $MaxTime =  ereg_replace("[^\.0-9]", "",clean_text($_POST['Max_Time']));
-		if(ereg_replace("[^\.0-9]", "",clean_text($_POST['MaxTime'])))
-		    $MaxTime = ereg_replace("[^\.0-9]", "",clean_text($_POST['MaxTime']));
+	    $user['numberoftickets'] = clean_int($_POST['numberoftickets'] );    
+		if(clean_number($_POST['Max_Mb']))
+		    $MaxMb = clean_number($_POST['Max_Mb']);
+		if(clean_number($_POST['MaxMb']))
+		    $MaxMb = clean_number($_POST['MaxMb']);
+		if(clean_number($_POST['Max_Time']))
+		    $MaxTime =  clean_number($_POST['Max_Time']);
+		if(clean_number($_POST['MaxTime']))
+		    $MaxTime = clean_number($_POST['MaxTime']);
 		for($i = 0; $i < $user['numberoftickets']; $i++)
 		{
 		    $username =  rand_username(5);	

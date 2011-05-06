@@ -253,7 +253,8 @@ function sort_users_into_groups($users)
 	unset($users_group[MACHINE_GROUP_NAME]);
 	
 	// Insert machines at end of list (will appear before "All")
-	$users_group[MACHINE_GROUP_NAME] = $machines;
+	if(sizeof($machines) > 0)
+    	$users_group[T_("Computers")] = $machines;
 	
 	return $users_group;
 }
@@ -268,18 +269,21 @@ function clean_text($text)
 #	$text = htmlspecialchars($text, ENT_NOQUOTES);
 #	$text = mysql_real_escape_string($text);
 
-	return $text;
+	return trim($text);
 }
 
 function clean_number($number)
 {
-    return ereg_replace("[^\.0-9]", "", clean_text($number));
+    global $locale;
+    $fmt = new NumberFormatter( $locale, NumberFormatter::DECIMAL );
+    return $fmt->parse(ereg_replace("[^\.,0-9]", "", clean_text($number)));
 }
 
 
 function clean_int($number)
 {
-    return ereg_replace("[^0-9]", "", clean_text($number));
+    return intval(clean_number($number));
+    //ereg_replace("[^0-9]", "", clean_text($number));
 }
 
 

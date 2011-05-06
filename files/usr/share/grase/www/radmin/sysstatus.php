@@ -7,6 +7,7 @@
 </head>
 <body>
 <h1>Server Monitor</h1>
+<p>This page is not actively maintained and is only currently here for historical purposes. It may be useful to get a quick idea of what services are running and which are not running. In the future it will become integrated with the main admin page.</p>
 <ul id="statusmon">
 
 <?php
@@ -68,13 +69,13 @@ $monitored_processes[] = array("label" => "*Webserver (Apache2)", "procname" => 
 $monitored_processes[] = array("label" => "*Authentication (FreeRADIUS)", "procname" => "freeradius", "pid" => "/var/run/freeradius/freeradius.pid");
 $monitored_processes[] = array("label" => "*Database (MySQL)", "procname" => "mysqld", "pid_error" => "/var/run/mysqld/mysqld.pid");
 $monitored_processes[] = array("label" => "*Proxy (Squid3)", "procname" => "squid3", "pid" => "/var/run/squid3.pid");
-$monitored_processes[] = array("label" => "*Filter (Dansguardian)", "procname" => "dansguardian", "pid" => "/var/run/dansguardian.pid");
+$monitored_processes[] = array("label" => "Filter (Dansguardian)", "procname" => "dansguardian", "pid" => "/var/run/dansguardian.pid");
 $monitored_processes[] = array("label" => "Ad Filter (Adzapper through Squid)", "procname" => "adzapper");
-$monitored_processes[] = array("label" => "*DNS (Dnsmasq)", "procname" => "dnsmasq", "pid" => "/var/run/dnsmasq.pid");
+$monitored_processes[] = array("label" => "DNS (Dnsmasq)", "procname" => "dnsmasq", "pid" => "/var/run/dnsmasq.pid");
 $monitored_processes[] = array("label" => "*SSH", "procname" => "sshd", "pid" => "/var/run/sshd.pid");
-$monitored_processes[] = array("label" => "*OpenVPN UDP", "procname" => "openvpn", "pid" => "/var/run/openvpn.client-udp.pid");
-$monitored_processes[] = array("label" => "OpenVPN TCP", "procname" => "openvpn", "pid" => "/var/run/openvpn.client-tcp.pid");
-$monitored_processes[] = array("label" => "*Postfix (Mail)", "procname" => "master");
+$monitored_processes[] = array("label" => "*OpenVPN UDP", "procname" => "openvpn", "pid" => "/var/run/openvpn.grase.pid");
+//$monitored_processes[] = array("label" => "OpenVPN TCP", "procname" => "openvpn", "pid" => "/var/run/openvpn.client-tcp.pid");
+$monitored_processes[] = array("label" => "Postfix (Mail)", "procname" => "master");
 #$monitored_processes[] = array("label" => "Email (IMAP/POP3, Dovecot)", "procname" => "dovecot", "pid_error" => "/var/run/dovecot/master.pid");
 //$monitored_processes[] = array("label" => "Ejabberd", "procname" => "dnsmasq", "pid" => "/var/run/dnsmasq.pid");
 #$monitored_processes[] = array("label" => "Monitor Bot", "procname" => "jimbo.py");
@@ -85,12 +86,14 @@ $monitored_processes[] = array("label" => "*Network (Gateway:$gateway_ip)", "pin
 #route -n |grep -o ^0\.0\.0\.0[[:space:]]*[^[:space:]]*| awk '{print $2 }'
 #$monitored_processes[] = array("label" => "*Internet (Open DNS)", "ping" => "208.67.220.220");
 $monitored_processes[] = array("label" => "Internet (Google SA)", "ping" => "google.co.za");
-$monitored_processes[] = array("label" => "Network (VPN Endpoint)", "ping" => "10.64.63.1");
+$monitored_processes[] = array("label" => "Internet (Google AU)", "ping" => "google.com.au");
+$monitored_processes[] = array("label" => "VPN (VPN Endpoint)", "ping" => "10.64.63.1");
+$monitored_processes[] = array("label" => "Network (VPN Server)", "ping" => "hotspot.purewhite.id.au");
 
 
 foreach($monitored_processes as $proc)
 {
-	if($proc['pid'] && file_exists($proc['pid'])) // PID File
+	if(isset($proc['pid']) && file_exists($proc['pid'])) // PID File
 	{
 		// Read file
 		$pid = file_get_contents($proc['pid']);
@@ -102,7 +105,7 @@ foreach($monitored_processes as $proc)
 		{
 			output_status($proc, 0, "");
 		}
-	}elseif($proc['procname']) // Check if proc is running, etc
+	}elseif(isset($proc['procname'])) // Check if proc is running, etc
 	{
 		$stime = proc_running_time($proc['procname']);
 		if($stime)
@@ -112,7 +115,7 @@ foreach($monitored_processes as $proc)
 		{
 			output_status($proc, 0, "");
 		}
-	}elseif($proc['ping'])// Ping host to see if up
+	}elseif(isset($proc['ping']))// Ping host to see if up
 	{
 		unset($output_dummy);
 		exec('ping -c 3 -q '.$proc['ping'], $output_dummy, $return);

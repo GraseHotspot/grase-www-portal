@@ -29,16 +29,17 @@ $success = array();
 
 if(isset($_POST['submit']))
 {
-    $newlocationname    = trim(clean_text($_POST['locationname']));
-    $newsupportcontact  = trim(clean_text($_POST['supportcontact']));    
-    $newsupportlink     = trim(clean_text($_POST['supportlink']));
-	$newpricemb         = trim(clean_text($_POST['pricemb']));
-	$newpricetime       = trim(clean_text($_POST['pricetime']));
-	$newcurrency        = trim(clean_text($_POST['currency']));    
-	$newwebsitename     = trim(clean_text($_POST['websitename']));
-	$newwebsitelink     = trim(clean_text($_POST['websitelink']));
-	$newsellabledata    = trim(clean_text($_POST['sellable_data']));
-	$newuseabledata     = trim(clean_text($_POST['useable_data']));	    
+    $newlocationname    = clean_text($_POST['locationname']);
+    $newsupportcontact  = clean_text($_POST['supportcontact']);    
+    $newsupportlink     = clean_text($_POST['supportlink']);
+	$newpricemb         = clean_number($_POST['pricemb']);
+	$newpricetime       = clean_number($_POST['pricetime']);
+	//$newcurrency        = clean_text($_POST['currency']);
+	$newlocale          = locale_accept_from_http(clean_text($_POST['locale']));
+	$newwebsitename     = clean_text($_POST['websitename']);
+	$newwebsitelink     = clean_text($_POST['websitelink']);
+	$newsellabledata    = clean_number($_POST['sellable_data']);
+	$newuseabledata     = clean_number($_POST['useable_data']);	    
     // Check for changed items
     
     if($newlocationname != $location) update_location($newlocationname);
@@ -46,7 +47,8 @@ if(isset($_POST['submit']))
     if($newsupportlink != $support_link) update_supportlink($newsupportlink);    
     if($newpricemb != $pricemb) update_pricemb($newpricemb);
     if($newpricetime != $pricetime) update_pricetime($newpricetime);
-    if($newcurrency != $currency) update_currency($newcurrency);
+    //if($newcurrency != $currency) update_currency($newcurrency);
+    if($newlocale != $locale) update_locale($newlocale);
     if($newwebsitename != $website_name) update_websitename($newwebsitename);
     if($newwebsitelink != $website_link) update_websitelink($newwebsitelink);
     if($newsellabledata != $sellable_data) update_sellabledata($newsellabledata);
@@ -58,10 +60,20 @@ if(isset($_POST['submit']))
 load_global_settings(); // Reloads settings
 
 	$smarty->assign("location", $location);
-	$smarty->assign("pricemb", $pricemb);
-	$smarty->assign("pricetime", $pricetime);
-	$smarty->assign("currency", $currency);
-	$smarty->assign("dispcurrency", $CurrencySymbols[$currency]);
+	$smarty->assign("pricemb", displayLocales($pricemb));
+	$smarty->assign("pricetime", displayLocales($pricetime));
+	//$smarty->assign("currency", $currency);
+	
+	// Locale stuff
+	
+    $fmt = new NumberFormatter( $locale, NumberFormatter::CURRENCY );
+	$smarty->assign("locale", $locale);
+    $smarty->assign("currency", $fmt->getSymbol(NumberFormatter::CURRENCY_SYMBOL));	
+    $smarty->assign("language",  locale_get_display_language($locale));
+    $smarty->assign("region", locale_get_display_region($locale));	
+	
+		
+	//$smarty->assign("dispcurrency", $CurrencySymbols[$currency]);
 	$smarty->assign("sellable_data", $sellable_data);
 	$smarty->assign("useable_data", $useable_data);
 	$smarty->assign("support_name", $support_name);
@@ -174,7 +186,7 @@ function update_pricetime($pricetime)
 }
 
 function update_currency($currency)
-{
+{   // No longer needed
     global $error, $smarty, $Settings, $success, $CurrencySymbols;
 	if($currency != "" && strlen($currency) < 4)
 	{
@@ -194,6 +206,32 @@ function update_currency($currency)
 
 
 }
+
+function update_locale($locale)
+{
+    global $error, $smarty, $Settings, $success;
+	if($locale != "" && locale_accept_from_http($locale))
+	{
+		if($Settings->setSetting('locale', locale_accept_from_http($locale)))
+		{
+			// Apply new locale so language displays correctly from now on
+			apply_locale($locale);
+
+			$success[] = T_("Locale updated");
+			AdminLog::getInstance()->log(T_("Locale updated to") . locale_accept_from_http($locale));
+		}
+		else
+		{
+			$error[] = T_("Error updating Locale");
+		}
+	}else
+	{
+		$error[] = T_("Invalid Locale");
+	}
+
+
+}
+
 
 
 // Data limits
