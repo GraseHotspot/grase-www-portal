@@ -70,6 +70,18 @@ class CronFunctions extends DatabaseFunctions
         
         if($olddbversion < 1.2)
         {
+            // remove unique key from radreply
+            $sql = "DROP INDEX userattribute ON radreply";
+            
+            $result = $this->db->exec($sql);
+            
+            if (PEAR::isError($result))
+            {
+                return T_('Upgrading DB failed: ') . $result->toString();
+            }
+            
+            $results += $result;            
+        
             // Add Radius Config user for Coova Chilli Radconfig
             $results += $this->setUserPassword(RADIUS_CONFIG_USER, RADIUS_CONFIG_PASSWORD);
             
@@ -89,7 +101,18 @@ class CronFunctions extends DatabaseFunctions
             
             // Add default macpasswd string
             $results += $this->setPortalConfigSingle('macpasswd', 'password');
+            // Add default defidelsession 
+            $results += $this->setPortalConfigSingle('defidletimeout', '600');
             
+            // Set last change time
+            $Settings->setSetting('lastchangeportalconf', time());
+            
+            //Install default groups
+	            $dgroup["Staff"] = "+6 months";
+	            $dgroup["Ministry"] = "+6 months";
+	            $dgroup["Students"] = "+3 months";
+	            $dgroup["Visitors"] = "+1 months";
+            $Settings->setSetting("groups", serialize($dgroup));
             
             // Upgrade DB version to next version
             $Settings->setSetting("DBVersion", 1.2);
