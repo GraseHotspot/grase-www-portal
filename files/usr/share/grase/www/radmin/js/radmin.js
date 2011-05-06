@@ -16,6 +16,17 @@ $(document).ready(function(){
 	    })
 	});
 	
+	$('.helptext').each(function(index, element){
+	    content = $(element).html();
+	    createLargeHelpDialog('helpdialog_' + index, 'Help', content);
+	    $(element).click(function()
+        {
+            $('#helpdialog_'+index).dialog('open');
+        });
+        $(element).html('');
+        $(element).addClass("ui-icon ui-icon-info");
+	});
+	
 	// Remove help text that is for those not using JS
 	
     $(".nojshelp").remove();
@@ -102,6 +113,22 @@ function createHelpDialog(id, title, content)
         autoOpen: false,
         title: title,
         resizable: false,        
+    })
+}
+
+function createLargeHelpDialog(id, title, content)
+{
+    // Simple function that uses jQuery UI to create a (Closed) dialog box for later use
+    $("<div/>", {
+        id: id,
+        html: content
+    }).dialog({
+        autoOpen: false,
+        title: title,
+        resizable: true,  
+        width: 450,
+        show: 'fade',
+        hide: 'fade',
     })
 }
 
