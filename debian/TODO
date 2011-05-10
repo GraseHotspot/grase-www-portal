@@ -38,3 +38,11 @@ Change how error messages are done (into array)
 Internationalization
 
 Move validation functions to class?
+
+Check MySQL caching is active and functional (settings db will get hammered each page load)
+
+Defaults for Data and Time limits (for all types)
+
+PDF Tickets
+
+Computer account edit page

@@ -21,12 +21,34 @@ require_once('../radmin/includes/load_settings.inc.php');
 
 // put full path to Smarty.class.php
 require_once('smarty/Smarty.class.php');
+require_once '../radmin/includes/smarty-gettext.php';
+
 $smarty = new Smarty();
+
+// TODO Detect browser settings and allow override of language?
+apply_locale($locale);
+
+$smarty->register_block('t', 'smarty_translate');
 
 $smarty->assign("Location", $location);
 $smarty->assign("pricemb", "$currency$pricemb");
 $smarty->assign("Support", array("link" => $support_link, "name" => $support_name));
 $smarty->assign("website_name", $website_name);
 $smarty->assign("website_link", $website_link);
+
+
+function apply_locale($newlocale)
+{
+    global $locale;
+    $locale = $newlocale;
+
+    Locale::setDefault($locale);
+    $language =  locale_get_display_language($locale, 'en');
+    $region = locale_get_display_region($locale);
+    T_setlocale(LC_MESSAGES, $language);
+
+    T_bindtextdomain("grase", "/usr/share/grase/locale");
+    T_textdomain("grase");
+}
 
 ?>

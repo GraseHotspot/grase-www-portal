@@ -1,20 +1,20 @@
 {include file="header.tpl" Name="Help" activepage="help"}
 
 <div id="page">
-<h1>{$Location} Hotspot - Help</h1>
+<h1>{$Location} Hotspot - {t}Help{/t}</h1>
 
 <p><a href="hotspot">Return to Welcome Page</a></p>
 <p>For payment and an account, please contact the Office during office hours. For support <a href="{$Support.link}">contact {$Support.name}</a></p>
-<p>For a quick logout, bookmark <a href="http://10.1.0.1:3990/logoff">LOGOUT</a>, this link will instantly log you out, and return you to the Welcome page.<br/>
+<p>{t href='http://10.1.0.1:3990/logoff' escape=no}For a quick logout, bookmark <a href="%1">LOGOUT</a>, this link will instantly log you out, and return you to the Welcome page.{/t}<br/>
 To get back to the status page, bookmark ether the Non javascript version (<a href="./nojsstatus" target="grasestatus">Hotspot Status nojs</a>), or the preferred javascript version (<a href="javascript: loginwindow = window.open('http://10.1.0.1/grase/uam/mini', 'grasestatus', 'width=300,height=400,location=no,directories=no,status=yes,menubar=no,toolbar=no'); loginwindow.focus();">Hotspot Status</a>). You can just drag ether link to your bookmark bar to easily bookmark them.</p>
 
-<p>Your Internet usage is limit by the amount of data that flows to and from your computer, or the amount of time spent online (depending on what you account type is). To maximise your account, you may wish to do the following:</p>
+<p>{t}Your Internet usage is limit by the amount of data that flows to and from your computer, or the amount of time spent online (depending on what you account type is). To maximise your account, you may wish to do the following:{/t}</p>
 <ul>
-	<li>Browse with images turned off</li>
-	<li>Resize all photos before uploading (800x600 is a good size for uploading to the internet, or emailing)</li>
-	<li>Ensure antivirus programs do not attempt to update the program (you probably still want them to update the virus definition files).</li>
-	<li>Use a client program for email instead of using webmail. (<a target="_blank" href="http://gmail.com">Gmail</a> has excellent support for client email programs)</li>
-	<li>Ensure when you finish using the Internet, you click logout so that other users won't be able to use your account</li>
+	<li>{t}Browse with images turned off{/t}</li>
+	<li>{t}Resize all photos before uploading (800x600 is a good size for uploading to the internet, or emailing){/t}</li>
+	<li>{t}Ensure antivirus programs do not attempt to update the program (you probably still want them to update the virus definition files).{/t}</li>
+	<li>{t}Use a client program for email instead of using webmail. {/t}</li>
+	<li>{t}Ensure when you finish using the Internet, you click logout so that other users won't be able to use your account{/t}</li>
 </ul>
 <div style="width: 45%; float: left">
 	{include file="laptop_req.tpl"}

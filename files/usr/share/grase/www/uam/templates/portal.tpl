@@ -3,9 +3,9 @@
 <div id="page">
 <h1>{$Location} Hotspot - Welcome</h1>
 
-<p>Welcome to the {$Location} Hotspot. Please read the following before logging in.</p>
-<p><a href="help">Information and Help</a></p>
-<p>For a quick logout, bookmark <a href="http://10.1.0.1:3990/logoff">LOGOUT</a>
+<p>{t location=$Location}Welcome to the %1 Hotspot. Please read the following before logging in.{/t}</p>
+<p><a href="help">{t}Information and Help{/t}</a></p>
+<p>{t href="http://10.1.0.1:3990/logoff" escape=no}For a quick logout, bookmark <a href="%1">LOGOUT</a>{/t}</p>
 
 <p>By logging in, you are agreeing to the following:</p>
 <ul>
@@ -14,6 +14,7 @@
 	<li><strong>You will not attempt to access any system on this network</strong></li>
 </ul>
 
+
 {if $user_url}<p id="userurlnojs" style="text-align: center;">If you are already logged in, continue to your site <br/><a href="{$user_url}" style="font-size: smaller">'{$user_url|truncate:60}'</a></p>{/if}
 
 
@@ -21,8 +22,8 @@
 {if $error}
 			<div class="ui-widget" id="errormessages">
 				<div class="ui-state-error ui-corner-all"  style="margin-top: 20px; padding: 0pt 0.7em;" > 
-					<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: 0.3em;"></span>
-					<ul>{foreach from=$error item=msg}<li><strong>{$msg}</strong></li>{/foreach}</ul></p>
+					<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: 0.3em;"></span></p>
+					<ul>{foreach from=$error item=msg}<li><strong>{$msg}</strong></li>{/foreach}</ul>
 
 				</div>
 			</div>
@@ -49,7 +50,7 @@
             
         <input type="hidden" name="userurl" value="{$user_url}"/>
         <input type="hidden" name="challenge" value="{$challenge}"/>        
-        <button type="submit" name="submit" id="submitbuttonnojs" onClick="connect();" class="fg-button ui-state-default ui-corner-all">Login</button>        
+        <button type="submit" name="submit" id="submitbuttonnojs" class="fg-button ui-state-default ui-corner-all">Login</button>        
     </form>
     
 
