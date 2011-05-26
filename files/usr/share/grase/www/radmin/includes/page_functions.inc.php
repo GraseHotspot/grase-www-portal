@@ -25,7 +25,15 @@ require_once('php-gettext/gettext.inc');
 require_once 'includes/database_functions.inc.php';
 require_once 'includes/load_settings.inc.php';
 
-require_once 'smarty/Smarty.class.php';
+if(file_exists('/usr/share/php/smarty/libs/') && ! is_link('/usr/share/php/smarty/libs/'))
+{
+    // Debian bug http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=514305
+    // Remove this code once fixed?
+    require_once('smarty/libs/Smarty.class.php');
+}else
+{
+    require_once('smarty/Smarty.class.php');
+}
 require_once 'smarty_sortby.php';
 
 require_once 'includes/smarty-gettext.php';

@@ -20,7 +20,16 @@ function __autoload($class_name) {
 require_once('../radmin/includes/load_settings.inc.php');
 
 // put full path to Smarty.class.php
-require_once('smarty/Smarty.class.php');
+if(file_exists('/usr/share/php/smarty/libs/') && ! is_link('/usr/share/php/smarty/libs/'))
+{
+    // Debian bug http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=514305
+    // Remove this code once fixed?
+    require_once('smarty/libs/Smarty.class.php');
+}else
+{
+    require_once('smarty/Smarty.class.php');
+}
+
 require_once '../radmin/includes/smarty-gettext.php';
 
 $smarty = new Smarty();

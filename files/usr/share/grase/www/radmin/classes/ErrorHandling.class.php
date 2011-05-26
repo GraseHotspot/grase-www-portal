@@ -28,8 +28,16 @@ class ErrorHandling
         $AdminLog =& AdminLog::getInstance();
         $AdminLog->log_error($error);
         
-        require_once('smarty/Smarty.class.php');
-        //require_once 'libs/Smarty.class.php';
+        if(file_exists('/usr/share/php/smarty/libs/') && ! is_link('/usr/share/php/smarty/libs/'))
+        {
+            // Debian bug http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=514305
+            // Remove this code once fixed?
+            require_once('smarty/libs/Smarty.class.php');
+        }else
+        {
+            require_once('smarty/Smarty.class.php');
+        }
+                //require_once 'libs/Smarty.class.php';
 
         $smarty = new Smarty;
 
@@ -49,7 +57,15 @@ class ErrorHandling
         $AdminLog =& AdminLog::getInstance();
         $AdminLog->log_error($error . $pear_error_obj->toString());
         
-        require_once('smarty/Smarty.class.php');
+        if(file_exists('/usr/share/php/smarty/libs/') && ! is_link('/usr/share/php/smarty/libs/'))
+        {
+            // Debian bug http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=514305
+            // Remove this code once fixed?
+            require_once('smarty/libs/Smarty.class.php');
+        }else
+        {
+            require_once('smarty/Smarty.class.php');
+        }
         //require_once 'libs/Smarty.class.php';
 
         $smarty = new Smarty;
@@ -70,7 +86,15 @@ class ErrorHandling
     {
         //$AdminLog =& AdminLog::getInstance();
         //$AdminLog->log_error($error);
-        require('smarty/Smarty.class.php');
+        if(file_exists('/usr/share/php/smarty/libs/') && ! is_link('/usr/share/php/smarty/libs/'))
+        {
+            // Debian bug http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=514305
+            // Remove this code once fixed?
+            require_once('smarty/libs/Smarty.class.php');
+        }else
+        {
+            require_once('smarty/Smarty.class.php');
+        }
 
         
 //        require_once 'libs/Smarty.class.php';

@@ -1,3 +1,9 @@
+grase-www-portal (3.1-2) purewhite; urgency=low
+
+  * Workaround for Debian bug #514305 (until it's fixed in Stable)
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Fri, 27 May 2011 09:30:14 +1000
+
 grase-www-portal (3.1-1) purewhite; urgency=low
 
   * Basic support for translations now exists
