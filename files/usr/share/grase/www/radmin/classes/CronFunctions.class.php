@@ -74,13 +74,14 @@ class CronFunctions extends DatabaseFunctions
             $sql = "DROP INDEX userattribute ON radreply";
             
             $result = $this->db->exec($sql);
-            
-            if (PEAR::isError($result))
+
+            // Don't die on error for this as there is no "IF EXISTS"            
+            /*if (PEAR::isError($result))
             {
                 return T_('Upgrading DB failed: ') . $result->toString();
-            }
-            
-            $results += $result;            
+            }*/
+            if (!PEAR::isError($result))
+                $results += $result;            
         
             // Add Radius Config user for Coova Chilli Radconfig
             $results += $this->setUserPassword(RADIUS_CONFIG_USER, RADIUS_CONFIG_PASSWORD);
