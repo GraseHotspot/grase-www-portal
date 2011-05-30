@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: GRASE 3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-06 12:40+1000\n"
-"PO-Revision-Date: 2011-05-27 17:58+0100\n"
+"PO-Revision-Date: 2011-05-30 11:00+1000\n"
 "Last-Translator: Gilbert Robert <robert@prolibre.com>\n"
 "Language-Team:  <tim@purewhite.id.au>\n"
 "Language: \n"
@@ -12,8 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;T_\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-Language: English\n"
-"X-Poedit-Country: AUSTRALIA\n"
+"X-Poedit-Language: French\n"
 "X-Poedit-SearchPath-0: ../../../www\n"
 
 #: ../../../www/radmin/templates/smarty.c:1
@@ -362,7 +361,7 @@ msgstr "Modifier le commentaire"
 
 #: ../../../www/radmin/templates/smarty.c:90
 msgid "If you really want to delete this machine account, please type exactly \"Yes, I want to delete this user\" in the below box then click \"Delete User\""
-msgstr "Si vous voulez vraiment supprimer ce compte d'ordinateur, s'il vous plaît saisir exactement \ \"Oui, je veux supprimer cet utilisateur \" dans le champ ci-dessous puis cliquez sur \ \"Supprimer un utilisateur \""
+msgstr "Si vous voulez vraiment supprimer ce compte d'ordinateur, s'il vous plaît saisir exactement \"Oui, je veux supprimer cet utilisateur \" dans le champ ci-dessous puis cliquez sur \"Supprimer un utilisateur \""
 
 #: ../../../www/radmin/templates/smarty.c:91
 #: ../../../www/radmin/templates/smarty.c:92
@@ -406,7 +405,7 @@ msgstr "Mise à jour des informations de l'utilisateur"
 
 #: ../../../www/radmin/templates/smarty.c:113
 msgid "If you really want to delete a user, please type exactly \"Yes, I want to delete this user\" in the below box then click \"Delete User\""
-msgstr "Si vous voulez vraiment supprimer un utilisateur, s'il vous plaît saisir exactement \ \" Yes, I want to delete this user\" dans le champ ci-dessous puis cliquez sur \ \"Supprimer un utilisateur \""
+msgstr "Si vous voulez vraiment supprimer un utilisateur, s'il vous plaît saisir exactement \" Yes, I want to delete this user\" dans le champ ci-dessous puis cliquez sur \"Supprimer un utilisateur \""
 
 #: ../../../www/radmin/templates/smarty.c:114
 msgid "Delete the User"
