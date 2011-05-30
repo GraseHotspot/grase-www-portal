@@ -248,6 +248,7 @@ function apply_locale($newlocale)
 
     //print_r(setlocale(LC_MESSAGES, NULL));
     T_bindtextdomain("grase", "/usr/share/grase/locale");
+    T_bind_textdomain_codeset("grase", "UTF-8");
     T_textdomain("grase");
 }
 
