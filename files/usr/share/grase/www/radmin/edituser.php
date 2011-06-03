@@ -93,7 +93,7 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
         // If Data Limit is changed and Not added too, Change Data Limit
         if(clean_number($_POST['MaxMb']) != ''
            && ! clean_number($_POST['Add_Mb'])
-           && clean_number($_POST['MaxMb']) != $user['MaxMb'])
+           && clean_number($_POST['MaxMb']) != clean_number($user['MaxMb']))
         {
             $temperror[] = validate_datalimit(clean_number($_POST['MaxMb']));
             if(array_filter($temperror))

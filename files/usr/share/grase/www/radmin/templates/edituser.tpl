@@ -53,7 +53,7 @@
 
 <div>
     <label for='MaxMb'>{t}Data Limit (MiB){/t}</label>
-    <input type="text" class="default_swap" id="MaxMb" name="MaxMb" value='{$user.MaxMb}' title="{t}Type your own Mb Limit{/t}"/>
+    <input type="text" class="default_swap" id="MaxMb" name="MaxMb" value='{$user.MaxMb|displayLocales}' title="{t}Type your own Mb Limit{/t}"/>
     <span id='MaxMbInfo'>{t}Change the Data Limit{/t}</span>
 </div>
 <div>

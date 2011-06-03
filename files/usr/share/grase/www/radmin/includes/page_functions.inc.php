@@ -262,6 +262,7 @@ $smarty->compile_check = true;
 //$smarty->register_outputfilter('smarty_outputfilter_strip');
 $smarty->register_modifier('bytes', array("Formatting", "formatBytes"));
 $smarty->register_modifier('seconds', array("Formatting", "formatSec"));
+$smarty->register_modifier('displayLocales', 'displayLocales');
 
 // i18n
 //$locale = (!isset($_GET["l"]))?"en_GB":$_GET["l"];  

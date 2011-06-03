@@ -225,7 +225,7 @@ class DatabaseFunctions
 	            WHERE UserName= %s
 	            AND AcctStopTime IS NULL
 	            ORDER BY AcctStartTime DESC LIMIT 1",
-	            $username);
+	            $this->db->quote($username));
         
         $radacctid = $this->db->queryOne($sql);
         
@@ -246,7 +246,7 @@ class DatabaseFunctions
 	            WHERE FramedIPAddress= %s
 	            AND AcctStopTime IS NULL
 	            ORDER BY AcctStartTime DESC LIMIT 1",
-	            $ipaddress);
+	            $this->db->quote($ipaddress)); // TODO: Ensure all sprintf's are using quote
         
         $username = $this->db->queryOne($sql);
         
