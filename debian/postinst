@@ -38,6 +38,10 @@ fix_dir_perms(){
 
 }
 
+clear_template_cache(){
+    rm -f /usr/share/grase/www/radmin/templates_c/* /usr/share/grase/www/uam/templates_c/*
+}
+
 copy_favicon(){
     cp -n /usr/share/grase/www/favicon.ico /var/www/favicon.ico || true
 }
@@ -59,6 +63,8 @@ www_proxy_group(){
 #DEBHELPER#
 
 link_logo
+
+clear_template_cache
 
 fix_dir_perms
 
