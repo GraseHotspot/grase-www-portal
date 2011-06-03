@@ -26,6 +26,7 @@ require_once 'includes/database_functions.inc.php';
 
     // TODO: Add "reset" option that archives old stuff? (Or deletes old stuff)
 	$smarty->assign("loglines", AdminLog::getInstance()->getLog());
+	$smarty->assign("lastcron", AdminLog::getInstance()->lastCron());
 	display_page('adminlog.tpl');
 
 ?>

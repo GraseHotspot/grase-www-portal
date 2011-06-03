@@ -2,6 +2,8 @@
 
 <h2>{t}Admin Log{/t}</h2>
 
+<p>Last Cron ran at: {$lastcron}</p>
+
 <div id='log' style='display:block;'>
 <form id="filter-form">Filter: <input name="filter" id="filter" value="" maxlength="30" size="30" type="text"></form><br>
 	<table border="0" id='AdminlogTable' class="stripeMe">

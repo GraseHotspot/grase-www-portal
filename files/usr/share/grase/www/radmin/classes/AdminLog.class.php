@@ -105,7 +105,7 @@ class AdminLog
     
     public function getLog()
     {
-        $sql = "SELECT timestamp, username, ipaddress, action FROM adminlog ORDER BY id DESC";
+        $sql = "SELECT timestamp, username, ipaddress, action FROM adminlog WHERE NOT username = 'CRON' ORDER BY id DESC";
         
         $res =& $this->db->query($sql);
         
@@ -118,6 +118,22 @@ class AdminLog
         $results = $res->fetchAll(MDB2_FETCHMODE_ASSOC, false, false);
         return $results;
         
+    }
+    
+    public function lastCron()
+    {
+        $sql = "SELECT timestamp FROM adminlog WHERE username = 'CRON' ORDER BY id DESC LIMIT 1";
+        
+        $res =& $this->db->query($sql);
+        
+        //print_r($res);
+        // Always check that result is not an error
+        if (PEAR::isError($res)) {
+            ErrorHandling::fatal_error("Getting Admin Log Failed: ". $res->getMessage());
+        }
+        
+        $result = $res->fetchOne();
+        return $result;    
     }
 
      

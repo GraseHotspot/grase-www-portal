@@ -1,3 +1,10 @@
+grase-www-portal (3.1-8) purewhite; urgency=low
+
+  * Debug statement left in
+  * Cron filtered out of admin log
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Fri, 03 Jun 2011 16:41:06 +1000
+
 grase-www-portal (3.1-7) purewhite; urgency=low
 
   * Data Limit 0 fix
