@@ -651,11 +651,12 @@ class DatabaseFunctions
     public function setUserDatalimit($username, $limitmb)
     {
         $datalimitoctets = $limitmb * 1024 * 1024;
+        echo "limit = ". bigintval($datalimitoctets);
         $fields = array (
             'Username'  => array ( 'value' => $username,    'key' => true),
             'Attribute' => array ( 'value' => 'Max-Octets',  'key' => true),
             'op'        => array ( 'value' => ':=' ),
-            'Value'     => array ( 'value' => intval($datalimitoctets))
+            'Value'     => array ( 'value' => bigintval($datalimitoctets))
             );   
         
         $result = $this->db->replace('radcheck', $fields);

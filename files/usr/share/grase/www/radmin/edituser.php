@@ -91,7 +91,7 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
         }
         
         // If Data Limit is changed and Not added too, Change Data Limit
-        if(clean_number($_POST['MaxMb']) != ''
+        if(clean_number($_POST['MaxMb']) !== ''
            && ! clean_number($_POST['Add_Mb'])
            && clean_number($_POST['MaxMb']) != clean_number($user['MaxMb']))
         {
@@ -102,6 +102,7 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
             }
             else
     		{
+
 			    database_change_datalimit($username, clean_number($_POST['MaxMb']));
 			    database_update_expirydate($username, expiry_for_group(getDBUserGroup($username)));
 			    // TODO: Check return for success			
@@ -129,7 +130,7 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
         }        
         
         // If Time Limit is changed and Not added too, Change Time Limit        
-        if(clean_number($_POST['MaxTime']) != ''
+        if(clean_number($_POST['MaxTime']) !== ''
            && ! clean_number($_POST['Add_Time'])
            && clean_number($_POST['MaxTime']) != $user['MaxTime'])
         {

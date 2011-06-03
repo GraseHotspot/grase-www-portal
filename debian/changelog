@@ -1,3 +1,21 @@
+grase-www-portal (3.1-7) purewhite; urgency=low
+
+  * Data Limit 0 fix
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Fri, 03 Jun 2011 16:29:49 +1000
+
+grase-www-portal (3.1-6) purewhite; urgency=low
+
+  * Fix data limit with 32bit systems caused by intval
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Fri, 03 Jun 2011 16:10:18 +1000
+
+grase-www-portal (3.1-5) purewhite; urgency=low
+
+  * Locale formatting fixes for datalimit
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Fri, 03 Jun 2011 15:46:54 +1000
+
 grase-www-portal (3.1-4) purewhite; urgency=low
 
   * Cron fix
