@@ -80,6 +80,22 @@ $j(document).ready(function(){
     
 });
 
+var TableTextExtraction = function(node)  
+{  
+    // extract data from markup and return it  
+    if(node.title != "")
+    {
+        return node.title;
+
+    }
+    if(node.textContent == '')
+    {
+        return '-1';
+    }
+    return node.textContent; 
+}  
+
+
 $j(document).ready(function(){
     jQuery(function($){
     
@@ -90,7 +106,12 @@ $j(document).ready(function(){
         
         $(".stripeMe tbody tr").mouseover(function() {$(this).addClass("ui-state-highlight");}).mouseout(function() {$(this).removeClass("ui-state-highlight");});
         //$(".stripeMe tr:even").addClass("alt");
-        $(".stripeMe").tablesorter(); // {sortList: [[0,0], [1,0]]});
+        
+       
+                
+        $(".stripeMe").tablesorter({
+            textExtraction: TableTextExtraction
+        }); // {sortList: [[0,0], [1,0]]});
 
 
         $("#userslist").tabs();

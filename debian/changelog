@@ -1,3 +1,9 @@
+grase-www-portal (3.1-9) purewhite; urgency=low
+
+  * Table sorting fix
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Mon, 06 Jun 2011 10:50:30 +1000
+
 grase-www-portal (3.1-8) purewhite; urgency=low
 
   * Debug statement left in

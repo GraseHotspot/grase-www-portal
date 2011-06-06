@@ -37,9 +37,9 @@ Click on ether the Data Usage or Time Usage to see the users sessions"}
 			<td class='info_username'><span class='info_password'>{if $user.Group eq 'Machine'}<span title="{t}Password Hidden{/t}">*</span>{else}<span title="{$user.Password}"><a href='javascript:alert("Password for {$user.Username} is {$user.Password}")'>*</a></span>{/if}</span><a href="edituser?username={$user.Username}">{$user.Username}</a></td>
 
 			{if $groupname == 'All'}<td class='info_group'>{$user.Group}</td>{/if}
-			<td class='info_datalimit'>{$user.MaxOctets|bytes}</td>
-			<td class='info_datausage'><a href="sessions?username={$user.Username}">{$user.AcctTotalOctets|bytes}</a></td>			
-			<td class='info_datausage_t'>{$user.TotalOctets|bytes}</td>			
+			<td class='info_datalimit' title='{$user.MaxOctets}'>{$user.MaxOctets|bytes}</td>
+			<td class='info_datausage' title='{$user.AcctTotalOctets}'><a href="sessions?username={$user.Username}">{$user.AcctTotalOctets|bytes}</a></td>			
+			<td class='info_datausage_t' title='{$user.TotalOctets}'>{$user.TotalOctets|bytes}</td>			
 			<td class='info_timelimit'>{if $user.MaxAllSession>0}{$user.MaxAllSession|seconds}{/if}</td>			
 			<td class='info_timeusage'><a href="sessions?username={$user.Username}">{$user.TotalTimeMonth|seconds}</a></td>						
 			<td class='info_expiry'>{$user.FormatExpiration}</td>
