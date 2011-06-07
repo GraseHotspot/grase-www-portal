@@ -1,3 +1,19 @@
+// JS function for correct sorting of table numbers 
+var TableTextExtraction = function(node)  
+{  
+    // extract data from markup and return it  
+    if(node.title != "")
+    {
+        return node.title;
+
+    }
+    if(node.textContent == '')
+    {
+        return '-1';
+    }
+    return node.textContent; 
+}  
+
 $(document).ready(function(){
 
     $("#DeleteUserConfirm").bind('paste', function(e) {
@@ -47,6 +63,103 @@ $(document).ready(function(){
         jsremove();
     
     });	
+    
+    // Make tables of users into tabbed display
+    $("#userslist").tabs();
+    
+    
+    // Stuff for displaying text in empty field until there is content
+    $(".datacost_item").click(function() {
+        $("#MaxMb").val($(this).attr("title"));
+    });
+    
+    $(".timecost_item").click(function() {
+        $("#MaxTime").val($(this).attr("title"));
+    });    
+    
+    /*
+        1.) Form Field Value Swap
+    */
+
+    swapValues = [];    
+    $(".default_swap").each(function(i){
+        swapValues[i] = $(this).attr("title");
+        if ($.trim($(this).val()) == "") {
+            $(this).val(swapValues[i]);
+        }
+        
+        $(this).focus(function(){
+            if ($(this).val() == swapValues[i]) {
+                $(this).val("");
+            }
+        }).blur(function(){
+            if ($.trim($(this).val()) == "") {
+                $(this).val(swapValues[i]);
+            }
+        });
+    });    
+    
+    // Sort and stripe tables 
+    $.tablesorter.defaults.widgets = ['zebra']; 
+    
+    $(".stripeMe tbody tr").mouseover(function() {$(this).addClass("ui-state-highlight");}).mouseout(function() {$(this).removeClass("ui-state-highlight");});
+    //$(".stripeMe tr:even").addClass("alt");
+            
+    $(".stripeMe").tablesorter({
+        textExtraction: TableTextExtraction
+    }); // {sortList: [[0,0], [1,0]]});
+
+    // Sidebar menu collapse/expander for submenu items
+    
+        
+        function collapse(submenuid, fast)
+        {
+            if(fast)
+            {
+                $('#'+submenuid).hide();            
+            }
+            else
+            {
+            $('#'+submenuid).hide('slideUp');
+            }
+            $('#'+submenuid).prevAll('.expand').show();
+            $('#'+submenuid).prevAll('.collapse').hide();           
+            $.cookie(submenuid, 'collapsed');            
+        }
+        
+        function expand(submenuid)
+        {
+            $('#'+submenuid).show('slideDown');
+            $('#'+submenuid).prevAll('.expand').hide();
+            $('#'+submenuid).prevAll('.collapse').show();
+            $.cookie(submenuid, 'expanded');           
+        }        
+        
+        $(".collapse").click(function() {
+            collapse($(this).nextAll('.submenu').attr('id'));
+        });
+        
+        $(".expand").click(function() {
+            expand($(this).nextAll('.submenu').attr('id'));
+        });
+        
+        $(".submenu").each(function(){
+            thisid = $(this).attr('id');
+            cookievalue = $.cookie(thisid);
+            if(cookievalue == 'collapsed'){
+                collapse(thisid, 1);
+             
+            }else{
+                expand(thisid);            
+            }
+        });
+        
+        $(".topmenu").click(function(){
+            expand('submenu'+$(this).attr('id'));
+        });
+        
+        expand($(".ui-state-active").parent('.submenu').attr('id'));    
+    
     
     // Create sidebar hider/shower
     $('#sidebartoggle').remove(); // Make sure it doesn't exist (odd bug somwhere)

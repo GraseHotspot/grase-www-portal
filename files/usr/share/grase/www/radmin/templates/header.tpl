@@ -10,11 +10,11 @@
 <!-- CSS Stylesheet -->
 <link rel="stylesheet" type="text/css" href="/grase/hotspot.css?{$hotspotcssversion}" id="hotspot_css" />
 <link rel="stylesheet" type="text/css" href="radmin.css?{$radmincssversion}" id="radmin_css" />
-
+{*
 
 
 <!--<link type="text/css" href="css/cupertino/jquery-ui-1.7.2.custom.css" rel="stylesheet" />       -->
-<!--	<link type="text/css" href="/javascript/jquery-ui/themes/base/jquery.ui.all.css" rel="stylesheet" />	-->
+<!--	<link type="text/css" href="/javascript/jquery-ui/themes/base/jquery.ui.all.css" rel="stylesheet" />	--> *}
 	<link type="text/css" href="/grase/css/cupertino/jquery-ui-1.8.11.custom.css" rel="stylesheet" />	
 
     <script type="text/javascript" src="/grase/js/jquery/jquery-1.5.2.min.js"></script>
@@ -39,138 +39,13 @@
 
 {literal}<script type="text/javascript"><!--//--><![CDATA[//><!--
 
-// $.noConflict();
 var $j = jQuery;
-
-
-$j(document).ready(function(){
-    $j(".datacost_item").click(function() {
-        //alert($j(this).attr("title"));
-        //alert($j("#MaxMb").val());
-        $j("#MaxMb").val($j(this).attr("title"));
-    });
-    
-    $j(".timecost_item").click(function() {
-        //alert($j(this).attr("title"));
-        //alert($j("#MaxTime").val());
-        $j("#MaxTime").val($j(this).attr("title"));
-    });
-    
-    
-    /*
-        1.) Form Field Value Swap
-    */
-
-    swapValues = [];    
-    $j(".default_swap").each(function(i){
-        swapValues[i] = $j(this).attr("title");
-        if ($j.trim($j(this).val()) == "") {
-            $j(this).val(swapValues[i]);
-        }
-        
-        $j(this).focus(function(){
-            if ($j(this).val() == swapValues[i]) {
-                $j(this).val("");
-            }
-        }).blur(function(){
-            if ($j.trim($j(this).val()) == "") {
-                $j(this).val(swapValues[i]);
-            }
-        });
-    });
-    
-    
-});
-
-var TableTextExtraction = function(node)  
-{  
-    // extract data from markup and return it  
-    if(node.title != "")
-    {
-        return node.title;
-
-    }
-    if(node.textContent == '')
-    {
-        return '-1';
-    }
-    return node.textContent; 
-}  
-
 
 $j(document).ready(function(){
     jQuery(function($){
     
         $(".printlink").attr({ target: "_print"});
 
-        // Sort and stripe tables 
-        $.tablesorter.defaults.widgets = ['zebra']; 
-        
-        $(".stripeMe tbody tr").mouseover(function() {$(this).addClass("ui-state-highlight");}).mouseout(function() {$(this).removeClass("ui-state-highlight");});
-        //$(".stripeMe tr:even").addClass("alt");
-        
-       
-                
-        $(".stripeMe").tablesorter({
-            textExtraction: TableTextExtraction
-        }); // {sortList: [[0,0], [1,0]]});
-
-
-        $("#userslist").tabs();
-        
-        
-        /*$("#userslistTable").tablesorter({
-            sortForce: [[1,0]], 
-            sortList: [[0,0],[1,0]] 
-        });     */
-        
-        function collapse(submenuid, fast)
-        {
-            if(fast)
-            {
-                $('#'+submenuid).hide();            
-            }
-            else
-            {
-            $('#'+submenuid).hide('slideUp');
-            }
-            $('#'+submenuid).prevAll('.expand').show();
-            $('#'+submenuid).prevAll('.collapse').hide();           
-            $.cookie(submenuid, 'collapsed');            
-        }
-        
-        function expand(submenuid)
-        {
-            $('#'+submenuid).show('slideDown');
-            $('#'+submenuid).prevAll('.expand').hide();
-            $('#'+submenuid).prevAll('.collapse').show();
-            $.cookie(submenuid, 'expanded');           
-        }        
-        
-        $(".collapse").click(function() {
-            collapse($(this).nextAll('.submenu').attr('id'));
-        });
-        
-        $(".expand").click(function() {
-            expand($(this).nextAll('.submenu').attr('id'));
-        });
-        
-        $(".submenu").each(function(){
-            thisid = $(this).attr('id');
-            cookievalue = $.cookie(thisid);
-            if(cookievalue == 'collapsed'){
-                collapse(thisid, 1);
-             
-            }else{
-                expand(thisid);            
-            }
-        });
-        
-        $(".topmenu").click(function(){
-            expand('submenu'+$(this).attr('id'));
-        });
-        
-        expand($(".ui-state-active").parent('.submenu').attr('id'));
                 
     });        
 
