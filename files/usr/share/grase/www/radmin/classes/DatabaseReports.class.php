@@ -43,7 +43,7 @@ class DatabaseReports
         $results = $res->fetchAll(MDB2_FETCHMODE_ASSOC, false, false);
         foreach($results as $result)
         {
-            $data[] = $result['TotalOctets']/1024/1024;
+            $data[] = intval($result['TotalOctets']/1024/1024);
             $label[] = $result['Label'];
         }
         return array($data, $label);    
@@ -271,10 +271,41 @@ class DatabaseReports
     {
         $sql = "SELECT
                 SUM(radacct.AcctInputOctets) + SUM(radacct.AcctOutputOctets) AS TotalOctets,
+                radcheck.Max-Total-Octets - SUM(radacct.AcctInputOctets) - SUM(radacct.AcctOutputOctets) AS TotalQuota
                 UserName AS Label
-                FROM radacct
+                FROM radacct, radcheck
+                WHERE radcheck.UserName = radacct.UserName
                 GROUP BY UserName";
-        return $this->processDataResults($sql);
+                
+        $sql = "SELECT
+                    SUM(radacct.AcctInputOctets) + SUM(radacct.AcctOutputOctets) AS TotalOctets,
+                    radcheck.Value  AS TotalQuota,
+                    radacct.UserName AS Label
+                FROM
+                    radacct, radcheck
+                WHERE
+                    radcheck.UserName = radacct.UserName
+                    AND radcheck.Attribute='Max-Octets'
+                GROUP BY radacct.UserName";
+
+        $res =& $this->db->query($sql);
+        
+        //print_r($res);
+        // Always check that result is not an error
+        if (PEAR::isError($res)) {
+            die($res->getMessage());
+        }
+        
+        $results = $res->fetchAll(MDB2_FETCHMODE_ASSOC, false, false);
+        foreach($results as $result)
+        {
+            $data1[] = intval($result['TotalOctets']/1024/1024);
+            $data2[] = intval($result['TotalQuota']/1024/1024);
+            $label[] = $result['Label'];
+        }
+        return array($data1, $data2, $label);                    
+                
+        //return $this->processDataResults($sql);
     }        
     
     public function getDailyUsers()

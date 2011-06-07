@@ -49,13 +49,14 @@ $.jqplot('thismonthdata',  [{$thismonthdowndata},{$thismonthupdata}],
         renderer:$.jqplot.BarRenderer,
         pointLabels: {
             hideZeros: true,
-            show: true
+            show: true,
+            formatString: '%.0f Mb'
 	    } 
       },
       gridPadding:{right:35},
       series:[
-       {pointLabels:{location:'nw'}},
-       {pointLabels:{location:'ne'}}
+       {pointLabels:{location:'s'}},
+       {pointLabels:{location:'s'}}
       ],
       axesDefaults: {
 
@@ -76,6 +77,55 @@ $.jqplot('thismonthdata',  [{$thismonthdowndata},{$thismonthupdata}],
       },
       legend: {
           labels: ['Downloads', 'Uploads'],
+          show: true,
+          placement: 'outsideGrid'
+      }     
+
+  });
+{/literal}  
+</script>
+
+<div id="thismonthusersdata" style="height:300px; width:100%">&nbsp;</div>
+
+<script>
+var ticks = {$thismonthuserslabels};
+$.jqplot('thismonthusersdata',  [{$thismonthusersdata},{$thismonthusersquota}], 
+{literal}
+{
+      title:'Users Usage',
+      stackSeries: false,
+      seriesDefaults:{
+        renderer:$.jqplot.BarRenderer,
+        pointLabels: {
+            hideZeros: true,
+            show: true,
+            formatString: '%.0f'
+	    } 
+      },
+      gridPadding:{right:35},
+      series:[
+       {pointLabels:{location:'s'}},
+       {pointLabels:{location:'s'}}       
+      ],
+      axesDefaults: {
+
+      },    
+      axes:{
+        xaxis:{
+            renderer:$.jqplot.CategoryAxisRenderer,
+            ticks: ticks,
+            tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+            tickOptions: {
+              angle: -30
+            }                    
+        },
+        yaxis: {
+            min: 0,
+            label: "Mb's used"
+        }
+      },
+      legend: {
+          labels: ['Used', 'Total Quota'],
           show: true,
           placement: 'outsideGrid'
       }     

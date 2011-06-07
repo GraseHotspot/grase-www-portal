@@ -194,10 +194,11 @@ class Reports
     
     public function getThisMonthUsersUsageReport()
     {
-    
-        list($data, $labels) = $this->DatabaseReports->getThisMonthUsersUsage();        
+        return $this->DatabaseReports->getThisMonthUsersUsage();
+        /*list($data, $labels) = $this->DatabaseReports->getThisMonthUsersUsage();
+                
         $chart = $this->constructBarChart($data, $labels, 'Current Months Users Usage (Mb)', ' #x_label# #val# Mb');
-        return $chart->toPrettyString();
+        return $chart->toPrettyString();*/
 
     }    
     

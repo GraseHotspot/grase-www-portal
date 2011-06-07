@@ -74,6 +74,12 @@ $Reports = new Reports(DatabaseConnections::getInstance());
     $smarty->assign('previousmonthsdata', json_encode($data));
     $smarty->assign('previousmonthsticks', json_encode($labels));    
     
+    // Current month by users
+    list($data1, $data2, $labels) = $Reports->getThisMonthUsersUsageReport();
+    $smarty->assign('thismonthusersdata', json_encode($data1));
+    $smarty->assign('thismonthusersquota', json_encode($data2));    
+    $smarty->assign('thismonthuserslabels', json_encode($labels));
+    
     
     // Current month group usage
     $smarty->assign('thismonthgroupdata', json_encode($Reports->getMonthGroupUsage()));
