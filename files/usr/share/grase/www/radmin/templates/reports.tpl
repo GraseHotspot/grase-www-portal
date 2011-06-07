@@ -36,7 +36,7 @@ swfobject.embedSWF("open-flash-chart.swf", "daily_sessions", "500", "200", "9.0.
 <link rel="stylesheet" type="text/css" href="/grase/js/jqplot/dist/jquery.jqplot.css" />
 
 
-<div id="thismonthdata" style="height:300px; width:100%">&nbsp;</div>
+<div id="thismonthdata" style="height:400px; width:100%">&nbsp;</div>
 
 <script>
 var ticks = {$thismonthticks};
@@ -85,7 +85,7 @@ $.jqplot('thismonthdata',  [{$thismonthdowndata},{$thismonthupdata}],
 {/literal}  
 </script>
 
-<div id="thismonthusersdata" style="height:300px; width:100%">&nbsp;</div>
+<div id="thismonthusersdata" style="height:400px; width:100%">&nbsp;</div>
 
 <script>
 var ticks = {$thismonthuserslabels};
@@ -134,7 +134,7 @@ $.jqplot('thismonthusersdata',  [{$thismonthusersdata},{$thismonthusersquota}],
 {/literal}  
 </script>
 
-<div id="previousmonthsdata" style="height:300px; width:100%">&nbsp;</div>
+<div id="previousmonthsdata" style="height:400px; width:100%">&nbsp;</div>
 
 <script>
 var ticks = {$previousmonthsticks};
@@ -183,7 +183,7 @@ $.jqplot('previousmonthsdata',  [{$previousmonthsdata}],
 </script>
 
 
-<div id="thismonthgrouppie" style="height:300px; width:100%"></div>
+<div id="thismonthgrouppie" style="height:400px; width:100%"></div>
 
 <script>
 var thismonthgrouppie = {$thismonthgroupdata};
