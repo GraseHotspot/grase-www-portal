@@ -5,13 +5,13 @@
 
 <p>{t}Deleting a group won't delete it's users. Next time the user is edited it's group will become the default group unless a new group is selected.{/t}</p>
 <div id="GroupConfigForm">
-<form method="post" action="" class="generalForm">
+<form method="post" action="?" class="generalForm">
 
 
 
 
     <div>
-        <label for='groupname'>{t}Group Name and Expiry{/t}</label>
+        <label>{t}Group Name and Expiry{/t}</label>
         
     {foreach from=$groups item=expiry key=groupname}        
         <div class="jsmultioption">

@@ -67,6 +67,96 @@ class DatabaseReports
             $label[] = $result['Date'];
         }
         return array($data, $label);    
+    }
+    
+    private function processAssociativeResults($sql)
+    {
+        $res =& $this->db->query($sql);
+        
+        //print_r($res);
+        // Always check that result is not an error
+        if (PEAR::isError($res)) {
+            die($res->getMessage());
+        }
+        
+        $results = $res->fetchAll(MDB2_FETCHMODE_ASSOC, false, false);
+        foreach($results as $result)
+        {
+            $data[] = array($result['Label'], intval($result['Data']));
+        }
+        return $data;
+    }
+    
+    public function getMonthGroupUsage()
+    {
+        $sql = "SELECT
+                    SUM(AcctInputOctets + AcctOutputOctets)/1024/1024 AS Data,
+                    radusergroup.GroupName AS Label
+                FROM
+                    radacct, 
+                    radusergroup
+                WHERE
+                    radacct.UserName = radusergroup.UserName
+                GROUP BY radusergroup.GroupName";
+        return $this->processAssociativeResults($sql);
+        
+    }    
+    
+    public function getThisMonthDownUsage()
+    {
+           
+        $sql = "SELECT SUM(TotalOctets) AS TotalOctets, Label FROM (
+        SELECT
+            SUM(AcctInputOctets) AS TotalOctets,
+            DATE(AcctStartTime) AS Label
+            FROM radacct
+            GROUP BY DAYOFMONTH(AcctStartTime)
+            UNION
+            SELECT '0' AS TotalOctets, CONCAT(dt.d, '-', days.d) as Label
+        FROM
+            (
+                SELECT CONCAT(a1,b1) as d
+                FROM
+                    (
+                    SELECT '0' as a1 UNION ALL SELECT '1' UNION ALL SELECT '2' UNION ALL SELECT '3'
+                    ) a
+                    JOIN
+                    (
+                    SELECT '0' as b1 UNION ALL SELECT '1' UNION ALL SELECT '2' UNION ALL SELECT '3' UNION ALL SELECT '4' UNION ALL SELECT '5' UNION ALL SELECT '6' UNION ALL SELECT '7' UNION ALL SELECT '8' UNION ALL SELECT '9'
+                    ) b
+                WHERE CONVERT(CONCAT(a1, b1), UNSIGNED ) <=
+                ( select DAY(NOW()) ) AND CONCAT(a1,b1)<>'00') days JOIN (SELECT DATE_FORMAT(NOW(),'%Y-%m') as d) dt ORDER BY Label) dailyusage
+        WHERE Label LIKE (SELECT DATE_FORMAT(NOW(),'%Y-%m-%%') as d)
+        GROUP BY Label
+        ";
+        
+        return $this->processDataResults($sql);
+    }
+    
+    public function getThisMonthUpUsage()
+    {
+           
+        $sql = "SELECT SUM(TotalOctets) AS TotalOctets, Label FROM (
+        SELECT
+            SUM(AcctOutputOctets) AS TotalOctets,
+            DATE(AcctStartTime) AS Label
+            FROM radacct
+            GROUP BY DAYOFMONTH(AcctStartTime)
+            UNION
+            SELECT '0' AS TotalOctets, CONCAT(dt.d, '-', days.d) as Label
+        FROM
+            (SELECT CONCAT(a1,b1) as d
+            FROM
+                (SELECT '0' as a1 UNION ALL SELECT '1' UNION ALL SELECT '2' UNION ALL SELECT '3') a
+                JOIN
+                (SELECT '0' as b1 UNION ALL SELECT '1' UNION ALL SELECT '2' UNION ALL SELECT '3' UNION ALL SELECT '4' UNION ALL SELECT '5' UNION ALL SELECT '6' UNION ALL SELECT '7' UNION ALL SELECT '8' UNION ALL SELECT '9') b
+                WHERE CONVERT(CONCAT(a1, b1), UNSIGNED ) <=
+                ( select DAY(NOW()) ) AND CONCAT(a1,b1)<>'00') days JOIN (SELECT DATE_FORMAT(NOW(),'%Y-%m') as d) dt ORDER BY Label) dailyusage
+        WHERE Label LIKE (SELECT DATE_FORMAT(NOW(),'%Y-%m-%%') as d)                
+        GROUP BY Label
+        ";
+        
+        return $this->processDataResults($sql);
     }    
     
     public function getThisMonthUsage()
@@ -137,11 +227,25 @@ class DatabaseReports
             FROM mtotacct
             GROUP BY AcctDate
             ORDER BY AcctDate";
+        $sql = "SELECT
+                    SUM(InputOctets) + SUM(OutputOctets) AS TotalOctets,
+                    DATE_FORMAT(AcctDate, '%b %Y') AS Label,
+                    AcctDate
+                FROM
+                    mtotacct
+                GROUP BY AcctDate
+                UNION SELECT
+                    SUM(AcctInputOctets) + SUM(AcctOutputOctets) AS TotalOctets,
+                    DATE_FORMAT(AcctStartTime, '%b %Y') AS Label,
+                    AcctStartTime
+                FROM
+                    radacct
+                ORDER BY AcctDate";
         
         return $this->processDataResults($sql);
 
     }
-    
+
     public function getMonthsUsage()
     {
         $sql = "

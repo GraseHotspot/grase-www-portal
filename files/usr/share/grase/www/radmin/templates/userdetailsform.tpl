@@ -1,11 +1,11 @@
 <div id="{$useraction}Form">
 <h2>{t}{$useractionTitle}{/t}</h2>
 
-<form method='post' id='newuserform' action='' class='generalForm'>
+<form method='post' id='newuserform' action='?' class='generalForm'>
 
 <div>
     <label for='Username'>{t}Username{/t}</label>
-    <input {if $usernamelock}disabled='disabled'{/if} type="text" name="Username" value='{$user.Username}'/>
+    <input {if $usernamelock}disabled='disabled'{/if} type="text" id="Username" name="Username" value='{$user.Username}'/>
     <span id="UsernameInfo">{t}Choose a username{/t}</span>
 </div>
 <div>
@@ -18,12 +18,12 @@
 </div>
 <div>
     <label for='Group'>{t}Group{/t}</label>
-    {html_options name="Group" options=$Usergroups selected=$user.Group}    
+    {html_options name="Group" id="Group" options=$Usergroups selected=$user.Group}    
     <span id='GroupInfo'>{t}Choose the users group (Expiry is based on the user group){/t}</span>
 </div>
 <div>
     <label for='Comment'>{t}Comment{/t}</label>
-    <input type="text" name="Comment" value='{$user.Comment}'/>
+    <input type="text" name="Comment" id="Comment" value='{$user.Comment}'/>
     <span id='CommentInfo'>{t}A comment about the user{/t}</span>
 </div>
 
@@ -31,15 +31,15 @@
     {t}A limit of 0 does not mean unlimited, it will immediately lock the user out. To have an unlimited user, the user must be created without any limits.{/t}</span></p>
 
 <div>
-    <label for='Max_Mb'>{t}Data Limit (MiB){/t}</label>
+    <label for='MaxMb'>{t}Data Limit (MiB){/t}</label>
     {html_options name="Max_Mb" options=$Datacosts selected=$user.Max_Mb}
     <span class="form_or">{t}OR{/t}</span>
     <input type="text" class="default_swap" id="MaxMb" name="MaxMb" value='{$user.MaxMb}' title="{t}Type your own Mb Limit{/t}"/>
     <span id='Max_MbInfo'>{t}Choose a Data Limit OR Type your own value{/t}</span>
 </div>
 <div>
-    <label for='Max_Time'>{t}Time Limit (Minutes){/t}</label>
-    {html_options name="Max_Time" options=$Timecosts selected=$user.Max_Time}
+    <label for='MaxTime'>{t}Time Limit (Minutes){/t}</label>
+    {html_options name="Max_Time" id="Max_Time" options=$Timecosts selected=$user.Max_Time}
     <span class="form_or">{t}OR{/t}</span>
     <input type="text" class="default_swap" id="MaxTime" name="MaxTime" value='{$user.MaxTime}' title="{t}Type your own Time Limit{/t}"/>
     <span id='Max_TimeInfo'>{t}Choose a Time Limit OR Type your own value{/t}</span>

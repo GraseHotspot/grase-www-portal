@@ -10,16 +10,9 @@
         {if $menuitem.submenu}
             <ul id="submenu{$menuitemid}" class="submenu">
             {foreach from=$menuitem.submenu item=submenuitem key=submenuid name=subloop}
-                <li id="{$submenuid}"
-                class="
-
-                "
-                
-                >
+                <li id="{$submenuid}" class="">
                 <a href="{$submenuitem.href}" class="ui-state-default
-                                {if $activepage == $submenuid}ui-state-active ui-state-highlight{/if} 
-                                "
-                >{$submenuitem.label}</a>
+                    {if $activepage == $submenuid}ui-state-active ui-state-highlight{/if}">{$submenuitem.label}</a>
                 </li>
             {/foreach}
             </ul>

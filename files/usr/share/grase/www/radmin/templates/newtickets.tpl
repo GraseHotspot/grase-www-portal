@@ -1,6 +1,6 @@
 {include file="header.tpl" Name="Create Tickets" activepage="createtickets"}
 
-{if $valid_last_batch}<!--<a href="printnewtickets" class="printlink" target="_tickets">Print Last Batch of Tickets</a>-->{/if}
+{if $valid_last_batch}<!--<a href="printnewtickets" class="printlink" target="tickets">Print Last Batch of Tickets</a>-->{/if}
 {if $createdusers}
 <div id='createdtickets' class="" >
     <h2>Last Created Tickets</h2>
@@ -33,42 +33,42 @@
 		</table>
 	</div>
 {/if}
-{if $valid_last_batch}<a href="printnewtickets" class="printlink" target="_tickets">Print Last Batch of Tickets</a>{/if}
+{if $valid_last_batch}<a href="printnewtickets" class="printlink" target="tickets">Print Last Batch of Tickets</a>{/if}
 
 
 <div id="createticketsForm">
 <h2>Create Tickets</h2>
 
 
-<form method='post' id='newticketsform' action='' class='generalForm'>
+<form method='post' id='newticketsform' action='?' class='generalForm'>
 
 <div>
     <label for='numberoftickets'>Number of Tickets</label>
-    <input type="text" name="numberoftickets" value='{$user.numberoftickets}'/>
+    <input type="text" name="numberoftickets" id="numberoftickets" value='{$user.numberoftickets}'/>
     <span id="numberofticketsInfo">Maximum of 50 tickets per batch</span>
 </div>
 <div>
     <label for='Group'>Group</label>
-    {html_options name="Group" options=$Usergroups selected=$user.Group}    
+    {html_options name="Group" id="Group" options=$Usergroups selected=$user.Group}    
     <span id='GroupInfo'>Choose the users group (Expiry is based on the user group)</span>
 </div>
 <div>
     <label for='Comment'>Comment</label>
-    <input type="text" name="Comment" value='{$user.Comment}'/>
+    <input type="text" name="Comment" id="Comment" value='{$user.Comment}'/>
     <span id='CommentInfo'>A comment that is applied to all tickets</span>
 </div>
 
     <p><span>When ether limit is reached, the user will be cut off. (i.e. after 1hour even if they still have data left)</span></p>
 
 <div>
-    <label for='Max_Mb'>Data Limit (MiB)</label>
+    <label for='MaxMb'>Data Limit (MiB)</label>
     {html_options name="Max_Mb" options=$Datacosts selected=$user.Max_Mb}
     <span class="form_or">OR</span>
     <input type="text" class="default_swap" id="MaxMb" name="MaxMb" value='{$user.MaxMb}' title="Type your own Mb Limit"/>
     <span id='Max_MbInfo'>Choose a Data Limit OR Type your own value</span>
 </div>
 <div>
-    <label for='Max_Time'>Time Limit (Minutes)</label>
+    <label for='MaxTime'>Time Limit (Minutes)</label>
     {html_options name="Max_Time" options=$Timecosts selected=$user.Max_Time}
     <span class="form_or">OR</span>
     <input type="text" class="default_swap" id="MaxTime" name="MaxTime" value='{$user.MaxTime}' title="Type your own Time Limit"/>

@@ -20,10 +20,10 @@
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-ini_set('include_path', 
+/*ini_set('include_path', 
   ini_get('include_path') . PATH_SEPARATOR . '../ofc2/php5-ofc-library/lib/');
   
-  require_once('../ofc2/php5-ofc-library/lib/OFC/OFC_Chart.php');
+  require_once('../ofc2/php5-ofc-library/lib/OFC/OFC_Chart.php');*/
 
  
 require_once 'includes/session.inc.php';
@@ -31,6 +31,7 @@ require_once 'includes/misc_functions.inc.php';
 require_once 'includes/database_functions.inc.php';
 
 
+/* No longer using OFC
 if(isset($_GET['chart']))
 {
     $Reports = new Reports(DatabaseConnections::getInstance());
@@ -57,12 +58,32 @@ if(isset($_GET['chart']))
     }
 }
 else
-{
+{ */
 //    $smarty->assign('chart1', $chart->toPrettyString());
+$Reports = new Reports(DatabaseConnections::getInstance());
+
+    // Current month up and down
+    list($data, $labels) = $Reports->getThisMonthDownUsageReport();
+    $smarty->assign('thismonthdowndata', json_encode($data));
+    list($data, $labels) = $Reports->getThisMonthUpUsageReport();
+    $smarty->assign('thismonthupdata', json_encode($data));
+    $smarty->assign('thismonthticks', json_encode($labels));
+    
+    // Previous months total usage
+    list($data, $labels) = $Reports->getPreviousMonthsUsageReport();
+    $smarty->assign('previousmonthsdata', json_encode($data));
+    $smarty->assign('previousmonthsticks', json_encode($labels));    
+    
+    
+    // Current month group usage
+    $smarty->assign('thismonthgroupdata', json_encode($Reports->getMonthGroupUsage()));
+    
+
+
 
 	display_page('reports.tpl');
 
-}
+//}
 
 ?>
 

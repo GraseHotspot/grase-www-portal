@@ -8,12 +8,12 @@
 {t one=$lastconfigstatus}Portal Config last updated %1{/t}</p>
 
 <div id="PortalConfigForm">
-<form method="post" action="" class="generalForm">
+<form method="post" action="?" class="generalForm">
 
     {foreach from=$singlechillioptions item=attributes key=option}
     <div>
         <label for='{$option}'>{$attributes.label}</label>
-        <input type="text" name="{$option}" value='{$attributes.value}'/>
+        <input type="text" name="{$option}" id="{$option}" value='{$attributes.value}'/>
         <span id="{$option}Info"><span class="helpbutton ui-icon ui-icon-info" title="Chilli Option: {$option}">({$option})</span> {$attributes.description}</span>
     </div>
     {/foreach}
@@ -26,7 +26,7 @@
         {foreach from=$attributes.value item=attribute name=attributeloop}
         <div class="jsmultioption"><input type="text" name="{$option}[]" value='{$attribute}'/><span class="jsremove"></span></div>
         {/foreach}
-        <div class="jsmultioption"><input type="text" name="{$option}[]" value=''/><span class="jsadd"></span></div>
+        <div class="jsmultioption"><input type="text" name="{$option}[]" id="{$option}" value=''/><span class="jsadd"></span></div>
         <span id="{$option}Info"><span class="helpbutton ui-icon ui-icon-info" title="Chilli Option: {$option}">({$option})</span> {$attributes.description}</span>
 
     </div>

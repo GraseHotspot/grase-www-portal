@@ -31,7 +31,7 @@ class Reports
         $this->DatabaseReports = new DatabaseReports($this->DatabaseConnections->getRadiusDB());
     }
     
-    private function constructChart($elements, $title, $labels, $tooltip = '')
+/*    private function constructChart($elements, $title, $labels, $tooltip = '')
     {
         $chart = new OFC_Chart();
         $chart->set_title( new OFC_Elements_Title( $title ) );
@@ -146,7 +146,7 @@ class Reports
         
         return $chart;
   
-    }    
+    }    */
     
     private function getMaxYAxis($data)
     {
@@ -162,6 +162,36 @@ class Reports
 
     }
     
+    public function getThisMonthUpUsageReport()
+    {
+        return $this->DatabaseReports->getThisMonthUpUsage();
+    }    
+    
+    public function getThisMonthDownUsageReport()
+    {
+        return $this->DatabaseReports->getThisMonthDownUsage();
+        /*list($data, $labels) = $this->DatabaseReports->getThisMonthUsage();        
+        $results = "[";
+        
+        $last_key = end(array_keys($data));
+
+        foreach($data as $key=> $value)
+        {
+            $date = strtotime($labels[$key]);
+            $date = $labels[$key];
+            $results .= "['$date ', $value]";
+            if($key != $last_key) $results .=",";
+        }
+        $results .= "]";
+        return $results;*/
+
+    }
+    
+    public function getMonthGroupUsage()
+    {
+        return $this->DatabaseReports->getMonthGroupUsage();
+    }    
+    
     public function getThisMonthUsersUsageReport()
     {
     
@@ -173,10 +203,10 @@ class Reports
     
     public function getPreviousMonthsUsageReport()
     {
-    
-        list($data, $labels) = $this->DatabaseReports->getPreviousMonthsUsage();      
+        return $this->DatabaseReports->getPreviousMonthsUsage();      
+/*        list($data, $labels) = $this->DatabaseReports->getPreviousMonthsUsage();      
         $chart = $this->constructBarChart($data, $labels, 'Previous Months Usage (Mb)');
-        return $chart->toPrettyString();
+        return $chart->toPrettyString();*/
 
     }
     
