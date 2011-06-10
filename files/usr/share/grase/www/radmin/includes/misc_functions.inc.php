@@ -259,6 +259,17 @@ function sort_users_into_groups($users)
 	return $users_group;
 }
 
+function stripspaces($text)
+{
+    return str_replace(' ', '', $text);
+}
+
+function underscorespaces($text)
+{
+    return str_replace(' ', '_', $text);
+}
+
+
 function clean_text($text)
 {
 
