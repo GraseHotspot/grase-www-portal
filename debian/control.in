@@ -1,5 +1,5 @@
 Source: grase-www-portal
-Section: config
+Section: net
 Priority: extra
 Maintainer: Tim White <tim@hotspot.purewhite.id.au>
 Build-Depends: @cdbs@, config-package-dev

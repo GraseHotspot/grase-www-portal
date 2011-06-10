@@ -1,3 +1,10 @@
+grase-www-portal (3.2.1) purewhite; urgency=low
+
+  * Small fix for group names with spaces in them
+  * Fixes to debian packaging to fix lintian errors
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Fri, 10 Jun 2011 20:45:22 +1000
+
 grase-www-portal (3.2) purewhite; urgency=low
 
   * New release with jqplot graphs instead of Open Flash Chart
