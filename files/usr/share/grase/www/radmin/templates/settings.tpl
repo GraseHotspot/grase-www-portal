@@ -33,13 +33,6 @@
         <br/><span>{t escape=no locale="<strong>$locale</strong>" language="<strong>$language</strong>" location="<strong>$region</strong>"}Current locale is %1, which sets the language to %2, and location to %3.{/t} {t currency="<strong>$currency</strong>" escape=no}Currency symbol is %1{/t}</span>
     </div>
 
-{* <!-- Locale controls this now    <div>
-        <label for='currency'>{t}Currency{/t}</label>
-        {html_options name=currency options=$CurrencySymbols selected=$currency}
-        <span id="currencyInfo">{t}Select the appropriate symbol for your local currency{/t}</span>
-    </div>--> *}
-
-
     <div>
         <label for='pricemb'>Cost per Mb</label>
         <input type="text" name="pricemb" id="pricemb" value='{$pricemb}'/>
