@@ -261,7 +261,7 @@ msgstr "La località corrente è %1, che imposta la lingua a %2, e la posizione 
 
 #: ../../../www/radmin/templates/smarty.c:59
 msgid "Currency symbol is %1"
-msgstr "Il simbolo corrente è %1>"
+msgstr "Il simbolo corrente è %1"
 
 #: ../../../www/radmin/templates/smarty.c:60
 msgid "Currency"
