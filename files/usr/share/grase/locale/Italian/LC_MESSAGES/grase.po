@@ -257,7 +257,7 @@ msgstr "La località definisce il numero di formati, valuta e la lingua. Se la l
 
 #: ../../../www/radmin/templates/smarty.c:58
 msgid "Current locale is <strong>%1</strong>, which sets the language to <strong>%2</strong>, and location to <strong>%3</strong>."
-msgstr "La località corrente è <strong>%1</ strong>, che imposta la lingua a <strong>%2</ strong>, e la posizione in <strong>%3</ strong>."
+msgstr "La località corrente è <strong>%1</strong>, che imposta la lingua a <strong>%2</strong>, e la posizione in <strong>%3</strong>."
 
 #: ../../../www/radmin/templates/smarty.c:59
 msgid "Currency symbol is <strong>%1</strong>"
