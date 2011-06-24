@@ -51,18 +51,24 @@ $(document).ready(function(){
     jsremove();
 
     // Make multi element adder function
-    $(".jsadd").addClass("ui-icon ui-icon-plus");
+    $(".jsaddbutton").addClass("ui-icon ui-icon-plus");
     $(".jsadd").unbind('click');
     $(".jsadd").click(function(){
         //$('<span class="jsremove"></span>').insertBefore(this)
         optiondiv = $(this).parent().clone(true);
         optiondiv.children('input').val('');
         $(this).parent().after(optiondiv);
+        $(this).children('.jsaddbutton').removeClass("jsaddbuton").addClass("jsremovebutton");
+        $(this).children('.jsaddremovetext').text($("#jsdeletetext").attr('title'));
         $(this).removeClass("jsadd").addClass("jsremove").unbind('click');
         //.val('');
         jsremove();
     
     });	
+    
+    $(".jsadd").show();
+    $(".jsremove").show();
+    
     
     // Make tables of users into tabbed display
     $("#userslist").tabs();
@@ -255,7 +261,7 @@ function jsremove(){
         $(this).parent().remove();
     
     });            
-    $(".jsremove").addClass("ui-icon ui-icon-minus").removeClass("ui-icon-plus");
+    $(".jsremovebutton").addClass("ui-icon ui-icon-minus").removeClass("ui-icon-plus");
     //console.log($(".jsremove"));
 }
 

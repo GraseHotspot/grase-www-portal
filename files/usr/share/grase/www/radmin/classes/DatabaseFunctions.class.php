@@ -610,6 +610,158 @@ class DatabaseFunctions
         
         return true;    
     }
+    
+    public function setGroupAttributes($name, $attributes)
+    {
+        // DELETE all attributes
+        $sql = sprintf(
+            "DELETE FROM radgroupreply WHERE GroupName = %s",
+            $this->db->quote($name));
+            
+        $result = $this->db->exec($sql);    
+        
+        if (PEAR::isError($result))
+        {
+            ErrorHandling::fatal_db_error(
+                T_('Deleting radgroupreply query failed: '), $result);
+        }
+        
+        if(isset($attributes['DataRecurLimit']))
+        {
+            $attributes[$attributes['DataRecurTime'].'Data'] = $attributes['DataRecurLimit'] * 1024 * 1024;
+            unset($attributes['DataRecurLimit']);
+            unset($attributes['DataRecurTime']);
+        }  
+        
+        if(isset($attributes['TimeRecurLimit']))
+        {
+            $attributes[$attributes['TimeRecurTime'].'Time'] = $attributes['TimeRecurLimit'] * 60;
+            unset($attributes['TimeRecurLimit']);
+            unset($attributes['TimeRecurTime']);
+        }
+        
+        if(isset($attributes['MaxMb']))
+        {
+            $attributes['MaxOctets'] = $attributes['MaxMb'] * 1024 * 1024;
+            unset($attributes['MaxMb']);
+        }
+        
+        if(isset($attributes['MaxTime']))
+        {
+            $attributes['MaxSeconds'] = $attributes['MaxTime'] * 60;
+            unset($attributes['MaxTime']);
+        }        
+        
+        $attributelookup = array(
+            'MaxOctets' => 'Max-Octets',
+            'MaxSeconds' => 'Max-All-Session',
+            'hourTime' => 'Max-Hourly-Session',            
+            'dayTime' => 'Max-Daily-Session',
+            'weekTime' => 'Max-Weekly-Session',
+            'monthTime' => 'Max-Monthly-Session',
+            'hourData' => 'Max-Hourly-Octets',            
+            'dayData' => 'Max-Daily-Octets',
+            'weekData' => 'Max-Weekly-Octets',
+            'monthData' => 'Max-Monthly-Octets',
+            
+        );
+        // Insert each attribute
+        foreach($attributes as $key => $value)
+        {
+            $fields = array (
+                'GroupName' => array ( 'value' => $name,    'key' => true),
+                'Attribute' => array ( 'value' => $attributelookup[$key],  'key' => true),
+                'op'        => array ( 'value' => "=" ),
+                'Value'     => array ( 'value' => $value)
+                );   
+            
+            $result = $this->db->replace('radgroupreply', $fields);
+            if (PEAR::isError($result))
+            {
+                ErrorHandling::fatal_db_error(
+                    T_('Adding Group Attributes query failed:  '), $result);
+            }
+        }
+    }
+    
+    public function getGroupAttributes()
+    {
+        $sql = "SELECT GroupName, Attribute, Value
+            FROM radgroupreply";
+            
+        $results = $this->db->queryAll($sql);
+        
+        if (PEAR::isError($results))
+        {
+            ErrorHandling::fatal_db_error(
+                T_('Get Groups details Query failed: '), $results);
+        }
+        
+        $attributelookup = array(
+            'Max-Octets' => 'MaxOctets',
+            'Max-All-Session' => 'MaxSeconds',
+            'Max-Hourly-Session' => 'hour_Time',
+            'Max-Daily-Session' => 'day_Time',
+            'Max-Weekly-Session' => 'week_Time',
+            'Max-Monthly-Session' => 'month_Time',
+            'Max-Hourly-Octets' => 'hour_Data',    
+            'Max-Daily-Octets' => 'day_Data' ,
+            'Max-Weekly-Octets' => 'week_Data',
+            'Max-Monthly-Octets' => 'month_Data',
+            
+        );
+        
+        $recurance_string = array(
+            'hour' => T_('Hourly'),        
+            'day' => T_('Daily'),
+            'week' => T_('Weekly'),
+            'month' => T_('Monthly')
+        );
+        
+        foreach ($results as $attribute) 
+        {
+            list($recurance, $type) = explode("_", $attributelookup[$attribute['Attribute']], 2);
+            if($type == 'Time')
+            {
+                $value = $attribute['Value'] / 60;
+                $attr = 'TimeRecurLimit';            
+                $groups[$attribute['GroupName']]['TimeRecurLimitS'] = $attribute['Value'];
+                $groups[$attribute['GroupName']]['TimeRecurTime'] = $recurance;
+                $groups[$attribute['GroupName']]['TimeRecurTimeFormatted'] = $recurance_string[$recurance];
+
+            }elseif($type == 'Data')
+            {
+                $value = $attribute['Value'] /1024 /1024;
+                $attr = 'DataRecurLimit';            
+                $groups[$attribute['GroupName']]['DataRecurLimitB'] = $attribute['Value'];
+                $groups[$attribute['GroupName']]['DataRecurTime'] = $recurance;
+                $groups[$attribute['GroupName']]['DataRecurTimeFormatted'] = $recurance_string[$recurance];
+
+            }else
+            {
+                if($recurance == "MaxOctets")
+                {
+                    $groups[$attribute['GroupName']]['MaxMb'] = $attribute['Value'] /1024 /1024;
+/*                    $value = $attribute['Value'] /1024 /1024;
+                    $attr = "MaxMb";*/
+                }elseif($recurance == "MaxSeconds")
+                {
+                    $groups[$attribute['GroupName']]['MaxTime'] = $attribute['Value'] /60;
+/*                    $value = $attribute['Value'] / 60;
+                    $attr = "MaxTime";*/
+                }
+                //else
+                //{
+                    $value = $attribute['Value'];
+                    $attr = $recurance;
+                //}
+            }
+            $groups[$attribute['GroupName']][$attr] = $value;
+        }
+
+        return $groups;
+  
+    }    
 
     public function setUserComment($username, $comment)
     {

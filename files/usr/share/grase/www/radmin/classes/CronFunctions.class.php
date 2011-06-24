@@ -224,6 +224,8 @@ class CronFunctions extends DatabaseFunctions
     {
         $rowsaffected = 0;
         $months = array(-2, -3, -4, -5, -6, -7, -8, -9, -10, -11, -12);
+        // If we remove -2 and leave last months data, the recurring data limits will work better, however lots of other code will need to change to search both mtotacct and radacct for information.
+        // Probably better to implement the extra code as this will preserve more accounting data for longer TODO:
         foreach($months as $month)
         {
             // Generate start and end dates for each month in question        

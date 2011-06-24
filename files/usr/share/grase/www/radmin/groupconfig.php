@@ -31,10 +31,17 @@ if(isset($_POST['submit']))
 {
     /* Filter out blanks. Key index is maintained with array_filter so
      * name->expiry association is maintained */
-    $groupnames = array_filter($_POST['groupname']);
+    //$groupnames = array_filter($_POST['groupname']);
+    $groupnames = $_POST['groupname'];
     $groupexpiry = array_filter($_POST['groupexpiry']);
+    $groupdatalimit = array_filter($_POST['Group_Max_Mb']);
+    $grouptimelimit = array_filter($_POST['Group_Max_Time']);    
+    //$grouprecurdatalimit = array_filter($_POST['Recur_Data_Limit']);
+    //$grouprecurdata = array_filter($_POST['Recur_Data']);    
+    $grouprecurtimelimit = array_filter($_POST['Recur_Time_Limit']);
+    $grouprecurtime = array_filter($_POST['Recur_Time']);    
     
-   
+
     
 
     if(sizeof($groupnames) == 0)
@@ -46,9 +53,34 @@ if(isset($_POST['submit']))
         $success[] = T_("It is not recommended having groups without expiries.");
     }
     
+
     $Expiry = array();
     foreach($groupnames as $key => $name)
     {
+        // There are attributes set but no group name
+        if(clean_text($name) == '')
+        {
+            if(
+                isset($groupexpiry[$key]) ||
+                isset($groupdatalimit[$key]) ||
+                isset($grouptimelimit[$key]) ||
+                //isset($grouprecurdatalimit[$key]) ||
+                //isset($grouprecurdata[$key]) ||
+                isset($grouprecurtimelimit[$key]) ||
+                isset($grouprecurtime[$key])
+            )
+            {
+                $error[] = T_("Invalid group name or group name missing");
+            }
+            /*else
+            {
+                continue;
+            }*/
+            // Just loop as trying to process a group without a name is hard so they will just have to reenter those details
+            continue;
+            
+        }
+        // Process expiry's    
         $groupexpiries[clean_text($name)] = $groupexpiry[clean_text($key)];
         
         // Validate expiries
@@ -63,31 +95,80 @@ if(isset($_POST['submit']))
                 $error[] = sprintf(T_("%s: Expiry can not be in the past"), $name);
             }
         }
+        
+        // Process radgroupreply options
+        
+        // validate limits
+	    //$error[] = validate_datalimit($groupdatalimit[$key]);
+	    $error[] = validate_timelimit($grouptimelimit[$key]);
+	    $error[] = validate_timelimit($grouprecurtimelimit[$key]);   
+	    //$error[] = validate_datalimit($grouprecurdatalimit[$key]);
+	    $error[] = validate_recur($grouprecurtime[$key]);
+	    $error[] = validate_recur($grouprecurdata[$key]);
+	    $error[] = validate_recurtime($grouprecurtime[$key], $grouprecurtimelimit[$key]);	    
+	    $error = array_filter($error);
+	    
+	    if(isset($grouprecurtime[$key]) xor isset($grouprecurtimelimit[$key]))
+	    {
+	        $error[] = sprintf(T_("Need both a time limit and recurrance for '%s'"), clean_text($name));
+	    }
+	    
+	    /*if(isset($grouprecurdata[$key]) xor isset($grouprecurdatalimit[$key]))
+	    {
+	        $error[] = sprintf(T_("Need both a data limit and recurrance for '%s'"), clean_text($name));
+	    }*/	    
+	    
+        $groups[clean_text($name)] = array_filter(array(
+            'MaxMb' => clean_number($groupdatalimit[$key]),
+            'MaxTime' => clean_int($grouptimelimit[$key]),
+            //'DataRecurTime' => clean_text($grouprecurdata[$key]),
+            //'DataRecurLimit' => clean_number($grouprecurdatalimit[$key]),
+            'TimeRecurTime' => clean_text($grouprecurtime[$key]),
+            'TimeRecurLimit' => clean_int($grouprecurtimelimit[$key]),            
+        ));
+
     }
+    
+
     
     if(sizeof($error) == 0)
     {
         // No errors. Save groups
         $Settings->setSetting("groups", serialize($groupexpiries));
+        
+        // Delete groups from radgroupreply not in groupexpiries...
+        // Deleting groups out of radgroupreply will modify current users
+        // Need to do check for any users still using group, if no user then delete
+        // TODO: check for groups that have not changed so don't run this on them
+        // TODO: cron function that removes groups no longer referenced anywhere
+        foreach($groups as $name => $group)
+        {
+            DatabaseFunctions::getInstance()->setGroupAttributes($name, $group);
+        }
+        
         $success[] = T_("Groups updated");
     } 
     
     if(sizeof($error) > 0) $smarty->assign("error", $error);	
     if(sizeof($success) > 0) $smarty->assign("success", $success);
     
-    
+    // TODO set this initially
+    $smarty->assign("groupdata", $groups);
     $smarty->assign("groups", $groupexpiries);
     //$smarty->assign("groups", $Expiry);
 
 	display_page('groups.tpl');
       
 }
+else{
 
-	
+	$smarty->assign("groupdata", DatabaseFunctions::getInstance()->getGroupAttributes());
     $smarty->assign("groups", unserialize($Settings->getSetting("groups")));
     //$smarty->assign("groups", $Expiry);
 
 	display_page('groups.tpl');
+	
+}
 
 ?>
 

@@ -24,9 +24,19 @@
     <div>
         <label for='{$option}'>{$attributes.label}</label>
         {foreach from=$attributes.value item=attribute name=attributeloop}
-        <div class="jsmultioption"><input type="text" name="{$option}[]" value='{$attribute}'/><span class="jsremove"></span></div>
+        <div class="jsmultioption"><input type="text" name="{$option}[]" value='{$attribute}'/>
+            <span class="jsremove">
+                <span class="jsremovebutton"></span>
+                <span class="jsaddremovetext" id="addtext"></span>
+            </span>                 
+        </div>
         {/foreach}
-        <div class="jsmultioption"><input type="text" name="{$option}[]" id="{$option}" value=''/><span class="jsadd"></span></div>
+        <div class="jsmultioption"><input type="text" name="{$option}[]" id="{$option}" value=''/>
+            <span class="jsadd">
+                <span class="jsaddbutton"></span>
+                <span class="jsaddremovetext" id="addtext"></span>
+            </span>            
+        </div>
         <span id="{$option}Info"><span class="helpbutton ui-icon ui-icon-info" title="Chilli Option: {$option}">({$option})</span> {$attributes.description}</span>
 
     </div>

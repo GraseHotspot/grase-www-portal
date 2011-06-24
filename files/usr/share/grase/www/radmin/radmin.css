@@ -1,5 +1,5 @@
-/* $Revision: 118 $
- * $Version: 3.2 $
+/* $Revision: 124 $
+ * $Version: 3.3 $
  * $ApplicationName: GRASE $
 */
 
@@ -746,4 +746,12 @@ ul#statusmon li {
 
 .ui-icon {
     display: inline-block !important; /* Override jQuery UI of display: block */
+}
+
+
+
+/* JSadd and JSRemove stuff */
+.jsadd, .jsremove {
+    display: none;
+    width: 10em;
 }

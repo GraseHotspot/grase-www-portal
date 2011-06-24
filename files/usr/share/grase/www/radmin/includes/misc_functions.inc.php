@@ -160,6 +160,26 @@ function validate_datalimit($limit)
 	// TODO: Return what?
 }
 
+function validate_recur($recurrance)
+{
+    global $Recurtimes;
+    if(!isset($Recurtimes[$recurrance])) return sprintf(T_("Invalid recurrance interval '%s'"), $recurrance);
+	// TODO: Return what?    
+}
+
+function validate_recurtime($recurrance, $time)
+{
+    // $time is in minutes not seconds
+    $Recurtimevales = array(
+        'hour' => 60,
+        'day' => 60 * 24,
+        'week' => 60 * 24 * 7,
+        'month' => 60 * 24 * 30);
+    if($Recurtimevales[$recurrance] <= $time) return T_("Recurring time limit must be less than interval");
+    print_r(array($Recurtimevales[$recurrance], $time, $recurrance));
+	// TODO: Return what?    
+}
+
 function validate_timelimit($limit)
 {
 	if ($limit && ! is_numeric($limit) ) return sprintf(T_("Invalid value '%s' for Time Limit"), $limit);

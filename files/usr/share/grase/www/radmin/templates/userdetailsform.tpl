@@ -28,7 +28,7 @@
 </div>
 
     <p><span>{t}When ether limit is reached, the user will be cut off. (i.e. after 1hour even if they still have data left){/t}<br/>
-    {t}A limit of 0 does not mean unlimited, it will immediately lock the user out. To have an unlimited user, the user must be created without any limits.{/t}</span></p>
+    {t}A limit of 0 does not mean unlimited, it will immediately lock the user out. To have an unlimited user, the user must be created without any limits.{/t}<br/><strong>{t}If a limit is not set here, but is defined for the group, then the group limit will apply{/t}</strong></span></p>
 
 <div>
     <label for='MaxMb'>{t}Data Limit (MiB){/t}</label>

@@ -10,6 +10,11 @@ Click on ether the Data Usage or Time Usage to see the users sessions"}
     </ul>
     {foreach from=$users_groups item=group key=groupname name=grouploop}
     <div id="list{$groupname|underscorespaces}" class="tabcontent">
+    {if $groupdata.$groupname.MaxOctets}{t}Data Limit{/t} {$groupdata.$groupname.MaxOctets|bytes}<br/>{/if}
+    {if $groupdata.$groupname.MaxSeconds}{t}Time Limit{/t} {$groupdata.$groupname.MaxSeconds|seconds}<br/>{/if}    
+    {if $groupdata.$groupname.TimeRecurLimit}{t 1=$groupdata.$groupname.TimeRecurTimeFormatted}%1 Time Limit{/t} {$groupdata.$groupname.TimeRecurLimitS|seconds}<br/>{/if}
+    {if $groupdata.$groupname.DataRecurLimit}{t 1=$groupdata.$groupname.DataRecurTimeFormatted}%1 Data Limit{/t} {$groupdata.$groupname.DataRecurLimitB|bytes}<br/>{/if}
+    
 	<table id="{$groupname}userslistTable" class="userslistTable stripeMe">
 	    <col style="width: 6em"/>
 	    {if $groupname == 'All'}<col style="width: 5em"/>{/if}

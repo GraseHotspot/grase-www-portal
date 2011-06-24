@@ -269,14 +269,14 @@ class DatabaseReports
     
     public function getThisMonthUsersUsage()
     {
-        $sql = "SELECT
+        /*$sql = "SELECT
                 SUM(radacct.AcctInputOctets) + SUM(radacct.AcctOutputOctets) AS TotalOctets,
                 radcheck.Max-Total-Octets - SUM(radacct.AcctInputOctets) - SUM(radacct.AcctOutputOctets) AS TotalQuota
                 UserName AS Label
                 FROM radacct, radcheck
                 WHERE radcheck.UserName = radacct.UserName
                 GROUP BY UserName";
-                
+            
         $sql = "SELECT
                     SUM(radacct.AcctInputOctets) + SUM(radacct.AcctOutputOctets) AS TotalOctets,
                     radcheck.Value  AS TotalQuota,
@@ -286,7 +286,30 @@ class DatabaseReports
                 WHERE
                     radcheck.UserName = radacct.UserName
                     AND radcheck.Attribute='Max-Octets'
-                GROUP BY radacct.UserName";
+                GROUP BY radacct.UserName";*/
+                
+        $sql = "SELECT
+                    SUM(TotalOctets) AS TotalOctets,
+                    SUM(TotalQuota) AS TotalQuota,
+                    Label
+                FROM
+                    (SELECT
+                        0 AS TotalOctets,
+                        radcheck.Value AS TotalQuota, 
+                        radcheck.UserName AS Label
+                    FROM
+                        radcheck
+                    WHERE
+                        radcheck.attribute = 'Max-Octets'
+                    UNION ALL
+                    SELECT
+                        SUM(radacct.AcctInputOctets) + SUM(radacct.AcctOutputOctets) AS TotalOctets, 
+                        0 AS TotalQuota, 
+                        radacct.UserName AS Label
+                    FROM
+                        radacct
+                    GROUP BY Label) AS T
+                GROUP BY Label";
 
         $res =& $this->db->query($sql);
         
@@ -303,6 +326,7 @@ class DatabaseReports
             $data2[] = intval($result['TotalQuota']/1024/1024);
             $label[] = $result['Label'];
         }
+
         return array($data1, $data2, $label);                    
                 
         //return $this->processDataResults($sql);

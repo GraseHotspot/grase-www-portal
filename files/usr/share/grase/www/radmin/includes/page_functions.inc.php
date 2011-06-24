@@ -142,6 +142,37 @@ function datacosts()
 	return $datacosts;
 }
 
+function datavals()
+{
+	//$disp_currency = $CurrencySymbols[$currency];
+	$datavals[''] = '';
+	$mb_options = array(10, 50, 100, 250, 500, 1024, 2048, 4096, 102400);
+	foreach($mb_options as $mb)
+	{
+		$datavals["$mb"] = Formatting::formatBytes($mb*1024*1024);;
+	}
+	return $datavals;
+}
+
+function timevals()
+{
+	//$disp_currency = $CurrencySymbols[$currency];
+	$timevals[''] = '';
+	$time_options = array(5, 10, 20, 30, 45, 60, 90, 120, 180, 600, 6000);
+	foreach($time_options as $time)
+	{
+	    if($time >= 60)
+	    {
+		    $timevals["$time"] = $time/60 . " hours";	    
+	    }
+	    else
+	    {
+		    $timevals["$time"] = "$time mins";
+		}
+	}
+	return $timevals;
+}
+
 function timecosts()
 {
 	global $timecosts, $pricetime, $currency;
@@ -152,7 +183,14 @@ function timecosts()
 	foreach($time_options as $time)
 	{
 		$cost = displayLocales(number_format(round($pricetime*$time, 2),2), TRUE);
-		$timecosts["$time"] = "$cost ($time mins)";
+	    if($time >= 60)
+	    {
+		    $timecosts["$time"] = "$cost (" . $time/60 . " hours)";	    
+	    }
+	    else
+	    {
+		    $timecosts["$time"] = "$cost ($time mins)";
+		}		
 	}
 	return $timecosts;
 }
@@ -164,7 +202,7 @@ function gboctects()
     {
         $octects = $gb*1024*1048576;
         $label = "$gb GiB";
-        $options[$octects] = $label;
+        $options["$octects"] = $label;
     }
     return $options;
 }
@@ -199,6 +237,19 @@ function groupexpirys()
 //	$Expiry[MACHINE_GROUP_NAME] = "--";
 //	$Expiry[DEFAULT_GROUP_NAME] = "+1 months";*/
 	return $Expiry;
+}
+
+function recurtimes()
+{
+    global $Recurtimes;
+    // TODO: Dynamic this? This is for demo
+    $Recurtimes = array(
+        '' => '',
+        'hour' => T_('Hour'),
+        'day' => T_('Day'),
+        'week' => T_('Week'),
+        'month' => T_('Month'));
+    return $Recurtimes;
 }
 
 /*function currency_symbols()
@@ -288,7 +339,10 @@ $smarty->assign("Usergroups", usergroups());
 // Costs
 //$smarty->assign("CurrencySymbols", currency_symbols());
 $smarty->assign("Datacosts", datacosts());
+$smarty->assign("Datavals", datavals());
 $smarty->assign("Timecosts", timecosts());
+$smarty->assign("Timevals", timevals());
+$smarty->assign("Recurtimes",recurtimes()); 
 
 $smarty->assign('gbvalues', gboctects());
 

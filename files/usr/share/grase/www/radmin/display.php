@@ -28,6 +28,7 @@ require_once 'includes/database_functions.inc.php';
 	$users_groups = sort_users_into_groups($users); // TODO: Reports and then no longer sort user list by downloads??
 	$users_groups['All'] = $users; // TODO: Group names can't have space in name TODO: Translate all?
 
+    $smarty->assign("groupdata", DatabaseFunctions::getInstance()->getGroupAttributes());
 	$smarty->assign("users", $users);
 	$smarty->assign("users_groups", $users_groups);
 	$smarty->register_modifier( "sortby", "smarty_modifier_sortby" );   

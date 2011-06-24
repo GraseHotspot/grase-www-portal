@@ -1,3 +1,9 @@
+grase-www-portal (3.3) purewhite; urgency=low
+
+  * Groups now support default limits
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Sat, 25 Jun 2011 08:53:14 +1000
+
 grase-www-portal (3.2.1) purewhite; urgency=low
 
   * Small fix for group names with spaces in them
