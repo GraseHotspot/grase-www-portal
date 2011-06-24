@@ -30,7 +30,7 @@
         <span id="localeInfo">{t}Select the appropriate Locale for your location{/t}
         <span class="helptext">{t escape=no}A locale has 2 parts, the language and location.<br/><strong>en_AU</strong> for example has the Language set to English, and the location to Australia.<br/><strong>en_ZA</strong> has the language set to English, and the location to South Africa, while <strong>af_ZA</strong> has the language set to Afrikaans and the location to South Africa.{/t}</span>
         <br/><strong>{t}The locale defines the number formats, currency and language. If the language selected is not available, it will fallback to English.{/t}</strong></span>
-        <br/><span>{t escape=no locale=$locale language=$language location=$region}Current locale is <strong>%1</strong>, which sets the language to <strong>%2</strong>, and location to <strong>%3</strong>.{/t} {t currency=$currency escape=no}Currency symbol is <strong>%1</strong>{/t}</span>
+        <br/><span>{t escape=no locale="<strong>$locale</strong" language="<strong>$language</strong" location="<strong>$region</strong"}Current locale is %1, which sets the language to %2, and location to %3.{/t} {t currency="<strong>$currency</strong>" escape=no}Currency symbol is %1{/t}</span>
     </div>
 
 {* <!-- Locale controls this now    <div>

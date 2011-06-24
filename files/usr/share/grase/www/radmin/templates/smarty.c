@@ -173,10 +173,10 @@ gettext("A locale has 2 parts, the language and location.<br/><strong>en_AU</str
 gettext("The locale defines the number formats, currency and language. If the language selected is not available, it will fallback to English.");
 
 /* .//settings.tpl */
-gettext("Current locale is <strong>%1</strong>, which sets the language to <strong>%2</strong>, and location to <strong>%3</strong>.");
+gettext("Current locale is %1, which sets the language to %2, and location to %3.");
 
 /* .//settings.tpl */
-gettext("Currency symbol is <strong>%1</strong>");
+gettext("Currency symbol is %1");
 
 /* .//settings.tpl */
 gettext("Currency");

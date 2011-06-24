@@ -255,12 +255,12 @@ msgid "The locale defines the number formats, currency and language. If the lang
 msgstr "Les locales definissent le format des nombres, la monnaie et la langue. Si la langue sélectionnée n'est pas disponible, l'Anglais sera mis par défaut."
 
 #: ../../../www/radmin/templates/smarty.c:58
-msgid "Current locale is <strong>%1</strong>, which sets the language to <strong>%2</strong>, and location to <strong>%3</strong>."
-msgstr "La locale courrante est <strong>%1</strong>, qui sélectionne la langue <strong>%2</strong>, et la localisation <strong>%3</strong>."
+msgid "Current locale is %1, which sets the language to %2, and location to %3."
+msgstr "La locale courrante est %1, qui sélectionne la langue %2, et la localisation %3."
 
 #: ../../../www/radmin/templates/smarty.c:59
-msgid "Currency symbol is <strong>%1</strong>"
-msgstr "Le symbole de la monnaie est <strong>%1</strong>"
+msgid "Currency symbol is %1"
+msgstr "Le symbole de la monnaie est %1"
 
 #: ../../../www/radmin/templates/smarty.c:60
 msgid "Currency"

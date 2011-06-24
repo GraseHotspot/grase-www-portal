@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GRASE 3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-25 08:58+1000\n"
-"PO-Revision-Date: 2011-06-25 08:58+1000\n"
+"POT-Creation-Date: 2011-06-25 09:29+1000\n"
+"PO-Revision-Date: 2011-06-25 09:29+1000\n"
 "Last-Translator: Timothy White <tim@purewhite.id.au>\n"
 "Language-Team:  <tim@purewhite.id.au>\n"
 "Language: \n"
@@ -263,11 +263,11 @@ msgid "The locale defines the number formats, currency and language. If the lang
 msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:176
-msgid "Current locale is <strong>%1</strong>, which sets the language to <strong>%2</strong>, and location to <strong>%3</strong>."
+msgid "Current locale is %1, which sets the language to %2, and location to %3."
 msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:179
-msgid "Currency symbol is <strong>%1</strong>"
+msgid "Currency symbol is %1"
 msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:182
