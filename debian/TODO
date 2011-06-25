@@ -56,3 +56,5 @@ HTML5 ?
 Admin users having different levels (so some who can only manage users, others who can manage the whole hotspot)
 
 Offsite backups of squid logs and mysql databases. Email, FTP, Dropbox?
+
+Change all old Help text (title attribute) methods to new help text method (spans) as this won't be affected by translations with a ' in the translation
