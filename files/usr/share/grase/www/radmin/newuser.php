@@ -36,13 +36,12 @@ function validate_form()
 	$MaxTime = clean_int($_POST['MaxTime'] );
 	$Max_Time = clean_int($_POST['Max_Time'] );	
 	
-
 	$error[] = validate_datalimit($MaxMb);
 	$error[] = validate_datalimit($Max_Mb);
 	$error[] = validate_timelimit($MaxTime);
 	$error[] = validate_timelimit($Max_Time);		
-	if($Max_Mb && $MaxMb) $error[] = T_("Only set one Data limit field");
-	if($Max_Time && $MaxTime) $error[] = T_("Only set one Time limit field");
+	if(is_numeric($Max_Mb) && is_numeric($MaxMb)) $error[] = T_("Only set one Data limit field");
+	if(is_numeric($Max_Time) && is_numeric($MaxTime)) $error[] = T_("Only set one Time limit field");
 
     /* // Expiry is not submitted anymore
 	list($error2, $expirydate) = validate_post_expirydate();
@@ -71,13 +70,13 @@ if(isset($_POST['newusersubmit']))
 		display_page('adduser.tpl');
 	}else
 	{
-		if(clean_number($_POST['Max_Mb']))
+		if(is_numeric(clean_number($_POST['Max_Mb'])))
 		    $MaxMb = clean_number($_POST['Max_Mb']);
-		if(clean_number($_POST['MaxMb']))
+		if(is_numeric(clean_number($_POST['MaxMb'])))
 		    $MaxMb = clean_number($_POST['MaxMb']);
-		if(clean_int($_POST['Max_Time']))
+		if(is_numeric(clean_int($_POST['Max_Time'])))
 		    $MaxTime =  clean_int($_POST['Max_Time']);
-		if(clean_int($_POST['MaxTime']))
+		if(is_numeric(clean_number($_POST['MaxTime'])))
 		    $MaxTime = clean_int($_POST['MaxTime']);
 		database_create_new_user( // TODO: Check if valid
 			clean_text($_POST['Username']),

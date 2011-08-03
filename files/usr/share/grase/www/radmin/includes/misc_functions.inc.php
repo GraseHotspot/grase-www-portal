@@ -319,12 +319,14 @@ function clean_number($number)
 {
     global $locale;
     $fmt = new NumberFormatter( $locale, NumberFormatter::DECIMAL );
-    return $fmt->parse(ereg_replace("[^\.,0-9]", "", clean_text($number)));
+    $cleannum = $fmt->parse(ereg_replace("[^\.,0-9]", "", clean_text($number)));
+    return $cleannum;
 }
 
 
 function clean_int($number)
 {
+    if(!is_numeric(clean_number($number))) return clean_number($number);
     return bigintval(clean_number($number));
     //ereg_replace("[^0-9]", "", clean_text($number));
 }
@@ -394,8 +396,8 @@ function sha1salt($plainText, $salt = null)
 function displayLocales($number, $isMoney=FALSE, $lg='') {
     global $locale;
     if ( $lg == '') $lg = $locale;
-    
-    if ( $number == '' ) return '';
+
+    if ( $number == '' ) return $number;
 
     if($isMoney)
     {

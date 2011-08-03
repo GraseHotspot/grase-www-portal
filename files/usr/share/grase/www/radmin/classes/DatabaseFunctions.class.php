@@ -595,10 +595,10 @@ class DatabaseFunctions
         if ($group)
             $this->setUserGroup($username, $group);
         
-        if ($datalimitmb)
+        if (is_numeric($datalimitmb))
             $this->setUserDataLimit($username, $datalimitmb);
         
-        if ($timelimitmins)
+        if (is_numeric($timelimitmins))
             $this->setUserTimeLimit($username, $timelimitmins);
         
         if (trim($expirydate) && trim($expirydate) != '--') 

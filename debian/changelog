@@ -2,8 +2,9 @@ grase-www-portal (3.4) purewhite; urgency=low
 
   * Support for bandwidth limits
   * Support for Simultaneous-Use (based on groups)
+  * Fixes for 0 in data and time limits
 
- -- Tim White <tim@hotspot.purewhite.id.au>  Wed, 03 Aug 2011 20:26:34 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Thu, 04 Aug 2011 08:12:24 +1000
 
 grase-www-portal (3.3) purewhite; urgency=low
 
