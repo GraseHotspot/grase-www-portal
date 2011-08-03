@@ -55,6 +55,38 @@ class Formatting
         return $output;
     }
 
+    public function formatBits($bits=0)
+    {
+        $kb = 1024;
+        $mb = $kb*1024;
+        $gb = $mb*1024;
+
+        if(!isset($bits)) return ""; // Unlimited needs to display as blank
+        
+        $bits = $bits + 0; // Should never be needed now as unlimited ^^
+
+        if ($bits >= $gb)
+        {
+            $output = displayLocales(sprintf ("%01.2f",$bits/$gb)) . " Gibit/s";
+        }elseif ($bits >= $mb)
+        {
+            $output = displayLocales(sprintf ("%01.2f",$bits/$mb)) . " Mibit/s";
+        }
+        elseif ( $bits >= $kb )
+        {
+            $output = displayLocales(sprintf ("%01.0f",$bits/1024)) . " Kibit/s";
+        }
+        elseif ($bits == 1 )
+        {
+            $output = displayLocales($bits) . " bit/s";        
+        }
+        else
+        {
+            $output = displayLocales($bits) . " bit/s";
+        }
+     
+        return $output;
+    }
 
     public function formatSec($seconds = 0)
     {

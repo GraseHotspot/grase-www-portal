@@ -120,6 +120,19 @@ class CronFunctions extends DatabaseFunctions
             
         }
         
+        if($olddbversion < 1.3)
+        {
+            // Set default groups to not allow simultaneous use
+            $results += $this->setGroupSimultaneousUse("Staff", "no");
+            $results += $this->setGroupSimultaneousUse("Ministry", "no");
+            $results += $this->setGroupSimultaneousUse("Students", "no");
+            $results += $this->setGroupSimultaneousUse("Visitors", "no");
+            
+            // Upgrade DB version to next version
+            $Settings->setSetting("DBVersion", 1.3);
+            
+        }
+        
 
         if($results > 0)
         {            

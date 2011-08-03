@@ -207,6 +207,24 @@ function gboctects()
     return $options;
 }
 
+function bandwidth_options()
+{
+    // kbits/second
+    $kbits_options = array(256, 512, 1024, 1536, 2048);
+    $options[''] = '';
+    foreach($kbits_options as $kbits)
+    {
+        $bits = $kbits * 1024;
+        $kbytes = $kbits/8;
+        $mbmin = $kbytes * 60 / 1024;
+        $label = Formatting::formatBits($bits) ."/sec ($kbytes kbytes/sec, $mbmin MiB/min)";
+        $options["$kbits"] = $label;
+    }
+    
+    return $options;
+
+}
+
 function usergroups()
 {
 	global $Usergroups, $Settings;
@@ -250,6 +268,11 @@ function recurtimes()
         'week' => T_('Week'),
         'month' => T_('Month'));
     return $Recurtimes;
+}
+
+function yesno()
+{
+    return array('yes' => T_('Yes'), 'no' => T_('No'));
 }
 
 /*function currency_symbols()
@@ -342,8 +365,9 @@ $smarty->assign("Datacosts", datacosts());
 $smarty->assign("Datavals", datavals());
 $smarty->assign("Timecosts", timecosts());
 $smarty->assign("Timevals", timevals());
+$smarty->assign("Bandwidthvals", bandwidth_options());
 $smarty->assign("Recurtimes",recurtimes()); 
-
+$smarty->assign("YesNo", yesno());
 $smarty->assign('gbvalues', gboctects());
 
 

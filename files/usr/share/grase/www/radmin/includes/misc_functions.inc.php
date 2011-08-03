@@ -167,6 +167,17 @@ function validate_recur($recurrance)
 	// TODO: Return what?    
 }
 
+function validate_yesno($yesno)
+{
+    if($yesno != 'yes' && $yesno != 'no') return sprintf(T_("Invalid response to YesNo Question '%s'"), $yesno);
+}
+
+function validate_bandwidth($kbits)
+{
+    $options = bandwidth_options();
+    if(!isset($options[$kbits]) ) return sprintf(T_("Invalid Bandwidth Limit '%s'"), $kbits);
+}
+
 function validate_recurtime($recurrance, $time)
 {
     // $time is in minutes not seconds
@@ -175,8 +186,9 @@ function validate_recurtime($recurrance, $time)
         'day' => 60 * 24,
         'week' => 60 * 24 * 7,
         'month' => 60 * 24 * 30);
-    if($Recurtimevales[$recurrance] <= $time) return T_("Recurring time limit must be less than interval");
-    print_r(array($Recurtimevales[$recurrance], $time, $recurrance));
+    //print_r(array($Recurtimevales[$recurrance], $time, $recurrance));
+    if($Recurtimevales[$recurrance] < $time) return T_("Recurring time limit must be less than interval");
+
 	// TODO: Return what?    
 }
 
@@ -382,6 +394,8 @@ function sha1salt($plainText, $salt = null)
 function displayLocales($number, $isMoney=FALSE, $lg='') {
     global $locale;
     if ( $lg == '') $lg = $locale;
+    
+    if ( $number == '' ) return '';
 
     if($isMoney)
     {

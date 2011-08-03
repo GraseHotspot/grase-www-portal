@@ -611,6 +611,41 @@ class DatabaseFunctions
         return true;    
     }
     
+    public function setGroupSimultaneousUse($name, $yesno)
+    {
+        $sql = sprintf(
+            "DELETE FROM radgroupcheck WHERE GroupName = %s AND Attribute = 'Simultaneous-Use'",
+            $this->db->quote($name));
+            
+        $result = $this->db->exec($sql);    
+        
+        if (PEAR::isError($result))
+        {
+            ErrorHandling::fatal_db_error(
+                T_('Deleting radgroupcheck query failed: '), $result);
+        }
+        
+        if($yesno == 'no') // We leave deleted if yes, set value to 1 if no
+        {
+            $fields = array (
+                'GroupName' => array ( 'value' => $name,    'key' => true),
+                'Attribute' => array ( 'value' => 'Simultaneous-Use',  'key' => true),
+                'op'        => array ( 'value' => ":=" ),
+                'Value'     => array ( 'value' => '1')
+                );   
+            
+            $result = $this->db->replace('radgroupcheck', $fields);
+            if (PEAR::isError($result))
+            {
+                ErrorHandling::fatal_db_error(
+                    T_('Adding Group Check Attributes query failed:  '), $result);
+            }  
+        }
+        
+        return $result;  
+    }
+    
+   
     public function setGroupAttributes($name, $attributes)
     {
         // DELETE all attributes
@@ -650,7 +685,13 @@ class DatabaseFunctions
         {
             $attributes['MaxSeconds'] = $attributes['MaxTime'] * 60;
             unset($attributes['MaxTime']);
-        }        
+        }
+        
+        if(isset($attributes['SimultaneousUse']))
+        {
+            $this->setGroupSimultaneousUse($name, $attributes['SimultaneousUse']);
+            unset($attributes['SimultaneousUse']);
+        }
         
         $attributelookup = array(
             'MaxOctets' => 'Max-Octets',
@@ -663,6 +704,9 @@ class DatabaseFunctions
             'dayData' => 'Max-Daily-Octets',
             'weekData' => 'Max-Weekly-Octets',
             'monthData' => 'Max-Monthly-Octets',
+            'BandwidthDownLimit' => 'ChilliSpot-Bandwidth-Max-Down',
+            'BandwidthUpLimit' => 'ChilliSpot-Bandwidth-Max-Up',
+            'SimultaneousUse' => 'Simultaneous-Use',
             
         );
         // Insert each attribute
@@ -697,6 +741,19 @@ class DatabaseFunctions
                 T_('Get Groups details Query failed: '), $results);
         }
         
+        $sql = "SELECT GroupName, Attribute, Value
+            FROM radgroupcheck";
+            
+        $results2 = $this->db->queryAll($sql);
+        
+        if (PEAR::isError($results))
+        {
+            ErrorHandling::fatal_db_error(
+                T_('Get Groups details Query failed: '), $results);
+        }
+        
+        $results = array_merge($results, $results2);        
+        
         $attributelookup = array(
             'Max-Octets' => 'MaxOctets',
             'Max-All-Session' => 'MaxSeconds',
@@ -708,6 +765,9 @@ class DatabaseFunctions
             'Max-Daily-Octets' => 'day_Data' ,
             'Max-Weekly-Octets' => 'week_Data',
             'Max-Monthly-Octets' => 'month_Data',
+            'ChilliSpot-Bandwidth-Max-Up' => 'Bandwidth_Up_Limit',
+            'ChilliSpot-Bandwidth-Max-Down' => 'Bandwidth_Down_Limit',
+            'Simultaneous-Use' => 'Simultaneous-Use',
             
         );
         
@@ -749,6 +809,10 @@ class DatabaseFunctions
                     $groups[$attribute['GroupName']]['MaxTime'] = $attribute['Value'] /60;
 /*                    $value = $attribute['Value'] / 60;
                     $attr = "MaxTime";*/
+                }
+                if($recurance == "Simultaneous-Use")
+                {
+                    $groups[$attribute['GroupName']]['SimultaneousUse'] = 'no';
                 }
                 //else
                 //{

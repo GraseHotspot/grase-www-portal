@@ -36,10 +36,13 @@ if(isset($_POST['submit']))
     $groupexpiry = array_filter($_POST['groupexpiry']);
     $groupdatalimit = array_filter($_POST['Group_Max_Mb']);
     $grouptimelimit = array_filter($_POST['Group_Max_Time']);    
+    $groupdownlimit = array_filter($_POST['Bandwidth_Down_Limit']);
+    $groupuplimit = array_filter($_POST['Bandwidth_Up_Limit']);    
     //$grouprecurdatalimit = array_filter($_POST['Recur_Data_Limit']);
     //$grouprecurdata = array_filter($_POST['Recur_Data']);    
     $grouprecurtimelimit = array_filter($_POST['Recur_Time_Limit']);
-    $grouprecurtime = array_filter($_POST['Recur_Time']);    
+    $grouprecurtime = array_filter($_POST['Recur_Time']);
+    $simultaneoususe = array_filter($_POST['SimultaneousUse']);    
     
 
     
@@ -64,6 +67,8 @@ if(isset($_POST['submit']))
                 isset($groupexpiry[$key]) ||
                 isset($groupdatalimit[$key]) ||
                 isset($grouptimelimit[$key]) ||
+                isset($groupdownlimit[$key]) ||
+                isset($groupuplimit[$key]) ||
                 //isset($grouprecurdatalimit[$key]) ||
                 //isset($grouprecurdata[$key]) ||
                 isset($grouprecurtimelimit[$key]) ||
@@ -106,6 +111,9 @@ if(isset($_POST['submit']))
 	    $error[] = validate_recur($grouprecurtime[$key]);
 	    $error[] = validate_recur($grouprecurdata[$key]);
 	    $error[] = validate_recurtime($grouprecurtime[$key], $grouprecurtimelimit[$key]);	    
+	    $error[] = validate_bandwidth($groupdownlimit[$key]);
+	    $error[] = validate_bandwidth($groupuplimit[$key]);
+	    $error[] = validate_yesno($simultaneoususe[$key]);	    
 	    $error = array_filter($error);
 	    
 	    if(isset($grouprecurtime[$key]) xor isset($grouprecurtimelimit[$key]))
@@ -124,7 +132,10 @@ if(isset($_POST['submit']))
             //'DataRecurTime' => clean_text($grouprecurdata[$key]),
             //'DataRecurLimit' => clean_number($grouprecurdatalimit[$key]),
             'TimeRecurTime' => clean_text($grouprecurtime[$key]),
-            'TimeRecurLimit' => clean_int($grouprecurtimelimit[$key]),            
+            'TimeRecurLimit' => clean_int($grouprecurtimelimit[$key]),
+            'BandwidthDownLimit' => clean_int($groupdownlimit[$key]),
+            'BandwidthUpLimit' => clean_int($groupuplimit[$key]),
+            'SimultaneousUse' => $simultaneoususe[$key],
         ));
 
     }

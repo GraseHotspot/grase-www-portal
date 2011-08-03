@@ -26,6 +26,13 @@ function __autoload($class_name) {
     require_once './classes/' . $class_name . '.class.php';
 }
 
+// Special case for stale sessions, don't log it
+/*if(isset($_GET['clearstalesessions']))
+{
+    CronFunctions::getInstance()->clearStaleSessions();
+    exit;
+}*/
+
 AdminLog::getInstance()->log_cron("CRON");
 
 //$Settings = new SettingsMySQL(DatabaseConnections::getInstance()->getRadminDB());
