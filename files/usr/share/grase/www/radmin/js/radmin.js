@@ -16,10 +16,10 @@ var TableTextExtraction = function(node)
 
 $(document).ready(function(){
 
-    $("#DeleteUserConfirm").bind('paste', function(e) {
+/*    $("#DeleteUserConfirm").bind('paste', function(e) {
         alert("Please don't paste, just type the words exactly\nYes, I want to delete this user");
         return false;
-    });
+    });*/
 
     // Simple jQuery to create help dialogs out of all elements with class helpbutton and a title attribute		
 	$('.helpbutton[title]').each(function(index, element){

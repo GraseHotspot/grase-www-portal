@@ -75,17 +75,13 @@
 <button type="submit" name="updateusersubmit" value="{t}Update User Details{/t}"><img src="/grase/images/icons/tick.png" alt=""/>{t}Update User Details{/t}</button>
 </form>
 
+<h3>{t}Delete User{/t}</h3>
 <form method='post' name='deleteuser' action='' class='generalForm'>
 
-{t}If you really want to delete a user, please type exactly "Yes, I want to delete this user" in the below box then click "Delete User"{/t}<br/>
-{t}User accounts are automatically deleted 2 months after expiry. Only unused accounts should be manually deleted to prevent errors in the reports or statistics.{/t}<br/>
-<div>
-    <label for='DeleteUser'>{t}Delete the User{/t}</label>
-    <input type="text" id="DeleteUserConfirm" name="DeleteUser"/>
-    <span class="DeleteUserInfo"> </span>    
-</div>
+{t}User accounts are automatically deleted 2 months after expiry. Only accounts with zero usage should be manually deleted to prevent errors in the reports or statistics.{/t}<br/>
+    <button class="negative" type="submit" name="deleteusersubmit" value="{t}Delete User{/t}" onClick="return confirm('{t}Are you sure you want to delete this user?{/t}')"><img src="/grase/images/icons/cross.png" alt=""/>{t username=$user.Username}Delete User %1{/t}</button>
 
-<button class="negative" type="submit" name="deleteusersubmit" value="{t}Delete User{/t}"><img src="/grase/images/icons/cross.png" alt=""/>{t}Delete User{/t}</button>
+
 </form>
 
 

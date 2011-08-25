@@ -154,8 +154,8 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
 
 	if(isset($_POST['deleteusersubmit'])) // Delete User
 	{
-		if($_POST['DeleteUser'] == "Yes, I want to delete this user") //Really delete user (TODO: DEFINE CONSTANTS)
-		{
+		//if($_POST['DeleteUser'] == "Yes, I want to delete this user") //Really delete user (TODO: DEFINE CONSTANTS)
+		//{
 			database_delete_user($username); // TODO: Check for success
 			$success[] = sprintf(T_("User '%s' Deleted"),$username);
 			AdminLog::getInstance()->log("User $username deleted");			
@@ -166,10 +166,10 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
 			//$smarty->display('listusers.tpl');
 			require('display.php');
 			die; // TODO: Recode so don't need die (too many nests?)
-		}else
-		{
-			$error[] = T_('Please type "Yes, I want to delete this user" (without the quotes) into the box before clicking delete user');
-		}
+		//}else
+		//{
+		//	$error[] = T('Please type "Yes, I want to delete this user" (without the quotes) into the box before clicking delete user');
+		//}
 		
 	}
 
