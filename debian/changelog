@@ -1,3 +1,9 @@
+grase-www-portal (3.4.1) purewhite; urgency=low
+
+  * German Translation
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Mon, 08 Aug 2011 11:28:33 +1000
+
 grase-www-portal (3.4) purewhite; urgency=low
 
   * Support for bandwidth limits

@@ -210,7 +210,7 @@ function gboctects()
 function bandwidth_options()
 {
     // kbits/second
-    $kbits_options = array(256, 512, 1024, 1536, 2048);
+    $kbits_options = array(64, 128, 256, 512, 1024, 1536, 2048, 4096, 8192);
     $options[''] = '';
     foreach($kbits_options as $kbits)
     {

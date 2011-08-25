@@ -1,747 +1,759 @@
-/* .//userdetailsform.tpl */
+/* ../www/radmin/templates/userdetailsform.tpl */
 gettext("Username");
 
-/* .//userdetailsform.tpl */
+/* ../www/radmin/templates/userdetailsform.tpl */
 gettext("Choose a username");
 
-/* .//userdetailsform.tpl */
+/* ../www/radmin/templates/userdetailsform.tpl */
 gettext("Password");
 
-/* .//userdetailsform.tpl */
+/* ../www/radmin/templates/userdetailsform.tpl */
 gettext("Choose a secure password for the user");
 
-/* .//userdetailsform.tpl */
+/* ../www/radmin/templates/userdetailsform.tpl */
 gettext("Group");
 
-/* .//userdetailsform.tpl */
+/* ../www/radmin/templates/userdetailsform.tpl */
 gettext("Choose the users group (Expiry is based on the user group)");
 
-/* .//userdetailsform.tpl */
+/* ../www/radmin/templates/userdetailsform.tpl */
 gettext("Comment");
 
-/* .//userdetailsform.tpl */
+/* ../www/radmin/templates/userdetailsform.tpl */
 gettext("A comment about the user");
 
-/* .//userdetailsform.tpl */
+/* ../www/radmin/templates/userdetailsform.tpl */
 gettext("When ether limit is reached, the user will be cut off. (i.e. after 1hour even if they still have data left)");
 
-/* .//userdetailsform.tpl */
+/* ../www/radmin/templates/userdetailsform.tpl */
 gettext("A limit of 0 does not mean unlimited, it will immediately lock the user out. To have an unlimited user, the user must be created without any limits.");
 
-/* .//userdetailsform.tpl */
+/* ../www/radmin/templates/userdetailsform.tpl */
 gettext("If a limit is not set here, but is defined for the group, then the group limit will apply");
 
-/* .//userdetailsform.tpl */
+/* ../www/radmin/templates/userdetailsform.tpl */
 gettext("Data Limit (MiB)");
 
-/* .//userdetailsform.tpl */
+/* ../www/radmin/templates/userdetailsform.tpl */
 gettext("OR");
 
-/* .//userdetailsform.tpl */
+/* ../www/radmin/templates/userdetailsform.tpl */
 gettext("Type your own Mb Limit");
 
-/* .//userdetailsform.tpl */
+/* ../www/radmin/templates/userdetailsform.tpl */
 gettext("Choose a Data Limit OR Type your own value");
 
-/* .//userdetailsform.tpl */
+/* ../www/radmin/templates/userdetailsform.tpl */
 gettext("Time Limit (Minutes)");
 
-/* .//userdetailsform.tpl */
+/* ../www/radmin/templates/userdetailsform.tpl */
 gettext("OR");
 
-/* .//userdetailsform.tpl */
+/* ../www/radmin/templates/userdetailsform.tpl */
 gettext("Type your own Time Limit");
 
-/* .//userdetailsform.tpl */
+/* ../www/radmin/templates/userdetailsform.tpl */
 gettext("Choose a Time Limit OR Type your own value");
 
-/* .//main.tpl */
+/* ../www/radmin/templates/main.tpl */
 gettext("User Management Interface");
 
-/* .//main.tpl */
+/* ../www/radmin/templates/main.tpl */
 gettext("Device Information");
 
-/* .//main.tpl */
+/* ../www/radmin/templates/main.tpl */
 gettext("Model Name");
 
-/* .//main.tpl */
+/* ../www/radmin/templates/main.tpl */
 gettext("Host Name");
 
-/* .//main.tpl */
+/* ../www/radmin/templates/main.tpl */
 gettext("System Up-Time");
 
-/* .//main.tpl */
+/* ../www/radmin/templates/main.tpl */
 gettext("Current Server Time");
 
-/* .//main.tpl */
+/* ../www/radmin/templates/main.tpl */
 gettext("Hardware Version");
 
-/* .//main.tpl */
+/* ../www/radmin/templates/main.tpl */
 gettext("Software Version");
 
-/* .//main.tpl */
+/* ../www/radmin/templates/main.tpl */
 gettext("Home URL");
 
-/* .//main.tpl */
+/* ../www/radmin/templates/main.tpl */
 gettext("LAN");
 
-/* .//main.tpl */
+/* ../www/radmin/templates/main.tpl */
 gettext("IP Address");
 
-/* .//main.tpl */
+/* ../www/radmin/templates/main.tpl */
 gettext("Subnet Mask");
 
-/* .//main.tpl */
+/* ../www/radmin/templates/main.tpl */
 gettext("MAC Address");
 
-/* .//main.tpl */
+/* ../www/radmin/templates/main.tpl */
 gettext("Network Interface");
 
-/* .//main.tpl */
+/* ../www/radmin/templates/main.tpl */
 gettext("WAN");
 
-/* .//main.tpl */
+/* ../www/radmin/templates/main.tpl */
 gettext("IP Address");
 
-/* .//main.tpl */
+/* ../www/radmin/templates/main.tpl */
 gettext("Subnet Mask");
 
-/* .//main.tpl */
+/* ../www/radmin/templates/main.tpl */
 gettext("Gateway");
 
-/* .//main.tpl */
+/* ../www/radmin/templates/main.tpl */
 gettext("DNS 1");
 
-/* .//main.tpl */
+/* ../www/radmin/templates/main.tpl */
 gettext("DNS 2");
 
-/* .//main.tpl */
+/* ../www/radmin/templates/main.tpl */
 gettext("MAC Address");
 
-/* .//main.tpl */
+/* ../www/radmin/templates/main.tpl */
 gettext("Network Interface");
 
-/* .//loginform.tpl */
+/* ../www/radmin/templates/loginform.tpl */
 gettext("Login");
 
-/* .//loginform.tpl */
+/* ../www/radmin/templates/loginform.tpl */
 gettext("Login is required to access the Administration section of this website.");
 
-/* .//loginform.tpl */
+/* ../www/radmin/templates/loginform.tpl */
 gettext("Username");
 
-/* .//loginform.tpl */
+/* ../www/radmin/templates/loginform.tpl */
 gettext("Username for Admin interface (Different to internet access username)");
 
-/* .//loginform.tpl */
+/* ../www/radmin/templates/loginform.tpl */
 gettext("Password");
 
-/* .//loginform.tpl */
+/* ../www/radmin/templates/loginform.tpl */
 gettext("Login");
 
-/* .//settings.tpl */
+/* ../www/radmin/templates/settings.tpl */
 gettext("Site Settings");
 
-/* .//settings.tpl */
+/* ../www/radmin/templates/settings.tpl */
 gettext("Location Name");
 
-/* .//settings.tpl */
+/* ../www/radmin/templates/settings.tpl */
 gettext("Enter a name that identifies this Hotspot Location");
 
-/* .//settings.tpl */
+/* ../www/radmin/templates/settings.tpl */
 gettext("Support Contact Name");
 
-/* .//settings.tpl */
+/* ../www/radmin/templates/settings.tpl */
 gettext("Enter the name of the Support Contact");
 
-/* .//settings.tpl */
+/* ../www/radmin/templates/settings.tpl */
 gettext("Support Link");
 
-/* .//settings.tpl */
+/* ../www/radmin/templates/settings.tpl */
 gettext("This is the link for the support contact. http:// or mailto: are allowed. If using http:// ensure this is accessabile for users who aren't logged into the hotspot");
 
-/* .//settings.tpl */
+/* ../www/radmin/templates/settings.tpl */
 gettext("Locale");
 
-/* .//settings.tpl */
+/* ../www/radmin/templates/settings.tpl */
 gettext("Select the appropriate Locale for your location");
 
-/* .//settings.tpl */
+/* ../www/radmin/templates/settings.tpl */
 gettext("A locale has 2 parts, the language and location.<br/><strong>en_AU</strong> for example has the Language set to English, and the location to Australia.<br/><strong>en_ZA</strong> has the language set to English, and the location to South Africa, while <strong>af_ZA</strong> has the language set to Afrikaans and the location to South Africa.");
 
-/* .//settings.tpl */
+/* ../www/radmin/templates/settings.tpl */
 gettext("The locale defines the number formats, currency and language. If the language selected is not available, it will fallback to English.");
 
-/* .//settings.tpl */
+/* ../www/radmin/templates/settings.tpl */
 gettext("Current locale is %1, which sets the language to %2, and location to %3.");
 
-/* .//settings.tpl */
+/* ../www/radmin/templates/settings.tpl */
 gettext("Currency symbol is %1");
 
-/* .//settings.tpl */
-gettext("Currency");
-
-/* .//settings.tpl */
-gettext("Select the appropriate symbol for your local currency");
-
-/* .//settings.tpl */
+/* ../www/radmin/templates/settings.tpl */
 gettext("How much to charge per Mb");
 
-/* .//settings.tpl */
+/* ../www/radmin/templates/settings.tpl */
 gettext("Cost per Minute");
 
-/* .//settings.tpl */
+/* ../www/radmin/templates/settings.tpl */
 gettext("How much to charge per Minute");
 
-/* .//settings.tpl */
+/* ../www/radmin/templates/settings.tpl */
 gettext("Website Name");
 
-/* .//settings.tpl */
+/* ../www/radmin/templates/settings.tpl */
 gettext("Label for Website Footer link");
 
-/* .//settings.tpl */
+/* ../www/radmin/templates/settings.tpl */
 gettext("Website Link");
 
-/* .//settings.tpl */
+/* ../www/radmin/templates/settings.tpl */
 gettext("Link for Website Footer Link");
 
-/* .//settings.tpl */
+/* ../www/radmin/templates/settings.tpl */
 gettext("Sellable Graph Max");
 
-/* .//settings.tpl */
+/* ../www/radmin/templates/settings.tpl */
 gettext("Select what is 100% on the Sellable Data Graph");
 
-/* .//settings.tpl */
+/* ../www/radmin/templates/settings.tpl */
 gettext("Useable Graph Max");
 
-/* .//settings.tpl */
+/* ../www/radmin/templates/settings.tpl */
 gettext("Select what is 100% on the Useable Data Graph");
 
-/* .//settings.tpl */
+/* ../www/radmin/templates/settings.tpl */
 gettext("Save Settings");
 
-/* .//groups.tpl */
+/* ../www/radmin/templates/groups.tpl */
 gettext("Group Config");
 
-/* .//groups.tpl */
+/* ../www/radmin/templates/groups.tpl */
 gettext("Group expiry needs to be in a format understood by the <a target=\"_blank\" href=\"http://www.php.net/manual/en/function.strtotime.php\">strtotime</a> PHP function.");
 
-/* .//groups.tpl */
+/* ../www/radmin/templates/groups.tpl */
 gettext("For example, \"+1 month\" will set an expiry for 1 month from when the account is created. \"+2 weeks\", \"+3 days\" etc.");
 
-/* .//groups.tpl */
+/* ../www/radmin/templates/groups.tpl */
 gettext("Deleting a group won't delete it's users. Next time the user is edited it's group will become the default group unless a new group is selected.");
 
-/* .//groups.tpl */
+/* ../www/radmin/templates/groups.tpl */
 gettext("The limits here are the default for group members, unless overridden when creating a member. If multiple limits are specified, the first limit to be reached will disconnect the user.");
 
-/* .//groups.tpl */
+/* ../www/radmin/templates/groups.tpl */
 gettext("Groups");
 
-/* .//groups.tpl */
+/* ../www/radmin/templates/groups.tpl */
 gettext("Name");
 
-/* .//groups.tpl */
+/* ../www/radmin/templates/groups.tpl */
 gettext("Expiry");
 
-/* .//groups.tpl */
+/* ../www/radmin/templates/groups.tpl */
 gettext("Default Data Limit (MiB)");
 
-/* .//groups.tpl */
+/* ../www/radmin/templates/groups.tpl */
 gettext("Default Time Limit (Minutes)");
 
-/* .//groups.tpl */
+/* ../www/radmin/templates/groups.tpl */
 gettext("Recurring Data Limit (MiB)");
 
-/* .//groups.tpl */
+/* ../www/radmin/templates/groups.tpl */
 gettext("per");
 
-/* .//groups.tpl */
+/* ../www/radmin/templates/groups.tpl */
 gettext("Recurring Time Limit (Minutes)");
 
-/* .//groups.tpl */
+/* ../www/radmin/templates/groups.tpl */
 gettext("per");
 
-/* .//groups.tpl */
+/* ../www/radmin/templates/groups.tpl */
+gettext("Bandwidth Limit Down");
+
+/* ../www/radmin/templates/groups.tpl */
+gettext("Bandwidth Limit Up");
+
+/* ../www/radmin/templates/groups.tpl */
+gettext("Allow simultaneous logins?");
+
+/* ../www/radmin/templates/groups.tpl */
 gettext("Delete Group");
 
-/* .//groups.tpl */
+/* ../www/radmin/templates/groups.tpl */
 gettext("Name");
 
-/* .//groups.tpl */
+/* ../www/radmin/templates/groups.tpl */
 gettext("Expiry");
 
-/* .//groups.tpl */
+/* ../www/radmin/templates/groups.tpl */
 gettext("Default Data Limit (MiB)");
 
-/* .//groups.tpl */
+/* ../www/radmin/templates/groups.tpl */
 gettext("Default Time Limit (Minutes)");
 
-/* .//groups.tpl */
+/* ../www/radmin/templates/groups.tpl */
 gettext("Recurring Data Limit (MiB)");
 
-/* .//groups.tpl */
+/* ../www/radmin/templates/groups.tpl */
 gettext("per");
 
-/* .//groups.tpl */
+/* ../www/radmin/templates/groups.tpl */
 gettext("Recurring Time Limit (Minutes)");
 
-/* .//groups.tpl */
+/* ../www/radmin/templates/groups.tpl */
 gettext("per");
 
-/* .//groups.tpl */
+/* ../www/radmin/templates/groups.tpl */
+gettext("Bandwidth Limit Down");
+
+/* ../www/radmin/templates/groups.tpl */
+gettext("Bandwidth Limit Up");
+
+/* ../www/radmin/templates/groups.tpl */
+gettext("Allow simultaneous logins?");
+
+/* ../www/radmin/templates/groups.tpl */
 gettext("Add Another Group");
 
-/* .//groups.tpl */
+/* ../www/radmin/templates/groups.tpl */
 gettext("Save Settings");
 
-/* .//groups.tpl */
+/* ../www/radmin/templates/groups.tpl */
 gettext("Delete Group");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Edit User");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Computer Account Locked (Only comments can be changed)");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Username");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Comment");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Group");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Data Limit (MiB)");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Expiry");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Comment");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Change Comment");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Change Comment");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("If you really want to delete this machine account, please type exactly \"Yes, I want to delete this user\" in the below box then click \"Delete User\"");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("User accounts are automatically deleted 2 months after expiry. Only unused accounts should be manually deleted to prevent errors in the reports or statistics.");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Delete User");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Delete User");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Username");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Password");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Choose a secure password for the user. Leave blank to not change");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Choose the users group (Expiry is based on the user group)");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Comment");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("A comment about the user");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("When ether limit is reached, the user will be cut off. (i.e. after 1hour even if they still have data left)");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("A limit of 0 does not mean unlimited, it will immediately lock the user out. To have an unlimited user, the user must be created without any limits.");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Data Limit (MiB)");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Type your own Mb Limit");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Change the Data Limit");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Add Data to Limit (MiB)");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Add to the Data Limit (Will ignore changes made above)");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Time Limit (Minutes)");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Type your own Time Limit");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Change the Time Limit");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Add Time to Limit (Minutes)");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Add to the Time Limit (Will ignore changes made above)");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Update User Details");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Update User Details");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("If you really want to delete a user, please type exactly \"Yes, I want to delete this user\" in the below box then click \"Delete User\"");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("User accounts are automatically deleted 2 months after expiry. Only unused accounts should be manually deleted to prevent errors in the reports or statistics.");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Delete the User");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Delete User");
 
-/* .//edituser.tpl */
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Delete User");
 
-/* .//portalconfig.tpl */
+/* ../www/radmin/templates/portalconfig.tpl */
 gettext("Portal Settings");
 
-/* .//portalconfig.tpl */
+/* ../www/radmin/templates/portalconfig.tpl */
 gettext("These settings are used by Coova Chilli. Coova Chilli only reloads it's config roughly once an hour, or when it's restarted.");
 
-/* .//portalconfig.tpl */
+/* ../www/radmin/templates/portalconfig.tpl */
 gettext("If you change the MAC Auth Password, no computer accounts will be able to login until Coova Chilli reloads it's config, or is manually restarted.");
 
-/* .//portalconfig.tpl */
+/* ../www/radmin/templates/portalconfig.tpl */
 gettext("Chilli Config last updated %1");
 
-/* .//portalconfig.tpl */
+/* ../www/radmin/templates/portalconfig.tpl */
 gettext("Portal Config last updated %1");
 
-/* .//portalconfig.tpl */
+/* ../www/radmin/templates/portalconfig.tpl */
 gettext("For each of the following items, if you need multiple values you can submit the form and it will append a blank input below the last valid value");
 
-/* .//portalconfig.tpl */
+/* ../www/radmin/templates/portalconfig.tpl */
 gettext("Save Settings");
 
-/* .//sessions.tpl */
+/* ../www/radmin/templates/sessions.tpl */
 gettext("Sessions for %1");
 
-/* .//sessions.tpl */
+/* ../www/radmin/templates/sessions.tpl */
 gettext("Start Time");
 
-/* .//sessions.tpl */
+/* ../www/radmin/templates/sessions.tpl */
 gettext("Stop Time");
 
-/* .//sessions.tpl */
+/* ../www/radmin/templates/sessions.tpl */
 gettext("Time");
 
-/* .//sessions.tpl */
+/* ../www/radmin/templates/sessions.tpl */
 gettext("IP Address");
 
-/* .//sessions.tpl */
+/* ../www/radmin/templates/sessions.tpl */
 gettext("Username");
 
-/* .//sessions.tpl */
+/* ../www/radmin/templates/sessions.tpl */
 gettext("Download");
 
-/* .//sessions.tpl */
+/* ../www/radmin/templates/sessions.tpl */
 gettext("Uploaded");
 
-/* .//sessions.tpl */
+/* ../www/radmin/templates/sessions.tpl */
 gettext("Data Usage");
 
-/* .//sessions.tpl */
+/* ../www/radmin/templates/sessions.tpl */
 gettext("Reason: ");
 
-/* .//sessions.tpl */
+/* ../www/radmin/templates/sessions.tpl */
 gettext("Computers hardware (MAC) address is %1");
 
-/* .//sessions.tpl */
+/* ../www/radmin/templates/sessions.tpl */
 gettext("Captive Portal Config Login");
 
-/* .//uploadlogo.tpl */
+/* ../www/radmin/templates/uploadlogo.tpl */
 gettext("Upload Logo");
 
-/* .//uploadlogo.tpl */
+/* ../www/radmin/templates/uploadlogo.tpl */
 gettext("Logo Image");
 
-/* .//uploadlogo.tpl */
+/* ../www/radmin/templates/uploadlogo.tpl */
 gettext("Select new logo file.");
 
-/* .//uploadlogo.tpl */
+/* ../www/radmin/templates/uploadlogo.tpl */
 gettext("Logo file needs to be in png format, and relatively small (remember, every page has the logo). 10 Kilobytes maximum. It's physical size shouldn't be bigger than about 220px in both directions.");
 
-/* .//uploadlogo.tpl */
+/* ../www/radmin/templates/uploadlogo.tpl */
 gettext("Upload Logo");
 
-/* .//changepasswd.tpl */
+/* ../www/radmin/templates/changepasswd.tpl */
 gettext("Admin Users");
 
-/* .//changepasswd.tpl */
+/* ../www/radmin/templates/changepasswd.tpl */
 gettext("Change Password");
 
-/* .//changepasswd.tpl */
+/* ../www/radmin/templates/changepasswd.tpl */
 gettext("Username");
 
-/* .//changepasswd.tpl */
+/* ../www/radmin/templates/changepasswd.tpl */
 gettext("Old Password");
 
-/* .//changepasswd.tpl */
+/* ../www/radmin/templates/changepasswd.tpl */
 gettext("New Password");
 
-/* .//changepasswd.tpl */
+/* ../www/radmin/templates/changepasswd.tpl */
 gettext("Confirm New Password");
 
-/* .//changepasswd.tpl */
+/* ../www/radmin/templates/changepasswd.tpl */
 gettext("Change Password");
 
-/* .//changepasswd.tpl */
+/* ../www/radmin/templates/changepasswd.tpl */
 gettext("Change Password");
 
-/* .//changepasswd.tpl */
+/* ../www/radmin/templates/changepasswd.tpl */
 gettext("Create new Admin User");
 
-/* .//changepasswd.tpl */
+/* ../www/radmin/templates/changepasswd.tpl */
 gettext("Username");
 
-/* .//changepasswd.tpl */
+/* ../www/radmin/templates/changepasswd.tpl */
 gettext("Password");
 
-/* .//changepasswd.tpl */
+/* ../www/radmin/templates/changepasswd.tpl */
 gettext("Create new Admin User");
 
-/* .//changepasswd.tpl */
+/* ../www/radmin/templates/changepasswd.tpl */
 gettext("Delete Admin User");
 
-/* .//changepasswd.tpl */
+/* ../www/radmin/templates/changepasswd.tpl */
 gettext("Deleting or modifying the support user will prevent remote assistance.");
 
-/* .//changepasswd.tpl */
+/* ../www/radmin/templates/changepasswd.tpl */
 gettext("Are you sure you want to delete %1?");
 
-/* .//changepasswd.tpl */
+/* ../www/radmin/templates/changepasswd.tpl */
 gettext("Delete %1");
 
-/* .//changepasswd.tpl */
+/* ../www/radmin/templates/changepasswd.tpl */
 gettext("Cannot delete current user");
 
-/* .//menubar.tpl */
+/* ../www/radmin/templates/menubar.tpl */
 gettext("Logged in as <b>%1</b>");
 
-/* .//log.tpl */
+/* ../www/radmin/templates/log.tpl */
 gettext("Session logs for %1 on %2");
 
-/* .//log.tpl */
+/* ../www/radmin/templates/log.tpl */
 gettext("Computers hardware (MAC) address is");
 
-/* .//log.tpl */
+/* ../www/radmin/templates/log.tpl */
 gettext("Between %1 and %2");
 
-/* .//log.tpl */
+/* ../www/radmin/templates/log.tpl */
 gettext("Total HTTP (WWW) Traffic Size:");
 
-/* .//log.tpl */
+/* ../www/radmin/templates/log.tpl */
 gettext("Domain");
 
-/* .//log.tpl */
+/* ../www/radmin/templates/log.tpl */
 gettext("Count");
 
-/* .//log.tpl */
+/* ../www/radmin/templates/log.tpl */
 gettext("Size");
 
-/* .//log.tpl */
+/* ../www/radmin/templates/log.tpl */
 gettext("Timestamp");
 
-/* .//log.tpl */
+/* ../www/radmin/templates/log.tpl */
 gettext("Address");
 
-/* .//log.tpl */
+/* ../www/radmin/templates/log.tpl */
 gettext("Host");
 
-/* .//log.tpl */
+/* ../www/radmin/templates/log.tpl */
 gettext("Cached");
 
-/* .//log.tpl */
+/* ../www/radmin/templates/log.tpl */
 gettext("Request Type");
 
-/* .//log.tpl */
+/* ../www/radmin/templates/log.tpl */
 gettext("Size");
 
-/* .//footer.tpl */
+/* ../www/radmin/templates/footer.tpl */
 gettext("Help Page");
 
-/* .//footer.tpl */
+/* ../www/radmin/templates/footer.tpl */
 gettext("My Account");
 
-/* .//footer.tpl */
+/* ../www/radmin/templates/footer.tpl */
 gettext("Admin");
 
-/* .//display.tpl */
+/* ../www/radmin/templates/display.tpl */
 gettext("Data Limit");
 
-/* .//display.tpl */
+/* ../www/radmin/templates/display.tpl */
 gettext("Time Limit");
 
-/* .//display.tpl */
+/* ../www/radmin/templates/display.tpl */
 gettext("%1 Time Limit");
 
-/* .//display.tpl */
+/* ../www/radmin/templates/display.tpl */
 gettext("%1 Data Limit");
 
-/* .//display.tpl */
+/* ../www/radmin/templates/display.tpl */
 gettext("Username");
 
-/* .//display.tpl */
+/* ../www/radmin/templates/display.tpl */
 gettext("Group");
 
-/* .//display.tpl */
+/* ../www/radmin/templates/display.tpl */
 gettext("Data Limit");
 
-/* .//display.tpl */
+/* ../www/radmin/templates/display.tpl */
 gettext("Total Data usage for the current month");
 
-/* .//display.tpl */
+/* ../www/radmin/templates/display.tpl */
 gettext("Data Usage (M)");
 
-/* .//display.tpl */
+/* ../www/radmin/templates/display.tpl */
 gettext("Total Data usage, from previous months, excluding current month");
 
-/* .//display.tpl */
+/* ../www/radmin/templates/display.tpl */
 gettext("Data Usage (T)");
 
-/* .//display.tpl */
+/* ../www/radmin/templates/display.tpl */
 gettext("Time Limit");
 
-/* .//display.tpl */
+/* ../www/radmin/templates/display.tpl */
 gettext("Time Usage (Month)");
 
-/* .//display.tpl */
+/* ../www/radmin/templates/display.tpl */
 gettext("Account Expiry");
 
-/* .//display.tpl */
+/* ../www/radmin/templates/display.tpl */
 gettext("Last Logoff timestamp from current month only");
 
-/* .//display.tpl */
+/* ../www/radmin/templates/display.tpl */
 gettext("Last Logoff");
 
-/* .//display.tpl */
+/* ../www/radmin/templates/display.tpl */
 gettext("Comment");
 
-/* .//display.tpl */
+/* ../www/radmin/templates/display.tpl */
 gettext("Password Hidden");
 
-/* .//adminlog.tpl */
+/* ../www/radmin/templates/adminlog.tpl */
 gettext("Admin Log");
 
-/* .//adminlog.tpl */
+/* ../www/radmin/templates/adminlog.tpl */
 gettext("Timestamp");
 
-/* .//adminlog.tpl */
+/* ../www/radmin/templates/adminlog.tpl */
 gettext("Username");
 
-/* .//adminlog.tpl */
+/* ../www/radmin/templates/adminlog.tpl */
 gettext("IP");
 
-/* .//adminlog.tpl */
+/* ../www/radmin/templates/adminlog.tpl */
 gettext("Action");
 
-/* .//error.tpl */
+/* ../www/radmin/templates/error.tpl */
 gettext("Error");
 
-/* .//error.tpl */
+/* ../www/radmin/templates/error.tpl */
 gettext("An Error has occured. Please report the error to the administrator");
 
-/* .//error.tpl */
+/* ../www/radmin/templates/error.tpl */
 gettext("There may be more information available to the administrator in the logs");
 
-/* .//addmachine.tpl */
+/* ../www/radmin/templates/addmachine.tpl */
 gettext("Create Computer Account");
 
-/* .//addmachine.tpl */
+/* ../www/radmin/templates/addmachine.tpl */
 gettext("MAC Address");
 
-/* .//addmachine.tpl */
+/* ../www/radmin/templates/addmachine.tpl */
 gettext("The MAC address is the network hardware address of the computer. It needs to be of the format XX-XX-XX-XX-XX-XX where XX is a hex number, typed in all capitals");
 
-/* .//addmachine.tpl */
+/* ../www/radmin/templates/addmachine.tpl */
 gettext("Comment");
 
-/* .//addmachine.tpl */
+/* ../www/radmin/templates/addmachine.tpl */
 gettext("Identify the computer. i.e. \"Bob's computer\"");
 
-/* .//addmachine.tpl */
+/* ../www/radmin/templates/addmachine.tpl */
 gettext("When ether limit is reached, the user will be cut off. (i.e. after 1hour even if they still have data left)");
 
-/* .//addmachine.tpl */
+/* ../www/radmin/templates/addmachine.tpl */
 gettext("Computer accounts are intended to be used for computers that need internet access at all times. For example, an office computer. Computer accounts login automatically as soon as they access the network, this will normally occur at startup. If a limit is set, when the limit is reached the computer will revert to the normal login screen for internet access. Computer accounts can not be edited to add more data or time, only deleted.");
 
-/* .//addmachine.tpl */
+/* ../www/radmin/templates/addmachine.tpl */
 gettext("It is not recommended setting a time or data limit for computer accounts.");
 
-/* .//addmachine.tpl */
+/* ../www/radmin/templates/addmachine.tpl */
 gettext("Data Limit (MiB)");
 
-/* .//addmachine.tpl */
+/* ../www/radmin/templates/addmachine.tpl */
 gettext("OR");
 
-/* .//addmachine.tpl */
+/* ../www/radmin/templates/addmachine.tpl */
 gettext("Type your own Mb Limit");
 
-/* .//addmachine.tpl */
+/* ../www/radmin/templates/addmachine.tpl */
 gettext("Time Limit (Minutes)");
 
-/* .//addmachine.tpl */
+/* ../www/radmin/templates/addmachine.tpl */
 gettext("OR");
 
-/* .//addmachine.tpl */
+/* ../www/radmin/templates/addmachine.tpl */
 gettext("Type your own Time Limit");
 
-/* .//addmachine.tpl */
+/* ../www/radmin/templates/addmachine.tpl */
 gettext("Choose a Time Limit OR Type your own value");
 
-/* .//addmachine.tpl */
+/* ../www/radmin/templates/addmachine.tpl */
 gettext("Create New Computer Account");
 
-/* .//addmachine.tpl */
+/* ../www/radmin/templates/addmachine.tpl */
 gettext("Create New Computer Account");
 
-/* .//statusmonitors.tpl */
+/* ../www/radmin/templates/statusmonitors.tpl */
 gettext("Sold");
 
-/* .//statusmonitors.tpl */
+/* ../www/radmin/templates/statusmonitors.tpl */
 gettext("%1 of %2");
 
-/* .//statusmonitors.tpl */
+/* ../www/radmin/templates/statusmonitors.tpl */
 gettext("This Month Used");
 
-/* .//statusmonitors.tpl */
+/* ../www/radmin/templates/statusmonitors.tpl */
 gettext("%1 of %2");
 
-/* .//statusmonitors.tpl */
+/* ../www/radmin/templates/statusmonitors.tpl */
 gettext("Last Month Used");
 
-/* .//statusmonitors.tpl */
+/* ../www/radmin/templates/statusmonitors.tpl */
 gettext("%1 of %2");
 
-/* .//newtickets.tpl */
+/* ../www/radmin/templates/newtickets.tpl */
 gettext("When ether limit is reached, the user will be cut off. (i.e. after 1hour even if they still have data left)");
 
-/* .//newtickets.tpl */
+/* ../www/radmin/templates/newtickets.tpl */
 gettext("A limit of 0 does not mean unlimited, it will immediately lock the user out. To have an unlimited user, the user must be created without any limits.");
 
-/* .//newtickets.tpl */
+/* ../www/radmin/templates/newtickets.tpl */
 gettext("If a limit is not set here, but is defined for the group, then the group limit will apply");
 

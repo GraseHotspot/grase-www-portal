@@ -1,0 +1,6 @@
+#!/bin/sh
+
+tsmarty2c ../www/radmin/templates > ../www/radmin/templates/smarty.c
+tsmarty2c ../www/uam/templates > ../www/uam/templates/smarty.c
+
+poedit English/LC_MESSAGES/grase.pot
