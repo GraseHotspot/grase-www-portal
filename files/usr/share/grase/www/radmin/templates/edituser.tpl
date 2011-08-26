@@ -15,11 +15,15 @@
 	
 	<tr><td>{t}Comment{/t}</td><td><form method='post'> <input type="text" name="Comment" value='{$user.Comment}'/><button type="submit" name="changecommentsubmit" value="{t}Change Comment{/t}">{t}Change Comment{/t}</button></form></td></tr>
 </table>
-<table>	
-<tr><td colspan='2' style='color: red'>{t}If you really want to delete this machine account, please type exactly "Yes, I want to delete this user" in the below box then click "Delete User"{/t}<br/>
-{t}User accounts are automatically deleted 2 months after expiry. Only unused accounts should be manually deleted to prevent errors in the reports or statistics.{/t}</td><tr/>
-	<tr><td></td><td><form method='post'><input size='30' type="text" name="DeleteUser"/><button class="negative" type="submit" name="deleteusersubmit" value="{t}Delete User{/t}"><img src="/grase/images/icons/cross.png" alt=""/>{t}Delete User{/t}</button></form></td></tr>
-</table>
+<h3>{t}Delete User{/t}</h3>
+<form method='post' name='deleteuser' action='' class='generalForm'>
+
+{t}User accounts are automatically deleted 2 months after expiry. Only accounts with zero usage should be manually deleted to prevent errors in the reports or statistics.{/t}<br/>
+    <button class="negative" type="submit" name="deleteusersubmit" value="{t}Delete User{/t}" onClick="return confirm('{t}Are you sure you want to delete this user?{/t}')"><img src="/grase/images/icons/cross.png" alt=""/>{t username=$user.Username}Delete User %1{/t}</button>
+
+
+</form>
+
 {else}
 
 <form method='post' name='edituser' action='' class='generalForm'>
