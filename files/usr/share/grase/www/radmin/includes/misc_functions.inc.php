@@ -266,6 +266,8 @@ function expiry_for_group($group)
 function sort_users_into_groups($users)
 {
 	$users_group = array();
+	$expiredusers = array();
+	
 	foreach($users as $user)
 	{
 		if(isset($user['Group']) && $user['Group'] != '')
@@ -274,6 +276,12 @@ function sort_users_into_groups($users)
 		}else
 		{
 			$users_group['Nogroup'][] = $user;
+		}
+		
+		
+		if($user['account_status'] == EXPIRED_ACCOUNT)
+		{
+		    $expiredusers[] = $user;
 		}
 	}
     
@@ -288,6 +296,9 @@ function sort_users_into_groups($users)
 	if(sizeof($machines) > 0)
     	$users_group[T_("Computers")] = $machines;
 	
+	if(sizeof($expiredusers) > 0)
+	    $users_group[T_("Expired")] = $expiredusers;
+	    
 	return $users_group;
 }
 
