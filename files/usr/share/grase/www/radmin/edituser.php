@@ -176,6 +176,10 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
 	$smarty->assign("error", $error);
 	$smarty->assign("success", $success);	
 	$smarty->assign("user", getDBUserDetails($_GET['username']));
+	
+	$smarty->assign("groupdata", DatabaseFunctions::getInstance()->getGroupAttributes());
+    $smarty->assign("groups", unserialize($Settings->getSetting("groups")));	
+	
 	display_page('edituser.tpl');
 
 }else

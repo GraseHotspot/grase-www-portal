@@ -40,6 +40,32 @@
                                 <span id="newpassword_text" ></span>
                                 <span id="newpassword_bar" style="font-size: 1px; height: 2px; width: 0px; border: 1px solid white;"></span> 
 </div>
+<span class="helptext">
+<h3>Group Properties</h3>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Expiry</th>
+        <th>MaxMb</th>
+        <th>MaxTime</th>
+        <th>Recur data lim</th>
+        <th>Recur data time</th>
+    </tr>
+
+{foreach from=$groups item=expiry key=groupname}
+
+    <tr>
+        <td>{$groupname}</td>
+        <td>{$expiry}</td>
+        <td>{$groupdata.$groupname.MaxMb}</td>
+        <td>{$groupdata.$groupname.MaxTime}</td>        
+        <td>{$groupdata.$groupname.DataRecurLimit} per {$groupdata.$groupname.DataRecurTime} </td>
+        <td>{$groupdata.$groupname.TimeRecurLimit} per {$groupdata.$groupname.TimeRecurTime} </td>
+
+    </tr>
+{/foreach}
+</table>
+</span>
 <div>
     <label for='Group'>Group</label>
     {html_options name="Group" options=$Usergroups selected=$user.Group}    
