@@ -257,7 +257,8 @@ function jsremove(){
     $(".jsremove").click(function(){
         //$(this).prev().remove();
         //$(this).next().remove();            
-        //$(this).remove();            
+        //$(this).remove();
+        confirm("Delete item?") &&            // TODO: Translation
         $(this).parent().remove();
     
     });            
