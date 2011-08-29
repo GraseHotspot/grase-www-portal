@@ -46,6 +46,13 @@ $smarty->assign("website_name", $website_name);
 $smarty->assign("website_link", $website_link);
 
 
+// Load login page settings from db and use defaults
+$smarty->assign("hidefooter", $Settings->getSetting('hidefooter') == 'TRUE' ? TRUE : FALSE);
+
+
+$smarty->assign("logintitle", $Settings->getSetting('logintitle'));
+
+
 function apply_locale($newlocale)
 {
     global $locale;

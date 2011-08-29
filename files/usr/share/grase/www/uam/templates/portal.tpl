@@ -1,7 +1,7 @@
-{include file="header.tpl" Name="Welcome" activepage="portal"}
+{include file="header.tpl" Name="Login" activepage="portal"}
 
 <div id="page">
-<h1>{$Location} Hotspot - Welcome</h1>
+<h1>{$logintitle}</h1>
 
 <p>{t location=$Location}Welcome to the %1 Hotspot. Please read the following before logging in.{/t}</p>
 <p><a href="help">{t}Information and Help{/t}</a></p>
@@ -29,13 +29,15 @@
 			</div>
 {/if}
     <form method="post" action="nojslogin.php" id="logonFormnojs" class="generalForm"><!-- TODO: Make this submit over SSL -->
+    {if ! $jsdisabled}
         <div class="ui-widget" id="jswarningwidget">
             <div id="nojswarning" class="ui-state-error ui-corner-all" style="margin-top: 20px; padding: 0pt 0.7em;"><p>You are using the less secure login method.<br/>{if ! $nojs}If you have javascript disabled, please try enabling it for the secure login method.<br/>{/if}Use this less secure login form if the javascript version is giving you trouble</p>
             {if $nojs}
             <p>You have disabled the secure javascript login method.<br/><a href="?enablejs">Click here to re-enable it</a></p>
             {/if}
-</div>
+            </div>
         </div>
+    {/if}
         <div>
             <label for='username'>Username</label>
             <input type="text" name="username" />

@@ -29,7 +29,12 @@ $challenge = $_GET['challenge'];
 if($userurl == 'http://logout/') $userurl = '';
 if($userurl == 'http://1.0.0.0/') $userurl = '';
 
-if(isset($_COOKIE['grasenojs']) && $_COOKIE['grasenojs'] == 'javascriptdisabled')
+if($Settings->getSetting('disablejavascript') == 'TRUE')
+{
+    $smarty->assign("nojs" , true);
+    $smarty->assign("js" , false);    
+    $smarty->assign("jsdisabled" , true);        
+}elseif( isset($_COOKIE['grasenojs']) && $_COOKIE['grasenojs'] == 'javascriptdisabled')
 {
     $smarty->assign("nojs" , true);
     $smarty->assign("js" , false);    
@@ -51,11 +56,11 @@ $smarty->assign("RealHostname", trim(file_get_contents('/etc/hostname')));
     
 */    
 
-if(!isset($_GET['res']))
+/*if(!isset($_GET['res']))
 {
     // Redirect to prelogin
         header("Location: http://10.1.0.1:3990/prelogin");
-}
+}*/
 
 // Already been through prelogin
 /*$jsloginlink = "http://10.1.0.1/grase/uam/mini?$query";

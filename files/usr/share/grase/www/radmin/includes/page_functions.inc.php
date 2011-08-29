@@ -96,7 +96,8 @@ function createmenuitems()
 	$menubar['settings'] = array("href" => "settings", "label" => T_("Settings"),
 	    "submenu" => array(
 	        'uploadlogo' => array("href" => "uploadlogo", "label" => T_("Site Logo") ),
-            'portalconfig' => array("href" => "portalconfig", "label" => T_("Portal Settings") ),	
+            'portalconfig' => array("href" => "portalconfig", "label" => T_("Portal Settings") ),
+            'loginconfig' => array("href" => "loginconfig", "label" => T_("Login Settings") ),
             'groups' => array("href" => "groupconfig", "label" => T_("Groups") )	
         )
             
@@ -216,7 +217,7 @@ function bandwidth_options()
     {
         $bits = $kbits * 1024;
         $kbytes = $kbits/8;
-        $mbmin = $kbytes * 60 / 1024;
+        $mbmin = round($kbytes * 60 / 1024, 2);
         $label = Formatting::formatBits($bits) ."/sec ($kbytes kbytes/sec, $mbmin MiB/min)";
         $options["$kbits"] = $label;
     }
@@ -234,7 +235,7 @@ function usergroups()
 	{
 	    $Usergroups[$group] = $group;
 	}
-/*	// TODO:  Move this stuff into database??
+/*	// DONE:  Move this stuff into database??
 	$Usergroups["Visitors"] = T_("Visitors");
 	$Usergroups["Students"] = T_("Students");
 	$Usergroups["Staff"] = T_("Staff");
@@ -247,7 +248,7 @@ function groupexpirys()
 {
 	global $Expiry, $Settings;
 	$Expiry = unserialize($Settings->getSetting("groups"));
-/*	// TODO: Move this stuff into database??
+/*	// DONE: Move this stuff into database??
 	$Expiry["Staff"] = "+6 months";
 	$Expiry["Ministry"] = "+6 months";
 	$Expiry["Students"] = "+3 months";

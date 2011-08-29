@@ -2,7 +2,7 @@
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<title>{$Location} - Hotspot{if $Name} - {t}{$Name}{/t}{/if}</title>
+<title>{$logintitle}{if $Name} - {t}{$Name}{/t}{/if}</title>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 <meta name="generator" content="GRASE - UAM" />
 <!-- CSS Stylesheet -->

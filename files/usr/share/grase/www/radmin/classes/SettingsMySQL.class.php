@@ -104,9 +104,19 @@ class SettingsMySQL extends Settings
        
     }
     
+    // ^^ Returning the value fails on empty strings
+    public function checkExistsSetting($setting)
+    {
+        $sql = sprintf("SELECT COUNT(setting) FROM settings WHERE setting = '%s'",
+                        mysql_real_escape_string($setting));
+        return $this->db->queryOne($sql);
+       
+    }    
+    
     public function setSetting($setting, $value)
     {
-        if($this->getSetting($setting) == '')
+        // Check count not contents ^^
+        if($this->checkExistsSetting($setting) == 0)
         {
             // Insert new record
             $sql = sprintf("INSERT INTO settings SET
