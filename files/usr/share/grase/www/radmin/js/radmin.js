@@ -73,6 +73,16 @@ $(document).ready(function(){
     // Make tables of users into tabbed display
     $("#userslist").tabs();
     
+    // Group properties in edit user collapsed
+	$('.collapseheader').click(function() {
+		$(this).next().toggle('slide' , { direction: "up" });
+		return false;
+	}).button({
+            icons: {
+                secondary: "ui-icon-triangle-1-s"
+            }
+        }).next().hide();    
+    
     
     // Stuff for displaying text in empty field until there is content
     $(".datacost_item").click(function() {

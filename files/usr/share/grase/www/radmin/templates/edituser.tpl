@@ -40,16 +40,23 @@
                                 <span id="newpassword_text" ></span>
                                 <span id="newpassword_bar" style="font-size: 1px; height: 2px; width: 0px; border: 1px solid white;"></span> 
 </div>
-<span class="helptext">
-<h3>Group Properties</h3>
-<table>
+
+<div>
+    <label for='Group'>Group</label>
+    {html_options name="Group" options=$Usergroups selected=$user.Group}    
+    <span id='GroupInfo'>{t}Choose the users group (Expiry is based on the user group){/t}</span>
+    
+<br/><span class="collapseheader">{t}Group Properties{/t}</span>
+<table style="font-size: 80%">
     <tr>
-        <th>Name</th>
-        <th>Expiry</th>
-        <th>MaxMb</th>
-        <th>MaxTime</th>
-        <th>Recur data lim</th>
-        <th>Recur data time</th>
+        <th>{t}Name{/t}</th>
+        <th>{t}Expiry{/t}</th>
+        <th>{t}Max Data (Mb){/t}</th>
+        <th>{t}Max Time (mins){/t}</th>
+        {*<th>Recur data limit</th>*}
+        <th>{t}Recur time limit{/t}</th>
+        <th>{t}BW Limit Down{/t}</th>
+        <th>{t}BW Limit Up{/t}</th>
     </tr>
 
 {foreach from=$groups item=expiry key=groupname}
@@ -59,17 +66,15 @@
         <td>{$expiry}</td>
         <td>{$groupdata.$groupname.MaxMb}</td>
         <td>{$groupdata.$groupname.MaxTime}</td>        
-        <td>{$groupdata.$groupname.DataRecurLimit} per {$groupdata.$groupname.DataRecurTime} </td>
-        <td>{$groupdata.$groupname.TimeRecurLimit} per {$groupdata.$groupname.TimeRecurTime} </td>
+        {*<td>{if $groupdata.$groupname.DataRecurLimit}{assign var=lim value=$groupdata.$groupname.DataRecurLimit}{$Datavals.$lim} per {$groupdata.$groupname.DataRecurTime} {/if}</td>*}
+        <td>{if $groupdata.$groupname.TimeRecurLimit}{assign var=lim value=$groupdata.$groupname.TimeRecurLimit}{$Timevals.$lim} per {$groupdata.$groupname.TimeRecurTime}{/if}</td>
+        <td>{if $groupdata.$groupname.BandwidthDownLimit}{assign var=lim value=$groupdata.$groupname.BandwidthDownLimit}{$Bandwidthvals.$lim}{/if}</td>
+        <td>{if $groupdata.$groupname.BandwidthUpLimit}{assign var=lim value=$groupdata.$groupname.BandwidthUpLimit}{$Bandwidthvals.$lim}{/if}</td>        
 
     </tr>
 {/foreach}
 </table>
-</span>
-<div>
-    <label for='Group'>Group</label>
-    {html_options name="Group" options=$Usergroups selected=$user.Group}    
-    <span id='GroupInfo'>{t}Choose the users group (Expiry is based on the user group){/t}</span>
+
 </div>
     
 <div>
