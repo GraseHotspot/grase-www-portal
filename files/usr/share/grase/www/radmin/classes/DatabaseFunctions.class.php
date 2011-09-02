@@ -765,8 +765,8 @@ class DatabaseFunctions
             'Max-Daily-Octets' => 'day_Data' ,
             'Max-Weekly-Octets' => 'week_Data',
             'Max-Monthly-Octets' => 'month_Data',
-            'ChilliSpot-Bandwidth-Max-Up' => 'Bandwidth_Up_Limit',
-            'ChilliSpot-Bandwidth-Max-Down' => 'Bandwidth_Down_Limit',
+            'ChilliSpot-Bandwidth-Max-Up' => 'BandwidthUpLimit',
+            'ChilliSpot-Bandwidth-Max-Down' => 'BandwidthDownLimit',
             'Simultaneous-Use' => 'Simultaneous-Use',
             
         );
