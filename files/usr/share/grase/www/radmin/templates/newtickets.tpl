@@ -44,13 +44,14 @@
 
 <div>
     <label for='numberoftickets'>Number of Tickets</label>
-    <input type="text" name="numberoftickets" id="numberoftickets" value='{$user.numberoftickets}'/>
+    <input type="text" name="numberoftickets" id="numberoftickets"  value='{$user.numberoftickets}' autofocus="autofocus" required="required"/>
     <span id="numberofticketsInfo">Maximum of 50 tickets per batch</span>
 </div>
 <div>
     <label for='Group'>Group</label>
     {html_options name="Group" id="Group" options=$Usergroups selected=$user.Group}    
     <span id='GroupInfo'>Choose the users group (Expiry is based on the user group)</span>
+    <br/>{include file="grouppropertiesinfo.tpl"}
 </div>
 <div>
     <label for='Comment'>Comment</label>

@@ -376,7 +376,7 @@ $smarty->assign('gbvalues', gboctects());
 function assign_vars()
 {
 	global $smarty, $sellable_data, $useable_data, $used_data, $sold_data;
-	global $location, $website_name, $website_link, $DEMO_SITE;
+	global $location, $website_name, $website_link, $DEMO_SITE, $Settings;
 
 	// Data
 	$total_sellable_data = $sellable_data; 
@@ -404,6 +404,11 @@ function assign_vars()
 	$smarty->assign("LastM_DataUsageOctets", $used_data);
 	$smarty->assign("LastM_DataRemainingOctets", $total_useable_data - $used_data);
 	$smarty->assign("LastM_DataUsagePercent", $used_data/($total_useable_data)*100);
+	
+    // Group data for displaying group properties	
+	$smarty->assign("groupdata", DatabaseFunctions::getInstance()->getGroupAttributes());
+    $smarty->assign("groups", unserialize($Settings->getSetting("groups")));	
+
 	
 	// DEMO SITE flag
 	$smarty->assign("DEMOSITE", $DEMO_SITE);

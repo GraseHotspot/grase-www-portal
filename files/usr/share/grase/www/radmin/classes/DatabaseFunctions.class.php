@@ -303,9 +303,13 @@ class DatabaseFunctions
         
         if (isset($Userdata['Expiration'])) 
         {
-            $Userdata['FormatExpiration'] = substr($Userdata['Expiration'], 0, -8);
+            /*$Userdata['FormatExpiration'] = substr($Userdata['Expiration'], 0, -8);
             $Userdata['ExpirationTimestamp'] = strtotime(
-                substr($Userdata['Expiration'], 0, -8));
+                substr($Userdata['Expiration'], 0, -8));*/
+            $Userdata['FormatExpiration'] = $Userdata['Expiration'];
+            if(substr($Userdata['Expiration'], -8) == "00:00:00")
+                $Userdata['FormatExpiration'] = substr($Userdata['Expiration'], 0, -8);
+            $Userdata['ExpirationTimestamp'] = strtotime($Userdata['Expiration']);
         }
         else
         {
@@ -1232,6 +1236,9 @@ class DatabaseFunctions
     
     private function _expiryFormat($date)
     {
+        // This function is only called with a valid $date, don't error check.
+        return date("F d Y H:i:s", strtotime($date));
+        /*
     	list($year, $month, $day) = explode("-", $date, 3);
     	
 	    if($year && $month && $day)
@@ -1243,7 +1250,7 @@ class DatabaseFunctions
 	        return "";
 	        
 	    // Should never get here as Expiry date is now handled automatically and isn't user supplied
-	    ErrorHandling::fatal_error(T_("Problem With expiration Date Format"));
+	    ErrorHandling::fatal_error(T_("Problem With expiration Date Format"));*/
     }
     
     private function _userAccountStatus($Userdata)

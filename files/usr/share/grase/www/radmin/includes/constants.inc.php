@@ -37,7 +37,7 @@ define("NOGROUP_ACCOUNT", "nogroup");
 
 // Group Constants TODO: Obsolete these?
 define("MACHINE_GROUP_NAME", "Computer");
-define("DEFAULT_GROUP_NAME", "Default");
+//define("DEFAULT_GROUP_NAME", "Default");
 
 // RADIUS ChilliSpot Config Constants
 define("RADIUS_CONFIG_USER", "CoovaChilli");

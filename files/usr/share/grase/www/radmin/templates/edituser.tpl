@@ -46,40 +46,23 @@
     {html_options name="Group" options=$Usergroups selected=$user.Group}    
     <span id='GroupInfo'>{t}Choose the users group (Expiry is based on the user group){/t}</span>
     
-<br/><span class="collapseheader">{t}Group Properties{/t}</span>
-<table style="font-size: 80%">
-    <tr>
-        <th>{t}Name{/t}</th>
-        <th>{t}Expiry{/t}</th>
-        <th>{t}Max Data (Mb){/t}</th>
-        <th>{t}Max Time (mins){/t}</th>
-        {*<th>Recur data limit</th>*}
-        <th>{t}Recur time limit{/t}</th>
-        <th>{t}BW Limit Down{/t}</th>
-        <th>{t}BW Limit Up{/t}</th>
-    </tr>
-
-{foreach from=$groups item=expiry key=groupname}
-
-    <tr>
-        <td>{$groupname}</td>
-        <td>{$expiry}</td>
-        <td>{$groupdata.$groupname.MaxMb}</td>
-        <td>{$groupdata.$groupname.MaxTime}</td>        
-        {*<td>{if $groupdata.$groupname.DataRecurLimit}{assign var=lim value=$groupdata.$groupname.DataRecurLimit}{$Datavals.$lim} per {$groupdata.$groupname.DataRecurTime} {/if}</td>*}
-        <td>{if $groupdata.$groupname.TimeRecurLimit}{assign var=lim value=$groupdata.$groupname.TimeRecurLimit}{$Timevals.$lim} per {$groupdata.$groupname.TimeRecurTime}{/if}</td>
-        <td>{if $groupdata.$groupname.BandwidthDownLimit}{assign var=lim value=$groupdata.$groupname.BandwidthDownLimit}{$Bandwidthvals.$lim}{/if}</td>
-        <td>{if $groupdata.$groupname.BandwidthUpLimit}{assign var=lim value=$groupdata.$groupname.BandwidthUpLimit}{$Bandwidthvals.$lim}{/if}</td>        
-
-    </tr>
-{/foreach}
-</table>
+<br/>{include file="grouppropertiesinfo.tpl"}
 
 </div>
-    
+
+<div>
+    <label>Expiration</label>
+{if $user.Expiration == '--'}<strong>{t}This user account never expires{/t}</strong>
+{else}{* Check if ExpirationTimestamp is passed *}
+    {if $user.ExpirationTimestamp > $smarty.now}{$user.FormatExpiration}
+    {else}<strong>{t}This user account has expired{/t}</strong><br/>{$user.FormatExpiration}<br/>
+    <button type="submit" name="unexpiresubmit">{t}Reset expiry{/t}</button>
+    {/if}
+{/if}
+</div>
 <div>
     <label for='Comment'>{t}Comment{/t}</label>
-    <input type="text" name="Comment" value='{$user.Comment}'/>
+    <input type="text" name="Comment" value='{$user.Comment}' autofocus="autofocus"/>
     <span id='CommentInfo'>{t}A comment about the user{/t}</span>
 </div>
 

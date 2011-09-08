@@ -229,9 +229,10 @@ function validate_group($username, $group)
 function expiry_for_group($group)
 {
 	global $Expiry;
-	if(isset($Expiry[$group]) && $Expiry[$group] != '--') return date('Y-m-d', strtotime($Expiry[$group]));
-	if(isset($Expiry[$group]) && $Expiry[$group] == '--') return "--";
-	return date('Y-m-d', strtotime($Expiry[DEFAULT_GROUP_NAME]));
+	if(isset($Expiry[$group]) && $Expiry[$group] != '--') return date('Y-m-d H:i:s', strtotime($Expiry[$group]));
+	//if(isset($Expiry[$group]) && ( $Expiry[$group] == '--' || $Expiry[$group] == '')) return "--";
+	//return date('Y-m-d', strtotime($Expiry[DEFAULT_GROUP_NAME]));
+	return "--";
 }
 
 /*function user_account_status($Userdata)
