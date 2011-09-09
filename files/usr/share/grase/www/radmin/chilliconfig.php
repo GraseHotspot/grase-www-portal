@@ -85,9 +85,9 @@ if(isset($_POST['submit']))
             }
             
             // Update options in database
-            DatabaseFunctions::getInstance()->setPortalConfigSingle($singleoption, $postvalue);
+            DatabaseFunctions::getInstance()->setChilliConfigSingle($singleoption, $postvalue);
             $success[] = sprintf(
-                T_("%s portal config option update"),
+                T_("%s Coova Chilli config option update"),
                 $attributes['label']);
         }
         
@@ -122,13 +122,13 @@ if(isset($_POST['submit']))
      
         if($postvalue != $attributes['value'])
         {
-            DatabaseFunctions::getInstance()->delPortalConfig($multioption);
+            DatabaseFunctions::getInstance()->delChilliConfig($multioption);
             foreach($postvalue as $value)
             {
-                DatabaseFunctions::getInstance()->setPortalConfigMulti($multioption, $value);
+                DatabaseFunctions::getInstance()->setChilliConfigMulti($multioption, $value);
             }
             $success[] = sprintf(
-                T_("%s portal config option update"),
+                T_("%s Coova Chilli config option update"),
                 $attributes['label']);
                 
 
@@ -140,7 +140,7 @@ if(isset($_POST['submit']))
 
     // Update last change timestamp if we actually changed something
     if(sizeof($success) > 0)
-        $Settings->setSetting('lastchangeportalconf', time());
+        $Settings->setSetting('lastchangechilliconf', time());
         
     // Call validate&change functions for changed items
     load_chillioptions(); // Reload due to changes in POST    
@@ -156,7 +156,7 @@ function load_chillioptions()
     foreach($multichillioptions as $multioption => $attributes)
     {
         $multichillioptions[$multioption]['value'] = 
-            DatabaseFunctions::getInstance()->getPortalConfigMulti($multioption);
+            DatabaseFunctions::getInstance()->getChilliConfigMulti($multioption);
     }
 
     // Load all Single option values from database
@@ -164,18 +164,13 @@ function load_chillioptions()
     foreach($singlechillioptions as $singleoption => $attributes)
     {
         $singlechillioptions[$singleoption]['value'] = 
-            DatabaseFunctions::getInstance()->getPortalConfigSingle($singleoption);
+            DatabaseFunctions::getInstance()->getChilliConfigSingle($singleoption);
     }
 }
 
-    
-//    DatabaseFunctions::getInstance()->setPortalConfigSingle('macpasswd', 'passwords');
-//    DatabaseFunctions::getInstance()->setPortalConfigSingle('defidletimeout', '600');
-//    DatabaseFunctions::getInstance()->setPortalConfigMulti('uamallowed', 'google.com.au');    
-
-    // Check when /etc/chilli/local.conf was last updated and compare to $Settings->gettSetting('lastchangeportalconfig');
+    // Check when /etc/chilli/local.conf was last updated and compare to $Settings->gettSetting('lastchangechilliconfig');
     $localconfts = filemtime('/etc/chilli/local.conf');
-    $lastchangets = $Settings->getSetting('lastchangeportalconf');
+    $lastchangets = $Settings->getSetting('lastchangechilliconf');
     if($localconfts < $lastchangets)
     {
         $error[] = T_("Changes pending Coova Chilli Reload");
@@ -191,7 +186,7 @@ if(sizeof($success) > 0) $smarty->assign("success", $success);
 
     $smarty->assign("singlechillioptions", $singlechillioptions);
     $smarty->assign("multichillioptions", $multichillioptions);    
-	display_page('portalconfig.tpl');
+	display_page('chilliconfig.tpl');
 
 ?>
 
