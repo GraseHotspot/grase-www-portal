@@ -19,7 +19,7 @@
 
 <tr><td class="title">{t}Software Version{/t}</td><td colspan="2">{$application_version}</td></tr>
 
-<tr><td class="title">{t}Home URL{/t}</td><td colspan="2"><a href="http://hotspot.purewhite.id.au">GRASE (Purewhite)</a></td></tr>
+<tr><td class="title">{t}Home URL{/t}</td><td colspan="2"><a href="http://grasehotspot.org">GRASE (Purewhite)</a></td></tr>
 
 
 <tr><td class="header" colspan="3">{t}LAN{/t}</td></tr>

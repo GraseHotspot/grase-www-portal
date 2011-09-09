@@ -20,6 +20,11 @@
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/* CronFunctions is mostly an upgrade and maintenace class, makes it easy to 
+ * upgrade database features and do regular cleaning. Cron is called after a 
+ * package update as well allowing for upgrades at each install
+ */
+
 class CronFunctions extends DatabaseFunctions
 {
     /* Inherited from DatabaseFunctions
@@ -49,6 +54,8 @@ class CronFunctions extends DatabaseFunctions
          * */
         $Settings = new SettingsMySQL(DatabaseConnections::getInstance()->getRadminDB());
         $olddbversion = $Settings->getSetting("DBVersion");
+        
+        $results = 0;
          
         if($olddbversion < 1.1)
         {
@@ -101,12 +108,12 @@ class CronFunctions extends DatabaseFunctions
             $results += $result;
             
             // Add default macpasswd string
-            $results += $this->setPortalConfigSingle('macpasswd', 'password');
+            $results += $this->setChilliConfigSingle('macpasswd', 'password');
             // Add default defidelsession 
-            $results += $this->setPortalConfigSingle('defidletimeout', '600');
+            $results += $this->setChilliConfigSingle('defidletimeout', '600');
             
             // Set last change time
-            $Settings->setSetting('lastchangeportalconf', time());
+            $Settings->setSetting('lastchangechilliconf', time());
             
             //Install default groups
 	            $dgroup["Staff"] = "+6 months";
@@ -131,6 +138,16 @@ class CronFunctions extends DatabaseFunctions
             // Upgrade DB version to next version
             $Settings->setSetting("DBVersion", 1.3);
             
+        }
+        
+        if($olddbversion < 1.4)
+        {
+            // Load default templates into database
+            require_once('includes/default_templates.php');
+        
+            // Upgrade DB version to next version
+            $Settings->setSetting("DBVersion", 1.4);        
+        
         }
         
 

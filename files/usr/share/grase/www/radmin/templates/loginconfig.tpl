@@ -1,6 +1,19 @@
 {include file="header.tpl" Name="Portal Settings" activepage="loginconfig" helptext="Use this page to change login page Settings"}
 
-<h2>{t}Login Settings{/t}</h2>
+<script src="/javascript/codemirror/lib/codemirror.js"></script>
+<link rel="stylesheet" href="/javascript/codemirror/lib/codemirror.css">
+<script src="/javascript/codemirror/mode/css/css.js"></script>
+<script src="/javascript/codemirror/mode/xml/xml.js"></script>
+<link rel="stylesheet" href="/javascript/codemirror/theme/default.css">
+
+<script src="/javascript/codemirror-ui/js/codemirror-ui.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/javascript/codemirror-ui/css/codemirror-ui.css" type="text/css" media="screen" />
+{literal}    <style type="text/css">
+      .CodeMirror {border: 1px solid black;}
+    </style>
+{/literal}    
+
+<h2>{t}Portal Customisation{/t}</h2>
 
 <div id="LoginConfigForm">
 <form method="post" action="?" class="generalForm">
@@ -16,6 +29,39 @@
         <span id="{$option}Info">{$attributes.description}</span>
     </div>
     {/foreach}
+    
+    
+    {foreach from=$templateoptions item=attributes key=option}
+    <div>
+        <label for='{$option}'>{$attributes.label}</label>
+        <span id="{$option}Info">{$attributes.description}</span>
+        {if $attributes.location}<span class="tpllocation">[{$attributes.location}]</span>{/if}
+        <br/>
+
+        
+        <textarea name="{$option}" id="{$option}">{$attributes.value}</textarea>    
+        
+            <script>
+                var delay{$option};
+                
+                //first set up some variables
+                var textarea = document.getElementById('{$option}');
+                {literal}
+                var uiOptions = { path : '/javascript/codemirror-ui/js/', searchMode : 'popup' }
+                var codeMirrorOptions = {
+                {/literal}
+                    mode: "text/{$attributes.type}",
+                    lineNumbers: true,
+                {literal}}{/literal};
+
+                //then create the editor
+                var my{$option} = new CodeMirrorUI(textarea,uiOptions,codeMirrorOptions);
+                
+            </script>
+    
+    </div>
+    
+    {/foreach}    
 
 <p class="nojshelp">{t}For each of the following items, if you need multiple values you can submit the form and it will append a blank input below the last valid value{/t}<p>
     

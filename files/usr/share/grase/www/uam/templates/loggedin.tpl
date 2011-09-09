@@ -1,10 +1,15 @@
 {include file="header.tpl" Name="Logged In" activepage="loggedin"}
 
 <div id="page">
+{if !$hideheader}
 <h1>{$Location} Hotspot - {t}Successful Login{/t}</h1>
+{/if}
+
+{if $tpl_loggedinnojshtml}{$tpl_loggedinnojshtml}{else}
+<p>Your login was successful. Please click <a href="nojsstatus" target="grasestatus">HERE</a> to open a status window<br/>If you don't open a status window, then bookmark the link <a href="http://logout/">http://logout/</a> so you can logout when finished.</p>
+{/if}
 
 
-<p>{t}Your login was successful.{/t} {t escape=no}Please click <a href="nojsstatus" target="grasestatus">HERE</a> to open a status window{/t}<br/>{t escape=no}If you don't open a status window, then bookmark the link <a href="http://logout/">http://logout/</a> so you can logout when finished.{/t}</p>
 {if $user_url}<span><a href="{$user_url}">{t}Continue to your site{/t} {$user_url|truncate:60}</a></span>{/if}
 
 

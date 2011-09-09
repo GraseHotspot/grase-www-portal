@@ -9,13 +9,13 @@ Login is required to access the {$Application} section of this website.
 
 <div>
     <label for='username'>Username</label>
-    <input type="text" name="username" value='{$username}'/>
+    <input type="text" name="username" value='{$username}' autofocus="autofocus" required="required"/>
     <span></span>
 </div>
 
 <div>
     <label for='password'>Password</label>
-    <input type="password" name="password" />
+    <input type="password" name="password" required="required" />
     <span></span>    
 </div>
 <button type="submit" class="positive" name="login" value="Login">Login</button>

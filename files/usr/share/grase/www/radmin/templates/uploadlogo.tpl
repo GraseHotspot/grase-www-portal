@@ -18,6 +18,20 @@
 
 </form>
 
+{t}For more advanced logos, (different file type, size, placement}, manually upload the file to /var/www/ or /usr/share/grase/www/images/ and use the custom CSS to override this logo. The logo is defined in the #page container as the background.{/t}
+{literal}
+<pre>
+#page {
+    background: url("/grase/images/logo.png") right top no-repeat;
+}
+</pre>
+<hr/>
+<pre>
+#page {
+    background: none;
+}
+</pre>
+{/literal}
 
 </div>
 

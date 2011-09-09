@@ -5,7 +5,7 @@
 <p>Last Cron ran at: {$lastcron}</p>
 
 <div id='log' style='display:block;'>
-<form id="filter-form">Filter: <input name="filter" id="filter" value="" maxlength="30" size="30" type="text"></form><br>
+<form id="filter-form">Filter: <input name="filter" id="filter" value="" maxlength="30" size="30" type="search"></form><br>
 	<table border="0" id='AdminlogTable' class="stripeMe">
 	    <col style="width: 10em"/>
 	    <col style="width: 9em"/>

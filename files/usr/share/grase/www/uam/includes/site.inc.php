@@ -47,10 +47,19 @@ $smarty->assign("website_link", $website_link);
 
 
 // Load login page settings from db and use defaults
-$smarty->assign("hidefooter", $Settings->getSetting('hidefooter') == 'TRUE' ? TRUE : FALSE);
+/*$smarty->assign("hidefooter", $Settings->getSetting('hidefooter') == 'TRUE' ? TRUE : FALSE);
+$smarty->assign("hideheader", $Settings->getSetting('hideheader') == 'TRUE' ? TRUE : FALSE);
+$smarty->assign("disableallcss", $Settings->getSetting('disableallcss') == 'TRUE' ? TRUE : FALSE);
+$smarty->assign("hidehelplink", $Settings->getSetting('hidehelplink') == 'TRUE' ? TRUE : FALSE);
+$smarty->assign("hidelogoutbookmark", $Settings->getSetting('hidelogoutbookmark') == 'TRUE' ? TRUE : FALSE);*/
+
+custom_settings(array('hidefooter', 'hideheader', 'disableallcss', 'hidehelplink', 'hidelogoutbookmark'));
 
 
 $smarty->assign("logintitle", $Settings->getSetting('logintitle'));
+
+// Load templates needed by all pages
+load_templates(array('maincss'));
 
 
 function apply_locale($newlocale)
@@ -65,6 +74,24 @@ function apply_locale($newlocale)
 
     T_bindtextdomain("grase", "/usr/share/grase/locale");
     T_textdomain("grase");
+}
+
+function load_templates($templates)
+{
+    global $Settings, $smarty;
+    foreach($templates as $template)
+    {
+        $smarty->assign('tpl_'.$template, $Settings->getTemplate($template));
+    }
+}
+
+function custom_settings($settings = array())
+{
+    global $smarty, $Settings;
+    foreach($settings as $setting)
+    {
+        $smarty->assign($setting, $Settings->getSetting($setting) == 'TRUE' ? TRUE : FALSE);    
+    }
 }
 
 ?>

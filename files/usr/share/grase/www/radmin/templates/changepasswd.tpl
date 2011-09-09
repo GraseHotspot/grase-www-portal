@@ -14,19 +14,19 @@
 
 <div>
     <label for='OldPassword'>{t}Old Password{/t}</label>
-    <input type="password" name="OldPassword" id="OldPassword" value='' class="autoDisable"/>
+    <input type="password" name="OldPassword" id="OldPassword" value='' class="autoDisable" required="required"/>
     <span id="OldPasswordInfo"> </span>
 </div>
 
 <div>
     <label for='NewPassword'>{t}New Password{/t}</label>
-    <input type="password" name="NewPassword" id="NewPassword" value='' class="autoDisable"/>
+    <input type="password" name="NewPassword" id="NewPassword" value='' class="autoDisable" required="required"/>
     <span id="NewPasswordInfo"> </span>
 </div>
 
 <div>
     <label for='ConfirmPassword'>{t}Confirm New Password{/t}</label>
-    <input type="password" name="ConfirmPassword" id="ConfirmPassword" value='' class="autoDisable"/>
+    <input type="password" name="ConfirmPassword" id="ConfirmPassword" value='' class="autoDisable" required="required"/>
     <span id="ConfirmPasswordInfo"> </span>
 </div>
 <div>
@@ -43,13 +43,13 @@
 
 <div>
     <label for='newUsername'>{t}Username{/t}</label>
-    <input type="text" name="newUsername" id="newUsername" value='' class="autoDisable"/>
+    <input type="text" name="newUsername" id="newUsername" value='' class="autoDisable" required="required"/>
     <span id="newUsernameInfo"> </span>
 </div>
 
 <div>
     <label for='newPassword'>{t}Password{/t}</label>
-    <input type="password" name="newPassword" id="newPassword" value='' class="autoDisable"/>
+    <input type="password" name="newPassword" id="newPassword" value='' class="autoDisable" required="required"/>
     <span id="newPasswordInfo"> </span>
 </div>
 

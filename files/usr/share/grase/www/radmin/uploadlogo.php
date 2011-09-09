@@ -48,12 +48,15 @@ require_once 'includes/database_functions.inc.php';
 				$error = "Logo too big";
 			}else
 			{
+			    // TODO: test if jpg or png
+			    // TODO: test if jpeg/jpg/png extension otherwise browser doesn't know type
 				//print "Attempting to test if png";
 				if(exif_imagetype($_FILES['newlogo']['tmp_name']) != IMAGETYPE_PNG)
 				{
 					$error = "Logo is not a png";
 				}else
 				{
+				    // TODO: don't overwrite logo.X, upload to logo dir and remember name to add to css/html
 					//print "Attempting to move file";
 					if(move_uploaded_file($_FILES['newlogo']['tmp_name'], '/usr/share/grase/www/images/logo.png'))
 					{

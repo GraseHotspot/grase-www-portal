@@ -27,7 +27,7 @@ class SettingsMySQL extends Settings
     private $databaseSettings;
     private $db;
     
-    private $dbSchemeVersion = "1.0";
+    private $dbSchemeVersion = "2.0";
     private $dbSchemeSettings = 
         "CREATE TABLE IF NOT EXISTS `settings` (
           `setting` varchar(20) NOT NULL,
@@ -41,6 +41,12 @@ class SettingsMySQL extends Settings
           PRIMARY KEY (`username`),
           KEY `password` (`password`)
         ) ENGINE=MyISAM DEFAULT CHARSET=latin1";
+    private $dbSchemaTemplates = 
+        "CREATE TABLE IF NOT EXISTS `templates` (
+          `id` tinyint(4) NOT NULL,
+          `tpl` text NOT NULL,
+          PRIMARY KEY (`id`)
+        ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='HTML/CSS Storage'";
 
     public function __construct($db)
     {
@@ -79,7 +85,8 @@ class SettingsMySQL extends Settings
     private function checkTablesExist()
     {
         if( $this->db->query("SHOW TABLES LIKE 'settings'")->numRows() &&
-            $this->db->query("SHOW TABLES LIKE 'auth'")->numRows())
+            $this->db->query("SHOW TABLES LIKE 'auth'")->numRows() &&
+            $this->db->query("SHOW TABLES LIKE 'templates'")->numRows())             
         {
             return true;
         }
@@ -93,7 +100,9 @@ class SettingsMySQL extends Settings
         $this->db->query($this->dbSchemeSettings);   
         // Auth Table
         $this->db->query($this->dbSchemeAuth);
-        $this->setSetting('DBVersion', $this->dbSchemeVersion);
+        // Templates table
+        $this->db->query($this->dbSchemaTemplates);
+        $this->setSetting('DBSchemaVersion', $this->dbSchemeVersion);
     }
     
     public function getSetting($setting)
@@ -107,7 +116,7 @@ class SettingsMySQL extends Settings
     // ^^ Returning the value fails on empty strings
     public function checkExistsSetting($setting)
     {
-        $sql = sprintf("SELECT COUNT(setting) FROM settings WHERE setting = '%s'",
+        $sql = sprintf("SELECT COUNT(setting) FROM settings WHERE setting = '%s'  LIMIT 1",
                         mysql_real_escape_string($setting));
         return $this->db->queryOne($sql);
        
@@ -149,6 +158,71 @@ class SettingsMySQL extends Settings
 
     }
     
+    
+/* "Settings" for templates */
+
+    // Template map is to make it easier to lookup templates via int not txt
+    private $templatemap = array(
+        'maincss'   => 0,
+        'loginhelptext' => 1,
+        'helptext' => 2,
+        'belowloginhtml' => 3,
+        'loggedinnojshtml' => 4,
+    );
+
+    public function getTemplate($template)
+    {
+        $sql = sprintf("SELECT tpl FROM templates WHERE id = '%s' LIMIT 1",
+                        mysql_real_escape_string($this->templatemap[$template]));
+        return $this->db->queryOne($sql);
+       
+    }
+    
+    // ^^ Returning the value fails on empty strings
+    public function checkExistsTemplate($template)
+    {
+        $sql = sprintf("SELECT COUNT(id) FROM templates WHERE id = '%s' LIMIT 1",
+                        mysql_real_escape_string($this->templatemap[$template]));
+        return $this->db->queryOne($sql);
+       
+    }    
+    
+    public function setTemplate($template, $value)
+    {
+        // Check count not contents ^^
+        if($this->checkExistsTemplate($template) == 0)
+        {
+            // Insert new record
+            $sql = sprintf("INSERT INTO templates SET
+                            id='%s',
+                            tpl='%s'",
+                            mysql_real_escape_string($this->templatemap[$template]),
+                            mysql_real_escape_string($value));
+        }else
+        {
+            // Update old record
+            $sql = sprintf("UPDATE templates SET
+                            tpl='%s'
+                            WHERE id='%s'",
+                            mysql_real_escape_string($value),
+                            mysql_real_escape_string($this->templatemap[$template]));
+            
+        }
+        
+        $affected =& $this->db->exec($sql);
+
+        // Always check that result is not an error
+        if (PEAR::isError($affected)) {
+	        AdminLog::getInstance()->log("Template $template failed to update");        
+            ErrorHandling::fatal_error('Updating template failed: '. $affected->getMessage());
+        }
+        //if($template != 'lastbatch') // lastbatch clogs admin log, filter it out
+            AdminLog::getInstance()->log("Template $template updated");
+        return true;
+        
+
+    }
+/* End templates functions */    
     
     public function upgradeFromFiles()
     {

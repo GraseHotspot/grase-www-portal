@@ -41,20 +41,64 @@ $multiloginoptions = array(
     
 // Options for login Config that can only be one
 $singleloginoptions = array(
+    'hideheader' => array(
+        "label" => T_("Login Screen Title"),
+        "description" => T_("Hide Title (header) from login screen"),
+        "type" => "bool"),
     'hidefooter' => array(
         "label" => T_("Login Screen Footer"),
-        "description" => T_("Hide footer from login screen"),
+        "description" => T_("Hide footer from login screen. Please consider adding a link back to http://grasehotspot.org if you are hiding the footer"),
+        "type" => "bool"),
+    'hidelogoutbookmark' => array(
+        "label" => T_("Logout Bookmark"),
+        "description" => T_("Hide Bookmark logout link"),
+        "type" => "bool"),        
+    'hidehelplink' => array(
+        "label" => T_("Help Link"),
+        "description" => T_("Hide Help and Information link from login page (still shows in footer if footer is enabled)"),
         "type" => "bool"),
     'disablejavascript' => array(
-        "label" => T_("Disable Javascript"),
+        "label" => T_("Disable Javascript Login"),
         "description" => T_("Force all logins to be through the less secure non-javascript method"),
         "type" => "bool"),  
+    'disableallcss' => array(
+        "label" => T_("Disable All Default CSS"),
+        "description" => T_("All css files will be excluded from the login pages, and only the css below (Main CSS) will be used"),
+        "type" => "bool"),          
         
     'logintitle' => array(
         "label" => T_("Page Title"),
         "description" => T_("The page title that is displayed on the login page"),
         "type" => "text"),              
-    );    
+    );
+
+
+// Templates    
+$templateoptions = array(
+    'maincss' => array(
+        "label" => T_("Main CSS"),
+        "description" => T_("Cascading style sheet that is applied to all portal pages (use !important to override a style if your settings here don't seem to work, it may be that the builtin css has a more specific selector than your one here, look at radmin.css for id's and classes)"),
+        "type" => "css"),
+    'helptext' => array(
+        "label" => T_("Help and Information Page"),
+        "description" => T_("Help and Information page contents"),
+//        "location" => "div id: tpl_helptext",
+        "type" => "html"),
+    'loginhelptext' => array(
+        "label" => T_("Login Help HTML"),
+        "description" => T_("Help text (and HTML) displayed on login page above login form"),
+//        "location" => "div id: tpl_loginhelptext",
+        "type" => "html"),        
+        
+    'belowloginhtml' => array(
+        "label" => T_("HTML Below login form"),
+        "description" => T_("HTML to insert below login form"),
+        "type" => "html"),        
+    'loggedinnojshtml' => array(
+        "label" => T_("Logged In HTML"),
+        "description" => T_("HTML for successful login when not using javascript"),
+        "type" => "html"),        
+    );           
     
 load_loginoptions();   
 
@@ -96,55 +140,43 @@ if(isset($_POST['submit']))
         
     }
     
-    foreach($multiloginoptions as $multioption => $attributes)
+    foreach($templateoptions as $templateoption => $attributes)
     {
-        $postvalue = array();
-        foreach($_POST[$multioption] as $value)
+        /*switch ($attributes['type'])
         {
-            switch ($attributes['type'])
-            {
-                case "string":
-                    $postvalue[] = clean_text($value);
-                    break;
-                case "int":
-                    $postvalue[] = clean_int($value);
-                    break;
-                case "number":
-                    $postvalue[] = clean_number($value);
-                    break;
-                    
-            }
+            default:
+            case "string":
+                $postvalue = trim(clean_text($_POST[$singleoption]));
+                break;
+            case "int":
+                $postvalue = trim(clean_int($_POST[$singleoption]));
+                break;
+            case "number":
+                $postvalue = trim(clean_number($_POST[$singleoption]));
+                break;
+            case "bool":
+                if(isset($_POST[$singleoption]))
+                    $postvalue = 'TRUE';
+                else
+                    $postvalue = 'FALSE';
+                break;
+                
+        }*/
+        // TODO: check that length isn't longer than maximum database length as it will be truncated
+        $postvalue = trim($_POST[$templateoption]);
         
-//        if($postvalue != $attributes['value'])
-//        {
-//        }
-        }
-        $postvalue = array_filter($postvalue);
-        sort($postvalue);        
-        sort($attributes['value']);
-     
         if($postvalue != $attributes['value'])
         {
-            DatabaseFunctions::getInstance()->delPortalConfig($multioption);
-            foreach($postvalue as $value)
-            {
-                DatabaseFunctions::getInstance()->setPortalConfigMulti($multioption, $value);
-            }
+            // Update options in database
+            $Settings->setTemplate($templateoption, $postvalue);
+
             $success[] = sprintf(
-                T_("%s portal config option update"),
+                T_("%s login config option update"),
                 $attributes['label']);
-                
-
-        
         }
-
         
-    }
-
-    // Update last change timestamp if we actually changed something
-    if(sizeof($success) > 0)
-        $Settings->setSetting('lastchangeportalconf', time());
-        
+    }    
+    
     // Call validate&change functions for changed items
     load_loginoptions(); // Reload due to changes in POST    
 }
@@ -153,14 +185,14 @@ if(isset($_POST['submit']))
 
 function load_loginoptions()
 {
-    global $multiloginoptions, $singleloginoptions, $Settings;
+    global $multiloginoptions, $singleloginoptions, $templateoptions, $Settings;
     // Load all Multi option values from database 
 
-    foreach($multiloginoptions as $multioption => $attributes)
+    /*foreach($multiloginoptions as $multioption => $attributes)
     {
         $multiloginoptions[$multioption]['value'] = 
             DatabaseFunctions::getInstance()->getPortalConfigMulti($multioption);
-    }
+    }*/
 
     // Load all Single option values from database
 
@@ -169,18 +201,20 @@ function load_loginoptions()
         $singleloginoptions[$singleoption]['value'] = 
             $Settings->getSetting($singleoption);
     }
+    
+    // Load all templates
+    foreach($templateoptions as $template => $attributes)
+    {
+        $templateoptions[$template]['value'] =
+            $Settings->getTemplate($template);
+    }
 }
 
-    
-//    DatabaseFunctions::getInstance()->setPortalConfigSingle('macpasswd', 'passwords');
-//    DatabaseFunctions::getInstance()->setPortalConfigSingle('defidletimeout', '600');
-//    DatabaseFunctions::getInstance()->setPortalConfigMulti('uamallowed', 'google.com.au');    
-
-    
 if(sizeof($error) > 0) $smarty->assign("error", $error);	
 if(sizeof($success) > 0) $smarty->assign("success", $success);
 
     $smarty->assign("singleloginoptions", $singleloginoptions);
+    $smarty->assign("templateoptions", $templateoptions);    
     $smarty->assign("multiloginoptions", $multiloginoptions);    
 	display_page('loginconfig.tpl');
 

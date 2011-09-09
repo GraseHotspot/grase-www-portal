@@ -74,7 +74,7 @@ if(isset($_POST['newmachinesubmit']))
 		$mac = clean_text($_POST['mac']);
 		database_create_new_user( // TODO: Check if successful
 			$mac,
-			DatabaseFunctions::getInstance()->getPortalConfigSingle('macpasswd'), // DONE: macpasswd comes from DB
+			DatabaseFunctions::getInstance()->getChilliConfigSingle('macpasswd'), // DONE: macpasswd comes from DB
 			$MaxMb,
 			$MaxTime,
 			'--', // No expiry for machine accounts

@@ -2,6 +2,8 @@
 
 require_once('includes/site.inc.php');
 
+load_templates(array('loginhelptext', 'belowloginhtml'));
+
 /*$loginurl = parse_url($_GET['loginurl']);
 $query = $loginurl['query'];
 parse_str($query, $uamopts);*/
@@ -56,11 +58,11 @@ $smarty->assign("RealHostname", trim(file_get_contents('/etc/hostname')));
     
 */    
 
-/*if(!isset($_GET['res']))
+if(!isset($_GET['res']))
 {
     // Redirect to prelogin
         header("Location: http://10.1.0.1:3990/prelogin");
-}*/
+}
 
 // Already been through prelogin
 /*$jsloginlink = "http://10.1.0.1/grase/uam/mini?$query";
@@ -88,6 +90,7 @@ switch($res)
         
     case 'success':
         //Logged in. Try popup and redirect to userurl
+        load_templates(array('loggedinnojshtml'));
         $smarty->display('loggedin.tpl');
         exit;
         break;        

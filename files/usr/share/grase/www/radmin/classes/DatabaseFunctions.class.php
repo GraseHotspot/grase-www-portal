@@ -1100,7 +1100,7 @@ class DatabaseFunctions
     
     /* Functions related to ChilliSpot Config attributes */
     
-    public function getPortalConfigSingle($option)
+    public function getChilliConfigSingle($option)
     {
         $sql = sprintf("SELECT Value
             FROM radreply
@@ -1115,7 +1115,7 @@ class DatabaseFunctions
         
          if (PEAR::isError($value)) {
             ErrorHandling::fatal_db_error(
-                T_('Retrieving Portal Config Single Value failed: '), $value);
+                T_('Retrieving Chilli Config Single Value failed: '), $value);
         }
         
         list($option, $value) = explode('=',$value);
@@ -1124,7 +1124,7 @@ class DatabaseFunctions
 
     }
     
-    public function delPortalConfig($option, $value='')
+    public function delChilliConfig($option, $value='')
     {
         if($value != '')
         {
@@ -1149,18 +1149,18 @@ class DatabaseFunctions
         if (PEAR::isError($result))
         {
             ErrorHandling::fatal_db_error(
-                T_('Deleting Portal Config Query Failed: '), $result);
+                T_('Deleting Chilli Config Query Failed: '), $result);
         }        
         
         return $result;
     }
     
-    public function setPortalConfigSingle($option, $value)
+    public function setChilliConfigSingle($option, $value)
     {
     
         /* Because of DB structure, we can't uniquely identify these items, so
          * must delete then insert as they are single values */
-        $this->delPortalConfig($option, '');
+        $this->delChilliConfig($option, '');
         // $value is '' so we delete any options as this is a single not multi
     
         $affected =& $this->insert_radius_values_sql->execute(
@@ -1173,13 +1173,13 @@ class DatabaseFunctions
         if (PEAR::isError($affected))
         {
             ErrorHandling::fatal_db_error(
-                T_('Setting Portal Config Single Query Failed: '), $affected);
+                T_('Setting Chilli Config Single Query Failed: '), $affected);
         }
         
         return $affected;     
     }
     
-    public function setPortalConfigMulti($option, $value)
+    public function setChilliConfigMulti($option, $value)
     {
     
         /* Because it's multiple, we rely on other parts of the software to
@@ -1195,13 +1195,13 @@ class DatabaseFunctions
         if (PEAR::isError($affected))
         {
             ErrorHandling::fatal_db_error(
-                T_('Setting Portal Config Multi Query Failed: '), $affected);
+                T_('Setting Chilli Config Multi Query Failed: '), $affected);
         }
         
         return $affected;     
     }    
     
-    public function getPortalConfigMulti($option)
+    public function getChilliConfigMulti($option)
     {
         $sql = sprintf("SELECT Value
             FROM radreply
@@ -1216,7 +1216,7 @@ class DatabaseFunctions
         
          if (PEAR::isError($values)) {
             ErrorHandling::fatal_db_error(
-                T_('Retrieving Portal Config Multi Value failed: '), $values);
+                T_('Retrieving Chilli Config Multi Value failed: '), $values);
         }
         $results = array();
         foreach($values as $val)
@@ -1269,7 +1269,7 @@ class DatabaseFunctions
 	        $status = LOWDATA_ACCOUNT;
 	    }
 	    elseif($Userdata['Group'] == MACHINE_GROUP_NAME)
-	    {
+	    {    
 	        $status = MACHINE_ACCOUNT; 
 	    }
 	    elseif($Userdata['Group'] != "")

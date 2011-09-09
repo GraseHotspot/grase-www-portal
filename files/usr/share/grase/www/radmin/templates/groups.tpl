@@ -1,7 +1,7 @@
 {include file="header.tpl" Name="Groups" activepage="groups"}
 
 <h2>{t}Group Config{/t}</h2>
-<p>{t escape=no}Group expiry needs to be in a format understood by the <a target="_blank" href="http://www.php.net/manual/en/function.strtotime.php">strtotime</a> PHP function.{/t}<br/>{t}For example, "+1 month" will set an expiry for 1 month from when the account is created. "+2 weeks", "+3 days" etc.{/t}</p>
+<p>{t escape=no}Group expiry needs to be in a format understood by the <a target="_blank" href="http://www.php.net/manual/en/function.strtotime.php">strtotime</a> PHP function.{/t}<br/>{t}For example, "+1 month" will set an expiry for 1 month from when the account is created. "+2 weeks", "+3 days" etc.{/t} {t}Expiry is calculated to the second, so if you want it to a date for example, try "+1 week midnight".{/t}</p>
 
 <p>{t}Deleting a group won't delete it's users. Next time the user is edited it's group will become the default group unless a new group is selected.{/t}</p>
 

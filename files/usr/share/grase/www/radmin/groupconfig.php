@@ -51,7 +51,7 @@ if(isset($_POST['submit']))
     {
         $error[] = T_("A minimum of one group is required");
     }
-    if(sizeof($groupexpiry) < 1)
+    if(sizeof($groupexpiry) < sizeof($groupnames) - 1)
     {
         $success[] = T_("It is not recommended having groups without expiries.");
     }
@@ -144,6 +144,7 @@ if(isset($_POST['submit']))
     
     if(sizeof($error) == 0)
     {
+
         // No errors. Save groups
         $Settings->setSetting("groups", serialize($groupexpiries));
         
@@ -154,6 +155,7 @@ if(isset($_POST['submit']))
         // TODO: cron function that removes groups no longer referenced anywhere
         foreach($groups as $name => $group)
         {
+     
             DatabaseFunctions::getInstance()->setGroupAttributes($name, $group);
         }
         

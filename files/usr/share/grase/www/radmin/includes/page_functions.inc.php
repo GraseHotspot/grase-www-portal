@@ -96,8 +96,8 @@ function createmenuitems()
 	$menubar['settings'] = array("href" => "settings", "label" => T_("Settings"),
 	    "submenu" => array(
 	        'uploadlogo' => array("href" => "uploadlogo", "label" => T_("Site Logo") ),
-            'portalconfig' => array("href" => "portalconfig", "label" => T_("Portal Settings") ),
-            'loginconfig' => array("href" => "loginconfig", "label" => T_("Login Settings") ),
+            'chilliconfig' => array("href" => "chilliconfig", "label" => T_("Coova Chilli Settings") ),
+            'loginconfig' => array("href" => "loginconfig", "label" => T_("Portal Customisation") ),
             'groups' => array("href" => "groupconfig", "label" => T_("Groups") )	
         )
             

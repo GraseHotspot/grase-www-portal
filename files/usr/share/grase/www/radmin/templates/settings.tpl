@@ -19,7 +19,7 @@
     
     <div>
         <label for='supportlink'>{t}Support Link{/t}</label>
-        <input type="text" name="supportlink" id="supportlink" value='{$support_link}'/>
+        <input type="url" name="supportlink" id="supportlink" value='{$support_link}'/>
         <span id="supportlinkInfo">{t}This is the link for the support contact. http:// or mailto: are allowed. If using http:// ensure this is accessabile for users who aren't logged into the hotspot{/t}</span>
     </div>    
 
@@ -54,7 +54,7 @@
     
     <div>
         <label for='websitelink'>{t}Website Link{/t}</label>
-        <input type="text" name="websitelink" id="websitelink" value='{$website_link}'/>
+        <input type="url" name="websitelink" id="websitelink" value='{$website_link}'/>
         <span id="websitelinkInfo">{t}Link for Website Footer Link{/t}</span>
     </div>   
     
