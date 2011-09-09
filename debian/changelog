@@ -1,3 +1,13 @@
+grase-www-portal (3.5) natty; urgency=low
+
+  * Display group properties in edit and new user pages
+  * Customisation of login pages
+  * Some HTML5 changes for forms and inputs
+  * Fixes for expiry to support to the second not to midnight of the date
+  * Easy "unexpire" of an expired user. Fixes #14
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Fri, 09 Sep 2011 08:02:02 +1000
+
 grase-www-portal (3.4.1) purewhite; urgency=low
 
   * German Translation
