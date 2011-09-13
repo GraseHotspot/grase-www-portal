@@ -1,5 +1,5 @@
-<p >{t}Laptop requirements:{/t}</p>
+<p >Laptop requirements:</p>
 <ul>
-	<li>{t}Laptop with Wireless (Capable of doing WEP/WPA Encryption) or an Ethernet Port{/t}</li>
-	<li>{t}Web browser.{/t} <em>{t}For the best experience, please use Firefox.{/t}</em></li>
+	<li>Laptop with Wireless (Capable of doing WEP/WPA Encryption) or an Ethernet Port</li>
+	<li>Web browser. <em>For the best experience, please use Firefox.</em></li>
 </ul>

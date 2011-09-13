@@ -224,6 +224,9 @@ gettext("Group expiry needs to be in a format understood by the <a target=\"_bla
 gettext("For example, \"+1 month\" will set an expiry for 1 month from when the account is created. \"+2 weeks\", \"+3 days\" etc.");
 
 /* ../www/radmin/templates/groups.tpl */
+gettext("Expiry is calculated to the second, so if you want it to a date for example, try \"+1 week midnight\".");
+
+/* ../www/radmin/templates/groups.tpl */
 gettext("Deleting a group won't delete it's users. Next time the user is edited it's group will become the default group unless a new group is selected.");
 
 /* ../www/radmin/templates/groups.tpl */
@@ -341,16 +344,19 @@ gettext("Change Comment");
 gettext("Change Comment");
 
 /* ../www/radmin/templates/edituser.tpl */
-gettext("If you really want to delete this machine account, please type exactly \"Yes, I want to delete this user\" in the below box then click \"Delete User\"");
+gettext("Delete User");
 
 /* ../www/radmin/templates/edituser.tpl */
-gettext("User accounts are automatically deleted 2 months after expiry. Only unused accounts should be manually deleted to prevent errors in the reports or statistics.");
+gettext("User accounts are automatically deleted 2 months after expiry. Only accounts with zero usage should be manually deleted to prevent errors in the reports or statistics.");
 
 /* ../www/radmin/templates/edituser.tpl */
 gettext("Delete User");
 
 /* ../www/radmin/templates/edituser.tpl */
-gettext("Delete User");
+gettext("Are you sure you want to delete this user?");
+
+/* ../www/radmin/templates/edituser.tpl */
+gettext("Delete User %1");
 
 /* ../www/radmin/templates/edituser.tpl */
 gettext("Username");
@@ -363,6 +369,15 @@ gettext("Choose a secure password for the user. Leave blank to not change");
 
 /* ../www/radmin/templates/edituser.tpl */
 gettext("Choose the users group (Expiry is based on the user group)");
+
+/* ../www/radmin/templates/edituser.tpl */
+gettext("This user account never expires");
+
+/* ../www/radmin/templates/edituser.tpl */
+gettext("This user account has expired");
+
+/* ../www/radmin/templates/edituser.tpl */
+gettext("Reset expiry");
 
 /* ../www/radmin/templates/edituser.tpl */
 gettext("Comment");
@@ -413,40 +428,19 @@ gettext("Update User Details");
 gettext("Update User Details");
 
 /* ../www/radmin/templates/edituser.tpl */
-gettext("If you really want to delete a user, please type exactly \"Yes, I want to delete this user\" in the below box then click \"Delete User\"");
+gettext("Delete User");
 
 /* ../www/radmin/templates/edituser.tpl */
-gettext("User accounts are automatically deleted 2 months after expiry. Only unused accounts should be manually deleted to prevent errors in the reports or statistics.");
-
-/* ../www/radmin/templates/edituser.tpl */
-gettext("Delete the User");
+gettext("User accounts are automatically deleted 2 months after expiry. Only accounts with zero usage should be manually deleted to prevent errors in the reports or statistics.");
 
 /* ../www/radmin/templates/edituser.tpl */
 gettext("Delete User");
 
 /* ../www/radmin/templates/edituser.tpl */
-gettext("Delete User");
+gettext("Are you sure you want to delete this user?");
 
-/* ../www/radmin/templates/portalconfig.tpl */
-gettext("Portal Settings");
-
-/* ../www/radmin/templates/portalconfig.tpl */
-gettext("These settings are used by Coova Chilli. Coova Chilli only reloads it's config roughly once an hour, or when it's restarted.");
-
-/* ../www/radmin/templates/portalconfig.tpl */
-gettext("If you change the MAC Auth Password, no computer accounts will be able to login until Coova Chilli reloads it's config, or is manually restarted.");
-
-/* ../www/radmin/templates/portalconfig.tpl */
-gettext("Chilli Config last updated %1");
-
-/* ../www/radmin/templates/portalconfig.tpl */
-gettext("Portal Config last updated %1");
-
-/* ../www/radmin/templates/portalconfig.tpl */
-gettext("For each of the following items, if you need multiple values you can submit the form and it will append a blank input below the last valid value");
-
-/* ../www/radmin/templates/portalconfig.tpl */
-gettext("Save Settings");
+/* ../www/radmin/templates/edituser.tpl */
+gettext("Delete User %1");
 
 /* ../www/radmin/templates/sessions.tpl */
 gettext("Sessions for %1");
@@ -498,6 +492,9 @@ gettext("Logo file needs to be in png format, and relatively small (remember, ev
 
 /* ../www/radmin/templates/uploadlogo.tpl */
 gettext("Upload Logo");
+
+/* ../www/radmin/templates/uploadlogo.tpl */
+gettext("For more advanced logos, (different file type, size, placement}, manually upload the file to /var/www/ or /usr/share/grase/www/images/ and use the custom CSS to override this logo. The logo is defined in the #page container as the background.");
 
 /* ../www/radmin/templates/changepasswd.tpl */
 gettext("Admin Users");
@@ -601,6 +598,27 @@ gettext("My Account");
 /* ../www/radmin/templates/footer.tpl */
 gettext("Admin");
 
+/* ../www/radmin/templates/chilliconfig.tpl */
+gettext("Coova Chilli Settings");
+
+/* ../www/radmin/templates/chilliconfig.tpl */
+gettext("These settings are used by Coova Chilli. Coova Chilli only reloads it's config roughly once an hour, or when it's restarted.");
+
+/* ../www/radmin/templates/chilliconfig.tpl */
+gettext("If you change the MAC Auth Password, no computer accounts will be able to login until Coova Chilli reloads it's config, or is manually restarted.");
+
+/* ../www/radmin/templates/chilliconfig.tpl */
+gettext("Chilli Config last updated %1");
+
+/* ../www/radmin/templates/chilliconfig.tpl */
+gettext("Portal Config last updated %1");
+
+/* ../www/radmin/templates/chilliconfig.tpl */
+gettext("For each of the following items, if you need multiple values you can submit the form and it will append a blank input below the last valid value");
+
+/* ../www/radmin/templates/chilliconfig.tpl */
+gettext("Save Settings");
+
 /* ../www/radmin/templates/display.tpl */
 gettext("Data Limit");
 
@@ -670,6 +688,30 @@ gettext("IP");
 /* ../www/radmin/templates/adminlog.tpl */
 gettext("Action");
 
+/* ../www/radmin/templates/grouppropertiesinfo.tpl */
+gettext("Group Properties");
+
+/* ../www/radmin/templates/grouppropertiesinfo.tpl */
+gettext("Name");
+
+/* ../www/radmin/templates/grouppropertiesinfo.tpl */
+gettext("Expiry");
+
+/* ../www/radmin/templates/grouppropertiesinfo.tpl */
+gettext("Max Data (Mb)");
+
+/* ../www/radmin/templates/grouppropertiesinfo.tpl */
+gettext("Max Time (mins)");
+
+/* ../www/radmin/templates/grouppropertiesinfo.tpl */
+gettext("Recur time limit");
+
+/* ../www/radmin/templates/grouppropertiesinfo.tpl */
+gettext("BW Limit Down");
+
+/* ../www/radmin/templates/grouppropertiesinfo.tpl */
+gettext("BW Limit Up");
+
 /* ../www/radmin/templates/error.tpl */
 gettext("Error");
 
@@ -729,6 +771,15 @@ gettext("Create New Computer Account");
 
 /* ../www/radmin/templates/addmachine.tpl */
 gettext("Create New Computer Account");
+
+/* ../www/radmin/templates/loginconfig.tpl */
+gettext("Portal Customisation");
+
+/* ../www/radmin/templates/loginconfig.tpl */
+gettext("For each of the following items, if you need multiple values you can submit the form and it will append a blank input below the last valid value");
+
+/* ../www/radmin/templates/loginconfig.tpl */
+gettext("Save Settings");
 
 /* ../www/radmin/templates/statusmonitors.tpl */
 gettext("Sold");
