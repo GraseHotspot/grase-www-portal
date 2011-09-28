@@ -45,7 +45,7 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
         }
         
         // Update group if changed
-        if(clean_text($_POST['Group']) != $user['Group'])
+        if(clean_text($_POST['Group']) && clean_text($_POST['Group']) != $user['Group'])
         {
             $temperror =  validate_group($username, $_POST['Group']);
             if(array_filter($temperror))

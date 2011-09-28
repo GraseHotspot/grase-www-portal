@@ -1,30 +1,11 @@
 {include file="header.tpl" Name="Edit User" activepage="users"}
 
 <div id="edituserForm">
-<h2>{t}Edit User{/t}</h2>
-
 {if $user.Group eq MACHINE_GROUP_NAME}
-<div class="errorPage" style="display: block;"> <span id="errorMessage">{t}Computer Account Locked (Only comments can be changed){/t}{if $error}<br/>{foreach from=$error item=msg}{$msg}<br/>{/foreach}{/if}</span> </div>
-
-<table>
-	<tr><td>{t}Username{/t}</td><td>{$user.Username}</td></tr>
-	<!--<tr><td>{t}Comment{/t}</td><td>{$user.Comment}</td></tr>	-->
-	<tr><td>{t}Group{/t}</td><td>{$user.Group}</td></tr>
-	<tr><td>{t}Data Limit (MiB){/t}</td><td>{$user.MaxMb}</td></tr>
-	<tr><td>{t}Expiry{/t}</td><td>{$user.Expiration}</td></tr>
-	
-	<tr><td>{t}Comment{/t}</td><td><form method='post'> <input type="text" name="Comment" value='{$user.Comment}'/><button type="submit" name="changecommentsubmit" value="{t}Change Comment{/t}">{t}Change Comment{/t}</button></form></td></tr>
-</table>
-<h3>{t}Delete User{/t}</h3>
-<form method='post' name='deleteuser' action='' class='generalForm'>
-
-{t}User accounts are automatically deleted 2 months after expiry. Only accounts with zero usage should be manually deleted to prevent errors in the reports or statistics.{/t}<br/>
-    <button class="negative" type="submit" name="deleteusersubmit" value="{t}Delete User{/t}" onClick="return confirm('{t}Are you sure you want to delete this user?{/t}')"><img src="/grase/images/icons/cross.png" alt=""/>{t username=$user.Username}Delete User %1{/t}</button>
-
-
-</form>
-
+<h2>{t}Edit Computer Account{/t}</h2>
 {else}
+<h2>{t}Edit User{/t}</h2>
+{/if}
 
 <form method='post' name='edituser' action='' class='generalForm'>
 <div>
@@ -33,6 +14,7 @@
     <span id="UsernameInfo">&nbsp;</span>
 </div>
 
+{if $user.Group ne MACHINE_GROUP_NAME}
 <div>
     <label for='Password'>{t}Password{/t}</label>
     <input type="text" name="Password" value='' onkeyup="runPassword(this.value, 'newpassword');" />
@@ -50,6 +32,7 @@
 
 </div>
 
+
 <div>
     <label>Expiration</label>
 {if $user.Expiration == '--'}<strong>{t}This user account never expires{/t}</strong>
@@ -60,6 +43,14 @@
     {/if}
 {/if}
 </div>
+
+{else}
+<div>
+    <label>Expiration</label>
+    <strong>{t}Computer Accounts never expire{/t}</strong>
+</div>
+{/if}
+
 <div>
     <label for='Comment'>{t}Comment{/t}</label>
     <input type="text" name="Comment" value='{$user.Comment}' autofocus="autofocus"/>
@@ -93,7 +84,11 @@
 <button type="submit" name="updateusersubmit" value="{t}Update User Details{/t}"><img src="/grase/images/icons/tick.png" alt=""/>{t}Update User Details{/t}</button>
 </form>
 
+{if $user.Group eq MACHINE_GROUP_NAME}
+<h3>{t}Delete Computer Account{/t}</h3>
+{else}
 <h3>{t}Delete User{/t}</h3>
+{/if}
 <form method='post' name='deleteuser' action='' class='generalForm'>
 
 {t}User accounts are automatically deleted 2 months after expiry. Only accounts with zero usage should be manually deleted to prevent errors in the reports or statistics.{/t}<br/>
@@ -103,6 +98,6 @@
 </form>
 
 
-{/if}
+
 
 {include file="footer.tpl"}
