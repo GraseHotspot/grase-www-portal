@@ -1,3 +1,10 @@
+grase-www-portal (3.5.2) purewhite; urgency=low
+
+  * Bug fix for default templates not being loaded
+  * Actually include default templates file!
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Thu, 06 Oct 2011 11:43:33 +1000
+
 grase-www-portal (3.5.1) purewhite; urgency=low
 
   * Editing of machine accounts is now active and working (accounts no longer "locked")

@@ -143,10 +143,15 @@ class CronFunctions extends DatabaseFunctions
         if($olddbversion < 1.4)
         {
             // Load default templates into database
-            require_once('includes/default_templates.php');
+            if(include_once('/usr/share/grase/www/radmin/includes/default_templates.php'))
+            {
+                $results ++;
         
-            // Upgrade DB version to next version
-            $Settings->setSetting("DBVersion", 1.4);        
+                // Upgrade DB version to next version
+                $Settings->setSetting("DBVersion", 1.4);        
+            }else{
+                return T_('Upgrading DB failed: ') . T_('Including default_templates file failed');
+            }
         
         }
         

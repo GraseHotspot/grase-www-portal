@@ -784,7 +784,7 @@ class DatabaseFunctions
         
         foreach ($results as $attribute) 
         {
-            list($recurance, $type) = explode("_", $attributelookup[$attribute['Attribute']], 2);
+            @list($recurance, $type) = explode("_", $attributelookup[$attribute['Attribute']], 2);
             if($type == 'Time')
             {
                 $value = $attribute['Value'] / 60;
