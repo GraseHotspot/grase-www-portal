@@ -338,6 +338,7 @@ $smarty->compile_check = true;
 $smarty->register_modifier('bytes', array("Formatting", "formatBytes"));
 $smarty->register_modifier('seconds', array("Formatting", "formatSec"));
 $smarty->register_modifier('displayLocales', 'displayLocales');
+$smarty->register_function('inputtype', 'input_type');
 
 // i18n
 //$locale = (!isset($_GET["l"]))?"en_GB":$_GET["l"];  

@@ -1,3 +1,10 @@
+grase-www-portal (3.6) purewhite; urgency=low
+
+  * Network settings can be changed from interface
+  * Dnsmasq now required for DNS
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Sun, 09 Oct 2011 22:19:57 +1000
+
 grase-www-portal (3.5.2) purewhite; urgency=low
 
   * Bug fix for default templates not being loaded
