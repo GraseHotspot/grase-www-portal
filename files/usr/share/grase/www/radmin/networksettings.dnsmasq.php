@@ -57,9 +57,15 @@ echo "\n";
 echo "no-resolv\n";
 echo "strict-order\n";
 
-foreach($networkoptions['dnsservers'] as $dnsserver)
+foreach(@$networkoptions['dnsservers'] as $dnsserver)
 {
     echo "server=$dnsserver\n";
+}
+if(sizeof($networkoptions['dnsservers']) == 0)
+{
+    echo "#default dns servers and OpenDNS Family Shield\n";
+    echo "server=208.67.222.123\n";
+    echo "server=208.67.220.123\n";    
 }
 
 if($networkoptions['opendnsbogusnxdomain'])
@@ -85,7 +91,7 @@ if($networkoptions['opendnsbogusnxdomain'])
     }
 }
 
-foreach($networkoptions['bogusnx'] as $ip){
+foreach(@$networkoptions['bogusnx'] as $ip){
     echo "bogus-nxdomain=$ip\n";
 }
 

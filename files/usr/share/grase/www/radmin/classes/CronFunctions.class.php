@@ -142,7 +142,7 @@ class CronFunctions extends DatabaseFunctions
         
         if($olddbversion < 1.4)
         {
-            // Load default templates into database
+
             if(include_once('/usr/share/grase/www/radmin/includes/default_templates.php'))
             {
                 $results ++;
@@ -154,6 +154,27 @@ class CronFunctions extends DatabaseFunctions
             }
         
         }
+        
+        if($olddbversion < 1.5)
+        {
+            // Load default network settings (match old chilli config)
+            $net['lanipaddress'] = '10.1.0.1';
+            $net['networkmask'] = '255.255.255.0';
+            $net['opendnsbogusnxdomain'] = true;
+            $net['dnsservers'] = array('208.67.222.123','208.67.220.123'); // OpenDNS Family Shield
+            $net['bogusnx'] = array();        
+            // Load default templates into database
+            if(include_once('/usr/share/grase/www/radmin/includes/default_templates.php'))
+            {
+                $results ++;
+        
+                // Upgrade DB version to next version
+                $Settings->setSetting("DBVersion", 1.5);        
+            }else{
+                return T_('Upgrading DB failed: ') . T_('Including default_templates file failed');
+            }
+        
+        }        
         
 
         if($results > 0)
