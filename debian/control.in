@@ -3,7 +3,7 @@ Section: net
 Priority: extra
 Maintainer: Tim White <tim@hotspot.purewhite.id.au>
 Build-Depends: @cdbs@, config-package-dev
-Standards-Version: 3.8.4
+Standards-Version: 3.9.1
 Homepage: http://hotspot.purewhite.id.au/
 
 Package: grase-www-portal

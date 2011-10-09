@@ -33,6 +33,10 @@ $multinetworkoptions = array(
         "label" => T_("DNS Servers"),
         "description" => T_("IP Addresses of DNS Servers. All clients will use the gateway as the DNS server which will use the addresses listed here to do DNS lookups. Dnsmasq WILL NOT get default servers from DHCP or /etc/resolv.conf and will default to OpenDNS"),
         "type" => "ip"),
+    'bogusnx' => array(
+        "label" => T_("Bogus NXDOMAIN"),
+        "description" => T_("IP Addresses of Bogus NXDOMAIN returns. All DNS replies that contain these ip address will be transformed into a NXDOMAIN result"),
+        "type" => "ip"),        
     );
     
 // Options for Chilli Config that can only be one
@@ -158,11 +162,11 @@ function load_networkoptions()
 }
 
     // Check when /etc/chilli/local.conf was last updated and compare to $Settings->gettSetting('lastchangechilliconfig');
-    $localconfts = filemtime('/etc/chilli/local.conf');
+    $localconfts = filemtime('/etc/dnsmasq.d/01-grasehotspot');
     $lastchangets = $Settings->getSetting('lastnetworkconf');
     if($localconfts < $lastchangets)
     {
-        $error[] = T_("Changes pending Coova Chilli Reload");
+        $error[] = T_("Changes pending Reload");
     }else{
         $success[] = T_("Settings match running config");
     }

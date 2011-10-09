@@ -20,6 +20,9 @@
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+// As this can be called from anywhere we need to chdir
+chdir(__DIR__);
+
 function __autoload($class_name) {
     require_once './classes/' . $class_name . '.class.php';
 }
@@ -31,16 +34,25 @@ require_once 'includes/database_functions.inc.php';
     
     $lastchangets = $Settings->getSetting('lastnetworkconf');
 
-print_r($networkoptions);
+//print_r($networkoptions);
 
 $lanip = $networkoptions['lanipaddress'];
 $netmask = $networkoptions['networkmask'];
 
 $networkip = long2ip(ip2long($lanip) & ip2long($netmask));
 
+echo "#### This file is auto generated                              ####\n";
+echo "#### Please do not edit it.                                   ####\n";
+echo "#### Changes can be made in the Grase Hotspot Admin interface ####\n";
+
 echo "#chilli_lanip $lanip\n";
-echo "#chilli_network $network\n";
+echo "#chilli_network $networkip\n";
 echo "#chilli_netmask $netmask\n";
+echo "\n";
+echo "address=/hotspot/$lanip\n";
+echo "address=/grasehotspot/$lanip\n";
+echo "address=/logout/1.0.0.0\n";
+echo "address=/logoff/1.0.0.0\n";
 echo "\n";
 echo "no-resolv\n";
 echo "strict-order\n";
@@ -51,7 +63,18 @@ foreach($networkoptions['dnsservers'] as $dnsserver)
 }
 
 if($networkoptions['opendnsbogusnxdomain'])
-{   
+{   /* From http://johnewart.net/posts/2010/04/26/
+    "67.215.65.130" => "hit-adult.opendns.com",
+    "67.215.65.131" => "hit-block.opendns.com",
+    "67.215.65.132" => "hit-nxdomain.opendns.com",
+    "67.215.65.133" => "hit-phish.opendns.com",
+    "67.215.65.134" => "hit-servfail.opendns.com",
+    "67.215.65.135" => "block.opendns.com",
+    "67.215.65.136" => "guide.opendns.com",
+    "67.215.65.137" => "phish.opendns.com",
+    "67.215.65.138" => "block.opendns.com",
+    "67.215.65.139" => "guide.opendns.com",
+    */
     $bogusnxdomains = array('hit-nxdomain.opendns.com');
     // TODO: plugin hook here?
     foreach($bogusnxdomains as $domainname){
@@ -61,6 +84,13 @@ if($networkoptions['opendnsbogusnxdomain'])
         }
     }
 }
+
+foreach($networkoptions['bogusnx'] as $ip){
+    echo "bogus-nxdomain=$ip\n";
+}
+
+
+echo "# last updated $lastchangets";
 ?>
 
 
