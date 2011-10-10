@@ -10,14 +10,14 @@
 <p><a href="help">{t}Information and Help{/t}</a></p>
 {/if}
 {if !$hidelogoutbookmark}
-<p>{t href="http://10.1.0.1:3990/logoff" escape=no}For a quick logout, bookmark <a href="%1">LOGOUT</a>{/t}</p>
+<p>{t href="http://logoff/" escape=no}For a quick logout, bookmark <a href="%1">LOGOUT</a>{/t}</p>
 {/if}
 
 
 {$tpl_loginhelptext}
 
 
-{if $user_url}<p id="userurlnojs" style="text-align: center;">If you are already logged in, continue to your site <br/><a href="{$user_url}" style="font-size: smaller">'{$user_url|truncate:60}'</a></p>{/if}
+{if $user_url}<p id="userurlnojs" style="text-align: center;">{t}If you are already logged in, continue to your site{/t} <br/><a href="{$user_url}" style="font-size: smaller">'{$user_url|truncate:60}'</a></p>{/if}
 
 
 <div id="loginerrorcontainer">
@@ -36,21 +36,21 @@
     <form method="post" action="nojslogin.php" id="logonFormnojs" class="generalForm" autocomplete="off"><!-- TODO: Make this submit over SSL -->
     {if ! $jsdisabled}
         <div class="ui-widget" id="jswarningwidget">
-            <div id="nojswarning" class="ui-state-error ui-corner-all" style="margin-top: 20px; padding: 0pt 0.7em;"><p>You are using the less secure login method.<br/>{if ! $nojs}If you have javascript disabled, please try enabling it for the secure login method.<br/>{/if}Use this less secure login form if the javascript version is giving you trouble</p>
+            <div id="nojswarning" class="ui-state-error ui-corner-all" style="margin-top: 20px; padding: 0pt 0.7em;"><p>{t}You are using the less secure login method.{/t}<br/>{if ! $nojs}{t}If you have javascript disabled, please try enabling it for the secure login method.{/t}<br/>{/if}{t}Use this less secure login form if the javascript version is giving you trouble{/t}</p>
             {if $nojs}
-            <p>You have disabled the secure javascript login method.<br/><a href="?enablejs">Click here to re-enable it</a></p>
+            <p>{t}You have disabled the secure javascript login method.{/t}<br/><a href="?enablejs">{t}Click here to re-enable it{/t}</a></p>
             {/if}
             </div>
         <!-- close jswarningwidget div-->
         </div>
     {/if}
         <div>
-            <label for='usernamenojs'>Username</label>
+            <label for='usernamenojs'>{t}Username{/t}</label>
             <input type="text" name="username" id="usernamenojs" autofocus="autofocus"/>
             <span id="UsernameInfo">&nbsp;</span>
         </div>
         <div>
-            <label for='passwordnojs'>Password</label>
+            <label for='passwordnojs'>{t}Password{/t}</label>
             <input type="password" name="password" id="passwordnojs" />
             <span id='PasswordInfo'>&nbsp;</span>
             
@@ -74,8 +74,8 @@
 <div style="clear: left; clear: right">&nbsp;</div>
 
 {if $js}
-<script type="text/javascript" id='chillijs' src='http://10.1.0.1/grase/uam/chilli.js'></script>
-<p style="font-size: smaller">Trouble logging in? <a href="?disablejs">Click here to disable the javascript login forms.</a><br/>This will use a less secure login method</p>
+<script type="text/javascript" id='chillijs' src='http://{$serverip}/grase/uam/js.php?js=chilli.js'></script>
+<p style="font-size: smaller">{t}Trouble logging in?{/t} <a href="?disablejs">{t}Click here to disable the javascript login forms.{/t}</a><br/>{t}This will use a less secure login method{/t}</p>
 {/if}
 
 <!-- close page div? -->

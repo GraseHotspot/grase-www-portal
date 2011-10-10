@@ -11,11 +11,11 @@ $query = $loginurl['query'];
 parse_str($query, $uamopts);
 
 if(isset($_GET['loginurl'])){
-	$loginlink = "http://10.1.0.1/uam/mini?$query";
+	$loginlink = "http://$lanip/uam/mini?$query";
 	$loginlink2 = $_GET['loginurl'];
 }else{
-	$loginlink = "http://10.1.0.1/uam/mini";
-	$loginlink2 = "http://10.1.0.1:3990/prelogin";
+	$loginlink = "http://$lanip/uam/mini";
+	$loginlink2 = "http://$lanip:3990/prelogin";
 }
 
 $smarty->assign("user_url", $uamopts['userurl']);

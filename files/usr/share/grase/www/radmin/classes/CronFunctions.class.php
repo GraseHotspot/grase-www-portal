@@ -162,18 +162,14 @@ class CronFunctions extends DatabaseFunctions
             $net['networkmask'] = '255.255.255.0';
             $net['opendnsbogusnxdomain'] = true;
             $net['dnsservers'] = array('208.67.222.123','208.67.220.123'); // OpenDNS Family Shield
-            $net['bogusnx'] = array();        
-            // Load default templates into database
-            if(include_once('/usr/share/grase/www/radmin/includes/default_templates.php'))
-            {
-                $results ++;
+            $net['bogusnx'] = array();
+            
+            $Settings->setSetting('networkoptions', serialize($net));      
+            $Settings->setSetting('lastnetworkconf', time());  
+            $results ++;
         
-                // Upgrade DB version to next version
-                $Settings->setSetting("DBVersion", 1.5);        
-            }else{
-                return T_('Upgrading DB failed: ') . T_('Including default_templates file failed');
-            }
-        
+            // Upgrade DB version to next version
+            $Settings->setSetting("DBVersion", 1.5);                
         }        
         
 

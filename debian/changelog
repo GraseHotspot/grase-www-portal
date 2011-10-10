@@ -2,8 +2,9 @@ grase-www-portal (3.6) purewhite; urgency=low
 
   * Network settings can be changed from interface
   * Dnsmasq now required for DNS
+  * More translations for uam including in js
 
- -- Tim White <tim@hotspot.purewhite.id.au>  Sun, 09 Oct 2011 22:19:57 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Mon, 10 Oct 2011 13:07:13 +1000
 
 grase-www-portal (3.5.2) purewhite; urgency=low
 

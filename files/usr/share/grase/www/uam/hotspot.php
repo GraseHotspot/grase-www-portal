@@ -13,7 +13,7 @@ if(isset($_GET['disablejs']))
     // Set cookie
     setcookie('grasenojs','javascriptdisabled', time()+60*60*24*30);
     // Redirect via header to reload page?
-    header("Location: http://10.1.0.1:3990/prelogin");
+    header("Location: http://$lanip:3990/prelogin");
 }
 
 if(isset($_GET['enablejs']))
@@ -21,7 +21,7 @@ if(isset($_GET['enablejs']))
     // Set cookie
     setcookie('grasenojs','', time()-60*60*24*30);
     // Redirect via header to reload page?
-    header("Location: http://10.1.0.1:3990/prelogin");
+    header("Location: http://$lanip:3990/prelogin");
 }
 
 $res = $_GET['res'];
@@ -61,11 +61,11 @@ $smarty->assign("RealHostname", trim(file_get_contents('/etc/hostname')));
 if(!isset($_GET['res']))
 {
     // Redirect to prelogin
-        header("Location: http://10.1.0.1:3990/prelogin");
+        header("Location: http://$lanip:3990/prelogin");
 }
 
 // Already been through prelogin
-/*$jsloginlink = "http://10.1.0.1/grase/uam/mini?$query";
+/*$jsloginlink = "http://$lanip/grase/uam/mini?$query";
 $nojsloginlink = $_GET['loginurl'];*/
 
 switch($res)

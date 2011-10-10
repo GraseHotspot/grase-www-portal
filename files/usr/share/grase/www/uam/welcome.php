@@ -45,11 +45,11 @@ parse_str($query, $uamopts);
 iOS_workaround($uamopts['userurl']);
 
 if(isset($_GET['loginurl'])){
-	$loginlink = "http://10.1.0.1/grase/uam/mini?$query";
+	$loginlink = "http://$lanip/grase/uam/mini?$query";
 	$loginlink2 = $_GET['loginurl'];
 }else{
-	$loginlink = "http://10.1.0.1/grase/uam/mini";
-	$loginlink2 = "http://10.1.0.1:3990/prelogin";
+	$loginlink = "http://$lanip/grase/uam/mini";
+	$loginlink2 = "http://$lanip:3990/prelogin";
 }
 
 $smarty->assign("user_url", $uamopts['userurl']);

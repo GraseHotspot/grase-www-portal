@@ -56,16 +56,22 @@ echo "address=/logoff/1.0.0.0\n";
 echo "\n";
 echo "no-resolv\n";
 echo "strict-order\n";
+echo "\n";
+echo "expand-hosts\n";
+echo "domain=hotspot.lan\n";
 
-foreach(@$networkoptions['dnsservers'] as $dnsserver)
-{
-    echo "server=$dnsserver\n";
-}
+// No dns servers set so default to OpenDNS Famiyl Shield
 if(sizeof($networkoptions['dnsservers']) == 0)
 {
     echo "#default dns servers and OpenDNS Family Shield\n";
     echo "server=208.67.222.123\n";
     echo "server=208.67.220.123\n";    
+}else{
+    foreach($networkoptions['dnsservers'] as $dnsserver)
+    {
+        echo "server=$dnsserver\n";
+    }
+
 }
 
 if($networkoptions['opendnsbogusnxdomain'])
@@ -91,7 +97,7 @@ if($networkoptions['opendnsbogusnxdomain'])
     }
 }
 
-foreach(@$networkoptions['bogusnx'] as $ip){
+foreach($networkoptions['bogusnx'] as $ip){
     echo "bogus-nxdomain=$ip\n";
 }
 

@@ -73,7 +73,7 @@
 </tr>
 <tr id="connectRow">
 <td><span id="statusMessage"></span></td>
-<td class="buttons"><a href="http://10.1.0.1:3990/logoff" id="logoutlink" class="negative"> <img src="/grase/images/icons/cross.png" alt=""/>
+<td class="buttons"><a href="http://logoff/" id="logoutlink" class="negative"> <img src="/grase/images/icons/cross.png" alt=""/>
 Logout</a></td>
 </tr>
 

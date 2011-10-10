@@ -13,7 +13,7 @@ Please don't try and access this page directly.
 
 //--><!]]></script>{/literal}
 
-<script id='chillijs' src='http://10.1.0.1/grase/uam/chilli.js'></script>
+<script id='chillijs' src='http://{$serverip}/grase/uam/js.php?js=chilli.js'></script>
 <!--{if $user_url}<span id='origurl'><a href="{$user_url}">Original URL {$user_url}</a></span>{/if}-->
 
 

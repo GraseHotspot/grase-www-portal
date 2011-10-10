@@ -45,6 +45,10 @@ $smarty->assign("Support", array("link" => $support_link, "name" => $support_nam
 $smarty->assign("website_name", $website_name);
 $smarty->assign("website_link", $website_link);
 
+$networkoptions = unserialize($Settings->getSetting("networkoptions"));
+$lanip = $networkoptions['lanipaddress'];
+$smarty->assign("serverip", $lanip);
+
 
 // Load login page settings from db and use defaults
 /*$smarty->assign("hidefooter", $Settings->getSetting('hidefooter') == 'TRUE' ? TRUE : FALSE);

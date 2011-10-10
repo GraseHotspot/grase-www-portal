@@ -20,14 +20,14 @@
 
 <div id="logonPage" style="display:none;">
 <form onSubmit="return false;" name="logon" class="generalForm" autocomplete="off">
-<div id="logonMessageold" class="ui-widget">Login:</div>
+<div id="logonMessageold" class="ui-widget">{t}Login{/t}:</div>
         <div>
-            <label for='username'>Username</label>
+            <label for='username'>{t}Username{/t}</label>
             <input type="text" name="username" id="username" autofocus="autofocus"/>
             <span id="UsernameInfo">&nbsp;</span>
         </div>
         <div>
-            <label for='password'>Password</label>
+            <label for='password'>{t}Password{/t}</label>
             <input type="password" name="password" id="password"/>
             <span id='PasswordInfo'>&nbsp;</span>
             
@@ -42,85 +42,85 @@
 
 <div id="userurl"></div>
 
-<p id="loggedinusername">You are logged in as: <span id="UserNameLink">Not available</span></p>
-<p id="myaccountlink"><a href="/grase/radmin/usermin" onclick="window.open(this.href,'_blank');return false;">Access My Account</a></p>
+<p id="loggedinusername">{t}You are logged in as{/t}: <span id="UserNameLink">Not available</span></p>
+<p id="myaccountlink"><a href="/grase/radmin/usermin" onclick="window.open(this.href,'_blank');return false;">{t}Access My Account{/t}</a></p>
 
 <table border="0" id="statusTable" style="padding-top:4px;font-size:70%">
 <tr id="UserNameRow" class="chilliLabelhide">
-<td id="UserNameLabel" class="chilliLabel"><b>User</b></td>
-<td id="UserNameLinkCell" class="chilliValue"><span id="UserNameLink1">Not available</span></td>
+<td id="UserNameLabel" class="chilliLabel"><b>{t}User{/t}</b></td>
+<td id="UserNameLinkCell" class="chilliValue"><span id="UserNameLink1">{t}Not available{/t}</span></td>
 </tr>
 <tr id="sessionIdRow" class="chilliLabelhide">
-<td id="sessionIdLabel" class="chilliLabel"><b>Session ID</b></td>
-<td id="sessionId" class="chilliValue">Not available</td>
+<td id="sessionIdLabel" class="chilliLabel"><b>{t}Session ID{/t}</b></td>
+<td id="sessionId" class="chilliValue">{t}Not available{/t}</td>
 </tr>
 <tr id="sessionUsageRow">
-<td id="sessionUsageLabel" class="chilliLabel"><b>Usage this session</b></td>
-<td id="sessionUsage" class="chilliValue">N/A</td>
+<td id="sessionUsageLabel" class="chilliLabel"><b>{t}Usage this session{/t}</b></td>
+<td id="sessionUsage" class="chilliValue">{t}N/A{/t}</td>
 </tr>
 <tr id="maxRemainOctetsRow">
-<td id="maxRemainOctetsLabel" class="chilliLabel"><b>Remaining Quota</b></td>
-<td id="maxRemainOctetscell" class="chilliValue"><span id="maxRemainOctets">Not available</span><div id="download_bar" style="height: 10px"></div></td>
+<td id="maxRemainOctetsLabel" class="chilliLabel"><b>{t}Remaining Quota{/t}</b></td>
+<td id="maxRemainOctetscell" class="chilliValue"><span id="maxRemainOctets">{t}Not available{/t}</span><div id="download_bar" style="height: 10px"></div></td>
 </tr>
 <tr id="MonthlyUsageLimitRow">
-<td id="MonthlyUsageLimitRowLabel" class="chilliLabel"><b>Quota allocation</b></td>
-<td id="MonthlyUsageLimit" class="chilliValue">Not available</td>
+<td id="MonthlyUsageLimitRowLabel" class="chilliLabel"><b>{t}Quota allocation{/t}</b></td>
+<td id="MonthlyUsageLimit" class="chilliValue">{t}Not available{/t}</td>
 </tr>
 <tr id="sessionTimeoutRow" class="chilliLabelhide">
-<td id="sessionTimeoutLabel" class="chilliLabel"><b>Max Session Time</b></td>
-<td id="sessionTimeout" class="chilliValue">Not available</td>
+<td id="sessionTimeoutLabel" class="chilliLabel"><b>{t}Max Session Time{/t}</b></td>
+<td id="sessionTimeout" class="chilliValue">{t}Not available{/t}</td>
 </tr>
 <tr id="idleTimeoutRow" class="chilliLabelhide">
-<td id="idleTimeoutLabel" class="chilliLabel"><b>Max Idle Time</b></td>
-<td id="idleTimeout" class="chilliValue">Not available</td>
+<td id="idleTimeoutLabel" class="chilliLabel"><b>{t}Max Idle Time{/t}</b></td>
+<td id="idleTimeout" class="chilliValue">{t}Not available{/t}</td>
 </tr>
 <tr id="startTimeRow" class="chilliLabelhide">
-<td id="startTimeLabel" class="chilliLabel"><b>Start Time</b></td>
-<td id="startTime" class="chilliValue">Not available</td>
+<td id="startTimeLabel" class="chilliLabel"><b>{t}Start Time{/t}</b></td>
+<td id="startTime" class="chilliValue">{t}Not available{/t}</td>
 </tr>
 <tr id="sessionTimeRow">
-<td id="sessionTimeLabel" class="chilliLabel"><b>Session Time</b></td>
-<td id="sessionTime" class="chilliValue">Not available</td>
+<td id="sessionTimeLabel" class="chilliLabel"><b>{t}Session Time{/t}</b></td>
+<td id="sessionTime" class="chilliValue">{t}Not available{/t}</td>
 </tr>
 <tr id="RemainsessionTimeRow">
-<td id="RemainsessionTimeLabel" class="chilliLabel"><b>Remaining Time</b></td>
-<td id="RemainsessionTimecell" class="chilliValue"><span id="RemainsessionTime">Loading...</span><div id="time_bar" style="height: 10px"></div></td>
+<td id="RemainsessionTimeLabel" class="chilliLabel"><b>{t}Remaining Time{/t}</b></td>
+<td id="RemainsessionTimecell" class="chilliValue"><span id="RemainsessionTime">{t}Loading...{/t}</span><div id="time_bar" style="height: 10px"></div></td>
 </tr>
 <tr id="MonthlyTimeLimitRow">
-<td id="MonthlyTimeLimitLabel" class="chilliLabel"><b>Monthly Time Limit</b></td>
-<td id="MonthlyTimeLimit" class="chilliValue">Not available</td>
+<td id="MonthlyTimeLimitLabel" class="chilliLabel"><b>{t}Monthly Time Limit{/t}</b></td>
+<td id="MonthlyTimeLimit" class="chilliValue">{t}Not available{/t}</td>
 </tr>
 <tr id="idleTimeRow" class="chilliLabelhide">
-<td id="idleTimeLabel" class="chilliLabel"><b>Idle Time</b></td>
-<td id="idleTime" class="chilliValue">Not available</td>
+<td id="idleTimeLabel" class="chilliLabel"><b>{t}Idle Time{/t}</b></td>
+<td id="idleTime" class="chilliValue">{t}Not available{/t}</td>
 </tr>
 <tr id="inputOctetsRow" class="chilliLabel">
-<td id="inputOctetsLabel" class="chilliLabel"><b>Downloaded</b></td>
-<td id="inputOctets" class="chilliValue">N/A</td>
+<td id="inputOctetsLabel" class="chilliLabel"><b>{t}Downloaded{/t}</b></td>
+<td id="inputOctets" class="chilliValue">{t}N/A{/t}</td>
 </tr>
 <tr id="outputOctetsRow" class="chilliLabel">
-<td id="outputOctetsLabel" class="chilliLabel"><b>Uploaded</b></td>
-<td id="outputOctets" class="chilliValue">N/A</td>
+<td id="outputOctetsLabel" class="chilliLabel"><b>{t}Uploaded{/t}</b></td>
+<td id="outputOctets" class="chilliValue">{t}N/A{/t}</td>
 </tr>
 <tr id="originalURLRow" class="chilliLabelhide">
-<td id="originalURLLabel" class="chilliLabel"><b>Original URL</b></td>
-<td id="originalURL" class="chilliValue">N/A</td>
+<td id="originalURLLabel" class="chilliLabel"><b>{t}Original URL{/t}</b></td>
+<td id="originalURL" class="chilliValue">{t}N/A{/t}</td>
 </tr>
 <tr id="connectRow">
-<td><span id="statusMessage">Connected</span></td>
+<td><span id="statusMessage">{t}Connected{/t}</span></td>
 <td class="buttons"><a href="#" id="logoutlink" class="negative" onClick="return disconnect();"> <img src="/grase/images/icons/cross.png" alt=""/>
-Logout</a></td>
+{t}Logout{/t}</a></td>
 </tr>
 
 </table>
 </div>
 
 <div id="waitPage" style="">
-<img src="images/wait.gif"/> Please wait...
+<img src="images/wait.gif"/> {t}Please wait...{/t}
 </div>
 
 <div id="errorPage" style="display:none;">
-<span id="errorMessage">Error</span>
+<span id="errorMessage">{t}Error{/t}</span>
 </div>
 </div>
 <!--<div id="debugPage" style="display:inline;">
