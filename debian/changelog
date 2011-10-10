@@ -3,8 +3,9 @@ grase-www-portal (3.6) purewhite; urgency=low
   * Network settings can be changed from interface
   * Dnsmasq now required for DNS
   * More translations for uam including in js
+  * Stale sessions expire sooner now (no more waiting 12 hours), needed for Simultaneous-Use
 
- -- Tim White <tim@hotspot.purewhite.id.au>  Mon, 10 Oct 2011 13:07:13 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Mon, 10 Oct 2011 15:42:34 +1000
 
 grase-www-portal (3.5.2) purewhite; urgency=low
 

@@ -188,8 +188,7 @@ class CronFunctions extends DatabaseFunctions
     {
         /* Finds all Sessions that appear to have timed out
          * Timed out is when the StartTime + SessionTime is more than 300 seconds older than now
-         * AND When starttime is more than 12 hours ago
-         * So essentially any sessions that haven't updated the session date in the last 5 minutes and started more than 12 hours ago
+         * So essentially any sessions that haven't updated the session date in the last 5 minutes
          * */
         $sql = "UPDATE radacct
                 SET
@@ -205,13 +204,7 @@ class CronFunctions extends DatabaseFunctions
                                              SEC_TO_TIME(AcctSessionTime)
                                             )
                                      )
-                            ) > 300 AND
-                TIME_TO_SEC(
-                            TIMEDIFF(
-                                     NOW(),
-                                     AcctStartTime
-                                     )
-                            ) > 43200";
+                            ) > 300";
         
         $result = $this->db->exec($sql);
         
