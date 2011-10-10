@@ -314,49 +314,10 @@ gettext("Save Settings");
 gettext("Delete Group");
 
 /* ../www/radmin/templates/edituser.tpl */
+gettext("Edit Computer Account");
+
+/* ../www/radmin/templates/edituser.tpl */
 gettext("Edit User");
-
-/* ../www/radmin/templates/edituser.tpl */
-gettext("Computer Account Locked (Only comments can be changed)");
-
-/* ../www/radmin/templates/edituser.tpl */
-gettext("Username");
-
-/* ../www/radmin/templates/edituser.tpl */
-gettext("Comment");
-
-/* ../www/radmin/templates/edituser.tpl */
-gettext("Group");
-
-/* ../www/radmin/templates/edituser.tpl */
-gettext("Data Limit (MiB)");
-
-/* ../www/radmin/templates/edituser.tpl */
-gettext("Expiry");
-
-/* ../www/radmin/templates/edituser.tpl */
-gettext("Comment");
-
-/* ../www/radmin/templates/edituser.tpl */
-gettext("Change Comment");
-
-/* ../www/radmin/templates/edituser.tpl */
-gettext("Change Comment");
-
-/* ../www/radmin/templates/edituser.tpl */
-gettext("Delete User");
-
-/* ../www/radmin/templates/edituser.tpl */
-gettext("User accounts are automatically deleted 2 months after expiry. Only accounts with zero usage should be manually deleted to prevent errors in the reports or statistics.");
-
-/* ../www/radmin/templates/edituser.tpl */
-gettext("Delete User");
-
-/* ../www/radmin/templates/edituser.tpl */
-gettext("Are you sure you want to delete this user?");
-
-/* ../www/radmin/templates/edituser.tpl */
-gettext("Delete User %1");
 
 /* ../www/radmin/templates/edituser.tpl */
 gettext("Username");
@@ -378,6 +339,9 @@ gettext("This user account has expired");
 
 /* ../www/radmin/templates/edituser.tpl */
 gettext("Reset expiry");
+
+/* ../www/radmin/templates/edituser.tpl */
+gettext("Computer Accounts never expire");
 
 /* ../www/radmin/templates/edituser.tpl */
 gettext("Comment");
@@ -426,6 +390,9 @@ gettext("Update User Details");
 
 /* ../www/radmin/templates/edituser.tpl */
 gettext("Update User Details");
+
+/* ../www/radmin/templates/edituser.tpl */
+gettext("Delete Computer Account");
 
 /* ../www/radmin/templates/edituser.tpl */
 gettext("Delete User");
@@ -588,6 +555,24 @@ gettext("Request Type");
 
 /* ../www/radmin/templates/log.tpl */
 gettext("Size");
+
+/* ../www/radmin/templates/netconfig.tpl */
+gettext("Network Settings");
+
+/* ../www/radmin/templates/netconfig.tpl */
+gettext("These settings are used by Coova Chilli and Dnsmasq. Both Coova Chilli and Dnsmasq will need to be reloaded when these settings change. A cron job will automatically check for changes every 5 minutes and reload these daemons if needed.");
+
+/* ../www/radmin/templates/netconfig.tpl */
+gettext("Status %1");
+
+/* ../www/radmin/templates/netconfig.tpl */
+gettext("Network Config last updated %1");
+
+/* ../www/radmin/templates/netconfig.tpl */
+gettext("For each of the following items, if you need multiple values you can submit the form and it will append a blank input below the last valid value");
+
+/* ../www/radmin/templates/netconfig.tpl */
+gettext("Save Settings");
 
 /* ../www/radmin/templates/footer.tpl */
 gettext("Help Page");

@@ -64,3 +64,42 @@ gettext("Information and Help");
 /* ../www/uam/templates/portal.tpl */
 gettext("For a quick logout, bookmark <a href=\"%1\">LOGOUT</a>");
 
+/* ../www/uam/templates/portal.tpl */
+gettext("If you are already logged in, continue to your site");
+
+/* ../www/uam/templates/portal.tpl */
+gettext("You are using the less secure login method.");
+
+/* ../www/uam/templates/portal.tpl */
+gettext("If you have javascript disabled, please try enabling it for the secure login method.");
+
+/* ../www/uam/templates/portal.tpl */
+gettext("Use this less secure login form if the javascript version is giving you trouble");
+
+/* ../www/uam/templates/portal.tpl */
+gettext("You have disabled the secure javascript login method.");
+
+/* ../www/uam/templates/portal.tpl */
+gettext("Click here to re-enable it");
+
+/* ../www/uam/templates/portal.tpl */
+gettext("Username");
+
+/* ../www/uam/templates/portal.tpl */
+gettext("Password");
+
+/* ../www/uam/templates/portal.tpl */
+gettext("Trouble logging in?");
+
+/* ../www/uam/templates/portal.tpl */
+gettext("Click here to disable the javascript login forms.");
+
+/* ../www/uam/templates/portal.tpl */
+gettext("This will use a less secure login method");
+
+/* ../www/uam/templates/error.tpl */
+gettext("Error");
+
+/* ../www/uam/templates/error.tpl */
+gettext("An Error has occured. Please report the error to the administrator");
+
