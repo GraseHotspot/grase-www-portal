@@ -195,7 +195,8 @@ class CronFunctions extends DatabaseFunctions
                 AcctTerminateCause='Admin-Reset',
                 AcctStopTime = FROM_UNIXTIME(UNIX_TIMESTAMP(AcctStartTime) + AcctSessionTime)
                 WHERE
-                AcctStopTime IS NULL AND
+                (AcctStopTime IS NULL OR AcctStopTime = 0)
+                AND
                 TIME_TO_SEC(
                             TIMEDIFF(
                                      NOW(),

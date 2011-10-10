@@ -4,7 +4,7 @@
 
 <p>{t}These settings are used by Coova Chilli and Dnsmasq. Both Coova Chilli and Dnsmasq will need to be reloaded when these settings change. A cron job will automatically check for changes every 5 minutes and reload these daemons if needed.{/t}</p>
 
-<p>{t one=$networkconfigstatus}Status %1{/t}<br/>
+<p>{t one=$networkconfigstatus}Network Config last reloaded %1{/t}<br/>
 {t one=$lastnetworkconfigstatus}Network Config last updated %1{/t}</p>
 
 <div id="NetworkConfigForm">
