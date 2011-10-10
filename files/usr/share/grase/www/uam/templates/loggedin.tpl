@@ -6,7 +6,7 @@
 {/if}
 
 {if $tpl_loggedinnojshtml}{$tpl_loggedinnojshtml}{else}
-<p>Your login was successful. Please click <a href="nojsstatus" target="grasestatus">HERE</a> to open a status window<br/>If you don't open a status window, then bookmark the link <a href="http://logout/">http://logout/</a> so you can logout when finished.</p>
+<p>Your login was successful. Please click <a href="nojsstatus" target="grasestatus">HERE</a> to open a status window<br/>If you don't open a status window, then bookmark the link <a href="http://logout/">http://1.0.0.0/</a> so you can logout when finished.</p>
 {/if}
 
 

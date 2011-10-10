@@ -943,7 +943,7 @@ function updateUI (cmd ) {
 	    chilliController.redir.originalURL != '' &&  typeof( miniportal ) == 'undefined' ) {
 	    $('#userurl').html('<a href="'+chilliController.redir.originalURL+ '">Click here to continue to your site (and open the status window)<br/> '+chilliController.redir.originalURL.substring(0,60)+'</a>');
 	    $('#userurl').click(function(){
-    	    loginwindow = window.open("/grase/uam/mini", "grasestatus", "width=300,height=400,location=no,directories=no,status=yes,menubar=no,toolbar=no");
+    	    loginwindow = window.open("/grase/uam/mini", "grasestatus", "width=300,height=500,location=no,directories=no,status=yes,menubar=no,toolbar=no");
     	    loginwindow.moveTo(100,100);
     	    loginwindow.focus();
     	    //return false;
@@ -1007,7 +1007,7 @@ function connect() {
 	}
     
     showWaitPage(1000);
-    loginwindow = window.open("/grase/uam/mini", "grasestatus", "width=300,height=400,location=no,directories=no,status=yes,menubar=no,toolbar=no");    
+    loginwindow = window.open("/grase/uam/mini", "grasestatus", "width=300,height=500,location=no,directories=no,status=yes,menubar=no,toolbar=no");    
     chilliController.logon( username , password ) ;
 }
 

@@ -10,7 +10,7 @@
 <p><a href="help">{t}Information and Help{/t}</a></p>
 {/if}
 {if !$hidelogoutbookmark}
-<p>{t href="http://logoff/" escape=no}For a quick logout, bookmark <a href="%1">LOGOUT</a>{/t}</p>
+<p>{t href="http://1.0.0.0/" escape=no}For a quick logout, bookmark <a href="%1">LOGOUT</a>{/t}</p>
 {/if}
 
 
