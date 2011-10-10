@@ -61,19 +61,19 @@ function loginForm($username = null, $status = null, &$auth = null)
             break;
         case -1:
         case -2:
-            $error = "Your session has expired. Please login again";
+            $error = T_("Your session has expired. Please login again");
             AdminLog::getInstance()->log("Expired Session");
             break; 
         case -3:
-            $error = "Incorrect Login.";
+            $error = T_("Incorrect Login");
             AdminLog::getInstance()->log("Invalid Login");
             break;
         case -5:
-            $errro = "Security Issue. Please login again";
+            $errro = T_("Security Issue. Please login again");
             AdminLog::getInstance()->log("Security Issue With Login");
             break;
         default:
-            $error = "Authentication Issue. Please report to Admin";
+            $error = T_("Authentication Issue. Please report to Admin");
             AdminLog::getInstance()->log("Auth Issues: $status");
     }
     if(isset($error)) $smarty->assign("error", $error);

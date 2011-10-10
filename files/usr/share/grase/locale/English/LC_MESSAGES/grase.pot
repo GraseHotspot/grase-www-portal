@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GRASE 3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-10 14:31+1000\n"
-"PO-Revision-Date: 2011-10-10 14:31+1000\n"
+"POT-Creation-Date: 2011-10-10 14:34+1000\n"
+"PO-Revision-Date: 2011-10-10 14:34+1000\n"
 "Last-Translator: Timothy White <tim@purewhite.id.au>\n"
 "Language-Team:  <tim@purewhite.id.au>\n"
 "Language: \n"
@@ -1822,6 +1822,22 @@ msgstr ""
 
 #: ../../../www/radmin/includes/page_functions.inc.php:277
 msgid "No"
+msgstr ""
+
+#: ../../../www/radmin/includes/session.inc.php:64
+msgid "Your session has expired. Please login again"
+msgstr ""
+
+#: ../../../www/radmin/includes/session.inc.php:68
+msgid "Incorrect Login"
+msgstr ""
+
+#: ../../../www/radmin/includes/session.inc.php:72
+msgid "Security Issue. Please login again"
+msgstr ""
+
+#: ../../../www/radmin/includes/session.inc.php:76
+msgid "Authentication Issue. Please report to Admin"
 msgstr ""
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:160
