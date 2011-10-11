@@ -83,7 +83,7 @@ if(isset($_POST['submit']))
                 $postvalue = trim(clean_number($_POST[$singleoption]));
                 break;
             case "ip":
-                $postvalue = trim($_POST[$singleoption]);
+                $postvalue = long2ip(ip2long(trim($_POST[$singleoption])));
                 break;
             case "bool":
                 $postvalue = isset($_POST[$singleoption]);
@@ -112,7 +112,7 @@ if(isset($_POST['submit']))
                     $postvalue[] = clean_number($value);
                     break;
                 case "ip":
-                    $postvalue[] = trim($value);
+                    $postvalue[] = long2ip(ip2long(trim($value)));
                     break;                     
                     
             }

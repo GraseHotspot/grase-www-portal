@@ -19,8 +19,19 @@ if($username != '')
     //print_r($user);
     //print_r($session);
 
-    $user['RemainingQuota'] = $user['MaxOctets'] - $user['AcctTotalOctets'];
-    $user['RemainingTime'] = $user['MaxAllSession'] - $user['TotalTimeMonth'];
+    /* Shared code with get_user_limits */    
+    $maxoctets = "";
+    $timelimit = "";
+    
+    if(isset($user['Max-Octets'])) $maxoctets = $user['Max-Octets'];
+    if(isset($user['Max-All-Session'])) $timelimit = $user['Max-All-Session'];
+    
+    if(isset($user['GroupSettings']['MaxOctets']) && ! $maxoctets) $maxoctets = $user['GroupSettings']['MaxOctets'];
+    if(isset($user['GroupSettings']['MaxSeconds']) && ! $timelimit) $timelimit = $user['GroupSettings']['MaxSeconds'];    
+    /* */
+
+    $user['RemainingQuota'] = $maxoctets - $user['AcctTotalOctets'];
+    $user['RemainingTime'] = $timelimit - $user['TotalTimeMonth'];
     $smarty->assign('user', $user);
     $smarty->assign('session', $session);
 }else{

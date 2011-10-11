@@ -24,6 +24,8 @@ class DatabaseFunctions
 {
     public $db; // Radius DB
     
+    private $groupdetails = array(); //cache group details 
+    
     public function &getInstance()
     {
         // Static reference of this class's instance.
@@ -327,7 +329,7 @@ class DatabaseFunctions
 
         // Get User Group
         $Userdata['Group'] = $this->getUserGroup($username);
-
+        
         // Get Data usage
         $Userdata['AcctTotalOctets'] = $this->getUserDataUsage($username);
         $Userdata['TotalOctets'] = $this->getUserDataUsageTotal($username);
@@ -344,6 +346,14 @@ class DatabaseFunctions
         
         // Get User Comment
         $Userdata['Comment'] = $this->getUserComment($username);
+        
+        // Get Information about groups (it's cached, so might as well fetch it all)
+        $groupdata = $this->getGroupAttributes();
+        
+        if (isset($groupdata[$Userdata['Group']])) 
+        {
+            $Userdata['GroupSettings'] = $groupdata[$Userdata['Group']];
+        }
         
         return $Userdata;        
     }
@@ -732,10 +742,35 @@ class DatabaseFunctions
         }
     }
     
-    public function getGroupAttributes()
+    public function getGroupAttributes($groupname = '', $clearcache = false)
     {
-        $sql = "SELECT GroupName, Attribute, Value
-            FROM radgroupreply";
+    
+        if(! $clearcache && $groupname != '' && isset($this->groupdetails[$groupname]))
+        {
+            return $this->groupdetails;
+        }
+        if(! $clearcache && $groupname == '' && sizeof($this->groupdetails) > 0)
+        {
+            return $this->groupdetails;
+        }
+        
+        $groups = array();
+        if(!$clearcache)
+        {
+            $groups = $this->groupdetails;
+        }
+        
+                
+        if($groupname != '')
+        {
+            $sql = sprintf("SELECT GroupName, Attribute, Value
+            FROM radgroupreply WHERE GroupName = %s",
+                $this->db->quote($groupname));
+        }else{
+
+            $sql = "SELECT GroupName, Attribute, Value
+                FROM radgroupreply";
+        }
             
         $results = $this->db->queryAll($sql);
         
@@ -826,6 +861,8 @@ class DatabaseFunctions
             }
             $groups[$attribute['GroupName']][$attr] = $value;
         }
+        
+        $this->groupdetails = $groups;
 
         return $groups;
   

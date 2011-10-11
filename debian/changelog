@@ -1,3 +1,13 @@
+grase-www-portal (3.6.1) purewhite; urgency=low
+
+  * Small fixes to session status (start getting group limits)
+  * Translation bug (remove c-comment)
+  * More utf8 fixes
+  * In DatabaseFunctions cache group details
+  * Added CONTRIBUTORS file for all contributors
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Wed, 12 Oct 2011 08:04:34 +1000
+
 grase-www-portal (3.6) purewhite; urgency=low
 
   * Network settings can be changed from interface

@@ -18,6 +18,7 @@ function __autoload($class_name) {
 
 //require('/var/www/radmin/includes/site_settings.inc.php');
 require_once('../radmin/includes/load_settings.inc.php');
+require_once('../radmin/includes/misc_functions.inc.php');
 
 // put full path to Smarty.class.php
 if(file_exists('/usr/share/php/smarty/libs/') && ! is_link('/usr/share/php/smarty/libs/'))

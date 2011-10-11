@@ -93,9 +93,9 @@ function smarty_translate($params, $text, &$smarty)
 	
 	// use plural if required parameters are set
 	if (isset($count) && isset($plural)) {
-		$text = T_ngettext($text, $plural, $count);
+		$text = utf8_encode(T_ngettext($text, $plural, $count));
 	} else { // use normal
-		$text = T_gettext($text);
+		$text = utf8_encode(T_gettext($text));
 	}
 
 	// run strarg if there are parameters
