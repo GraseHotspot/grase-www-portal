@@ -303,7 +303,6 @@ msgid "Sellable Graph Max"
 msgstr "Graphe de revenus max "
 
 #: ../../../www/radmin/templates/smarty.c:70
-#, c-format
 msgid "Select what is 100% on the Sellable Data Graph"
 msgstr "Sélectionnez ce qui est à 100% dans le graphe de revenus max"
 
@@ -312,7 +311,6 @@ msgid "Useable Graph Max"
 msgstr "Graphe d'utilisation max"
 
 #: ../../../www/radmin/templates/smarty.c:72
-#, c-format
 msgid "Select what is 100% on the Useable Data Graph"
 msgstr "Sélectionnez ce qui est 100% dans le graphe d'utilisation max"
 
