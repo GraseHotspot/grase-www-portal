@@ -1,3 +1,9 @@
+grase-www-portal (3.6.2) purewhite; urgency=low
+
+  * New Mobile (jQuery Mobile) portal
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Wed, 12 Oct 2011 21:24:40 +1000
+
 grase-www-portal (3.6.1) purewhite; urgency=low
 
   * Small fixes to session status (start getting group limits)
