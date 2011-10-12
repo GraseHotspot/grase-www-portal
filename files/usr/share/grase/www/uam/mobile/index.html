@@ -1,0 +1,217 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>Page Title</title> 
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.3.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.js"></script>
+	
+	<script type="text/javascript" src="chilliMD5.js"></script>	
+	
+	<script type="text/javascript">
+	var challenge = 0;
+	
+	var ident = '00';
+	
+	var urlRoot = 'http://192.168.10.1:3990/json/';
+	
+	var chilliController = { interval:30 , host:"###SERVERIPADDRESS###" , port:3990 , ident:'00' , ssl:false , uamService: '' };
+	chilliController.stateCodes = { UNKNOWN:-1 , NOT_AUTH:0 , AUTH:1 , AUTH_PENDING:2 , AUTH_SPLASH:3 } ;
+	
+	function get_challenge()
+	{
+	
+	    if ( typeof (challenge) != 'string' ) {
+	      $.getJSON(urlRoot + 'status?callback=?', function(resp) {
+	        // Check for valid challenge
+
+            
+	        if ( typeof (resp.challenge) != 'string' ) {
+		        alert('Cannot get challenge');
+		        return false;
+	        }
+	        if ( resp.clientSate === chilliController.stateCodes.AUTH ) {
+		        alert('Already connected.');
+		        return false;
+	        }	                    
+            // Check clientState
+            
+            /// ...
+            
+            // Got valid challenge and not logged in
+            challenge = json.challenge;            
+            
+            get_login();
+            
+          });
+        }else{
+            get_login();
+        }
+	}
+	
+	function get_login()
+	{
+		/* Calculate MD5 CHAP at the client side */
+		var myMD5 = new ChilliMD5();
+		
+		var password = $("#loginpassword").val();
+		var username = $("#loginusername").val();
+		
+		if ( typeof(password) !== 'string' || typeof(username) !== 'string' || password.length == 0 || username.length == 0) {
+		    $("#errormessages").text("Both username and password are needed");
+            $.mobile.changePage("#loginpage");
+            return false;
+        }
+		
+		var chappassword = myMD5.chap ( ident , password , challenge );
+
+        	
+		/* Build /logon command URL */
+		var logonUrl = urlRoot + 'logon?username=' + escape(username) + '&response='  + chappassword;
+
+        $.ajax({
+            url: logonUrl,
+            dataType: "jsonp",
+            timeout: 1000,
+            jsonpCallback: "process_reply"
+        });	
+
+	}
+	
+	function process_reply(resp)
+	{
+	    //alert(resp);
+	    // Check for message (error)
+	    if ( typeof (resp.message)  == 'string' ) {
+	        alert(resp.message);
+	    }
+	    
+	    if ( typeof (resp.challenge) == 'string' ) {
+		    challenge = resp.challenge ;
+	    }	    
+	    
+	    //client state
+	    if (  ( resp.clientState === chilliController.stateCodes.NOT_AUTH     ) ||
+              ( resp.clientState === chilliController.stateCodes.AUTH         ) ||
+              ( resp.clientState === chilliController.stateCodes.AUTH_SPLASH  ) ||
+    	      ( resp.clientState === chilliController.stateCodes.AUTH_PENDING ) ) {
+                
+            if ( resp.clientState === chilliController.stateCodes.NOT_AUTH )
+                $.mobile.changePage("#loginpage");
+            
+            if ( resp.clientState === chilliController.stateCodes.AUTH )
+                $.mobile.changePage("#status");
+                
+            if ( resp.clientStaet === chilliController.stateCodes.AUTH_PENDING )
+                $.mobile.changePage("#waiting");
+
+		}
+    	else {
+	    	alert("Unknown clientState found in JSON reply");
+	    }
+	    
+	    setTimeout('update_status()', 10000);
+	}
+	
+	function update_status()
+	{
+        $.ajax({
+            url: urlRoot + 'status',
+            dataType: "jsonp",
+            timeout: 1000,
+            jsonpCallback: "process_reply"
+            });	
+	}
+	
+	function logoff()
+	{
+        $.ajax({
+            url: urlRoot + 'logoff',
+            dataType: "jsonp",
+            timeout: 1000,
+            jsonpCallback: "process_reply"
+            });	
+	}	
+	
+    $('#loginpage').live('pagecreate',function(event){
+        update_status();
+        
+        $('#loginform').submit(function ()
+            {
+                $.mobile.changePage($("#waiting"));
+                get_challenge();
+                return false;
+            });
+            
+        $('#logoffform').submit(function ()
+            {
+                logoff();
+            });
+    });
+	</script>
+</head> 
+
+<body> 
+<body> 
+
+<div data-role="page" id="loginpage">
+
+    <div data-role="header">
+        <h1>Hotspot Login</h1>
+    </div><!-- /header -->
+
+    <div data-role="content">
+        <p>Use of this hotspot is subject to the <a href="toc.html">Terms and Conditions</a>. By logging in you are agreeing to these terms and conditions</p>
+        <p id="errormessages"></p>
+        <form id="loginform">
+            <div data-role="fieldcontain">
+                <label for="loginusername">Username</label>
+                <input type="text" id="loginusername"/>
+                
+            </div>
+            <div data-role="fieldcontain">
+                <label for="loginpassword">Password</label>
+                <input type="password" id="loginpassword"/>
+                
+            </div>
+            
+            <button type="submit" id="loginsubmit">Login</button>
+
+
+        </form>
+    </div><!-- /content -->
+
+    <div data-role="footer">
+        <h4></h4>
+    </div>
+</div><!-- /page -->
+
+<div data-role="page" id="waiting">
+    <div data-role="header">
+        <h1>Logging in...</h1>
+    </div>
+    
+    <div data-role="content">
+        <p>Attempting to login to the hotspot</p>
+    </div>
+</div>
+
+<div data-role="page" id="status">
+    <div data-role="header">
+        <h1>Active Session</h1>
+    </div>
+    
+    <div data-role="content">
+        <p>Status</p>
+        <form id="logoffform">
+            <button type="submit" id="logoff">Logoff</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
+
