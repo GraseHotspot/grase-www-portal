@@ -24,25 +24,27 @@ if(isset($_GET['enablejs']))
     header("Location: http://$lanip:3990/prelogin");
 }
 
-$res = $_GET['res'];
-$userurl = $_GET['userurl'];
-$challenge = $_GET['challenge'];
+$res = @$_GET['res'];
+$userurl = @$_GET['userurl'];
+$challenge = @$_GET['challenge'];
 
 if($userurl == 'http://logout/') $userurl = '';
 if($userurl == 'http://1.0.0.0/') $userurl = '';
 
 if($Settings->getSetting('disablejavascript') == 'TRUE')
 {
+    $nojs = true;
     $smarty->assign("nojs" , true);
     $smarty->assign("js" , false);    
     $smarty->assign("jsdisabled" , true);        
 }elseif( isset($_COOKIE['grasenojs']) && $_COOKIE['grasenojs'] == 'javascriptdisabled')
 {
+    $nojs = true;
     $smarty->assign("nojs" , true);
     $smarty->assign("js" , false);    
 }else
 {
-
+    $nojs = false;
     $smarty->assign("nojs" , false);
     $smarty->assign("js" , true);        
 }
@@ -73,6 +75,11 @@ switch($res)
     case 'already':
         //if ($userurl) header("Location: $userurl");
         // Fall through to welcome page?
+        if($nojs)
+        {
+            $smarty->display('loggedin.tpl');
+            exit;
+        }
         break;
     
     case 'failed':

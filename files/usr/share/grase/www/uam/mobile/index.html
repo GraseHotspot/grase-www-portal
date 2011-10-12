@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html> 
 	<head> 
-	<title>Page Title</title> 
+	<title>Hotspot Login</title> 
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 
@@ -16,7 +16,7 @@
 	
 	var ident = '00';
 	
-	var urlRoot = 'http://192.168.10.1:3990/json/';
+	var urlRoot = 'http://10.1.0.1:3990/json/';
 	
 	var chilliController = { interval:30 , host:"###SERVERIPADDRESS###" , port:3990 , ident:'00' , ssl:false , uamService: '' };
 	chilliController.stateCodes = { UNKNOWN:-1 , NOT_AUTH:0 , AUTH:1 , AUTH_PENDING:2 , AUTH_SPLASH:3 } ;
@@ -62,7 +62,7 @@
 		
 		if ( typeof(password) !== 'string' || typeof(username) !== 'string' || password.length == 0 || username.length == 0) {
 		    $("#errormessages").text("Both username and password are needed");
-            $.mobile.changePage("#loginpage");
+            $.mobile.changePage($("#loginpage"));
             return false;
         }
 		
@@ -100,13 +100,13 @@
     	      ( resp.clientState === chilliController.stateCodes.AUTH_PENDING ) ) {
                 
             if ( resp.clientState === chilliController.stateCodes.NOT_AUTH )
-                $.mobile.changePage("#loginpage");
+                $.mobile.changePage($("#loginpage"), { reverse: true} );
             
             if ( resp.clientState === chilliController.stateCodes.AUTH )
-                $.mobile.changePage("#status");
+                $.mobile.changePage($("#status"));
                 
             if ( resp.clientStaet === chilliController.stateCodes.AUTH_PENDING )
-                $.mobile.changePage("#waiting");
+                $.mobile.changePage($("#waiting"));
 
 		}
     	else {
@@ -137,7 +137,6 @@
 	}	
 	
     $('#loginpage').live('pagecreate',function(event){
-        update_status();
         
         $('#loginform').submit(function ()
             {
@@ -145,10 +144,17 @@
                 get_challenge();
                 return false;
             });
+        update_status();
+            
+    });            
+    
+    $('#status').live('pagecreate',function(event){
+   
             
         $('#logoffform').submit(function ()
             {
                 logoff();
+                return false;
             });
     });
 	</script>

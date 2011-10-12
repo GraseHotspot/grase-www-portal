@@ -4,6 +4,8 @@
 // Apply CHAP
 // Redirect to login url
 
+require_once('includes/site.inc.php');
+
 // Login url form 10.1.0.1:3990/login?logon?username=$username&response=$response&userurl=$userurl
 
 $username = urlencode($_POST['username']);
