@@ -26,14 +26,14 @@
 </tr>
 <tr id="maxRemainOctetsRow">
 <td id="maxRemainOctetsLabel" class="chilliLabel"><b>{t}Remaining Quota{/t}</b></td>
-<td id="maxRemainOctets" class="chilliValue">{$user.RemainingQuota|bytes}</td>
+<td id="maxRemainOctets" class="chilliValue">{if $user.RemainingQuota gt 0}{$user.RemainingQuota|bytes}{else}{t}Unlimited{/t}{/if}</td>
 </tr>
 <tr id="download_bar_row">
 <td></td><td id="download_bar_cell"><span id="download_bar" style="display:none;"> </span></td>
 </tr>
 <tr id="MonthlyUsageLimitRow">
 <td id="MonthlyUsageLimitRowLabel" class="chilliLabel"><b>{t}Quota allocation{/t}</b></td>
-<td id="MonthlyUsageLimit" class="chilliValue">{$user.MaxOctets|bytes}</td>
+<td id="MonthlyUsageLimit" class="chilliValue">{if $user.MaxOctets gt 0}{$user.MaxOctets|bytes}{else}{t}Unlimited{/t}{/if}</td>
 </tr>
 <tr id="sessionTimeoutRow" class="chilliLabelhide">
 <td id="sessionTimeoutLabel" class="chilliLabel"><b>{t}Max Session Time{/t}</b></td>
@@ -53,11 +53,11 @@
 </tr>
 <tr id="RemainsessionTimeRow">
 <td id="RemainsessionTimeLabel" class="chilliLabel"><b>{t}Remaining Time{/t}</b></td>
-<td id="RemainsessionTime" class="chilliValue">{$user.RemainingTime|seconds}</td>
+<td id="RemainsessionTime" class="chilliValue">{if $user.RemainingTime gt 0}{$user.RemainingTime|seconds}{else}{t}Unlimited{/t}{/if}</td>
 </tr>
 <tr id="MonthlyTimeLimitRow">
 <td id="MonthlyTimeLimitLabel" class="chilliLabel"><b>{t}Time Limit{/t}</b></td>
-<td id="MonthlyTimeLimit" class="chilliValue">{$user.MaxAllSession|seconds}</td>
+<td id="MonthlyTimeLimit" class="chilliValue">{if $user.MaxAllSession gt 0}{$user.MaxAllSession|seconds}{else}{t}Unlimited{/t}{/if}</td>
 </tr>
 <tr id="idleTimeRow" class="chilliLabelhide">
 <td id="idleTimeLabel" class="chilliLabel"><b>{t}Idle Time{/t}</b></td>
@@ -73,7 +73,7 @@
 </tr>
 <tr id="connectRow">
 <td><span id="statusMessage"></span></td>
-<td class="buttons"><a href="http://logoff/" id="logoutlink" class="negative"> <img src="/grase/images/icons/cross.png" alt=""/>
+<td class="buttons"><a href="http://1.0.0.0/" id="logoutlink" class="negative"> <img src="/grase/images/icons/cross.png" alt=""/>
 Logout</a></td>
 </tr>
 

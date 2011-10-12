@@ -8,7 +8,7 @@ if (o != null) {
 
 o.innerHTML='<?php
 
-$template=str_replace("\n", " ", str_replace("'","\'",utf8_encode($smarty->fetch('../json_html.tmpl'))));
+$template=str_replace("\n", " ", str_replace("'","\'",$smarty->fetch('../json_html.tmpl')));
 echo $template;
 
 ?>'

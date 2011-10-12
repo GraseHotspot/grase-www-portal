@@ -13,6 +13,7 @@ $search = array(
     'Error loading generic login form',
     'Popup Blocked. Click link below to continue to your website and open the status window',
     'Logged In',
+    'Click to open the status window and continue to your site',
     );
 $replace = array(
     $lanip,
@@ -21,6 +22,7 @@ $replace = array(
     T_('Error loading generic login form'),
     T_('Popup Blocked. Click link below to continue to your website and open the status window'),
     T_('Logged In'),
+    T_('Click to open the status window and continue to your site'),
     );
 $jsfilecontents = str_replace($search, $replace, $jsfilecontents);
 

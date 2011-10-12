@@ -78,6 +78,7 @@ function apply_locale($newlocale)
     T_setlocale(LC_MESSAGES, $language);
 
     T_bindtextdomain("grase", "/usr/share/grase/locale");
+    T_bind_textdomain_codeset("grase", "UTF-8");    
     T_textdomain("grase");
 }
 

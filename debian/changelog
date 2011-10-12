@@ -5,8 +5,11 @@ grase-www-portal (3.6.1) purewhite; urgency=low
   * More utf8 fixes
   * In DatabaseFunctions cache group details
   * Added CONTRIBUTORS file for all contributors
+  * Removal of popup on login link, now only after successful login
+  * Display error/status messages longer
+  * No auto redirect to userurl (prevents redirecting you to logout link)
 
- -- Tim White <tim@hotspot.purewhite.id.au>  Wed, 12 Oct 2011 08:04:34 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Wed, 12 Oct 2011 10:25:45 +1000
 
 grase-www-portal (3.6) purewhite; urgency=low
 

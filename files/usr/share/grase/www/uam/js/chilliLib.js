@@ -399,14 +399,15 @@ chilliController.processReply = function ( resp ) {
         	    loginwindow.focus();
         	    if(chilliController.redir.originalURL)		
         	    {
-    	    	    window.location.href = chilliController.redir.originalURL;
+    	    	    //window.location.href = chilliController.redir.originalURL;
     	    	    chilliController.redir.originalURL = null;
     	    	}
     	    }
         	else
         	{
-    	        showStatusMessage("Popup Blocked. Click link below to continue to your website and open the status window");
+    	        showStatusMessage("Popup window Blocked. Click link below to continue to your website and open the status window");
     	    }
+    	    updateUI();
     	}
     	else
     	{
@@ -902,7 +903,8 @@ function setElementValue(elem, val, forceHTML) {
 function showErrorMessage(message)
 {
     if( message != "" ){
-        $("#errormessages").fadeIn(400).delay(10000).fadeOut(400);
+        showStatusMessage("");
+        $("#errormessages").fadeIn(400);//.delay(10000).fadeOut(400);
         $("#errormessageslist").html("<li>"+message+"</li>");
         window.focus();
     }else
@@ -914,7 +916,8 @@ function showErrorMessage(message)
 function showStatusMessage(message)
 {
     if( message != "" ){
-        $("#successmessages").fadeIn(400).delay(5000).fadeOut(400);
+        showErrorMessage("");
+        $("#successmessages").fadeIn(400).delay(10000).fadeOut(400);
         $("#successmessageslist").html("<li>"+message+"</li>");
     }else
     {
@@ -943,7 +946,7 @@ function updateUI (cmd ) {
 	}
 	if (chilliController.redir.originalURL != null &&
 	    chilliController.redir.originalURL != '' &&  typeof( miniportal ) == 'undefined' ) {
-	    $('#userurl').html('<a href="'+chilliController.redir.originalURL+ '">Click here to continue to your site (and open the status window)<br/> '+chilliController.redir.originalURL.substring(0,60)+'</a>');
+	    $('#userurl').html('<a href="'+chilliController.redir.originalURL+ '">Click to open the status window and continue to your site<br/> '+chilliController.redir.originalURL.substring(0,60)+'</a>');
 	    $('#userurl').click(function(){
     	    loginwindow = window.open("/grase/uam/mini", "grasestatus", "width=300,height=400,location=no,directories=no,status=yes,menubar=no,toolbar=no");
     	    loginwindow.moveTo(100,100);
@@ -1009,7 +1012,7 @@ function connect() {
 	}
     
     showWaitPage(1000);
-    loginwindow = window.open("/grase/uam/mini", "grasestatus", "width=300,height=400,location=no,directories=no,status=yes,menubar=no,toolbar=no");    
+    //loginwindow = window.open("/grase/uam/mini", "grasestatus", "width=300,height=400,location=no,directories=no,status=yes,menubar=no,toolbar=no");    
     chilliController.logon( username , password ) ;
 }
 
@@ -1028,6 +1031,7 @@ function showLogonPage() {
     hidePage("statusPage");
     hidePage("waitPage");
     hidePage("errorPage");
+    setTimeout('chilliController.refresh()', 10000);
 }
 
 function showStatusPage() {
@@ -1154,6 +1158,11 @@ function showErrorPage( str )  {
 var chillijsWindowOnLoad = window.onload;
 var delayTimer; // global reference to delayTimer
 $(document).ready(function() {
+    $("#logonFormnojs").hide(); 
+    $("#nojswarning").hide();     
+    $("#userurlnojs").hide();    
+    showWaitPage();    
+    
     if (chillijsWindowOnLoad) 
 	chillijsWindowOnLoad();
 
@@ -1195,9 +1204,6 @@ $(document).ready(function() {
 	}
     }
 
-    $("#logonFormnojs").hide(); 
-    $("#nojswarning").hide();     
-    $("#userurlnojs").hide();    
-    showWaitPage();    
+
     setTimeout('chilliController.refresh()', 500);
 });

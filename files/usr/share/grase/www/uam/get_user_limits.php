@@ -20,8 +20,7 @@ if($_GET['username']){
     
     if(isset($user['GroupSettings']['MaxOctets']) && ! $maxoctets) $maxoctets = $user['GroupSettings']['MaxOctets'];
     if(isset($user['GroupSettings']['MaxSeconds']) && ! $timelimit) $timelimit = $user['GroupSettings']['MaxSeconds'];
-    
-    print_r($user);
+
     
 ?>
 chilliJSON.reply({"version":"1.0","clientState":1,"user_details":{"monthlyusagelimit":"<? echo $maxoctets;?>","monthlytimelimit":"<? echo $timelimit;?>"}})
