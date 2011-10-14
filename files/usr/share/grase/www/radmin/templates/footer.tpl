@@ -1,8 +1,9 @@
 </div>
-
+{* Disabled due to too much confusion over the use of these, also need to be moved to the authenticated area (maybe use display_page function to do header, footer, and status bars)
 {if $activepage!="error"}
     {include file="statusmonitors.tpl"}
 {/if}
+*}
 
 <div id="return"><a href="/grase/uam/help">{t}Help Page{/t}</a>&nbsp;|&nbsp;<a href="{$website_link}">{$website_name}</a>&nbsp;|&nbsp;<a href="/grase/radmin/usermin">{t}My Account{/t}</a>&nbsp;|&nbsp;<a href="/grase/radmin/">{t}Admin{/t}</a>
 <div id="copyright">&copy;&nbsp;{$smarty.now|date_format:'%Y'}&nbsp;<a href="http://grasehotspot.org/">Timothy White</a></div>

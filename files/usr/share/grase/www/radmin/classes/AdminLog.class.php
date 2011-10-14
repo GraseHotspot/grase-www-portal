@@ -69,9 +69,14 @@ class AdminLog
 
 	// Share SQL Query between functions
         $this->log_sql = $this->db->prepare('INSERT INTO adminlog
-        	(timestamp, username, ipaddress, action)
+        	(`timestamp`, username, ipaddress, action)
         	VALUES (?, ?, ?, ?)',
         	array('timestamp', 'text', 'text', 'text'), MDB2_PREPARE_MANIP);
+        
+        //var_dump($this->db);
+        //var_dump($this->log_sql);	
+    	if(PEAR::isError($this->log_sql))
+    	    ErrorHandling::fatal_nodb_error("Preparing logging statement failed: ". $this->log_sql->getMessage());
      }
     
     
@@ -105,7 +110,7 @@ class AdminLog
     
     public function getLog()
     {
-        $sql = "SELECT timestamp, username, ipaddress, action FROM adminlog WHERE NOT username = 'CRON' ORDER BY id DESC";
+        $sql = "SELECT `timestamp`, username, ipaddress, action FROM adminlog WHERE NOT username = 'CRON' ORDER BY id DESC";
         
         $res =& $this->db->query($sql);
         
@@ -122,7 +127,7 @@ class AdminLog
     
     public function lastCron()
     {
-        $sql = "SELECT timestamp FROM adminlog WHERE username = 'CRON' ORDER BY id DESC LIMIT 1";
+        $sql = "SELECT `timestamp` FROM adminlog WHERE username = 'CRON' ORDER BY id DESC LIMIT 1";
         
         $res =& $this->db->query($sql);
         
@@ -139,7 +144,7 @@ class AdminLog
      
     public function log($action)
     {
-        $affected =& $this->log_sql->execute(array(date('c' /*Y-m-d H:i:s'*/),
+        $affected =& $this->log_sql->execute(array(date('Y-m-d H:i:s'),
                 $this->Auth->getUsername(),
                 $this->ip,
                 $action));
@@ -155,7 +160,7 @@ class AdminLog
     
     public function log_cron($action)
     {
-        $affected =& $this->log_sql->execute(array(date('c' /*Y-m-d H:i:s'*/),
+        $affected =& $this->log_sql->execute(array(date('*Y-m-d H:i:s'),
                 'CRON',
                 $this->ip,
                 $action));
@@ -171,7 +176,7 @@ class AdminLog
     
     public function log_error($action)
     {
-        $affected =& $this->log_sql->execute(array(date('c' /*Y-m-d H:i:s'*/),
+        $affected =& $this->log_sql->execute(array(date('Y-m-d H:i:s'),
                 $this->Auth->getUsername(),
                 $this->ip,
                 "FATAL: ".$action));

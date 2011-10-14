@@ -20,8 +20,6 @@
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-require_once('include/timezone.inc.php');
-
 /**** Site Settings ****/
 $Settings = new SettingsMySQL($DBs->getRadminDB());
 
@@ -42,8 +40,8 @@ function load_global_settings()
     $pricemb = $Settings->getSetting('priceMb'); if($pricemb == "") $pricemb = 0.6;
     $pricetime = $Settings->getSetting('priceMinute'); if($pricetime == "") $pricetime = 0.1;
     //$currency = $Settings->getSetting('currency'); if($currency == "") $currency = "R";
-    $sellable_data = $Settings->getSetting('sellableData'); if($sellable_data == "") $sellable_data = "4294967296"; //4Gb
-    $useable_data = $Settings->getSetting('useableData'); if($useable_data == "") $useable_data = "5368709120"; //5Gb
+    //$sellable_data = $Settings->getSetting('sellableData'); if($sellable_data == "") $sellable_data = "4294967296"; //4Gb
+    //$useable_data = $Settings->getSetting('useableData'); if($useable_data == "") $useable_data = "5368709120"; //5Gb
     $support_name = $Settings->getSetting('supportContactName'); if($support_name == "") $support_name = "Tim White";
     $support_link = $Settings->getSetting('supportContactLink'); if($support_link == "") $support_link = "http://purewhite.id.au/";
 
@@ -60,6 +58,13 @@ function load_global_settings()
 // Real hostname
 $realhostname = trim(file_get_contents('/etc/hostname'));
 
+/* PHP No longer correctly gets the timezone from the system. Try to set it */
 
+$tzfile = trim(file_get_contents('/etc/timezone'));
+
+if($tzfile)
+    date_default_timezone_set($tzfile);
+else
+    date_default_timezone_set(@date_default_timezone_get());
 
 ?>

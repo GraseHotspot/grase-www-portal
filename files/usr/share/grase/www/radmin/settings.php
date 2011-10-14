@@ -27,6 +27,8 @@ require_once 'includes/database_functions.inc.php';
 $error = array();
 $success = array();
 
+/* TODO: most of this file is repetative. Make it more like Chilli Settings, with arrays defining options and labels, and validation types, then do generic loop */
+
 if(isset($_POST['submit']))
 {
     $newlocationname    = clean_text($_POST['locationname']);
@@ -38,8 +40,8 @@ if(isset($_POST['submit']))
 	$newlocale          = locale_accept_from_http(clean_text($_POST['locale']));
 	$newwebsitename     = clean_text($_POST['websitename']);
 	$newwebsitelink     = clean_text($_POST['websitelink']);
-	$newsellabledata    = clean_number($_POST['sellable_data']);
-	$newuseabledata     = clean_number($_POST['useable_data']);	    
+	//$newsellabledata    = clean_number($_POST['sellable_data']);
+	//$newuseabledata     = clean_number($_POST['useable_data']);	    
     // Check for changed items
     
     if($newlocationname != $location) update_location($newlocationname);
@@ -51,8 +53,8 @@ if(isset($_POST['submit']))
     if($newlocale != $locale) update_locale($newlocale);
     if($newwebsitename != $website_name) update_websitename($newwebsitename);
     if($newwebsitelink != $website_link) update_websitelink($newwebsitelink);
-    if($newsellabledata != $sellable_data) update_sellabledata($newsellabledata);
-    if($newuseabledata != $useable_data) update_useabledata($newuseabledata);    
+    //if($newsellabledata != $sellable_data) update_sellabledata($newsellabledata);
+    //if($newuseabledata != $useable_data) update_useabledata($newuseabledata);    
     // Call validate&change functions for changed items
 }
 
@@ -74,8 +76,8 @@ load_global_settings(); // Reloads settings
 	
 		
 	//$smarty->assign("dispcurrency", $CurrencySymbols[$currency]);
-	$smarty->assign("sellable_data", $sellable_data);
-	$smarty->assign("useable_data", $useable_data);
+	//$smarty->assign("sellable_data", $sellable_data);
+	//$smarty->assign("useable_data", $useable_data);
 	$smarty->assign("support_name", $support_name);
 	$smarty->assign("support_link", $support_link);
 	$smarty->assign("website_name", $website_name);

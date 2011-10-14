@@ -24,7 +24,7 @@
 require_once "Auth.php";
 require_once "MDB2.php";
 
-require_once('include/timezone.inc.php');
+
 
 /**
  * Include Auth_Container base class

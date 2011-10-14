@@ -4,7 +4,7 @@
 <h2>{t}Login{/t}</h2>
 {t}Login is required to access the Administration section of this website.{/t}
 
-<form method='post' action="login?page={$smarty.server.SCRIPT_NAME}" class='generalForm width2'>
+<form method='post' action="login.php?page={$smarty.server.SCRIPT_NAME}" class='generalForm width2'>
 
 <div>
     <label for='username' class='width1'>{t}Username{/t}</label>

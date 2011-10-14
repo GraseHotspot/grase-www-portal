@@ -118,6 +118,7 @@ class DatabaseConnections
             
         $this->radiusOptions = array(
             'portability' => MDB2_PORTABILITY_ALL ^ MDB2_PORTABILITY_FIX_CASE,
+            'emulate_prepared' => true            
             );            
 
         $db_settings = $this->radminDatabaseSettings;
@@ -133,6 +134,7 @@ class DatabaseConnections
             
         $this->radminOptions = array(
             'portability' => MDB2_PORTABILITY_ALL ^ MDB2_PORTABILITY_FIX_CASE,
+            'emulate_prepared' => true
             );            
             
 
@@ -148,14 +150,14 @@ class DatabaseConnections
         $this->radiusDB->setFetchMode(MDB2_FETCHMODE_ASSOC);
 
         
-        $this->radminDB =& MDB2::connect($this->radminDSN);
+        $this->radminDB =& MDB2::connect($this->radminDSN, $this->radminOptions);
         if (PEAR::isError($this->radminDB))
         {
             // Attempt to create the radminDB? TODO: Make nicer?
             $this->radiusDB->loadModule('Manager');
             $this->radiusDB->createDatabase($db_settings['sql_radmindatabase']);
             
-            $this->radminDB =& MDB2::connect($this->radminDSN);
+            $this->radminDB =& MDB2::connect($this->radminDSN, $this->radminOptions);
             if (PEAR::isError($this->radminDB))
             {
                 ErrorHandling::fatal_nodb_error($this->radminDB->getMessage()." RADMIN");

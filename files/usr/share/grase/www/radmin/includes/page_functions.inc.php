@@ -21,7 +21,6 @@
 */
 require_once('php-gettext/gettext.inc');
 
-require_once('include/timezone.inc.php');
 
 require_once 'includes/database_functions.inc.php';
 require_once 'includes/load_settings.inc.php';
@@ -382,6 +381,7 @@ function assign_vars()
 	global $location, $website_name, $website_link, $DEMO_SITE, $Settings;
 
 	// Data
+	/* Disabled usage bars due to lack of understanding/confusion
 	$total_sellable_data = $sellable_data; 
 	$smarty->assign("TotalSellableData", $total_sellable_data);
 	$sold_data =  getSoldData();
@@ -396,18 +396,18 @@ function assign_vars()
 	$smarty->assign("DataRemainingOctets", $total_useable_data - $used_data);
 	$smarty->assign("DataUsagePercent", $used_data/($total_useable_data)*100);
 
+	// last months usage
+	$used_data =  getMonthUsedData(); // TODO: make it get last month that data is for?
+	$smarty->assign("LastM_DataUsageOctets", $used_data);
+	$smarty->assign("LastM_DataRemainingOctets", $total_useable_data - $used_data);
+	$smarty->assign("LastM_DataUsagePercent", $used_data/($total_useable_data)*100);	
+	*/
+
     // Settings
     $smarty->assign("Title", $location . " - " . APPLICATION_NAME);
     $smarty->assign("website_name", $website_name);
     $smarty->assign("website_link", $website_link);
     
-
-	// last months usage
-	$used_data =  getMonthUsedData(); // TODO: make it get last month that data is for?
-	$smarty->assign("LastM_DataUsageOctets", $used_data);
-	$smarty->assign("LastM_DataRemainingOctets", $total_useable_data - $used_data);
-	$smarty->assign("LastM_DataUsagePercent", $used_data/($total_useable_data)*100);
-	
     // Group data for displaying group properties	
 	$smarty->assign("groupdata", DatabaseFunctions::getInstance()->getGroupAttributes());
     $smarty->assign("groups", unserialize($Settings->getSetting("groups")));	
