@@ -20,6 +20,8 @@
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+require_once('include/timezone.inc.php');
+
 /**** Site Settings ****/
 $Settings = new SettingsMySQL($DBs->getRadminDB());
 

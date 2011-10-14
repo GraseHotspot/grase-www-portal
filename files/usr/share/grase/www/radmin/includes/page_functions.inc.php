@@ -21,6 +21,7 @@
 */
 require_once('php-gettext/gettext.inc');
 
+require_once('include/timezone.inc.php');
 
 require_once 'includes/database_functions.inc.php';
 require_once 'includes/load_settings.inc.php';
