@@ -37,7 +37,7 @@ if(isset($_POST['submit']))
 	$newpricemb         = clean_number($_POST['pricemb']);
 	$newpricetime       = clean_number($_POST['pricetime']);
 	//$newcurrency        = clean_text($_POST['currency']);
-	$newlocale          = locale_accept_from_http(clean_text($_POST['locale']));
+	$newlocale          = clean_text($_POST['locale']);
 	$newwebsitename     = clean_text($_POST['websitename']);
 	$newwebsitelink     = clean_text($_POST['websitelink']);
 	//$newsellabledata    = clean_number($_POST['sellable_data']);
@@ -211,16 +211,22 @@ function update_currency($currency)
 
 function update_locale($locale)
 {
-    global $error, $smarty, $Settings, $success;
-	if($locale != "" && locale_accept_from_http($locale))
+	global $error, $smarty, $Settings, $success;
+
+	//$locale = locale_accept_from_http($locale);
+	$newlocale = Locale::parseLocale($locale);
+	
+	// If ['language'] isn't set, then we can't pick a language, so whole Locale is invalid. Region part of Locale isn't as important as Language is. Could default to English if no langauge, so Region would work, but they could just append en_ to the locale themself 
+	if(isset($newlocale['language']))
 	{
-		if($Settings->setSetting('locale', locale_accept_from_http($locale)))
+		$locale = Locale::composeLocale($newlocale);
+		if($Settings->setSetting('locale', $locale))
 		{
 			// Apply new locale so language displays correctly from now on
 			apply_locale($locale);
 
 			$success[] = T_("Locale updated");
-			AdminLog::getInstance()->log(T_("Locale updated to") . locale_accept_from_http($locale));
+			AdminLog::getInstance()->log(T_("Locale updated to") . $locale);
 		}
 		else
 		{
