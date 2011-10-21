@@ -1,19 +1,18 @@
 # 
 # Translators:
-# Silverio Santos <SSantos@web.de>, 2011.
-# ssantos <ssantos@web.de>, 2011.
+# Ifeoluwa Opeyemi A <info@htreasure.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Grase Hotspot\n"
 "Report-Msgid-Bugs-To: http://trac.grasehotspot.org/\n"
 "POT-Creation-Date: 2011-10-10 14:34+1000\n"
-"PO-Revision-Date: 2011-10-11 10:39+0000\n"
-"Last-Translator: purewhite <tim@purewhite.id.au>\n"
-"Language-Team: German (http://www.transifex.net/projects/p/grase/team/de/)\n"
+"PO-Revision-Date: 2011-10-21 00:59+0000\n"
+"Last-Translator: hidden_treasure12 <info@htreasure.com>\n"
+"Language-Team: Afrikaans (http://www.transifex.net/projects/p/grase/team/af/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de\n"
+"Language: af\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-Country: AUSTRALIA\n"
@@ -31,11 +30,11 @@ msgstr ""
 #: ../../../www/radmin/templates/smarty.c:668
 #: ../../../www/uam/templates/smarty.c:86
 msgid "Username"
-msgstr "Benutzername"
+msgstr "Gebruikernaam"
 
 #: ../../../www/radmin/templates/smarty.c:5
 msgid "Choose a username"
-msgstr "Benutzernamen auswählen"
+msgstr "Kies 'n gebruikersnaam"
 
 #: ../../../www/radmin/templates/smarty.c:8
 #: ../../../www/radmin/templates/smarty.c:137
@@ -43,33 +42,33 @@ msgstr "Benutzernamen auswählen"
 #: ../../../www/radmin/templates/smarty.c:497
 #: ../../../www/uam/templates/smarty.c:89
 msgid "Password"
-msgstr "Passwort"
+msgstr "Wagwoord"
 
 #: ../../../www/radmin/templates/smarty.c:11
 msgid "Choose a secure password for the user"
-msgstr "Ein sicheres Passwort für den Benutzer auswählen"
+msgstr "Kies 'n veilige wagwoord vir die gebruiker"
 
 #: ../../../www/radmin/templates/smarty.c:14
 #: ../../../www/radmin/templates/smarty.c:623
 msgid "Group"
-msgstr "Gruppe"
+msgstr "Groep"
 
 #: ../../../www/radmin/templates/smarty.c:17
 #: ../../../www/radmin/templates/smarty.c:332
 msgid "Choose the users group (Expiry is based on the user group)"
-msgstr "Benutzergruppe auswählen (Ablauf hängt von der Benutzergruppe ab)"
+msgstr "Kies die gebruikers-groep (Verval is gebaseer op die gebruiker-groep)"
 
 #: ../../../www/radmin/templates/smarty.c:20
 #: ../../../www/radmin/templates/smarty.c:347
 #: ../../../www/radmin/templates/smarty.c:656
 #: ../../../www/radmin/templates/smarty.c:719
 msgid "Comment"
-msgstr "Kommentar"
+msgstr "Kommentaar"
 
 #: ../../../www/radmin/templates/smarty.c:23
 #: ../../../www/radmin/templates/smarty.c:350
 msgid "A comment about the user"
-msgstr "Ein Kommentar über den Benutzer"
+msgstr "'N opmerking oor die gebruiker"
 
 #: ../../../www/radmin/templates/smarty.c:26
 #: ../../../www/radmin/templates/smarty.c:353
@@ -79,8 +78,8 @@ msgid ""
 "When ether limit is reached, the user will be cut off. (i.e. after 1hour "
 "even if they still have data left)"
 msgstr ""
-"Wenn eines der Beschränkungen erreicht ist, wird der Benutzer abgeschaltet "
-"(z.B. nach einer Stunde obwohl noch Daten übrig sind)"
+"Wanneer eter limiet bereik word, sal die gebruiker afgesny word. (Dws na 1 "
+"uur, selfs as hulle nog steeds data links)"
 
 #: ../../../www/radmin/templates/smarty.c:29
 #: ../../../www/radmin/templates/smarty.c:356
@@ -89,9 +88,9 @@ msgid ""
 "A limit of 0 does not mean unlimited, it will immediately lock the user out."
 " To have an unlimited user, the user must be created without any limits."
 msgstr ""
-"Das Limit 0 heißt nicht unbegrenzt, es wird den Benutzer sofort "
-"ausschließen. Für einen unbegrenzten Benutzer muß dieser mit unbeschränkten "
-"Limits angelegt werden."
+"'N limiet van 0 beteken nie onbeperk nie, sal dit onmiddellik die gebruiker "
+"slot uit. Om 'n onbeperkte gebruiker, moet die gebruiker geskep word sonder "
+"enige beperkings."
 
 #: ../../../www/radmin/templates/smarty.c:32
 #: ../../../www/radmin/templates/smarty.c:794
@@ -99,76 +98,76 @@ msgid ""
 "If a limit is not set here, but is defined for the group, then the group "
 "limit will apply"
 msgstr ""
-"Wenn hier kein Limit angegeben wurde, aber es für die Gruppe definiert ist, "
-"wird das Gruppenlimit verwendet"
+"As 'n beperking is nie wat hier ingestel is nie, maar word gedefinieer vir "
+"die groep, die groep limiet van toepassing sal wees"
 
 #: ../../../www/radmin/templates/smarty.c:35
 #: ../../../www/radmin/templates/smarty.c:359
 #: ../../../www/radmin/templates/smarty.c:734
 msgid "Data Limit (MiB)"
-msgstr "Daten Limit (MiB)"
+msgstr "Datalimiet (MiB)"
 
 #: ../../../www/radmin/templates/smarty.c:38
 #: ../../../www/radmin/templates/smarty.c:50
 #: ../../../www/radmin/templates/smarty.c:737
 #: ../../../www/radmin/templates/smarty.c:746
 msgid "OR"
-msgstr "ODER"
+msgstr "OF"
 
 #: ../../../www/radmin/templates/smarty.c:41
 #: ../../../www/radmin/templates/smarty.c:362
 #: ../../../www/radmin/templates/smarty.c:740
 msgid "Type your own Mb Limit"
-msgstr "Eigenes MB Limit eingeben"
+msgstr "Tik jou eie Mb limiet"
 
 #: ../../../www/radmin/templates/smarty.c:44
 msgid "Choose a Data Limit OR Type your own value"
-msgstr "Datenlimit eingeben ODER Wert selbst eingeben"
+msgstr "Kies 'n datalimiet of tik jou eie waarde"
 
 #: ../../../www/radmin/templates/smarty.c:47
 #: ../../../www/radmin/templates/smarty.c:374
 #: ../../../www/radmin/templates/smarty.c:743
 msgid "Time Limit (Minutes)"
-msgstr "Zeit Limit (Minuten)"
+msgstr "Tyd perk (minute)"
 
 #: ../../../www/radmin/templates/smarty.c:53
 #: ../../../www/radmin/templates/smarty.c:377
 #: ../../../www/radmin/templates/smarty.c:749
 msgid "Type your own Time Limit"
-msgstr "Eigenes Zeitlimit eingeben"
+msgstr "Tik jou eie tyd limiet"
 
 #: ../../../www/radmin/templates/smarty.c:56
 #: ../../../www/radmin/templates/smarty.c:752
 msgid "Choose a Time Limit OR Type your own value"
-msgstr "Zeitlimit auswählen ODER Wert selbst eingeben"
+msgstr "Kies 'n tydsbeperking of tik jou eie waarde"
 
 #: ../../../www/radmin/templates/smarty.c:59
 msgid "User Management Interface"
-msgstr "Benutzerverwaltungsoberfläche"
+msgstr "Gebruikers beheer jou"
 
 #: ../../../www/radmin/templates/smarty.c:62
 msgid "Device Information"
-msgstr "Geräteinformation"
+msgstr "Apparaat data"
 
 #: ../../../www/radmin/templates/smarty.c:65
 msgid "Model Name"
-msgstr "Typ"
+msgstr "Model Naam"
 
 #: ../../../www/radmin/templates/smarty.c:68
 msgid "Host Name"
-msgstr "Hostname"
+msgstr "Host naam"
 
 #: ../../../www/radmin/templates/smarty.c:71
 msgid "System Up-Time"
-msgstr "System Up-Time"
+msgstr "Stelsel Up-Tyd"
 
 #: ../../../www/radmin/templates/smarty.c:74
 msgid "Current Server Time"
-msgstr "Current Server Time"
+msgstr "Huidige bediener tyd"
 
 #: ../../../www/radmin/templates/smarty.c:77
 msgid "Hardware Version"
-msgstr "Hardware Version"
+msgstr "Hardware Weergawe"
 
 #: ../../../www/radmin/templates/smarty.c:80
 msgid "Software Version"
@@ -186,23 +185,23 @@ msgstr "LAN"
 #: ../../../www/radmin/templates/smarty.c:104
 #: ../../../www/radmin/templates/smarty.c:425
 msgid "IP Address"
-msgstr "IP Addresse"
+msgstr "IP-adres"
 
 #: ../../../www/radmin/templates/smarty.c:92
 #: ../../../www/radmin/templates/smarty.c:107
 msgid "Subnet Mask"
-msgstr "Subnet Maske"
+msgstr "Subnet Masker"
 
 #: ../../../www/radmin/templates/smarty.c:95
 #: ../../../www/radmin/templates/smarty.c:119
 #: ../../../www/radmin/templates/smarty.c:713
 msgid "MAC Address"
-msgstr "MAC Addresse"
+msgstr "MAC-adres"
 
 #: ../../../www/radmin/templates/smarty.c:98
 #: ../../../www/radmin/templates/smarty.c:122
 msgid "Network Interface"
-msgstr "Netzwerkinterface"
+msgstr "Network Interface"
 
 #: ../../../www/radmin/templates/smarty.c:101
 msgid "WAN"
@@ -223,42 +222,44 @@ msgstr "DNS 2"
 #: ../../../www/radmin/templates/smarty.c:125
 #: ../../../www/radmin/templates/smarty.c:140
 msgid "Login"
-msgstr "Anmeldung"
+msgstr "Teken in"
 
 #: ../../../www/radmin/templates/smarty.c:128
 msgid ""
 "Login is required to access the Administration section of this website."
 msgstr ""
-"Anmeldung wird für den Zugriff auf den Adminbereich dieser Website benötigt."
+"Intekening word vereis om toegang te verkry tot die Administrasie afdeling "
+"van hierdie webblad."
 
 #: ../../../www/radmin/templates/smarty.c:134
 msgid "Username for Admin interface (Different to internet access username)"
 msgstr ""
-"Benutzername für Adminoberfläche (anders als Internetzugangs-Benutzername)"
+"Gebruikersnaam vir Admin koppelvlak (verskil toegang tot die internet "
+"Gebruikernaam)"
 
 #: ../../../www/radmin/templates/smarty.c:143
 msgid "Site Settings"
-msgstr "Site Einstellungen"
+msgstr "Site-instellings"
 
 #: ../../../www/radmin/templates/smarty.c:146
 msgid "Location Name"
-msgstr "Standortname"
+msgstr "Plek naam"
 
 #: ../../../www/radmin/templates/smarty.c:149
 msgid "Enter a name that identifies this Hotspot Location"
-msgstr "Einen Namen eingeben, der diesen Hotspot Standort beschreibt"
+msgstr "Tik 'n naam wat hierdie hotspot-plek identifiseer"
 
 #: ../../../www/radmin/templates/smarty.c:152
 msgid "Support Contact Name"
-msgstr "Unterstützer Kontaktname"
+msgstr "Ondersteun Contact Naam"
 
 #: ../../../www/radmin/templates/smarty.c:155
 msgid "Enter the name of the Support Contact"
-msgstr "Geben Sie den Namen des Unterstützer Kontakts an"
+msgstr "Gee die naam van die Support Contact"
 
 #: ../../../www/radmin/templates/smarty.c:158
 msgid "Support Link"
-msgstr "Link zur Unterstützung"
+msgstr "Ondersteuning skakel"
 
 #: ../../../www/radmin/templates/smarty.c:161
 msgid ""
@@ -266,17 +267,17 @@ msgid ""
 " using http:// ensure this is accessabile for users who aren't logged into "
 "the hotspot"
 msgstr ""
-"Dies ist der Link zum Unterstützer Kontakt. http:// or mailto: sind erlaubt."
-" Bei Nutzung von http:// stellen Sie sicher, dass er für nicht an den "
-"Hotspot angemeldete Benutzer erreichbar ist."
+"Dit is die skakel vir die ondersteuning kontak. http:// of mailto: word "
+"toegelaat nie. As die gebruik van http:// verseker dat hierdie accessabile "
+"vir gebruikers wat nie aangemeld is nie in die hotspot nie"
 
 #: ../../../www/radmin/templates/smarty.c:164
 msgid "Locale"
-msgstr "Regionalschema"
+msgstr "Locale"
 
 #: ../../../www/radmin/templates/smarty.c:167
 msgid "Select the appropriate Locale for your location"
-msgstr "Das geeignete Regionalschema für diesen Standort auswählen"
+msgstr "Kies die korrekte Locale vir jou plek"
 
 #: ../../../www/radmin/templates/smarty.c:170
 msgid ""
@@ -286,74 +287,72 @@ msgid ""
 "the location to South Africa, while <strong>af_ZA</strong> has the language "
 "set to Afrikaans and the location to South Africa."
 msgstr ""
-"Ein Regionalschema hat 2 Teile, die Sprache und den Standort.<br>Bei "
-"<strong>de_DE</strong> zum Beispiel ist die Sprache Deutsch und der Standort"
-" Deutschland.<br/>Bei <strong>de_AT</strong> ist die Sprache Deutsch und der"
-" Standort Österreich, während bei <strong>af_ZA</strong> die Sprache "
-"Afrikaans und der Standort Südafrika ist."
+"'N plaaslike het 2 dele, die taal en plek. <br/> <strong>en_AU</strong> "
+"byvoorbeeld het die taal stel na Engels, en die plek na Australië. <br/> "
+"<strong>en_ZA</strong> het die taal na Engels, en die plek na Suid-Afrika, "
+"terwyl <strong>af_ZA</strong> het die taal ingestel op Afrikaans en die plek"
+" na Suid-Afrika."
 
 #: ../../../www/radmin/templates/smarty.c:173
 msgid ""
 "The locale defines the number formats, currency and language. If the "
 "language selected is not available, it will fallback to English."
 msgstr ""
-"Das Gebietsschema definiert Nummernformat, Währung und Sprache. Wenn die "
-"ausgewählte Sprache nicht verfügbar ist, wird auf Englisch zurückgegriffen."
+"Die land definieer die aantal formate, valuta en taal. Indien die taal wat "
+"gekies is nie beskikbaar nie, dit sal terugval na Engels."
 
 #: ../../../www/radmin/templates/smarty.c:176
 msgid ""
 "Current locale is %1, which sets the language to %2, and location to %3."
-msgstr ""
-"Das aktuelle Gebietsschema ist %1, welches die Sprache auf %2 und den "
-"Standort auf %3 einstellt."
+msgstr "Huidige locale %1, waarin die taal %2, en die plek van %3."
 
 #: ../../../www/radmin/templates/smarty.c:179
 msgid "Currency symbol is %1"
-msgstr "Das Währungssysmbol ist %1"
+msgstr "Geld simbool is %1"
 
 #: ../../../www/radmin/templates/smarty.c:182
 msgid "How much to charge per Mb"
-msgstr "Wieviel kostet das Mb"
+msgstr "Hoeveel te hef per MB"
 
 #: ../../../www/radmin/templates/smarty.c:185
 msgid "Cost per Minute"
-msgstr "Kosten pro Minute"
+msgstr "Koste per minuut"
 
 #: ../../../www/radmin/templates/smarty.c:188
 msgid "How much to charge per Minute"
-msgstr "Wieviel kostet die Minute"
+msgstr "Hoeveel te hef per minuut"
 
 #: ../../../www/radmin/templates/smarty.c:191
 msgid "Website Name"
-msgstr "Websitename"
+msgstr "Website Naam"
 
 #: ../../../www/radmin/templates/smarty.c:194
 msgid "Label for Website Footer link"
-msgstr "Beschriftung des Website Fußzeilenlinks"
+msgstr "Etiket vir Website Footer skakel"
 
 #: ../../../www/radmin/templates/smarty.c:197
 msgid "Website Link"
-msgstr "Website-Link"
+msgstr "Webwerf skakel"
 
 #: ../../../www/radmin/templates/smarty.c:200
 msgid "Link for Website Footer Link"
-msgstr "Link zur Website Fußzeilenlink"
+msgstr "Skakel vir Website Footer skakel"
 
 #: ../../../www/radmin/templates/smarty.c:203
 msgid "Sellable Graph Max"
-msgstr "Verkäuflich Graph Max"
+msgstr "Verkoopbare Grafiek Max"
 
 #: ../../../www/radmin/templates/smarty.c:206
 msgid "Select what is 100% on the Sellable Data Graph"
-msgstr "Auswählen, was 100% auf dem verkäufliche Daten Graphen darstellt"
+msgstr "Kies wat is 100% op die verkoopbare Data Grafiek"
 
 #: ../../../www/radmin/templates/smarty.c:209
 msgid "Useable Graph Max"
-msgstr "Nutzbar Graph Max"
+msgstr "Bruikbare Grafiek Max"
 
 #: ../../../www/radmin/templates/smarty.c:212
 msgid "Select what is 100% on the Useable Data Graph"
-msgstr "Auswählen, was 100% auf dem nutzbar Daten Graphen darstellt"
+msgstr "Kies wat is 100% op die bruikbare Data Grafiek"
 
 #: ../../../www/radmin/templates/smarty.c:215
 #: ../../../www/radmin/templates/smarty.c:311
@@ -361,11 +360,11 @@ msgstr "Auswählen, was 100% auf dem nutzbar Daten Graphen darstellt"
 #: ../../../www/radmin/templates/smarty.c:605
 #: ../../../www/radmin/templates/smarty.c:767
 msgid "Save Settings"
-msgstr "Einstellungen speichern"
+msgstr "Stoor Stellings"
 
 #: ../../../www/radmin/templates/smarty.c:218
 msgid "Group Config"
-msgstr "Gruppe konfigurieren"
+msgstr "Groep Config"
 
 #: ../../../www/radmin/templates/smarty.c:221
 msgid ""
@@ -373,33 +372,35 @@ msgid ""
 "href=\"http://www.php.net/manual/en/function.strtotime.php\">strtotime</a> "
 "PHP function."
 msgstr ""
-"Gruppenablauf muß in einem Format eingebeben werden, das die PHP Funktion <a"
-" target=\"_blank\" "
+"Groep verstryking moet word in 'n formaat wat verstaan ​​word deur die <a "
+"target=\"_blank\" "
 "href=\"http://www.php.net/manual/en/function.strtotime.php\">strtotime</a> "
-"versteht."
+"PHP funksie."
 
 #: ../../../www/radmin/templates/smarty.c:224
 msgid ""
 "For example, \"+1 month\" will set an expiry for 1 month from when the "
 "account is created. \"+2 weeks\", \"+3 days\" etc."
 msgstr ""
-"\"+1 month\" zum Beispiel wird den Ablauf auf 1 Monat vom Anlegen des Kontos"
-" einstellen.  \"+2 weeks\", \"+3 days\" etc."
+"Byvoorbeeld, \"+1 maand\" 'n periode vir 1 maand sal stel wanneer die "
+"rekening geskep word. \"+2 weke\", \"+3 dae\" ens."
 
 #: ../../../www/radmin/templates/smarty.c:227
 msgid ""
 "Expiry is calculated to the second, so if you want it to a date for example,"
 " try \"+1 week midnight\"."
 msgstr ""
+"Verval is bereken na die tweede, so as jy dit wil 'n datum vir' n voorbeeld,"
+" probeer \"+1 week middernag\"."
 
 #: ../../../www/radmin/templates/smarty.c:230
 msgid ""
 "Deleting a group won't delete it's users. Next time the user is edited it's "
 "group will become the default group unless a new group is selected."
 msgstr ""
-"Das Löschen einer Gruppe wird deren Benutzer nicht löschen. Das nächste Mal,"
-" an dem der Benutzer bearbeitet wird, wird dessen Gruppe die "
-"Voreinstellungsgruppe bis eine andere Gruppe ausgewählt wird."
+"Die verwydering van 'n groep nie verwyder die gebruikers. Volgende keer is "
+"die gebruiker se groep geredigeer sal die standaard-groep word tensy 'n nuwe"
+" groep gekies word."
 
 #: ../../../www/radmin/templates/smarty.c:233
 msgid ""
@@ -407,145 +408,145 @@ msgid ""
 "creating a member. If multiple limits are specified, the first limit to be "
 "reached will disconnect the user."
 msgstr ""
-"Die Limits hier sind die Voreinstellung für die Gruppenmitglieder, bis sie "
-"durch Erstellung eines Mitglieds überschrieben werden. Wenn mehrere Limits "
-"angegeben wurden, wird der Benutzer bei Erreichen des ersten Limits "
-"getrennt."
+"Die grense hier is die standaard vir die lede van die groep, tensy "
+"geneutraliseer word wanneer die skep van 'n lid. As daar verskeie perke "
+"gespesifiseer word, sal die eerste limiet te bereik verbreek die gebruiker."
 
 #: ../../../www/radmin/templates/smarty.c:236
 msgid "Groups"
-msgstr "Gruppen"
+msgstr "Groepe"
 
 #: ../../../www/radmin/templates/smarty.c:239
 #: ../../../www/radmin/templates/smarty.c:275
 #: ../../../www/radmin/templates/smarty.c:680
 msgid "Name"
-msgstr "Name"
+msgstr "Naam"
 
 #: ../../../www/radmin/templates/smarty.c:242
 #: ../../../www/radmin/templates/smarty.c:278
 #: ../../../www/radmin/templates/smarty.c:683
 msgid "Expiry"
-msgstr "Ablauf"
+msgstr "Verval"
 
 #: ../../../www/radmin/templates/smarty.c:245
 #: ../../../www/radmin/templates/smarty.c:281
 msgid "Default Data Limit (MiB)"
-msgstr "Datenlimit Voreinstellung (MiB)"
+msgstr "Default datalimiet (MiB)"
 
 #: ../../../www/radmin/templates/smarty.c:248
 #: ../../../www/radmin/templates/smarty.c:284
 msgid "Default Time Limit (Minutes)"
-msgstr "Zeitlimit Voreinstellung (Minuten)"
+msgstr "Standaard Tyd perk (minute)"
 
 #: ../../../www/radmin/templates/smarty.c:251
 #: ../../../www/radmin/templates/smarty.c:287
 msgid "Recurring Data Limit (MiB)"
-msgstr "Wiederkehrendes Datenlimit (MiB)"
+msgstr "Herhalende datalimiet (MiB)"
 
 #: ../../../www/radmin/templates/smarty.c:254
 #: ../../../www/radmin/templates/smarty.c:260
 #: ../../../www/radmin/templates/smarty.c:290
 #: ../../../www/radmin/templates/smarty.c:296
 msgid "per"
-msgstr "pro"
+msgstr "per"
 
 #: ../../../www/radmin/templates/smarty.c:257
 #: ../../../www/radmin/templates/smarty.c:293
 msgid "Recurring Time Limit (Minutes)"
-msgstr "Wiederkehrendes Zeitlimit (in Minuten)"
+msgstr "Herhalende Tyd perk (minute)"
 
 #: ../../../www/radmin/templates/smarty.c:263
 #: ../../../www/radmin/templates/smarty.c:299
 msgid "Bandwidth Limit Down"
-msgstr ""
+msgstr "Bandwydte perk Down"
 
 #: ../../../www/radmin/templates/smarty.c:266
 #: ../../../www/radmin/templates/smarty.c:302
 msgid "Bandwidth Limit Up"
-msgstr ""
+msgstr "Bandwydte perk op"
 
 #: ../../../www/radmin/templates/smarty.c:269
 #: ../../../www/radmin/templates/smarty.c:305
 msgid "Allow simultaneous logins?"
-msgstr ""
+msgstr "Laat gelyktydige logins?"
 
 #: ../../../www/radmin/templates/smarty.c:272
 #: ../../../www/radmin/templates/smarty.c:314
 msgid "Delete Group"
-msgstr "Gruppe löschen"
+msgstr "Verwyder groep"
 
 #: ../../../www/radmin/templates/smarty.c:308
 msgid "Add Another Group"
-msgstr "Weiteren Benutzer hinzufügen"
+msgstr "Voeg 'n ander groep"
 
 #: ../../../www/radmin/templates/smarty.c:317
 msgid "Edit Computer Account"
-msgstr ""
+msgstr "Computer Rekeninge wysig"
 
 #: ../../../www/radmin/templates/smarty.c:320
 msgid "Edit User"
-msgstr "Benutzer bearbeiten"
+msgstr "Redigeer Gebruikersverslae"
 
 #: ../../../www/radmin/templates/smarty.c:329
 msgid "Choose a secure password for the user. Leave blank to not change"
 msgstr ""
-"Wählen Sie ein sicheren Passwort für den Benutzer. Um es nicht zu ändern, "
-"lassen Sie es leer"
+"Kies 'n veilige wagwoord vir die gebruiker. Laat dit leeg om nie verander "
+"nie"
 
 #: ../../../www/radmin/templates/smarty.c:335
 msgid "This user account never expires"
-msgstr ""
+msgstr "Hierdie rekening nooit verval"
 
 #: ../../../www/radmin/templates/smarty.c:338
 msgid "This user account has expired"
-msgstr ""
+msgstr "Hierdie gebruiker rekening het verval"
 
 #: ../../../www/radmin/templates/smarty.c:341
 msgid "Reset expiry"
-msgstr ""
+msgstr "Herstel verstryking"
 
 #: ../../../www/radmin/templates/smarty.c:344
 msgid "Computer Accounts never expire"
-msgstr ""
+msgstr "Rekenaar rekeninge nie verval"
 
 #: ../../../www/radmin/templates/smarty.c:365
 msgid "Change the Data Limit"
-msgstr "Das Datenlimit ändern"
+msgstr "Verander die datalimiet"
 
 #: ../../../www/radmin/templates/smarty.c:368
 msgid "Add Data to Limit (MiB)"
-msgstr "Füge Daten dem Limit hinzu (MiB)"
+msgstr "Voeg inligting te beperk (MiB)"
 
 #: ../../../www/radmin/templates/smarty.c:371
 msgid "Add to the Data Limit (Will ignore changes made above)"
-msgstr "Füge Daten dem Limit hinzu (die Änderungen oben ignonierend)"
+msgstr "Voeg die datalimiet (veranderinge hierbo gemaak sal ignoreer)"
 
 #: ../../../www/radmin/templates/smarty.c:380
 msgid "Change the Time Limit"
-msgstr "Das Zeitlimit ändern"
+msgstr "Verander die tydsbeperking"
 
 #: ../../../www/radmin/templates/smarty.c:383
 msgid "Add Time to Limit (Minutes)"
-msgstr "Füge Zeit dem Limit hinzu (Minuten)"
+msgstr "Voeg tyd te beperk (minute)"
 
 #: ../../../www/radmin/templates/smarty.c:386
 msgid "Add to the Time Limit (Will ignore changes made above)"
-msgstr "Füge Zeit dem Limit hinzu (die Änderungen oben ignorierend)"
+msgstr ""
+"Voeg toe aan die tydsbeperking (veranderinge hierbo gemaak sal ignoreer)"
 
 #: ../../../www/radmin/templates/smarty.c:389
 #: ../../../www/radmin/templates/smarty.c:392
 msgid "Update User Details"
-msgstr "Benutzerdetails aktualisieren"
+msgstr "Werk User Details"
 
 #: ../../../www/radmin/templates/smarty.c:395
 msgid "Delete Computer Account"
-msgstr ""
+msgstr "Verwyder Computer Rekeninge"
 
 #: ../../../www/radmin/templates/smarty.c:398
 #: ../../../www/radmin/templates/smarty.c:404
 msgid "Delete User"
-msgstr "Benutzer löschen"
+msgstr "Gebruiker verwyder"
 
 #: ../../../www/radmin/templates/smarty.c:401
 msgid ""
@@ -553,69 +554,72 @@ msgid ""
 " with zero usage should be manually deleted to prevent errors in the reports"
 " or statistics."
 msgstr ""
+"Gebruiker rekeninge word outomaties geskrap 2 maande na die verstryking. "
+"Slegs rekeninge met 'n nul gebruik moet word met die hand verwyder word om "
+"foute in die verslae of statistieke om te voorkom dat."
 
 #: ../../../www/radmin/templates/smarty.c:407
 msgid "Are you sure you want to delete this user?"
-msgstr ""
+msgstr "Is jy seker jy wil hierdie gebruiker uitvee?"
 
 #: ../../../www/radmin/templates/smarty.c:410
 msgid "Delete User %1"
-msgstr ""
+msgstr "Verwyder gebruiker %1"
 
 #: ../../../www/radmin/templates/smarty.c:413
 msgid "Sessions for %1"
-msgstr "Sitzungen für %1"
+msgstr "Sessies vir %1"
 
 #: ../../../www/radmin/templates/smarty.c:416
 #: ../../../www/uam/templates/smarty.c:23
 msgid "Start Time"
-msgstr "Startzeit"
+msgstr "Begin Tyd"
 
 #: ../../../www/radmin/templates/smarty.c:419
 msgid "Stop Time"
-msgstr "Stopzeit"
+msgstr "Stop tyd"
 
 #: ../../../www/radmin/templates/smarty.c:422
 msgid "Time"
-msgstr "Zeit"
+msgstr "Tyd"
 
 #: ../../../www/radmin/templates/smarty.c:431
 msgid "Download"
-msgstr "Download"
+msgstr "Aflaai"
 
 #: ../../../www/radmin/templates/smarty.c:434
 #: ../../../www/uam/templates/smarty.c:41
 msgid "Uploaded"
-msgstr "Hochgeladen"
+msgstr "Uploaded"
 
 #: ../../../www/radmin/templates/smarty.c:437
 msgid "Data Usage"
-msgstr "Datennutzung"
+msgstr "Gebruik van data"
 
 #: ../../../www/radmin/templates/smarty.c:440
 msgid "Reason: "
-msgstr "Grund: "
+msgstr "Rede:"
 
 #: ../../../www/radmin/templates/smarty.c:443
 msgid "Computers hardware (MAC) address is %1"
-msgstr "Die Hardwareadresse (MAC) des Computers ist %1"
+msgstr "Rekenaars hardeware (MAC) adres is %1"
 
 #: ../../../www/radmin/templates/smarty.c:446
 msgid "Captive Portal Config Login"
-msgstr "Captive Portal Konfigurationsanmeldung"
+msgstr "Captive Portal Config Login"
 
 #: ../../../www/radmin/templates/smarty.c:449
 #: ../../../www/radmin/templates/smarty.c:461
 msgid "Upload Logo"
-msgstr "Logo hochladen"
+msgstr "Laai die logo"
 
 #: ../../../www/radmin/templates/smarty.c:452
 msgid "Logo Image"
-msgstr "Logo Bild"
+msgstr "Logo prent"
 
 #: ../../../www/radmin/templates/smarty.c:455
 msgid "Select new logo file."
-msgstr "Neue Logodatei auswählen."
+msgstr "Kies nuwe logo lêer."
 
 #: ../../../www/radmin/templates/smarty.c:458
 msgid ""
@@ -623,9 +627,9 @@ msgid ""
 "page has the logo). 10 Kilobytes maximum. It's physical size shouldn't be "
 "bigger than about 220px in both directions."
 msgstr ""
-"Die Logodatei muß im PNG-Format vorliegen und relativ klein sein (zur "
-"Erinnerung: jede Seite enthält das Logo), 10 KB maximale Größe. Die "
-"Ausdehnung sollte nicht größer als 220px in jede Richtung betragen."
+"Logo lêer moet png formaat, en relatief klein (onthou, elke bladsy is die "
+"logo). 10 kilogrepe maksimum. Dit is fisiese grootte mag nie groter wees as "
+"oor 220px in albei rigtings."
 
 #: ../../../www/radmin/templates/smarty.c:464
 msgid ""
@@ -634,75 +638,79 @@ msgid ""
 "custom CSS to override this logo. The logo is defined in the #page container"
 " as the background."
 msgstr ""
+"Vir meer gevorderde logo's, (verskillende lêer soort, grootte, plasing}, met"
+" die hand die lêer / var / www / of / usr / share / grase / www / images / "
+"oplaai en gebruik van die persoonlike CSS hierdie logo te ignoreer. Die logo"
+" omskryf in die # bladsy houer as die agtergrond."
 
 #: ../../../www/radmin/templates/smarty.c:467
 msgid "Admin Users"
-msgstr "Adminbenutzer"
+msgstr "Admin gebruikers"
 
 #: ../../../www/radmin/templates/smarty.c:470
 #: ../../../www/radmin/templates/smarty.c:485
 #: ../../../www/radmin/templates/smarty.c:488
 msgid "Change Password"
-msgstr "Passwort ändern"
+msgstr "Verander wagwoord"
 
 #: ../../../www/radmin/templates/smarty.c:476
 msgid "Old Password"
-msgstr "Altes Passwort"
+msgstr "Oud wagwoord"
 
 #: ../../../www/radmin/templates/smarty.c:479
 msgid "New Password"
-msgstr "Neues Passwort"
+msgstr "Nuwe wagwoord"
 
 #: ../../../www/radmin/templates/smarty.c:482
 msgid "Confirm New Password"
-msgstr "Neues Passwort bestätigen"
+msgstr "Bevestig nuwe wagwoord"
 
 #: ../../../www/radmin/templates/smarty.c:491
 #: ../../../www/radmin/templates/smarty.c:500
 msgid "Create new Admin User"
-msgstr "Neuen Adminbenutzer anlegen"
+msgstr "Skep nuwe Admin User"
 
 #: ../../../www/radmin/templates/smarty.c:503
 msgid "Delete Admin User"
-msgstr "Adminbenutzer löschen"
+msgstr "Verwyder Admin User"
 
 #: ../../../www/radmin/templates/smarty.c:506
 msgid "Deleting or modifying the support user will prevent remote assistance."
 msgstr ""
-"Den Supportbenutzer zu löschen oder zu verändern wird entfernte "
-"Unterstützung verhindern."
+"Verwyder of die wysiging van die ondersteuning gebruiker sal verhoed dat "
+"hulp op afstand."
 
 #: ../../../www/radmin/templates/smarty.c:509
 msgid "Are you sure you want to delete %1?"
-msgstr "Sind Sie sicher %1 zu löschen?"
+msgstr "Is jy seker jy wil %1 te verwyder?"
 
 #: ../../../www/radmin/templates/smarty.c:512
 msgid "Delete %1"
-msgstr "$1 löschen"
+msgstr "Verwyder %1"
 
 #: ../../../www/radmin/templates/smarty.c:515
 msgid "Cannot delete current user"
-msgstr "Kann aktuellen Benutzer nicht löschen"
+msgstr "Kan nie verwyder huidige gebruiker"
 
 #: ../../../www/radmin/templates/smarty.c:518
 msgid "Logged in as <b>%1</b>"
-msgstr "Als <b>%1</b> angemeldet"
+msgstr "Logged in <b>as %1</b>"
 
 #: ../../../www/radmin/templates/smarty.c:521
 msgid "Session logs for %1 on %2"
-msgstr "Sitzungslogs für %1 auf %2"
+msgstr "Sessie logboeke vir %1 op %2"
 
 #: ../../../www/radmin/templates/smarty.c:524
 msgid "Computers hardware (MAC) address is"
-msgstr "Hardwareadresse (MAC) des Computers ist"
+msgstr "Rekenaars hardeware adres (MAC)"
 
 #: ../../../www/radmin/templates/smarty.c:527
 msgid "Between %1 and %2"
-msgstr "Zwischen %1 und %2"
+msgstr "Tussen %1 en %2"
 
 #: ../../../www/radmin/templates/smarty.c:530
 msgid "Total HTTP (WWW) Traffic Size:"
-msgstr "Gesamte HTTP (WWW) Übertragungsmenge:"
+msgstr "Totale HTTP (WWW) Verkeer Grootte:"
 
 #: ../../../www/radmin/templates/smarty.c:533
 msgid "Domain"
@@ -710,21 +718,21 @@ msgstr "Domain"
 
 #: ../../../www/radmin/templates/smarty.c:536
 msgid "Count"
-msgstr "Anzahl"
+msgstr "Count"
 
 #: ../../../www/radmin/templates/smarty.c:539
 #: ../../../www/radmin/templates/smarty.c:557
 msgid "Size"
-msgstr "Größe"
+msgstr "Grootte"
 
 #: ../../../www/radmin/templates/smarty.c:542
 #: ../../../www/radmin/templates/smarty.c:665
 msgid "Timestamp"
-msgstr "Zeitstempel"
+msgstr "Tyd Stempel"
 
 #: ../../../www/radmin/templates/smarty.c:545
 msgid "Address"
-msgstr "Adresse"
+msgstr "Adres"
 
 #: ../../../www/radmin/templates/smarty.c:548
 msgid "Host"
@@ -732,15 +740,15 @@ msgstr "Host"
 
 #: ../../../www/radmin/templates/smarty.c:551
 msgid "Cached"
-msgstr "Gepuffert"
+msgstr "Cached"
 
 #: ../../../www/radmin/templates/smarty.c:554
 msgid "Request Type"
-msgstr "Anforderungstyp"
+msgstr "Versoek Type"
 
 #: ../../../www/radmin/templates/smarty.c:560
 msgid "Network Settings"
-msgstr ""
+msgstr "Netwerk Stellings"
 
 #: ../../../www/radmin/templates/smarty.c:563
 msgid ""
@@ -749,14 +757,18 @@ msgid ""
 " automatically check for changes every 5 minutes and reload these daemons if"
 " needed."
 msgstr ""
+"Hierdie instellings word deur Coova Chilli en Dnsmasq. Beide Coova Chilli en"
+" Dnsmasq nodig sal hê om herlaai te word wanneer hierdie instellings te "
+"verander. 'N cron sal outomaties te monitor vir verandering elke 5 minute en"
+" Reload hierdie demone indien nodig."
 
 #: ../../../www/radmin/templates/smarty.c:566
 msgid "Status %1"
-msgstr ""
+msgstr "Status %1"
 
 #: ../../../www/radmin/templates/smarty.c:569
 msgid "Network Config last updated %1"
-msgstr ""
+msgstr "Network Config laas %1"
 
 #: ../../../www/radmin/templates/smarty.c:572
 #: ../../../www/radmin/templates/smarty.c:602
@@ -765,17 +777,17 @@ msgid ""
 "For each of the following items, if you need multiple values you can submit "
 "the form and it will append a blank input below the last valid value"
 msgstr ""
-"Wenn Sie für jedes der nachfolgenden Elemente mehrere Werte benötigen können"
-" Sie das Formular übertragen, dann wird eine leere Eingabe unter den letzten"
-" gültigen Wert angehängt"
+"Vir elk van die volgende items, as jy nodig het om verskeie waardes het kan "
+"jy die vorm en stuur, en dit sal 'n leë insette voeg onder die laaste "
+"geldige waarde"
 
 #: ../../../www/radmin/templates/smarty.c:578
 msgid "Help Page"
-msgstr "Hilfeseite"
+msgstr "Help Page"
 
 #: ../../../www/radmin/templates/smarty.c:581
 msgid "My Account"
-msgstr "Mein Konto"
+msgstr "My Account"
 
 #: ../../../www/radmin/templates/smarty.c:584
 msgid "Admin"
@@ -783,91 +795,93 @@ msgstr "Admin"
 
 #: ../../../www/radmin/templates/smarty.c:587
 msgid "Coova Chilli Settings"
-msgstr ""
+msgstr "Coova Chilli Stellings"
 
 #: ../../../www/radmin/templates/smarty.c:590
 msgid ""
 "These settings are used by Coova Chilli. Coova Chilli only reloads it's "
 "config roughly once an hour, or when it's restarted."
 msgstr ""
-"Diese Einstellungen werden von Coova Chilli verwendet. Coova Chilli liest "
-"seine Einstellungen nur etwa stündlich oder bei dessen Neustart neu ein."
+"Hierdie instellings is wat gebruik word deur Coova Chilli. Coova Chilli "
+"enigste herlaadt config ongeveer een keer 'n uur, of wanneer dit weer begin."
 
 #: ../../../www/radmin/templates/smarty.c:593
 msgid ""
 "If you change the MAC Auth Password, no computer accounts will be able to "
 "login until Coova Chilli reloads it's config, or is manually restarted."
 msgstr ""
-"Wenn Sie das MAC Auth Passwort ändern, wird kein Computer in der Lage sein "
-"sich anzumelden, bis Coova Chilli seine Konfiguration neu lädt oder es neu "
-"gestartet wird."
+"As jy die MAC Auth Wagwoord verander, sal geen rekenaar rekeninge in staat "
+"wees om aan te meld totdat Coova Chilli herlaadt se config, of met die hand "
+"weer begin."
 
 #: ../../../www/radmin/templates/smarty.c:596
 msgid "Chilli Config last updated %1"
-msgstr "Chilli Konfiguration wurde $1 zuletzt aktualisiert"
+msgstr "Chilli Config laas %1"
 
 #: ../../../www/radmin/templates/smarty.c:599
 msgid "Portal Config last updated %1"
-msgstr "Portal Konfiguration wurde $1 zuletzt aktualisiert"
+msgstr "Portal Config laas %1"
 
 #: ../../../www/radmin/templates/smarty.c:608
 #: ../../../www/radmin/templates/smarty.c:626
 msgid "Data Limit"
-msgstr "Datenlimit"
+msgstr "Datalimiet"
 
 #: ../../../www/radmin/templates/smarty.c:611
 #: ../../../www/radmin/templates/smarty.c:641
 #: ../../../www/uam/templates/smarty.c:32
 msgid "Time Limit"
-msgstr "Zeitlimit"
+msgstr "Tyd perk"
 
 #: ../../../www/radmin/templates/smarty.c:614
 msgid "%1 Time Limit"
-msgstr "%1 Zeitlimit"
+msgstr "%1 Tyd perk"
 
 #: ../../../www/radmin/templates/smarty.c:617
 msgid "%1 Data Limit"
-msgstr "%1 Datenlimit"
+msgstr "%1 datalimiet"
 
 #: ../../../www/radmin/templates/smarty.c:629
 msgid "Total Data usage for the current month"
-msgstr "Summe Datennutzung für den aktuellen Monat"
+msgstr "Totale gebruik van data vir die huidige maand"
 
 #: ../../../www/radmin/templates/smarty.c:632
 msgid "Data Usage (M)"
-msgstr "Datennutzung (M)"
+msgstr "Gebruik van data (M)"
 
 #: ../../../www/radmin/templates/smarty.c:635
 msgid "Total Data usage, from previous months, excluding current month"
-msgstr "Summe Datennutzung vorangegangener Monate, exkl. aktueller Monat"
+msgstr ""
+"Totale gebruik van data van die vorige maande, met die uitsondering van die "
+"huidige maand"
 
 #: ../../../www/radmin/templates/smarty.c:638
 msgid "Data Usage (T)"
-msgstr "Datennutzung (T)"
+msgstr "Gebruik van data (T)"
 
 #: ../../../www/radmin/templates/smarty.c:644
 msgid "Time Usage (Month)"
-msgstr "Zeitnutzung (Monat)"
+msgstr "Tyd gebruik (Maand)"
 
 #: ../../../www/radmin/templates/smarty.c:647
 msgid "Account Expiry"
-msgstr "Kontoablauf"
+msgstr "Rekening Verstryking"
 
 #: ../../../www/radmin/templates/smarty.c:650
 msgid "Last Logoff timestamp from current month only"
-msgstr "Zeitstempel des letzten Logoff nur vom vorherigen Monat"
+msgstr "Laaste Logoff die datum en tyd van die huidige maand"
 
 #: ../../../www/radmin/templates/smarty.c:653
 msgid "Last Logoff"
-msgstr "Letzter Logoff"
+msgstr "Laaste Logoff"
 
 #: ../../../www/radmin/templates/smarty.c:659
 msgid "Password Hidden"
-msgstr "Passwort verdeckt"
+msgstr "Wagwoord Hidden"
 
 #: ../../../www/radmin/templates/smarty.c:662
 msgid "Admin Log"
-msgstr "Admin Log"
+msgstr "Admin Aanteken"
 
 #: ../../../www/radmin/templates/smarty.c:671
 msgid "IP"
@@ -875,52 +889,52 @@ msgstr "IP"
 
 #: ../../../www/radmin/templates/smarty.c:674
 msgid "Action"
-msgstr "Aktion"
+msgstr "Aksie"
 
 #: ../../../www/radmin/templates/smarty.c:677
 msgid "Group Properties"
-msgstr ""
+msgstr "Groep Eienskappe"
 
 #: ../../../www/radmin/templates/smarty.c:686
 msgid "Max Data (Mb)"
-msgstr ""
+msgstr "Max Data (MB)"
 
 #: ../../../www/radmin/templates/smarty.c:689
 msgid "Max Time (mins)"
-msgstr ""
+msgstr "Max Tyd (minute)"
 
 #: ../../../www/radmin/templates/smarty.c:692
 msgid "Recur time limit"
-msgstr ""
+msgstr "Herhaal tyd limiet"
 
 #: ../../../www/radmin/templates/smarty.c:695
 msgid "BW Limit Down"
-msgstr ""
+msgstr "BW Limit Down"
 
 #: ../../../www/radmin/templates/smarty.c:698
 msgid "BW Limit Up"
-msgstr ""
+msgstr "BW Beperk"
 
 #: ../../../www/radmin/templates/smarty.c:701
 #: ../../../www/uam/templates/smarty.c:101
 msgid "Error"
-msgstr "Fehler"
+msgstr "Fout"
 
 #: ../../../www/radmin/templates/smarty.c:704
 #: ../../../www/uam/templates/smarty.c:104
 msgid "An Error has occured. Please report the error to the administrator"
-msgstr "Ein Fehler ist aufgetreten. Bitte berichten Sie ihn dem Administrator"
+msgstr ""
+"'N fout het voorgekom het. Meld asseblief die fout aan die administrateur"
 
 #: ../../../www/radmin/templates/smarty.c:707
 msgid ""
 "There may be more information available to the administrator in the logs"
 msgstr ""
-"Es können dem Administrator weitere Informationen in den Logs zur Verfügung "
-"stehen"
+"Daar kan meer inligting beskikbaar is vir die administrateur in die logs"
 
 #: ../../../www/radmin/templates/smarty.c:710
 msgid "Create Computer Account"
-msgstr "Computerkonto anlegen"
+msgstr "Skep Computer Rekeninge"
 
 #: ../../../www/radmin/templates/smarty.c:716
 msgid ""
@@ -928,13 +942,13 @@ msgid ""
 " be of the format XX-XX-XX-XX-XX-XX where XX is a hex number, typed in all "
 "capitals"
 msgstr ""
-"Die MAC Adresse ist die Netzwerk Hardwareadresse des Computers. Sie muß im "
-"Format XX-XX-XX-XX-XX-XX eingegeben werden, wobei XX eine Hexadezimalnummer"
-"  in Großbuchstaben ist"
+"Die MAC-adres is die netwerk hardeware-adres van die rekenaar. Dit moet word"
+" van die formaat XX-XX-XX-XX-XX-XX, waar XX is 'n hex aantal, wat in "
+"hoofletters getik"
 
 #: ../../../www/radmin/templates/smarty.c:722
 msgid "Identify the computer. i.e. \"Bob's computer\""
-msgstr "Bennenen Sie den Computer, z.B. \"Michaels Computer\""
+msgstr "Identifiseer die rekenaar. dws \"Bob se rekenaar\""
 
 #: ../../../www/radmin/templates/smarty.c:728
 msgid ""
@@ -945,184 +959,188 @@ msgid ""
 "will revert to the normal login screen for internet access. Computer "
 "accounts can not be edited to add more data or time, only deleted."
 msgstr ""
-"Computerkonten sind zur Nutzung von Computern, die immer Zugang zum Internet"
-" benötigen. Computerkonten melden sich automatisch an wenn sie auf das "
-"Internet zugreifen, üblicherweise beim Hochfahren. Wenn ein Limit gesetzt "
-"ist und dieses erreicht wurde wird der Computer zum normalen "
-"Anmeldebildschirm umgeleitet, um Internetzugriff zu ermöglichen. "
-"Computerkonten können nicht berabeitet werden, um mehr Zeit oder Daten "
-"hinzuzufügen, sie können nur gelöscht werden."
+"Rekenaar rekeninge is bedoel om gebruik te word vir rekenaars wat toegang "
+"tot die internet te alle tye moet. Byvoorbeeld, 'n kantoor-rekenaar. "
+"Rekenaar rekeninge outomaties login so gou as hulle toegang tot die netwerk,"
+" dit sal gewoonlik voorkom by opstart. Indien 'n beperking is, wanneer die "
+"limiet bereik word, sal die rekenaar terug te gaan na die normale login "
+"skerm vir toegang tot die internet. Rekenaar rekeninge kan nie verwerk word "
+"om meer data of tyd, net verwyder by te voeg."
 
 #: ../../../www/radmin/templates/smarty.c:731
 msgid ""
 "It is not recommended setting a time or data limit for computer accounts."
 msgstr ""
-"Es ist nicht empfohlen Zeit- oder Datenlimits für Computerkonten zu "
-"vergeben."
+"Dit word nie aanbeveel die opstel van 'n keer of data limiet vir rekenaar "
+"rekeninge."
 
 #: ../../../www/radmin/templates/smarty.c:755
 #: ../../../www/radmin/templates/smarty.c:758
 msgid "Create New Computer Account"
-msgstr "Neues Computerkonto anlegen"
+msgstr "Skep nuwe rekenaar rekening"
 
 #: ../../../www/radmin/templates/smarty.c:761
 msgid "Portal Customisation"
-msgstr ""
+msgstr "Portal Aanpassing"
 
 #: ../../../www/radmin/templates/smarty.c:770
 msgid "Sold"
-msgstr "Verkauft"
+msgstr "Verkocht"
 
 #: ../../../www/radmin/templates/smarty.c:773
 #: ../../../www/radmin/templates/smarty.c:779
 #: ../../../www/radmin/templates/smarty.c:785
 msgid "%1 of %2"
-msgstr "%1 von %2"
+msgstr "%1 van%2"
 
 #: ../../../www/radmin/templates/smarty.c:776
 msgid "This Month Used"
-msgstr "Diesen Monat verwendet"
+msgstr "Hierdie maand gebruik"
 
 #: ../../../www/radmin/templates/smarty.c:782
 msgid "Last Month Used"
-msgstr "Letzten Monat verwendet"
+msgstr "Verlede maand gebruik"
 
 #: ../../../www/uam/templates/smarty.c:2
 msgid "You are logged in as:"
-msgstr ""
+msgstr "Jy is aangeteken as:"
 
 #: ../../../www/uam/templates/smarty.c:5
 msgid "User"
-msgstr ""
+msgstr "Gebruikers"
 
 #: ../../../www/uam/templates/smarty.c:8
 msgid "Usage this session"
-msgstr ""
+msgstr "Gebruik hierdie sessie"
 
 #: ../../../www/uam/templates/smarty.c:11
 msgid "Remaining Quota"
-msgstr ""
+msgstr "Oorblywende Contingent"
 
 #: ../../../www/uam/templates/smarty.c:14
 msgid "Quota allocation"
-msgstr ""
+msgstr "Quotum"
 
 #: ../../../www/uam/templates/smarty.c:17
 msgid "Max Session Time"
-msgstr ""
+msgstr "Max. Sessie tyd"
 
 #: ../../../www/uam/templates/smarty.c:20
 msgid "Max Idle Time"
-msgstr ""
+msgstr "Max Idle Time"
 
 #: ../../../www/uam/templates/smarty.c:26
 msgid "Session Time"
-msgstr ""
+msgstr "Sessie tyd"
 
 #: ../../../www/uam/templates/smarty.c:29
 msgid "Remaining Time"
-msgstr ""
+msgstr "Res van die tyd"
 
 #: ../../../www/uam/templates/smarty.c:35
 msgid "Idle Time"
-msgstr ""
+msgstr "Idle Time"
 
 #: ../../../www/uam/templates/smarty.c:38
 msgid "Downloaded"
-msgstr ""
+msgstr "Afgelaai"
 
 #: ../../../www/uam/templates/smarty.c:44
 msgid "Help"
-msgstr ""
+msgstr "Help"
 
 #: ../../../www/uam/templates/smarty.c:47
 msgid "Support"
-msgstr ""
+msgstr "Ondersteuning"
 
 #: ../../../www/uam/templates/smarty.c:50
 msgid "Successful Login"
-msgstr ""
+msgstr "Suksesvolle Login"
 
 #: ../../../www/uam/templates/smarty.c:53
 msgid "Continue to your site"
-msgstr ""
+msgstr "Gaan voort op jou werf"
 
 #: ../../../www/uam/templates/smarty.c:56
 msgid "Free Downloads"
-msgstr ""
+msgstr "Free Downloads"
 
 #: ../../../www/uam/templates/smarty.c:59
 msgid ""
 "Welcome to the %1 Hotspot. Please read the following before logging in."
-msgstr ""
+msgstr "Welkom by %1 Hotspot. Lees asseblief die volgende voor te meld"
 
 #: ../../../www/uam/templates/smarty.c:62
 msgid "Information and Help"
-msgstr ""
+msgstr "Inligting en hulp"
 
 #: ../../../www/uam/templates/smarty.c:65
 msgid "For a quick logout, bookmark <a href=\"%1\">LOGOUT</a>"
-msgstr ""
+msgstr "Vir 'n vinnige meld, boekmerk <a href=\"%1\">meld</a>"
 
 #: ../../../www/uam/templates/smarty.c:68
 msgid "If you are already logged in, continue to your site"
-msgstr ""
+msgstr "As jy reeds ingeteken is, bly jou werf"
 
 #: ../../../www/uam/templates/smarty.c:71
 msgid "You are using the less secure login method."
-msgstr ""
+msgstr "Jy is die gebruik van die minder veilige login metode."
 
 #: ../../../www/uam/templates/smarty.c:74
 msgid ""
 "If you have javascript disabled, please try enabling it for the secure login"
 " method."
 msgstr ""
+"As jy het Javascript afgeskakel, kan jy probeer om in staat te stel om vir "
+"die veilige login metode."
 
 #: ../../../www/uam/templates/smarty.c:77
 msgid ""
 "Use this less secure login form if the javascript version is giving you "
 "trouble"
 msgstr ""
+"Gebruik hierdie minder veilige login vorm as die javascript-weergawe gee jy "
+"probleme"
 
 #: ../../../www/uam/templates/smarty.c:80
 msgid "You have disabled the secure javascript login method."
-msgstr ""
+msgstr "Jy het die veilige JavaScript Login metode gestremdes."
 
 #: ../../../www/uam/templates/smarty.c:83
 msgid "Click here to re-enable it"
-msgstr ""
+msgstr "Klik hier om weer in te skakel"
 
 #: ../../../www/uam/templates/smarty.c:92
 msgid "Trouble logging in?"
-msgstr ""
+msgstr "Probleme met jou intekening?"
 
 #: ../../../www/uam/templates/smarty.c:95
 msgid "Click here to disable the javascript login forms."
-msgstr ""
+msgstr "Klik hier om die javascript login vorms om in te skakel."
 
 #: ../../../www/uam/templates/smarty.c:98
 msgid "This will use a less secure login method"
-msgstr ""
+msgstr "Dit sal 'n minder veilige login metode gebruik"
 
 #: ../../../www/radmin/newmachine.php:30
 msgid "MAC Address already has an account"
-msgstr "Die MAC Adresse hat bereits ein Konto"
+msgstr "MAC-adres het reeds 'n rekening"
 
 #: ../../../www/radmin/newmachine.php:43
 msgid "Only set one Data limit field"
-msgstr "Nur ein Datenlimitfeld einstellen"
+msgstr "Net een Data limiet veld"
 
 #: ../../../www/radmin/newmachine.php:44
 msgid "Only set one Time limit field"
-msgstr "Nur ein Zeitlimitfeld setzen"
+msgstr "Slegs stel 'n Tydsbeperking veld"
 
 #: ../../../www/radmin/newmachine.php:84
 msgid "Computer Account Successfully Created"
-msgstr "Computerkonto erfolgreich angelegt"
+msgstr "Rekenaar rekening geskep"
 
 #: ../../../www/radmin/chilliconfig.php:33
 msgid "Walled Garden allowed hosts"
-msgstr "Erlaubte Hosts für Walled Garden "
+msgstr "Ommuurde tuin toegelaat leërskare"
 
 #: ../../../www/radmin/chilliconfig.php:34
 msgid ""
@@ -1130,21 +1148,20 @@ msgid ""
 " done at startup time so not suitable for domains with Round Robin IP "
 "Addresses"
 msgstr ""
-"IPs und Hostnamen, die ohne Anmeldung erreichbar sind. Ein DNS-lookup wird "
-"nur zum Startzeitpunkt gemacht, deshalb ist es für Round Robin IP-Adressen "
-"nicht geeignet"
+"IP's en Host Name wat toeganklik is sonder meld DNS-soektog is slegs gedoen "
+"op opstart tyd so nie geskik vir domains met 'n Round Robin IP-adresse"
 
 #: ../../../www/radmin/chilliconfig.php:37
 msgid "Walled Garden allowed domains"
-msgstr "Erlaubte Domains für Walled Garden"
+msgstr "Ommuurde tuin toegelaat domeine"
 
 #: ../../../www/radmin/chilliconfig.php:38
 msgid "Domains (and their subdomains) that are accesible without logging in."
-msgstr "Domains (und deren Subdomains), die ohne Anmeldung erreichbar sind."
+msgstr "Domeine (en hulle subdomeinen) wat toeganklik is sonder om te meld"
 
 #: ../../../www/radmin/chilliconfig.php:45
 msgid "MAC Auth Password"
-msgstr "MAC Auth Passwort"
+msgstr "MAC Auth Password"
 
 #: ../../../www/radmin/chilliconfig.php:46
 msgid ""
@@ -1152,57 +1169,57 @@ msgid ""
 "something obscure as it can be used to login using a known MAC address as "
 "the username."
 msgstr ""
-"Das MAC-Passwort, das zur automatischen Anmeldung von Computerkonten "
-"verwendet wird. Ändern Sie es in ein kompliziertes Passwort, da es zur "
-"Anmeldung per bekannter MAC-Adresse als Benutzername verwendet werden kann."
+"Die Mac-wagwoord wat gebruik word om rekenaar rekeninge te Auto Login. "
+"Verander dit iets wat onduidelik is, aangesien dit gebruik kan word om aan "
+"te meld met behulp van 'n bekende MAC-adres as die gebruikersnaam."
 
 #: ../../../www/radmin/chilliconfig.php:49
 msgid "Default Session Idle Timeout"
-msgstr "Voreinstellung Idle Sitzungstimeout"
+msgstr "Standaard Sessie Idle Time-out"
 
 #: ../../../www/radmin/chilliconfig.php:50
 msgid ""
 "Default Idle Timeout for sessions. Logout after this number of seconds have "
 "passed without any traffic."
 msgstr ""
-"Voreinstellung Idle Timeout für Sitzungen. Abmeldung nach dieser Anzahl "
-"Sekunden in denen nichts übertragen wurde."
+"Default Idle Time-out vir die sessies. Teken uit na hierdie aantal sekondes "
+"geslaag het sonder enige verkeer."
 
 #: ../../../www/radmin/chilliconfig.php:90
 #: ../../../www/radmin/chilliconfig.php:131
 #, php-format
 msgid "%s Coova Chilli config option update"
-msgstr ""
+msgstr "%s Coova Chilli config opsie update"
 
 #: ../../../www/radmin/chilliconfig.php:176
 msgid "Changes pending Coova Chilli Reload"
-msgstr "Änderungen, die beim Coova Chilli Neustart aktiviert werden"
+msgstr "Veranderinge hangende Coova Chilli Reload"
 
 #: ../../../www/radmin/chilliconfig.php:178
 #: ../../../www/radmin/netconfig.php:171
 msgid "Settings match running config"
-msgstr "Einstellungen stimmen mit aktueller Konfiguration überein"
+msgstr "Stellings ooreenstem config"
 
 #: ../../../www/radmin/usermin.php:42
 msgid "New Passwords must match"
-msgstr "neue Passwörter müssen übereinstimmen"
+msgstr "Nuwe wagwoord moet ooreenstem"
 
 #: ../../../www/radmin/usermin.php:45
 msgid "Password must not be blank"
-msgstr "Passwort darf nicht leer bleiben"
+msgstr "Wagwoord moet nie leeg is"
 
 #: ../../../www/radmin/usermin.php:50 ../../../www/radmin/edituser.php:43
 #: ../../../www/radmin/passwd.php:61 ../../../www/radmin/passwd.php:62
 msgid "Password Changed"
-msgstr "Passwort geändert"
+msgstr "Wagwoord is verander"
 
 #: ../../../www/radmin/usermin.php:53
 msgid "Password not updated"
-msgstr "Passwort nicht aktualisiert"
+msgstr "Wagwoord nie opgedateer"
 
 #: ../../../www/radmin/netconfig.php:33
 msgid "DNS Servers"
-msgstr ""
+msgstr "DNS-bedieners"
 
 #: ../../../www/radmin/netconfig.php:34
 msgid ""
@@ -1211,20 +1228,26 @@ msgid ""
 "WILL NOT get default servers from DHCP or /etc/resolv.conf and will default "
 "to OpenDNS Family Shield"
 msgstr ""
+"IP-adresse van DNS-bedieners. Alle kliënte sal die poort gebruik as die DNS-"
+"bediener wat sal gebruik om die adresse hier gelys DNS-soektogte te doen. "
+"Dnsmasq SAL NIE standaard bedieners van DHCP of / etc / resolv.conf en sal "
+"standaard te OpenDNS Familie Shield"
 
 #: ../../../www/radmin/netconfig.php:37
 msgid "Bogus NXDOMAIN"
-msgstr ""
+msgstr "Skyn NXDOMAIN"
 
 #: ../../../www/radmin/netconfig.php:38
 msgid ""
 "IP Addresses of Bogus NXDOMAIN returns. All DNS replies that contain these "
 "ip address will be transformed into a NXDOMAIN result"
 msgstr ""
+"IP-adresse van skyn NXDOMAIN opbrengste. Alle DNS-antwoord dat bevat hierdie"
+" IP-adres sal omskep word in 'n NXDOMAIN resultaat"
 
 #: ../../../www/radmin/netconfig.php:45
 msgid "LAN IP Address"
-msgstr ""
+msgstr "LAN IP adres"
 
 #: ../../../www/radmin/netconfig.php:46
 msgid ""
@@ -1233,183 +1256,198 @@ msgid ""
 "DNS server the clients access. For default Squid config this should be a "
 "private ip address."
 msgstr ""
+"Die IP adres van die bediener wat gebruik word op die LAN-kant (Coova-"
+"Chilli) van die netwerk. Dit sal die poort adres vir alle kliënte, sowel as "
+"die DNS-bediener die kliënte toegang word. Vir standaard Squid config dit "
+"moet 'n private IP-adres."
 
 #: ../../../www/radmin/netconfig.php:55
 msgid "LAN Network Mask"
-msgstr ""
+msgstr "LAN Netwerk Masker"
 
 #: ../../../www/radmin/netconfig.php:56
 msgid ""
 "Network mask to use for clients network. (i.e. 255.255.255.0). DHCP range "
 "and network address will be calculated from this and the LAN IP Address."
 msgstr ""
+"Netwerk masker te gebruik vir kliënte netwerk. (Dws 255.255.255.0). DHCP-"
+"reeks en netwerk adres sal bereken word uit hierdie en die LAN IP-adres."
 
 #: ../../../www/radmin/netconfig.php:60
 msgid "Bogus NXDOMAIN (OpenDNS)"
-msgstr ""
+msgstr "Skyn NXDOMAIN (OpenDNS)"
 
 #: ../../../www/radmin/netconfig.php:61
 msgid ""
 "Some DNS Providers return bogus NXDOMAIN to redirect you to their search "
 "engine. Block the bogus ip's and return a real NXDOMAIN for OpenDNS."
 msgstr ""
+"Sommige DNS Verskaffers terugkeer pseudo NXDOMAIN om u te lei na hul "
+"soektog. Blok die pseudo IP's en 'n werklike NXDOMAIN vir OpenDNS terugkeer."
 
 #: ../../../www/radmin/netconfig.php:169
 msgid "Changes pending Reload"
-msgstr ""
+msgstr "Wysigings hangende Reload"
 
 #: ../../../www/radmin/edituser.php:61
 msgid "Group Changed"
-msgstr "Gruppe geändert"
+msgstr "Groep het"
 
 #: ../../../www/radmin/edituser.php:71
 msgid "Comment Changed"
-msgstr "Kommentar geändert"
+msgstr "Nota verander"
 
 #: ../../../www/radmin/edituser.php:88
 msgid "Data Limit Increased"
-msgstr "Datenlimit angehoben"
+msgstr "Datalimiet Verhoogde"
 
 #: ../../../www/radmin/edituser.php:89
 #, php-format
 msgid "Data Limit increased for %s"
-msgstr "Datenlimit für %s angehoben"
+msgstr "Datalimiet verhoog vir %s"
 
 #: ../../../www/radmin/edituser.php:109
 msgid "Max Data Limit Updated"
-msgstr "Max Datenlimit aktualisiert"
+msgstr "Max Data Limit Opdateer"
 
 #: ../../../www/radmin/edituser.php:110
 #, php-format
 msgid "Max Data Limit changed for %s"
-msgstr "Max Datenlimit für %s geändert"
+msgstr "Max datalimiet verander vir %s"
 
 #: ../../../www/radmin/edituser.php:127
 msgid "Time Limit Increased"
-msgstr "Zeitlimit angehoben"
+msgstr "Tyd perk is verhoog"
 
 #: ../../../www/radmin/edituser.php:128
 #, php-format
 msgid "Time Limit increased for %s"
-msgstr "Zeitlimit für %s angehoben"
+msgstr "Tyd perk verhoog vir %s"
 
 #: ../../../www/radmin/edituser.php:147
 msgid "Max Time Limit Updated"
-msgstr "Max Zeitlimit aktualisiert"
+msgstr "Max Tyd perk Opdateer"
 
 #: ../../../www/radmin/edituser.php:148
 #, php-format
 msgid "Max Time Limit changed for %s"
-msgstr "Max Zeitlimit geändert für %s"
+msgstr "Max Tyd perk verander vir %s"
 
 #: ../../../www/radmin/edituser.php:157
 msgid "Expiry updated"
-msgstr ""
+msgstr "Verval opgedateer"
 
 #: ../../../www/radmin/edituser.php:167
 #, php-format
 msgid "User '%s' Deleted"
-msgstr "Benutzer '%s' gelöscht"
+msgstr "Gebruiker '%s' Afgehaal"
 
 #: ../../../www/radmin/passwd.php:53
 msgid "Old Password incorrect"
-msgstr "Falsches altes Passwort"
+msgstr "Ou Wagwoord verkeerd"
 
 #: ../../../www/radmin/passwd.php:56
 msgid "New passwords don't match"
-msgstr "Neue Passwörter stimmen nicht überein"
+msgstr "Nuwe wagwoord stem nie ooreen nie"
 
 #: ../../../www/radmin/passwd.php:64
 msgid "Please fill in all password fields"
-msgstr "Bitte alle Passwortfelder ausfüllen"
+msgstr "Vul in al die wagwoord velde"
 
 #: ../../../www/radmin/passwd.php:71
 #, php-format
 msgid "User %s already exists"
-msgstr "Benutzer %s existiert bereits"
+msgstr "Gebruiker %s bestaan ​​reeds"
 
 #: ../../../www/radmin/passwd.php:74
 msgid "User Created"
-msgstr "Benutzer angelegt"
+msgstr "Gebruiker gemaak"
 
 #: ../../../www/radmin/passwd.php:77
 msgid "Need both username and password"
-msgstr "Es werden sowohl der Benutzername als auch das Password benötigt"
+msgstr "Beide gebruikersnaam en wagwoord nodig"
 
 #: ../../../www/radmin/passwd.php:83
 #, php-format
 msgid "User %s Deleted"
-msgstr "Benutzer %s gelöscht"
+msgstr "Gebruiker %s Afgehaal"
 
 #: ../../../www/radmin/passwd.php:86
 msgid "Invalid Delete Request"
-msgstr "Ungültige Löschanfrage"
+msgstr "Ongeldige Verwyder Versoek"
 
 #: ../../../www/radmin/loginconfig.php:45
 msgid "Login Screen Title"
-msgstr ""
+msgstr "Login Screen Titel"
 
 #: ../../../www/radmin/loginconfig.php:46
 msgid "Hide Title (header) from login screen"
-msgstr ""
+msgstr "Steek Titel (header) van login skerm"
 
 #: ../../../www/radmin/loginconfig.php:49
 msgid "Login Screen Footer"
-msgstr ""
+msgstr "Login Screen Footer"
 
 #: ../../../www/radmin/loginconfig.php:50
 msgid ""
 "Hide footer from login screen. Please consider adding a link back to "
 "http://grasehotspot.org if you are hiding the footer"
 msgstr ""
+"Steek footer login skerm. Oorweeg dit asseblief om die toevoeging van 'n "
+"skakel terug na http://grasehotspot.org as jy die wegsteek van die footer"
 
 #: ../../../www/radmin/loginconfig.php:53
 msgid "Logout Bookmark"
-msgstr ""
+msgstr "Logout Bookmark"
 
 #: ../../../www/radmin/loginconfig.php:54
 msgid "Hide Bookmark logout link"
-msgstr ""
+msgstr "Steek Bookmark meld skakel"
 
 #: ../../../www/radmin/loginconfig.php:57
 msgid "Help Link"
-msgstr ""
+msgstr "Skakel Help"
 
 #: ../../../www/radmin/loginconfig.php:58
 msgid ""
 "Hide Help and Information link from login page (still shows in footer if "
 "footer is enabled)"
 msgstr ""
+"Steek hulp en inligting skakel vanaf 'login page (nog steeds toon in footer "
+"as footer is aangeskakel)"
 
 #: ../../../www/radmin/loginconfig.php:61
 msgid "Disable Javascript Login"
-msgstr ""
+msgstr "Skakel Javascript Login"
 
 #: ../../../www/radmin/loginconfig.php:62
 msgid "Force all logins to be through the less secure non-javascript method"
 msgstr ""
+"Force alle logins te word deur die minder veilige metode van non-javascript"
 
 #: ../../../www/radmin/loginconfig.php:65
 msgid "Disable All Default CSS"
-msgstr ""
+msgstr "Skakel alle Default CSS"
 
 #: ../../../www/radmin/loginconfig.php:66
 msgid ""
 "All css files will be excluded from the login pages, and only the css below "
 "(Main CSS) will be used"
 msgstr ""
+"Alle css lêers, sal uitgesluit word van die aanmelding bladsye, en net die "
+"css hieronder (Hoof CSS) sal gebruik word om"
 
 #: ../../../www/radmin/loginconfig.php:70
 msgid "Page Title"
-msgstr ""
+msgstr "Page Title"
 
 #: ../../../www/radmin/loginconfig.php:71
 msgid "The page title that is displayed on the login page"
-msgstr ""
+msgstr "Die titel van die artikel wat vertoon word op die aanmelding bladsy"
 
 #: ../../../www/radmin/loginconfig.php:79
 msgid "Main CSS"
-msgstr ""
+msgstr "Main CSS"
 
 #: ../../../www/radmin/loginconfig.php:80
 msgid ""
@@ -1418,505 +1456,510 @@ msgid ""
 "the builtin css has a more specific selector than your one here, look at "
 "radmin.css for id's and classes)"
 msgstr ""
+"Cascading Style Sheets wat aan al die portaal bladsye (gebruik! Belangrik om"
+" 'n styl te ignoreer as jou stellings hier lyk nie te werk nie, dit kan wees"
+" dat die ingeboude CSS het' n meer spesifieke selector as een van jou hier "
+"toegepas word, kyk op radmin. CSS vir ID's en klasse)"
 
 #: ../../../www/radmin/loginconfig.php:83
 msgid "Help and Information Page"
-msgstr ""
+msgstr "Hulp en inligting Page"
 
 #: ../../../www/radmin/loginconfig.php:84
 msgid "Help and Information page contents"
-msgstr ""
+msgstr "Hulp en inligting bladsy inhoud"
 
 #: ../../../www/radmin/loginconfig.php:88
 msgid "Login Help HTML"
-msgstr ""
+msgstr "Login Help HTML"
 
 #: ../../../www/radmin/loginconfig.php:89
 msgid "Help text (and HTML) displayed on login page above login form"
-msgstr ""
+msgstr "Help teks (en HTML), vertoon op die login bladsy bo Login Form"
 
 #: ../../../www/radmin/loginconfig.php:94
 msgid "HTML Below login form"
-msgstr ""
+msgstr "HTML Hier login vorm"
 
 #: ../../../www/radmin/loginconfig.php:95
 msgid "HTML to insert below login form"
-msgstr ""
+msgstr "HTML te voeg onder Login Form"
 
 #: ../../../www/radmin/loginconfig.php:98
 msgid "Logged In HTML"
-msgstr ""
+msgstr "Aangeteken in HTML"
 
 #: ../../../www/radmin/loginconfig.php:99
 msgid "HTML for successful login when not using javascript"
 msgstr ""
+"HTML vir 'n suksesvolle online wanneer dit nie met behulp van JavaScript"
 
 #: ../../../www/radmin/loginconfig.php:137
 #: ../../../www/radmin/loginconfig.php:174
 #, php-format
 msgid "%s login config option update"
-msgstr ""
+msgstr "%s login config opsie update"
 
 #: ../../../www/radmin/groupconfig.php:52
 msgid "A minimum of one group is required"
-msgstr "Es wird mindestens eine Gruppe benötigt"
+msgstr "'N Minimum van een groep word vereis"
 
 #: ../../../www/radmin/groupconfig.php:56
 msgid "It is not recommended having groups without expiries."
-msgstr "Es ist nicht empfohlen Gruppen ohne Ablauf zu haben."
+msgstr "Dit word nie aanbeveel met groepe sonder termijnen."
 
 #: ../../../www/radmin/groupconfig.php:78
 msgid "Invalid group name or group name missing"
-msgstr "Ungültiger oder fehlender Gruppenname"
+msgstr "Ongeldige naam vir die groep of 'n groep naam ontbreek"
 
 #: ../../../www/radmin/groupconfig.php:96
 #, php-format
 msgid "%s: Invalid expiry format"
-msgstr "%s: Ungültiges Ablaufformat"
+msgstr "%s: Ongeldige verstryking formaat"
 
 #: ../../../www/radmin/groupconfig.php:100
 #, php-format
 msgid "%s: Expiry can not be in the past"
-msgstr "%s: Ablauf darf nicht in der Vergangenheit liegen"
+msgstr "%s: Verval kan nie in die verlede"
 
 #: ../../../www/radmin/groupconfig.php:121
 #, php-format
 msgid "Need both a time limit and recurrance for '%s'"
-msgstr "Sowohl Zeilimit als auch Wiederholung benötigt für '%s'"
+msgstr "Het jy 'n tyd limiet en recurrance vir '%s'"
 
 #: ../../../www/radmin/groupconfig.php:162
 msgid "Groups updated"
-msgstr "Gruppen aktualisiert"
+msgstr "Groepe opgedateer"
 
 #: ../../../www/radmin/newuser.php:31
 msgid "Username already taken"
-msgstr "Benutzername bereits verwendet"
+msgstr "Gebruikernaam reeds geneem"
 
 #: ../../../www/radmin/newuser.php:32
 msgid "Username and Password are both Required"
-msgstr "Sowohl Benutzername als auch Passwort benötigt"
+msgstr "Gebruikersnaam en wagwoord Vereiste"
 
 #: ../../../www/radmin/newuser.php:90
 #, php-format
 msgid "User %s Successfully Created"
-msgstr "Benutzer %s erfolgreich angelegt"
+msgstr "Gebruiker %s suksesvol geskep"
 
 #: ../../../www/radmin/newuser.php:91
 #, php-format
 msgid "Print Ticket for %s"
-msgstr "Drucke Ticket für %s"
+msgstr "Druk die kaartjie vir %s"
 
 #: ../../../www/radmin/newuser.php:92
 #, php-format
 msgid "Created new user %s"
-msgstr "Neuen Benutzer %s angelegt"
+msgstr "Het nuwe gebruiker %s"
 
 #: ../../../www/radmin/newtickets.php:50
 msgid "Max of 50 tickets per batch"
-msgstr "Höchstens 50 Tickets pro Stapel"
+msgstr "Maksimum van 50 kaartjies per batch"
 
 #: ../../../www/radmin/newtickets.php:111
 msgid "Tickets Successfully Created"
-msgstr "Tickets erfolgreich angelegt"
+msgstr "Kaartjies suksesvol geskep"
 
 #: ../../../www/radmin/newtickets.php:112
 msgid "Print Tickets"
-msgstr "Drucke Tickets"
+msgstr "Print Kaartjies"
 
 #: ../../../www/radmin/settings.php:94
 msgid "Location name not valid"
-msgstr "Standortname nicht gültig"
+msgstr "Plek naam nie geldig"
 
 #: ../../../www/radmin/settings.php:98
 msgid "Location name updated"
-msgstr "Standortname aktualisiert"
+msgstr "Plek naam verander"
 
 #: ../../../www/radmin/settings.php:99
 msgid "Location Name changed to"
-msgstr "Standortname geändert in"
+msgstr "Plek naam verander na"
 
 #: ../../../www/radmin/settings.php:104
 msgid "Error Saving Location Name"
-msgstr "Fehler beim Speichern des Standortnamens"
+msgstr "Fout tydens stoor plek naam"
 
 #: ../../../www/radmin/settings.php:113
 msgid "Website name not valid"
-msgstr "Websitename nicht gültig"
+msgstr "Webwerf naam nie geldig"
 
 #: ../../../www/radmin/settings.php:118 ../../../www/radmin/settings.php:119
 msgid "Website name updated"
-msgstr "Webitename aktualisiert"
+msgstr "Webwerf naam verander"
 
 #: ../../../www/radmin/settings.php:123
 msgid "Error Saving Website Name"
-msgstr "Fehler beim Speichern des Websitenamens"
+msgstr "Fout tydens stoor webwerf naam"
 
 #: ../../../www/radmin/settings.php:131
 msgid "Website link not valid"
-msgstr "Websitelink nicht gültig"
+msgstr "Skakel nie geldig"
 
 #: ../../../www/radmin/settings.php:136 ../../../www/radmin/settings.php:137
 msgid "Website link updated"
-msgstr "Websitelink aktualisiert"
+msgstr "Webwerf skakel updated"
 
 #: ../../../www/radmin/settings.php:141
 msgid "Error Saving Website link"
-msgstr "Fehler beim Speichern des Websitelinks"
+msgstr "Fout tydens stoor skakel"
 
 #: ../../../www/radmin/settings.php:155 ../../../www/radmin/settings.php:156
 msgid "Price per MiB updated"
-msgstr "Preis pro MiB aktualisiert"
+msgstr "Prys per MiB opgedateer"
 
 #: ../../../www/radmin/settings.php:160
 msgid "Error saving Price per MiB"
-msgstr "Fehler beim Speichern des Preises pro MiB"
+msgstr "Fout tydens stoor van die prys per MiB"
 
 #: ../../../www/radmin/settings.php:165
 msgid "Invalid Price per MiB"
-msgstr "Ungültiger Preis pro MiB"
+msgstr "Ongeldige prys per MiB"
 
 #: ../../../www/radmin/settings.php:176 ../../../www/radmin/settings.php:177
 msgid "Price per Minute Updated"
-msgstr "Preis pro Minute aktualisiert"
+msgstr "Prys per Minute Opdateer"
 
 #: ../../../www/radmin/settings.php:180
 msgid "Error saving Price per Minute"
-msgstr "Fehler beim Speichern des Preises pro Minute"
+msgstr "Fout tydens stoor van die prys per minuut"
 
 #: ../../../www/radmin/settings.php:184
 msgid "Invalid Price per Minute"
-msgstr "Ungültiger Preis pro Minute"
+msgstr "Ongeldige prys per minuut"
 
 #: ../../../www/radmin/settings.php:195
 msgid "Currency updated"
-msgstr "Währung aktualisiert"
+msgstr "Geld opgedateer"
 
 #: ../../../www/radmin/settings.php:196
 msgid "Currency updated to"
-msgstr "Währung aktualisiert in"
+msgstr "Geld opgedateer aan"
 
 #: ../../../www/radmin/settings.php:200
 msgid "Error saving Currency"
-msgstr "Fehler beim Speichern der Währung"
+msgstr "Fout tydens stoor Wisselkoers"
 
 #: ../../../www/radmin/settings.php:204
 msgid "Invalid Currency"
-msgstr "Ungültige Währung"
+msgstr "Ongeldige valuta"
 
 #: ../../../www/radmin/settings.php:220
 msgid "Locale updated"
-msgstr "Regionalschema aktualisiert"
+msgstr "Locale opgedateer"
 
 #: ../../../www/radmin/settings.php:221
 msgid "Locale updated to"
-msgstr "Regionalschema aktualisiert in"
+msgstr "Locale opgedateer om te"
 
 #: ../../../www/radmin/settings.php:225
 msgid "Error updating Locale"
-msgstr "Fehler beim Aktualisieren des Regionalschemas"
+msgstr "Fout met die opdatering van Locale"
 
 #: ../../../www/radmin/settings.php:229
 msgid "Invalid Locale"
-msgstr "Ungültiges Regionalschema"
+msgstr "Ongeldige Locale"
 
 #: ../../../www/radmin/settings.php:245 ../../../www/radmin/settings.php:246
 msgid "Sellable Data Limit Update"
-msgstr "Verkäufliches Datenlimit Aktualisierung"
+msgstr "Verkoopbare Data Limit Update"
 
 #: ../../../www/radmin/settings.php:250
 msgid "Error updating Sellable Data Limit"
-msgstr "Fehler beim Aktualisieren des verkäuflichen Datenlimits"
+msgstr "Fout met die opdatering van verkoopbare datalimiet"
 
 #: ../../../www/radmin/settings.php:255
 msgid "Invalid value for Sellable Data"
-msgstr "Ungültiger Wert für verkäufliche Daten"
+msgstr "Ongeldige waarde vir verkoopbare Data"
 
 #: ../../../www/radmin/settings.php:266 ../../../www/radmin/settings.php:267
 msgid "Useable Data Limit Update"
-msgstr "Nutzbare Daten Limit Aktualisierung"
+msgstr "Bruikbare Data Limit Update"
 
 #: ../../../www/radmin/settings.php:271
 msgid "Error updating Useable Data Limit"
-msgstr "Fehler beim Aktualisieren des nutzbaren Datenlimits"
+msgstr "Fout met die opdatering van bruikbare datalimiet"
 
 #: ../../../www/radmin/settings.php:276
 msgid "Invalid value for Useable Data"
-msgstr "Ungültiger Wert für nutzbare Daten"
+msgstr "Ongeldige waarde vir bruikbare Data"
 
 #: ../../../www/radmin/settings.php:284
 msgid "Support name not valid"
-msgstr "Unterstützername nicht gültig"
+msgstr "Ondersteun naam nie geldig"
 
 #: ../../../www/radmin/settings.php:289 ../../../www/radmin/settings.php:290
 msgid "Support name updated"
-msgstr "Unterstützername aktualisiert"
+msgstr "Ondersteuning naam verander"
 
 #: ../../../www/radmin/settings.php:294
 msgid "Error Saving Support Name"
-msgstr "Fehler beim Speichern des Unterstützernamens"
+msgstr "Fout tydens stoor van Support Naam"
 
 #: ../../../www/radmin/settings.php:302
 msgid "Support link not valid"
-msgstr "Unterstützungslink nicht gültig"
+msgstr "Ondersteun skakel nie geldig"
 
 #: ../../../www/radmin/settings.php:307 ../../../www/radmin/settings.php:308
 msgid "Support link updated"
-msgstr "Unterstützungslink aktualisiert"
+msgstr "Ondersteuning skakel updated"
 
 #: ../../../www/radmin/settings.php:312
 msgid "Error Saving Support link"
-msgstr "Fehler beim Speichern des Unterstützungslinks"
+msgstr "Fout tydens stoor van ondersteuning skakel"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:70
 #: ../../../www/radmin/classes/CronFunctions.class.php:105
 #: ../../../www/radmin/classes/CronFunctions.class.php:153
 msgid "Upgrading DB failed: "
-msgstr "Datenbankaufrüstung fehlgeschlagen: "
+msgstr "Opgradering DB het misluk:"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:153
 msgid "Including default_templates file failed"
-msgstr ""
+msgstr "Insluitende default_templates lêer het misluk"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:178
 msgid "Database upgraded"
-msgstr "Datenbank aufgerüstet"
+msgstr "Databasis opgegradeer"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:220
 msgid "Clearing stale sessions failed: "
-msgstr "Entfernen abgelaufener Sitzungen fehlgeschlagen:"
+msgstr "Skoonmaak van verjaar sessies het misluk:"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:224
 msgid "Stale sessions cleared"
-msgstr "Abgelaufene Sitzungen entfernt"
+msgstr "Verjaar sessies skoongemaak"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:257
 msgid "Fetching users to delete failed"
-msgstr "Holen der zu löschenden Benutzer fehlgeschlagen"
+msgstr "Fetching gebruikers te verwyder misluk"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:269
 msgid "Expired users deleted"
-msgstr "Abgelaufene Benutzer gelöscht"
+msgstr "Verouderd gebruikers verwyder"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:322
 msgid "Unable to insert data into mtotaccttmp: "
-msgstr "Fehler beim Einfügen von Daten in mtotaccttmp: "
+msgstr "Kan data in te voeg in mtotaccttmp:"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:340
 msgid "Unable to delete old radacct data: "
-msgstr "Konnte alte radacct Daten nicht löschen: "
+msgstr "Kan die ou radacct data te verwyder:"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:361
 msgid "Unable to update users Max-Octets: "
-msgstr "Konnte Benutzer Max-Octets nicht aktualisieren: "
+msgstr "Kan gebruikers Max-octets by te werk:"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:380
 msgid "Unable to update users Max-All-Session: "
-msgstr "Konnte Benutzer Max-All-Session nicht aktualisieren: "
+msgstr "Kan gebruikers Max-All-Sessie by te werk:"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:416
 msgid "Unable to move mtotaccttmp data to mtotacct: "
-msgstr "Konnte mtotaccttmp Daten nicht in mtotacct verschieben: "
+msgstr "Kan mtotaccttmp data te skuif na mtotacct:"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:429
 msgid "Unable to truncate mtotaccttmp: "
-msgstr "Konnte mtotaccttmp nicht leeren: "
+msgstr "Kan mtotaccttmp af kapt:"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:449
 msgid "Unable to ensure positive values in radcheck: "
-msgstr "Konnte positive Werte in radcheck nicht sicherstellen: "
+msgstr "Kan nie die positiewe waardes in radcheck om te verseker dat:"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:467
 msgid "Unable to delete ancient radacct data: "
-msgstr "Konnte veraltete radacct Daten nicht löschen: "
+msgstr "Kan die ou radacct data te verwyder:"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:476
 msgid "Old Radius Accounting Data Archived"
-msgstr "Alte Radius Kontendaten archiviert"
+msgstr "Ou Radius Rekeningkunde Data Archived"
 
 #: ../../../www/radmin/classes/DatabaseConnections.class.php:70
 msgid "DB Config File isn't a valid file."
-msgstr "DB Konfigurationsdatei ist keine gültige Datei."
+msgstr "DB Config Lêer is nie 'n geldige lêer."
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:100
 msgid "Retrieving Sold Usage failed: "
-msgstr "Abrufen der verkauften Nutzung fehlgeschlagen: "
+msgstr "Hierdie artikel word aangebied Gebruik gekry het misluk:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:134
 msgid "Retrieving Month Usage failed: "
-msgstr "Abrufen der monatlichen Nutzung fehlgeschlagen: "
+msgstr "Retrieving-Maand Gebruik misluk:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:151
 msgid "Retrieving Current Month Usage failed: "
-msgstr "Abrufen der Nutzung im aktuellen Monat fehlgeschlagen: "
+msgstr "Huidige Maand gebruik gekry het misluk:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:182
 msgid "Retrieving Session by RadAcctID failed: "
-msgstr "Abrufen der Sitzung per RadAcctID fehlgeschlagen: "
+msgstr "Retrieving Sessie deur RadAcctID het misluk:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:214
 msgid "Retrieving Sessions by Username failed: "
-msgstr "Abrufen der Sitzungen per Benutzername fehlgeschlagen: "
+msgstr "Retrieving Sessies deur Gebruikernaam het misluk:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:235
 msgid "Retrieving Current Session by Username failed: "
-msgstr "Abrufen der aktuellen Sitzung per Benutzername fehlgeschlagen: "
+msgstr "Kry van die huidige sessie deur Gebruikernaam het misluk:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:256
 msgid "Retrieving Username by Active Session (ipadddress): "
-msgstr "Rufe Benutzername per aktiver Sitzung ab (IP-Adresse): "
+msgstr "Retrieving Gebruikernaam deur aktiewe sessie (ipadddress):"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:280
 msgid "Get User details Query failed: "
-msgstr "Abfrage Benutzerdetails holen fehlgeschlagen: "
+msgstr "Kry Gebruiker besonderhede Query misluk:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:365
 msgid "Get User Group Query failed: "
-msgstr "Abfrage Benutzergruppen holen fehlgeschlagen: "
+msgstr "Kry User Group Query misluk:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:392
 msgid "Get All Usernames Query Failed: "
-msgstr "Abfrage alle Benutzernamen holen fehlgeschlagen: "
+msgstr "Kry gebruikers name Query Failed:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:416
 msgid "Get Users By Group Query Failed: "
-msgstr "Abfrage Benutzer per Gruppe holen fehlgeschlagen: "
+msgstr "Kry gebruikers deur Groep Query Failed:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:442
 msgid "Get User Last Logout Query Failed: "
-msgstr "Abfrage Benutzer letzte Abmeldung holen fehlgeschlagen: "
+msgstr "Kry 'n gebruiker om die laaste Teken Query Failed:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:471
 msgid "Get User Total Session Time Query failed: "
-msgstr "Abfrage Benutzer Summe der Sitzungszeit holen fehlgeschlagen: "
+msgstr "Gebruikers Totaal Sessie Tyd Query het misluk:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:492
 msgid "Get User Data Usage Query failed: "
-msgstr "Abfrage Benutzer Datennutzung holen fehlgeschlagen: "
+msgstr "Kry 'n User Data Gebruik Query misluk:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:513
 msgid "Get User Data Usage (Total) Query failed: "
-msgstr "Abfrage Benutzer Summe Datennutzung holen fehlgeschlagen: "
+msgstr "Kry Gebruik van gebruikers data (totaal) Query misluk:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:533
 msgid "Get Monthly Data Usage Query failed: "
-msgstr "Abfrage monatliche Datennutzung holen fehlgeschlagen: "
+msgstr "Kry 'n maandelikse data Gebruik Query misluk:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:561
 msgid "Get Monthly Data Usage Totals Query failed: "
-msgstr "Abfrage monatliche Summe Datennutzung holen fehlgeschlagen: "
+msgstr "Kry maandelikse data Gebruik Totale Query het misluk:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:587
 msgid "Get User Comment failed: "
-msgstr "Benutzerkommentar holen fehlgeschlagen: "
+msgstr "Kry Gebruiker Opmerking misluk:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:629
 msgid "Deleting radgroupcheck query failed: "
-msgstr ""
+msgstr "Radgroupcheck navraag verwyder het misluk:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:645
 msgid "Adding Group Check Attributes query failed:  "
-msgstr ""
+msgstr "Adding Groep Check Attributes navraag misluk:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:665
 msgid "Deleting radgroupreply query failed: "
-msgstr "radgroupreply Löschabfrage fehlgeschlagen: "
+msgstr "Radgroupreply navraag verwyder het misluk:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:730
 msgid "Adding Group Attributes query failed:  "
-msgstr "Gruppenattribute hinzufügen fehlgeschlagen: "
+msgstr "Adding Groep Attributes navraag misluk:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:745
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:756
 msgid "Get Groups details Query failed: "
-msgstr "Gruppendetails Abfrage fehlgeschlagen: "
+msgstr "Kry Groepe besonderhede Query misluk:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:779
 msgid "Hourly"
-msgstr "Stündlich"
+msgstr "Uurlikse"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:780
 msgid "Daily"
-msgstr "Täglich"
+msgstr "Daagliks"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:781
 msgid "Weekly"
-msgstr "Wöchentlich"
+msgstr "Weeklikse"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:782
 msgid "Monthly"
-msgstr "Monatlich"
+msgstr "Maandeliks"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:846
 msgid "Setting User Comment Query Failed: "
-msgstr "Abfrage Benutzerkommentar setzen fehlgeschlagen: "
+msgstr "Kader Gebruiker Opmerking Query Failed:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:865
 msgid "Setting User Group Query Failed: "
-msgstr "Abfrage Benutzergruppe setzen fehlgeschlagen: "
+msgstr "Kader User Group Query Failed:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:886
 msgid "Setting User Datalimit Query Failed: "
-msgstr "Abfrage Benutzer Datemlimit setzen fehlgeschlagen: "
+msgstr "Kader Gebruiker datalimiet Query Failed:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:911
 msgid "Getting User Current Data Limit to increase failed: "
-msgstr "Aktuelles Datenlimit des Benutzers zum Erhöhen holen fehlgeschlagen: "
+msgstr "Aan die Gebruiker Huidige datalimiet versuim het om te verhoog:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:933
 msgid "Setting User Timelimit Query Failed: "
-msgstr "Abfrage Benutzer Zeitlimit setzen fehlgeschlagen: "
+msgstr "Kader Gebruiker tyd limiet Query Failed:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:957
 msgid "Getting User Current Time Limit to increase failed: "
-msgstr "Abfrage Benutzerkommentar setzen fehlgeschlagen: "
+msgstr "Aan die Gebruiker huidige tyd perk te verhoog het misluk:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:978
 msgid "Setting User Password Query Failed: "
-msgstr "Abfrage Benutzerpasswort setzen fehlgeschlagen: "
+msgstr "Kader Gebruiker Wagwoord Query Failed:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:1001
 msgid "Setting User Expiry Date Query Failed: "
-msgstr "Abfrage Benutzer Ablaufdatum setzen fehlgeschlagen: "
+msgstr "Kader Gebruiker Vervaldatum query misluk:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:1021
 msgid "Deleting User Expiry Date Query Failed: "
-msgstr "Abfrage Benutzer Ablaufdatum löschen fehlgeschlagen: "
+msgstr "Gebruikers Vervaldatum query verwyder het misluk:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:1042
 msgid "Deleting user failed: "
-msgstr "Benutzer löschen fehlgeschlagen: "
+msgstr "Verwyder gebruiker het misluk:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:1055
 msgid "Deleting users group failed: "
-msgstr "Gruppe des Benutzers löschen fehlgeschlagen: "
+msgstr "Users Group verwyder het misluk:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:1068
 msgid "Deleting users comment failed: "
-msgstr "Benutzerkommentar löschen fehlgeschlagen: "
+msgstr "Gebruikers kommentaar verwyder het misluk:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:1088
 msgid "Checking Uniq Username failed: "
-msgstr "Prüfung nach eindeutigem Benutzernamen fehlgeschlagen: "
+msgstr "Gecontroleerd Uniq Gebruikernaam het misluk:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:1118
 msgid "Retrieving Chilli Config Single Value failed: "
-msgstr ""
+msgstr "Chilli Config enkele waarde gekry het misluk:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:1152
 msgid "Deleting Chilli Config Query Failed: "
-msgstr ""
+msgstr "Verwyder Chilli Config Query Failed:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:1176
 msgid "Setting Chilli Config Single Query Failed: "
-msgstr ""
+msgstr "Kader Chilli Config n soektog misluk:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:1198
 msgid "Setting Chilli Config Multi Query Failed: "
-msgstr ""
+msgstr "Die opstel van Chilli Config Multi Query Failed:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:1219
 msgid "Retrieving Chilli Config Multi Value failed: "
-msgstr ""
+msgstr "Chilli Config Multi Waarde gekry het misluk:"
 
 #: ../../../www/radmin/includes/page_functions.inc.php:79
 msgid "Status"
@@ -1924,39 +1967,39 @@ msgstr "Status"
 
 #: ../../../www/radmin/includes/page_functions.inc.php:80
 msgid "Users"
-msgstr "Benutzer"
+msgstr "Gebruikers"
 
 #: ../../../www/radmin/includes/page_functions.inc.php:82
 msgid "New User"
-msgstr "Neuer Benutzer"
+msgstr "New User"
 
 #: ../../../www/radmin/includes/page_functions.inc.php:83
 msgid "Mass New Users"
-msgstr "Mehrere neue Benutzer"
+msgstr "Massa Nuwe Gebruikers"
 
 #: ../../../www/radmin/includes/page_functions.inc.php:84
 msgid "Computer Account"
-msgstr "Computerkonto"
+msgstr "Rekenaar rekening"
 
 #: ../../../www/radmin/includes/page_functions.inc.php:87
 msgid "Monitor Sessions"
-msgstr "Sitzungen überwachen"
+msgstr "Monitor Sessies"
 
 #: ../../../www/radmin/includes/page_functions.inc.php:89
 msgid "Reports"
-msgstr "Berichte"
+msgstr "Verslae"
 
 #: ../../../www/radmin/includes/page_functions.inc.php:96
 msgid "Settings"
-msgstr "Einstellungen"
+msgstr "Stellings"
 
 #: ../../../www/radmin/includes/page_functions.inc.php:98
 msgid "Site Logo"
-msgstr "Site Logo"
+msgstr "Site logo"
 
 #: ../../../www/radmin/includes/page_functions.inc.php:118
 msgid "Logoff"
-msgstr "Abmelden"
+msgstr "Logoff"
 
 #: ../../../www/radmin/includes/page_functions.inc.php:127
 msgid "System Status"
@@ -1964,154 +2007,156 @@ msgstr "System Status"
 
 #: ../../../www/radmin/includes/page_functions.inc.php:268
 msgid "Hour"
-msgstr "Stunde"
+msgstr "Uur"
 
 #: ../../../www/radmin/includes/page_functions.inc.php:269
 msgid "Day"
-msgstr "Tag"
+msgstr "Dag"
 
 #: ../../../www/radmin/includes/page_functions.inc.php:270
 msgid "Week"
-msgstr "Woche"
+msgstr "Week"
 
 #: ../../../www/radmin/includes/page_functions.inc.php:271
 msgid "Month"
-msgstr "Monat"
+msgstr "Maand"
 
 #: ../../../www/radmin/includes/page_functions.inc.php:277
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 #: ../../../www/radmin/includes/page_functions.inc.php:277
 msgid "No"
-msgstr ""
+msgstr "Geen"
 
 #: ../../../www/radmin/includes/session.inc.php:64
 msgid "Your session has expired. Please login again"
-msgstr ""
+msgstr "Jou sessie verstryk het. Log weer"
 
 #: ../../../www/radmin/includes/session.inc.php:68
 msgid "Incorrect Login"
-msgstr ""
+msgstr "Verkeerde Login"
 
 #: ../../../www/radmin/includes/session.inc.php:72
 msgid "Security Issue. Please login again"
-msgstr ""
+msgstr "Sekuriteit probleem. Log weer"
 
 #: ../../../www/radmin/includes/session.inc.php:76
 msgid "Authentication Issue. Please report to Admin"
-msgstr ""
+msgstr "Verifikasie kwessie. Please report to Admin"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:160
 msgid "Invalid Expiry Date"
-msgstr "Ungültiges Ablaufdatum"
+msgstr "Ongeldige Vervaldatum"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:170
 msgid "Expiry Date in the past"
-msgstr "Ablaufdatum liegt in der Vergangenheit"
+msgstr "Vervaldatum in die verlede"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:177
 #, php-format
 msgid "Invalid value '%s' for Data Limit"
-msgstr "Ungültiger Wert '%s' für das Datenlimit"
+msgstr "Ongeldige waarde '%s' vir datalimiet"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:184
 #, php-format
 msgid "Invalid recurrance interval '%s'"
-msgstr "Ungültiger Wiederholungsintervall '%s'"
+msgstr "Ongeldige recurrance interval '%s'"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:190
 #, php-format
 msgid "Invalid response to YesNo Question '%s'"
-msgstr ""
+msgstr "Ongeldige antwoord YesNo vraag \"%s\""
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:196
 #, php-format
 msgid "Invalid Bandwidth Limit '%s'"
-msgstr ""
+msgstr "Ongeldige Bandwydte perk '%s'"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:208
 msgid "Recurring time limit must be less than interval"
-msgstr "Wiederholungszeitlimit muß niedriger sein als der Intervall"
+msgstr "Herhalende tyd limiet moet minder wees as die interval"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:215
 #, php-format
 msgid "Invalid value '%s' for Time Limit"
-msgstr "Ungültiger Wert '%s' für das Zeitlimit"
+msgstr "Ongeldige waarde '%s' vir tyd beperking"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:222
 msgid "MAC Address not in correct format"
-msgstr "MAC-Adresse nicht korrekt formatiert"
+msgstr "MAC-adres is nie in die korrekte formaat"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:229
 #, php-format
 msgid "Invalid number '%s' (Must be whole number)"
-msgstr "Ungültige Nummer '%s' (Muß eine ganze Zahl sein)"
+msgstr "Ongeldige aantal \"%s '(moet' n hele aantal)"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:239
 msgid "Only Machines can be in the Machine group"
-msgstr "Nur Computer dürfen in der Computergruppe sein "
+msgstr "Slegs masjiene kan word in die masjien groep"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:243
 msgid "Invalid Group"
-msgstr "Ungültige Gruppe"
+msgstr "Ongeldige groep"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:316
 msgid "Computers"
-msgstr "Computer"
+msgstr "Rekenaars"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:319
 msgid "Expired"
-msgstr ""
+msgstr "Verouderd"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:388
 msgid "Uploaded Image was too big"
-msgstr "Hochgeladenes Bild war zu groß"
+msgstr "Uploaded prent is te groot"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:391
 msgid "Error In Uploading"
-msgstr "Fehler beim Hochladen"
+msgstr "Fout In oplaai"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:394
 msgid "No file was uploaded"
-msgstr "Es wurde keine Datei hochgeladen"
+msgstr "Geen lêer afgelaai nie"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:397
 msgid "Missing a temporary folder"
-msgstr "Temporärverzeichnis fehlt"
+msgstr "'N tydelike gids ontbreek"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:400
 msgid "Failed to write file to disk"
-msgstr "Datei auf Laufwerk zu schreiben fehlgeschlagen"
+msgstr "Kan lêer op skyf te skryf"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:403
 msgid "File upload stopped by extension"
-msgstr "Dateihochladen durch Erweiterung beendet"
+msgstr "File upload gestop by uitbreiding"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:406
 msgid "Unknown upload error"
-msgstr "Unbekannter Hochladefehler"
+msgstr "Onbekend upload fout"
 
 #: ../../../www/uam/js.php:19
 msgid "Username is required"
-msgstr ""
+msgstr "Gebruikersnaam is vereis"
 
 #: ../../../www/uam/js.php:20
 msgid "Are you sure you want to disconnect now?"
-msgstr ""
+msgstr "Is jy seker jy wil nou ontkoppel?"
 
 #: ../../../www/uam/js.php:21
 msgid "Error loading generic login form"
-msgstr ""
+msgstr "Fout tydens laai van generiese Login Form"
 
 #: ../../../www/uam/js.php:22
 msgid ""
 "Popup Blocked. Click link below to continue to your website and open the "
 "status window"
 msgstr ""
+"Pop-up geblokkeer. Klik op skakel hieronder om voort te gaan om jou webwerf "
+"en die status venster oop"
 
 #: ../../../www/uam/js.php:23
 msgid "Logged In"
-msgstr ""
+msgstr "Aangeteken"
 
 
