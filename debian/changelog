@@ -3,10 +3,12 @@ grase-www-portal (3.6.3) purewhite; urgency=low
   * Timezone fix
   * Disabled usage bars at bottom of admin pages as too much confussion about what they do/represent
   * SQL Fixes to be more compatible with other servers
-  * New Tagalog translation
+  * New translations
   * Updated other Translations
+  * Added DHCP lease to Chilli Config
+  * Update smarty-gettext to newest version
 
- -- Tim White <tim@hotspot.purewhite.id.au>  Sat, 15 Oct 2011 16:32:41 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Fri, 21 Oct 2011 12:30:48 +1000
 
 grase-www-portal (3.6.2) purewhite; urgency=low
 
