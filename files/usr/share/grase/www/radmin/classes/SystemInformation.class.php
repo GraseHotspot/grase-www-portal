@@ -105,7 +105,8 @@ class SystemInformation
     private function WAN_Interface()
     {
         // Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
-        $lines = preg_split ("/\n/", trim(`/sbin/route -n |grep eth`));
+        $lines = preg_split ("/\n/", trim(`/sbin/route -n |grep eth | sort -r`));
+
         $details = preg_split ("/\s+/",$lines[0]);
         $this->wan->netmask = $details[2];
         $this->wan->iface = $details[7];

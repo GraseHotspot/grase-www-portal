@@ -31,14 +31,14 @@ if(file_exists('/usr/share/php/smarty/libs/') && ! is_link('/usr/share/php/smart
     require_once('smarty/Smarty.class.php');
 }
 
-require_once '../radmin/includes/smarty-gettext.php';
+require_once '../radmin/includes/block.t.php';
 
 $smarty = new Smarty();
 
 // TODO Detect browser settings and allow override of language?
 apply_locale($locale);
 
-$smarty->register_block('t', 'smarty_translate');
+$smarty->register_block('t', 'smarty_block_t');
 
 $smarty->assign("Location", $location);
 $smarty->assign("pricemb", "$currency$pricemb");

@@ -36,7 +36,9 @@ if(file_exists('/usr/share/php/smarty/libs/') && ! is_link('/usr/share/php/smart
 }
 require_once 'smarty_sortby.php';
 
-require_once 'includes/smarty-gettext.php';
+require_once 'includes/block.t.php';
+
+
 /*ini_set('include_path', ini_get('include_path') . PATH_SEPARATOR . '/usr/share/grase/i18n/');
 
 include_once 'library/piins.smarty/prefilter.i18N.php';
@@ -344,7 +346,8 @@ $smarty->register_function('inputtype', 'input_type');
 
 // i18n
 //$locale = (!isset($_GET["l"]))?"en_GB":$_GET["l"];  
-$smarty->register_block('t', 'smarty_translate');
+$smarty->register_block('t', 'smarty_block_t');
+
 apply_locale($locale);
 
 
