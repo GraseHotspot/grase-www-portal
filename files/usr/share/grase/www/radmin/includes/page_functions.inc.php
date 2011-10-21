@@ -314,13 +314,14 @@ function apply_locale($newlocale)
     Locale::setDefault($locale);
     //echo Locale::getDefault();
     $language =  locale_get_display_language($locale, 'en');
+    $lang = Locale::getPrimaryLanguage($locale);
     $region = locale_get_display_region($locale);
     //echo "$language $region<br/>";
     //print_r(displayLocales("-10000.11", TRUE)); 
 
     //putenv("LC_ALL=$locale");
     //$language = "Leet";
-    T_setlocale(LC_MESSAGES, $language);
+    T_setlocale(LC_MESSAGES, $lang);
 
     //print_r(setlocale(LC_MESSAGES, NULL));
     T_bindtextdomain("grase", "/usr/share/grase/locale");

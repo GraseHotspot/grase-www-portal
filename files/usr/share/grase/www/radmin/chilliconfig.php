@@ -48,7 +48,11 @@ $singlechillioptions = array(
     'defidletimeout' => array(
         "label" => T_("Default Session Idle Timeout"),
         "description" => T_("Default Idle Timeout for sessions. Logout after this number of seconds have passed without any traffic."),
-        "type" => "int")
+        "type" => "int"),
+    'lease' => array(
+        "label" => T_("DHCP Lease time"),
+        "description" => T_("DHCP lease time in seconds."),
+        "type" => "int")        
     );    
     
 load_chillioptions();   
