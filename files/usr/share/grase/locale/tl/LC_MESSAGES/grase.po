@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Grase Hotspot\n"
 "Report-Msgid-Bugs-To: http://trac.grasehotspot.org/\n"
-"POT-Creation-Date: 2011-10-10 14:34+1000\n"
-"PO-Revision-Date: 2011-10-15 12:23+0000\n"
+"POT-Creation-Date: 2011-10-21 12:19+1000\n"
+"PO-Revision-Date: 2011-10-21 02:21+0000\n"
 "Last-Translator: purewhite <tim@purewhite.id.au>\n"
 "Language-Team: Tagalog (http://www.transifex.net/projects/p/grase/team/tl/)\n"
 "MIME-Version: 1.0\n"
@@ -22,62 +22,62 @@ msgstr ""
 "X-Poedit-Language: English\n"
 "X-Poedit-SearchPath-0: ../../../www\n"
 
-#: ../../../www/radmin/templates/smarty.c:2
-#: ../../../www/radmin/templates/smarty.c:131
-#: ../../../www/radmin/templates/smarty.c:323
-#: ../../../www/radmin/templates/smarty.c:428
-#: ../../../www/radmin/templates/smarty.c:473
-#: ../../../www/radmin/templates/smarty.c:494
-#: ../../../www/radmin/templates/smarty.c:620
-#: ../../../www/radmin/templates/smarty.c:668
-#: ../../../www/uam/templates/smarty.c:86
+#: ../../../www/radmin/templates/smarty.c:1
+#: ../../../www/radmin/templates/smarty.c:44
+#: ../../../www/radmin/templates/smarty.c:108
+#: ../../../www/radmin/templates/smarty.c:143
+#: ../../../www/radmin/templates/smarty.c:158
+#: ../../../www/radmin/templates/smarty.c:165
+#: ../../../www/radmin/templates/smarty.c:207
+#: ../../../www/radmin/templates/smarty.c:223
+#: ../../../www/uam/templates/smarty.c:33
 msgid "Username"
 msgstr "Gagamit"
 
-#: ../../../www/radmin/templates/smarty.c:5
+#: ../../../www/radmin/templates/smarty.c:2
 msgid "Choose a username"
 msgstr "Pumili nang username"
 
-#: ../../../www/radmin/templates/smarty.c:8
-#: ../../../www/radmin/templates/smarty.c:137
-#: ../../../www/radmin/templates/smarty.c:326
-#: ../../../www/radmin/templates/smarty.c:497
-#: ../../../www/uam/templates/smarty.c:89
+#: ../../../www/radmin/templates/smarty.c:3
+#: ../../../www/radmin/templates/smarty.c:46
+#: ../../../www/radmin/templates/smarty.c:109
+#: ../../../www/radmin/templates/smarty.c:166
+#: ../../../www/uam/templates/smarty.c:34
 msgid "Password"
 msgstr "Hudyat"
 
-#: ../../../www/radmin/templates/smarty.c:11
+#: ../../../www/radmin/templates/smarty.c:4
 msgid "Choose a secure password for the user"
 msgstr "Pumili nang hudyat na matibay para sa gumagamit"
 
-#: ../../../www/radmin/templates/smarty.c:14
-#: ../../../www/radmin/templates/smarty.c:623
+#: ../../../www/radmin/templates/smarty.c:5
+#: ../../../www/radmin/templates/smarty.c:208
 msgid "Group"
 msgstr "Grupo"
 
-#: ../../../www/radmin/templates/smarty.c:17
-#: ../../../www/radmin/templates/smarty.c:332
+#: ../../../www/radmin/templates/smarty.c:6
+#: ../../../www/radmin/templates/smarty.c:111
 msgid "Choose the users group (Expiry is based on the user group)"
 msgstr ""
 "Pumili nang grupo para sa gagamit (Ang expiry ay base sa grupo nang "
 "gumagamit)"
 
-#: ../../../www/radmin/templates/smarty.c:20
-#: ../../../www/radmin/templates/smarty.c:347
-#: ../../../www/radmin/templates/smarty.c:656
-#: ../../../www/radmin/templates/smarty.c:719
+#: ../../../www/radmin/templates/smarty.c:7
+#: ../../../www/radmin/templates/smarty.c:116
+#: ../../../www/radmin/templates/smarty.c:219
+#: ../../../www/radmin/templates/smarty.c:240
 msgid "Comment"
 msgstr "Komentaryo"
 
-#: ../../../www/radmin/templates/smarty.c:23
-#: ../../../www/radmin/templates/smarty.c:350
+#: ../../../www/radmin/templates/smarty.c:8
+#: ../../../www/radmin/templates/smarty.c:117
 msgid "A comment about the user"
 msgstr "Komentaryo sa gagamit"
 
-#: ../../../www/radmin/templates/smarty.c:26
-#: ../../../www/radmin/templates/smarty.c:353
-#: ../../../www/radmin/templates/smarty.c:725
-#: ../../../www/radmin/templates/smarty.c:788
+#: ../../../www/radmin/templates/smarty.c:9
+#: ../../../www/radmin/templates/smarty.c:118
+#: ../../../www/radmin/templates/smarty.c:242
+#: ../../../www/radmin/templates/smarty.c:263
 msgid ""
 "When ether limit is reached, the user will be cut off. (i.e. after 1hour "
 "even if they still have data left)"
@@ -85,9 +85,9 @@ msgstr ""
 "Kung alin sa limitasyon ay maabot, ang gumagamit ay puputulin (i.e. "
 "pagkatapos nang isang oras kahit may natitira pa silang data)"
 
-#: ../../../www/radmin/templates/smarty.c:29
-#: ../../../www/radmin/templates/smarty.c:356
-#: ../../../www/radmin/templates/smarty.c:791
+#: ../../../www/radmin/templates/smarty.c:10
+#: ../../../www/radmin/templates/smarty.c:119
+#: ../../../www/radmin/templates/smarty.c:264
 msgid ""
 "A limit of 0 does not mean unlimited, it will immediately lock the user out."
 " To have an unlimited user, the user must be created without any limits."
@@ -96,8 +96,8 @@ msgstr ""
 "puputulin ang gumagamit. Para sa gagamit na walang limitasyon, dapat lumikha"
 " nang gagamit na walang limitasyon."
 
-#: ../../../www/radmin/templates/smarty.c:32
-#: ../../../www/radmin/templates/smarty.c:794
+#: ../../../www/radmin/templates/smarty.c:11
+#: ../../../www/radmin/templates/smarty.c:265
 msgid ""
 "If a limit is not set here, but is defined for the group, then the group "
 "limit will apply"
@@ -105,165 +105,165 @@ msgstr ""
 "Kung walang limitasyon na ilalagay dito subalit naka takda sa group, kung "
 "gayon ang limitasyon nang grupo ang gagamitin"
 
-#: ../../../www/radmin/templates/smarty.c:35
-#: ../../../www/radmin/templates/smarty.c:359
-#: ../../../www/radmin/templates/smarty.c:734
+#: ../../../www/radmin/templates/smarty.c:12
+#: ../../../www/radmin/templates/smarty.c:120
+#: ../../../www/radmin/templates/smarty.c:245
 msgid "Data Limit (MiB)"
 msgstr "Limitasyon sa data (MiB)"
 
-#: ../../../www/radmin/templates/smarty.c:38
-#: ../../../www/radmin/templates/smarty.c:50
-#: ../../../www/radmin/templates/smarty.c:737
-#: ../../../www/radmin/templates/smarty.c:746
+#: ../../../www/radmin/templates/smarty.c:13
+#: ../../../www/radmin/templates/smarty.c:17
+#: ../../../www/radmin/templates/smarty.c:246
+#: ../../../www/radmin/templates/smarty.c:249
 msgid "OR"
 msgstr "kung hindi"
 
-#: ../../../www/radmin/templates/smarty.c:41
-#: ../../../www/radmin/templates/smarty.c:362
-#: ../../../www/radmin/templates/smarty.c:740
+#: ../../../www/radmin/templates/smarty.c:14
+#: ../../../www/radmin/templates/smarty.c:121
+#: ../../../www/radmin/templates/smarty.c:247
 msgid "Type your own Mb Limit"
 msgstr "Maglagay nang sariling Mb limitasyon"
 
-#: ../../../www/radmin/templates/smarty.c:44
+#: ../../../www/radmin/templates/smarty.c:15
 msgid "Choose a Data Limit OR Type your own value"
 msgstr "Pumili nang limitasyon sa data or maglagay nang sariling halaga"
 
-#: ../../../www/radmin/templates/smarty.c:47
-#: ../../../www/radmin/templates/smarty.c:374
-#: ../../../www/radmin/templates/smarty.c:743
+#: ../../../www/radmin/templates/smarty.c:16
+#: ../../../www/radmin/templates/smarty.c:125
+#: ../../../www/radmin/templates/smarty.c:248
 msgid "Time Limit (Minutes)"
 msgstr "Limitasyon sa oras ( Minutos )"
 
-#: ../../../www/radmin/templates/smarty.c:53
-#: ../../../www/radmin/templates/smarty.c:377
-#: ../../../www/radmin/templates/smarty.c:749
+#: ../../../www/radmin/templates/smarty.c:18
+#: ../../../www/radmin/templates/smarty.c:126
+#: ../../../www/radmin/templates/smarty.c:250
 msgid "Type your own Time Limit"
 msgstr "Maglagay nang sariling limitasyon sa oras"
 
-#: ../../../www/radmin/templates/smarty.c:56
-#: ../../../www/radmin/templates/smarty.c:752
+#: ../../../www/radmin/templates/smarty.c:19
+#: ../../../www/radmin/templates/smarty.c:251
 msgid "Choose a Time Limit OR Type your own value"
 msgstr "Pumili nang limitasyon sa oras or maglagay nang sariling halaga"
 
-#: ../../../www/radmin/templates/smarty.c:59
+#: ../../../www/radmin/templates/smarty.c:20
 msgid "User Management Interface"
 msgstr "Pahina para sa tagapangasiwa"
 
-#: ../../../www/radmin/templates/smarty.c:62
+#: ../../../www/radmin/templates/smarty.c:21
 msgid "Device Information"
 msgstr "Impormasyon tungkol sa kasangkapan"
 
-#: ../../../www/radmin/templates/smarty.c:65
+#: ../../../www/radmin/templates/smarty.c:22
 msgid "Model Name"
 msgstr "Pangalan ng Modelo"
 
-#: ../../../www/radmin/templates/smarty.c:68
+#: ../../../www/radmin/templates/smarty.c:23
 msgid "Host Name"
 msgstr "Pangalan ng host"
 
-#: ../../../www/radmin/templates/smarty.c:71
+#: ../../../www/radmin/templates/smarty.c:24
 msgid "System Up-Time"
 msgstr "Tagal ng pag andar ng systema"
 
-#: ../../../www/radmin/templates/smarty.c:74
+#: ../../../www/radmin/templates/smarty.c:25
 msgid "Current Server Time"
 msgstr "Kasalukuyang oras ng systema"
 
-#: ../../../www/radmin/templates/smarty.c:77
+#: ../../../www/radmin/templates/smarty.c:26
 msgid "Hardware Version"
 msgstr "Bersyon ng hardware"
 
-#: ../../../www/radmin/templates/smarty.c:80
+#: ../../../www/radmin/templates/smarty.c:27
 msgid "Software Version"
 msgstr "Bersyon ng software"
 
-#: ../../../www/radmin/templates/smarty.c:83
+#: ../../../www/radmin/templates/smarty.c:28
 msgid "Home URL"
 msgstr "Pangunahing URL"
 
-#: ../../../www/radmin/templates/smarty.c:86
+#: ../../../www/radmin/templates/smarty.c:29
 msgid "LAN"
 msgstr "LAN"
 
-#: ../../../www/radmin/templates/smarty.c:89
-#: ../../../www/radmin/templates/smarty.c:104
-#: ../../../www/radmin/templates/smarty.c:425
+#: ../../../www/radmin/templates/smarty.c:30
+#: ../../../www/radmin/templates/smarty.c:35
+#: ../../../www/radmin/templates/smarty.c:142
 msgid "IP Address"
 msgstr "IP Address"
 
-#: ../../../www/radmin/templates/smarty.c:92
-#: ../../../www/radmin/templates/smarty.c:107
+#: ../../../www/radmin/templates/smarty.c:31
+#: ../../../www/radmin/templates/smarty.c:36
 msgid "Subnet Mask"
 msgstr "Subnet Mask"
 
-#: ../../../www/radmin/templates/smarty.c:95
-#: ../../../www/radmin/templates/smarty.c:119
-#: ../../../www/radmin/templates/smarty.c:713
+#: ../../../www/radmin/templates/smarty.c:32
+#: ../../../www/radmin/templates/smarty.c:40
+#: ../../../www/radmin/templates/smarty.c:238
 msgid "MAC Address"
 msgstr "MAC Address"
 
-#: ../../../www/radmin/templates/smarty.c:98
-#: ../../../www/radmin/templates/smarty.c:122
+#: ../../../www/radmin/templates/smarty.c:33
+#: ../../../www/radmin/templates/smarty.c:41
 msgid "Network Interface"
 msgstr "Network Interface"
 
-#: ../../../www/radmin/templates/smarty.c:101
+#: ../../../www/radmin/templates/smarty.c:34
 msgid "WAN"
 msgstr "WAN"
 
-#: ../../../www/radmin/templates/smarty.c:110
+#: ../../../www/radmin/templates/smarty.c:37
 msgid "Gateway"
 msgstr "Gateway"
 
-#: ../../../www/radmin/templates/smarty.c:113
+#: ../../../www/radmin/templates/smarty.c:38
 msgid "DNS 1"
 msgstr "DNS 1"
 
-#: ../../../www/radmin/templates/smarty.c:116
+#: ../../../www/radmin/templates/smarty.c:39
 msgid "DNS 2"
 msgstr "DNS 2"
 
-#: ../../../www/radmin/templates/smarty.c:125
-#: ../../../www/radmin/templates/smarty.c:140
+#: ../../../www/radmin/templates/smarty.c:42
+#: ../../../www/radmin/templates/smarty.c:47
 msgid "Login"
 msgstr "Pumasok para makakonek"
 
-#: ../../../www/radmin/templates/smarty.c:128
+#: ../../../www/radmin/templates/smarty.c:43
 msgid ""
 "Login is required to access the Administration section of this website."
 msgstr "Pumasok para makakonek sa pahinang tagapangasiwa"
 
-#: ../../../www/radmin/templates/smarty.c:134
+#: ../../../www/radmin/templates/smarty.c:45
 msgid "Username for Admin interface (Different to internet access username)"
 msgstr ""
 "Username para sa tagapangasiwa (Iba sa username para sa pagpasok sa "
 "internet)"
 
-#: ../../../www/radmin/templates/smarty.c:143
+#: ../../../www/radmin/templates/smarty.c:48
 msgid "Site Settings"
 msgstr "pagkaayus-ayus ng site"
 
-#: ../../../www/radmin/templates/smarty.c:146
+#: ../../../www/radmin/templates/smarty.c:49
 msgid "Location Name"
 msgstr "Pangalan sa lokasyon"
 
-#: ../../../www/radmin/templates/smarty.c:149
+#: ../../../www/radmin/templates/smarty.c:50
 msgid "Enter a name that identifies this Hotspot Location"
 msgstr "Maglagay nang pangalang na mapagkilanlan ng lokasyon ng Hotspot"
 
-#: ../../../www/radmin/templates/smarty.c:152
+#: ../../../www/radmin/templates/smarty.c:51
 msgid "Support Contact Name"
 msgstr "Pangalan ng susuporta"
 
-#: ../../../www/radmin/templates/smarty.c:155
+#: ../../../www/radmin/templates/smarty.c:52
 msgid "Enter the name of the Support Contact"
 msgstr "Ilagay ang pangalan nang susuporta"
 
-#: ../../../www/radmin/templates/smarty.c:158
+#: ../../../www/radmin/templates/smarty.c:53
 msgid "Support Link"
 msgstr "Link para sa supporta"
 
-#: ../../../www/radmin/templates/smarty.c:161
+#: ../../../www/radmin/templates/smarty.c:54
 msgid ""
 "This is the link for the support contact. http:// or mailto: are allowed. If"
 " using http:// ensure this is accessabile for users who aren't logged into "
@@ -273,15 +273,15 @@ msgstr ""
 "ng http://, siguroduin na itoy makikita sa mga gumagamit na hindi naka konek"
 " sa hotspot"
 
-#: ../../../www/radmin/templates/smarty.c:164
+#: ../../../www/radmin/templates/smarty.c:55
 msgid "Locale"
 msgstr "Kinaroroonan"
 
-#: ../../../www/radmin/templates/smarty.c:167
+#: ../../../www/radmin/templates/smarty.c:56
 msgid "Select the appropriate Locale for your location"
 msgstr "Piliin ang naaangkop na lokal para sa iyong lokasyon"
 
-#: ../../../www/radmin/templates/smarty.c:170
+#: ../../../www/radmin/templates/smarty.c:57
 msgid ""
 "A locale has 2 parts, the language and location.<br/><strong>en_AU</strong> "
 "for example has the Language set to English, and the location to "
@@ -295,7 +295,7 @@ msgstr ""
 "sa South Africa, habang ang <strong> af_ZA </ strong> ay ang wika na "
 "nakatakda sa Afrikaans at ang lokasyon sa South Africa."
 
-#: ../../../www/radmin/templates/smarty.c:173
+#: ../../../www/radmin/templates/smarty.c:58
 msgid ""
 "The locale defines the number formats, currency and language. If the "
 "language selected is not available, it will fallback to English."
@@ -303,73 +303,75 @@ msgstr ""
 "Ang locale ang tumutukoy sa mga format ng numero, pera at wika. Kung ang "
 "napiling wika ay hindi magagamit, ito ay babalik sa Ingles."
 
-#: ../../../www/radmin/templates/smarty.c:176
+#: ../../../www/radmin/templates/smarty.c:59
 msgid ""
 "Current locale is %1, which sets the language to %2, and location to %3."
 msgstr ""
 "Kasalukuyang locale ay %1, na nagtatakda ng wika sa %2, at lokasyon sa %3."
 
-#: ../../../www/radmin/templates/smarty.c:179
+#: ../../../www/radmin/templates/smarty.c:60
 msgid "Currency symbol is %1"
 msgstr "Ang simbolo nang salapi ay %1"
 
-#: ../../../www/radmin/templates/smarty.c:182
+#: ../../../www/radmin/templates/smarty.c:61
 msgid "How much to charge per Mb"
 msgstr "Magkano ang singil sa bawat Mb"
 
-#: ../../../www/radmin/templates/smarty.c:185
+#: ../../../www/radmin/templates/smarty.c:62
 msgid "Cost per Minute"
 msgstr "Halaga kada minuto"
 
-#: ../../../www/radmin/templates/smarty.c:188
+#: ../../../www/radmin/templates/smarty.c:63
 msgid "How much to charge per Minute"
 msgstr "Magkano ang singil sa bawat minuto"
 
-#: ../../../www/radmin/templates/smarty.c:191
+#: ../../../www/radmin/templates/smarty.c:64
 msgid "Website Name"
 msgstr "Pangalan nang website"
 
-#: ../../../www/radmin/templates/smarty.c:194
+#: ../../../www/radmin/templates/smarty.c:65
 msgid "Label for Website Footer link"
 msgstr "Tatak nang Website Footer Link"
 
-#: ../../../www/radmin/templates/smarty.c:197
+#: ../../../www/radmin/templates/smarty.c:66
 msgid "Website Link"
 msgstr "Website Link"
 
-#: ../../../www/radmin/templates/smarty.c:200
+#: ../../../www/radmin/templates/smarty.c:67
 msgid "Link for Website Footer Link"
 msgstr "kawing ng Website Footer Link"
 
-#: ../../../www/radmin/templates/smarty.c:203
+#: ../../../www/radmin/templates/smarty.c:68
 msgid "Sellable Graph Max"
 msgstr "Talaguhitan ng pwedeng ibenta"
 
-#: ../../../www/radmin/templates/smarty.c:206
+#: ../../../www/radmin/templates/smarty.c:69
+#, c-format
 msgid "Select what is 100% on the Sellable Data Graph"
 msgstr "Pumili ng 100% sa talaguhitan ng mabebentang impormasyon"
 
-#: ../../../www/radmin/templates/smarty.c:209
+#: ../../../www/radmin/templates/smarty.c:70
 msgid "Useable Graph Max"
 msgstr "Magagamit na talaguhitan"
 
-#: ../../../www/radmin/templates/smarty.c:212
+#: ../../../www/radmin/templates/smarty.c:71
+#, c-format
 msgid "Select what is 100% on the Useable Data Graph"
 msgstr "Pumili ng 100% sa talaguhitan ng magagamit na impormasyon"
 
-#: ../../../www/radmin/templates/smarty.c:215
-#: ../../../www/radmin/templates/smarty.c:311
-#: ../../../www/radmin/templates/smarty.c:575
-#: ../../../www/radmin/templates/smarty.c:605
-#: ../../../www/radmin/templates/smarty.c:767
+#: ../../../www/radmin/templates/smarty.c:72
+#: ../../../www/radmin/templates/smarty.c:104
+#: ../../../www/radmin/templates/smarty.c:192
+#: ../../../www/radmin/templates/smarty.c:202
+#: ../../../www/radmin/templates/smarty.c:256
 msgid "Save Settings"
 msgstr "I-save ang mga Setting"
 
-#: ../../../www/radmin/templates/smarty.c:218
+#: ../../../www/radmin/templates/smarty.c:73
 msgid "Group Config"
 msgstr "Konfigurasyon ng grupo"
 
-#: ../../../www/radmin/templates/smarty.c:221
+#: ../../../www/radmin/templates/smarty.c:74
 msgid ""
 "Group expiry needs to be in a format understood by the <a target=\"_blank\" "
 "href=\"http://www.php.net/manual/en/function.strtotime.php\">strtotime</a> "
@@ -380,7 +382,7 @@ msgstr ""
 "href=\"http://www.php.net/manual/en/function.strtotime.php\"> strtotime </a>"
 " PHP function"
 
-#: ../../../www/radmin/templates/smarty.c:224
+#: ../../../www/radmin/templates/smarty.c:75
 msgid ""
 "For example, \"+1 month\" will set an expiry for 1 month from when the "
 "account is created. \"+2 weeks\", \"+3 days\" etc."
@@ -388,7 +390,7 @@ msgstr ""
 "Halimbawa, \"+1 buwan\" ay magtakda ng isang expire para sa 1 buwan kapag "
 "ang account ay nalikha. \"+2 weeks\", \"+3 days\" atbp."
 
-#: ../../../www/radmin/templates/smarty.c:227
+#: ../../../www/radmin/templates/smarty.c:76
 msgid ""
 "Expiry is calculated to the second, so if you want it to a date for example,"
 " try \"+1 week midnight\"."
@@ -396,7 +398,7 @@ msgstr ""
 "Pagtapos ay kinakalkula sa segundo, kaya kung gusto mo ito sa isang petsa "
 "para sa Halimbawa, subukan ang \"+1 hatinggabi ng linggo\"."
 
-#: ../../../www/radmin/templates/smarty.c:230
+#: ../../../www/radmin/templates/smarty.c:77
 msgid ""
 "Deleting a group won't delete it's users. Next time the user is edited it's "
 "group will become the default group unless a new group is selected."
@@ -405,7 +407,7 @@ msgstr ""
 "babaguhin ang gumagamit, ang grupo nya ay ang orihinal na grupo hanggan sa "
 "magpili ng bagong grupo."
 
-#: ../../../www/radmin/templates/smarty.c:233
+#: ../../../www/radmin/templates/smarty.c:78
 msgid ""
 "The limits here are the default for group members, unless overridden when "
 "creating a member. If multiple limits are specified, the first limit to be "
@@ -416,145 +418,145 @@ msgstr ""
 "mga limitasyon ay tinukoy, ang unang limitasyon sa maabot ay kakalas sa "
 "gumagamit."
 
-#: ../../../www/radmin/templates/smarty.c:236
+#: ../../../www/radmin/templates/smarty.c:79
 msgid "Groups"
 msgstr "Mga Grupo"
 
-#: ../../../www/radmin/templates/smarty.c:239
-#: ../../../www/radmin/templates/smarty.c:275
-#: ../../../www/radmin/templates/smarty.c:680
+#: ../../../www/radmin/templates/smarty.c:80
+#: ../../../www/radmin/templates/smarty.c:92
+#: ../../../www/radmin/templates/smarty.c:227
 msgid "Name"
 msgstr "Pangalan"
 
-#: ../../../www/radmin/templates/smarty.c:242
-#: ../../../www/radmin/templates/smarty.c:278
-#: ../../../www/radmin/templates/smarty.c:683
+#: ../../../www/radmin/templates/smarty.c:81
+#: ../../../www/radmin/templates/smarty.c:93
+#: ../../../www/radmin/templates/smarty.c:228
 msgid "Expiry"
 msgstr "Magtatapos"
 
-#: ../../../www/radmin/templates/smarty.c:245
-#: ../../../www/radmin/templates/smarty.c:281
+#: ../../../www/radmin/templates/smarty.c:82
+#: ../../../www/radmin/templates/smarty.c:94
 msgid "Default Data Limit (MiB)"
 msgstr "Default Data Limit (MiB)"
 
-#: ../../../www/radmin/templates/smarty.c:248
-#: ../../../www/radmin/templates/smarty.c:284
+#: ../../../www/radmin/templates/smarty.c:83
+#: ../../../www/radmin/templates/smarty.c:95
 msgid "Default Time Limit (Minutes)"
 msgstr "Default Time Limit (Minutes)"
 
-#: ../../../www/radmin/templates/smarty.c:251
-#: ../../../www/radmin/templates/smarty.c:287
+#: ../../../www/radmin/templates/smarty.c:84
+#: ../../../www/radmin/templates/smarty.c:96
 msgid "Recurring Data Limit (MiB)"
 msgstr "Paulit-ulit na hanganan ng impormasyon (MiB)"
 
-#: ../../../www/radmin/templates/smarty.c:254
-#: ../../../www/radmin/templates/smarty.c:260
-#: ../../../www/radmin/templates/smarty.c:290
-#: ../../../www/radmin/templates/smarty.c:296
+#: ../../../www/radmin/templates/smarty.c:85
+#: ../../../www/radmin/templates/smarty.c:87
+#: ../../../www/radmin/templates/smarty.c:97
+#: ../../../www/radmin/templates/smarty.c:99
 msgid "per"
 msgstr "Sa bawat isa"
 
-#: ../../../www/radmin/templates/smarty.c:257
-#: ../../../www/radmin/templates/smarty.c:293
+#: ../../../www/radmin/templates/smarty.c:86
+#: ../../../www/radmin/templates/smarty.c:98
 msgid "Recurring Time Limit (Minutes)"
 msgstr "Paulit-ulit na hanganan ng oras (minuto)"
 
-#: ../../../www/radmin/templates/smarty.c:263
-#: ../../../www/radmin/templates/smarty.c:299
+#: ../../../www/radmin/templates/smarty.c:88
+#: ../../../www/radmin/templates/smarty.c:100
 msgid "Bandwidth Limit Down"
 msgstr "Hangganan nang bandwidth na pababa"
 
-#: ../../../www/radmin/templates/smarty.c:266
-#: ../../../www/radmin/templates/smarty.c:302
+#: ../../../www/radmin/templates/smarty.c:89
+#: ../../../www/radmin/templates/smarty.c:101
 msgid "Bandwidth Limit Up"
 msgstr "Hangganan nang bandwidth na pataas"
 
-#: ../../../www/radmin/templates/smarty.c:269
-#: ../../../www/radmin/templates/smarty.c:305
+#: ../../../www/radmin/templates/smarty.c:90
+#: ../../../www/radmin/templates/smarty.c:102
 msgid "Allow simultaneous logins?"
 msgstr "Pahintulutan ang sabay-sabay na pag login?"
 
-#: ../../../www/radmin/templates/smarty.c:272
-#: ../../../www/radmin/templates/smarty.c:314
+#: ../../../www/radmin/templates/smarty.c:91
+#: ../../../www/radmin/templates/smarty.c:105
 msgid "Delete Group"
 msgstr "Burahin ang grupo"
 
-#: ../../../www/radmin/templates/smarty.c:308
+#: ../../../www/radmin/templates/smarty.c:103
 msgid "Add Another Group"
 msgstr "Magdagdag nang ibang grupo"
 
-#: ../../../www/radmin/templates/smarty.c:317
+#: ../../../www/radmin/templates/smarty.c:106
 msgid "Edit Computer Account"
 msgstr "I-edit ang Computer Account"
 
-#: ../../../www/radmin/templates/smarty.c:320
+#: ../../../www/radmin/templates/smarty.c:107
 msgid "Edit User"
 msgstr "Iwasto ang gagamit"
 
-#: ../../../www/radmin/templates/smarty.c:329
+#: ../../../www/radmin/templates/smarty.c:110
 msgid "Choose a secure password for the user. Leave blank to not change"
 msgstr ""
 "Pumili nang malakas na hudyat para sa gumagamit. I blanko kung walang "
 "babaguhin"
 
-#: ../../../www/radmin/templates/smarty.c:335
+#: ../../../www/radmin/templates/smarty.c:112
 msgid "This user account never expires"
 msgstr "Ang gumagamit nito ay hindi nag expire"
 
-#: ../../../www/radmin/templates/smarty.c:338
+#: ../../../www/radmin/templates/smarty.c:113
 msgid "This user account has expired"
 msgstr "Ang account na ito ay expired na."
 
-#: ../../../www/radmin/templates/smarty.c:341
+#: ../../../www/radmin/templates/smarty.c:114
 msgid "Reset expiry"
 msgstr "Baguhin ang takda ng expiry"
 
-#: ../../../www/radmin/templates/smarty.c:344
+#: ../../../www/radmin/templates/smarty.c:115
 msgid "Computer Accounts never expire"
 msgstr "Ang mga kompyuter account ay hindi nag e-expire"
 
-#: ../../../www/radmin/templates/smarty.c:365
+#: ../../../www/radmin/templates/smarty.c:122
 msgid "Change the Data Limit"
 msgstr "Baguhin ang hanganan ng impormasyon"
 
-#: ../../../www/radmin/templates/smarty.c:368
+#: ../../../www/radmin/templates/smarty.c:123
 msgid "Add Data to Limit (MiB)"
 msgstr "I dagdag sa hanganan ng impormasyon (MiB)"
 
-#: ../../../www/radmin/templates/smarty.c:371
+#: ../../../www/radmin/templates/smarty.c:124
 msgid "Add to the Data Limit (Will ignore changes made above)"
 msgstr ""
 "I dagdag sa hanganan ng impormasyon (ang mga pagbabago sa taas ay "
 "pababayaan)"
 
-#: ../../../www/radmin/templates/smarty.c:380
+#: ../../../www/radmin/templates/smarty.c:127
 msgid "Change the Time Limit"
 msgstr "Baguhin ang hanganan ng oras"
 
-#: ../../../www/radmin/templates/smarty.c:383
+#: ../../../www/radmin/templates/smarty.c:128
 msgid "Add Time to Limit (Minutes)"
 msgstr "I dagdag sa hanganan ng oras (Minuto)"
 
-#: ../../../www/radmin/templates/smarty.c:386
+#: ../../../www/radmin/templates/smarty.c:129
 msgid "Add to the Time Limit (Will ignore changes made above)"
 msgstr ""
 "I dagdag sa hanganan ng oras (ang mga pagbabago sa taas ay pababayaan)"
 
-#: ../../../www/radmin/templates/smarty.c:389
-#: ../../../www/radmin/templates/smarty.c:392
+#: ../../../www/radmin/templates/smarty.c:130
+#: ../../../www/radmin/templates/smarty.c:131
 msgid "Update User Details"
 msgstr "Baguhin ang detalye ng gumagamit"
 
-#: ../../../www/radmin/templates/smarty.c:395
+#: ../../../www/radmin/templates/smarty.c:132
 msgid "Delete Computer Account"
 msgstr "Burahin ang computer account"
 
-#: ../../../www/radmin/templates/smarty.c:398
-#: ../../../www/radmin/templates/smarty.c:404
+#: ../../../www/radmin/templates/smarty.c:133
+#: ../../../www/radmin/templates/smarty.c:135
 msgid "Delete User"
 msgstr "Burahin ang gumagmit"
 
-#: ../../../www/radmin/templates/smarty.c:401
+#: ../../../www/radmin/templates/smarty.c:134
 msgid ""
 "User accounts are automatically deleted 2 months after expiry. Only accounts"
 " with zero usage should be manually deleted to prevent errors in the reports"
@@ -564,70 +566,70 @@ msgstr ""
 "gumagamit na walang gamit ay manual na alisin para hindi magmali-mali ang "
 "mga ulat o statistica."
 
-#: ../../../www/radmin/templates/smarty.c:407
+#: ../../../www/radmin/templates/smarty.c:136
 msgid "Are you sure you want to delete this user?"
 msgstr "Sigurado ka bang tangalin ang gagamit nito?"
 
-#: ../../../www/radmin/templates/smarty.c:410
+#: ../../../www/radmin/templates/smarty.c:137
 msgid "Delete User %1"
 msgstr "Burahin ang gagamit %1"
 
-#: ../../../www/radmin/templates/smarty.c:413
+#: ../../../www/radmin/templates/smarty.c:138
 msgid "Sessions for %1"
 msgstr "Sesyon para sa %1"
 
-#: ../../../www/radmin/templates/smarty.c:416
-#: ../../../www/uam/templates/smarty.c:23
+#: ../../../www/radmin/templates/smarty.c:139
+#: ../../../www/uam/templates/smarty.c:10
 msgid "Start Time"
 msgstr "Simula nang oras"
 
-#: ../../../www/radmin/templates/smarty.c:419
+#: ../../../www/radmin/templates/smarty.c:140
 msgid "Stop Time"
 msgstr "Tapos na oras"
 
-#: ../../../www/radmin/templates/smarty.c:422
+#: ../../../www/radmin/templates/smarty.c:141
 msgid "Time"
 msgstr "Oras"
 
-#: ../../../www/radmin/templates/smarty.c:431
+#: ../../../www/radmin/templates/smarty.c:144
 msgid "Download"
 msgstr "Download"
 
-#: ../../../www/radmin/templates/smarty.c:434
-#: ../../../www/uam/templates/smarty.c:41
+#: ../../../www/radmin/templates/smarty.c:145
+#: ../../../www/uam/templates/smarty.c:18
 msgid "Uploaded"
 msgstr "Uploaded"
 
-#: ../../../www/radmin/templates/smarty.c:437
+#: ../../../www/radmin/templates/smarty.c:146
 msgid "Data Usage"
 msgstr "Gamit ng Impormasyon"
 
-#: ../../../www/radmin/templates/smarty.c:440
+#: ../../../www/radmin/templates/smarty.c:147
 msgid "Reason: "
 msgstr "Rason:"
 
-#: ../../../www/radmin/templates/smarty.c:443
+#: ../../../www/radmin/templates/smarty.c:148
 msgid "Computers hardware (MAC) address is %1"
 msgstr "(MAC)address nang kompyuter is %1"
 
-#: ../../../www/radmin/templates/smarty.c:446
+#: ../../../www/radmin/templates/smarty.c:149
 msgid "Captive Portal Config Login"
 msgstr "Login ng bihag Portal config"
 
-#: ../../../www/radmin/templates/smarty.c:449
-#: ../../../www/radmin/templates/smarty.c:461
+#: ../../../www/radmin/templates/smarty.c:150
+#: ../../../www/radmin/templates/smarty.c:154
 msgid "Upload Logo"
 msgstr "i upload ang logo"
 
-#: ../../../www/radmin/templates/smarty.c:452
+#: ../../../www/radmin/templates/smarty.c:151
 msgid "Logo Image"
 msgstr "imahe ng logo"
 
-#: ../../../www/radmin/templates/smarty.c:455
+#: ../../../www/radmin/templates/smarty.c:152
 msgid "Select new logo file."
 msgstr "Pumili ng bagong logo "
 
-#: ../../../www/radmin/templates/smarty.c:458
+#: ../../../www/radmin/templates/smarty.c:153
 msgid ""
 "Logo file needs to be in png format, and relatively small (remember, every "
 "page has the logo). 10 Kilobytes maximum. It's physical size shouldn't be "
@@ -637,7 +639,7 @@ msgstr ""
 "ay may logo). hanggang 10 kilobytes lamang. ang pisikal nyang anyo ay hindi "
 "dapat lalagpas nang 220px sa bawat direksyon."
 
-#: ../../../www/radmin/templates/smarty.c:464
+#: ../../../www/radmin/templates/smarty.c:155
 msgid ""
 "For more advanced logos, (different file type, size, placement}, manually "
 "upload the file to /var/www/ or /usr/share/grase/www/images/ and use the "
@@ -649,113 +651,113 @@ msgstr ""
 "manaig ang lumang logo. Ang logo ay naka takda sa #page container para sa "
 "background."
 
-#: ../../../www/radmin/templates/smarty.c:467
+#: ../../../www/radmin/templates/smarty.c:156
 msgid "Admin Users"
 msgstr "Mga tagapangasiwa"
 
-#: ../../../www/radmin/templates/smarty.c:470
-#: ../../../www/radmin/templates/smarty.c:485
-#: ../../../www/radmin/templates/smarty.c:488
+#: ../../../www/radmin/templates/smarty.c:157
+#: ../../../www/radmin/templates/smarty.c:162
+#: ../../../www/radmin/templates/smarty.c:163
 msgid "Change Password"
 msgstr "Baguhin ang hudyat"
 
-#: ../../../www/radmin/templates/smarty.c:476
+#: ../../../www/radmin/templates/smarty.c:159
 msgid "Old Password"
 msgstr "Lumang hudyat"
 
-#: ../../../www/radmin/templates/smarty.c:479
+#: ../../../www/radmin/templates/smarty.c:160
 msgid "New Password"
 msgstr "Bagong hudyat"
 
-#: ../../../www/radmin/templates/smarty.c:482
+#: ../../../www/radmin/templates/smarty.c:161
 msgid "Confirm New Password"
 msgstr "patunayan ang bagong hudyat"
 
-#: ../../../www/radmin/templates/smarty.c:491
-#: ../../../www/radmin/templates/smarty.c:500
+#: ../../../www/radmin/templates/smarty.c:164
+#: ../../../www/radmin/templates/smarty.c:167
 msgid "Create new Admin User"
 msgstr "Maglikha nang bagong gagamit na Admin"
 
-#: ../../../www/radmin/templates/smarty.c:503
+#: ../../../www/radmin/templates/smarty.c:168
 msgid "Delete Admin User"
 msgstr "Burahin ang Admin na gagamit"
 
-#: ../../../www/radmin/templates/smarty.c:506
+#: ../../../www/radmin/templates/smarty.c:169
 msgid "Deleting or modifying the support user will prevent remote assistance."
 msgstr ""
 "Pagtanggal o pagbabago ng support gumagamit ay maiwasan ang remote tulong."
 
-#: ../../../www/radmin/templates/smarty.c:509
+#: ../../../www/radmin/templates/smarty.c:170
 msgid "Are you sure you want to delete %1?"
 msgstr "Sigurado ka bang burahin ang %1?"
 
-#: ../../../www/radmin/templates/smarty.c:512
+#: ../../../www/radmin/templates/smarty.c:171
 msgid "Delete %1"
 msgstr "Burahin %1"
 
-#: ../../../www/radmin/templates/smarty.c:515
+#: ../../../www/radmin/templates/smarty.c:172
 msgid "Cannot delete current user"
 msgstr "Hindi mabubura ang kasalukuyang gumagamit"
 
-#: ../../../www/radmin/templates/smarty.c:518
+#: ../../../www/radmin/templates/smarty.c:173
 msgid "Logged in as <b>%1</b>"
 msgstr "Log in bilang <b>%1</b>"
 
-#: ../../../www/radmin/templates/smarty.c:521
+#: ../../../www/radmin/templates/smarty.c:174
 msgid "Session logs for %1 on %2"
 msgstr "Session logs for %1 on %2"
 
-#: ../../../www/radmin/templates/smarty.c:524
+#: ../../../www/radmin/templates/smarty.c:175
 msgid "Computers hardware (MAC) address is"
 msgstr "(MAC) address nang kompyuter"
 
-#: ../../../www/radmin/templates/smarty.c:527
+#: ../../../www/radmin/templates/smarty.c:176
 msgid "Between %1 and %2"
 msgstr "Sa pagitan nang $1 at %2"
 
-#: ../../../www/radmin/templates/smarty.c:530
+#: ../../../www/radmin/templates/smarty.c:177
 msgid "Total HTTP (WWW) Traffic Size:"
 msgstr "Total nang HTTP (WWW) Traffic Size:"
 
-#: ../../../www/radmin/templates/smarty.c:533
+#: ../../../www/radmin/templates/smarty.c:178
 msgid "Domain"
 msgstr "Domain"
 
-#: ../../../www/radmin/templates/smarty.c:536
+#: ../../../www/radmin/templates/smarty.c:179
 msgid "Count"
 msgstr "Bilang"
 
-#: ../../../www/radmin/templates/smarty.c:539
-#: ../../../www/radmin/templates/smarty.c:557
+#: ../../../www/radmin/templates/smarty.c:180
+#: ../../../www/radmin/templates/smarty.c:186
 msgid "Size"
 msgstr "Laki"
 
-#: ../../../www/radmin/templates/smarty.c:542
-#: ../../../www/radmin/templates/smarty.c:665
+#: ../../../www/radmin/templates/smarty.c:181
+#: ../../../www/radmin/templates/smarty.c:222
 msgid "Timestamp"
 msgstr "Timestamp"
 
-#: ../../../www/radmin/templates/smarty.c:545
+#: ../../../www/radmin/templates/smarty.c:182
 msgid "Address"
 msgstr "Tirahan"
 
-#: ../../../www/radmin/templates/smarty.c:548
+#: ../../../www/radmin/templates/smarty.c:183
 msgid "Host"
 msgstr "Host"
 
-#: ../../../www/radmin/templates/smarty.c:551
+#: ../../../www/radmin/templates/smarty.c:184
 msgid "Cached"
 msgstr "Cached"
 
-#: ../../../www/radmin/templates/smarty.c:554
+#: ../../../www/radmin/templates/smarty.c:185
 msgid "Request Type"
 msgstr "Tipo ng hiling"
 
-#: ../../../www/radmin/templates/smarty.c:560
+#: ../../../www/radmin/templates/smarty.c:187
 msgid "Network Settings"
 msgstr "Network Settings"
 
-#: ../../../www/radmin/templates/smarty.c:563
+#: ../../../www/radmin/templates/smarty.c:188
 msgid ""
 "These settings are used by Coova Chilli and Dnsmasq. Both Coova Chilli and "
 "Dnsmasq will need to be reloaded when these settings change. A cron job will"
@@ -767,17 +769,17 @@ msgstr ""
 " cron job ay kusa nag siyasatin kada limang minuto at kakargahin ang daemons"
 " kung kinakailangan."
 
-#: ../../../www/radmin/templates/smarty.c:566
-msgid "Status %1"
-msgstr "Kalagyan %1"
+#: ../../../www/radmin/templates/smarty.c:189
+msgid "Network Config last reloaded %1"
+msgstr ""
 
-#: ../../../www/radmin/templates/smarty.c:569
+#: ../../../www/radmin/templates/smarty.c:190
 msgid "Network Config last updated %1"
 msgstr "Network Config huling nabago nung %1"
 
-#: ../../../www/radmin/templates/smarty.c:572
-#: ../../../www/radmin/templates/smarty.c:602
-#: ../../../www/radmin/templates/smarty.c:764
+#: ../../../www/radmin/templates/smarty.c:191
+#: ../../../www/radmin/templates/smarty.c:201
+#: ../../../www/radmin/templates/smarty.c:255
 msgid ""
 "For each of the following items, if you need multiple values you can submit "
 "the form and it will append a blank input below the last valid value"
@@ -786,23 +788,23 @@ msgstr ""
 "maramihang mga halaga maaari mong isumite ang form at ito ay maglagay ng "
 "isang blangko na input sa ibaba ng huling wastong halaga"
 
-#: ../../../www/radmin/templates/smarty.c:578
+#: ../../../www/radmin/templates/smarty.c:193
 msgid "Help Page"
 msgstr "Pahina para sa tulong"
 
-#: ../../../www/radmin/templates/smarty.c:581
+#: ../../../www/radmin/templates/smarty.c:194
 msgid "My Account"
 msgstr "Aking account"
 
-#: ../../../www/radmin/templates/smarty.c:584
+#: ../../../www/radmin/templates/smarty.c:195
 msgid "Admin"
 msgstr "Pangangasiwa"
 
-#: ../../../www/radmin/templates/smarty.c:587
+#: ../../../www/radmin/templates/smarty.c:196
 msgid "Coova Chilli Settings"
 msgstr "takda ng Coova Chilli"
 
-#: ../../../www/radmin/templates/smarty.c:590
+#: ../../../www/radmin/templates/smarty.c:197
 msgid ""
 "These settings are used by Coova Chilli. Coova Chilli only reloads it's "
 "config roughly once an hour, or when it's restarted."
@@ -810,7 +812,7 @@ msgstr ""
 "Ang mga takdan na ito ay ginagamit ng Coova Chilli. Coova Chilli ay kusang "
 "binabago ang kanyang takda kada oras or sa pag restart nya."
 
-#: ../../../www/radmin/templates/smarty.c:593
+#: ../../../www/radmin/templates/smarty.c:198
 msgid ""
 "If you change the MAC Auth Password, no computer accounts will be able to "
 "login until Coova Chilli reloads it's config, or is manually restarted."
@@ -819,127 +821,127 @@ msgstr ""
 " makapag-login hanggang sa mga muling pagkarga ng Chilli sa Coova config, o "
 "mano-manong ay restart."
 
-#: ../../../www/radmin/templates/smarty.c:596
+#: ../../../www/radmin/templates/smarty.c:199
 msgid "Chilli Config last updated %1"
 msgstr "Chilli Config huling nabago nung %1"
 
-#: ../../../www/radmin/templates/smarty.c:599
+#: ../../../www/radmin/templates/smarty.c:200
 msgid "Portal Config last updated %1"
 msgstr "Portal Config huling nabago nung %1"
 
-#: ../../../www/radmin/templates/smarty.c:608
-#: ../../../www/radmin/templates/smarty.c:626
+#: ../../../www/radmin/templates/smarty.c:203
+#: ../../../www/radmin/templates/smarty.c:209
 msgid "Data Limit"
 msgstr "Hangganan ng impormasyon"
 
-#: ../../../www/radmin/templates/smarty.c:611
-#: ../../../www/radmin/templates/smarty.c:641
-#: ../../../www/uam/templates/smarty.c:32
+#: ../../../www/radmin/templates/smarty.c:204
+#: ../../../www/radmin/templates/smarty.c:214
+#: ../../../www/uam/templates/smarty.c:14
 msgid "Time Limit"
 msgstr "Hangganan ng Oras"
 
-#: ../../../www/radmin/templates/smarty.c:614
+#: ../../../www/radmin/templates/smarty.c:205
 msgid "%1 Time Limit"
 msgstr "%1 Hangganan ng Oras"
 
-#: ../../../www/radmin/templates/smarty.c:617
+#: ../../../www/radmin/templates/smarty.c:206
 msgid "%1 Data Limit"
 msgstr "%1 Hangganan ng impormasyon"
 
-#: ../../../www/radmin/templates/smarty.c:629
+#: ../../../www/radmin/templates/smarty.c:210
 msgid "Total Data usage for the current month"
 msgstr "Kabuuan nang gamit nang impormasyon sa kasalukuyang buyan"
 
-#: ../../../www/radmin/templates/smarty.c:632
+#: ../../../www/radmin/templates/smarty.c:211
 msgid "Data Usage (M)"
 msgstr "gamit nang impormasyon (M)"
 
-#: ../../../www/radmin/templates/smarty.c:635
+#: ../../../www/radmin/templates/smarty.c:212
 msgid "Total Data usage, from previous months, excluding current month"
 msgstr ""
 "Kabuuan nang gamit ng impormasyon, sa naunang mga buwan, hindi kasali ang "
 "kasalukuyang buwan"
 
-#: ../../../www/radmin/templates/smarty.c:638
+#: ../../../www/radmin/templates/smarty.c:213
 msgid "Data Usage (T)"
 msgstr "Gamit nang impormasyon (T)"
 
-#: ../../../www/radmin/templates/smarty.c:644
+#: ../../../www/radmin/templates/smarty.c:215
 msgid "Time Usage (Month)"
 msgstr "Gamit nang oras (Buwan)"
 
-#: ../../../www/radmin/templates/smarty.c:647
+#: ../../../www/radmin/templates/smarty.c:216
 msgid "Account Expiry"
 msgstr "Expired na ang account"
 
-#: ../../../www/radmin/templates/smarty.c:650
+#: ../../../www/radmin/templates/smarty.c:217
 msgid "Last Logoff timestamp from current month only"
 msgstr "Huling Logoff timestamp mula sa kasalukuyang buwan lamang"
 
-#: ../../../www/radmin/templates/smarty.c:653
+#: ../../../www/radmin/templates/smarty.c:218
 msgid "Last Logoff"
 msgstr "Huling pag-alis"
 
-#: ../../../www/radmin/templates/smarty.c:659
+#: ../../../www/radmin/templates/smarty.c:220
 msgid "Password Hidden"
 msgstr "Nakatagong hudyat"
 
-#: ../../../www/radmin/templates/smarty.c:662
+#: ../../../www/radmin/templates/smarty.c:221
 msgid "Admin Log"
 msgstr "Ulat ng pangangasiwa"
 
-#: ../../../www/radmin/templates/smarty.c:671
+#: ../../../www/radmin/templates/smarty.c:224
 msgid "IP"
 msgstr "IP"
 
-#: ../../../www/radmin/templates/smarty.c:674
+#: ../../../www/radmin/templates/smarty.c:225
 msgid "Action"
 msgstr "Aksyon"
 
-#: ../../../www/radmin/templates/smarty.c:677
+#: ../../../www/radmin/templates/smarty.c:226
 msgid "Group Properties"
 msgstr "Property ng grupo"
 
-#: ../../../www/radmin/templates/smarty.c:686
+#: ../../../www/radmin/templates/smarty.c:229
 msgid "Max Data (Mb)"
 msgstr "Sukdulan ng impormasyon (Mb)"
 
-#: ../../../www/radmin/templates/smarty.c:689
+#: ../../../www/radmin/templates/smarty.c:230
 msgid "Max Time (mins)"
 msgstr "Sukduluan ng oras (mins)"
 
-#: ../../../www/radmin/templates/smarty.c:692
+#: ../../../www/radmin/templates/smarty.c:231
 msgid "Recur time limit"
 msgstr "Pabalik-balik na hanganan ng oras"
 
-#: ../../../www/radmin/templates/smarty.c:695
+#: ../../../www/radmin/templates/smarty.c:232
 msgid "BW Limit Down"
 msgstr "BW hanganan pababa"
 
-#: ../../../www/radmin/templates/smarty.c:698
+#: ../../../www/radmin/templates/smarty.c:233
 msgid "BW Limit Up"
 msgstr "BW hanganan pataas"
 
-#: ../../../www/radmin/templates/smarty.c:701
-#: ../../../www/uam/templates/smarty.c:101
+#: ../../../www/radmin/templates/smarty.c:234
+#: ../../../www/uam/templates/smarty.c:38
 msgid "Error"
 msgstr "Mali"
 
-#: ../../../www/radmin/templates/smarty.c:704
-#: ../../../www/uam/templates/smarty.c:104
+#: ../../../www/radmin/templates/smarty.c:235
+#: ../../../www/uam/templates/smarty.c:39
 msgid "An Error has occured. Please report the error to the administrator"
 msgstr "May maling naganap. Paki sabi sa mali sa administrator"
 
-#: ../../../www/radmin/templates/smarty.c:707
+#: ../../../www/radmin/templates/smarty.c:236
 msgid ""
 "There may be more information available to the administrator in the logs"
 msgstr "Marami pang impormasyon ang makikita ng tagapangasiwa sa mga ulat."
 
-#: ../../../www/radmin/templates/smarty.c:710
+#: ../../../www/radmin/templates/smarty.c:237
 msgid "Create Computer Account"
 msgstr "Lumikha ng account para sa kompyuter"
 
-#: ../../../www/radmin/templates/smarty.c:716
+#: ../../../www/radmin/templates/smarty.c:239
 msgid ""
 "The MAC address is the network hardware address of the computer. It needs to"
 " be of the format XX-XX-XX-XX-XX-XX where XX is a hex number, typed in all "
@@ -948,11 +950,11 @@ msgstr ""
 "Ang MAC address ay ang network hardware address ng kompyuter. Dapat ang "
 "pormat ay XX-XX-XX-XX-XX-XX ang XX ay hex na numera at naka kapital"
 
-#: ../../../www/radmin/templates/smarty.c:722
+#: ../../../www/radmin/templates/smarty.c:241
 msgid "Identify the computer. i.e. \"Bob's computer\""
 msgstr "Kilalanin ang kompyuter i.e \"Kompyuter ni Bob\""
 
-#: ../../../www/radmin/templates/smarty.c:728
+#: ../../../www/radmin/templates/smarty.c:243
 msgid ""
 "Computer accounts are intended to be used for computers that need internet "
 "access at all times. For example, an office computer. Computer accounts "
@@ -967,127 +969,133 @@ msgstr ""
 " babalik sa login para maka konek uli. Ang mga kompyuter account ay hindi "
 "mababago kung dadagdag ng impormasyon or oras, dapat ay alisin ito. "
 
-#: ../../../www/radmin/templates/smarty.c:731
+#: ../../../www/radmin/templates/smarty.c:244
 msgid ""
 "It is not recommended setting a time or data limit for computer accounts."
 msgstr ""
 "Hindi rekomendado ang pag takda ng limitasyon sa oras o impormasyon sa mga "
 "kompyuter accounts"
 
-#: ../../../www/radmin/templates/smarty.c:755
-#: ../../../www/radmin/templates/smarty.c:758
+#: ../../../www/radmin/templates/smarty.c:252
+#: ../../../www/radmin/templates/smarty.c:253
 msgid "Create New Computer Account"
 msgstr "Maglikha ng bagong kompyuter account"
 
-#: ../../../www/radmin/templates/smarty.c:761
+#: ../../../www/radmin/templates/smarty.c:254
 msgid "Portal Customisation"
 msgstr "Kostomisa ng portal"
 
-#: ../../../www/radmin/templates/smarty.c:770
+#: ../../../www/radmin/templates/smarty.c:257
 msgid "Sold"
 msgstr "Nabenta"
 
-#: ../../../www/radmin/templates/smarty.c:773
-#: ../../../www/radmin/templates/smarty.c:779
-#: ../../../www/radmin/templates/smarty.c:785
+#: ../../../www/radmin/templates/smarty.c:258
+#: ../../../www/radmin/templates/smarty.c:260
+#: ../../../www/radmin/templates/smarty.c:262
 msgid "%1 of %2"
 msgstr "%1 ng %2"
 
-#: ../../../www/radmin/templates/smarty.c:776
+#: ../../../www/radmin/templates/smarty.c:259
 msgid "This Month Used"
 msgstr "Nagamit ngayong buwan"
 
-#: ../../../www/radmin/templates/smarty.c:782
+#: ../../../www/radmin/templates/smarty.c:261
 msgid "Last Month Used"
 msgstr "Nagamit nung isang buwan"
 
-#: ../../../www/uam/templates/smarty.c:2
+#: ../../../www/uam/templates/smarty.c:1
 msgid "You are logged in as:"
 msgstr "Ang gumagamit ay si:"
 
-#: ../../../www/uam/templates/smarty.c:5
+#: ../../../www/uam/templates/smarty.c:2
 msgid "User"
 msgstr "Gumagamit"
 
-#: ../../../www/uam/templates/smarty.c:8
+#: ../../../www/uam/templates/smarty.c:3
 msgid "Usage this session"
 msgstr "Gamit sa kasalukuyan"
 
-#: ../../../www/uam/templates/smarty.c:11
+#: ../../../www/uam/templates/smarty.c:4
 msgid "Remaining Quota"
 msgstr "Natitirang kota"
 
-#: ../../../www/uam/templates/smarty.c:14
+#: ../../../www/uam/templates/smarty.c:5 ../../../www/uam/templates/smarty.c:7
+#: ../../../www/uam/templates/smarty.c:13
+#: ../../../www/uam/templates/smarty.c:15
+msgid "Unlimited"
+msgstr ""
+
+#: ../../../www/uam/templates/smarty.c:6
 msgid "Quota allocation"
 msgstr "Alokasyon nang kota"
 
-#: ../../../www/uam/templates/smarty.c:17
+#: ../../../www/uam/templates/smarty.c:8
 msgid "Max Session Time"
 msgstr "Sukdulan ng kasalukuyang ginagamit na oras"
 
-#: ../../../www/uam/templates/smarty.c:20
+#: ../../../www/uam/templates/smarty.c:9
 msgid "Max Idle Time"
 msgstr "Sukdulan ng oras na walang ginagawa"
 
-#: ../../../www/uam/templates/smarty.c:26
+#: ../../../www/uam/templates/smarty.c:11
 msgid "Session Time"
 msgstr "Session Time"
 
-#: ../../../www/uam/templates/smarty.c:29
+#: ../../../www/uam/templates/smarty.c:12
 msgid "Remaining Time"
 msgstr "Natitirang oras"
 
-#: ../../../www/uam/templates/smarty.c:35
+#: ../../../www/uam/templates/smarty.c:16
 msgid "Idle Time"
 msgstr "Oras na walang ginagawa"
 
-#: ../../../www/uam/templates/smarty.c:38
+#: ../../../www/uam/templates/smarty.c:17
 msgid "Downloaded"
 msgstr "Downloaded"
 
-#: ../../../www/uam/templates/smarty.c:44
+#: ../../../www/uam/templates/smarty.c:19
 msgid "Help"
 msgstr "Tulong"
 
-#: ../../../www/uam/templates/smarty.c:47
+#: ../../../www/uam/templates/smarty.c:20
 msgid "Support"
 msgstr "Suporta"
 
-#: ../../../www/uam/templates/smarty.c:50
+#: ../../../www/uam/templates/smarty.c:21
 msgid "Successful Login"
 msgstr "Matagumpay na pagpasok"
 
-#: ../../../www/uam/templates/smarty.c:53
+#: ../../../www/uam/templates/smarty.c:22
 msgid "Continue to your site"
 msgstr "Patuloy sa inyong site"
 
-#: ../../../www/uam/templates/smarty.c:56
+#: ../../../www/uam/templates/smarty.c:23
 msgid "Free Downloads"
 msgstr "Libreng downloads"
 
-#: ../../../www/uam/templates/smarty.c:59
+#: ../../../www/uam/templates/smarty.c:24
 msgid ""
 "Welcome to the %1 Hotspot. Please read the following before logging in."
 msgstr ""
 "Malugod na pagbati sa %1 Hotspot. Pakibasa the sumusunod bago pumasok."
 
-#: ../../../www/uam/templates/smarty.c:62
+#: ../../../www/uam/templates/smarty.c:25
 msgid "Information and Help"
 msgstr "Impormasyon at tulong"
 
-#: ../../../www/uam/templates/smarty.c:65
+#: ../../../www/uam/templates/smarty.c:26
 msgid "For a quick logout, bookmark <a href=\"%1\">LOGOUT</a>"
 msgstr "Para sa madaling pag-alis, bookmark <a href=\"%1\">LOGOUT</a>"
 
-#: ../../../www/uam/templates/smarty.c:68
+#: ../../../www/uam/templates/smarty.c:27
 msgid "If you are already logged in, continue to your site"
 msgstr "Kung naka pasok kana, patuloy sa inyong site"
 
-#: ../../../www/uam/templates/smarty.c:71
+#: ../../../www/uam/templates/smarty.c:28
 msgid "You are using the less secure login method."
 msgstr "Ikaw ay gumagamit ng mas mababa seguridad sa pamamaraan sa pag-login."
 
-#: ../../../www/uam/templates/smarty.c:74
+#: ../../../www/uam/templates/smarty.c:29
 msgid ""
 "If you have javascript disabled, please try enabling it for the secure login"
 " method."
@@ -1095,7 +1103,7 @@ msgstr ""
 "Kung javascript mo pinagana ang, mangyaring subukan ang pagpapagana sa mga "
 "ito para sa ang mga secure na paraan sa pag-login."
 
-#: ../../../www/uam/templates/smarty.c:77
+#: ../../../www/uam/templates/smarty.c:30
 msgid ""
 "Use this less secure login form if the javascript version is giving you "
 "trouble"
@@ -1103,23 +1111,23 @@ msgstr ""
 "Gamitin ang mas mababa secure na form login kung ang bersyon ng javascript "
 "ay nagbibigay sa iyo ng problema"
 
-#: ../../../www/uam/templates/smarty.c:80
+#: ../../../www/uam/templates/smarty.c:31
 msgid "You have disabled the secure javascript login method."
 msgstr "Mo pinagana ang secure javascript login paraan."
 
-#: ../../../www/uam/templates/smarty.c:83
+#: ../../../www/uam/templates/smarty.c:32
 msgid "Click here to re-enable it"
 msgstr "Mag-click dito ma-enable muli ang ito"
 
-#: ../../../www/uam/templates/smarty.c:92
+#: ../../../www/uam/templates/smarty.c:35
 msgid "Trouble logging in?"
 msgstr "Nahihirapan sa pagpasok?"
 
-#: ../../../www/uam/templates/smarty.c:95
+#: ../../../www/uam/templates/smarty.c:36
 msgid "Click here to disable the javascript login forms."
 msgstr "Mag-click dito upang di paganahin ang javascript login form."
 
-#: ../../../www/uam/templates/smarty.c:98
+#: ../../../www/uam/templates/smarty.c:37
 msgid "This will use a less secure login method"
 msgstr "Ito ay gumagamit na hindi masyadong matatag na paglogin."
 
@@ -1189,17 +1197,25 @@ msgstr ""
 "Default Idle Timeout para sa session. Logout matapos ang bilang ng mga "
 "segundo na ang nakalipas nang walang anumang trapiko."
 
-#: ../../../www/radmin/chilliconfig.php:90
-#: ../../../www/radmin/chilliconfig.php:131
+#: ../../../www/radmin/chilliconfig.php:53
+msgid "DHCP Lease time"
+msgstr ""
+
+#: ../../../www/radmin/chilliconfig.php:54
+msgid "DHCP lease time in seconds."
+msgstr ""
+
+#: ../../../www/radmin/chilliconfig.php:94
+#: ../../../www/radmin/chilliconfig.php:135
 #, php-format
 msgid "%s Coova Chilli config option update"
 msgstr "%s opsyon update ng Coova Chilli config"
 
-#: ../../../www/radmin/chilliconfig.php:176
+#: ../../../www/radmin/chilliconfig.php:180
 msgid "Changes pending Coova Chilli Reload"
 msgstr "Ang pagbabago ay hinihintay sa pagbago ng Coova Chilli"
 
-#: ../../../www/radmin/chilliconfig.php:178
+#: ../../../www/radmin/chilliconfig.php:182
 #: ../../../www/radmin/netconfig.php:171
 msgid "Settings match running config"
 msgstr "Setting tumugma tumatakbo config"
@@ -1575,147 +1591,147 @@ msgstr "Tagumpay na pag likha ng tikets"
 msgid "Print Tickets"
 msgstr "Mag printa ng mga tikets"
 
-#: ../../../www/radmin/settings.php:94
+#: ../../../www/radmin/settings.php:96
 msgid "Location name not valid"
 msgstr "Ang pangalan ng lokasyon ay hindi naaayon"
 
-#: ../../../www/radmin/settings.php:98
+#: ../../../www/radmin/settings.php:100
 msgid "Location name updated"
 msgstr "Binago ang pangalan ng lokasyon"
 
-#: ../../../www/radmin/settings.php:99
+#: ../../../www/radmin/settings.php:101
 msgid "Location Name changed to"
 msgstr "Pangalan ng lokasyon ay binago sa"
 
-#: ../../../www/radmin/settings.php:104
+#: ../../../www/radmin/settings.php:106
 msgid "Error Saving Location Name"
 msgstr "May mali sa pag save ng pangalan ng location"
 
-#: ../../../www/radmin/settings.php:113
+#: ../../../www/radmin/settings.php:115
 msgid "Website name not valid"
 msgstr "Pangalan ng website ay hindi wasto"
 
-#: ../../../www/radmin/settings.php:118 ../../../www/radmin/settings.php:119
+#: ../../../www/radmin/settings.php:120 ../../../www/radmin/settings.php:121
 msgid "Website name updated"
 msgstr "Pangalan ng website update"
 
-#: ../../../www/radmin/settings.php:123
+#: ../../../www/radmin/settings.php:125
 msgid "Error Saving Website Name"
 msgstr "Error sa Pag-save ng ng Website Pangalan"
 
-#: ../../../www/radmin/settings.php:131
+#: ../../../www/radmin/settings.php:133
 msgid "Website link not valid"
 msgstr "Website link ay hindi wasto"
 
-#: ../../../www/radmin/settings.php:136 ../../../www/radmin/settings.php:137
+#: ../../../www/radmin/settings.php:138 ../../../www/radmin/settings.php:139
 msgid "Website link updated"
 msgstr "Website link update"
 
-#: ../../../www/radmin/settings.php:141
+#: ../../../www/radmin/settings.php:143
 msgid "Error Saving Website link"
 msgstr "Error Nagse-save ang link ng Website"
 
-#: ../../../www/radmin/settings.php:155 ../../../www/radmin/settings.php:156
+#: ../../../www/radmin/settings.php:157 ../../../www/radmin/settings.php:158
 msgid "Price per MiB updated"
 msgstr "Presyo ng MiB binago"
 
-#: ../../../www/radmin/settings.php:160
+#: ../../../www/radmin/settings.php:162
 msgid "Error saving Price per MiB"
 msgstr "May mali sa pag bago ng presyo ng MiB"
 
-#: ../../../www/radmin/settings.php:165
+#: ../../../www/radmin/settings.php:167
 msgid "Invalid Price per MiB"
 msgstr "Maling presyo para sa MiB"
 
-#: ../../../www/radmin/settings.php:176 ../../../www/radmin/settings.php:177
+#: ../../../www/radmin/settings.php:178 ../../../www/radmin/settings.php:179
 msgid "Price per Minute Updated"
 msgstr "Presyo kada minuto binago"
 
-#: ../../../www/radmin/settings.php:180
+#: ../../../www/radmin/settings.php:182
 msgid "Error saving Price per Minute"
 msgstr "May mali sa pagbago ng presyo kada minuto"
 
-#: ../../../www/radmin/settings.php:184
+#: ../../../www/radmin/settings.php:186
 msgid "Invalid Price per Minute"
 msgstr "Maling presyo para sa kada minuto"
 
-#: ../../../www/radmin/settings.php:195
+#: ../../../www/radmin/settings.php:197
 msgid "Currency updated"
 msgstr "Halaga ng pera binago"
 
-#: ../../../www/radmin/settings.php:196
+#: ../../../www/radmin/settings.php:198
 msgid "Currency updated to"
 msgstr "Halaga ng pera binago sa"
 
-#: ../../../www/radmin/settings.php:200
+#: ../../../www/radmin/settings.php:202
 msgid "Error saving Currency"
 msgstr "May mali sa pagbago ng halaga ng pera"
 
-#: ../../../www/radmin/settings.php:204
+#: ../../../www/radmin/settings.php:206
 msgid "Invalid Currency"
 msgstr "Mali na halaga ng pera"
 
-#: ../../../www/radmin/settings.php:220
+#: ../../../www/radmin/settings.php:228
 msgid "Locale updated"
 msgstr "Nabagong lokasyon"
 
-#: ../../../www/radmin/settings.php:221
+#: ../../../www/radmin/settings.php:229
 msgid "Locale updated to"
 msgstr "Binago ang lokasyon sa"
 
-#: ../../../www/radmin/settings.php:225
+#: ../../../www/radmin/settings.php:233
 msgid "Error updating Locale"
 msgstr "May mali ang pagbago sa lokasyon"
 
-#: ../../../www/radmin/settings.php:229
+#: ../../../www/radmin/settings.php:237
 msgid "Invalid Locale"
 msgstr "Maling lokasyon"
 
-#: ../../../www/radmin/settings.php:245 ../../../www/radmin/settings.php:246
+#: ../../../www/radmin/settings.php:253 ../../../www/radmin/settings.php:254
 msgid "Sellable Data Limit Update"
 msgstr "Sellable Data Limit Update"
 
-#: ../../../www/radmin/settings.php:250
+#: ../../../www/radmin/settings.php:258
 msgid "Error updating Sellable Data Limit"
 msgstr "Error sa pag-update ng Sellable Data Limit"
 
-#: ../../../www/radmin/settings.php:255
+#: ../../../www/radmin/settings.php:263
 msgid "Invalid value for Sellable Data"
 msgstr "Hindi wastong halaga para sa mga Sellable Data"
 
-#: ../../../www/radmin/settings.php:266 ../../../www/radmin/settings.php:267
+#: ../../../www/radmin/settings.php:274 ../../../www/radmin/settings.php:275
 msgid "Useable Data Limit Update"
 msgstr "Useable Data Limit Update"
 
-#: ../../../www/radmin/settings.php:271
+#: ../../../www/radmin/settings.php:279
 msgid "Error updating Useable Data Limit"
 msgstr "Error sa pag-update ng Useable Data Limit"
 
-#: ../../../www/radmin/settings.php:276
+#: ../../../www/radmin/settings.php:284
 msgid "Invalid value for Useable Data"
 msgstr "Hindi wastong halaga para sa mga Useable Data"
 
-#: ../../../www/radmin/settings.php:284
+#: ../../../www/radmin/settings.php:292
 msgid "Support name not valid"
 msgstr "Pangalan ng taga supporta ay hindi insakto"
 
-#: ../../../www/radmin/settings.php:289 ../../../www/radmin/settings.php:290
+#: ../../../www/radmin/settings.php:297 ../../../www/radmin/settings.php:298
 msgid "Support name updated"
 msgstr "Pangalan ng taga supporta ay nabago"
 
-#: ../../../www/radmin/settings.php:294
+#: ../../../www/radmin/settings.php:302
 msgid "Error Saving Support Name"
 msgstr "May mali sa pagbago ng pangalan ng taga supporta"
 
-#: ../../../www/radmin/settings.php:302
+#: ../../../www/radmin/settings.php:310
 msgid "Support link not valid"
 msgstr "Link para sa supporta ay hindi insakto"
 
-#: ../../../www/radmin/settings.php:307 ../../../www/radmin/settings.php:308
+#: ../../../www/radmin/settings.php:315 ../../../www/radmin/settings.php:316
 msgid "Support link updated"
 msgstr "Link para sa supporta ay nabago"
 
-#: ../../../www/radmin/settings.php:312
+#: ../../../www/radmin/settings.php:320
 msgid "Error Saving Support link"
 msgstr "May mali sa pagbago ng link ng taga supporta"
 
@@ -1733,55 +1749,55 @@ msgstr "Kabilang default_templates file ay hindi nagtagumpay"
 msgid "Database upgraded"
 msgstr "Database upgrade"
 
-#: ../../../www/radmin/classes/CronFunctions.class.php:220
+#: ../../../www/radmin/classes/CronFunctions.class.php:214
 msgid "Clearing stale sessions failed: "
 msgstr "Clearing lipas session ay nabigong:"
 
-#: ../../../www/radmin/classes/CronFunctions.class.php:224
+#: ../../../www/radmin/classes/CronFunctions.class.php:218
 msgid "Stale sessions cleared"
 msgstr "Lipas session clear"
 
-#: ../../../www/radmin/classes/CronFunctions.class.php:257
+#: ../../../www/radmin/classes/CronFunctions.class.php:251
 msgid "Fetching users to delete failed"
 msgstr "Nabigo ang pagkuha sa mga idedelete na gumagamit"
 
-#: ../../../www/radmin/classes/CronFunctions.class.php:269
+#: ../../../www/radmin/classes/CronFunctions.class.php:263
 msgid "Expired users deleted"
 msgstr "Naalis na ang mga expired na gumagamit"
 
-#: ../../../www/radmin/classes/CronFunctions.class.php:322
+#: ../../../www/radmin/classes/CronFunctions.class.php:316
 msgid "Unable to insert data into mtotaccttmp: "
 msgstr "Hindi maipasok ang impormasyon sa mtotaccttmp: "
 
-#: ../../../www/radmin/classes/CronFunctions.class.php:340
+#: ../../../www/radmin/classes/CronFunctions.class.php:334
 msgid "Unable to delete old radacct data: "
 msgstr "Hindi maalis ang lumang radacct na impormasyon: "
 
-#: ../../../www/radmin/classes/CronFunctions.class.php:361
+#: ../../../www/radmin/classes/CronFunctions.class.php:355
 msgid "Unable to update users Max-Octets: "
 msgstr "Hindi mabago ang Max-Octets sa gumagamit: "
 
-#: ../../../www/radmin/classes/CronFunctions.class.php:380
+#: ../../../www/radmin/classes/CronFunctions.class.php:374
 msgid "Unable to update users Max-All-Session: "
 msgstr "Hindi mabago ang Max-All-Session sa gumagamit: "
 
-#: ../../../www/radmin/classes/CronFunctions.class.php:416
+#: ../../../www/radmin/classes/CronFunctions.class.php:410
 msgid "Unable to move mtotaccttmp data to mtotacct: "
 msgstr "Hindi magalaw ang mtotaccttmp impormasyon patungong mtotacct:"
 
-#: ../../../www/radmin/classes/CronFunctions.class.php:429
+#: ../../../www/radmin/classes/CronFunctions.class.php:423
 msgid "Unable to truncate mtotaccttmp: "
 msgstr "Hindi pungusan mtotaccttmp:"
 
-#: ../../../www/radmin/classes/CronFunctions.class.php:449
+#: ../../../www/radmin/classes/CronFunctions.class.php:443
 msgid "Unable to ensure positive values in radcheck: "
 msgstr "Hindi masigurong positibong halaga sa radcheck: "
 
-#: ../../../www/radmin/classes/CronFunctions.class.php:467
+#: ../../../www/radmin/classes/CronFunctions.class.php:461
 msgid "Unable to delete ancient radacct data: "
 msgstr "Hindi maalis ang matatandang impormasyon sa radacct: "
 
-#: ../../../www/radmin/classes/CronFunctions.class.php:476
+#: ../../../www/radmin/classes/CronFunctions.class.php:470
 msgid "Old Radius Accounting Data Archived"
 msgstr "Lumang Radius Accounting Data archive"
 
@@ -1789,254 +1805,254 @@ msgstr "Lumang Radius Accounting Data archive"
 msgid "DB Config File isn't a valid file."
 msgstr "Ang DB Config File ay hindi magagamit"
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:100
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:102
 msgid "Retrieving Sold Usage failed: "
 msgstr "Hindi makuha ang binawing nabentang gamit: "
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:134
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:136
 msgid "Retrieving Month Usage failed: "
 msgstr "Hindi makuha ang binawing buwanang gamit: "
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:151
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:153
 msgid "Retrieving Current Month Usage failed: "
 msgstr "Hindi makuha ang binawing kasalukuyang buwang gamit: "
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:182
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:184
 msgid "Retrieving Session by RadAcctID failed: "
 msgstr "Nabigo ang Kinukuha ang Session sa pamamagitan ng RadAcctID:"
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:214
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:216
 msgid "Retrieving Sessions by Username failed: "
 msgstr "Kinukuha ang mga session sa pamamagitan ng Username nabigo:"
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:235
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:237
 msgid "Retrieving Current Session by Username failed: "
 msgstr ""
 "Kinukuha Kasalukuyang Session sa pamamagitan ng Username ay hindi "
 "nagtagumpay:"
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:256
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:258
 msgid "Retrieving Username by Active Session (ipadddress): "
 msgstr "Kinukuha ang Username ng Aktibo Session (ipadddress):"
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:280
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:282
 msgid "Get User details Query failed: "
 msgstr "Kumuha ng mga User detalye Query nabigo:"
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:365
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:375
 msgid "Get User Group Query failed: "
 msgstr "Kumuha ng Query ng User Group nabigo:"
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:392
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:402
 msgid "Get All Usernames Query Failed: "
 msgstr "Kumuha ng Lahat ng Username Query Nabigong:"
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:416
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:426
 msgid "Get Users By Group Query Failed: "
 msgstr "Kumuha ng mga gumagamit pamamagitan ng Query sa Group Nabigong:"
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:442
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:452
 msgid "Get User Last Logout Query Failed: "
 msgstr "Nabigo ang Kumuha ng User Huling Logout Query:"
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:471
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:481
 msgid "Get User Total Session Time Query failed: "
 msgstr "Kumuha ng Nabigo ang User Kabuuang Session Time Query:"
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:492
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:502
 msgid "Get User Data Usage Query failed: "
 msgstr "Kumuha ng User Data Paggamit Query ay hindi nagtagumpay:"
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:513
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:523
 msgid "Get User Data Usage (Total) Query failed: "
 msgstr "Kumuha ng Data ng Gumagamit Paggamit (Total) Query nabigo:"
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:533
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:543
 msgid "Get Monthly Data Usage Query failed: "
 msgstr "Kumuha ng Buwanang Data Paggamit Query nabigo:"
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:561
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:571
 msgid "Get Monthly Data Usage Totals Query failed: "
 msgstr "Kumuha ng Nabigo ang Buwanang Data Paggamit Kabuuan Query:"
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:587
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:597
 msgid "Get User Comment failed: "
 msgstr "User Puna nabigo:"
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:629
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:639
 msgid "Deleting radgroupcheck query failed: "
 msgstr "Pagtanggal radgroupcheck query ay hindi nagtagumpay:"
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:645
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:655
 msgid "Adding Group Check Attributes query failed:  "
 msgstr "Pagdaragdag Group Katangian Suriin query nabigo:"
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:665
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:675
 msgid "Deleting radgroupreply query failed: "
 msgstr "Pagtanggal radgroupreply query ay hindi nagtagumpay:"
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:730
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:740
 msgid "Adding Group Attributes query failed:  "
 msgstr "Nabigo ang pagusisa sa pagdaragdag sa Katangian ng grupo:  "
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:745
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:756
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:780
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:791
 msgid "Get Groups details Query failed: "
 msgstr "Kumuha Groups detalye Query ay hindi nagtagumpay:"
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:779
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:814
 msgid "Hourly"
 msgstr "Kada oras"
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:780
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:815
 msgid "Daily"
 msgstr "Araw-araw"
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:781
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:816
 msgid "Weekly"
 msgstr "linggohan"
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:782
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:817
 msgid "Monthly"
 msgstr "buwanan"
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:846
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:883
 msgid "Setting User Comment Query Failed: "
 msgstr "Nabigo ang Pagtatakda ng User Puna Query:"
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:865
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:902
 msgid "Setting User Group Query Failed: "
 msgstr "Nabigo ang Pagtatakda ng User Group Query:"
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:886
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:923
 msgid "Setting User Datalimit Query Failed: "
 msgstr "Nabigo ang Pagtatakda ng User Datalimit Query:"
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:911
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:948
 msgid "Getting User Current Data Limit to increase failed: "
 msgstr "Pagkuha ng User Kasalukuyang Data Limit na taasan nabigo:"
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:933
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:970
 msgid "Setting User Timelimit Query Failed: "
 msgstr "Nabigo ang Pagtatakda ng User Timelimit Query:"
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:957
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:994
 msgid "Getting User Current Time Limit to increase failed: "
 msgstr "Pagkuha ng User Kasalukuyang Oras Limit upang madagdagan ang nabigo:"
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:978
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1015
 msgid "Setting User Password Query Failed: "
 msgstr "Nabigo ang Pagtatakda ng User Password Query:"
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1001
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1038
 msgid "Setting User Expiry Date Query Failed: "
 msgstr "Nabigo ang Pagtatakda User expire Petsa ng Query:"
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1021
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1058
 msgid "Deleting User Expiry Date Query Failed: "
 msgstr "Nabigo ang pagtanggal ng pagusisa sa Petsa ng pagtapos ng user: "
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1042
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1079
 msgid "Deleting user failed: "
 msgstr "Nabigo ang pagtanggal ng gumagamit: "
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1055
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1092
 msgid "Deleting users group failed: "
 msgstr "Nabigo ang pagalis ng grupo sa mga gumagamit: "
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1068
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1105
 msgid "Deleting users comment failed: "
 msgstr "Nabigo ang pag-alis sa mga komento sa gumagamit: "
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1088
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1125
 msgid "Checking Uniq Username failed: "
 msgstr "Nabigo ang sinusuring Uniq username: "
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1118
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1155
 msgid "Retrieving Chilli Config Single Value failed: "
 msgstr "Nabigo ang pagsauli ng Chilli Config Single Value: "
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1152
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1189
 msgid "Deleting Chilli Config Query Failed: "
 msgstr "Nabigo ang pag alis sa Chilli Config Query: "
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1176
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1213
 msgid "Setting Chilli Config Single Query Failed: "
 msgstr "Nabigo ang paglagay ng Chilli Config Query: "
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1198
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1235
 msgid "Setting Chilli Config Multi Query Failed: "
 msgstr "Nabigo ang paglagay ng Chilli Config Multi Query: "
 
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1219
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1256
 msgid "Retrieving Chilli Config Multi Value failed: "
 msgstr "Nabigo ang pagsauli ng Chilli Config Multi Value: "
 
-#: ../../../www/radmin/includes/page_functions.inc.php:79
+#: ../../../www/radmin/includes/page_functions.inc.php:81
 msgid "Status"
 msgstr "Katayuan"
 
-#: ../../../www/radmin/includes/page_functions.inc.php:80
+#: ../../../www/radmin/includes/page_functions.inc.php:82
 msgid "Users"
 msgstr "Gumagamit"
 
-#: ../../../www/radmin/includes/page_functions.inc.php:82
+#: ../../../www/radmin/includes/page_functions.inc.php:84
 msgid "New User"
 msgstr "Bagong gumagamit"
 
-#: ../../../www/radmin/includes/page_functions.inc.php:83
+#: ../../../www/radmin/includes/page_functions.inc.php:85
 msgid "Mass New Users"
 msgstr "Maramihang bagong gumagamit"
 
-#: ../../../www/radmin/includes/page_functions.inc.php:84
+#: ../../../www/radmin/includes/page_functions.inc.php:86
 msgid "Computer Account"
 msgstr "Computer Account"
 
-#: ../../../www/radmin/includes/page_functions.inc.php:87
+#: ../../../www/radmin/includes/page_functions.inc.php:89
 msgid "Monitor Sessions"
 msgstr "Magmatyag ng mga sesyon"
 
-#: ../../../www/radmin/includes/page_functions.inc.php:89
+#: ../../../www/radmin/includes/page_functions.inc.php:91
 msgid "Reports"
 msgstr "Mga ulat"
 
-#: ../../../www/radmin/includes/page_functions.inc.php:96
+#: ../../../www/radmin/includes/page_functions.inc.php:98
 msgid "Settings"
 msgstr "Mga Setting"
 
-#: ../../../www/radmin/includes/page_functions.inc.php:98
+#: ../../../www/radmin/includes/page_functions.inc.php:100
 msgid "Site Logo"
 msgstr "Logo ng site"
 
-#: ../../../www/radmin/includes/page_functions.inc.php:118
+#: ../../../www/radmin/includes/page_functions.inc.php:120
 msgid "Logoff"
 msgstr "Logoff"
 
-#: ../../../www/radmin/includes/page_functions.inc.php:127
+#: ../../../www/radmin/includes/page_functions.inc.php:129
 msgid "System Status"
 msgstr "Katayuan ng sistema"
 
-#: ../../../www/radmin/includes/page_functions.inc.php:268
+#: ../../../www/radmin/includes/page_functions.inc.php:270
 msgid "Hour"
 msgstr "Oras"
 
-#: ../../../www/radmin/includes/page_functions.inc.php:269
+#: ../../../www/radmin/includes/page_functions.inc.php:271
 msgid "Day"
 msgstr "Araw"
 
-#: ../../../www/radmin/includes/page_functions.inc.php:270
+#: ../../../www/radmin/includes/page_functions.inc.php:272
 msgid "Week"
 msgstr "Lingo"
 
-#: ../../../www/radmin/includes/page_functions.inc.php:271
+#: ../../../www/radmin/includes/page_functions.inc.php:273
 msgid "Month"
 msgstr "Buwan"
 
-#: ../../../www/radmin/includes/page_functions.inc.php:277
+#: ../../../www/radmin/includes/page_functions.inc.php:279
 msgid "Yes"
 msgstr "Oo"
 
-#: ../../../www/radmin/includes/page_functions.inc.php:277
+#: ../../../www/radmin/includes/page_functions.inc.php:279
 msgid "No"
 msgstr "Hindi"
 
@@ -2146,19 +2162,19 @@ msgstr "Natigil ang pagupload ng file dahil sa extension"
 msgid "Unknown upload error"
 msgstr "Hindi kilalang mali pag upload"
 
-#: ../../../www/uam/js.php:19
+#: ../../../www/uam/js.php:20
 msgid "Username is required"
 msgstr "Dapat may username"
 
-#: ../../../www/uam/js.php:20
+#: ../../../www/uam/js.php:21
 msgid "Are you sure you want to disconnect now?"
 msgstr "Sigurado ka bang mag diskonek ngayun?"
 
-#: ../../../www/uam/js.php:21
+#: ../../../www/uam/js.php:22
 msgid "Error loading generic login form"
 msgstr "May mali sa pagload ng generic login form"
 
-#: ../../../www/uam/js.php:22
+#: ../../../www/uam/js.php:23
 msgid ""
 "Popup Blocked. Click link below to continue to your website and open the "
 "status window"
@@ -2166,8 +2182,12 @@ msgstr ""
 "Popup ay na block. I-click ang link sa ibaba upang magpatuloy sa iyong "
 "website at buksan ang window ng katayuan"
 
-#: ../../../www/uam/js.php:23
+#: ../../../www/uam/js.php:24
 msgid "Logged In"
 msgstr "Naka log in"
+
+#: ../../../www/uam/js.php:25
+msgid "Click to open the status window and continue to your site"
+msgstr ""
 
 
