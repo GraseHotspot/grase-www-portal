@@ -348,7 +348,6 @@ msgid "Sellable Graph Max"
 msgstr "Gráfico Max Vendibles  "
 
 #: ../../../www/radmin/templates/smarty.c:69
-#, c-format
 msgid "Select what is 100% on the Sellable Data Graph"
 msgstr "Seleccione lo que es el 100% en el gráfico de datos vendibles"
 
@@ -357,7 +356,6 @@ msgid "Useable Graph Max"
 msgstr "Gráfico Max Utilizable "
 
 #: ../../../www/radmin/templates/smarty.c:71
-#, c-format
 msgid "Select what is 100% on the Useable Data Graph"
 msgstr "Seleccione lo que es el 100% en el gráfico de datos utilizable"
 

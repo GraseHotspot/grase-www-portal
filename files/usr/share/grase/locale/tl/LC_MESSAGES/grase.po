@@ -291,8 +291,8 @@ msgid ""
 msgstr ""
 "Locale A ay may 2 bahagi, ang wika at lokasyon. <br/> <strong> En_AU </ "
 "strong> halimbawa ng Wika set sa Ingles, at ang lokasyon sa Australia. <br/>"
-" <strong> En_ZA </ strong>ay itakda ang wika sa Ingles, at ang mga lokasyon "
-"sa South Africa, habang ang <strong> af_ZA </ strong> ay ang wika na "
+" <strong> En_ZA </strong>ay itakda ang wika sa Ingles, at ang mga lokasyon "
+"sa South Africa, habang ang <strong> af_ZA </strong> ay ang wika na "
 "nakatakda sa Afrikaans at ang lokasyon sa South Africa."
 
 #: ../../../www/radmin/templates/smarty.c:58
@@ -346,7 +346,6 @@ msgid "Sellable Graph Max"
 msgstr "Talaguhitan ng pwedeng ibenta"
 
 #: ../../../www/radmin/templates/smarty.c:69
-#, c-format
 msgid "Select what is 100% on the Sellable Data Graph"
 msgstr "Pumili ng 100% sa talaguhitan ng mabebentang impormasyon"
 
@@ -355,7 +354,6 @@ msgid "Useable Graph Max"
 msgstr "Magagamit na talaguhitan"
 
 #: ../../../www/radmin/templates/smarty.c:71
-#, c-format
 msgid "Select what is 100% on the Useable Data Graph"
 msgstr "Pumili ng 100% sa talaguhitan ng magagamit na impormasyon"
 
