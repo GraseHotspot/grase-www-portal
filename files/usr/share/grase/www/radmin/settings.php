@@ -83,6 +83,8 @@ load_global_settings(); // Reloads settings
 	$smarty->assign("website_name", $website_name);
 	$smarty->assign("website_link", $website_link);
 	
+	$smarty->assign("available_languages", get_available_languages());
+	
 if(sizeof($error) > 0) $smarty->assign("error", $error);	
 if(sizeof($success) > 0) $smarty->assign("success", $success);
 

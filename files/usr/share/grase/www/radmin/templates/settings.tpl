@@ -27,6 +27,14 @@
     <div>
         <label for='locale'>{t}Locale{/t}</label>
         <input name="locale" type="text" id="locale" value="{$locale}"/>
+                <span class="helptext ui-icon-help">{t}Available languages:{/t}
+            <dl>
+                {foreach from=$available_languages item=language}
+                <dt>{$language.code}</dt> <dd>{$language.display}</dd>
+                {/foreach}
+            </dl>
+        </span>
+
         <span id="localeInfo">{t}Select the appropriate Locale for your location{/t}
         <span class="helptext">{t escape=no}A locale has 2 parts, the language and location.<br/><strong>en_AU</strong> for example has the Language set to English, and the location to Australia.<br/><strong>en_ZA</strong> has the language set to English, and the location to South Africa, while <strong>af_ZA</strong> has the language set to Afrikaans and the location to South Africa.{/t}</span>
         <br/><strong>{t}The locale defines the number formats, currency and language. If the language selected is not available, it will fallback to English.{/t}</strong></span>

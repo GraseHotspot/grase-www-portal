@@ -496,4 +496,18 @@ function displayLocales_old($number, $isMoney, $lg='') {
     }
     if ($isMoney) return $m; else return $n;
 }*/
+
+function get_available_languages()
+{
+    $langs = array();
+    $lang_codes = glob('/usr/share/grase/locale/??', GLOB_ONLYDIR);
+    foreach($lang_codes as $code)
+    {
+        $lang['display'] = Locale::getDisplayLanguage(basename($code), 'en');
+        $lang['code'] = basename($code);
+        $langs[] = $lang;
+    }
+    
+    return $langs;
+}
 ?>

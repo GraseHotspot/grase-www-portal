@@ -1,5 +1,5 @@
 /* $Revision: 189 $
- * $Version: 3.6.3 $
+ * $Version: 3.6.4 $
  * $ApplicationName: GRASE $
 */
 
@@ -653,3 +653,22 @@ ul#statusmon li {
  }
  
 /* End CodeMirrorUI Overrides */
+
+dl {
+    margin-bottom:50px;
+}
+ 
+dl dt {
+    background:#5f9be3;
+    color:#fff;
+    float:left;
+    font-weight:bold;
+    margin-right:10px;
+    padding:5px;
+    width:50px;
+}
+ 
+dl dd {
+    margin:2px 0;
+    padding:5px 0;
+}
