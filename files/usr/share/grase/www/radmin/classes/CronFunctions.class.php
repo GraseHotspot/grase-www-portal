@@ -170,6 +170,21 @@ class CronFunctions extends DatabaseFunctions
         
             // Upgrade DB version to next version
             $Settings->setSetting("DBVersion", 1.5);                
+        }
+        
+        if($olddbversion < 1.6)
+        {
+            // Move groupAttributes to the correct table
+            foreach(DatabaseFunctions::getInstance()->getGroupAttributes() as $name => $group)
+            {
+         
+                DatabaseFunctions::getInstance()->setGroupAttributes($name, $group);
+                $results ++;
+            }
+            
+            // Upgrade DB version to next version
+            $Settings->setSetting("DBVersion", 1.6);              
+            
         }        
         
 

@@ -20,6 +20,8 @@
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+require_once 'includes/misc_functions.inc.php';
+
 class DatabaseFunctions
 {
     public $db; // Radius DB
@@ -625,6 +627,7 @@ class DatabaseFunctions
         return true;    
     }
     
+    // This function is used via Cron to assist with upgrades, but is otherwise obsolete
     public function setGroupSimultaneousUse($name, $yesno)
     {
         $sql = sprintf(
@@ -662,7 +665,21 @@ class DatabaseFunctions
    
     public function setGroupAttributes($name, $attributes)
     {
-        // DELETE all attributes
+        $checkitems = array(
+            'SimultaneousUse',
+            'MaxOctets',
+            'MaxSeconds',
+            'hourTime',
+            'dayTime',
+            'weekTime',
+            'monthTime',
+            'hourData',
+            'dayData',
+            'weekData',
+            'monthData',
+        
+        );
+        // DELETE all attributes from groupreply
         $sql = sprintf(
             "DELETE FROM radgroupreply WHERE GroupName = %s",
             $this->db->quote($name));
@@ -674,10 +691,24 @@ class DatabaseFunctions
             ErrorHandling::fatal_db_error(
                 T_('Deleting radgroupreply query failed: '), $result);
         }
+
+        // DELETE all attributes from groupcheck
+        $sql = sprintf(
+            "DELETE FROM radgroupcheck WHERE GroupName = %s",
+            $this->db->quote($name));
+            
+        $result = $this->db->exec($sql);    
+        
+        if (PEAR::isError($result))
+        {
+            ErrorHandling::fatal_db_error(
+                T_('Deleting radgroupreply query failed: '), $result);
+        }
+
         
         if(isset($attributes['DataRecurLimit']))
         {
-            $attributes[$attributes['DataRecurTime'].'Data'] = $attributes['DataRecurLimit'] * 1024 * 1024;
+            $attributes[$attributes['DataRecurTime'].'Data'] = bigintval($attributes['DataRecurLimit'] * 1024 * 1024);
             unset($attributes['DataRecurLimit']);
             unset($attributes['DataRecurTime']);
         }  
@@ -691,7 +722,7 @@ class DatabaseFunctions
         
         if(isset($attributes['MaxMb']))
         {
-            $attributes['MaxOctets'] = $attributes['MaxMb'] * 1024 * 1024;
+            $attributes['MaxOctets'] = bigintval($attributes['MaxMb'] * 1024 * 1024);
             unset($attributes['MaxMb']);
         }
         
@@ -703,10 +734,16 @@ class DatabaseFunctions
         
         if(isset($attributes['SimultaneousUse']))
         {
-            $this->setGroupSimultaneousUse($name, $attributes['SimultaneousUse']);
-            unset($attributes['SimultaneousUse']);
+            //$this->setGroupSimultaneousUse($name, $attributes['SimultaneousUse']);
+            if($attributes['SimultaneousUse'] == "yes")
+            {
+                unset($attributes['SimultaneousUse']);
+            }else{
+                $attributes['SimultaneousUse'] = 1;
+            }
+
         }
-        
+
         $attributelookup = array(
             'MaxOctets' => 'Max-Octets',
             'MaxSeconds' => 'Max-All-Session',
@@ -726,18 +763,29 @@ class DatabaseFunctions
         // Insert each attribute
         foreach($attributes as $key => $value)
         {
-            $fields = array (
-                'GroupName' => array ( 'value' => $name,    'key' => true),
-                'Attribute' => array ( 'value' => $attributelookup[$key],  'key' => true),
-                'op'        => array ( 'value' => "=" ),
-                'Value'     => array ( 'value' => $value)
-                );   
-            
-            $result = $this->db->replace('radgroupreply', $fields);
-            if (PEAR::isError($result))
+            if(isset($attributelookup[$key]))
             {
-                ErrorHandling::fatal_db_error(
-                    T_('Adding Group Attributes query failed:  '), $result);
+                $table = 'radgroupreply';
+                $op = '=';
+                if(in_array($key, $checkitems))
+                {
+                    $table = 'radgroupcheck';
+                    $op = ':=';
+                }
+            
+                $fields = array (
+                    'GroupName' => array ( 'value' => $name,    'key' => true),
+                    'Attribute' => array ( 'value' => $attributelookup[$key],  'key' => true),
+                    'op'        => array ( 'value' => $op ),
+                    'Value'     => array ( 'value' => $value)
+                    );   
+                
+                $result = $this->db->replace($table, $fields);
+                if (PEAR::isError($result))
+                {
+                    ErrorHandling::fatal_db_error(
+                        T_('Adding Group Attributes query failed:  '), $result);
+                }
             }
         }
     }
@@ -760,18 +808,26 @@ class DatabaseFunctions
             $groups = $this->groupdetails;
         }
         
-                
+        
+        // setup sql for getting group and check attributes     
         if($groupname != '')
         {
             $sql = sprintf("SELECT GroupName, Attribute, Value
             FROM radgroupreply WHERE GroupName = %s",
                 $this->db->quote($groupname));
+            $sql2 = sprintf("SELECT GroupName, Attribute, Value
+            FROM radgroupcheck WHERE GroupName = %s",
+                $this->db->quote($groupname));
         }else{
 
             $sql = "SELECT GroupName, Attribute, Value
                 FROM radgroupreply";
+            $sql2 = "SELECT GroupName, Attribute, Value
+            FROM radgroupcheck";
         }
-            
+        
+        
+        // Get radgroupreply items    
         $results = $this->db->queryAll($sql);
         
         if (PEAR::isError($results))
@@ -780,10 +836,8 @@ class DatabaseFunctions
                 T_('Get Groups details Query failed: '), $results);
         }
         
-        $sql = "SELECT GroupName, Attribute, Value
-            FROM radgroupcheck";
-            
-        $results2 = $this->db->queryAll($sql);
+        // Get radgroupcheck items
+        $results2 = $this->db->queryAll($sql2);
         
         if (PEAR::isError($results))
         {
@@ -791,6 +845,7 @@ class DatabaseFunctions
                 T_('Get Groups details Query failed: '), $results);
         }
         
+        // Merge results of check and reply
         $results = array_merge($results, $results2);        
         
         $attributelookup = array(

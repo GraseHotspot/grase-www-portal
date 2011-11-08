@@ -139,7 +139,7 @@ function datacosts()
 	foreach($money_options as $money)
 	{
 		$disp_money = displayLocales(number_format($money, 2), TRUE);
-		$data = round($money/$pricemb, 2);
+		$data = round($money/$pricemb, 0);
 		$disp_data = Formatting::formatBytes($data*1024*1024);
 		$datacosts["$data"] = "$disp_money ($disp_data)";
 	}
