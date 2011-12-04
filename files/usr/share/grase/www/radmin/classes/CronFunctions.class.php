@@ -188,12 +188,12 @@ class CronFunctions extends DatabaseFunctions
         }
         if($olddbversion < 1.7)
         {
-            $sql = "ALTER TABLE auth
-                    DROP COLUMN accesslevel;
-                    ALTER TABLE auth
+            $sql1 = "ALTER TABLE auth
+                    DROP COLUMN accesslevel";
+            $sql2 = "ALTER TABLE auth
                     ADD COLUMN accesslevel INT NOT NULL DEFAULT 1";
             
-            $result = $this->radminDB->exec($sql);
+            $result = $this->radminDB->exec($sql1);
             
             if (PEAR::isError($result))
             {
@@ -201,6 +201,14 @@ class CronFunctions extends DatabaseFunctions
             }
             
             $results += $result;
+            $result = $this->radminDB->exec($sql2);
+            
+            if (PEAR::isError($result))
+            {
+                return T_('Upgrading DB failed: ') . $result->toString();
+            }
+            
+            $results += $result;            
             $Settings->setSetting("DBVersion", 1.7);
         }        
         
