@@ -24,6 +24,8 @@
   ini_get('include_path') . PATH_SEPARATOR . '../ofc2/php5-ofc-library/lib/');
   
   require_once('../ofc2/php5-ofc-library/lib/OFC/OFC_Chart.php');*/
+$PAGE = 'reports';
+require_once 'includes/pageaccess.inc.php';
 
  
 require_once 'includes/session.inc.php';

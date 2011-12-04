@@ -19,6 +19,8 @@
     You should have received a copy of the GNU General Public License
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
+$PAGE = 'users';
+require_once 'includes/pageaccess.inc.php';
 
 require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';

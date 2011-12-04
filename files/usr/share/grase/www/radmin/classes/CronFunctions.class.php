@@ -185,6 +185,23 @@ class CronFunctions extends DatabaseFunctions
             // Upgrade DB version to next version
             $Settings->setSetting("DBVersion", 1.6);              
             
+        }
+        if($olddbversion < 1.7)
+        {
+            $sql = "ALTER TABLE auth
+                    DROP COLUMN accesslevel;
+                    ALTER TABLE auth
+                    ADD COLUMN accesslevel INT NOT NULL DEFAULT 1";
+            
+            $result = $this->radminDB->exec($sql);
+            
+            if (PEAR::isError($result))
+            {
+                return T_('Upgrading DB failed: ') . $result->toString();
+            }
+            
+            $results += $result;
+            $Settings->setSetting("DBVersion", 1.7);
         }        
         
 

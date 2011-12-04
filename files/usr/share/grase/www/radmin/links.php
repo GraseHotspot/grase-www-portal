@@ -20,6 +20,8 @@
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+// TODO: This page is no longer used
+
 require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
 require_once 'includes/database_functions.inc.php';

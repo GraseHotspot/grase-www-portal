@@ -11,6 +11,9 @@
 
 <tr><td class="title">{t}Host Name{/t}</td><td colspan="2">{$Sysinfo->hostname}</td></tr>
 
+<tr><td class="title">{t}HTTP Server{/t}</td><td colspan="2">{$Sysinfo->httpd->software} via {$Sysinfo->httpd->gateway}</td></tr>
+
+
 <tr><td class="title">{t}System Up-Time{/t}</td><td colspan="2">{$Sysinfo->uptime}</td></tr>
 
 <tr><td class="title">{t}Current Server Time{/t}</td><td>{php}echo date('r'){/php}</td><td></td></tr>

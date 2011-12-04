@@ -25,7 +25,8 @@
     <script type="text/javascript" src="/grase/js/jquery.uitablefilter.js"></script>        
     
     <script type="text/javascript" src="/grase/js/grase.js?{$grasejsversion}"></script>        
-    <script type="text/javascript" src="/grase/radmin/js/radmin.js?{$radminjsversion}"></script>        
+    <script type="text/javascript" src="/grase/radmin/js/radmin.js?{$radminjsversion}"></script>    
+
     
 
 <link rel="shortcut icon" href="/grase/favicon.ico" />

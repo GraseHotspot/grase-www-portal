@@ -25,6 +25,7 @@ require_once 'includes/misc_functions.inc.php';
 class DatabaseFunctions
 {
     public $db; // Radius DB
+    public $radminDB; // Radmin DB
     
     private $groupdetails = array(); //cache group details 
     
@@ -41,6 +42,7 @@ class DatabaseFunctions
     public function __construct()
     {
         $this->db =& DatabaseConnections::getInstance()->getRadiusDB();
+        $this->radminDB =& DatabaseConnections::getInstance()->getRadminDB();
         
     	// Share SQL Query between functions
         $this->insert_radius_values_sql = $this->db->prepare(

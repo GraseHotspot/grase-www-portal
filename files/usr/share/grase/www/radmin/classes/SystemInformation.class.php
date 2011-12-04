@@ -47,6 +47,12 @@ class CpuDevice
 	public $bogomips;
 }
 
+class HTTPD
+{
+    public $software;
+    public $gateway;
+}
+
 class SystemInformation
 {
     public $lan;
@@ -54,12 +60,14 @@ class SystemInformation
     public $cpu;
     public $hostname;
     public $uptime;
+    public $httpd;
     
     public function __construct()
     {
         $this->lan = new NetworkInterface();
         $this->wan = new NetworkInterface();
         $this->cpu = new CpuDevice(); // Only takes information for 1 core/processor
+        $this->httpd = new HTTPD();
         
         // Load Settings in correct order
         $this->LAN_Interface();
@@ -67,6 +75,13 @@ class SystemInformation
         $this->Hostname();
         $this->Uptime();
         $this->cpu();
+        $this->httpd();
+    }
+    
+    public function httpd()
+    {
+        $this->httpd->software = $_SERVER['SERVER_SOFTWARE'];
+        $this->httpd->gateway = PHP_SAPI;
     }
 
     public function Hostname()

@@ -44,4 +44,21 @@ define("RADIUS_CONFIG_USER", "CoovaChilli");
 define("RADIUS_CONFIG_PASSWORD", "radmin");
 define("RADIUS_CONFIG_ATTRIBUTE", "ChilliSpot-Config");
 
+// Access level bitmasks
+
+define("ADMINLEVEL", 1); // 2^0
+define("POWERLEVEL", 2 | ADMINLEVEL); //3
+define("NORMALLEVEL", 4 | POWERLEVEL); //7
+define("REPORTLEVEL", 8);
+define("CREATEUSERLEVEL", 16);
+define("ALLLEVEL", 0); // 0
+
+// User bitmasks
+//define("ROOTUSER", -1); //(~0)
+define("ADMINUSER", 1); // 2^0
+define("POWERUSER", 2); //2^1
+define("NORMALUSER", 4); //2^2
+
+
+
 ?>

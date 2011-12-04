@@ -21,9 +21,10 @@
 */
 require_once('php-gettext/gettext.inc');
 
-
+require_once('includes/accesscheck.inc.php');
 require_once 'includes/database_functions.inc.php';
 require_once 'includes/load_settings.inc.php';
+require_once 'includes/pageaccess.inc.php';
 
 if(file_exists('/usr/share/php/smarty/libs/') && ! is_link('/usr/share/php/smarty/libs/'))
 {
@@ -77,6 +78,7 @@ function css_file_version()
 
 function createmenuitems()
 {
+    global $PAGESACCESS;
 	//	$menubar['id'] = array("href" => , "label" => );
 	$menubar['main'] = array("href" => "./", "label" => T_("Status"));
 	$menubar['users'] = array("href" => "display", "label" => T_("Users"),
@@ -118,7 +120,29 @@ function createmenuitems()
 
 	
 	$menubar['logout'] = array("href" => "./?logoff", "label" => T_("Logoff") );
-	return $menubar;
+	
+    // Filter out menu items user doesn't have access to
+	$newmenubar = array();
+	foreach($menubar as $label => $toplevel)
+	{
+
+        // If they don't have access to top level of a menu section, they also don't have access to the levels below it via the menu (still up to the PAGESACCESS to prevent access
+	    if(check_level($PAGESACCESS[$label]))
+	    {
+	        $submenu = array();
+    	    foreach($toplevel['submenu'] as $secondlabel => $secondlevel)
+    	    {
+	    	    if(check_level($PAGESACCESS[$secondlabel]))
+	    	        $submenu[$secondlabel] = $secondlevel;
+	    	}
+	    	$item = $toplevel;
+            unset($item['submenu']);
+	    	if(sizeof($submenu))
+    	    	$item['submenu'] = $submenu;	    	
+	    	$newmenubar[$label] = $item;
+	    }
+	}
+	return $newmenubar;
 }
 
 function createusefullinks()
@@ -350,7 +374,16 @@ $smarty->register_block('t', 'smarty_block_t');
 
 apply_locale($locale);
 
+$smarty->assign("RealHostname", $realhostname);
 
+
+
+
+function assign_vars()
+{
+	global $smarty, $sellable_data, $useable_data, $used_data, $sold_data;
+	global $location, $website_name, $website_link, $DEMO_SITE, $Settings;
+	
 list($fileversions, $application_version)=css_file_version();
 $smarty->assign("radmincssversion", $fileversions['radmin.css']);
 $smarty->assign("hotspotcssversion", $fileversions['hotspot.css']);
@@ -359,7 +392,7 @@ $smarty->assign("radminjsversion", $fileversions['radmin.js']);
 $smarty->assign("application_version", $application_version);
 $smarty->assign("Application", APPLICATION_NAME);
 
-$smarty->assign("RealHostname", $realhostname);
+
 
 // Setup Menus
 $smarty->assign("MenuItems", createmenuitems());
@@ -375,14 +408,7 @@ $smarty->assign("Timevals", timevals());
 $smarty->assign("Bandwidthvals", bandwidth_options());
 $smarty->assign("Recurtimes",recurtimes()); 
 $smarty->assign("YesNo", yesno());
-$smarty->assign('gbvalues', gboctects());
-
-
-
-function assign_vars()
-{
-	global $smarty, $sellable_data, $useable_data, $used_data, $sold_data;
-	global $location, $website_name, $website_link, $DEMO_SITE, $Settings;
+$smarty->assign('gbvalues', gboctects());	
 
 	// Data
 	/* Disabled usage bars due to lack of understanding/confusion

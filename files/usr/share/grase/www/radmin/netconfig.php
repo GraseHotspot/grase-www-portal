@@ -20,6 +20,9 @@
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+$PAGE = 'netconfig';
+require_once 'includes/pageaccess.inc.php';
+
 require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
 require_once 'includes/database_functions.inc.php';

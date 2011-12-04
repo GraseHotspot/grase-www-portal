@@ -38,6 +38,7 @@ function __autoload($class_name) {
 
 require_once('php-gettext/gettext.inc');
 
+require_once('accesscheck.inc.php');
 require_once 'load_settings.inc.php';
 require_once 'page_functions.inc.php';
 
@@ -84,7 +85,9 @@ function loginForm($username = null, $status = null, &$auth = null)
 $options = array(
     'dsn' => $DBs->getRadminDSN(),
     'cryptType' => 'sha1salt',
-    'sessionName' => 'GRASE Radius Admin For Internet'
+    'sessionName' => 'GRASE Radius Admin For Internet',
+    // accesslevel contains the users access levels as a bitmask
+    'db_fields' => array('accesslevel')
     );
     
 $Auth = new Auth("MDB2_Salt", $options, "loginForm");
@@ -118,5 +121,9 @@ if (!$Auth->checkAuth())
 {
     $smarty->assign("LoggedInUsername", $Auth->getUsername());
 }
+
+
+check_page_access();
+print_r($Auth->getAuthData());
 
 ?>
