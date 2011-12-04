@@ -28,3 +28,7 @@ if [ "$1" = "purge" ]; then
 fi
 
 #DEBHELPER#
+
+if dpkg-maintscript-helper supports rm_conffile 2>/dev/null; then
+    dpkg-maintscript-helper rm_conffile /etc/apache2/conf.d/grase.conf -- "$@"
+fi

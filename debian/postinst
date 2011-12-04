@@ -62,6 +62,10 @@ www_proxy_group(){
 }
 #DEBHELPER#
 
+if dpkg-maintscript-helper supports rm_conffile 2>/dev/null; then
+    dpkg-maintscript-helper rm_conffile /etc/apache2/conf.d/grase.conf -- "$@"
+fi
+
 link_logo
 
 clear_template_cache
@@ -74,14 +78,14 @@ call_cron
 
 www_proxy_group
 
-a2enmod rewrite || true
-a2enmod headers || true
+#a2enmod rewrite || true
+#a2enmod headers || true
 
-if which invoke-rc.d >/dev/null 2>&1; then
-       invoke-rc.d apache2 restart 3>&- || true
-else
-       /etc/init.d/apache2 restart 3>&- || true
-fi
+#if which invoke-rc.d >/dev/null 2>&1; then
+#       invoke-rc.d apache2 restart 3>&- || true
+#else
+#       /etc/init.d/apache2 restart 3>&- || true
+#fi
 
 
 exit 0
