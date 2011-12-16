@@ -174,7 +174,7 @@ class DatabaseFunctions
             Username,
             AcctInputOctets,
             AcctOutputOctets,
-            SUM(AcctInputOctets + AcctOutputOctets) AS AcctTotalOctets,
+            (AcctInputOctets + AcctOutputOctets) AS AcctTotalOctets,
             CallingStationId
             FROM radacct
             WHERE RadAcctID = %s
@@ -536,7 +536,7 @@ class DatabaseFunctions
                        AcctDate,
                        InputOctets,
                        OutputOctets,
-                       SUM(InputOctets + OutputOctets) as TotalOctets
+                       (InputOctets + OutputOctets) as TotalOctets
                  FROM mtotacct";
         
         $results = $this->db->queryAll($sql);
