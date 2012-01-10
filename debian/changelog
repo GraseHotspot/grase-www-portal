@@ -4,8 +4,9 @@ grase-www-portal (3.6.4) purewhite; urgency=low
   * Fix for Group Attributes being in radreply instead of radcheck
   * Allow ether Apache or Nginx as the webserver (new conf packages split out)
   * Multiple Admin levels
+  * SQL Fix 
 
- -- Tim White <tim@hotspot.purewhite.id.au>  Sun, 04 Dec 2011 10:07:22 +1000
+ -- Tim White <tim@tim-MacBook>  Fri, 16 Dec 2011 09:55:33 +0800
 
 grase-www-portal (3.6.3) purewhite; urgency=low
 

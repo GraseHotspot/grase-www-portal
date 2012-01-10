@@ -21,7 +21,7 @@
 */
 
 /* Application Description/Settings */
-require ('constants.inc.php');
+require_once ('constants.inc.php');
 
 $config_file = 'configs/site.conf';
 

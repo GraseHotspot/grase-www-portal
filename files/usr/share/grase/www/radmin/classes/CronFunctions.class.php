@@ -195,10 +195,11 @@ class CronFunctions extends DatabaseFunctions
             
             $result = $this->radminDB->exec($sql1);
             
-            if (PEAR::isError($result))
+            // Don't care if it's an error
+            /*if (PEAR::isError($result))
             {
                 return T_('Upgrading DB failed: ') . $result->toString();
-            }
+            }*/
             
             $results += $result;
             $result = $this->radminDB->exec($sql2);
