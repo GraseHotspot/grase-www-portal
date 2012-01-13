@@ -124,6 +124,6 @@ if (!$Auth->checkAuth())
 
 
 check_page_access();
-print_r($Auth->getAuthData());
+//print_r($Auth->getAuthData());
 
 ?>
