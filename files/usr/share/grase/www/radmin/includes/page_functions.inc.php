@@ -448,6 +448,9 @@ $smarty->assign('gbvalues', gboctects());
 }
 
 
+// These functions setup some globals that are used in validation functions, maybe we need to do it differently?
+recurtimes();
+usergroups();
 groupexpirys();
 
 ?>
