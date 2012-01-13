@@ -63,6 +63,10 @@ class PDFLabels {
     private $pdf = NULL;
     private $firstpage = true;
     
+    // Some settings we can change
+    
+    $print_border = false;
+    
     // Preset Labels
 	static $preset_labels = array('Avery 5160' => array(
         'name'=>'5160',
@@ -152,7 +156,7 @@ class PDFLabels {
         $_PosX = $this->Margin_Left+($this->COUNTX*($this->Width+$this->X_Space));
         $_PosY = $this->Margin_Top+($this->COUNTY*($this->Height+$this->Y_Space));
         
-        $this->pdf->MultiCell($this->Width, $this->Height, $texte, 1, 'C', 0, 0, $_PosX, $_PosY, true, 0, false, true, $this->Height, 'M', true);
+        $this->pdf->MultiCell($this->Width, $this->Height, $texte, $print_border, 'C', 0, 0, $_PosX, $_PosY, true, 0, false, true, $this->Height, 'M', true);
 
         $this->COUNTX++;
 
