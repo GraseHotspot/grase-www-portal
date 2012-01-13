@@ -27,8 +27,8 @@
    written to take advantage of the TCPDF class
 */
 
-    require_once('/usr/share/tcpdf/config/lang/eng.php');
-    require_once('/usr/share/tcpdf/tcpdf.php');
+    require_once('/usr/share/grase/tcpdf/config/lang/eng.php');
+    require_once('/usr/share/grase/tcpdf/tcpdf.php');
     
 class PDFLabels {
 
@@ -115,6 +115,9 @@ class PDFLabels {
         $this->pdf->SetFont($this->Font_Name, '', $this->FontSize); 
         $this->pdf->SetMargins(0,0); 
         $this->pdf->SetAutoPageBreak(false);
+        
+        $this->pdf->setPrintFooter(false);
+        $this->pdf->setPrintHeader(false);
         
         // set cell padding
         //$pdf->setCellPaddings(1, 1, 1, 1);
