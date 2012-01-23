@@ -227,6 +227,10 @@ class CronFunctions extends DatabaseFunctions
             $Settings->setSetting('lastnetworkconf', time());
             $results += 2;
             
+            // New chilli settings for garden
+            $results += $this->setChilliConfigSingle('nousergardendata', '');
+
+            
             $Settings->setSetting("DBVersion", 1.8);
         }        
         
