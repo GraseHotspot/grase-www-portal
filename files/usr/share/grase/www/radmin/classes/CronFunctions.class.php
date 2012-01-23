@@ -211,6 +211,23 @@ class CronFunctions extends DatabaseFunctions
             
             $results += $result;            
             $Settings->setSetting("DBVersion", 1.7);
+        }
+        
+        if($olddbversion < 1.8)
+        {
+            // Default network interface settings need to be set
+            require_once('/usr/share/grase/www/radmin/includes/network_functions.inc.php');
+            $interfaces = default_net_ifs();
+            $networkoptions = unserialize($Settings->getSetting('networkoptions'));
+            $networkoptions['lanif'] = $interfaces['lanif'];
+            $networkoptions['wanif'] = $interfaces['wanif'];
+
+            $Settings->setSetting('networkoptions', serialize($networkoptions));
+            
+            $Settings->setSetting('lastnetworkconf', time());
+            $results += 2;
+            
+            $Settings->setSetting("DBVersion", 1.8);
         }        
         
 

@@ -27,6 +27,8 @@ require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
 require_once 'includes/database_functions.inc.php';
 
+require_once 'includes/network_functions.inc.php';
+
 $error = array();
 $success = array();
 
@@ -64,6 +66,28 @@ $singlenetworkoptions = array(
         "description" => T_("Some DNS Providers return bogus NXDOMAIN to redirect you to their search engine. Block the bogus ip's and return a real NXDOMAIN for OpenDNS."),
         "type" => "bool"),              
     );    
+
+$wanif = array(net_get_wan_if());
+$lanifs = available_lan_ifs($wanif[0]);
+
+
+// Options for Chilli Config that can only be one but selected from a list
+$selectnetworkoptions = array(
+    'lanif' => array(
+        "label" => T_("LAN Network Interface"),
+        "description" => T_("The Network Interface that is connected to the LAN of the Hotspot (the side the clients connect to)"),
+        "type" => "string",
+        "required" => "true",
+        "options" => $lanifs),
+    'wanif' => array(
+        "label" => T_("WAN Network Interface"),
+        "description" => T_("The Network Interface that is connected to the WAN of the Hotspot (the side the internet is connected to)"),
+        "type" => "string",
+        "required" => "true",
+        "options" => $wanif),
+        
+    );    
+
     
 load_networkoptions();   
 
@@ -97,6 +121,35 @@ if(isset($_POST['submit']))
         $networkoptions[$singleoption] = $postvalue;
         
     }
+    
+    foreach($selectnetworkoptions as $selectoption => $attributes)
+    {
+        switch ($attributes['type'])
+        {
+            case "string":
+                $postvalue = trim(clean_text($_POST[$selectoption]));
+                // TODO Validate from list of valid vars
+                break;
+            /*
+            case "int":
+                $postvalue = trim(clean_int($_POST[$singleoption]));
+                break;
+            case "number":
+                $postvalue = trim(clean_number($_POST[$singleoption]));
+                break;
+            case "ip":
+                $postvalue = long2ip(ip2long(trim($_POST[$singleoption])));
+                break;
+            case "bool":
+                $postvalue = isset($_POST[$singleoption]);
+                break;
+            */
+                
+        }
+        
+        $networkoptions[$selectoption] = $postvalue;
+        
+    }    
     
     foreach($multinetworkoptions as $multioption => $attributes)
     {
@@ -146,7 +199,7 @@ if(isset($_POST['submit']))
 
 function load_networkoptions()
 {
-    global $multinetworkoptions, $singlenetworkoptions, $Settings;
+    global $multinetworkoptions, $singlenetworkoptions, $selectnetworkoptions, $Settings;
     // Load all Multi option values from database 
     
     $networkoptions = unserialize($Settings->getSetting('networkoptions'));
@@ -162,6 +215,15 @@ function load_networkoptions()
     {
         $singlenetworkoptions[$singleoption]['value'] = $networkoptions[$singleoption];
     }
+    
+    // Load all Single Selection option values from database
+
+    foreach($selectnetworkoptions as $selectoption => $attributes)
+    {
+        $selectnetworkoptions[$selectoption]['value'] = $networkoptions[$selectoption];
+    }
+    
+        
 }
 
     // Check when /etc/chilli/local.conf was last updated and compare to $Settings->gettSetting('lastchangechilliconfig');
@@ -181,6 +243,7 @@ if(sizeof($error) > 0) $smarty->assign("error", $error);
 if(sizeof($success) > 0) $smarty->assign("success", $success);
 
     $smarty->assign("singlenetworkoptions", $singlenetworkoptions);
+    $smarty->assign("selectnetworkoptions", $selectnetworkoptions);    
     $smarty->assign("multinetworkoptions", $multinetworkoptions);    
 	display_page('netconfig.tpl');
 

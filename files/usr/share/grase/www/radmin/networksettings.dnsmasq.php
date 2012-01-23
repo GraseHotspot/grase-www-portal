@@ -39,6 +39,9 @@ require_once 'includes/database_functions.inc.php';
 $lanip = $networkoptions['lanipaddress'];
 $netmask = $networkoptions['networkmask'];
 
+$lanif = $networkoptions['lanif'];
+$wanif = $networkoptions['wanif'];
+
 $networkip = long2ip(ip2long($lanip) & ip2long($netmask));
 
 echo "#### This file is auto generated                              ####\n";
@@ -46,6 +49,8 @@ echo "#### Please do not edit it.                                   ####\n";
 echo "#### Changes can be made in the Grase Hotspot Admin interface ####\n";
 
 echo "#chilli_lanip $lanip\n";
+echo "#chilli_wanif $wanif\n";
+echo "#chilli_lanif $lanif\n";
 echo "#chilli_network $networkip\n";
 echo "#chilli_netmask $netmask\n";
 echo "\n";

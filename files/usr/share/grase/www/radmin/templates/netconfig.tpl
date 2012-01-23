@@ -18,6 +18,18 @@
     </div>
     {/foreach}
 
+    {foreach from=$selectnetworkoptions item=attributes key=option}
+    <div>
+        <label for='{$option}'>{$attributes.label}</label>
+        <select name='{$option}' id='{$option}'>
+        {foreach from=$attributes.options item=option}
+            <option value='{$option}' {if $option == $attributes.value}selected="selected"{/if}>{$option}</option>
+        {/foreach}
+        </select>
+        <span id="{$option}Info">{$attributes.description}</span>
+    </div>
+    {/foreach}
+
 <p class="nojshelp">{t}For each of the following items, if you need multiple values you can submit the form and it will append a blank input below the last valid value{/t}<p>
     
     {foreach from=$multinetworkoptions item=attributes key=option name=multiloop}
