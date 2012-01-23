@@ -54,6 +54,7 @@ class PDFLabels {
     private $Metric = 'mm';
     private $MetricDoc = 'mm';
     private $PaperSize = 'a4';
+    private $PaperOrientation = 'P';
     // Font
     private $Font_Name = 'Helvetica';
     
@@ -65,23 +66,40 @@ class PDFLabels {
     
     // Some settings we can change
     
-    $print_border = false;
+    public $print_border = 0;
     
     // Preset Labels
-	static $preset_labels = array('Avery 5160' => array(
-        'name'=>'5160',
-        'paper-size'=>'letter',     
-        'metric'=>'mm',     
-        'marginLeft'=>1.762,     
-        'marginTop'=>10.7,         
-        'NX'=>3,     
-        'NY'=>10,     
-        'SpaceX'=>3.175,     
-        'SpaceY'=>0,     
-        'width'=>66.675,     
-        'height'=>25.4,         
-        'font-size'=>8
-    ));
+	static $preset_labels = array(
+	    'Avery 5160' => array(
+            'name'=>'Avery 5160',
+            'paper-size'=>'letter',     
+            'metric'=>'mm',     
+            'marginLeft'=>1.762,     
+            'marginTop'=>10.7,         
+            'NX'=>3,     
+            'NY'=>10,     
+            'SpaceX'=>3.175,     
+            'SpaceY'=>0,     
+            'width'=>66.675,     
+            'height'=>25.4,         
+            'font-size'=>8),
+        'Overflow' => array(
+            'name' => 'Overflow Cafe Custom',
+            'paper-size' => 'a4',
+            'paper-orientation' => 'L',
+            'metric' => 'mm',
+            'marginLeft'=> 15,     
+            'marginTop'=>1,         
+            'NX'=>3,     
+            'NY'=>7,     
+            'SpaceX'=>1,     
+            'SpaceY'=>1,     
+            'width'=>85,     
+            'height'=>28,         
+            'font-size'=>10,
+            'print_border' => 1),
+            
+    );
     
     private function setFormat($format){
         $this->Metric                = $format['metric'];
@@ -96,6 +114,9 @@ class PDFLabels {
         $this->Height                = $format['height'];
         $this->FontSize              = $format['font-size'];   
         $this->PaperSize             = isset($format['paper-size']) ? $format['paper-size'] : $this->PaperSize;
+        $this->PaperOrientation      = isset($format['paper-orientation']) ? $format['paper-orientation'] : $this->PaperOrientation;
+        $this->print_border      = isset($format['print_border']) ? $format['print_border'] : $this->print_border;        
+        
         
         // set font
         //$pdf->SetFont('helvetica', '', 8);     
@@ -114,7 +135,7 @@ class PDFLabels {
         $this->setFormat($labelformat);
         
         // create new PDF document
-        $this->pdf = new TCPDF(PDF_PAGE_ORIENTATION, $this->MetricDoc, $this->PaperSize, true, 'UTF-8', false);
+        $this->pdf = new TCPDF($this->PaperOrientation, $this->MetricDoc, $this->PaperSize, true, 'UTF-8', false);
         
         $this->pdf->SetFont($this->Font_Name, '', $this->FontSize); 
         $this->pdf->SetMargins(0,0); 
@@ -156,7 +177,7 @@ class PDFLabels {
         $_PosX = $this->Margin_Left+($this->COUNTX*($this->Width+$this->X_Space));
         $_PosY = $this->Margin_Top+($this->COUNTY*($this->Height+$this->Y_Space));
         
-        $this->pdf->MultiCell($this->Width, $this->Height, $texte, $print_border, 'C', 0, 0, $_PosX, $_PosY, true, 0, false, true, $this->Height, 'M', true);
+        $this->pdf->MultiCell($this->Width, $this->Height, $texte, $this->print_border, 'C', 0, 0, $_PosX, $_PosY, true, 0, false, true, $this->Height, 'M', true);
 
         $this->COUNTX++;
 

@@ -62,46 +62,8 @@ if(isset($_GET['user']))
 	generate_pdf($users);
 	
 function generate_pdf($users){
-/*    require_once('/usr/share/tcpdf/config/lang/eng.php');
-    require_once('/usr/share/tcpdf/tcpdf.php');
-
-    // create new PDF document
-    $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
     
-    $pdf->SetCreator(PDF_CREATOR);
-    $pdf->SetAuthor('GRASE Hotspot');
-    $pdf->SetTitle('Voucher Batch X');
-    $pdf->SetSubject('Hotspot Login Vouchers');
-
-    $pdf->AddPage();
-    
-// set cell padding
-$pdf->setCellPaddings(1, 1, 1, 1);
-
-// set cell margins
-$pdf->setCellMargins(1, 1, 1, 1);    
-
-// set some text for example
-$txt = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
-
-// Multicell test
-$pdf->MultiCell(55, 5, '[LEFT] '.$txt, 1, 'L', 0, 0, 0, 0, true);
-$pdf->MultiCell(55, 5, '[RIGHT] '.$txt, 1, 'R', 0, 0, 60, 0, true);
-$pdf->MultiCell(55, 5, '[CENTER] '.$txt, 1, 'C', 0, 0, 30, 10, true);
-$pdf->MultiCell(55, 5, '[JUSTIFY] '.$txt."\n", 1, 'J', 0, 0, '' ,'', true);
-$pdf->MultiCell(55, 5, '[DEFAULT] '.$txt, 1, '', 0, 0, '', '', true);
-    
-    
-    
-    
-    
-    
-    
-    $pdf->Output('batchX.pdf', 'I');*/
-    
-$txt = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';    
-    
-    $labels = new PDFLabels('Avery 5160');
+    $labels = new PDFLabels('Overflow');
     foreach($users as $user)
     {
         $label = T_("Username").": ".$user['Username'];
