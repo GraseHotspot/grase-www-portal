@@ -85,6 +85,17 @@ class ErrorHandling
     // ErrorHandling::fatal_nodb_error
     public function fatal_nodb_error($error)
     {
+        global $NONINTERACTIVE_SCRIPT;
+        if(isset($NONINTERACTIVE_SCRIPT) && $NONINTERACTIVE_SCRIPT)
+        {
+            // Non-interactive script running, return error message as comments
+            echo "#error_occured\n";
+            echo "# An error has occured in the application\n";
+            echo "# ::$error::\n";
+            echo "# Memory used: ".memory_get_usage()."\n";
+            die();
+        
+        }
         //$AdminLog =& AdminLog::getInstance();
         //$AdminLog->log_error($error);
         if(file_exists('/usr/share/php/smarty/libs/') && ! is_link('/usr/share/php/smarty/libs/'))

@@ -27,7 +27,7 @@ function __autoload($class_name) {
     require_once './classes/' . $class_name . '.class.php';
 }
 
-
+$NONINTERACTIVE_SCRIPT = TRUE;
 require_once 'includes/database_functions.inc.php';
 
     $networkoptions = unserialize($Settings->getSetting('networkoptions'));

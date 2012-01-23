@@ -64,7 +64,7 @@ class DatabaseConnections
     {
 
         // Check that databaseSettingsFile is valid
-        if (!is_file($dbSettingsFile))
+        if (!is_readable($dbSettingsFile))
         {
             ErrorHandling::fatal_nodb_error(
 		T_("DB Config File isn't a valid file.") . "($dbSettingsFile)"
