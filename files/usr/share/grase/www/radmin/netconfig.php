@@ -168,7 +168,8 @@ if(isset($_POST['submit']))
                     $postvalue[] = clean_number($value);
                     break;
                 case "ip":
-                    $postvalue[] = long2ip(ip2long(trim($value)));
+                    if(trim($value))
+                        $postvalue[] = long2ip(ip2long(trim($value)));
                     break;                     
                     
             }
