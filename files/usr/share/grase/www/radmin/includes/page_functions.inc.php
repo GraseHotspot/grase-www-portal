@@ -84,7 +84,7 @@ function createmenuitems()
 	$menubar['users'] = array("href" => "display", "label" => T_("Users"),
 	    "submenu" => array(
 	        'createuser' => array("href" => "newuser", "label" => T_("New User")),
-	        'createtickets' => array("href" => "newtickets", "label" => T_("Mass New Users")),
+	        'createtickets' => array("href" => "newtickets", "label" => T_("Batch Users")),
 	        'createmachine' => array("href" => "newmachine", "label" => T_("Computer Account"))	
 	        )
     	);
