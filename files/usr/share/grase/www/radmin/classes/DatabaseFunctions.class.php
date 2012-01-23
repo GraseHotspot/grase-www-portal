@@ -312,9 +312,9 @@ class DatabaseFunctions
             /*$Userdata['FormatExpiration'] = substr($Userdata['Expiration'], 0, -8);
             $Userdata['ExpirationTimestamp'] = strtotime(
                 substr($Userdata['Expiration'], 0, -8));*/
-            $Userdata['FormatExpiration'] = $Userdata['Expiration'];
+            $Userdata['FormatExpiration'] = date("M j Y H:i:s" ,strtotime($Userdata['Expiration']));
             if(substr($Userdata['Expiration'], -8) == "00:00:00")
-                $Userdata['FormatExpiration'] = substr($Userdata['Expiration'], 0, -8);
+                $Userdata['FormatExpiration'] = substr($Userdata['FormatExpiration'], 0, -8);
             $Userdata['ExpirationTimestamp'] = strtotime($Userdata['Expiration']);
         }
         else
