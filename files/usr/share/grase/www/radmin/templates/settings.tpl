@@ -29,8 +29,8 @@
         <input name="locale" type="text" id="locale" value="{$locale}"/>
                 <span class="helptext ui-icon-help">{t}Available languages:{/t}
             <dl>
-                {foreach from=$available_languages item=language}
-                <dt>{$language.code}</dt> <dd>{$language.display}</dd>
+                {foreach from=$available_languages item=languageitem}
+                <dt>{$languageitem.code}</dt> <dd>{$languageitem.display}</dd>
                 {/foreach}
             </dl>
         </span>
