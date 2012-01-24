@@ -24,7 +24,14 @@ require_once 'includes/misc_functions.inc.php';
 
 class DatabaseFunctions
 {
+
+    /*
+     *  DatabaseFunctions is a Class that deals with with RADIUS database
+     *
+     */
     public $db; // Radius DB
+    
+    // radminDB only here because CronFunctions inherits from us. Maybe move this to CronFunctions? TODO:
     public $radminDB; // Radmin DB
     
     private $groupdetails = array(); //cache group details 
