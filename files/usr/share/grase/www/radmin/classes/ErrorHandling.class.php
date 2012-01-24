@@ -76,7 +76,7 @@ class ErrorHandling
         $smarty->assign("error", $error . $pear_error_obj->getMessage());
         
         $smarty->display("error.tpl");
-        var_dump($pear_error_obj);
+        //var_dump($pear_error_obj);
         die();
 
     }    
