@@ -21,14 +21,14 @@
 
 <div>
     <label for='MaxMb'>{t}Data Limit (MiB){/t}</label>
-    {html_options name="Max_Mb" options=$Datacosts selected=$machine.Max_Mb}
+    {html_options name="Max_Mb" options=$GroupDatacosts selected=$machine.Max_Mb}
     <span class="form_or">{t}OR{/t}</span>
     <input type="text" class="default_swap" id="MaxMb" name="MaxMb" value='{$machine.MaxMb}' title="{t}Type your own Mb Limit{/t}"/>
     <span id='Max_MbInfo'>Choose a Data Limit OR Type your own value</span>
 </div>
 <div>
     <label for='MaxTime'>{t}Time Limit (Minutes){/t}</label>
-    {html_options name="Max_Time" options=$Timecosts selected=$machine.Max_Time}
+    {html_options name="Max_Time" options=$GroupTimecosts selected=$machine.Max_Time}
     <span class="form_or">{t}OR{/t}</span>
     <input type="text" class="default_swap" id="MaxTime" name="MaxTime" value='{$machine.MaxTime}' title="{t}Type your own Time Limit{/t}"/>
     <span id='Max_TimeInfo'>{t}Choose a Time Limit OR Type your own value{/t}</span>

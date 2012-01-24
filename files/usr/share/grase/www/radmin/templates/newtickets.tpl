@@ -1,6 +1,6 @@
 {include file="header.tpl" Name="Create Tickets" activepage="createtickets"}
 
-{if $valid_last_batch}<!--<a href="printnewtickets" class="printlink" target="tickets">Print Last Batch of Tickets</a>-->{/if}
+{if $last_batch}<!--<a href="printnewtickets?batch={$last_batch}" class="printlink" target="tickets">Print Last Batch of Tickets</a>-->{/if}
 {if $createdusers}
 <div id='createdtickets' class="" >
     <h2>Last Created Tickets</h2>
@@ -33,7 +33,7 @@
 		</table>
 	</div>
 {/if}
-{if $valid_last_batch}<a href="printnewtickets" class="printlink" target="tickets">Print Last Batch of Tickets</a>{/if}
+{if $last_batch}<a href="printnewtickets?batch={$last_batch}" class="printlink" target="tickets">Print Last Batch of Tickets</a>{/if}
 
 
 <div id="createticketsForm">
@@ -49,7 +49,7 @@
 </div>
 <div>
     <label for='Group'>Group</label>
-    {html_options name="Group" id="Group" options=$Usergroups selected=$user.Group}    
+    {html_options name="Group" id="Group" options=$groups selected=$user.Group}    
     <span id='GroupInfo'>Choose the users group (Expiry is based on the user group)</span>
     <br/>{include file="grouppropertiesinfo.tpl"}
 </div>

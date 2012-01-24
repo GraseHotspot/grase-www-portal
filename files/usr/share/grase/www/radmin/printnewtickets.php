@@ -30,16 +30,28 @@ if(isset($_GET['user']))
 {
     $users = database_get_users(array(clean_text($_GET['user'])));
 	if(!is_array($users)) $users = array();    
+	$title = clean_text($_GET['user']) . ' Voucher';
+}elseif(isset($_GET['batch']))
+{
+    $batch = clean_number($_GET['batch']);
+	$users = database_get_users($Settings->getBatch($batch) );
+	if(!is_array($users)) $users = array();
+	$title = sprintf(T_('Batch %s Vouchers'), $batch);
 }else
 {
-	$users = database_get_users(unserialize($Settings->getSetting('lastbatch')));
+    $batch = $Settings->getSetting('lastbatch');
+	$users = database_get_users($Settings->getBatch($batch) );
 	if(!is_array($users)) $users = array();
+	$title = sprintf(T_('Batch %s Vouchers'), $batch);
 }	
+
+    /* Don't need any smarty stuff here as we now do pdf
 	$users_groups = sort_users_into_groups($users); // TODO: Reports and then no longer sort user list by downloads??
 	$smarty->assign("users", $users);
 	$smarty->assign("users_groups", $users_groups);
 	$smarty->register_modifier( "sortby", "smarty_modifier_sortby" );   
 	//display_page('printnewtickets.tpl');
+	*/
 	
 	$preset_labels['Avery 5160'] = array(
 	    'name'=>'5160',
@@ -56,14 +68,11 @@ if(isset($_GET['user']))
 	    'font-size'=>8
 	    );
 	
+	generate_pdf($users, $title);
 	
-	
-	
-	generate_pdf($users);
-	
-function generate_pdf($users){
+function generate_pdf($users, $title){
     
-    $labels = new PDFLabels('Overflow');
+    $labels = new PDFLabels('Overflow', $title);
     foreach($users as $user)
     {
         $label = T_("Username").": ".$user['Username'];

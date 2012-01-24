@@ -50,4 +50,7 @@ if($expiredusers) echo "$expiredusers\n";
 $prevmonths = CronFunctions::getInstance()->condensePreviousMonthsAccounting();
 if($prevmonths) echo "$prevmonths\n";
 
+$oldbatches = CronFunctions::getInstance()->clearOldBatches();
+if($oldbatches) echo "$oldbatches\n";
+
 ?>

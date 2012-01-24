@@ -158,6 +158,7 @@ function datacosts()
 {
 	global $datacosts, $pricemb, $currency;
 	//$disp_currency = $CurrencySymbols[$currency];
+	$datacosts['inherit'] = T_('Inherit from group');
 	$datacosts[''] = '';
 	$money_options = array($pricemb, 5, 10, 15, 20, 25, 30, 40, 50, 75, 100);
 	foreach($money_options as $money)
@@ -168,6 +169,13 @@ function datacosts()
 		$datacosts["$data"] = "$disp_money ($disp_data)";
 	}
 	return $datacosts;
+}
+
+function groupdatacosts()
+{
+    $datacosts = datacosts();
+    unset($datacosts['inherit']);
+    return $datacosts;
 }
 
 function datavals()
@@ -201,10 +209,18 @@ function timevals()
 	return $timevals;
 }
 
+function grouptimecosts()
+{
+    $timecosts = timecosts();
+    unset($timecosts['inherit']);
+    return $timecosts;
+}
+
 function timecosts()
 {
 	global $timecosts, $pricetime, $currency;
 	//$disp_currency = $CurrencySymbols[$currency];
+	$timecosts['inherit'] = T_('Inherit from group');
 	$timecosts[''] = '';
 	//$pricemb = $price; // 60c/Mb
 	$time_options = array(5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 60, 90, 120, 180);
@@ -245,7 +261,7 @@ function bandwidth_options()
         $bits = $kbits * 1024;
         $kbytes = $kbits/8;
         $mbmin = round($kbytes * 60 / 1024, 2);
-        $label = Formatting::formatBits($bits) ."/sec ($kbytes kbytes/sec, $mbmin MiB/min)";
+        $label = Formatting::formatBits($bits) ." ($kbytes kbytes/sec, $mbmin MiB/min)";
         $options["$kbits"] = $label;
     }
     
@@ -253,7 +269,19 @@ function bandwidth_options()
 
 }
 
-function usergroups()
+function grouplist()
+{
+    // Makes an array of groupname=>groupname for html drop downs
+    global $Settings;
+    $groups = array();
+    foreach($Settings->getGroup() as $groupname => $group)
+    {
+        $groups[$groupname] = $groupname;
+    }
+    return $groups;
+}
+
+/*function usergroups()
 {
 	global $Usergroups, $Settings;
 	// Duplicate code to keep old code running. All this needs to be merged at some point
@@ -261,17 +289,17 @@ function usergroups()
 	foreach($groups as $group => $expiry)
 	{
 	    $Usergroups[$group] = $group;
-	}
+	}*/
 /*	// DONE:  Move this stuff into database??
 	$Usergroups["Visitors"] = T_("Visitors");
 	$Usergroups["Students"] = T_("Students");
 	$Usergroups["Staff"] = T_("Staff");
 	$Usergroups["Ministry"] = T_("Ministry");
 //	$Usergroups[MACHINE_GROUP_NAME] = "Machine (Locked)";*/
-	return $Usergroups;
-}
+/*	return $Usergroups;
+}*/
 
-function groupexpirys()
+/*function groupexpirys()
 {
 	global $Expiry, $Settings;
 	$Expiry = unserialize($Settings->getSetting("groups"));
@@ -282,8 +310,8 @@ function groupexpirys()
 	$Expiry["Visitors"] = "+1 months";
 //	$Expiry[MACHINE_GROUP_NAME] = "--";
 //	$Expiry[DEFAULT_GROUP_NAME] = "+1 months";*/
-	return $Expiry;
-}
+/*	return $Expiry;
+}*/
 
 function recurtimes()
 {
@@ -396,14 +424,16 @@ $smarty->assign("Application", APPLICATION_NAME);
 
 // Setup Menus
 $smarty->assign("MenuItems", createmenuitems());
-$smarty->assign("Usergroups", usergroups());
+/*$smarty->assign("Usergroups", usergroups());*/
 
 
 // Costs
 //$smarty->assign("CurrencySymbols", currency_symbols());
 $smarty->assign("Datacosts", datacosts());
+$smarty->assign("GroupDatacosts", groupdatacosts());
 $smarty->assign("Datavals", datavals());
 $smarty->assign("Timecosts", timecosts());
+$smarty->assign("GroupTimecosts", grouptimecosts());
 $smarty->assign("Timevals", timevals());
 $smarty->assign("Bandwidthvals", bandwidth_options());
 $smarty->assign("Recurtimes",recurtimes()); 
@@ -440,8 +470,9 @@ $smarty->assign('gbvalues', gboctects());
     
     // Group data for displaying group properties	
 	$smarty->assign("groupdata", DatabaseFunctions::getInstance()->getGroupAttributes());
-    $smarty->assign("groups", unserialize($Settings->getSetting("groups")));	
-
+    $smarty->assign("groupsettings", $Settings->getGroup());		
+    $smarty->assign("groups", grouplist());	
+    
 	
 	// DEMO SITE flag
 	$smarty->assign("DEMOSITE", $DEMO_SITE);
@@ -450,7 +481,7 @@ $smarty->assign('gbvalues', gboctects());
 
 // These functions setup some globals that are used in validation functions, maybe we need to do it differently?
 recurtimes();
-usergroups();
-groupexpirys();
+//usergroups();
+//groupexpirys();
 
 ?>

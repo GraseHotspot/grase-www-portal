@@ -232,8 +232,9 @@ function validate_int($number)
 
 function validate_group($username, $group)
 {
-	global $Usergroups;
-	if(isset($Usergroups[$group]))
+	global $Settings;
+	$groups = $Settings->getGroup();
+	if(isset($groups[$group]))
 	{
 		if($group == MACHINE_GROUP_NAME && strpos($username, "-dev") === false) // TODO: This no longer works for newer coovachilli, check for mac address format 00-00-00-00-00-00
 			return T_("Only Machines can be in the Machine group"); // TODO: Internationalsation of all strings
@@ -244,10 +245,12 @@ function validate_group($username, $group)
 	}
 }
 
-function expiry_for_group($group)
+function expiry_for_group($group, $groups = '')
 {
-	global $Expiry;
-	if(isset($Expiry[$group]) && $Expiry[$group] != '--') return date('Y-m-d H:i:s', strtotime($Expiry[$group]));
+	global $Settings;
+	if($groups == '')
+    	$groups = $Settings->getGroup($group);
+	if(isset($groups[$group]['Expiry']) && $groups[$group]['Expiry'] != '--') return date('Y-m-d H:i:s', strtotime($groups[$group]['Expiry']));
 	//if(isset($Expiry[$group]) && ( $Expiry[$group] == '--' || $Expiry[$group] == '')) return "--";
 	//return date('Y-m-d', strtotime($Expiry[DEFAULT_GROUP_NAME]));
 	return "--";

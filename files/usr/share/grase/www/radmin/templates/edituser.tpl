@@ -67,7 +67,7 @@
 </div>
 <div>
     <label for='Add_Mb'>{t}Add Data to Limit (MiB){/t}</label>
-    {html_options name="Add_Mb" options=$Datacosts selected=$user.Add_Mb}
+    {html_options name="Add_Mb" options=$GroupDatacosts selected=$user.Add_Mb}
     <span class="Add_MbInfo">{t}Add to the Data Limit (Will ignore changes made above){/t}</span>    
 </div>
 <div>
@@ -77,7 +77,7 @@
 </div>
 <div>
     <label for='Add_Time'>{t}Add Time to Limit (Minutes){/t}</label>
-     {html_options name="Add_Time" options=$Timecosts selected=$user.Add_Time}
+     {html_options name="Add_Time" options=$GroupTimecosts selected=$user.Add_Time}
     <span class="Add_TimeInfo">{t}Add to the Time Limit (Will ignore changes made above){/t}</span>    
 </div>
 

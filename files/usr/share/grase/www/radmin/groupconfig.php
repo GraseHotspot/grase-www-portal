@@ -59,7 +59,7 @@ if(isset($_POST['submit']))
     }
     
 
-    $Expiry = array();
+    //$Expiry = array();
     foreach($groupnames as $key => $name)
     {
         // There are attributes set but no group name
@@ -129,8 +129,8 @@ if(isset($_POST['submit']))
 	    }*/	    
 	    
         $groups[clean_text($name)] = array_filter(array(
-            'MaxMb' => clean_number($groupdatalimit[$key]),
-            'MaxTime' => clean_int($grouptimelimit[$key]),
+            //'MaxMb' => clean_number($groupdatalimit[$key]),
+            //'MaxTime' => clean_int($grouptimelimit[$key]),
             //'DataRecurTime' => clean_text($grouprecurdata[$key]),
             //'DataRecurLimit' => clean_number($grouprecurdatalimit[$key]),
             'TimeRecurTime' => clean_text($grouprecurtime[$key]),
@@ -139,6 +139,12 @@ if(isset($_POST['submit']))
             'BandwidthUpLimit' => clean_int($groupuplimit[$key]),
             'SimultaneousUse' => $simultaneoususe[$key],
         ));
+        $groupsettings[clean_text($name)] = array_filter(array(
+            'GroupName' => clean_text($name),
+            'Expiry'    => $groupexpiry[$key],
+            'MaxMb'     => clean_number($groupdatalimit[$key]),
+            'MaxTime'   => clean_int($grouptimelimit[$key]),
+        ));        
 
     }
     
@@ -148,7 +154,18 @@ if(isset($_POST['submit']))
     {
 
         // No errors. Save groups
-        $Settings->setSetting("groups", serialize($groupexpiries));
+        //$Settings->setSetting("groups", serialize($groupexpiries));
+        foreach($groupsettings as $attributes)
+        {
+            $Settings->setGroup($attributes);
+        }
+        
+        // Delete groups no longer referenced
+        foreach($Settings->getGroup() as $oldgroup => $oldgroupsettings)
+        {
+            if(!isset($groupsettings[$oldgroup]))
+                $Settings->deleteGroup($oldgroup);
+        }
         
         // Delete groups from radgroupreply not in groupexpiries...
         // Deleting groups out of radgroupreply will modify current users
@@ -169,7 +186,7 @@ if(isset($_POST['submit']))
     
     // TODO set this initially
     $smarty->assign("groupdata", $groups);
-    $smarty->assign("groups", $groupexpiries);
+    $smarty->assign("groupsettings", $Settings->getGroup());
     //$smarty->assign("groups", $Expiry);
 
 	display_page('groups.tpl');
@@ -178,7 +195,8 @@ if(isset($_POST['submit']))
 else{
 
 	$smarty->assign("groupdata", DatabaseFunctions::getInstance()->getGroupAttributes());
-    $smarty->assign("groups", unserialize($Settings->getSetting("groups")));
+    $smarty->assign("groupsettings", $Settings->getGroup());
+
     //$smarty->assign("groups", $Expiry);
 
 	display_page('groups.tpl');

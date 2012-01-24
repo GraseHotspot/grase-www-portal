@@ -64,6 +64,8 @@ class PDFLabels {
     private $pdf = NULL;
     private $firstpage = true;
     
+    private $title = 'BatchX';
+    
     // Some settings we can change
     
     public $print_border = 0;
@@ -123,7 +125,7 @@ class PDFLabels {
     }
     
     // Constructor
-    function __construct ($format, $posX=1, $posY=1) {
+    function __construct ($format, $title, $posX=1, $posY=1) {
         if (is_array($format)) {
             // Custom format passed from app
             $labelformat = $format;
@@ -152,7 +154,8 @@ class PDFLabels {
         
         $this->pdf->SetCreator(PDF_CREATOR);
         $this->pdf->SetAuthor('GRASE Hotspot');
-        $this->pdf->SetTitle('Voucher Batch X');
+        $this->pdf->SetTitle($title);
+        $this->title = $title;
         $this->pdf->SetSubject('Hotspot Login Vouchers');        
         
         
@@ -194,8 +197,9 @@ class PDFLabels {
         }
     }
     
-    function Output_Doc($filename = 'BatchX.pdf')
+    function Output_Doc($filename = '')
     {
+        if($filename == '') $filename = $this->title .'.pdf';
         $this->pdf->Output($filename, 'I');
     }
     

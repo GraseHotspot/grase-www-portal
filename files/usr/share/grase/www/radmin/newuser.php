@@ -43,8 +43,8 @@ function validate_form()
 	$error[] = validate_datalimit($Max_Mb);
 	$error[] = validate_timelimit($MaxTime);
 	$error[] = validate_timelimit($Max_Time);		
-	if(is_numeric($Max_Mb) && is_numeric($MaxMb)) $error[] = T_("Only set one Data limit field");
-	if(is_numeric($Max_Time) && is_numeric($MaxTime)) $error[] = T_("Only set one Time limit field");
+	if((is_numeric($Max_Mb) || $_POST['Max_Mb'] == 'inherit') && is_numeric($MaxMb)) $error[] = T_("Only set one Data limit field");
+	if((is_numeric($Max_Time) || $_POST['Max_Time'] == 'inherit') && is_numeric($MaxTime)) $error[] = T_("Only set one Time limit field");
 
     /* // Expiry is not submitted anymore
 	list($error2, $expirydate) = validate_post_expirydate();
@@ -62,9 +62,11 @@ if(isset($_POST['newusersubmit']))
 		$user['Username'] = clean_text($_POST['Username']);
 		$user['Password'] = clean_text($_POST['Password']);
 		$user['MaxMb'] = displayLocales(clean_number($_POST['MaxMb']));
-		$user['Max_Mb'] = displayLocales(clean_number($_POST['Max_Mb']));		
+		$user['Max_Mb'] = displayLocales(clean_number($_POST['Max_Mb']));
+		if($_POST['Max_Mb'] == 'inherit' ) $user['Max_Mb'] = 'inherit';
 		$user['MaxTime'] = displayLocales(clean_int($_POST['MaxTime']));
 		$user['Max_Time'] = displayLocales(clean_int($_POST['Max_Time']));	
+		if($_POST['Max_Time'] == 'inherit' ) $user['Max_Time'] = 'inherit';
 		$user['Group'] = clean_text($_POST['Group']);
 		$user['Expiration'] = expiry_for_group(clean_text($_POST['Group'])); //"${_POST['Expirydate_Year']}-${_POST['Expirydate_Month']}-${_POST['Expirydate_Day']}";
 		$user['Comment'] = clean_text($_POST['Comment']);
@@ -73,20 +75,34 @@ if(isset($_POST['newusersubmit']))
 		display_page('adduser.tpl');
 	}else
 	{
+	    
+	    $group = clean_text($_POST['Group']);
+	    // Load group settings so we can use Expiry, MaxMb and MaxTime
+	    $groupsettings = $Settings->getGroup($group);
+	    
+	    // TODO: Create function to make these the same across all locations	    
 		if(is_numeric(clean_number($_POST['Max_Mb'])))
 		    $MaxMb = clean_number($_POST['Max_Mb']);
 		if(is_numeric(clean_number($_POST['MaxMb'])))
 		    $MaxMb = clean_number($_POST['MaxMb']);
+		if($_POST['Max_Mb'] == 'inherit')
+		    $MaxMb = $groupsettings[$group]['MaxMb'];
+		    
 		if(is_numeric(clean_int($_POST['Max_Time'])))
 		    $MaxTime =  clean_int($_POST['Max_Time']);
 		if(is_numeric(clean_number($_POST['MaxTime'])))
 		    $MaxTime = clean_int($_POST['MaxTime']);
+		if($_POST['Max_Time'] == 'inherit')
+		    $MaxTime = $groupsettings[$group]['MaxTime'];
+		    
+		    
+		    
 		database_create_new_user( // TODO: Check if valid
 			clean_text($_POST['Username']),
 			clean_text($_POST['Password']),
 			$MaxMb,
 			$MaxTime,
-			expiry_for_group(clean_text($_POST['Group'])),
+			expiry_for_group($group, $groupsettings),
 			clean_text($_POST['Group']),
 			clean_text($_POST['Comment'])
 		);
@@ -106,7 +122,11 @@ function display_adduser_form()
 	global $smarty, $pricemb;
 //    $user['Username'] = rand_username(5);	
 	$user['Password'] = rand_password(6);
-	$user['Max_Mb'] = round(10/$pricemb, 2); // TODO: Make a default setting for data and time and put in settings page
+	
+	// TODO: make default settings customisable
+	$user['Max_Mb'] = 'inherit';
+	$user['Max_Time'] = 'inherit';
+	//$user['Max_Mb'] = round(10/$pricemb, 2); // TODO: Make a default setting for data and time and put in settings page
 	$user['Expiration'] = "--";//date('Y-m-d', strtotime('+3 month'));
 	$smarty->assign("user", $user);
 	display_page('adduser.tpl');

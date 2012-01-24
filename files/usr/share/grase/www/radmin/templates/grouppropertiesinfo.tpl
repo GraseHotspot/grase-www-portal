@@ -11,13 +11,13 @@
         <th>{t}BW Limit Up{/t}</th>
     </tr>
 
-{foreach from=$groups item=expiry key=groupname}
+{foreach from=$groupsettings item=attributes key=groupname}
 
     <tr>
         <td>{$groupname}</td>
-        <td>{$expiry}</td>
-        <td>{$groupdata.$groupname.MaxMb}</td>
-        <td>{$groupdata.$groupname.MaxTime}</td>        
+        <td>{$attributes.Expiry}</td>
+        <td>{$attributes.MaxMb}</td>
+        <td>{$attributes.MaxTime}</td>        
         {*<td>{if $groupdata.$groupname.DataRecurLimit}{assign var=lim value=$groupdata.$groupname.DataRecurLimit}{$Datavals.$lim} per {$groupdata.$groupname.DataRecurTime} {/if}</td>*}
         <td>{if $groupdata.$groupname.TimeRecurLimit}{assign var=lim value=$groupdata.$groupname.TimeRecurLimit}{$Timevals.$lim} per {$groupdata.$groupname.TimeRecurTime}{/if}</td>
         <td>{if $groupdata.$groupname.BandwidthDownLimit}{assign var=lim value=$groupdata.$groupname.BandwidthDownLimit}{$Bandwidthvals.$lim}{/if}</td>

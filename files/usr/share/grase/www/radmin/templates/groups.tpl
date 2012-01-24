@@ -5,7 +5,7 @@
 
 <p>{t}Deleting a group won't delete it's users. Next time the user is edited it's group will become the default group unless a new group is selected.{/t}</p>
 
-<p>{t}The limits here are the default for group members, unless overridden when creating a member. If multiple limits are specified, the first limit to be reached will disconnect the user.{/t}</p>
+<p>{t}The limits here are the default for group members, unless overridden when creating a member. If multiple limits are specified, the first limit to be reached will disconnect the user.{/t} {t}Changing Expiry, Data or Time limits, will not change existing users of the group and will only apply to new users. Recurring limits, Bandwidth and simultaneous logins will all apply to existing and new members.{/t}</p>
 <div id="GroupConfigForm">
 <form method="post" action="?" class="generalForm">
 
@@ -15,16 +15,16 @@
     <div>
         <h3>{t}Groups{/t}</h3>
         
-    {foreach from=$groups item=expiry key=groupname}        
+    {foreach from=$groupsettings item=settings key=groupname}        
         <div class="jsmultioption">
             <label>{t}Name{/t}</label><input type="text" name="groupname[]" value='{$groupname}'/>
-            <label>{t}Expiry{/t}</label><input type="text" name="groupexpiry[]" value='{$expiry}'/>
+            <label>{t}Expiry{/t}</label><input type="text" name="groupexpiry[]" value='{$settings.Expiry}'/>
             
             <label>{t}Default Data Limit (MiB){/t}</label>
-            {html_options name="Group_Max_Mb[]" options=$Datacosts selected=$groupdata.$groupname.MaxMb}
+            {html_options name="Group_Max_Mb[]" options=$GroupDatacosts selected=$settings.MaxMb}
             
             <label>{t}Default Time Limit (Minutes){/t}</label>
-            {html_options name="Group_Max_Time[]" options=$Timecosts selected=$groupdata.$groupname.MaxTime}
+            {html_options name="Group_Max_Time[]" options=$GroupTimecosts selected=$settings.MaxTime}
             
             {* <label>{t}Recurring Data Limit (MiB){/t}</label>
             {html_options name="Recur_Data_Limit[]" options=$Datavals selected=$groupdata.$groupname.DataRecurLimit}{t}per{/t}
@@ -57,9 +57,9 @@
             <label>{t}Name{/t}</label><input type="text" name="groupname[]" value=''/>
             <label>{t}Expiry{/t}</label><input type="text" name="groupexpiry[]" value=''/>
             <label>{t}Default Data Limit (MiB){/t}</label>
-            {html_options name="Group_Max_Mb[]" options=$Datacosts selected=$user.Max_Mb}
+            {html_options name="Group_Max_Mb[]" options=$GroupDatacosts selected=$user.Max_Mb}
             <label>{t}Default Time Limit (Minutes){/t}</label>
-            {html_options name="Group_Max_Time[]" options=$Timecosts selected=$user.Max_Time}
+            {html_options name="Group_Max_Time[]" options=$GroupTimecosts selected=$user.Max_Time}
 
             {* <label>{t}Recurring Data Limit (MiB){/t}</label>
             {html_options name="Recur_Data_Limit[]" options=$Datavals}{t}per{/t}

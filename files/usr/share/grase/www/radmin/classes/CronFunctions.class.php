@@ -232,8 +232,54 @@ class CronFunctions extends DatabaseFunctions
 
             
             $Settings->setSetting("DBVersion", 1.8);
+        }
+        
+        if($olddbversion < 1.9)
+        {
+            // Get last batch and migrate it to new batch system
+            $lastbatch = $Settings->getSetting('lastbatch');
+            // Check if lastbatch is an array, if so then we migrate
+            if(is_array(unserialize($lastbatch)))
+            {
+                $lastbatchusers = unserialize($lastbatch);
+                $nextBatchID = $Settings->nextBatchID();
+                $results += $Settings->saveBatch($nextBatchID, $lastbatchusers);
+                // Lastbatch becomes an ID
+                $Settings->setSetting('lastbatch', $nextBatchID);
+            }else{
+                $Settings->setSetting('lastbatch', 0);
+            }
+            
+            $Settings->setSetting("DBVersion", 1.9);
+
         }        
         
+        if($olddbversion < 2.0)
+        {
+            // Migrate groups to new system
+            $groups = unserialize($Settings->getSetting('groups'));
+
+            $groupattributes = $this->getGroupAttributes();
+            
+            foreach($groups as $group => $expiry)
+            {
+                $attributes = array();
+                $attributes['GroupName'] = $group;
+                $attributes['Expiry'] = $expiry;
+                $attributes['MaxOctets'] = $groupattributes[$group]['MaxOctets'];
+                $attributes['MaxSeconds'] = $groupattributes[$group]['MaxSeconds'];
+                // No comment stored, but oh well
+                $attributes['Comment'] = $groupattributes[$group]['Comment'];
+                
+                $results += $Settings->setGroup($attributes);
+            }
+            
+            $Settings->setSetting('groups',serialize(''));
+            
+            $Settings->setSetting("DBVersion", 2.0);
+        }
+        
+        // TODO: cron to clean old batches
 
         if($results > 0)
         {            
@@ -244,7 +290,54 @@ class CronFunctions extends DatabaseFunctions
 
     }
         
-         
+    public function clearOldBatches()
+    {
+        $rowsaffected = false;
+        // Delete user names from batch that are no longer in radcheck table (gone)
+
+        // Not the fastest way to do this, but due to it being in 2 different databases that we wish to keep user perms separate for, we need to execute extra queries and do some php processing
+        $sql = "SELECT UserName FROM radcheck";
+        
+        $result = $this->db->queryAll($sql);
+        
+        if (PEAR::isError($result))
+        {
+            return T_('Unable to select user from radcheck') . $result->toString();
+        }
+        
+        foreach($result as $user)
+        {
+            $users[] = $this->db->quote($user['UserName']);
+        }
+        $users = implode( ', ' , $users);
+        
+        // $users has already been escaped above
+        $sql = "DELETE FROM batch WHERE UserName NOT IN ($users)";
+        
+        $sql2 = "DELETE FROM batches WHERE batchID NOT IN (SELECT batchID FROM batch)";
+        
+        $result = $this->radminDB->exec($sql);
+        
+        if (PEAR::isError($result))
+        {
+            return T_('Unable to cleanup old users from batch ') . $result->toString();
+        }
+                         
+        $rowsaffected += $result;        
+        
+        $result = $this->radminDB->exec($sql2);
+        
+        if (PEAR::isError($result))
+        {
+            return T_('Unable to cleanup old batches ') . $result->toString();
+        }
+                         
+        $rowsaffected += $result;
+
+        if($rowsaffected) return "($rowsaffected) " . T_('Old Batches Cleaned');
+        
+        return false;
+    }         
 
     public function clearStaleSessions()
     {

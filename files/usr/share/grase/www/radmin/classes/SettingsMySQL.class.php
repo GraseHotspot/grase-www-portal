@@ -22,12 +22,20 @@
 
 class SettingsMySQL extends Settings
 {
-
+    /*
+     * SettingsMySQL deals with Settings Stored in the RADMIN MySQL database
+     * Ideally anything stored in the RADMIN database (settings, templates, 
+     * batches) should be managed here to keep it clean from the RADIUS
+     * database.
+     * Auth isn't handled here as there is an Auth class that deals with that
+     * all cleanly.
+     *
+     */
     private $databaseSettingsFile;
     private $databaseSettings;
     private $db;
     
-    private $dbSchemeVersion = "2.0";
+    private $dbSchemeVersion = "2.1";
     private $dbSchemeSettings = 
         "CREATE TABLE IF NOT EXISTS `settings` (
           `setting` varchar(20) NOT NULL,
@@ -47,6 +55,33 @@ class SettingsMySQL extends Settings
           `tpl` text NOT NULL,
           PRIMARY KEY (`id`)
         ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='HTML/CSS Storage'";
+
+    private $dbSchemaBatch = 
+        "CREATE TABLE IF NOT EXISTS `batch` (
+	        `batchID` INT UNSIGNED NOT NULL,
+	        `UserName` VARCHAR(64) NOT NULL,
+             KEY `username` (`UserName`)
+        ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Stores users batch when auto created'";
+        
+    private $dbSchemaBatches = 
+        "CREATE TABLE IF NOT EXISTS `batches` (
+	        `batchID` INT NOT NULL,
+	        `createTime` TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+	        `createdBy` VARCHAR(64) NOT NULL,
+	        `Comment` VARCHAR(300),
+	        PRIMARY KEY `batchid` (`batchID`)
+        ) ENGINE=MyISAM COMMENT ='Batches'";
+        
+    private $dbSchemaGroups =
+        "CREATE TABLE `groups` (
+            `GroupName` VARCHAR(64) NOT NULL,
+            `Expiry` VARCHAR(100) NULL,
+            `MaxOctets` BIGINT(32) UNSIGNED NULL,
+            `MaxSeconds` BIGINT(32) UNSIGNED NULL,
+            `Comment` VARCHAR(300) NULL,
+            `lastupdated` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            PRIMARY KEY `GroupName` (`GroupName`)
+        ) TYPE = MyISAM COMMENT ='Groups'";
 
     public function __construct($db)
     {
@@ -86,7 +121,11 @@ class SettingsMySQL extends Settings
     {
         if( $this->db->query("SHOW TABLES LIKE 'settings'")->numRows() &&
             $this->db->query("SHOW TABLES LIKE 'auth'")->numRows() &&
-            $this->db->query("SHOW TABLES LIKE 'templates'")->numRows())             
+            $this->db->query("SHOW TABLES LIKE 'templates'")->numRows() &&
+            $this->db->query("SHOW TABLES LIKE 'batch'")->numRows()  &&
+            $this->db->query("SHOW TABLES LIKE 'batches'")->numRows() &&
+            $this->db->query("SHOW TABLES LIKE 'groups'")->numRows()
+            )
         {
             return true;
         }
@@ -102,22 +141,36 @@ class SettingsMySQL extends Settings
         $this->db->query($this->dbSchemeAuth);
         // Templates table
         $this->db->query($this->dbSchemaTemplates);
+        // Batch table
+        $this->db->query($this->dbSchemaBatch);
+        // Batches table
+        $this->db->query($this->dbSchemaBatches);
+        // Groups Table
+        $this->db->query($this->dbSchemaGroups);
         $this->setSetting('DBSchemaVersion', $this->dbSchemeVersion);
     }
     
     public function getSetting($setting)
     {
-        $sql = sprintf("SELECT value FROM settings WHERE setting = '%s'",
-                        mysql_real_escape_string($setting));
-        return $this->db->queryOne($sql);
+        $sql = sprintf("SELECT value FROM settings WHERE setting = %s",
+                        $this->db->quote($setting));
+        //return $this->db->queryOne($sql);
+        
+        $result = $this->db->queryOne($sql);
+        // Always check that result is not an error
+        if (PEAR::isError($result)) {
+            ErrorHandling::fatal_error('Getting setting failed: '. $result->getMessage());
+        }
+        
+        return $result;
        
     }
     
     // ^^ Returning the value fails on empty strings
     public function checkExistsSetting($setting)
     {
-        $sql = sprintf("SELECT COUNT(setting) FROM settings WHERE setting = '%s'  LIMIT 1",
-                        mysql_real_escape_string($setting));
+        $sql = sprintf("SELECT COUNT(setting) FROM settings WHERE setting = %s  LIMIT 1",
+                        $this->db->quote($setting));
         return $this->db->queryOne($sql);
        
     }    
@@ -129,18 +182,18 @@ class SettingsMySQL extends Settings
         {
             // Insert new record
             $sql = sprintf("INSERT INTO settings SET
-                            setting='%s',
-                            value='%s'",
-                            mysql_real_escape_string($setting),
-                            mysql_real_escape_string($value));
+                            setting=%s,
+                            value=%s",
+                            $this->db->quote($setting),
+                            $this->db->quote($value));
         }else
         {
             // Update old record
             $sql = sprintf("UPDATE settings SET
-                            value='%s'
-                            WHERE setting='%s'",
-                            mysql_real_escape_string($value),
-                            mysql_real_escape_string($setting));
+                            value=%s
+                            WHERE setting=%s",
+                            $this->db->quote($value),
+                            $this->db->quote($setting));
             
         }
         
@@ -151,6 +204,8 @@ class SettingsMySQL extends Settings
 	        AdminLog::getInstance()->log("Setting $setting failed to update (to $value)");        
             ErrorHandling::fatal_error('Updating setting failed: '. $affected->getMessage());
         }
+        
+        // TODO: Do we still need to filter this out now?
         if($setting != 'lastbatch') // lastbatch clogs admin log, filter it out
             AdminLog::getInstance()->log("Setting $setting updated to $value");
         return true;
@@ -172,17 +227,23 @@ class SettingsMySQL extends Settings
 
     public function getTemplate($template)
     {
-        $sql = sprintf("SELECT tpl FROM templates WHERE id = '%s' LIMIT 1",
-                        mysql_real_escape_string($this->templatemap[$template]));
-        return $this->db->queryOne($sql);
+        $sql = sprintf("SELECT tpl FROM templates WHERE id = %s LIMIT 1",
+                        $this->db->quote($this->templatemap[$template]));
+        $result = $this->db->queryOne($sql);
+        // Always check that result is not an error
+        if (PEAR::isError($result)) {
+            ErrorHandling::fatal_error('Getting template failed: '. $result->getMessage());
+        }
+        
+        return $result;
        
     }
     
     // ^^ Returning the value fails on empty strings
     public function checkExistsTemplate($template)
     {
-        $sql = sprintf("SELECT COUNT(id) FROM templates WHERE id = '%s' LIMIT 1",
-                        mysql_real_escape_string($this->templatemap[$template]));
+        $sql = sprintf("SELECT COUNT(id) FROM templates WHERE id = %s LIMIT 1",
+                        $this->db->quote($this->templatemap[$template]));
         return $this->db->queryOne($sql);
        
     }    
@@ -194,18 +255,18 @@ class SettingsMySQL extends Settings
         {
             // Insert new record
             $sql = sprintf("INSERT INTO templates SET
-                            id='%s',
-                            tpl='%s'",
-                            mysql_real_escape_string($this->templatemap[$template]),
-                            mysql_real_escape_string($value));
+                            id=%s,
+                            tpl=%s",
+                            $this->db->quote($this->templatemap[$template]),
+                            $this->db->quote($value));
         }else
         {
             // Update old record
             $sql = sprintf("UPDATE templates SET
-                            tpl='%s'
-                            WHERE id='%s'",
-                            mysql_real_escape_string($value),
-                            mysql_real_escape_string($this->templatemap[$template]));
+                            tpl=%s
+                            WHERE id=%s",
+                            $this->db->quote($value),
+                            $this->db->quote($this->templatemap[$template]));
             
         }
         
@@ -216,13 +277,214 @@ class SettingsMySQL extends Settings
 	        AdminLog::getInstance()->log("Template $template failed to update");        
             ErrorHandling::fatal_error('Updating template failed: '. $affected->getMessage());
         }
-        //if($template != 'lastbatch') // lastbatch clogs admin log, filter it out
-            AdminLog::getInstance()->log("Template $template updated");
+        AdminLog::getInstance()->log("Template $template updated");
         return true;
         
 
     }
 /* End templates functions */    
+
+/* Functions for managing batchs */
+
+    public function saveBatch($batchID, $users, $createuser = 'Anon(System)', $comment = "")
+    {
+        $result = 0;
+        
+        $sql = sprintf("INSERT INTO batches SET
+                        batchID=%s,
+                        createdBy=%s,
+                        Comment=%s",
+                        $this->db->quote($batchID),
+                        $this->db->quote($createuser),
+                        $this->db->quote($comment));
+
+        $affected =& $this->db->exec($sql);        
+
+        // Always check that result is not an error
+        if (PEAR::isError($affected)) {
+            AdminLog::getInstance()->log("Batches $batchID failed to add");
+            ErrorHandling::fatal_error('Adding batch failed: '. $affected->getMessage());
+        }
+        $result ++;        
+        
+        // $users is an array of usernames, nothing more
+        foreach($users as $user)
+        {
+            // Insert new record
+            $sql = sprintf("INSERT INTO batch SET
+                            batchID=%s,
+                            UserName=%s",
+                            $this->db->quote($batchID),
+                            $this->db->quote($user));
+            $affected =& $this->db->exec($sql);        
+
+            // Always check that result is not an error
+            if (PEAR::isError($affected)) {
+	            AdminLog::getInstance()->log("Batch $batchID failed to add $user");
+                ErrorHandling::fatal_error('Adding user to batch failed: '. $affected->getMessage());
+            }
+            $result ++;
+        }
+        
+
+                        
+        
+        return $result;
+    }
+    
+    public function getBatch($batchID = 0)
+    {
+        if($batchID == 0) // Get lastbatch
+        {
+            $batchID = $this->getSetting('lastbatch');
+        }
+        
+        $sql = sprintf("SELECT UserName
+            FROM batch
+            WHERE batchID=%s",
+            $this->db->quote($batchID)
+            );
+            
+        $result = $this->db->queryAll($sql, NULL , MDB2_FETCHMODE_ORDERED);
+        
+        // Always check that result is not an error
+        if (PEAR::isError($result)) {
+            ErrorHandling::fatal_error('Getting batch users failed: '. $result->getMessage());
+        }
+        
+        $results = array();
+        foreach ($result as $row)
+        {
+            $results[] = $row[0];
+        }
+        
+        return $results;
+    }
+    
+    public function nextBatchID()
+    {
+        // Get next available BatchID
+        // ISNULL/IFNULL aren't standards, COALESCE is
+        $sql = "SELECT COALESCE(MAX(batchID),0)+1 AS nextBatchID FROM batch";
+        
+        $nextBatchID = $this->db->queryOne($sql);
+        
+        // Always check that result is not an error
+        if (PEAR::isError($nextBatchID)) {
+            AdminLog::getInstance()->log("Unable to fetch nextBatchID");
+            ErrorHandling::fatal_error('Fetching nextBatchID failed: '. $nextBatchID->getMessage());
+        }
+        
+        return $nextBatchID;
+        
+    }
+
+/* End batches functions */
+
+/* Start Group Functions */
+
+/* getGroup($groupname = '') // Get single group or all groups
+ * setGroup($groupname, $settings) // Set group settings
+ * deleteGroup($groupname) // Delete group
+ */
+
+    public function getGroup($groupname = '')
+    {
+        if($groupname != '')
+        {
+            $sql = sprintf("SELECT
+                GroupName,
+                Expiry,
+                MaxOctets,
+                MaxSeconds,
+                Comment,
+                lastupdated
+                FROM groups
+                WHERE GroupName=%s",
+                $this->db->quote($groupname)
+                );
+        }else{
+            $sql = "SELECT
+                GroupName,
+                Expiry,
+                MaxOctets,
+                MaxSeconds,
+                Comment,
+                lastupdated
+                FROM groups";
+        
+        }
+            
+        $result = $this->db->queryAll($sql);
+        
+        // Always check that result is not an error
+        if (PEAR::isError($result)) {
+            ErrorHandling::fatal_error('Getting groups failed: '. $result->getMessage());
+        }
+        
+        foreach ($result as $results)
+        {
+            if(isset($results['MaxSeconds']))
+                $results['MaxTime'] = $results['MaxSeconds'] / 60;
+            if(isset($results['MaxOctets']))
+                $results['MaxMb'] = $results['MaxOctets'] /1024 /1024;
+            $groups[$results['GroupName']] = $results;
+        }
+        
+        return $groups;
+    
+    }
+    
+    public function setGroup($attributes)
+    {
+    
+        if(isset($attributes['MaxMb']))
+        {
+            $attributes['MaxOctets'] = bigintval($attributes['MaxMb'] * 1024 * 1024);
+            unset($attributes['MaxMb']);
+        }
+        
+        if(isset($attributes['MaxTime']))
+        {
+            $attributes['MaxSeconds'] = $attributes['MaxTime'] * 60;
+            unset($attributes['MaxTime']);
+        }
+        
+        $fields = array (
+            'GroupName' => array ( 'value' => $attributes['GroupName'], 'key' => true),
+            'Expiry'    => array ( 'value' => $attributes['Expiry']),
+            'MaxOctets' => array ( 'value' => $attributes['MaxOctets']),
+            'MaxSeconds'   => array ( 'value' => $attributes['MaxSeconds']),
+            'Comment'   => array ( 'value' => $attributes['Comment'])
+            );
+            
+        $result = $this->db->replace('groups', $fields);
+        if (PEAR::isError($result))
+        {
+            ErrorHandling::fatal_db_error(
+                T_('Adding Group query failed:  '), $result);
+        }
+        
+        return $result;
+
+    }
+    
+    public function deleteGroup($groupname)
+    {
+        $sql = sprintf("DELETE FROM groups WHERE GroupName=%s",
+            $this->db->quote($groupname));
+            
+        $result = $this->db->exec($sql);
+        if (PEAR::isError($result))
+        {
+            ErrorHandling::fatal_db_error(
+                T_('Delete Group query failed:  '), $result);
+        }
+        
+        return $result;
+    }
+
+/* End Group Functions */
     
     public function upgradeFromFiles()
     {
