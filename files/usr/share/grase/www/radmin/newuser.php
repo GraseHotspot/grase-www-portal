@@ -61,12 +61,15 @@ if(isset($_POST['newusersubmit']))
 	if($error ){
 		$user['Username'] = clean_text($_POST['Username']);
 		$user['Password'] = clean_text($_POST['Password']);
+		
 		$user['MaxMb'] = displayLocales(clean_number($_POST['MaxMb']));
 		$user['Max_Mb'] = displayLocales(clean_number($_POST['Max_Mb']));
 		if($_POST['Max_Mb'] == 'inherit' ) $user['Max_Mb'] = 'inherit';
+		
 		$user['MaxTime'] = displayLocales(clean_int($_POST['MaxTime']));
 		$user['Max_Time'] = displayLocales(clean_int($_POST['Max_Time']));	
 		if($_POST['Max_Time'] == 'inherit' ) $user['Max_Time'] = 'inherit';
+		
 		$user['Group'] = clean_text($_POST['Group']);
 		$user['Expiration'] = expiry_for_group(clean_text($_POST['Group'])); //"${_POST['Expirydate_Year']}-${_POST['Expirydate_Month']}-${_POST['Expirydate_Day']}";
 		$user['Comment'] = clean_text($_POST['Comment']);
