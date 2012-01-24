@@ -20,6 +20,8 @@
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+// TODO: This appears to be obsolete, replaced by Auth Class, remove old code
+
 class AdminAuthSettings extends AdminAuth
 {
     private $userlogins;

@@ -20,6 +20,7 @@
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+// TODO: This appears to be obsolete, replaced by Auth Class, remove old code
 
 /*function __autoload($class_name) {
     require_once $class_name . '.class.php';
