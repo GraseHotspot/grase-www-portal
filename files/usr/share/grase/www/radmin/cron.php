@@ -19,6 +19,7 @@
     You should have received a copy of the GNU General Public License
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
+$NONINTERACTIVE_SCRIPT = true;
 
 require_once('includes/constants.inc.php');
 
