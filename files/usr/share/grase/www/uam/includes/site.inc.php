@@ -60,8 +60,9 @@ $smarty->assign("hidelogoutbookmark", $Settings->getSetting('hidelogoutbookmark'
 
 custom_settings(array('hidefooter', 'hideheader', 'disableallcss', 'hidehelplink', 'hidelogoutbookmark'));
 
-
-$smarty->assign("logintitle", $Settings->getSetting('logintitle'));
+$logintitle = $Settings->getSetting('logintitle');
+if($logintitle == '') $logintitle = "$location Hotspot";
+$smarty->assign("logintitle", $logintitle);
 
 // Load templates needed by all pages
 load_templates(array('maincss'));
