@@ -43,10 +43,10 @@ function load_global_settings()
     //$sellable_data = $Settings->getSetting('sellableData'); if($sellable_data == "") $sellable_data = "4294967296"; //4Gb
     //$useable_data = $Settings->getSetting('useableData'); if($useable_data == "") $useable_data = "5368709120"; //5Gb
     $support_name = $Settings->getSetting('supportContactName'); if($support_name == "") $support_name = "Tim White";
-    $support_link = $Settings->getSetting('supportContactLink'); if($support_link == "") $support_link = "http://purewhite.id.au/";
+    $support_link = $Settings->getSetting('supportContactLink'); if($support_link == "") $support_link = "http://grasehotspot.com/";
 
-    $website_link = $Settings->getSetting('websiteLink'); if($website_link == "") $website_link = "http://ywam.org/";
-    $website_name = $Settings->getSetting('websiteName'); if($website_name == "") $website_name = "YWAM";
+    $website_link = $Settings->getSetting('websiteLink'); if($website_link == "") $website_link = "http://grasehotspot.org/";
+    $website_name = $Settings->getSetting('websiteName'); if($website_name == "") $website_name = "GRASE Hotspot Project";
     
     $locale = $Settings->getSetting('locale'); if($locale == '') $locale = "en_AU";
     

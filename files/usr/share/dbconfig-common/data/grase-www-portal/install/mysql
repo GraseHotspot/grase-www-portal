@@ -46,8 +46,8 @@ INSERT IGNORE INTO `settings` VALUES
 ('sellableData','2147483648'),
 ('userableData','3221225472'),
 ('supportContactName','Tim White'),
-('supportContactLink','http://purewhite.id.au/'),
-('websiteLink','http://hotspot.purewhite.id.au/'),('websiteName','GRASE Hotspot Project');
+('supportContactLink','http://grasehotspot.com/'),
+('websiteLink','http://grasehotspot.org/'),('websiteName','GRASE Hotspot Project');
 
 #
 # Table structure for table 'adminlog'
