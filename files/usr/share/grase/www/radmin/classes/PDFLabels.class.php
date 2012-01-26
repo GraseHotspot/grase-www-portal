@@ -181,6 +181,9 @@ class PDFLabels {
         $_PosY = $this->Margin_Top+($this->COUNTY*($this->Height+$this->Y_Space));
         
         $this->pdf->MultiCell($this->Width, $this->Height, $texte, $this->print_border, 'C', 0, 0, $_PosX, $_PosY, true, 0, false, true, $this->Height, 'M', true);
+        //$this->pdf->writeHTMLCell($this->Width, $this->Height, $_PosX, $_PosY,$texte, $this->print_border, 0,  false, true, 'C', true);
+        //$this->pdf->MultiCell($this->Width, $this->Height, $texte, $this->print_border, 'C', 0, 0, $_PosX, $_PosY, true, 0, true, true, $this->Height, 'M', true);
+
 
         $this->COUNTX++;
 

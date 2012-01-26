@@ -50,6 +50,11 @@ function validate_form()
 	if((is_numeric($Max_Mb) || $_POST['Max_Mb'] == 'inherit') && is_numeric($MaxMb)) $error[] = T_("Only set one Data limit field");
 	if((is_numeric($Max_Time) || $_POST['Max_Time'] == 'inherit') && is_numeric($MaxTime)) $error[] = T_("Only set one Time limit field");
 	
+	/*
+	 * TODO: Remove this limit as we now store batches in a new table
+	 * (Remove once we have a nice easy way to manage batches, accidently
+	 * creating 1000 users and not being able to delete them is a bad thing)
+	 */
 	if($NumberTickets > 50) $error[] = T_("Max of 50 tickets per batch"); // Limit due to limit in settings length which stores batch for printing
 
 	list($error2, $expirydate) = validate_post_expirydate();

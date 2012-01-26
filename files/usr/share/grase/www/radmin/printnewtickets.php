@@ -70,14 +70,24 @@ if(isset($_GET['user']))
 	
 	generate_pdf($users, $title);
 	
-function generate_pdf($users, $title){
-    
+function generate_pdf($users, $title)
+{
+
+    $ssid = $Settings->getSetting('printSSID');
+    $print_group = $Settings->getSetting('printGroup');
     $labels = new PDFLabels('Overflow', $title);
     foreach($users as $user)
     {
-        $label = T_("Username").": ".$user['Username'];
-        $label .= "\n".T_("Password").": ".$user['Password'];
-        $label .= "\n".T_("Voucher Type").": ".$user['Group'];        
+        $label = '';
+        if($ssid)
+            $label .= sprintf(T_("Wireless Network: %s"), $ssid) . "\n";        
+            
+        $label .= sprintf(T_("Username: %s"), $user['Username']) . "\n";
+        $label .= sprintf(T_("Password: %s"), $user['Password']) . "\n";
+        
+        if($print_group)
+            $label .= sprintf(T_("Voucher Type: "), $user['Group']) . "\n";
+            
         $labels->Add_PDF_Label($label);
     }
     $labels->Output_Doc();

@@ -64,7 +64,16 @@ $singlenetworkoptions = array(
     'opendnsbogusnxdomain' => array(
         "label" => T_("Bogus NXDOMAIN (OpenDNS)"),
         "description" => T_("Some DNS Providers return bogus NXDOMAIN to redirect you to their search engine. Block the bogus ip's and return a real NXDOMAIN for OpenDNS."),
-        "type" => "bool"),              
+        "type" => "bool"),
+    /* TODO: Move printing options to own settings page */
+    'printSSID' => array(
+	"label" => T_("Wireless Network Name (SSID)"),
+	"description" => T_("Wireless Network Name that clients connect to. Currently does not modify any settings but if set will print on the tickets"),
+	"type" => "text"),
+    'printGroup' => array(
+	"label" => T_("Print Ticket Type"),
+	"description" => T_("Print the ticket type (Group name) on tickets"),
+	"type" => "bool"),
     );    
 
 $wanif = array(net_get_wan_if());
