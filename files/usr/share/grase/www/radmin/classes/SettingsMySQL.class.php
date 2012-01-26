@@ -250,6 +250,8 @@ class SettingsMySQL extends Settings
     
     public function setTemplate($template, $value)
     {
+        // if $value == NULL we cause problems (assume user wants empty template
+        if($value == '') $value = ' ';
         // Check count not contents ^^
         if($this->checkExistsTemplate($template) == 0)
         {
