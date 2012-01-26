@@ -1,12 +1,20 @@
-grase-www-portal (3.6.4) purewhite; urgency=low
+grase-www-portal (3.6.9-dev1) purewhite; urgency=low
 
   * Show available languages
   * Fix for Group Attributes being in radreply instead of radcheck
   * Allow ether Apache or Nginx as the webserver (new conf packages split out)
   * Multiple Admin levels
   * SQL Fix 
+  * Small fix for translated sections
+  * PDF Printing instead of HTML printing for tickets
+  * Include TCPDF Library for PDF creation
+  * Small error handling fixes for non-interactive fixes
+  * Able to pick network interfaces (WAN/LAN) in interface
+  * Changed how groups are stored
+  * Group Settings (MaxMb MaxTime) are applied at user creation time now
+  * (This will most likely be 3.7 if no major bugs are found)
 
- -- Tim White <tim@tim-MacBook>  Fri, 16 Dec 2011 09:55:33 +0800
+ -- Tim White <tim@hotspot.purewhite.id.au>  Thu, 26 Jan 2012 20:38:32 +1000
 
 grase-www-portal (3.6.3) purewhite; urgency=low
 
