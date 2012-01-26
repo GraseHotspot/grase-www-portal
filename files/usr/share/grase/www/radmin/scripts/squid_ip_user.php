@@ -24,7 +24,14 @@ http_access deny Banned_Hosts
 */
 
 
+chdir(__DIR__ . '/../');
 
+function __autoload($class_name) {
+    require_once './classes/' . $class_name . '.class.php';
+}
+
+$NONINTERACTIVE_SCRIPT = TRUE;
+require_once 'includes/database_functions.inc.php';
 
 //require_once("database_functions.inc.php");
 
@@ -33,15 +40,17 @@ $fp = fopen('php://stdin', 'r');
 while($IP = trim(fgets($fp, 4096))){
 //	echo "$IP ".database_radacct_ip_to_username($IP)."\n";
     // TODO: See about converting this back to DB lookup
-	$username = chilli_ip_to_username($IP);
-	if($username){
+	//$username = chilli_ip_to_username($IP);
+	$username = DatabaseFunctions::getInstance()->activeSessionUsername($IP);
+	if($username != "ERR" && $username){
 		print "OK user=$username\n";
 	}else{
-		print "OK\n";
-		//print "ERR\n";
+		//print "OK\n";
+		print "ERR\n";
 	}
 }
 
+// Old function. Hopefully DatabaseFunctions will do this for us now
 function chilli_ip_to_username($IP){
 	$current_sessions = `chilli_query list`;
 	$current_sessions = split("\n", $current_sessions);

@@ -1400,8 +1400,32 @@ class DatabaseFunctions
 	    return $status;    
     }
            
-}
 
+/* Squid Related Functions HERE */
+    public function activeSessionUsername($ipaddress)
+    {
+/* select * from radacct WHERE FramedIPAddress != '' AND AcctStopTime = '' OR AcctStopTime IS NULL ORDER BY RadAcctId DESC LIMIT 4; */
+        $sql = sprintf("SELECT UserName from radacct
+            WHERE FramedIPAddress=%s
+            AND (AcctStopTime = '' OR AcctStopTime IS NULL)
+            ORDER BY RadAcctId DESC",
+            $this->db->quote($ipaddress)
+        );
+        
+        $user = $this->db->queryOne($sql);
+
+        if (PEAR::isError($user)) {
+            // TODO: This needs to be logged in admin log? Won't see error as it's squid calling it
+            return "ERR";
+            //ErrorHandling::fatal_db_error(
+            //    T_('Retrieving active session from ipaddress failed: '), $user);
+        }
+        
+        return $user;
+
+    }
+
+}
 
 
 ?>
