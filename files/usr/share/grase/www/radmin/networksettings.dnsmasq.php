@@ -102,10 +102,12 @@ if($networkoptions['opendnsbogusnxdomain'])
     }
 }
 
-foreach($networkoptions['bogusnx'] as $ip){
-    echo "bogus-nxdomain=$ip\n";
+if(is_array($networkoptions['bogusnx']))
+{
+    foreach($networkoptions['bogusnx'] as $ip){
+        echo "bogus-nxdomain=$ip\n";
+    }
 }
-
 
 echo "# last updated $lastchangets";
 ?>
