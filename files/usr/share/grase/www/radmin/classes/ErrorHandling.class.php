@@ -28,6 +28,18 @@ class ErrorHandling
         $AdminLog =& AdminLog::getInstance();
         $AdminLog->log_error($error);
         
+        global $NONINTERACTIVE_SCRIPT;
+        if(isset($NONINTERACTIVE_SCRIPT) && $NONINTERACTIVE_SCRIPT)
+        {
+            // Non-interactive script running, return error message as comments
+            echo "#error_occured\n";
+            echo "# An error has occured in the application\n";
+            echo "# ::$error::\n";
+            echo "# Memory used: ".memory_get_usage()."\n";
+            die();
+        
+        }        
+        
         if(file_exists('/usr/share/php/smarty/libs/') && ! is_link('/usr/share/php/smarty/libs/'))
         {
             // Debian bug http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=514305
@@ -56,6 +68,18 @@ class ErrorHandling
     {
         $AdminLog =& AdminLog::getInstance();
         $AdminLog->log_error($error . $pear_error_obj->toString());
+        
+        global $NONINTERACTIVE_SCRIPT;
+        if(isset($NONINTERACTIVE_SCRIPT) && $NONINTERACTIVE_SCRIPT)
+        {
+            // Non-interactive script running, return error message as comments
+            echo "#error_occured\n";
+            echo "# An error has occured in the application\n";
+            echo "# ::$error::\n";
+            echo "# Memory used: ".memory_get_usage()."\n";
+            die();
+        
+        }        
         
         if(file_exists('/usr/share/php/smarty/libs/') && ! is_link('/usr/share/php/smarty/libs/'))
         {
