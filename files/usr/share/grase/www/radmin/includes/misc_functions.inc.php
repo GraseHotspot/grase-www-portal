@@ -365,19 +365,20 @@ function clean_int($number)
 }
 
 
-// bigintval taken from http://stackoverflow.com/questions/990406/php-intval-equivalent-for-numbers-2147483647
-function bigintval($value) {
-  $value = trim($value);
-  if (ctype_digit($value)) {
-    return $value;
-  }
-  $value = preg_replace("/[^0-9](.*)$/", '', $value);
-  if (ctype_digit($value)) {
-    return $value;
-  }
-  return 0;
+if(!function_exists('bigintval')) {
+    // bigintval taken from http://stackoverflow.com/questions/990406/php-intval-equivalent-for-numbers-2147483647
+    function bigintval($value) {
+      $value = trim($value);
+      if (ctype_digit($value)) {
+        return $value;
+      }
+      $value = preg_replace("/[^0-9](.*)$/", '', $value);
+      if (ctype_digit($value)) {
+        return $value;
+      }
+      return 0;
+    }
 }
-
 
 
 /* TODO: check where this code came from */

@@ -20,7 +20,23 @@
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/* To prevent us needing to include misc_functions, we redefine bigintval
 require_once 'includes/misc_functions.inc.php';
+*/
+if(!function_exists('bigintval')) {
+    // bigintval taken from http://stackoverflow.com/questions/990406/php-intval-equivalent-for-numbers-2147483647
+    function bigintval($value) {
+      $value = trim($value);
+      if (ctype_digit($value)) {
+        return $value;
+      }
+      $value = preg_replace("/[^0-9](.*)$/", '', $value);
+      if (ctype_digit($value)) {
+        return $value;
+      }
+      return 0;
+    }
+}
 
 class DatabaseFunctions
 {
