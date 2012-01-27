@@ -1279,13 +1279,22 @@ class DatabaseFunctions
          * must delete then insert as they are single values */
         $this->delChilliConfig($option, '');
         // $value is '' so we delete any options as this is a single not multi
-    
+
+        if($value != '')
+        {
+            $test = "$option=$value";
+        }
+        else
+        {
+            $test = "$option";
+        }        
+        
         $affected =& $this->insert_radius_values_sql->execute(
             array(
                 RADIUS_CONFIG_USER,
                 RADIUS_CONFIG_ATTRIBUTE,
                 '+=',
-                "$option=$value"));
+                "$test"));
         
         if (PEAR::isError($affected))
         {

@@ -93,7 +93,7 @@ function generate_pdf($users, $title)
         $label .= sprintf(T_("Password: %s"), $user['Password']) . "\n";
         
         if($print_group)
-            $label .= sprintf(T_("Voucher Type: "), $user['Group']) . "\n";
+            $label .= sprintf(T_("Voucher Type: %s"), $user['Group']) . "\n";
             
         $labels->Add_PDF_Label($label);
     }
