@@ -81,6 +81,7 @@ function generate_pdf($users, $title)
     $networksettings = unserialize($Settings->getSetting('networkoptions'));
     $ssid = $networksettings['printSSID'];
     $print_group = $networksettings['printGroup'];
+    $print_expiry = $networksettings['printExpiry'];
     
     $labels = new PDFLabels('Overflow', $title);
     foreach($users as $user)
@@ -93,8 +94,18 @@ function generate_pdf($users, $title)
         $label .= sprintf(T_("Password: %s"), $user['Password']) . "\n";
         
         if($print_group)
+        {
             $label .= sprintf(T_("Voucher Type: %s"), $user['Group']) . "\n";
+        }
             
+        if($print_expiry 
+            && $user['FormatExpiration']
+            && $user['FormatExpiration'] != '--')
+        {
+            $label .= sprintf(T_("Expiry: %s"), $user['FormatExpiration']) . "\n";
+        }
+
+        
         $labels->Add_PDF_Label($label);
     }
     $labels->Output_Doc();

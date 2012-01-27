@@ -74,6 +74,10 @@ $singlenetworkoptions = array(
 	"label" => T_("Print Ticket Type"),
 	"description" => T_("Print the ticket type (Group name) on tickets"),
 	"type" => "bool"),
+    'printExpiry' => array(
+	"label" => T_("Print Ticket Expiry"),
+	"description" => T_("Print the expiry on tickets"),
+	"type" => "bool"),	
     );    
 
 $wanif = array(net_get_wan_if());

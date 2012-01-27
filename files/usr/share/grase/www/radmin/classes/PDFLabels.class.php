@@ -57,6 +57,7 @@ class PDFLabels {
     private $PaperOrientation = 'P';
     // Font
     private $Font_Name = 'Helvetica';
+    //private $Font_Name = 'Courier';
     
     private $COUNTX = 1;
     private $COUNTY = 1;
@@ -139,7 +140,7 @@ class PDFLabels {
         // create new PDF document
         $this->pdf = new TCPDF($this->PaperOrientation, $this->MetricDoc, $this->PaperSize, true, 'UTF-8', false);
         
-        $this->pdf->SetFont($this->Font_Name, '', $this->FontSize); 
+        $this->pdf->SetFont($this->Font_Name, 'B', $this->FontSize); 
         $this->pdf->SetMargins(0,0); 
         $this->pdf->SetAutoPageBreak(false);
         
