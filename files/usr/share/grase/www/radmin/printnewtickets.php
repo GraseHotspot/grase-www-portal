@@ -72,9 +72,16 @@ if(isset($_GET['user']))
 	
 function generate_pdf($users, $title)
 {
-
-    $ssid = $Settings->getSetting('printSSID');
-    $print_group = $Settings->getSetting('printGroup');
+    global $Settings;
+    /* The following will work in the future */
+    //$ssid = $Settings->getSetting('printSSID');
+    //$print_group = $Settings->getSetting('printGroup');
+    
+    // These settings are temporarily in network settings
+    $networksettings = unserialize($Settings->getSetting('networkoptions'));
+    $ssid = $networksettings['printSSID'];
+    $print_group = $networksettings['printGroup'];
+    
     $labels = new PDFLabels('Overflow', $title);
     foreach($users as $user)
     {
