@@ -17,7 +17,7 @@ Click on ether the Data Usage or Time Usage to see the users sessions"}
     {if $groupdata.$groupname.DataRecurLimit}{t 1=$groupdata.$groupname.DataRecurTimeFormatted}%1 Data Limit{/t} {$groupdata.$groupname.DataRecurLimitB|bytes}<br/>{/if}
     *}
     
-	<table id="{$groupname}userslistTable" class="userslistTable stripeMe">
+	<table id="{$groupname|underscorespaces}userslistTable" class="userslistTable stripeMe">
 	    <col style="width: 6em"/>
 	    {if $groupname == 'All'}<col style="width: 5em"/>{/if}
 	    <col span="4" style="width: 6em"/>	    	    

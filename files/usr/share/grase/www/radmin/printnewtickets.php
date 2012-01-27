@@ -54,6 +54,7 @@ if(isset($_GET['user']))
 	$title = sprintf(T_('Batch %s Vouchers'), $batch);
 }	
 
+    // TODO: ?? Offer HTML still?
     /* Don't need any smarty stuff here as we now do pdf
 	$users_groups = sort_users_into_groups($users); // TODO: Reports and then no longer sort user list by downloads??
 	$smarty->assign("users", $users);

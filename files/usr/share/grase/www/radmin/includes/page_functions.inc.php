@@ -131,7 +131,7 @@ function createmenuitems()
 	    {
 	      $submenu = array();
 	      
-	      if(is_array($toplevel['submenu']))
+	      if(isset($toplevel['submenu']) && is_array($toplevel['submenu']))
 	      {
 		foreach($toplevel['submenu'] as $secondlabel => $secondlevel)
 		{
