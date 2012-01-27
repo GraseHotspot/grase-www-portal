@@ -129,17 +129,21 @@ function createmenuitems()
         // If they don't have access to top level of a menu section, they also don't have access to the levels below it via the menu (still up to the PAGESACCESS to prevent access
 	    if(check_level($PAGESACCESS[$label]))
 	    {
-	        $submenu = array();
-    	    foreach($toplevel['submenu'] as $secondlabel => $secondlevel)
-    	    {
-	    	    if(check_level($PAGESACCESS[$secondlabel]))
-	    	        $submenu[$secondlabel] = $secondlevel;
-	    	}
-	    	$item = $toplevel;
-            unset($item['submenu']);
-	    	if(sizeof($submenu))
-    	    	$item['submenu'] = $submenu;	    	
-	    	$newmenubar[$label] = $item;
+	      $submenu = array();
+	      
+	      if(is_array($toplevel['submenu']))
+	      {
+		foreach($toplevel['submenu'] as $secondlabel => $secondlevel)
+		{
+			if(check_level($PAGESACCESS[$secondlabel]))
+			    $submenu[$secondlabel] = $secondlevel;
+		}
+	      }
+	      $item = $toplevel;
+	      unset($item['submenu']);
+	      if(sizeof($submenu))
+		  $item['submenu'] = $submenu;	    	
+	      $newmenubar[$label] = $item;
 	    }
 	}
 	return $newmenubar;
