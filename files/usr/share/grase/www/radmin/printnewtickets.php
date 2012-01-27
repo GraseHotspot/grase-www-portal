@@ -33,10 +33,19 @@ if(isset($_GET['user']))
 	$title = clean_text($_GET['user']) . ' Voucher';
 }elseif(isset($_GET['batch']))
 {
-    $batch = clean_number($_GET['batch']);
-	$users = database_get_users($Settings->getBatch($batch) );
-	if(!is_array($users)) $users = array();
-	$title = sprintf(T_('Batch %s Vouchers'), $batch);
+    $batches = explode(',', $_GET['batch']);
+
+    $users = array();
+    foreach($batches as $batch)
+    {
+        $batch = clean_number($batch);
+	    $fetchusers = database_get_users($Settings->getBatch($batch) );
+	    if(!is_array($fetchusers)) $fetchusers = array();
+	    $users = array_merge($users, $fetchusers);
+	}
+	
+	// TODO: replace , with _ in below
+    $title = sprintf(T_('Batch %s Vouchers'), clean_number($_GET['batch']));	
 }else
 {
     $batch = $Settings->getSetting('lastbatch');
