@@ -1235,7 +1235,7 @@ class DatabaseFunctions
                 T_('Retrieving Chilli Config Single Value failed: '), $value);
         }
         
-        list($option, $value) = explode('=',$value);
+        @ list($option, $value) = explode('=',$value, 2);
         
         return $value;
 

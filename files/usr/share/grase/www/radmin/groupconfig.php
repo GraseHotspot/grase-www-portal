@@ -106,44 +106,46 @@ if(isset($_POST['submit']))
         // Process radgroupreply options
         
         // validate limits
-	    //$error[] = validate_datalimit($groupdatalimit[$key]);
-	    $error[] = validate_timelimit($grouptimelimit[$key]);
-	    $error[] = validate_timelimit($grouprecurtimelimit[$key]);   
-	    //$error[] = validate_datalimit($grouprecurdatalimit[$key]);
-	    $error[] = validate_recur($grouprecurtime[$key]);
-	    $error[] = validate_recur($grouprecurdata[$key]);
-	    $error[] = validate_recurtime($grouprecurtime[$key], $grouprecurtimelimit[$key]);	    
-	    $error[] = validate_bandwidth($groupdownlimit[$key]);
-	    $error[] = validate_bandwidth($groupuplimit[$key]);
-	    $error[] = validate_yesno($simultaneoususe[$key]);	    
-	    $error = array_filter($error);
-	    
-	    if(isset($grouprecurtime[$key]) xor isset($grouprecurtimelimit[$key]))
-	    {
-	        $error[] = sprintf(T_("Need both a time limit and recurrance for '%s'"), clean_text($name));
-	    }
-	    
-	    /*if(isset($grouprecurdata[$key]) xor isset($grouprecurdatalimit[$key]))
-	    {
-	        $error[] = sprintf(T_("Need both a data limit and recurrance for '%s'"), clean_text($name));
-	    }*/	    
-	    
+	//$error[] = validate_datalimit($groupdatalimit[$key]);
+	
+	// Silence warnings (@) as we don't care if they are set or not'
+	$error[] = @ validate_timelimit($grouptimelimit[$key]);
+	$error[] = @ validate_timelimit($grouprecurtimelimit[$key]);   
+	//$error[] = validate_datalimit($grouprecurdatalimit[$key]);
+	$error[] = @ validate_recur($grouprecurtime[$key]);
+	$error[] = @ validate_recur($grouprecurdata[$key]);
+	$error[] = @ validate_recurtime($grouprecurtime[$key], $grouprecurtimelimit[$key]);	    
+	$error[] = @ validate_bandwidth($groupdownlimit[$key]);
+	$error[] = @ validate_bandwidth($groupuplimit[$key]);
+	$error[] = @ validate_yesno($simultaneoususe[$key]);	    
+	$error = array_filter($error);
+	
+	if(isset($grouprecurtime[$key]) xor isset($grouprecurtimelimit[$key]))
+	{
+	    $error[] = sprintf(T_("Need both a time limit and recurrance for '%s'"), clean_text($name));
+	}
+	
+	/*if(isset($grouprecurdata[$key]) xor isset($grouprecurdatalimit[$key]))
+	{
+	    $error[] = sprintf(T_("Need both a data limit and recurrance for '%s'"), clean_text($name));
+	}*/	    
+	
         $groups[clean_text($name)] = array_filter(array(
             //'MaxMb' => clean_number($groupdatalimit[$key]),
             //'MaxTime' => clean_int($grouptimelimit[$key]),
             //'DataRecurTime' => clean_text($grouprecurdata[$key]),
             //'DataRecurLimit' => clean_number($grouprecurdatalimit[$key]),
-            'TimeRecurTime' => clean_text($grouprecurtime[$key]),
-            'TimeRecurLimit' => clean_int($grouprecurtimelimit[$key]),
-            'BandwidthDownLimit' => clean_int($groupdownlimit[$key]),
-            'BandwidthUpLimit' => clean_int($groupuplimit[$key]),
-            'SimultaneousUse' => $simultaneoususe[$key],
+            'TimeRecurTime' => @ clean_text($grouprecurtime[$key]),
+            'TimeRecurLimit' => @ clean_int($grouprecurtimelimit[$key]),
+            'BandwidthDownLimit' => @ clean_int($groupdownlimit[$key]),
+            'BandwidthUpLimit' => @ clean_int($groupuplimit[$key]),
+            'SimultaneousUse' => @ $simultaneoususe[$key],
         ));
         $groupsettings[clean_text($name)] = array_filter(array(
             'GroupName' => clean_text($name),
-            'Expiry'    => $groupexpiry[$key],
-            'MaxMb'     => clean_number($groupdatalimit[$key]),
-            'MaxTime'   => clean_int($grouptimelimit[$key]),
+            'Expiry'    => @ $groupexpiry[$key],
+            'MaxMb'     => @ clean_number($groupdatalimit[$key]),
+            'MaxTime'   => @ clean_int($grouptimelimit[$key]),
         ));        
 
     }

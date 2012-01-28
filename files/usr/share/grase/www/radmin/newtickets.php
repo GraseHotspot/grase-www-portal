@@ -29,7 +29,7 @@ require_once 'includes/database_functions.inc.php';
 
 function validate_form()
 {
-	global $expirydate;
+	//global $expirydate;
 	$error = array();
 	//if(! checkDBUniqueUsername($_POST['Username'])) $error.= "Username already taken<br/>";
 	//if ( ! $_POST['Username'] || !$_POST['Password'] ) $error.="Username and Password are both Required<br/>";
@@ -57,8 +57,8 @@ function validate_form()
 	 */
 	if($NumberTickets > 50) $error[] = T_("Max of 50 tickets per batch"); // Limit due to limit in settings length which stores batch for printing
 
-	list($error2, $expirydate) = validate_post_expirydate();
-	$error = array_merge($error, $error2);
+	//list($error2, $expirydate) = validate_post_expirydate();
+	//$error = array_merge($error, $error2);
 	$error[] = validate_group("", $_POST['Group']);
 	return array_filter($error);
 }
@@ -100,14 +100,14 @@ if(isset($_POST['createticketssubmit']))
 		if(is_numeric(clean_number($_POST['MaxMb'])))
 		    $MaxMb = clean_number($_POST['MaxMb']);
 		if($_POST['Max_Mb'] == 'inherit')
-		    $MaxMb = $groupsettings[$group]['MaxMb'];
+		    $MaxMb = @ $groupsettings[$group]['MaxMb'];
 		    
 		if(is_numeric(clean_int($_POST['Max_Time'])))
 		    $MaxTime =  clean_int($_POST['Max_Time']);
 		if(is_numeric(clean_number($_POST['MaxTime'])))
 		    $MaxTime = clean_int($_POST['MaxTime']);
 		if($_POST['Max_Time'] == 'inherit')
-		    $MaxTime = $groupsettings[$group]['MaxTime'];
+		    $MaxTime = @ $groupsettings[$group]['MaxTime'];
 		    
 		    
 		for($i = 0; $i < $user['numberoftickets']; $i++)
@@ -130,6 +130,8 @@ if(isset($_POST['createticketssubmit']))
 		}
 		//print strlen(serialize($createdusernames));
 		$batchID = $Settings->nextBatchID();
+		
+		// TODO: BatchComment
 		$Settings->saveBatch($batchID, $createdusernames, $Auth->getUsername(), clean_text($_POST['BatchComment']));
 		$Settings->setSetting('lastbatch', $batchID);
 		$createdusers = database_get_users($createdusernames);

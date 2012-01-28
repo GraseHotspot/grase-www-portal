@@ -454,10 +454,10 @@ class SettingsMySQL extends Settings
         
         $fields = array (
             'GroupName' => array ( 'value' => $attributes['GroupName'], 'key' => true),
-            'Expiry'    => array ( 'value' => $attributes['Expiry']),
-            'MaxOctets' => array ( 'value' => $attributes['MaxOctets']),
-            'MaxSeconds'   => array ( 'value' => $attributes['MaxSeconds']),
-            'Comment'   => array ( 'value' => $attributes['Comment'])
+            'Expiry'    => array ( 'value' => @ $attributes['Expiry']),
+            'MaxOctets' => array ( 'value' => @ $attributes['MaxOctets']),
+            'MaxSeconds'   => array ( 'value' => @ $attributes['MaxSeconds']),
+            'Comment'   => array ( 'value' => @ $attributes['Comment'])
             );
             
         $result = $this->db->replace('groups', $fields);

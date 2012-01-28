@@ -80,6 +80,7 @@ class DatabaseReports
         }
         
         $results = $res->fetchAll(MDB2_FETCHMODE_ASSOC, false, false);
+        $data = array();
         foreach($results as $result)
         {
             $data[] = array($result['Label'], intval($result['Data']));
