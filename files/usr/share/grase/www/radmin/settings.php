@@ -103,7 +103,7 @@ function update_location($location)
 	    if($Settings->setSetting('locationName', $location))
 	    {
 		    $success[] = T_("Location name updated");
-		    AdminLog::getInstance()->log(T_("Location Name changed to")." $new_location");
+		    AdminLog::getInstance()->log(T_("Location Name changed to")." $location");
 		    $smarty->assign("Title", $location . " - " . APPLICATION_NAME); //TODO: remove need for this with setting reload function
 	    }
 	    else
