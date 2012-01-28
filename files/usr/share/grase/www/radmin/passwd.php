@@ -42,6 +42,7 @@ require_once 'includes/database_functions.inc.php';
     $admin_users = getAdminUsers();
 
 	$errors = array();
+	$success = array();
 	
 	if(isset($_POST['changepasswordsubmit'])){
 	    if(	isset($_POST['OldPassword']) &&
@@ -71,7 +72,7 @@ require_once 'includes/database_functions.inc.php';
 	{
 		if(isset($admin_users[$_POST['newUsername']]))
 		{
-			$errors[] = sprintf(T_("User %s already exists"), $_POST['Username']);
+			$errors[] = sprintf(T_("User %s already exists"), $_POST['newUsername']);
 		}elseif($_POST['newPassword'] && $_POST['newUsername'])
 		{
 			$success[] = T_("User Created");
