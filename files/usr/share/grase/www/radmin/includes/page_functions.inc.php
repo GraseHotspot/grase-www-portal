@@ -280,7 +280,7 @@ function grouplist()
     $groups = array();
     foreach($Settings->getGroup() as $groupname => $group)
     {
-        $groups[$groupname] = $groupname;
+        $groups[$groupname] = $group['GroupLabel'];
     }
     return $groups;
 }

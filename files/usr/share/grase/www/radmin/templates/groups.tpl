@@ -17,7 +17,7 @@
         
     {foreach from=$groupsettings item=settings key=groupname}        
         <div class="jsmultioption">
-            <label>{t}Name{/t}</label><input type="text" name="groupname[]" value='{$groupname}'/>
+            <label>{t}Name{/t}</label><input type="text" name="groupname[]" value='{$settings.GroupLabel}'/>
             <label>{t}Expiry{/t}</label><input type="text" name="groupexpiry[]" value='{$settings.Expiry}'/>
             
             <label>{t}Default Data Limit (MiB){/t}</label>

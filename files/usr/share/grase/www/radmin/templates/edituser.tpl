@@ -25,7 +25,8 @@
 
 <div>
     <label for='Group'>Group</label>
-    {html_options name="Group" options=$Usergroups selected=$user.Group}    
+    {*{html_options name="Group" options=$Usergroups selected=$user.Group}   *}
+    {html_options name="Group" id="Group" options=$groups selected=$user.Group}      
     <span id='GroupInfo'>{t}Choose the users group (Expiry is based on the user group){/t}</span>
     
 <br/>{include file="grouppropertiesinfo.tpl"}

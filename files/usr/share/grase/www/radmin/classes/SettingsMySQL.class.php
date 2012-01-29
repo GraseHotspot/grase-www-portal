@@ -75,6 +75,7 @@ class SettingsMySQL extends Settings
     private $dbSchemaGroups =
         "CREATE TABLE `groups` (
             `GroupName` VARCHAR(64) NOT NULL,
+            `GroupLabel` VARCHAR(64) NOT NULL,
             `Expiry` VARCHAR(100) NULL,
             `MaxOctets` BIGINT(32) UNSIGNED NULL,
             `MaxSeconds` BIGINT(32) UNSIGNED NULL,
@@ -396,6 +397,7 @@ class SettingsMySQL extends Settings
         {
             $sql = sprintf("SELECT
                 GroupName,
+                GroupLabel,
                 Expiry,
                 MaxOctets,
                 MaxSeconds,
@@ -408,6 +410,7 @@ class SettingsMySQL extends Settings
         }else{
             $sql = "SELECT
                 GroupName,
+                GroupLabel,
                 Expiry,
                 MaxOctets,
                 MaxSeconds,
@@ -454,6 +457,7 @@ class SettingsMySQL extends Settings
         
         $fields = array (
             'GroupName' => array ( 'value' => $attributes['GroupName'], 'key' => true),
+            'GroupLabel' => array ( 'value' => $attributes['GroupLabel']),
             'Expiry'    => array ( 'value' => @ $attributes['Expiry']),
             'MaxOctets' => array ( 'value' => @ $attributes['MaxOctets']),
             'MaxSeconds'   => array ( 'value' => @ $attributes['MaxSeconds']),

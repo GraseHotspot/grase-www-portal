@@ -87,6 +87,8 @@ function generate_pdf($users, $title)
     //$ssid = $Settings->getSetting('printSSID');
     //$print_group = $Settings->getSetting('printGroup');
     
+    $groupsettings = grouplist();
+    
     // These settings are temporarily in network settings
     $networksettings = unserialize($Settings->getSetting('networkoptions'));
     $ssid = $networksettings['printSSID'];
@@ -105,7 +107,8 @@ function generate_pdf($users, $title)
         
         if($print_group)
         {
-            $label .= sprintf(T_("Voucher Type: %s"), $user['Group']) . "\n";
+            $label .= sprintf(T_("Voucher Type: %s"), $groupsettings[$user['Group']]) . "\n";
+            
         }
             
         if($print_expiry 

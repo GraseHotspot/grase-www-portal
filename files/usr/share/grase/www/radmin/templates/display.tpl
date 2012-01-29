@@ -5,14 +5,14 @@ Click on ether the Data Usage or Time Usage to see the users sessions"}
 <div id='userslist' style="overflow:hidden;"><!-- jQuery UI bug #5601 requires overflow:hidden style due to float left menu -->
     <ul id="tabselector">
     {foreach from=$users_groups item=group key=groupname name=groupmenuloop}
-        <li><a href="#list{$groupname|underscorespaces}">{$groupname}</a></li>
+        <li><a href="#list{$groupname}">{if $groupsettings.$groupname.GroupLabel}{$groupsettings.$groupname.GroupLabel}{else}{$groupname}{/if}</a></li>
     {/foreach}
     </ul>
     {foreach from=$users_groups item=group key=groupname name=grouploop}
-    <div id="list{$groupname|underscorespaces}" class="tabcontent">
+    <div id="list{$groupname}" class="tabcontent">
 {* We now show group limits in edit user page, commented out of here for now as it looks odd
-    {if $groupdata.$groupname.MaxOctets}{t}Data Limit{/t} {$groupdata.$groupname.MaxOctets|bytes}<br/>{/if}
-    {if $groupdata.$groupname.MaxSeconds}{t}Time Limit{/t} {$groupdata.$groupname.MaxSeconds|seconds}<br/>{/if}    
+    {if $groupsettings.$groupname.MaxOctets}{t}Data Limit{/t} {$groupdata.$groupname.MaxOctets|bytes}<br/>{/if}
+    {if $groupsettings.$groupname.MaxSeconds}{t}Time Limit{/t} {$groupdata.$groupname.MaxSeconds|seconds}<br/>{/if}    
     {if $groupdata.$groupname.TimeRecurLimit}{t 1=$groupdata.$groupname.TimeRecurTimeFormatted}%1 Time Limit{/t} {$groupdata.$groupname.TimeRecurLimitS|seconds}<br/>{/if}
     {if $groupdata.$groupname.DataRecurLimit}{t 1=$groupdata.$groupname.DataRecurTimeFormatted}%1 Data Limit{/t} {$groupdata.$groupname.DataRecurLimitB|bytes}<br/>{/if}
     *}

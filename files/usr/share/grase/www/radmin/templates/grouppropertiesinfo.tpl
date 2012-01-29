@@ -14,7 +14,7 @@
 {foreach from=$groupsettings item=attributes key=groupname}
 
     <tr>
-        <td>{$groupname}</td>
+        <td>{$attributes.GroupLabel}</td>
         <td>{$attributes.Expiry}</td>
         <td>{$attributes.MaxMb}</td>
         <td>{$attributes.MaxTime}</td>        

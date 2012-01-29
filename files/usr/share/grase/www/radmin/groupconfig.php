@@ -88,7 +88,7 @@ if(isset($_POST['submit']))
             
         }
         // Process expiry's    
-        $groupexpiries[clean_text($name)] = $groupexpiry[clean_text($key)];
+        $groupexpiries[clean_groupname($name)] = $groupexpiry[clean_text($key)];
         
         // Validate expiries
         if(isset($groupexpiry[$key]))
@@ -130,7 +130,7 @@ if(isset($_POST['submit']))
 	    $error[] = sprintf(T_("Need both a data limit and recurrance for '%s'"), clean_text($name));
 	}*/	    
 	
-        $groups[clean_text($name)] = array_filter(array(
+        $groups[clean_groupname($name)] = array_filter(array(
             //'MaxMb' => clean_number($groupdatalimit[$key]),
             //'MaxTime' => clean_int($grouptimelimit[$key]),
             //'DataRecurTime' => clean_text($grouprecurdata[$key]),
@@ -141,8 +141,9 @@ if(isset($_POST['submit']))
             'BandwidthUpLimit' => @ clean_int($groupuplimit[$key]),
             'SimultaneousUse' => @ $simultaneoususe[$key],
         ));
-        $groupsettings[clean_text($name)] = array_filter(array(
-            'GroupName' => clean_text($name),
+        $groupsettings[clean_groupname($name)] = array_filter(array(
+            'GroupName' => clean_groupname($name),
+            'GroupLabel' => clean_text($name),
             'Expiry'    => @ $groupexpiry[$key],
             'MaxMb'     => @ clean_number($groupdatalimit[$key]),
             'MaxTime'   => @ clean_int($grouptimelimit[$key]),

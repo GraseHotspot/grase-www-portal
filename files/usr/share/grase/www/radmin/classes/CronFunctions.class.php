@@ -264,7 +264,8 @@ class CronFunctions extends DatabaseFunctions
             foreach($groups as $group => $expiry)
             {
                 $attributes = array();
-                $attributes['GroupName'] = $group;
+                $attributes['GroupName'] = clean_groupname($group);
+                $attributes['GroupLabel'] = $group;
                 $attributes['Expiry'] = $expiry;
                 $attributes['MaxOctets'] = $groupattributes[$group]['MaxOctets'];
                 $attributes['MaxSeconds'] = $groupattributes[$group]['MaxSeconds'];

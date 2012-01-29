@@ -335,6 +335,12 @@ function underscorespaces($text)
     return str_replace(array(' ', '$', '(', ')'), '_', $text);
 }
 
+function clean_groupname($text)
+{
+  // Get the group name in a suitable format
+  return underscorespaces(clean_text($text));
+}
+
 
 function clean_text($text)
 {
