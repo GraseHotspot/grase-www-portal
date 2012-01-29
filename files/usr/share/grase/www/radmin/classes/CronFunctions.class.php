@@ -266,11 +266,11 @@ class CronFunctions extends DatabaseFunctions
                 $attributes = array();
                 $attributes['GroupName'] = clean_groupname($group);
                 $attributes['GroupLabel'] = $group;
-                $attributes['Expiry'] = $expiry;
-                $attributes['MaxOctets'] = $groupattributes[$group]['MaxOctets'];
-                $attributes['MaxSeconds'] = $groupattributes[$group]['MaxSeconds'];
+                $attributes['Expiry'] = @ $expiry;
+                $attributes['MaxOctets'] = @ $groupattributes[$group]['MaxOctets'];
+                $attributes['MaxSeconds'] = @ $groupattributes[$group]['MaxSeconds'];
                 // No comment stored, but oh well
-                $attributes['Comment'] = $groupattributes[$group]['Comment'];
+                $attributes['Comment'] = @ $groupattributes[$group]['Comment'];
                 
                 $results += $Settings->setGroup($attributes);
             }

@@ -22,7 +22,7 @@
 $NONINTERACTIVE_SCRIPT = true;
 
 require_once('includes/constants.inc.php');
-require_once('includes/misc_functions.inc.php')
+require_once('includes/misc_functions.inc.php');
 
 function __autoload($class_name) {
     require_once './classes/' . $class_name . '.class.php';

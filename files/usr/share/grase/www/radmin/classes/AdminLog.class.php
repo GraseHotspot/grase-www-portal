@@ -67,6 +67,7 @@ class AdminLog
         
         if(! $this->checkTablesExist()) $this->createTables();
 
+	// TODO: Make timestamp auto update in sql
 	// Share SQL Query between functions
         $this->log_sql = $this->db->prepare('INSERT INTO adminlog
         	(`timestamp`, username, ipaddress, action)
@@ -144,6 +145,7 @@ class AdminLog
      
     public function log($action)
     {
+	// TODO: Make timestamp auto update in sql
         $affected =& $this->log_sql->execute(array(date('Y-m-d H:i:s'),
                 $this->Auth->getUsername(),
                 $this->ip,
