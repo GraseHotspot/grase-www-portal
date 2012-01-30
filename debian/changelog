@@ -1,4 +1,4 @@
-grase-www-portal (3.6.9-dev5) purewhite; urgency=low
+grase-www-portal (3.7.0) purewhite; urgency=low
 
   * Show available languages
   * Fix for Group Attributes being in radreply instead of radcheck
@@ -14,9 +14,9 @@ grase-www-portal (3.6.9-dev5) purewhite; urgency=low
   * Group Settings (MaxMb MaxTime) are applied at user creation time now
   * Bug fix that broke cron (non-interactive plus NULL value)
   * Bug fix, show '$Location Hotspot' when no Login Page Title is defined
-  * (This will most likely be 3.7 if no major bugs are found)
+  * Store group label and group name differently, group name is sanitised
 
- -- Tim White <tim@hotspot.purewhite.id.au>  Fri, 27 Jan 2012 17:57:19 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Mon, 30 Jan 2012 14:38:54 +1000
 
 grase-www-portal (3.6.3) purewhite; urgency=low
 
