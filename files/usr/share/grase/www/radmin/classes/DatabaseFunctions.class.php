@@ -1390,6 +1390,15 @@ class DatabaseFunctions
 	    {
 	        $status = LOCKED_ACCOUNT;
 	    }
+	    elseif(isset($Userdata['Max-All-Sessions']) && ($Userdata['Max-All-Sessions'] - $Userdata['TotalTimeMonth']) <= 0 )
+	    {
+	        $status = LOCKED_ACCOUNT;
+	    }
+	    elseif(isset($Userdata['Max-All-Sessions']) && ($Userdata['TotalTimeMonth'] / $Userdata['Max-All-Sessions']) > 0.90 )
+	    {
+	        $status = LOWTIME_ACCOUNT;
+	    }
+	    // TODO: Change this to a percentage?
 	    elseif(isset($Userdata['Max-Octets']) && ($Userdata['Max-Octets'] - $Userdata['AcctTotalOctets']) <= 1024*1024*2 )
 	    {
 	        $status = LOWDATA_ACCOUNT;
