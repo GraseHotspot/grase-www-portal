@@ -39,14 +39,16 @@ MAC=$(ifconfig | grep -o -E '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}'|tr -d ":"
 location=$(echo "SELECT value FROM settings WHERE setting = 'locationName';" | mysql  -h $radmin_sql_server -u $radmin_sql_username $radmin_sql_password $radmin_sql_database -s)
 hostname=$(hostname)
 
-(cat << EOM
-To: backups+db@hotspot.purewhite.id.au
-Subject: GRASE DB Backup `date +%Y%m%d` ($location - $hostname$MAC)
-MIME-Version: 1.0
-Content-Disposition: attachment; filename=$backup_file
-Content-Type: application/x-gzip; name=$backup_file
-Content-Transfer-Encoding: base64
 
-EOM
-base64 $backup_file ) | sendmail backups+db@hotspot.purewhite.id.au
+# TODO: Make offsite backups an option in admin interface (we already have root to read database, so can easily extract required settings)
+#(cat << EOM
+#To: backups+db@hotspot.purewhite.id.au
+#Subject: GRASE DB Backup `date +%Y%m%d` ($location - $hostname$MAC)
+#MIME-Version: 1.0
+#Content-Disposition: attachment; filename=$backup_file
+#Content-Type: application/x-gzip; name=$backup_file
+#Content-Transfer-Encoding: base64
+#
+#EOM
+#base64 $backup_file ) | sendmail backups+db@hotspot.purewhite.id.au
 
