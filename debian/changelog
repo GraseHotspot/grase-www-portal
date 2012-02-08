@@ -1,3 +1,10 @@
+grase-www-portal (3.7.1) purewhite; urgency=low
+
+  * Security flaw fixed (bug #54) sending data to 3rd party
+  * Preliminary changes to how we determin when an account is approaching it's limits
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Wed, 08 Feb 2012 22:53:31 +1000
+
 grase-www-portal (3.7.0) purewhite; urgency=low
 
   * Show available languages
