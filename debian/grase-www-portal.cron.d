@@ -4,7 +4,7 @@
 # m h	dom mon dow	command
 
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-MAILTO=hotspot@hotspot.purewhite.id.au
+#MAILTO=hotspot@hotspot.purewhite.id.au
 ## NEEDS USERNAME
 #@daily	        root	/root/system/install/upgrade_script.sh
 #@reboot         root	/usr/share/grase/www/radmin/scripts/radius_stale > /dev/null
