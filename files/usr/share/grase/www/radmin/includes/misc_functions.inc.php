@@ -289,6 +289,8 @@ function sort_users_into_groups($users)
 {
 	$users_group = array();
 	$expiredusers = array();
+	$lockedusers = array();
+	$lowusers = array();
 	
 	foreach($users as $user)
 	{
@@ -305,6 +307,18 @@ function sort_users_into_groups($users)
 		{
 		    $expiredusers[] = $user;
 		}
+		
+		if($user['account_status'] == LOCKED_ACCOUNT)
+		{
+		    $lockedusers[] = $user;
+		}
+		
+
+		if($user['account_status'] == LOWDATA_ACCOUNT || $user['account_status'] == LOWTIME_ACCOUNT)
+		{
+		    $lowusers[] = $user;
+		}		
+		
 	}
     
     // Sort array alphabetically
@@ -318,8 +332,15 @@ function sort_users_into_groups($users)
 	if(sizeof($machines) > 0)
     	$users_group[T_("Computers")] = $machines;
 	
+	// Built in sort groups (can't have spaces in name)
 	if(sizeof($expiredusers) > 0)
 	    $users_group[T_("Expired")] = $expiredusers;
+	    
+	if(sizeof($lockedusers) > 0)
+	    $users_group[T_("Out Of Quota")] = $lockedusers;
+	    
+	if(sizeof($lowusers) > 0)
+	    $users_group[T_("Low Quota")] = $lowusers;	    	    
 	    
 	return $users_group;
 }
