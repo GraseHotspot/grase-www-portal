@@ -363,7 +363,17 @@ class DatabaseFunctions
 
         // Get Total Session Time
         $Userdata['TotalTimeMonth'] = $this->getUserTotalSessionTime($username);
+        $Userdata['TotalTimeAll'] = $this->getUserSessionTimeTotal($username);
 
+
+        // User remaining time
+        
+        if (isset($Userdata['Max-All-Session'])) 
+        {
+            $Userdata['RemainingSeconds'] = $Userdata['Max-All-Session'] - $Userdata['TotalTimeMonth'];
+            if($Userdata['RemainingSeconds'] < 0)
+                $Userdata['RemainingSeconds'] = 0;
+        }
 
         // Get Last Logout
         $Userdata['LastLogout'] = $this->getUserLastLogoutTime($username);
@@ -491,6 +501,7 @@ class DatabaseFunctions
         return $LastLogout;    
     }
     
+    // Session time for current month TODO: rename?
     public function getUserTotalSessionTime($username)
     {
         // Get Total Session Time
@@ -510,6 +521,30 @@ class DatabaseFunctions
 
         return $results;
     }
+    
+    // Session time for all time
+    public function getUserSessionTimeTotal($username)
+    {
+        // Get Time usage
+        $sql = sprintf("SELECT (
+		                SUM(mtotacct.ConnTotDuration)
+		              )
+		              AS TotalTime
+		              FROM mtotacct
+		              WHERE UserName= %s",
+		              $this->db->quote($username, 'text', true, true));
+		              
+		$results = $this->db->queryOne($sql);
+		if (PEAR::isError($results))
+		{
+            ErrorHandling::fatal_db_error(
+                T_('Get User Time Usage (Total) Query failed: '), $results);
+        }
+        
+        // We want a real total, not an archived total
+        return $this->getUserTotalSessionTime($username) + $results + 0; // Need to zero it if null
+    }    
+    
     
     public function getUserDataUsage($username)
     {
@@ -550,7 +585,8 @@ class DatabaseFunctions
                 T_('Get User Data Usage (Total) Query failed: '), $results);
         }
         
-        return $results + 0; // Need to zero it if null
+        // We want a real total, not an archived total
+        return $this->getUserDataUsage($username) + $results + 0; // Need to zero it if null
     }    
     
     public function getMonthlyAccounts()
@@ -1390,16 +1426,16 @@ class DatabaseFunctions
 	    {
 	        $status = LOCKED_ACCOUNT;
 	    }
-	    elseif(isset($Userdata['Max-All-Sessions']) && ($Userdata['Max-All-Sessions'] - $Userdata['TotalTimeMonth']) <= 0 )
+	    elseif(isset($Userdata['Max-All-Session']) && ($Userdata['Max-All-Session'] - $Userdata['TotalTimeMonth']) <= 0 )
 	    {
 	        $status = LOCKED_ACCOUNT;
 	    }
-	    elseif(isset($Userdata['Max-All-Sessions']) && ($Userdata['TotalTimeMonth'] / $Userdata['Max-All-Sessions']) > 0.90 )
+	    elseif(isset($Userdata['Max-All-Session']) && ($Userdata['TotalTimeMonth'] / $Userdata['Max-All-Session']) > 0.90 )
 	    {
 	        $status = LOWTIME_ACCOUNT;
 	    }
 	    // TODO: Change this to a percentage?
-	    elseif(isset($Userdata['Max-Octets']) && ($Userdata['Max-Octets'] - $Userdata['AcctTotalOctets']) <= 1024*1024*2 )
+	    elseif(isset($Userdata['Max-Octets']) && ($Userdata['AcctTotalOctets'] /$Userdata['Max-Octets']) > 0.90  )
 	    {
 	        $status = LOWDATA_ACCOUNT;
 	    }
