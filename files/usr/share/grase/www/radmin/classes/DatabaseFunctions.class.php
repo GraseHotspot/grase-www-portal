@@ -738,6 +738,7 @@ class DatabaseFunctions
             'dayData',
             'weekData',
             'monthData',
+            'LoginTime',
         
         );
         // DELETE all attributes from groupreply
@@ -765,7 +766,6 @@ class DatabaseFunctions
             ErrorHandling::fatal_db_error(
                 T_('Deleting radgroupreply query failed: '), $result);
         }
-
         
         if(isset($attributes['DataRecurLimit']))
         {
@@ -819,6 +819,7 @@ class DatabaseFunctions
             'BandwidthDownLimit' => 'ChilliSpot-Bandwidth-Max-Down',
             'BandwidthUpLimit' => 'ChilliSpot-Bandwidth-Max-Up',
             'SimultaneousUse' => 'Simultaneous-Use',
+            'LoginTime' => 'Login-Time',
             
         );
         // Insert each attribute
@@ -923,6 +924,7 @@ class DatabaseFunctions
             'ChilliSpot-Bandwidth-Max-Up' => 'BandwidthUpLimit',
             'ChilliSpot-Bandwidth-Max-Down' => 'BandwidthDownLimit',
             'Simultaneous-Use' => 'Simultaneous-Use',
+            'Login-Time' => 'LoginTime',
             
         );
         
@@ -977,7 +979,7 @@ class DatabaseFunctions
             }
             $groups[$attribute['GroupName']][$attr] = $value;
         }
-        
+
         $this->groupdetails = $groups;
 
         return $groups;

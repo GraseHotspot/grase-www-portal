@@ -44,7 +44,8 @@ if(isset($_POST['submit']))
     //$grouprecurdata = array_filter($_POST['Recur_Data']);    
     $grouprecurtimelimit = array_filter($_POST['Recur_Time_Limit']);
     $grouprecurtime = array_filter($_POST['Recur_Time']);
-    $simultaneoususe = array_filter($_POST['SimultaneousUse']);    
+    $simultaneoususe = array_filter($_POST['SimultaneousUse']);
+    $grouplogintime = array_filter($_POST['LoginTime']);    
     
 
     
@@ -74,7 +75,8 @@ if(isset($_POST['submit']))
                 //isset($grouprecurdatalimit[$key]) ||
                 //isset($grouprecurdata[$key]) ||
                 isset($grouprecurtimelimit[$key]) ||
-                isset($grouprecurtime[$key])
+                isset($grouprecurtime[$key]) ||
+                isset($grouplogintime[$key])
             )
             {
                 $error[] = T_("Invalid group name or group name missing");
@@ -106,29 +108,31 @@ if(isset($_POST['submit']))
         // Process radgroupreply options
         
         // validate limits
-	//$error[] = validate_datalimit($groupdatalimit[$key]);
+	    //$error[] = validate_datalimit($groupdatalimit[$key]);
 	
-	// Silence warnings (@) as we don't care if they are set or not'
-	$error[] = @ validate_timelimit($grouptimelimit[$key]);
-	$error[] = @ validate_timelimit($grouprecurtimelimit[$key]);   
-	//$error[] = validate_datalimit($grouprecurdatalimit[$key]);
-	$error[] = @ validate_recur($grouprecurtime[$key]);
-	$error[] = @ validate_recur($grouprecurdata[$key]);
-	$error[] = @ validate_recurtime($grouprecurtime[$key], $grouprecurtimelimit[$key]);	    
-	$error[] = @ validate_bandwidth($groupdownlimit[$key]);
-	$error[] = @ validate_bandwidth($groupuplimit[$key]);
-	$error[] = @ validate_yesno($simultaneoususe[$key]);	    
-	$error = array_filter($error);
+	    // Silence warnings (@) as we don't care if they are set or not'
+	    $error[] = @ validate_timelimit($grouptimelimit[$key]);
+	    $error[] = @ validate_timelimit($grouprecurtimelimit[$key]);   
+	    //$error[] = validate_datalimit($grouprecurdatalimit[$key]);
+	    $error[] = @ validate_recur($grouprecurtime[$key]);
+	    $error[] = @ validate_recur($grouprecurdata[$key]);
+	    $error[] = @ validate_recurtime($grouprecurtime[$key], $grouprecurtimelimit[$key]);	    
+	    $error[] = @ validate_bandwidth($groupdownlimit[$key]);
+	    $error[] = @ validate_bandwidth($groupuplimit[$key]);
+	    $error[] = @ validate_yesno($simultaneoususe[$key]);
+	    // TODO: Validate Login-Time
+	    $error[] = @ validate_uucptimerange($grouplogintime[$key]);	    
+	    $error = array_filter($error);
 	
-	if(isset($grouprecurtime[$key]) xor isset($grouprecurtimelimit[$key]))
-	{
-	    $error[] = sprintf(T_("Need both a time limit and recurrance for '%s'"), clean_text($name));
-	}
+	    if(isset($grouprecurtime[$key]) xor isset($grouprecurtimelimit[$key]))
+	    {
+	        $error[] = sprintf(T_("Need both a time limit and recurrance for '%s'"), clean_text($name));
+	    }
 	
-	/*if(isset($grouprecurdata[$key]) xor isset($grouprecurdatalimit[$key]))
-	{
-	    $error[] = sprintf(T_("Need both a data limit and recurrance for '%s'"), clean_text($name));
-	}*/	    
+	    /*if(isset($grouprecurdata[$key]) xor isset($grouprecurdatalimit[$key]))
+	    {
+	        $error[] = sprintf(T_("Need both a data limit and recurrance for '%s'"), clean_text($name));
+	    }*/	    
 	
         $groups[clean_groupname($name)] = array_filter(array(
             //'MaxMb' => clean_number($groupdatalimit[$key]),
@@ -140,6 +144,7 @@ if(isset($_POST['submit']))
             'BandwidthDownLimit' => @ clean_int($groupdownlimit[$key]),
             'BandwidthUpLimit' => @ clean_int($groupuplimit[$key]),
             'SimultaneousUse' => @ $simultaneoususe[$key],
+            'LoginTime' => @ $grouplogintime[$key]
         ));
         $groupsettings[clean_groupname($name)] = array_filter(array(
             'GroupName' => clean_groupname($name),
@@ -150,8 +155,6 @@ if(isset($_POST['submit']))
         ));        
 
     }
-    
-
     
     if(sizeof($error) == 0)
     {
@@ -188,7 +191,7 @@ if(isset($_POST['submit']))
     if(sizeof($success) > 0) $smarty->assign("success", $success);
     
     // TODO set this initially
-    $smarty->assign("groupdata", $groups);
+    $smarty->assign("groupcurrentdata", $groups);
     $smarty->assign("groupsettings", $Settings->getGroup());
     //$smarty->assign("groups", $Expiry);
 
@@ -197,7 +200,7 @@ if(isset($_POST['submit']))
 }
 else{
 
-	$smarty->assign("groupdata", DatabaseFunctions::getInstance()->getGroupAttributes());
+	$smarty->assign("groupcurrentdata", DatabaseFunctions::getInstance()->getGroupAttributes());
     $smarty->assign("groupsettings", $Settings->getGroup());
 
     //$smarty->assign("groups", $Expiry);
