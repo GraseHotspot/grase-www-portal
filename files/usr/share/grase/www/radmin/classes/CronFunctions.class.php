@@ -281,6 +281,33 @@ class CronFunctions extends DatabaseFunctions
         }
         
         // TODO: cron to clean old batches
+        
+        if($olddbversion < 2.1)
+        {
+            // Remove uniq index on radgroupcheck
+            $sql = "DROP INDEX GroupName ON radgroupcheck";
+            
+            $result = $this->db->exec($sql);
+
+            if (!PEAR::isError($result))
+                $results += $result;      
+                
+            $sql = "ALTER TABLE radgroupcheck
+                    ADD KEY `GroupName` (`GroupName`(32))";
+                    
+            $result = $this->db->exec($sql);
+            
+            if (PEAR::isError($result))
+            {
+                return T_('Upgrading DB failed: ') . $result->toString();
+            }            
+
+            if (!PEAR::isError($result))
+                $results += $result;                          
+
+            $Settings->setSetting("DBVersion", 2.1);                
+            
+        }
 
         if($results > 0)
         {            
@@ -630,5 +657,12 @@ class CronFunctions extends DatabaseFunctions
         return false;
     }
 }
+
+/* Post auth needs some cleaning up.
+This will cleanup all mac address auths and coovachilli auths, leaving only the last attempt
+DELETE t1 from radpostauth t1, radpostauth t2 WHERE t1.username=t2.username AND t1.reply = t2.reply AND t1.id < t2.id AND (t1.username  REGEXP '^([[:xdigit:]]{2}-){5}[[:xdigit:]]{2}' OR t1.username = "CoovaChilli")
+
+Probably only need to clear rejects for mac address, and clear accepts for coovachilli admin user
+*/
 
 ?>
