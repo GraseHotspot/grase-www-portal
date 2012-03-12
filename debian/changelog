@@ -1,3 +1,9 @@
+grase-www-portal (3.7.3) purewhite; urgency=low
+
+  * Just DROP the new columns before adding them
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Tue, 13 Mar 2012 09:52:08 +1000
+
 grase-www-portal (3.7.2) purewhite; urgency=low
 
   * Updated translations for 3.7 from Transifex Database1

@@ -311,7 +311,16 @@ class CronFunctions extends DatabaseFunctions
         
         if($olddbversion < 2.2)
         {        
-        
+
+            // Need to check if columns exist, or just drop them?
+            $sql1 = "ALTER TABLE radpostauth
+                    DROP COLUMN ServiceType,
+                    DROP COLUMN FramedIPAddress,
+                    DROP COLUMN CallingStationId";
+            
+            $result = $this->radminDB->exec($sql1);
+            // Don't care if it's an error            
+
             $sql = "ALTER TABLE radpostauth
                     ADD COLUMN ServiceType varchar(32) DEFAULT NULL,
                     ADD COLUMN FramedIPAddress varchar(15) DEFAULT NULL,
