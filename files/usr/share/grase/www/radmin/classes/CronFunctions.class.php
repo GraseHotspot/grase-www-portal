@@ -318,7 +318,7 @@ class CronFunctions extends DatabaseFunctions
                     DROP COLUMN FramedIPAddress,
                     DROP COLUMN CallingStationId";
             
-            $result = $this->radminDB->exec($sql1);
+            $result = $this->db->exec($sql1);
             // Don't care if it's an error            
 
             $sql = "ALTER TABLE radpostauth
