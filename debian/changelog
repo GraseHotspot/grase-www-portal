@@ -1,3 +1,15 @@
+grase-www-portal (3.7.2) purewhite; urgency=low
+
+  * Updated translations for 3.7 from Transifex Database1
+  * Display remaining time instead of time limits
+  * Don't clear ancient accounting data (need way to fix this)
+  * Fix cron to clear previous months properly
+  * Fix bug #64
+  * Support for Login-Time (closes #33)
+  * Upgrade radpostauth table to record more data
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Tue, 13 Mar 2012 09:15:02 +1000
+
 grase-www-portal (3.7.1) purewhite; urgency=low
 
   * Security flaw fixed (bug #54) sending data to 3rd party

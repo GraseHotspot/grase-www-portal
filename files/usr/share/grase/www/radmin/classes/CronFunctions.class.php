@@ -308,6 +308,28 @@ class CronFunctions extends DatabaseFunctions
             $Settings->setSetting("DBVersion", 2.1);                
             
         }
+        
+        if($olddbversion < 2.2)
+        {        
+        
+            $sql = "ALTER TABLE radpostauth
+                    ADD COLUMN ServiceType varchar(32) DEFAULT NULL,
+                    ADD COLUMN FramedIPAddress varchar(15) DEFAULT NULL,
+                    ADD COLUMN CallingStationId varchar(50) DEFAULT NULL";
+
+            $result = $this->db->exec($sql);
+            
+            if (PEAR::isError($result))
+            {
+                return T_('Upgrading DB failed: ') . $result->toString();
+            }            
+
+            if (!PEAR::isError($result))
+                $results += $result;                          
+
+            $Settings->setSetting("DBVersion", 2.2);                
+        }
+
 
         if($results > 0)
         {            
