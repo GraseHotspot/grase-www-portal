@@ -111,6 +111,7 @@ class DatabaseReports
             SUM(AcctInputOctets) AS TotalOctets,
             DATE(AcctStartTime) AS Label
             FROM radacct
+            WHERE ServiceType != 'Administrative-User'
             GROUP BY DAYOFMONTH(AcctStartTime)
             UNION
             SELECT '0' AS TotalOctets, CONCAT(dt.d, '-', days.d) as Label
@@ -142,6 +143,7 @@ class DatabaseReports
             SUM(AcctOutputOctets) AS TotalOctets,
             DATE(AcctStartTime) AS Label
             FROM radacct
+            WHERE ServiceType != 'Administrative-User'
             GROUP BY DAYOFMONTH(AcctStartTime)
             UNION
             SELECT '0' AS TotalOctets, CONCAT(dt.d, '-', days.d) as Label
@@ -162,19 +164,20 @@ class DatabaseReports
     
     public function getThisMonthUsage()
     {
-        $sql = "SELECT
+        /*$sql = "SELECT
             SUM(AcctInputOctets) + SUM(AcctOutputOctets) AS TotalOctets,
             DATE(AcctStartTime) AS Label,
             DATE(AcctStartTime) AS Date
             FROM radacct
             GROUP BY DAYOFMONTH(AcctStartTime)
-            ORDER BY AcctStartTime";
+            ORDER BY AcctStartTime";*/
             
         $sql = "SELECT SUM(TotalOctets) AS TotalOctets, Label FROM (
         SELECT
             SUM(AcctInputOctets) + SUM(AcctOutputOctets) AS TotalOctets,
             DATE(AcctStartTime) AS Label
             FROM radacct
+            WHERE ServiceType != 'Administrative-User'
             GROUP BY DAYOFMONTH(AcctStartTime)
             UNION
             SELECT '0' AS TotalOctets, CONCAT(dt.d, '-', days.d) as Label
@@ -234,13 +237,16 @@ class DatabaseReports
                     AcctDate
                 FROM
                     mtotacct
-                GROUP BY AcctDate
+                WHERE UserName != ".$this->db->quote(RADIUS_CONFIG_USER)."
+                GROUP BY Label
                 UNION SELECT
                     SUM(AcctInputOctets) + SUM(AcctOutputOctets) AS TotalOctets,
                     DATE_FORMAT(AcctStartTime, '%b %Y') AS Label,
                     AcctStartTime
                 FROM
                     radacct
+                WHERE ServiceType != 'Administrative-User'
+                GROUP BY Label
                 ORDER BY AcctDate";
         
         return $this->processDataResults($sql);
@@ -255,12 +261,14 @@ class DatabaseReports
             SUM(mtotacct.InputOctets) + SUM(mtotacct.OutputOctets) AS TotalOctets,
             DATE_FORMAT(mtotacct.AcctDate, '%b %Y') AS Date
             FROM mtotacct
+            WHERE UserName != ".$this->db->quote(RADIUS_CONFIG_USER)."
             GROUP BY AcctDate
             UNION
             SELECT
             SUM(radacct.AcctInputOctets) + SUM(radacct.AcctOutputOctets) AS TotalOctets,
             DATE_FORMAT(radacct.AcctStartTime, '%b %Y') AS Date
             FROM radacct
+            WHERE ServiceType != 'Administrative-User'
             GROUP BY MONTH(AcctStartTime)
             ORDER BY Date 
             ) AS AggregatedTableUsage
@@ -309,6 +317,7 @@ class DatabaseReports
                         radacct.UserName AS Label
                     FROM
                         radacct
+                    WHERE UserName != ".$this->db->quote(RADIUS_CONFIG_USER)."
                     GROUP BY Label) AS T
                 GROUP BY Label";
 
@@ -339,6 +348,7 @@ class DatabaseReports
             COUNT(DISTINCT UserName) AS Total,
             DATE(AcctStartTime) AS Date
             FROM radacct
+            WHERE UserName != ".$this->db->quote(RADIUS_CONFIG_USER)."
             GROUP BY DAYOFMONTH(AcctStartTime)
             ORDER BY AcctStartTime";
         
@@ -352,6 +362,7 @@ class DatabaseReports
             COUNT(RadAcctId) AS Total,
             DATE(AcctStartTime) AS Date
             FROM radacct
+            WHERE UserName != ".$this->db->quote(RADIUS_CONFIG_USER)."
             GROUP BY DAYOFMONTH(AcctStartTime)
             ORDER BY AcctStartTime";
         
