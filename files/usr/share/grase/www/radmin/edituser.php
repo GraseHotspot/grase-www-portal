@@ -31,7 +31,7 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
 {
 	$error = array();
 	$success = array();
-	$username = mysql_real_escape_string($_GET['username']);
+	$username = mysql_real_escape_string($_GET['username']); // TODO change this? i.e. make database class do it if it doesn't already
 	$user = getDBUserDetails($_GET['username']);
 	
 	if(isset($_POST['updateusersubmit']))
@@ -183,8 +183,13 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
 	}
 
 	$smarty->assign("error", $error);
-	$smarty->assign("success", $success);	
-	$smarty->assign("user", getDBUserDetails($_GET['username']));
+	$smarty->assign("success", $success);
+	
+	// if $success we need to reload the info
+	if(sizeof($success) > 0 || sizeof($error) > 0)	
+    	$smarty->assign("user", getDBUserDetails($_GET['username']));
+	else
+    	$smarty->assign("user", $user);	
 	
 	display_page('edituser.tpl');
 
