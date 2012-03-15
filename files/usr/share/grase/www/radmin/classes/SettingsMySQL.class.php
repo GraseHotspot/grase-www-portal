@@ -35,6 +35,9 @@ class SettingsMySQL extends Settings
     private $databaseSettings;
     private $db;
     
+    private $settingcache = array();
+    private $settingcacheloaded = false;
+    
     private $dbSchemeVersion = "2.1";
     private $dbSchemeSettings = 
         "CREATE TABLE IF NOT EXISTS `settings` (
@@ -100,6 +103,9 @@ class SettingsMySQL extends Settings
         }*/
         if(! $this->checkTablesExist()) $this->createTables();
         //if($this->getSetting('DBVersion') == "" || $this->getSetting('DBVersion') < $this->dbSchemeVersion) $this->upgradeTables();
+        
+        // Load all settings as we ALWAYS need settings (do we?) TODO
+        $this->loadAllSettings();
     }
         
 #    private function connectDatabase()
@@ -120,12 +126,29 @@ class SettingsMySQL extends Settings
     
     private function checkTablesExist()
     {
-        if( $this->db->query("SHOW TABLES LIKE 'settings'")->numRows() &&
-            $this->db->query("SHOW TABLES LIKE 'auth'")->numRows() &&
-            $this->db->query("SHOW TABLES LIKE 'templates'")->numRows() &&
-            $this->db->query("SHOW TABLES LIKE 'batch'")->numRows()  &&
-            $this->db->query("SHOW TABLES LIKE 'batches'")->numRows() &&
-            $this->db->query("SHOW TABLES LIKE 'groups'")->numRows()
+        // TODO, this is more efficient as a single query and php do the rest
+        
+        $sql = "SHOW TABLES";
+        $results = $this->db->queryAll($sql);
+        
+        if (PEAR::isError($results))
+        {
+            ErrorHandling::fatal_db_error(
+                T_('Get All Settings for caching Query failed: '), $results);
+        }
+
+        foreach ($results as $row) 
+        {
+            // To ensure if database names change, we don't know the column name (it could be Tables_in_radmin) so just take the first column of the array
+            $tables[current($row)] = 1;
+        }
+        
+        if( isset($tables['settings']) &&
+            isset($tables['auth']) &&
+            isset($tables['templates']) &&
+            isset($tables['batch'])  &&
+            isset($tables['batches']) &&
+            isset($tables['groups'])
             )
         {
             return true;
@@ -151,8 +174,33 @@ class SettingsMySQL extends Settings
         $this->setSetting('DBSchemaVersion', $this->dbSchemeVersion);
     }
     
+    private function loadAllSettings($force = true)
+    {
+        if($this->settingcacheloaded && force == false) return true;
+        
+        // Load everything into a cache as needed (make sure we update the cache up updates
+        $sql = "SELECT setting, value FROM settings";
+        
+        $results = $this->db->queryAll($sql);
+        
+        if (PEAR::isError($results))
+        {
+            ErrorHandling::fatal_db_error(
+                T_('Get All Settings for caching Query failed: '), $results);
+        }
+        
+        foreach ($results as $row) 
+        {
+            $this->settingcache[$row['setting']] = $row['value'];
+        }
+        
+        $this->settingcacheloaded = true;
+    }
+    
     public function getSetting($setting)
     {
+        if($this->settingcacheloaded /*&& isset($this->settingcache[$setting])*/) return @ $this->settingcache[$setting];
+        
         $sql = sprintf("SELECT value FROM settings WHERE setting = %s",
                         $this->db->quote($setting));
         //return $this->db->queryOne($sql);
@@ -170,6 +218,8 @@ class SettingsMySQL extends Settings
     // ^^ Returning the value fails on empty strings
     public function checkExistsSetting($setting)
     {
+        if($this->settingcacheloaded && isset($this->settingcache[$setting])) return 1;
+    
         $sql = sprintf("SELECT COUNT(setting) FROM settings WHERE setting = %s  LIMIT 1",
                         $this->db->quote($setting));
         return $this->db->queryOne($sql);
@@ -205,6 +255,9 @@ class SettingsMySQL extends Settings
 	        AdminLog::getInstance()->log("Setting $setting failed to update (to $value)");        
             ErrorHandling::fatal_error('Updating setting failed: '. $affected->getMessage());
         }
+        
+        // Update settings cache to prevent wrong data
+        if($this->settingcacheloaded) $this->settingcache[$setting] = $value;
         
         // TODO: Do we still need to filter this out now?
         if($setting != 'lastbatch') // lastbatch clogs admin log, filter it out
