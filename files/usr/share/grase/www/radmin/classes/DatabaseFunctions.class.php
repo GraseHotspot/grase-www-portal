@@ -52,6 +52,9 @@ class DatabaseFunctions
     
     private $groupdetails = array(); //cache group details 
     
+    private $usercache = array(); // Cache users details
+    private $usercacheloaded = false;
+    
     public function &getInstance()
     {
         // Static reference of this class's instance.
@@ -287,31 +290,144 @@ class DatabaseFunctions
         }
         
         return $username;
-    }        
-
-    public function getUserDetails($username)
+    }
+    
+    public function loadAllUserDetails($force = false)
     {
-        // Will be from function getDBUserDetails($username) // was database_get_user_details
-        $Userdata['Username'] = $username;
-
-        // Get radcheck attributes
-        $sql = sprintf("SELECT Attribute, Value
-                        FROM radcheck
-                        WHERE Username = %s",
-                        $this->db->quote($username)
-                        );
-                        
+        // If there is stuff in the cache and force isn't set, don't do anything
+        if($this->usercacheloaded && $force == false) return true;
+        
+        // Load all the user details we are going to lookup and cache them!
+        // Radcheck
+        $sql = "SELECT Attribute, Value, UserName FROM radcheck";
+        
         $results = $this->db->queryAll($sql);
         
         if (PEAR::isError($results))
         {
             ErrorHandling::fatal_db_error(
-                T_('Get User details Query failed: '), $results);
+                T_('Get All User radcheck details Query failed: '), $results);
         }
         
-        foreach ($results as $attribute) 
+        foreach ($results as $row) 
         {
-            $Userdata[$attribute['Attribute']] = $attribute['Value'];
+            $this->usercache[$row['UserName']]['radcheck'][$row['Attribute']] = $row['Value'];
+        }        
+        
+        // Usergroup
+        $sql = "SELECT GroupName, UserName FROM radusergroup";
+        
+        $results = $this->db->queryAll($sql);
+        
+        if (PEAR::isError($results))
+        {
+            ErrorHandling::fatal_db_error(
+                T_('Get All User Group details Query failed: '), $results);
+        }
+        
+        foreach ($results as $user) 
+        {
+            $this->usercache[$user['UserName']]['GroupName'] = $user['GroupName'];
+        }
+        
+        // Comment
+        $sql = "SELECT Comment, UserName FROM radusercomment"; 
+        
+        $results = $this->db->queryAll($sql);
+        
+        if (PEAR::isError($results))
+        {
+            ErrorHandling::fatal_db_error(
+                T_('Get All User Comment details Query failed: '), $results);
+        }
+        
+        foreach ($results as $user) 
+        {
+            $this->usercache[$user['UserName']]['Comment'] = $user['Comment'];
+        }       
+        // AcctTotalOctets from radacct
+        // AcctSessionTime from radacct
+        // Last logout from radacct            
+        $sql = "SELECT UserName,
+            SUM(radacct.AcctInputOctets)+SUM(radacct.AcctOutputOctets)
+            AS AcctTotalOctets,
+            SUM(AcctSessionTime) AS AcctSessionTime,
+            MAX(AcctStopTime) AS LastLogout
+            FROM radacct
+            GROUP BY UserName";
+
+        $results = $this->db->queryAll($sql);
+        
+        if (PEAR::isError($results))
+        {
+            ErrorHandling::fatal_db_error(
+                T_('Get All User radacct details Query failed: '), $results);
+        }
+        
+        foreach ($results as $user) 
+        {
+            $this->usercache[$user['UserName']]['AcctTotalOctets'] = $user['AcctTotalOctets'];
+            $this->usercache[$user['UserName']]['AcctSessionTime'] = $user['AcctSessionTime'];
+            $this->usercache[$user['UserName']]['LastLogout'] = $user['LastLogout'];
+        }
+        
+        // TotalTime from mtotacct        
+        // TotalOctets from mtotacct        
+        $sql = "SELECT UserName,
+            SUM(mtotacct.ConnTotDuration) AS TotalTime,
+            SUM(mtotacct.InputOctets) + SUM(mtotacct.OutputOctets) AS TotalOctets
+            FROM mtotacct GROUP BY UserName";
+            
+        $results = $this->db->queryAll($sql);
+        
+        if (PEAR::isError($results))
+        {
+            ErrorHandling::fatal_db_error(
+                T_('Get All User mtotacct details Query failed: '), $results);
+        }
+        
+        foreach ($results as $user) 
+        {
+            $this->usercache[$user['UserName']]['TotalTime'] = $user['TotalTime'];
+            $this->usercache[$user['UserName']]['TotalOctets'] = $user['TotalOctets'];
+        }
+        
+        $this->usercacheloaded = true;
+    }        
+
+    public function getUserDetails($username)
+    {
+        // Will be from function getDBUserDetails($username) // was database_get_user_details
+        
+        //$row['UserName']]['radcheck'][$row['Attribute']] = $row['Value'];
+        if($this->usercacheloaded)
+        {
+            $Userdata = $this->usercache[$username]['radcheck'];
+            $Userdata['Username'] = $username;
+        }else{
+            
+            $Userdata['Username'] = $username;
+
+            // Get radcheck attributes
+            $sql = sprintf("SELECT Attribute, Value
+                            FROM radcheck
+                            WHERE Username = %s",
+                            $this->db->quote($username)
+                            );
+                            
+            $results = $this->db->queryAll($sql);
+            
+            if (PEAR::isError($results))
+            {
+                ErrorHandling::fatal_db_error(
+                    T_('Get User details Query failed: '), $results);
+            }
+            
+            foreach ($results as $attribute) 
+            {
+                $Userdata[$attribute['Attribute']] = $attribute['Value'];
+            }
+            
         }
         
         // User Password (Upgraded to Cleartext-Password, but smarty doesn't like '-' in names)
@@ -397,6 +513,7 @@ class DatabaseFunctions
     
     public function getUserGroup($username)
     {
+        if($this->usercacheloaded) return $this->usercache[$username]['GroupName'];
         // Get users group
         $sql = sprintf("SELECT GroupName
                         FROM radusergroup
@@ -473,22 +590,27 @@ class DatabaseFunctions
     
     public function getUserLastLogoutTime($username)
     {
-        // Get Last Logout
-        $sql = sprintf("SELECT AcctStopTime
-		              FROM radacct
-		              WHERE AcctTerminateCause != ''
-		              AND UserName = %s
-		              ORDER BY RadAcctId DESC LIMIT 1",
-		              $this->db->quote($username, 'text', true, true));
-		              
-	    $results = $this->db->queryOne($sql);
+        if($this->usercacheloaded)
+        {
+            $results = $this->usercache[$username]['LastLogout'];
+        }else{
+            // Get Last Logout
+            $sql = sprintf("SELECT AcctStopTime
+		                  FROM radacct
+		                  WHERE AcctTerminateCause != ''
+		                  AND UserName = %s
+		                  ORDER BY RadAcctId DESC LIMIT 1",
+		                  $this->db->quote($username, 'text', true, true));
+		                  
+	        $results = $this->db->queryOne($sql);
 	
-	    if (PEAR::isError($results))
-	    {
-	        ErrorHandling::fatal_db_error(
-	            T_('Get User Last Logout Query Failed: '), $results);
-	    }
-        
+	        if (PEAR::isError($results))
+	        {
+	            ErrorHandling::fatal_db_error(
+	                T_('Get User Last Logout Query Failed: '), $results);
+	        }
+        }
+                
         if (is_null($results)) 
         {
             $LastLogout = "...";
@@ -504,6 +626,7 @@ class DatabaseFunctions
     // Session time for current month TODO: rename?
     public function getUserTotalSessionTime($username)
     {
+        if($this->usercacheloaded) return $this->usercache[$username]['AcctSessionTime'];
         // Get Total Session Time
         $sql = sprintf("SELECT
 		              SUM(AcctSessionTime)
@@ -525,22 +648,26 @@ class DatabaseFunctions
     // Session time for all time
     public function getUserSessionTimeTotal($username)
     {
-        // Get Time usage
-        $sql = sprintf("SELECT (
-		                SUM(mtotacct.ConnTotDuration)
-		              )
-		              AS TotalTime
-		              FROM mtotacct
-		              WHERE UserName= %s",
-		              $this->db->quote($username, 'text', true, true));
-		              
-		$results = $this->db->queryOne($sql);
-		if (PEAR::isError($results))
-		{
-            ErrorHandling::fatal_db_error(
-                T_('Get User Time Usage (Total) Query failed: '), $results);
-        }
-        
+        if($this->usercacheloaded)
+        {
+            $results =  $this->usercache[$username]['TotalTime'];
+        }else{
+            // Get Time usage
+            $sql = sprintf("SELECT (
+		                    SUM(mtotacct.ConnTotDuration)
+		                  )
+		                  AS TotalTime
+		                  FROM mtotacct
+		                  WHERE UserName= %s",
+		                  $this->db->quote($username, 'text', true, true));
+		                  
+		    $results = $this->db->queryOne($sql);
+		    if (PEAR::isError($results))
+		    {
+                ErrorHandling::fatal_db_error(
+                    T_('Get User Time Usage (Total) Query failed: '), $results);
+            }
+        }        
         // We want a real total, not an archived total
         return $this->getUserTotalSessionTime($username) + $results + 0; // Need to zero it if null
     }    
@@ -548,6 +675,8 @@ class DatabaseFunctions
     
     public function getUserDataUsage($username)
     {
+        if($this->usercacheloaded) return $this->usercache[$username]['AcctTotalOctets'] + 0;
+
         // Get Data usage
         $sql = sprintf("SELECT (
 		                SUM(radacct.AcctInputOctets)+SUM(radacct.AcctOutputOctets)
@@ -569,22 +698,26 @@ class DatabaseFunctions
     
     public function getUserDataUsageTotal($username)
     {
+        if($this->usercacheloaded)
+        {
+            $results =  $this->usercache[$username]['TotalOctets'];
+        }else{
         // Get Data usage
-        $sql = sprintf("SELECT (
-		                SUM(mtotacct.InputOctets) + SUM(mtotacct.OutputOctets)
-		              )
-		              AS TotalOctets
-		              FROM mtotacct
-		              WHERE UserName= %s",
-		              $this->db->quote($username, 'text', true, true));
-		              
-		$results = $this->db->queryOne($sql);
-		if (PEAR::isError($results))
-		{
-            ErrorHandling::fatal_db_error(
-                T_('Get User Data Usage (Total) Query failed: '), $results);
-        }
-        
+            $sql = sprintf("SELECT (
+		                    SUM(mtotacct.InputOctets) + SUM(mtotacct.OutputOctets)
+		                  )
+		                  AS TotalOctets
+		                  FROM mtotacct
+		                  WHERE UserName= %s",
+		                  $this->db->quote($username, 'text', true, true));
+		                  
+		    $results = $this->db->queryOne($sql);
+		    if (PEAR::isError($results))
+		    {
+                ErrorHandling::fatal_db_error(
+                    T_('Get User Data Usage (Total) Query failed: '), $results);
+            }
+        }        
         // We want a real total, not an archived total
         return $this->getUserDataUsage($username) + $results + 0; // Need to zero it if null
     }    
@@ -648,6 +781,8 @@ class DatabaseFunctions
 
     public function getUserComment($username)
     {
+        if($this->usercacheloaded) return trim($this->usercache[$username]['Comment']);
+        
         $sql = sprintf("SELECT Comment
                          FROM radusercomment
                          WHERE UserName = %s",
