@@ -554,7 +554,7 @@ class CronFunctions extends DatabaseFunctions
             
             $sql = sprintf("UPDATE radcheck, mtotaccttmp
                             SET
-                            radcheck.value = CAST((radcheck.value - (mtotaccttmp.InputOctets + mtotaccttmp.OutputOctets)) AS UNSIGNED)
+                            radcheck.value = CAST(radcheck.value AS SIGNED INTEGER) - (mtotaccttmp.InputOctets + mtotaccttmp.OutputOctets)
                             WHERE radcheck.Attribute=%s
                             AND radcheck.UserName=mtotaccttmp.UserName
                             AND mtotaccttmp.AcctDate=%s",
@@ -573,7 +573,7 @@ class CronFunctions extends DatabaseFunctions
                             
             $sql = sprintf("UPDATE radcheck, mtotaccttmp
                             SET
-                            radcheck.value = radcheck.value - mtotaccttmp.ConnTotDuration 
+                            radcheck.value = CAST(radcheck.value AS SIGNED INTEGER) - mtotaccttmp.ConnTotDuration 
                             WHERE radcheck.Attribute = %s
                             AND radcheck.UserName = mtotaccttmp.UserName
                             AND mtotaccttmp.AcctDate = %s",
@@ -646,7 +646,7 @@ class CronFunctions extends DatabaseFunctions
                             radcheck.value = 0 
                             WHERE
                             radcheck.Attribute = %s
-                            AND radcheck.value < 0",
+                            AND CAST(radcheck.value AS SIGNED INTEGER) < 0",
                             $this->db->quote('Max-Octets')
                             );
                             
