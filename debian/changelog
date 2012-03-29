@@ -1,10 +1,10 @@
-grase-www-portal (3.7.4) purewhite; urgency=low
+grase-www-portal (3.7.4-dev2) purewhite; urgency=low
 
   * Some smart caching of user details and settings to reduce database calls significantly (and page load times) ref #63
   * Fix report graphs (and filter out CoovaChilli User) Fixes #52
   * Major fix for archiving users
 
- -- Tim White <tim@hotspot.purewhite.id.au>  Thu, 29 Mar 2012 21:00:44 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Thu, 29 Mar 2012 21:05:22 +1000
 
 grase-www-portal (3.7.3) purewhite; urgency=low
 
