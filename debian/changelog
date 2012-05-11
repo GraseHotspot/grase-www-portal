@@ -1,3 +1,10 @@
+grase-www-portal (3.7.4-dev3) purewhite; urgency=low
+
+  * Fix UUCP timerange filter to allow more values
+  * Added more contributors
+
+ -- Tim White <tim@hotspot.purewhite.id.au>  Sat, 12 May 2012 07:36:44 +1000
+
 grase-www-portal (3.7.4-dev2) purewhite; urgency=low
 
   * Some smart caching of user details and settings to reduce database calls significantly (and page load times) ref #63
