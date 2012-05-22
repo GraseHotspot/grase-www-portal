@@ -1,3 +1,10 @@
+grase-www-portal (UNRELEASED) purewhite; urgency=low
+
+  * Check if bogusnxdomains has returned ips
+  * Shorten long "time" format from "days" to "d"
+
+ -- Tim White <tim@grasehotspot.org>  Wed, 23 May 2012 07:58:42 +1000
+
 grase-www-portal (3.7.4-dev3) purewhite; urgency=low
 
   * Fix UUCP timerange filter to allow more values

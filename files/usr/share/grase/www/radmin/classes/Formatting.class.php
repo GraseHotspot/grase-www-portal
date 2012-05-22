@@ -95,8 +95,8 @@ class Formatting
 	    $days = intval($seconds / 86400);
 	    $seconds = intval($seconds % 60);
 	    if($days < 1) return sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
-	    if($days == 1) return sprintf("%d day %02d:%02d:%02d", $days, $hours, $minutes, $seconds);
-	    return sprintf("%d days %02d:%02d:%02d", $days, $hours, $minutes, $seconds);
+	    if($days == 1) return sprintf("%dd %02d:%02d:%02d", $days, $hours, $minutes, $seconds);
+	    return sprintf("%dd %02d:%02d:%02d", $days, $hours, $minutes, $seconds);
     }
 }
 

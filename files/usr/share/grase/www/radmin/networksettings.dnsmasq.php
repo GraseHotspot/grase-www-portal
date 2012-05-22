@@ -95,7 +95,8 @@ if($networkoptions['opendnsbogusnxdomain'])
     $bogusnxdomains = array('hit-nxdomain.opendns.com');
     // TODO: plugin hook here?
     foreach($bogusnxdomains as $domainname){
-        foreach(gethostbynamel($domainname) as $ip)
+	$ips = gethostbynamel($domainname);
+	if($ips) foreach($ips as $ip)
         {
             echo "bogus-nxdomain=$ip\n";
         }
