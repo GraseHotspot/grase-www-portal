@@ -201,7 +201,7 @@ class CronFunctions extends DatabaseFunctions
                 return T_('Upgrading DB failed: ') . $result->toString();
             }*/
             
-            $results += $result;
+            $results += $result; //TODO this can be an error which can't be cast into an int
             $result = $this->radminDB->exec($sql2);
             
             if (PEAR::isError($result))

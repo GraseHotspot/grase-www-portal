@@ -75,7 +75,9 @@ class ErrorHandling
             // Non-interactive script running, return error message as comments
             echo "#error_occured\n";
             echo "# An error has occured in the application\n";
+            echo "# More information may be available in the server logs\n";
             echo "# ::$error::\n";
+	    echo "#\n# ". $pear_error_obj->toString() . "\n"; // TODO: Do we really want to allow these error messages to be available without needing to access server logs?
             echo "# Memory used: ".memory_get_usage()."\n";
             die();
         
