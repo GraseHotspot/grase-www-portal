@@ -85,7 +85,7 @@ class SettingsMySQL extends Settings
             `Comment` VARCHAR(300) NULL,
             `lastupdated` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
             PRIMARY KEY `GroupName` (`GroupName`)
-        ) TYPE = MyISAM COMMENT ='Groups'";
+        ) ENGINE=MyISAM COMMENT ='Groups'";
 
     public function __construct($db)
     {
