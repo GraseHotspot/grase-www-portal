@@ -243,7 +243,7 @@ function validate_uucptimerange($timeranges)
         foreach($timerange as $range)
         {
             $result = preg_match('/^(Su|Mo|Tu|We|Th|Fr|Sa|Sun|Mon|Tue|Wed|Thur|Fri|Sat|Wk|Any|Al|Never)(\d{4}-\d{4})?$/', $range);
-            var_dump(array($range, $result));        
+            //var_dump(array($range, $result));        
             if($result == 0)
                 return T_('Invalid Time Range ' . $timeranges);
         }
