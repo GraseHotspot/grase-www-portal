@@ -449,7 +449,7 @@ class CronFunctions extends DatabaseFunctions
         $deleted_results = 0;
         foreach($months as $month)
         {
-            $timepattern = strftime("%B __ %Y 00:00:00", strtotime("$month months"));
+            $timepattern = strftime("%B __ %Y __:__:__", strtotime("$month months"));
             $sql = sprintf("SELECT UserName
                             FROM radcheck
                             WHERE Attribute = %s AND
