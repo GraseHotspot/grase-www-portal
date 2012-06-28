@@ -416,33 +416,33 @@ function assign_vars()
 	global $smarty, $sellable_data, $useable_data, $used_data, $sold_data;
 	global $location, $website_name, $website_link, $DEMO_SITE, $Settings;
 	
-list($fileversions, $application_version)=css_file_version();
-$smarty->assign("radmincssversion", $fileversions['radmin.css']);
-$smarty->assign("hotspotcssversion", $fileversions['hotspot.css']);
-$smarty->assign("grasejsversion", $fileversions['grase.js']);
-$smarty->assign("radminjsversion", $fileversions['radmin.js']);
-$smarty->assign("application_version", $application_version);
-$smarty->assign("Application", APPLICATION_NAME);
+	list($fileversions, $application_version)=css_file_version();
+	$smarty->assign("radmincssversion", $fileversions['radmin.css']);
+	$smarty->assign("hotspotcssversion", $fileversions['hotspot.css']);
+	$smarty->assign("grasejsversion", $fileversions['grase.js']);
+	$smarty->assign("radminjsversion", $fileversions['radmin.js']);
+	$smarty->assign("application_version", $application_version);
+	$smarty->assign("Application", APPLICATION_NAME);
 
 
 
-// Setup Menus
-$smarty->assign("MenuItems", createmenuitems());
-/*$smarty->assign("Usergroups", usergroups());*/
+	// Setup Menus
+	$smarty->assign("MenuItems", createmenuitems());
+	/*$smarty->assign("Usergroups", usergroups());*/
 
 
-// Costs
-//$smarty->assign("CurrencySymbols", currency_symbols());
-$smarty->assign("Datacosts", datacosts());
-$smarty->assign("GroupDatacosts", groupdatacosts());
-$smarty->assign("Datavals", datavals());
-$smarty->assign("Timecosts", timecosts());
-$smarty->assign("GroupTimecosts", grouptimecosts());
-$smarty->assign("Timevals", timevals());
-$smarty->assign("Bandwidthvals", bandwidth_options());
-$smarty->assign("Recurtimes",recurtimes()); 
-$smarty->assign("YesNo", yesno());
-$smarty->assign('gbvalues', gboctects());	
+	// Costs
+	//$smarty->assign("CurrencySymbols", currency_symbols());
+	$smarty->assign("Datacosts", datacosts());
+	$smarty->assign("GroupDatacosts", groupdatacosts());
+	$smarty->assign("Datavals", datavals());
+	$smarty->assign("Timecosts", timecosts());
+	$smarty->assign("GroupTimecosts", grouptimecosts());
+	$smarty->assign("Timevals", timevals());
+	$smarty->assign("Bandwidthvals", bandwidth_options());
+	$smarty->assign("Recurtimes",recurtimes()); 
+	$smarty->assign("YesNo", yesno());
+	$smarty->assign('gbvalues', gboctects());	
 
 	// Data
 	/* Disabled usage bars due to lack of understanding/confusion
@@ -467,19 +467,22 @@ $smarty->assign('gbvalues', gboctects());
 	$smarty->assign("LastM_DataUsagePercent", $used_data/($total_useable_data)*100);	
 	*/
 
-    // Settings
-    $smarty->assign("Title", $location . " - " . APPLICATION_NAME);
-    $smarty->assign("website_name", $website_name);
-    $smarty->assign("website_link", $website_link);
+	// Settings
+	$smarty->assign("Title", $location . " - " . APPLICATION_NAME);
+	$smarty->assign("website_name", $website_name);
+	$smarty->assign("website_link", $website_link);
     
-    // Group data for displaying group properties	
+	// Group data for displaying group properties	
 	$smarty->assign("groupdata", DatabaseFunctions::getInstance()->getGroupAttributes());
-    $smarty->assign("groupsettings", $Settings->getGroup());		
-    $smarty->assign("groups", grouplist());	
+	$smarty->assign("groupsettings", $Settings->getGroup());		
+	$smarty->assign("groups", grouplist());	
     
 	
 	// DEMO SITE flag
 	$smarty->assign("DEMOSITE", $DEMO_SITE);
+
+	// Usermin assign vars
+	if(function_exists('usermin_assign_vars')) usermin_assign_vars();
 }
 
 

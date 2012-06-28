@@ -31,13 +31,18 @@ function usermin_createmenuitems()
 	return $menubar;
 }
 
-$smarty->assign("Application", USERMIN_APPLICATION_NAME);
+function usermin_assign_vars()
+{
+	global $smarty, $location;
+	$smarty->assign("Application", USERMIN_APPLICATION_NAME);
 
-$smarty->assign("Title", $location . " - " . USERMIN_APPLICATION_NAME);
+	$smarty->assign("Title", $location . " - " . USERMIN_APPLICATION_NAME);
 
-// Setup Menus
-$smarty->assign("MenuItems", usermin_createmenuitems());
-isset($_SESSION['username']) && $smarty->assign("LoggedInUsername", $_SESSION['username']);
+	// Setup Menus
+	$smarty->assign("MenuItems", usermin_createmenuitems());
+	isset($_SESSION['username']) && $smarty->assign("LoggedInUsername", $_SESSION['username']);
+
+}
 
 
 ?>
