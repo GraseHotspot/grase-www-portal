@@ -17,7 +17,7 @@
 {$tpl_loginhelptext}
 
 
-{if $user_url}<p id="userurlnojs" style="text-align: center;">{t}If you are already logged in, continue to your site{/t} <br/><a href="{$user_url}" style="font-size: smaller">'{$user_url|truncate:60}'</a></p>{/if}
+{if $user_url}{if $js}<noscript>{/if}<p id="userurlnojs" style="text-align: center;">{t}If you are already logged in, continue to your site{/t} <br/><a href="{$user_url}" style="font-size: smaller">'{$user_url|truncate:60}'</a></p>{if $js}</noscript>{/if}{/if}
 
 
 <div id="loginerrorcontainer">
@@ -32,6 +32,7 @@
 			</div>
 {/if}
 
+{if $js}<noscript>{/if}
     <div id="loginformcontainer">
     <form method="post" action="nojslogin.php" id="logonFormnojs" class="generalForm" autocomplete="off"><!-- TODO: Make this submit over SSL -->
     {if ! $jsdisabled}
@@ -65,6 +66,7 @@
 
     <!-- close loginformcontainer div -->
     </div>
+{if $js}</noscript>{/if}
     
 <!-- close loginerrorcontainer div -->    
 </div>
