@@ -1,8 +1,9 @@
 grase-www-portal (3.7.4-dev5) purewhite; urgency=low
 
   * Cron archive scripts allowed negative time value which allowed usage after using all allowed time
+  * Fix Reports some more 
 
- -- Tim White <tim@grasehotspot.org>  Sat, 30 Jun 2012 07:14:20 +1000
+ -- Tim White <tim@grasehotspot.org>  Sat, 30 Jun 2012 07:59:03 +1000
 
 grase-www-portal (3.7.4-dev4) purewhite; urgency=low
 

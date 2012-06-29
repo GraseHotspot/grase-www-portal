@@ -112,7 +112,7 @@ class DatabaseReports
             DATE(AcctStartTime) AS Label
             FROM radacct
             WHERE ServiceType != 'Administrative-User'
-            GROUP BY DAYOFMONTH(AcctStartTime)
+            GROUP BY DATE(AcctStartTime)
             UNION
             SELECT '0' AS TotalOctets, CONCAT(dt.d, '-', days.d) as Label
         FROM
@@ -144,7 +144,7 @@ class DatabaseReports
             DATE(AcctStartTime) AS Label
             FROM radacct
             WHERE ServiceType != 'Administrative-User'
-            GROUP BY DAYOFMONTH(AcctStartTime)
+            GROUP BY DATE(AcctStartTime)
             UNION
             SELECT '0' AS TotalOctets, CONCAT(dt.d, '-', days.d) as Label
         FROM
@@ -178,7 +178,7 @@ class DatabaseReports
             DATE(AcctStartTime) AS Label
             FROM radacct
             WHERE ServiceType != 'Administrative-User'
-            GROUP BY DAYOFMONTH(AcctStartTime)
+            GROUP BY DATE(AcctStartTime)
             UNION
             SELECT '0' AS TotalOctets, CONCAT(dt.d, '-', days.d) as Label
         FROM
