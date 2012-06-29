@@ -640,7 +640,9 @@ class CronFunctions extends DatabaseFunctions
             $rowsaffected += $result;                     
         
             // Ensure all radcheck values are > 0 where appropriate
-            
+	    // TODO: Check if any other attributes may need "resetting"
+
+	    // Max-Octets reset            
             $sql = sprintf("UPDATE radcheck 
                             SET
                             radcheck.value = 0 
@@ -648,6 +650,25 @@ class CronFunctions extends DatabaseFunctions
                             radcheck.Attribute = %s
                             AND CAST(radcheck.value AS SIGNED INTEGER) < 0",
                             $this->db->quote('Max-Octets')
+                            );
+                            
+            $result = $this->db->exec($sql);
+            
+            if (PEAR::isError($result))
+            {
+                return T_('Unable to ensure positive values in radcheck: ') . $result->toString();
+            }
+            
+            $rowsaffected += $result;                                        
+
+	    // Max-All-Session reset            
+            $sql = sprintf("UPDATE radcheck 
+                            SET
+                            radcheck.value = 0 
+                            WHERE
+                            radcheck.Attribute = %s
+                            AND CAST(radcheck.value AS SIGNED INTEGER) < 0",
+                            $this->db->quote('Max-All-Session')
                             );
                             
             $result = $this->db->exec($sql);
