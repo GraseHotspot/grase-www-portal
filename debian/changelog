@@ -1,3 +1,9 @@
+grase-www-portal (3.7.5) purewhite; urgency=low
+
+  * Release 3.7.4-dev5 as 3.7.5
+
+ -- Tim White <tim@grasehotspot.org>  Thu, 19 Jul 2012 13:02:11 +1000
+
 grase-www-portal (3.7.4-dev5) purewhite; urgency=low
 
   * Cron archive scripts allowed negative time value which allowed usage after using all allowed time
