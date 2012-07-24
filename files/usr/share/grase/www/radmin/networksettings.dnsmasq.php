@@ -92,7 +92,11 @@ if($networkoptions['opendnsbogusnxdomain'])
     "67.215.65.138" => "block.opendns.com",
     "67.215.65.139" => "guide.opendns.com",
     */
-    $bogusnxdomains = array('hit-nxdomain.opendns.com');
+    
+    // Due to Bug #79 (http://trac.grasehotspot.org/ticket/79) we can't lookup the bogus nxdomain ips, as we block them!
+    // Unless another solution is found for lookups we'll just have to update this if the ips ever change.
+    echo "bogus-nxdomain=67.215.65.132\n";
+    /*$bogusnxdomains = array('hit-nxdomain.opendns.com');
     // TODO: plugin hook here?
     foreach($bogusnxdomains as $domainname){
 	$ips = gethostbynamel($domainname);
@@ -100,7 +104,7 @@ if($networkoptions['opendnsbogusnxdomain'])
         {
             echo "bogus-nxdomain=$ip\n";
         }
-    }
+    }*/
 }
 
 if(is_array($networkoptions['bogusnx']))

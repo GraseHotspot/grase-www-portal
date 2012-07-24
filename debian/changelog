@@ -1,3 +1,9 @@
+grase-www-portal (3.7.6) purewhite; urgency=low
+
+  * Fix bug #79 which is causing restarts every 5 minutes
+
+ -- Tim White <tim@grasehotspot.org>  Wed, 25 Jul 2012 09:26:18 +1000
+
 grase-www-portal (3.7.5) purewhite; urgency=low
 
   * Release 3.7.4-dev5 as 3.7.5
