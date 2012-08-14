@@ -34,7 +34,7 @@ function load_global_settings()
 {
     global $Settings, $location, $pricemb, $pricetime, $currency, $sellable_data;
     global $useable_data, $support_name, $support_link, $website_link;
-    global $website_name, $locale, $DEMO_SITE;
+    global $website_name, $locale, $mb_options, $time_options, $kbit_options, $DEMO_SITE;
     
     $location = $Settings->getSetting('locationName'); if($location == "") $location = "Default";
     $pricemb = $Settings->getSetting('priceMb'); if($pricemb == "") $pricemb = 0.6;
@@ -47,6 +47,10 @@ function load_global_settings()
 
     $website_link = $Settings->getSetting('websiteLink'); if($website_link == "") $website_link = "http://grasehotspot.org/";
     $website_name = $Settings->getSetting('websiteName'); if($website_name == "") $website_name = "GRASE Hotspot Project";
+    
+    $mb_options = $Settings->getSetting('mbOptions'); if($mb_options == "") $mb_options = "10 50 100 250 500 1024 2048 4096 102400";
+    $time_options = $Settings->getSetting('timeOptions'); if($time_options == "") $time_options = "5 10 20 30 45 60 90 120 180 240 600 6000";
+    $kbit_options = $Settings->getSetting('kbitOptions'); if($kbit_options == "") $kbit_options = "64 128 256 512 1024 1536 2048 4096 8192";
     
     $locale = $Settings->getSetting('locale'); if($locale == '') $locale = "en_AU";
     
@@ -63,7 +67,7 @@ $realhostname = trim(file_get_contents('/etc/hostname'));
 $tzfile = trim(file_get_contents('/etc/timezone'));
 
 if($tzfile)
-    date_default_timezone_set($tzfile);
+    date_default_timezone_set($tzfile); // TODO Need to catch error here?
 else
     date_default_timezone_set(@date_default_timezone_get());
 

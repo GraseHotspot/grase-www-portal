@@ -73,6 +73,64 @@ $(document).ready(function(){
     // Make tables of users into tabbed display
     $("#userslist").tabs();
     
+    // Make group list tabbed
+    $("#groupSettingsNewGroup").hide();
+    var tab_counter = 1;
+    
+    var $grouptabs = $("#groupslist").tabs({
+        tabTemplate: "<li><a href='#{href}'>#{label}</a> <span class='ui-icon ui-icon-close'>Remove Tab</span></li>"/*,
+	add: function( event, ui ) {
+	        var tab_content = "Tab content.";
+	        //$( ui.panel ).append( $("#groupSettings_NewGroup").html() );
+	}*/
+    });
+        
+        // Add each tab        
+    $("div[id*=groupSettings_]").each(function(index) {
+            $("#groupslist").tabs("add", "#" + $(this).attr('id'), $(this).children('.groupnameinput').val() );
+    });
+    
+        // Make close buttons on tabs work
+        //TODO migrate live to .on event
+        $( "#groupslist span.ui-icon-close" ).live( "click", function() {
+			var index = $( "li", $grouptabs ).index( $( this ).parent() );
+			$grouptabs.tabs( "remove", index );
+		});
+	
+	
+	function addTab() {
+	        $("#groupSettingsNewGroup").clone().attr('id','groupSettingsDyn_' + tab_counter).show().appendTo("#groupslist");
+	        //$("#tabs-2").html($("#groupSettings_NewGroup").html());
+                $grouptabs.tabs( "add", "#groupSettingsDyn_" + tab_counter, "New Group" );		
+
+		tab_counter++;
+	        $(".groupnameinput").change( function() {
+                $('a[href=#' + $(this).parent().attr("id") + ']').text($(this).val());
+                });
+	}
+
+	$( "#addgroup" ).button()
+	               .click(function() {
+	                        addTab();
+	                        return false;
+	               }
+	               );
+
+        // Update tab names on name Update
+        $(".groupnameinput").change( function() {
+                $('a[href=#' + $(this).parent().attr("id") + ']').text($(this).val());
+        });
+        
+        /*TODO update to 1.7 and replace above with below
+                $("#groupslist").on("change", ".groupnameinput", function() {
+                $('a[href=#' + $(this).parent().attr("id") + ']').text($(this).val());
+        });*/
+
+
+
+
+
+    
     // Group properties in edit user collapsed
 	$('.collapseheader').click(function() {
 		$(this).next().toggle('slide' , { direction: "up" });

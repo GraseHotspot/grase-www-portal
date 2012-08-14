@@ -143,6 +143,7 @@ class DatabaseConnections
         $this->radiusDB =& MDB2::connect($this->radiusDSN, $this->radiusOptions);
         if (PEAR::isError($this->radiusDB))
         {
+            //TODO Send more of error handler to error handling (i.e. userinfo in database errors, for debugging (stderr?))
             ErrorHandling::fatal_nodb_error($this->radiusDB->getMessage() . " RADIUS<br/>The RADIUS database does not exist");
         }
         

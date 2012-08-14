@@ -34,11 +34,13 @@ $success = array();
 
 if(isset($_POST['submit']))
 {
-    $newlocationname    = clean_text($_POST['locationname']);
-    $newsupportcontact  = clean_text($_POST['supportcontact']);    
-    $newsupportlink     = clean_text($_POST['supportlink']);
+        $newlocationname    = clean_text($_POST['locationname']);
+        $newsupportcontact  = clean_text($_POST['supportcontact']);    
+        $newsupportlink     = clean_text($_POST['supportlink']);
 	$newpricemb         = clean_number($_POST['pricemb']);
 	$newpricetime       = clean_number($_POST['pricetime']);
+	$newmboptions       = clean_numberarray($_POST['mboptions']);
+	$newtimeoptions     = clean_numberarray($_POST['timeoptions']);
 	//$newcurrency        = clean_text($_POST['currency']);
 	$newlocale          = clean_text($_POST['locale']);
 	$newwebsitename     = clean_text($_POST['websitename']);
@@ -52,12 +54,11 @@ if(isset($_POST['submit']))
     if($newsupportlink != $support_link) update_supportlink($newsupportlink);    
     if($newpricemb != $pricemb) update_pricemb($newpricemb);
     if($newpricetime != $pricetime) update_pricetime($newpricetime);
-    //if($newcurrency != $currency) update_currency($newcurrency);
+    if($newmboptions != $mb_options) update_mboptions($newmboptions);
+    if($newtimeoptions != $time_options) update_timeoptions($newtimeoptions);
     if($newlocale != $locale) update_locale($newlocale);
     if($newwebsitename != $website_name) update_websitename($newwebsitename);
     if($newwebsitelink != $website_link) update_websitelink($newwebsitelink);
-    //if($newsellabledata != $sellable_data) update_sellabledata($newsellabledata);
-    //if($newuseabledata != $useable_data) update_useabledata($newuseabledata);    
     // Call validate&change functions for changed items
 }
 
@@ -90,8 +91,6 @@ load_global_settings(); // Reloads settings
 	
 if(sizeof($error) > 0) $smarty->assign("error", $error);	
 if(sizeof($success) > 0) $smarty->assign("success", $success);
-
-//$old_error_level = error_reporting(1); // TODO: Don't have this catching stuff
 
 // Location
 
@@ -192,27 +191,7 @@ function update_pricetime($pricetime)
 	}
 }
 
-function update_currency($currency)
-{   // No longer needed
-    global $error, $smarty, $Settings, $success, $CurrencySymbols;
-	if($currency != "" && strlen($currency) < 4)
-	{
-		if($Settings->setSetting('currency', $currency))
-		{
-			$success[] = T_("Currency updated");
-			AdminLog::getInstance()->log(T_("Currency updated to") ." ${CurrencySymbols[$currency]}");
-		}
-		else
-		{
-			$error[] = T_("Error saving Currency");
-		}
-	}else
-	{
-		$error[] = T_("Invalid Currency");
-	}
-
-
-}
+// Data and Time selections
 
 function update_locale($locale)
 {
@@ -247,48 +226,6 @@ function update_locale($locale)
 
 
 
-// Data limits
-function update_sellabledata($sellabledata)
-{
-    global $error, $smarty, $Settings, $success;
-    if($sellabledata != "" && is_numeric($sellabledata))
-    {
-        if($Settings->setSetting('sellableData', $sellabledata))
-        {
-            $success[] = T_("Sellable Data Limit Update");
-			AdminLog::getInstance()->log(T_("Sellable Data Limit Update"));        
-        }
-        else
-        {
-            $error[] = T_("Error updating Sellable Data Limit");
-        }
-    }
-    else
-    {
-        $error[] = T_("Invalid value for Sellable Data");
-    }
-}
-
-function update_useabledata($useabledata)
-{
-    global $error, $smarty, $Settings, $success;
-    if($useabledata != "" && is_numeric($useabledata))
-    {
-        if($Settings->setSetting('useableData', $useabledata))
-        {
-            $success[] = T_("Useable Data Limit Update");
-			AdminLog::getInstance()->log(T_("Useable Data Limit Update"));        
-        }
-        else
-        {
-            $error[] = T_("Error updating Useable Data Limit");
-        }
-    }
-    else
-    {
-        $error[] = T_("Invalid value for Useable Data");
-    }
-}
 
 // Support Contact
 function update_supportcontact($supportname)

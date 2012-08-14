@@ -158,12 +158,14 @@ function createusefullinks()
 	return $links;
 }
 
+// TODO rename datacosts to better reflect that it just has inherit added to datavals
 function datacosts()
 {
-	global $datacosts, $pricemb, $currency;
+	global $datacosts;//, $pricemb, $currency;
 	//$disp_currency = $CurrencySymbols[$currency];
 	$datacosts['inherit'] = T_('Inherit from group');
-	$datacosts[''] = '';
+	$datacosts = array_merge($datacosts, datavals());
+	/*$datacosts[''] = '';
 	$money_options = array($pricemb, 5, 10, 15, 20, 25, 30, 40, 50, 75, 100);
 	foreach($money_options as $money)
 	{
@@ -171,23 +173,25 @@ function datacosts()
 		$data = round($money/$pricemb, 0);
 		$disp_data = Formatting::formatBytes($data*1024*1024);
 		$datacosts["$data"] = "$disp_money ($disp_data)";
-	}
+	}*/
 	return $datacosts;
 }
 
+/* Can just use datavals now
 function groupdatacosts()
 {
     $datacosts = datacosts();
     unset($datacosts['inherit']);
     return $datacosts;
-}
+}*/
 
 function datavals()
 {
+        global $mb_options;
 	//$disp_currency = $CurrencySymbols[$currency];
 	$datavals[''] = '';
-	$mb_options = array(10, 50, 100, 250, 500, 1024, 2048, 4096, 102400);
-	foreach($mb_options as $mb)
+	$mboptions = explode(" ", $mb_options);
+	foreach($mboptions as $mb)
 	{
 		$datavals["$mb"] = Formatting::formatBytes($mb*1024*1024);;
 	}
@@ -196,10 +200,10 @@ function datavals()
 
 function timevals()
 {
-	//$disp_currency = $CurrencySymbols[$currency];
+        global $time_options;
 	$timevals[''] = '';
-	$time_options = array(5, 10, 20, 30, 45, 60, 90, 120, 180, 600, 6000);
-	foreach($time_options as $time)
+	$timeoptions = explode(" ", $time_options);
+	foreach($timeoptions as $time)
 	{
 	    if($time >= 60)
 	    {
@@ -213,22 +217,23 @@ function timevals()
 	return $timevals;
 }
 
+/* Can just use timevals now
 function grouptimecosts()
 {
     $timecosts = timecosts();
     unset($timecosts['inherit']);
     return $timecosts;
-}
+}*/
 
 function timecosts()
 {
-	global $timecosts, $pricetime, $currency;
-	//$disp_currency = $CurrencySymbols[$currency];
+	global $timecosts;//, $pricetime, $currency, $time_options;
 	$timecosts['inherit'] = T_('Inherit from group');
-	$timecosts[''] = '';
-	//$pricemb = $price; // 60c/Mb
-	$time_options = array(5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 60, 90, 120, 180);
-	foreach($time_options as $time)
+	$timecosts = array_merge($timecosts, timevals());
+		
+/*	//$pricemb = $price; // 60c/Mb
+	$timeoptions = explode(" ", $time_options);
+	foreach($timeoptions as $time)
 	{
 		$cost = displayLocales(number_format(round($pricetime*$time, 2),2), TRUE);
 	    if($time >= 60)
@@ -239,10 +244,11 @@ function timecosts()
 	    {
 		    $timecosts["$time"] = "$cost ($time mins)";
 		}		
-	}
+	}*/
 	return $timecosts;
 }
 
+/* REMOVE was used for sellable/useable data graphs
 function gboctects()
 {
     $gb_options = array(1, 2, 4, 5, 10, 100);
@@ -254,11 +260,13 @@ function gboctects()
     }
     return $options;
 }
+*/
 
 function bandwidth_options()
 {
+    global $kbit_options;
     // kbits/second
-    $kbits_options = array(64, 128, 256, 512, 1024, 1536, 2048, 4096, 8192);
+    $kbits_options = explode(" ", $kbit_options);
     $options[''] = '';
     foreach($kbits_options as $kbits)
     {
@@ -434,18 +442,19 @@ function assign_vars()
 	// Costs
 	//$smarty->assign("CurrencySymbols", currency_symbols());
 	$smarty->assign("Datacosts", datacosts());
-	$smarty->assign("GroupDatacosts", groupdatacosts());
+	$smarty->assign("GroupDatacosts", datavals());
 	$smarty->assign("Datavals", datavals());
 	$smarty->assign("Timecosts", timecosts());
-	$smarty->assign("GroupTimecosts", grouptimecosts());
+	$smarty->assign("GroupTimecosts", timevals());
 	$smarty->assign("Timevals", timevals());
 	$smarty->assign("Bandwidthvals", bandwidth_options());
 	$smarty->assign("Recurtimes",recurtimes()); 
 	$smarty->assign("YesNo", yesno());
-	$smarty->assign('gbvalues', gboctects());	
+
 
 	// Data
-	/* Disabled usage bars due to lack of understanding/confusion
+	/* Disabled usage bars due to lack of understanding/confusion and now have better reports
+	//$smarty->assign('gbvalues', gboctects());		
 	$total_sellable_data = $sellable_data; 
 	$smarty->assign("TotalSellableData", $total_sellable_data);
 	$sold_data =  getSoldData();

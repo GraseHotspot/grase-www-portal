@@ -65,19 +65,6 @@
         <input type="url" name="websitelink" id="websitelink" value='{$website_link}'/>
         <span id="websitelinkInfo">{t}Link for Website Footer Link{/t}</span>
     </div>   
-{* Disabled due to lack of understand    
-    <div>
-        <label for='sellable_data'>{t}Sellable Graph Max{/t}</label>
-        {html_options name=sellable_data id="sellable_data" options=$gbvalues selected=$sellable_data}
-        <span id="sellable_dataInfo">{t}Select what is 100% on the Sellable Data Graph{/t}</span>
-    </div>     
-
-    <div>
-        <label for='useable_data'>{t}Useable Graph Max{/t}</label>
-        {html_options name=useable_data id="useable_data" options=$gbvalues selected=$useable_data}
-        <span id="useable_dataInfo">{t}Select what is 100% on the Useable Data Graph{/t}</span>
-    </div>
-*}    
    
     <button type="submit" name="submit">{t}Save Settings{/t}</button> 
 

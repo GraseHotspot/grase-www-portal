@@ -404,6 +404,18 @@ function clean_number($number)
     return $cleannum;
 }
 
+function clean_numberarray($numberarray)
+{
+        //Explode it into it's array using " " (as this can't appear in numbers anywhere in the world)
+        $numarray = explode(' ', $numberarray);
+        foreach($numarray as $num)
+        {
+                $numericarray[] = clean_number($num);
+        }
+        
+        return $numericarray;
+}
+
 
 function clean_int($number)
 {

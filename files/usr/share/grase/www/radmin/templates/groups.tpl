@@ -9,6 +9,8 @@
 <p>{t}Deleting a group won't delete it's users. Next time the user is edited it's group will become the default group unless a new group is selected.{/t}</p>
 
 <p>{t}The limits here are the default for group members, unless overridden when creating a member. If multiple limits are specified, the first limit to be reached will disconnect the user.{/t} {t}Changing Expiry, Data or Time limits, will not change existing users of the group and will only apply to new users. Recurring limits, Bandwidth and simultaneous logins will all apply to existing and new members.{/t}</p>
+
+<p class="ui-widget messagewidget error">{t}Recurring Data and Time limits must not be used with simultaneous login set to yes, otherwise users may be able to use more than the allocated limit. Data limits should only be used with larger time periods, and users may need to logout and log back in if they use past the time period.{/t}</p>
 <div id="GroupConfigForm">
 <form method="post" action="?" class="generalForm">
 
@@ -16,11 +18,20 @@
 
 
     <div>
-        <h3>{t}Groups{/t}</h3>
+      <h3>{t}Groups{/t}</h3>
+      
+      <button id="addgroup">New Group</button>
         
-    {foreach from=$groupsettings item=settings key=groupname}        
-        <div class="jsmultioption">
-            <label>{t}Name{/t}</label><input type="text" name="groupname[]" value='{$settings.GroupLabel}'/>
+      <div id='groupslist' style="overflow:hidden;">
+        <ul id="tabselector">
+                 
+        </ul>
+      
+
+        
+    {foreach from=$groupsettings item=settings key=groupname name=groupsettingsloop}        
+        <div class="jsmultioption" id="groupSettings_{$smarty.foreach.groupsettingsloop.iteration}" class="tabcontent">
+            <label>{t}Name{/t}</label><input type="text" class="groupnameinput" name="groupname[]" value='{$settings.GroupLabel}'/>
             <label>{t}Expiry{/t}</label><input type="text" name="groupexpiry[]" value='{$settings.Expiry}'/>
             
             <label>{t}Login Times{/t}</label><input type="text" name="LoginTime[]" value='{$groupcurrentdata.$groupname.LoginTime}'/>            
@@ -31,9 +42,9 @@
             <label>{t}Default Time Limit (Minutes){/t}</label>
             {html_options name="Group_Max_Time[]" options=$GroupTimecosts selected=$settings.MaxTime}
             
-            {* <label>{t}Recurring Data Limit (MiB){/t}</label>
+            <label>{t}Recurring Data Limit (MiB){/t}</label>
             {html_options name="Recur_Data_Limit[]" options=$Datavals selected=$groupcurrentdata.$groupname.DataRecurLimit}{t}per{/t}
-            {html_options name="Recur_Data[]" options=$Recurtimes selected=$groupcurrentdata.$groupname.DataRecurTime} *}
+            {html_options name="Recur_Data[]" options=$Recurtimes selected=$groupcurrentdata.$groupname.DataRecurTime}
             
             <label>{t}Recurring Time Limit (Minutes){/t}</label>
             {html_options name="Recur_Time_Limit[]" options=$Timevals selected=$groupcurrentdata.$groupname.TimeRecurLimit}{t}per{/t}
@@ -50,16 +61,16 @@
             
             
             
-            <div class="jsremove ui-widget-content">
+            <!--<div class="jsremove ui-widget-content">
                 <span class="jsremovebutton"></span>
                 <span class="jsaddremovetext">{t}Delete Group{/t}</span>
-            </div>
-            <hr/>            
+            </div> -->
+            <hr/>           
         </div>
 
     {/foreach}
-        <div class="jsmultioption">
-            <label>{t}Name{/t}</label><input type="text" name="groupname[]" value=''/>
+        <div class="jsmultioption" id="groupSettingsNewGroup" class="tabcontent">
+            <label>{t}Name{/t}</label><input type="text" name="groupname[]" class="groupnameinput" value=''/>
             <label>{t}Expiry{/t}</label><input type="text" name="groupexpiry[]" value=''/>
             <label>{t}Login Times{/t}</label><input type="text" name="LoginTime[]" value=''/>  
             <label>{t}Default Data Limit (MiB){/t}</label>
@@ -67,10 +78,10 @@
             <label>{t}Default Time Limit (Minutes){/t}</label>
             {html_options name="Group_Max_Time[]" options=$GroupTimecosts selected=$user.Max_Time}
 
-            {* <label>{t}Recurring Data Limit (MiB){/t}</label>
+            <label>{t}Recurring Data Limit (MiB){/t}</label>
             {html_options name="Recur_Data_Limit[]" options=$Datavals}{t}per{/t}
             {html_options name="Recur_Data[]" values=$Recurtimes output=$Recurtimes}            
-            *}
+            
             <label>{t}Recurring Time Limit (Minutes){/t}</label>
             {html_options name="Recur_Time_Limit[]" options=$Timevals }{t}per{/t}
             {html_options name="Recur_Time[]" options=$Recurtimes}
@@ -84,20 +95,15 @@
             <label>{t}Allow simultaneous logins?{/t}</label>
             {html_options name="SimultaneousUse[]" options=$YesNo selected='no'}
             
-            
-            
-            <div class="jsadd  ui-widget-content">
-                <span class="jsaddbutton"></span>
-                <span class="jsaddremovetext" id="addtext">{t}Add Another Group{/t}</span>
-            </div>
-            <hr/>
         </div>
         <span id="groupsInfo"></span>
+
+      </div>
 
     </div>
 
     <button type="submit" name="submit">{t}Save Settings{/t}</button>
-    <div id="jsdeletetext" title="{t}Delete Group{/t}"></div> 
+
 
 </form>
 

@@ -40,8 +40,8 @@ if(isset($_POST['submit']))
     $grouptimelimit = array_filter($_POST['Group_Max_Time']);    
     $groupdownlimit = array_filter($_POST['Bandwidth_Down_Limit']);
     $groupuplimit = array_filter($_POST['Bandwidth_Up_Limit']);    
-    //$grouprecurdatalimit = array_filter($_POST['Recur_Data_Limit']);
-    //$grouprecurdata = array_filter($_POST['Recur_Data']);    
+    $grouprecurdatalimit = array_filter($_POST['Recur_Data_Limit']);
+    $grouprecurdata = array_filter($_POST['Recur_Data']);    
     $grouprecurtimelimit = array_filter($_POST['Recur_Time_Limit']);
     $grouprecurtime = array_filter($_POST['Recur_Time']);
     $simultaneoususe = array_filter($_POST['SimultaneousUse']);
@@ -72,8 +72,8 @@ if(isset($_POST['submit']))
                 isset($grouptimelimit[$key]) ||
                 isset($groupdownlimit[$key]) ||
                 isset($groupuplimit[$key]) ||
-                //isset($grouprecurdatalimit[$key]) ||
-                //isset($grouprecurdata[$key]) ||
+                isset($grouprecurdatalimit[$key]) ||
+                isset($grouprecurdata[$key]) ||
                 isset($grouprecurtimelimit[$key]) ||
                 isset($grouprecurtime[$key]) ||
                 isset($grouplogintime[$key])
@@ -113,7 +113,7 @@ if(isset($_POST['submit']))
 	    // Silence warnings (@) as we don't care if they are set or not'
 	    $error[] = @ validate_timelimit($grouptimelimit[$key]);
 	    $error[] = @ validate_timelimit($grouprecurtimelimit[$key]);   
-	    //$error[] = validate_datalimit($grouprecurdatalimit[$key]);
+	    $error[] = @ validate_datalimit($grouprecurdatalimit[$key]);
 	    $error[] = @ validate_recur($grouprecurtime[$key]);
 	    $error[] = @ validate_recur($grouprecurdata[$key]);
 	    $error[] = @ validate_recurtime($grouprecurtime[$key], $grouprecurtimelimit[$key]);	    
@@ -137,8 +137,8 @@ if(isset($_POST['submit']))
         $groups[clean_groupname($name)] = array_filter(array(
             //'MaxMb' => clean_number($groupdatalimit[$key]),
             //'MaxTime' => clean_int($grouptimelimit[$key]),
-            //'DataRecurTime' => clean_text($grouprecurdata[$key]),
-            //'DataRecurLimit' => clean_number($grouprecurdatalimit[$key]),
+            'DataRecurTime' => clean_text($grouprecurdata[$key]),
+            'DataRecurLimit' => clean_number($grouprecurdatalimit[$key]),
             'TimeRecurTime' => @ clean_text($grouprecurtime[$key]),
             'TimeRecurLimit' => @ clean_int($grouprecurtimelimit[$key]),
             'BandwidthDownLimit' => @ clean_int($groupdownlimit[$key]),
