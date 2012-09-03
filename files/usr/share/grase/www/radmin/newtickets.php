@@ -64,6 +64,43 @@ function validate_form()
 }
 
 
+/* ** Process batches actions (delete,print, export) **   */
+
+if(isset($_POST['batchesprint']))
+{
+        foreach($_POST['selectedbatches'] as $batch)
+        {
+                $selectedbatches[] = clean_number($batch);
+        }
+        $selectedbatches = implode(',', $selectedbatches);
+        if(sizeof($selectedbatches) == 0){
+                $error[] = T_("Please select a batch to print");
+                $smarty->assign("error", $error);
+        }else{
+                header ("Location: http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/printnewtickets?batch=$selectedbatches");
+        }
+
+}
+
+if(isset($_POST['batchesexport']))
+{
+        foreach($_POST['selectedbatches'] as $batch)
+        {
+                $selectedbatches[] = clean_number($batch);
+        }
+        $selectedbatches = implode(',', $selectedbatches);
+        if(sizeof($selectedbatches) == 0){
+                $error[] = T_("Please select a batch to export");
+                $smarty->assign("error", $error);
+        }else{
+                header ("Location: http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/exporttickets?batch=$selectedbatches");
+        }
+
+}
+
+// TODO Delete batches
+
+/*  **  Process creation of batches **   */
 
 if(isset($_POST['createticketssubmit']))
 {
@@ -132,7 +169,7 @@ if(isset($_POST['createticketssubmit']))
 		$batchID = $Settings->nextBatchID();
 		
 		// TODO: BatchComment
-		$Settings->saveBatch($batchID, $createdusernames, $Auth->getUsername(), clean_text($_POST['BatchComment']));
+		$Settings->saveBatch($batchID, $createdusernames, $Auth->getUsername(), clean_text($_POST['Comment']));
 		$Settings->setSetting('lastbatch', $batchID);
 		$createdusers = database_get_users($createdusernames);
 		$smarty->assign("createdusers", $createdusers);
@@ -161,6 +198,7 @@ function display_adduser_form()
 	$smarty->assign("user", $user);
 	
     $smarty->assign("last_batch", $Settings->getSetting('lastbatch'));
+    $smarty->assign("listbatches", $Settings->listBatches());
     
 	display_page('newtickets.tpl');
 }

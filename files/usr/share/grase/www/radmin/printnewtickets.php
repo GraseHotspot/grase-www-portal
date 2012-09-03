@@ -45,7 +45,7 @@ if(isset($_GET['user']))
 	}
 	
 	// TODO: replace , with _ in below
-    $title = sprintf(T_('Batch %s Vouchers'), clean_number($_GET['batch']));	
+    $title = sprintf(T_('Batch %s Vouchers'), implode('-', $batches));	
 }else
 {
     $batch = $Settings->getSetting('lastbatch');

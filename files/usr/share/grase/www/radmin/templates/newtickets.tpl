@@ -33,6 +33,33 @@
 		</table>
 	</div>
 {/if}
+
+{if $listbatches}
+<form id='batchactions' method='POST'>
+<table>
+<thead>
+        <th>{t}Batch ID{/t}</th>
+        <th>{t}Date Created{/t}</th>
+        <th>{t}Created By{/t}</th>
+        <th>{t}Number of Tickets{/t}</th>
+        <th>{t}Comment{/t}</th>
+</thead>
+{foreach from=$listbatches item=batch}
+<tr>
+        <td><input type='checkbox' name='selectedbatches[]' value='{$batch.batchID}'/>{$batch.batchID}</td>
+        <td>{$batch.createTime}</td>
+        <td>{$batch.createdBy}</td>
+        <td>{$batch.numTickets}</td>
+        <td>{$batch.comment}</td>      
+</tr>        
+{/foreach}
+</table>
+<button name='batchesprint'>Print selected Batches</button>
+<button name='batchesexport'>Export selected Batches (CSV)</button>
+<!--<button name='batchesdelete'>Delete selected Batches</button>-->
+</form>
+{/if}
+
 {if $last_batch}<a href="printnewtickets?batch={$last_batch}" class="printlink" target="tickets">Print Last Batch of Tickets</a>{/if}
 
 
