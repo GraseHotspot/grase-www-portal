@@ -985,6 +985,8 @@ class DatabaseFunctions
                 }
             }
         }
+        
+        AdminLog::getInstance()->log("Group $name updated db settings");
     }
     
     public function getGroupAttributes($groupname = '', $clearcache = false)

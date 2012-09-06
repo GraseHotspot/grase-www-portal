@@ -388,6 +388,27 @@ class SettingsMySQL extends Settings
         return $result;
     }
     
+    public function listBatches()
+    {
+    /* select batches.batchID, createTime, createdBy, comment, count(UserName) from batch, batches WHERE batches.batchID = batch.batchID;*/
+        $sql = "select batches.batchID, createTime, createdBy, comment, count(UserName) as numTickets from batch, batches WHERE batches.batchID = batch.batchID GROUP BY batches.batchID";
+        
+        $result = $this->db->queryAll($sql);
+        
+        // Always check that result is not an error
+        if (PEAR::isError($result)) {
+            ErrorHandling::fatal_error('Getting list of batches  failed: '. $result->getMessage());
+        }
+        
+        /*$results = array();
+        foreach ($result as $row)
+        {
+            $results[] = $row[0];
+        }*/
+        
+        return $result;
+    }
+    
     public function getBatch($batchID = 0)
     {
         if($batchID == 0) // Get lastbatch
@@ -524,6 +545,8 @@ class SettingsMySQL extends Settings
                 T_('Adding Group query failed:  '), $result);
         }
         
+    AdminLog::getInstance()->log("Group ".$attributes['GroupName']." updated settings");
+        
         return $result;
 
     }
@@ -539,6 +562,8 @@ class SettingsMySQL extends Settings
             ErrorHandling::fatal_db_error(
                 T_('Delete Group query failed:  '), $result);
         }
+        
+        AdminLog::getInstance()->log("Group $groupname deleted");
         
         return $result;
     }
