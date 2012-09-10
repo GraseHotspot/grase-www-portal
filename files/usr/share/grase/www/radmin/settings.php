@@ -41,6 +41,7 @@ if(isset($_POST['submit']))
 	$newpricetime       = clean_number($_POST['pricetime']);
 	$newmboptions       = clean_numberarray($_POST['mboptions']);
 	$newtimeoptions     = clean_numberarray($_POST['timeoptions']);
+	$newbwoptions       = clean_numberarray($_POST['bwoptions']);	
 	//$newcurrency        = clean_text($_POST['currency']);
 	$newlocale          = clean_text($_POST['locale']);
 	$newwebsitename     = clean_text($_POST['websitename']);
@@ -53,12 +54,39 @@ if(isset($_POST['submit']))
     if($newsupportcontact != $support_name) update_supportcontact($newsupportcontact);    
     if($newsupportlink != $support_link) update_supportlink($newsupportlink);    
     if($newpricemb != $pricemb) update_pricemb($newpricemb);
-    if($newpricetime != $pricetime) update_pricetime($newpricetime);
-    if($newmboptions != $mb_options) update_mboptions($newmboptions);
-    if($newtimeoptions != $time_options) update_timeoptions($newtimeoptions);
+    //if($newtimeoptions != $time_options) update_timeoptions($newtimeoptions);
     if($newlocale != $locale) update_locale($newlocale);
     if($newwebsitename != $website_name) update_websitename($newwebsitename);
     if($newwebsitelink != $website_link) update_websitelink($newwebsitelink);
+    
+    // New functions to file, dont do messy way like above. Value will always be valid, as the cleaning functions should make it a valid value. We should still check the value fits how we want it to (i.e. isn't empty). We don't need to check for error up update as when we have errors we'll never come back here
+    $new2timeoptions = checkGroupsTimeDropdowns($newtimeoptions);
+    if($new2timeoptions != $newtimeoptions) $error[] = T_("Some time options are still in use by current groups and have been added back in");
+    
+    $new2mboptions = checkGroupsDataDropdowns($newmboptions);
+    if($new2mboptions != $newmboptions) $error[] = T_("Some data options are still in use by current groups and have been added back in");
+    
+    $new2bwoptions = checkGroupsBandwidthDropdowns($newbwoptions);
+    if($new2bwoptions != $newbwoptions) $error[] = T_("Some bandwidth options are still in use by current groups and have been added back in");        
+    
+    if($new2timeoptions != $time_options)
+    {
+        $Settings->setSetting('timeOptions', $new2timeoptions);
+        $success[] = T_("Time Options Updated");
+    }
+    
+    if($new2mboptions != $mb_options)
+    {
+        $Settings->setSetting('mbOptions', $new2mboptions);
+        $success[] = T_("Data Options Updated");
+    }
+    
+    if($new2bwoptions != $kbit_options)
+    {
+        $Settings->setSetting('kbitOptions', $new2bwoptions);
+        $success[] = T_("Bandwidth Options Updated");
+    }
+
     // Call validate&change functions for changed items
 }
 
@@ -68,6 +96,9 @@ load_global_settings(); // Reloads settings
 	$smarty->assign("location", $location);
 	$smarty->assign("pricemb", displayLocales($pricemb));
 	$smarty->assign("pricetime", displayLocales($pricetime));
+	$smarty->assign("mboptions", $mb_options);
+	$smarty->assign("timeoptions", $time_options);	
+	$smarty->assign("bwoptions", $kbit_options);		
 	//$smarty->assign("currency", $currency);
 	
 	// Locale stuff

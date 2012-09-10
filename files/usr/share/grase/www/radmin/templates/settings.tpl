@@ -41,8 +41,9 @@
         <br/><span>{t escape=no locale="<strong>$locale</strong>" language="<strong>$language</strong>" location="<strong>$region</strong>"}Current locale is %1, which sets the language to %2, and location to %3.{/t} {t currency="<strong>$currency</strong>" escape=no}Currency symbol is %1{/t}</span>
     </div>
 
+{* We no longer price it per Mb/Minute
     <div>
-        <label for='pricemb'>Cost per Mb</label>
+        <label for='pricemb'>{t}Cost per Mb{/t}</label>
         <input type="text" name="pricemb" id="pricemb" value='{$pricemb}'/>
         <span id="pricembInfo">{t}How much to charge per Mb{/t}</span>
     </div>
@@ -53,6 +54,26 @@
         <input type="text" name="pricetime" id="pricetime" value='{$pricetime}'/>
         <span id="pricetimeInfo">{t}How much to charge per Minute{/t}</span>
     </div>
+*}    
+    
+    <div>
+        <label for='mboptions'>{t}Data Options{/t}</label>
+        <input type="text" name="mboptions" id="mboptions" value='{$mboptions}'/>
+        <span id="mboptionsInfo">{t}Space separated list of Data Options in MB's to populate dropdown boxes{/t}</span>
+    </div>
+
+
+    <div>
+        <label for='timeoptions'>{t}Time Options{/t}</label>
+        <input type="text" name="timeoptions" id="timeoptions" value='{$timeoptions}'/>
+        <span id="timeoptionsInfo">{t}Space separated list of Time options in minutes to populate dropdown boxes.{/t}</span>
+    </div>    
+
+    <div>
+        <label for='bwoptions'>{t}Bandwidth Options{/t}</label>
+        <input type="text" name="bwoptions" id="bwoptions" value='{$bwoptions}'/>
+        <span id="bwoptionsInfo">{t}Space separated list of Bandwidth options in kbit/s to populate dropdown boxes.{/t}</span>
+    </div> 
 
     <div>
         <label for='websitename'>{t}Website Name{/t}</label>

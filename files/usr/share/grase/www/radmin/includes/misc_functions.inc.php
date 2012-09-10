@@ -305,6 +305,83 @@ function expiry_for_group($group, $groups = '')
 	return $status;
 }*/
 
+
+/* Functions to check the group settings to ensure all currently used values are present in the dropdown boxes */
+
+function checkGroupsDataDropdowns($datavals)
+{
+        global $Settings;
+        $mb = explode(' ', $datavals);
+        $group_settings = $Settings->getGroup();
+        $group_attribs = DatabaseFunctions::getInstance()->getGroupAttributes();        
+
+        foreach($group_settings as $name => $group)
+        {       
+                if(
+                        isset($group['MaxMb']) &&
+                        !in_array($group['MaxMb'], $mb) )
+                                $mb[] = $group['MaxMb'];
+
+                if(
+                        isset($group_attribs[$name]['DataRecurLimit']) &&
+                        !in_array($group_attribs[$name]['DataRecurLimit'], $mb))
+                                $mb[] = $group_attribs[$name]['DataRecurLimit'];
+        }
+        asort($mb);
+        $mb = trim(implode(" ", $mb));
+        return $mb;
+}
+
+function checkGroupsTimeDropdowns($datavals)
+{
+        global $Settings;
+        $time = explode(' ', $datavals);
+        $group_settings = $Settings->getGroup();
+        $group_attribs = DatabaseFunctions::getInstance()->getGroupAttributes();
+
+        foreach($group_settings as $name => $group)
+        {       
+                if(
+                        isset($group['MaxTime']) &&
+                        !in_array($group['MaxTime'], $time))
+                                $time[] = $group['MaxTime'];
+
+                if(
+                        isset($group_attribs[$name]['TimeRecurLimit']) &&
+                        !in_array($group_attribs[$name]['TimeRecurLimit'], $time))
+                                $time[] = $group_attribs[$name]['TimeRecurLimit'];
+        }
+        asort($time);
+        $time = trim(implode(" ", $time));
+        return $time;
+}
+
+function checkGroupsBandwidthDropdowns($datavals)
+{
+        global $Settings;
+        $bw = explode(' ', $datavals);
+        $group_settings = $Settings->getGroup();
+        $group_attribs = DatabaseFunctions::getInstance()->getGroupAttributes();
+
+        foreach($group_settings as $name => $group)
+        {       
+
+                if(
+                        isset($group_attribs[$name]['BandwidthUpLimit']) &&
+                        !in_array($group_attribs[$name]['BandwidthUpLimit'], $bw))
+                                $bw[] = $group_attribs[$name]['BandwidthUpLimit'];
+                if(
+                        isset($group_attribs[$name]['BandwidthDownLimit']) &&
+                        !in_array($group_attribs[$name]['BandwidthDownLimit'], $bw))
+                                $bw[] = $group_attribs[$name]['BandwidthDownLimit'];
+        }
+        asort($bw);
+        $bw = trim(implode(" ", $bw));
+        return $bw;
+}
+
+/* */
+
 function sort_users_into_groups($users)
 {
 	$users_group = array();
@@ -413,7 +490,7 @@ function clean_numberarray($numberarray)
                 $numericarray[] = clean_number($num);
         }
         
-        return $numericarray;
+        return implode(" ", $numericarray);
 }
 
 

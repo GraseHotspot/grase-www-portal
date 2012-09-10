@@ -8,7 +8,9 @@
 
 <p>{t}Deleting a group won't delete it's users. Next time the user is edited it's group will become the default group unless a new group is selected.{/t}</p>
 
-<p>{t}The limits here are the default for group members, unless overridden when creating a member. If multiple limits are specified, the first limit to be reached will disconnect the user.{/t} {t}Changing Expiry, Data or Time limits, will not change existing users of the group and will only apply to new users. Recurring limits, Bandwidth and simultaneous logins will all apply to existing and new members.{/t}</p>
+<p>{t}The limits here are the default for group members, unless overridden when creating a member. The limits are applied at user creation time, if "Inherit from group" is selected. If multiple limits are specified, the first limit to be reached will disconnect the user.{/t}</p>
+
+<p>{t}Changing Expiry, Data or Time limits, will not change existing users of the group and will only apply to new users. Recurring limits, Bandwidth and simultaneous logins will all apply to existing and new members.{/t}</p>
 
 <p class="ui-widget messagewidget error">{t}Recurring Data and Time limits must not be used with simultaneous login set to yes, otherwise users may be able to use more than the allocated limit. Data limits should only be used with larger time periods, and users may need to logout and log back in if they use past the time period.{/t}</p>
 <div id="GroupConfigForm">
@@ -74,9 +76,9 @@
             <label>{t}Expiry{/t}</label><input type="text" name="groupexpiry[]" value=''/>
             <label>{t}Login Times{/t}</label><input type="text" name="LoginTime[]" value=''/>  
             <label>{t}Default Data Limit (MiB){/t}</label>
-            {html_options name="Group_Max_Mb[]" options=$GroupDatacosts selected=$user.Max_Mb}
+            {html_options name="Group_Max_Mb[]" options=$GroupDatacosts}
             <label>{t}Default Time Limit (Minutes){/t}</label>
-            {html_options name="Group_Max_Time[]" options=$GroupTimecosts selected=$user.Max_Time}
+            {html_options name="Group_Max_Time[]" options=$GroupTimecosts}
 
             <label>{t}Recurring Data Limit (MiB){/t}</label>
             {html_options name="Recur_Data_Limit[]" options=$Datavals}{t}per{/t}

@@ -1,3 +1,10 @@
+grase-www-portal (3.7.7-UNRELEASED) purewhite; urgency=low
+
+  * Data and Time limits are no longer tied to $ amounts
+  * Data, Time and Bandwidth options are customisable
+
+ -- Tim White <tim@grasehotspot.org>  Tue, 11 Sep 2012 09:07:36 +1000
+
 grase-www-portal (3.7.6) purewhite; urgency=low
 
   * Fix bug #79 which is causing restarts every 5 minutes
