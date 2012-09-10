@@ -26,8 +26,6 @@ require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
 require_once 'includes/database_functions.inc.php';
 
-checkGroupsDataDropdowns($mb_options);
-
 $error = array();
 $success = array();
 
