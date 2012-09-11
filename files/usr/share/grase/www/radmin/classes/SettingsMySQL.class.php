@@ -38,7 +38,7 @@ class SettingsMySQL extends Settings
     private $settingcache = array();
     private $settingcacheloaded = false;
     
-    private $dbSchemeVersion = "2.1";
+    private $dbSchemeVersion = "2.2";
     private $dbSchemeSettings = 
         "CREATE TABLE IF NOT EXISTS `settings` (
           `setting` varchar(20) NOT NULL,
@@ -86,6 +86,20 @@ class SettingsMySQL extends Settings
             `lastupdated` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
             PRIMARY KEY `GroupName` (`GroupName`)
         ) ENGINE=MyISAM COMMENT ='Groups'";
+        
+    private $dbSchemaVouchers =
+        "CREATE TABLE `vouchers` (
+            `VoucherName` VARCHAR(64) NOT NULL,
+            `VoucherLabel` VARCHAR(64) NOT NULL,            
+            `VoucherPrice` VARCHAR(64) NOT NULL,
+            `VoucherGroup` VARCHAR(64) NOT NULL,
+            `MaxOctets` BIGINT(32) UNSIGNED NULL,
+            `MaxSeconds` BIGINT(32) UNSIGNED NULL,
+            `Description` VARCHAR(300) NULL,
+            `VoucherType` INT(32) UNSIGNED NOT NULL,
+            `lastupdated` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            PRIMARY KEY `VoucherName` (`VoucherName`)
+        ) ENGINE=MyISAM COMMENT ='Vouchers'";        
 
     public function __construct($db)
     {
@@ -148,7 +162,8 @@ class SettingsMySQL extends Settings
             isset($tables['templates']) &&
             isset($tables['batch'])  &&
             isset($tables['batches']) &&
-            isset($tables['groups'])
+            isset($tables['groups']) &&
+            isset($tables['vouchers'])
             )
         {
             return true;
@@ -171,6 +186,8 @@ class SettingsMySQL extends Settings
         $this->db->query($this->dbSchemaBatches);
         // Groups Table
         $this->db->query($this->dbSchemaGroups);
+        // Vouchers Table
+        $this->db->query($this->dbSchemaVouchers);        
         $this->setSetting('DBSchemaVersion', $this->dbSchemeVersion);
     }
     
@@ -569,6 +586,151 @@ class SettingsMySQL extends Settings
     }
 
 /* End Group Functions */
+
+/* Start Vouchers Functions */
+
+    public function setVoucher($attributes)
+    {
+    
+        if(isset($attributes['MaxMb']))
+        {
+            $attributes['MaxOctets'] = bigintval($attributes['MaxMb'] * 1024 * 1024);
+            unset($attributes['MaxMb']);
+        }
+        
+        if(isset($attributes['MaxTime']))
+        {
+            $attributes['MaxSeconds'] = $attributes['MaxTime'] * 60;
+            unset($attributes['MaxTime']);
+        }
+        
+        $attributes['VoucherType'] = 0;
+        if($attributes['InitVoucher'])
+        {
+            $attributes['VoucherType'] = 1 | $attributes['VoucherType'];
+        }
+        
+        if($attributes['TopupVoucher'])
+        {
+            $attributes['VoucherType'] = 2 | $attributes['VoucherType'];
+
+        }        
+
+        $fields = array (
+            'VoucherName' => array ( 'value' => $attributes['VoucherName'], 'key' => true),
+            'VoucherLabel' => array ( 'value' => $attributes['VoucherLabel']),            
+            'VoucherPrice' => array ( 'value' => $attributes['VoucherPrice'] + 0),
+            'VoucherGroup'    => array ( 'value' => $attributes['VoucherGroup']),
+            'MaxOctets' => array ( 'value' => @ $attributes['MaxOctets']),
+            'MaxSeconds'   => array ( 'value' => @ $attributes['MaxSeconds']),
+            'Description'   => array ( 'value' => @ $attributes['Description']),
+            'VoucherType'   => array ( 'value' => $attributes['VoucherType'])
+            );
+            
+        $result = $this->db->replace('vouchers', $fields);
+        if (PEAR::isError($result))
+        {
+            ErrorHandling::fatal_db_error(
+                T_('Adding Voucher query failed:  '), $result);
+        }
+        
+    AdminLog::getInstance()->log("Voucher ".$attributes['VoucherName']." updated settings");
+        
+        return $result;
+
+    }
+    
+    public function getVoucher($vouchername = '', $vouchergroup = '', $vouchertype = '')
+    {
+        $sql = "SELECT
+                VoucherName,
+                VoucherLabel,
+                VoucherPrice,
+                VoucherGroup,
+                MaxOctets,
+                MaxSeconds,
+                Description,
+                VoucherType,
+                lastupdated
+                FROM vouchers";
+
+        $prev_stat = false;
+        $wheresql = '';
+        
+        if($vouchername != '')
+        {
+            $wheresql .= sprintf("VoucherName=%s",
+                $this->db->quote($vouchername)
+                );
+            $prev_stat = true;
+        }
+        if($vouchergroup != '')
+        {
+            if($prev_stat = true) $wheresql = " AND ";
+            $wheresql .= sprintf("VoucherGroup=%s",
+                $this->db->quote($vouchergroup)
+                );                
+            $prev_stat = true;
+        }
+        
+        if($vouchertype != '')
+        {
+            if($prev_stat = true) $wheresql = " AND ";
+            $wheresql .= sprintf("(VoucherType & %s) > 0",
+                $this->db->quote($vouchertype)
+                );                
+            $prev_stat = true;
+        }
+        
+        if($prev_stat && $wheresql != '')
+        {
+                $sql .= " WHERE " . $wheresql;
+        }
+            
+        $result = $this->db->queryAll($sql);
+        
+        // Always check that result is not an error
+        if (PEAR::isError($result)) {
+            ErrorHandling::fatal_error('Getting vouchers failed: '. $result->getMessage());
+        }
+        
+        foreach ($result as $results)
+        {
+            if(isset($results['MaxSeconds']))
+                $results['MaxTime'] = $results['MaxSeconds'] / 60;
+            if(isset($results['MaxOctets']))
+                $results['MaxMb'] = $results['MaxOctets'] /1024 /1024;
+            if(isset($results['VoucherType']))
+            {
+                if(($results['VoucherType'] & 1) > 0) $results['InitVoucher'] = true;
+                if(($results['VoucherType'] & 2) > 0) $results['TopupVoucher'] = true;
+            }
+            $vouchers[$results['VoucherName']] = $results;
+        }
+        
+        return $vouchers;
+    
+    }    
+    
+    public function deleteVoucher($vouchername)
+    {
+        $sql = sprintf("DELETE FROM vouchers WHERE VoucherName=%s",
+            $this->db->quote($vouchername));
+            
+        $result = $this->db->exec($sql);
+        if (PEAR::isError($result))
+        {
+            ErrorHandling::fatal_db_error(
+                T_('Delete Voucher query failed:  '), $result);
+        }
+        
+        AdminLog::getInstance()->log("Voucher $vouchername deleted");
+        
+        return $result;
+    }
+    
+
+/* End Vouchers Functions */
     
     public function upgradeFromFiles()
     {

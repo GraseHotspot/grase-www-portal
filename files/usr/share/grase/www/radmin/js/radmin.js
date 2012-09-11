@@ -70,6 +70,29 @@ $(document).ready(function(){
     $(".jsremove").show();
     
     
+    // Multi element add/remove for tables
+    // Make multi remove elements remoable
+    tablejsremove();
+
+    // Make multi element adder function
+    $(".jsaddtablebutton").addClass("ui-icon ui-icon-plus");
+    $(".jsaddtable").unbind('click');
+    $(".jsaddtable").click(function(){
+        optiontr = $(this).closest('tr').clone(true);
+        optiontr.find('input').val('').attr('checked', false);;
+        $(this).parent().parent().after(optiontr);
+        $(this).find('.jsaddtablebutton').removeClass("jsaddtablebuton").addClass("jsremovetablebutton");
+        $(this).find('.jsaddremovetext').text($("#jsdeletetabletext").attr('title'));
+        $(this).removeClass("jsaddtable").addClass("jsremovetable").unbind('click');
+        //.val('');
+        tablejsremove();
+    
+    });	
+    
+    $(".jsaddtable").show();
+    $(".jsremovetable").show();    
+    
+    
     // Make tables of users into tabbed display
     $("#userslist").tabs();
     
@@ -331,6 +354,19 @@ function jsremove(){
     
     });            
     $(".jsremovebutton").addClass("ui-icon ui-icon-minus").removeClass("ui-icon-plus");
+    //console.log($(".jsremove"));
+}
+
+function tablejsremove(){
+    $(".jsremovetable").click(function(){
+        //$(this).prev().remove();
+        //$(this).next().remove();            
+        //$(this).remove();
+        confirm("Delete item?") &&            // TODO: Translation
+        $(this).parent().parent().remove();
+    
+    });            
+    $(".jsremovetablebutton").addClass("ui-icon ui-icon-minus").removeClass("ui-icon-plus");
     //console.log($(".jsremove"));
 }
 

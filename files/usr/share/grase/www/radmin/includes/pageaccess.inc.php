@@ -22,6 +22,7 @@ $PAGESACCESS = array(
      'chilliconfig'  => ADMINLEVEL,
      'loginconfig'   => ADMINLEVEL,
      'groups'        => POWERLEVEL | ADMINLEVEL,
+     'vouchers'      => POWERLEVEL | ADMINLEVEL,
      
     'passwd'        => ADMINLEVEL,
      'adminlog'      => ADMINLEVEL,

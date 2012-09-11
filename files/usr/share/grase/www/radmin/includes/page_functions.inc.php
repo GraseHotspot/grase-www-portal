@@ -103,7 +103,9 @@ function createmenuitems()
 	        'netconfig' => array("href" => "netconfig", "label" => T_("Network Settings") ),
             'chilliconfig' => array("href" => "chilliconfig", "label" => T_("Coova Chilli Settings") ),
             'loginconfig' => array("href" => "loginconfig", "label" => T_("Portal Customisation") ),
-            'groups' => array("href" => "groupconfig", "label" => T_("Groups") )	
+            'groups' => array("href" => "groupconfig", "label" => T_("Groups") ),	
+            'vouchers' => array("href" => "voucherconfig", "label" => T_("Vouchers") ),
+
         )
             
 	        		

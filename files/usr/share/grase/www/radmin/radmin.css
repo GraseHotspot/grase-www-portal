@@ -298,8 +298,8 @@ th.headerSortUp {
     background-color: #3399FF; 
 } 
 
-#userslist table {
-    font-size: 80%;
+#userslist table, #vouchersTable {
+    font-size: 70%;
 }
 
 #sessionslistTable {
@@ -544,6 +544,16 @@ ul#statusmon li {
 	font-size: 11px;
 	border: 1px solid #cecece;
 }
+
+.generalForm .mediuminput{
+	width: 110px; 
+}
+
+.generalForm .smallinput{
+	width: 6em; 
+}
+
+
 .generalForm input.error{
 	background: #f8dbdb;
 	border-color: #e77776;

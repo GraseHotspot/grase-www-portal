@@ -2,8 +2,9 @@ grase-www-portal (3.7.7-UNRELEASED) purewhite; urgency=low
 
   * Data and Time limits are no longer tied to $ amounts
   * Data, Time and Bandwidth options are customisable
+  * Creation of Vouchers that you can "sell"
 
- -- Tim White <tim@grasehotspot.org>  Tue, 11 Sep 2012 09:07:36 +1000
+ -- Tim White <tim@grasehotspot.org>  Tue, 11 Sep 2012 15:45:06 +1000
 
 grase-www-portal (3.7.6) purewhite; urgency=low
 

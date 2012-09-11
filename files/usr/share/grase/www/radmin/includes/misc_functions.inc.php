@@ -223,7 +223,16 @@ function validate_mac($macaddress)
     // TODO: Check that each XX pair is a valid hex number
 }
 
-function validate_int($number)
+function validate_num($number, $error='')
+{
+	if ($number && is_numeric($number) && trim($number) != "") return "";
+	if ($number + 0 === 0) return "";
+	if($error != '') return $error; // Return the error message sent to us if defined
+        return sprintf(T_("Invalid number %s"), $number);
+	// TODO: Return what?
+}
+
+function validate_int($number) //TODO make this actually validate int?
 {
 	if ($number && is_numeric($number) && trim($number) != "") return "";
     return sprintf(T_("Invalid number '%s' (Must be whole number)"), $number);
