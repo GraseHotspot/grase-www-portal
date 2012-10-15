@@ -4,7 +4,7 @@
 
 /*  This file is part of GRASE Hotspot.
 
-    http://hotspot.purewhite.id.au/
+    http://grasehotspot.org/
 
     GRASE Hotspot is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -366,7 +366,9 @@ function display_page($template)
 	return $smarty->display($template);
 }
 
-function apply_locale($newlocale)
+
+require_once 'locale.inc.php'; // Below moved to <<
+/*function apply_locale($newlocale)
 {
     global $locale;
     // TODO: Move this stuff to somewhere else?
@@ -395,7 +397,7 @@ function apply_locale($newlocale)
     T_bindtextdomain("grase", "/usr/share/grase/locale");
     T_bind_textdomain_codeset("grase", "UTF-8");
     T_textdomain("grase");
-}
+}*/
 
 
 
@@ -408,6 +410,7 @@ $smarty->compile_check = true;
 $smarty->register_modifier('bytes', array("Formatting", "formatBytes"));
 $smarty->register_modifier('seconds', array("Formatting", "formatSec"));
 $smarty->register_modifier('displayLocales', 'displayLocales');
+$smarty->register_modifier('displayMoneyLocales', 'displayMoneyLocales');
 $smarty->register_function('inputtype', 'input_type');
 
 // i18n
