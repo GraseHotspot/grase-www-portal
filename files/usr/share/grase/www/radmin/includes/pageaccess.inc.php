@@ -29,6 +29,8 @@ $PAGESACCESS = array(
      
     'logout'        => ALLLEVEL,
     'login'         => ALLLEVEL,
+    
+    'purchase_wizard' => ALLLEVEL,
 );
 
 // Default level

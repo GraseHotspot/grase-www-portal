@@ -1,0 +1,39 @@
+.vouchertype, .paymentgateways {
+list-style: none;
+margin: 0;
+padding: 0;
+}
+
+.vouchertype ul, .paymentgateways ul {
+        list-style: none;
+}
+ 
+.vouchertype li a, .paymentgateways li a {
+float: left;
+margin-right: 10px;
+background-color:#444444;
+width: 20%;
+height: 150px;
+position: relative;
+
+}
+
+.vouchertype li input, .paymentgateways li input {
+display: none;
+}
+
+.vouchertype li label, .paymentgateways li label {
+display: block;
+text-align: center;
+padding: 8px;
+}
+
+.vouchertype li.highlight a, .paymentgateways li.highlight a {
+    background-color: #343434;
+    color: #FFF;
+}
+
+div.vouchertype {
+        clear: both;
+
+}

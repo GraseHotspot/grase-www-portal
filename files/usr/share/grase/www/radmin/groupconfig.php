@@ -35,6 +35,7 @@ if(isset($_POST['submit']))
      * name->expiry association is maintained */
     //$groupnames = array_filter($_POST['groupname']);
     $groupnames = $_POST['groupname'];
+    $groupcomment = array_filter($_POST['groupcomment']);
     $groupexpiry = array_filter($_POST['groupexpiry']);
     $groupdatalimit = array_filter($_POST['Group_Max_Mb']);
     $grouptimelimit = array_filter($_POST['Group_Max_Time']);    
@@ -67,6 +68,7 @@ if(isset($_POST['submit']))
         if(clean_text($name) == '')
         {
             if(
+                isset($groupcomment[$key]) ||
                 isset($groupexpiry[$key]) ||
                 isset($groupdatalimit[$key]) ||
                 isset($grouptimelimit[$key]) ||
@@ -148,10 +150,12 @@ if(isset($_POST['submit']))
         ));
         $groupsettings[clean_groupname($name)] = array_filter(array(
             'GroupName' => clean_groupname($name),
+            'Comment'   => clean_text($groupcomment[$key]),
             'GroupLabel' => clean_text($name),
             'Expiry'    => @ $groupexpiry[$key],
             'MaxMb'     => @ clean_number($groupdatalimit[$key]),
             'MaxTime'   => @ clean_int($grouptimelimit[$key]),
+            
         ));        
 
     }

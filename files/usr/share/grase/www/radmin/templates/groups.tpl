@@ -34,6 +34,7 @@
     {foreach from=$groupsettings item=settings key=groupname name=groupsettingsloop}        
         <div class="jsmultioption" id="groupSettings_{$smarty.foreach.groupsettingsloop.iteration}" class="tabcontent">
             <label>{t}Name{/t}</label><input type="text" class="groupnameinput" name="groupname[]" value='{$settings.GroupLabel}'/>
+            <label>{t}Description{/t}</label><textarea name="groupcomment[]" class="groupcommentinput" maxlength='250'>{$settings.Comment}</textarea>
             <label>{t}Expiry{/t}</label><input type="text" name="groupexpiry[]" value='{$settings.Expiry}'/>
             
             <label>{t}Login Times{/t}</label><input type="text" name="LoginTime[]" value='{$groupcurrentdata.$groupname.LoginTime}'/>            
@@ -73,6 +74,7 @@
     {/foreach}
         <div class="jsmultioption" id="groupSettingsNewGroup" class="tabcontent">
             <label>{t}Name{/t}</label><input type="text" name="groupname[]" class="groupnameinput" value=''/>
+            <label>{t}Description{/t}</label><textarea name="groupcomment[]" class="groupcommentinput" maxlength='250'></textarea>
             <label>{t}Expiry{/t}</label><input type="text" name="groupexpiry[]" value=''/>
             <label>{t}Login Times{/t}</label><input type="text" name="LoginTime[]" value=''/>  
             <label>{t}Default Data Limit (MiB){/t}</label>
