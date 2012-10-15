@@ -1,4 +1,4 @@
-<?
+<?php
 
 /* Copyright 2008 Timothy White */
 
@@ -572,6 +572,11 @@ function sha1salt($plainText, $salt = null)
 
         return $salt . sha1($salt . $plainText);
     }
+
+function displayMoneyLocales($number)
+{
+        return displayLocales($number, TRUE);
+}
 
 function displayLocales($number, $isMoney=FALSE, $lg='') {
     global $locale;

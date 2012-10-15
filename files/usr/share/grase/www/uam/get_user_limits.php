@@ -23,7 +23,7 @@ if($_GET['username']){
 
     
 ?>
-chilliJSON.reply({"version":"1.0","clientState":1,"user_details":{"monthlyusagelimit":"<? echo $maxoctets;?>","monthlytimelimit":"<? echo $timelimit;?>"}})
-<?}else{?>
+chilliJSON.reply({"version":"1.0","clientState":1,"user_details":{"monthlyusagelimit":"<?php echo $maxoctets;?>","monthlytimelimit":"<?php echo $timelimit;?>"}})
+<?php }else{?>
 chilliJSON.reply({"version":"1.0","clientState":0})
-<?}?>
+<?php }?>
