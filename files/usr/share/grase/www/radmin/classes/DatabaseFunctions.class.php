@@ -1315,7 +1315,80 @@ class DatabaseFunctions
             
             return $result;
         }
-    }    
+    }
+    
+    public function lockUser($username, $reason)    
+    {
+        /* Lock a user account with a message */
+        $fields = array (
+                'Username'  => array ( 'value' => $username,    'key' => true),
+                'Attribute' => array ( 'value' => 'Auth-Type',  'key' => true),
+                'op'        => array ( 'value' => ':=' ),
+                'Value'     => array ( 'value' => 'Reject')
+        );
+
+        $result = $this->db->replace('radcheck', $fields);
+
+        if (PEAR::isError($result))
+        {
+        ErrorHandling::fatal_db_error(
+            T_('Locking User Account Query Failed: '), $result);
+        }        
+
+        // Apply message
+        $fields = array (
+                'Username'  => array ( 'value' => $username,    'key' => true),
+                'Attribute' => array ( 'value' => 'Reply-Message',  'key' => true),
+                'op'        => array ( 'value' => ':=' ),
+                'Value'     => array ( 'value' => $reason)
+        );
+
+        $result = $this->db->replace('radreply', $fields);
+
+        if (PEAR::isError($result))
+        {
+        ErrorHandling::fatal_db_error(
+            T_('User Account Lock Reason Query Failed: '), $result);
+        }        
+
+
+    }
+    
+    public function unlockUser($username)
+    {
+        /* Remove a lock on a user account */
+        
+        $sql = sprintf("DELETE FROM radcheck
+                    WHERE Username=%s
+                    AND Attribute=%s",
+                    $this->db->quote($username),
+                    $this->db->quote('Auth-Type')
+                    );
+
+        $result = $this->db->queryOne($sql);
+
+        if (PEAR::isError($result))
+        {
+        ErrorHandling::fatal_db_error(
+            T_('Removing User Lock Query Failed: '), $result);
+        }
+
+        $sql = sprintf("DELETE FROM radreply
+                    WHERE Username=%s
+                    AND Attribute=%s",
+                    $this->db->quote($username),
+                    $this->db->quote('Reply-Message')
+                    );
+
+        $result = $this->db->queryOne($sql);
+
+        if (PEAR::isError($result))
+        {
+        ErrorHandling::fatal_db_error(
+            T_('Removing User Lock Message Query Failed: '), $result);
+        }
+                    
+    }
     
     public function deleteUser($username)
     {
