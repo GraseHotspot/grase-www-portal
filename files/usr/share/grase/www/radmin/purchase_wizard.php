@@ -241,7 +241,7 @@ switch($_SESSION['wizardpage'])
         require_once('paymentgateways/PaymentGatewayPlugin.class.php');
         if(!is_file('paymentgateways/'.$paymentgateways[$_SESSION['selectedpaymentgateway']]['pluginfile']))
         {
-            die("Invalid plugin");
+            die('Invalid payment plugin<br/><form action="" method="POST"><input type="hidden" name="pgformsubmission" value="1"/><input name="restartwizard" type="submit" value="Restart Wizard"/>');
         }
 
         // TODO Clean up and make error detection lots lots better

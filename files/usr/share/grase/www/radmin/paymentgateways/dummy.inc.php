@@ -22,7 +22,8 @@ class PG_Dummy extends PaymentGatewayPlugin
                     break;
                 case "finished":
                     return "<h1>Payment Successful</h1>The payment has been sucessfully processed and your account is now active with the following details...<br/>" .
-                    "Username: " . $this->useraccount['Username']. "<br/>Password: " . $this->useraccount['Password'];
+                    "Username: " . $this->useraccount['Username']. "<br/>Password: " . $this->useraccount['Password'] .
+                    "<br/><input name='restartwizard' type='submit' value='Restart Wizard'/>";
                     break;
             }
         }
