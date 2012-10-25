@@ -44,6 +44,18 @@ if(!isset($_SESSION['wizardpage']))
     $_SESSION['wizardpage'] = 'initialpage';
 }
 
+if(isset($_SESSION['ExpireSession']) && $_SESSION['ExpireSession'] < time())
+{
+    // Session has expired. destroy
+    restart_wizard();
+}
+
+// Allow us to at any time restart the wizard
+if(isset($_POST['restartwizard']))
+{
+    restart_wizard();
+}
+
 // Groups and vouchers stuff
 
 $groups           = array();
@@ -175,13 +187,8 @@ switch($_SESSION['wizardpage'])
             {
 
                 // Selection is not confirmed, start again
+                restart_wizard();
 
-                session_destroy();
-                $host  = $_SERVER['HTTP_HOST'];
-                $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-                $extra = 'purchase_wizard';
-                header("Location: http://$host$uri/$extra");
-                exit;
             }
         }
         $smarty->assign('selectedgateway', $_SESSION['selectedpaymentgateway']);
@@ -198,7 +205,7 @@ switch($_SESSION['wizardpage'])
         //var_dump($_POST);
         //var_dump($vouchers);
 
-        if(!isset($_SESSION['PendingUsername']))
+        if(!isset($_SESSION['PendingAccount']))
         {
             /* Create our locked random user */
 
@@ -225,8 +232,7 @@ switch($_SESSION['wizardpage'])
             DatabaseFunctions::getInstance()->lockUser($Username, T_('Account Pending Payment and Activation'));
             
             // Store user account in session
-            $_SESSION['PendingUsername'] = $Username;
-            $_SESSION['PendingPassword'] = $Password;
+            $_SESSION['PendingAccount'] = array('Username' => $Username, 'Password' => $Password);
         }
 
         /* */
@@ -245,7 +251,7 @@ switch($_SESSION['wizardpage'])
         // Recreate object each time
 
         $classname = "PG_".$_SESSION['selectedpaymentgateway'];
-        $paymentplugin = new $classname;
+        $paymentplugin = new $classname($_SESSION['PendingAccount'], $_SESSION['selectedvoucher']);
 
         //$paymentplugin-> // Load voucher and user details (at initilisation) TODO
         // Load state from SESSION
@@ -274,13 +280,20 @@ switch($_SESSION['wizardpage'])
 
         // Page has been processed, we now check if payment is complete and do what we need
 
-        if($paymentplugin->isPaymentCompleted())
+        if($paymentplugin->isPaymentCompleted() && ! isset($_SESSION['AccountActivated']))
         {
             // Payment completed, display user details, activate user, cleanup
 
-            echo "Payment completed";
-
-            // TODO activate user account
+            // Activate the account. It's upto the plugin to display things
+            DatabaseFunctions::getInstance()->unlockUser($_SESSION['PendingAccount']['Username']);
+            
+            $_SESSION['AccountActivated'] = true;
+            // Expire session after 5 minutes to prevent others from seeing saved login details
+            // TODO provide link to clear details
+            $_SESSION['ExpireSession'] = time() + 300;
+            
+            // TODO Store purchase details in database, along with payment details including price and plugin used, and any reciept number
+            //print $paymentplugin->getPaymentDetails(); TODO TODO TODO TODO
         }
 
         // Regardless of payment completion and page processing, we now display the page. If anything is wrong with the processing this page will let us know as the plugin handles which state we are in.
@@ -292,14 +305,20 @@ switch($_SESSION['wizardpage'])
         // Store state into SESSION
 
         $_SESSION['paymentGatewayPluginState'] = $paymentplugin->getState();
-        
-        var_dump($_SESSION);
-        
-        print $paymentplugin->getPaymentDetails();
 
         // Load payment gateway based on $_SESSION['selectedpaymentgateway']
 
         break;
+}
+
+function restart_wizard()
+{
+    session_destroy();
+    $host  = $_SERVER['HTTP_HOST'];
+    $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+    $extra = 'purchase_wizard';
+    header("Location: http://$host$uri/$extra");
+    exit;
 }
 
 ?>

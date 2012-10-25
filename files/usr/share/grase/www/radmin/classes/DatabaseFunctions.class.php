@@ -1351,6 +1351,7 @@ class DatabaseFunctions
             T_('User Account Lock Reason Query Failed: '), $result);
         }        
 
+        AdminLog::getInstance()->log("Locking user $username because: $reason");
 
     }
     
@@ -1387,6 +1388,8 @@ class DatabaseFunctions
         ErrorHandling::fatal_db_error(
             T_('Removing User Lock Message Query Failed: '), $result);
         }
+        
+        AdminLog::getInstance()->log("Unlocked user $username");
                     
     }
     

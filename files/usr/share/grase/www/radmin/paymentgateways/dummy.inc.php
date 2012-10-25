@@ -4,37 +4,49 @@
 class PG_Dummy extends PaymentGatewayPlugin
 {
 
-        function getPageContents($page = 'default')
+        function getPageContents($page = '')
         {
-                return "
+            if($page == '') $page = $this->currentPage();
+            switch($page)
+            {
+                case "default":
+                    return "
                 <h1>This is the dummy payment gateway</h1>
                 
                 <p>All of this will be displayed between form tags, so we just need to worry about setting our buttons, as there will be a hidden input that tells us the form has been submitted</p>
                 
-                <input name='cancelsubmission' type='submit' value='Cancel'/>
+                <input name='restartwizard' type='submit' value='Cancel'/>
                 <input name='paysubmission' type='submit' value='Pay'/>        
                 
                 ";
+                    break;
+                case "finished":
+                    return "<h1>Payment Successful</h1>The payment has been sucessfully processed and your account is now active with the following details...<br/>" .
+                    "Username: " . $this->useraccount['Username']. "<br/>Password: " . $this->useraccount['Password'];
+                    break;
+            }
         }
 
-        function processPage($page = 'default')
+        function processPage($page = '')
         {
-                echo "Processing page $page";
-                $this->state['paid'] = false;
-                $nextpage = 'success';
-                if($_POST['paysubmission'] == 'Pay')
-                {
-                        // Set payment to done
-                        $this->state['paid'] = true;
-                }
-                return ($page);
+            if($page == '') $page = $this->currentPage();
+            echo "Processing page $page";
+            $this->state['paid'] = false;
+            if($_POST['paysubmission'] == 'Pay')
+            {
+                    // Set payment to done
+                    $this->state['paid'] = true;
+                    $page = "finished";
+                    $this->setCurrentPage('finished');
+            }
+            return ($page);
         }
         
         
         // payment_details returns details to be stored along in the payment gateway
         function getPaymentDetails()
         {
-                return 'Dummy payment: '. date('c');
+                return 'Dummy payment: '. date('c') . "<br/>" . $this->useraccount['Username'];
         }
         
         // Function that lets us know when the payment has completed successfully

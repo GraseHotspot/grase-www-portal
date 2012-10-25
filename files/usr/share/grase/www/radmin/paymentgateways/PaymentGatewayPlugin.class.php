@@ -21,9 +21,15 @@ class PaymentGatewayPlugin
         protected $displayUserPassword = true; // If true we can display user details at the end
         protected $state = array(); // Anything in the state array will be stored between page views for carrying the state between pages
         
+        public function __construct($account, $voucher)
+        {
+            // Set details of user account we are purchasing so plugin case use it (e.g. sms details)
+            $this->voucher = $voucher;
+            $this->useraccount = $account;
+        }
         
         // Function for getting different pages of content from plugin
-        public function getPageContents($page = 'default')
+        public function getPageContents($page = '')
         {
         
                 return 'No page contents for this plugin have been defined';
@@ -31,9 +37,9 @@ class PaymentGatewayPlugin
         
         // Function for processing plugin pages, we tell it which page we are on, and it process the page and then tells us which page to goto next (getPageContents function can be used to put in error message and such by making us display the same page again)
         
-        public function processPage($page = 'default')
+        public function processPage($page = '')
         {
-                return 'default';
+                return $this->currentPage();
         }
         
         
@@ -72,7 +78,7 @@ class PaymentGatewayPlugin
                 return $this->state['currentpage'] ? $this->state['currentpage'] : 'default';
         }
         
-        private function setCurrentPage($page)
+        protected function setCurrentPage($page)
         {
                 $this->state['currentpage'] = $page;
         }

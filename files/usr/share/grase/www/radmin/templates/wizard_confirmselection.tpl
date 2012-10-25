@@ -39,7 +39,7 @@ You have choosen the {$selectedvoucher} voucher and wish to pay via {$selectedpa
 Is this correct?
 
 <button type="submit" name="selectionconfirmed" value="correct">Yes</button>
-<button type="submit" name="selectionconfirmed" value="incorrect">Start Over</button>
+<button type="submit" name="restartwizard" value="incorrect">Start Over</button>
 
 </form>
 
