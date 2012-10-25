@@ -20,19 +20,7 @@
 				$('div.paymentgateways').children().find("li."+$column).find(":radio").attr("checked","checked");
 				return false;
 			});
-			/*$("a.Mbps").click(function() { //check for the second selection
-				var $column = $(this).attr('title'); // assign the ID of the column
-				$('table.RTMbps').children().find("td").removeClass("highlight"); //forget the last highlighted column
-				$('table.RTMbps').children().find("td."+$column).addClass("highlight"); //highlight the selected column
-				$('table.RTMbps').children().find("td."+$column).find(":radio").attr("checked","checked");
-				return false;
-			});
-			$("button.sendit").click(function() {
-				var $DDR = $('table.RTDDR').children().find("td").find(":checked").val();
-				var $Mbps = $('table.RTMbps').children().find("td").find(":checked").val();
-				alert('You selected '+$DDR+' of RAM, and '+$Mbps+' Bandwidth, for example');
-				return false;
-			});*/
+
 			
 		});
 	{/literal}		

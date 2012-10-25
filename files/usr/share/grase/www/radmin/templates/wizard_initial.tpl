@@ -20,19 +20,15 @@
 				$('div.vouchertype').children().find("li."+$column).find(":radio").attr("checked","checked");
 				return false;
 			});
-			/*$("a.Mbps").click(function() { //check for the second selection
+			
+			$("a.gateway").click(function() { //check for the first selection
 				var $column = $(this).attr('title'); // assign the ID of the column
-				$('table.RTMbps').children().find("td").removeClass("highlight"); //forget the last highlighted column
-				$('table.RTMbps').children().find("td."+$column).addClass("highlight"); //highlight the selected column
-				$('table.RTMbps').children().find("td."+$column).find(":radio").attr("checked","checked");
+				$('div.paymentgateways').children().find("li").removeClass("highlight") //forget the last highlighted column
+				$('div.paymentgateways').children().find("li."+$column).addClass("highlight"); //highlight the selected column
+				$('div.paymentgateways').children().find("li."+$column).find(":radio").attr("checked","checked");
 				return false;
-			});
-			$("button.sendit").click(function() {
-				var $DDR = $('table.RTDDR').children().find("td").find(":checked").val();
-				var $Mbps = $('table.RTMbps').children().find("td").find(":checked").val();
-				alert('You selected '+$DDR+' of RAM, and '+$Mbps+' Bandwidth, for example');
-				return false;
-			});*/
+			});			
+
 			
 		});
 	{/literal}		
@@ -42,11 +38,14 @@
 
 <h1>Initial page for wizard</h1>
 
+{$error}
+
 <form action="" method="POST">
 
-{t}Please select your voucher type{/t}
+<h2>{t}Please select your voucher type{/t}</h2>
 
 <div id="vouchertypes">
+
 {foreach from=$groupsettings item=attributes key=groupname}
 
         <div class="vouchertype">
@@ -70,7 +69,23 @@
 
 </div>
 
-<input type="submit" value="Select Voucher" />
+<h2>{t}Please select your preferred payment method{/t}</h2>
+
+<div id="paymentgateways" class="paymentgateways">
+        <ul>
+                {foreach from=$paymentgateways item=gateway key=gatewayName}
+                <li class="{$gatewayName}">
+                <a href="#" class="signup gateway" title="{$gatewayName}">
+                <label>{$gateway.Label}</label>
+                <label>{$gateway.Description}</label>
+                <input type="radio" class="radioFancy" name="gatewayselected" value="{$gatewayName}" required /></a>
+                </li>
+                {/foreach}
+        </ul>
+
+</div>
+
+<input type="submit" name="gotopayment" value="{t}Proceed to Payment{/t}" />
 
 </form>
 
