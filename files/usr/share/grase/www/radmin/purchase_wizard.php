@@ -146,10 +146,7 @@ switch($_SESSION['wizardpage'])
                 $_SESSION['wizardpage']             = 'confirmselectionpage';
                 $_SESSION['selectedvoucher']        = $_POST['voucherselected'];
                 $_SESSION['selectedpaymentgateway'] = $_POST['gatewayselected'];
-                $host                               = $_SERVER['HTTP_HOST'];
-                $uri                                = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-                $extra                              = 'purchase_wizard';
-                header("Location: http://$host$uri/$extra");
+                reload_page();
                 exit;
             } else
             {
@@ -178,10 +175,7 @@ switch($_SESSION['wizardpage'])
 
                 // TODO store selection in database yet? i.e. make user but don't give them access to it's details until we've gotten payment?
 
-                $host  = $_SERVER['HTTP_HOST'];
-                $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-                $extra = 'purchase_wizard';
-                header("Location: http://$host$uri/$extra");
+                reload_page();
                 exit;
             } else
             {
@@ -314,9 +308,14 @@ switch($_SESSION['wizardpage'])
 function restart_wizard()
 {
     session_destroy();
-    $host  = $_SERVER['HTTP_HOST'];
-    $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-    $extra = 'purchase_wizard';
+    reload_page();
+    exit;
+}
+
+function reload_page($extra = 'purchase_wizard')
+{
+    $host = $_SERVER['HTTP_HOST'];
+    $uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
     header("Location: http://$host$uri/$extra");
     exit;
 }

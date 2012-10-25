@@ -34,7 +34,7 @@
 
 {t}Please select your preferred payment method{/t}
 
-You have choosen the {$selectedvoucher} voucher and wish to pay via {$selectedpaymentgateway}.
+You have choosen the {$selectedvoucher} voucher and wish to pay via {$selectedgateway}.
 
 Is this correct?
 
