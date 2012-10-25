@@ -1406,6 +1406,19 @@ class DatabaseFunctions
             ErrorHandling::fatal_db_error(
                 T_('Deleting user failed: '). "($username) ", $result);
         }
+        
+        /* Remove data from radreply */
+        $sql = sprintf("DELETE from radreply
+                        WHERE UserName=%s",
+                        $this->db->quote($username));
+        
+        $result = $this->db->query($sql);
+        
+        if (PEAR::isError($result))
+        {
+            ErrorHandling::fatal_db_error(
+                T_('Deleting user radreply data failed: '). "($username) ", $result);
+        }        
 
         /* Remove user from group */
         $sql = sprintf("DELETE from radusergroup

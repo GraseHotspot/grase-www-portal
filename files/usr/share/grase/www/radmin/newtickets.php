@@ -149,7 +149,7 @@ if(isset($_POST['createticketssubmit']))
 		    
 		for($i = 0; $i < $user['numberoftickets']; $i++)
 		{
-		    $username =  rand_username(5);	
+		    $username =  rand_username(5); // TODO this username isn't check for uniquness!	
 		    $password =  rand_password(6);
 		    database_create_new_user( // TODO: Check if successful
 			    $username,

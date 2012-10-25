@@ -76,7 +76,7 @@ function rand_password($len)
 }
 
 /* This function is a modified version of the above function */
-function rand_username($len)
+function rand_username($len) //TODO Check we don't already have this user!
 {
 	$c = "bcdfghjklmnprstvwz";
 	$v = "aeiou";

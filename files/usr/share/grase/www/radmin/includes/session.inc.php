@@ -33,7 +33,7 @@ require_once 'Auth/Container.php';
 require_once 'Auth/Container/MDB2.php';
 
 function __autoload($class_name) {
-    require_once './classes/' . $class_name . '.class.php';
+    require_once __DIR__. '/../classes/' . $class_name . '.class.php';
 }
 
 require_once('php-gettext/gettext.inc');

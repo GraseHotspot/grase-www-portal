@@ -36,6 +36,6 @@ $PAGESACCESS = array(
 // Default level
 $ACCESS_LEVEL = ADMINLEVEL;
 
-if(isset($PAGESACCESS[$PAGE]))
+if(isset($PAGE) && isset($PAGESACCESS[$PAGE]))
     $ACCESS_LEVEL = $PAGESACCESS[$PAGE];
     
