@@ -1,0 +1,2215 @@
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Grase Hotspot\n"
+"Report-Msgid-Bugs-To: http://trac.grasehotspot.org/\n"
+"POT-Creation-Date: 2012-01-29 16:57+1000\n"
+"PO-Revision-Date: 2012-02-10 13:08+0000\n"
+"Last-Translator: Johnny Solbu <transifex@solbu.net>\n"
+"Language-Team: Norwegian Bokmål (http://www.transifex.com/projects/p/grase/language/nb/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: nb\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Country: AUSTRALIA\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;T_\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-SearchPath-0: ../../../www/radmin\n"
+"X-Poedit-SearchPath-1: ../../../www/uam\n"
+
+#: ../../../www/radmin/templates/smarty.c:1
+#: ../../../www/radmin/templates/smarty.c:45
+#: ../../../www/radmin/templates/smarty.c:113
+#: ../../../www/radmin/templates/smarty.c:148
+#: ../../../www/radmin/templates/smarty.c:163
+#: ../../../www/radmin/templates/smarty.c:180
+#: ../../../www/radmin/templates/smarty.c:222
+#: ../../../www/radmin/templates/smarty.c:238
+#: ../../../www/uam/templates/smarty.c:33
+msgid "Username"
+msgstr "Brukernavn"
+
+#: ../../../www/radmin/templates/smarty.c:2
+msgid "Choose a username"
+msgstr "Velg et brukernavn"
+
+#: ../../../www/radmin/templates/smarty.c:3
+#: ../../../www/radmin/templates/smarty.c:47
+#: ../../../www/radmin/templates/smarty.c:114
+#: ../../../www/radmin/templates/smarty.c:181
+#: ../../../www/uam/templates/smarty.c:34
+msgid "Password"
+msgstr "Passord"
+
+#: ../../../www/radmin/templates/smarty.c:4
+msgid "Choose a secure password for the user"
+msgstr "Velg et sikkert passord for brukeren"
+
+#: ../../../www/radmin/templates/smarty.c:5
+#: ../../../www/radmin/templates/smarty.c:223
+msgid "Group"
+msgstr "Gruppe"
+
+#: ../../../www/radmin/templates/smarty.c:6
+#: ../../../www/radmin/templates/smarty.c:116
+msgid "Choose the users group (Expiry is based on the user group)"
+msgstr "Velg brukergruppe (Utløpsdato tar utgangspunkt i brukergruppen)"
+
+#: ../../../www/radmin/templates/smarty.c:7
+#: ../../../www/radmin/templates/smarty.c:121
+#: ../../../www/radmin/templates/smarty.c:234
+#: ../../../www/radmin/templates/smarty.c:255
+msgid "Comment"
+msgstr "Kommentar"
+
+#: ../../../www/radmin/templates/smarty.c:8
+#: ../../../www/radmin/templates/smarty.c:122
+msgid "A comment about the user"
+msgstr "Kommentar om bruker"
+
+#: ../../../www/radmin/templates/smarty.c:9
+#: ../../../www/radmin/templates/smarty.c:123
+#: ../../../www/radmin/templates/smarty.c:257
+#: ../../../www/radmin/templates/smarty.c:278
+msgid ""
+"When ether limit is reached, the user will be cut off. (i.e. after 1hour "
+"even if they still have data left)"
+msgstr "Når nettverkbegresningen er nådd vil brukeren bli koblet fra nettet. (eksempel: etter 1 time, uansett om de fortsatt har data igjen)"
+
+#: ../../../www/radmin/templates/smarty.c:10
+#: ../../../www/radmin/templates/smarty.c:124
+#: ../../../www/radmin/templates/smarty.c:279
+msgid ""
+"A limit of 0 does not mean unlimited, it will immediately lock the user out."
+" To have an unlimited user, the user must be created without any limits."
+msgstr "Med en begresning på 0 mener vi ikke ubegrenset, Det vil bety å låse bruker ute. For å ha en ubegrenset bruker må brukeren opprettes uten noen begresninger."
+
+#: ../../../www/radmin/templates/smarty.c:11
+#: ../../../www/radmin/templates/smarty.c:280
+msgid ""
+"If a limit is not set here, but is defined for the group, then the group "
+"limit will apply"
+msgstr "Hvss en begresning ikke er satt her, men er definert for gruppen, vil gruppebegrensningen tre i kraft."
+
+#: ../../../www/radmin/templates/smarty.c:12
+#: ../../../www/radmin/templates/smarty.c:125
+#: ../../../www/radmin/templates/smarty.c:260
+msgid "Data Limit (MiB)"
+msgstr "Datagrense (MiB"
+
+#: ../../../www/radmin/templates/smarty.c:13
+#: ../../../www/radmin/templates/smarty.c:17
+#: ../../../www/radmin/templates/smarty.c:261
+#: ../../../www/radmin/templates/smarty.c:264
+msgid "OR"
+msgstr "Eller"
+
+#: ../../../www/radmin/templates/smarty.c:14
+#: ../../../www/radmin/templates/smarty.c:126
+#: ../../../www/radmin/templates/smarty.c:262
+msgid "Type your own Mb Limit"
+msgstr "Skriv din egen Mb-Grense"
+
+#: ../../../www/radmin/templates/smarty.c:15
+msgid "Choose a Data Limit OR Type your own value"
+msgstr "Velg en Datagrense eller skriv din egen verdi"
+
+#: ../../../www/radmin/templates/smarty.c:16
+#: ../../../www/radmin/templates/smarty.c:130
+#: ../../../www/radmin/templates/smarty.c:263
+msgid "Time Limit (Minutes)"
+msgstr "Tidsbegrensning (minutter)"
+
+#: ../../../www/radmin/templates/smarty.c:18
+#: ../../../www/radmin/templates/smarty.c:131
+#: ../../../www/radmin/templates/smarty.c:265
+msgid "Type your own Time Limit"
+msgstr "Skriv din egen tidsbegrensning."
+
+#: ../../../www/radmin/templates/smarty.c:19
+#: ../../../www/radmin/templates/smarty.c:266
+msgid "Choose a Time Limit OR Type your own value"
+msgstr "Velg en tidsbegresning eller skriv din egen verdi"
+
+#: ../../../www/radmin/templates/smarty.c:20
+msgid "User Management Interface"
+msgstr "Brukeradministrasjonsgrensesnitt"
+
+#: ../../../www/radmin/templates/smarty.c:21
+msgid "Device Information"
+msgstr "Enhetsinformasjon"
+
+#: ../../../www/radmin/templates/smarty.c:22
+msgid "Model Name"
+msgstr "Modellnavn"
+
+#: ../../../www/radmin/templates/smarty.c:23
+msgid "Host Name"
+msgstr "Servernavn"
+
+#: ../../../www/radmin/templates/smarty.c:24
+msgid "HTTP Server"
+msgstr "HTTP-tjener"
+
+#: ../../../www/radmin/templates/smarty.c:25
+msgid "System Up-Time"
+msgstr "Systemoppetid (uptime)"
+
+#: ../../../www/radmin/templates/smarty.c:26
+msgid "Current Server Time"
+msgstr "Nåværende servertid"
+
+#: ../../../www/radmin/templates/smarty.c:27
+msgid "Hardware Version"
+msgstr "Maskinvareversjon"
+
+#: ../../../www/radmin/templates/smarty.c:28
+msgid "Software Version"
+msgstr "Programvareversjon"
+
+#: ../../../www/radmin/templates/smarty.c:29
+msgid "Home URL"
+msgstr "Hjemmeside-URL"
+
+#: ../../../www/radmin/templates/smarty.c:30
+msgid "LAN"
+msgstr "LAN"
+
+#: ../../../www/radmin/templates/smarty.c:31
+#: ../../../www/radmin/templates/smarty.c:36
+#: ../../../www/radmin/templates/smarty.c:147
+msgid "IP Address"
+msgstr "IP-adresse"
+
+#: ../../../www/radmin/templates/smarty.c:32
+#: ../../../www/radmin/templates/smarty.c:37
+msgid "Subnet Mask"
+msgstr "Subnetmaske"
+
+#: ../../../www/radmin/templates/smarty.c:33
+#: ../../../www/radmin/templates/smarty.c:41
+#: ../../../www/radmin/templates/smarty.c:253
+msgid "MAC Address"
+msgstr "MAC-adresse"
+
+#: ../../../www/radmin/templates/smarty.c:34
+#: ../../../www/radmin/templates/smarty.c:42
+msgid "Network Interface"
+msgstr "Netverksgrensesnitt"
+
+#: ../../../www/radmin/templates/smarty.c:35
+msgid "WAN"
+msgstr "WAN"
+
+#: ../../../www/radmin/templates/smarty.c:38
+msgid "Gateway"
+msgstr "Ruter"
+
+#: ../../../www/radmin/templates/smarty.c:39
+msgid "DNS 1"
+msgstr "DNS 1"
+
+#: ../../../www/radmin/templates/smarty.c:40
+msgid "DNS 2"
+msgstr "DNS 2"
+
+#: ../../../www/radmin/templates/smarty.c:43
+#: ../../../www/radmin/templates/smarty.c:48
+msgid "Login"
+msgstr "Logg inn"
+
+#: ../../../www/radmin/templates/smarty.c:44
+msgid ""
+"Login is required to access the Administration section of this website."
+msgstr "Pålogging er påkrevd for tilgang til administrasjonsiden for denne websiden."
+
+#: ../../../www/radmin/templates/smarty.c:46
+msgid "Username for Admin interface (Different to internet access username)"
+msgstr "Brukernavn for Admin interface (Forskjellig fra brukernavnet for internettilgang)"
+
+#: ../../../www/radmin/templates/smarty.c:49
+msgid "Site Settings"
+msgstr "Sideinnstillinger"
+
+#: ../../../www/radmin/templates/smarty.c:50
+msgid "Location Name"
+msgstr "Stedsnavn"
+
+#: ../../../www/radmin/templates/smarty.c:51
+msgid "Enter a name that identifies this Hotspot Location"
+msgstr "Skriv inn et navn som identifiserer dette Hotspot-Stedet"
+
+#: ../../../www/radmin/templates/smarty.c:52
+msgid "Support Contact Name"
+msgstr "Brukerstøttekontakt"
+
+#: ../../../www/radmin/templates/smarty.c:53
+msgid "Enter the name of the Support Contact"
+msgstr "Skriv inn navn på brukerstøttekontakt"
+
+#: ../../../www/radmin/templates/smarty.c:54
+msgid "Support Link"
+msgstr "Link til brukerstøtte"
+
+#: ../../../www/radmin/templates/smarty.c:55
+msgid ""
+"This is the link for the support contact. http:// or mailto: are allowed. If"
+" using http:// ensure this is accessabile for users who aren't logged into "
+"the hotspot"
+msgstr "Dette er en link for brukerstøttekontakt. http:// eller mailto: er tillatt. Hvis du bruker http:// være sikker på at denne er tilgjengelig for brukere som ikke er logget inn på hotspot"
+
+#: ../../../www/radmin/templates/smarty.c:56
+msgid "Locale"
+msgstr "Locale"
+
+#: ../../../www/radmin/templates/smarty.c:57
+msgid "Available languages:"
+msgstr "Tilgjengelige språk"
+
+#: ../../../www/radmin/templates/smarty.c:58
+msgid "Select the appropriate Locale for your location"
+msgstr "Velg riktig Locale for din plassering"
+
+#: ../../../www/radmin/templates/smarty.c:59
+msgid ""
+"A locale has 2 parts, the language and location.<br/><strong>en_AU</strong> "
+"for example has the Language set to English, and the location to "
+"Australia.<br/><strong>en_ZA</strong> has the language set to English, and "
+"the location to South Africa, while <strong>af_ZA</strong> has the language "
+"set to Afrikaans and the location to South Africa."
+msgstr "Locale har to deler, språk og sted.<br><strong>en_AU</strong> for eksempel har språket satt til Engelsk, og stedsplaseringen til Australia.<br><strong>en_ZA</strong> har språket satt til engelsk og Sør-Afrika som stedsplassering, mens <strong>af_ZA</strong> har Afrikaans som språk og Sør-Afrika som stedsplassering."
+
+#: ../../../www/radmin/templates/smarty.c:60
+msgid ""
+"The locale defines the number formats, currency and language. If the "
+"language selected is not available, it will fallback to English."
+msgstr "Locale definerer nummerformatering, myntenhet og språk. Hvis det valgte språket ikke er tilgjengelig vil den falle tilbake på Engelsk"
+
+#: ../../../www/radmin/templates/smarty.c:61
+msgid ""
+"Current locale is %1, which sets the language to %2, and location to %3."
+msgstr "Nåværende locale er %1, som setter språket til %2 og sted til %3."
+
+#: ../../../www/radmin/templates/smarty.c:62
+msgid "Currency symbol is %1"
+msgstr "Myntenhetssymbol er %1"
+
+#: ../../../www/radmin/templates/smarty.c:63
+msgid "How much to charge per Mb"
+msgstr "Hvor mye i avgift per Mb"
+
+#: ../../../www/radmin/templates/smarty.c:64
+msgid "Cost per Minute"
+msgstr "kostnad per minutt"
+
+#: ../../../www/radmin/templates/smarty.c:65
+msgid "How much to charge per Minute"
+msgstr "Hvor mye i avgift per minutt"
+
+#: ../../../www/radmin/templates/smarty.c:66
+msgid "Website Name"
+msgstr "Hjemmesidenavn"
+
+#: ../../../www/radmin/templates/smarty.c:67
+msgid "Label for Website Footer link"
+msgstr "Etikett for internettsidens bunntekstlenke"
+
+#: ../../../www/radmin/templates/smarty.c:68
+msgid "Website Link"
+msgstr "Hjemmesidelink"
+
+#: ../../../www/radmin/templates/smarty.c:69
+msgid "Link for Website Footer Link"
+msgstr "Link til bunntekstlenke"
+
+#: ../../../www/radmin/templates/smarty.c:70
+msgid "Sellable Graph Max"
+msgstr "Salgbar graf Maks"
+
+#: ../../../www/radmin/templates/smarty.c:71
+#, c-format
+msgid "Select what is 100% on the Sellable Data Graph"
+msgstr "Velg hva som er 100% på Salgbar datagraf"
+
+#: ../../../www/radmin/templates/smarty.c:72
+msgid "Useable Graph Max"
+msgstr "Brukbar graf Maks"
+
+#: ../../../www/radmin/templates/smarty.c:73
+#, c-format
+msgid "Select what is 100% on the Useable Data Graph"
+msgstr "Velg hva som er 100% på den brukbare datagrafen"
+
+#: ../../../www/radmin/templates/smarty.c:74
+#: ../../../www/radmin/templates/smarty.c:109
+#: ../../../www/radmin/templates/smarty.c:207
+#: ../../../www/radmin/templates/smarty.c:217
+#: ../../../www/radmin/templates/smarty.c:271
+msgid "Save Settings"
+msgstr "Lagre innstillinger"
+
+#: ../../../www/radmin/templates/smarty.c:75
+msgid "Access Denied"
+msgstr "Nektet tilgang"
+
+#: ../../../www/radmin/templates/smarty.c:76
+msgid ""
+"You have attempted to access a page outside of your access level. Please "
+"return to an area you have access to."
+msgstr "Du har forsøkt å åpne en side utenfor ditt tilgang nivå. Vennligst gå tilbake til et område du har tilgang til."
+
+#: ../../../www/radmin/templates/smarty.c:77
+msgid "Group Config"
+msgstr "Gruppekonfigurering"
+
+#: ../../../www/radmin/templates/smarty.c:78
+msgid ""
+"Group expiry needs to be in a format understood by the <a target=\"_blank\" "
+"href=\"http://www.php.net/manual/en/function.strtotime.php\">strtotime</a> "
+"PHP function."
+msgstr "Gruppeutløpet må være i et format forstått av <a target=\"_blank\" href=\"http://www.php.net/manual/en/function.strtotime.php\">strtotime</a> PHP-funksjonen."
+
+#: ../../../www/radmin/templates/smarty.c:79
+msgid ""
+"For example, \"+1 month\" will set an expiry for 1 month from when the "
+"account is created. \"+2 weeks\", \"+3 days\" etc."
+msgstr "For eksempel, \"+1 måned\" vil sette en utløpsdato til en måned fra når kontoen er opprettet. \"+2 uker\", \"+3 dager\" og så videre."
+
+#: ../../../www/radmin/templates/smarty.c:80
+msgid ""
+"Expiry is calculated to the second, so if you want it to a date for example,"
+" try \"+1 week midnight\"."
+msgstr "Utløpsdato kalkuleres på sekundet. Så hvis du ønsker det til en dato for eksempel, prøv \"+1 uke midnatt\"."
+
+#: ../../../www/radmin/templates/smarty.c:81
+msgid ""
+"Deleting a group won't delete it's users. Next time the user is edited it's "
+"group will become the default group unless a new group is selected."
+msgstr "Å slette en gruppe vil ikke slette dens brukere. Neste gang brukeren rediger gruppen sin vil den bli standardgruppen, med mindre en ny gruppe er valgt."
+
+#: ../../../www/radmin/templates/smarty.c:82
+msgid ""
+"The limits here are the default for group members, unless overridden when "
+"creating a member. If multiple limits are specified, the first limit to be "
+"reached will disconnect the user."
+msgstr "Grensene her er standard for gruppemedlemmer, med mindre det overstyres når du oppretter et medlem. Hvis flere grenser er spesifisert vil den første grensen som nåes koble fra brukeren."
+
+#: ../../../www/radmin/templates/smarty.c:83
+msgid ""
+"Changing Expiry, Data or Time limits, will not change existing users of the "
+"group and will only apply to new users. Recurring limits, Bandwidth and "
+"simultaneous logins will all apply to existing and new members."
+msgstr "Endre utløps, data eller tidsbegrensninger, vil ikke endre eksisterende brukere av gruppen, og vil bare gjelde for nye brukere. Regelmessige grenser, båndbredde og samtidige innlogginger vil alle gjelde for eksisterende og nye medlemmer."
+
+#: ../../../www/radmin/templates/smarty.c:84
+msgid "Groups"
+msgstr "Grupper"
+
+#: ../../../www/radmin/templates/smarty.c:85
+#: ../../../www/radmin/templates/smarty.c:97
+#: ../../../www/radmin/templates/smarty.c:242
+msgid "Name"
+msgstr "Navn"
+
+#: ../../../www/radmin/templates/smarty.c:86
+#: ../../../www/radmin/templates/smarty.c:98
+#: ../../../www/radmin/templates/smarty.c:243
+msgid "Expiry"
+msgstr "Utløpstid"
+
+#: ../../../www/radmin/templates/smarty.c:87
+#: ../../../www/radmin/templates/smarty.c:99
+msgid "Default Data Limit (MiB)"
+msgstr "Standard datagrense (MiB)"
+
+#: ../../../www/radmin/templates/smarty.c:88
+#: ../../../www/radmin/templates/smarty.c:100
+msgid "Default Time Limit (Minutes)"
+msgstr "Standard tidsgrense (Minutter)"
+
+#: ../../../www/radmin/templates/smarty.c:89
+#: ../../../www/radmin/templates/smarty.c:101
+msgid "Recurring Data Limit (MiB)"
+msgstr "Gjentagende datagrense (MiB)"
+
+#: ../../../www/radmin/templates/smarty.c:90
+#: ../../../www/radmin/templates/smarty.c:92
+#: ../../../www/radmin/templates/smarty.c:102
+#: ../../../www/radmin/templates/smarty.c:104
+msgid "per"
+msgstr "per"
+
+#: ../../../www/radmin/templates/smarty.c:91
+#: ../../../www/radmin/templates/smarty.c:103
+msgid "Recurring Time Limit (Minutes)"
+msgstr "Gjentagende tidsgrense (Minutter)"
+
+#: ../../../www/radmin/templates/smarty.c:93
+#: ../../../www/radmin/templates/smarty.c:105
+msgid "Bandwidth Limit Down"
+msgstr "Båndbreddegrense Ned"
+
+#: ../../../www/radmin/templates/smarty.c:94
+#: ../../../www/radmin/templates/smarty.c:106
+msgid "Bandwidth Limit Up"
+msgstr "Båndbreddegrense Opp"
+
+#: ../../../www/radmin/templates/smarty.c:95
+#: ../../../www/radmin/templates/smarty.c:107
+msgid "Allow simultaneous logins?"
+msgstr "Tillat samtidige innlogginger?"
+
+#: ../../../www/radmin/templates/smarty.c:96
+#: ../../../www/radmin/templates/smarty.c:110
+msgid "Delete Group"
+msgstr "Slett gruppe"
+
+#: ../../../www/radmin/templates/smarty.c:108
+msgid "Add Another Group"
+msgstr "Legg til enda en gruppe"
+
+#: ../../../www/radmin/templates/smarty.c:111
+msgid "Edit Computer Account"
+msgstr "Rediger datamaskinkonto"
+
+#: ../../../www/radmin/templates/smarty.c:112
+msgid "Edit User"
+msgstr "Rediger bruker"
+
+#: ../../../www/radmin/templates/smarty.c:115
+msgid "Choose a secure password for the user. Leave blank to not change"
+msgstr "Velg et sikkert passord for brukeren. La stå tomt for å ikke endre"
+
+#: ../../../www/radmin/templates/smarty.c:117
+msgid "This user account never expires"
+msgstr "Denne brukerkontoen utløper ikke"
+
+#: ../../../www/radmin/templates/smarty.c:118
+msgid "This user account has expired"
+msgstr "Denne brukerkontoen har utløpt"
+
+#: ../../../www/radmin/templates/smarty.c:119
+msgid "Reset expiry"
+msgstr "Nullstill utløpstid"
+
+#: ../../../www/radmin/templates/smarty.c:120
+msgid "Computer Accounts never expire"
+msgstr "Datamaskinkontoer utløper aldri"
+
+#: ../../../www/radmin/templates/smarty.c:127
+msgid "Change the Data Limit"
+msgstr "Endre datagrensen"
+
+#: ../../../www/radmin/templates/smarty.c:128
+msgid "Add Data to Limit (MiB)"
+msgstr "Legg til data til grensen (MiB)"
+
+#: ../../../www/radmin/templates/smarty.c:129
+msgid "Add to the Data Limit (Will ignore changes made above)"
+msgstr "Legg til Datagrense (Vil ignorere endringene ovenfor)"
+
+#: ../../../www/radmin/templates/smarty.c:132
+msgid "Change the Time Limit"
+msgstr "Endre tidsgrensen"
+
+#: ../../../www/radmin/templates/smarty.c:133
+msgid "Add Time to Limit (Minutes)"
+msgstr "Legg Tid til grensen"
+
+#: ../../../www/radmin/templates/smarty.c:134
+msgid "Add to the Time Limit (Will ignore changes made above)"
+msgstr "Legg til tidsgrensen (Vil ignorere endringene ovenfor)"
+
+#: ../../../www/radmin/templates/smarty.c:135
+#: ../../../www/radmin/templates/smarty.c:136
+msgid "Update User Details"
+msgstr "Oppdater brukerdetaljer"
+
+#: ../../../www/radmin/templates/smarty.c:137
+msgid "Delete Computer Account"
+msgstr "Slett datamaskinkonto"
+
+#: ../../../www/radmin/templates/smarty.c:138
+#: ../../../www/radmin/templates/smarty.c:140
+msgid "Delete User"
+msgstr "Slett bruker"
+
+#: ../../../www/radmin/templates/smarty.c:139
+msgid ""
+"User accounts are automatically deleted 2 months after expiry. Only accounts"
+" with zero usage should be manually deleted to prevent errors in the reports"
+" or statistics."
+msgstr "Brukerkontoer blir automatisk slettet 2 måneder etter utløpet. Bare kontoer med null bruk bør manuelt slettes for å unngå feil i rapporter eller statistikk."
+
+#: ../../../www/radmin/templates/smarty.c:141
+msgid "Are you sure you want to delete this user?"
+msgstr "Er du sikker på at du vil slette denne brukeren?"
+
+#: ../../../www/radmin/templates/smarty.c:142
+msgid "Delete User %1"
+msgstr "Slett bruker %1"
+
+#: ../../../www/radmin/templates/smarty.c:143
+msgid "Sessions for %1"
+msgstr "Økter for  %1"
+
+#: ../../../www/radmin/templates/smarty.c:144
+#: ../../../www/uam/templates/smarty.c:10
+msgid "Start Time"
+msgstr "Starttid"
+
+#: ../../../www/radmin/templates/smarty.c:145
+msgid "Stop Time"
+msgstr "Sluttid"
+
+#: ../../../www/radmin/templates/smarty.c:146
+msgid "Time"
+msgstr "Tid"
+
+#: ../../../www/radmin/templates/smarty.c:149
+msgid "Download"
+msgstr "Nedlasting"
+
+#: ../../../www/radmin/templates/smarty.c:150
+#: ../../../www/uam/templates/smarty.c:18
+msgid "Uploaded"
+msgstr "Opplasted"
+
+#: ../../../www/radmin/templates/smarty.c:151
+msgid "Data Usage"
+msgstr "Databruk"
+
+#: ../../../www/radmin/templates/smarty.c:152
+msgid "Reason: "
+msgstr "Begrunnelse: "
+
+#: ../../../www/radmin/templates/smarty.c:153
+msgid "Computers hardware (MAC) address is %1"
+msgstr "Datamaskinens maskinvareadresse (MAC) er %1"
+
+#: ../../../www/radmin/templates/smarty.c:154
+msgid "Captive Portal Config Login"
+msgstr "Inngjerdet portalkonfigurasjonsinnlogging"
+
+#: ../../../www/radmin/templates/smarty.c:155
+#: ../../../www/radmin/templates/smarty.c:159
+msgid "Upload Logo"
+msgstr "Last opp logo"
+
+#: ../../../www/radmin/templates/smarty.c:156
+msgid "Logo Image"
+msgstr "Logobilde"
+
+#: ../../../www/radmin/templates/smarty.c:157
+msgid "Select new logo file."
+msgstr "Velg nytt logobilde"
+
+#: ../../../www/radmin/templates/smarty.c:158
+msgid ""
+"Logo file needs to be in png format, and relatively small (remember, every "
+"page has the logo). 10 Kilobytes maximum. It's physical size shouldn't be "
+"bigger than about 220px in both directions."
+msgstr "Logofilen må være i png-format og relativt lite (husk at hver side har logoen). 10 Kilobyte maksimum. Den fysiske størrelsen bør ikke være større enn ca 220px i begge retninger."
+
+#: ../../../www/radmin/templates/smarty.c:160
+msgid ""
+"For more advanced logos, (different file type, size, placement}, manually "
+"upload the file to /var/www/ or /usr/share/grase/www/images/ and use the "
+"custom CSS to override this logo. The logo is defined in the #page container"
+" as the background."
+msgstr "For mer avanserte logoer, (annen filtype, størrelse, plassering}, manuelt laste opp filen til /var/www/ eller /usr/share/grase/www/images/ og bruk egendefinert CSS til å overstyre denne logoen. Logoen er definert i \"#page\" som bakgrunn."
+
+#: ../../../www/radmin/templates/smarty.c:161
+#: ../../../www/radmin/templates/smarty.c:169
+msgid "Admin Users"
+msgstr "Administrasjonsbrukere"
+
+#: ../../../www/radmin/templates/smarty.c:162
+#: ../../../www/radmin/templates/smarty.c:167
+#: ../../../www/radmin/templates/smarty.c:168
+msgid "Change Password"
+msgstr "Endre passord"
+
+#: ../../../www/radmin/templates/smarty.c:164
+msgid "Old Password"
+msgstr "Gammelt passord"
+
+#: ../../../www/radmin/templates/smarty.c:165
+msgid "New Password"
+msgstr "Nytt passord"
+
+#: ../../../www/radmin/templates/smarty.c:166
+msgid "Confirm New Password"
+msgstr "Bekreft nytt passord"
+
+#: ../../../www/radmin/templates/smarty.c:170
+#: ../../../www/radmin/templates/smarty.c:184
+msgid "Deleting or modifying the support user will prevent remote assistance."
+msgstr "Slette eller endre supportbrukeren vil hindre fjernassistanse."
+
+#: ../../../www/radmin/templates/smarty.c:171
+#: ../../../www/radmin/templates/smarty.c:172
+msgid "Admin User"
+msgstr "Adminbruker"
+
+#: ../../../www/radmin/templates/smarty.c:173
+#: ../../../www/radmin/templates/smarty.c:174
+msgid "Power User"
+msgstr "Power-bruker"
+
+#: ../../../www/radmin/templates/smarty.c:175
+#: ../../../www/radmin/templates/smarty.c:176
+msgid "Normal User"
+msgstr "Normal bruker"
+
+#: ../../../www/radmin/templates/smarty.c:177
+#: ../../../www/radmin/templates/smarty.c:185
+msgid "Are you sure you want to delete %1?"
+msgstr "Er du sikker på at du ønsker å slette %1?"
+
+#: ../../../www/radmin/templates/smarty.c:178
+#: ../../../www/radmin/templates/smarty.c:186
+msgid "Delete %1"
+msgstr "Slett %1"
+
+#: ../../../www/radmin/templates/smarty.c:179
+#: ../../../www/radmin/templates/smarty.c:182
+msgid "Create new Admin User"
+msgstr "Opprett ny administrasjonsbruker"
+
+#: ../../../www/radmin/templates/smarty.c:183
+msgid "Delete Admin User"
+msgstr "Slett administrasjonsbruker"
+
+#: ../../../www/radmin/templates/smarty.c:187
+msgid "Cannot delete current user"
+msgstr "kan ikke slette gjeldende bruker"
+
+#: ../../../www/radmin/templates/smarty.c:188
+msgid "Logged in as <b>%1</b>"
+msgstr "Innlogget som <b>%1</b>"
+
+#: ../../../www/radmin/templates/smarty.c:189
+msgid "Session logs for %1 on %2"
+msgstr "Øktlogger for %1 på %2"
+
+#: ../../../www/radmin/templates/smarty.c:190
+msgid "Computers hardware (MAC) address is"
+msgstr "Datamaskinens maskinvareadresse (MAC) er"
+
+#: ../../../www/radmin/templates/smarty.c:191
+msgid "Between %1 and %2"
+msgstr "Mellom %1 og %2"
+
+#: ../../../www/radmin/templates/smarty.c:192
+msgid "Total HTTP (WWW) Traffic Size:"
+msgstr "Total HTTP (WWW) trafikkstørrelse:"
+
+#: ../../../www/radmin/templates/smarty.c:193
+msgid "Domain"
+msgstr "Domene"
+
+#: ../../../www/radmin/templates/smarty.c:194
+msgid "Count"
+msgstr "Antall"
+
+#: ../../../www/radmin/templates/smarty.c:195
+#: ../../../www/radmin/templates/smarty.c:201
+msgid "Size"
+msgstr "Størrelse"
+
+#: ../../../www/radmin/templates/smarty.c:196
+#: ../../../www/radmin/templates/smarty.c:237
+msgid "Timestamp"
+msgstr "Tidsstempel"
+
+#: ../../../www/radmin/templates/smarty.c:197
+msgid "Address"
+msgstr "Adresse"
+
+#: ../../../www/radmin/templates/smarty.c:198
+msgid "Host"
+msgstr "Vert"
+
+#: ../../../www/radmin/templates/smarty.c:199
+msgid "Cached"
+msgstr "Bufret"
+
+#: ../../../www/radmin/templates/smarty.c:200
+msgid "Request Type"
+msgstr "Forespørselstype"
+
+#: ../../../www/radmin/templates/smarty.c:202
+msgid "Network Settings"
+msgstr "Nettverksinnstillinger"
+
+#: ../../../www/radmin/templates/smarty.c:203
+msgid ""
+"These settings are used by Coova Chilli and Dnsmasq. Both Coova Chilli and "
+"Dnsmasq will need to be reloaded when these settings change. A cron job will"
+" automatically check for changes every 5 minutes and reload these daemons if"
+" needed."
+msgstr "Disse innstillingene brukes av Coova Chilli og Dnsmasq. Både Coova Chilli og Dnsmasq må lastes på nytt når disse innstillingene endres. En cron jobb vil automatisk se etter endringer hvert 5. minutt og oppdatere disse tjenerne om nødvendig."
+
+#: ../../../www/radmin/templates/smarty.c:204
+msgid "Network Config last reloaded %1"
+msgstr "Nettverkskonfigurasjon sist lastet %1"
+
+#: ../../../www/radmin/templates/smarty.c:205
+msgid "Network Config last updated %1"
+msgstr "Nettverkskonfigurasjon sist oppdatert %1"
+
+#: ../../../www/radmin/templates/smarty.c:206
+#: ../../../www/radmin/templates/smarty.c:216
+#: ../../../www/radmin/templates/smarty.c:270
+msgid ""
+"For each of the following items, if you need multiple values you can submit "
+"the form and it will append a blank input below the last valid value"
+msgstr "For hver av de følgende elementer, hvis du trenger flere verdier kan du sende inn skjemaet og det vil legge et tomt felt under siste gyldig verdi"
+
+#: ../../../www/radmin/templates/smarty.c:208
+msgid "Help Page"
+msgstr "Hjelpeside"
+
+#: ../../../www/radmin/templates/smarty.c:209
+msgid "My Account"
+msgstr "Min konto"
+
+#: ../../../www/radmin/templates/smarty.c:210
+msgid "Admin"
+msgstr "Administrator"
+
+#: ../../../www/radmin/templates/smarty.c:211
+msgid "Coova Chilli Settings"
+msgstr "Coova Chilli-innstillinger"
+
+#: ../../../www/radmin/templates/smarty.c:212
+msgid ""
+"These settings are used by Coova Chilli. Coova Chilli only reloads it's "
+"config roughly once an hour, or when it's restarted."
+msgstr "Disse innstillingene brukes av Coova Chilli. Coova Chilli omlaster konfigurasjonen bare omtrent en gang i timen, eller når det er nytt."
+
+#: ../../../www/radmin/templates/smarty.c:213
+msgid ""
+"If you change the MAC Auth Password, no computer accounts will be able to "
+"login until Coova Chilli reloads it's config, or is manually restarted."
+msgstr "Hvis du endrer MAC-autentiseringspassordet vil ingen datamaskinkontoer kunne logge inn før Coova Chilli laster om konfigurasjonsfilen, eller startes på nytt manuelt."
+
+#: ../../../www/radmin/templates/smarty.c:214
+msgid "Chilli Config last updated %1"
+msgstr "Chilli-konfigurasjon sist opptatert %1"
+
+#: ../../../www/radmin/templates/smarty.c:215
+msgid "Portal Config last updated %1"
+msgstr "portalkonfigurasjon sist opptatert %1"
+
+#: ../../../www/radmin/templates/smarty.c:218
+#: ../../../www/radmin/templates/smarty.c:224
+msgid "Data Limit"
+msgstr "Datagrense"
+
+#: ../../../www/radmin/templates/smarty.c:219
+#: ../../../www/radmin/templates/smarty.c:229
+#: ../../../www/uam/templates/smarty.c:14
+msgid "Time Limit"
+msgstr "Tidsgrense"
+
+#: ../../../www/radmin/templates/smarty.c:220
+msgid "%1 Time Limit"
+msgstr "%1 tidsgrense"
+
+#: ../../../www/radmin/templates/smarty.c:221
+msgid "%1 Data Limit"
+msgstr "%1 datagrense"
+
+#: ../../../www/radmin/templates/smarty.c:225
+msgid "Total Data usage for the current month"
+msgstr "Total databruk for inneværende måned."
+
+#: ../../../www/radmin/templates/smarty.c:226
+msgid "Data Usage (M)"
+msgstr "Databruk (M)"
+
+#: ../../../www/radmin/templates/smarty.c:227
+msgid "Total Data usage, from previous months, excluding current month"
+msgstr "Total databruk for tidligere måneder, unntatt inneværende  måned"
+
+#: ../../../www/radmin/templates/smarty.c:228
+msgid "Data Usage (T)"
+msgstr "Databruk (T)"
+
+#: ../../../www/radmin/templates/smarty.c:230
+msgid "Time Usage (Month)"
+msgstr "Tidsbruk (Måned)"
+
+#: ../../../www/radmin/templates/smarty.c:231
+msgid "Account Expiry"
+msgstr "Konto utløper"
+
+#: ../../../www/radmin/templates/smarty.c:232
+msgid "Last Logoff timestamp from current month only"
+msgstr "Siste avloggingstidsstempel kun fra inneværende måned"
+
+#: ../../../www/radmin/templates/smarty.c:233
+msgid "Last Logoff"
+msgstr "Siste avlogging"
+
+#: ../../../www/radmin/templates/smarty.c:235
+msgid "Password Hidden"
+msgstr "Passord gjemt"
+
+#: ../../../www/radmin/templates/smarty.c:236
+msgid "Admin Log"
+msgstr "Administrasjonslogg"
+
+#: ../../../www/radmin/templates/smarty.c:239
+msgid "IP"
+msgstr "IP"
+
+#: ../../../www/radmin/templates/smarty.c:240
+msgid "Action"
+msgstr "Handling"
+
+#: ../../../www/radmin/templates/smarty.c:241
+msgid "Group Properties"
+msgstr "Gruppeegenskaper"
+
+#: ../../../www/radmin/templates/smarty.c:244
+msgid "Max Data (Mb)"
+msgstr "Maks data (Mb)"
+
+#: ../../../www/radmin/templates/smarty.c:245
+msgid "Max Time (mins)"
+msgstr "Maks tid (minutter)"
+
+#: ../../../www/radmin/templates/smarty.c:246
+msgid "Recur time limit"
+msgstr "Gjenta tidsgrense"
+
+#: ../../../www/radmin/templates/smarty.c:247
+msgid "BW Limit Down"
+msgstr "BW-grense Ned"
+
+#: ../../../www/radmin/templates/smarty.c:248
+msgid "BW Limit Up"
+msgstr "BW-grense Opp"
+
+#: ../../../www/radmin/templates/smarty.c:249
+#: ../../../www/uam/templates/smarty.c:38
+msgid "Error"
+msgstr "Feil"
+
+#: ../../../www/radmin/templates/smarty.c:250
+#: ../../../www/uam/templates/smarty.c:39
+msgid "An Error has occured. Please report the error to the administrator"
+msgstr "En feil har oppstått. Vennligst rapporter feilen til administratoren"
+
+#: ../../../www/radmin/templates/smarty.c:251
+msgid ""
+"There may be more information available to the administrator in the logs"
+msgstr "Det kan finnes mer informasjon tilgjengelig for administrator i loggene"
+
+#: ../../../www/radmin/templates/smarty.c:252
+msgid "Create Computer Account"
+msgstr "Opprett datamaskinkonto"
+
+#: ../../../www/radmin/templates/smarty.c:254
+msgid ""
+"The MAC address is the network hardware address of the computer. It needs to"
+" be of the format XX-XX-XX-XX-XX-XX where XX is a hex number, typed in all "
+"capitals"
+msgstr "MAC-adressen er nettverkskortets maskinvareadresse til datamaskinen. Det må være av formatet XX-XX-XX-XX-XX-XX hvor XX er et hex-tall, skrevet i store bokstaver"
+
+#: ../../../www/radmin/templates/smarty.c:256
+msgid "Identify the computer. i.e. \"Bob's computer\""
+msgstr "identifiser datamaskinen. Dvs. \"Kjells datamaskin\""
+
+#: ../../../www/radmin/templates/smarty.c:258
+msgid ""
+"Computer accounts are intended to be used for computers that need internet "
+"access at all times. For example, an office computer. Computer accounts "
+"login automatically as soon as they access the network, this will normally "
+"occur at startup. If a limit is set, when the limit is reached the computer "
+"will revert to the normal login screen for internet access. Computer "
+"accounts can not be edited to add more data or time, only deleted."
+msgstr "Datamaskin kontoer er ment å brukes for datamaskiner som trenger internett til enhver tid. For eksempel en kontordatamaskin. Datamaskinkontoer logger inn automatisk så snart de kobler til nettverket, normalt vil dette skje ved oppstart. Dersom en grense er satt, Når grensen er nådd vil datamaskinen gå tilbake til den normale innloggingsbildet for internett-tilgang. Datamaskinkontoer kan ikke endres ved å legge til mer data eller tid, bare slettes."
+
+#: ../../../www/radmin/templates/smarty.c:259
+msgid ""
+"It is not recommended setting a time or data limit for computer accounts."
+msgstr "Det er ikke anbefalt å sette et tidspunkt eller data grense for datamaskin kontoer."
+
+#: ../../../www/radmin/templates/smarty.c:267
+#: ../../../www/radmin/templates/smarty.c:268
+msgid "Create New Computer Account"
+msgstr "Opprett ny datamaskinkonto"
+
+#: ../../../www/radmin/templates/smarty.c:269
+msgid "Portal Customisation"
+msgstr "Portaltilpasning"
+
+#: ../../../www/radmin/templates/smarty.c:272
+msgid "Sold"
+msgstr "Solgt"
+
+#: ../../../www/radmin/templates/smarty.c:273
+#: ../../../www/radmin/templates/smarty.c:275
+#: ../../../www/radmin/templates/smarty.c:277
+msgid "%1 of %2"
+msgstr "%1 av %2"
+
+#: ../../../www/radmin/templates/smarty.c:274
+msgid "This Month Used"
+msgstr "Brukt denne måned"
+
+#: ../../../www/radmin/templates/smarty.c:276
+msgid "Last Month Used"
+msgstr "Brukt forige måned"
+
+#: ../../../www/uam/templates/smarty.c:1
+msgid "You are logged in as:"
+msgstr "Du er logget inn som:"
+
+#: ../../../www/uam/templates/smarty.c:2
+msgid "User"
+msgstr "Bruker"
+
+#: ../../../www/uam/templates/smarty.c:3
+msgid "Usage this session"
+msgstr "Forbruk denne økten"
+
+#: ../../../www/uam/templates/smarty.c:4
+msgid "Remaining Quota"
+msgstr "Gjennværende kvote"
+
+#: ../../../www/uam/templates/smarty.c:5 ../../../www/uam/templates/smarty.c:7
+#: ../../../www/uam/templates/smarty.c:13
+#: ../../../www/uam/templates/smarty.c:15
+msgid "Unlimited"
+msgstr "Ubegrenset"
+
+#: ../../../www/uam/templates/smarty.c:6
+msgid "Quota allocation"
+msgstr "Kvotetildeling"
+
+#: ../../../www/uam/templates/smarty.c:8
+msgid "Max Session Time"
+msgstr "Maks økttid"
+
+#: ../../../www/uam/templates/smarty.c:9
+msgid "Max Idle Time"
+msgstr "Maks inaktiv tid"
+
+#: ../../../www/uam/templates/smarty.c:11
+msgid "Session Time"
+msgstr "Økttid"
+
+#: ../../../www/uam/templates/smarty.c:12
+msgid "Remaining Time"
+msgstr "Gjenværende tid"
+
+#: ../../../www/uam/templates/smarty.c:16
+msgid "Idle Time"
+msgstr "Inaktiv tid"
+
+#: ../../../www/uam/templates/smarty.c:17
+msgid "Downloaded"
+msgstr "Nedlasted"
+
+#: ../../../www/uam/templates/smarty.c:19
+msgid "Help"
+msgstr "Hjelp"
+
+#: ../../../www/uam/templates/smarty.c:20
+msgid "Support"
+msgstr "Brukerstøtte (Support)"
+
+#: ../../../www/uam/templates/smarty.c:21
+msgid "Successful Login"
+msgstr "Vellykket innlogging"
+
+#: ../../../www/uam/templates/smarty.c:22
+msgid "Continue to your site"
+msgstr "Fortsett til ditt nettsted"
+
+#: ../../../www/uam/templates/smarty.c:23
+msgid "Free Downloads"
+msgstr "Frie nedlastinger"
+
+#: ../../../www/uam/templates/smarty.c:24
+msgid ""
+"Welcome to the %1 Hotspot. Please read the following before logging in."
+msgstr "Velkommen til %1 Hotspot. Vennligst les følgende før du logger deg inn"
+
+#: ../../../www/uam/templates/smarty.c:25
+msgid "Information and Help"
+msgstr "Innformasjon og hjelp"
+
+#: ../../../www/uam/templates/smarty.c:26
+msgid "For a quick logout, bookmark <a href=\"%1\">LOGOUT</a>"
+msgstr "For rask utlogging, bokmerk <a href=\"%1\">LOGG UT</a>"
+
+#: ../../../www/uam/templates/smarty.c:27
+msgid "If you are already logged in, continue to your site"
+msgstr "Hvis du allerede er logget inn, fortsetter til ditt nettsted"
+
+#: ../../../www/uam/templates/smarty.c:28
+msgid "You are using the less secure login method."
+msgstr "Du bruker den mindre sikre påloggingsmetoden."
+
+#: ../../../www/uam/templates/smarty.c:29
+msgid ""
+"If you have javascript disabled, please try enabling it for the secure login"
+" method."
+msgstr "Hvis du har deaktivert JavaScript, vennligst aktiver det for den sikre påloggingsmetoden."
+
+#: ../../../www/uam/templates/smarty.c:30
+msgid ""
+"Use this less secure login form if the javascript version is giving you "
+"trouble"
+msgstr "Bruk dette mindre sikre påloggingsskjemaet hvis javascript-versjonen gir deg trøbbel"
+
+#: ../../../www/uam/templates/smarty.c:31
+msgid "You have disabled the secure javascript login method."
+msgstr "Du har deaktivert den sikre javascript-baserte innloggingsmetoden."
+
+#: ../../../www/uam/templates/smarty.c:32
+msgid "Click here to re-enable it"
+msgstr "Klikk her for å reaktivere det"
+
+#: ../../../www/uam/templates/smarty.c:35
+msgid "Trouble logging in?"
+msgstr "Innloggingsproblemer?"
+
+#: ../../../www/uam/templates/smarty.c:36
+msgid "Click here to disable the javascript login forms."
+msgstr "klikk her for å deaktivere Javascriptinnlogginsskjemaene."
+
+#: ../../../www/uam/templates/smarty.c:37
+msgid "This will use a less secure login method"
+msgstr "Dette vil bruke den mindre sikre innloggingsmetoden"
+
+#: ../../../www/radmin/newmachine.php:32
+msgid "MAC Address already has an account"
+msgstr "MAC-adressen har allerede en konto"
+
+#: ../../../www/radmin/newmachine.php:45
+msgid "Only set one Data limit field"
+msgstr "Angi kun ett datagrensefelt"
+
+#: ../../../www/radmin/newmachine.php:46
+msgid "Only set one Time limit field"
+msgstr "Angi kun ett tidsgrensefelt"
+
+#: ../../../www/radmin/newmachine.php:86
+msgid "Computer Account Successfully Created"
+msgstr "Datamaskinkontoen er opprettet"
+
+#: ../../../www/radmin/chilliconfig.php:36
+msgid "Walled Garden allowed hosts"
+msgstr "Inngjerdede tillatte verter"
+
+#: ../../../www/radmin/chilliconfig.php:37
+msgid ""
+"IP's and Hostnames that are accesible without logging in. DNS Lookup is only"
+" done at startup time so not suitable for domains with Round Robin IP "
+"Addresses"
+msgstr "IP-er og vertsnavn som er tilgjengelige uten innlogging. DNS oppslag gjøres kun ved oppstart, så det er ikke egnet for domener med \"Round Robin\" IP-adresser"
+
+#: ../../../www/radmin/chilliconfig.php:40
+msgid "Walled Garden allowed domains"
+msgstr "Inngjerdede tillatte domener"
+
+#: ../../../www/radmin/chilliconfig.php:41
+msgid "Domains (and their subdomains) that are accesible without logging in."
+msgstr "Domener (og deres underdomener) som er tilgjengelig uten innlogging"
+
+#: ../../../www/radmin/chilliconfig.php:48
+msgid "MAC Auth Password"
+msgstr "MAC autentiseringpassord"
+
+#: ../../../www/radmin/chilliconfig.php:49
+msgid ""
+"The MAC Password used to autologin Computer Accounts. Change this to "
+"something obscure as it can be used to login using a known MAC address as "
+"the username."
+msgstr "MAC-passordet brukes til automatisk innlogging av datamaskinkontoer. Endre dette til noe uklart da det kan brukes til å logge inn ved hjelp av en kjent MAC-adresse som brukernavn."
+
+#: ../../../www/radmin/chilliconfig.php:52
+msgid "Default Session Idle Timeout"
+msgstr "Standard inaktiv økttidsavbrudd"
+
+#: ../../../www/radmin/chilliconfig.php:53
+msgid ""
+"Default Idle Timeout for sessions. Logout after this number of seconds have "
+"passed without any traffic."
+msgstr "Standard inaktiv tidsavbrudd for økter. Utlogging etter at dette antallet sekunder har gått uten trafikk."
+
+#: ../../../www/radmin/chilliconfig.php:56
+msgid "DHCP Lease time"
+msgstr "DHCP leietid"
+
+#: ../../../www/radmin/chilliconfig.php:57
+msgid "DHCP lease time in seconds."
+msgstr "DHCP leietid i sekunder"
+
+#: ../../../www/radmin/chilliconfig.php:97
+#: ../../../www/radmin/chilliconfig.php:138
+#, php-format
+msgid "%s Coova Chilli config option update"
+msgstr "%s Coova Chilli konfigurasjonsvalgoppdatering"
+
+#: ../../../www/radmin/chilliconfig.php:183
+msgid "Changes pending Coova Chilli Reload"
+msgstr "Endringer venter på Coova Chilli-oppdatering"
+
+#: ../../../www/radmin/chilliconfig.php:185
+#: ../../../www/radmin/netconfig.php:250
+msgid "Settings match running config"
+msgstr "Innstillinger samsvarer med gjeldende konfigurasjon"
+
+#: ../../../www/radmin/usermin.php:42
+msgid "New Passwords must match"
+msgstr "Nye passord må samsvare"
+
+#: ../../../www/radmin/usermin.php:45
+msgid "Password must not be blank"
+msgstr "Passordet kan ikke være blankt"
+
+#: ../../../www/radmin/usermin.php:50 ../../../www/radmin/edituser.php:45
+#: ../../../www/radmin/passwd.php:65 ../../../www/radmin/passwd.php:66
+msgid "Password Changed"
+msgstr "Passord endret"
+
+#: ../../../www/radmin/usermin.php:53
+msgid "Password not updated"
+msgstr "Passord ikke oppdatert"
+
+#: ../../../www/radmin/netconfig.php:38
+msgid "DNS Servers"
+msgstr "DNS-servere"
+
+#: ../../../www/radmin/netconfig.php:39
+msgid ""
+"IP Addresses of DNS Servers. All clients will use the gateway as the DNS "
+"server which will use the addresses listed here to do DNS lookups. Dnsmasq "
+"WILL NOT get default servers from DHCP or /etc/resolv.conf and will default "
+"to OpenDNS Family Shield"
+msgstr "IP-adresser til DNS-servere. Alle kunder vil bruke gatewayen som DNS-server som vil bruke de adressene som er oppført her til å gjøre DNS-oppslag. Dnsmasq vil ikke få standard servere fra DHCP eller /etc/resolv.conf og vil som standard bruke OpenDNS Family Shield"
+
+#: ../../../www/radmin/netconfig.php:42
+msgid "Bogus NXDOMAIN"
+msgstr "Falsk NXDOMAIN"
+
+#: ../../../www/radmin/netconfig.php:43
+msgid ""
+"IP Addresses of Bogus NXDOMAIN returns. All DNS replies that contain these "
+"ip address will be transformed into a NXDOMAIN result"
+msgstr "IP-adresser med Falsk NXDOMAIN returnerer. Alle DNS-svar som inneholder disse ip-adresse vil bli forvandlet til et NXDOMAIN"
+
+#: ../../../www/radmin/netconfig.php:50
+msgid "LAN IP Address"
+msgstr "LAN IP-adresse"
+
+#: ../../../www/radmin/netconfig.php:51
+msgid ""
+"The server IP address that is used on the LAN side (Coova-Chilli) of the "
+"network. This will be the gateway address for all clients, as well as the "
+"DNS server the clients access. For default Squid config this should be a "
+"private ip address."
+msgstr "Serverens IP-adresse som er brukt på LAN siden (Coova-Chilli) av nettverket. Dette vil være gateway adressen for alle klienter, samt DNS-serveren kundene bruker. For standard Squid-konfigurasjon bør dette være en privat ip-adresse."
+
+#: ../../../www/radmin/netconfig.php:60
+msgid "LAN Network Mask"
+msgstr "LAN nettverksmaske"
+
+#: ../../../www/radmin/netconfig.php:61
+msgid ""
+"Network mask to use for clients network. (i.e. 255.255.255.0). DHCP range "
+"and network address will be calculated from this and the LAN IP Address."
+msgstr "Nettverks maske til bruk for klientenes nettverk. (dvs. 255.255.255.0). DHCP-rekkevidde og nettadresse vil bli beregnet ut fra dette og LAN IP-adressen."
+
+#: ../../../www/radmin/netconfig.php:65
+msgid "Bogus NXDOMAIN (OpenDNS)"
+msgstr "Falsk NXDOMAIN (OpenDNS)"
+
+#: ../../../www/radmin/netconfig.php:66
+msgid ""
+"Some DNS Providers return bogus NXDOMAIN to redirect you to their search "
+"engine. Block the bogus ip's and return a real NXDOMAIN for OpenDNS."
+msgstr "Noen DNS Tilbydere returnerer falske NXDOMAIN for å omdirigere deg til deres søkemotor. Blokker de falske IPene og returnere et reelt NXDOMAIN for OpenDNS."
+
+#: ../../../www/radmin/netconfig.php:70
+msgid "Wireless Network Name (SSID)"
+msgstr "Trådløst nettverksnavn (SSID)"
+
+#: ../../../www/radmin/netconfig.php:71
+msgid ""
+"Wireless Network Name that clients connect to. Currently does not modify any"
+" settings but if set will print on the tickets"
+msgstr "Navn på trådløst nettverk som klienter kobler til. Foreløpig endres ikke eventuelle innstillinger, men dersom det er satt vil det skrives ut på kvitteringene"
+
+#: ../../../www/radmin/netconfig.php:74
+msgid "Print Ticket Type"
+msgstr "Skriv ut kvitteringstype"
+
+#: ../../../www/radmin/netconfig.php:75
+msgid "Print the ticket type (Group name) on tickets"
+msgstr "Skriv ut kvitteringstype (gruppenavn) på kvitteringer"
+
+#: ../../../www/radmin/netconfig.php:78
+msgid "Print Ticket Expiry"
+msgstr "Skriv ut kvitteringsutløp"
+
+#: ../../../www/radmin/netconfig.php:79
+msgid "Print the expiry on tickets"
+msgstr "Skriv ut utløpstid på kvittering. "
+
+#: ../../../www/radmin/netconfig.php:90
+msgid "LAN Network Interface"
+msgstr "LAN nettverksgrensesnitt"
+
+#: ../../../www/radmin/netconfig.php:91
+msgid ""
+"The Network Interface that is connected to the LAN of the Hotspot (the side "
+"the clients connect to)"
+msgstr "Nettverksgrensesnittet som er koblet til LAN på Hotspot (Hvilken side klienter kobler seg opp til)"
+
+#: ../../../www/radmin/netconfig.php:96
+msgid "WAN Network Interface"
+msgstr "WAN nettverksgrensesnitt"
+
+#: ../../../www/radmin/netconfig.php:97
+msgid ""
+"The Network Interface that is connected to the WAN of the Hotspot (the side "
+"the internet is connected to)"
+msgstr "Nettverksgrensesnittet som er koblet til LAN på Hotspot (Hvilken side klienter kobler seg opp til)"
+
+#: ../../../www/radmin/netconfig.php:248
+msgid "Changes pending Reload"
+msgstr "Endringer avventer omlasting"
+
+#: ../../../www/radmin/edituser.php:63
+msgid "Group Changed"
+msgstr "Gruppe endret"
+
+#: ../../../www/radmin/edituser.php:73
+msgid "Comment Changed"
+msgstr "Kommentar endret"
+
+#: ../../../www/radmin/edituser.php:90
+msgid "Data Limit Increased"
+msgstr "Datagrense økt"
+
+#: ../../../www/radmin/edituser.php:91
+#, php-format
+msgid "Data Limit increased for %s"
+msgstr "Datagrense økt for %s"
+
+#: ../../../www/radmin/edituser.php:111
+msgid "Max Data Limit Updated"
+msgstr "Maks datagrense oppdatert"
+
+#: ../../../www/radmin/edituser.php:112
+#, php-format
+msgid "Max Data Limit changed for %s"
+msgstr "Maks datagrense endret for %s"
+
+#: ../../../www/radmin/edituser.php:129
+msgid "Time Limit Increased"
+msgstr "Tidsgrense økt"
+
+#: ../../../www/radmin/edituser.php:130
+#, php-format
+msgid "Time Limit increased for %s"
+msgstr "Tidsgrense økt for %s"
+
+#: ../../../www/radmin/edituser.php:149
+msgid "Max Time Limit Updated"
+msgstr "Maks tidsgrense økt for %s"
+
+#: ../../../www/radmin/edituser.php:150
+#, php-format
+msgid "Max Time Limit changed for %s"
+msgstr "Maks tidsgrense endret for %s"
+
+#: ../../../www/radmin/edituser.php:159
+msgid "Expiry updated"
+msgstr "Utløpstid oppdatert"
+
+#: ../../../www/radmin/edituser.php:169
+#, php-format
+msgid "User '%s' Deleted"
+msgstr "Bruker '%s' slettet"
+
+#: ../../../www/radmin/passwd.php:57
+msgid "Old Password incorrect"
+msgstr "Gammelt passord er feil"
+
+#: ../../../www/radmin/passwd.php:60
+msgid "New passwords don't match"
+msgstr "Nye passord samsvarer ikke"
+
+#: ../../../www/radmin/passwd.php:68
+msgid "Please fill in all password fields"
+msgstr "Vennligst fyll inn alle passordfelt"
+
+#: ../../../www/radmin/passwd.php:75
+#, php-format
+msgid "User %s already exists"
+msgstr "Bruker %s eksisterer allerede"
+
+#: ../../../www/radmin/passwd.php:78
+msgid "User Created"
+msgstr "Bruker opprettet"
+
+#: ../../../www/radmin/passwd.php:81
+msgid "Need both username and password"
+msgstr "Trenger både brukernavn og passord"
+
+#: ../../../www/radmin/passwd.php:87
+#, php-format
+msgid "User %s Deleted"
+msgstr "Bruker '%s' slettet"
+
+#: ../../../www/radmin/passwd.php:90
+msgid "Invalid Delete Request"
+msgstr "Ugyldig sletteforespørsel"
+
+#: ../../../www/radmin/loginconfig.php:48
+msgid "Login Screen Title"
+msgstr "Tittel på innloggingsskjerm"
+
+#: ../../../www/radmin/loginconfig.php:49
+msgid "Hide Title (header) from login screen"
+msgstr "Skjul tittel (topptekst) fra innlogginsskjermen"
+
+#: ../../../www/radmin/loginconfig.php:52
+msgid "Login Screen Footer"
+msgstr "Bunntekst innloggingsskjerm"
+
+#: ../../../www/radmin/loginconfig.php:53
+msgid ""
+"Hide footer from login screen. Please consider adding a link back to "
+"http://grasehotspot.org if you are hiding the footer"
+msgstr "Skjul bunnteksten fra innloggingsskjermen. Vennligst vurdere å legge en link tilbake til http://grasehotspot.org hvis du gjemmer bunnteksten"
+
+#: ../../../www/radmin/loginconfig.php:56
+msgid "Logout Bookmark"
+msgstr "Utloggingsbokmerke"
+
+#: ../../../www/radmin/loginconfig.php:57
+msgid "Hide Bookmark logout link"
+msgstr "Skjul utloggingsbokmerkelink"
+
+#: ../../../www/radmin/loginconfig.php:60
+msgid "Help Link"
+msgstr "Hjelpelink"
+
+#: ../../../www/radmin/loginconfig.php:61
+msgid ""
+"Hide Help and Information link from login page (still shows in footer if "
+"footer is enabled)"
+msgstr "Skjul Hjelp- og Informasjonslenke fra innloggingssiden (vises fremdeles i bunnteksten hvis bunntekst er aktivert)"
+
+#: ../../../www/radmin/loginconfig.php:64
+msgid "Disable Javascript Login"
+msgstr "Deaktiver javascript-innlogging"
+
+#: ../../../www/radmin/loginconfig.php:65
+msgid "Force all logins to be through the less secure non-javascript method"
+msgstr "Tving alle pålogginger til å være gjennom den mindre sikker ikke-javascript metoden"
+
+#: ../../../www/radmin/loginconfig.php:68
+msgid "Disable All Default CSS"
+msgstr "Deaktiver alle standard CSS"
+
+#: ../../../www/radmin/loginconfig.php:69
+msgid ""
+"All css files will be excluded from the login pages, and only the css below "
+"(Main CSS) will be used"
+msgstr "Alle CSS-filer vil bli ekskludert fra loginsider, og bare css-koden nedenfor (Hoved CSS) vil bli brukt"
+
+#: ../../../www/radmin/loginconfig.php:73
+msgid "Page Title"
+msgstr "Sidetittel"
+
+#: ../../../www/radmin/loginconfig.php:74
+msgid "The page title that is displayed on the login page"
+msgstr "Sidetittelen som vises på innloggingsskjermen"
+
+#: ../../../www/radmin/loginconfig.php:82
+msgid "Main CSS"
+msgstr "Hoved-CSS"
+
+#: ../../../www/radmin/loginconfig.php:83
+msgid ""
+"Cascading style sheet that is applied to all portal pages (use !important to"
+" override a style if your settings here don't seem to work, it may be that "
+"the builtin css has a more specific selector than your one here, look at "
+"radmin.css for id's and classes)"
+msgstr "Cascading style sheet (CSS) som er brukt på alle portalsider (bruk !important for å overstyre en stil hvis innstillingene her ikke synes å fungere, kan det være at builtin css har en mer spesifikk selektor enn en din her, se på radmin.css for id-ene og klasser)"
+
+#: ../../../www/radmin/loginconfig.php:86
+msgid "Help and Information Page"
+msgstr "Hjelp og informasjonsside"
+
+#: ../../../www/radmin/loginconfig.php:87
+msgid "Help and Information page contents"
+msgstr "Hjelp og informasjonssideinnhold"
+
+#: ../../../www/radmin/loginconfig.php:91
+msgid "Login Help HTML"
+msgstr "innloggingshjelp HTML"
+
+#: ../../../www/radmin/loginconfig.php:92
+msgid "Help text (and HTML) displayed on login page above login form"
+msgstr "Hjelpetekst (og HTML) vist på innlogginssisen over innloggingsskjema"
+
+#: ../../../www/radmin/loginconfig.php:97
+msgid "HTML Below login form"
+msgstr "HTML under innloggingsskjema"
+
+#: ../../../www/radmin/loginconfig.php:98
+msgid "HTML to insert below login form"
+msgstr "HTML som settes inn under innloggingsskjema"
+
+#: ../../../www/radmin/loginconfig.php:101
+msgid "Logged In HTML"
+msgstr "Logget inn HTML"
+
+#: ../../../www/radmin/loginconfig.php:102
+msgid "HTML for successful login when not using javascript"
+msgstr "HTML for vellykket innlogging når javascript ikke brukes"
+
+#: ../../../www/radmin/loginconfig.php:140
+#: ../../../www/radmin/loginconfig.php:177
+#, php-format
+msgid "%s login config option update"
+msgstr "%s innloggingsvalg oppdater"
+
+#: ../../../www/radmin/groupconfig.php:54
+msgid "A minimum of one group is required"
+msgstr "Minst en gruppe er påkrevet"
+
+#: ../../../www/radmin/groupconfig.php:58
+msgid "It is not recommended having groups without expiries."
+msgstr "Det er ikke anbefalt å ha grupper uten utløpstid."
+
+#: ../../../www/radmin/groupconfig.php:80
+msgid "Invalid group name or group name missing"
+msgstr "ugyldig gruppenavn eller gruppenavnet mangler"
+
+#: ../../../www/radmin/groupconfig.php:98
+#, php-format
+msgid "%s: Invalid expiry format"
+msgstr "%s: Ugyldig utløpstidsformat"
+
+#: ../../../www/radmin/groupconfig.php:102
+#, php-format
+msgid "%s: Expiry can not be in the past"
+msgstr "%s: Utløpstiden kan ikke være i fortid"
+
+#: ../../../www/radmin/groupconfig.php:125
+#, php-format
+msgid "Need both a time limit and recurrance for '%s'"
+msgstr "Trenger både en tidsbegrensning og gjentakelse for '%s'"
+
+#: ../../../www/radmin/groupconfig.php:184
+msgid "Groups updated"
+msgstr "Grupper oppdatert"
+
+#: ../../../www/radmin/newuser.php:34
+msgid "Username already taken"
+msgstr "Brukernavnet er opptatt"
+
+#: ../../../www/radmin/newuser.php:35
+msgid "Username and Password are both Required"
+msgstr "Både brukernavn og passord er nødvendig"
+
+#: ../../../www/radmin/newuser.php:112
+#, php-format
+msgid "User %s Successfully Created"
+msgstr "Bruker %s er opprettet"
+
+#: ../../../www/radmin/newuser.php:113
+#, php-format
+msgid "Print Ticket for %s"
+msgstr "Skriv billett for %s"
+
+#: ../../../www/radmin/newuser.php:114
+#, php-format
+msgid "Created new user %s"
+msgstr "Opprettet ny bruker %s"
+
+#: ../../../www/radmin/printnewtickets.php:48
+#: ../../../www/radmin/printnewtickets.php:54
+#, php-format
+msgid "Batch %s Vouchers"
+msgstr "Batch %s kviteringer"
+
+#: ../../../www/radmin/printnewtickets.php:103
+#, php-format
+msgid "Wireless Network: %s"
+msgstr "Trådløst nettverk: %s"
+
+#: ../../../www/radmin/printnewtickets.php:105
+#, php-format
+msgid "Username: %s"
+msgstr "Br&ukernavn:: %s"
+
+#: ../../../www/radmin/printnewtickets.php:106
+#, php-format
+msgid "Password: %s"
+msgstr "Passord: %s"
+
+#: ../../../www/radmin/printnewtickets.php:110
+#, php-format
+msgid "Voucher Type: %s"
+msgstr "DB-type: %s"
+
+#: ../../../www/radmin/printnewtickets.php:118
+#, php-format
+msgid "Expiry: %s"
+msgstr "Utløpstid: %s"
+
+#: ../../../www/radmin/newtickets.php:58
+msgid "Max of 50 tickets per batch"
+msgstr "Maks 50 billetter per parti"
+
+#: ../../../www/radmin/newtickets.php:139
+msgid "Tickets Successfully Created"
+msgstr "Billettene ble opprettet"
+
+#: ../../../www/radmin/newtickets.php:140
+msgid "Print Tickets"
+msgstr "Skriv ut billetter"
+
+#: ../../../www/radmin/settings.php:101
+msgid "Location name not valid"
+msgstr "Ugyldig stedsnavn"
+
+#: ../../../www/radmin/settings.php:105
+msgid "Location name updated"
+msgstr "Stedsnavn oppdatert"
+
+#: ../../../www/radmin/settings.php:106
+msgid "Location Name changed to"
+msgstr "Stedsnavn endret til"
+
+#: ../../../www/radmin/settings.php:111
+msgid "Error Saving Location Name"
+msgstr "Feil ved lagring av stedsnavn"
+
+#: ../../../www/radmin/settings.php:120
+msgid "Website name not valid"
+msgstr "Ugyldig hjemmesidenavn"
+
+#: ../../../www/radmin/settings.php:125 ../../../www/radmin/settings.php:126
+msgid "Website name updated"
+msgstr "Hjemmesidenavn oppdatert"
+
+#: ../../../www/radmin/settings.php:130
+msgid "Error Saving Website Name"
+msgstr "Feil ved lagring av hjemmesidenavn"
+
+#: ../../../www/radmin/settings.php:138
+msgid "Website link not valid"
+msgstr "Ugyldig hjemmesidelink"
+
+#: ../../../www/radmin/settings.php:143 ../../../www/radmin/settings.php:144
+msgid "Website link updated"
+msgstr "Hjemmesidelink oppdatert"
+
+#: ../../../www/radmin/settings.php:148
+msgid "Error Saving Website link"
+msgstr "Feil ved lagring av hjemmesidelink"
+
+#: ../../../www/radmin/settings.php:162 ../../../www/radmin/settings.php:163
+msgid "Price per MiB updated"
+msgstr "Pris per MiB oppdatert"
+
+#: ../../../www/radmin/settings.php:167
+msgid "Error saving Price per MiB"
+msgstr "Feil ved lagring av pris per MiB"
+
+#: ../../../www/radmin/settings.php:172
+msgid "Invalid Price per MiB"
+msgstr "Ugyldig pris per MiB"
+
+#: ../../../www/radmin/settings.php:183 ../../../www/radmin/settings.php:184
+msgid "Price per Minute Updated"
+msgstr "Pris per minutt oppdatert"
+
+#: ../../../www/radmin/settings.php:187
+msgid "Error saving Price per Minute"
+msgstr "Feil ved lagring av pris per minutt"
+
+#: ../../../www/radmin/settings.php:191
+msgid "Invalid Price per Minute"
+msgstr "Ugyldig pris per minutt"
+
+#: ../../../www/radmin/settings.php:202
+msgid "Currency updated"
+msgstr "Valuta oppdatert"
+
+#: ../../../www/radmin/settings.php:203
+msgid "Currency updated to"
+msgstr "Valuta oppdatert til"
+
+#: ../../../www/radmin/settings.php:207
+msgid "Error saving Currency"
+msgstr "Feil ved lagring av valuta"
+
+#: ../../../www/radmin/settings.php:211
+msgid "Invalid Currency"
+msgstr "Ugyldig valuta"
+
+#: ../../../www/radmin/settings.php:233
+msgid "Locale updated"
+msgstr "Locale oppdatert"
+
+#: ../../../www/radmin/settings.php:234
+msgid "Locale updated to"
+msgstr "Locale oppdatert til"
+
+#: ../../../www/radmin/settings.php:238
+msgid "Error updating Locale"
+msgstr "Feil ved oppdatering av Locale"
+
+#: ../../../www/radmin/settings.php:242
+msgid "Invalid Locale"
+msgstr "Ugyldig Locale"
+
+#: ../../../www/radmin/settings.php:258 ../../../www/radmin/settings.php:259
+msgid "Sellable Data Limit Update"
+msgstr "Salgbar datagrenseoppdatering"
+
+#: ../../../www/radmin/settings.php:263
+msgid "Error updating Sellable Data Limit"
+msgstr "Feil ved oppdatering av datagrense"
+
+#: ../../../www/radmin/settings.php:268
+msgid "Invalid value for Sellable Data"
+msgstr "Salgbar dataverdi er ugyldig"
+
+#: ../../../www/radmin/settings.php:279 ../../../www/radmin/settings.php:280
+msgid "Useable Data Limit Update"
+msgstr "Brukbar datagrenseoppdatering"
+
+#: ../../../www/radmin/settings.php:284
+msgid "Error updating Useable Data Limit"
+msgstr "Feil ved oppdatering av Brukbar datagrense"
+
+#: ../../../www/radmin/settings.php:289
+msgid "Invalid value for Useable Data"
+msgstr "Ugyldi verdi for Brukbar datagrense"
+
+#: ../../../www/radmin/settings.php:297
+msgid "Support name not valid"
+msgstr "Ugyldig brukerstøttenavn "
+
+#: ../../../www/radmin/settings.php:302 ../../../www/radmin/settings.php:303
+msgid "Support name updated"
+msgstr "Brukerstøttenavn oppdatert"
+
+#: ../../../www/radmin/settings.php:307
+msgid "Error Saving Support Name"
+msgstr "Feil ved lagring av brukerstøttenavn"
+
+#: ../../../www/radmin/settings.php:315
+msgid "Support link not valid"
+msgstr "Ugyldig brukerstøttelink"
+
+#: ../../../www/radmin/settings.php:320 ../../../www/radmin/settings.php:321
+msgid "Support link updated"
+msgstr "Brukerstøttelink oppdatert"
+
+#: ../../../www/radmin/settings.php:325
+msgid "Error Saving Support link"
+msgstr "Feil ved lagring av brukerstøttelink"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:70
+#: ../../../www/radmin/classes/CronFunctions.class.php:105
+#: ../../../www/radmin/classes/CronFunctions.class.php:153
+#: ../../../www/radmin/classes/CronFunctions.class.php:209
+msgid "Upgrading DB failed: "
+msgstr "Oppgradering av Database feilet"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:153
+msgid "Including default_templates file failed"
+msgstr "Inkludering av default_templates-fil feilet"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:287
+msgid "Database upgraded"
+msgstr "Database oppgradert"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:306
+msgid "Unable to select user from radcheck"
+msgstr "Kan ikke velge bruker fra radacct-data"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:324
+msgid "Unable to cleanup old users from batch "
+msgstr "Kan ikke rydde gamle brukere fra batch"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:333
+msgid "Unable to cleanup old batches "
+msgstr "Kan ikke rydde gamle batcher"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:338
+msgid "Old Batches Cleaned"
+msgstr "Ryddet i gamle batcher"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:370
+msgid "Clearing stale sessions failed: "
+msgstr "Opprydding av foreldede (stale) økter feilet: "
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:374
+msgid "Stale sessions cleared"
+msgstr "Foreldede (stale) økter fjernet"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:407
+msgid "Fetching users to delete failed"
+msgstr "Feil ved henting av brukere som skal slettes."
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:419
+msgid "Expired users deleted"
+msgstr "Utgåtte brukere slettet"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:472
+msgid "Unable to insert data into mtotaccttmp: "
+msgstr "Kan ikke sette inn data i mtotaccttmp: "
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:490
+msgid "Unable to delete old radacct data: "
+msgstr "Kan ikke slette gamle radacct-data"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:511
+msgid "Unable to update users Max-Octets: "
+msgstr "Kan ikke oppdatere brukernes Max-oktetters: "
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:530
+msgid "Unable to update users Max-All-Session: "
+msgstr "Kan ikke oppdatere brukernes Maks-ALL-økter"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:566
+msgid "Unable to move mtotaccttmp data to mtotacct: "
+msgstr "Kan ikek flytte mtotaccttmp-data til mtotacct: "
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:579
+msgid "Unable to truncate mtotaccttmp: "
+msgstr "Kan ikke avkorte mtotaccttmp: "
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:599
+msgid "Unable to ensure positive values in radcheck: "
+msgstr "Kan ikke sikre positive verdier i radcheck: "
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:617
+msgid "Unable to delete ancient radacct data: "
+msgstr "Kan ikke slette gamle radacct-data: "
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:626
+msgid "Old Radius Accounting Data Archived"
+msgstr "Gamle Radius regnskapsdata arkivert"
+
+#: ../../../www/radmin/classes/SettingsMySQL.class.php:471
+msgid "Adding Group query failed:  "
+msgstr "Ny gruppe-spørring feilet"
+
+#: ../../../www/radmin/classes/SettingsMySQL.class.php:487
+msgid "Delete Group query failed:  "
+msgstr "Sletting av gruppe-spørring feilet"
+
+#: ../../../www/radmin/classes/DatabaseConnections.class.php:70
+msgid "DB Config File isn't a valid file."
+msgstr "Databasekonfigurasjonsfilen er ikke en gyldig fil."
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:129
+msgid "Retrieving Sold Usage failed: "
+msgstr "Feil ved henting av Solgt Forbruk: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:163
+msgid "Retrieving Month Usage failed: "
+msgstr "Mottagelse av månedsforbruk feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:180
+msgid "Retrieving Current Month Usage failed: "
+msgstr "Mottagelse av nåværende månedsforbruk feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:211
+msgid "Retrieving Session by RadAcctID failed: "
+msgstr "Mottagelse av økt av RadAcctID feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:243
+msgid "Retrieving Sessions by Username failed: "
+msgstr "Mottagelse av Økter ved Brukernavn feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:264
+msgid "Retrieving Current Session by Username failed: "
+msgstr "Mottagelse av Nåværende Økt av Brukernavn feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:285
+msgid "Retrieving Username by Active Session (ipadddress): "
+msgstr "Mottagelse av brukernavn ved aktive økter (Ip-Adresse): "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:309
+msgid "Get User details Query failed: "
+msgstr "Henting av Brukerdetaljerspørring feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:402
+msgid "Get User Group Query failed: "
+msgstr "Henting av brukergruppespørring feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:429
+msgid "Get All Usernames Query Failed: "
+msgstr "Henting av alle brukernavnspørring Feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:453
+msgid "Get Users By Group Query Failed: "
+msgstr "Henting av Brukere av Gruppespørring Feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:479
+msgid "Get User Last Logout Query Failed: "
+msgstr "Henting av Bruker Sist utloggetspørring feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:508
+msgid "Get User Total Session Time Query failed: "
+msgstr "Henting av Bruker Total Økttidspørring feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:529
+msgid "Get User Data Usage Query failed: "
+msgstr "Henting av Bruker Dataforbrukspørring feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:550
+msgid "Get User Data Usage (Total) Query failed: "
+msgstr "Henting av Bruker Databruk (Totalt)-spørring feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:570
+msgid "Get Monthly Data Usage Query failed: "
+msgstr "Henting av Månedlig Databrukspørring feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:598
+msgid "Get Monthly Data Usage Totals Query failed: "
+msgstr "Henting av Totalt Månedlig Databrukspørring feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:624
+msgid "Get User Comment failed: "
+msgstr "Henting av Brukerkommentar feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:667
+msgid "Deleting radgroupcheck query failed: "
+msgstr "Sletting av radgroupcheckspørring feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:683
+msgid "Adding Group Check Attributes query failed:  "
+msgstr "Legger til Gruppesjekkrettigheterspørring feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:717
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:730
+msgid "Deleting radgroupreply query failed: "
+msgstr "Sletter radgroupreplayspørring feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:812
+msgid "Adding Group Attributes query failed:  "
+msgstr "Legger til Grupperettigheterspørring feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:861
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:870
+msgid "Get Groups details Query failed: "
+msgstr "Henting av Gruppers detaljerspørring feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:894
+msgid "Hourly"
+msgstr "Hver time"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:895
+msgid "Daily"
+msgstr "Daglig"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:896
+msgid "Weekly"
+msgstr "Ukentlig"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:897
+msgid "Monthly"
+msgstr "Månedlig"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:963
+msgid "Setting User Comment Query Failed: "
+msgstr "Setter Brukerkommentarspørring Feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:982
+msgid "Setting User Group Query Failed: "
+msgstr "Setter Brukergruppespørring Feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1003
+msgid "Setting User Datalimit Query Failed: "
+msgstr "Setter Brukerdatabegresningspørring feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1028
+msgid "Getting User Current Data Limit to increase failed: "
+msgstr "Henter Brukerdatabegresning til å øke feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1050
+msgid "Setting User Timelimit Query Failed: "
+msgstr "Setter Bruker Tidsbegresningspørring Feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1074
+msgid "Getting User Current Time Limit to increase failed: "
+msgstr "Henting av økning av gjeldende brukertidsbegresning feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1095
+msgid "Setting User Password Query Failed: "
+msgstr "Setter Brukerpassordspørring feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1118
+msgid "Setting User Expiry Date Query Failed: "
+msgstr "Setter Brukerutløpsdatospørring feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1138
+msgid "Deleting User Expiry Date Query Failed: "
+msgstr "Sletting av Brukers Utløpsdatospørring Feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1159
+msgid "Deleting user failed: "
+msgstr "Sletting av bruker feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1172
+msgid "Deleting users group failed: "
+msgstr "Sletting av brukers gruppe feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1185
+msgid "Deleting users comment failed: "
+msgstr "Sletting av brukers kommentar feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1205
+msgid "Checking Uniq Username failed: "
+msgstr "Sjekk av Unikt Brukernavn feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1235
+msgid "Retrieving Chilli Config Single Value failed: "
+msgstr "Mottagelse av Chilli Konfigurasjon Enkelverdi feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1269
+msgid "Deleting Chilli Config Query Failed: "
+msgstr "Sletting avr Chilli Konfigurasjon Spørring Feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1302
+msgid "Setting Chilli Config Single Query Failed: "
+msgstr "Setter Chilli Konfigurasjon Enkel Spørring feilet: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1324
+msgid "Setting Chilli Config Multi Query Failed: "
+msgstr "Setter Chilli Konfigurasjon Multi Spørring Feilet:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1345
+msgid "Retrieving Chilli Config Multi Value failed: "
+msgstr "Mottagelse av Chilli Konfigurasjon Multi Verdi feilet:"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:83
+msgid "Status"
+msgstr "Status"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:84
+msgid "Users"
+msgstr "Brukere"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:86
+msgid "New User"
+msgstr "Ny bruker"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:87
+msgid "Batch Users"
+msgstr "Gruppebrukere"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:88
+msgid "Computer Account"
+msgstr "Datamaskinkonto"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:91
+msgid "Monitor Sessions"
+msgstr "Overvåk Økter"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:93
+msgid "Reports"
+msgstr "Rapporter"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:100
+msgid "Settings"
+msgstr "Innstillinger"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:102
+msgid "Site Logo"
+msgstr "Hjemmesidelogo"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:122
+msgid "Logoff"
+msgstr "Logg av"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:157
+msgid "System Status"
+msgstr "Systemstaus"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:165
+#: ../../../www/radmin/includes/page_functions.inc.php:227
+msgid "Inherit from group"
+msgstr "Arv fra gruppe"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:326
+msgid "Hour"
+msgstr "Time"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:327
+msgid "Day"
+msgstr "Dag"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:328
+msgid "Week"
+msgstr "Uke"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:329
+msgid "Month"
+msgstr "Måned"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:335
+msgid "Yes"
+msgstr "Ja"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:335
+msgid "No"
+msgstr "Nei"
+
+#: ../../../www/radmin/includes/session.inc.php:65
+msgid "Your session has expired. Please login again"
+msgstr "Din økt har utløpt. Vennligst logg inn på nytt"
+
+#: ../../../www/radmin/includes/session.inc.php:69
+msgid "Incorrect Login"
+msgstr "Ukorrekt pålogging"
+
+#: ../../../www/radmin/includes/session.inc.php:73
+msgid "Security Issue. Please login again"
+msgstr "Sikkerhetsproblemer. Vennligst logg inn på nytt"
+
+#: ../../../www/radmin/includes/session.inc.php:77
+msgid "Authentication Issue. Please report to Admin"
+msgstr "Identifiseringsproblemer"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:160
+msgid "Invalid Expiry Date"
+msgstr "Ugyldig Utløpsdato"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:170
+msgid "Expiry Date in the past"
+msgstr "Utløpsdato i fortid"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:177
+#, php-format
+msgid "Invalid value '%s' for Data Limit"
+msgstr "Ugyldig variabel '%s' for Data Begrensning"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:184
+#, php-format
+msgid "Invalid recurrance interval '%s'"
+msgstr "Ugyldig intervalgjentagelse '%s'"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:190
+#, php-format
+msgid "Invalid response to YesNo Question '%s'"
+msgstr "Ugyldig respons til Ja/Nei-spørsmål %s'"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:196
+#, php-format
+msgid "Invalid Bandwidth Limit '%s'"
+msgstr "Ugyldig Båndbreddegrense '%s'"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:208
+msgid "Recurring time limit must be less than interval"
+msgstr "recurring tids begresning må være mindre en interval"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:215
+#, php-format
+msgid "Invalid value '%s' for Time Limit"
+msgstr "Ugyldig variabel '%s' for Tidsgrense"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:222
+msgid "MAC Address not in correct format"
+msgstr "MAC-Adressen har ikke korrekt format"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:229
+#, php-format
+msgid "Invalid number '%s' (Must be whole number)"
+msgstr "Ngyldig nummer '%s' (Må være hele nummer)"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:240
+msgid "Only Machines can be in the Machine group"
+msgstr "Kun maskiner kan være i datamaskingruppen"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:244
+msgid "Invalid Group"
+msgstr "Ugyldig Gruppe"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:319
+msgid "Computers"
+msgstr "Datamaskiner"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:322
+msgid "Expired"
+msgstr "Utløpt"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:399
+msgid "Uploaded Image was too big"
+msgstr "Opplastet Bilde var for stort"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:402
+msgid "Error In Uploading"
+msgstr "Opplastingsfeil"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:405
+msgid "No file was uploaded"
+msgstr "Ingen fil ble lastet opp"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:408
+msgid "Missing a temporary folder"
+msgstr "Mangler en midlertidig mappe"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:411
+msgid "Failed to write file to disk"
+msgstr "Greide ikke å skrive fil til disk"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:414
+msgid "File upload stopped by extension"
+msgstr "Filopplastning stoppet av filetternavn"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:417
+msgid "Unknown upload error"
+msgstr "Ukjent opplastningsfeil"
+
+#: ../../../www/uam/js.php:20
+msgid "Username is required"
+msgstr "Brukernavn er påkrevet"
+
+#: ../../../www/uam/js.php:21
+msgid "Are you sure you want to disconnect now?"
+msgstr "Er du sikker på at du ønsker å koble av nå?"
+
+#: ../../../www/uam/js.php:22
+msgid "Error loading generic login form"
+msgstr "Feil ved lasting av generisk innloggingsskjema"
+
+#: ../../../www/uam/js.php:23
+msgid ""
+"Popup Blocked. Click link below to continue to your website and open the "
+"status window"
+msgstr "Popupvindu blokkert. Klikk på linken under for å fortsette til nettsiden og åpne statusvinduet"
+
+#: ../../../www/uam/js.php:24
+msgid "Logged In"
+msgstr "Innlogget"
+
+#: ../../../www/uam/js.php:25
+msgid "Click to open the status window and continue to your site"
+msgstr "Klikk her for å åpne statusvinduet og fortsett til nettsiden din"
