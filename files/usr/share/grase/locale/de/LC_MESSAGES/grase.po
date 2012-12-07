@@ -1,5 +1,7 @@
 # 
 # Translators:
+# Sean Schneeweiß <seansnowwhite@gmail.com>, 2012.
+#   <seansnowwhite@gmail.com>, 2012.
 # Silverio Santos <SSantos@web.de>, 2011.
 # ssantos <ssantos@web.de>, 2011.
 msgid ""
@@ -7,14 +9,14 @@ msgstr ""
 "Project-Id-Version: Grase Hotspot\n"
 "Report-Msgid-Bugs-To: http://trac.grasehotspot.org/\n"
 "POT-Creation-Date: 2012-01-29 16:57+1000\n"
-"PO-Revision-Date: 2012-06-16 06:52+0000\n"
-"Last-Translator: Timothy White <tim@purewhite.id.au>\n"
-"Language-Team: German (http://www.transifex.net/projects/p/grase/language/de/)\n"
+"PO-Revision-Date: 2012-12-03 09:42+0000\n"
+"Last-Translator: Sean Schneeweiß <seansnowwhite@gmail.com>\n"
+"Language-Team: German (http://www.transifex.com/projects/p/grase/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: de\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-Country: AUSTRALIA\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;T_\n"
@@ -79,7 +81,7 @@ msgstr "Ein Kommentar über den Benutzer"
 msgid ""
 "When ether limit is reached, the user will be cut off. (i.e. after 1hour "
 "even if they still have data left)"
-msgstr "Wenn eines der Beschränkungen erreicht ist, wird der Benutzer abgeschaltet (z.B. nach einer Stunde obwohl noch Daten übrig sind)"
+msgstr "Wenn eines der Beschränkungen erreicht ist, wird der Benutzer unterbrochen (z.B. nach einer Stunde, obwohl noch Daten übrig sind)."
 
 #: ../../../www/radmin/templates/smarty.c:10
 #: ../../../www/radmin/templates/smarty.c:124
@@ -87,14 +89,14 @@ msgstr "Wenn eines der Beschränkungen erreicht ist, wird der Benutzer abgeschal
 msgid ""
 "A limit of 0 does not mean unlimited, it will immediately lock the user out."
 " To have an unlimited user, the user must be created without any limits."
-msgstr "Das Limit 0 heißt nicht unbegrenzt, es wird den Benutzer sofort ausschließen. Für einen unbegrenzten Benutzer muß dieser mit unbeschränkten Limits angelegt werden."
+msgstr "Das Limit 0 ist nicht unbegrenzt, es wird den Benutzer sofort ausschließen. Für einen unbegrenzten Benutzer muss dieser mit unbeschränkten Limits angelegt werden."
 
 #: ../../../www/radmin/templates/smarty.c:11
 #: ../../../www/radmin/templates/smarty.c:280
 msgid ""
 "If a limit is not set here, but is defined for the group, then the group "
 "limit will apply"
-msgstr "Wenn hier kein Limit angegeben wurde, aber es für die Gruppe definiert ist, wird das Gruppenlimit verwendet"
+msgstr "Wenn hier kein Limit angegeben wurde, aber es für die Gruppe definiert ist, wird das Gruppenlimit verwendet."
 
 #: ../../../www/radmin/templates/smarty.c:12
 #: ../../../www/radmin/templates/smarty.c:125
@@ -189,7 +191,7 @@ msgstr "IP Addresse"
 #: ../../../www/radmin/templates/smarty.c:32
 #: ../../../www/radmin/templates/smarty.c:37
 msgid "Subnet Mask"
-msgstr "Subnet Maske"
+msgstr "Subnetzmaske"
 
 #: ../../../www/radmin/templates/smarty.c:33
 #: ../../../www/radmin/templates/smarty.c:41
@@ -282,13 +284,13 @@ msgid ""
 "Australia.<br/><strong>en_ZA</strong> has the language set to English, and "
 "the location to South Africa, while <strong>af_ZA</strong> has the language "
 "set to Afrikaans and the location to South Africa."
-msgstr "Ein Regionalschema hat 2 Teile, die Sprache und den Standort.<br>Bei <strong>de_DE</strong> zum Beispiel ist die Sprache Deutsch und der Standort Deutschland.<br/>Bei <strong>de_AT</strong> ist die Sprache Deutsch und der Standort Österreich, während bei <strong>af_ZA</strong> die Sprache Afrikaans und der Standort Südafrika ist."
+msgstr "Ein Regionalschema hat 2 Teile, die Sprache und den Standort.<br>Bei <strong>de_DE</strong> zum Beispiel ist die Sprache Deutsch und der Standort Deutschland.<br/>Bei <strong>de_AT</strong> ist die Sprache Deutsch und der Standort Österreich, während bei <strong>af_ZA</strong> die Sprache Afrikanisch und der Standort Südafrika ist."
 
 #: ../../../www/radmin/templates/smarty.c:60
 msgid ""
 "The locale defines the number formats, currency and language. If the "
 "language selected is not available, it will fallback to English."
-msgstr "Das Gebietsschema definiert Nummernformat, Währung und Sprache. Wenn die ausgewählte Sprache nicht verfügbar ist, wird auf Englisch zurückgegriffen."
+msgstr "Das Gebietsschema definiert das Nummernformat, die Währung und die Sprache. Wenn die ausgewählte Sprache nicht verfügbar ist, wird auf Englisch zurückgegriffen."
 
 #: ../../../www/radmin/templates/smarty.c:61
 msgid ""
@@ -297,7 +299,7 @@ msgstr "Das aktuelle Gebietsschema ist %1, welches die Sprache auf %2 und den St
 
 #: ../../../www/radmin/templates/smarty.c:62
 msgid "Currency symbol is %1"
-msgstr "Das Währungssysmbol ist %1"
+msgstr "Das Währungssymbol ist %1"
 
 #: ../../../www/radmin/templates/smarty.c:63
 msgid "How much to charge per Mb"
@@ -372,13 +374,13 @@ msgid ""
 "Group expiry needs to be in a format understood by the <a target=\"_blank\" "
 "href=\"http://www.php.net/manual/en/function.strtotime.php\">strtotime</a> "
 "PHP function."
-msgstr "Gruppenablauf muß in einem Format eingebeben werden, das die PHP Funktion <a target=\"_blank\" href=\"http://www.php.net/manual/en/function.strtotime.php\">strtotime</a> versteht."
+msgstr "Gruppenablauf muss in einem Format eingebeben werden, das die PHP Funktion <a target=\"_blank\" href=\"http://www.php.net/manual/en/function.strtotime.php\">strtotime</a> versteht."
 
 #: ../../../www/radmin/templates/smarty.c:79
 msgid ""
 "For example, \"+1 month\" will set an expiry for 1 month from when the "
 "account is created. \"+2 weeks\", \"+3 days\" etc."
-msgstr "\"+1 month\" zum Beispiel wird den Ablauf auf 1 Monat vom Anlegen des Kontos einstellen.  \"+2 weeks\", \"+3 days\" etc."
+msgstr "\"+1 month\" zum Beispiel wird den Ablauf auf 1 Monat vom Anlegen aus des Kontos einstellen.  \"+2 weeks\", \"+3 days\" etc."
 
 #: ../../../www/radmin/templates/smarty.c:80
 msgid ""
@@ -390,7 +392,7 @@ msgstr "Ablauf wird sekundengenau berechnet, weshalb z.B. für ein Datum folgend
 msgid ""
 "Deleting a group won't delete it's users. Next time the user is edited it's "
 "group will become the default group unless a new group is selected."
-msgstr "Das Löschen einer Gruppe wird deren Benutzer nicht löschen. Das nächste Mal, an dem der Benutzer bearbeitet wird, wird dessen Gruppe die Voreinstellungsgruppe bis eine andere Gruppe ausgewählt wird."
+msgstr "Das Löschen einer Gruppe wird deren Benutzer nicht löschen. Das nächste Mal, an dem der Benutzer bearbeitet wird, wird dessen Gruppe die Standardgruppe, bis eine andere Gruppe ausgewählt wird."
 
 #: ../../../www/radmin/templates/smarty.c:82
 msgid ""
@@ -404,7 +406,7 @@ msgid ""
 "Changing Expiry, Data or Time limits, will not change existing users of the "
 "group and will only apply to new users. Recurring limits, Bandwidth and "
 "simultaneous logins will all apply to existing and new members."
-msgstr ""
+msgstr "Das Ändern des Ablaufdatums, des Datenvolumens oder Zeitlimits, wirkt sich nicht auf betehende Benutzer der Gruppe aus, sondern nur auf neu erstellte Benutzer. Sich wiederholende Limits, Bandbreiten Limits und die Erlaubnis der gleichzeitigen Logins wird sowohl für bestehende Benutzer als auch für neue Benutzer eingestellt."
 
 #: ../../../www/radmin/templates/smarty.c:84
 msgid "Groups"
@@ -452,12 +454,12 @@ msgstr "Zeitlimit pro Sitzung (in Minuten)"
 #: ../../../www/radmin/templates/smarty.c:93
 #: ../../../www/radmin/templates/smarty.c:105
 msgid "Bandwidth Limit Down"
-msgstr "Unteres Bandbreitenlimit"
+msgstr "Download Bandbreitenlimit"
 
 #: ../../../www/radmin/templates/smarty.c:94
 #: ../../../www/radmin/templates/smarty.c:106
 msgid "Bandwidth Limit Up"
-msgstr "Oberes Bandbreitenlimit"
+msgstr "Upload Bandbreitenlimit"
 
 #: ../../../www/radmin/templates/smarty.c:95
 #: ../../../www/radmin/templates/smarty.c:107
@@ -471,7 +473,7 @@ msgstr "Gruppe löschen"
 
 #: ../../../www/radmin/templates/smarty.c:108
 msgid "Add Another Group"
-msgstr "Weiteren Benutzer hinzufügen"
+msgstr "Weitere Gruppe hinzufügen"
 
 #: ../../../www/radmin/templates/smarty.c:111
 msgid "Edit Computer Account"
@@ -483,7 +485,7 @@ msgstr "Benutzer bearbeiten"
 
 #: ../../../www/radmin/templates/smarty.c:115
 msgid "Choose a secure password for the user. Leave blank to not change"
-msgstr "Wählen Sie ein sicheren Passwort für den Benutzer. Um es nicht zu ändern, lassen Sie es leer"
+msgstr "Wählen Sie ein sicheres Passwort für den Benutzer. Um es nicht zu ändern, lassen Sie es leer."
 
 #: ../../../www/radmin/templates/smarty.c:117
 msgid "This user account never expires"
@@ -499,7 +501,7 @@ msgstr "Ablauf zurücksetzen"
 
 #: ../../../www/radmin/templates/smarty.c:120
 msgid "Computer Accounts never expire"
-msgstr "Computerkonto läuft nicht ab"
+msgstr "Computerkonten laufen nicht ab"
 
 #: ../../../www/radmin/templates/smarty.c:127
 msgid "Change the Data Limit"
@@ -511,7 +513,7 @@ msgstr "Füge Daten dem Limit hinzu (MiB)"
 
 #: ../../../www/radmin/templates/smarty.c:129
 msgid "Add to the Data Limit (Will ignore changes made above)"
-msgstr "Füge Daten dem Limit hinzu (die Änderungen oben ignonierend)"
+msgstr "Dem Datenlimit hinzufügen (ignoriert die Änderungen oben)"
 
 #: ../../../www/radmin/templates/smarty.c:132
 msgid "Change the Time Limit"
@@ -519,11 +521,11 @@ msgstr "Das Zeitlimit ändern"
 
 #: ../../../www/radmin/templates/smarty.c:133
 msgid "Add Time to Limit (Minutes)"
-msgstr "Füge Zeit dem Limit hinzu (Minuten)"
+msgstr "Füge dem Limit Zeit hinzu (Minuten)"
 
 #: ../../../www/radmin/templates/smarty.c:134
 msgid "Add to the Time Limit (Will ignore changes made above)"
-msgstr "Füge Zeit dem Limit hinzu (die Änderungen oben ignorierend)"
+msgstr "Dem Zeitlimit hinzufügen (ignoriert die Änderungen oben)"
 
 #: ../../../www/radmin/templates/smarty.c:135
 #: ../../../www/radmin/templates/smarty.c:136
@@ -582,7 +584,7 @@ msgstr "Hochgeladen"
 
 #: ../../../www/radmin/templates/smarty.c:151
 msgid "Data Usage"
-msgstr "Datennutzung"
+msgstr "Verbrauchte Daten"
 
 #: ../../../www/radmin/templates/smarty.c:152
 msgid "Reason: "
@@ -614,7 +616,7 @@ msgid ""
 "Logo file needs to be in png format, and relatively small (remember, every "
 "page has the logo). 10 Kilobytes maximum. It's physical size shouldn't be "
 "bigger than about 220px in both directions."
-msgstr "Die Logodatei muß im PNG-Format vorliegen und relativ klein sein (zur Erinnerung: jede Seite enthält das Logo), 10 KB maximale Größe. Das Bild sollte nicht größer als 220px in jeder Richtung betragen."
+msgstr "Die Logodatei muss im PNG-Format vorliegen und relativ klein sein (zur Erinnerung: jede Seite enthält das Logo), 10 KB maximale Größe. Das Bild sollte nicht größer als 220px in jeder Richtung betragen."
 
 #: ../../../www/radmin/templates/smarty.c:160
 msgid ""
@@ -622,7 +624,7 @@ msgid ""
 "upload the file to /var/www/ or /usr/share/grase/www/images/ and use the "
 "custom CSS to override this logo. The logo is defined in the #page container"
 " as the background."
-msgstr "Für leistungsfähigere Logos (anderer Dateityp, Größe oder Position) bitte die Datei nach /var/www oder /usr/share/grase/www/images/ hochladen und um dieses Logo zu ersetzen eine angepasste CSS verwenden. Das Logo ist im #page-Container als Hintergrund definiert."
+msgstr "Für Logos mit einem anderern Dateityp, anderer Größe oder anderer Position, bitte die Datei nach /var/www oder /usr/share/grase/www/images/ hochladen und eine angepasste CSS verwenden. Das Logo ist im #page-Container als Hintergrund definiert."
 
 #: ../../../www/radmin/templates/smarty.c:161
 #: ../../../www/radmin/templates/smarty.c:169
@@ -762,7 +764,7 @@ msgstr "Die Konfiguration des Netzwerkes wurde um %1 erneuert"
 
 #: ../../../www/radmin/templates/smarty.c:205
 msgid "Network Config last updated %1"
-msgstr "Netzwerkkonfiguration wurde %1 zuletzt aktualisiert"
+msgstr "Netzwerkkonfiguration wurde zuletzt am %1 aktualisiert"
 
 #: ../../../www/radmin/templates/smarty.c:206
 #: ../../../www/radmin/templates/smarty.c:216
@@ -802,11 +804,11 @@ msgstr "Wenn Sie das MAC Auth Passwort ändern, wird kein Computer in der Lage s
 
 #: ../../../www/radmin/templates/smarty.c:214
 msgid "Chilli Config last updated %1"
-msgstr "Chilli Konfiguration wurde %1 zuletzt aktualisiert"
+msgstr "Chilli Konfiguration wurde zuletzt am %1 aktualisiert"
 
 #: ../../../www/radmin/templates/smarty.c:215
 msgid "Portal Config last updated %1"
-msgstr "Portal Konfiguration wurde %1 zuletzt aktualisiert"
+msgstr "Portal Konfiguration wurde zuletzt am %1 aktualisiert"
 
 #: ../../../www/radmin/templates/smarty.c:218
 #: ../../../www/radmin/templates/smarty.c:224
@@ -837,7 +839,7 @@ msgstr "Datennutzung (M)"
 
 #: ../../../www/radmin/templates/smarty.c:227
 msgid "Total Data usage, from previous months, excluding current month"
-msgstr "Summe Datennutzung vorangegangener Monate, exkl. aktueller Monat"
+msgstr "Summe Datennutzung vorangegangener Monate, exkl. dem aktuellen Monat"
 
 #: ../../../www/radmin/templates/smarty.c:228
 msgid "Data Usage (T)"
@@ -907,12 +909,12 @@ msgstr "Fehler"
 #: ../../../www/radmin/templates/smarty.c:250
 #: ../../../www/uam/templates/smarty.c:39
 msgid "An Error has occured. Please report the error to the administrator"
-msgstr "Ein Fehler ist aufgetreten. Bitte den Admin verständigen"
+msgstr "Ein Fehler ist aufgetreten. Bitte verständigen Sie den Administrator."
 
 #: ../../../www/radmin/templates/smarty.c:251
 msgid ""
 "There may be more information available to the administrator in the logs"
-msgstr "Der Admin findet weitere Informationen in den Log Dateien"
+msgstr "Der Administrator findet weitere Informationen in den Log Dateien."
 
 #: ../../../www/radmin/templates/smarty.c:252
 msgid "Create Computer Account"
@@ -923,7 +925,7 @@ msgid ""
 "The MAC address is the network hardware address of the computer. It needs to"
 " be of the format XX-XX-XX-XX-XX-XX where XX is a hex number, typed in all "
 "capitals"
-msgstr "Die MAC Adresse ist die Netzwerk Hardwareadresse des Computers. Sie muß im Format XX-XX-XX-XX-XX-XX eingegeben werden, wobei XX eine Hexadezimalnummer  in Großbuchstaben ist"
+msgstr "Die MAC Adresse ist die Netzwerk Hardwareadresse des Computers. Sie muß im Format XX-XX-XX-XX-XX-XX eingegeben werden, wobei XX eine Hexadezimalnummer in Großbuchstaben ist"
 
 #: ../../../www/radmin/templates/smarty.c:256
 msgid "Identify the computer. i.e. \"Bob's computer\""
@@ -1551,7 +1553,7 @@ msgstr "Neuen Benutzer %s angelegt"
 #: ../../../www/radmin/printnewtickets.php:54
 #, php-format
 msgid "Batch %s Vouchers"
-msgstr ""
+msgstr "Gutscheinstapel, Voucherstapel %s"
 
 #: ../../../www/radmin/printnewtickets.php:103
 #, php-format
@@ -1561,7 +1563,7 @@ msgstr "Drahtloses Netzwerk: %s"
 #: ../../../www/radmin/printnewtickets.php:105
 #, php-format
 msgid "Username: %s"
-msgstr ""
+msgstr "Benutzername: %s"
 
 #: ../../../www/radmin/printnewtickets.php:106
 #, php-format
@@ -1751,19 +1753,19 @@ msgstr "Datenbank aufgerüstet"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:306
 msgid "Unable to select user from radcheck"
-msgstr ""
+msgstr "Das Auswählen der Benutzer von radcheck ist nicht möglich"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:324
 msgid "Unable to cleanup old users from batch "
-msgstr ""
+msgstr "Das Entfernen alter Benutzer der Benutzerstapel ist nicht möglich"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:333
 msgid "Unable to cleanup old batches "
-msgstr ""
+msgstr "Das Entfernen alter Benutzerstapel ist nicht möglich"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:338
 msgid "Old Batches Cleaned"
-msgstr ""
+msgstr "Alte Benutzerstapel wurden entfernt"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:370
 msgid "Clearing stale sessions failed: "
@@ -1819,11 +1821,11 @@ msgstr "Alte Radius Kontendaten archiviert"
 
 #: ../../../www/radmin/classes/SettingsMySQL.class.php:471
 msgid "Adding Group query failed:  "
-msgstr ""
+msgstr "Das Hinzufügen der Gruppe hat nicht funktioniert:"
 
 #: ../../../www/radmin/classes/SettingsMySQL.class.php:487
 msgid "Delete Group query failed:  "
-msgstr ""
+msgstr "Das Löschen der Gruppe hat nicht funktioniert:"
 
 #: ../../../www/radmin/classes/DatabaseConnections.class.php:70
 msgid "DB Config File isn't a valid file."
@@ -2025,7 +2027,7 @@ msgstr "Neuer Benutzer"
 
 #: ../../../www/radmin/includes/page_functions.inc.php:87
 msgid "Batch Users"
-msgstr ""
+msgstr "Benutzerstapel"
 
 #: ../../../www/radmin/includes/page_functions.inc.php:88
 msgid "Computer Account"
@@ -2058,7 +2060,7 @@ msgstr "System Status"
 #: ../../../www/radmin/includes/page_functions.inc.php:165
 #: ../../../www/radmin/includes/page_functions.inc.php:227
 msgid "Inherit from group"
-msgstr ""
+msgstr "Von Gruppe übernehmen"
 
 #: ../../../www/radmin/includes/page_functions.inc.php:326
 msgid "Hour"
