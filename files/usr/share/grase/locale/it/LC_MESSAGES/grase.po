@@ -1,19 +1,20 @@
 # 
 # Translators:
+# Antonino Murabito <antoninomurabito@gmail.com>, 2012.
 # Ifeoluwa Opeyemi A <info@htreasure.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Grase Hotspot\n"
 "Report-Msgid-Bugs-To: http://trac.grasehotspot.org/\n"
 "POT-Creation-Date: 2012-01-29 16:57+1000\n"
-"PO-Revision-Date: 2012-01-29 07:17+0000\n"
-"Last-Translator: Timothy White <tim@purewhite.id.au>\n"
-"Language-Team: Italian (http://www.transifex.net/projects/p/grase/team/it/)\n"
+"PO-Revision-Date: 2012-11-14 19:26+0000\n"
+"Last-Translator: Antonino Murabito <antoninomurabito@gmail.com>\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/grase/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: it\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-Country: AUSTRALIA\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;T_\n"
@@ -57,9 +58,7 @@ msgstr "Gruppo"
 #: ../../../www/radmin/templates/smarty.c:6
 #: ../../../www/radmin/templates/smarty.c:116
 msgid "Choose the users group (Expiry is based on the user group)"
-msgstr ""
-"Scegli il gruppo di utenti (la scadenza è sarà impostata sul gruppo di "
-"utenti)"
+msgstr "Scegli il gruppo di utenti (la scadenza è sarà impostata sul gruppo di utenti)"
 
 #: ../../../www/radmin/templates/smarty.c:7
 #: ../../../www/radmin/templates/smarty.c:121
@@ -80,10 +79,7 @@ msgstr "Un commento sull'utente"
 msgid ""
 "When ether limit is reached, the user will be cut off. (i.e. after 1hour "
 "even if they still have data left)"
-msgstr ""
-"Quando la soglia impostata viene raggiunta, l'utente verrà disconnesso. "
-"(esempio: se impostato per un 1 ora, dopo tale limite non si avrà più "
-"navigazione dati)"
+msgstr "Quando la soglia impostata viene raggiunta, l'utente verrà disconnesso. (esempio: se impostato per un 1 ora, dopo tale limite non si avrà più navigazione dati)"
 
 #: ../../../www/radmin/templates/smarty.c:10
 #: ../../../www/radmin/templates/smarty.c:124
@@ -91,19 +87,14 @@ msgstr ""
 msgid ""
 "A limit of 0 does not mean unlimited, it will immediately lock the user out."
 " To have an unlimited user, the user must be created without any limits."
-msgstr ""
-"Un limite di 0 non significa illimitato, invece bloccherà immediatamente "
-"l'utente. Per avere un utente illimitato, l'utente deve essere creato senza "
-"impostare alcun limite."
+msgstr "Un limite di 0 non significa illimitato, invece bloccherà immediatamente l'utente. Per avere un utente illimitato, l'utente deve essere creato senza impostare alcun limite."
 
 #: ../../../www/radmin/templates/smarty.c:11
 #: ../../../www/radmin/templates/smarty.c:280
 msgid ""
 "If a limit is not set here, but is defined for the group, then the group "
 "limit will apply"
-msgstr ""
-"Se il limite non è impostato qui, ma è definito per il gruppo, poi il limite"
-" si applica gruppo"
+msgstr "Se il limite non è impostato qui, ma è definito per il gruppo, poi il limite si applica gruppo"
 
 #: ../../../www/radmin/templates/smarty.c:12
 #: ../../../www/radmin/templates/smarty.c:125
@@ -163,7 +154,7 @@ msgstr "Nome dell'Host"
 
 #: ../../../www/radmin/templates/smarty.c:24
 msgid "HTTP Server"
-msgstr ""
+msgstr "Server HTTP"
 
 #: ../../../www/radmin/templates/smarty.c:25
 msgid "System Up-Time"
@@ -235,15 +226,11 @@ msgstr "Login"
 #: ../../../www/radmin/templates/smarty.c:44
 msgid ""
 "Login is required to access the Administration section of this website."
-msgstr ""
-"Il Login è necessario per accedere alla sezione di amministrazione di questo"
-" sito."
+msgstr "Il Login è necessario per accedere alla sezione di amministrazione di questo sito."
 
 #: ../../../www/radmin/templates/smarty.c:46
 msgid "Username for Admin interface (Different to internet access username)"
-msgstr ""
-"Username per l'interfaccia di amministrazione (differente da quella usata "
-"per l'accesso ad internet)"
+msgstr "Username per l'interfaccia di amministrazione (differente da quella usata per l'accesso ad internet)"
 
 #: ../../../www/radmin/templates/smarty.c:49
 msgid "Site Settings"
@@ -274,10 +261,7 @@ msgid ""
 "This is the link for the support contact. http:// or mailto: are allowed. If"
 " using http:// ensure this is accessabile for users who aren't logged into "
 "the hotspot"
-msgstr ""
-"Questo è il link per il contatto di supporto. Sono ammessi http:// o mailto:"
-" . Se si usa http:// garantisci l'accessibilità agli utenti che non sono "
-"loggati all'hotspot"
+msgstr "Questo è il link per il contatto di supporto. Sono ammessi http:// o mailto: . Se si usa http:// garantisci l'accessibilità agli utenti che non sono loggati all'hotspot"
 
 #: ../../../www/radmin/templates/smarty.c:56
 msgid "Locale"
@@ -285,7 +269,7 @@ msgstr "Località"
 
 #: ../../../www/radmin/templates/smarty.c:57
 msgid "Available languages:"
-msgstr ""
+msgstr "Lingue disponibili"
 
 #: ../../../www/radmin/templates/smarty.c:58
 msgid "Select the appropriate Locale for your location"
@@ -298,26 +282,18 @@ msgid ""
 "Australia.<br/><strong>en_ZA</strong> has the language set to English, and "
 "the location to South Africa, while <strong>af_ZA</strong> has the language "
 "set to Afrikaans and the location to South Africa."
-msgstr ""
-"Una località si compone di 2 parti, la lingua e la posizione. <br /> "
-"<strong> en_AU </strong> per esempio, hai la lingua settata in inglese, e la"
-" posizione in Australia. <br /> <strong> en_ZA </strong> hai la lingua "
-"settata in inglese, e la posizione in Sud Africa, mentre <strong> af_ZA "
-"</strong> ha la lingua impostata in africana e il luogo in Sud Africa."
+msgstr "Una località si compone di 2 parti, la lingua e la posizione. <br /> <strong> en_AU </strong> per esempio, hai la lingua settata in inglese, e la posizione in Australia. <br /> <strong> en_ZA </strong> hai la lingua settata in inglese, e la posizione in Sud Africa, mentre <strong> af_ZA </strong> ha la lingua impostata in africana e il luogo in Sud Africa."
 
 #: ../../../www/radmin/templates/smarty.c:60
 msgid ""
 "The locale defines the number formats, currency and language. If the "
 "language selected is not available, it will fallback to English."
-msgstr ""
-"La località definisce il numero di formati, valuta e la lingua. Se la lingua"
-" selezionata non è disponibile, sarà selezionata quella inglese."
+msgstr "La località definisce il numero di formati, valuta e la lingua. Se la lingua selezionata non è disponibile, sarà selezionata quella inglese."
 
 #: ../../../www/radmin/templates/smarty.c:61
 msgid ""
 "Current locale is %1, which sets the language to %2, and location to %3."
-msgstr ""
-"La località corrente è %1, che imposta la lingua a %2, e la posizione in %3."
+msgstr "La località corrente è %1, che imposta la lingua a %2, e la posizione in %3."
 
 #: ../../../www/radmin/templates/smarty.c:62
 msgid "Currency symbol is %1"
@@ -379,13 +355,13 @@ msgstr "Salva impostazioni"
 
 #: ../../../www/radmin/templates/smarty.c:75
 msgid "Access Denied"
-msgstr ""
+msgstr "Accesso non consentito"
 
 #: ../../../www/radmin/templates/smarty.c:76
 msgid ""
 "You have attempted to access a page outside of your access level. Please "
 "return to an area you have access to."
-msgstr ""
+msgstr "Hai tentato l'accesso ad una pagina al di fuori del tuo livello. Ritorna ad un'area alla quale puoi accedere."
 
 #: ../../../www/radmin/templates/smarty.c:77
 msgid "Group Config"
@@ -396,53 +372,39 @@ msgid ""
 "Group expiry needs to be in a format understood by the <a target=\"_blank\" "
 "href=\"http://www.php.net/manual/en/function.strtotime.php\">strtotime</a> "
 "PHP function."
-msgstr ""
-"Un gruppo che necessita di scadenza ha bisogno di un formato comprensibile "
-"per il <a target=\"_blank\" "
-"href=\"http://www.php.net/manual/en/function.strtotime.php\">strtotime</a> "
-"funzione PHP."
+msgstr "Un gruppo che necessita di scadenza ha bisogno di un formato comprensibile per il <a target=\"_blank\" href=\"http://www.php.net/manual/en/function.strtotime.php\">strtotime</a> funzione PHP."
 
 #: ../../../www/radmin/templates/smarty.c:79
 msgid ""
 "For example, \"+1 month\" will set an expiry for 1 month from when the "
 "account is created. \"+2 weeks\", \"+3 days\" etc."
-msgstr ""
-"Per esempio, \"+1 mese\" farà in modo che la scadenza sia di 1 mese da "
-"quando l'account viene creato. \"+2 settimane\", \"+3 giorni\" etc."
+msgstr "Per esempio, \"+1 mese\" farà in modo che la scadenza sia di 1 mese da quando l'account viene creato. \"+2 settimane\", \"+3 giorni\" etc."
 
 #: ../../../www/radmin/templates/smarty.c:80
 msgid ""
 "Expiry is calculated to the second, so if you want it to a date for example,"
 " try \"+1 week midnight\"."
-msgstr ""
-"Scadenza è calcolata al secondo, quindi se si vuole una data per esempio, "
-"provare a \"+1 mezzanotte settimana\"."
+msgstr "Scadenza è calcolata al secondo, quindi se si vuole una data per esempio, provare a \"+1 mezzanotte settimana\"."
 
 #: ../../../www/radmin/templates/smarty.c:81
 msgid ""
 "Deleting a group won't delete it's users. Next time the user is edited it's "
 "group will become the default group unless a new group is selected."
-msgstr ""
-"L'eliminazione di un gruppo non eliminerà i suoi utenti. La prossima volta "
-"che sarà modificato l'utente, il gruppo diventerà il gruppo predefinito a "
-"meno che non sia selezionato un nuovo gruppo."
+msgstr "L'eliminazione di un gruppo non eliminerà i suoi utenti. La prossima volta che sarà modificato l'utente, il gruppo diventerà il gruppo predefinito a meno che non sia selezionato un nuovo gruppo."
 
 #: ../../../www/radmin/templates/smarty.c:82
 msgid ""
 "The limits here are the default for group members, unless overridden when "
 "creating a member. If multiple limits are specified, the first limit to be "
 "reached will disconnect the user."
-msgstr ""
-"I limiti sono qui di default per i membri del gruppo, se non ignorato "
-"durante la creazione di un membro. Se i limiti sono specificati più, il "
-"primo limite da raggiungere si disconnette l'utente."
+msgstr "I limiti sono qui di default per i membri del gruppo, se non ignorato durante la creazione di un membro. Se i limiti sono specificati più, il primo limite da raggiungere si disconnette l'utente."
 
 #: ../../../www/radmin/templates/smarty.c:83
 msgid ""
 "Changing Expiry, Data or Time limits, will not change existing users of the "
 "group and will only apply to new users. Recurring limits, Bandwidth and "
 "simultaneous logins will all apply to existing and new members."
-msgstr ""
+msgstr "Cambiare la Scadenza per limite di Dati o Tempo, non avrà effetto sugli utenti preesistenti del gruppo ma si applicherà ai nuovi."
 
 #: ../../../www/radmin/templates/smarty.c:84
 msgid "Groups"
@@ -521,9 +483,7 @@ msgstr "Modifica utente"
 
 #: ../../../www/radmin/templates/smarty.c:115
 msgid "Choose a secure password for the user. Leave blank to not change"
-msgstr ""
-"Scegliere una password sicura per l'utente. Lasciare in bianco per non "
-"cambiare"
+msgstr "Scegliere una password sicura per l'utente. Lasciare in bianco per non cambiare"
 
 #: ../../../www/radmin/templates/smarty.c:117
 msgid "This user account never expires"
@@ -551,9 +511,7 @@ msgstr "Aggiungi il limite Dati (Mb)"
 
 #: ../../../www/radmin/templates/smarty.c:129
 msgid "Add to the Data Limit (Will ignore changes made above)"
-msgstr ""
-"Aggiungere al limite Dati (saranno ignorate le modifiche fornite "
-"precedentemente)"
+msgstr "Aggiungere al limite Dati (saranno ignorate le modifiche fornite precedentemente)"
 
 #: ../../../www/radmin/templates/smarty.c:132
 msgid "Change the Time Limit"
@@ -565,9 +523,7 @@ msgstr "Aggiungi al limite Tempo (minuti)"
 
 #: ../../../www/radmin/templates/smarty.c:134
 msgid "Add to the Time Limit (Will ignore changes made above)"
-msgstr ""
-"Aggiungi al limite Tempo (saranno ignorate le modifiche fornite "
-"precedentemente)"
+msgstr "Aggiungi al limite Tempo (saranno ignorate le modifiche fornite precedentemente)"
 
 #: ../../../www/radmin/templates/smarty.c:135
 #: ../../../www/radmin/templates/smarty.c:136
@@ -588,10 +544,7 @@ msgid ""
 "User accounts are automatically deleted 2 months after expiry. Only accounts"
 " with zero usage should be manually deleted to prevent errors in the reports"
 " or statistics."
-msgstr ""
-"Gli account utente vengono automaticamente cancellati 2 mesi dopo la "
-"scadenza. Conti solo con l'uso a zero dovrebbero essere eliminati "
-"manualmente per evitare errori nelle relazioni o nelle statistiche."
+msgstr "Gli account utente vengono automaticamente cancellati 2 mesi dopo la scadenza. Conti solo con l'uso a zero dovrebbero essere eliminati manualmente per evitare errori nelle relazioni o nelle statistiche."
 
 #: ../../../www/radmin/templates/smarty.c:141
 msgid "Are you sure you want to delete this user?"
@@ -661,11 +614,7 @@ msgid ""
 "Logo file needs to be in png format, and relatively small (remember, every "
 "page has the logo). 10 Kilobytes maximum. It's physical size shouldn't be "
 "bigger than about 220px in both directions."
-msgstr ""
-"Il file per il logo deve essere nel formato png, e con dimensione "
-"relativamente piccola (ricorda che ogni pagina ha il logo). 10 kilobyte "
-"massimo. La sua dimensione fisica non deve essere più grande di circa 220px "
-"in entrambe le direzioni (orizzontale e verticale)."
+msgstr "Il file per il logo deve essere nel formato png, e con dimensione relativamente piccola (ricorda che ogni pagina ha il logo). 10 kilobyte massimo. La sua dimensione fisica non deve essere più grande di circa 220px in entrambe le direzioni (orizzontale e verticale)."
 
 #: ../../../www/radmin/templates/smarty.c:160
 msgid ""
@@ -673,11 +622,7 @@ msgid ""
 "upload the file to /var/www/ or /usr/share/grase/www/images/ and use the "
 "custom CSS to override this logo. The logo is defined in the #page container"
 " as the background."
-msgstr ""
-"Per i loghi più avanzate, (tipo di file diversi, dimensioni, collocazione}, "
-"caricare manualmente il file in / var / www / o / usr / share / GRASE / www "
-"/ images / ed usare il CSS personalizzato per ignorare questo logo. Il logo "
-"è definita nel contenitore # pagina come sfondo."
+msgstr "Per i loghi più avanzate, (tipo di file diversi, dimensioni, collocazione}, caricare manualmente il file in / var / www / o / usr / share / GRASE / www / images / ed usare il CSS personalizzato per ignorare questo logo. Il logo è definita nel contenitore # pagina come sfondo."
 
 #: ../../../www/radmin/templates/smarty.c:161
 #: ../../../www/radmin/templates/smarty.c:169
@@ -705,9 +650,7 @@ msgstr "Conferma nuova Password"
 #: ../../../www/radmin/templates/smarty.c:170
 #: ../../../www/radmin/templates/smarty.c:184
 msgid "Deleting or modifying the support user will prevent remote assistance."
-msgstr ""
-"L'eliminazione o la modifica del supporto all'utente ne impedirà "
-"l'assistenza remota."
+msgstr "L'eliminazione o la modifica del supporto all'utente ne impedirà l'assistenza remota."
 
 #: ../../../www/radmin/templates/smarty.c:171
 #: ../../../www/radmin/templates/smarty.c:172
@@ -811,15 +754,11 @@ msgid ""
 "Dnsmasq will need to be reloaded when these settings change. A cron job will"
 " automatically check for changes every 5 minutes and reload these daemons if"
 " needed."
-msgstr ""
-"Queste impostazioni vengono utilizzate da Chilli Coova e Dnsmasq. Sia Chilli"
-" Coova e Dnsmasq dovranno essere ricaricati quando queste modificare le "
-"impostazioni. Un lavoro cron controllerà automaticamente cambia ogni 5 "
-"minuti e ricaricare questi demoni, se necessario."
+msgstr "Queste impostazioni vengono utilizzate da Chilli Coova e Dnsmasq. Sia Chilli Coova e Dnsmasq dovranno essere ricaricati quando queste modificare le impostazioni. Un lavoro cron controllerà automaticamente cambia ogni 5 minuti e ricaricare questi demoni, se necessario."
 
 #: ../../../www/radmin/templates/smarty.c:204
 msgid "Network Config last reloaded %1"
-msgstr ""
+msgstr "Ultima Configurazione di rete ricaricata %1"
 
 #: ../../../www/radmin/templates/smarty.c:205
 msgid "Network Config last updated %1"
@@ -831,10 +770,7 @@ msgstr "Config.Rete Ultima modifica %1"
 msgid ""
 "For each of the following items, if you need multiple values you can submit "
 "the form and it will append a blank input below the last valid value"
-msgstr ""
-"Per ciascuna delle seguenti voci, se avete bisogno di più valori è possibile"
-" inserire il modulo e come effetto si aggiungerà un campo vuoto sotto "
-"l'ultimo valore valido"
+msgstr "Per ciascuna delle seguenti voci, se avete bisogno di più valori, è possibile inserire il modulo e come effetto si aggiungerà un campo vuoto sotto l'ultimo valore valido"
 
 #: ../../../www/radmin/templates/smarty.c:208
 msgid "Help Page"
@@ -850,25 +786,19 @@ msgstr "Amministratore"
 
 #: ../../../www/radmin/templates/smarty.c:211
 msgid "Coova Chilli Settings"
-msgstr "Coova Chilli Impostazioni"
+msgstr "Impostazioni di Coova Chilli"
 
 #: ../../../www/radmin/templates/smarty.c:212
 msgid ""
 "These settings are used by Coova Chilli. Coova Chilli only reloads it's "
 "config roughly once an hour, or when it's restarted."
-msgstr ""
-"Queste impostazioni vengono utilizzate da Coova Chilli. Ricarica Coova "
-"Chilli solo se è configurato approssimativamente circa una volta ogni ora, o"
-" quando è riavviato."
+msgstr "Queste impostazioni vengono utilizzate da Coova Chilli. Coova Chilli ricarica la sua configurazione approssimativamente una volta ogni ora o, quando è riavviato."
 
 #: ../../../www/radmin/templates/smarty.c:213
 msgid ""
 "If you change the MAC Auth Password, no computer accounts will be able to "
 "login until Coova Chilli reloads it's config, or is manually restarted."
-msgstr ""
-"Se si modifica la password di autenticazione MAC, nessun account computer "
-"sarà in grado di collegarsi fino all'avvio del servizio Coova Chilli, o del "
-"suo riavviato manuale."
+msgstr "Se si modifica la password di autenticazione MAC, nessun computer account sarà in grado di collegarsi fino a quando Coova Chilli non ricarichi la sua configurazione o al suo riavviato manuale."
 
 #: ../../../www/radmin/templates/smarty.c:214
 msgid "Chilli Config last updated %1"
@@ -907,8 +837,7 @@ msgstr "Dati utilizzati (M)"
 
 #: ../../../www/radmin/templates/smarty.c:227
 msgid "Total Data usage, from previous months, excluding current month"
-msgstr ""
-"Totale dei dati utilizzati dei mesi precedenti, è escluso il mese corrente"
+msgstr "Totale dei dati utilizzati dei mesi precedenti, è escluso il mese corrente"
 
 #: ../../../www/radmin/templates/smarty.c:228
 msgid "Data Usage (T)"
@@ -983,9 +912,7 @@ msgstr "Si è verificato un errore. Si prega di segnalarlo all'amministratore"
 #: ../../../www/radmin/templates/smarty.c:251
 msgid ""
 "There may be more information available to the administrator in the logs"
-msgstr ""
-"Nei log ci possono essere ulteriori informazioni disponibili per "
-"l'amministratore"
+msgstr "Nei log ci possono essere ulteriori informazioni disponibili per l'amministratore"
 
 #: ../../../www/radmin/templates/smarty.c:252
 msgid "Create Computer Account"
@@ -996,10 +923,7 @@ msgid ""
 "The MAC address is the network hardware address of the computer. It needs to"
 " be of the format XX-XX-XX-XX-XX-XX where XX is a hex number, typed in all "
 "capitals"
-msgstr ""
-"L'indirizzo MAC è l'indirizzo hardware di rete del computer. Il suo formato "
-"è del tipo XX-XX-XX-XX-XX-XX dove XX è un numero esadecimale, digitato in "
-"tutte le parti"
+msgstr "L'indirizzo MAC è l'indirizzo hardware di rete del computer. Il suo formato è del tipo XX-XX-XX-XX-XX-XX dove XX è un numero esadecimale, digitato in tutte le parti"
 
 #: ../../../www/radmin/templates/smarty.c:256
 msgid "Identify the computer. i.e. \"Bob's computer\""
@@ -1013,23 +937,12 @@ msgid ""
 "occur at startup. If a limit is set, when the limit is reached the computer "
 "will revert to the normal login screen for internet access. Computer "
 "accounts can not be edited to add more data or time, only deleted."
-msgstr ""
-"Gli account computer sono utilizzati per le postazioni che hanno bisogno di "
-"accedere a Internet in ogni momento. Per esempio, un computer per uso di "
-"ufficio. Il Login dell'account computer verrà eseguito automaticamente non "
-"appena verrà svolto l'accesso alla rete, che normalmente si verifica nella "
-"fase di avvio. Se viene impostato un limite, quando tale limite verrà "
-"raggiunto, il computer tornerà alla normale schermata di login per l'accesso"
-" a internet. L'account computer non può essere modificato per aggiungere o "
-"incrementare il livello dati o di tempo per la navigazione, ma si può solo "
-"cancellarlo."
+msgstr "Gli account computer sono utilizzati per le postazioni che hanno bisogno di accedere a Internet in ogni momento. Per esempio, un computer per uso di ufficio. Il Login dell'account computer verrà eseguito automaticamente non appena verrà svolto l'accesso alla rete, che normalmente si verifica nella fase di avvio. Se viene impostato un limite, quando tale limite verrà raggiunto, il computer tornerà alla normale schermata di login per l'accesso a internet. L'account computer non può essere modificato per aggiungere o incrementare il livello dati o di tempo per la navigazione, ma si può solo cancellarlo."
 
 #: ../../../www/radmin/templates/smarty.c:259
 msgid ""
 "It is not recommended setting a time or data limit for computer accounts."
-msgstr ""
-"Non è consigliabile impostare un limite di tempo o di dati per gli account "
-"computer."
+msgstr "Non è consigliabile impostare un limite di tempo o di dati per gli account computer."
 
 #: ../../../www/radmin/templates/smarty.c:267
 #: ../../../www/radmin/templates/smarty.c:268
@@ -1078,7 +991,7 @@ msgstr "Quota residuo"
 #: ../../../www/uam/templates/smarty.c:13
 #: ../../../www/uam/templates/smarty.c:15
 msgid "Unlimited"
-msgstr ""
+msgstr "Illimitato"
 
 #: ../../../www/uam/templates/smarty.c:6
 msgid "Quota allocation"
@@ -1114,15 +1027,15 @@ msgstr "Aiuto"
 
 #: ../../../www/uam/templates/smarty.c:20
 msgid "Support"
-msgstr "Sostegno"
+msgstr "Supporto"
 
 #: ../../../www/uam/templates/smarty.c:21
 msgid "Successful Login"
-msgstr "Accedi successo"
+msgstr "Login effettuato"
 
 #: ../../../www/uam/templates/smarty.c:22
 msgid "Continue to your site"
-msgstr "Continua al tuo sito"
+msgstr "Vai al tuo sito"
 
 #: ../../../www/uam/templates/smarty.c:23
 msgid "Free Downloads"
@@ -1131,20 +1044,19 @@ msgstr "Free Downloads"
 #: ../../../www/uam/templates/smarty.c:24
 msgid ""
 "Welcome to the %1 Hotspot. Please read the following before logging in."
-msgstr ""
-"Benvenuti nel %1 Hotspot. Si prega di leggere quanto segue prima di log-in"
+msgstr "Benvenuti nel %1 Hotspot. Si prega di leggere quanto segue prima del log-in"
 
 #: ../../../www/uam/templates/smarty.c:25
 msgid "Information and Help"
-msgstr "Informazioni e aiuto"
+msgstr "Informazioni ed aiuto"
 
 #: ../../../www/uam/templates/smarty.c:26
 msgid "For a quick logout, bookmark <a href=\"%1\">LOGOUT</a>"
-msgstr "Per un rapido logout, segnalibro <a href=\"%1\">LOGOUT</a>"
+msgstr "Per un rapido logout, aggiungi ai segnalibri <a href=\"%1\">LOGOUT</a>"
 
 #: ../../../www/uam/templates/smarty.c:27
 msgid "If you are already logged in, continue to your site"
-msgstr "Se sei già loggato, continuano al tuo sito"
+msgstr "Se sei già loggato, vai al tuo sito"
 
 #: ../../../www/uam/templates/smarty.c:28
 msgid "You are using the less secure login method."
@@ -1154,17 +1066,13 @@ msgstr "Si utilizza il metodo di login meno sicuro."
 msgid ""
 "If you have javascript disabled, please try enabling it for the secure login"
 " method."
-msgstr ""
-"Se hai javascript disabilitato, prova le consente per il metodo di login "
-"sicuro."
+msgstr "Se hai javascript disabilitato, prova ad abilitarlo per il metodo di login sicuro."
 
 #: ../../../www/uam/templates/smarty.c:30
 msgid ""
 "Use this less secure login form if the javascript version is giving you "
 "trouble"
-msgstr ""
-"Utilizza questo modulo di login meno sicuri se la versione javascript ti dà "
-"problemi"
+msgstr "Utilizza questo modulo di login meno sicuro se la versione javascript ti dà problemi"
 
 #: ../../../www/uam/templates/smarty.c:31
 msgid "You have disabled the secure javascript login method."
@@ -1211,10 +1119,7 @@ msgid ""
 "IP's and Hostnames that are accesible without logging in. DNS Lookup is only"
 " done at startup time so not suitable for domains with Round Robin IP "
 "Addresses"
-msgstr ""
-"IP e gli Hostnames sono accessibili senza essere loggati. La ricerca dei DNS"
-" viene eseguita solo in fase di avvio e non è adatto per i domini con "
-"indirizzi  IP di tip Round Robin"
+msgstr "IP e gli Hostnames sono accessibili senza essere loggati. La ricerca dei DNS viene eseguita solo in fase di avvio e non è adatto per i domini con indirizzi  IP di tip Round Robin"
 
 #: ../../../www/radmin/chilliconfig.php:40
 msgid "Walled Garden allowed domains"
@@ -1222,8 +1127,7 @@ msgstr "Zona dei domini consentiti"
 
 #: ../../../www/radmin/chilliconfig.php:41
 msgid "Domains (and their subdomains) that are accesible without logging in."
-msgstr ""
-"Domini (ed i loro sottodomini) che sono accessibili senza essere loggati"
+msgstr "Domini (ed i loro sottodomini) che sono accessibili senza essere loggati"
 
 #: ../../../www/radmin/chilliconfig.php:48
 msgid "MAC Auth Password"
@@ -1234,31 +1138,25 @@ msgid ""
 "The MAC Password used to autologin Computer Accounts. Change this to "
 "something obscure as it can be used to login using a known MAC address as "
 "the username."
-msgstr ""
-"La password utilizzata per l'autologin account computer MAC . Cambia la "
-"password per evitare di possibili utilizzi per effettuare il login "
-"utilizzando un indirizzo MAC noto come username."
+msgstr "La password utilizzata per l'autologin account computer MAC . Cambia la password per evitare di possibili utilizzi per effettuare il login utilizzando un indirizzo MAC noto come username."
 
 #: ../../../www/radmin/chilliconfig.php:52
 msgid "Default Session Idle Timeout"
-msgstr "Sessione predefinite con Timeout inattivo"
+msgstr "Tempo predefinito per Timeout di inattività"
 
 #: ../../../www/radmin/chilliconfig.php:53
 msgid ""
 "Default Idle Timeout for sessions. Logout after this number of seconds have "
 "passed without any traffic."
-msgstr ""
-"Impostazione predefinita per Timeout inattivo per le sessioni. "
-"Disconnessione dopo questo numero di secondi che sono passati senza alcun "
-"traffico."
+msgstr "Impostazione predefinita per Timeout di inattività per le sessioni. Dopo tale numero di secondi, passati senza alcun traffico si verrà disconnessi."
 
 #: ../../../www/radmin/chilliconfig.php:56
 msgid "DHCP Lease time"
-msgstr ""
+msgstr "DHCP Lease time"
 
 #: ../../../www/radmin/chilliconfig.php:57
 msgid "DHCP lease time in seconds."
-msgstr ""
+msgstr "DHCP lease time in secondi."
 
 #: ../../../www/radmin/chilliconfig.php:97
 #: ../../../www/radmin/chilliconfig.php:138
@@ -1302,11 +1200,7 @@ msgid ""
 "server which will use the addresses listed here to do DNS lookups. Dnsmasq "
 "WILL NOT get default servers from DHCP or /etc/resolv.conf and will default "
 "to OpenDNS Family Shield"
-msgstr ""
-"Indirizzi IP dei server DNS. Tutti i clienti utilizzeranno il gateway come "
-"server DNS, che utilizzerà gli indirizzi elencati qui di fare ricerche DNS. "
-"Dnsmasq non sarà possibile ottenere i server di default da DHCP o / etc / "
-"resolv.conf e di default OpenDNS Famiglia Shield"
+msgstr "Indirizzi IP dei server DNS. Tutti i clients utilizzeranno il gateway come server DNS, che utilizzerà gli indirizzi elencati qui per le ricerche DNS. Dnsmasq NON prenderà i server di default dal DHCP o / etc / resolv.conf ma avra com default OpenDNS Family Shield"
 
 #: ../../../www/radmin/netconfig.php:42
 msgid "Bogus NXDOMAIN"
@@ -1316,13 +1210,11 @@ msgstr "NXDOMAIN Bogus"
 msgid ""
 "IP Addresses of Bogus NXDOMAIN returns. All DNS replies that contain these "
 "ip address will be transformed into a NXDOMAIN result"
-msgstr ""
-"Indirizzi IP dei rendimenti NXDOMAIN Bogus. Tutte le risposte DNS che "
-"contengono questi indirizzo IP sarà trasformato in un risultato NXDOMAIN"
+msgstr "Indirizzi IP dei rendimenti NXDOMAIN Bogus. Tutte le risposte DNS che contengono questi indirizzi IP saranno trasformati in un risultato NXDOMAIN"
 
 #: ../../../www/radmin/netconfig.php:50
 msgid "LAN IP Address"
-msgstr "LAN IP Address"
+msgstr "Indirizzi IP della LAN"
 
 #: ../../../www/radmin/netconfig.php:51
 msgid ""
@@ -1330,24 +1222,17 @@ msgid ""
 "network. This will be the gateway address for all clients, as well as the "
 "DNS server the clients access. For default Squid config this should be a "
 "private ip address."
-msgstr ""
-"L'indirizzo IP del server che viene utilizzato sul lato LAN (Coova-Chilli) "
-"della rete. Questo sarà l'indirizzo del gateway per tutti i clienti, così "
-"come il server DNS del client di accesso. Per la configurazione di default "
-"Squid questo dovrebbe essere un indirizzo IP privato."
+msgstr "L'indirizzo IP del server che viene utilizzato sul lato LAN (Coova-Chilli) della rete. Questo sarà l'indirizzo del gateway ed il server DNS per tutti i clients. Per la configurazione di default Squid questo dovrebbe essere un indirizzo IP privato."
 
 #: ../../../www/radmin/netconfig.php:60
 msgid "LAN Network Mask"
-msgstr "Maschera di rete LAN"
+msgstr "Network Mask della LAN"
 
 #: ../../../www/radmin/netconfig.php:61
 msgid ""
 "Network mask to use for clients network. (i.e. 255.255.255.0). DHCP range "
 "and network address will be calculated from this and the LAN IP Address."
-msgstr ""
-"Maschera di rete da utilizzare per i client di rete. (Ad esempio "
-"255.255.255.0). Intervallo DHCP e l'indirizzo di rete sarà calcolata da "
-"questo e l'indirizzo IP della LAN."
+msgstr "Network mask da utilizzare per i clients di rete. (Ad esempio 255.255.255.0). L'intervallo DHCP e gli indirizzi di rete saranno calcolati da questo e dall'indirizzo IP della LAN."
 
 #: ../../../www/radmin/netconfig.php:65
 msgid "Bogus NXDOMAIN (OpenDNS)"
@@ -1357,24 +1242,21 @@ msgstr "NXDOMAIN Bogus (OpenDNS)"
 msgid ""
 "Some DNS Providers return bogus NXDOMAIN to redirect you to their search "
 "engine. Block the bogus ip's and return a real NXDOMAIN for OpenDNS."
-msgstr ""
-"Alcuni provider di DNS ritorno NXDOMAIN fasulli per reindirizzare l'utente "
-"verso il loro motore di ricerca. Bloccare l'ip fasullo e restituire un "
-"NXDOMAIN reale per OpenDNS."
+msgstr "Alcuni provider di DNS ritorno NXDOMAIN fasulli per reindirizzare l'utente verso il loro motore di ricerca. Bloccare l'ip fasullo e restituire un NXDOMAIN reale per OpenDNS."
 
 #: ../../../www/radmin/netconfig.php:70
 msgid "Wireless Network Name (SSID)"
-msgstr ""
+msgstr "Nome della Rete Wireless (SSID)"
 
 #: ../../../www/radmin/netconfig.php:71
 msgid ""
 "Wireless Network Name that clients connect to. Currently does not modify any"
 " settings but if set will print on the tickets"
-msgstr ""
+msgstr "Nome della rete wireless alla quale si collegano i clients. Attualmente non modifica alcuna impostazione ma se inserito, viene stampato sui tickets."
 
 #: ../../../www/radmin/netconfig.php:74
 msgid "Print Ticket Type"
-msgstr ""
+msgstr "Stampa Tipo di Ticket"
 
 #: ../../../www/radmin/netconfig.php:75
 msgid "Print the ticket type (Group name) on tickets"
@@ -1382,31 +1264,31 @@ msgstr ""
 
 #: ../../../www/radmin/netconfig.php:78
 msgid "Print Ticket Expiry"
-msgstr ""
+msgstr "Stampa Scadenza Ticket"
 
 #: ../../../www/radmin/netconfig.php:79
 msgid "Print the expiry on tickets"
-msgstr ""
+msgstr "Stampa la scadenza sul ticket"
 
 #: ../../../www/radmin/netconfig.php:90
 msgid "LAN Network Interface"
-msgstr ""
+msgstr "Interfaccia LAN"
 
 #: ../../../www/radmin/netconfig.php:91
 msgid ""
 "The Network Interface that is connected to the LAN of the Hotspot (the side "
 "the clients connect to)"
-msgstr ""
+msgstr "L'interfaccia di rete collegata alla LAN dell'Hotspot (il lato al quale si collegano i clients)"
 
 #: ../../../www/radmin/netconfig.php:96
 msgid "WAN Network Interface"
-msgstr ""
+msgstr "Interfaccia WAN"
 
 #: ../../../www/radmin/netconfig.php:97
 msgid ""
 "The Network Interface that is connected to the WAN of the Hotspot (the side "
 "the internet is connected to)"
-msgstr ""
+msgstr "L'interfaccia di rete collegata alla WAN dell'Hotspot (il lato al quale è connesso internet)"
 
 #: ../../../www/radmin/netconfig.php:248
 msgid "Changes pending Reload"
@@ -1458,7 +1340,7 @@ msgstr "Limite massimo di Tempo cambiato del %s"
 
 #: ../../../www/radmin/edituser.php:159
 msgid "Expiry updated"
-msgstr "Scadenza aggiornato"
+msgstr "Scadenza aggiornata"
 
 #: ../../../www/radmin/edituser.php:169
 #, php-format
@@ -1515,10 +1397,7 @@ msgstr "Schermata di accesso piè di pagina"
 msgid ""
 "Hide footer from login screen. Please consider adding a link back to "
 "http://grasehotspot.org if you are hiding the footer"
-msgstr ""
-"Nascondi piè di pagina schermata di login. Si prega di considerare "
-"l'aggiunta di un link al http://grasehotspot.org se si sta nascondendo i piè"
-" di pagina"
+msgstr "Nascondi piè di pagina schermata di login. Si prega di considerare l'aggiunta di un link al http://grasehotspot.org se si sta nascondendo i piè di pagina"
 
 #: ../../../www/radmin/loginconfig.php:56
 msgid "Logout Bookmark"
@@ -1536,9 +1415,7 @@ msgstr "Aiuto link"
 msgid ""
 "Hide Help and Information link from login page (still shows in footer if "
 "footer is enabled)"
-msgstr ""
-"Nascondi Aiuto Informazioni e link dalla pagina di login (mostra ancora in "
-"piè di pagina piè di pagina, se è abilitato)"
+msgstr "Nascondi Aiuto Informazioni e link dalla pagina di login (mostra ancora in piè di pagina piè di pagina, se è abilitato)"
 
 #: ../../../www/radmin/loginconfig.php:64
 msgid "Disable Javascript Login"
@@ -1546,8 +1423,7 @@ msgstr "Disabilitare Javascript login"
 
 #: ../../../www/radmin/loginconfig.php:65
 msgid "Force all logins to be through the less secure non-javascript method"
-msgstr ""
-"Forza tutti i login da attraverso la meno sicura non javascript metodo"
+msgstr "Forza tutti i login da attraverso la meno sicura non javascript metodo"
 
 #: ../../../www/radmin/loginconfig.php:68
 msgid "Disable All Default CSS"
@@ -1557,9 +1433,7 @@ msgstr "Disabilita tutto di default CSS"
 msgid ""
 "All css files will be excluded from the login pages, and only the css below "
 "(Main CSS) will be used"
-msgstr ""
-"Tutti i file css saranno esclusi dalle pagine di login, e solo sotto il css "
-"(Main CSS) verrà utilizzato"
+msgstr "Tutti i file css saranno esclusi dalle pagine di login, e solo sotto il css (Main CSS) verrà utilizzato"
 
 #: ../../../www/radmin/loginconfig.php:73
 msgid "Page Title"
@@ -1579,11 +1453,7 @@ msgid ""
 " override a style if your settings here don't seem to work, it may be that "
 "the builtin css has a more specific selector than your one here, look at "
 "radmin.css for id's and classes)"
-msgstr ""
-"Cascading Style Sheet che viene applicato a tutte le pagine del portale "
-"(uso! Importante per sovrascrivere uno stile se le impostazioni qui non "
-"sembra funzionare, è possibile che il css builtin ha un selettore più "
-"specifico rispetto la tua uno qui, guarda Radmin. css per id e classi)"
+msgstr "Cascading Style Sheet che viene applicato a tutte le pagine del portale (uso! Importante per sovrascrivere uno stile se le impostazioni qui non sembra funzionare, è possibile che il css builtin ha un selettore più specifico rispetto la tua uno qui, guarda Radmin. css per id e classi)"
 
 #: ../../../www/radmin/loginconfig.php:86
 msgid "Help and Information Page"
@@ -1599,9 +1469,7 @@ msgstr "Accedi HTML Help"
 
 #: ../../../www/radmin/loginconfig.php:92
 msgid "Help text (and HTML) displayed on login page above login form"
-msgstr ""
-"Testo di aiuto (e HTML) visualizzati sulla pagina di login di sopra form di "
-"login"
+msgstr "Testo di aiuto (e HTML) visualizzati sulla pagina di login di sopra form di login"
 
 #: ../../../www/radmin/loginconfig.php:97
 msgid "HTML Below login form"
@@ -1688,27 +1556,27 @@ msgstr ""
 #: ../../../www/radmin/printnewtickets.php:103
 #, php-format
 msgid "Wireless Network: %s"
-msgstr ""
+msgstr "Rete Wireless: %s"
 
 #: ../../../www/radmin/printnewtickets.php:105
 #, php-format
 msgid "Username: %s"
-msgstr ""
+msgstr "Username: %s"
 
 #: ../../../www/radmin/printnewtickets.php:106
 #, php-format
 msgid "Password: %s"
-msgstr ""
+msgstr "Password: %s"
 
 #: ../../../www/radmin/printnewtickets.php:110
 #, php-format
 msgid "Voucher Type: %s"
-msgstr ""
+msgstr "Tipo di Voucher: %s"
 
 #: ../../../www/radmin/printnewtickets.php:118
 #, php-format
 msgid "Expiry: %s"
-msgstr ""
+msgstr "Scadenza: %s"
 
 #: ../../../www/radmin/newtickets.php:58
 msgid "Max of 50 tickets per batch"
@@ -1883,19 +1751,19 @@ msgstr "Database aggiornato:"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:306
 msgid "Unable to select user from radcheck"
-msgstr ""
+msgstr "Impossibile selezionare l'utente dal radchek"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:324
 msgid "Unable to cleanup old users from batch "
-msgstr ""
+msgstr "Impossibile cancellare i vecchi utenti dal batch"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:333
 msgid "Unable to cleanup old batches "
-msgstr ""
+msgstr "Impossibile pulire i vecchi batches"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:338
 msgid "Old Batches Cleaned"
-msgstr ""
+msgstr "I vecchi Batches sono Puliti"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:370
 msgid "Clearing stale sessions failed: "
@@ -1951,11 +1819,11 @@ msgstr "Archiviati vecchi dati accounting Radius"
 
 #: ../../../www/radmin/classes/SettingsMySQL.class.php:471
 msgid "Adding Group query failed:  "
-msgstr ""
+msgstr "Aggiunta della query di gruppo fallita:"
 
 #: ../../../www/radmin/classes/SettingsMySQL.class.php:487
 msgid "Delete Group query failed:  "
-msgstr ""
+msgstr "Eliminazione della query di gruppo fallita:"
 
 #: ../../../www/radmin/classes/DatabaseConnections.class.php:70
 msgid "DB Config File isn't a valid file."
@@ -2011,8 +1879,7 @@ msgstr "Ottieni l'ultimo utente disconnesso. Query non riuscita:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:508
 msgid "Get User Total Session Time Query failed: "
-msgstr ""
-"Ottieni il totale del tempo di sessione degli utenti. Query non riuscita:"
+msgstr "Ottieni il totale del tempo di sessione degli utenti. Query non riuscita:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:529
 msgid "Get User Data Usage Query failed: "
@@ -2158,7 +2025,7 @@ msgstr "Nuovo utente"
 
 #: ../../../www/radmin/includes/page_functions.inc.php:87
 msgid "Batch Users"
-msgstr ""
+msgstr "Utenti Batch"
 
 #: ../../../www/radmin/includes/page_functions.inc.php:88
 msgid "Computer Account"
@@ -2191,7 +2058,7 @@ msgstr "Stato del sistema"
 #: ../../../www/radmin/includes/page_functions.inc.php:165
 #: ../../../www/radmin/includes/page_functions.inc.php:227
 msgid "Inherit from group"
-msgstr ""
+msgstr "Eredita dal gruppo"
 
 #: ../../../www/radmin/includes/page_functions.inc.php:326
 msgid "Hour"
@@ -2219,19 +2086,19 @@ msgstr "No"
 
 #: ../../../www/radmin/includes/session.inc.php:65
 msgid "Your session has expired. Please login again"
-msgstr "La sessione è scaduta. Effettua il login di nuovo"
+msgstr "La sessione è scaduta. Effettua di nuovo il login"
 
 #: ../../../www/radmin/includes/session.inc.php:69
 msgid "Incorrect Login"
-msgstr "Login incorrect"
+msgstr "Login errato"
 
 #: ../../../www/radmin/includes/session.inc.php:73
 msgid "Security Issue. Please login again"
-msgstr "Problema di sicurezza. Effettua il login di nuovo"
+msgstr "Problema di sicurezza. Effettua di nuovo il login"
 
 #: ../../../www/radmin/includes/session.inc.php:77
 msgid "Authentication Issue. Please report to Admin"
-msgstr "Problema di autenticazione. Si prega di segnalare a Admin"
+msgstr "Problema di autenticazione. Si prega di avvisare l'Admin"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:160
 msgid "Invalid Expiry Date"
@@ -2239,45 +2106,45 @@ msgstr "Data di scadenza non valida"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:170
 msgid "Expiry Date in the past"
-msgstr "Data di scadenza nel passato"
+msgstr "Data di scadenza passata"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:177
 #, php-format
 msgid "Invalid value '%s' for Data Limit"
-msgstr "Valore Invalido '%s' per limite di Data"
+msgstr "Valore Invalido '%s' per limite di Dati"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:184
 #, php-format
 msgid "Invalid recurrance interval '%s'"
-msgstr "Valido intervallo ricorrenza '%s'"
+msgstr "Intervallo di ricorrenza non valido '%s'"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:190
 #, php-format
 msgid "Invalid response to YesNo Question '%s'"
-msgstr "YesNo valida risposta alla domanda '%s'"
+msgstr "Risposta non valida alla richiesta di SiNo '%s'"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:196
 #, php-format
 msgid "Invalid Bandwidth Limit '%s'"
-msgstr "Limita larghezza di banda non valida '%s'"
+msgstr "Limite di larghezza di banda non valido '%s'"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:208
 msgid "Recurring time limit must be less than interval"
-msgstr "Termine ricorrente deve essere inferiore dell'intervallo"
+msgstr "Il limite di tempo ricorrente deve essere inferiore all'intervallo"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:215
 #, php-format
 msgid "Invalid value '%s' for Time Limit"
-msgstr "Valore invalido '%s' per limite di Tempo"
+msgstr "Valore invalido '%s' per il limite di Tempo"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:222
 msgid "MAC Address not in correct format"
-msgstr "Indirizzo MAC non è nel formato corretto"
+msgstr "L'Indirizzo MAC non è nel formato corretto"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:229
 #, php-format
 msgid "Invalid number '%s' (Must be whole number)"
-msgstr "Numero invalido '%s' (Deve essere un numero intero)"
+msgstr "Numero invalido '%s' (Deve essere il numero intero)"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:240
 msgid "Only Machines can be in the Machine group"
@@ -2321,7 +2188,7 @@ msgstr "Il caricamento del file interrotto dall'estensione"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:417
 msgid "Unknown upload error"
-msgstr "Caricato errore sconosciuto"
+msgstr "Errore sconosciuto durante il caricamento"
 
 #: ../../../www/uam/js.php:20
 msgid "Username is required"
@@ -2329,7 +2196,7 @@ msgstr "Il nome utente è necessario"
 
 #: ../../../www/uam/js.php:21
 msgid "Are you sure you want to disconnect now?"
-msgstr "Sei sicuro che si desidera disconnettere ora?"
+msgstr "Sei sicuro che di volerti disconnettere ora?"
 
 #: ../../../www/uam/js.php:22
 msgid "Error loading generic login form"
@@ -2339,9 +2206,7 @@ msgstr "Errore durante il caricamento generico form di login"
 msgid ""
 "Popup Blocked. Click link below to continue to your website and open the "
 "status window"
-msgstr ""
-"Popup bloccati. Clicca sul link qui sotto per continuare al tuo sito web e "
-"aprire la finestra di stato"
+msgstr "Popup bloccati. Clicca sul link qui sotto per continuare al tuo sito web e aprire la finestra di stato"
 
 #: ../../../www/uam/js.php:24
 msgid "Logged In"
@@ -2349,6 +2214,4 @@ msgstr "Collegati"
 
 #: ../../../www/uam/js.php:25
 msgid "Click to open the status window and continue to your site"
-msgstr ""
-
-
+msgstr "Clicca per aprire la finestra di stato e continua sul tuo sito"
