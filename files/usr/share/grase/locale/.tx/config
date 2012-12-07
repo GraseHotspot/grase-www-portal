@@ -1,5 +1,5 @@
 [main]
-host = https://www.transifex.net
+host = https://www.transifex.com
 
 [grase.grasepot]
 file_filter = <lang>/LC_MESSAGES/grase.po
