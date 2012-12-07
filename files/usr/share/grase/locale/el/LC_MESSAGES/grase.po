@@ -1,0 +1,2216 @@
+# 
+# Translators:
+#   <tomas213@gmail.com>, 2011, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: Grase Hotspot\n"
+"Report-Msgid-Bugs-To: http://trac.grasehotspot.org/\n"
+"POT-Creation-Date: 2012-01-29 16:57+1000\n"
+"PO-Revision-Date: 2012-04-01 19:31+0000\n"
+"Last-Translator: tomas213 <tomas213@gmail.com>\n"
+"Language-Team: Greek (http://www.transifex.com/projects/p/grase/language/el/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Country: AUSTRALIA\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;T_\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-SearchPath-0: ../../../www/radmin\n"
+"X-Poedit-SearchPath-1: ../../../www/uam\n"
+
+#: ../../../www/radmin/templates/smarty.c:1
+#: ../../../www/radmin/templates/smarty.c:45
+#: ../../../www/radmin/templates/smarty.c:113
+#: ../../../www/radmin/templates/smarty.c:148
+#: ../../../www/radmin/templates/smarty.c:163
+#: ../../../www/radmin/templates/smarty.c:180
+#: ../../../www/radmin/templates/smarty.c:222
+#: ../../../www/radmin/templates/smarty.c:238
+#: ../../../www/uam/templates/smarty.c:33
+msgid "Username"
+msgstr "Όνομα χρήστη"
+
+#: ../../../www/radmin/templates/smarty.c:2
+msgid "Choose a username"
+msgstr "Επιλέξτε ένα όνομα χρήστη"
+
+#: ../../../www/radmin/templates/smarty.c:3
+#: ../../../www/radmin/templates/smarty.c:47
+#: ../../../www/radmin/templates/smarty.c:114
+#: ../../../www/radmin/templates/smarty.c:181
+#: ../../../www/uam/templates/smarty.c:34
+msgid "Password"
+msgstr "Κωδικός"
+
+#: ../../../www/radmin/templates/smarty.c:4
+msgid "Choose a secure password for the user"
+msgstr "Επιλέξτε έναν ασφαλή κωδικό για τον χρήστη"
+
+#: ../../../www/radmin/templates/smarty.c:5
+#: ../../../www/radmin/templates/smarty.c:223
+msgid "Group"
+msgstr "Ομάδα"
+
+#: ../../../www/radmin/templates/smarty.c:6
+#: ../../../www/radmin/templates/smarty.c:116
+msgid "Choose the users group (Expiry is based on the user group)"
+msgstr "Επιλέξτε την ομάδα χρηστών (Η λήξη βασίζεται στην ομάδα χρήστη)"
+
+#: ../../../www/radmin/templates/smarty.c:7
+#: ../../../www/radmin/templates/smarty.c:121
+#: ../../../www/radmin/templates/smarty.c:234
+#: ../../../www/radmin/templates/smarty.c:255
+msgid "Comment"
+msgstr "Σχόλιο"
+
+#: ../../../www/radmin/templates/smarty.c:8
+#: ../../../www/radmin/templates/smarty.c:122
+msgid "A comment about the user"
+msgstr "Σχόλιο σχετικά με τον χρήστη"
+
+#: ../../../www/radmin/templates/smarty.c:9
+#: ../../../www/radmin/templates/smarty.c:123
+#: ../../../www/radmin/templates/smarty.c:257
+#: ../../../www/radmin/templates/smarty.c:278
+msgid ""
+"When ether limit is reached, the user will be cut off. (i.e. after 1hour "
+"even if they still have data left)"
+msgstr "Όταν το όριο έχει φτάσει, ο χρήστης θα αποσυνδεθεί (π.χ. μετά από 1 ώρα, ακόμα αν έχει υπόλοιπο δεδομένων)."
+
+#: ../../../www/radmin/templates/smarty.c:10
+#: ../../../www/radmin/templates/smarty.c:124
+#: ../../../www/radmin/templates/smarty.c:279
+msgid ""
+"A limit of 0 does not mean unlimited, it will immediately lock the user out."
+" To have an unlimited user, the user must be created without any limits."
+msgstr "Ένα όριο 0 (μηδέν), δεν σημαίνει απεριόριστο. αλλά θα κλειδώσει αμέσως τον χρήστη. Για να δημιουργήστε έναν απεριόριστο χρήστη, ο χρήστης πρέπει να δημιουργηθεί χωρίς κανένα περιορισμό."
+
+#: ../../../www/radmin/templates/smarty.c:11
+#: ../../../www/radmin/templates/smarty.c:280
+msgid ""
+"If a limit is not set here, but is defined for the group, then the group "
+"limit will apply"
+msgstr "Αν δεν ορισθεί ένα όριο εδώ αλλά οριστεί στην ομάδα, τότε θα γίνει ενεργή το όριο της ομάδας."
+
+#: ../../../www/radmin/templates/smarty.c:12
+#: ../../../www/radmin/templates/smarty.c:125
+#: ../../../www/radmin/templates/smarty.c:260
+msgid "Data Limit (MiB)"
+msgstr "Όριο Δεδομένων (MB)"
+
+#: ../../../www/radmin/templates/smarty.c:13
+#: ../../../www/radmin/templates/smarty.c:17
+#: ../../../www/radmin/templates/smarty.c:261
+#: ../../../www/radmin/templates/smarty.c:264
+msgid "OR"
+msgstr "ή"
+
+#: ../../../www/radmin/templates/smarty.c:14
+#: ../../../www/radmin/templates/smarty.c:126
+#: ../../../www/radmin/templates/smarty.c:262
+msgid "Type your own Mb Limit"
+msgstr "Πληκτρολογήστε το δικό σας όριο σε MB"
+
+#: ../../../www/radmin/templates/smarty.c:15
+msgid "Choose a Data Limit OR Type your own value"
+msgstr "Επιλέξτε ένα Όριο Δεδομένων ή πληκτρολογήστε την δική σας τιμή"
+
+#: ../../../www/radmin/templates/smarty.c:16
+#: ../../../www/radmin/templates/smarty.c:130
+#: ../../../www/radmin/templates/smarty.c:263
+msgid "Time Limit (Minutes)"
+msgstr "Όριο χρόνου (Σε λεπτά)"
+
+#: ../../../www/radmin/templates/smarty.c:18
+#: ../../../www/radmin/templates/smarty.c:131
+#: ../../../www/radmin/templates/smarty.c:265
+msgid "Type your own Time Limit"
+msgstr "Πληκτρολογήστε το δικό σας Όριο Χρόνου"
+
+#: ../../../www/radmin/templates/smarty.c:19
+#: ../../../www/radmin/templates/smarty.c:266
+msgid "Choose a Time Limit OR Type your own value"
+msgstr "Επιλέξτε ένα Όριο Χρόνου ή πληκτρολογήστε την δική σας τιμή"
+
+#: ../../../www/radmin/templates/smarty.c:20
+msgid "User Management Interface"
+msgstr "Περιβάλλον εργασίας χρήστη"
+
+#: ../../../www/radmin/templates/smarty.c:21
+msgid "Device Information"
+msgstr "Επιλογές "
+
+#: ../../../www/radmin/templates/smarty.c:22
+msgid "Model Name"
+msgstr "Όνομα μοντέλου"
+
+#: ../../../www/radmin/templates/smarty.c:23
+msgid "Host Name"
+msgstr "Όνομα διακομιστή"
+
+#: ../../../www/radmin/templates/smarty.c:24
+msgid "HTTP Server"
+msgstr "HTTP Server"
+
+#: ../../../www/radmin/templates/smarty.c:25
+msgid "System Up-Time"
+msgstr "Χρόνους απρόσκοπτης λειτουργίας συστήματος"
+
+#: ../../../www/radmin/templates/smarty.c:26
+msgid "Current Server Time"
+msgstr "Τωρινή ώρα διακομιστή"
+
+#: ../../../www/radmin/templates/smarty.c:27
+msgid "Hardware Version"
+msgstr "Έκδοση υλικού"
+
+#: ../../../www/radmin/templates/smarty.c:28
+msgid "Software Version"
+msgstr "Έκδοση λογισμικού"
+
+#: ../../../www/radmin/templates/smarty.c:29
+msgid "Home URL"
+msgstr "Κεντρική σελίδα"
+
+#: ../../../www/radmin/templates/smarty.c:30
+msgid "LAN"
+msgstr "Τοπικό δίκτυο"
+
+#: ../../../www/radmin/templates/smarty.c:31
+#: ../../../www/radmin/templates/smarty.c:36
+#: ../../../www/radmin/templates/smarty.c:147
+msgid "IP Address"
+msgstr "Διεύθυνση IP"
+
+#: ../../../www/radmin/templates/smarty.c:32
+#: ../../../www/radmin/templates/smarty.c:37
+msgid "Subnet Mask"
+msgstr "Mάσκα υποδικτύου (Subnet Mask)"
+
+#: ../../../www/radmin/templates/smarty.c:33
+#: ../../../www/radmin/templates/smarty.c:41
+#: ../../../www/radmin/templates/smarty.c:253
+msgid "MAC Address"
+msgstr "MAC Address"
+
+#: ../../../www/radmin/templates/smarty.c:34
+#: ../../../www/radmin/templates/smarty.c:42
+msgid "Network Interface"
+msgstr "Network Interface"
+
+#: ../../../www/radmin/templates/smarty.c:35
+msgid "WAN"
+msgstr "WAN"
+
+#: ../../../www/radmin/templates/smarty.c:38
+msgid "Gateway"
+msgstr "Πύλη"
+
+#: ../../../www/radmin/templates/smarty.c:39
+msgid "DNS 1"
+msgstr "DNS 1"
+
+#: ../../../www/radmin/templates/smarty.c:40
+msgid "DNS 2"
+msgstr "DNS 2"
+
+#: ../../../www/radmin/templates/smarty.c:43
+#: ../../../www/radmin/templates/smarty.c:48
+msgid "Login"
+msgstr "Είσοδος"
+
+#: ../../../www/radmin/templates/smarty.c:44
+msgid ""
+"Login is required to access the Administration section of this website."
+msgstr "Η είσοδος είναι απαραίτητη για να έχετε πρόσβαση στο διαχειριστικό μέρος του website."
+
+#: ../../../www/radmin/templates/smarty.c:46
+msgid "Username for Admin interface (Different to internet access username)"
+msgstr "Κωδικός για το διαχειριστικό τμήμα (Διαφορετικό από τον κωδικό πρόσβασης στο ίντερνετ)"
+
+#: ../../../www/radmin/templates/smarty.c:49
+msgid "Site Settings"
+msgstr "Ρυθμίσεις του site"
+
+#: ../../../www/radmin/templates/smarty.c:50
+msgid "Location Name"
+msgstr "Όνομα περιοχής"
+
+#: ../../../www/radmin/templates/smarty.c:51
+msgid "Enter a name that identifies this Hotspot Location"
+msgstr "Πληκτρολογήστε ένα όνομα που προσδιορίζει αυτό το Hotstop"
+
+#: ../../../www/radmin/templates/smarty.c:52
+msgid "Support Contact Name"
+msgstr "Όνομα τεχνικού υποστήριξης"
+
+#: ../../../www/radmin/templates/smarty.c:53
+msgid "Enter the name of the Support Contact"
+msgstr "Πληκτρολογήστε το όνομα του Τεχνικού Υποστήριξης"
+
+#: ../../../www/radmin/templates/smarty.c:54
+msgid "Support Link"
+msgstr "Διεύθυνση Υποστήριξης"
+
+#: ../../../www/radmin/templates/smarty.c:55
+msgid ""
+"This is the link for the support contact. http:// or mailto: are allowed. If"
+" using http:// ensure this is accessabile for users who aren't logged into "
+"the hotspot"
+msgstr "Αυτό είναι η διεύθυνση της του τεχνικού υποστήριξης.\nΕπιτρεπονται http:// ή mailto:\nΑν χρησιμοποιείτε  http://, βεβαιωθείτε πως είναι προσβάσιμο από τους χρήστες που δεν είναι συνδεμένοι στο hotspot"
+
+#: ../../../www/radmin/templates/smarty.c:56
+msgid "Locale"
+msgstr "Τοπικές ρυθμίσεις"
+
+#: ../../../www/radmin/templates/smarty.c:57
+msgid "Available languages:"
+msgstr "Διαθέσιμες γλώσσες"
+
+#: ../../../www/radmin/templates/smarty.c:58
+msgid "Select the appropriate Locale for your location"
+msgstr "Επίλεξτε τις κατάλληλες τοπικές ρυθμίσεις"
+
+#: ../../../www/radmin/templates/smarty.c:59
+msgid ""
+"A locale has 2 parts, the language and location.<br/><strong>en_AU</strong> "
+"for example has the Language set to English, and the location to "
+"Australia.<br/><strong>en_ZA</strong> has the language set to English, and "
+"the location to South Africa, while <strong>af_ZA</strong> has the language "
+"set to Afrikaans and the location to South Africa."
+msgstr "Οι τοπικές ρυθμίσεις έχουν 2 τμήματα, τη γλώσσα και την τοποθεσία. <br/> <strong> En_AU </ strong>, για παράδειγμα έχει την γλώσσα στα αγγλικά, και την τοποθεσία στην Αυστραλία. <br/> <strong> En_ZA </ strong> έχει τη γλώσσα του στα αγγλικά και την τοποθεσία στη Νότια Αφρική, ενώ <strong> af_ZA </ strong> έχει την Αφρικάνικη γλώσσα  και η τοποθεσία στη Νότια Αφρική."
+
+#: ../../../www/radmin/templates/smarty.c:60
+msgid ""
+"The locale defines the number formats, currency and language. If the "
+"language selected is not available, it will fallback to English."
+msgstr "Οι τοπικές ρυθμίσεις ορίζουν τις μορφές των αριθμών, το νόμισμα και τη γλώσσα. Εάν η επιλεγμένη γλώσσα δεν είναι διαθέσιμη, θα χρησιμοποιηθούν τα αγγλικά."
+
+#: ../../../www/radmin/templates/smarty.c:61
+msgid ""
+"Current locale is %1, which sets the language to %2, and location to %3."
+msgstr "Η τοπική ρύθμιση είναι %1, και θέτει την γλώσσα σε %2, και την τοποθεσία σε %3."
+
+#: ../../../www/radmin/templates/smarty.c:62
+msgid "Currency symbol is %1"
+msgstr "Το σύμβολο για το νόμισμα είναι %1"
+
+#: ../../../www/radmin/templates/smarty.c:63
+msgid "How much to charge per Mb"
+msgstr "Πόσο να χρεώσετε για το MB"
+
+#: ../../../www/radmin/templates/smarty.c:64
+msgid "Cost per Minute"
+msgstr "Κόστος να λεπτό"
+
+#: ../../../www/radmin/templates/smarty.c:65
+msgid "How much to charge per Minute"
+msgstr "Πόσο να χρεώσετε ανά λεπτό"
+
+#: ../../../www/radmin/templates/smarty.c:66
+msgid "Website Name"
+msgstr "Όνομα Website"
+
+#: ../../../www/radmin/templates/smarty.c:67
+msgid "Label for Website Footer link"
+msgstr "Ετικέτα για το link της υποσελίδας"
+
+#: ../../../www/radmin/templates/smarty.c:68
+msgid "Website Link"
+msgstr "Link για το website"
+
+#: ../../../www/radmin/templates/smarty.c:69
+msgid "Link for Website Footer Link"
+msgstr "Link για το link της υποσελίδας"
+
+#: ../../../www/radmin/templates/smarty.c:70
+msgid "Sellable Graph Max"
+msgstr "Μέγιστο χρησιμοποιούμενο γράφημα"
+
+#: ../../../www/radmin/templates/smarty.c:71
+#, c-format
+msgid "Select what is 100% on the Sellable Data Graph"
+msgstr "Επιλέξτε το 100% επί του χρησιμοποιήσιμου γραφήματος δεδομένων"
+
+#: ../../../www/radmin/templates/smarty.c:72
+msgid "Useable Graph Max"
+msgstr "Μέγιστο χρησιμοποιούμενο γράφημα"
+
+#: ../../../www/radmin/templates/smarty.c:73
+#, c-format
+msgid "Select what is 100% on the Useable Data Graph"
+msgstr "Επιλέξτε αυτό που είναι 100% επί του χρησιμοποιήσιμου γραφήματος δεδομένων"
+
+#: ../../../www/radmin/templates/smarty.c:74
+#: ../../../www/radmin/templates/smarty.c:109
+#: ../../../www/radmin/templates/smarty.c:207
+#: ../../../www/radmin/templates/smarty.c:217
+#: ../../../www/radmin/templates/smarty.c:271
+msgid "Save Settings"
+msgstr "Αποθήκευση ρυθμίσεων"
+
+#: ../../../www/radmin/templates/smarty.c:75
+msgid "Access Denied"
+msgstr "Απαγόρευση εισόδου"
+
+#: ../../../www/radmin/templates/smarty.c:76
+msgid ""
+"You have attempted to access a page outside of your access level. Please "
+"return to an area you have access to."
+msgstr "Προσπαθήσατε να εισέλθετε σε μια σελίδα εκτός των ορίων πρόσβασης. Παρακαλώ επιστρέψτε σε μια περιοχή που έχετε πρόσβαση"
+
+#: ../../../www/radmin/templates/smarty.c:77
+msgid "Group Config"
+msgstr "Ρυθμίσεις ομάδος"
+
+#: ../../../www/radmin/templates/smarty.c:78
+msgid ""
+"Group expiry needs to be in a format understood by the <a target=\"_blank\" "
+"href=\"http://www.php.net/manual/en/function.strtotime.php\">strtotime</a> "
+"PHP function."
+msgstr "Η λήξη της ομάδας πρέπει να είναι σε μορφή κατανοητή από την <a target=\"_blank\" href=\"http://www.php.net/manual/en/function.strtotime.php\"> strtotime </ a> PHP συνάρτηση."
+
+#: ../../../www/radmin/templates/smarty.c:79
+msgid ""
+"For example, \"+1 month\" will set an expiry for 1 month from when the "
+"account is created. \"+2 weeks\", \"+3 days\" etc."
+msgstr "Για παράδειγμα, «+1 μήνα» θα θέσει τη λήξη των μέτρων για 1 μήνα από τη στιγμή που ο λογαριασμός έχει δημιουργηθεί. \"+2 εβδομάδες\", \"+3 ημέρες\" κλπ."
+
+#: ../../../www/radmin/templates/smarty.c:80
+msgid ""
+"Expiry is calculated to the second, so if you want it to a date for example,"
+" try \"+1 week midnight\"."
+msgstr "Η λήξη υπολογίζεται στο δευτερόλεπτο, οπότε αν το θέλετε σε μια ημερομηνία, για παράδειγμα, προσπαθήστε να \"+1 εβδομάδα μεσάνυχτα\"."
+
+#: ../../../www/radmin/templates/smarty.c:81
+msgid ""
+"Deleting a group won't delete it's users. Next time the user is edited it's "
+"group will become the default group unless a new group is selected."
+msgstr "Διαγράφοντας μια ομάδα δεν διαγράφονται οι χρήστες σε αυτήν. Την επόμενη φορά που θα επεξεργαστείτε τον χρήστη, θα γίνει ενεργή η προεπιλεγμένη ομάδα εκτός και αν επιλεγεί μια νέα."
+
+#: ../../../www/radmin/templates/smarty.c:82
+msgid ""
+"The limits here are the default for group members, unless overridden when "
+"creating a member. If multiple limits are specified, the first limit to be "
+"reached will disconnect the user."
+msgstr "Τα όρια εδώ είναι τα προεπιλεγμένα για τα μέλη της ομάδας, εκτός αν προέχει κατά τη δημιουργία ενός μέλους. Εάν δεν έχουν καθοριστεί πολλαπλά όρια, το πρώτο όριο που πρέπει να επιτευχθεί θα αποσυνδεθεί ο χρήστης."
+
+#: ../../../www/radmin/templates/smarty.c:83
+msgid ""
+"Changing Expiry, Data or Time limits, will not change existing users of the "
+"group and will only apply to new users. Recurring limits, Bandwidth and "
+"simultaneous logins will all apply to existing and new members."
+msgstr "Αλλάζωντας τα στοιχεία λήξης, δεδομένων ή χρονικών ορίων, δεν θα αλλάξει τους υπάρχοντες χρήστες της ομάδας και θα ισχύει μόνο για νέους χρήστες. Επαναλαμβανόμενα όρια, bandwidth και ταυτόχρονες συνδέσεις θα ισχύουν για τα υφιστάμενα και τα νέα μέλη."
+
+#: ../../../www/radmin/templates/smarty.c:84
+msgid "Groups"
+msgstr "Ομάδες"
+
+#: ../../../www/radmin/templates/smarty.c:85
+#: ../../../www/radmin/templates/smarty.c:97
+#: ../../../www/radmin/templates/smarty.c:242
+msgid "Name"
+msgstr "Όνομα"
+
+#: ../../../www/radmin/templates/smarty.c:86
+#: ../../../www/radmin/templates/smarty.c:98
+#: ../../../www/radmin/templates/smarty.c:243
+msgid "Expiry"
+msgstr "Λήξη"
+
+#: ../../../www/radmin/templates/smarty.c:87
+#: ../../../www/radmin/templates/smarty.c:99
+msgid "Default Data Limit (MiB)"
+msgstr "Προεπιλεγμένο όριο δεδομένων (MiB)"
+
+#: ../../../www/radmin/templates/smarty.c:88
+#: ../../../www/radmin/templates/smarty.c:100
+msgid "Default Time Limit (Minutes)"
+msgstr "Προεπιλεγμένο όριο χρόνου (Λεπτά)"
+
+#: ../../../www/radmin/templates/smarty.c:89
+#: ../../../www/radmin/templates/smarty.c:101
+msgid "Recurring Data Limit (MiB)"
+msgstr "Επαναλαμβανόμενο όριο δεδομένων (MiB)"
+
+#: ../../../www/radmin/templates/smarty.c:90
+#: ../../../www/radmin/templates/smarty.c:92
+#: ../../../www/radmin/templates/smarty.c:102
+#: ../../../www/radmin/templates/smarty.c:104
+msgid "per"
+msgstr "ανά"
+
+#: ../../../www/radmin/templates/smarty.c:91
+#: ../../../www/radmin/templates/smarty.c:103
+msgid "Recurring Time Limit (Minutes)"
+msgstr "Επαναλαμβανόμενο όριο χρόνου (Λεπτά)"
+
+#: ../../../www/radmin/templates/smarty.c:93
+#: ../../../www/radmin/templates/smarty.c:105
+msgid "Bandwidth Limit Down"
+msgstr "Όριο bandwidth στο κατέβασμα"
+
+#: ../../../www/radmin/templates/smarty.c:94
+#: ../../../www/radmin/templates/smarty.c:106
+msgid "Bandwidth Limit Up"
+msgstr "Όριο bandwidth στο ανέβασμα"
+
+#: ../../../www/radmin/templates/smarty.c:95
+#: ../../../www/radmin/templates/smarty.c:107
+msgid "Allow simultaneous logins?"
+msgstr "Να επιτραπεί η ταυτόχρονη σύνδεση?"
+
+#: ../../../www/radmin/templates/smarty.c:96
+#: ../../../www/radmin/templates/smarty.c:110
+msgid "Delete Group"
+msgstr "Διαγραφή ομάδας"
+
+#: ../../../www/radmin/templates/smarty.c:108
+msgid "Add Another Group"
+msgstr "Προσθήκη ομάδαςς"
+
+#: ../../../www/radmin/templates/smarty.c:111
+msgid "Edit Computer Account"
+msgstr "Επεξεργασία λογαριασμού υπολογιστή"
+
+#: ../../../www/radmin/templates/smarty.c:112
+msgid "Edit User"
+msgstr "Επεξεργασία χρήστη"
+
+#: ../../../www/radmin/templates/smarty.c:115
+msgid "Choose a secure password for the user. Leave blank to not change"
+msgstr "Επιλέξετε έναν ασφαλή κωδικό για τον χρήστη. Αφήστε κενό για να διατηρήσετε τον ίδιο."
+
+#: ../../../www/radmin/templates/smarty.c:117
+msgid "This user account never expires"
+msgstr "Αυτός ο λογαριασμός χρήστη δεν λήγει ποτέ"
+
+#: ../../../www/radmin/templates/smarty.c:118
+msgid "This user account has expired"
+msgstr "Αυτός ο λογαριασμός χρήστη έχει λήξει"
+
+#: ../../../www/radmin/templates/smarty.c:119
+msgid "Reset expiry"
+msgstr "Επαναφορά λήξης"
+
+#: ../../../www/radmin/templates/smarty.c:120
+msgid "Computer Accounts never expire"
+msgstr "Οι λογαριασμοί υπολογιστών δεν λήγουν ποτέ"
+
+#: ../../../www/radmin/templates/smarty.c:127
+msgid "Change the Data Limit"
+msgstr "Αλλάξτε στο όριο δεδομένων"
+
+#: ../../../www/radmin/templates/smarty.c:128
+msgid "Add Data to Limit (MiB)"
+msgstr "Προσθέστε δεδομένα στο όριο (MiB)"
+
+#: ../../../www/radmin/templates/smarty.c:129
+msgid "Add to the Data Limit (Will ignore changes made above)"
+msgstr "Προσθέστε δεδομένα στο όριο (Θα αγνοηθούν οι αλλαγές που έγιναν παραπάνω)"
+
+#: ../../../www/radmin/templates/smarty.c:132
+msgid "Change the Time Limit"
+msgstr "Αλλάξτε το χρονικό όριο"
+
+#: ../../../www/radmin/templates/smarty.c:133
+msgid "Add Time to Limit (Minutes)"
+msgstr "Προσθέστε χρόνο στο όριο (Λεπτά)"
+
+#: ../../../www/radmin/templates/smarty.c:134
+msgid "Add to the Time Limit (Will ignore changes made above)"
+msgstr "Προσθέστε χρόνο στο όριο (Θα αγνοηθούν οι αλλαγές που έγιναν παραπάνω)"
+
+#: ../../../www/radmin/templates/smarty.c:135
+#: ../../../www/radmin/templates/smarty.c:136
+msgid "Update User Details"
+msgstr "Ενημερώστε λεπτομέριεες χρήστη"
+
+#: ../../../www/radmin/templates/smarty.c:137
+msgid "Delete Computer Account"
+msgstr "Διαγραφή λογαριασμού υπολογιστή"
+
+#: ../../../www/radmin/templates/smarty.c:138
+#: ../../../www/radmin/templates/smarty.c:140
+msgid "Delete User"
+msgstr "Διάγραφή χρήστη"
+
+#: ../../../www/radmin/templates/smarty.c:139
+msgid ""
+"User accounts are automatically deleted 2 months after expiry. Only accounts"
+" with zero usage should be manually deleted to prevent errors in the reports"
+" or statistics."
+msgstr "ΟΙ λογαριασμοί των χρηστών διαγράφονται αυτόματα 2 μήνες μετά την λήξη τους. Μόνο οι λογαριασμοί με μηδαμινή χρήση θα πρέπει να σβήνονται χειροκίνητα προς αποφυγή λαθών στις αναφορές των στατιστικών"
+
+#: ../../../www/radmin/templates/smarty.c:141
+msgid "Are you sure you want to delete this user?"
+msgstr "Είσαι σίγουρος πως θέλεις να διαγράψεις αυτόν τον χρήστη?"
+
+#: ../../../www/radmin/templates/smarty.c:142
+msgid "Delete User %1"
+msgstr "Διαγραφή χρήστ %1"
+
+#: ../../../www/radmin/templates/smarty.c:143
+msgid "Sessions for %1"
+msgstr "Συνδέσεις για %1"
+
+#: ../../../www/radmin/templates/smarty.c:144
+#: ../../../www/uam/templates/smarty.c:10
+msgid "Start Time"
+msgstr "Ξεκίνα τον χρόνο"
+
+#: ../../../www/radmin/templates/smarty.c:145
+msgid "Stop Time"
+msgstr "Σταμάτα τον χρόνο"
+
+#: ../../../www/radmin/templates/smarty.c:146
+msgid "Time"
+msgstr "Χρόνος"
+
+#: ../../../www/radmin/templates/smarty.c:149
+msgid "Download"
+msgstr "Κατεβασμένα"
+
+#: ../../../www/radmin/templates/smarty.c:150
+#: ../../../www/uam/templates/smarty.c:18
+msgid "Uploaded"
+msgstr "Ανεβασμένα"
+
+#: ../../../www/radmin/templates/smarty.c:151
+msgid "Data Usage"
+msgstr "Χρήση δεδομένων"
+
+#: ../../../www/radmin/templates/smarty.c:152
+msgid "Reason: "
+msgstr "Λόγος :"
+
+#: ../../../www/radmin/templates/smarty.c:153
+msgid "Computers hardware (MAC) address is %1"
+msgstr "Διεύθυνση υλικού υπολογιστών (MAC) είναι %1"
+
+#: ../../../www/radmin/templates/smarty.c:154
+msgid "Captive Portal Config Login"
+msgstr "Είσοδος στις ρυθμίσεις του Captive Portal"
+
+#: ../../../www/radmin/templates/smarty.c:155
+#: ../../../www/radmin/templates/smarty.c:159
+msgid "Upload Logo"
+msgstr "Ανεβάστε ένα λογότυπο"
+
+#: ../../../www/radmin/templates/smarty.c:156
+msgid "Logo Image"
+msgstr "Φωτογραφία λογότυπου"
+
+#: ../../../www/radmin/templates/smarty.c:157
+msgid "Select new logo file."
+msgstr "Επιλέξτε το αρχείο του νέου λογότυπου"
+
+#: ../../../www/radmin/templates/smarty.c:158
+msgid ""
+"Logo file needs to be in png format, and relatively small (remember, every "
+"page has the logo). 10 Kilobytes maximum. It's physical size shouldn't be "
+"bigger than about 220px in both directions."
+msgstr "Το αρχείο του λογότυπου πρέπει να είναι σε .png μορφή και σχετικά μικρό (έχετε υπόψιν πως κάθε σελίδα έχει το λογότυπο). 10 Kilobytes το μέγιστο. Η διάσταση του δεν πρέπει να είναι μεγαλύτερη από 220px στο πλάτος και ύψος."
+
+#: ../../../www/radmin/templates/smarty.c:160
+msgid ""
+"For more advanced logos, (different file type, size, placement}, manually "
+"upload the file to /var/www/ or /usr/share/grase/www/images/ and use the "
+"custom CSS to override this logo. The logo is defined in the #page container"
+" as the background."
+msgstr "Για περισσότερα προηγμένα λογότυπα, (διαφορετικό τύπο αρχείου, το μέγεθος, τοποθέτηση}, ανεβάστε χειροκίνητα το αρχείο στο /var/www / ή στο /usr/share/grase/www/images/ και χρησιμοποιήσετε το προσαρμοσμένο CSS για να παρακάμψετε αυτό το λογότυπο. Το λογότυπο ορίζεται στο #page ως φόντο."
+
+#: ../../../www/radmin/templates/smarty.c:161
+#: ../../../www/radmin/templates/smarty.c:169
+msgid "Admin Users"
+msgstr "Διαχειριστές"
+
+#: ../../../www/radmin/templates/smarty.c:162
+#: ../../../www/radmin/templates/smarty.c:167
+#: ../../../www/radmin/templates/smarty.c:168
+msgid "Change Password"
+msgstr "Αλλαγή κωδικού"
+
+#: ../../../www/radmin/templates/smarty.c:164
+msgid "Old Password"
+msgstr "Παλιός κωδικός"
+
+#: ../../../www/radmin/templates/smarty.c:165
+msgid "New Password"
+msgstr "Νέος κωδικός"
+
+#: ../../../www/radmin/templates/smarty.c:166
+msgid "Confirm New Password"
+msgstr "Επιβεβαιώστε τον νέο κωδικό"
+
+#: ../../../www/radmin/templates/smarty.c:170
+#: ../../../www/radmin/templates/smarty.c:184
+msgid "Deleting or modifying the support user will prevent remote assistance."
+msgstr "Διαγραγή ή τροποποίηση του χρήστη υποστήριξης θα αποτρέψει την απομακρυσμένη βοήθεια"
+
+#: ../../../www/radmin/templates/smarty.c:171
+#: ../../../www/radmin/templates/smarty.c:172
+msgid "Admin User"
+msgstr "Διαχειριστής"
+
+#: ../../../www/radmin/templates/smarty.c:173
+#: ../../../www/radmin/templates/smarty.c:174
+msgid "Power User"
+msgstr "Προχωρημένος χρήστης"
+
+#: ../../../www/radmin/templates/smarty.c:175
+#: ../../../www/radmin/templates/smarty.c:176
+msgid "Normal User"
+msgstr "Κανονικός χρήστης"
+
+#: ../../../www/radmin/templates/smarty.c:177
+#: ../../../www/radmin/templates/smarty.c:185
+msgid "Are you sure you want to delete %1?"
+msgstr "Είστε σίγουρος πως θέλετε να διαγράψετε %1"
+
+#: ../../../www/radmin/templates/smarty.c:178
+#: ../../../www/radmin/templates/smarty.c:186
+msgid "Delete %1"
+msgstr "Διαγραφή %1"
+
+#: ../../../www/radmin/templates/smarty.c:179
+#: ../../../www/radmin/templates/smarty.c:182
+msgid "Create new Admin User"
+msgstr "Δημιουργήστε νέο διαχειριστή"
+
+#: ../../../www/radmin/templates/smarty.c:183
+msgid "Delete Admin User"
+msgstr "Διαγραφή διαχειριστή"
+
+#: ../../../www/radmin/templates/smarty.c:187
+msgid "Cannot delete current user"
+msgstr "Δεν μπορεί να γίνει διαγραγή του τρέχων χρήστη"
+
+#: ../../../www/radmin/templates/smarty.c:188
+msgid "Logged in as <b>%1</b>"
+msgstr "Συνδεμένος σαν <b>%1</b>"
+
+#: ../../../www/radmin/templates/smarty.c:189
+msgid "Session logs for %1 on %2"
+msgstr "Αρχεία καταγραφής για την σύνδεση %1 στο %2"
+
+#: ../../../www/radmin/templates/smarty.c:190
+msgid "Computers hardware (MAC) address is"
+msgstr "Η MAC διεύθυνση για τους υπολογιστές είναι"
+
+#: ../../../www/radmin/templates/smarty.c:191
+msgid "Between %1 and %2"
+msgstr "Ανάμεσα από %1 και %2"
+
+#: ../../../www/radmin/templates/smarty.c:192
+msgid "Total HTTP (WWW) Traffic Size:"
+msgstr "Συνολικό μέγεθος κίνησης HTTP (www)"
+
+#: ../../../www/radmin/templates/smarty.c:193
+msgid "Domain"
+msgstr "Domain"
+
+#: ../../../www/radmin/templates/smarty.c:194
+msgid "Count"
+msgstr "Υπολογισμός"
+
+#: ../../../www/radmin/templates/smarty.c:195
+#: ../../../www/radmin/templates/smarty.c:201
+msgid "Size"
+msgstr "Μέγεθος"
+
+#: ../../../www/radmin/templates/smarty.c:196
+#: ../../../www/radmin/templates/smarty.c:237
+msgid "Timestamp"
+msgstr "Χρονική σήμανση"
+
+#: ../../../www/radmin/templates/smarty.c:197
+msgid "Address"
+msgstr "Διεύθυνση"
+
+#: ../../../www/radmin/templates/smarty.c:198
+msgid "Host"
+msgstr "Host"
+
+#: ../../../www/radmin/templates/smarty.c:199
+msgid "Cached"
+msgstr "Αποθηκευμένο"
+
+#: ../../../www/radmin/templates/smarty.c:200
+msgid "Request Type"
+msgstr "Τύπος αιτήματος"
+
+#: ../../../www/radmin/templates/smarty.c:202
+msgid "Network Settings"
+msgstr "Ρυθμίσεις δικτύου"
+
+#: ../../../www/radmin/templates/smarty.c:203
+msgid ""
+"These settings are used by Coova Chilli and Dnsmasq. Both Coova Chilli and "
+"Dnsmasq will need to be reloaded when these settings change. A cron job will"
+" automatically check for changes every 5 minutes and reload these daemons if"
+" needed."
+msgstr "Αυτές οι ρυθμίσεις χρησιμοποιούνται από Coova Chilli και το Dnsmasq. Και τα δύο θα φορτώνονται πάλι όταν αλλάξετε τις ρυθμίσεις. Μια περιοδική εργασία θα ελέγχει αυτόματα για αλλαγές κάθε 5 λεπτά και θα τις ανανεώνει αν χρειαστεί."
+
+#: ../../../www/radmin/templates/smarty.c:204
+msgid "Network Config last reloaded %1"
+msgstr "Οι ρυθμίσεις δικτύου ανανεώθηκαν τελευταία φορά %1"
+
+#: ../../../www/radmin/templates/smarty.c:205
+msgid "Network Config last updated %1"
+msgstr "Οι ρυθμίσεις δικτύου ανανεώθηκαν τελευταία φορά %1"
+
+#: ../../../www/radmin/templates/smarty.c:206
+#: ../../../www/radmin/templates/smarty.c:216
+#: ../../../www/radmin/templates/smarty.c:270
+msgid ""
+"For each of the following items, if you need multiple values you can submit "
+"the form and it will append a blank input below the last valid value"
+msgstr "Για κάθε ένα από τα ακόλουθα στοιχεία, αν χρειάζεστε πολλαπλές τιμές, μπορείτε να υποβάλετε τη φόρμα και θα προσαρτήσει ένα κενό πεδίο εισόδου κάτω από την τελευταία έγκυρη τιμή"
+
+#: ../../../www/radmin/templates/smarty.c:208
+msgid "Help Page"
+msgstr "Σελίδα βοήθειας"
+
+#: ../../../www/radmin/templates/smarty.c:209
+msgid "My Account"
+msgstr "Ο λογαριασμός μου"
+
+#: ../../../www/radmin/templates/smarty.c:210
+msgid "Admin"
+msgstr "Διαχειριστής"
+
+#: ../../../www/radmin/templates/smarty.c:211
+msgid "Coova Chilli Settings"
+msgstr "Ρυθμίσεις Coova Chilli"
+
+#: ../../../www/radmin/templates/smarty.c:212
+msgid ""
+"These settings are used by Coova Chilli. Coova Chilli only reloads it's "
+"config roughly once an hour, or when it's restarted."
+msgstr "Αυτές οι ρυθμίσεις χρησιμοποιούνται από Coova Chilli. Οι ρυθμίσεις ανανεώνονται περίπου ανά μία ώρα ή όταν γίνει επανεκκίνηση."
+
+#: ../../../www/radmin/templates/smarty.c:213
+msgid ""
+"If you change the MAC Auth Password, no computer accounts will be able to "
+"login until Coova Chilli reloads it's config, or is manually restarted."
+msgstr "Εάν αλλάξετε τον κωδικό του MAC, κανένας λογαριασμός υπολογιστή δεν θα μπορεί να συνδεθεί μέχρι Coova Chilli να ανανεωθεί ή γίνει χειροκίνητα επανεκκίνηση."
+
+#: ../../../www/radmin/templates/smarty.c:214
+msgid "Chilli Config last updated %1"
+msgstr "Οι ρυθμίσεις του Chilli Config ανανεώθηκαν στις %1"
+
+#: ../../../www/radmin/templates/smarty.c:215
+msgid "Portal Config last updated %1"
+msgstr "Τελευταία ανανέωση ρυθμίσεων του portal %1"
+
+#: ../../../www/radmin/templates/smarty.c:218
+#: ../../../www/radmin/templates/smarty.c:224
+msgid "Data Limit"
+msgstr "Όριο δεδομένων"
+
+#: ../../../www/radmin/templates/smarty.c:219
+#: ../../../www/radmin/templates/smarty.c:229
+#: ../../../www/uam/templates/smarty.c:14
+msgid "Time Limit"
+msgstr "Όριο χρόνου"
+
+#: ../../../www/radmin/templates/smarty.c:220
+msgid "%1 Time Limit"
+msgstr "%1 όριο χρόνου"
+
+#: ../../../www/radmin/templates/smarty.c:221
+msgid "%1 Data Limit"
+msgstr "%1 όριο δεδομένων"
+
+#: ../../../www/radmin/templates/smarty.c:225
+msgid "Total Data usage for the current month"
+msgstr "Συνολική χρήση δεδομένων για τον τρέχων μήνα"
+
+#: ../../../www/radmin/templates/smarty.c:226
+msgid "Data Usage (M)"
+msgstr "Χρήση δεδομένων (M)"
+
+#: ../../../www/radmin/templates/smarty.c:227
+msgid "Total Data usage, from previous months, excluding current month"
+msgstr "Συνολική χρήση των δεδομένων, από προηγούμενους μήνες, εκτός του τρέχοντος μηνός."
+
+#: ../../../www/radmin/templates/smarty.c:228
+msgid "Data Usage (T)"
+msgstr "Χρήση δεδομένων (χρόνος)"
+
+#: ../../../www/radmin/templates/smarty.c:230
+msgid "Time Usage (Month)"
+msgstr "Χρήση χρόνου (Μηνιαίο)"
+
+#: ../../../www/radmin/templates/smarty.c:231
+msgid "Account Expiry"
+msgstr "Λήξη λογαριασμού"
+
+#: ../../../www/radmin/templates/smarty.c:232
+msgid "Last Logoff timestamp from current month only"
+msgstr "Τελευταία χρονική σήμανση αποσύνδεσης από τον τωρινό μήνα μόνο"
+
+#: ../../../www/radmin/templates/smarty.c:233
+msgid "Last Logoff"
+msgstr "Τελευταία αποσύνδεση"
+
+#: ../../../www/radmin/templates/smarty.c:235
+msgid "Password Hidden"
+msgstr "Κρυφός κωδικός"
+
+#: ../../../www/radmin/templates/smarty.c:236
+msgid "Admin Log"
+msgstr "Αρχείο καταγραφής διαχειριστή"
+
+#: ../../../www/radmin/templates/smarty.c:239
+msgid "IP"
+msgstr "IP"
+
+#: ../../../www/radmin/templates/smarty.c:240
+msgid "Action"
+msgstr "Δράση"
+
+#: ../../../www/radmin/templates/smarty.c:241
+msgid "Group Properties"
+msgstr "Ιδιότητες ομάδος"
+
+#: ../../../www/radmin/templates/smarty.c:244
+msgid "Max Data (Mb)"
+msgstr "Μέγιστα δεδομένα (Mb)"
+
+#: ../../../www/radmin/templates/smarty.c:245
+msgid "Max Time (mins)"
+msgstr "Μέγιστος χρόνος (λεπτά)"
+
+#: ../../../www/radmin/templates/smarty.c:246
+msgid "Recur time limit"
+msgstr "Επανάληψη βάση χρόνου"
+
+#: ../../../www/radmin/templates/smarty.c:247
+msgid "BW Limit Down"
+msgstr "Όριο bandwidth στο κατέβασμα"
+
+#: ../../../www/radmin/templates/smarty.c:248
+msgid "BW Limit Up"
+msgstr "Όριο στο ανέβασμα "
+
+#: ../../../www/radmin/templates/smarty.c:249
+#: ../../../www/uam/templates/smarty.c:38
+msgid "Error"
+msgstr "Σφάλμα"
+
+#: ../../../www/radmin/templates/smarty.c:250
+#: ../../../www/uam/templates/smarty.c:39
+msgid "An Error has occured. Please report the error to the administrator"
+msgstr "Ένα σφάλμα δημιουργήθηκε. Παρακαλώ αναφέρετε το στον διαχειριστή"
+
+#: ../../../www/radmin/templates/smarty.c:251
+msgid ""
+"There may be more information available to the administrator in the logs"
+msgstr "Μπορεί να υπάρχουν περισσότερες πληροφορίες στη διάθεση του διαχειριστή στα αρχεία καταγραφής"
+
+#: ../../../www/radmin/templates/smarty.c:252
+msgid "Create Computer Account"
+msgstr "Δημιουργήστε λογαριασμό υπολογιστή"
+
+#: ../../../www/radmin/templates/smarty.c:254
+msgid ""
+"The MAC address is the network hardware address of the computer. It needs to"
+" be of the format XX-XX-XX-XX-XX-XX where XX is a hex number, typed in all "
+"capitals"
+msgstr "Η διεύθυνση MAC είναι η διεύθυνση υλικού του δικτύου του υπολογιστή. Πρέπει να του τη μορφή XX-XX-XX-XX-XX-XX, όπου ΧΧ είναι ένα δεκαεξαδικό αριθμό, δακτυλογραφημένο σε όλες τις πρωτεύουσες"
+
+#: ../../../www/radmin/templates/smarty.c:256
+msgid "Identify the computer. i.e. \"Bob's computer\""
+msgstr "Προσδιορίστε τον υπολογιστή π.χ. \"Ο υπολογιστής του Bob\""
+
+#: ../../../www/radmin/templates/smarty.c:258
+msgid ""
+"Computer accounts are intended to be used for computers that need internet "
+"access at all times. For example, an office computer. Computer accounts "
+"login automatically as soon as they access the network, this will normally "
+"occur at startup. If a limit is set, when the limit is reached the computer "
+"will revert to the normal login screen for internet access. Computer "
+"accounts can not be edited to add more data or time, only deleted."
+msgstr "Οι λογαριασμοί υπολογιστών που προορίζονται να χρησιμοποιηθούν για τους υπολογιστές που χρειάζονται πρόσβαση στο διαδίκτυο ανά πάσα στιγμή. Για παράδειγμα, έναν υπολογιστή γραφείου. Οι λογαριασμών υπολογιστή συνδέονται αυτόματα από τη στιγμή που έχουν πρόσβαση στο δίκτυο, αυτό θα πρέπει κανονικά να προκύψει κατά την εκκίνηση. Σε περίπτωση που ένα οριστεί ένα όριο, όταν αυτό ξεπεραστεί, θα επανέλθει στην κανονική οθόνη σύνδεσης για πρόσβαση στο Internet. Οι λογαριασμών υπολογιστή δεν μπορούν να επεξεργαστούν για να προστεθούν περισσότερα δεδομένα ή το χρόνος, παρά μόνο να διαγράφονται."
+
+#: ../../../www/radmin/templates/smarty.c:259
+msgid ""
+"It is not recommended setting a time or data limit for computer accounts."
+msgstr "Δεν συνιστάται να τεθεί ένα όριο χρονικό ή δεδομένων για τους λογαριασμούς του υπολογιστή."
+
+#: ../../../www/radmin/templates/smarty.c:267
+#: ../../../www/radmin/templates/smarty.c:268
+msgid "Create New Computer Account"
+msgstr "Δημιουργία νέου λογαριασμού Υπολογιστών"
+
+#: ../../../www/radmin/templates/smarty.c:269
+msgid "Portal Customisation"
+msgstr "Προσαρμογή πύλης"
+
+#: ../../../www/radmin/templates/smarty.c:272
+msgid "Sold"
+msgstr "Πουλήθηκε"
+
+#: ../../../www/radmin/templates/smarty.c:273
+#: ../../../www/radmin/templates/smarty.c:275
+#: ../../../www/radmin/templates/smarty.c:277
+msgid "%1 of %2"
+msgstr "%1 από %2"
+
+#: ../../../www/radmin/templates/smarty.c:274
+msgid "This Month Used"
+msgstr "Αυτό τον μήνα χρησιμοποιήθηκαν"
+
+#: ../../../www/radmin/templates/smarty.c:276
+msgid "Last Month Used"
+msgstr "Τον προηγούμενο μήνα χρησιμοποιήθηκαν"
+
+#: ../../../www/uam/templates/smarty.c:1
+msgid "You are logged in as:"
+msgstr "Είστε συνδεμένος σαν :"
+
+#: ../../../www/uam/templates/smarty.c:2
+msgid "User"
+msgstr "Χρήστης"
+
+#: ../../../www/uam/templates/smarty.c:3
+msgid "Usage this session"
+msgstr "Χρήση αυτής της συνόδου"
+
+#: ../../../www/uam/templates/smarty.c:4
+msgid "Remaining Quota"
+msgstr "Υπόλοιπο ποσοστό"
+
+#: ../../../www/uam/templates/smarty.c:5 ../../../www/uam/templates/smarty.c:7
+#: ../../../www/uam/templates/smarty.c:13
+#: ../../../www/uam/templates/smarty.c:15
+msgid "Unlimited"
+msgstr "Απεριόριστο"
+
+#: ../../../www/uam/templates/smarty.c:6
+msgid "Quota allocation"
+msgstr "Κατανομή ποσοστού"
+
+#: ../../../www/uam/templates/smarty.c:8
+msgid "Max Session Time"
+msgstr "Μέγιστος χρόνος σύνδεσης"
+
+#: ../../../www/uam/templates/smarty.c:9
+msgid "Max Idle Time"
+msgstr "Μέγιστος αδρανής χρόνος"
+
+#: ../../../www/uam/templates/smarty.c:11
+msgid "Session Time"
+msgstr "Χρόνος σύνδεσης"
+
+#: ../../../www/uam/templates/smarty.c:12
+msgid "Remaining Time"
+msgstr "Υπόλοιπο χρόνου"
+
+#: ../../../www/uam/templates/smarty.c:16
+msgid "Idle Time"
+msgstr "Χρόνος αδράνειας"
+
+#: ../../../www/uam/templates/smarty.c:17
+msgid "Downloaded"
+msgstr "Κατεβασμένο"
+
+#: ../../../www/uam/templates/smarty.c:19
+msgid "Help"
+msgstr "Βοήθεια"
+
+#: ../../../www/uam/templates/smarty.c:20
+msgid "Support"
+msgstr "Υποστήριξη"
+
+#: ../../../www/uam/templates/smarty.c:21
+msgid "Successful Login"
+msgstr "Επιτυχημένη σύνδεση"
+
+#: ../../../www/uam/templates/smarty.c:22
+msgid "Continue to your site"
+msgstr "Συνεχίστε στο site σας"
+
+#: ../../../www/uam/templates/smarty.c:23
+msgid "Free Downloads"
+msgstr "Δωρεάν downloads"
+
+#: ../../../www/uam/templates/smarty.c:24
+msgid ""
+"Welcome to the %1 Hotspot. Please read the following before logging in."
+msgstr "Καλώς ήρθατε στο %1 Hotspot. Παρακαλώ διαβάστε τα παρακάτω πριν εισέλθετε."
+
+#: ../../../www/uam/templates/smarty.c:25
+msgid "Information and Help"
+msgstr "Πληροφορίες και βοήθεια"
+
+#: ../../../www/uam/templates/smarty.c:26
+msgid "For a quick logout, bookmark <a href=\"%1\">LOGOUT</a>"
+msgstr "Για γρήγορη αποσύνδεση, αποθηκεύσετε <a href=\"%1\">ΑΠΟΣΥΝΔΕΣΗ</a>"
+
+#: ../../../www/uam/templates/smarty.c:27
+msgid "If you are already logged in, continue to your site"
+msgstr "Αν είστε ήδη συνδεμένοι, προχωρήστε στο site σας."
+
+#: ../../../www/uam/templates/smarty.c:28
+msgid "You are using the less secure login method."
+msgstr "Χρησιμοποιείται τον λιγότερο ασφαλή τρόπο σύνδεσης"
+
+#: ../../../www/uam/templates/smarty.c:29
+msgid ""
+"If you have javascript disabled, please try enabling it for the secure login"
+" method."
+msgstr "Αν έχετε απενεργοποιημένη την JavaScript, δοκιμάστε να την ενεργοποιήσετε για πιο ασφαλή μέθοδο σύνδεσης."
+
+#: ../../../www/uam/templates/smarty.c:30
+msgid ""
+"Use this less secure login form if the javascript version is giving you "
+"trouble"
+msgstr "Χρησιμοποιήστε αυτήν την λιγότερο ασφαλή φόρμα σύνδεσης εάν η έκδοση javascript σας δημιουργεί πρόβλημα"
+
+#: ../../../www/uam/templates/smarty.c:31
+msgid "You have disabled the secure javascript login method."
+msgstr "Έχετε απενεργοποιήσει την ασφαλή μέθοδο σύνδεσης javascript."
+
+#: ../../../www/uam/templates/smarty.c:32
+msgid "Click here to re-enable it"
+msgstr "Κάνε click εδώ για να το ενεργοποιήσετε πάλι"
+
+#: ../../../www/uam/templates/smarty.c:35
+msgid "Trouble logging in?"
+msgstr "Πρόβλημα κατά την είσοδο;"
+
+#: ../../../www/uam/templates/smarty.c:36
+msgid "Click here to disable the javascript login forms."
+msgstr "Κάντε click εδώ για να απενεργοποιήσετε τις javascript φόρμες"
+
+#: ../../../www/uam/templates/smarty.c:37
+msgid "This will use a less secure login method"
+msgstr "Αυτό θα χρησιμοποιήσει έναν λιγότερο ασφαλή τρόπο σύνδεσης"
+
+#: ../../../www/radmin/newmachine.php:32
+msgid "MAC Address already has an account"
+msgstr "Αυτή η διεύθυνση MAC έχει ήδη λογαριασμό"
+
+#: ../../../www/radmin/newmachine.php:45
+msgid "Only set one Data limit field"
+msgstr "Ορίστε μόνο ένα πεδίο δεδομένων"
+
+#: ../../../www/radmin/newmachine.php:46
+msgid "Only set one Time limit field"
+msgstr "Ορίστε μόνο ένα πεδίο χρονικού ορίου"
+
+#: ../../../www/radmin/newmachine.php:86
+msgid "Computer Account Successfully Created"
+msgstr "Ο λογαριασμός υπολογιστή δημιουργήθηκε με επιτυχία"
+
+#: ../../../www/radmin/chilliconfig.php:36
+msgid "Walled Garden allowed hosts"
+msgstr "Επιτρεπόμενοι υπολογιστές (Walled Garden )"
+
+#: ../../../www/radmin/chilliconfig.php:37
+msgid ""
+"IP's and Hostnames that are accesible without logging in. DNS Lookup is only"
+" done at startup time so not suitable for domains with Round Robin IP "
+"Addresses"
+msgstr "IP και ονόματα κεντρικών υπολογιστών που είναι προσβάσιμες χωρίς να συνδεθείτε in. DNS αναζητήσεις γίνονται μόνο κατά την εκκίνηση του χρόνου και έτσι δεν είναι κατάλληλο για τομείς με Round Robin IP Διευθύνσεις."
+
+#: ../../../www/radmin/chilliconfig.php:40
+msgid "Walled Garden allowed domains"
+msgstr "Επιτρεπόμενα domains (Walled Garden )"
+
+#: ../../../www/radmin/chilliconfig.php:41
+msgid "Domains (and their subdomains) that are accesible without logging in."
+msgstr "Ονόματα (και υποτομείς τους) που είναι προσβάσιμες χωρίς να συνδεθείτε."
+
+#: ../../../www/radmin/chilliconfig.php:48
+msgid "MAC Auth Password"
+msgstr "Κωδικός για πρόσβαση με MAC διευθύνσεις"
+
+#: ../../../www/radmin/chilliconfig.php:49
+msgid ""
+"The MAC Password used to autologin Computer Accounts. Change this to "
+"something obscure as it can be used to login using a known MAC address as "
+"the username."
+msgstr "Ο κωδικός για MAC διευθύνσεις χρησιμοποείεται για να εισάγει αυτόματα τους λογαριασμούς υπολογιστών. Αλλάξτε το σε κάτι κρυφό γιατί μπορεί να χρησιμοποιηθεί για να είσοδο με μια γνωστή MAC σαν όνομα χρήση."
+
+#: ../../../www/radmin/chilliconfig.php:52
+msgid "Default Session Idle Timeout"
+msgstr "Προεπιλεγμένος χρόνος αποσύνδεσης"
+
+#: ../../../www/radmin/chilliconfig.php:53
+msgid ""
+"Default Idle Timeout for sessions. Logout after this number of seconds have "
+"passed without any traffic."
+msgstr "Προεπιλεγμένος χρόνος αποσύνδεσης. Αποσύνδεση μετά από αυτά τα δευτερόλεπτα χωρίς καμία κίνηση δεδομένων"
+
+#: ../../../www/radmin/chilliconfig.php:56
+msgid "DHCP Lease time"
+msgstr "Χρόνος αποδεύσμευσης DHCP"
+
+#: ../../../www/radmin/chilliconfig.php:57
+msgid "DHCP lease time in seconds."
+msgstr "Χρόνος αποδεύσμευσης DHCP σε δευτερόλεπτα"
+
+#: ../../../www/radmin/chilliconfig.php:97
+#: ../../../www/radmin/chilliconfig.php:138
+#, php-format
+msgid "%s Coova Chilli config option update"
+msgstr "Οι ρυθμίσεις %s Coova Chill ανανεώθηκαν"
+
+#: ../../../www/radmin/chilliconfig.php:183
+msgid "Changes pending Coova Chilli Reload"
+msgstr "Αλλαγές εν αναμονή ανανέωσης για το Coova Chilli"
+
+#: ../../../www/radmin/chilliconfig.php:185
+#: ../../../www/radmin/netconfig.php:250
+msgid "Settings match running config"
+msgstr "Οι ρυθμίσεις ταιριάζουν με τις τρέχουσες ρυθμίσεις"
+
+#: ../../../www/radmin/usermin.php:42
+msgid "New Passwords must match"
+msgstr "Οι νέοι κωδικοί πρέπει να είναι όμοιοι"
+
+#: ../../../www/radmin/usermin.php:45
+msgid "Password must not be blank"
+msgstr "Ο κωδικός δεν μπορεί να είναι κενός"
+
+#: ../../../www/radmin/usermin.php:50 ../../../www/radmin/edituser.php:45
+#: ../../../www/radmin/passwd.php:65 ../../../www/radmin/passwd.php:66
+msgid "Password Changed"
+msgstr "Ο κωδικός άλλαξε"
+
+#: ../../../www/radmin/usermin.php:53
+msgid "Password not updated"
+msgstr "Ο κωδικός δεν ενημερώθηκε"
+
+#: ../../../www/radmin/netconfig.php:38
+msgid "DNS Servers"
+msgstr "DNS Servers"
+
+#: ../../../www/radmin/netconfig.php:39
+msgid ""
+"IP Addresses of DNS Servers. All clients will use the gateway as the DNS "
+"server which will use the addresses listed here to do DNS lookups. Dnsmasq "
+"WILL NOT get default servers from DHCP or /etc/resolv.conf and will default "
+"to OpenDNS Family Shield"
+msgstr "Διευθύνσεις IP των DNS Servers. Όλοι οι πελάτες θα χρησιμοποιούν την πύλη ως τον DNS server που θα χρησιμοποιεί τις διευθύνσεις που αναφέρονται εδώ για να κάνετε αναζητήσεις DNS. Το Dnsmasq δεν θα πάρει από προεπιλεγμένους διακομιστές DHCP ή από το /etc/resolv.conf και θα χρησιμοποιήσει το OpenDNS και την \"Οικογενειακή Ασπίδα\""
+
+#: ../../../www/radmin/netconfig.php:42
+msgid "Bogus NXDOMAIN"
+msgstr "Bogus NXDOMAIN"
+
+#: ../../../www/radmin/netconfig.php:43
+msgid ""
+"IP Addresses of Bogus NXDOMAIN returns. All DNS replies that contain these "
+"ip address will be transformed into a NXDOMAIN result"
+msgstr "Οι διευθύνσεις IP των Bogus  NXDOMAIN. Όλες οι απαντήσεις DNS που περιέχουν αυτές τις διευθύνσεις IP θα πρέπει να μετατρέπονται σε NXDOMAIN αποτέλεσμα/"
+
+#: ../../../www/radmin/netconfig.php:50
+msgid "LAN IP Address"
+msgstr "IP τοπικού Δικτύου"
+
+#: ../../../www/radmin/netconfig.php:51
+msgid ""
+"The server IP address that is used on the LAN side (Coova-Chilli) of the "
+"network. This will be the gateway address for all clients, as well as the "
+"DNS server the clients access. For default Squid config this should be a "
+"private ip address."
+msgstr "Η διεύθυνση IP του διακομιστή που χρησιμοποιείται στην πλευρά του LAN (Coova-Chilli) του δικτύου. Αυτή θα είναι η διεύθυνση πύλης για όλους τους πελάτες, καθώς και o DNS server. Για το προεπιλεγμένο αρχείο ρυθμίσεων του Squid αυτή θα πρέπει να είναι μια ιδιωτική διεύθυνση IP."
+
+#: ../../../www/radmin/netconfig.php:60
+msgid "LAN Network Mask"
+msgstr "Μάσκα τοπικού Δικτύου (subnet)"
+
+#: ../../../www/radmin/netconfig.php:61
+msgid ""
+"Network mask to use for clients network. (i.e. 255.255.255.0). DHCP range "
+"and network address will be calculated from this and the LAN IP Address."
+msgstr "Μάσκα δικτύου (network mask) για να χρησιμοποιούν oi πελάτες του δικτύου. (δηλαδή 255.255.255.0). Το εύρος DHCP και η διεύθυνση του δικτύου θα υπολογίζονται από αυτή τη διεύθυνση IP."
+
+#: ../../../www/radmin/netconfig.php:65
+msgid "Bogus NXDOMAIN (OpenDNS)"
+msgstr "Bogus NXDOMAIN (OpenDNS)"
+
+#: ../../../www/radmin/netconfig.php:66
+msgid ""
+"Some DNS Providers return bogus NXDOMAIN to redirect you to their search "
+"engine. Block the bogus ip's and return a real NXDOMAIN for OpenDNS."
+msgstr "Ορισμένοι πάροχοι DNS επιστρέφουν ψευδείς NXDOMAIN για να σας ανακατευθύνουν στη μηχανή αναζήτησής τους. Αποκλείστε το ψεύτικο ip και επιστρέψτε ένα πραγματικό NXDOMAIN για το OpenDNS."
+
+#: ../../../www/radmin/netconfig.php:70
+msgid "Wireless Network Name (SSID)"
+msgstr "Όνομα ασυρμάτου δικτύου (SSID)"
+
+#: ../../../www/radmin/netconfig.php:71
+msgid ""
+"Wireless Network Name that clients connect to. Currently does not modify any"
+" settings but if set will print on the tickets"
+msgstr "Όνομα ασυρμάτου δικτύου (SSID) στο οποίο συνδέονται οι χρήστες. Δεν επηρεάζει καμία ρύθμιση, απλά τυπώνεται στο εισιτήριο"
+
+#: ../../../www/radmin/netconfig.php:74
+msgid "Print Ticket Type"
+msgstr "Εκτύπωση είδος εισιτηρίου"
+
+#: ../../../www/radmin/netconfig.php:75
+msgid "Print the ticket type (Group name) on tickets"
+msgstr "Εκτύπωσε το είδος (όνομα ομάδος) στα εισιτήρια"
+
+#: ../../../www/radmin/netconfig.php:78
+msgid "Print Ticket Expiry"
+msgstr "Εκτύπωσε την λήξη του εισιτηρίου"
+
+#: ../../../www/radmin/netconfig.php:79
+msgid "Print the expiry on tickets"
+msgstr "Εκτύπωσε τις λήξης των εισιτηρίων"
+
+#: ../../../www/radmin/netconfig.php:90
+msgid "LAN Network Interface"
+msgstr "Κάρτα δικτύου LAN"
+
+#: ../../../www/radmin/netconfig.php:91
+msgid ""
+"The Network Interface that is connected to the LAN of the Hotspot (the side "
+"the clients connect to)"
+msgstr "Το δίκτυο που είναι συνδεμένο στο LAN του Hotspot (το μέρος που συνδέονται οι υπολογιστές)"
+
+#: ../../../www/radmin/netconfig.php:96
+msgid "WAN Network Interface"
+msgstr "Κάρτα δικτύου WAN"
+
+#: ../../../www/radmin/netconfig.php:97
+msgid ""
+"The Network Interface that is connected to the WAN of the Hotspot (the side "
+"the internet is connected to)"
+msgstr "Το δίκτυο που είναι συνδεμένο στο LAN του Hotspot (το μέρος που συνδέεται το internet)"
+
+#: ../../../www/radmin/netconfig.php:248
+msgid "Changes pending Reload"
+msgstr "Αλλαγές περιμένουν ανανέωση"
+
+#: ../../../www/radmin/edituser.php:63
+msgid "Group Changed"
+msgstr "Η ομάδα άλλαξε"
+
+#: ../../../www/radmin/edituser.php:73
+msgid "Comment Changed"
+msgstr "Τα σχόλια αλλάχθηκαν"
+
+#: ../../../www/radmin/edituser.php:90
+msgid "Data Limit Increased"
+msgstr "Το όριο δεδομένων αυξήθηκε"
+
+#: ../../../www/radmin/edituser.php:91
+#, php-format
+msgid "Data Limit increased for %s"
+msgstr "Το όριο δεδομένων αυξήθηκε για %s"
+
+#: ../../../www/radmin/edituser.php:111
+msgid "Max Data Limit Updated"
+msgstr "Το όριο του μέγιστου χρόνου ενημερώθηκε"
+
+#: ../../../www/radmin/edituser.php:112
+#, php-format
+msgid "Max Data Limit changed for %s"
+msgstr "Το όριο δεδομένων αυξήθηκε κατά %s"
+
+#: ../../../www/radmin/edituser.php:129
+msgid "Time Limit Increased"
+msgstr "Το χρονικό όριο αυξήθηκε"
+
+#: ../../../www/radmin/edituser.php:130
+#, php-format
+msgid "Time Limit increased for %s"
+msgstr "Το χρονικό όριο αυξήθηκε κατά %s"
+
+#: ../../../www/radmin/edituser.php:149
+msgid "Max Time Limit Updated"
+msgstr "Το όριο του μέγιστου χρόνου ενημερώθηκε"
+
+#: ../../../www/radmin/edituser.php:150
+#, php-format
+msgid "Max Time Limit changed for %s"
+msgstr "Το όριο δεδομένων αυξήθηκε κατά %s"
+
+#: ../../../www/radmin/edituser.php:159
+msgid "Expiry updated"
+msgstr "Η λήξη ανανεώθηκε"
+
+#: ../../../www/radmin/edituser.php:169
+#, php-format
+msgid "User '%s' Deleted"
+msgstr "Ο χρήστης '%s' διαγράφηκε"
+
+#: ../../../www/radmin/passwd.php:57
+msgid "Old Password incorrect"
+msgstr "Ο παλιός κωδικός είναι λανθασμένος"
+
+#: ../../../www/radmin/passwd.php:60
+msgid "New passwords don't match"
+msgstr "Οι νέοι κωδικοί δεν ταιριάζουν"
+
+#: ../../../www/radmin/passwd.php:68
+msgid "Please fill in all password fields"
+msgstr "Παρακαλώ συμπληρώστε όλα τα πεδία των κωδικών"
+
+#: ../../../www/radmin/passwd.php:75
+#, php-format
+msgid "User %s already exists"
+msgstr "Ο χρήστης %s υπάρχει ήδη"
+
+#: ../../../www/radmin/passwd.php:78
+msgid "User Created"
+msgstr "Ο χρήστης δημιουργήθηκε"
+
+#: ../../../www/radmin/passwd.php:81
+msgid "Need both username and password"
+msgstr "Χρειάζεται και το όνομα χρήστη και ο κωδικός"
+
+#: ../../../www/radmin/passwd.php:87
+#, php-format
+msgid "User %s Deleted"
+msgstr "Ο χρήστης %s διαγράφηκε"
+
+#: ../../../www/radmin/passwd.php:90
+msgid "Invalid Delete Request"
+msgstr "Άκυρη αίτηση διαγραφής"
+
+#: ../../../www/radmin/loginconfig.php:48
+msgid "Login Screen Title"
+msgstr "Τίτλος σελίδας εισόδου"
+
+#: ../../../www/radmin/loginconfig.php:49
+msgid "Hide Title (header) from login screen"
+msgstr "Απόκρυψε τον τίτλο (κεφαλίδα) από την σελίδα εισόδου"
+
+#: ../../../www/radmin/loginconfig.php:52
+msgid "Login Screen Footer"
+msgstr "Τίτλος υποσελίδας εισόδου"
+
+#: ../../../www/radmin/loginconfig.php:53
+msgid ""
+"Hide footer from login screen. Please consider adding a link back to "
+"http://grasehotspot.org if you are hiding the footer"
+msgstr "Απόκρυψε το υποσέλιδο από την σελίδα εισόδου. Παρακαλώ βάλτε ένα link προς http://grasehotspot.org αν κρύψετε το υποσέλιδο"
+
+#: ../../../www/radmin/loginconfig.php:56
+msgid "Logout Bookmark"
+msgstr "Σελιδοδείκτης αποσύνδεσης"
+
+#: ../../../www/radmin/loginconfig.php:57
+msgid "Hide Bookmark logout link"
+msgstr "Απόκρυψη του link της αποσύνδεσης"
+
+#: ../../../www/radmin/loginconfig.php:60
+msgid "Help Link"
+msgstr "Link Βοήθειας"
+
+#: ../../../www/radmin/loginconfig.php:61
+msgid ""
+"Hide Help and Information link from login page (still shows in footer if "
+"footer is enabled)"
+msgstr "Κρύψε το link Βοήθειας και Πληροφορίας από την σελίδα σύνδεσης (παραμένει στο υποσέλιδο, αν το υποσέλιδο είναι ενεργοποιημένο)"
+
+#: ../../../www/radmin/loginconfig.php:64
+msgid "Disable Javascript Login"
+msgstr "Απενεργοποιήστε την Javascript σύνδεση"
+
+#: ../../../www/radmin/loginconfig.php:65
+msgid "Force all logins to be through the less secure non-javascript method"
+msgstr "Υποχρέωση όλων των συνδέσεων να είναι μέσα από μια λιγότερη μη ασφαλή javascript μέθοδο"
+
+#: ../../../www/radmin/loginconfig.php:68
+msgid "Disable All Default CSS"
+msgstr "Απενεργοποιήστε όλα τα προεπιλεγμένα CSS"
+
+#: ../../../www/radmin/loginconfig.php:69
+msgid ""
+"All css files will be excluded from the login pages, and only the css below "
+"(Main CSS) will be used"
+msgstr "Όλα τα αρχεία CSS θα πρέπει να αποκλείονται από την σελίδα σύνδεσης, και μόνο η παρακάτω CSS (Κεντρικό CSS) θα χρησιμοποιηθεί"
+
+#: ../../../www/radmin/loginconfig.php:73
+msgid "Page Title"
+msgstr "Τίτλος σελίδας"
+
+#: ../../../www/radmin/loginconfig.php:74
+msgid "The page title that is displayed on the login page"
+msgstr "Ο τίτλος της σελίδας που εμφανίζεται στην σελίδα σύνδεσης"
+
+#: ../../../www/radmin/loginconfig.php:82
+msgid "Main CSS"
+msgstr "Κεντρικό CSS"
+
+#: ../../../www/radmin/loginconfig.php:83
+msgid ""
+"Cascading style sheet that is applied to all portal pages (use !important to"
+" override a style if your settings here don't seem to work, it may be that "
+"the builtin css has a more specific selector than your one here, look at "
+"radmin.css for id's and classes)"
+msgstr "CSS που εφαρμόζονται σε όλες τις σελίδες της πύλης (χρησιμοποίηστε το !important για να παρακάμψετε ένα στυλ, εάν οι ρυθμίσεις σας εδώ δεν φαίνονται να λειτουργουν, μπορεί το ενσωματωμένο CSS έχει μια πιο συγκεκριμένη επιλογή, ελένξτε το Radmin.css για τα id και τα classes)"
+
+#: ../../../www/radmin/loginconfig.php:86
+msgid "Help and Information Page"
+msgstr "Σελίδα Βοήθειας και Πληροφορίας"
+
+#: ../../../www/radmin/loginconfig.php:87
+msgid "Help and Information page contents"
+msgstr "Περιεχόμενα σελίδας Βοήθειας και Πληροφορίας"
+
+#: ../../../www/radmin/loginconfig.php:91
+msgid "Login Help HTML"
+msgstr "HTML σελίδα της βοήθειας εισόδου"
+
+#: ../../../www/radmin/loginconfig.php:92
+msgid "Help text (and HTML) displayed on login page above login form"
+msgstr "Κείμενο βοήθειας (και HTML) που εμφανίζεται στην σελίδα εισόδου και πάνω από την φόρμα εισόδου"
+
+#: ../../../www/radmin/loginconfig.php:97
+msgid "HTML Below login form"
+msgstr "HTML κάτω από την φόρμα εισόδου"
+
+#: ../../../www/radmin/loginconfig.php:98
+msgid "HTML to insert below login form"
+msgstr "HTML κώδικας για εισαγωγή κάτω από την φόρμα εισόδου"
+
+#: ../../../www/radmin/loginconfig.php:101
+msgid "Logged In HTML"
+msgstr "HTML κώδικας για την σελίδα εισόδου"
+
+#: ../../../www/radmin/loginconfig.php:102
+msgid "HTML for successful login when not using javascript"
+msgstr "HTML για την επιτυχή σύνδεση όταν δεν χρησιμοποιείται javascript"
+
+#: ../../../www/radmin/loginconfig.php:140
+#: ../../../www/radmin/loginconfig.php:177
+#, php-format
+msgid "%s login config option update"
+msgstr "%s ανανέωση επιλογών εισόδου"
+
+#: ../../../www/radmin/groupconfig.php:54
+msgid "A minimum of one group is required"
+msgstr "Τουλάχιστον 1 ομάδα είναι απαραίτητη"
+
+#: ../../../www/radmin/groupconfig.php:58
+msgid "It is not recommended having groups without expiries."
+msgstr "Δεν συνιστάται να υπάρχουν ομάδες χωρίς λήξη."
+
+#: ../../../www/radmin/groupconfig.php:80
+msgid "Invalid group name or group name missing"
+msgstr "Άκυρο όνομα ομάδας ή δεν υπάρχει όνομα"
+
+#: ../../../www/radmin/groupconfig.php:98
+#, php-format
+msgid "%s: Invalid expiry format"
+msgstr "%s: Ανεπαρκή μορφή λήξης"
+
+#: ../../../www/radmin/groupconfig.php:102
+#, php-format
+msgid "%s: Expiry can not be in the past"
+msgstr "%s: Η λήξη δεν μπορεί να είναι στο παρελθόν"
+
+#: ../../../www/radmin/groupconfig.php:125
+#, php-format
+msgid "Need both a time limit and recurrance for '%s'"
+msgstr "Χρειάζονται και όριο χρόνου και επανάληψη για '%s'"
+
+#: ../../../www/radmin/groupconfig.php:184
+msgid "Groups updated"
+msgstr "Οι ομάδες ανανεώθηκαν"
+
+#: ../../../www/radmin/newuser.php:34
+msgid "Username already taken"
+msgstr "Το όνομα χρήστη υπάρχει ήδη"
+
+#: ../../../www/radmin/newuser.php:35
+msgid "Username and Password are both Required"
+msgstr "Το όνομα χρήστη και ο κωδικός είναι απαραίτητα"
+
+#: ../../../www/radmin/newuser.php:112
+#, php-format
+msgid "User %s Successfully Created"
+msgstr "Ο χρήστης %s δημιουργήθηκε επιτυχώς"
+
+#: ../../../www/radmin/newuser.php:113
+#, php-format
+msgid "Print Ticket for %s"
+msgstr "Εκτυπώστε εισιτήρια για %s"
+
+#: ../../../www/radmin/newuser.php:114
+#, php-format
+msgid "Created new user %s"
+msgstr "Δημιουργήθηκε νέος χρήστης για %s"
+
+#: ../../../www/radmin/printnewtickets.php:48
+#: ../../../www/radmin/printnewtickets.php:54
+#, php-format
+msgid "Batch %s Vouchers"
+msgstr "Παρτίδες %s Εισιτηρίων"
+
+#: ../../../www/radmin/printnewtickets.php:103
+#, php-format
+msgid "Wireless Network: %s"
+msgstr "Ασύρματο δίκτυο : %s"
+
+#: ../../../www/radmin/printnewtickets.php:105
+#, php-format
+msgid "Username: %s"
+msgstr "Όνομα χρήστη : %s"
+
+#: ../../../www/radmin/printnewtickets.php:106
+#, php-format
+msgid "Password: %s"
+msgstr "Κωδικός : %s"
+
+#: ../../../www/radmin/printnewtickets.php:110
+#, php-format
+msgid "Voucher Type: %s"
+msgstr "Είδος κουπονιού : %s"
+
+#: ../../../www/radmin/printnewtickets.php:118
+#, php-format
+msgid "Expiry: %s"
+msgstr "Λήξης  : %s"
+
+#: ../../../www/radmin/newtickets.php:58
+msgid "Max of 50 tickets per batch"
+msgstr "Μέγιστο 50 εισιτήρια ανά παρτίδα"
+
+#: ../../../www/radmin/newtickets.php:139
+msgid "Tickets Successfully Created"
+msgstr "Τα εισιτήρια δημιουργήθηκαν επιτυχώς"
+
+#: ../../../www/radmin/newtickets.php:140
+msgid "Print Tickets"
+msgstr "Εκτύπωση εισιτηρίων"
+
+#: ../../../www/radmin/settings.php:101
+msgid "Location name not valid"
+msgstr "Το όνομα της περιοχής δεν είναι έγκυρο"
+
+#: ../../../www/radmin/settings.php:105
+msgid "Location name updated"
+msgstr "Το όνομα της τοποθεσίας ανανεώθηκε"
+
+#: ../../../www/radmin/settings.php:106
+msgid "Location Name changed to"
+msgstr "Το όνομα της περιοχής άλλαξε σε"
+
+#: ../../../www/radmin/settings.php:111
+msgid "Error Saving Location Name"
+msgstr "Σφάλμα στην αποθήκευση του ονόματος τοποθεσίας"
+
+#: ../../../www/radmin/settings.php:120
+msgid "Website name not valid"
+msgstr "Το όνομα του website δεν είναι έγκυρο"
+
+#: ../../../www/radmin/settings.php:125 ../../../www/radmin/settings.php:126
+msgid "Website name updated"
+msgstr "Το όνομα του website ανανεώθηκε"
+
+#: ../../../www/radmin/settings.php:130
+msgid "Error Saving Website Name"
+msgstr "Σφάλμα κατά την αποθήκευση του ονόματος του website"
+
+#: ../../../www/radmin/settings.php:138
+msgid "Website link not valid"
+msgstr "To link για το website δεν είναι έγκυρο"
+
+#: ../../../www/radmin/settings.php:143 ../../../www/radmin/settings.php:144
+msgid "Website link updated"
+msgstr "Το link για το website ανανεώθηκε"
+
+#: ../../../www/radmin/settings.php:148
+msgid "Error Saving Website link"
+msgstr "Σφάλμα κατά την αποθήκευση του link για το website"
+
+#: ../../../www/radmin/settings.php:162 ../../../www/radmin/settings.php:163
+msgid "Price per MiB updated"
+msgstr "Η τιμή ανά MiB ανανεώθηκε"
+
+#: ../../../www/radmin/settings.php:167
+msgid "Error saving Price per MiB"
+msgstr "Σφάλμα κατά την αποθήκευση της τιμής ανά MiB"
+
+#: ../../../www/radmin/settings.php:172
+msgid "Invalid Price per MiB"
+msgstr "Άκυρη τιμή ανά MiB"
+
+#: ../../../www/radmin/settings.php:183 ../../../www/radmin/settings.php:184
+msgid "Price per Minute Updated"
+msgstr "Τιμή ανά λεπτό ανανεώθηκε"
+
+#: ../../../www/radmin/settings.php:187
+msgid "Error saving Price per Minute"
+msgstr "Σφάλμα κατά την αποθήκευση της τιμής ανά λεπτό"
+
+#: ../../../www/radmin/settings.php:191
+msgid "Invalid Price per Minute"
+msgstr "Άκυρη τιμή ανά λεπτό"
+
+#: ../../../www/radmin/settings.php:202
+msgid "Currency updated"
+msgstr "Το νόμισμα ανανεώθηκε"
+
+#: ../../../www/radmin/settings.php:203
+msgid "Currency updated to"
+msgstr "Το νόμισμα άλλαξε σε "
+
+#: ../../../www/radmin/settings.php:207
+msgid "Error saving Currency"
+msgstr "Πρόβλημα στην αποθήκευση του νομίσματος"
+
+#: ../../../www/radmin/settings.php:211
+msgid "Invalid Currency"
+msgstr "Άκυρο νόμισμα"
+
+#: ../../../www/radmin/settings.php:233
+msgid "Locale updated"
+msgstr "Τοπικές ρυθμίσεις ανανεώθηκαν"
+
+#: ../../../www/radmin/settings.php:234
+msgid "Locale updated to"
+msgstr "Τοπικές ρυθμίσεις ανανεώθηκαν σε"
+
+#: ../../../www/radmin/settings.php:238
+msgid "Error updating Locale"
+msgstr "Σφάλμα ανανέωσης τοπικών ρυθμίσεων"
+
+#: ../../../www/radmin/settings.php:242
+msgid "Invalid Locale"
+msgstr "Άκυρες τοπικές ρυθμίσεις"
+
+#: ../../../www/radmin/settings.php:258 ../../../www/radmin/settings.php:259
+msgid "Sellable Data Limit Update"
+msgstr "Ενημέρωση μέγιστου χρησιμοποιούμενου γραφήματος"
+
+#: ../../../www/radmin/settings.php:263
+msgid "Error updating Sellable Data Limit"
+msgstr "Αποτυχία στην ενημέρωση του μέγιστου χρησιμοποιούμενου γραφήματος δεδομένων"
+
+#: ../../../www/radmin/settings.php:268
+msgid "Invalid value for Sellable Data"
+msgstr "Άκυρη τιμή για το μέγιστο χρησιμοποιούμενου γραφήματος δεδομένων"
+
+#: ../../../www/radmin/settings.php:279 ../../../www/radmin/settings.php:280
+msgid "Useable Data Limit Update"
+msgstr "Ενημέρωση χρησιμοποιούμενου ορίου δεδομένων"
+
+#: ../../../www/radmin/settings.php:284
+msgid "Error updating Useable Data Limit"
+msgstr "Σφάλμα στην ενημέρωση του χρησιμοποιούμενου ορίου δεδομένων"
+
+#: ../../../www/radmin/settings.php:289
+msgid "Invalid value for Useable Data"
+msgstr "Άκυρη τιμή για το χρησιμοποιούμενο όριο δεδομένων"
+
+#: ../../../www/radmin/settings.php:297
+msgid "Support name not valid"
+msgstr "Το όνομα της τεχνικής υποστήριξης δεν είναι έγκυρο"
+
+#: ../../../www/radmin/settings.php:302 ../../../www/radmin/settings.php:303
+msgid "Support name updated"
+msgstr "Όνομα τεχνικής υποστήριξης ανανεώθηκε"
+
+#: ../../../www/radmin/settings.php:307
+msgid "Error Saving Support Name"
+msgstr "Σφάλμα κατά την αποθήκευση του ονόματος της τεχνικής υποστήριξης"
+
+#: ../../../www/radmin/settings.php:315
+msgid "Support link not valid"
+msgstr "Το link της τεχνικής υποστήριξης δεν είναι έγκυρο"
+
+#: ../../../www/radmin/settings.php:320 ../../../www/radmin/settings.php:321
+msgid "Support link updated"
+msgstr "Το link της τεχνικής υποστήριξης ανανεώθηκε"
+
+#: ../../../www/radmin/settings.php:325
+msgid "Error Saving Support link"
+msgstr "Σφάλμα κατά την αποθήκευση του link της τεχνικής υποστήριξης"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:70
+#: ../../../www/radmin/classes/CronFunctions.class.php:105
+#: ../../../www/radmin/classes/CronFunctions.class.php:153
+#: ../../../www/radmin/classes/CronFunctions.class.php:209
+msgid "Upgrading DB failed: "
+msgstr "Αποτυχία κατά την αναβάθμιση της βάσης δεδομένων"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:153
+msgid "Including default_templates file failed"
+msgstr "Το πρότυπο αρχείο απότυχε να συμπεριληφθεί"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:287
+msgid "Database upgraded"
+msgstr "Βάση δεδομένων αναβαθμίστηκε"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:306
+msgid "Unable to select user from radcheck"
+msgstr "Αποτυχία επιλογής χρηστών από radcheck"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:324
+msgid "Unable to cleanup old users from batch "
+msgstr "Αποτυχία καθαρισμού παλιών χρηστών από τις παρτίδες"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:333
+msgid "Unable to cleanup old batches "
+msgstr "Αποτυχία διαγραφής παλιών παρτίδων"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:338
+msgid "Old Batches Cleaned"
+msgstr "Παλιές παρτίδες διαγράφτηκαν"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:370
+msgid "Clearing stale sessions failed: "
+msgstr "Αποτυχία εκκαθάρισης παλιών συνδέσεων"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:374
+msgid "Stale sessions cleared"
+msgstr "Παλιές συνδέσεις εκκαθαρίστηκαν"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:407
+msgid "Fetching users to delete failed"
+msgstr "Ανάκτηση χρηστών προς διαγραφή απέτυχε"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:419
+msgid "Expired users deleted"
+msgstr "Οι χρήστες που έληξαν διαγράφηκαν"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:472
+msgid "Unable to insert data into mtotaccttmp: "
+msgstr "Αδύνατη η εισαγωγή δεδομένων στο mtotaccttmp: "
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:490
+msgid "Unable to delete old radacct data: "
+msgstr "Δεν είναι δυνατή η διαγραφή των παλιών δεδομένων radacct:"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:511
+msgid "Unable to update users Max-Octets: "
+msgstr "Δεν είναι δυνατή η ενημέρωση των χρηστών Max-Octets :"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:530
+msgid "Unable to update users Max-All-Session: "
+msgstr "Δεν είναι δυνατή η ενημέρωση των μέγιστων συνδέσεων των χρηστών"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:566
+msgid "Unable to move mtotaccttmp data to mtotacct: "
+msgstr "Αδυναμία μεταφοράς δεδομένων mtotaccttmp στο mtotacct:"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:579
+msgid "Unable to truncate mtotaccttmp: "
+msgstr "Αδυναμία περικοπής mtotaccttmp :"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:599
+msgid "Unable to ensure positive values in radcheck: "
+msgstr "Δεν είναι δυνατή η εξασφάλιση θετικών τιμών στο radcheck :"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:617
+msgid "Unable to delete ancient radacct data: "
+msgstr "Αδυναμία στην διαγραγή παλιών radacct δεδομένων"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:626
+msgid "Old Radius Accounting Data Archived"
+msgstr "Παλιά αρχεία λογαριασμών radius αρχειοθετήθηκαν"
+
+#: ../../../www/radmin/classes/SettingsMySQL.class.php:471
+msgid "Adding Group query failed:  "
+msgstr "Αποτυχία προσθήκης ομάδος"
+
+#: ../../../www/radmin/classes/SettingsMySQL.class.php:487
+msgid "Delete Group query failed:  "
+msgstr "Αποτυχία διαγραφής ομάδας"
+
+#: ../../../www/radmin/classes/DatabaseConnections.class.php:70
+msgid "DB Config File isn't a valid file."
+msgstr "Το αρχείο ρυθμίσεων της DB δεν είναι είναι συμβατό"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:129
+msgid "Retrieving Sold Usage failed: "
+msgstr "Ανάκτηση Εξαντλημένων Στοιχείων χρήσης απέτυχε:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:163
+msgid "Retrieving Month Usage failed: "
+msgstr "Αποτυχία ανάκτησης Μηνιαίας Χρήστης :"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:180
+msgid "Retrieving Current Month Usage failed: "
+msgstr "Αποτυχία ανάκτησης Χρήσης Τωρινού Μήνα :"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:211
+msgid "Retrieving Session by RadAcctID failed: "
+msgstr "Αποτυχία ανάκτησης Δεδομένων βάση RadAcctID :"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:243
+msgid "Retrieving Sessions by Username failed: "
+msgstr "Ανάκτηση συνδέσεων ανά όνομα χρήστη απέτυχε :"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:264
+msgid "Retrieving Current Session by Username failed: "
+msgstr "Ανάκτηση τωρινών συνδέσεων ανά όνομα χρήστη απέτυχε :"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:285
+msgid "Retrieving Username by Active Session (ipadddress): "
+msgstr "Ανάκτηση όνομα χρηστών ανά ενεργές συνδέσεις (διευθύνσεις IP)"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:309
+msgid "Get User details Query failed: "
+msgstr "Ανάκτηση λεπτομεριών χρήστη απέτυχε :"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:402
+msgid "Get User Group Query failed: "
+msgstr "Ανάκτηση ομάδων χρηστών απέτυχε"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:429
+msgid "Get All Usernames Query Failed: "
+msgstr "Ανάκτηση όλων των ονομάτων χρηστών απέτυχε"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:453
+msgid "Get Users By Group Query Failed: "
+msgstr "Ανάκτηση χρηστών ανά όμάδα απέτυχε"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:479
+msgid "Get User Last Logout Query Failed: "
+msgstr "Ανάκτηση τελευταίας αποσύνδεσης χρηστών απέτυχε"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:508
+msgid "Get User Total Session Time Query failed: "
+msgstr "Ανάκτηση συνολικού χρόνου σύνδεσης χρήστη απέτυχε"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:529
+msgid "Get User Data Usage Query failed: "
+msgstr "Ανάκτηση χρήση δεδομένων χρήστη απέτυχε"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:550
+msgid "Get User Data Usage (Total) Query failed: "
+msgstr "Ανάκτηση χρήση δεδομένων χρήστη (σύνολο) απέτυχε"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:570
+msgid "Get Monthly Data Usage Query failed: "
+msgstr "Ανάκτηση μηνιαίες χρήσης δεδομένων απέτυχε"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:598
+msgid "Get Monthly Data Usage Totals Query failed: "
+msgstr "Ανάκτηση συνολικής μηνιαίας χρήσης δεδομένων απέτυχε"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:624
+msgid "Get User Comment failed: "
+msgstr "Ανάκτηση σχόλιων χρήστη απέτυχε"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:667
+msgid "Deleting radgroupcheck query failed: "
+msgstr "Αποτυχία διαγραφής radgroupcheck :"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:683
+msgid "Adding Group Check Attributes query failed:  "
+msgstr "Αποτυχία ελέγχου ιδιοτήτων ομάδας"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:717
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:730
+msgid "Deleting radgroupreply query failed: "
+msgstr "Αποτυχία διαγραφής radgroupreply "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:812
+msgid "Adding Group Attributes query failed:  "
+msgstr "Αποτυχία προσθήκης ιδιοτήτων ομάδας"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:861
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:870
+msgid "Get Groups details Query failed: "
+msgstr "Ανάκτηση λεπτομεριών ομάδων απέτυχε"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:894
+msgid "Hourly"
+msgstr "Ωριαία"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:895
+msgid "Daily"
+msgstr "Ημερίσιο"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:896
+msgid "Weekly"
+msgstr "Εβδομαδιαίο"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:897
+msgid "Monthly"
+msgstr "Μηναίο"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:963
+msgid "Setting User Comment Query Failed: "
+msgstr "Ρύθμιση σχολίων χρήση απέτυχε"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:982
+msgid "Setting User Group Query Failed: "
+msgstr "Ρύθμιση ομάδας χρηστών απέτυχε"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1003
+msgid "Setting User Datalimit Query Failed: "
+msgstr "Ρύθμιση όριο δεδομένων χρήστη απέτυχε"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1028
+msgid "Getting User Current Data Limit to increase failed: "
+msgstr "Ρύθμιση αύξησης ορίου δεδομένων χρήστη απέτυχε"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1050
+msgid "Setting User Timelimit Query Failed: "
+msgstr "Ρύθμιση όριο χρόνου χρήστη απέτυχε"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1074
+msgid "Getting User Current Time Limit to increase failed: "
+msgstr "Ρύθμιση αύξησης χρόνου χρήστη απέτυχε"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1095
+msgid "Setting User Password Query Failed: "
+msgstr "Ρύθμιση κωδικού χρήστη απέτυχε"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1118
+msgid "Setting User Expiry Date Query Failed: "
+msgstr "Ρύθμιση ημερομηνίας λήξης χρήστη απέτυχε"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1138
+msgid "Deleting User Expiry Date Query Failed: "
+msgstr "Διαγραφή ημερομηνία λήξης χρήστη απέτυχε"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1159
+msgid "Deleting user failed: "
+msgstr "Διαγραφή χρήστη απέτυχε"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1172
+msgid "Deleting users group failed: "
+msgstr "Διαγραφή ομάδα χρηστών απέτυχε"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1185
+msgid "Deleting users comment failed: "
+msgstr "Διαγραφή σχολίων χρηστών απέτυχε"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1205
+msgid "Checking Uniq Username failed: "
+msgstr "Αποτυχία ελέγχου μοναδικότητας ονόματος χρήστη :"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1235
+msgid "Retrieving Chilli Config Single Value failed: "
+msgstr "Αποτυχία ανάκτησης μοναδικής ρύθμισης του Chilli Config"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1269
+msgid "Deleting Chilli Config Query Failed: "
+msgstr "Αποτυχία διαγραφής αρχείου ρυθμίσεων Chilli"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1302
+msgid "Setting Chilli Config Single Query Failed: "
+msgstr "Αποτυχία μονής ρύθμισης του Chilli :"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1324
+msgid "Setting Chilli Config Multi Query Failed: "
+msgstr "Αποτυχία πολλαπλής ρύθμισης του Chilli :"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1345
+msgid "Retrieving Chilli Config Multi Value failed: "
+msgstr "Αποτυχία ανάκτησης πολλαπών τιμών του αρχείου ρυθμίσεων του Chilli"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:83
+msgid "Status"
+msgstr "Κατάσταση"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:84
+msgid "Users"
+msgstr "Χρήστες"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:86
+msgid "New User"
+msgstr "Νέος χρήστης"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:87
+msgid "Batch Users"
+msgstr "Μαζικοί χρήστες"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:88
+msgid "Computer Account"
+msgstr "Λογαριασμός υπολογιστή"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:91
+msgid "Monitor Sessions"
+msgstr "Παρακολούθηση συνδέσεων"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:93
+msgid "Reports"
+msgstr "Αναφορές"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:100
+msgid "Settings"
+msgstr "Ρυθμίσεις"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:102
+msgid "Site Logo"
+msgstr "Λογότυπο site"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:122
+msgid "Logoff"
+msgstr "Αποσύνδεση"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:157
+msgid "System Status"
+msgstr "Κατάσταση συστήματος"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:165
+#: ../../../www/radmin/includes/page_functions.inc.php:227
+msgid "Inherit from group"
+msgstr "Κληροδοτημένο από την ομάδα"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:326
+msgid "Hour"
+msgstr "Ωρα"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:327
+msgid "Day"
+msgstr "Ημέρα"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:328
+msgid "Week"
+msgstr "Εβδομάδα"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:329
+msgid "Month"
+msgstr "Μήνας"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:335
+msgid "Yes"
+msgstr "Ναι"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:335
+msgid "No"
+msgstr "Όχι"
+
+#: ../../../www/radmin/includes/session.inc.php:65
+msgid "Your session has expired. Please login again"
+msgstr "Η σύνδεση σας έχει λήξη. Παρακαλώ συνδεθείτε ξανά"
+
+#: ../../../www/radmin/includes/session.inc.php:69
+msgid "Incorrect Login"
+msgstr "Λανθασμένη είσοδος"
+
+#: ../../../www/radmin/includes/session.inc.php:73
+msgid "Security Issue. Please login again"
+msgstr "Πρόβλημα ασφαλείας. Παρακαλώ συνδεθείτε ξανά."
+
+#: ../../../www/radmin/includes/session.inc.php:77
+msgid "Authentication Issue. Please report to Admin"
+msgstr "Πρόβλημα στην ταυτοποίησης. Παρακαλώ αναφέρετε το πρόβλημα στον Διαχειριστή"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:160
+msgid "Invalid Expiry Date"
+msgstr "Άκυρη ημερομονία λήξης"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:170
+msgid "Expiry Date in the past"
+msgstr "Ήμερομηνία λήξης στο παρελθόν"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:177
+#, php-format
+msgid "Invalid value '%s' for Data Limit"
+msgstr "Άκυρη τιμή '%s' για το όριο δεδομένων"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:184
+#, php-format
+msgid "Invalid recurrance interval '%s'"
+msgstr "Άκυρο επαναληπτικό διάστημα '%s'"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:190
+#, php-format
+msgid "Invalid response to YesNo Question '%s'"
+msgstr "Άκυρη απάντηση σε ερώτηση Ναι/Όχι '%s'"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:196
+#, php-format
+msgid "Invalid Bandwidth Limit '%s'"
+msgstr "Άκυρο όριο εύρους '%s'"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:208
+msgid "Recurring time limit must be less than interval"
+msgstr "Επαναλαμβανόμενο όριο χρόνου πρέπει να είναι μικρότερο από το διάστημα"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:215
+#, php-format
+msgid "Invalid value '%s' for Time Limit"
+msgstr "Άκυρη τιμή '%s' για το χρονικό όριο"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:222
+msgid "MAC Address not in correct format"
+msgstr "Διεύθυνση MAC δεν είναι στην σωστή μορφή"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:229
+#, php-format
+msgid "Invalid number '%s' (Must be whole number)"
+msgstr "Άκυρος αριθμός '%s' (πρέπει να είναι ολόκληρος αριθμός)"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:240
+msgid "Only Machines can be in the Machine group"
+msgstr "Μόνο μηχανές μπορούν να είναι στην ομάδα μηχανών"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:244
+msgid "Invalid Group"
+msgstr "Άκυρη ομάδα"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:319
+msgid "Computers"
+msgstr "Υπολογιστές"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:322
+msgid "Expired"
+msgstr "Ληγμένο"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:399
+msgid "Uploaded Image was too big"
+msgstr "Η φωτογραφία που ανέβηκε ήταν πολύ μεγάλη σε μέγεθος"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:402
+msgid "Error In Uploading"
+msgstr "Σφάλμα κατά το ανέβασμα"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:405
+msgid "No file was uploaded"
+msgstr "Δεν ανέβηκε κανένα αρχείο"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:408
+msgid "Missing a temporary folder"
+msgstr "Λείπει ο προσωρινός φάκελος"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:411
+msgid "Failed to write file to disk"
+msgstr "Αποτυχία να αποθηκευτεί το αρχείο στον δίσκο"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:414
+msgid "File upload stopped by extension"
+msgstr "Το ανέβασμα του αρχείου σταμάτησε λόγο της επέκταστης του"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:417
+msgid "Unknown upload error"
+msgstr "Άγνωστο σφάλμα στο ανέβασμα (upload)"
+
+#: ../../../www/uam/js.php:20
+msgid "Username is required"
+msgstr "Απαιτείτε όνομα χρήστη"
+
+#: ../../../www/uam/js.php:21
+msgid "Are you sure you want to disconnect now?"
+msgstr "Είστε σίγουρος πως θέλετε να αποσυνδεθείτε τώρα?"
+
+#: ../../../www/uam/js.php:22
+msgid "Error loading generic login form"
+msgstr "Σφάλμα κατά την φόρτωση γενικής φόρμας"
+
+#: ../../../www/uam/js.php:23
+msgid ""
+"Popup Blocked. Click link below to continue to your website and open the "
+"status window"
+msgstr "To αναδυόμενο παράθυρο μπλοκαρίστηκε. Κάντε click στο παρακάτω link για να συνεχίσετε με το web site σας"
+
+#: ../../../www/uam/js.php:24
+msgid "Logged In"
+msgstr "Συνδεμένος"
+
+#: ../../../www/uam/js.php:25
+msgid "Click to open the status window and continue to your site"
+msgstr "Κάντε click για ανοίξετε το παράθυρο και να προχωρήσετε στο site σας"
