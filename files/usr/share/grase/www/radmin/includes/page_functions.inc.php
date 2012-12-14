@@ -104,7 +104,7 @@ function createmenuitems()
             'chilliconfig' => array("href" => "chilliconfig", "label" => T_("Coova Chilli Settings") ),
             'loginconfig' => array("href" => "loginconfig", "label" => T_("Portal Customisation") ),
             'groups' => array("href" => "groupconfig", "label" => T_("Groups") ),	
-            'vouchers' => array("href" => "voucherconfig", "label" => T_("Vouchers") ),
+            //'vouchers' => array("href" => "voucherconfig", "label" => T_("Vouchers") ), // DISABLED FOR RELEASE AS NOT YET READY FOR PRODUCTION
 
         )
             
@@ -421,7 +421,10 @@ apply_locale($locale);
 
 $smarty->assign("RealHostname", $realhostname);
 
-
+// Initialise error variables 
+	$errormessages = array();
+	$successmessages = array();
+	$warningmessages = array();
 
 
 function assign_vars()
@@ -490,7 +493,12 @@ function assign_vars()
 	$smarty->assign("groupdata", DatabaseFunctions::getInstance()->getGroupAttributes());
 	$smarty->assign("groupsettings", $Settings->getGroup());		
 	$smarty->assign("groups", grouplist());	
-    
+	
+	// Error, warning, success messages
+	global $errormessages, $successmessages, $warningmessages;
+	if(sizeof($errormessages) != 0)	$smarty->assign("error", $errormessages);
+	if(sizeof($successmessages) != 0)	$smarty->assign("success", $successmessages);
+	if(sizeof($warningmessages) != 0)	$smarty->assign("warningmessages", $warningmessages);		
 	
 	// DEMO SITE flag
 	$smarty->assign("DEMOSITE", $DEMO_SITE);
