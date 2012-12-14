@@ -41,21 +41,6 @@
         <br/><span>{t escape=no locale="<strong>$locale</strong>" language="<strong>$language</strong>" location="<strong>$region</strong>"}Current locale is %1, which sets the language to %2, and location to %3.{/t} {t currency="<strong>$currency</strong>" escape=no}Currency symbol is %1{/t}</span>
     </div>
 
-{* We no longer price it per Mb/Minute
-    <div>
-        <label for='pricemb'>{t}Cost per Mb{/t}</label>
-        <input type="text" name="pricemb" id="pricemb" value='{$pricemb}'/>
-        <span id="pricembInfo">{t}How much to charge per Mb{/t}</span>
-    </div>
-
-
-    <div>
-        <label for='pricetime'>{t}Cost per Minute{/t}</label>
-        <input type="text" name="pricetime" id="pricetime" value='{$pricetime}'/>
-        <span id="pricetimeInfo">{t}How much to charge per Minute{/t}</span>
-    </div>
-*}    
-    
     <div>
         <label for='mboptions'>{t}Data Options{/t}</label>
         <input type="text" name="mboptions" id="mboptions" value='{$mboptions}'/>
