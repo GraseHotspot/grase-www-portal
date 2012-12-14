@@ -31,7 +31,8 @@ function validate_form()
 {
 	global $expirydate;
 	$error = array();
-	if(! checkDBUniqueUsername($_POST['Username'])) $error[] = T_("Username already taken");
+	$username = clean_username($_POST['Username']);
+	if(! checkDBUniqueUsername($username)) $error[] = T_("Username already taken");
 	if ( ! $_POST['Username'] || !$_POST['Password'] ) $error[] = T_("Username and Password are both Required");
 	
    	$MaxMb = clean_number($_POST['MaxMb'] );
@@ -59,7 +60,7 @@ if(isset($_POST['newusersubmit']))
 {
 	$error=validate_form();
 	if($error ){
-		$user['Username'] = clean_text($_POST['Username']);
+		$user['Username'] = clean_username($_POST['Username']);
 		$user['Password'] = clean_text($_POST['Password']);
 		
 		$user['MaxMb'] = displayLocales(clean_number($_POST['MaxMb']));
@@ -101,7 +102,7 @@ if(isset($_POST['newusersubmit']))
 		    
 		    
 		database_create_new_user( // TODO: Check if valid
-			clean_text($_POST['Username']),
+			clean_username($_POST['Username']),
 			clean_text($_POST['Password']),
 			$MaxMb,
 			$MaxTime,

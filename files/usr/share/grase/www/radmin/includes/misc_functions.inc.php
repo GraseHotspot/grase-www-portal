@@ -468,6 +468,16 @@ function clean_groupname($text)
   return underscorespaces(clean_text($text));
 }
 
+function clean_username($text)
+{
+    // Usernames should be stricter than other strings, ' and " just cause problems
+    $text = clean_text($text);
+    $text = str_replace("'", "", $text);
+    $text = str_replace('"', "", $text);    
+    // Maybe should also strip spaces?
+    return $text;
+}
+
 
 function clean_text($text)
 {
