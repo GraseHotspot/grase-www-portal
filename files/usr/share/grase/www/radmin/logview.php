@@ -180,7 +180,7 @@ function build_perl_command($conditions)
 		//";*/
 		// TODO: FIXME: Ensure this is squid3 logs
 		// DONE: Add www-data to proxy group so can access logs, ensure logs rotate not compressed
-		$command = "cat /var/log/squid3/access.log*  | $perlcommand ";
+		$command = "gunzip -fc /var/log/squid3/access.log*  | $perlcommand ";
 	}else
 	{
 		$error = "Invalid Acctid";
