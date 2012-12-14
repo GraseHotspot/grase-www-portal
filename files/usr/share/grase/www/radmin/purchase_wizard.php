@@ -1,4 +1,5 @@
 <?php
+exit 0; // DISABLED FOR RELEASE AS NOT YET READY FOR PRODUCTION
 /* Copyright 2012 Timothy White */
 /*  This file is part of GRASE Hotspot.
 
