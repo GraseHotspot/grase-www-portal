@@ -10,7 +10,7 @@
 <form method='post' name='edituser' action='' class='generalForm'>
 <div>
     <label for='Username'>{t}Username{/t}</label>
-    <input disabled='disabled' type="text" name="Username" value='{$user.Username}'/>
+    <input disabled='disabled' type="text" name="Username" value='{$user.Username|escape}'/>
     <span id="UsernameInfo">&nbsp;</span>
 </div>
 
@@ -54,8 +54,14 @@
 
 <div>
     <label for='Comment'>{t}Comment{/t}</label>
-    <input type="text" name="Comment" value='{$user.Comment}' autofocus="autofocus"/>
+    <input type="text" name="Comment" value='{$user.Comment|escape}' autofocus="autofocus"/>
     <span id='CommentInfo'>{t}A comment about the user{/t}</span>
+</div>
+
+<div>
+    <label for='LockReason'>{t}Account Lock Reason{/t}</label>
+    <input type="text" name="LockReason" value='{$user.LockReason|escape}'/>
+    <span id='LockReasonInfo'>{t}Enter a reason in here to lock the users account. Clear the reason to unlock the account{/t}</span>
 </div>
 
     <span>{t}When ether limit is reached, the user will be cut off. (i.e. after 1hour even if they still have data left){/t}<br/>

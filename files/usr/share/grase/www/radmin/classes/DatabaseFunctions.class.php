@@ -331,6 +331,7 @@ class DatabaseFunctions
         if($this->usercacheloaded && $force == false) return true;
         
         // Load all the user details we are going to lookup and cache them!
+        
         // Radcheck
         $sql = "SELECT Attribute, Value, UserName FROM radcheck";
         
@@ -346,6 +347,23 @@ class DatabaseFunctions
         {
             $this->usercache[$row['UserName']]['radcheck'][$row['Attribute']] = $row['Value'];
         }        
+        
+        // Radreply
+        $sql = "SELECT Attribute, Value, UserName FROM radreply";
+        
+        $results = $this->db->queryAll($sql);
+        
+        if (PEAR::isError($results))
+        {
+            ErrorHandling::fatal_db_error(
+                T_('Get All User radreply details Query failed: '), $results);
+        }
+        
+        foreach ($results as $row) 
+        {
+            $this->usercache[$row['UserName']]['radreply'][$row['Attribute']] = $row['Value'];
+        }        
+        
         
         // Usergroup
         $sql = "SELECT GroupName, UserName FROM radusergroup";
@@ -436,6 +454,7 @@ class DatabaseFunctions
         if($this->usercacheloaded)
         {
             $Userdata = $this->usercache[$username]['radcheck'];
+            $Userreplydata = $this->usercache[$username]['radreply'];            
             $Userdata['Username'] = $username;
         }else{
             
@@ -459,6 +478,26 @@ class DatabaseFunctions
             foreach ($results as $attribute) 
             {
                 $Userdata[$attribute['Attribute']] = $attribute['Value'];
+            }
+            
+            // Get radreply attributes
+            $sql = sprintf("SELECT Attribute, Value
+                            FROM radreply
+                            WHERE Username = %s",
+                            $this->db->quote($username)
+                            );
+                            
+            $results = $this->db->queryAll($sql);
+            
+            if (PEAR::isError($results))
+            {
+                ErrorHandling::fatal_db_error(
+                    T_('Get User radreply details Query failed: '), $results);
+            }
+            
+            foreach ($results as $attribute) 
+            {
+                $Userreplydata[$attribute['Attribute']] = $attribute['Value'];
             }
             
         }
@@ -493,6 +532,17 @@ class DatabaseFunctions
         {
             $Userdata['Expiration'] = "--";
             $Userdata['FormatExpiration'] = "--";
+        }
+        
+        // User Account Lockout
+        if (isset($Userdata['Auth-Type']))
+        {
+            // Check we are actually locked (Reject)
+            if($Userdata['Auth-Type'] == "Reject"){
+                $Userdata['AccountLock'] = true;
+                $Userdata['LockReason'] = $Userreplydata['Reply-Message'];
+            }
+            // Get message
         }
         
         // User "time" limit

@@ -31,6 +31,7 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
 {
 	$error = array();
 	$success = array();
+
 	$username = mysql_real_escape_string($_GET['username']); // TODO change this? i.e. make database class do it if it doesn't already
 	$user = getDBUserDetails($_GET['username']);
 	
@@ -73,6 +74,21 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
 			$success[] = T_("Comment Changed");
 			AdminLog::getInstance()->log("Comment changed for $username");        
         }
+        
+        // Lock/Unlock update
+        if(clean_text($_POST['LockReason']) != $user['LockReason'])
+        {
+            if(clean_text($_POST['LockReason']) == ''){
+		        DatabaseFunctions::getInstance()->unlockUser($username);
+		        $success[] = T_("User Account Unlocked");
+    			AdminLog::getInstance()->log("Account $username unlocked");        
+	        }else{
+		        DatabaseFunctions::getInstance()->lockUser($username, clean_text($_POST['LockReason']));
+		        $success[] = T_("User Account Locked");
+    			AdminLog::getInstance()->log("Account $username locked: ".clean_text($_POST['LockReason']));        
+	        }
+
+        }        
         
         // Increase Data Limit
         if(clean_number($_POST['Add_Mb']))
@@ -181,15 +197,21 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
 		//}
 		
 	}
+	
+
 
 	$smarty->assign("error", $error);
 	$smarty->assign("success", $success);
 	
 	// if $success we need to reload the info
 	if(sizeof($success) > 0 || sizeof($error) > 0)	
-    	$smarty->assign("user", getDBUserDetails($_GET['username']));
-	else
-    	$smarty->assign("user", $user);	
+    	$user = getDBUserDetails($_GET['username']);
+
+    // After potential reload, we can assign it to smarty
+   	$smarty->assign("user", $user);	
+
+    // After all user details are loaded, we can load our warning
+    if($user['AccountLock'] == true) $warningmessages[] = T_('User account is locked and will not be able to login');
 	
 	display_page('edituser.tpl');
 
