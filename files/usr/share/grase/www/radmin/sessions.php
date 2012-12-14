@@ -32,9 +32,25 @@ require_once 'includes/database_functions.inc.php';
 	    $smarty->assign("sessions", getDBSessionsAccounting($_GET['username']));
 	    $smarty->assign("username", $_GET['username']);
 	}
-	else
+	elseif(isset($_GET['allsessions']))
 	{
-        $smarty->assign("sessions", getDBSessionsAccounting());
+	    $sessions = getDBSessionsAccounting();
+	    $totalrows = sizeof($sessions);
+	    $numPerPage = $_GET['items'] ? abs($_GET['items']) : 25; // TODO check this is safe
+	    $page = $_GET['page'] ? abs($_GET['page']) : 0; //TODO check this is safe
+	    
+	    $pages = floor($totalrows/$numPerPage);
+	    if($page > $pages) $page = $pages;
+	    $currentstartitem = $page * $numPerPage;
+	    
+	    $displaysessions = array_slice($sessions, $currentstartitem, $numPerPage, TRUE );
+    	$smarty->assign("sessions", $displaysessions);        
+    	
+    	$smarty->assign("pages", $pages);
+    	$smarty->assign("perpage", $numPerPage);
+    	$smarty->assign("currentpage", $page);
+    }else{
+        $smarty->assign("activesessions", DatabaseFunctions::getInstance()->getActiveRadiusSessionsDetails());
     }
 
 	display_page('sessions.tpl');

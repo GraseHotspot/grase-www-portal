@@ -302,7 +302,7 @@ th.headerSortUp {
     font-size: 70%;
 }
 
-#sessionslistTable {
+#sessionslistTable, #activesessionslistTable {
 	font-size: 80%;
 }
 
@@ -476,6 +476,13 @@ ul#statusmon li {
 .time {
 	color: black;
 	font-size: 80%;
+}
+
+.paginate {
+    text-align: center;
+    width: 75%;
+    margin: auto;
+
 }
 
 /* Forms extra stuff */

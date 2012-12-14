@@ -249,6 +249,39 @@ class DatabaseFunctions
         
     }
     
+    public function getActiveRadiusSessionsDetails($username = '') 
+    {
+        $where_clause = sprintf("AND Username = %s", $this->db->quote($username));
+        if($username == '') $where_clause = '';
+        $sql = sprintf("SELECT RadAcctId,
+            AcctStartTime,
+            AcctStopTime,
+            AcctSessionTime,
+            AcctTerminateCause,
+            ServiceType,            
+            FramedIPAddress,
+            Username,
+            AcctInputOctets,
+            AcctOutputOctets,
+            AcctInputOctets + AcctOutputOctets AS AcctTotalOctets,
+            CallingStationId
+            FROM radacct
+            WHERE (AcctStopTime = '' OR AcctStopTime IS NULL)
+            %s
+            ORDER BY RadAcctId DESC",
+            $where_clause);
+            
+        $sessions = $this->db->queryAll($sql);
+        
+        if (PEAR::isError($sessions))
+        {
+            ErrorHandling::fatal_db_error(
+                T_('Retrieving Sessions by Username failed: '), $sessions);
+        }        
+        return $sessions;            
+        
+    }    
+    
     public function getRadiusIDCurrentSessionByUser($username)
     {
         // Gets the username for an active session based on ip address
