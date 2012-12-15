@@ -2,6 +2,12 @@
 
 {if $username}<h2>{t 1=$username}Sessions for %1{/t}</h2>{/if}
 
+{if !$activesessions && !$sessions}
+<h2>{t}Active Sessions{/t}</h2>
+<h3>{t}No active sessions{/t}</h3>
+<a href="?allsessions">{t}Display all Sessions{/t}</a>
+{/if}
+
 {if $activesessions}
 <h2>{t}Active Sessions{/t}</h2>
 <a href="?allsessions">{t}Display all Sessions{/t}</a>

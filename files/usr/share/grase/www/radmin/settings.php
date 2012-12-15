@@ -37,8 +37,8 @@ if(isset($_POST['submit']))
         $newlocationname    = clean_text($_POST['locationname']);
         $newsupportcontact  = clean_text($_POST['supportcontact']);    
         $newsupportlink     = clean_text($_POST['supportlink']);
-	$newpricemb         = clean_number($_POST['pricemb']);
-	$newpricetime       = clean_number($_POST['pricetime']);
+//	$newpricemb         = clean_number($_POST['pricemb']);
+//	$newpricetime       = clean_number($_POST['pricetime']);
 	$newmboptions       = clean_numberarray($_POST['mboptions']);
 	$newtimeoptions     = clean_numberarray($_POST['timeoptions']);
 	$newbwoptions       = clean_numberarray($_POST['bwoptions']);	
@@ -53,7 +53,7 @@ if(isset($_POST['submit']))
     if($newlocationname != $location) update_location($newlocationname);
     if($newsupportcontact != $support_name) update_supportcontact($newsupportcontact);    
     if($newsupportlink != $support_link) update_supportlink($newsupportlink);    
-    if($newpricemb != $pricemb) update_pricemb($newpricemb);
+//    if($newpricemb != $pricemb) update_pricemb($newpricemb);
     //if($newtimeoptions != $time_options) update_timeoptions($newtimeoptions);
     if($newlocale != $locale) update_locale($newlocale);
     if($newwebsitename != $website_name) update_websitename($newwebsitename);
@@ -94,8 +94,8 @@ if(isset($_POST['submit']))
 load_global_settings(); // Reloads settings
 
 	$smarty->assign("location", $location);
-	$smarty->assign("pricemb", displayLocales($pricemb));
-	$smarty->assign("pricetime", displayLocales($pricetime));
+//	$smarty->assign("pricemb", displayLocales($pricemb));
+//	$smarty->assign("pricetime", displayLocales($pricetime));
 	$smarty->assign("mboptions", $mb_options);
 	$smarty->assign("timeoptions", $time_options);	
 	$smarty->assign("bwoptions", $kbit_options);		
@@ -182,6 +182,7 @@ function update_websitelink($websitelink)
 
 // Pricing
 
+/*
 function update_pricemb($pricemb)
 {
     global $error, $smarty, $Settings, $success;
@@ -221,6 +222,7 @@ function update_pricetime($pricetime)
 		$error[] = T_("Invalid Price per Minute");
 	}
 }
+*/
 
 // Data and Time selections
 
