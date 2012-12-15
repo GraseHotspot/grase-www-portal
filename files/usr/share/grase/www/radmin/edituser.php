@@ -83,9 +83,10 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
 		        $success[] = T_("User Account Unlocked");
     			AdminLog::getInstance()->log("Account $username unlocked");        
 	        }else{
-		        DatabaseFunctions::getInstance()->lockUser($username, clean_text($_POST['LockReason']));
+	            // Using clean_username as the LockReason is processed by JSON from CoovaChilli from Radius and so ' and " don't carry well
+	            		        DatabaseFunctions::getInstance()->lockUser($username, clean_username($_POST['LockReason']));
 		        $success[] = T_("User Account Locked");
-    			AdminLog::getInstance()->log("Account $username locked: ".clean_text($_POST['LockReason']));        
+    			AdminLog::getInstance()->log("Account $username locked: ".clean_username($_POST['LockReason']));        
 	        }
 
         }        

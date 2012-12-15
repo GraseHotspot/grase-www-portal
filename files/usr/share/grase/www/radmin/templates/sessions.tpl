@@ -10,8 +10,8 @@
 	<table border="0" id='activesessionslistTable' class="stripeMe">
 	    <col style="width: 2em"/>
 	    <col span="2" style="width: 6em"/>	    	    
-	    <col span="2" style="width: 4em"/>
-	    <col span="2" style="width: 5em"/>		    
+	    <col span="1" style="width: 3em"/>
+	    <col span="3" style="width: 5em"/>		    
 		<thead>
 		<tr id='activesessionsattributesRow' class="sessionheader">
 			<th>#</th>
@@ -38,7 +38,7 @@
 			<a href="?username={$session.Username}">{$session.Username}</a><a class="ui-icon ui-icon-person" style="display:inline-block" href="edituser?username={$session.Username}"></a>
 			{/if}
 			</td>
-			<td title='{$session.AcctTotalOctets}'>{$session.AcctTotalOctets|bytes}<br/><span class="ui-icon ui-icon-arrowthick-1-n" style="display:inline-block"></span>{$session.AcctInputOctets|bytes} <span class="ui-icon ui-icon-arrowthick-1-s" style="display:inline-block"></span>{$session.AcctOutputOctets|bytes} </td>				
+			<td title='{$session.AcctTotalOctets}'>{$session.AcctTotalOctets|bytes}<br/><span class="ui-icon ui-icon-arrowthick-1-s" style="display:inline-block"></span>{$session.AcctInputOctets|bytes} <span class="ui-icon ui-icon-arrowthick-1-n" style="display:inline-block"></span>{$session.AcctOutputOctets|bytes} </td>				
 		</tr>
 		{/foreach}
 		</tbody>
@@ -55,15 +55,15 @@
 	<table border="0" id='sessionslistTable' class="stripeMe">
 	    <col style="width: 2em"/>
 	    <col span="2" style="width: 6em"/>	    	    
-	    <col span="2" style="width: 4em"/>
-	    <col span="2" style="width: 5em"/>	
+	    <col span="1" style="width: 3em"/>
+	    <col span="3" style="width: 5em"/>	
 		<thead>
 		<tr id='sessionsattributesRow' class="sessionheader">
 			<th>#</th>
 			<th><!--AcctStartTime-->{t}Start Time{/t}</th>
 			<th><!--AcctStopTime-->{t}Stop Time{/t}</th>
 			<th><!--AcctSessionTime-->{t}Time{/t}</th>
-			<th><!--FramedIPAddress-->{t}IP Address{/t}</th>
+			<th><!--FramedIPAddress-->{t}IP/MAC Address{/t}</th>
 			<th>{t}Username{/t}</th>
 			<th>{t}Data Usage{/t}</th>
 		</tr>	
@@ -83,7 +83,7 @@
 			<a href="?username={$session.Username}">{$session.Username}</a><a class="ui-icon ui-icon-person" style="display:inline-block" href="edituser?username={$session.Username}"></a>
 			{/if}
 			</td>
-			<td title='{$session.AcctTotalOctets}'>{$session.AcctTotalOctets|bytes}<br/><span class="ui-icon ui-icon-arrowthick-1-n" style="display:inline-block"></span>{$session.AcctInputOctets|bytes} <span class="ui-icon ui-icon-arrowthick-1-s" style="display:inline-block"></span>{$session.AcctOutputOctets|bytes} </td>				
+			<td title='{$session.AcctTotalOctets}'>{$session.AcctTotalOctets|bytes}<br/><span class="ui-icon ui-icon-arrowthick-1-s" style="display:inline-block"></span>{$session.AcctInputOctets|bytes} <span class="ui-icon ui-icon-arrowthick-1-n" style="display:inline-block"></span>{$session.AcctOutputOctets|bytes} </td>				
 		</tr>
 		{/foreach}
 		</tbody>

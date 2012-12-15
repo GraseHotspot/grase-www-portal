@@ -1,3 +1,4 @@
+{if $pages > 0}
 <div class='paginate'>
 
  
@@ -24,3 +25,4 @@
 
 
 </div>
+{/if}

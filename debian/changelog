@@ -1,10 +1,13 @@
-grase-www-portal (3.7.7-UNRELEASED) purewhite; urgency=low
+grase-www-portal (3.7.7) purewhite; urgency=low
 
   * Data and Time limits are no longer tied to $ amounts
   * Data, Time and Bandwidth options are customisable
-  * Creation of Vouchers that you can "sell"
+  * DHCP Start/End options (fixes #85) thanks to Peter Boon
+  * Fix lots of <? to <?php so we don't break on some php's
+  * Ability to lock and unlock users (#77)
+  * Tidyup Monitor sessions with pagination (#84, #90)
 
- -- Tim White <tim@grasehotspot.org>  Tue, 11 Sep 2012 15:45:06 +1000
+ -- Tim White <tim@grasehotspot.org>  Sat, 15 Dec 2012 13:57:46 +1000
 
 grase-www-portal (3.7.6) purewhite; urgency=low
 
