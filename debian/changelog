@@ -1,3 +1,9 @@
+grase-www-portal (3.7.7.2) purewhite; urgency=low
+
+  * Fix bug with data and time values not being the right value (#93)
+
+ -- Tim White <tim@grasehotspot.org>  Fri, 21 Dec 2012 08:17:04 +1000
+
 grase-www-portal (3.7.7.1) purewhite; urgency=low
 
   * Few minor fixups for active sessions

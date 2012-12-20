@@ -166,7 +166,7 @@ function datacosts()
 	global $datacosts;//, $pricemb, $currency;
 	//$disp_currency = $CurrencySymbols[$currency];
 	$datacosts['inherit'] = T_('Inherit from group');
-	$datacosts = array_merge($datacosts, datavals());
+	$datacosts = $datacosts + datavals();
 	/*$datacosts[''] = '';
 	$money_options = array($pricemb, 5, 10, 15, 20, 25, 30, 40, 50, 75, 100);
 	foreach($money_options as $money)
@@ -231,7 +231,7 @@ function timecosts()
 {
 	global $timecosts;//, $pricetime, $currency, $time_options;
 	$timecosts['inherit'] = T_('Inherit from group');
-	$timecosts = array_merge($timecosts, timevals());
+	$timecosts = $timecosts + timevals();
 		
 /*	//$pricemb = $price; // 60c/Mb
 	$timeoptions = explode(" ", $time_options);
