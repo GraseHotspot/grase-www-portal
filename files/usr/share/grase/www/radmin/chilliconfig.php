@@ -59,11 +59,11 @@ $singlechillioptions = array(
     'dhcpstart' => array(
         "label" => T_("DHCP Start"),
         "description" => T_("Start of DHCP Range"),
-        "type" => "int"),
+        "type" => "ip"),
     'dhcpend' => array(
         "label" => T_("DHCP End"),
         "description" => T_("End of DHCP Range"),
-        "type" => "int"),
+        "type" => "ip"),
     );    
     
 load_chillioptions();   
@@ -83,6 +83,9 @@ if(isset($_POST['submit']))
                 break;
             case "number":
                 $postvalue = trim(clean_number($_POST[$singleoption]));
+                break;
+            case "ip":
+                $postvalue = long2ip(ip2long(trim($_POST[$singleoption])));
                 break;
                 
         }
@@ -124,6 +127,10 @@ if(isset($_POST['submit']))
                 case "number":
                     $postvalue[] = clean_number($value);
                     break;
+                case "ip":
+                    if(trim($value))
+                        $postvalue[] = long2ip(ip2long(trim($value)));
+                    break; 
                     
             }
         
