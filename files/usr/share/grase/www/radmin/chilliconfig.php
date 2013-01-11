@@ -56,14 +56,15 @@ $singlechillioptions = array(
         "label" => T_("DHCP Lease time"),
         "description" => T_("DHCP lease time in seconds."),
         "type" => "int"),
+        // TODO Somehow validate these values?
     'dhcpstart' => array(
         "label" => T_("DHCP Start"),
-        "description" => T_("Start of DHCP Range"),
-        "type" => "ip"),
+        "description" => T_("Start of DHCP Range (offset from start of network range)"),
+        "type" => "int"),
     'dhcpend' => array(
         "label" => T_("DHCP End"),
-        "description" => T_("End of DHCP Range"),
-        "type" => "ip"),
+        "description" => T_("End of DHCP Range (offset from start of network range)"),
+        "type" => "int"),
     );    
     
 load_chillioptions();   

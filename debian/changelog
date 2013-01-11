@@ -1,3 +1,9 @@
+grase-www-portal (3.7.7.4) purewhite; urgency=low
+
+  * Undo incorrect dhcp start/end fix
+
+ -- Tim White <tim@grasehotspot.org>  Sat, 12 Jan 2013 06:47:15 +1000
+
 grase-www-portal (3.7.7.3) purewhite; urgency=low
 
   * Fix dhcp start/end range filtering
