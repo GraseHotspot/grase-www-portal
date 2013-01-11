@@ -332,6 +332,8 @@ class DatabaseFunctions
         
         // Load all the user details we are going to lookup and cache them!
         
+        /* Lowercase the initial key (username) to make lookups case insensitive!! */
+        
         // Radcheck
         $sql = "SELECT Attribute, Value, UserName FROM radcheck";
         
@@ -345,7 +347,7 @@ class DatabaseFunctions
         
         foreach ($results as $row) 
         {
-            $this->usercache[$row['UserName']]['radcheck'][$row['Attribute']] = $row['Value'];
+            $this->usercache[mb_strtolower($row['UserName'])]['radcheck'][$row['Attribute']] = $row['Value'];
         }        
         
         // Radreply
@@ -361,7 +363,7 @@ class DatabaseFunctions
         
         foreach ($results as $row) 
         {
-            $this->usercache[$row['UserName']]['radreply'][$row['Attribute']] = $row['Value'];
+            $this->usercache[mb_strtolower($row['UserName'])]['radreply'][$row['Attribute']] = $row['Value'];
         }        
         
         
@@ -378,7 +380,7 @@ class DatabaseFunctions
         
         foreach ($results as $user) 
         {
-            $this->usercache[$user['UserName']]['GroupName'] = $user['GroupName'];
+            $this->usercache[mb_strtolower($user['UserName'])]['GroupName'] = $user['GroupName'];
         }
         
         // Comment
@@ -394,7 +396,7 @@ class DatabaseFunctions
         
         foreach ($results as $user) 
         {
-            $this->usercache[$user['UserName']]['Comment'] = $user['Comment'];
+            $this->usercache[mb_strtolower($user['UserName'])]['Comment'] = $user['Comment'];
         }       
         // AcctTotalOctets from radacct
         // AcctSessionTime from radacct
@@ -417,9 +419,9 @@ class DatabaseFunctions
         
         foreach ($results as $user) 
         {
-            $this->usercache[$user['UserName']]['AcctTotalOctets'] = $user['AcctTotalOctets'];
-            $this->usercache[$user['UserName']]['AcctSessionTime'] = $user['AcctSessionTime'];
-            $this->usercache[$user['UserName']]['LastLogout'] = $user['LastLogout'];
+            $this->usercache[mb_strtolower($user['UserName'])]['AcctTotalOctets'] = $user['AcctTotalOctets'];
+            $this->usercache[mb_strtolower($user['UserName'])]['AcctSessionTime'] = $user['AcctSessionTime'];
+            $this->usercache[mb_strtolower($user['UserName'])]['LastLogout'] = $user['LastLogout'];
         }
         
         // TotalTime from mtotacct        
@@ -439,8 +441,8 @@ class DatabaseFunctions
         
         foreach ($results as $user) 
         {
-            $this->usercache[$user['UserName']]['TotalTime'] = $user['TotalTime'];
-            $this->usercache[$user['UserName']]['TotalOctets'] = $user['TotalOctets'];
+            $this->usercache[mb_strtolower($user['UserName'])]['TotalTime'] = $user['TotalTime'];
+            $this->usercache[mb_strtolower($user['UserName'])]['TotalOctets'] = $user['TotalOctets'];
         }
         
         $this->usercacheloaded = true;
@@ -453,8 +455,8 @@ class DatabaseFunctions
         //$row['UserName']]['radcheck'][$row['Attribute']] = $row['Value'];
         if($this->usercacheloaded)
         {
-            $Userdata = $this->usercache[$username]['radcheck'];
-            $Userreplydata = $this->usercache[$username]['radreply'];            
+            $Userdata = $this->usercache[mb_strtolower($username)]['radcheck'];
+            $Userreplydata = $this->usercache[mb_strtolower($username)]['radreply'];            
             $Userdata['Username'] = $username;
         }else{
             
@@ -596,7 +598,7 @@ class DatabaseFunctions
     
     public function getUserGroup($username)
     {
-        if($this->usercacheloaded) return $this->usercache[$username]['GroupName'];
+        if($this->usercacheloaded) return $this->usercache[mb_strtolower($username)]['GroupName'];
         // Get users group
         $sql = sprintf("SELECT GroupName
                         FROM radusergroup
@@ -675,7 +677,7 @@ class DatabaseFunctions
     {
         if($this->usercacheloaded)
         {
-            $results = $this->usercache[$username]['LastLogout'];
+            $results = $this->usercache[mb_strtolower($username)]['LastLogout'];
         }else{
             // Get Last Logout
             $sql = sprintf("SELECT AcctStopTime
@@ -709,7 +711,7 @@ class DatabaseFunctions
     // Session time for current month TODO: rename?
     public function getUserTotalSessionTime($username)
     {
-        if($this->usercacheloaded) return $this->usercache[$username]['AcctSessionTime'];
+        if($this->usercacheloaded) return $this->usercache[mb_strtolower($username)]['AcctSessionTime'];
         // Get Total Session Time
         $sql = sprintf("SELECT
 		              SUM(AcctSessionTime)
@@ -733,7 +735,7 @@ class DatabaseFunctions
     {
         if($this->usercacheloaded)
         {
-            $results =  $this->usercache[$username]['TotalTime'];
+            $results =  $this->usercache[mb_strtolower($username)]['TotalTime'];
         }else{
             // Get Time usage
             $sql = sprintf("SELECT (
@@ -758,7 +760,7 @@ class DatabaseFunctions
     
     public function getUserDataUsage($username)
     {
-        if($this->usercacheloaded) return $this->usercache[$username]['AcctTotalOctets'] + 0;
+        if($this->usercacheloaded) return $this->usercache[mb_strtolower($username)]['AcctTotalOctets'] + 0;
 
         // Get Data usage
         $sql = sprintf("SELECT (
@@ -768,7 +770,7 @@ class DatabaseFunctions
 		              FROM radacct
 		              WHERE UserName= %s",
 		              $this->db->quote($username, 'text', true, true));
-		              
+		
 		$results = $this->db->queryOne($sql);
 		if (PEAR::isError($results))
 		{
@@ -783,7 +785,7 @@ class DatabaseFunctions
     {
         if($this->usercacheloaded)
         {
-            $results =  $this->usercache[$username]['TotalOctets'];
+            $results =  $this->usercache[mb_strtolower($username)]['TotalOctets'];
         }else{
         // Get Data usage
             $sql = sprintf("SELECT (
@@ -793,7 +795,7 @@ class DatabaseFunctions
 		                  FROM mtotacct
 		                  WHERE UserName= %s",
 		                  $this->db->quote($username, 'text', true, true));
-		                  
+		
 		    $results = $this->db->queryOne($sql);
 		    if (PEAR::isError($results))
 		    {
@@ -864,7 +866,7 @@ class DatabaseFunctions
 
     public function getUserComment($username)
     {
-        if($this->usercacheloaded) return trim($this->usercache[$username]['Comment']);
+        if($this->usercacheloaded) return trim($this->usercache[mb_strtolower($username)]['Comment']);
         
         $sql = sprintf("SELECT Comment
                          FROM radusercomment

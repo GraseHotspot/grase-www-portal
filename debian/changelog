@@ -1,3 +1,9 @@
+grase-www-portal (3.7.7.5) purewhite; urgency=low
+
+  * Fix case insensitive usernames to still show correct usage 
+
+ -- Tim White <tim@grasehotspot.org>  Sat, 12 Jan 2013 07:33:52 +1000
+
 grase-www-portal (3.7.7.4) purewhite; urgency=low
 
   * Undo incorrect dhcp start/end fix
