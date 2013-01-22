@@ -1,8 +1,8 @@
-grase-www-portal (3.7.7.6) UNRELEASED; urgency=low
+grase-www-portal (3.7.7.6) purewhite; urgency=low
 
   * Fix bug in Service-Type check for CoovaChilli user
 
- -- Tim White <tim@grasehotspot.org>  Tue, 22 Jan 2013 14:55:18 +1000
+ -- Tim White <tim@grasehotspot.org>  Tue, 22 Jan 2013 14:55:54 +1000
 
 grase-www-portal (3.7.7.5) purewhite; urgency=low
 
