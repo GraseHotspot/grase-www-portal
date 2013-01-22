@@ -1,3 +1,9 @@
+grase-www-portal (3.7.7.6) UNRELEASED; urgency=low
+
+  * Fix bug in Service-Type check for CoovaChilli user
+
+ -- Tim White <tim@grasehotspot.org>  Tue, 22 Jan 2013 14:55:18 +1000
+
 grase-www-portal (3.7.7.5) purewhite; urgency=low
 
   * Fix case insensitive usernames to still show correct usage 

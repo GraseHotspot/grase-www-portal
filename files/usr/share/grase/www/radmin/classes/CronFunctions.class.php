@@ -97,7 +97,7 @@ class CronFunctions extends DatabaseFunctions
             $result = $this->replace_radcheck_query(
                 RADIUS_CONFIG_USER, 
                 'Service-Type', 
-                ':=',
+                '==',
                 'Administrative-User');
             
             if (PEAR::isError($result))
@@ -337,6 +337,26 @@ class CronFunctions extends DatabaseFunctions
                 $results += $result;                          
 
             $Settings->setSetting("DBVersion", 2.2);                
+        }
+        
+        if($olddbversion < 2.3)
+        {                
+            // Previously we incorrectly set Service-Type op to := instead of ==
+            // Set Radius Config user Service-Type to filter it out of normal users
+            $result = $this->replace_radcheck_query(
+                RADIUS_CONFIG_USER, 
+                'Service-Type', 
+                '==',
+                'Administrative-User');
+            
+            if (PEAR::isError($result))
+            {
+                return T_('Upgrading DB failed: ') . $result->toString();
+            }
+            
+            $results += $result;
+            
+            $Settings->setSetting("DBVersion", 2.3);
         }
 
 
