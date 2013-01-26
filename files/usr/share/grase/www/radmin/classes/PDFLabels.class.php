@@ -56,7 +56,7 @@ class PDFLabels {
     private $PaperSize = 'a4';
     private $PaperOrientation = 'P';
     // Font
-    private $Font_Name = 'Helvetica';
+    private $Font_Name = 'freesans'; // Need to make this configurable as this will define what Languages will print properly
     //private $Font_Name = 'Courier';
     
     private $COUNTX = 1;
