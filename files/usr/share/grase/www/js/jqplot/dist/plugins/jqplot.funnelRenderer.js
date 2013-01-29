@@ -2,9 +2,10 @@
  * jqPlot
  * Pure JavaScript plotting plugin using jQuery
  *
- * Version: 1.0.0b1_r746
+ * Version: 1.0.4
+ * Revision: 1121
  *
- * Copyright (c) 2009-2011 Chris Leonello
+ * Copyright (c) 2009-2012 Chris Leonello
  * jqPlot is currently available for use in all personal or commercial projects 
  * under both the MIT (http://www.opensource.org/licenses/mit-license.php) and GPL 
  * version 2.0 (http://www.gnu.org/licenses/gpl-2.0.html) licenses. This means that you can 
@@ -802,14 +803,13 @@
                 }
             }
         }
-        this.target.bind('mouseout', {plot:this}, function (ev) { unhighlight(ev.data.plot); });
     }
     
     // called with scope of plot
     function postParseOptions(options) {
         for (var i=0; i<this.series.length; i++) {
             this.series[i].seriesColors = this.seriesColors;
-            this.series[i].colorGenerator = this.colorGenerator;
+            this.series[i].colorGenerator = $.jqplot.colorGenerator;
         }
     }
     
@@ -841,6 +841,7 @@
             plot.target.trigger(evt1, ins);
             if (plot.series[ins[0]].highlightMouseOver && !(ins[0] == plot.plugins.funnelRenderer.highlightedSeriesIndex && ins[1] == plot.series[ins[0]]._highlightedPoint)) {
                 var evt = jQuery.Event('jqplotDataHighlight');
+		evt.which = ev.which;
                 evt.pageX = ev.pageX;
                 evt.pageY = ev.pageY;
                 plot.target.trigger(evt, ins);
@@ -857,6 +858,7 @@
             var ins = [neighbor.seriesIndex, neighbor.pointIndex, neighbor.data];
             if (plot.series[ins[0]].highlightMouseDown && !(ins[0] == plot.plugins.funnelRenderer.highlightedSeriesIndex && ins[1] == plot.series[ins[0]]._highlightedPoint)) {
                 var evt = jQuery.Event('jqplotDataHighlight');
+		evt.which = ev.which;
                 evt.pageX = ev.pageX;
                 evt.pageY = ev.pageY;
                 plot.target.trigger(evt, ins);
@@ -879,6 +881,7 @@
         if (neighbor) {
             var ins = [neighbor.seriesIndex, neighbor.pointIndex, neighbor.data];
             var evt = jQuery.Event('jqplotDataClick');
+	    evt.which = ev.which;
             evt.pageX = ev.pageX;
             evt.pageY = ev.pageY;
             plot.target.trigger(evt, ins);
@@ -893,6 +896,7 @@
                 unhighlight(plot);
             }
             var evt = jQuery.Event('jqplotDataRightClick');
+	    evt.which = ev.which;
             evt.pageX = ev.pageX;
             evt.pageY = ev.pageY;
             plot.target.trigger(evt, ins);
@@ -903,19 +907,26 @@
     // create a canvas which we can draw on.
     // insert it before the eventCanvas, so eventCanvas will still capture events.
     function postPlotDraw() {
+        // Memory Leaks patch    
+        if (this.plugins.funnelRenderer && this.plugins.funnelRenderer.highlightCanvas) {
+            this.plugins.funnelRenderer.highlightCanvas.resetCanvas();
+            this.plugins.funnelRenderer.highlightCanvas = null;
+        }
+
         this.plugins.funnelRenderer = {};
         this.plugins.funnelRenderer.highlightCanvas = new $.jqplot.GenericCanvas();
         
         // do we have any data labels?  if so, put highlight canvas before those
         var labels = $(this.targetId+' .jqplot-data-label');
         if (labels.length) {
-            $(labels[0]).before(this.plugins.funnelRenderer.highlightCanvas.createElement(this._gridPadding, 'jqplot-funnelRenderer-highlight-canvas', this._plotDimensions));
+            $(labels[0]).before(this.plugins.funnelRenderer.highlightCanvas.createElement(this._gridPadding, 'jqplot-funnelRenderer-highlight-canvas', this._plotDimensions, this));
         }
         // else put highlight canvas before event canvas.
         else {
-            this.eventCanvas._elem.before(this.plugins.funnelRenderer.highlightCanvas.createElement(this._gridPadding, 'jqplot-funnelRenderer-highlight-canvas', this._plotDimensions));
+            this.eventCanvas._elem.before(this.plugins.funnelRenderer.highlightCanvas.createElement(this._gridPadding, 'jqplot-funnelRenderer-highlight-canvas', this._plotDimensions, this));
         }
         var hctx = this.plugins.funnelRenderer.highlightCanvas.setContext();
+        this.eventCanvas._elem.bind('mouseleave', {plot:this}, function (ev) { unhighlight(ev.data.plot); });
     }
     
     $.jqplot.preInitHooks.push(preInit);

@@ -2,9 +2,10 @@
  * jqPlot
  * Pure JavaScript plotting plugin using jQuery
  *
- * Version: 1.0.0b1_r746
+ * Version: 1.0.4
+ * Revision: 1121
  *
- * Copyright (c) 2009-2011 Chris Leonello
+ * Copyright (c) 2009-2012 Chris Leonello
  * jqPlot is currently available for use in all personal or commercial projects 
  * under both the MIT (http://www.opensource.org/licenses/mit-license.php) and GPL 
  * version 2.0 (http://www.gnu.org/licenses/gpl-2.0.html) licenses. This means that you can 
@@ -79,10 +80,16 @@
     // insert it before the eventCanvas, so eventCanvas will still capture events.
     // add a new DragCanvas object to the plot plugins to handle drawing on this new canvas.
     $.jqplot.Dragable.postPlotDraw = function() {
+        // Memory Leaks patch    
+        if (this.plugins.dragable && this.plugins.dragable.highlightCanvas) {
+            this.plugins.dragable.highlightCanvas.resetCanvas();
+            this.plugins.dragable.highlightCanvas = null;
+        }
+
         this.plugins.dragable = {previousCursor:'auto', isOver:false};
         this.plugins.dragable.dragCanvas = new DragCanvas();
         
-        this.eventCanvas._elem.before(this.plugins.dragable.dragCanvas.createElement(this._gridPadding, 'jqplot-dragable-canvas', this._plotDimensions));
+        this.eventCanvas._elem.before(this.plugins.dragable.dragCanvas.createElement(this._gridPadding, 'jqplot-dragable-canvas', this._plotDimensions, this));
         var dctx = this.plugins.dragable.dragCanvas.setContext();
     };
     

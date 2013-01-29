@@ -2,9 +2,10 @@
  * jqPlot
  * Pure JavaScript plotting plugin using jQuery
  *
- * Version: 1.0.0b1_r746
+ * Version: 1.0.4
+ * Revision: 1121
  *
- * Copyright (c) 2009-2011 Chris Leonello
+ * Copyright (c) 2009-2012 Chris Leonello
  * jqPlot is currently available for use in all personal or commercial projects 
  * under both the MIT (http://www.opensource.org/licenses/mit-license.php) and GPL 
  * version 2.0 (http://www.gnu.org/licenses/gpl-2.0.html) licenses. This means that you can 
@@ -83,7 +84,7 @@
     };
     
     // called with scope of axis
-    $.jqplot.MekkoAxisRenderer.prototype.draw = function(ctx) {
+    $.jqplot.MekkoAxisRenderer.prototype.draw = function(ctx, plot) {
         if (this.show) {
             // populate the axis label and value properties.
             // createTicks is a method on the renderer, but
@@ -95,7 +96,11 @@
             var dim=0;
             var temp;
             
-            this._elem = $('<div class="jqplot-axis jqplot-'+this.name+'" style="position:absolute;"></div>');
+            var elem = document.createElement('div');
+            this._elem = $(elem);
+            this._elem.addClass('jqplot-axis jqplot-'+this.name);
+            this._elem.css('position', 'absolute');
+            elem = null;
             
             if (this.name == 'xaxis' || this.name == 'x2axis') {
                 this._elem.width(this._plotDimensions.width);
@@ -109,8 +114,7 @@
             this.labelOptions.axis = this.name;
             this._label = new this.labelRenderer(this.labelOptions);
             if (this._label.show) {
-                var elem = this._label.draw(ctx);
-                elem.appendTo(this._elem);
+                this._elem.append(this._label.draw(ctx));
             }
             
             var t, tick, elem;
@@ -119,8 +123,7 @@
                 for (var i=0; i<t.length; i++) {
                     tick = t[i];
                     if (tick.showLabel && (!tick.isMinorTick || this.showMinorTicks)) {
-                        elem = tick.draw(ctx);
-                        elem.appendTo(this._elem);
+                        this._elem.append(tick.draw(ctx));
                     }
                 }
             }
@@ -134,11 +137,12 @@
                     this._barLabels[i].show = false;
                 }
                 if (this._barLabels[i].show) {
-                    var elem = this._barLabels[i].draw(ctx);
+                    var elem = this._barLabels[i].draw(ctx, plot);
                     elem.removeClass('jqplot-'+this.name+'-label');
                     elem.addClass('jqplot-'+this.name+'-tick');
                     elem.addClass('jqplot-mekko-barLabel');
                     elem.appendTo(this._elem);
+                    elem = null;
                 }   
             }
             

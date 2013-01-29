@@ -2,9 +2,10 @@
  * jqPlot
  * Pure JavaScript plotting plugin using jQuery
  *
- * Version: 1.0.0b1_r746
+ * Version: 1.0.4
+ * Revision: 1121
  *
- * Copyright (c) 2009-2011 Chris Leonello
+ * Copyright (c) 2009-2012 Chris Leonello
  * jqPlot is currently available for use in all personal or commercial projects 
  * under both the MIT (http://www.opensource.org/licenses/mit-license.php) and GPL 
  * version 2.0 (http://www.gnu.org/licenses/gpl-2.0.html) licenses. This means that you can 
@@ -631,6 +632,7 @@
             plot.target.trigger(evt1, ins);
             if (plot.series[ins[0]].highlightMouseOver && !(ins[0] == plot.plugins.bubbleRenderer.highlightedSeriesIndex && ins[1] == plot.series[ins[0]]._highlightedPoint)) {
                 var evt = jQuery.Event('jqplotDataHighlight');
+		evt.which = ev.which;
                 evt.pageX = ev.pageX;
                 evt.pageY = ev.pageY;
                 plot.target.trigger(evt, ins);
@@ -649,6 +651,7 @@
             var ins = [si, pi, neighbor.data, plot.series[si].gridData[pi][2]];
             if (plot.series[ins[0]].highlightMouseDown && !(ins[0] == plot.plugins.bubbleRenderer.highlightedSeriesIndex && ins[1] == plot.series[ins[0]]._highlightedPoint)) {
                 var evt = jQuery.Event('jqplotDataHighlight');
+		evt.which = ev.which;
                 evt.pageX = ev.pageX;
                 evt.pageY = ev.pageY;
                 plot.target.trigger(evt, ins);
@@ -673,6 +676,7 @@
             var pi = neighbor.pointIndex;
             var ins = [si, pi, neighbor.data, plot.series[si].gridData[pi][2]];
             var evt = jQuery.Event('jqplotDataClick');
+	    evt.which = ev.which;
             evt.pageX = ev.pageX;
             evt.pageY = ev.pageY;
             plot.target.trigger(evt, ins);
@@ -689,6 +693,7 @@
                 unhighlight(plot);
             }
             var evt = jQuery.Event('jqplotDataRightClick');
+	    evt.which = ev.which;
             evt.pageX = ev.pageX;
             evt.pageY = ev.pageY;
             plot.target.trigger(evt, ins);
@@ -699,6 +704,12 @@
     // create a canvas which we can draw on.
     // insert it before the eventCanvas, so eventCanvas will still capture events.
     function postPlotDraw() {
+        // Memory Leaks patch    
+        if (this.plugins.bubbleRenderer && this.plugins.bubbleRenderer.highlightCanvas) {
+            this.plugins.bubbleRenderer.highlightCanvas.resetCanvas();
+            this.plugins.bubbleRenderer.highlightCanvas = null;
+        }
+        
         this.plugins.bubbleRenderer = {highlightedSeriesIndex:null};
         this.plugins.bubbleRenderer.highlightCanvas = new $.jqplot.GenericCanvas();
         this.plugins.bubbleRenderer.highlightLabel = null;
@@ -709,7 +720,7 @@
         var height = this._plotDimensions.height - this._gridPadding.top - this._gridPadding.bottom;
         this.plugins.bubbleRenderer.highlightLabelCanvas.css({top:top, left:left, width:width+'px', height:height+'px'});
 
-        this.eventCanvas._elem.before(this.plugins.bubbleRenderer.highlightCanvas.createElement(this._gridPadding, 'jqplot-bubbleRenderer-highlight-canvas', this._plotDimensions));
+        this.eventCanvas._elem.before(this.plugins.bubbleRenderer.highlightCanvas.createElement(this._gridPadding, 'jqplot-bubbleRenderer-highlight-canvas', this._plotDimensions, this));
         this.eventCanvas._elem.before(this.plugins.bubbleRenderer.highlightLabelCanvas);
         
         var hctx = this.plugins.bubbleRenderer.highlightCanvas.setContext();
