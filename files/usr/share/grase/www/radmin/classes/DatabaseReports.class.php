@@ -45,8 +45,9 @@ class DatabaseReports
         {
             $data[] = intval($result['TotalOctets']/1024/1024);
             $label[] = $result['Label'];
+            $assoc[] = array($result['Label'], intval($result['TotalOctets']/1024/1024));
         }
-        return array($data, $label);    
+        return array($data, $label, $assoc);    
     }
     
     
@@ -332,8 +333,8 @@ class DatabaseReports
         $results = $res->fetchAll(MDB2_FETCHMODE_ASSOC, false, false);
         foreach($results as $result)
         {
-            $data1[] = intval($result['TotalOctets']/1024/1024);
-            $data2[] = intval($result['TotalQuota']/1024/1024);
+            $data1[] = array($result['Label'], intval($result['TotalOctets']/1024/1024));
+            $data2[] = array($result['Label'], intval($result['TotalQuota']/1024/1024));
             $label[] = $result['Label'];
         }
 
