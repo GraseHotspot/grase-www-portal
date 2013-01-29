@@ -7,6 +7,7 @@
 <title>{$Title} - {t}{$Name}{/t}</title>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 <meta name="generator" content="{$Application} {$application_version}" />
+{if $autorefresh}<meta http-equiv="refresh" content="{$autorefresh}">{/if}
 <!-- CSS Stylesheet -->
 <link rel="stylesheet" type="text/css" href="/grase/hotspot.css?{$hotspotcssversion}" id="hotspot_css" />
 <link rel="stylesheet" type="text/css" href="radmin.css?{$radmincssversion}" id="radmin_css" />

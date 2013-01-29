@@ -10,7 +10,7 @@
 
 {if $activesessions}
 <h2>{t}Active Sessions{/t}</h2>
-<a href="?allsessions">{t}Display all Sessions{/t}</a>
+<a href="?allsessions">{t}Display all Sessions{/t}</a> | {if $autorefresh}<a href="?">{t}Stop Auto Refresh Page{/t}</a> (Last refresh {$smarty.now|date_format:"%Y-%m-%d %T"}){else}<a href="?refresh=5">{t}Auto Refresh Page{/t}</a>{/if}
 
 <div id='activesessionslist' style='display:block;'>
 	<table border="0" id='activesessionslistTable' class="stripeMe">

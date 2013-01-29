@@ -51,6 +51,12 @@ require_once 'includes/database_functions.inc.php';
     	$smarty->assign("currentpage", $page);
     }else{
         $smarty->assign("activesessions", DatabaseFunctions::getInstance()->getActiveRadiusSessionsDetails());
+        if($_GET['refresh'])
+        {
+            $refresh = clean_int($_GET['refresh'])*60;
+            if($refresh < 60) $refresh = 60;
+            $smarty->assign("autorefresh", $refresh);
+        }
     }
 
 	display_page('sessions.tpl');
