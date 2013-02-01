@@ -145,13 +145,18 @@ if(isset($_POST['createticketssubmit']))
 		    $MaxTime = clean_int($_POST['MaxTime']);
 		if($_POST['Max_Time'] == 'inherit')
 		    $MaxTime = @ $groupsettings[$group]['MaxTime'];
-		    
-		    
+
+        // We create the batch first, then add users to it (prevents us having unattached users if the batch dies for some reason)
+		$batchID = $Settings->nextBatchID();
+		$Settings->saveBatch($batchID, array(), $Auth->getUsername(), clean_text($_POST['Comment']));
+		$Settings->setSetting('lastbatch', $batchID);
+
+		$failedusers= 0;
 		for($i = 0; $i < $user['numberoftickets']; $i++)
 		{
 		    $username =  rand_username(5); // TODO this username isn't check for uniquness!	
 		    $password =  rand_password(6);
-		    database_create_new_user( // TODO: Check if successful
+		    if(database_create_new_user( // TODO: Check if successful
 			    $username,
 			    $password,
 			    $MaxMb,
@@ -159,23 +164,39 @@ if(isset($_POST['createticketssubmit']))
 			    expiry_for_group($group, $groupsettings),
 			    clean_text($_POST['Group']),
 			    clean_text($_POST['Comment'])
-		    );
-		    AdminLog::getInstance()->log("Created new user $username");
-		    //$createdusers[] = array("UserName" => $username, "password" => $password);
-		    //$createdusernames[] = array("UserName" => $username);
-		    $createdusernames[] = $username;		    		    
+		    ))
+		    {
+		        AdminLog::getInstance()->log("Created new user $username");
+		        $Settings->addUserToBatch($batchID, $username);
+    		    $createdusernames[] = $username;
+	        }else{
+	            // Failed to create. Most likely not a unique username. Try again but have loop prevention
+	            $i--;
+	            AdminLog::getInstance()->log("Failed to created new user $username. Probably duplicate username");
+	            $failedusers++;
+	            
+	            if($failedusers > 20)
+	            {
+	                AdminLog::getInstance()->log("Too many failed usersnames, stopping batch creation");
+	                $error[] = sprintf(T_("Too many users failed to create. Batch creation stopped. %s users have been successfully created"), $i);
+	                break;
+	            }
+	        }
 		}
-		//print strlen(serialize($createdusernames));
-		$batchID = $Settings->nextBatchID();
-		
-		// TODO: BatchComment
-		$Settings->saveBatch($batchID, $createdusernames, $Auth->getUsername(), clean_text($_POST['Comment']));
-		$Settings->setSetting('lastbatch', $batchID);
+
 		$createdusers = database_get_users($createdusernames);
 		$smarty->assign("createdusers", $createdusers);
-		$success[] = T_("Tickets Successfully Created");
-		$success[] = "<a target='_tickets' href='printnewtickets'>".T_("Print Tickets")."</a>";				
+		//if($createdusers != $user['numberoftickets']-1)
+		//{
+		//    $error[] =  T_('Unable to create all batch users due to lack of unique usernames');
+		//}
+		if($failedusers <= 20)
+		{
+		    $success[] = T_("Tickets Successfully Created");
+		    $success[] = "<a target='_tickets' href='printnewtickets'>".T_("Print Tickets")."</a>";
+	    }
 	    $smarty->assign("success", $success);
+	    $smarty->assign("error", $error);
 		display_adduser_form();
 	}
 }else

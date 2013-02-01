@@ -887,6 +887,9 @@ class DatabaseFunctions
         $username, $password, $datalimitmb, $timelimitmins, $expirydate,
         $group, $comment)
     {
+        // Check unique user
+        if(!$this->checkUniqueUsername($username)) return false; // This may get done multiple times for the same user in batch creation
+        
         $this->setUserPassword($username, $password);
         
         if ($group)

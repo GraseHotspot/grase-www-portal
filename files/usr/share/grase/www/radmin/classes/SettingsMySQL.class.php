@@ -225,7 +225,7 @@ class SettingsMySQL extends Settings
         $result = $this->db->queryOne($sql);
         // Always check that result is not an error
         if (PEAR::isError($result)) {
-            ErrorHandling::fatal_error('Getting setting failed: '. $result->getMessage());
+            ErrorHandling::fatal_db_error('Getting setting failed: ', $result);
         }
         
         return $result;
@@ -270,7 +270,7 @@ class SettingsMySQL extends Settings
         // Always check that result is not an error
         if (PEAR::isError($affected)) {
 	        AdminLog::getInstance()->log("Setting $setting failed to update (to $value)");        
-            ErrorHandling::fatal_error('Updating setting failed: '. $affected->getMessage());
+            ErrorHandling::fatal_db_error('Updating setting failed: ', $affected);
         }
         
         // Update settings cache to prevent wrong data
@@ -303,7 +303,7 @@ class SettingsMySQL extends Settings
         $result = $this->db->queryOne($sql);
         // Always check that result is not an error
         if (PEAR::isError($result)) {
-            ErrorHandling::fatal_error('Getting template failed: '. $result->getMessage());
+            ErrorHandling::fatal_db_error('Getting template failed: ', $result);
         }
         
         return $result;
@@ -348,7 +348,7 @@ class SettingsMySQL extends Settings
         // Always check that result is not an error
         if (PEAR::isError($affected)) {
 	        AdminLog::getInstance()->log("Template $template failed to update");        
-            ErrorHandling::fatal_error('Updating template failed: '. $affected->getMessage());
+            ErrorHandling::fatal_db_error('Updating template failed: ', $affected);
         }
         AdminLog::getInstance()->log("Template $template updated");
         return true;
@@ -359,7 +359,7 @@ class SettingsMySQL extends Settings
 
 /* Functions for managing batchs */
 
-    public function saveBatch($batchID, $users, $createuser = 'Anon(System)', $comment = "")
+    public function saveBatch($batchID, $users = array(), $createuser = 'Anon(System)', $comment = "")
     {
         $result = 0;
         
@@ -376,33 +376,35 @@ class SettingsMySQL extends Settings
         // Always check that result is not an error
         if (PEAR::isError($affected)) {
             AdminLog::getInstance()->log("Batches $batchID failed to add");
-            ErrorHandling::fatal_error('Adding batch failed: '. $affected->getMessage());
+            ErrorHandling::fatal_db_error('Adding batch failed: '. $affected->getMessage(), $affected);
         }
         $result ++;        
         
         // $users is an array of usernames, nothing more
         foreach($users as $user)
         {
-            // Insert new record
-            $sql = sprintf("INSERT INTO batch SET
-                            batchID=%s,
-                            UserName=%s",
-                            $this->db->quote($batchID),
-                            $this->db->quote($user));
-            $affected =& $this->db->exec($sql);        
-
-            // Always check that result is not an error
-            if (PEAR::isError($affected)) {
-	            AdminLog::getInstance()->log("Batch $batchID failed to add $user");
-                ErrorHandling::fatal_error('Adding user to batch failed: '. $affected->getMessage());
-            }
-            $result ++;
+            if($this->addUserToBatch($batchID, $user)) $result ++;
         }
         
-
-                        
-        
         return $result;
+    }
+    
+    public function addUserToBatch($batchID, $user)
+    {
+        // Insert new batch/user record
+        $sql = sprintf("INSERT INTO batch SET
+                        batchID=%s,
+                        UserName=%s",
+                        $this->db->quote($batchID),
+                        $this->db->quote($user));
+        $affected =& $this->db->exec($sql);        
+
+        // Always check that result is not an error
+        if (PEAR::isError($affected)) {
+            AdminLog::getInstance()->log("Batch $batchID failed to add $user");
+            ErrorHandling::fatal_db_error('Adding user to batch failed: ', $affected);
+        }
+        return true;
     }
     
     public function listBatches()
@@ -414,7 +416,7 @@ class SettingsMySQL extends Settings
         
         // Always check that result is not an error
         if (PEAR::isError($result)) {
-            ErrorHandling::fatal_error('Getting list of batches  failed: '. $result->getMessage());
+            ErrorHandling::fatal_db_error('Getting list of batches failed: ', $result);
         }
         
         /*$results = array();
@@ -443,7 +445,7 @@ class SettingsMySQL extends Settings
         
         // Always check that result is not an error
         if (PEAR::isError($result)) {
-            ErrorHandling::fatal_error('Getting batch users failed: '. $result->getMessage());
+            ErrorHandling::fatal_db_error('Getting batch users failed: ', $result);
         }
         
         $results = array();
@@ -459,14 +461,15 @@ class SettingsMySQL extends Settings
     {
         // Get next available BatchID
         // ISNULL/IFNULL aren't standards, COALESCE is
-        $sql = "SELECT COALESCE(MAX(batchID),0)+1 AS nextBatchID FROM batch";
+        // GREATEST isn't a standard
+        $sql = "SELECT GREATEST(COALESCE(MAX(batch.batchID),0),COALESCE(MAX(batches.batchID),0))+1 AS nextBatchID FROM batch, batches";
         
         $nextBatchID = $this->db->queryOne($sql);
         
         // Always check that result is not an error
         if (PEAR::isError($nextBatchID)) {
             AdminLog::getInstance()->log("Unable to fetch nextBatchID");
-            ErrorHandling::fatal_error('Fetching nextBatchID failed: '. $nextBatchID->getMessage());
+            ErrorHandling::fatal_db_error('Fetching nextBatchID failed: ', $nextBatchID);
         }
         
         return $nextBatchID;
@@ -515,7 +518,7 @@ class SettingsMySQL extends Settings
         
         // Always check that result is not an error
         if (PEAR::isError($result)) {
-            ErrorHandling::fatal_error('Getting groups failed: '. $result->getMessage());
+            ErrorHandling::fatal_db_error('Getting groups failed: ', $result);
         }
         
         foreach ($result as $results)
@@ -691,7 +694,7 @@ class SettingsMySQL extends Settings
         
         // Always check that result is not an error
         if (PEAR::isError($result)) {
-            ErrorHandling::fatal_error('Getting vouchers failed: '. $result->getMessage());
+            ErrorHandling::fatal_db_error('Getting vouchers failed: ', $result);
         }
         
         foreach ($result as $results)
