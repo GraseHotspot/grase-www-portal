@@ -507,9 +507,6 @@ class CronFunctions extends DatabaseFunctions
          * can be condensed into less queries but this removes complexity
          * */
          
-        //  SELECT UserName FROM radcheck WHERE Attribute = 'Expiration' AND Value LIKE 'January __ 2011 00:00:00'
-         
-        // Loop through previous months encase they have been missed. Bit of overkill but works. Time is cheap
         $deleted_results = 0;
         $sql = sprintf("SELECT UserName
                         FROM radcheck
@@ -539,6 +536,43 @@ class CronFunctions extends DatabaseFunctions
         return false;
          
     }    
+    
+    public function deleteOutOfDataUsers()
+    {
+        /* Do select to get list of usernames
+         * Run deleteUser over each username (this clears all junk easily
+         * can be condensed into less queries but this removes complexity
+         * */
+
+        $deleted_results = 0;
+        $sql = sprintf("SELECT UserName
+                        FROM radcheck
+                        WHERE Attribute = %s AND
+                        Value = 0",
+                        $this->db->quote('Max-Octets')
+                        );
+        
+        $results = $this->db->queryAll($sql);
+        
+        if (PEAR::isError($results))
+        {
+            return T_('Fetching users to delete failed') . $results->toString();
+        }
+        
+        foreach($results as $user)
+        {
+            AdminLog::getInstance()->log_cron("Cron Deleting OutOfData ${user['UserName']}");
+            $this->deleteUser($user['UserName']);
+        }
+        $deleted_results += sizeof($results);
+
+
+        if($deleted_results)
+            return "($deleted_results) " . T_('OutOfData users deleted');
+            
+        return false;
+         
+    }        
     
     public function condensePreviousMonthsAccounting()
     {

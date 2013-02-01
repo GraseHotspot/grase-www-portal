@@ -60,4 +60,10 @@ if($_GET['deleteoutoftimeusers'])
     $outoftime = CronFunctions::getInstance()->deleteOutOfTimeUsers();
     if($outoftime) echo "$outoftime\n";
 }
+
+if($_GET['deleteoutofdatausers'])
+{
+    $outofdata = CronFunctions::getInstance()->deleteOutOfDataUsers();
+    if($outofdata) echo "$outofdata\n";
+}
 ?>
