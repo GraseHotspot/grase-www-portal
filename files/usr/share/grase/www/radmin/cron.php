@@ -55,4 +55,9 @@ if($prevmonths) echo "$prevmonths\n";
 $oldbatches = CronFunctions::getInstance()->clearOldBatches();
 if($oldbatches) echo "$oldbatches\n";
 
+if($_GET['deleteoutoftimeusers'])
+{
+    $outoftime = CronFunctions::getInstance()->deleteOutOfTimeUsers();
+    if($outoftime) echo "$outoftime\n";
+}
 ?>
