@@ -162,7 +162,7 @@ class AdminLog
     
     public function log_cron($action)
     {
-        $affected =& $this->log_sql->execute(array(date('*Y-m-d H:i:s'),
+        $affected =& $this->log_sql->execute(array(date('Y-m-d H:i:s'),
                 'CRON',
                 $this->ip,
                 $action));

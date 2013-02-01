@@ -280,8 +280,6 @@ class CronFunctions extends DatabaseFunctions
             $Settings->setSetting("DBVersion", 2.0);
         }
         
-        // TODO: cron to clean old batches
-        
         if($olddbversion < 2.1)
         {
             // Remove uniq index on radgroupcheck
@@ -487,7 +485,7 @@ class CronFunctions extends DatabaseFunctions
             
             foreach($results as $user)
             {
-                AdminLog::getInstance()->log_cron("Cron Deleting ${user['UserName']}");
+                AdminLog::getInstance()->log_cron("Cron Deleting Expired ${user['UserName']}");
                 $this->deleteUser($user['UserName']);
             }
             $deleted_results += sizeof($results);
