@@ -154,9 +154,11 @@ if(isset($_POST['createticketssubmit']))
 		$failedusers= 0;
 		for($i = 0; $i < $user['numberoftickets']; $i++)
 		{
-		    $username =  rand_username(5); // TODO this username isn't check for uniquness!	
+		    $username =  rand_username(5); // DONE: Username uniqness is checked as user creation time in Database
 		    $password =  rand_password(6);
-		    if(database_create_new_user( // TODO: Check if successful
+		    
+		    // Attempt to create user. Will error if it's not a unique username
+		    if(database_create_new_user(
 			    $username,
 			    $password,
 			    $MaxMb,
@@ -170,8 +172,11 @@ if(isset($_POST['createticketssubmit']))
 		        $Settings->addUserToBatch($batchID, $username);
     		    $createdusernames[] = $username;
 	        }else{
-	            // Failed to create. Most likely not a unique username. Try again but have loop prevention
+	            // Failed to create. Most likely not a unique username.
+	            // Try again but only for so long (i.e. all usernames are in use)
 	            $i--;
+	            
+	            // This really chokes up the logs, maybe don't log this? TODO
 	            AdminLog::getInstance()->log("Failed to created new user $username. Probably duplicate username");
 	            $failedusers++;
 	            
@@ -184,12 +189,11 @@ if(isset($_POST['createticketssubmit']))
 	        }
 		}
 
+        // Load up user details of created users for displaying
 		$createdusers = database_get_users($createdusernames);
 		$smarty->assign("createdusers", $createdusers);
-		//if($createdusers != $user['numberoftickets']-1)
-		//{
-		//    $error[] =  T_('Unable to create all batch users due to lack of unique usernames');
-		//}
+
+        // Check if we managed to create all users or if batch failed
 		if($failedusers <= 20)
 		{
 		    $success[] = T_("Tickets Successfully Created");
