@@ -185,7 +185,34 @@ class DatabaseFunctions
         
         return $usedoctets + 0;
     }
-    
+
+    public function getMonthsAccountingDataAvailableFor()
+    {
+        $sql = "SELECT DATE_FORMAT(AcctDate, '%Y-%m') AS Month FROM mtotacct
+                UNION
+                SELECT DATE_FORMAT(AcctStartTime, '%Y-%m') AS Month from radacct";
+
+        $res =& $this->db->query($sql);
+        
+        if (PEAR::isError($res)) {
+            ErrorHandling::fatal_db_error(
+                T_('Retrieving Months Accounting Data Available For failed: '), $res);
+        }
+        
+        $results = $res->fetchAll(MDB2_FETCHMODE_ASSOC, false, false);
+        
+        $monthsavailable = array();
+        
+        foreach($results as $result)
+        {
+            //$label = date('Y-m-d', strtotime($result['Month']));
+            $label = date('F Y', strtotime($result['Month']));
+            $monthsavailable[$result['Month']] = $label;
+        }
+        
+        ksort($monthsavailable);
+        return $monthsavailable;;
+    }    
     
     
     public function getRadiusSessionDetails($radacctid) 

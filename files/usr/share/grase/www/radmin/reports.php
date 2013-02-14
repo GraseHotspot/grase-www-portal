@@ -64,25 +64,27 @@ else
 //    $smarty->assign('chart1', $chart->toPrettyString());
 $Reports = new Reports(DatabaseConnections::getInstance());
 
+    $smarty->assign('monthsavailableaccounting', DatabaseFunctions::getInstance()->getMonthsAccountingDataAvailableFor());
+
     // Current month up and down
     list($data1, $labels, $assoc1) = $Reports->getThisMonthDownUsageReport();
-//    $smarty->assign('thismonthdowndata', json_encode($data1));
     list($data2, $labels, $assoc2) = $Reports->getThisMonthUpUsageReport();
-//    $smarty->assign('thismonthupdata', json_encode($data2));
     $smarty->assign('thismonthseries', json_encode(array($assoc1, $assoc2)));
-//    $smarty->assign('thismonthticks', json_encode($labels));
     
     // Previous months total usage
     list($data, $labels, $assoc) = $Reports->getPreviousMonthsUsageReport();
     $smarty->assign('previousmonthsseries', json_encode(array($assoc)));
-    //$smarty->assign('previousmonthsticks', json_encode($labels));    
     
-    // Current month by users
-    list($data1, $data2, $labels) = $Reports->getThisMonthUsersUsageReport();
-    //$smarty->assign('thismonthusersdata', json_encode($data1));
-    //$smarty->assign('thismonthusersquota', json_encode($data2));
-    $smarty->assign('thismonthusersseries', json_encode(array($data1, $data2)));
-    //$smarty->assign('thismonthuserslabels', json_encode($labels));
+    // Users usage - Current Month
+    list($data1, $data2, $labels, $month) = $Reports->getUsersUsageMonthReport($_GET['UsersUsageMonth']); //TODO: Sanatise input?
+    $smarty->assign('usersusagemonth', $month[0]);
+    $smarty->assign('usersusageprettymonth', $month[1]);    
+    $smarty->assign('userdatausagemonthseries', json_encode(array($data1)));
+    $smarty->assign('usertimeusagemonthseries', json_encode(array($data2)));    
+    
+    // Users usage - By Month
+    //list($data1, $data2, $labels) = $Reports->getThisMonthUsersUsageReport();
+    //$smarty->assign('thismonthusersseries', json_encode(array($data1, $data2)));
     
     
     // Current month group usage

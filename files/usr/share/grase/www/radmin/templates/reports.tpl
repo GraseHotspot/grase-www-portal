@@ -34,7 +34,7 @@ function bar_graph(divid, stackSeries, seriesdata, title, legendlabels, yaxislab
             pointLabels: {
                 hideZeros: true,
                 show: true,
-                formatString: '%.0f Mb',
+                formatString: '%.0f',
                 location:'s'
 	        } 
           },
@@ -129,7 +129,7 @@ function datebar_graph(divid, stackSeries, seriesdata, title, legendlabels, yaxi
 {/literal}  
 </script>
 
-
+<form>
 <div id="thismonthdata" style="height:400px; width:100%">&nbsp;</div>
 
 <script>
@@ -137,10 +137,20 @@ datebar_graph('thismonthdata', true, {$thismonthseries}, 'Daily Usage', ['Downlo
 
 </script>
 
-<div id="thismonthusersdata" style="height:400px; width:100%">&nbsp;</div>
-<script>
-bar_graph('thismonthusersdata', false, {$thismonthusersseries}, 'Users Usage', ['Used', 'Total Quota'], "Mb's used");
 
+
+<div id="thismonthusersdata" >
+<div id="thismonthusersdatagraph" style="height:400px; width:100%">&nbsp;</div>
+<div id="thismonthuserstimegraph" style="height:400px; width:100%">&nbsp;</div>
+{html_options name="UsersUsageMonth" options=$monthsavailableaccounting selected=$usersusagemonth}
+<input type="submit" value="Change Month"/>
+</div>
+<script>
+bar_graph('thismonthusersdatagraph', false, {$userdatausagemonthseries}, 'Users Data Usage For {$usersusageprettymonth}', ['Data Used'], "Mb's");
+</script>
+
+<script>
+bar_graph('thismonthuserstimegraph', false, {$usertimeusagemonthseries}, 'Users Time Usage For {$usersusageprettymonth}', ['Time Used'], "Minutes");
 </script>
 
 <div id="previousmonthsdata" style="height:400px; width:100%">&nbsp;</div>
@@ -152,6 +162,8 @@ bar_graph('previousmonthsdata', false, {$previousmonthsseries}, 'Months Usage', 
 
 
 <div id="thismonthgrouppie" style="height:400px; width:100%"></div>
+
+</form>
 
 <script>
 var thismonthgrouppie = {$thismonthgroupdata};

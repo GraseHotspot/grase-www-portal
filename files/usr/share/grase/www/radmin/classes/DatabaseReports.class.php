@@ -226,12 +226,12 @@ class DatabaseReports
     
     public function getPreviousMonthsUsage()
     {
-        $sql = "SELECT
+        /*$sql = "SELECT
             SUM(InputOctets) + SUM(OutputOctets) AS TotalOctets,
             DATE_FORMAT(AcctDate, '%b %Y') AS Label
             FROM mtotacct
             GROUP BY AcctDate
-            ORDER BY AcctDate";
+            ORDER BY AcctDate";*/
         $sql = "SELECT
                     SUM(InputOctets) + SUM(OutputOctets) AS TotalOctets,
                     DATE_FORMAT(AcctDate, '%b %Y') AS Label,
@@ -277,7 +277,7 @@ class DatabaseReports
         return $this->processDataResults($sql);           
     }
     
-    public function getThisMonthUsersUsage()
+    public function getThisMonthUsersUsage() // TODO Potentially obsolete by getUsersUsageForMonth
     {
         /*$sql = "SELECT
                 SUM(radacct.AcctInputOctets) + SUM(radacct.AcctOutputOctets) AS TotalOctets,
@@ -319,6 +319,7 @@ class DatabaseReports
                     FROM
                         radacct
                     WHERE UserName != ".$this->db->quote(RADIUS_CONFIG_USER)."
+                    AND DATE_FORMAT(radacct.AcctStartTime, '%b %Y') = DATE_FORMAT(NOW(), '%b %Y')
                     GROUP BY Label) AS T
                 GROUP BY Label";
 
@@ -341,7 +342,81 @@ class DatabaseReports
         return array($data1, $data2, $label);                    
                 
         //return $this->processDataResults($sql);
-    }        
+    }
+    
+    public function getUsersUsageForMonth($month = '')
+    {
+        if($month == '') $month = 'now';
+        $monthformat = date('M Y', strtotime($month));
+        $sql = "SELECT
+                    SUM(TotalOctets) AS TotalOctets,
+                    SUM(TotalTime) AS TotalTime,
+                    Label,
+                    Month
+                FROM (
+        
+        
+                SELECT
+                    SUM(radacct.AcctInputOctets) + SUM(radacct.AcctOutputOctets) AS TotalOctets,
+                    SUM(radacct.AcctSessionTime) AS TotalTime,  
+                    radacct.UserName AS Label,
+                    DATE_FORMAT(radacct.AcctStartTime, '%b %Y') AS Month
+                FROM
+                    radacct
+                WHERE UserName != ".$this->db->quote(RADIUS_CONFIG_USER)."
+                AND DATE_FORMAT(radacct.AcctStartTime, '%b %Y') = ".$this->db->quote($monthformat)."
+                GROUP BY Label, Month
+                
+                UNION ALL
+                
+                SELECT
+                    SUM(mtotacct.InputOctets) + SUM(mtotacct.OutputOctets) AS TotalOctets,
+                    SUM(mtotacct.ConnTotDuration) AS TotalTime,  
+                    mtotacct.UserName AS Label,
+                    DATE_FORMAT(mtotacct.AcctDate, '%b %Y') AS Month
+                FROM
+                    mtotacct
+                WHERE UserName != ".$this->db->quote(RADIUS_CONFIG_USER)."
+                AND DATE_FORMAT(mtotacct.AcctDate, '%b %Y') = ".$this->db->quote($monthformat)."
+                GROUP BY Label, Month
+                
+                ) AS T
+                GROUP BY Label, Month";
+                
+
+
+        $res =& $this->db->query($sql);
+        
+        //print_r($res);
+        // Always check that result is not an error
+        if (PEAR::isError($res)) {
+            die($res->getMessage());
+        }
+        
+        $data1= array();
+        $data2= array();
+        
+        $results = $res->fetchAll(MDB2_FETCHMODE_ASSOC, false, false);
+        foreach($results as $result)
+        {
+            $data1[] = array($result['Label'], intval($result['TotalOctets']/1024/1024));
+            $data2[] = array($result['Label'], intval($result['TotalTime']/60));
+            $label[] = $result['Label'];
+        }
+        
+        if(empty($data1))
+        {
+            $data1[] = array('', 0);
+            $data2[] = array('', 0);
+            $label[] = '';
+        }
+        
+        $prettymonth = date('F Y', strtotime($month));
+
+        return array($data1, $data2, $label, array($month, $prettymonth));                    
+                
+        //return $this->processDataResults($sql);
+    }    
     
     public function getDailyUsers()
     {
