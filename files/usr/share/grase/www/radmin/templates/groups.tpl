@@ -84,7 +84,7 @@
 
             <label>{t}Recurring Data Limit (MiB){/t}</label>
             {html_options name="Recur_Data_Limit[]" options=$Datavals}{t}per{/t}
-            {html_options name="Recur_Data[]" values=$Recurtimes output=$Recurtimes}            
+            {html_options name="Recur_Data[]" options=$Recurtimes}            
             
             <label>{t}Recurring Time Limit (Minutes){/t}</label>
             {html_options name="Recur_Time_Limit[]" options=$Timevals }{t}per{/t}
