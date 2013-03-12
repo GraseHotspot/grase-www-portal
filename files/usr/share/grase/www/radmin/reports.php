@@ -70,6 +70,16 @@ $Reports = new Reports(DatabaseConnections::getInstance());
     list($data1, $labels, $assoc1) = $Reports->getThisMonthDownUsageReport();
     list($data2, $labels, $assoc2) = $Reports->getThisMonthUpUsageReport();
     $smarty->assign('thismonthseries', json_encode(array($assoc1, $assoc2)));
+    $thismonthupdown[] = array('Day', 'Downloads', 'Uploads');
+    foreach($labels as $id => $label)
+    {
+        $thismonthupdown[] = array($label, $data1[$id], $data2[$id]);
+    }
+    $smarty->assign('thismonthupdownarray', json_encode($thismonthupdown));
+    
+    
+    // All months users usage
+    $smarty->assign('userusagebymontharray', json_encode($Reports->getUsersUsageByMonth()));
     
     // Previous months total usage
     list($data, $labels, $assoc) = $Reports->getPreviousMonthsUsageReport();
