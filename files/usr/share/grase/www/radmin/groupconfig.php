@@ -49,8 +49,6 @@ if(isset($_POST['submit']))
     $grouplogintime = array_filter($_POST['LoginTime']);    
     
 
-    
-
     if(sizeof($groupnames) == 0)
     {
         $error[] = T_("A minimum of one group is required");
