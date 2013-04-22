@@ -254,10 +254,6 @@ table  {
     word-wrap:break-word;
 }
 
-table.jqplot-table-legend {
-    width: auto;
-}
-
 table td, table th {
 	text-align: left;
 	padding: 0.3em;
