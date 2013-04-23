@@ -70,15 +70,43 @@ require_once 'includes/database_functions.inc.php';
 
 	if(isset($_POST['addadminusersubmit'])) // Add new admin user
 	{
+	    if(isset($_POST['newAccessLevel']))
+	    {
+	        switch($_POST['newAccessLevel'])
+	        {
+	            case 'admin':
+	                $newaccesslevel = ADMINUSER;
+    	            break;
+	            case 'power':
+	                $newaccesslevel = POWERUSER;
+	                break;
+	            case 'normal':
+	                $newaccesslevel = NORMALUSER;
+	                break;
+	            default:
+	                $errors[] = T_("Invalid Access level");
+	        }
+	    }else $errors[] = T_("Need an access level to create admin user");
 		if(isset($admin_users[$_POST['newUsername']]))
 		{
 			$errors[] = sprintf(T_("User %s already exists"), $_POST['newUsername']);
-		}elseif($_POST['newPassword'] && $_POST['newUsername'])
+		}
+		if(trim($_POST['newPassword']) == "" || trim($_POST['newUsername']) == "")
 		{
-			$success[] = T_("User Created");
-			$Auth->addUser($_POST['newUsername'], $_POST['newPassword']) or $error_user = "Error Creating User";
-			AdminLog::getInstance()->log("New Admin User Created, ${_POST['newUsername']}");
-		}else $errors[] = T_("Need both username and password");
+		    $errors[] = T_("Need both username and password");
+	    }
+
+	    if(sizeof($errors) == 0)
+	    {
+
+			// Access level is set at creation and can't be changed via the Auth class
+			if($Auth->addUser($_POST['newUsername'], $_POST['newPassword'], array('accesslevel' => $newaccesslevel)))
+			{
+
+    			$success[] = T_("User Created");
+				AdminLog::getInstance()->log("New Admin User Created, ${_POST['newUsername']}");
+			}else $errors[] = T_("Error Creating Admin User");
+		}
 	}
 
 	if(isset($_POST['deleteadminusersubmit'])) // Delete admin user
@@ -94,9 +122,29 @@ require_once 'includes/database_functions.inc.php';
 	$smarty->assign("error", $errors);
 	$smarty->assign("success", $success);	
 
+    foreach($Auth->listUsers() as $adminuser)
+    {
+        unset($adminuser['password']);
+        switch($adminuser['accesslevel'])
+        {
+            case 1:
+                $adminuser['accesslevellabel'] = T_("Admin User");
+                break;
+            case 2:
+                $adminuser['accesslevellabel'] = T_("Power User");
+                break;
+            case 4:
+                $adminuser['accesslevellabel'] = T_("Limited User");
+                break;
+            default:
+                $adminuser['accesslevellabel'] = T_("Unknown Access Level");
+                break;
+        }
+        $adminusers[] = $adminuser;
+    }
 
-    $admin_users = getAdminUsers();
-	$smarty->assign("adminusers", array_keys($admin_users));
+
+	$smarty->assign("adminusers", $adminusers);
 	display_page('changepasswd.tpl');
 
 ?>
