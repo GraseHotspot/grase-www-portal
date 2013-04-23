@@ -22,7 +22,7 @@
 
 class Formatting
 {
-    public function formatBytes($bytes=0)
+    static public function formatBytes($bytes=0)
     {
         $kb = 1024;
         $mb = $kb*1024;
@@ -55,7 +55,7 @@ class Formatting
         return $output;
     }
 
-    public function formatBits($bits=0)
+    static public function formatBits($bits=0)
     {
         $kb = 1024;
         $mb = $kb*1024;
@@ -88,7 +88,7 @@ class Formatting
         return $output;
     }
 
-    public function formatSec($seconds = 0)
+    static public function formatSec($seconds = 0)
     {
 	    $minutes = intval($seconds / 60 % 60);
 	    $hours = intval($seconds / 3600 % 24);
