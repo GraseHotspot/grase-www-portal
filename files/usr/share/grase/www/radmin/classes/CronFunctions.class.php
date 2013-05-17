@@ -467,7 +467,7 @@ class CronFunctions extends DatabaseFunctions
         $deleted_results = 0;
         foreach($months as $month)
         {
-            $timepattern = strftime("%B __ %Y __:__:__", strtotime("$month months"));
+            $timepattern = strftime("%B %% %Y __:__:__", strtotime("$month months"));
             $sql = sprintf("SELECT UserName
                             FROM radcheck
                             WHERE Attribute = %s AND
@@ -475,7 +475,7 @@ class CronFunctions extends DatabaseFunctions
                             $this->db->quote('Expiration'),
                             $this->db->quote($timepattern)
                             );
-            
+
             $results = $this->db->queryAll($sql);
             
             if (PEAR::isError($results))
@@ -800,9 +800,78 @@ class CronFunctions extends DatabaseFunctions
         
         return false;
     }
+
+    public function clearOldPostAuth()
+    {
+        $twomonthsago = strftime("%Y-%m-%d", strtotime("first day of -1 months"));
+        $sql = sprintf("DELETE FROM radpostauth WHERE AuthDate < %s",
+                        $this->db->quote($twomonthsago));
+
+        $result = $this->db->exec($sql);
+
+        if (PEAR::isError($result))
+        {
+            return T_('Unable to clear old Postauth rows: ') . $result->toString();
+        }
+
+        if($result) return "($result) " . T_('Old Postauth rows cleared');
+
+        return false;
+    }
+
+    public function clearPostAuthMacRejects()
+    {
+        $sql = "SELECT id from radpostauth R JOIN (select username, max(AuthDate) AS maxauthdate from radpostauth WHERE username LIKE '__-__-__-__-__-__' AND reply = 'Access-Reject' GROUP BY username) A ON (R.username = A.username) WHERE reply= 'Access-Reject' AND authdate <> maxauthdate";
+
+        $result =& $this->db->query($sql);
+
+        if (PEAR::isError($result))
+        {
+            return T_('Unable to get PostAuth MAC Reject IDs: ') . $result->toString();
+        }
+
+
+        $rows = 0;
+        $time_start = microtime(true);
+        while (($row = $result->fetchRow())) {
+            set_time_limit (30);
+            $sql = sprintf("DELETE from radpostauth WHERE id = %s",
+                            $this->db->quote($row['id']));
+
+            $rowresult = $this->db->exec($sql);
+
+
+            if (PEAR::isError($rowresult))
+            {
+                return T_('Unable to delete PostAuth MAC Reject entry: ' . $rowresult->toString());
+            }
+
+            $rows += $rowresult;
+
+        }
+        $time_end = microtime(true);
+        $time = $time_end - $time_start;
+        if($rows) return "Deleted $rows in $time seconds: " . T_('PostAuth MAC Reject rows cleared');
+
+        return false;
+    }
+
 }
 
 /* Post auth needs some cleaning up.
+
+DELETE all access-rejects for mac addresses except last 1
+DELETE R from radpostauth R JOIN (select username, max(AuthDate) AS maxauthdate from radpostauth WHERE username LIKE '__-__-__-__-__-__' AND reply = 'Access-Reject' GROUP BY username) A ON (R.username = A.username) WHERE reply= 'Access-Reject' AND authdate <> maxauthdate;
+
+^^^ SQL is SOOOO slow
+
+INSTEAD we do following select which might take a minute
+
+SELECT id from radpostauth R JOIN (select username, max(AuthDate) AS maxauthdate from radpostauth WHERE username LIKE '__-__-__-__-__-__' AND reply = 'Access-Reject' GROUP BY username) A ON (R.username = A.username) WHERE reply= 'Access-Reject' AND authdate <> maxauthdate;
+
+THEN WE DELETE 1 by 1
+
+
 This will cleanup all mac address auths and coovachilli auths, leaving only the last attempt
 DELETE t1 from radpostauth t1, radpostauth t2 WHERE t1.username=t2.username AND t1.reply = t2.reply AND t1.id < t2.id AND (t1.username  REGEXP '^([[:xdigit:]]{2}-){5}[[:xdigit:]]{2}' OR t1.username = "CoovaChilli")
 

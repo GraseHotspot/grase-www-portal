@@ -52,13 +52,21 @@ if($expiredusers) echo "$expiredusers\n";
 $prevmonths = CronFunctions::getInstance()->condensePreviousMonthsAccounting();
 if($prevmonths) echo "$prevmonths\n";
 
-if($_GET['deleteoutoftimeusers'])
+$oldpostdata = CronFunctions::getInstance()->clearOldPostAuth();
+if($oldpostdata) echo "$oldpostdata\n";
+
+$postauthmacreject = CronFunctions::getInstance()->clearPostAuthMacRejects();
+if($postauthmacreject) echo "$postauthmacreject\n";
+
+
+
+if(@ $_GET['deleteoutoftimeusers'])
 {
     $outoftime = CronFunctions::getInstance()->deleteOutOfTimeUsers();
     if($outoftime) echo "$outoftime\n";
 }
 
-if($_GET['deleteoutofdatausers'])
+if(@ $_GET['deleteoutofdatausers'])
 {
     $outofdata = CronFunctions::getInstance()->deleteOutOfDataUsers();
     if($outofdata) echo "$outofdata\n";

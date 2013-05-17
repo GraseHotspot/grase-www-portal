@@ -760,7 +760,7 @@ class SettingsMySQL extends Settings
         $support_contact = trim(file_get_contents($support_contact_file)); if($support_contact == "") $support_contact = "http://purewhite.id.au/ Tim White";
         list($support_link, $support_name) = explode(' ', $support_contact, 2);
 
-        $website = trim(file_get_contents($website_file)); if($website == "") $website = "http://ywam.org/ YWAM";
+        $website = trim(file_get_contents($website_file)); if($website == "") $website = "http://whiteitsolutions.com.au/ White IT Solutions";
         list($website_link, $website_name) = explode(' ', $website, 2);
         error_reporting($old_error_level);        
 
