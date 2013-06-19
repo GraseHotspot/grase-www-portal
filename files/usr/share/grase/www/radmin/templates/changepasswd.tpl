@@ -53,8 +53,8 @@
     <td>{$user.username}{if $user.username == 'support'}&nbsp;<a class="helpbutton" title='{t}Deleting or modifying the support user will prevent remote assistance.{/t}' ><img src="/grase/images/icons/help.png" alt=""/></a>{/if}</td>
     <td>{$user.accesslevellabel}</td>
     <td>{if $LoggedInUsername != $user.username}<form method='post' id='DeleteUser{$user.username}' action='?' class='generalForm'>
-        <input type="hidden" value="{$user}" name="deleteusername"/>
-        <span><button class="negative" type="submit" name="deleteadminusersubmit" value="{t user=$user.username}Delete %1{/t}" onclick="return confirm('{t user=$user}Are you sure you want to delete %1?{/t}');"><img src="/grase/images/icons/cross.png" alt=""/>{t user=$user.username}Delete %1{/t}</button></span>
+        <input type="hidden" value="{$user.username}" name="deleteusername"/>
+        <span><button class="negative" type="submit" name="deleteadminusersubmit" value="{t user=$user.username}Delete %1{/t}" onclick="return confirm('{t user=$user.username}Are you sure you want to delete %1?{/t}');"><img src="/grase/images/icons/cross.png" alt=""/>{t user=$user.username}Delete %1{/t}</button></span>
     </form>        
     {else}
         <span>{t}Cannot delete current user{/t}</span>
