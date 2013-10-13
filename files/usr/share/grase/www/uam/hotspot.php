@@ -104,6 +104,13 @@ switch($res)
         
 }
 
+if($_GET['automac'])
+{
+    require_once '../radmin/automacusers.php';
+
+    automacuser();
+}
+
 
 function setup_login_form()
 {
