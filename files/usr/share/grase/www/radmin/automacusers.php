@@ -36,17 +36,54 @@
 
 function automacuser()
 {
+    // TODO MAC is passed in via uam
     $mac = DatabaseFunctions::getInstance()->latestMacFromIP(remoteip());
     $autousername = mactoautousername($mac);
 
     // Attempt to create user
     //
-    if($Settings->getSetting('autocreategroup'))
+    $autocreategroup = $Settings->getSetting('autocreategroup');
+    $autocreatepassword = $Settings->getSetting('autocreatepassword');
+
+    if($autocreategroup)
     {
         // Create user
+        DatabaseFunctions::getInstance()->createUser(
+            $autousername,
+            $autocreatepassword,
+            false, // Data limit
+            false, // Time limit
+            '--', // Expiry date
+            $autocreategroup,
+            "Auto created account for $mac at ". date('Ymd H:i:s')
+        );
+
+        // Create CHAP Challenge/Response token
+        $response = chapchallengeresponse($_GET['challenge'], $autocreatepassword);
+
+        $loginurl = uamloginurl($autousername, $response);
+
+        header("Location: $loginurl");
     }
 
     // Login redirect
+}
+
+function chapchallengeresponse($challenge, $password)
+{
+    // Generates a response for a challenge response CHAP Auth
+    $hexchal = pack ("H32", $challenge);
+    $response = md5("\0" . $password . $hexchal);
+
+    return $response;
+}
+
+function uamloginurl($username, $response)
+{
+    global $lanip;
+    $username = urlencode($username);
+    $response = urlencode($response);
+    return "http://$lanip:3990/login?username=$username&response=$response";
 }
 
 function mactoautousername($mac)
