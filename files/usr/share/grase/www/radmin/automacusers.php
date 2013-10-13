@@ -36,6 +36,7 @@
 
 function automacuser()
 {
+    global $Settings;
     // TODO MAC is passed in via uam
     $mac = DatabaseFunctions::getInstance()->latestMacFromIP(remoteip());
     $autousername = mactoautousername($mac);
