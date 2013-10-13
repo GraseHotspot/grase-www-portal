@@ -69,6 +69,12 @@ if(!isset($_GET['res']))
 // Already been through prelogin
 /*$jsloginlink = "http://$lanip/grase/uam/mini?$query";
 $nojsloginlink = $_GET['loginurl'];*/
+    require_once '../radmin/automacusers.php';
+if($_GET['automac'])
+{
+
+    automacuser();
+}
 
 switch($res)
 {
@@ -97,6 +103,15 @@ switch($res)
         
     case 'success':
         //Logged in. Try popup and redirect to userurl
+
+        // If this is an automac login (check UID vs MAC) then we skip the 
+        // normal success and go back to portal which should work better as 
+        // it's not a nojs login
+        if($_GET['uid'] == mactoautousername($_GET['mac']))
+        {
+            break;
+        }
+        //
         load_templates(array('loggedinnojshtml'));
         $smarty->display('loggedin.tpl');
         exit;
@@ -104,12 +119,7 @@ switch($res)
         
 }
 
-if($_GET['automac'])
-{
-    require_once '../radmin/automacusers.php';
 
-    automacuser();
-}
 
 
 function setup_login_form()
