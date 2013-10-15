@@ -72,7 +72,11 @@ $nojsloginlink = $_GET['loginurl'];*/
     require_once '../radmin/automacusers.php';
 if($_GET['automac'])
 {
-
+    // TODO only if this is enabled? (Although the function will do that 
+    // anyway) so maybe only show the link if this is enabled?
+    //
+    // TODO need to ensure we have a challenge otherwise we need a fresh one, 
+    // maybe if we AJAX the call so we always have a challenge?
     automacuser();
 }
 

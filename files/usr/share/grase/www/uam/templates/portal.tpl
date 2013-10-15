@@ -71,6 +71,10 @@
 <!-- close loginerrorcontainer div -->    
 </div>
 
+<div id="freelogin">
+<a href="{$smarty.server.HTTP_HOST}{$smarty.server.REQUEST_URI}&automac=1">Click here for Free internet access</a>
+</div>
+
 {$tpl_belowloginhtml}
 
 <div style="clear: left; clear: right">&nbsp;</div>
