@@ -72,7 +72,7 @@
 </div>
 
 <div id="freelogin">
-<a href="{$smarty.server.HTTP_HOST}{$smarty.server.REQUEST_URI}&automac=1">Click here for Free internet access</a>
+<a href="//{$smarty.server.HTTP_HOST}{$smarty.server.REQUEST_URI}&automac=1">Click here for Free internet access</a>
 </div>
 
 {$tpl_belowloginhtml}
