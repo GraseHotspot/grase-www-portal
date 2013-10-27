@@ -15,7 +15,7 @@
 				<td>Comment</td>
 			</tr>
 			</thead>
-			<tbody id='{$id}_body'>	
+			<tbody id='{$id}_body'>
 
 			{foreach from=$createdusers item=ticket key=id name=usersloop}
 			<tr id="user_{$ticket.Username}_Row" class="userrow {if $smarty.foreach.usersloop.iteration is even}even{else}odd{/if} {$ticket.account_status}" >
@@ -23,9 +23,9 @@
 				<td class='info_password'>{$ticket.Password}</td>
 
 				<td class='info_datalimit'>{$ticket.MaxOctets|bytes}</td>
-				<td class='info_timelimit'>{if $ticket.MaxAllSession>0}{$ticket.MaxAllSession|seconds}{/if}</td>			
+				<td class='info_timelimit'>{if $ticket.MaxAllSession>0}{$ticket.MaxAllSession|seconds}{/if}</td>
 				<td class='info_expiry'>{$ticket.FormatExpiration}</td>
-				<td class='info_comment'>{$ticket.Comment}</td>			
+				<td class='info_comment'>{$ticket.Comment}</td>
 			</tr>
 			{/foreach}
 			</tbody>
@@ -50,8 +50,8 @@
         <td>{$batch.createTime}</td>
         <td>{$batch.createdBy}</td>
         <td>{$batch.numTickets}</td>
-        <td>{$batch.comment}</td>      
-</tr>        
+        <td>{$batch.comment}</td>
+</tr>
 {/foreach}
 </table>
 <button name='batchesprint'>Print selected Batches</button>
@@ -76,7 +76,7 @@
 </div>
 <div>
     <label for='Group'>Group</label>
-    {html_options name="Group" id="Group" options=$groups selected=$user.Group}    
+    {html_options name="Group" id="Group" options=$groups selected=$user.Group}
     <span id='GroupInfo'>Choose the users group (Expiry is based on the user group)</span>
     <br/>{include file="grouppropertiesinfo.tpl"}
 </div>
@@ -104,7 +104,7 @@
     <span id='Max_TimeInfo'>Choose a Time Limit OR Type your own value</span>
 </div>
 
-       <p><button type="submit" name="createticketssubmit" value="Create Tickets"><img src="/grase/images/icons/tick.png" alt=""/>Create Tickets</button></p>
+       <p><button type="submit" name="createticketssubmit" value="Create Tickets"><img src="/grase/images/icons/tick.png" alt=""/>{t}Create Tickets{/t}</button></p>
 
 </form>
 </div>

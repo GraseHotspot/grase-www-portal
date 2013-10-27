@@ -510,7 +510,8 @@ class SettingsMySQL extends Settings
                 MaxSeconds,
                 Comment,
                 lastupdated
-                FROM groups";
+                FROM groups
+                ORDER BY GroupName";
         
         }
             
@@ -740,11 +741,11 @@ class SettingsMySQL extends Settings
         AdminLog::getInstance()->log("Performing upgradeFromFiles on Settings");
         /* */
         $location_file = '/var/www/radmin/configs/site_settings/location'; // Hotspot location
-        $pricemb_file = '/var/www/radmin/configs/site_settings/pricemb'; // Price per MB
-        $pricetime_file = '/var/www/radmin/configs/site_settings/pricetime'; // Price permin
+        //$pricemb_file = '/var/www/radmin/configs/site_settings/pricemb'; // Price per MB
+        //$pricetime_file = '/var/www/radmin/configs/site_settings/pricetime'; // Price permin
         //$currency_file = '/var/www/radmin/configs/site_settings/currency'; // Currency, e.g. R or $
-        $sellable_data_file = '/var/www/radmin/configs/site_settings/sellable_data'; // Sellable Data in Octets's
-        $useable_data_file = '/var/www/radmin/configs/site_settings/useable_data'; // Useable Data in Octets's
+        //$sellable_data_file = '/var/www/radmin/configs/site_settings/sellable_data'; // Sellable Data in Octets's
+        //$useable_data_file = '/var/www/radmin/configs/site_settings/useable_data'; // Useable Data in Octets's
         $support_contact_file = '/var/www/radmin/configs/site_settings/support_contact'; // Support Contact
         $website_file = '/var/www/radmin/configs/site_settings/website'; // Support Contact
 
@@ -752,11 +753,11 @@ class SettingsMySQL extends Settings
         /* */
 
         $location = trim(file_get_contents($location_file)); if($location == "") $location = "Default";
-        $pricemb = trim(file_get_contents($pricemb_file)); if($pricemb == "") $pricemb = 0.6;
-        $pricetime = trim(file_get_contents($pricetime_file)); if($pricetime == "") $pricetime = 0.1;
+        //$pricemb = trim(file_get_contents($pricemb_file)); if($pricemb == "") $pricemb = 0.6;
+        //$pricetime = trim(file_get_contents($pricetime_file)); if($pricetime == "") $pricetime = 0.1;
         //$currency = trim(file_get_contents($currency_file)); if($currency == "") $currency = "R";
-        $sellable_data = trim(file_get_contents($sellable_data_file)); if($sellable_data == "") $sellable_data = "2147483648"; //2Gb
-        $useable_data = trim(file_get_contents($useable_data_file)); if($useable_data == "") $useable_data = "3221225472"; //3Gb
+        //$sellable_data = trim(file_get_contents($sellable_data_file)); if($sellable_data == "") $sellable_data = "2147483648"; //2Gb
+        //$useable_data = trim(file_get_contents($useable_data_file)); if($useable_data == "") $useable_data = "3221225472"; //3Gb
         $support_contact = trim(file_get_contents($support_contact_file)); if($support_contact == "") $support_contact = "http://purewhite.id.au/ Tim White";
         list($support_link, $support_name) = explode(' ', $support_contact, 2);
 
@@ -765,11 +766,11 @@ class SettingsMySQL extends Settings
         error_reporting($old_error_level);        
 
         $this->setSetting('locationName', $location);                
-        $this->setSetting('priceMb', $pricemb);                        
-        $this->setSetting('priceMinute', $pricetime);
+        //$this->setSetting('priceMb', $pricemb);
+        //$this->setSetting('priceMinute', $pricetime);
         //$this->setSetting('currency', $currency);
-        $this->setSetting('sellableData', $sellable_data);
-        $this->setSetting('useableData', $useable_data);
+        //$this->setSetting('sellableData', $sellable_data);
+        //$this->setSetting('useableData', $useable_data);
         $this->setSetting('supportContactName', $support_name);
         $this->setSetting('supportContactLink', $support_link);
 
