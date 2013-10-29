@@ -59,6 +59,13 @@ function automacuser($json = false)
             "Auto created account for $mac at ". date('Ymd H:i:s')
         );
 
+        // Users password may not match the autocreatepassword if it's changed. 
+        // Should we update the users password or get the users password?
+        DatabaseFunctions::getInstance()->setUserPassword(
+            $autousername,
+            $autocreatepassword
+        );
+
         // Create CHAP Challenge/Response token
         $challenge = $_GET['challenge'];
         $response = chapchallengeresponse($challenge, $autocreatepassword);
