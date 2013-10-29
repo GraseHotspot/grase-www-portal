@@ -53,6 +53,11 @@ $smarty->assign("user_url", $userurl);
 $smarty->assign("challenge", $challenge);
 $smarty->assign("RealHostname", trim(file_get_contents('/etc/hostname')));
 
+if($Settings->getSetting('autocreategroup'))
+{
+    $smarty->assign('automac', true);
+}
+
 /* Important parts of uamopts
     * challenge
     * userurl

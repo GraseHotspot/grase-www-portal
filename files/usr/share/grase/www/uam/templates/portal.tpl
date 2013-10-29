@@ -45,6 +45,10 @@
         <!-- close jswarningwidget div-->
         </div>
     {/if}
+    {if $automac}<div id="freelogin">
+     <a href="//{$smarty.server.HTTP_HOST}{$smarty.server.REQUEST_URI}&automac=1">{t}Free internet access{/t}</a>
+    </div>
+    {/if}
         <div>
             <label for='usernamenojs'>{t}Username{/t}</label>
             <input type="text" name="username" id="usernamenojs" autofocus="autofocus"/>
@@ -71,9 +75,6 @@
 <!-- close loginerrorcontainer div -->    
 </div>
 
-<div id="freelogin">
-<a href="//{$smarty.server.HTTP_HOST}{$smarty.server.REQUEST_URI}&automac=1">Click here for Free internet access</a>
-</div>
 
 {$tpl_belowloginhtml}
 

@@ -73,6 +73,12 @@ $singleloginoptions = array(
         "label" => T_("Page Title"),
         "description" => T_("The page title that is displayed on the login page"),
         "type" => "text"),              
+
+     'autocreategroup' => array(
+        "label" => T_("Free Login Group"),
+        "description" => T_("The group to create 'Free Login' users in. Leave blank to disable free logins"),
+        "type" => "text"),              
+   
     );
 
 

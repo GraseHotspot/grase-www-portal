@@ -21,6 +21,7 @@
 <div id="logonPage" style="display:none;">
 <form onSubmit="return false;" name="logon" class="generalForm" autocomplete="off">
 <div id="logonMessageold" class="ui-widget">{t}Login{/t}:</div>
+    {if $automac}<button href="#" onClick="tosaccept();" class="fg-button ui-state-default ui-corner-all">{t}Free access{/t}</button> <br/>{/if}
         <div>
             <label for='username'>{t}Username{/t}</label>
             <input type="text" name="username" id="username" autofocus="autofocus"/>
@@ -33,8 +34,7 @@
             
         </div>    
      
-        <button type="submit" name="submit" id="submitbutton" onClick="connect();" class="fg-button ui-state-default ui-corner-all">Login</button>       
-        <a href="#" onClick="tosaccept();">Free access</a> 
+        <button type="submit" name="submit" id="submitbutton" onClick="connect();" class="fg-button ui-state-default ui-corner-all">{t}Login{/t}</button>       
     </form>
 
 </div>
