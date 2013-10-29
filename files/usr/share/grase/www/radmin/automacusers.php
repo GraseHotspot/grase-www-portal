@@ -34,7 +34,7 @@
  *
  * */
 
-function automacuser()
+function automacuser($json = false)
 {
     global $Settings;
     // TODO MAC is passed in via uam
@@ -60,11 +60,18 @@ function automacuser()
         );
 
         // Create CHAP Challenge/Response token
-        $response = chapchallengeresponse($_GET['challenge'], $autocreatepassword);
+        $challenge = $_GET['challenge'];
+        $response = chapchallengeresponse($challenge, $autocreatepassword);
 
         $loginurl = uamloginurl($autousername, $response);
 
-        header("Location: $loginurl");
+        if($json)
+        {
+            return json_encode(array('username' => $autousername, 'challenge' => $challenge, 'response' => $response));
+        }else{
+            header("Location: $loginurl");
+            return false;
+        }
     }
 
     // Login redirect

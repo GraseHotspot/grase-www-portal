@@ -70,7 +70,7 @@ if(!isset($_GET['res']))
 /*$jsloginlink = "http://$lanip/grase/uam/mini?$query";
 $nojsloginlink = $_GET['loginurl'];*/
     require_once '../radmin/automacusers.php';
-if($_GET['automac'])
+if(@$_GET['automac'])
 {
     // TODO only if this is enabled? (Although the function will do that 
     // anyway) so maybe only show the link if this is enabled?
