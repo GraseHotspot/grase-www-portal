@@ -1,6 +1,8 @@
 grase-www-portal (3.7.7.7) UNRELEASED; urgency=low
 
+  [ Tim White ]
   * Set Freesans as default font for PDF vouchers due to printing issues
+  * "Free Access" user auto create and login 
 
  -- Tim White <tim@grasehotspot.org>  Tue, 22 Jan 2013 16:13:27 +1000
 
