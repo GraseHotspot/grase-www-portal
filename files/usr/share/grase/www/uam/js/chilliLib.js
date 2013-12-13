@@ -212,6 +212,20 @@ chilliController.logon = function ( username , password )  {
 	chilliJSON.get( chilliController.urlRoot() + 'status'  ) ;
 };
 
+chilliController.toslogon = function ()  {
+
+
+	log ( 'chilliController.toslogon()' );
+
+	chilliController.command = 'toslogon';
+
+	log ('chilliController.toslogon: asking for a new challenge ' );
+	chilliJSON.onError        = chilliController.onError    ;
+	chilliJSON.onJSONReady    = chilliController.toslogonStep2 ;
+	chilliController.clientState = chilliController.AUTH_PENDING ; 
+	chilliJSON.get( chilliController.urlRoot() + 'status'  ) ;
+};
+
 
 /**
  *   Second part of the logon process invoked after
@@ -289,6 +303,38 @@ chilliController.logonStep2 = function ( resp ) {
 
 }; 
 
+chilliController.toslogonStep2 = function ( resp ) {
+
+	log('Entering toslogonStep 2');
+
+	if ( typeof (resp.challenge) != 'string' ) {
+		log('logonStep2: cannot find a challenge. Aborting.');
+		return chilliController.onError('Cannot get challenge');
+	}
+
+	if ( resp.clientSate === chilliController.stateCodes.AUTH ) {
+		log('logonStep2: Already connected. Aborting.');
+		return chilliController.onError('Already connected.');
+	}
+
+	var challenge = resp.challenge;
+
+	log ('chilliController.toslogonStep2: Got challenge = ' + challenge );
+
+    log ('chilliController.toslogonStep2: Logon using AutoMac Service (external CHAP)');
+
+    // Build command URL
+    var url = 'http://' + chilliController.host + '/grase/uam/automac.php?challenge=' + challenge ;
+
+    // Make uamService request
+    chilliJSON.onError     = chilliController.onError     ;
+    chilliJSON.onJSONReady = chilliController.toslogonStep3 ;
+
+    chilliController.clientState = chilliController.AUTH_PENDING ; 
+    chilliJSON.get( url ) ;
+		
+}; 
+
 /**
  *   Third part of the logon process invoked after
  *   getting a uamService response
@@ -311,6 +357,25 @@ chilliController.logonStep3 = function ( resp ) {
 		chilliJSON.get ( logonUrl ) ;
 	}
 }
+
+chilliController.toslogonStep3 = function ( resp ) {
+	log('Entering toslogonStep 3');
+
+	if ( typeof (resp.response) == 'string' ) {
+		chilliJSON.onError     = chilliController.onError     ;
+		chilliJSON.onJSONReady = chilliController.processReply ;
+		chilliController.clientState = chilliController.stateCodes.AUTH_PENDING ; 
+	
+		/* Build /logon command URL */
+		var logonUrl = chilliController.urlRoot() + 'logon?username=' + resp.username + '&response='  + resp.response;
+        // TODO redirect to TOS?
+        //if (chilliController.queryObj && chilliController.queryObj['userurl'] ) {
+		//    logonUrl += '&userurl='+chilliController.queryObj['userurl'] ;
+		//}
+		chilliJSON.get ( logonUrl ) ;
+	}
+}
+
 
 chilliController.refresh = function ( ) {
 
@@ -1014,6 +1079,11 @@ function connect() {
     showWaitPage(1000);
     //loginwindow = window.open("/grase/uam/mini", "grasestatus", "width=300,height=400,location=no,directories=no,status=yes,menubar=no,toolbar=no");    
     chilliController.logon( username , password ) ;
+}
+
+function tosaccept() {
+    showWaitPage(1000);
+    chilliController.toslogon();
 }
 
 function disconnect() {

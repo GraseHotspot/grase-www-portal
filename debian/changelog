@@ -1,7 +1,9 @@
 grase-www-portal (3.7.7.7) UNRELEASED; urgency=low
 
+  [ Tim White ]
   * Set Freesans as default font for PDF vouchers due to printing issues
   * Some report updates
+  * "Free Access" user auto create and login 
   * Auto refresh of sessions page (Fixes #23)
   * Change how batches are created to prevent errors and also check for uniqueness of usernames
   * Fix up some database logging

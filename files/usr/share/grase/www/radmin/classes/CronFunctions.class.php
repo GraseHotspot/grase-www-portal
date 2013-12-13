@@ -357,6 +357,24 @@ class CronFunctions extends DatabaseFunctions
             $Settings->setSetting("DBVersion", 2.3);
         }
 
+        // Create the autocreatepassword setting, with a random string if it 
+        // doesn't already exist
+        if($olddbversion < 2.4)
+        {
+            // Check that setting doesn't already exist as changing an existing 
+            // password will lock users out
+            if(! $Settings->getSetting("autocreatepassword"))
+            {
+                $Settings->setSetting("autocreatepassword", rand_password(20));
+
+                $results++;
+            }
+
+            $Settings->setSetting("DBVersion", 2.4);
+        }
+
+
+
 
         if($results > 0)
         {            
