@@ -1,6 +1,16 @@
 grase-www-portal (3.7.7.7) UNRELEASED; urgency=low
 
   * Set Freesans as default font for PDF vouchers due to printing issues
+  * Some report updates
+  * Auto refresh of sessions page (Fixes #23)
+  * Change how batches are created to prevent errors and also check for uniqueness of usernames
+  * Fix up some database logging
+  * Added 'Cron' function to delete all users who have no remaining time limit (append ?deleteoutoftimeusers=1 to the end of the cron url)
+  * Added 'Cron' function to delete all users who have no remaining data limit (append ?deleteoutofdatausers=1 to the end of the cron url)
+  * Fix bug in CRON logging timestamp
+  * Migrating report charts to Google Chart API
+  * Fix CRON job that deletes expired users, it was missing users who expired at the start of the month 
+  * Allow "TOS" only login (via auto creation of MAC account)
 
  -- Tim White <tim@grasehotspot.org>  Tue, 22 Jan 2013 16:13:27 +1000
 
