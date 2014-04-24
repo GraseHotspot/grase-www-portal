@@ -4,20 +4,79 @@
 <title>{$logintitle}{if $Name} - {t}{$Name}{/t}{/if}</title>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 <meta name="generator" content="GRASE - UAM" />
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- CSS Stylesheet -->
 {if !$disableallcss}
-    <link rel="stylesheet" type="text/css" href="/grase/hotspot.css" id="hotspot_css" />
-    <link rel="stylesheet" type="text/css" href="/grase/radmin/radmin.css" id="radmin_css" />
-	<link type="text/css" href="/grase/css/cupertino/jquery-ui-1.8.11.custom.css" rel="stylesheet" />
+{*    <link rel="stylesheet" type="text/css" href="/grase/hotspot.css" id="hotspot_css" />*}
+{*    <link rel="stylesheet" type="text/css" href="/grase/radmin/radmin.css" id="radmin_css" />*}
+{*	<link type="text/css" href="/grase/css/cupertino/jquery-ui-1.8.11.custom.css" rel="stylesheet" />*}
+<link rel="stylesheet" href="/grase/css/bootstrap.min.css">
+<link rel="stylesheet" href="/grase/css/font-awesome.min.css">
+
 {/if}
 <style type="text/css">
 {$tpl_maincss}
+{literal}
+#errormessages:empty
+{
+    display: none;
+}
+#return {
+    background: url('/grase/logo.png') bottom right no-repeat;
+    padding-bottom: 150px;
+}
+
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+{/literal}
 </style>
 <!-- / CSS Stylesheet -->
 <!-- Favicon -->
 <link rel="shortcut icon" href="/grase/favicon.ico" />
-    <script type="text/javascript" src="/grase/js/jquery/jquery-1.5.2.min.js"></script>
-    <script type="text/javascript" src="/grase/js/jquery/jquery-ui-1.8.11.custom.min.js"></script>    
+    <script type="text/javascript" src="/grase/js/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/grase/js/bootstrap.min.js"></script>
+
     <script type="text/javascript" src="/grase/js/grase.js"></script>        
  
 {if $activepage == "nojsstatus"}	
@@ -25,4 +84,28 @@
 {/if}
 </head>
 <body>
+<div class="container">
 {if $activepage != "mini"}{literal}<!--[if lte IE 6]><script src="/grase/ie6/warning2.js"></script><![endif]-->{/literal}{/if}
+
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                 <span class="sr-only">Toggle navigation</span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+                 </button>
+                 <a class="navbar-brand" href="#">Brand</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Contact</a></li>
+                {if !$hidehelplink}<li><a href="help">{t}Help{/t}</a></li>{/if}
+              </ul>
+            </div>
+        </div>
+    </nav>

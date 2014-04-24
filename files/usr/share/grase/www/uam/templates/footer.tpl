@@ -36,5 +36,6 @@ function convert($size)
 <div id="copyright">&copy;&nbsp;{$smarty.now|date_format:'%Y'}&nbsp;<a href="http://hotspot.purewhite.id.au/">Timothy White</a></div>
 -->
 {/if}
+</div>
 </body>
 </html>
