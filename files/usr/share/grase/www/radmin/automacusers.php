@@ -46,7 +46,7 @@ function automacuser($json = false)
     $autocreategroup = $Settings->getSetting('autocreategroup');
     $autocreatepassword = $Settings->getSetting('autocreatepassword');
 
-    if($autocreategroup)
+    if($autocreategroup && strlen($autousername) > 0)
     {
         // Create user
         DatabaseFunctions::getInstance()->createUser(
