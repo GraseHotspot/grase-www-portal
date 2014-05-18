@@ -4,17 +4,11 @@
 <title>{$logintitle}{if $Name} - {t}{$Name}{/t}{/if}</title>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 <meta name="generator" content="GRASE - UAM" />
-
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- CSS Stylesheet -->
 {if !$disableallcss}
-{*    <link rel="stylesheet" type="text/css" href="/grase/hotspot.css" id="hotspot_css" />*}
-{*    <link rel="stylesheet" type="text/css" href="/grase/radmin/radmin.css" id="radmin_css" />*}
-{*	<link type="text/css" href="/grase/css/cupertino/jquery-ui-1.8.11.custom.css" rel="stylesheet" />*}
 <link rel="stylesheet" href="/grase/css/bootstrap.min.css">
 <link rel="stylesheet" href="/grase/css/font-awesome.min.css">
-
 {/if}
 <style type="text/css">
 {$tpl_maincss}
