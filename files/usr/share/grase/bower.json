@@ -1,0 +1,9 @@
+{
+    "name": "Grase Hotspot",
+    "dependencies" : {
+        "bootstrap": "*",
+        "fontawesome" : "*",
+        "jquery" : "1.*",
+        "jquery.tablesorter" : "*"
+    }
+}
