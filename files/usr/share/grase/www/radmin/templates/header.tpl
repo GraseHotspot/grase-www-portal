@@ -11,14 +11,9 @@
 <!-- CSS Stylesheet -->
 <link rel="stylesheet" type="text/css" href="/grase/hotspot.css?{$hotspotcssversion}" id="hotspot_css" />
 <link rel="stylesheet" type="text/css" href="radmin.css?{$radmincssversion}" id="radmin_css" />
-{*
-
-
-<!--<link type="text/css" href="css/cupertino/jquery-ui-1.7.2.custom.css" rel="stylesheet" />       -->
-<!--	<link type="text/css" href="/javascript/jquery-ui/themes/base/jquery.ui.all.css" rel="stylesheet" />	--> *}
         <link type="text/css" href="/grase/css/cupertino/jquery-ui-1.8.11.custom.css" rel="stylesheet" />	
 
-    <script type="text/javascript" src="/grase/js/jquery/jquery-1.5.2.min.js"></script>
+    <script type="text/javascript" src="/grase/js/jquery/jquery.min.js"></script>
 
     <script type="text/javascript" src="/grase/js/jquery/jquery-ui-1.8.11.custom.min.js"></script>
     
