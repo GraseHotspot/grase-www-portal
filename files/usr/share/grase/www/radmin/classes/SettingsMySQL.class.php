@@ -294,6 +294,7 @@ class SettingsMySQL extends Settings
         'helptext' => 2,
         'belowloginhtml' => 3,
         'loggedinnojshtml' => 4,
+        'termsandconditions' => 5,
     );
 
     public function getTemplate($template)
