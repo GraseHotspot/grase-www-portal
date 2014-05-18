@@ -107,7 +107,13 @@ $templateoptions = array(
         "label" => T_("Logged In HTML"),
         "description" => T_("HTML for successful login when not using javascript"),
         "type" => "html"),        
-    );           
+
+    'termsandconditions' => array(
+        "label" => T_("Terms and Conditions"),
+        "description" => T_("Terms and Conditions of use (HTML)"),
+        "type" => "html"),
+);           
+
     
 load_loginoptions();   
 
