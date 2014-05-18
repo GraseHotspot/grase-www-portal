@@ -26,29 +26,11 @@ require_once 'includes/database_functions.inc.php';
 require_once 'includes/load_settings.inc.php';
 require_once 'includes/pageaccess.inc.php';
 
-if(file_exists('/usr/share/php/smarty/libs/') && ! is_link('/usr/share/php/smarty/libs/'))
-{
-    // Debian bug http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=514305
-    // Remove this code once fixed?
-    require_once('smarty/libs/Smarty.class.php');
-}else
-{
-    require_once('smarty/Smarty.class.php');
-}
+
+require_once __DIR__.'/../../../vendor/autoload.php';
+
 require_once 'smarty_sortby.php';
-
-require_once 'includes/block.t.php';
-
-
-/*ini_set('include_path', ini_get('include_path') . PATH_SEPARATOR . '/usr/share/grase/i18n/');
-
-include_once 'library/piins.smarty/prefilter.i18N.php';
-include_once 'library/piins.smarty/postfilter.i18n.php';
-include_once 'library/piins.smarty/prefilter.smartyTags.php';
-//include_once 'library/smarty/Smarty.class.php';
-require_once 'library/piins.utils/FileUtils.php';*/
-
-
+require_once("smarty3/SmartyBC.class.php");
 
 
 function css_file_version()
@@ -403,10 +385,12 @@ require_once 'locale.inc.php'; // Below moved to <<
 
 
 
-$smarty = new Smarty;
+$smarty = new SmartyBC();
 
+//$smarty->error_reporting = E_ALL & ~E_NOTICE;
 $smarty->compile_check = true;
 //$smarty->register_outputfilter('smarty_outputfilter_strip');
+//$smarty->registerPlugin('modifier', 'bytes', array("Formatting", "formatBytes"));
 $smarty->register_modifier('bytes', array("Formatting", "formatBytes"));
 $smarty->register_modifier('seconds', array("Formatting", "formatSec"));
 $smarty->register_modifier('displayLocales', 'displayLocales');
