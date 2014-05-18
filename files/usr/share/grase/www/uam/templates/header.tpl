@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- CSS Stylesheet -->
 {if !$disableallcss}
-<link rel="stylesheet" href="/grase/css/bootstrap.min.css">
-<link rel="stylesheet" href="/grase/css/font-awesome.min.css">
+<link rel="stylesheet" href="/grase/vendor/bootstrap/dist/js/bootstrap.min.css">
+<link rel="stylesheet" href="/grase/vendor/fontawesome/css/font-awesome.min.css">
 {/if}
 <style type="text/css">
 {$tpl_maincss}
@@ -68,8 +68,8 @@ body {
 <!-- / CSS Stylesheet -->
 <!-- Favicon -->
 <link rel="shortcut icon" href="/grase/favicon.ico" />
-    <script type="text/javascript" src="/grase/js/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="/grase/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/grase/vendor/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/grase/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <script type="text/javascript" src="/grase/js/grase.js"></script>        
  
