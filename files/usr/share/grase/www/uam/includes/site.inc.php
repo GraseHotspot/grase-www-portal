@@ -20,6 +20,9 @@ function __autoload($class_name) {
 require_once('../radmin/includes/load_settings.inc.php');
 require_once('../radmin/includes/misc_functions.inc.php');
 
+require("smarty3/SmartyBC.class.php");
+
+/*
 // put full path to Smarty.class.php
 if(file_exists('/usr/share/php/smarty/libs/') && ! is_link('/usr/share/php/smarty/libs/'))
 {
@@ -29,16 +32,17 @@ if(file_exists('/usr/share/php/smarty/libs/') && ! is_link('/usr/share/php/smart
 }else
 {
     require_once('smarty/Smarty.class.php');
-}
+}*/
 
-require_once '../radmin/includes/block.t.php';
+require_once __DIR__.'/../../../vendor/autoload.php';
+//require_once '../radmin/includes/block.t.php';
 
-$smarty = new Smarty();
+$smarty = new SmartyBC();
 
 // TODO Detect browser settings and allow override of language?
 apply_locale($locale);
 
-$smarty->register_block('t', 'smarty_block_t');
+#$smarty->register_block('t', 'smarty_block_t');
 
 $smarty->assign("Location", $location);
 $smarty->assign("pricemb", "$currency$pricemb");

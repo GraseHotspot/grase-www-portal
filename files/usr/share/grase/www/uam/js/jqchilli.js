@@ -13,7 +13,6 @@
 
     var ident = '00';
 
-    var urlRoot = 'http://' + window.location.hostname '/json/'; // TODO make this dynamic
 
 
     // Setup "chilliController"
@@ -21,6 +20,9 @@
     var chilliController = { interval:30 , host:"###SERVERIPADDRESS###" , port:3990 , ident:'00' , ssl:false , uamService: '' };
     chilliController.stateCodes = { UNKNOWN:-1 , NOT_AUTH:0 , AUTH:1 , AUTH_PENDING:2 , AUTH_SPLASH:3 } ;
     chilliController.clientState = chilliController.stateCodes.UNKNOWN;
+
+    //var urlRoot = 'http://' + window.location.hostname + '/json/'; // TODO make this dynamic
+    var urlRoot = 'http://' + chilliController.host + ':' + chilliController.port + '/json/'; // TODO make this dynamic
 
 
     chilliController.formatTime = function ( t , zeroReturn ) {
@@ -353,7 +355,7 @@
     // Setup status window link
 
     $('#statuslink').click(function(){
-        var loginwindow = window.open ('/rio/uam/mini', 'rio_uam', 'width=300,height=400,status=yes,resizable=yes');
+        var loginwindow = window.open ('/grase/uam/mini', 'grase_uam', 'width=300,height=400,status=yes,resizable=yes');
         if (loginwindow)
         {
             loginwindow.moveTo(100,100);

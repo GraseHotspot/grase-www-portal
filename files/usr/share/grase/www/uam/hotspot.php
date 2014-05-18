@@ -2,7 +2,7 @@
 
 require_once('includes/site.inc.php');
 
-load_templates(array('loginhelptext', 'belowloginhtml'));
+load_templates(array('loginhelptext', 'belowloginhtml', 'termsandconditions'));
 
 /*$loginurl = parse_url($_GET['loginurl']);
 $query = $loginurl['query'];
