@@ -46,7 +46,7 @@
             <input type="hidden" name="response" value=""/>
             <input type="hidden" name="userurl" value="{$user_url}"/>
             <button class="btn btn-lg btn-primary btn-block" type="SUBMIT">Login</button>
-            {if $nojs}<p>{t}You have disabled the secure javascript login method.{/t} <a href="?enablejs">{t}Click here to re-enable it{/t}</a></p>{/if}
+            {if $nojs}<p style="font-size: smaller">{t}You have disabled the secure javascript login method.{/t} <a href="?enablejs">{t}Click here to re-enable it{/t}</a></p>{/if}
             </form>
     </div>
 
@@ -68,7 +68,7 @@
     {if $js}
         <script type="text/javascript" src="/grase/uam/js/chilliMD5.js"></script>
         <script type="text/javascript" id='chillijs' src='/grase/uam/js.php?js=jqchilli.js'></script>
-        <p style="font-size: smaller">{t}Trouble logging in?{/t} <a href="?disablejs">{t}Click here to disable the javascript login forms.{/t}</a><br/>{t}This will use a less secure login method{/t}</p>
+        <p style="font-size: smaller; text-align: center">{t}Trouble logging in?{/t} <a href="?disablejs">{t}Click here to try a less secure login.{/t}</a></p>
     {/if}
 
 <!-- close page div? -->
