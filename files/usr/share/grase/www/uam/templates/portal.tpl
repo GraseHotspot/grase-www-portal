@@ -1,5 +1,4 @@
 {include file="header.tpl" Name="Login" activepage="portal"}
-
 <div id="container">
     {if !$hideheader}
     <h1>{$logintitle}</h1>
@@ -8,8 +7,8 @@
     {if $tpl_termsandconditions}
     <div >
         <p style="text-align:center"><strong>{t}By continuing, you agree to the below terms and conditions.{/t}</strong></p>
-        <button class="showLink visible-xs btn btn-lg btn-primary btn-block" style="max-width: 300px; margin: 0 auto"  onclick="$('#tos').toggleClass('hidden-xs')">{t}Show Terms and Conditions{/t}</button>
-        <div id="tos" class="hidden-xs" style="height:8em;width:100%;border:1px solid #ccc;overflow:auto;margin:auto"><!-- Terms and Conditions -->{$tpl_termsandconditions}</div>
+        <button class="showLink visible-xs btn btn-lg btn-primary btn-block" style="max-width: 300px; margin: 0 auto"  onclick="$('#tos').toggleClass('hidden-xs')">{t}Show Terms and Conditions{/t}</button>
+        <div id="tos" class="hidden-xs" style="height:8em;width:100%;border:1px solid #ccc;overflow:auto;margin:auto"><!-- Terms and Conditions -->{$tpl_termsandconditions}</div>
     </div>
     {/if}
 
@@ -26,28 +25,27 @@
     {/if}
 
     {if $automac}
-    <div class="" style=""><!-- This is the "Enter" button for "Open" networks. -->
-        <form class="form-signin" method="get" action="//{$smarty.server.HTTP_HOST}{$smarty.server.REQUEST_URI}&automac=1">
-            <h2>{t}Free Access{/t}</h2>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">{t}Free Access{/t}</button>
-        </form>
-    </div>
-    {/if}
+    <div class="" style=""><!-- This is the "Enter" button for "Open" networks. -->
+        <form class="form-signin" method="get" action="//{$smarty.server.HTTP_HOST}{$smarty.server.REQUEST_URI}&automac=1">
+            <h2>{t}Free Access{/t}</h2>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">{t}Free Access{/t}</button>
+        </form>
+    </div>{/if}
 
 
-    <!-- Voucher Error messages (not found, expired, etc) will be displayed using this variable - do not remove -->
-    <p class="error" id="errormessages"></p>
+    <!-- Voucher Error messages (not found, expired, etc) will be displayed using this variable - do not remove -->
+    <p class="error" id="errormessages"></p>
 
 
     <div id="loginform">
         <form method="post"  action="nojslogin.php" autocomplete="off" class="form-signin">
-            <h2>{t}Voucher Login{/t}</h2>
+            <h2>{t}Voucher Login{/t}</h2>
             <input class="form-control" id="username" name="username" type="text" required autofocus placeholder="{t}Username{/t}"/>
             <input class="form-control" id="password" name="password" type="password" required placeholder="{t}Password{/t}"/>
             <input type="hidden" name="challenge" value="{$challenge}"/>
             <input type="hidden" name="response" value=""/>
             <input type="hidden" name="userurl" value="{$user_url}"/>
-            <button class="btn btn-lg btn-primary btn-block" type="SUBMIT">Login</button>
+            <button class="btn btn-lg btn-primary btn-block" type="SUBMIT">Login</button>
             {if $nojs}<p>{t}You have disabled the secure javascript login method.{/t} <a href="?enablejs">{t}Click here to re-enable it{/t}</a></p>{/if}
             </form>
     </div>
