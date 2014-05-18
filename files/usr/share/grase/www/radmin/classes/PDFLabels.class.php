@@ -27,8 +27,6 @@
    written to take advantage of the TCPDF class
 */
 
-    require_once('/usr/share/grase/tcpdf/config/lang/eng.php');
-    require_once('/usr/share/grase/tcpdf/tcpdf.php');
     
 class PDFLabels {
 
