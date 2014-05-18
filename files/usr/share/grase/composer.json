@@ -1,0 +1,12 @@
+{
+    "repositories": [
+    {
+        "type": "vcs",
+        "url": "https://github.com/GraseHotspot/smarty-gettext"
+    }
+    ],
+    "require": {
+        "smarty-gettext/smarty-gettext": "@dev",
+        "tecnick.com/tcpdf": "@stable"
+    }
+}
