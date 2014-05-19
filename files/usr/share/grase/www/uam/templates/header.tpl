@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- CSS Stylesheet -->
 {if !$disableallcss}
-<link rel="stylesheet" href="/grase/vendor/bootstrap/dist/js/bootstrap.min.css">
+<link rel="stylesheet" href="/grase/vendor/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="/grase/vendor/fontawesome/css/font-awesome.min.css">
 {/if}
 <style type="text/css">
@@ -23,14 +23,15 @@
 }
 
 body {
-  padding-top: 40px;
-  padding-bottom: 40px;
+/*  padding-top: 40px;
+  padding-bottom: 40px;*/
   background-color: #eee;
 }
 
 .form-signin {
   max-width: 330px;
   padding: 15px;
+  padding-top: 0;
   margin: 0 auto;
 }
 .form-signin .form-signin-heading,
@@ -63,6 +64,11 @@ body {
   border-top-right-radius: 0;
 }
 
+#loginform h2 {
+    margin-top: 0;
+}
+        
+
 {/literal}
 </style>
 <!-- / CSS Stylesheet -->
@@ -78,11 +84,10 @@ body {
 {/if}
 </head>
 <body>
-<div class="container">
 {if $activepage != "mini"}{literal}<!--[if lte IE 6]><script src="/grase/ie6/warning2.js"></script><![endif]-->{/literal}{/if}
 
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
+    <nav class="navbar navbar-default navbar-static-top navbar-inverse" role="navigation">
+        <div class="container-fluid" style="max-width: 960px">
             <div class="navbar-header">
                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
                  <span class="sr-only">Toggle navigation</span>
@@ -103,3 +108,5 @@ body {
             </div>
         </div>
     </nav>
+
+<div class="container">

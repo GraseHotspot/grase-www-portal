@@ -7,8 +7,8 @@
     {if $tpl_termsandconditions}
     <div >
         <p style="text-align:center"><strong>{t}By continuing, you agree to the below terms and conditions.{/t}</strong></p>
-        <button class="showLink visible-xs btn btn-lg btn-primary btn-block" style="max-width: 300px; margin: 0 auto"  onclick="$('#tos').toggleClass('hidden-xs')">{t}Show Terms and Conditions{/t}</button>
-        <div id="tos" class="hidden-xs" style="height:8em;width:100%;border:1px solid #ccc;overflow:auto;margin:auto"><!-- Terms and Conditions -->{$tpl_termsandconditions}</div>
+        <div style="padding: 0 15px; max-width: 330px; margin: 0 auto"><button class="showLink visible-xs btn btn-sm btn-info btn-block"  style="max-width: 300px; margin: 0 auto; "  onclick="$('#tos').toggleClass('hidden-xs')">{t}Show Terms and Conditions{/t}</button></div>
+        <div id="tos" class="hidden-xs" style="height:8em;width:100%; max-width: 960px; border:1px solid #ccc;overflow:auto;margin:auto"><!-- Terms and Conditions -->{$tpl_termsandconditions}</div>
     </div>
     {/if}
 
@@ -28,7 +28,7 @@
     <div class="" style=""><!-- This is the "Enter" button for "Open" networks. -->
         <form class="form-signin" method="get" action="//{$smarty.server.HTTP_HOST}{$smarty.server.REQUEST_URI}&automac=1">
             <h2>{t}Free Access{/t}</h2>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">{t}Free Access{/t}</button>
+            <button class="btn btn-success btn-block" type="submit">{t}Free Access{/t}</button>
         </form>
     </div>{/if}
 
@@ -45,7 +45,7 @@
             <input type="hidden" name="challenge" value="{$challenge}"/>
             <input type="hidden" name="response" value=""/>
             <input type="hidden" name="userurl" value="{$user_url}"/>
-            <button class="btn btn-lg btn-primary btn-block" type="SUBMIT">Login</button>
+            <button class="btn btn-primary btn-block" type="SUBMIT">Login</button>
             {if $nojs}<p style="font-size: smaller">{t}You have disabled the secure javascript login method.{/t} <a href="?enablejs">{t}Click here to re-enable it{/t}</a></p>{/if}
             </form>
     </div>
