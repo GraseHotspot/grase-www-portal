@@ -95,16 +95,16 @@ body {
                  <span class="icon-bar"></span>
                  <span class="icon-bar"></span>
                  </button>
-                 <a class="navbar-brand" href="#">Brand</a>
+                 <a class="navbar-brand" href="#">{$logintitle}</a>
             </div>
 
             <div class="collapse navbar-collapse" id="navbar-collapse-1">
               <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li {if $activepage == 'portal'}class="active"{/if}><a href="#">Login</a></li>
                 <li><a href="#">Features</a></li>
                 <li><a href="#">Contact</a></li>
-                {if !$hidehelplink}<li><a href="help">{t}Help{/t}</a></li>{/if}
-              </ul>
+                {if !$hidehelplink}<li {if $activepage == 'help'}class='active'{/if}><a href="help">{t}Help{/t}</a></li>{/if}
+              </ul >
             </div>
         </div>
     </nav>
