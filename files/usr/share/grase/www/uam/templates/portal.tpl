@@ -7,7 +7,7 @@
     {if $tpl_termsandconditions}
     <div >
         <p style="text-align:center"><strong>{t}By continuing, you agree to the below terms and conditions.{/t}</strong></p>
-        <div style="padding: 0 15px; max-width: 330px; margin: 0 auto"><button class="showLink visible-xs btn btn-sm btn-info btn-block"  style="max-width: 300px; margin: 0 auto; "  onclick="$('#tos').toggleClass('hidden-xs')">{t}Show Terms and Conditions{/t}</button></div>
+        <div style="padding: 0 15px; max-width: 330px; margin: 0 auto"><button class="showLink visible-xs btn btn-sm btn-block"  style="max-width: 300px; margin: 0 auto; "  onclick="$('#tos').toggleClass('hidden-xs')">{t}Show Terms and Conditions{/t}</button></div>
         <div id="tos" class="hidden-xs" style="height:8em;width:100%; max-width: 960px; border:1px solid #ccc;overflow:auto;margin:auto"><!-- Terms and Conditions -->{$tpl_termsandconditions}</div>
     </div>
     {/if}
