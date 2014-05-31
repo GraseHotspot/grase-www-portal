@@ -123,13 +123,20 @@ chilliController.formatBytes = function (b, zeroReturn)
 
 /* END Chilli Controller Code */
 
+function display_error(errormsg)
+{
+    display_loginform();
+    error_message(errormsg, 'alert-danger');
+
+}
+
 function tos_getresponse()
 {
     // Send Challenge to automac script which will give us the response to send
     // and the username (so we never know the password clientside)
 
     /* Build automac URL */
-    var tosUrl = urlRoot + '/grase/uam/automac?challenge=' + escape(challenge);
+    var tosUrl = 'http://' + window.location.hostname + '/grase/uam/automac?challenge=' + escape(challenge);
 
     chilliController.clientState = chilliController.stateCodes.AUTH_PENDING;
 
@@ -138,7 +145,11 @@ function tos_getresponse()
         url: tosUrl,
         dataType: "jsonp",
         timeout: 1000,
-        jsonpCallback: "tos_get_login"
+        jsonpCallback: "tos_get_login",
+        error: function()
+            {
+                display_error("No response from TOS server");
+            }
     });
 
 }
@@ -162,8 +173,7 @@ function get_challenge()
 
                 if (typeof (resp.challenge) != 'string')
                 {
-                    display_loginform();
-                    error_message('Unable to get secure challenge', 'alert-error');
+                    display_error('Unable to get secure challenge');
                     return false;
                 }
                 if (resp.clientState === chilliController.stateCodes.AUTH)
@@ -183,11 +193,9 @@ function get_challenge()
                 get_login();
 
             },
-            error: function ()
+            error: function()
             {
-                display_loginform();
-                error_message('Server Timed Out. Please try again', 'alert-error');
-
+                display_error("Server Timed Out. Please try again");
             }
 
         });
@@ -204,6 +212,7 @@ function get_login()
     if (logintype == "TOS")
     {
         tos_getresponse();
+        return false;
     }
     /* Calculate MD5 CHAP at the client side */
     var myMD5 = new ChilliMD5();
@@ -213,11 +222,7 @@ function get_login()
 
     if (typeof (password) !== 'string' || typeof (username) !== 'string' || password.length == 0 || username.length == 0)
     {
-        error_message("Both username and password are needed", 'alert-error');
-
-        //$('#loginform').toggle();
-        //$('#loading').toggle();
-
+        display_error("Both username and password are needed");
         return false;
     }
 
@@ -233,7 +238,11 @@ function get_login()
         url: logonUrl,
         dataType: "jsonp",
         timeout: 1000,
-        jsonpCallback: "process_reply"
+        jsonpCallback: "process_reply",
+        error: function()
+        {
+            display_error("Login Failed due to server error. Please try again");
+        }
     });
 
 }
@@ -241,6 +250,11 @@ function get_login()
 
 function tos_get_login(resp)
 {
+    if (typeof (resp) == 'undefined' || typeof (resp.username) !== 'string' || typeof (resp.response) !== 'string')
+    {
+        display_error("Incorrect response from TOS server. Please notify system admin");
+        return false;
+    }
 
     /* Build /logon command URL */
     var logonUrl = urlRoot + 'logon?username=' + escape(resp.username) + '&response=' + resp.response;
@@ -252,7 +266,11 @@ function tos_get_login(resp)
         url: logonUrl,
         dataType: "jsonp",
         timeout: 1000,
-        jsonpCallback: "process_reply"
+        jsonpCallback: "process_reply",
+        error: function()
+        {
+            display_error("TOS login failed due to server error. Please try again");
+        }
     });
 
 }
@@ -296,7 +314,7 @@ function process_reply(resp)
             if (chilliController.clientState === chilliController.stateCodes.AUTH_PENDING)
             {
                 // We have sucessfully logged in or changed states to logged in
-                error_message("Login successful", 'alert-successful');
+                error_message("Login successful", 'alert-success');
 
             }
             //console.log(chilliController.clientState);
@@ -342,7 +360,7 @@ function process_reply(resp)
     }
     else
     {
-        error_message("Unknown clientState found in JSON reply", 'alert-error');
+        display_error("Unknown clientState found in JSON reply");
     }
 
     // Clear any previous timeout we have running
@@ -370,13 +388,17 @@ function logoff()
         url: urlRoot + 'logoff',
         dataType: "jsonp",
         timeout: 1000,
-        jsonpCallback: "process_reply"
+        jsonpCallback: "process_reply",
+        error: function()
+        {
+            display_error("Failed to logoff. Please try again");
+        }
     });
 }
 
 function display_loginform()
 {
-    $('.alert-successful').hide();
+    $('.alert-success').hide();
     $('#loginform').show();
     $('#tosaccept').show();
     $('#loading').hide();
@@ -405,7 +427,7 @@ function display_loggedinform()
 function error_message(msg, type)
 {
     type = type || "";
-    $("#errormessages").append('<div class="alert ' + type + '"><button type="button" class="close" data-dismiss="alert">&times;</button>' + msg + '</div>');
+    $("#errormessages").append('<div class="alert alert-dismissable ' + type + '"><button type="button" class="close" data-dismiss="alert">&times;</button>' + msg + '</div>');
 }
 
 function clear_error_messages()
