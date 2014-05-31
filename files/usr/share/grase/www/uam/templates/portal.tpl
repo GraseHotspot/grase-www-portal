@@ -24,6 +24,9 @@
     </div>
     {/if}
 
+    <!-- Voucher Error messages (not found, expired, etc) will be displayed using this variable - do not remove -->
+    <p class="error" id="errormessages"></p>
+
     {if $automac}
     <div class="" style="" id="tosaccept">
         <form class="form-signin" method="get" action="//{$smarty.server.HTTP_HOST}{$smarty.server.REQUEST_URI}&automac=1">
@@ -31,11 +34,6 @@
             <button class="btn btn-success btn-block" type="submit">{t}Free Access{/t}</button>
         </form>
     </div>{/if}
-
-
-    <!-- Voucher Error messages (not found, expired, etc) will be displayed using this variable - do not remove -->
-    <p class="error" id="errormessages"></p>
-
 
     <div id="loginform">
         <form method="post"  action="nojslogin.php" autocomplete="off" class="form-signin">
@@ -50,15 +48,15 @@
             </form>
     </div>
 
-    <div id="loading" class="well well-large well-transparent lead" style="display: none">
-        <i class="icon-spinner icon-spin icon-2x pull-left"></i> {t}Attempting Login...{/t}
+    <div id="loading" class="well lead" style="display: none">
+        <i class="fa-spinner fa-spin fa fa-2x pull-left"></i> {t}Attempting Login...{/t}
     </div>
 
     <div id="loggedin" style="display: none">
         <span id="loggedinuserName" style="display: none">{t}Logged in as{/t} <strong id="loggedinuserNameVal"></strong></span>
         <span id="sessionTimeout" style="display: none"><br/>Remaining Time <strong id="sessionTimeoutVal"></strong></span>
         <span id="sessionMaxTotalOctets" style="display: none"><br/>Remaining Data <strong id="sessionMaxTotalOctetsVal"></strong></span>
-        <br/><a class="btn btn-danger" href="http://1.0.0.0" id="logofflink">{t}Logout{/t}</a> <a href="/grase/uam/mini" class="btn btn-success" target="grase_uam" id='statuslink'>{t}Open Status Window{/t} <i class=" icon-external-link"></i></a>
+        <br/><a class="btn btn-danger" href="http://1.0.0.0" id="logofflink">{t}Logout{/t}</a> <a href="/grase/uam/mini" class="btn btn-success" target="grase_uam" id='statuslink'>{t}Open Status Window{/t} <i class="fa fa-external-link"></i></a>
     </div>
 
     {$tpl_belowloginhtml}
