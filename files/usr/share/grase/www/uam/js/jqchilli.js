@@ -13,6 +13,8 @@ var challenge = 0;
 
 var ident = '00';
 
+var logintype = "";
+
 // Setup "chilliController"
 
 var chilliController = {
@@ -121,6 +123,29 @@ chilliController.formatBytes = function (b, zeroReturn)
 
 /* END Chilli Controller Code */
 
+function tos_getresponse()
+{
+    // Send Challenge to automac script which will give us the response to send
+    // and the username (so we never know the password clientside)
+
+    /* Build automac URL */
+    var tosUrl = urlRoot + '/grase/uam/automac?challenge=' + escape(challenge);
+
+    chilliController.clientState = chilliController.stateCodes.AUTH_PENDING;
+
+    $.ajax(
+    {
+        url: tosUrl,
+        dataType: "jsonp",
+        timeout: 1000,
+        jsonpCallback: "tos_get_login"
+    });
+
+}
+
+
+
+
 function get_challenge()
 {
 
@@ -166,28 +191,6 @@ function get_challenge()
             }
 
         });
-        /*$.getJSON(urlRoot + 'status?callback=?', function(resp) {
-        // Check for valid challenge
-
-
-        if ( typeof (resp.challenge) != 'string' ) {
-            alert('Cannot get challenge');
-            return false;
-        }
-        if ( resp.clientSate === chilliController.stateCodes.AUTH ) {
-            alert('Already connected.');
-            return false;
-        }
-        // Check clientState
-
-        /// ...
-
-        // Got valid challenge and not logged in
-        challenge = json.challenge;
-
-        get_login();
-
-        });*/
     }
     else
     {
@@ -197,6 +200,11 @@ function get_challenge()
 
 function get_login()
 {
+    // Redirect to the TOS login functions when it's a TOS login
+    if (logintype == "TOS")
+    {
+        tos_getresponse();
+    }
     /* Calculate MD5 CHAP at the client side */
     var myMD5 = new ChilliMD5();
 
@@ -217,6 +225,25 @@ function get_login()
 
     /* Build /logon command URL */
     var logonUrl = urlRoot + 'logon?username=' + escape(username) + '&response=' + chappassword;
+
+    chilliController.clientState = chilliController.stateCodes.AUTH_PENDING;
+
+    $.ajax(
+    {
+        url: logonUrl,
+        dataType: "jsonp",
+        timeout: 1000,
+        jsonpCallback: "process_reply"
+    });
+
+}
+
+
+function tos_get_login(resp)
+{
+
+    /* Build /logon command URL */
+    var logonUrl = urlRoot + 'logon?username=' + escape(resp.username) + '&response=' + resp.response;
 
     chilliController.clientState = chilliController.stateCodes.AUTH_PENDING;
 
@@ -351,13 +378,16 @@ function display_loginform()
 {
     $('.alert-successful').hide();
     $('#loginform').show();
+    $('#tosaccept').show();
     $('#loading').hide();
     $('#loggedin').hide();
+    logintype = "";
 }
 
 function display_loadingform()
 {
     $('#loginform').hide();
+    $('#tosaccept').hide();
     $('#loading').show();
     $('#loggedin').hide();
 }
@@ -365,6 +395,7 @@ function display_loadingform()
 function display_loggedinform()
 {
     $('#loginform').hide();
+    $('#tosaccept').hide();
     $('#loading').hide();
     $('#loggedin').show();
     // We don't want to save the password, even if it's a nice feature
@@ -386,11 +417,22 @@ function clear_error_messages()
 
 $('#loginform').submit(function ()
 {
+    logintype = "USER";
     display_loadingform();
     clear_error_messages()
     get_challenge();
     return false;
 });
+
+$('#tosaccept').submit(function ()
+{
+    logintype = "TOS";
+    display_loadingform();
+    clear_error_messages()
+    get_challenge();
+    return false;
+});
+
 
 $('#logofflink').click(function ()
 {
