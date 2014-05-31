@@ -7,8 +7,8 @@
     {if $tpl_termsandconditions}
     <div >
         <p style="text-align:center"><strong>{t}By continuing, you agree to the below terms and conditions.{/t}</strong></p>
-        <div style="padding: 0 15px; max-width: 330px; margin: 0 auto"><button class="showLink visible-xs btn btn-sm btn-block"  style="max-width: 300px; margin: 0 auto; "  onclick="$('#tos').toggleClass('hidden-xs')">{t}Show Terms and Conditions{/t}</button></div>
-        <div id="tos" class="hidden-xs" style="height:8em;width:100%; max-width: 960px; border:1px solid #ccc;overflow:auto;margin:auto"><!-- Terms and Conditions -->{$tpl_termsandconditions}</div>
+        <div style="padding: 0 15px; max-width: 330px;" class="center-block"><button class="showLink visible-xs btn btn-sm btn-block"  style="max-width: 300px; margin: 0 auto; "  onclick="$('#tos').toggleClass('hidden-xs')">{t}Show Terms and Conditions{/t}</button></div>
+        <div id="tos" class="hidden-xs center-block" style="height:8em;width:100%; max-width: 960px; border:1px solid #ccc;overflow:auto;"><!-- Terms and Conditions -->{$tpl_termsandconditions}</div>
     </div>
     {/if}
 
@@ -25,7 +25,7 @@
     {/if}
 
     <!-- Voucher Error messages (not found, expired, etc) will be displayed using this variable - do not remove -->
-    <p class="error" id="errormessages"></p>
+    <div class="error center-block" id="errormessages" style="margin-top: 1em; max-width: 300px; text-align: center;"></div>
 
     {if $automac}
     <div class="" style="" id="tosaccept">
@@ -48,8 +48,8 @@
             </form>
     </div>
 
-    <div id="loading" class="well lead" style="display: none">
-        <i class="fa-spinner fa-spin fa fa-2x pull-left"></i> {t}Attempting Login...{/t}
+    <div id="loading" class="well center-block" style="margin-top: 1em; max-width: 300px; display: none; text-align: center">
+        <i class="fa-spinner fa-spin fa fa-2x"></i> {t}Attempting Login...{/t}
     </div>
 
     <div id="loggedin" style="display: none">
