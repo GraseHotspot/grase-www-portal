@@ -12,9 +12,14 @@
 
 require_once "MDB2.php";
 
-function __autoload($class_name) {
-    require_once '../radmin/classes/' . $class_name . '.class.php';    
+function grase_autoload($class_name) {
+    if( file_exists(__DIR__. '/../../radmin/classes/' . $class_name . '.class.php'))
+    {
+        include_once __DIR__. '/../../radmin/classes/' . $class_name . '.class.php';
+    }
 }
+
+spl_autoload_register('grase_autoload');
 
 //require('/var/www/radmin/includes/site_settings.inc.php');
 require_once('../radmin/includes/load_settings.inc.php');
