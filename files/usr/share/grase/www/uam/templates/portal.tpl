@@ -25,7 +25,7 @@
     {/if}
 
     {if $automac}
-    <div class="" style=""><!-- This is the "Enter" button for "Open" networks. -->
+    <div class="" style="" id="tosaccept">
         <form class="form-signin" method="get" action="//{$smarty.server.HTTP_HOST}{$smarty.server.REQUEST_URI}&automac=1">
             <h2>{t}Free Access{/t}</h2>
             <button class="btn btn-success btn-block" type="submit">{t}Free Access{/t}</button>
