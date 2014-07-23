@@ -30,7 +30,7 @@ fi
 install_composer_deps(){ # Install composer and install/upgrade dependencies
     cd /usr/share/grase/
     if [ ! -e 'composer.phar' ]; then
-        curl -sS https://getcomposer.org/installer | php
+        php -r "readfile('https://getcomposer.org/installer');" | php
     fi
     php composer.phar self-update
     php composer.phar install
