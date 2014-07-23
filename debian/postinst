@@ -87,7 +87,8 @@ clear_template_cache
 
 install_composer_deps
 
-install_bower_deps
+# Debian 7 doesn't have npm easily installable
+#install_bower_deps
 
 fix_dir_perms
 
