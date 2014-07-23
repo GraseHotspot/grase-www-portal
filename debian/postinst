@@ -27,6 +27,23 @@ if [ "$action" != configure ]
   exit 0
 fi
 
+install_composer_deps(){ # Install composer and install/upgrade dependencies
+    pushd /usr/share/grase/
+    if [ ! -e 'composer.phar' ]; then
+        curl -sS https://getcomposer.org/installer | php
+    fi
+    php composer.phar self-update
+    php composer.phar install
+    popd
+}
+
+install_bower_deps(){ # Install Bower and install/upgrade depenencies
+    pushd /usr/share/grase/
+    npm install -g bower
+    bower update
+    popd
+}
+
 call_cron(){ # Call cron so certain upgrades can occur
     wget -q http://127.0.0.1/grase/radmin/cron.php -O - || true
 }
@@ -69,6 +86,10 @@ fi
 link_logo
 
 clear_template_cache
+
+install_composer_deps
+
+install_bower_deps
 
 fix_dir_perms
 
