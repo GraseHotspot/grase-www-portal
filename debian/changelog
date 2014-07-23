@@ -5,13 +5,17 @@ grase-www-portal (3.7.7.7) UNRELEASED; urgency=low
   * Some report updates
   * "Free Access" user auto create and login 
   * Auto refresh of sessions page (Fixes #23)
-  * Change how batches are created to prevent errors and also check for uniqueness of usernames
+  * Change how batches are created to prevent errors and also check for
+    uniqueness of usernames
   * Fix up some database logging
-  * Added 'Cron' function to delete all users who have no remaining time limit (append ?deleteoutoftimeusers=1 to the end of the cron url)
-  * Added 'Cron' function to delete all users who have no remaining data limit (append ?deleteoutofdatausers=1 to the end of the cron url)
+  * Added 'Cron' function to delete all users who have no remaining time limit
+    (append ?deleteoutoftimeusers=1 to the end of the cron url)
+  * Added 'Cron' function to delete all users who have no remaining data limit
+    (append ?deleteoutofdatausers=1 to the end of the cron url)
   * Fix bug in CRON logging timestamp
   * Migrating report charts to Google Chart API
-  * Fix CRON job that deletes expired users, it was missing users who expired at the start of the month 
+  * Fix CRON job that deletes expired users, it was missing users who expired
+    at the start of the month 
   * Allow "TOS" only login (via auto creation of MAC account)
   * Update to Smarty3
   * Install and use Composer and Bower to manage external dependencies
@@ -80,7 +84,8 @@ grase-www-portal (3.7.5) purewhite; urgency=low
 
 grase-www-portal (3.7.4-dev5) purewhite; urgency=low
 
-  * Cron archive scripts allowed negative time value which allowed usage after using all allowed time
+  * Cron archive scripts allowed negative time value which allowed usage after
+    using all allowed time
   * Fix Reports some more 
 
  -- Tim White <tim@grasehotspot.org>  Sat, 30 Jun 2012 07:59:03 +1000
@@ -105,7 +110,8 @@ grase-www-portal (3.7.4-dev3) purewhite; urgency=low
 
 grase-www-portal (3.7.4-dev2) purewhite; urgency=low
 
-  * Some smart caching of user details and settings to reduce database calls significantly (and page load times) ref #63
+  * Some smart caching of user details and settings to reduce database calls
+    significantly (and page load times) ref #63
   * Fix report graphs (and filter out CoovaChilli User) Fixes #52
   * Major fix for archiving users
 
