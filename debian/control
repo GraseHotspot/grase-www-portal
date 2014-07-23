@@ -1,7 +1,7 @@
 Source: grase-www-portal
 Section: unknown
 Priority: extra
-Maintainer: Tim White <tim@hotspot.purewhite.id.au>
+Maintainer: Tim White <tim@grasehotspot.org>
 Build-Depends: debhelper (>= 7)
 Standards-Version: 3.8.3
 Homepage: <insert the upstream URL, if relevant>

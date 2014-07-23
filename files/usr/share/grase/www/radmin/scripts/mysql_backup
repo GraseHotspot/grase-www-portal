@@ -42,7 +42,7 @@ hostname=$(hostname)
 
 # TODO: Make offsite backups an option in admin interface (we already have root to read database, so can easily extract required settings)
 #(cat << EOM
-#To: backups+db@hotspot.purewhite.id.au
+#To: ### BACKUP EMAIL
 #Subject: GRASE DB Backup `date +%Y%m%d` ($location - $hostname$MAC)
 #MIME-Version: 1.0
 #Content-Disposition: attachment; filename=$backup_file
@@ -50,7 +50,7 @@ hostname=$(hostname)
 #Content-Transfer-Encoding: base64
 #
 #EOM
-#base64 $backup_file ) | sendmail backups+db@hotspot.purewhite.id.au
+#base64 $backup_file ) | sendmail ### BACKUP EMAIL
 
 # TODO Offsite backups to s3cmd
 # As we are in the backup_dir, we can use the sync command to make sure the files are correctly uploaded, only new files will be uploaded

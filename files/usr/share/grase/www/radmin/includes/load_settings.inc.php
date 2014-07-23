@@ -4,7 +4,7 @@
 
 /*  This file is part of GRASE Hotspot.
 
-    http://hotspot.purewhite.id.au/
+    http://grasehotspot.org/
 
     GRASE Hotspot is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

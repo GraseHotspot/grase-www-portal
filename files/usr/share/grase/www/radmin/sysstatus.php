@@ -16,7 +16,7 @@
 
 /*  This file is part of GRASE Hotspot.
 
-    http://hotspot.purewhite.id.au/
+    http://grasehotspot.org/
 
     GRASE Hotspot is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -88,7 +88,7 @@ $monitored_processes[] = array("label" => "*Network (Gateway:$gateway_ip)", "pin
 $monitored_processes[] = array("label" => "Internet (Google SA)", "ping" => "google.co.za");
 $monitored_processes[] = array("label" => "Internet (Google AU)", "ping" => "google.com.au");
 $monitored_processes[] = array("label" => "VPN (VPN Endpoint)", "ping" => "10.64.63.1");
-$monitored_processes[] = array("label" => "Network (VPN Server)", "ping" => "hotspot.purewhite.id.au");
+$monitored_processes[] = array("label" => "Network (VPN Server)", "ping" => "vpn.grasehotspot.net");
 
 
 foreach($monitored_processes as $proc)

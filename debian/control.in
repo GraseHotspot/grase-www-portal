@@ -1,10 +1,10 @@
 Source: grase-www-portal
 Section: net
 Priority: extra
-Maintainer: Tim White <tim@hotspot.purewhite.id.au>
+Maintainer: Tim White <tim@grasehotspot.org>
 Build-Depends: @cdbs@, config-package-dev
 Standards-Version: 3.9.1
-Homepage: http://hotspot.purewhite.id.au/
+Homepage: http://grasehotspot.org/
 
 Package: grase-www-portal
 Architecture: all

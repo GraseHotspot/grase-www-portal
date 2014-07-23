@@ -5,7 +5,7 @@
 <a href="/grase/radmin/usermin">My Account</a>&nbsp;|&nbsp;
 <a href="{$Support.link}">{t}Support{/t}: {$Support.name}</a>&nbsp;|&nbsp;
 <a href="/grase/radmin/">Admin</a>
-<div id="copyright">&copy;&nbsp;{$smarty.now|date_format:'%Y'}&nbsp;<a href="http://hotspot.purewhite.id.au/">Timothy White</a></div>
+<div id="copyright">&copy;&nbsp;{$smarty.now|date_format:'%Y'}&nbsp;<a href="http://grasehotspot.org/">Timothy White</a></div>
 <div id="generated">
 {php}
    global $pagestarttime;
@@ -33,7 +33,7 @@ function convert($size)
 
 {else}
 <!-- Please consider putting a link to http://grasehotspot.org as well as a copyright statement if you are hiding the footer
-<div id="copyright">&copy;&nbsp;{$smarty.now|date_format:'%Y'}&nbsp;<a href="http://hotspot.purewhite.id.au/">Timothy White</a></div>
+<div id="copyright">&copy;&nbsp;{$smarty.now|date_format:'%Y'}&nbsp;<a href="http://grasehotspot.org/">Timothy White</a></div>
 -->
 {/if}
 </div>
