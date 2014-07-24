@@ -17,3 +17,15 @@ Description: Portal files for the GRASE Hotspot System
  users and other hotspot related tasks.
  .
  This package provides the portal webapps
+
+Package: grase-www-portal-ext-libs
+Architecture: all
+Depends: ${misc:Depends}
+Provides: ${diverted-files}
+Conflicts: ${diverted-files}
+Description: External Libraries for the GRASE Hotspot System
+ The GRASE Hotspot System binds together CoovaChilli, Freeradius, MySQL,
+ and other systems as well as providing an administrative frontend to managing
+ users and other hotspot related tasks.
+ .
+ This package provides the external libraries for the portal webapps

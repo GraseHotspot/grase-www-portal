@@ -2,6 +2,8 @@
 
 DEB_AUTO_UPDATE_DEBIAN_CONTROL = true
 
+export DH_OPTIONS=-X.git
+
 #DEB_DIVERT_EXTENSION = .grase
 # Replace some base files with simple replacements.
 #DEB_DIVERT_FIiLES_grase-monit-conf += \
