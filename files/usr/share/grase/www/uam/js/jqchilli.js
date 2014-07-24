@@ -315,6 +315,11 @@ function process_reply(resp)
             {
                 // We have sucessfully logged in or changed states to logged in
                 error_message("Login successful", 'alert-success');
+                userurl = getQueryVariable('userurl');
+                if (typeof (userurl) == 'string')
+                {
+                    error_message("Continue to your site <a href='" + userurl + "'>" + userurl + "</a>", 'alert-success');
+                }
 
             }
             //console.log(chilliController.clientState);
