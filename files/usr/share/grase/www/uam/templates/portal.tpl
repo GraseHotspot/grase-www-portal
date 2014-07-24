@@ -1,4 +1,6 @@
+{if $activepage != 'mini'}
 {include file="header.tpl" Name="Login" activepage="portal"}
+{/if}
 <div id="container">
     {if !$hideheader}
     <h1>{$logintitle}</h1>
@@ -71,4 +73,6 @@
 
 <!-- close page div? -->
 </div>
+{if $activepage != 'mini'}
 {include file="footer.tpl"}
+{/if}

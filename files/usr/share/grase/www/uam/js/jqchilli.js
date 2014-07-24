@@ -315,10 +315,11 @@ function process_reply(resp)
             {
                 // We have sucessfully logged in or changed states to logged in
                 error_message("Login successful", 'alert-success');
-                userurl = getQueryVariable('userurl');
+                var userurl = getQueryVariable('userurl');
                 if (typeof (userurl) == 'string')
                 {
-                    error_message("Continue to your site <a href='" + userurl + "'>" + userurl + "</a>", 'alert-success');
+                    userurl = decodeURIComponent(userurl)
+                    error_message("Continue to your site <a target='_blank' href='" + userurl + "'>" + userurl + "</a>", 'alert-success');
                 }
 
             }

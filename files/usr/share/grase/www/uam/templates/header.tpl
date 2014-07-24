@@ -84,19 +84,23 @@ body {
 {/if}
 </head>
 <body>
-{if $activepage != "mini"}{literal}<!--[if lte IE 6]><script src="/grase/ie6/warning2.js"></script><![endif]-->{/literal}{/if}
-
+{if $activepage != "mini"}
+{literal}<!--[if lte IE 6]><script src="/grase/ie6/warning2.js"></script><![endif]-->{/literal}
+{/if}
     <nav class="navbar navbar-default navbar-static-top navbar-inverse" role="navigation">
         <div class="container-fluid" style="max-width: 960px">
             <div class="navbar-header">
-                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+{if $activepage != "mini"}
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
                  <span class="sr-only">Toggle navigation</span>
                  <span class="icon-bar"></span>
                  <span class="icon-bar"></span>
                  <span class="icon-bar"></span>
                  </button>
+{/if}
                  <a class="navbar-brand" href="#">{$logintitle}</a>
             </div>
+{if $activepage != "mini"}
 
             <div class="collapse navbar-collapse" id="navbar-collapse-1">
               <ul class="nav navbar-nav">
@@ -106,7 +110,7 @@ body {
                 {if !$hidehelplink}<li {if $activepage == 'help'}class='active'{/if}><a href="help">{t}Help{/t}</a></li>{/if}
               </ul >
             </div>
+{/if}
         </div>
     </nav>
-
 <div class="container">
