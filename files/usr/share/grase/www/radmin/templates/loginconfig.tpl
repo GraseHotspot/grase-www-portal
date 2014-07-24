@@ -1,13 +1,13 @@
 {include file="header.tpl" Name="Portal Settings" activepage="loginconfig" helptext="Use this page to change login page Settings"}
 
-<script src="/javascript/codemirror/codemirror.js"></script>
-<script src="/javascript/codemirror/util/searchcursor.js" type="text/javascript"></script>
-<link rel="stylesheet" href="/javascript/codemirror/codemirror.css">
-<script src="/javascript/codemirror/mode/css/css.js"></script>
-<script src="/javascript/codemirror/mode/xml/xml.js"></script>
+<script src="/grase/vendor/codemirror/lib/codemirror.js"></script>
+<script src="/grase/vendor/codemirror/addon/search/searchcursor.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/grase/vendor/codemirror/lib/codemirror.css">
+<script src="/grase/vendor/codemirror/mode/css/css.js"></script>
+<script src="/grase/vendor/codemirror/mode/xml/xml.js"></script>
 
-<script src="/javascript/codemirror-ui/js/codemirror-ui.js" type="text/javascript"></script>
-<link rel="stylesheet" href="/javascript/codemirror-ui/css/codemirror-ui.css" type="text/css" media="screen" />
+<script src="/grase/vendor/codemirror-ui/js/codemirror-ui.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/grase/vendor/codemirror-ui/css/codemirror-ui.css" type="text/css" media="screen" />
 {literal}    <style type="text/css">
       .CodeMirror {border: 1px solid black;}
     </style>
@@ -47,7 +47,7 @@
                 //first set up some variables
                 var textarea = document.getElementById('{$option}');
                 {literal}
-                var uiOptions = { path : '/javascript/codemirror-ui/js/', searchMode : 'popup', imagePath: '/javascript/codemirror-ui/images/silk', }
+                var uiOptions = { path : '/grase/vendor/codemirror-ui/js/', searchMode : 'popup', imagePath: '/javascript/codemirror-ui/images/silk', }
                 var codeMirrorOptions = {
                 {/literal}
                     mode: "text/{$attributes.type}",
