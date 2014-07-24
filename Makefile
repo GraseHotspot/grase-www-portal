@@ -1,5 +1,6 @@
 COMPOSER_FILES = files/usr/share/grase/composer.json files/usr/share/grase/composer.lock
 BOWER_FILES = files/usr/share/grase/bower.json 
+VERSION = $(shell sed -n '/grase-www-portal/s/[^ ]* (//;s/).*//p;q' debian/changelog)
 
 all: bower composer
 
@@ -12,6 +13,9 @@ composer:
 	mkdir -p ext-libs/composer
 	cp $(COMPOSER_FILES) ext-libs/composer
 	cd ext-libs/composer; /usr/local/bin/composer install
+
+files/usr/share/grase/www/radmin/includes/constants.inc.php: debian/changelog
+	sed -i 's/APPLICATION_VERSION", "[^"]*"/APPLICATION_VERSION", "$(VERSION)"/' files/usr/share/grase/www/radmin/includes/constants.inc.php
 
 clean:
 	rm -fr ext-libs
