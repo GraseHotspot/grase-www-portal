@@ -58,7 +58,7 @@
         <span id="loggedinuserName" style="display: none">{t}Logged in as{/t} <strong id="loggedinuserNameVal"></strong></span>
         <span id="sessionTimeout" style="display: none"><br/>Remaining Time <strong id="sessionTimeoutVal"></strong></span>
         <span id="sessionMaxTotalOctets" style="display: none"><br/>Remaining Data <strong id="sessionMaxTotalOctetsVal"></strong></span>
-        <br/><a class="btn btn-danger" href="http://1.0.0.0" id="logofflink">{t}Logout{/t}</a> <a href="/grase/uam/mini" class="btn btn-success" target="grase_uam" id='statuslink'>{t}Open Status Window{/t} <i class="fa fa-external-link"></i></a>
+        <br/><a class="btn btn-danger" href="http://1.0.0.0" id="logofflink">{t}Logout{/t}</a> {if $activepage != 'mini'}<a href="/grase/uam/mini" class="btn btn-success" target="grase_uam" id='statuslink'>{t}Open Status Window{/t} <i class="fa fa-external-link"></i></a>{/if}
     </div>
 
     {$tpl_belowloginhtml}
