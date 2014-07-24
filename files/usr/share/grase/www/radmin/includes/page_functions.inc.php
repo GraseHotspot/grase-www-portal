@@ -35,12 +35,12 @@ require_once("smarty3/SmartyBC.class.php");
 
 function css_file_version()
 {
-	//reading stream
-	$handle = fopen("radmin.css", "r");
-	//read first line, TODO:  check if it's not empty, etc.
-	$first_line = fgets ($handle);
-	$second_line = fgets ($handle);
-	fclose($handle);
+	#//reading stream
+	#$handle = fopen("radmin.css", "r");
+	#//read first line, TODO:  check if it's not empty, etc.
+	#$first_line = fgets ($handle);
+	#$second_line = fgets ($handle);
+	#fclose($handle);
 	//extract revision number, chosen format: "/* $Rev: 1424314 $ */"
 	//$cssrevid = substr($first_line, 14, -3);
 	$resourcefiles = array(
@@ -54,8 +54,8 @@ function css_file_version()
 	    $fileversions[basename($file)] = date("YmdHis",filemtime($file));	
 	}
     //	$cssrevid = date("YmdHis",filemtime("radmin.css"));	
-	$application_version = substr($second_line, 13, -3);
-	return array($fileversions, $application_version);
+    #$application_version = substr($second_line, 13, -3);
+	return array($fileversions, APPLICATION_VERSION);
 }
 
 function createmenuitems()
