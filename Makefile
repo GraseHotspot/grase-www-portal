@@ -11,7 +11,7 @@ bower:
 composer:
 	mkdir -p ext-libs/composer
 	cp $(COMPOSER_FILES) ext-libs/composer
-	cd ext-libs/composer; composer install
+	cd ext-libs/composer; /usr/local/bin/composer install
 
 clean:
 	rm -r ext-libs
