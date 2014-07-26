@@ -18,7 +18,7 @@
     display: none;
 }
 #return {
-    background: url('/grase/logo.png') bottom right no-repeat;
+    background: url('/grase/images/logo.png') bottom right no-repeat;
     padding-bottom: 150px;
 }
 
