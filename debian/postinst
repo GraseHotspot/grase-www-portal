@@ -81,7 +81,8 @@ if dpkg-maintscript-helper supports rm_conffile 2>/dev/null; then
     dpkg-maintscript-helper rm_conffile /etc/apache2/conf.d/grase.conf -- "$@"
 fi
 
-link_logo
+# Shouldn't need to link the logo thanks to new rewrites
+#link_logo
 
 clear_template_cache
 
