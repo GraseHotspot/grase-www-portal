@@ -35,7 +35,7 @@
         <div class="jsmultioption" id="groupSettings_{$smarty.foreach.groupsettingsloop.iteration}" class="tabcontent">
             <label>{t}Name{/t}</label><input type="text" class="groupnameinput" name="groupname[]" value='{$settings.GroupLabel}'/>
             <label>{t}Description{/t}</label><textarea name="groupcomment[]" class="groupcommentinput" maxlength='250'>{$settings.Comment}</textarea>
-            <label>{t}Expiry{/t}</label><input type="text" name="groupexpiry[]" value='{$settings.Expiry}'/>
+            <label>{t}Expiry{/t}</label><input type="text" placeholder="{t}Never Expire{/t}" name="groupexpiry[]" value='{$settings.Expiry}'/>
             
             <label>{t}Login Times{/t}</label><input type="text" name="LoginTime[]" value='{$groupcurrentdata.$groupname.LoginTime}'/>            
             
@@ -59,8 +59,8 @@
             <label>{t}Bandwidth Limit Up{/t}</label>
             {html_options name="Bandwidth_Up_Limit[]" options=$Bandwidthvals selected=$groupcurrentdata.$groupname.BandwidthUpLimit}
             
-            <label>{t}Allow simultaneous logins?{/t}</label>
-            {html_options name="SimultaneousUse[]" options=$YesNo selected=$groupcurrentdata.$groupname.SimultaneousUse}
+            <label>{t}Number of simultaneous logins. Leave Blank for unlimited{/t}</label>
+            <input type="number" min="1" placeholder="{t}Unlimited{/t}" name="SimultaneousUse[]" value="{$groupcurrentdata.$groupname.SimultaneousUse}"/>
             
             
             
@@ -75,7 +75,7 @@
         <div class="jsmultioption" id="groupSettingsNewGroup" class="tabcontent">
             <label>{t}Name{/t}</label><input type="text" name="groupname[]" class="groupnameinput" value=''/>
             <label>{t}Description{/t}</label><textarea name="groupcomment[]" class="groupcommentinput" maxlength='250'></textarea>
-            <label>{t}Expiry{/t}</label><input type="text" name="groupexpiry[]" value=''/>
+            <label>{t}Expiry{/t}</label><input type="text" placeholder="{t}Never Expire{/t}" name="groupexpiry[]" value=''/>
             <label>{t}Login Times{/t}</label><input type="text" name="LoginTime[]" value=''/>  
             <label>{t}Default Data Limit (MiB){/t}</label>
             {html_options name="Group_Max_Mb[]" options=$GroupDatacosts}
@@ -96,8 +96,8 @@
             <label>{t}Bandwidth Limit Up{/t}</label>
             {html_options name="Bandwidth_Up_Limit[]" options=$Bandwidthvals}
             
-            <label>{t}Allow simultaneous logins?{/t}</label>
-            {html_options name="SimultaneousUse[]" options=$YesNo selected='no'}
+            <label>{t}Number of simultaneous logins. Leave Blank for unlimited{/t}</label>
+            <input type="number" min="1"  placeholder="{t}Unlimited{/t}" nname="SimultaneousUse[]" value=""/>
             
         </div>
         <span id="groupsInfo"></span>

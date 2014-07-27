@@ -232,9 +232,10 @@ function validate_num($number, $error='')
 	// TODO: Return what?
 }
 
-function validate_int($number) //TODO make this actually validate int?
+function validate_int($number, $option = false) //TODO make this actually validate int?
 {
-	if ($number && is_numeric($number) && trim($number) != "") return "";
+    if ($number && is_numeric($number) && trim($number) != "") return "";
+    if($option && trim($number) == "") return "";
     return sprintf(T_("Invalid number '%s' (Must be whole number)"), $number);
 	// TODO: Return what?
 }
@@ -675,4 +676,5 @@ function get_available_languages()
     
     return $langs;
 }
+
 ?>

@@ -939,7 +939,7 @@ class DatabaseFunctions
     }
     
     // This function is used via Cron to assist with upgrades, but is otherwise obsolete
-    public function setGroupSimultaneousUse($name, $yesno)
+    public function setGroupSimultaneousUse($name, $value)
     {
         $sql = sprintf(
             "DELETE FROM radgroupcheck WHERE GroupName = %s AND Attribute = 'Simultaneous-Use'",
@@ -953,13 +953,13 @@ class DatabaseFunctions
                 T_('Deleting radgroupcheck query failed: '), $result);
         }
         
-        if($yesno == 'no') // We leave deleted if yes, set value to 1 if no
+        if($value > 0) // We leave deleted if < 0
         {
             $fields = array (
                 'GroupName' => array ( 'value' => $name,    'key' => true),
                 'Attribute' => array ( 'value' => 'Simultaneous-Use',  'key' => true),
                 'op'        => array ( 'value' => ":=" ),
-                'Value'     => array ( 'value' => '1')
+                'Value'     => array ( 'value' => $value)
                 );   
             
             $result = $this->db->replace('radgroupcheck', $fields);
@@ -1046,11 +1046,9 @@ class DatabaseFunctions
         if(isset($attributes['SimultaneousUse']))
         {
             //$this->setGroupSimultaneousUse($name, $attributes['SimultaneousUse']);
-            if($attributes['SimultaneousUse'] == "yes")
+            if($attributes['SimultaneousUse'] == "")
             {
                 unset($attributes['SimultaneousUse']);
-            }else{
-                $attributes['SimultaneousUse'] = 1;
             }
 
         }
@@ -1218,10 +1216,9 @@ class DatabaseFunctions
                     $groups[$attribute['GroupName']]['MaxTime'] = $attribute['Value'] /60;
 /*                    $value = $attribute['Value'] / 60;
                     $attr = "MaxTime";*/
-                }
-                if($recurance == "Simultaneous-Use")
+                }elseif($recurance == "Simultaneous-Use")
                 {
-                    $groups[$attribute['GroupName']]['SimultaneousUse'] = 'no';
+                    $groups[$attribute['GroupName']]['SimultaneousUse'] = $attribute['Value'];
                 }
                 //else
                 //{

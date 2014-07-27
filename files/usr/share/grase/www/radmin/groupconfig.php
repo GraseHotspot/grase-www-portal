@@ -119,7 +119,7 @@ if(isset($_POST['submit']))
 	    $error[] = @ validate_recurtime($grouprecurtime[$key], $grouprecurtimelimit[$key]);	    
 	    $error[] = @ validate_bandwidth($groupdownlimit[$key]);
 	    $error[] = @ validate_bandwidth($groupuplimit[$key]);
-	    $error[] = @ validate_yesno($simultaneoususe[$key]);
+	    $error[] = @ validate_int($simultaneoususe[$key], true); //TODO we don't validate that it's not 0, relying on HTML5 to do that
 	    // TODO: Validate Login-Time
 	    $error[] = @ validate_uucptimerange($grouplogintime[$key]);	    
 	    $error = array_filter($error);
@@ -143,7 +143,7 @@ if(isset($_POST['submit']))
             'TimeRecurLimit' => @ clean_int($grouprecurtimelimit[$key]),
             'BandwidthDownLimit' => @ clean_int($groupdownlimit[$key]),
             'BandwidthUpLimit' => @ clean_int($groupuplimit[$key]),
-            'SimultaneousUse' => @ $simultaneoususe[$key],
+            'SimultaneousUse' => @ clean_int($simultaneoususe[$key]),
             'LoginTime' => @ $grouplogintime[$key]
         ));
         $groupsettings[clean_groupname($name)] = array_filter(array(
