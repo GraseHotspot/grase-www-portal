@@ -4,6 +4,7 @@
 <title>{$logintitle}{if $Name} - {t}{$Name}{/t}{/if}</title>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 <meta name="generator" content="GRASE - UAM" />
+<meta name="referrer" content="origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- CSS Stylesheet -->
 {if !$disableallcss}
