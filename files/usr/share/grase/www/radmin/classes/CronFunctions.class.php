@@ -310,7 +310,14 @@ class CronFunctions extends DatabaseFunctions
         }
         
         if($olddbversion < 2.2)
-        {        
+        {       
+            // "hotfix" Due to radpostauth growing stupidly large, trying to 
+            // change the columns is really slow, so we should just truncate 
+            // the table first as it's likely to be really old and useless data 
+            // anyway
+
+            $sqltruncate = "TRUNCATE radpostauth";
+            $result = $this->db->exec($sqltruncate);
 
             // Need to check if columns exist, or just drop them?
             $sql1 = "ALTER TABLE radpostauth
@@ -359,6 +366,31 @@ class CronFunctions extends DatabaseFunctions
             $Settings->setSetting("DBVersion", 2.3);
         }
 
+        // Create the autocreatepassword setting, with a random string if it 
+        // doesn't already exist
+        if($olddbversion < 2.4)
+        {
+            // Check that setting doesn't already exist as changing an existing 
+            // password will lock users out
+            if(! $Settings->getSetting("autocreatepassword"))
+            {
+                $Settings->setSetting("autocreatepassword", rand_password(20));
+
+                $results++;
+            }
+
+            $Settings->setSetting("DBVersion", 2.4);
+        }
+
+        if($olddbversion < 2.5)
+        {
+            // Assume we are doing an upgrade from before postauth was 
+            // truncated and so we'll just truncate postauth to save time
+
+            $sqltruncate = "TRUNCATE radpostauth";
+            $result = $this->db->exec($sqltruncate);
+
+        }
 
         if($results > 0)
         {            
@@ -728,6 +760,66 @@ class CronFunctions extends DatabaseFunctions
         
         return false;
     }
+
+
+    public function clearOldPostAuth()
+    {
+        $twomonthsago = strftime("%Y-%m-%d", strtotime("first day of -1 months"));
+        $sql = sprintf("DELETE FROM radpostauth WHERE AuthDate < %s",
+                        $this->db->quote($twomonthsago));
+
+        $result = $this->db->exec($sql);
+
+        if (PEAR::isError($result))
+        {
+            return T_('Unable to clear old Postauth rows: ') . $result->toString();
+        }
+
+        if($result) return "($result) " . T_('Old Postauth rows cleared');
+
+        return false;
+    }
+
+    public function clearPostAuthMacRejects()
+    {
+        $sql = "SELECT id from radpostauth R JOIN (select username, max(AuthDate) AS maxauthdate from radpostauth WHERE username LIKE '__-__-__-__-__-__' AND reply = 'Access-Reject' GROUP BY username) A ON (R.username = A.username) WHERE reply= 'Access-Reject' AND authdate <> maxauthdate";
+
+        $result =& $this->db->query($sql);
+
+        if (PEAR::isError($result))
+        {
+            return T_('Unable to get PostAuth MAC Reject IDs: ') . $result->toString();
+        }
+
+
+        $rows = 0;
+        $time_start = microtime(true);
+        while (($row = $result->fetchRow())) {
+            set_time_limit (30);
+            $sql = sprintf("DELETE from radpostauth WHERE id = %s",
+                            $this->db->quote($row['id']));
+
+            $rowresult = $this->db->exec($sql);
+
+
+            if (PEAR::isError($rowresult))
+            {
+                return T_('Unable to delete PostAuth MAC Reject entry: ' . $rowresult->toString());
+            }
+
+            $rows += $rowresult;
+
+        }
+        $time_end = microtime(true);
+        $time = $time_end - $time_start;
+        if($rows) return "Deleted $rows in $time seconds: " . T_('PostAuth MAC Reject rows cleared');
+
+        return false;
+    }
+
+
+
+
 }
 
 /* Post auth needs some cleaning up.
