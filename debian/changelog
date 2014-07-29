@@ -1,4 +1,4 @@
-grase-www-portal (3.7.7.6.1) purewhite; urgency=medium
+grase-www-portal (3.7.7.7) purewhite; urgency=medium
 
   * Hotfix for radpostauth table growing stupidly large
 
