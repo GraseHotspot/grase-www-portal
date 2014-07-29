@@ -1,5 +1,5 @@
 /* $Revision: 372 $
- * $Version: 3.7.7.7-alpha $
+ * $Version: 3.7.7.9-alpha $
  * $ApplicationName: GRASE $
 */
 
@@ -252,6 +252,10 @@ table  {
     table-layout:fixed;
     width:100%;
     word-wrap:break-word;
+}
+
+table.jqplot-table-legend {
+    width: auto;
 }
 
 table td, table th {
