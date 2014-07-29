@@ -1,4 +1,4 @@
-grase-www-portal (3.7.7.7) UNRELEASED; urgency=low
+grase-www-portal (3.7.7.8) UNRELEASED; urgency=low
 
   [ Tim White ]
   * Set Freesans as default font for PDF vouchers due to printing issues
@@ -21,12 +21,12 @@ grase-www-portal (3.7.7.7) UNRELEASED; urgency=low
   * Install and use Composer and Bower to manage external dependencies
 
  -- Tim White <tim@grasehotspot.org>  Tue, 22 Jan 2013 16:13:27 +1000
-
-grase-www-portal (3.7.7.6.1) purewhite; urgency=medium
+grase-www-portal (3.7.7.7) purewhite; urgency=medium
 
   * Hotfix for radpostauth table growing stupidly large
 
  -- Tim White <tim@grasehotspot.org>  Tue, 29 Jul 2014 19:46:29 +1000
+
 grase-www-portal (3.7.7.6) purewhite; urgency=low
 
   * Fix bug in Service-Type check for CoovaChilli user
