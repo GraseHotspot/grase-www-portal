@@ -22,6 +22,11 @@ grase-www-portal (3.7.7.7) UNRELEASED; urgency=low
 
  -- Tim White <tim@grasehotspot.org>  Tue, 22 Jan 2013 16:13:27 +1000
 
+grase-www-portal (3.7.7.6.1) purewhite; urgency=medium
+
+  * Hotfix for radpostauth table growing stupidly large
+
+ -- Tim White <tim@grasehotspot.org>  Tue, 29 Jul 2014 19:46:29 +1000
 grase-www-portal (3.7.7.6) purewhite; urgency=low
 
   * Fix bug in Service-Type check for CoovaChilli user
@@ -84,8 +89,7 @@ grase-www-portal (3.7.5) purewhite; urgency=low
 
 grase-www-portal (3.7.4-dev5) purewhite; urgency=low
 
-  * Cron archive scripts allowed negative time value which allowed usage after
-    using all allowed time
+  * Cron archive scripts allowed negative time value which allowed usage after using all allowed time
   * Fix Reports some more 
 
  -- Tim White <tim@grasehotspot.org>  Sat, 30 Jun 2012 07:59:03 +1000
@@ -106,22 +110,21 @@ grase-www-portal (3.7.4-dev3) purewhite; urgency=low
   * Fix UUCP timerange filter to allow more values
   * Added more contributors
 
- -- Tim White <tim@grasehotspot.org>  Sat, 12 May 2012 07:36:44 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Sat, 12 May 2012 07:36:44 +1000
 
 grase-www-portal (3.7.4-dev2) purewhite; urgency=low
 
-  * Some smart caching of user details and settings to reduce database calls
-    significantly (and page load times) ref #63
+  * Some smart caching of user details and settings to reduce database calls significantly (and page load times) ref #63
   * Fix report graphs (and filter out CoovaChilli User) Fixes #52
   * Major fix for archiving users
 
- -- Tim White <tim@grasehotspot.org>  Thu, 29 Mar 2012 21:05:22 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Thu, 29 Mar 2012 21:05:22 +1000
 
 grase-www-portal (3.7.3) purewhite; urgency=low
 
   * Just DROP the new columns before adding them
 
- -- Tim White <tim@grasehotspot.org>  Tue, 13 Mar 2012 09:52:08 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Tue, 13 Mar 2012 09:52:08 +1000
 
 grase-www-portal (3.7.2) purewhite; urgency=low
 
@@ -133,14 +136,14 @@ grase-www-portal (3.7.2) purewhite; urgency=low
   * Support for Login-Time (closes #33)
   * Upgrade radpostauth table to record more data
 
- -- Tim White <tim@grasehotspot.org>  Tue, 13 Mar 2012 09:15:02 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Tue, 13 Mar 2012 09:15:02 +1000
 
 grase-www-portal (3.7.1) purewhite; urgency=low
 
   * Security flaw fixed (bug #54) sending data to 3rd party
   * Preliminary changes to how we determin when an account is approaching it's limits
 
- -- Tim White <tim@grasehotspot.org>  Wed, 08 Feb 2012 22:53:31 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Wed, 08 Feb 2012 22:53:31 +1000
 
 grase-www-portal (3.7.0) purewhite; urgency=low
 
@@ -160,7 +163,7 @@ grase-www-portal (3.7.0) purewhite; urgency=low
   * Bug fix, show '$Location Hotspot' when no Login Page Title is defined
   * Store group label and group name differently, group name is sanitised
 
- -- Tim White <tim@grasehotspot.org>  Mon, 30 Jan 2012 14:38:54 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Mon, 30 Jan 2012 14:38:54 +1000
 
 grase-www-portal (3.6.3) purewhite; urgency=low
 
@@ -172,7 +175,7 @@ grase-www-portal (3.6.3) purewhite; urgency=low
   * Added DHCP lease to Chilli Config
   * Update smarty-gettext to newest version
 
- -- Tim White <tim@grasehotspot.org>  Fri, 21 Oct 2011 12:30:48 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Fri, 21 Oct 2011 12:30:48 +1000
 
 grase-www-portal (3.6.2) purewhite; urgency=low
 
@@ -180,7 +183,7 @@ grase-www-portal (3.6.2) purewhite; urgency=low
   * Non-javascript login fixes
   * Logoff link fixes
 
- -- Tim White <tim@grasehotspot.org>  Wed, 12 Oct 2011 22:24:45 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Wed, 12 Oct 2011 22:24:45 +1000
 
 grase-www-portal (3.6.1) purewhite; urgency=low
 
@@ -193,7 +196,7 @@ grase-www-portal (3.6.1) purewhite; urgency=low
   * Display error/status messages longer
   * No auto redirect to userurl (prevents redirecting you to logout link)
 
- -- Tim White <tim@grasehotspot.org>  Wed, 12 Oct 2011 10:25:45 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Wed, 12 Oct 2011 10:25:45 +1000
 
 grase-www-portal (3.6) purewhite; urgency=low
 
@@ -202,20 +205,20 @@ grase-www-portal (3.6) purewhite; urgency=low
   * More translations for uam including in js
   * Stale sessions expire sooner now (no more waiting 12 hours), needed for Simultaneous-Use
 
- -- Tim White <tim@grasehotspot.org>  Mon, 10 Oct 2011 15:42:34 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Mon, 10 Oct 2011 15:42:34 +1000
 
 grase-www-portal (3.5.2) purewhite; urgency=low
 
   * Bug fix for default templates not being loaded
   * Actually include default templates file!
 
- -- Tim White <tim@grasehotspot.org>  Thu, 06 Oct 2011 11:43:33 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Thu, 06 Oct 2011 11:43:33 +1000
 
 grase-www-portal (3.5.1) purewhite; urgency=low
 
   * Editing of machine accounts is now active and working (accounts no longer "locked")
 
- -- Tim White <tim@grasehotspot.org>  Wed, 28 Sep 2011 11:53:41 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Wed, 28 Sep 2011 11:53:41 +1000
 
 grase-www-portal (3.5) natty; urgency=low
 
@@ -225,13 +228,13 @@ grase-www-portal (3.5) natty; urgency=low
   * Fixes for expiry to support to the second not to midnight of the date
   * Easy "unexpire" of an expired user. Fixes #14
 
- -- Tim White <tim@grasehotspot.org>  Fri, 09 Sep 2011 08:02:02 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Fri, 09 Sep 2011 08:02:02 +1000
 
 grase-www-portal (3.4.1) purewhite; urgency=low
 
   * German Translation
 
- -- Tim White <tim@grasehotspot.org>  Mon, 08 Aug 2011 11:28:33 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Mon, 08 Aug 2011 11:28:33 +1000
 
 grase-www-portal (3.4) purewhite; urgency=low
 
@@ -239,76 +242,76 @@ grase-www-portal (3.4) purewhite; urgency=low
   * Support for Simultaneous-Use (based on groups)
   * Fixes for 0 in data and time limits
 
- -- Tim White <tim@grasehotspot.org>  Thu, 04 Aug 2011 08:12:24 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Thu, 04 Aug 2011 08:12:24 +1000
 
 grase-www-portal (3.3) purewhite; urgency=low
 
   * Groups now support default limits
 
- -- Tim White <tim@grasehotspot.org>  Sat, 25 Jun 2011 08:53:14 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Sat, 25 Jun 2011 08:53:14 +1000
 
 grase-www-portal (3.2.1) purewhite; urgency=low
 
   * Small fix for group names with spaces in them
   * Fixes to debian packaging to fix lintian errors
 
- -- Tim White <tim@grasehotspot.org>  Fri, 10 Jun 2011 20:45:22 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Fri, 10 Jun 2011 20:45:22 +1000
 
 grase-www-portal (3.2) purewhite; urgency=low
 
   * New release with jqplot graphs instead of Open Flash Chart
 
- -- Tim White <tim@grasehotspot.org>  Tue, 07 Jun 2011 19:49:06 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Tue, 07 Jun 2011 19:49:06 +1000
 
 grase-www-portal (3.1-9) purewhite; urgency=low
 
   * Table sorting fix
 
- -- Tim White <tim@grasehotspot.org>  Mon, 06 Jun 2011 10:50:30 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Mon, 06 Jun 2011 10:50:30 +1000
 
 grase-www-portal (3.1-8) purewhite; urgency=low
 
   * Debug statement left in
   * Cron filtered out of admin log
 
- -- Tim White <tim@grasehotspot.org>  Fri, 03 Jun 2011 16:41:06 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Fri, 03 Jun 2011 16:41:06 +1000
 
 grase-www-portal (3.1-7) purewhite; urgency=low
 
   * Data Limit 0 fix
 
- -- Tim White <tim@grasehotspot.org>  Fri, 03 Jun 2011 16:29:49 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Fri, 03 Jun 2011 16:29:49 +1000
 
 grase-www-portal (3.1-6) purewhite; urgency=low
 
   * Fix data limit with 32bit systems caused by intval
 
- -- Tim White <tim@grasehotspot.org>  Fri, 03 Jun 2011 16:10:18 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Fri, 03 Jun 2011 16:10:18 +1000
 
 grase-www-portal (3.1-5) purewhite; urgency=low
 
   * Locale formatting fixes for datalimit
 
- -- Tim White <tim@grasehotspot.org>  Fri, 03 Jun 2011 15:46:54 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Fri, 03 Jun 2011 15:46:54 +1000
 
 grase-www-portal (3.1-4) purewhite; urgency=low
 
   * Cron fix
 
- -- Tim White <tim@grasehotspot.org>  Mon, 30 May 2011 20:10:25 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Mon, 30 May 2011 20:10:25 +1000
 
 grase-www-portal (3.1-3) purewhite; urgency=low
 
   * French translation thanks to Gilbert Robert <robert@prolibre.com>
   * Fix to translation system to work with utf-8
 
- -- Tim White <tim@grasehotspot.org>  Mon, 30 May 2011 12:07:01 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Mon, 30 May 2011 12:07:01 +1000
 
 grase-www-portal (3.1-2) purewhite; urgency=low
 
   * Workaround for Debian bug #514305 (until it's fixed in Stable)
 
- -- Tim White <tim@grasehotspot.org>  Fri, 27 May 2011 09:30:14 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Fri, 27 May 2011 09:30:14 +1000
 
 grase-www-portal (3.1-1) purewhite; urgency=low
 
@@ -324,20 +327,20 @@ grase-www-portal (3.1-1) purewhite; urgency=low
   * Menu reorganised and grouped. Changed appearance
   * Machine group is now known as Computer
 
- -- Tim White <tim@grasehotspot.org>  Tue, 10 May 2011 14:05:46 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Tue, 10 May 2011 14:05:46 +1000
 
 grase-www-portal (3.0-18) purewhite; urgency=low
 
   * Added logout button to login page for bookmarking
 
- -- Tim White <tim@grasehotspot.org>  Thu, 07 Apr 2011 16:29:54 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Thu, 07 Apr 2011 16:29:54 +1000
 
 grase-www-portal (3.0-17) purewhite; urgency=low
 
   * Retry ?version on css and js files
   * Enable apache headers mod, enable caching of js/css files
 
- -- Tim White <tim@grasehotspot.org>  Thu, 07 Apr 2011 14:10:05 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Thu, 07 Apr 2011 14:10:05 +1000
 
 grase-www-portal (3.0-16) purewhite; urgency=low
 
@@ -345,13 +348,13 @@ grase-www-portal (3.0-16) purewhite; urgency=low
   * Allow printing of ticket for single User ("Create User")
   * Removed Dep on jquery-ui libs
 
- -- Tim White <tim@grasehotspot.org>  Wed, 06 Apr 2011 18:21:40 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Wed, 06 Apr 2011 18:21:40 +1000
 
 grase-www-portal (3.0-15) purewhite; urgency=low
 
   * Missing Dep on jquery-ui libs
 
- -- Tim White <tim@grasehotspot.org>  Mon, 04 Apr 2011 21:30:09 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Mon, 04 Apr 2011 21:30:09 +1000
 
 grase-www-portal (3.0-14) purewhite; urgency=low
 
@@ -359,91 +362,91 @@ grase-www-portal (3.0-14) purewhite; urgency=low
   * Lots of cleanup
   * Changes to support db change to Cleartext-Password
 
- -- Tim White <tim@grasehotspot.org>  Mon, 04 Apr 2011 19:23:57 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Mon, 04 Apr 2011 19:23:57 +1000
 
 grase-www-portal (3.0-13) purewhite; urgency=low
 
   * Fix for Database Backup script (backup both db, not just 1)
 
- -- Tim White <tim@grasehotspot.org>  Fri, 01 Apr 2011 13:26:30 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Fri, 01 Apr 2011 13:26:30 +1000
 
 grase-www-portal (3.0-12) purewhite; urgency=low
 
   * Migration of forms to jQuery UI
   * Small CSS and Bugs fixed
 
- -- Tim White <tim@grasehotspot.org>  Fri, 01 Apr 2011 11:11:08 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Fri, 01 Apr 2011 11:11:08 +1000
 
 grase-www-portal (3.0-11) purewhite; urgency=low
 
   * Fix to ensure /etc/grase dir is present
 
- -- Tim White <tim@grasehotspot.org>  Mon, 14 Mar 2011 23:01:53 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Mon, 14 Mar 2011 23:01:53 +1000
 
 grase-www-portal (3.0-10) purewhite; urgency=low
 
   * Problem in cron functions
 
- -- Tim White <tim@grasehotspot.org>  Sat, 22 Jan 2011 17:46:45 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Sat, 22 Jan 2011 17:46:45 +1000
 
 grase-www-portal (3.0-9) purewhite; urgency=low
 
   * Fix in server monitor for squid3
 
- -- Tim White <tim@grasehotspot.org>  Wed, 19 Jan 2011 09:09:33 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Wed, 19 Jan 2011 09:09:33 +1000
 
 grase-www-portal (3.0-8) purewhite; urgency=low
 
   * Fix for Max-Octects not being an int
 
- -- Tim White <tim@grasehotspot.org>  Sat, 25 Dec 2010 15:04:14 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Sat, 25 Dec 2010 15:04:14 +1000
 
 grase-www-portal (3.0-7) purewhite; urgency=low
 
   * Changes to display of errors and messages
 
- -- Tim White <tim@grasehotspot.org>  Tue, 21 Dec 2010 19:44:52 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Tue, 21 Dec 2010 19:44:52 +1000
 
 grase-www-portal (3.0-6) purewhite; urgency=low
 
   * Attempts to fix for iOS
 
- -- Tim White <tim@grasehotspot.org>  Sat, 18 Dec 2010 21:38:36 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Sat, 18 Dec 2010 21:38:36 +1000
 
 grase-www-portal (3.0-5) purewhite; urgency=low
 
   * Small bugfixes. Bump to 2.9.0 preparing for 3.0
 
- -- Tim White <tim@grasehotspot.org>  Mon, 13 Dec 2010 14:43:46 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Mon, 13 Dec 2010 14:43:46 +1000
 
 grase-www-portal (3.0-4) purewhite; urgency=low
 
   * Licensing stuff
 
- -- Tim White <tim@grasehotspot.org>  Sat, 11 Dec 2010 20:06:12 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Sat, 11 Dec 2010 20:06:12 +1000
 
 grase-www-portal (3.0-3) purewhite; urgency=low
 
   * Fixes for squid log file processing
   * Fixes for logo being overwritten on upgrade
 
- -- Tim White <tim@grasehotspot.org>  Sat, 11 Dec 2010 08:19:36 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Sat, 11 Dec 2010 08:19:36 +1000
 
 grase-www-portal (3.0-2) purewhite; urgency=low
 
   * Added radacct archiving to Cron class
 
- -- Tim White <tim@grasehotspot.org>  Fri, 10 Dec 2010 11:31:23 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Fri, 10 Dec 2010 11:31:23 +1000
 
 grase-www-portal (3.0-1) purewhite; urgency=low
 
   * Changes to log processing for squid3
 
- -- Tim White <tim@grasehotspot.org>  Thu, 09 Dec 2010 16:43:42 +1000
+ -- Tim White <tim@hotspot.purewhite.id.au>  Thu, 09 Dec 2010 16:43:42 +1000
 
 grase-www-portal (3.0) purewhite; urgency=low
 
   [ Tim White ]
   * Initial Debian Release.
 
- -- Tim White <tim@grasehotspot.org>  Mon, 3 May 2010 10:47:00 +0800
+ -- Tim White <tim@hotspot.purewhite.id.au>  Mon, 3 May 2010 10:47:00 +0800

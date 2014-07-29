@@ -280,6 +280,8 @@ class CronFunctions extends DatabaseFunctions
             $Settings->setSetting("DBVersion", 2.0);
         }
         
+        // TODO: cron to clean old batches
+        
         if($olddbversion < 2.1)
         {
             // Remove uniq index on radgroupcheck
@@ -308,7 +310,14 @@ class CronFunctions extends DatabaseFunctions
         }
         
         if($olddbversion < 2.2)
-        {        
+        {       
+            // "hotfix" Due to radpostauth growing stupidly large, trying to 
+            // change the columns is really slow, so we should just truncate 
+            // the table first as it's likely to be really old and useless data 
+            // anyway
+
+            $sqltruncate = "TRUNCATE radpostauth";
+            $result = $this->db->exec($sqltruncate);
 
             // Need to check if columns exist, or just drop them?
             $sql1 = "ALTER TABLE radpostauth
@@ -356,7 +365,6 @@ class CronFunctions extends DatabaseFunctions
             
             $Settings->setSetting("DBVersion", 2.3);
         }
-
         // Create the autocreatepassword setting, with a random string if it 
         // doesn't already exist
         if($olddbversion < 2.4)
@@ -373,8 +381,15 @@ class CronFunctions extends DatabaseFunctions
             $Settings->setSetting("DBVersion", 2.4);
         }
 
+        if($olddbversion < 2.5)
+        {
+            // Assume we are doing an upgrade from before postauth was 
+            // truncated and so we'll just truncate postauth to save time
 
+            $sqltruncate = "TRUNCATE radpostauth";
+            $result = $this->db->exec($sqltruncate);
 
+        }
 
         if($results > 0)
         {            
@@ -493,7 +508,7 @@ class CronFunctions extends DatabaseFunctions
                             $this->db->quote('Expiration'),
                             $this->db->quote($timepattern)
                             );
-
+            
             $results = $this->db->queryAll($sql);
             
             if (PEAR::isError($results))
@@ -818,7 +833,6 @@ class CronFunctions extends DatabaseFunctions
         
         return false;
     }
-
     public function clearOldPostAuth()
     {
         $twomonthsago = strftime("%Y-%m-%d", strtotime("first day of -1 months"));
@@ -873,7 +887,6 @@ class CronFunctions extends DatabaseFunctions
 
         return false;
     }
-
 }
 
 /* Post auth needs some cleaning up.
@@ -888,8 +901,6 @@ INSTEAD we do following select which might take a minute
 SELECT id from radpostauth R JOIN (select username, max(AuthDate) AS maxauthdate from radpostauth WHERE username LIKE '__-__-__-__-__-__' AND reply = 'Access-Reject' GROUP BY username) A ON (R.username = A.username) WHERE reply= 'Access-Reject' AND authdate <> maxauthdate;
 
 THEN WE DELETE 1 by 1
-
-
 This will cleanup all mac address auths and coovachilli auths, leaving only the last attempt
 DELETE t1 from radpostauth t1, radpostauth t2 WHERE t1.username=t2.username AND t1.reply = t2.reply AND t1.id < t2.id AND (t1.username  REGEXP '^([[:xdigit:]]{2}-){5}[[:xdigit:]]{2}' OR t1.username = "CoovaChilli")
 
