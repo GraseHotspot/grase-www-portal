@@ -1,3 +1,9 @@
+grase-www-portal (3.7.7.9) purewhite; urgency=medium
+
+  * Ensure empty folders are included in the build
+
+ -- Tim White <tim@grasehotspot.org>  Sat, 09 Aug 2014 07:19:23 +1000
+
 grase-www-portal (3.7.7.8) purewhite; urgency=medium
 
   * Actually bump version number 
