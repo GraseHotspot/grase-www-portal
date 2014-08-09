@@ -1,4 +1,4 @@
-grase-www-portal (3.7.7.9) UNRELEASED; urgency=low
+grase-www-portal (3.7.7.11) UNRELEASED; urgency=low
 
   [ Tim White ]
   * Set Freesans as default font for PDF vouchers due to printing issues
@@ -22,11 +22,18 @@ grase-www-portal (3.7.7.9) UNRELEASED; urgency=low
 
  -- Tim White <tim@grasehotspot.org>  Tue, 22 Jan 2013 16:13:27 +1000
 
+grase-www-portal (3.7.7.10) purewhite; urgency=medium
+
+  * Actually bump version number
+
+ -- Tim White <tim@grasehotspot.org>  Sat, 09 Aug 2014 13:06:16 +1000
+
 grase-www-portal (3.7.7.9) purewhite; urgency=medium
 
   * Ensure empty folders are included in the build
 
  -- Tim White <tim@grasehotspot.org>  Sat, 09 Aug 2014 07:19:23 +1000
+
 grase-www-portal (3.7.7.8) purewhite; urgency=medium
 
   * Actually bump version number 
