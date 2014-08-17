@@ -53,6 +53,10 @@ $smarty->assign("user_url", $userurl);
 $smarty->assign("challenge", $challenge);
 $smarty->assign("RealHostname", trim(file_get_contents('/etc/hostname')));
 
+if($Settings->getSetting('autocreategroup'))
+{
+    $smarty->assign('automac', true);
+}
 /* Important parts of uamopts
     * challenge
     * userurl
@@ -69,6 +73,17 @@ if(!isset($_GET['res']))
 // Already been through prelogin
 /*$jsloginlink = "http://$lanip/grase/uam/mini?$query";
 $nojsloginlink = $_GET['loginurl'];*/
+    require_once '../radmin/automacusers.php';
+if(@$_GET['automac'])
+{
+    // TODO only if this is enabled? (Although the function will do that 
+    // anyway) so maybe only show the link if this is enabled?
+    //
+    // TODO need to ensure we have a challenge otherwise we need a fresh one, 
+    // maybe if we AJAX the call so we always have a challenge?
+    automacuser();
+    exit;
+}
 
 switch($res)
 {
@@ -97,6 +112,14 @@ switch($res)
         
     case 'success':
         //Logged in. Try popup and redirect to userurl
+        // If this is an automac login (check UID vs MAC) then we skip the 
+        // normal success and go back to portal which should work better as 
+        // it's not a nojs login
+        if($_GET['uid'] == mactoautousername($_GET['mac']))
+        {
+            break;
+        }
+        //
         load_templates(array('loggedinnojshtml'));
         $smarty->display('loggedin.tpl');
         exit;
