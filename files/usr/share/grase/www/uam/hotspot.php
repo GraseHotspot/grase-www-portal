@@ -52,7 +52,6 @@ if($Settings->getSetting('disablejavascript') == 'TRUE')
 $smarty->assign("user_url", $userurl);
 $smarty->assign("challenge", $challenge);
 $smarty->assign("RealHostname", trim(file_get_contents('/etc/hostname')));
-
 if($Settings->getSetting('autocreategroup'))
 {
     $smarty->assign('automac', true);
@@ -83,6 +82,7 @@ if(@$_GET['automac'])
     // TODO need to ensure we have a challenge otherwise we need a fresh one, 
     // maybe if we AJAX the call so we always have a challenge?
     automacuser();
+    exit;
 }
 
 switch($res)
@@ -112,7 +112,6 @@ switch($res)
         
     case 'success':
         //Logged in. Try popup and redirect to userurl
-
         // If this is an automac login (check UID vs MAC) then we skip the 
         // normal success and go back to portal which should work better as 
         // it's not a nojs login
@@ -127,8 +126,6 @@ switch($res)
         break;        
         
 }
-
-
 
 
 function setup_login_form()

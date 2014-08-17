@@ -73,7 +73,6 @@ $singleloginoptions = array(
         "label" => T_("Page Title"),
         "description" => T_("The page title that is displayed on the login page"),
         "type" => "text"),              
-
      'autocreategroup' => array(
         "label" => T_("Free Login Group"),
         "description" => T_("The group to create 'Free Login' users in. Leave blank to disable free logins"),
@@ -107,13 +106,11 @@ $templateoptions = array(
         "label" => T_("Logged In HTML"),
         "description" => T_("HTML for successful login when not using javascript"),
         "type" => "html"),        
-
     'termsandconditions' => array(
         "label" => T_("Terms and Conditions"),
         "description" => T_("Terms and Conditions of use (HTML)"),
         "type" => "html"),
 );           
-
     
 load_loginoptions();   
 

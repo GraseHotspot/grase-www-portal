@@ -226,7 +226,6 @@ chilliController.toslogon = function ()  {
 	chilliJSON.get( chilliController.urlRoot() + 'status'  ) ;
 };
 
-
 /**
  *   Second part of the logon process invoked after
  *   the just requested challenge has been received
@@ -375,8 +374,6 @@ chilliController.toslogonStep3 = function ( resp ) {
 		chilliJSON.get ( logonUrl ) ;
 	}
 }
-
-
 chilliController.refresh = function ( ) {
 
 	if ( chilliController.autorefreshTimer ) {
