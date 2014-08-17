@@ -1766,7 +1766,35 @@ class DatabaseFunctions
 	    }
 	    return $status;    
     }
-           
+    /* Postauth Related functions here */
+
+    public function latestMacFromIP($ipaddress)
+    {
+        // We limit the selection to a machine that has connected in the last 
+        // hour, (this may need to be updated in the future with 
+        // CallingStationId for multiple APs)
+        $sql = sprintf("SELECT username from radpostauth
+            WHERE FramedIPAddress=%s
+            AND username LIKE '__-__-__-__-__-__'
+            AND authdate > TIMESTAMP(DATE_SUB(NOW(), INTERVAL 1 HOUR))
+
+            ORDER BY ID DESC
+            LIMIT 1",
+            $this->db->quote($ipaddress)
+        );
+
+        $mac = $this->db->queryOne($sql);
+
+        if (PEAR::isError($mac))
+        {
+            ErrorHandling::fatal_db_error(
+                T_('Retrieving MAC from IP failed: '), $mac);
+        }
+
+        // Check its a MAC address??
+
+        return $mac;
+    }
 
 /* Squid Related Functions HERE */
     public function activeSessionUsername($ipaddress)
