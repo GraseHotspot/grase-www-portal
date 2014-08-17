@@ -185,7 +185,6 @@ class DatabaseFunctions
         
         return $usedoctets + 0;
     }
-
     public function getMonthsAccountingDataAvailableFor()
     {
         $sql = "SELECT DATE_FORMAT(AcctDate, '%Y-%m') AS Month FROM mtotacct
@@ -1793,7 +1792,6 @@ class DatabaseFunctions
 	    }
 	    return $status;    
     }
-
     /* Postauth Related functions here */
 
     public function latestMacFromIP($ipaddress)
@@ -1823,7 +1821,6 @@ class DatabaseFunctions
 
         return $mac;
     }
-
 
 /* Squid Related Functions HERE */
     public function activeSessionUsername($ipaddress)
