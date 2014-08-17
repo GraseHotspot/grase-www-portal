@@ -1,3 +1,9 @@
+grase-www-portal (3.7.7.11) purewhite; urgency=medium
+
+  * Backport Freelogin code (TOS Accept code)
+
+ -- Tim White <tim@grasehotspot.org>  Sun, 17 Aug 2014 19:29:55 +1000
+
 grase-www-portal (3.7.7.10) purewhite; urgency=medium
 
   * Actually bump version number
