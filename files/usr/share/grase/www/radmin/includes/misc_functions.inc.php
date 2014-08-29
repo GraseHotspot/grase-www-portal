@@ -190,36 +190,6 @@ function expiry_for_group($group, $groups = '')
 	return "--";
 }
 
-/*function user_account_status($Userdata)
-{
-	if(isset($Userdata['ExpirationTimestamp']) && $Userdata['ExpirationTimestamp'] < time())
-	{
-	    $status = EXPIRED_ACCOUNT;
-	}
-	elseif(isset($Userdata['Max-Octets']) && ($Userdata['Max-Octets'] - $Userdata['AcctTotalOctets']) <= 0 )
-	{
-	    $status = LOCKED_ACCOUNT;
-	}
-	elseif(isset($Userdata['Max-Octets']) && ($Userdata['Max-Octets'] - $Userdata['AcctTotalOctets']) <= 1024*1024*2 )
-	{
-	    $status = LOWDATA_ACCOUNT;
-	}
-	elseif($Userdata['Group'] == MACHINE_GROUP_NAME)
-	{
-	    $status = MACHINE_ACCOUNT;
-	}
-	elseif($Userdata['Group'] != "")
-	{
-	    $status = NORMAL_ACCOUNT;
-	}
-	else
-	{
-	    $status = NOGROUP_ACCOUNT;
-	}
-	return $status;
-}*/
-
-
 /* Functions to check the group settings to ensure all currently used values are present in the dropdown boxes */
 
 function checkGroupsDataDropdowns($datavals)
