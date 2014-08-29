@@ -2,7 +2,7 @@
 
 namespace Grase;
 
-/* Copyright 2008-2014 Timothy White */
+    /* Copyright 2008-2014 Timothy White */
 
 /*  This file is part of GRASE Hotspot.
 
@@ -25,7 +25,7 @@ namespace Grase;
 class Util
 {
     // NOTE: This function is based on http://snipplr.com/view/5444/random-pronounceable-passwords-generator/
-    public static function RandomPassword($len)
+    public static function randomPassword($len)
     {
         $C = "BCDFGHJKLMNPRSTVWZ";
         $c = "bcdfghjklmnprstvwz";
@@ -69,8 +69,8 @@ class Util
         return $password;
     }
 
-    /* This function is a modified version of RandomPassword function */
-    public static function RandomUsername($len)
+    /* This function is a modified version of randomPassword function */
+    public static function randomUsername($len)
     {
         // It's the calling functions responsability to check the username doesn't already exist
         $c = "bcdfghjklmnprstvwz";
@@ -94,5 +94,21 @@ class Util
             }
         }
         return $password;
+    }
+
+    /* NOTE: This function is from Smarty Docs http://www.smarty.net/docs/en/tips.dates.tpl */
+    public static function makeTimeStamp($year = '', $month = '', $day = '')
+    {
+        if (empty($year)) {
+            $year = strftime('%Y');
+        }
+        if (empty($month)) {
+            $month = strftime('%m');
+        }
+        if (empty($day)) {
+            $day = strftime('%d');
+        }
+
+        return mktime(0, 0, 0, $month, $day, $year);
     }
 }

@@ -39,25 +39,6 @@ function input_type($params, &$smarty)
     }
 }
 
-/* NOTE: This function is from Smarty Docs http://www.smarty.net/docs/en/tips.dates.tpl */
-function makeTimeStamp($year='', $month='', $day='')
-{
-   if(empty($year))
-   {
-       $year = strftime('%Y');
-   }
-   if(empty($month))
-   {
-       $month = strftime('%m');
-   }
-   if(empty($day))
-   {
-       $day = strftime('%d');
-   }
-
-   return mktime(0, 0, 0, $month, $day, $year);
-}
-
 
 
 
@@ -84,7 +65,7 @@ function validate_post_expirydate() // OBSOLETE ?
 	}
 
 	if( $expirydate &&
-		makeTimeStamp(
+		\Grase\Util::makeTimeStamp(
 			$_POST['Expirydate_Year'],
 			$_POST['Expirydate_Month'],
 			$_POST['Expirydate_Day'] ) < time()
