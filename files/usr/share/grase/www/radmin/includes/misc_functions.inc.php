@@ -437,21 +437,6 @@ function file_upload_error_message($error_code)
     }
 }
 
-/* TODO: check where this code came from */
-function sha1salt($plainText, $salt = null)
-    {
-        $SALT_LENGTH = 9;
-        if ($salt === null)
-        {
-            $salt = substr(md5(uniqid(rand() , true)) , 0, $SALT_LENGTH);
-        }
-        else
-        {
-            $salt = substr($salt, 0, $SALT_LENGTH);
-        }
-
-        return $salt . sha1($salt . $plainText);
-    }
 
 function displayMoneyLocales($number)
 {
