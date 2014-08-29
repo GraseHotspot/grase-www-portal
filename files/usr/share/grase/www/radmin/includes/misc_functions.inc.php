@@ -326,11 +326,6 @@ function sort_users_into_groups($users)
 	return $users_group;
 }
 
-function stripspaces($text)
-{
-    return str_replace(' ', '', $text);
-}
-
 function underscorespaces($text)
 {
     // This function is used to cleanup things like ids, so replace all chars that shouldn't be in id's and such
