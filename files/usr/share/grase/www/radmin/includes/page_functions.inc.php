@@ -35,14 +35,6 @@ require_once("smarty3/SmartyBC.class.php");
 
 function css_file_version()
 {
-	#//reading stream
-	#$handle = fopen("radmin.css", "r");
-	#//read first line, TODO:  check if it's not empty, etc.
-	#$first_line = fgets ($handle);
-	#$second_line = fgets ($handle);
-	#fclose($handle);
-	//extract revision number, chosen format: "/* $Rev: 1424314 $ */"
-	//$cssrevid = substr($first_line, 14, -3);
 	$resourcefiles = array(
 	    '/usr/share/grase/www/hotspot.css',
 	    '/usr/share/grase/www/radmin/radmin.css',
@@ -53,8 +45,6 @@ function css_file_version()
 	{
 	    $fileversions[basename($file)] = date("YmdHis",filemtime($file));	
 	}
-    //	$cssrevid = date("YmdHis",filemtime("radmin.css"));	
-    #$application_version = substr($second_line, 13, -3);
 	return array($fileversions, APPLICATION_VERSION);
 }
 
@@ -135,10 +125,7 @@ function createmenuitems()
 
 function createusefullinks()
 {
-	#$links['radmin'] = array("href" => "/radmin", "label" => "Internet User Administration (Radmin, RADIUS Administration)");
-	#$links['dglog'] = array("href" => "/cgi-bin/dglog.pl", "label" => "Dansguardian Log Viewer, for checking logs for attempts to view blocked pages");
-	#$links['munin'] = array("href" => "/munin", "label" => "Munin, System Monitor Graphs");	
-	$links['sysstatus'] = array("href" => "/grase/radmin/sysstatus", "label" => T_("System Status"));		
+	$links['sysstatus'] = array("href" => "/grase/radmin/sysstatus", "label" => T_("System Status"));
 	return $links;
 }
 
@@ -146,28 +133,10 @@ function createusefullinks()
 function datacosts()
 {
 	global $datacosts;//, $pricemb, $currency;
-	//$disp_currency = $CurrencySymbols[$currency];
 	$datacosts['inherit'] = T_('Inherit from group');
 	$datacosts = $datacosts + datavals();
-	/*$datacosts[''] = '';
-	$money_options = array($pricemb, 5, 10, 15, 20, 25, 30, 40, 50, 75, 100);
-	foreach($money_options as $money)
-	{
-		$disp_money = displayLocales(number_format($money, 2), TRUE);
-		$data = round($money/$pricemb, 0);
-		$disp_data = Formatting::formatBytes($data*1024*1024);
-		$datacosts["$data"] = "$disp_money ($disp_data)";
-	}*/
 	return $datacosts;
 }
-
-/* Can just use datavals now
-function groupdatacosts()
-{
-    $datacosts = datacosts();
-    unset($datacosts['inherit']);
-    return $datacosts;
-}*/
 
 function datavals()
 {
@@ -201,50 +170,14 @@ function timevals()
 	return $timevals;
 }
 
-/* Can just use timevals now
-function grouptimecosts()
-{
-    $timecosts = timecosts();
-    unset($timecosts['inherit']);
-    return $timecosts;
-}*/
-
 function timecosts()
 {
 	global $timecosts;//, $pricetime, $currency, $time_options;
 	$timecosts['inherit'] = T_('Inherit from group');
 	$timecosts = $timecosts + timevals();
 		
-/*	//$pricemb = $price; // 60c/Mb
-	$timeoptions = explode(" ", $time_options);
-	foreach($timeoptions as $time)
-	{
-		$cost = displayLocales(number_format(round($pricetime*$time, 2),2), TRUE);
-	    if($time >= 60)
-	    {
-		    $timecosts["$time"] = "$cost (" . $time/60 . " hours)";	    
-	    }
-	    else
-	    {
-		    $timecosts["$time"] = "$cost ($time mins)";
-		}		
-	}*/
 	return $timecosts;
 }
-
-/* REMOVE was used for sellable/useable data graphs
-function gboctects()
-{
-    $gb_options = array(1, 2, 4, 5, 10, 100);
-    foreach($gb_options as $gb)
-    {
-        $octects = $gb*1024*1048576;
-        $label = "$gb GiB";
-        $options["$octects"] = $label;
-    }
-    return $options;
-}
-*/
 
 function bandwidth_options()
 {
@@ -277,38 +210,6 @@ function grouplist()
     return $groups;
 }
 
-/*function usergroups()
-{
-	global $Usergroups, $Settings;
-	// Duplicate code to keep old code running. All this needs to be merged at some point
-	$groups = unserialize($Settings->getSetting("groups"));
-	foreach($groups as $group => $expiry)
-	{
-	    $Usergroups[$group] = $group;
-	}*/
-/*	// DONE:  Move this stuff into database??
-	$Usergroups["Visitors"] = T_("Visitors");
-	$Usergroups["Students"] = T_("Students");
-	$Usergroups["Staff"] = T_("Staff");
-	$Usergroups["Ministry"] = T_("Ministry");
-//	$Usergroups[MACHINE_GROUP_NAME] = "Machine (Locked)";*/
-/*	return $Usergroups;
-}*/
-
-/*function groupexpirys()
-{
-	global $Expiry, $Settings;
-	$Expiry = unserialize($Settings->getSetting("groups"));
-/*	// DONE: Move this stuff into database??
-	$Expiry["Staff"] = "+6 months";
-	$Expiry["Ministry"] = "+6 months";
-	$Expiry["Students"] = "+3 months";
-	$Expiry["Visitors"] = "+1 months";
-//	$Expiry[MACHINE_GROUP_NAME] = "--";
-//	$Expiry[DEFAULT_GROUP_NAME] = "+1 months";*/
-/*	return $Expiry;
-}*/
-
 function recurtimes()
 {
     global $Recurtimes;
@@ -327,20 +228,6 @@ function yesno()
     return array('yes' => T_('Yes'), 'no' => T_('No'));
 }
 
-/*function currency_symbols()
-{
-	global $CurrencySymbols;
-	// DONE: install more locales and automate this?
-	$CurrencySymbols['$'] = "$";
-	$CurrencySymbols['¢'] = "&#162;";
-	$CurrencySymbols['R'] = "R";
-	$CurrencySymbols['£'] = "&pound;";
-	$CurrencySymbols['€'] = "&euro;";
-	$CurrencySymbols['¥'] = "&#165;";
-	$CurrencySymbols['¤'] = "&#164;";
-	return $CurrencySymbols;
-}*/
-
 function display_page($template)
 {
 	global $smarty;
@@ -349,41 +236,7 @@ function display_page($template)
 }
 
 
-require_once 'locale.inc.php'; // Below moved to <<
-/*function apply_locale($newlocale)
-{
-    global $locale;
-    // TODO: Move this stuff to somewhere else?
-
-    //$locale = locale_accept_from_http("en_GB");
-    //echo $locale;
-    //echo	locale_accept_from_http($_SERVER['HTTP_ACCEPT_LANGUAGE']);
-    //echo 	$_SERVER['HTTP_ACCEPT_LANGUAGE'];
-
-    //if($locale == '') $locale = "en_AU";
-    $locale = $newlocale;
-
-    Locale::setDefault($locale);
-    //echo Locale::getDefault();
-    $language =  locale_get_display_language($locale, 'en');
-    $lang = Locale::getPrimaryLanguage($locale);
-    $region = locale_get_display_region($locale);
-    //echo "$language $region<br/>";
-    //print_r(displayLocales("-10000.11", TRUE)); 
-
-    //putenv("LC_ALL=$locale");
-    //$language = "Leet";
-    T_setlocale(LC_MESSAGES, $lang);
-
-    //print_r(setlocale(LC_MESSAGES, NULL));
-    T_bindtextdomain("grase", "/usr/share/grase/locale");
-    T_bind_textdomain_codeset("grase", "UTF-8");
-    T_textdomain("grase");
-}*/
-
-
-
-
+require_once 'locale.inc.php';
 
 $smarty = new SmartyBC();
 
@@ -443,30 +296,6 @@ function assign_vars()
 	$smarty->assign("Recurtimes",recurtimes()); 
 	$smarty->assign("YesNo", yesno());
 
-
-	// Data
-	/* Disabled usage bars due to lack of understanding/confusion and now have better reports
-	//$smarty->assign('gbvalues', gboctects());		
-	$total_sellable_data = $sellable_data; 
-	$smarty->assign("TotalSellableData", $total_sellable_data);
-	$sold_data =  getSoldData();
-	$smarty->assign("SoldOctets", $sold_data);
-	$smarty->assign("SellableOctets", $total_sellable_data - $sold_data);
-	$smarty->assign("SoldOctetsPercent", $sold_data/($total_sellable_data)*100);
-
-	$total_useable_data = $useable_data; 
-	$smarty->assign("TotalUseableData", $total_useable_data);
-	$used_data =  getUsedData();
-	$smarty->assign("DataUsageOctets", $used_data);
-	$smarty->assign("DataRemainingOctets", $total_useable_data - $used_data);
-	$smarty->assign("DataUsagePercent", $used_data/($total_useable_data)*100);
-
-	// last months usage
-	$used_data =  getMonthUsedData(); // TODO: make it get last month that data is for?
-	$smarty->assign("LastM_DataUsageOctets", $used_data);
-	$smarty->assign("LastM_DataRemainingOctets", $total_useable_data - $used_data);
-	$smarty->assign("LastM_DataUsagePercent", $used_data/($total_useable_data)*100);	
-	*/
 
 	// Settings
 	$smarty->assign("Title", $location . " - " . APPLICATION_NAME);

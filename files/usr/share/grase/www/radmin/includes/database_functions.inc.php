@@ -25,27 +25,7 @@ require_once 'load_settings.inc.php';
 
 // MAJOR TODO: Migrate all this to new DB stuff
 
-// Connecting, selecting database
-/*$settings = file($CONFIG['radius_database_config_file']);
-
-foreach($settings as $setting) 
-{
-    list($key, $value) = split(":", $setting);
-    $db_settings[$key] = trim($value);
-}
-$dblink = mysql_pconnect($db_settings['sql_server'], $db_settings['sql_username'], $db_settings['sql_password']) or die('Could not connect: ' . mysql_error());
-mysql_select_db($db_settings['sql_database']) or die('Could not select database');
-*/
-
-
-/* DATA Accounting Functions
-* getSoldData()
-* getUsedData()
-*
-*
-*/
-
-function getSoldData() 
+function getSoldData()
 {
     return DatabaseFunctions::getInstance()->getSoldData();
 }
