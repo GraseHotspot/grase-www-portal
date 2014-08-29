@@ -8,5 +8,12 @@
     "require": {
         "smarty-gettext/smarty-gettext": "@dev",
         "tecnick.com/tcpdf": "@stable"
+    },
+    "autoload":
+    {
+        "psr-4":
+        {
+            "Grase\\": "src/Grase/"
+        }                    
     }
 }

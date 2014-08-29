@@ -124,8 +124,8 @@ if(isset($_POST['newusersubmit']))
 function display_adduser_form()
 {
 	global $smarty, $pricemb;
-//    $user['Username'] = rand_username(5);	
-	$user['Password'] = rand_password(6);
+//    $user['Username'] = \Grase\Util::RandomUsername(5);
+	$user['Password'] = \Grase\Util::RandomPassword(6);
 	
 	// TODO: make default settings customisable
 	$user['Max_Mb'] = 'inherit';

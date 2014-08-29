@@ -208,8 +208,8 @@ switch($_SESSION['wizardpage'])
             $MaxTime  = $vouchers[$_SESSION['selectedvoucher']]['MaxTime'];
             $Expiry   = expiry_for_group($vouchers[$_SESSION['selectedvoucher']]['VoucherGroup']);
             $Comment  = $_SESSION['selectedvoucher']." Voucher purchased ".date();
-            $Username = rand_username(5);
-            $Password = rand_password(6);
+            $Username = \Grase\Util::RandomUsername(5);
+            $Password = \Grase\Util::RandomPassword(6);
 
             // TODO Maybe set expiry to a few days so if payment isn't valid then we expire soon, and after sucessful payment we update expiry?
 

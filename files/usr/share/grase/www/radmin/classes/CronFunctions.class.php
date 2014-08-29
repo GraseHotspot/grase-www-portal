@@ -373,7 +373,7 @@ class CronFunctions extends DatabaseFunctions
             // password will lock users out
             if(! $Settings->getSetting("autocreatepassword"))
             {
-                $Settings->setSetting("autocreatepassword", rand_password(20));
+                $Settings->setSetting("autocreatepassword", \Grase\Util::RandomPassword(20));
 
                 $results++;
             }

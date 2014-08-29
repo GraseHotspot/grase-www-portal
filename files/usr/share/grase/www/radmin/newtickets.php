@@ -154,8 +154,8 @@ if(isset($_POST['createticketssubmit']))
 		$failedusers= 0;
 		for($i = 0; $i < $user['numberoftickets']; $i++)
 		{
-		    $username =  rand_username(5); // DONE: Username uniqness is checked as user creation time in Database
-		    $password =  rand_password(6);
+		    $username =  \Grase\Util::RandomUsername(5); // DONE: Username uniqness is checked as user creation time in Database
+		    $password =  \Grase\Util::RandomPassword(6);
 		    
 		    // Attempt to create user. Will error if it's not a unique username
 		    if(database_create_new_user(
@@ -211,8 +211,8 @@ if(isset($_POST['createticketssubmit']))
 function display_adduser_form()
 {
 	global $smarty, $Settings;
-//    $user['Username'] = rand_username(5);	
-	$user['Password'] = rand_password(6);
+//    $user['Username'] = \Grase\Util::RandomUsername(5);
+	$user['Password'] = \Grase\Util::RandomPassword(6);
 	
 		// TODO: make default settings customisable
 	$user['Max_Mb'] = 'inherit';
