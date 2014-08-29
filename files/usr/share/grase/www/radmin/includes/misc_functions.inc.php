@@ -39,13 +39,6 @@ function input_type($params, &$smarty)
     }
 }
 
-function expiration_to_timestamp($date)
-{
-	return strtotime($date);
-/*	list($year, $month, $day) = split("-", $date);
-	return l($year, $month, $day);*/
-}
-
 /* NOTE: This function is from Smarty Docs http://www.smarty.net/docs/en/tips.dates.tpl */
 function makeTimeStamp($year='', $month='', $day='')
 {
