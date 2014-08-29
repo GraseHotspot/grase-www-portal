@@ -99,6 +99,36 @@ if(isset($_POST['batchesexport']))
 }
 
 // TODO Delete batches
+if(isset($_POST['batchesdelete']))
+{
+        foreach($_POST['selectedbatches'] as $batch)
+        {
+                $selectedbatches[] = clean_number($batch);
+        }
+        #$selectedbatches = implode(',', $selectedbatches);
+        if(sizeof($selectedbatches) == 0){
+                $error[] = T_("Please select a batch to delete");
+                $smarty->assign("error", $error);
+        }else{
+            $users = array();
+            foreach($selectedbatches as $batch)
+            {
+                $fetchusers = database_get_users($Settings->getBatch($batch) );
+                if(!is_array($fetchusers)) $fetchusers = array();
+                $users = array_merge($users, $fetchusers);    
+            }
+            foreach($users as $user)
+            {
+                print "Deleting ".$user['Username'];
+                // TODO Actually delete user
+                // Maybe delete user from batch as we go to ensure if we fail 
+                // at any point the batch is correct?
+            }
+            // TODO Delete batch from settings
+
+        }
+
+}
 
 /*  **  Process creation of batches **   */
 
