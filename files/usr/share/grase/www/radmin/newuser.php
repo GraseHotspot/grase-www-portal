@@ -98,10 +98,10 @@ if(isset($_POST['newusersubmit']))
 		    $MaxTime = clean_int($_POST['MaxTime']);
 		if($_POST['Max_Time'] == 'inherit')
 		    $MaxTime = $groupsettings[$group]['MaxTime'];
-		    
-		    
-		    
-		database_create_new_user( // TODO: Check if valid
+
+
+
+        DatabaseFunctions::getInstance()->createUser( // TODO: Check if valid
 			clean_username($_POST['Username']),
 			clean_text($_POST['Password']),
 			$MaxMb,

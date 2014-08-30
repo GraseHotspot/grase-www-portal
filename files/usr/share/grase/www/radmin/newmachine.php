@@ -74,7 +74,7 @@ if(isset($_POST['newmachinesubmit']))
 		if(clean_int($_POST['MaxTime']))
 		    $MaxTime = clean_int($_POST['MaxTime']);
 		$mac = clean_text($_POST['mac']);
-		database_create_new_user( // TODO: Check if successful
+        DatabaseFunctions::getInstance()->createUser( // TODO: Check if successful
 			$mac,
 			DatabaseFunctions::getInstance()->getChilliConfigSingle('macpasswd'), // DONE: macpasswd comes from DB
 			$MaxMb,

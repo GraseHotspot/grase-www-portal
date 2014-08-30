@@ -99,7 +99,7 @@ if(isset($_POST['submit']))
                 $machineaccounts = DatabaseFunctions::getInstance()->getUsersByGroup(MACHINE_GROUP_NAME);
                 foreach($machineaccounts as $machine)
                 {
-                    database_change_password($machine, $postvalue);
+                    DatabaseFunctions::getInstance()->setUserPassword($machine, $postvalue);
                 }
             }
             

@@ -213,7 +213,7 @@ switch($_SESSION['wizardpage'])
 
             // TODO Maybe set expiry to a few days so if payment isn't valid then we expire soon, and after sucessful payment we update expiry?
 
-            database_create_new_user(// TODO: Check if valid
+            DatabaseFunctions::getInstance()->createUser(// TODO: Check if valid
                 $Username, 
                 $Password, 
                 $MaxMb, 

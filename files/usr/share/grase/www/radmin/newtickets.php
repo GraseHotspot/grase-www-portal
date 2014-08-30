@@ -188,7 +188,7 @@ if(isset($_POST['createticketssubmit']))
 		    $password =  \Grase\Util::randomPassword(6);
 		    
 		    // Attempt to create user. Will error if it's not a unique username
-		    if(database_create_new_user(
+		    if(DatabaseFunctions::getInstance()->createUser(
 			    $username,
 			    $password,
 			    $MaxMb,

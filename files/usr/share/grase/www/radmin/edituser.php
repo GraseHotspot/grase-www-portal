@@ -41,7 +41,7 @@ if(isset($_GET['username']) && !DatabaseFunctions::getInstance()->checkUniqueUse
         // Update password
 	    if(clean_text($_POST['Password']) && clean_text($_POST['Password']) != $user['Password'])
 	    {
-	        database_change_password($username, clean_text($_POST['Password']));
+            DatabaseFunctions::getInstance()->setUserPassword($username, clean_text($_POST['Password']));
 	        // TODO: Check return for success		
 	        $success[] = T_("Password Changed");
 	        AdminLog::getInstance()->log("Password changed for $username");	    
@@ -57,8 +57,8 @@ if(isset($_GET['username']) && !DatabaseFunctions::getInstance()->checkUniqueUse
             }
             else
             {
-			    database_change_group($username, clean_text($_POST['Group']));
-			    database_update_expirydate($username,
+                DatabaseFunctions::getInstance()->setUserGroup($username, clean_text($_POST['Group']));
+			    DatabaseFunctions::getInstance()->setUserExpiry($username,
 			        expiry_for_group(DatabaseFunctions::getInstance()->getUserGroup($username)));
 			    // TODO: Check return for success
 			    $success[] = T_("Group Changed");
@@ -69,7 +69,7 @@ if(isset($_GET['username']) && !DatabaseFunctions::getInstance()->checkUniqueUse
         // Update comment if changed
         if(clean_text($_POST['Comment']) != $user['Comment'])
         {
-			database_change_comment($username, clean_text($_POST['Comment']));
+            DatabaseFunctions::getInstance()->setUserComment($username, clean_text($_POST['Comment']));
 			// TODO: Check return for success			
 			$success[] = T_("Comment Changed");
 			AdminLog::getInstance()->log("Comment changed for $username");        
@@ -101,8 +101,8 @@ if(isset($_GET['username']) && !DatabaseFunctions::getInstance()->checkUniqueUse
             }
             else            
             {
-			    database_increase_datalimit($username, clean_number($_POST['Add_Mb']));
-    			database_update_expirydate($username, expiry_for_group(DatabaseFunctions::getInstance()->getUserGroup($username)));
+                DatabaseFunctions::getInstance()->increaseUserDatalimit($username, clean_number($_POST['Add_Mb']));
+    			DatabaseFunctions::getInstance()->setUserExpiry($username, expiry_for_group(DatabaseFunctions::getInstance()->getUserGroup($username)));
     			// TODO: Check return for success			
     			$success[] = T_("Data Limit Increased");	
 			AdminLog::getInstance()->log(sprintf(T_("Data Limit increased for %s"), $username));            
@@ -122,8 +122,8 @@ if(isset($_GET['username']) && !DatabaseFunctions::getInstance()->checkUniqueUse
             else
     		{
 
-			    database_change_datalimit($username, clean_number($_POST['MaxMb']));
-			    database_update_expirydate($username, expiry_for_group(DatabaseFunctions::getInstance()->getUserGroup($username)));
+                DatabaseFunctions::getInstance()->setUserDataLimit($username, clean_number($_POST['MaxMb']));
+			    DatabaseFunctions::getInstance()->setUserExpiry($username, expiry_for_group(DatabaseFunctions::getInstance()->getUserGroup($username)));
 			    // TODO: Check return for success			
 			    $success[] = T_("Max Data Limit Updated");	
 			    AdminLog::getInstance()->log(sprintf(T_("Max Data Limit changed for %s"), $username));			
@@ -140,8 +140,8 @@ if(isset($_GET['username']) && !DatabaseFunctions::getInstance()->checkUniqueUse
             }
             else            
             {
-			    database_increase_timelimit($username, clean_number($_POST['Add_Time']));
-    			database_update_expirydate($username, expiry_for_group(DatabaseFunctions::getInstance()->getUserGroup($username)));
+                DatabaseFunctions::getInstance()->increaseUserTimelimit($username, clean_number($_POST['Add_Time']));
+    			DatabaseFunctions::getInstance()->setUserExpiry($username, expiry_for_group(DatabaseFunctions::getInstance()->getUserGroup($username)));
     			// TODO: Check return for success			
     			$success[] = T_("Time Limit Increased");	
 			AdminLog::getInstance()->log(sprintf(T_("Time Limit increased for %s"), $username));            
@@ -160,8 +160,8 @@ if(isset($_GET['username']) && !DatabaseFunctions::getInstance()->checkUniqueUse
             }
             else
     		{
-			    database_change_timelimit($username, clean_number($_POST['MaxTime']));
-			    database_update_expirydate($username, expiry_for_group(DatabaseFunctions::getInstance()->getUserGroup($username)));
+                DatabaseFunctions::getInstance()->setUserTimeLimit($username, clean_number($_POST['MaxTime']));
+			    DatabaseFunctions::getInstance()->setUserExpiry($username, expiry_for_group(DatabaseFunctions::getInstance()->getUserGroup($username)));
 			    // TODO: Check return for success			
 			    $success[] = T_("Max Time Limit Updated");	
 			    AdminLog::getInstance()->log(sprintf(T_("Max Time Limit changed for %s"), $username));			
@@ -172,7 +172,7 @@ if(isset($_GET['username']) && !DatabaseFunctions::getInstance()->checkUniqueUse
 	
 	if(isset($_POST['unexpiresubmit']))
 	{
-	    database_update_expirydate($username, expiry_for_group(DatabaseFunctions::getInstance()->getUserGroup($username)));
+	    DatabaseFunctions::getInstance()->setUserExpiry($username, expiry_for_group(DatabaseFunctions::getInstance()->getUserGroup($username)));
 	    $success[] = T_("Expiry updated");
 	}
 	

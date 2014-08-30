@@ -45,7 +45,7 @@ else
             $error[] = T_("Password must not be blank");
         }else
         {
-            if(database_change_password($Auth->getUsername(), $newpass1))
+            if(DatabaseFunctions::getInstance()->setUserPassword($Auth->getUsername(), $newpass1))
             {
                 $success[] = T_("Password Changed");
             }else
