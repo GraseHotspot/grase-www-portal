@@ -25,127 +25,15 @@ require_once 'load_settings.inc.php';
 
 // MAJOR TODO: Migrate all this to new DB stuff
 
-function getSoldData()
-{
-    return DatabaseFunctions::getInstance()->getSoldData();
-}
-
-function getMonthUsedData($month = "") 
-{
-    return DatabaseFunctions::getInstance()->getMonthUsedData($month);
-}
-
-function getUsedData() 
-{
-    return DatabaseFunctions::getInstance()->getUsedData();
-}
-
-/* RADIUS ACCOUNTING FUNCTIONS
-* getDBSessionAccounting($radacctit)
-* getDBSessionsAccounting($username = '')
-* convertRadacctIPtoUsername($IP)
-*
-*/
-
-function getDBSessionAccounting($radacctid) 
-{
-    return DatabaseFunctions::getInstance()->getRadiusSessionDetails($radacctid);
-}
-
-function getDBSessionsAccounting($username = '') 
-{
-    return DatabaseFunctions::getInstance()->getRadiusUserSessionsDetails($username);
-}
-
-/* OBSOLETE ?
-// Used by scripts/squid_user_group.php
-function convertRadacctIPtoUsername($IP) // was database_radacct_ip_to_username
-{
-    $query = sprintf("SELECT UserName from radacct
-			WHERE AcctTerminateCause = ''
-			AND FramedIPAddress = '%s'
-			ORDER BY RadAcctId DESC LIMIT 1", mysql_real_escape_string($IP));
-    $result2 = mysql_db_query('radius', $query) or die('Get IP to User Query failed: ' . mysql_error());
-    
-    if (mysql_num_rows($result2) == 0) 
-    {
-        $username = "";
-    }
-    else
-    {
-        $username = mysql_result($result2, 0);
-    }
-    mysql_free_result($result2);
-    
-    return $username;
-}*/
 
 /* USER DETAILS
 *
 *
 */
 
-function getDBUserDetails($username) // was database_get_user_details
-{
-    return DatabaseFunctions::getInstance()->getUserDetails($username);
-
-}
-
 /* Not in use yet. TODO: move some of above into these functions and make them active */
 
-function getDBUserLastLogoutTime($username) 
-{
-
-    return DatabaseFunctions::getInstance()->getUserLastLogoutTime($username);
-
-}
-
-function getDBUserTotalSessionTime($username) 
-{
-    return DatabaseFunctions::getInstance()->getUserTotalSessionTime($username);
-
-}
-
-function getDBUserDataUsage($username) 
-{
-    return DatabaseFunctions::getInstance()->getUserDataUsage($username);
-
-
-}
-
-function getDBUserDataUsageTotal($username) // was database_get_user_datausage_total
-{
-        return DatabaseFunctions::getInstance()->getUserDataUsageTotal($username);
-
-}
-
-function getDBMonthlyAccounts() // database_get_monthly_accounts
-{
-
-    return DatabaseFunctions::getInstance()->getMonthlyAccounts();
-
-    
-}
-
-function getDBMonthlyAccountsTotals() // was database_get_monthly_accounts_totals
-{
-    return DatabaseFunctions::getInstance()->getMonthlyAccountsTotals();
-
-}
-
-function checkDBUniqueUsername($username) // was database_check_uniq_username
-{
-    return DatabaseFunctions::getInstance()->checkUniqueUsername($username);
-
-}
-
-function getDBUserGroup($username) 
-{
-    return DatabaseFunctions::getInstance()->getUserGroup($username);
-
-}
-
-function database_get_users($selectusers) 
+function database_get_users($selectusers)
 {
 
     // For each User, get information
@@ -153,7 +41,7 @@ function database_get_users($selectusers)
     foreach($selectusers as $user) 
     {
         //$users[] = getDBUserDetails($user['UserName']);
-        $users[] = getDBUserDetails($user);
+        $users[] = DatabaseFunctions::getInstance()->getUserDetails($user);
     }
     
     return $users;

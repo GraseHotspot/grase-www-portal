@@ -27,13 +27,13 @@ require_once 'includes/misc_functions.inc.php';
 require_once 'includes/database_functions.inc.php';
 
 
-if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Display single user, in detail
+if(isset($_GET['username']) && !DatabaseFunctions::getInstance()->checkUniqueUsername($_GET['username']))#Display single user, in detail
 {
 	$error = array();
 	$success = array();
 
 	$username = mysql_real_escape_string($_GET['username']); // TODO change this? i.e. make database class do it if it doesn't already
-	$user = getDBUserDetails($_GET['username']);
+	$user = DatabaseFunctions::getInstance()->getUserDetails($_GET['username']);
 	
 	if(isset($_POST['updateusersubmit']))
 	{   // Process form for changed items and do updates
@@ -59,7 +59,7 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
             {
 			    database_change_group($username, clean_text($_POST['Group']));
 			    database_update_expirydate($username,
-			        expiry_for_group(getDBUserGroup($username)));
+			        expiry_for_group(DatabaseFunctions::getInstance()->getUserGroup($username)));
 			    // TODO: Check return for success
 			    $success[] = T_("Group Changed");
 			    AdminLog::getInstance()->log("Group changed for $username");                
@@ -102,7 +102,7 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
             else            
             {
 			    database_increase_datalimit($username, clean_number($_POST['Add_Mb']));
-    			database_update_expirydate($username, expiry_for_group(getDBUserGroup($username)));
+    			database_update_expirydate($username, expiry_for_group(DatabaseFunctions::getInstance()->getUserGroup($username)));
     			// TODO: Check return for success			
     			$success[] = T_("Data Limit Increased");	
 			AdminLog::getInstance()->log(sprintf(T_("Data Limit increased for %s"), $username));            
@@ -123,7 +123,7 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
     		{
 
 			    database_change_datalimit($username, clean_number($_POST['MaxMb']));
-			    database_update_expirydate($username, expiry_for_group(getDBUserGroup($username)));
+			    database_update_expirydate($username, expiry_for_group(DatabaseFunctions::getInstance()->getUserGroup($username)));
 			    // TODO: Check return for success			
 			    $success[] = T_("Max Data Limit Updated");	
 			    AdminLog::getInstance()->log(sprintf(T_("Max Data Limit changed for %s"), $username));			
@@ -141,7 +141,7 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
             else            
             {
 			    database_increase_timelimit($username, clean_number($_POST['Add_Time']));
-    			database_update_expirydate($username, expiry_for_group(getDBUserGroup($username)));
+    			database_update_expirydate($username, expiry_for_group(DatabaseFunctions::getInstance()->getUserGroup($username)));
     			// TODO: Check return for success			
     			$success[] = T_("Time Limit Increased");	
 			AdminLog::getInstance()->log(sprintf(T_("Time Limit increased for %s"), $username));            
@@ -161,7 +161,7 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
             else
     		{
 			    database_change_timelimit($username, clean_number($_POST['MaxTime']));
-			    database_update_expirydate($username, expiry_for_group(getDBUserGroup($username)));
+			    database_update_expirydate($username, expiry_for_group(DatabaseFunctions::getInstance()->getUserGroup($username)));
 			    // TODO: Check return for success			
 			    $success[] = T_("Max Time Limit Updated");	
 			    AdminLog::getInstance()->log(sprintf(T_("Max Time Limit changed for %s"), $username));			
@@ -172,7 +172,7 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
 	
 	if(isset($_POST['unexpiresubmit']))
 	{
-	    database_update_expirydate($username, expiry_for_group(getDBUserGroup($username)));
+	    database_update_expirydate($username, expiry_for_group(DatabaseFunctions::getInstance()->getUserGroup($username)));
 	    $success[] = T_("Expiry updated");
 	}
 	
@@ -206,7 +206,7 @@ if(isset($_GET['username']) && !checkDBUniqueUsername($_GET['username']))#Displa
 	
 	// if $success we need to reload the info
 	if(sizeof($success) > 0 || sizeof($error) > 0)	
-    	$user = getDBUserDetails($_GET['username']);
+    	$user = DatabaseFunctions::getInstance()->getUserDetails($_GET['username']);
 
     // After potential reload, we can assign it to smarty
    	$smarty->assign("user", $user);	

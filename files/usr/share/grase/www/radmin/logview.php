@@ -150,7 +150,7 @@ function build_perl_command($conditions)
 	if(trim($_GET['acctid']) != '')
 	{
 
-		$session = getDBSessionAccounting($_GET['acctid']);
+		$session = DatabaseFunctions::getInstance()->getRadiusSessionDetails($_GET['acctid']);
 		//print_r($session);
 
 

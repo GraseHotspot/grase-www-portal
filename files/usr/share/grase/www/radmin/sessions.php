@@ -29,12 +29,12 @@ require_once 'includes/database_functions.inc.php';
 
     if(isset($_GET['username']))
     {
-	    $smarty->assign("sessions", getDBSessionsAccounting($_GET['username']));
+	    $smarty->assign("sessions", DatabaseFunctions::getInstance()->getRadiusUserSessionsDetails($_GET['username']));
 	    $smarty->assign("username", $_GET['username']);
 	}
 	elseif(isset($_GET['allsessions']))
 	{
-	    $sessions = getDBSessionsAccounting();
+	    $sessions = DatabaseFunctions::getInstance()->getRadiusUserSessionsDetails();
 	    $totalrows = sizeof($sessions);
 	    $numPerPage = $_GET['items'] ? abs($_GET['items']) : 25; // TODO check this is safe
 	    $page = $_GET['page'] ? abs($_GET['page']) : 0; //TODO check this is safe

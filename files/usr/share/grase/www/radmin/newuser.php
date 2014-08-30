@@ -32,7 +32,7 @@ function validate_form()
 	global $expirydate;
 	$error = array();
 	$username = clean_username($_POST['Username']);
-	if(! checkDBUniqueUsername($username)) $error[] = T_("Username already taken");
+	if(! DatabaseFunctions::getInstance()->checkUniqueUsername($username)) $error[] = T_("Username already taken");
 	if ( ! $_POST['Username'] || !$_POST['Password'] ) $error[] = T_("Username and Password are both Required");
 	
    	$MaxMb = clean_number($_POST['MaxMb'] );

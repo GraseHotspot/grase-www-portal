@@ -29,7 +29,7 @@ require_once 'includes/database_functions.inc.php';
 function validate_form()
 {
 	$error = array();
-	if(! checkDBUniqueUsername($_POST['mac'])) $error[] = T_("MAC Address already has an account");
+	if(! DatabaseFunctions::getInstance()->checkUniqueUsername($_POST['mac'])) $error[] = T_("MAC Address already has an account");
 	
 	$MaxMb = clean_number( $_POST['MaxMb'] );
 	$Max_Mb = clean_number( $_POST['Max_Mb'] );	

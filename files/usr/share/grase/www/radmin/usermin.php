@@ -26,7 +26,7 @@ require_once 'includes/database_functions.inc.php';
 
 if(isset($_GET['history']))
 {
-    $smarty->assign("sessions", getDBSessionsAccounting($Auth->getUsername()));
+    $smarty->assign("sessions", DatabaseFunctions::getInstance()->getRadiusUserSessionsDetails($Auth->getUsername()));
     display_page('usermin_history.tpl');
 }
 else
@@ -58,7 +58,7 @@ else
     
     $smarty->assign("error", array_filter($error));
     $smarty->assign("success", $success);
-    $smarty->assign("user", getDBUserDetails($Auth->getUsername()));
+    $smarty->assign("user", DatabaseFunctions::getInstance()->getUserDetails($Auth->getUsername()));
     display_page('usermin_userdetails.tpl');
 
 }

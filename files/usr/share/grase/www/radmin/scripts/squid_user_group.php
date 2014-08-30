@@ -44,7 +44,7 @@ $fp = fopen('php://stdin', 'r');
 while($data = trim(fgets($fp, 4096))){
 //	echo "$IP ".convertRadacctIPtoUsername($IP)."\n";
 	list($Username, $group) = split(" ", $data, 2);
-	$usergroup=trim(getDBUserGroup($Username));
+	$usergroup=trim(DatabaseFunctions::getInstance()->getUserGroup($Username));
 	if($usergroup == $group && $usergroup != ""){
 		print "OK\n";
 	}else{
