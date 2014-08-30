@@ -27,10 +27,10 @@ class Util
     // NOTE: This function is based on http://snipplr.com/view/5444/random-pronounceable-passwords-generator/
     public static function randomPassword($len)
     {
-        $C = "BCDFGHJKLMNPRSTVWZ";
+        //$C = "BCDFGHJKLMNPRSTVWZ";
         $c = "bcdfghjklmnprstvwz";
         $v = "aeiou";
-        $V = "AEIOU";
+        //$V = "AEIOU";
 
         $password = "";
         $syllables = 3;
@@ -145,7 +145,7 @@ class Util
 
             // If destination and mask are 0.0.0.0 then this is a default route
             if ($parms[1] == "00000000" && $parms[7] == "00000000") {
-                $default_gateway = $parms[2]; // Future use?
+                //$default_gateway = $parms[2]; // Future use?
                 $default_wanif = trim($parms[0]);
             }
         }
