@@ -88,8 +88,21 @@ class Page
 
     public function displayPage($template)
     {
-        //$this->setupVariables();
         \assign_vars($this->te);
+        $this->setupTemplateVariables();
         return $this->te->display($template);
+    }
+
+    public function setupTemplateVariables()
+    {
+        if (sizeof($this->warningMessages) != 0) {
+            $this->assign("warningmessages", $this->warningMessages);
+        }
+        if (sizeof($this->errorMessages) != 0) {
+            $this->assign("error", $this->errorMessages);
+        }
+        if (sizeof($this->successMessages) != 0) {
+            $this->assign("success", $this->successMessages);
+        }
     }
 }

@@ -236,11 +236,6 @@ $templateEngine = new \Grase\Page();
 
 $templateEngine->assign("RealHostname", $realhostname);
 
-// Initialise error variables 
-	$errormessages = array();
-	$successmessages = array();
-	$warningmessages = array();
-
 
 function assign_vars($templateEngine)
 {
@@ -283,12 +278,6 @@ function assign_vars($templateEngine)
 	$templateEngine->assign("groupdata", DatabaseFunctions::getInstance()->getGroupAttributes());
 	$templateEngine->assign("groupsettings", $Settings->getGroup());
 	$templateEngine->assign("groups", grouplist());
-	
-	// Error, warning, success messages
-	global $errormessages, $successmessages, $warningmessages;
-	if(sizeof($errormessages) != 0)	$templateEngine->assign("error", $errormessages);
-	if(sizeof($successmessages) != 0)	$templateEngine->assign("success", $successmessages);
-	if(sizeof($warningmessages) != 0)	$templateEngine->assign("warningmessages", $warningmessages);
 	
 	// DEMO SITE flag
 	$templateEngine->assign("DEMOSITE", $DEMO_SITE);
