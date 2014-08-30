@@ -45,7 +45,7 @@ require_once __DIR__.'/../../../vendor/autoload.php';
 $smarty = new SmartyBC();
 
 // TODO Detect browser settings and allow override of language?
-apply_locale($locale);
+\Grase\Locale::applyLocale($locale);
 
 #$smarty->register_block('t', 'smarty_block_t');
 
@@ -75,22 +75,6 @@ $smarty->assign("logintitle", $logintitle);
 
 // Load templates needed by all pages
 load_templates(array('maincss'));
-
-
-function apply_locale($newlocale)
-{
-    global $locale;
-    $locale = $newlocale;
-
-    Locale::setDefault($locale);
-    $language =  locale_get_display_language($locale, 'en');
-    $region = locale_get_display_region($locale);
-    T_setlocale(LC_MESSAGES, $language);
-
-    T_bindtextdomain("grase", "/usr/share/grase/locale");
-    T_bind_textdomain_codeset("grase", "UTF-8");    
-    T_textdomain("grase");
-}
 
 function load_templates($templates)
 {

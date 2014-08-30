@@ -239,7 +239,7 @@ function update_locale($locale)
 		if($Settings->setSetting('locale', $locale))
 		{
 			// Apply new locale so language displays correctly from now on
-			apply_locale($locale);
+			\Grase\Locale::applyLocale($locale);
 
 			$success[] = T_("Locale updated");
 			AdminLog::getInstance()->log(T_("Locale updated to") . $locale);

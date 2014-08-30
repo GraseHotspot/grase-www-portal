@@ -25,6 +25,9 @@ require_once('includes/accesscheck.inc.php');
 require_once 'includes/load_settings.inc.php';
 require_once 'includes/pageaccess.inc.php';
 
+// We require misc_functions due to locale stuff
+require_once 'includes/misc_functions.inc.php';
+
 
 require_once __DIR__.'/../../../vendor/autoload.php';
 
@@ -235,8 +238,6 @@ function display_page($template)
 }
 
 
-require_once 'locale.inc.php';
-
 $smarty = new SmartyBC();
 
 //$smarty->error_reporting = E_ALL & ~E_NOTICE;
@@ -253,7 +254,7 @@ $smarty->register_function('inputtype', 'input_type');
 //$locale = (!isset($_GET["l"]))?"en_GB":$_GET["l"];  
 $smarty->register_block('t', 'smarty_block_t');
 
-apply_locale($locale);
+\Grase\Locale::applyLocale($locale);
 
 $smarty->assign("RealHostname", $realhostname);
 

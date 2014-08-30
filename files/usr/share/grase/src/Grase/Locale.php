@@ -1,5 +1,4 @@
 <?php
-
 /* Copyright 2012 Timothy White */
 
 /*  This file is part of GRASE Hotspot.
@@ -22,28 +21,29 @@
 
 // This Locale stuff doesn't need any DB, so we can call it from anywhere and just apply the locale we want without DB calls!
 
+namespace Grase;
+
+// Probably not needed, but just to be sure for now we'll require the gettext.inc
 require_once('php-gettext/gettext.inc');
 
-function apply_locale($newlocale)
-{
-    global $locale;
-    
+class Locale {
+    public static $locale = '';
 
+    public static function applyLocale($newlocale)
+    {
+        self::$locale = $newlocale;
+        //TODO Allow locale to be overriden by GET request?
+        //if($_GET['lang']) $locale = $_GET['lang'];
 
-    $locale = $newlocale;
-    //TODO Allow locale to be overriden by GET request?
-    //if($_GET['lang']) $locale = $_GET['lang'];
+        locale_set_default(self::$locale);
+        $language =  locale_get_display_language(self::$locale, 'en');
+        $lang = locale_get_primary_language(self::$locale);
+        $region = locale_get_display_region(self::$locale);
 
-    locale_set_default($locale);
-    //echo Locale::getDefault();
-    $language =  locale_get_display_language($locale, 'en');
-    $lang = locale_get_primary_language($locale);
-    $region = locale_get_display_region($locale);
+        T_setlocale(LC_MESSAGES, $lang);
 
-    T_setlocale(LC_MESSAGES, $lang);
-
-    T_bindtextdomain("grase", "/usr/share/grase/locale");
-    T_bind_textdomain_codeset("grase", "UTF-8");
-    T_textdomain("grase");
-}
-?>
+        T_bindtextdomain("grase", "/usr/share/grase/locale");
+        T_bind_textdomain_codeset("grase", "UTF-8");
+        T_textdomain("grase");
+    }
+} 
