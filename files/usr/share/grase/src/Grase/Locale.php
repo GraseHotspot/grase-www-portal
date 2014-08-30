@@ -37,9 +37,9 @@ class Locale
         //if($_GET['lang']) $locale = $_GET['lang'];
 
         locale_set_default(self::$locale);
-        $language = locale_get_display_language(self::$locale, 'en');
+        //$language = locale_get_display_language(self::$locale, 'en');
         $lang = locale_get_primary_language(self::$locale);
-        $region = locale_get_display_region(self::$locale);
+        //$region = locale_get_display_region(self::$locale);
 
         T_setlocale(LC_MESSAGES, $lang);
 
