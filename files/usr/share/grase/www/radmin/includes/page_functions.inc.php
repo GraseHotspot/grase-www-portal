@@ -230,13 +230,6 @@ function yesno()
     return array('yes' => T_('Yes'), 'no' => T_('No'));
 }
 
-function display_page($template)
-{
-	global $templateEngine;
-	assign_vars();
-	return $templateEngine->display($template);
-}
-
 $templateEngine = new \Grase\Page();
 
 \Grase\Locale::applyLocale($locale);

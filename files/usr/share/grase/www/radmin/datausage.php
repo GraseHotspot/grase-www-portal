@@ -29,7 +29,7 @@ require_once 'includes/misc_functions.inc.php';
 	$monthly_accounts_totals = DatabaseFunctions::getInstance()->getMonthlyAccountsTotals();
 	$templateEngine->assign("monthly_accounts", $monthly_accounts);
 	$templateEngine->assign("monthly_accounts_totals", $monthly_accounts_totals);
-	display_page('monthly_accounts.tpl');
+	$templateEngine->displayPage('monthly_accounts.tpl');
 
 // TODO: Data usage over "forever"
 	

@@ -206,7 +206,7 @@ function build_perl_command($conditions)
 	$templateEngine->assign("domain_size", $domain_size);
 	$templateEngine->assign("domain_formatsize", $domain_formatsize);
 	$templateEngine->assign("http_traffic_size", $format_http_traffic_size);
-	display_page('log.tpl');
+	$templateEngine->displayPage('log.tpl');
 
 
 // $loglines);

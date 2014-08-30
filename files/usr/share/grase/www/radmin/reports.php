@@ -102,7 +102,7 @@ $Reports = new Reports(DatabaseConnections::getInstance());
 
 
 
-	display_page('reports.tpl');
+	$templateEngine->displayPage('reports.tpl');
 
 //}
 

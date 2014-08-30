@@ -26,7 +26,7 @@ require_once 'includes/usermin_session.inc.php';
 if(isset($_GET['history']))
 {
     $templateEngine->assign("sessions", DatabaseFunctions::getInstance()->getRadiusUserSessionsDetails($Auth->getUsername()));
-    display_page('usermin_history.tpl');
+    $templateEngine->displayPage('usermin_history.tpl');
 }
 else
 {
@@ -58,7 +58,7 @@ else
     $templateEngine->assign("error", array_filter($error));
     $templateEngine->assign("success", $success);
     $templateEngine->assign("user", DatabaseFunctions::getInstance()->getUserDetails($Auth->getUsername()));
-    display_page('usermin_userdetails.tpl');
+    $templateEngine->displayPage('usermin_userdetails.tpl');
 
 }
 ?>

@@ -144,7 +144,7 @@ require_once 'includes/misc_functions.inc.php';
 
 
 	$templateEngine->assign("adminusers", $adminusers);
-	display_page('changepasswd.tpl');
+	$templateEngine->displayPage('changepasswd.tpl');
 
 ?>
 

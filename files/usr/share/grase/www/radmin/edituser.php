@@ -204,7 +204,7 @@ if(isset($_GET['username']) && !DatabaseFunctions::getInstance()->checkUniqueUse
     // After all user details are loaded, we can load our warning
     if($user['AccountLock'] == true) $warningmessages[] = T_('User account is locked and will not be able to login');
 	
-	display_page('edituser.tpl');
+	$templateEngine->displayPage('edituser.tpl');
 
 }else
 {	# Display all users //TODO: Redirect?

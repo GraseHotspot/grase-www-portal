@@ -26,7 +26,7 @@ require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
 
 	$templateEngine->assign("links", createusefullinks());
-	display_page('links.tpl');
+	$templateEngine->displayPage('links.tpl');
 
 ?>
 

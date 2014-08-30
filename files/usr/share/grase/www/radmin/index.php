@@ -28,7 +28,7 @@ $Sysinfo = new SystemInformation();
 
 $templateEngine->assign('Sysinfo', $Sysinfo);
 
-display_page('main.tpl');
+$templateEngine->displayPage('main.tpl');
 
 ?>
 

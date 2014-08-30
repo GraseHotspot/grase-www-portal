@@ -151,7 +151,7 @@ if(isset($_POST['createticketssubmit']))
 		$user['Comment'] = clean_text($_POST['Comment']);
 		$templateEngine->assign("user", $user);
 		$templateEngine->assign("error", $error);
-		display_page('newtickets.tpl'); //TODO: What happens if this returns?
+		$templateEngine->displayPage('newtickets.tpl'); //TODO: What happens if this returns?
 	}else
 	{
 	    $group = clean_text($_POST['Group']);
@@ -254,7 +254,7 @@ function display_adduser_form()
     $templateEngine->assign("last_batch", $Settings->getSetting('lastbatch'));
     $templateEngine->assign("listbatches", $Settings->listBatches());
     
-	display_page('newtickets.tpl');
+	$templateEngine->displayPage('newtickets.tpl');
 }
 
 ?>

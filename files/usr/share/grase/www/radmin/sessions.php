@@ -58,7 +58,7 @@ require_once 'includes/misc_functions.inc.php';
         }
     }
 
-	display_page('sessions.tpl');
+	$templateEngine->displayPage('sessions.tpl');
 
 // TODO: Data usage over "forever"
 	

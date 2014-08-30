@@ -83,7 +83,7 @@ require_once 'includes/misc_functions.inc.php';
     if($success)
         $templateEngine->assign("success", array($success));
 
-	display_page('uploadlogo.tpl');
+	$templateEngine->displayPage('uploadlogo.tpl');
 
 ?>
 

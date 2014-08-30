@@ -63,7 +63,7 @@ function loginForm($username = null, $status = null, &$auth = null)
             $error = "Authentication Issue. Please report to Admin";
     }
     if(isset($error)) $templateEngine->assign("error", $error);
-   	display_page('usermin_login.tpl');
+   	$templateEngine->displayPage('usermin_login.tpl');
    	exit();
 }
 

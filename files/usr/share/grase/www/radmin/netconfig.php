@@ -256,7 +256,7 @@ if(sizeof($success) > 0) $templateEngine->assign("success", $success);
     $templateEngine->assign("singlenetworkoptions", $singlenetworkoptions);
     $templateEngine->assign("selectnetworkoptions", $selectnetworkoptions);
     $templateEngine->assign("multinetworkoptions", $multinetworkoptions);
-	display_page('netconfig.tpl');
+	$templateEngine->displayPage('netconfig.tpl');
 
 ?>
 

@@ -298,7 +298,7 @@ function update_supportlink($supportlink)
 
 //error_reporting($old_error_level);
 	//require('includes/site_settings.inc.php'); // ReRead settings
-	display_page('settings.tpl');
+	$templateEngine->displayPage('settings.tpl');
 
 ?>
 

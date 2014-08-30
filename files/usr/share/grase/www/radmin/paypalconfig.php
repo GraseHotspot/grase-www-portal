@@ -139,7 +139,7 @@ if(sizeof($error) > 0) $templateEngine->assign("error", $error);
 if(sizeof($success) > 0) $templateEngine->assign("success", $success);
 
     $templateEngine->assign("singlepaypaloptions", $singlepaypaloptions);
-	display_page('paypalconfig.tpl');
+	$templateEngine->displayPage('paypalconfig.tpl');
 
 
 ?>

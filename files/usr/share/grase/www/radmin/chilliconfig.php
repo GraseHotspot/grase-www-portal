@@ -208,7 +208,7 @@ if(sizeof($success) > 0) $templateEngine->assign("success", $success);
 
     $templateEngine->assign("singlechillioptions", $singlechillioptions);
     $templateEngine->assign("multichillioptions", $multichillioptions);
-	display_page('chilliconfig.tpl');
+	$templateEngine->displayPage('chilliconfig.tpl');
 
 ?>
 

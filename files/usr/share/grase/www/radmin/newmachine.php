@@ -61,7 +61,7 @@ if(isset($_POST['newmachinesubmit']))
 		$user['Comment'] = clean_text($_POST['Comment']);
 		$templateEngine->assign("machine", $user);
 		$templateEngine->assign("error", $error);
-		display_page('addmachine.tpl');
+		$templateEngine->displayPage('addmachine.tpl');
 	}else
 	{
 		if(clean_number($_POST['Max_Mb']))
@@ -95,7 +95,7 @@ if(isset($_POST['newmachinesubmit']))
 function display_addmachine_form()
 {
 	global $templateEngine;
-	display_page('addmachine.tpl');
+	$templateEngine->displayPage('addmachine.tpl');
 }
 
 ?>

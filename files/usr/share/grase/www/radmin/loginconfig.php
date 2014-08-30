@@ -227,7 +227,7 @@ if(sizeof($success) > 0) $templateEngine->assign("success", $success);
     $templateEngine->assign("singleloginoptions", $singleloginoptions);
     $templateEngine->assign("templateoptions", $templateoptions);
     $templateEngine->assign("multiloginoptions", $multiloginoptions);
-	display_page('loginconfig.tpl');
+	$templateEngine->displayPage('loginconfig.tpl');
 
 ?>
 

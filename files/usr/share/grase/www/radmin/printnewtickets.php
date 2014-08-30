@@ -59,7 +59,7 @@ if(isset($_GET['user']))
 	$smarty->assign("users", $users);
 	$smarty->assign("users_groups", $users_groups);
 	$smarty->register_modifier( "sortby", "smarty_modifier_sortby" );   
-	//display_page('printnewtickets.tpl');
+	//$templateEngine->displayPage('printnewtickets.tpl');
 	*/
 	
 	$preset_labels['Avery 5160'] = array(

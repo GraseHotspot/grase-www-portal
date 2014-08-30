@@ -149,7 +149,7 @@ if(isset($_POST['submit']))
 
 
 $templateEngine->assign("vouchersettings", $Settings->getVoucher());
-display_page('vouchers.tpl');
+$templateEngine->displayPage('vouchers.tpl');
 
 ?>
 

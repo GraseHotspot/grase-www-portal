@@ -34,8 +34,8 @@ require_once 'includes/misc_functions.inc.php';
     $templateEngine->assign("groupdata", DatabaseFunctions::getInstance()->getGroupAttributes());
 	$templateEngine->assign("users", $users);
 	$templateEngine->assign("users_groups", $users_groups);
-	$templateEngine->register_modifier( "sortby", "smarty_modifier_sortby" );
-	display_page('display.tpl');
+
+	$templateEngine->displayPage('display.tpl');
 
 
 //var_dump(DatabaseFunctions::getInstance()->usercache);

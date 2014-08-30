@@ -28,7 +28,7 @@ require_once 'includes/misc_functions.inc.php';
     // TODO: Add "reset" option that archives old stuff? (Or deletes old stuff)
 	$templateEngine->assign("loglines", AdminLog::getInstance()->getLog());
 	$templateEngine->assign("lastcron", AdminLog::getInstance()->lastCron());
-	display_page('adminlog.tpl');
+	$templateEngine->displayPage('adminlog.tpl');
 
 ?>
 

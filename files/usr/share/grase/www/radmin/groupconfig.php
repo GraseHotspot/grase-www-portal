@@ -196,7 +196,7 @@ if(isset($_POST['submit']))
     $templateEngine->assign("groupsettings", $Settings->getGroup());
     //$smarty->assign("groups", $Expiry);
 
-	display_page('groups.tpl');
+	$templateEngine->displayPage('groups.tpl');
       
 }
 else{
@@ -206,7 +206,7 @@ else{
 
     //$smarty->assign("groups", $Expiry);
 
-	display_page('groups.tpl');
+	$templateEngine->displayPage('groups.tpl');
 	
 }
 

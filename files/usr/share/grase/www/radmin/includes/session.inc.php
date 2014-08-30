@@ -57,8 +57,8 @@ require_once 'page_functions.inc.php';
 function loginForm($username = null, $status = null, &$auth = null)
 {
     global $templateEngine;
-	$templateEngine->clear_assign('MenuItems');
-	$templateEngine->clear_assign("LoggedInUsername");
+	$templateEngine->clearAssign('MenuItems');
+	$templateEngine->clearAssign("LoggedInUsername");
     $templateEngine->assign('username', $username);
     
     switch($status)
@@ -83,7 +83,7 @@ function loginForm($username = null, $status = null, &$auth = null)
             AdminLog::getInstance()->log("Auth Issues: $status");
     }
     if(isset($error)) $templateEngine->assign("error", $error);
-   	display_page('loginform.tpl');
+   	$templateEngine->displayPage('loginform.tpl');
    	exit();
 }
 

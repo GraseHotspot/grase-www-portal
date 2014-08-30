@@ -31,7 +31,7 @@ function check_page_access(){
     if(! check_level($ACCESS_LEVEL))
     {
 
-        display_page('accessdenied.tpl');
+        $templateEngine->displayPage('accessdenied.tpl');
         exit;
     }
 }

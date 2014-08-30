@@ -22,6 +22,8 @@ namespace Grase;
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+require_once("smarty3/SmartyBC.class.php");
+
 class Page
 {
     private $te;
@@ -33,7 +35,7 @@ class Page
     {
         if ($template_engine == null)
         {
-            $this->te = new SmartBC();
+            $this->te = new \SmartyBC();
             $this->setupSmarty();
         }else{
             $this->te = $template_engine;
@@ -51,6 +53,7 @@ class Page
         $this->te->register_modifier('displayLocales', 'displayLocales');
         $this->te->register_modifier('displayMoneyLocales', 'displayMoneyLocales');
         $this->te->register_function('inputtype', 'input_type');
+        $this->te->register_modifier( "sortby", "smarty_modifier_sortby" );
 
         // i18n
         //$locale = (!isset($_GET["l"]))?"en_GB":$_GET["l"];
@@ -76,6 +79,11 @@ class Page
     public function assign($template_var, $value)
     {
         return $this->te->assign($template_var, $value);
+    }
+
+    public function clearAssign($template_var)
+    {
+        return $this->te->clearAssign($template_var);
     }
 
     public function displayPage($template)
