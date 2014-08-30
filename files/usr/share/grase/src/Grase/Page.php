@@ -33,11 +33,10 @@ class Page
 
     public function __construct($template_engine = null)
     {
-        if ($template_engine == null)
-        {
+        if ($template_engine == null) {
             $this->te = new \SmartyBC();
             $this->setupSmarty();
-        }else{
+        } else {
             $this->te = $template_engine;
         }
     }
@@ -53,7 +52,7 @@ class Page
         $this->te->register_modifier('displayLocales', 'displayLocales');
         $this->te->register_modifier('displayMoneyLocales', 'displayMoneyLocales');
         $this->te->register_function('inputtype', 'input_type');
-        $this->te->register_modifier( "sortby", "smarty_modifier_sortby" );
+        $this->te->register_modifier("sortby", "smarty_modifier_sortby");
 
         // i18n
         //$locale = (!isset($_GET["l"]))?"en_GB":$_GET["l"];
@@ -74,11 +73,6 @@ class Page
     public function warningMessage($message)
     {
         $this->warningMessages[] = $message;
-    }
-
-    public function assign($template_var, $value)
-    {
-        return $this->te->assign($template_var, $value);
     }
 
     public function clearAssign($template_var)
@@ -104,5 +98,10 @@ class Page
         if (sizeof($this->successMessages) != 0) {
             $this->assign("success", $this->successMessages);
         }
+    }
+
+    public function assign($template_var, $value)
+    {
+        return $this->te->assign($template_var, $value);
     }
 }

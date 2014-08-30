@@ -31,8 +31,8 @@ require_once 'includes/misc_functions.inc.php';
 
 require_once __DIR__.'/../../../vendor/autoload.php';
 
+// TODO: Move smarty_sortby.php into a proper class and fix up Page
 require_once 'smarty_sortby.php';
-require_once("smarty3/SmartyBC.class.php");
 
 
 function css_file_version()
