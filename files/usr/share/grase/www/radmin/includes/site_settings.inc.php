@@ -59,8 +59,6 @@ function load_global_settings()
 }
 
 /* */
-// Real hostname
-$realhostname = trim(file_get_contents('/etc/hostname'));
 
 /* PHP No longer correctly gets the timezone from the system. Try to set it */
 

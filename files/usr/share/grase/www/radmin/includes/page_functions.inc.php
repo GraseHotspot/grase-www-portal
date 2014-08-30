@@ -234,7 +234,7 @@ $templateEngine = new \Grase\Page();
 
 \Grase\Locale::applyLocale($locale);
 
-$templateEngine->assign("RealHostname", $realhostname);
+
 
 
 function assign_vars($templateEngine)

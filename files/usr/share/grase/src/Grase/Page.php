@@ -98,6 +98,9 @@ class Page
         if (sizeof($this->successMessages) != 0) {
             $this->assign("success", $this->successMessages);
         }
+
+        // Real hostname
+        $this->assign("RealHostname", trim(file_get_contents('/etc/hostname')));
     }
 
     public function assign($template_var, $value)
