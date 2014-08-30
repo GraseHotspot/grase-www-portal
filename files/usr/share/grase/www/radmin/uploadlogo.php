@@ -74,7 +74,7 @@ require_once 'includes/misc_functions.inc.php';
 		}
 		else
 		{
-		    $error = file_upload_error_message($_FILES['newlogo']['error']);
+		    $error = \Grase\Util::fileUploadErrorCodeToMessage($_FILES['newlogo']['error']);
 		}
 	}
 	if($error)

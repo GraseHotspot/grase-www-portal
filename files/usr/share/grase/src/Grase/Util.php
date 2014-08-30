@@ -202,4 +202,33 @@ class Util
 
         return array('lanif' => $default_lanif, 'wanif' => $default_wanif);
     }
+
+    /* TODO: check where this code came from */
+    public static function fileUploadErrorCodeToMessage($error_code)
+    {
+        switch ($error_code) {
+            case UPLOAD_ERR_INI_SIZE:
+            case UPLOAD_ERR_FORM_SIZE:
+            case 2:
+                return T_('Uploaded Image was too big');
+
+            case UPLOAD_ERR_PARTIAL:
+                return T_('Error In Uploading');
+
+            case UPLOAD_ERR_NO_FILE:
+                return T_('No file was uploaded');
+
+            case UPLOAD_ERR_NO_TMP_DIR:
+                return T_('Missing a temporary folder');
+
+            case UPLOAD_ERR_CANT_WRITE:
+                return T_('Failed to write file to disk');
+
+            case UPLOAD_ERR_EXTENSION:
+                return T_('File upload stopped by extension');
+
+            default:
+                return T_('Unknown upload error');
+        }
+    }
 }
