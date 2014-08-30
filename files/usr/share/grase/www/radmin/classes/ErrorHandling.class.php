@@ -23,7 +23,7 @@
 class ErrorHandling
 {
     // ErrorHandling::fatal_error
-    public function fatal_error($error)
+    public static function fatal_error($error)
     {
         $AdminLog =& AdminLog::getInstance();
         $AdminLog->log_error($error);
@@ -65,7 +65,7 @@ class ErrorHandling
     }
     
     // ErrorHandling::fatal_db_error
-    public function fatal_db_error($error, $pear_error_obj)
+    public static function fatal_db_error($error, $pear_error_obj)
     {
         $AdminLog =& AdminLog::getInstance();
         $AdminLog->log_error($error . $pear_error_obj->toString());
@@ -111,7 +111,7 @@ class ErrorHandling
     
     
     // ErrorHandling::fatal_nodb_error
-    public function fatal_nodb_error($error)
+    public static function fatal_nodb_error($error)
     {
         global $NONINTERACTIVE_SCRIPT;
         if(isset($NONINTERACTIVE_SCRIPT) && $NONINTERACTIVE_SCRIPT)
