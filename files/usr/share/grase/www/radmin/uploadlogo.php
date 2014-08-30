@@ -78,10 +78,10 @@ require_once 'includes/misc_functions.inc.php';
 		}
 	}
 	if($error)
-	    $smarty->assign("error", array($error));
+	    $templateEngine->assign("error", array($error));
 	    
     if($success)
-        $smarty->assign("success", array($success));	    
+        $templateEngine->assign("success", array($success));
 
 	display_page('uploadlogo.tpl');
 

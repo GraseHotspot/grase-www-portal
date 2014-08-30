@@ -142,13 +142,13 @@ if(isset($_POST['submit']))
     } 
     
     $error = array_unique(array_merge($error, $warning));
-    if(sizeof($error) > 0) $smarty->assign("error", $error);	
-    if(sizeof($success) > 0) $smarty->assign("success", $success);
+    if(sizeof($error) > 0) $templateEngine->assign("error", $error);
+    if(sizeof($success) > 0) $templateEngine->assign("success", $success);
 
 }    
 
 
-$smarty->assign("vouchersettings", $Settings->getVoucher());
+$templateEngine->assign("vouchersettings", $Settings->getVoucher());
 display_page('vouchers.tpl');
 
 ?>

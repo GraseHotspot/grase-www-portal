@@ -135,10 +135,10 @@ if(is_array($response) && $response['ACK'] == 'Success') { //Request successful
 
 
 
-if(sizeof($error) > 0) $smarty->assign("error", $error);	
-if(sizeof($success) > 0) $smarty->assign("success", $success);
+if(sizeof($error) > 0) $templateEngine->assign("error", $error);
+if(sizeof($success) > 0) $templateEngine->assign("success", $success);
 
-    $smarty->assign("singlepaypaloptions", $singlepaypaloptions);
+    $templateEngine->assign("singlepaypaloptions", $singlepaypaloptions);
 	display_page('paypalconfig.tpl');
 
 

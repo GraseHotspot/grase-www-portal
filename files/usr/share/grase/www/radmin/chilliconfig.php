@@ -200,14 +200,14 @@ function load_chillioptions()
         $success[] = T_("Settings match running config");
     }
     
-    $smarty->assign("chilliconfigstatus", date('r',$localconfts));
-    $smarty->assign("lastconfigstatus", date('r',$lastchangets));            
+    $templateEngine->assign("chilliconfigstatus", date('r',$localconfts));
+    $templateEngine->assign("lastconfigstatus", date('r',$lastchangets));
     
-if(sizeof($error) > 0) $smarty->assign("error", $error);	
-if(sizeof($success) > 0) $smarty->assign("success", $success);
+if(sizeof($error) > 0) $templateEngine->assign("error", $error);
+if(sizeof($success) > 0) $templateEngine->assign("success", $success);
 
-    $smarty->assign("singlechillioptions", $singlechillioptions);
-    $smarty->assign("multichillioptions", $multichillioptions);    
+    $templateEngine->assign("singlechillioptions", $singlechillioptions);
+    $templateEngine->assign("multichillioptions", $multichillioptions);
 	display_page('chilliconfig.tpl');
 
 ?>

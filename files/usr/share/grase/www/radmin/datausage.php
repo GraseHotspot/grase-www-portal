@@ -27,8 +27,8 @@ require_once 'includes/misc_functions.inc.php';
 
 	$monthly_accounts = DatabaseFunctions::getInstance()->getMonthlyAccounts();
 	$monthly_accounts_totals = DatabaseFunctions::getInstance()->getMonthlyAccountsTotals();
-	$smarty->assign("monthly_accounts", $monthly_accounts);
-	$smarty->assign("monthly_accounts_totals", $monthly_accounts_totals);
+	$templateEngine->assign("monthly_accounts", $monthly_accounts);
+	$templateEngine->assign("monthly_accounts_totals", $monthly_accounts_totals);
 	display_page('monthly_accounts.tpl');
 
 // TODO: Data usage over "forever"

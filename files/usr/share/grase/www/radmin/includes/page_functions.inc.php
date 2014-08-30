@@ -232,31 +232,16 @@ function yesno()
 
 function display_page($template)
 {
-	global $smarty;
+	global $templateEngine;
 	assign_vars();
-	return $smarty->display($template);
+	return $templateEngine->display($template);
 }
 
-
-$smarty = new SmartyBC();
-
-//$smarty->error_reporting = E_ALL & ~E_NOTICE;
-$smarty->compile_check = true;
-//$smarty->register_outputfilter('smarty_outputfilter_strip');
-//$smarty->registerPlugin('modifier', 'bytes', array("Formatting", "formatBytes"));
-$smarty->register_modifier('bytes', array("Formatting", "formatBytes"));
-$smarty->register_modifier('seconds', array("Formatting", "formatSec"));
-$smarty->register_modifier('displayLocales', 'displayLocales');
-$smarty->register_modifier('displayMoneyLocales', 'displayMoneyLocales');
-$smarty->register_function('inputtype', 'input_type');
-
-// i18n
-//$locale = (!isset($_GET["l"]))?"en_GB":$_GET["l"];  
-$smarty->register_block('t', 'smarty_block_t');
+$templateEngine = new \Grase\Page();
 
 \Grase\Locale::applyLocale($locale);
 
-$smarty->assign("RealHostname", $realhostname);
+$templateEngine->assign("RealHostname", $realhostname);
 
 // Initialise error variables 
 	$errormessages = array();
@@ -264,57 +249,56 @@ $smarty->assign("RealHostname", $realhostname);
 	$warningmessages = array();
 
 
-function assign_vars()
+function assign_vars($templateEngine)
 {
-	global $smarty, $sellable_data, $useable_data, $used_data, $sold_data;
 	global $location, $website_name, $website_link, $DEMO_SITE, $Settings;
 	
 	list($fileversions, $application_version)=css_file_version();
-	$smarty->assign("radmincssversion", $fileversions['radmin.css']);
-	$smarty->assign("hotspotcssversion", $fileversions['hotspot.css']);
-	$smarty->assign("grasejsversion", $fileversions['grase.js']);
-	$smarty->assign("radminjsversion", $fileversions['radmin.js']);
-	$smarty->assign("application_version", $application_version);
-	$smarty->assign("Application", APPLICATION_NAME);
+	$templateEngine->assign("radmincssversion", $fileversions['radmin.css']);
+	$templateEngine->assign("hotspotcssversion", $fileversions['hotspot.css']);
+	$templateEngine->assign("grasejsversion", $fileversions['grase.js']);
+	$templateEngine->assign("radminjsversion", $fileversions['radmin.js']);
+	$templateEngine->assign("application_version", $application_version);
+	$templateEngine->assign("Application", APPLICATION_NAME);
 
 
 
 	// Setup Menus
-	$smarty->assign("MenuItems", createmenuitems());
+	$templateEngine->assign("MenuItems", createmenuitems());
 	/*$smarty->assign("Usergroups", usergroups());*/
 
 
 	// Costs
 	//$smarty->assign("CurrencySymbols", currency_symbols());
-	$smarty->assign("Datacosts", datacosts());
-	$smarty->assign("GroupDatacosts", datavals());
-	$smarty->assign("Datavals", datavals());
-	$smarty->assign("Timecosts", timecosts());
-	$smarty->assign("GroupTimecosts", timevals());
-	$smarty->assign("Timevals", timevals());
-	$smarty->assign("Bandwidthvals", bandwidth_options());
-	$smarty->assign("Recurtimes",recurtimes()); 
-	$smarty->assign("YesNo", yesno());
+	$templateEngine->assign("Datacosts", datacosts());
+	$templateEngine->assign("GroupDatacosts", datavals());
+	$templateEngine->assign("Datavals", datavals());
+	$templateEngine->assign("Timecosts", timecosts());
+	$templateEngine->assign("GroupTimecosts", timevals());
+	$templateEngine->assign("Timevals", timevals());
+	$templateEngine->assign("Bandwidthvals", bandwidth_options());
+	$templateEngine->assign("Recurtimes",recurtimes());
+	$templateEngine->assign("YesNo", yesno());
 
 
 	// Settings
-	$smarty->assign("Title", $location . " - " . APPLICATION_NAME);
-	$smarty->assign("website_name", $website_name);
-	$smarty->assign("website_link", $website_link);
+	$templateEngine->assign("Title", $location . " - " . APPLICATION_NAME);
+	$templateEngine->assign("website_name", $website_name);
+	$templateEngine->assign("website_link", $website_link);
     
 	// Group data for displaying group properties	
-	$smarty->assign("groupdata", DatabaseFunctions::getInstance()->getGroupAttributes());
-	$smarty->assign("groupsettings", $Settings->getGroup());		
-	$smarty->assign("groups", grouplist());	
+	$templateEngine->assign("groupdata", DatabaseFunctions::getInstance()->getGroupAttributes());
+	$templateEngine->assign("groupsettings", $Settings->getGroup());
+	$templateEngine->assign("groups", grouplist());
 	
 	// Error, warning, success messages
 	global $errormessages, $successmessages, $warningmessages;
-	if(sizeof($errormessages) != 0)	$smarty->assign("error", $errormessages);
-	if(sizeof($successmessages) != 0)	$smarty->assign("success", $successmessages);
-	if(sizeof($warningmessages) != 0)	$smarty->assign("warningmessages", $warningmessages);		
+	if(sizeof($errormessages) != 0)	$templateEngine->assign("error", $errormessages);
+	if(sizeof($successmessages) != 0)	$templateEngine->assign("success", $successmessages);
+	if(sizeof($warningmessages) != 0)	$templateEngine->assign("warningmessages", $warningmessages);
 	
 	// DEMO SITE flag
-	$smarty->assign("DEMOSITE", $DEMO_SITE);
+	$templateEngine->assign("DEMOSITE", $DEMO_SITE);
 
 	// Usermin assign vars
 	if(function_exists('usermin_assign_vars')) usermin_assign_vars();

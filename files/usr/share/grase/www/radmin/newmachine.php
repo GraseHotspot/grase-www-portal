@@ -59,8 +59,8 @@ if(isset($_POST['newmachinesubmit']))
 		$user['MaxTime'] = displayLocales(clean_int($_POST['MaxTime']));
 		$user['Max_Time'] = displayLocales(clean_int($_POST['Max_Time']));	
 		$user['Comment'] = clean_text($_POST['Comment']);
-		$smarty->assign("machine", $user);
-		$smarty->assign("error", $error);
+		$templateEngine->assign("machine", $user);
+		$templateEngine->assign("error", $error);
 		display_page('addmachine.tpl');
 	}else
 	{
@@ -84,7 +84,7 @@ if(isset($_POST['newmachinesubmit']))
 		);
 		$success[] = T_("Computer Account Successfully Created");
 		AdminLog::getInstance()->log("Created new computer $mac");
-		$smarty->assign("success", $success);
+		$templateEngine->assign("success", $success);
 		display_addmachine_form();
 	}
 }else
@@ -94,7 +94,7 @@ if(isset($_POST['newmachinesubmit']))
 
 function display_addmachine_form()
 {
-	global $smarty;
+	global $templateEngine;
 	display_page('addmachine.tpl');
 }
 

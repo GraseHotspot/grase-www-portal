@@ -247,15 +247,15 @@ function load_networkoptions()
         $success[] = T_("Settings match running config");
     }
     
-    $smarty->assign("networkconfigstatus", date('r',$localconfts));
-    $smarty->assign("lastnetworkconfigstatus", date('r',$lastchangets));            
+    $templateEngine->assign("networkconfigstatus", date('r',$localconfts));
+    $templateEngine->assign("lastnetworkconfigstatus", date('r',$lastchangets));
     
-if(sizeof($error) > 0) $smarty->assign("error", $error);	
-if(sizeof($success) > 0) $smarty->assign("success", $success);
+if(sizeof($error) > 0) $templateEngine->assign("error", $error);
+if(sizeof($success) > 0) $templateEngine->assign("success", $success);
 
-    $smarty->assign("singlenetworkoptions", $singlenetworkoptions);
-    $smarty->assign("selectnetworkoptions", $selectnetworkoptions);    
-    $smarty->assign("multinetworkoptions", $multinetworkoptions);    
+    $templateEngine->assign("singlenetworkoptions", $singlenetworkoptions);
+    $templateEngine->assign("selectnetworkoptions", $selectnetworkoptions);
+    $templateEngine->assign("multinetworkoptions", $multinetworkoptions);
 	display_page('netconfig.tpl');
 
 ?>

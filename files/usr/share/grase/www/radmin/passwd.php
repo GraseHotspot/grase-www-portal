@@ -118,8 +118,8 @@ require_once 'includes/misc_functions.inc.php';
 	}
 	
 	
-	$smarty->assign("error", $errors);
-	$smarty->assign("success", $success);	
+	$templateEngine->assign("error", $errors);
+	$templateEngine->assign("success", $success);
 
     foreach($Auth->listUsers() as $adminuser)
     {
@@ -143,7 +143,7 @@ require_once 'includes/misc_functions.inc.php';
     }
 
 
-	$smarty->assign("adminusers", $adminusers);
+	$templateEngine->assign("adminusers", $adminusers);
 	display_page('changepasswd.tpl');
 
 ?>

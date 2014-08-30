@@ -92,48 +92,48 @@ if(isset($_POST['submit']))
 // TODO: Make a proper settings file?
 load_global_settings(); // Reloads settings
 
-	$smarty->assign("location", $location);
+	$templateEngine->assign("location", $location);
 //	$smarty->assign("pricemb", displayLocales($pricemb));
 //	$smarty->assign("pricetime", displayLocales($pricetime));
-	$smarty->assign("mboptions", $mb_options);
-	$smarty->assign("timeoptions", $time_options);	
-	$smarty->assign("bwoptions", $kbit_options);		
+	$templateEngine->assign("mboptions", $mb_options);
+	$templateEngine->assign("timeoptions", $time_options);
+	$templateEngine->assign("bwoptions", $kbit_options);
 	//$smarty->assign("currency", $currency);
 	
 	// Locale stuff
 	
     $fmt = new NumberFormatter( $locale, NumberFormatter::CURRENCY );
-	$smarty->assign("locale", $locale);
-    $smarty->assign("currency", $fmt->getSymbol(NumberFormatter::CURRENCY_SYMBOL));	
-    $smarty->assign("language",  locale_get_display_language($locale));
-    $smarty->assign("region", locale_get_display_region($locale));	
+	$templateEngine->assign("locale", $locale);
+    $templateEngine->assign("currency", $fmt->getSymbol(NumberFormatter::CURRENCY_SYMBOL));
+    $templateEngine->assign("language",  locale_get_display_language($locale));
+    $templateEngine->assign("region", locale_get_display_region($locale));
 	
 		
 	//$smarty->assign("dispcurrency", $CurrencySymbols[$currency]);
 	//$smarty->assign("sellable_data", $sellable_data);
 	//$smarty->assign("useable_data", $useable_data);
-	$smarty->assign("support_name", $support_name);
-	$smarty->assign("support_link", $support_link);
-	$smarty->assign("website_name", $website_name);
-	$smarty->assign("website_link", $website_link);
+	$templateEngine->assign("support_name", $support_name);
+	$templateEngine->assign("support_link", $support_link);
+	$templateEngine->assign("website_name", $website_name);
+	$templateEngine->assign("website_link", $website_link);
 	
-	$smarty->assign("available_languages", get_available_languages());
+	$templateEngine->assign("available_languages", get_available_languages());
 	
-if(sizeof($error) > 0) $smarty->assign("error", $error);	
-if(sizeof($success) > 0) $smarty->assign("success", $success);
+if(sizeof($error) > 0) $templateEngine->assign("error", $error);
+if(sizeof($success) > 0) $templateEngine->assign("success", $success);
 
 // Location
 
 function update_location($location)
 {
-    global $error, $smarty, $Settings, $success;
+    global $error, $templateEngine, $Settings, $success;
     if($location == "") $error[] = T_("Location name not valid");
     else {
 	    if($Settings->setSetting('locationName', $location))
 	    {
 		    $success[] = T_("Location name updated");
 		    AdminLog::getInstance()->log(T_("Location Name changed to")." $location");
-		    $smarty->assign("Title", $location . " - " . APPLICATION_NAME); //TODO: remove need for this with setting reload function
+		    $templateEngine->assign("Title", $location . " - " . APPLICATION_NAME); //TODO: remove need for this with setting reload function
 	    }
 	    else
 	    {
@@ -145,7 +145,7 @@ function update_location($location)
 // Website
 function update_websitename($websitename)
 {
-    global $error, $smarty, $Settings, $success;
+    global $error, $templateEngine, $Settings, $success;
     if($websitename == "") $error[] = T_("Website name not valid");    
     else
     {
@@ -163,7 +163,7 @@ function update_websitename($websitename)
 
 function update_websitelink($websitelink)
 {
-    global $error, $smarty, $Settings, $success;
+    global $error, $templateEngine, $Settings, $success;
     if($websitelink == "" || strpos($websitelink, ' ') !== false) $error[] = T_("Website link not valid");    
     else
     {
@@ -227,7 +227,7 @@ function update_pricetime($pricetime)
 
 function update_locale($locale)
 {
-	global $error, $smarty, $Settings, $success;
+	global $error, $templateEngine, $Settings, $success;
 
 	//$locale = locale_accept_from_http($locale);
 	$newlocale = Locale::parseLocale($locale);
@@ -262,7 +262,7 @@ function update_locale($locale)
 // Support Contact
 function update_supportcontact($supportname)
 {
-    global $error, $smarty, $Settings, $success;
+    global $error, $templateEngine, $Settings, $success;
     if($supportname == "") $error[] = T_("Support name not valid");    
     else
     {
@@ -280,7 +280,7 @@ function update_supportcontact($supportname)
 
 function update_supportlink($supportlink)
 {
-    global $error, $smarty, $Settings, $success;
+    global $error, $templateEngine, $Settings, $success;
     if($supportlink == "" || strpos($supportlink, ' ') !== false) $error[] = T_("Support link not valid");    
     else
     {

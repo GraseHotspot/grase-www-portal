@@ -56,10 +56,10 @@ require_once 'page_functions.inc.php';
 
 function loginForm($username = null, $status = null, &$auth = null)
 {
-    global $smarty;
-	$smarty->clear_assign('MenuItems');
-	$smarty->clear_assign("LoggedInUsername");
-    $smarty->assign('username', $username);
+    global $templateEngine;
+	$templateEngine->clear_assign('MenuItems');
+	$templateEngine->clear_assign("LoggedInUsername");
+    $templateEngine->assign('username', $username);
     
     switch($status)
     {
@@ -82,7 +82,7 @@ function loginForm($username = null, $status = null, &$auth = null)
             $error = T_("Authentication Issue. Please report to Admin");
             AdminLog::getInstance()->log("Auth Issues: $status");
     }
-    if(isset($error)) $smarty->assign("error", $error);
+    if(isset($error)) $templateEngine->assign("error", $error);
    	display_page('loginform.tpl');
    	exit();
 }
@@ -124,7 +124,7 @@ if (!$Auth->checkAuth())
     $Auth->start();
 }else
 {
-    $smarty->assign("LoggedInUsername", $Auth->getUsername());
+    $templateEngine->assign("LoggedInUsername", $Auth->getUsername());
 }
 
 

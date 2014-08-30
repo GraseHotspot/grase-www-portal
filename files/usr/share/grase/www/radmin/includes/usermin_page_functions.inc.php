@@ -33,14 +33,14 @@ function usermin_createmenuitems()
 
 function usermin_assign_vars()
 {
-	global $smarty, $location;
-	$smarty->assign("Application", USERMIN_APPLICATION_NAME);
+	global $templateEngine, $location;
+	$templateEngine->assign("Application", USERMIN_APPLICATION_NAME);
 
-	$smarty->assign("Title", $location . " - " . USERMIN_APPLICATION_NAME);
+	$templateEngine->assign("Title", $location . " - " . USERMIN_APPLICATION_NAME);
 
 	// Setup Menus
-	$smarty->assign("MenuItems", usermin_createmenuitems());
-	isset($_SESSION['username']) && $smarty->assign("LoggedInUsername", $_SESSION['username']);
+	$templateEngine->assign("MenuItems", usermin_createmenuitems());
+	isset($_SESSION['username']) && $templateEngine->assign("LoggedInUsername", $_SESSION['username']);
 
 }
 

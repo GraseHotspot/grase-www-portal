@@ -39,11 +39,11 @@ function __autoload($class_name) {
 
 function loginForm($username = null, $status = null, &$auth = null)
 {
-    global $smarty;
-	$smarty->clear_assign('MenuItems');
-	$smarty->clear_assign("LoggedInUsername");
-    $smarty->assign('username', $username);
-    if(isset($_GET['user'])) $smarty->assign('username', $_GET['user']);
+    global $templateEngine;
+	$templateEngine->clear_assign('MenuItems');
+	$templateEngine->clear_assign("LoggedInUsername");
+    $templateEngine->assign('username', $username);
+    if(isset($_GET['user'])) $templateEngine->assign('username', $_GET['user']);
     
     switch($status)
     {
@@ -62,7 +62,7 @@ function loginForm($username = null, $status = null, &$auth = null)
         default:
             $error = "Authentication Issue. Please report to Admin";
     }
-    if(isset($error)) $smarty->assign("error", $error);
+    if(isset($error)) $templateEngine->assign("error", $error);
    	display_page('usermin_login.tpl');
    	exit();
 }
@@ -96,7 +96,7 @@ if (!$Auth->checkAuth())
     $Auth->start();
 }else
 {
-    $smarty->assign("LoggedInUsername", $Auth->getUsername());
+    $templateEngine->assign("LoggedInUsername", $Auth->getUsername());
 }
 
 

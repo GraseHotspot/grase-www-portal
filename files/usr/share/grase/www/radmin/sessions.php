@@ -28,8 +28,8 @@ require_once 'includes/misc_functions.inc.php';
 
     if(isset($_GET['username']))
     {
-	    $smarty->assign("sessions", DatabaseFunctions::getInstance()->getRadiusUserSessionsDetails($_GET['username']));
-	    $smarty->assign("username", $_GET['username']);
+	    $templateEngine->assign("sessions", DatabaseFunctions::getInstance()->getRadiusUserSessionsDetails($_GET['username']));
+	    $templateEngine->assign("username", $_GET['username']);
 	}
 	elseif(isset($_GET['allsessions']))
 	{
@@ -43,18 +43,18 @@ require_once 'includes/misc_functions.inc.php';
 	    $currentstartitem = $page * $numPerPage;
 	    
 	    $displaysessions = array_slice($sessions, $currentstartitem, $numPerPage, TRUE );
-    	$smarty->assign("sessions", $displaysessions);        
+    	$templateEngine->assign("sessions", $displaysessions);
     	
-    	$smarty->assign("pages", $pages);
-    	$smarty->assign("perpage", $numPerPage);
-    	$smarty->assign("currentpage", $page);
+    	$templateEngine->assign("pages", $pages);
+    	$templateEngine->assign("perpage", $numPerPage);
+    	$templateEngine->assign("currentpage", $page);
     }else{
-        $smarty->assign("activesessions", DatabaseFunctions::getInstance()->getActiveRadiusSessionsDetails());
+        $templateEngine->assign("activesessions", DatabaseFunctions::getInstance()->getActiveRadiusSessionsDetails());
         if($_GET['refresh'])
         {
             $refresh = clean_int($_GET['refresh'])*60;
             if($refresh < 60) $refresh = 60;
-            $smarty->assign("autorefresh", $refresh);
+            $templateEngine->assign("autorefresh", $refresh);
         }
     }
 

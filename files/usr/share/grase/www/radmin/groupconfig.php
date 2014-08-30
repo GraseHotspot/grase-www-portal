@@ -188,12 +188,12 @@ if(isset($_POST['submit']))
         $success[] = T_("Groups updated");
     } 
     
-    if(sizeof($error) > 0) $smarty->assign("error", $error);	
-    if(sizeof($success) > 0) $smarty->assign("success", $success);
+    if(sizeof($error) > 0) $templateEngine->assign("error", $error);
+    if(sizeof($success) > 0) $templateEngine->assign("success", $success);
     
     // TODO set this initially
-    $smarty->assign("groupcurrentdata", $groups);
-    $smarty->assign("groupsettings", $Settings->getGroup());
+    $templateEngine->assign("groupcurrentdata", $groups);
+    $templateEngine->assign("groupsettings", $Settings->getGroup());
     //$smarty->assign("groups", $Expiry);
 
 	display_page('groups.tpl');
@@ -201,8 +201,8 @@ if(isset($_POST['submit']))
 }
 else{
 
-	$smarty->assign("groupcurrentdata", DatabaseFunctions::getInstance()->getGroupAttributes());
-    $smarty->assign("groupsettings", $Settings->getGroup());
+	$templateEngine->assign("groupcurrentdata", DatabaseFunctions::getInstance()->getGroupAttributes());
+    $templateEngine->assign("groupsettings", $Settings->getGroup());
 
     //$smarty->assign("groups", $Expiry);
 

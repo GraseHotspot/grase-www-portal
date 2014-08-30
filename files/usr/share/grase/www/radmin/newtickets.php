@@ -74,7 +74,7 @@ if(isset($_POST['batchesprint']))
         $selectedbatches = implode(',', $selectedbatches);
         if(sizeof($selectedbatches) == 0){
                 $error[] = T_("Please select a batch to print");
-                $smarty->assign("error", $error);
+                $templateEngine->assign("error", $error);
         }else{
                 header ("Location: http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/printnewtickets?batch=$selectedbatches");
         }
@@ -90,7 +90,7 @@ if(isset($_POST['batchesexport']))
         $selectedbatches = implode(',', $selectedbatches);
         if(sizeof($selectedbatches) == 0){
                 $error[] = T_("Please select a batch to export");
-                $smarty->assign("error", $error);
+                $templateEngine->assign("error", $error);
         }else{
                 header ("Location: http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/exporttickets?batch=$selectedbatches");
         }
@@ -107,7 +107,7 @@ if(isset($_POST['batchesdelete']))
         #$selectedbatches = implode(',', $selectedbatches);
         if(sizeof($selectedbatches) == 0){
                 $error[] = T_("Please select a batch to delete");
-                $smarty->assign("error", $error);
+                $templateEngine->assign("error", $error);
         }else{
             $users = array();
             foreach($selectedbatches as $batch)
@@ -149,8 +149,8 @@ if(isset($_POST['createticketssubmit']))
 		$user['Group'] = clean_text($_POST['Group']);
 		$user['Expiration'] = expiry_for_group(clean_text($_POST['Group'])); //"${_POST['Expirydate_Year']}-${_POST['Expirydate_Month']}-${_POST['Expirydate_Day']}";
 		$user['Comment'] = clean_text($_POST['Comment']);
-		$smarty->assign("user", $user);
-		$smarty->assign("error", $error);
+		$templateEngine->assign("user", $user);
+		$templateEngine->assign("error", $error);
 		display_page('newtickets.tpl'); //TODO: What happens if this returns?
 	}else
 	{
@@ -220,7 +220,7 @@ if(isset($_POST['createticketssubmit']))
 
         // Load up user details of created users for displaying
 		$createdusers = DatabaseFunctions::getInstance()->getMultipleUsersDetails($createdusernames);
-		$smarty->assign("createdusers", $createdusers);
+		$templateEngine->assign("createdusers", $createdusers);
 
         // Check if we managed to create all users or if batch failed
 		if($failedusers <= 20)
@@ -228,8 +228,8 @@ if(isset($_POST['createticketssubmit']))
 		    $success[] = T_("Tickets Successfully Created");
 		    $success[] = "<a target='_tickets' href='printnewtickets'>".T_("Print Tickets")."</a>";
 	    }
-	    $smarty->assign("success", $success);
-	    $smarty->assign("error", $error);
+	    $templateEngine->assign("success", $success);
+	    $templateEngine->assign("error", $error);
 		display_adduser_form();
 	}
 }else
@@ -239,7 +239,7 @@ if(isset($_POST['createticketssubmit']))
 
 function display_adduser_form()
 {
-	global $smarty, $Settings;
+	global $templateEngine, $Settings;
 //    $user['Username'] = \Grase\Util::RandomUsername(5);
 	$user['Password'] = \Grase\Util::randomPassword(6);
 	
@@ -249,10 +249,10 @@ function display_adduser_form()
 	//$user['Max_Mb'] = 50;
 	
 	$user['Expiration'] = "--";//date('Y-m-d', strtotime('+3 month'));
-	$smarty->assign("user", $user);
+	$templateEngine->assign("user", $user);
 	
-    $smarty->assign("last_batch", $Settings->getSetting('lastbatch'));
-    $smarty->assign("listbatches", $Settings->listBatches());
+    $templateEngine->assign("last_batch", $Settings->getSetting('lastbatch'));
+    $templateEngine->assign("listbatches", $Settings->listBatches());
     
 	display_page('newtickets.tpl');
 }

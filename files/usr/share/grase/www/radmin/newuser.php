@@ -73,8 +73,8 @@ if(isset($_POST['newusersubmit']))
 		$user['Group'] = clean_text($_POST['Group']);
 		$user['Expiration'] = expiry_for_group(clean_text($_POST['Group'])); //"${_POST['Expirydate_Year']}-${_POST['Expirydate_Month']}-${_POST['Expirydate_Day']}";
 		$user['Comment'] = clean_text($_POST['Comment']);
-		$smarty->assign("user", $user);
-		$smarty->assign("error", $error);
+		$templateEngine->assign("user", $user);
+		$templateEngine->assign("error", $error);
 		display_page('adduser.tpl');
 	}else
 	{
@@ -112,7 +112,7 @@ if(isset($_POST['newusersubmit']))
 		$success[] = sprintf(T_("User %s Successfully Created"),clean_text($_POST['Username']));
 		$success[] = "<a target='_tickets' href='printnewtickets?user=". clean_text($_POST['Username']) ."'>".sprintf(T_("Print Ticket for %s"), clean_text($_POST['Username']))."</a>";		
 		AdminLog::getInstance()->log(sprintf(T_("Created new user %s"),clean_text($_POST['Username'])));
-		$smarty->assign("success", $success);
+		$templateEngine->assign("success", $success);
 		display_adduser_form();
 	}
 }else
@@ -122,7 +122,7 @@ if(isset($_POST['newusersubmit']))
 
 function display_adduser_form()
 {
-	global $smarty, $pricemb;
+	global $templateEngine, $pricemb;
 //    $user['Username'] = \Grase\Util::RandomUsername(5);
 	$user['Password'] = \Grase\Util::randomPassword(6);
 	
@@ -131,7 +131,7 @@ function display_adduser_form()
 	$user['Max_Time'] = 'inherit';
 	//$user['Max_Mb'] = round(10/$pricemb, 2); // TODO: Make a default setting for data and time and put in settings page
 	$user['Expiration'] = "--";//date('Y-m-d', strtotime('+3 month'));
-	$smarty->assign("user", $user);
+	$templateEngine->assign("user", $user);
 	display_page('adduser.tpl');
 }
 

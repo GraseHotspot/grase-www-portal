@@ -151,13 +151,13 @@ switch($_SESSION['wizardpage'])
             } else
             {
                 $error = $error ? $error : T_('Invalid Voucher or Payment Selection');
-                $smarty->assign('error', $error);
+                $templateEngine->assign('error', $error);
             }
         }
-        $smarty->assign("groupsettings", $groups_with_vouchers);
-        $smarty->assign("vouchers", $grouped_vouchers);
-        $smarty->assign('paymentgateways', $paymentgateways);
-        $smarty->display('wizard_initial.tpl');
+        $templateEngine->assign("groupsettings", $groups_with_vouchers);
+        $templateEngine->assign("vouchers", $grouped_vouchers);
+        $templateEngine->assign('paymentgateways', $paymentgateways);
+        $templateEngine->display('wizard_initial.tpl');
         break;
 
     
@@ -185,9 +185,9 @@ switch($_SESSION['wizardpage'])
 
             }
         }
-        $smarty->assign('selectedgateway', $_SESSION['selectedpaymentgateway']);
-        $smarty->assign('selectedvoucher', $_SESSION['selectedvoucher']);
-        $smarty->display('wizard_confirmselection.tpl');
+        $templateEngine->assign('selectedgateway', $_SESSION['selectedpaymentgateway']);
+        $templateEngine->assign('selectedvoucher', $_SESSION['selectedvoucher']);
+        $templateEngine->display('wizard_confirmselection.tpl');
         
         break;
 

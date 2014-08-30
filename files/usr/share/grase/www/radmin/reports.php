@@ -63,33 +63,33 @@ else
 //    $smarty->assign('chart1', $chart->toPrettyString());
 $Reports = new Reports(DatabaseConnections::getInstance());
 
-    $smarty->assign('monthsavailableaccounting', DatabaseFunctions::getInstance()->getMonthsAccountingDataAvailableFor());
+    $templateEngine->assign('monthsavailableaccounting', DatabaseFunctions::getInstance()->getMonthsAccountingDataAvailableFor());
 
     // Current month up and down
     list($data1, $labels, $assoc1) = $Reports->getThisMonthDownUsageReport();
     list($data2, $labels, $assoc2) = $Reports->getThisMonthUpUsageReport();
-    $smarty->assign('thismonthseries', json_encode(array($assoc1, $assoc2)));
+    $templateEngine->assign('thismonthseries', json_encode(array($assoc1, $assoc2)));
     $thismonthupdown[] = array('Day', 'Downloads', 'Uploads');
     foreach($labels as $id => $label)
     {
         $thismonthupdown[] = array($label, $data1[$id], $data2[$id]);
     }
-    $smarty->assign('thismonthupdownarray', json_encode($thismonthupdown));
+    $templateEngine->assign('thismonthupdownarray', json_encode($thismonthupdown));
     
     
     // All months users usage
-    $smarty->assign('userusagebymontharray', json_encode($Reports->getUsersUsageByMonth()));
+    $templateEngine->assign('userusagebymontharray', json_encode($Reports->getUsersUsageByMonth()));
     
     // Previous months total usage
     list($data, $labels, $assoc) = $Reports->getPreviousMonthsUsageReport();
-    $smarty->assign('previousmonthsseries', json_encode(array($assoc)));
+    $templateEngine->assign('previousmonthsseries', json_encode(array($assoc)));
     
     // Users usage - Current Month
     list($data1, $data2, $labels, $month) = $Reports->getUsersUsageMonthReport($_GET['UsersUsageMonth']); //TODO: Sanatise input?
-    $smarty->assign('usersusagemonth', $month[0]);
-    $smarty->assign('usersusageprettymonth', $month[1]);    
-    $smarty->assign('userdatausagemonthseries', json_encode(array($data1)));
-    $smarty->assign('usertimeusagemonthseries', json_encode(array($data2)));    
+    $templateEngine->assign('usersusagemonth', $month[0]);
+    $templateEngine->assign('usersusageprettymonth', $month[1]);
+    $templateEngine->assign('userdatausagemonthseries', json_encode(array($data1)));
+    $templateEngine->assign('usertimeusagemonthseries', json_encode(array($data2)));
     
     // Users usage - By Month
     //list($data1, $data2, $labels) = $Reports->getThisMonthUsersUsageReport();
@@ -97,7 +97,7 @@ $Reports = new Reports(DatabaseConnections::getInstance());
     
     
     // Current month group usage
-    $smarty->assign('thismonthgroupdata', json_encode($Reports->getMonthGroupUsage()));
+    $templateEngine->assign('thismonthgroupdata', json_encode($Reports->getMonthGroupUsage()));
     
 
 

@@ -182,8 +182,8 @@ if(isset($_GET['username']) && !DatabaseFunctions::getInstance()->checkUniqueUse
         DatabaseFunctions::getInstance()->deleteUser($username); // TODO: Check for success
         $success[] = sprintf(T_("User '%s' Deleted"),$username);
         AdminLog::getInstance()->log("User $username deleted");
-        $smarty->assign("error", $error);
-        $smarty->assign("success", $success);
+        $templateEngine->assign("error", $error);
+        $templateEngine->assign("success", $success);
         require('display.php');
         die; // TODO: Recode so don't need die (too many nests?)
 
@@ -191,15 +191,15 @@ if(isset($_GET['username']) && !DatabaseFunctions::getInstance()->checkUniqueUse
 	
 
 
-	$smarty->assign("error", $error);
-	$smarty->assign("success", $success);
+	$templateEngine->assign("error", $error);
+	$templateEngine->assign("success", $success);
 	
 	// if $success we need to reload the info
 	if(sizeof($success) > 0 || sizeof($error) > 0)	
     	$user = DatabaseFunctions::getInstance()->getUserDetails($_GET['username']);
 
     // After potential reload, we can assign it to smarty
-   	$smarty->assign("user", $user);	
+   	$templateEngine->assign("user", $user);
 
     // After all user details are loaded, we can load our warning
     if($user['AccountLock'] == true) $warningmessages[] = T_('User account is locked and will not be able to login');

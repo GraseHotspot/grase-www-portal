@@ -183,7 +183,7 @@ function build_perl_command($conditions)
 	}else
 	{
 		$error = "Invalid Acctid";
-		$smarty->assign("error", $error);
+		$templateEngine->assign("error", $error);
 	}
 	if($command)
 	{
@@ -198,14 +198,14 @@ function build_perl_command($conditions)
 		//echo "</pre>";
 	}
 
-	$smarty->assign("loglines", $log);
-	$smarty->assign("ipaddress", $conditions['ipaddress']);
-	$smarty->assign("username", $username);	
-	$smarty->assign("session", $session);
-	$smarty->assign("domain_tally", $domain_tally);
-	$smarty->assign("domain_size", $domain_size);
-	$smarty->assign("domain_formatsize", $domain_formatsize);
-	$smarty->assign("http_traffic_size", $format_http_traffic_size);
+	$templateEngine->assign("loglines", $log);
+	$templateEngine->assign("ipaddress", $conditions['ipaddress']);
+	$templateEngine->assign("username", $username);
+	$templateEngine->assign("session", $session);
+	$templateEngine->assign("domain_tally", $domain_tally);
+	$templateEngine->assign("domain_size", $domain_size);
+	$templateEngine->assign("domain_formatsize", $domain_formatsize);
+	$templateEngine->assign("http_traffic_size", $format_http_traffic_size);
 	display_page('log.tpl');
 
 

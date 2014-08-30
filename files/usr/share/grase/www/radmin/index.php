@@ -26,7 +26,7 @@ require_once 'includes/session.inc.php';
 
 $Sysinfo = new SystemInformation();
 
-$smarty->assign('Sysinfo', $Sysinfo);
+$templateEngine->assign('Sysinfo', $Sysinfo);
 
 display_page('main.tpl');
 
