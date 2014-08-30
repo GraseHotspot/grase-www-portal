@@ -26,7 +26,8 @@ namespace Grase;
 // Probably not needed, but just to be sure for now we'll require the gettext.inc
 require_once('php-gettext/gettext.inc');
 
-class Locale {
+class Locale
+{
     public static $locale = '';
 
     public static function applyLocale($newlocale)
@@ -36,7 +37,7 @@ class Locale {
         //if($_GET['lang']) $locale = $_GET['lang'];
 
         locale_set_default(self::$locale);
-        $language =  locale_get_display_language(self::$locale, 'en');
+        $language = locale_get_display_language(self::$locale, 'en');
         $lang = locale_get_primary_language(self::$locale);
         $region = locale_get_display_region(self::$locale);
 
