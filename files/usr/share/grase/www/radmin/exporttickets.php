@@ -34,7 +34,7 @@ if(isset($_GET['batch']))
     foreach($batches as $batch)
     {
         $batch = clean_number($batch);
-	    $fetchusers = database_get_users($Settings->getBatch($batch) );
+	    $fetchusers = DatabaseFunctions::getInstance()->getMultipleUsersDetails($Settings->getBatch($batch) );
 	    if(!is_array($fetchusers)) $fetchusers = array();
 	    $users = array_merge($users, $fetchusers);
 	}
@@ -44,7 +44,7 @@ if(isset($_GET['batch']))
 }else //TODO remove the lastbatch part?
 {
         $batch = $Settings->getSetting('lastbatch');
-	$users = database_get_users($Settings->getBatch($batch) );
+	$users = DatabaseFunctions::getInstance()->getMultipleUsersDetails($Settings->getBatch($batch) );
 	if(!is_array($users)) $users = array();
 	$title = sprintf(T_('Batch_%s_details'), $batch);
 }	

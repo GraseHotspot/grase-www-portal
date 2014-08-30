@@ -472,7 +472,18 @@ class DatabaseFunctions
         }
         
         $this->usercacheloaded = true;
-    }        
+    }
+
+    public function getMultipleUsersDetails($usernames)
+    {
+        $users = array();
+        // For each user, get their information
+        foreach($usernames as $username)
+        {
+            $users[] = $this->getUserDetails($username);
+        }
+        return $users;
+    }
 
     public function getUserDetails($username)
     {

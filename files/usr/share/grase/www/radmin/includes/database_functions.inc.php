@@ -31,28 +31,6 @@ require_once 'load_settings.inc.php';
 *
 */
 
-/* Not in use yet. TODO: move some of above into these functions and make them active */
-
-function database_get_users($selectusers)
-{
-
-    // For each User, get information
-
-    foreach($selectusers as $user) 
-    {
-        //$users[] = getDBUserDetails($user['UserName']);
-        $users[] = DatabaseFunctions::getInstance()->getUserDetails($user);
-    }
-    
-    return $users;
-}
-
-function database_get_user_names() 
-{
-    return DatabaseFunctions::getInstance()->getAllUserNames();
-
-}
-
 /* Modify User Functions
 * database_delete_user($username)
 * database_increase_datalimit($username, $addmb)

@@ -28,7 +28,7 @@ require_once 'includes/misc_functions.inc.php';
 require_once 'includes/database_functions.inc.php';
 if(isset($_GET['user']))
 {
-    $users = database_get_users(array(clean_text($_GET['user'])));
+    $users = DatabaseFunctions::getInstance()->getMultipleUsersDetails(array(clean_text($_GET['user'])));
 	if(!is_array($users)) $users = array();    
 	$title = clean_text($_GET['user']) . ' Voucher';
 }elseif(isset($_GET['batch']))
@@ -39,7 +39,7 @@ if(isset($_GET['user']))
     foreach($batches as $batch)
     {
         $batch = clean_number($batch);
-	    $fetchusers = database_get_users($Settings->getBatch($batch) );
+	    $fetchusers = DatabaseFunctions::getInstance()->getMultipleUsersDetails($Settings->getBatch($batch) );
 	    if(!is_array($fetchusers)) $fetchusers = array();
 	    $users = array_merge($users, $fetchusers);
 	}
@@ -49,7 +49,7 @@ if(isset($_GET['user']))
 }else
 {
     $batch = $Settings->getSetting('lastbatch');
-	$users = database_get_users($Settings->getBatch($batch) );
+	$users = DatabaseFunctions::getInstance()->getMultipleUsersDetails($Settings->getBatch($batch) );
 	if(!is_array($users)) $users = array();
 	$title = sprintf(T_('Batch %s Vouchers'), $batch);
 }	

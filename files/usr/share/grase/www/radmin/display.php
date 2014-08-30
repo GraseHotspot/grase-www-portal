@@ -28,7 +28,7 @@ require_once 'includes/database_functions.inc.php';
 
     DatabaseFunctions::getInstance()->loadAllUserDetails();
 
-	$users = database_get_users(database_get_user_names());
+	$users = DatabaseFunctions::getInstance()->getMultipleUsersDetails(DatabaseFunctions::getInstance()->getAllUserNames());
 	$users_groups = sort_users_into_groups($users); // TODO: Reports and then no longer sort user list by downloads??
 	$users_groups['All'] = $users; // TODO: Group names can't have space in name TODO: Translate all?
 

@@ -113,7 +113,7 @@ if(isset($_POST['batchesdelete']))
             $users = array();
             foreach($selectedbatches as $batch)
             {
-                $fetchusers = database_get_users($Settings->getBatch($batch) );
+                $fetchusers = DatabaseFunctions::getInstance()->getMultipleUsersDetails($Settings->getBatch($batch) );
                 if(!is_array($fetchusers)) $fetchusers = array();
                 $users = array_merge($users, $fetchusers);    
             }
@@ -220,7 +220,7 @@ if(isset($_POST['createticketssubmit']))
 		}
 
         // Load up user details of created users for displaying
-		$createdusers = database_get_users($createdusernames);
+		$createdusers = DatabaseFunctions::getInstance()->getMultipleUsersDetails($createdusernames);
 		$smarty->assign("createdusers", $createdusers);
 
         // Check if we managed to create all users or if batch failed
