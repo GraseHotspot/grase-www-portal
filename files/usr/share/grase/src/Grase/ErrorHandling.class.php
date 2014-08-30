@@ -31,27 +31,24 @@ class ErrorHandling
         $AdminLog->log_error($error);
 
         global $NONINTERACTIVE_SCRIPT;
-        if(isset($NONINTERACTIVE_SCRIPT) && $NONINTERACTIVE_SCRIPT)
-        {
+        if (isset($NONINTERACTIVE_SCRIPT) && $NONINTERACTIVE_SCRIPT) {
             // Non-interactive script running, return error message as comments
             echo "#error_occured\n";
             echo "# An error has occured in the application\n";
             echo "# ::$error::\n";
-            echo "# Memory used: ".memory_get_usage()."\n";
+            echo "# Memory used: " . memory_get_usage() . "\n";
             die();
 
         }
 
-        if(file_exists('/usr/share/php/smarty/libs/') && ! is_link('/usr/share/php/smarty/libs/'))
-        {
+        if (file_exists('/usr/share/php/smarty/libs/') && !is_link('/usr/share/php/smarty/libs/')) {
             // Debian bug http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=514305
             // Remove this code once fixed?
             require_once('smarty/libs/Smarty.class.php');
-        }else
-        {
+        } else {
             require_once('smarty/Smarty.class.php');
         }
-                //require_once 'libs/Smarty.class.php';
+        //require_once 'libs/Smarty.class.php';
 
         $smarty = new Smarty;
 
@@ -72,26 +69,23 @@ class ErrorHandling
         $AdminLog->log_error($error . $pear_error_obj->toString());
 
         global $NONINTERACTIVE_SCRIPT;
-        if(isset($NONINTERACTIVE_SCRIPT) && $NONINTERACTIVE_SCRIPT)
-        {
+        if (isset($NONINTERACTIVE_SCRIPT) && $NONINTERACTIVE_SCRIPT) {
             // Non-interactive script running, return error message as comments
             echo "#error_occured\n";
             echo "# An error has occured in the application\n";
             echo "# More information may be available in the server logs\n";
             echo "# ::$error::\n";
-	    echo "#\n# ". $pear_error_obj->toString() . "\n"; // TODO: Do we really want to allow these error messages to be available without needing to access server logs?
-            echo "# Memory used: ".memory_get_usage()."\n";
+            echo "#\n# " . $pear_error_obj->toString() . "\n"; // TODO: Do we really want to allow these error messages to be available without needing to access server logs?
+            echo "# Memory used: " . memory_get_usage() . "\n";
             die();
 
         }
 
-        if(file_exists('/usr/share/php/smarty/libs/') && ! is_link('/usr/share/php/smarty/libs/'))
-        {
+        if (file_exists('/usr/share/php/smarty/libs/') && !is_link('/usr/share/php/smarty/libs/')) {
             // Debian bug http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=514305
             // Remove this code once fixed?
             require_once('smarty/libs/Smarty.class.php');
-        }else
-        {
+        } else {
             require_once('smarty/Smarty.class.php');
         }
         //require_once 'libs/Smarty.class.php';
@@ -113,30 +107,24 @@ class ErrorHandling
     public static function fatal_nodb_error($error)
     {
         global $NONINTERACTIVE_SCRIPT;
-        if(isset($NONINTERACTIVE_SCRIPT) && $NONINTERACTIVE_SCRIPT)
-        {
+        if (isset($NONINTERACTIVE_SCRIPT) && $NONINTERACTIVE_SCRIPT) {
             // Non-interactive script running, return error message as comments
             echo "#error_occured\n";
             echo "# An error has occured in the application\n";
             echo "# ::$error::\n";
-            echo "# Memory used: ".memory_get_usage()."\n";
+            echo "# Memory used: " . memory_get_usage() . "\n";
             die();
 
         }
         //$AdminLog =& AdminLog::getInstance();
         //$AdminLog->log_error($error);
-        if(file_exists('/usr/share/php/smarty/libs/') && ! is_link('/usr/share/php/smarty/libs/'))
-        {
+        if (file_exists('/usr/share/php/smarty/libs/') && !is_link('/usr/share/php/smarty/libs/')) {
             // Debian bug http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=514305
             // Remove this code once fixed?
             require_once('smarty/libs/Smarty.class.php');
-        }else
-        {
+        } else {
             require_once('smarty/Smarty.class.php');
         }
-
-
-//        require_once 'libs/Smarty.class.php';
 
         $smarty = new Smarty;
 
@@ -156,13 +144,12 @@ class ErrorHandling
 
 function smartyerrorblockt()
 {
-            if(!function_exists('smarty_block_t'))
-            {
-                function smarty_block_t($params, $text, &$smarty)
-                {
-                    return "$text";
-                }
-            }
+    if (!function_exists('smarty_block_t')) {
+        function smarty_block_t($params, $text, &$smarty)
+        {
+            return "$text";
+        }
+    }
 }
 
 ?>
