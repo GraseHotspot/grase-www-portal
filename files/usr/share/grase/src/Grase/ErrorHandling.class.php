@@ -20,14 +20,16 @@
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+namespace Grase;
+
 class ErrorHandling
 {
-    // ErrorHandling::fatal_error
+
     public static function fatal_error($error)
     {
         $AdminLog =& AdminLog::getInstance();
         $AdminLog->log_error($error);
-        
+
         global $NONINTERACTIVE_SCRIPT;
         if(isset($NONINTERACTIVE_SCRIPT) && $NONINTERACTIVE_SCRIPT)
         {
@@ -37,9 +39,9 @@ class ErrorHandling
             echo "# ::$error::\n";
             echo "# Memory used: ".memory_get_usage()."\n";
             die();
-        
-        }        
-        
+
+        }
+
         if(file_exists('/usr/share/php/smarty/libs/') && ! is_link('/usr/share/php/smarty/libs/'))
         {
             // Debian bug http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=514305
@@ -58,18 +60,17 @@ class ErrorHandling
         $smarty->register_block('t', 'smarty_block_t'); // Needed even though message will be in English
         $smarty->assign("Application", APPLICATION_NAME);
         $smarty->assign("error", $error);
-        
+
         $smarty->display("error.tpl");
         die();
 
     }
-    
-    // ErrorHandling::fatal_db_error
+
     public static function fatal_db_error($error, $pear_error_obj)
     {
         $AdminLog =& AdminLog::getInstance();
         $AdminLog->log_error($error . $pear_error_obj->toString());
-        
+
         global $NONINTERACTIVE_SCRIPT;
         if(isset($NONINTERACTIVE_SCRIPT) && $NONINTERACTIVE_SCRIPT)
         {
@@ -81,9 +82,9 @@ class ErrorHandling
 	    echo "#\n# ". $pear_error_obj->toString() . "\n"; // TODO: Do we really want to allow these error messages to be available without needing to access server logs?
             echo "# Memory used: ".memory_get_usage()."\n";
             die();
-        
-        }        
-        
+
+        }
+
         if(file_exists('/usr/share/php/smarty/libs/') && ! is_link('/usr/share/php/smarty/libs/'))
         {
             // Debian bug http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=514305
@@ -102,15 +103,13 @@ class ErrorHandling
         $smarty->register_block('t', 'smarty_block_t'); // Needed even though message will be in English
         $smarty->assign("Application", APPLICATION_NAME);
         $smarty->assign("error", $error . $pear_error_obj->getMessage());
-        
+
         $smarty->display("error.tpl");
         //var_dump($pear_error_obj);
         die();
 
-    }    
-    
-    
-    // ErrorHandling::fatal_nodb_error
+    }
+
     public static function fatal_nodb_error($error)
     {
         global $NONINTERACTIVE_SCRIPT;
@@ -122,7 +121,7 @@ class ErrorHandling
             echo "# ::$error::\n";
             echo "# Memory used: ".memory_get_usage()."\n";
             die();
-        
+
         }
         //$AdminLog =& AdminLog::getInstance();
         //$AdminLog->log_error($error);
@@ -147,11 +146,11 @@ class ErrorHandling
         $smarty->assign("Application", APPLICATION_NAME);
         $smarty->assign("error", $error);
         $smarty->assign("memory_used", memory_get_usage());
-        
+
         $smarty->display("error.tpl");
         die();
 
-    }    
+    }
 
 }
 

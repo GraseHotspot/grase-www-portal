@@ -128,7 +128,7 @@ class DatabaseFunctions
         $result = $this->db->queryOne($sql);
         
         if (PEAR::isError($result)) {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Retrieving Sold Usage failed: '), $result);
         }
         $soldoctets = $result;
@@ -162,7 +162,7 @@ class DatabaseFunctions
         $usedoctets = $this->db->queryOne($sql);
         
         if (PEAR::isError($usedoctets)) {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Retrieving Month Usage failed: '), $usedoctets);
         }
         
@@ -179,7 +179,7 @@ class DatabaseFunctions
         $usedoctets = $this->db->queryOne($sql);
         
         if (PEAR::isError($usedoctets)) {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Retrieving Current Month Usage failed: '), $usedoctets);
         }
         
@@ -194,7 +194,7 @@ class DatabaseFunctions
         $res =& $this->db->query($sql);
         
         if (PEAR::isError($res)) {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Retrieving Months Accounting Data Available For failed: '), $res);
         }
         
@@ -236,7 +236,7 @@ class DatabaseFunctions
         $session = $this->db->queryRow($sql);
         
          if (PEAR::isError($session)) {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Retrieving Session by RadAcctID failed: '), $session);
         }
         
@@ -268,7 +268,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($sessions))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Retrieving Sessions by Username failed: '), $sessions);
         }        
         return $sessions;            
@@ -301,7 +301,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($sessions))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Retrieving Sessions by Username failed: '), $sessions);
         }        
         return $sessions;            
@@ -322,7 +322,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($radacctid))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Retrieving Current Session by Username failed: '), $radacctid);
         }
         
@@ -343,7 +343,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($username))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Retrieving Username by Active Session (ipadddress): '),
                 $username);
         }
@@ -367,7 +367,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($results))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Get All User radcheck details Query failed: '), $results);
         }
         
@@ -383,7 +383,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($results))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Get All User radreply details Query failed: '), $results);
         }
         
@@ -400,7 +400,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($results))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Get All User Group details Query failed: '), $results);
         }
         
@@ -416,7 +416,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($results))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Get All User Comment details Query failed: '), $results);
         }
         
@@ -439,7 +439,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($results))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Get All User radacct details Query failed: '), $results);
         }
         
@@ -461,7 +461,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($results))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Get All User mtotacct details Query failed: '), $results);
         }
         
@@ -510,7 +510,7 @@ class DatabaseFunctions
             
             if (PEAR::isError($results))
             {
-                ErrorHandling::fatal_db_error(
+                \Grase\ErrorHandling::fatal_db_error(
                     T_('Get User details Query failed: '), $results);
             }
             
@@ -530,7 +530,7 @@ class DatabaseFunctions
             
             if (PEAR::isError($results))
             {
-                ErrorHandling::fatal_db_error(
+                \Grase\ErrorHandling::fatal_db_error(
                     T_('Get User radreply details Query failed: '), $results);
             }
             
@@ -647,7 +647,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($results))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Get User Group Query failed: '), $results);
         }
         
@@ -674,7 +674,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($results))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Get All Usernames Query Failed: '), $results);
         }
         
@@ -698,7 +698,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($results))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Get Users By Group Query Failed: '), $results);
         }
         
@@ -728,7 +728,7 @@ class DatabaseFunctions
 	
 	        if (PEAR::isError($results))
 	        {
-	            ErrorHandling::fatal_db_error(
+	            \Grase\ErrorHandling::fatal_db_error(
 	                T_('Get User Last Logout Query Failed: '), $results);
 	        }
         }
@@ -760,7 +760,7 @@ class DatabaseFunctions
 		$results = $this->db->queryOne($sql);
 		if (PEAR::isError($results))
 		{
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Get User Total Session Time Query failed: '), $results);
         }
 
@@ -786,7 +786,7 @@ class DatabaseFunctions
 		    $results = $this->db->queryOne($sql);
 		    if (PEAR::isError($results))
 		    {
-                ErrorHandling::fatal_db_error(
+                \Grase\ErrorHandling::fatal_db_error(
                     T_('Get User Time Usage (Total) Query failed: '), $results);
             }
         }        
@@ -811,7 +811,7 @@ class DatabaseFunctions
 		$results = $this->db->queryOne($sql);
 		if (PEAR::isError($results))
 		{
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Get User Data Usage Query failed: '), $results);
         }
         
@@ -836,7 +836,7 @@ class DatabaseFunctions
 		    $results = $this->db->queryOne($sql);
 		    if (PEAR::isError($results))
 		    {
-                ErrorHandling::fatal_db_error(
+                \Grase\ErrorHandling::fatal_db_error(
                     T_('Get User Data Usage (Total) Query failed: '), $results);
             }
         }        
@@ -857,7 +857,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($results))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Get Monthly Data Usage Query failed: '), $results);
         }
         
@@ -885,7 +885,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($results))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Get Monthly Data Usage Totals Query failed: '), $results);
         }
         
@@ -914,7 +914,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($results))
         {
-            ErrorHandling::fatal_db_error(T_('Get User Comment failed: '), $results);
+            \Grase\ErrorHandling::fatal_db_error(T_('Get User Comment failed: '), $results);
         }
         
         return trim($results);
@@ -959,7 +959,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Deleting radgroupcheck query failed: '), $result);
         }
         
@@ -975,7 +975,7 @@ class DatabaseFunctions
             $result = $this->db->replace('radgroupcheck', $fields);
             if (PEAR::isError($result))
             {
-                ErrorHandling::fatal_db_error(
+                \Grase\ErrorHandling::fatal_db_error(
                     T_('Adding Group Check Attributes query failed:  '), $result);
             }  
         }
@@ -1010,7 +1010,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Deleting radgroupreply query failed: '), $result);
         }
 
@@ -1023,7 +1023,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Deleting radgroupreply query failed: '), $result);
         }
         
@@ -1103,7 +1103,7 @@ class DatabaseFunctions
                 $result = $this->db->replace($table, $fields);
                 if (PEAR::isError($result))
                 {
-                    ErrorHandling::fatal_db_error(
+                    \Grase\ErrorHandling::fatal_db_error(
                         T_('Adding Group Attributes query failed:  '), $result);
                 }
             }
@@ -1154,7 +1154,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($results))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Get Groups details Query failed: '), $results);
         }
         
@@ -1163,7 +1163,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($results))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Get Groups details Query failed: '), $results);
         }
         
@@ -1256,7 +1256,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Setting User Comment Query Failed: '), $result);
         }
         
@@ -1275,7 +1275,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Setting User Group Query Failed: '), $result);
         }
         
@@ -1296,7 +1296,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Setting User Datalimit Query Failed: '), $result);
         }
         
@@ -1321,7 +1321,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Getting User Current Data Limit to increase failed: '), $result);
         }
         
@@ -1343,7 +1343,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Setting User Timelimit Query Failed: '), $result);
         }
         
@@ -1367,7 +1367,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Getting User Current Time Limit to increase failed: '), $result);
         }
         
@@ -1388,7 +1388,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Setting User Password Query Failed: '), $result);
         }
         
@@ -1411,7 +1411,7 @@ class DatabaseFunctions
             
             if (PEAR::isError($result))
             {
-                ErrorHandling::fatal_db_error(
+                \Grase\ErrorHandling::fatal_db_error(
                     T_('Setting User Expiry Date Query Failed: '), $result);
             }
             
@@ -1431,7 +1431,7 @@ class DatabaseFunctions
             
             if (PEAR::isError($result))
             {
-                ErrorHandling::fatal_db_error(
+                \Grase\ErrorHandling::fatal_db_error(
                     T_('Deleting User Expiry Date Query Failed: '), $result);
             }
             
@@ -1453,7 +1453,7 @@ class DatabaseFunctions
 
         if (PEAR::isError($result))
         {
-        ErrorHandling::fatal_db_error(
+        \Grase\ErrorHandling::fatal_db_error(
             T_('Locking User Account Query Failed: '), $result);
         }        
 
@@ -1469,7 +1469,7 @@ class DatabaseFunctions
 
         if (PEAR::isError($result))
         {
-        ErrorHandling::fatal_db_error(
+        \Grase\ErrorHandling::fatal_db_error(
             T_('User Account Lock Reason Query Failed: '), $result);
         }        
 
@@ -1492,7 +1492,7 @@ class DatabaseFunctions
 
         if (PEAR::isError($result))
         {
-        ErrorHandling::fatal_db_error(
+        \Grase\ErrorHandling::fatal_db_error(
             T_('Removing User Lock Query Failed: '), $result);
         }
 
@@ -1507,7 +1507,7 @@ class DatabaseFunctions
 
         if (PEAR::isError($result))
         {
-        ErrorHandling::fatal_db_error(
+        \Grase\ErrorHandling::fatal_db_error(
             T_('Removing User Lock Message Query Failed: '), $result);
         }
         
@@ -1528,7 +1528,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Deleting user failed: '). "($username) ", $result);
         }
         
@@ -1541,7 +1541,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Deleting user radreply data failed: '). "($username) ", $result);
         }        
 
@@ -1554,7 +1554,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Deleting users group failed: '). "($username) ", $result);
         }
         
@@ -1567,7 +1567,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Deleting users comment failed: '). "($username) ", $result);
         }
                       
@@ -1587,7 +1587,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($results))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Checking Uniq Username failed: '), $results);
         }
         
@@ -1617,7 +1617,7 @@ class DatabaseFunctions
         $value = $this->db->queryOne($sql);
         
          if (PEAR::isError($value)) {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Retrieving Chilli Config Single Value failed: '), $value);
         }
         
@@ -1651,7 +1651,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Deleting Chilli Config Query Failed: '), $result);
         }        
         
@@ -1684,7 +1684,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($affected))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Setting Chilli Config Single Query Failed: '), $affected);
         }
         
@@ -1706,7 +1706,7 @@ class DatabaseFunctions
         
         if (PEAR::isError($affected))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Setting Chilli Config Multi Query Failed: '), $affected);
         }
         
@@ -1727,7 +1727,7 @@ class DatabaseFunctions
         $values = $this->db->queryAll($sql);
         
          if (PEAR::isError($values)) {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Retrieving Chilli Config Multi Value failed: '), $values);
         }
         $results = array();
@@ -1762,7 +1762,7 @@ class DatabaseFunctions
 	        return "";
 	        
 	    // Should never get here as Expiry date is now handled automatically and isn't user supplied
-	    ErrorHandling::fatal_error(T_("Problem With expiration Date Format"));*/
+	    \Grase\ErrorHandling::fatal_error(T_("Problem With expiration Date Format"));*/
     }
     
     private function _userAccountStatus($Userdata)
@@ -1824,7 +1824,7 @@ class DatabaseFunctions
 
         if (PEAR::isError($mac))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Retrieving MAC from IP failed: '), $mac);
         }
 
@@ -1849,7 +1849,7 @@ class DatabaseFunctions
         if (PEAR::isError($user)) {
             // TODO: This needs to be logged in admin log? Won't see error as it's squid calling it
             return "ERR";
-            //ErrorHandling::fatal_db_error(
+            //\Grase\ErrorHandling::fatal_db_error(
             //    T_('Retrieving active session from ipaddress failed: '), $user);
         }
         

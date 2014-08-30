@@ -66,7 +66,7 @@ class DatabaseConnections
         // Check that databaseSettingsFile is valid
         if (!is_readable($dbSettingsFile))
         {
-            ErrorHandling::fatal_nodb_error(
+            \Grase\ErrorHandling::fatal_nodb_error(
 		T_("DB Config File isn't a valid file.") . "($dbSettingsFile)"
 	    );
         }
@@ -89,7 +89,7 @@ class DatabaseConnections
 #        // Check that databaseSettingsFile is valid
 #        if (!is_file($this->databaseSettingsFile))
 #        {
-#            ErrorHandling::fatal_nodb_error('DB Config File(' . $this->databaseSettingsFile . ') isn\'t a valid file.');
+#            \Grase\ErrorHandling::fatal_nodb_error('DB Config File(' . $this->databaseSettingsFile . ') isn\'t a valid file.');
 #        }
 #    
 #        // Connecting, selecting database
@@ -144,7 +144,7 @@ class DatabaseConnections
         if (PEAR::isError($this->radiusDB))
         {
             //TODO Send more of error handler to error handling (i.e. userinfo in database errors, for debugging (stderr?))
-            ErrorHandling::fatal_nodb_error($this->radiusDB->getMessage() . " RADIUS<br/>The RADIUS database does not exist");
+            \Grase\ErrorHandling::fatal_nodb_error($this->radiusDB->getMessage() . " RADIUS<br/>The RADIUS database does not exist");
         }
         
         // Set mode for Radius DB
@@ -161,7 +161,7 @@ class DatabaseConnections
             $this->radminDB =& MDB2::connect($this->radminDSN, $this->radminOptions);
             if (PEAR::isError($this->radminDB))
             {
-                ErrorHandling::fatal_nodb_error($this->radminDB->getMessage()." RADMIN");
+                \Grase\ErrorHandling::fatal_nodb_error($this->radminDB->getMessage()." RADMIN");
             }
         }
         

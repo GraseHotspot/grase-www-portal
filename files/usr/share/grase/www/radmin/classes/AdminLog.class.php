@@ -77,7 +77,7 @@ class AdminLog
         //var_dump($this->db);
         //var_dump($this->log_sql);	
     	if(PEAR::isError($this->log_sql))
-    	    ErrorHandling::fatal_nodb_error("Preparing logging statement failed: ". $this->log_sql->getMessage());
+    	    \Grase\ErrorHandling::fatal_nodb_error("Preparing logging statement failed: ". $this->log_sql->getMessage());
      }
     
     
@@ -118,7 +118,7 @@ class AdminLog
         //print_r($res);
         // Always check that result is not an error
         if (PEAR::isError($res)) {
-            ErrorHandling::fatal_error("Getting Admin Log Failed: ". $res->getMessage());
+            \Grase\ErrorHandling::fatal_error("Getting Admin Log Failed: ". $res->getMessage());
         }
         
         $results = $res->fetchAll(MDB2_FETCHMODE_ASSOC, false, false);
@@ -135,7 +135,7 @@ class AdminLog
         //print_r($res);
         // Always check that result is not an error
         if (PEAR::isError($res)) {
-            ErrorHandling::fatal_error("Getting Admin Log Failed: ". $res->getMessage());
+            \Grase\ErrorHandling::fatal_error("Getting Admin Log Failed: ". $res->getMessage());
         }
         
         $result = $res->fetchOne();
@@ -153,7 +153,7 @@ class AdminLog
 
         // Always check that result is not an error
         if (PEAR::isError($affected)) {
-            ErrorHandling::fatal_error('Creating Log Entry failed: '. $affected->getMessage());
+            \Grase\ErrorHandling::fatal_error('Creating Log Entry failed: '. $affected->getMessage());
         }
         
         return $affected;
@@ -169,7 +169,7 @@ class AdminLog
 
         // Always check that result is not an error
         if (PEAR::isError($affected)) {
-            ErrorHandling::fatal_error('Creating CRON Log Entry failed: '. $affected->getMessage());
+            \Grase\ErrorHandling::fatal_error('Creating CRON Log Entry failed: '. $affected->getMessage());
         }
         
         return $affected;

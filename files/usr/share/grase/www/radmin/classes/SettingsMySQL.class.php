@@ -134,8 +134,8 @@ class SettingsMySQL extends Settings
 #            $this->databaseSettings[$key] = trim($value);
 #        }
 #        
-#        $this->db = mysql_pconnect($this->databaseSettings['sql_server'], $this->databaseSettings['sql_username'], $this->databaseSettings['sql_password']) or ErrorHandling::fatal_error('Could not connect: ' . mysql_error());
-#        mysql_select_db($this->databaseSettings['sql_radmindatabase'], $this->db) or ErrorHandling::fatal_error('Could not select database');
+#        $this->db = mysql_pconnect($this->databaseSettings['sql_server'], $this->databaseSettings['sql_username'], $this->databaseSettings['sql_password']) or \Grase\ErrorHandling::fatal_error('Could not connect: ' . mysql_error());
+#        mysql_select_db($this->databaseSettings['sql_radmindatabase'], $this->db) or \Grase\ErrorHandling::fatal_error('Could not select database');
 #    }
     
     private function checkTablesExist()
@@ -147,7 +147,7 @@ class SettingsMySQL extends Settings
         
         if (PEAR::isError($results))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Get All Settings for caching Query failed: '), $results);
         }
 
@@ -202,7 +202,7 @@ class SettingsMySQL extends Settings
         
         if (PEAR::isError($results))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Get All Settings for caching Query failed: '), $results);
         }
         
@@ -225,7 +225,7 @@ class SettingsMySQL extends Settings
         $result = $this->db->queryOne($sql);
         // Always check that result is not an error
         if (PEAR::isError($result)) {
-            ErrorHandling::fatal_db_error('Getting setting failed: ', $result);
+            \Grase\ErrorHandling::fatal_db_error('Getting setting failed: ', $result);
         }
         
         return $result;
@@ -270,7 +270,7 @@ class SettingsMySQL extends Settings
         // Always check that result is not an error
         if (PEAR::isError($affected)) {
 	        AdminLog::getInstance()->log("Setting $setting failed to update (to $value)");        
-            ErrorHandling::fatal_db_error('Updating setting failed: ', $affected);
+            \Grase\ErrorHandling::fatal_db_error('Updating setting failed: ', $affected);
         }
         
         // Update settings cache to prevent wrong data
@@ -304,7 +304,7 @@ class SettingsMySQL extends Settings
         $result = $this->db->queryOne($sql);
         // Always check that result is not an error
         if (PEAR::isError($result)) {
-            ErrorHandling::fatal_db_error('Getting template failed: ', $result);
+            \Grase\ErrorHandling::fatal_db_error('Getting template failed: ', $result);
         }
         
         return $result;
@@ -349,7 +349,7 @@ class SettingsMySQL extends Settings
         // Always check that result is not an error
         if (PEAR::isError($affected)) {
 	        AdminLog::getInstance()->log("Template $template failed to update");        
-            ErrorHandling::fatal_db_error('Updating template failed: ', $affected);
+            \Grase\ErrorHandling::fatal_db_error('Updating template failed: ', $affected);
         }
         AdminLog::getInstance()->log("Template $template updated");
         return true;
@@ -377,7 +377,7 @@ class SettingsMySQL extends Settings
         // Always check that result is not an error
         if (PEAR::isError($affected)) {
             AdminLog::getInstance()->log("Batches $batchID failed to add");
-            ErrorHandling::fatal_db_error('Adding batch failed: '. $affected->getMessage(), $affected);
+            \Grase\ErrorHandling::fatal_db_error('Adding batch failed: '. $affected->getMessage(), $affected);
         }
         $result ++;        
         
@@ -403,7 +403,7 @@ class SettingsMySQL extends Settings
         // Always check that result is not an error
         if (PEAR::isError($affected)) {
             AdminLog::getInstance()->log("Batch $batchID failed to add $user");
-            ErrorHandling::fatal_db_error('Adding user to batch failed: ', $affected);
+            \Grase\ErrorHandling::fatal_db_error('Adding user to batch failed: ', $affected);
         }
         return true;
     }
@@ -417,7 +417,7 @@ class SettingsMySQL extends Settings
         
         // Always check that result is not an error
         if (PEAR::isError($result)) {
-            ErrorHandling::fatal_db_error('Getting list of batches failed: ', $result);
+            \Grase\ErrorHandling::fatal_db_error('Getting list of batches failed: ', $result);
         }
         
         /*$results = array();
@@ -446,7 +446,7 @@ class SettingsMySQL extends Settings
         
         // Always check that result is not an error
         if (PEAR::isError($result)) {
-            ErrorHandling::fatal_db_error('Getting batch users failed: ', $result);
+            \Grase\ErrorHandling::fatal_db_error('Getting batch users failed: ', $result);
         }
         
         $results = array();
@@ -470,7 +470,7 @@ class SettingsMySQL extends Settings
         // Always check that result is not an error
         if (PEAR::isError($nextBatchID)) {
             AdminLog::getInstance()->log("Unable to fetch nextBatchID");
-            ErrorHandling::fatal_db_error('Fetching nextBatchID failed: ', $nextBatchID);
+            \Grase\ErrorHandling::fatal_db_error('Fetching nextBatchID failed: ', $nextBatchID);
         }
         
         return $nextBatchID;
@@ -520,7 +520,7 @@ class SettingsMySQL extends Settings
         
         // Always check that result is not an error
         if (PEAR::isError($result)) {
-            ErrorHandling::fatal_db_error('Getting groups failed: ', $result);
+            \Grase\ErrorHandling::fatal_db_error('Getting groups failed: ', $result);
         }
         
         foreach ($result as $results)
@@ -563,7 +563,7 @@ class SettingsMySQL extends Settings
         $result = $this->db->replace('groups', $fields);
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Adding Group query failed:  '), $result);
         }
         
@@ -581,7 +581,7 @@ class SettingsMySQL extends Settings
         $result = $this->db->exec($sql);
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Delete Group query failed:  '), $result);
         }
         
@@ -635,7 +635,7 @@ class SettingsMySQL extends Settings
         $result = $this->db->replace('vouchers', $fields);
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Adding Voucher query failed:  '), $result);
         }
         
@@ -696,7 +696,7 @@ class SettingsMySQL extends Settings
         
         // Always check that result is not an error
         if (PEAR::isError($result)) {
-            ErrorHandling::fatal_db_error('Getting vouchers failed: ', $result);
+            \Grase\ErrorHandling::fatal_db_error('Getting vouchers failed: ', $result);
         }
         
         foreach ($result as $results)
@@ -725,7 +725,7 @@ class SettingsMySQL extends Settings
         $result = $this->db->exec($sql);
         if (PEAR::isError($result))
         {
-            ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatal_db_error(
                 T_('Delete Voucher query failed:  '), $result);
         }
         
