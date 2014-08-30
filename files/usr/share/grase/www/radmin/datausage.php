@@ -24,7 +24,6 @@
 
 require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
-require_once 'includes/database_functions.inc.php';
 
 	$monthly_accounts = DatabaseFunctions::getInstance()->getMonthlyAccounts();
 	$monthly_accounts_totals = DatabaseFunctions::getInstance()->getMonthlyAccountsTotals();

@@ -25,7 +25,6 @@ require_once 'includes/pageaccess.inc.php';
 
 require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
-require_once 'includes/database_functions.inc.php';
 if(isset($_GET['user']))
 {
     $users = DatabaseFunctions::getInstance()->getMultipleUsersDetails(array(clean_text($_GET['user'])));

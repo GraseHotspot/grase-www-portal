@@ -30,7 +30,6 @@ require_once 'includes/pageaccess.inc.php';
  
 require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
-require_once 'includes/database_functions.inc.php';
 
 
 /* No longer using OFC

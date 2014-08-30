@@ -35,9 +35,7 @@ http_access allow Auth_User Ministry
 
 chdir(dirname(__FILE__) . '/../');
 
-require_once(dirname(__FILE__) . '/../includes/database_functions.inc.php');
 
-//require_once("../includes/database_functions.inc.php");
 $group = trim($argv[1]);
 
 $fp = fopen('php://stdin', 'r');

@@ -21,7 +21,6 @@
 */
 
 require_once 'includes/usermin_session.inc.php';
-require_once 'includes/database_functions.inc.php';
 
 
 if(isset($_GET['history']))

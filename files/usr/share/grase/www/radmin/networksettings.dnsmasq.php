@@ -28,7 +28,6 @@ function __autoload($class_name) {
 }
 
 $NONINTERACTIVE_SCRIPT = TRUE;
-require_once 'includes/database_functions.inc.php';
 
     $networkoptions = unserialize($Settings->getSetting('networkoptions'));
     

@@ -31,7 +31,6 @@ require_once 'includes/load_settings.inc.php';
 require_once 'includes/page_functions.inc.php';
 
 require_once 'includes/misc_functions.inc.php';
-require_once 'includes/database_functions.inc.php';;
 
 // Need a session variable that we hold current place in wizard? Don't rely on posts to choose what we do in the wizard, always go to correct place in wizard and from there it can process post and redirect to wizard
 

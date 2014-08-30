@@ -24,7 +24,6 @@ require_once 'includes/pageaccess.inc.php';
 
 require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
-require_once 'includes/database_functions.inc.php';
 
 
 if(isset($_GET['username']) && !DatabaseFunctions::getInstance()->checkUniqueUsername($_GET['username']))#Display single user, in detail

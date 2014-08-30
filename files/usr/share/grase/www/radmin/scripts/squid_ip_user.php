@@ -31,9 +31,7 @@ function __autoload($class_name) {
 }
 
 $NONINTERACTIVE_SCRIPT = TRUE;
-require_once 'includes/database_functions.inc.php';
 
-//require_once("database_functions.inc.php");
 
 
 $fp = fopen('php://stdin', 'r');
