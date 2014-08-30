@@ -111,4 +111,93 @@ class Util
 
         return mktime(0, 0, 0, $month, $day, $year);
     }
+
+    // Network Functions
+    public static function getNetworkWANIF()
+    {
+        // Based on default route, get network interface that is the "gateway" (WAN) interface
+        $default_wanif = 'eth0';
+
+        $routes = file('/proc/net/route');
+        foreach ($routes as $route) {
+            $parms = explode("\t", $route);
+            /*
+                [0] => Iface
+                [1] => Destination
+                [2] => Gateway
+                [3] => Flags
+                [4] => RefCnt
+                [5] => Use
+                [6] => Metric
+                [7] => Mask
+                [8] => MTU
+                [9] => Window
+                [10] => IRTT
+            */
+
+            // Filter out tunnels and loopbacks
+            if (stripos($parms[0], 'tun') !== false) {
+                continue;
+            }
+            if (stripos($parms[0], 'lo') !== false) {
+                continue;
+            }
+
+            // If destination and mask are 0.0.0.0 then this is a default route
+            if ($parms[1] == "00000000" && $parms[7] == "00000000") {
+                $default_gateway = $parms[2]; // Future use?
+                $default_wanif = trim($parms[0]);
+            }
+        }
+       return $default_wanif;
+    }
+
+    public static function getAvailableLANIFS($wanif = '')
+    {
+        // Show all available network interfaces that we can be using for the LAN interface
+
+        if($wanif == '') $wanif = self::getNetworkWANIF();
+        $devs = file('/proc/net/dev');
+        $lanifs = array();
+
+        // Get rid of junk at start
+        array_shift($devs);
+        array_shift($devs);
+
+        foreach($devs as $dev)
+        {
+            $parms = explode(":", $dev, 2);
+            if(stripos($parms[0], 'tun') !== FALSE)
+                continue;
+            if(stripos($parms[0], 'lo') !== FALSE)
+                continue;
+            if(trim($parms[0]) != $wanif)
+                $lanifs[] = trim($parms[0]);
+        }
+
+        return $lanifs;
+    }
+
+    public static function getDefaultNetworkIFS()
+    {
+        $default_wanif = self::getNetworkWANIF();
+        $lanifs = self::getAvailableLANIFS($default_wanif);
+        $lanifs_order_pref = array('br0', 'wlan0', 'eth0', 'eth1');
+        $lanifs = array_intersect($lanifs_order_pref, $lanifs);
+        if(count($lanifs) == 0)
+        {
+            // No valid lan interfaces in array, select next best
+            if($default_wanif != 'eth0')
+            {
+                $default_lanif = 'eth0';
+            }else{
+                $default_lanif = 'eth1';
+            }
+        }else{
+            // Valid options in lanifs, select top option
+            $default_lanif = array_shift($lanifs);
+        }
+
+        return array('lanif' => $default_lanif, 'wanif' => $default_wanif);
+    }
 }

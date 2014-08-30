@@ -217,7 +217,7 @@ class CronFunctions extends DatabaseFunctions
         {
             // Default network interface settings need to be set
             require_once('/usr/share/grase/www/radmin/includes/network_functions.inc.php');
-            $interfaces = default_net_ifs();
+            $interfaces = \Grase\Util::getDefaultNetworkIFS();
             $networkoptions = unserialize($Settings->getSetting('networkoptions'));
             $networkoptions['lanif'] = $interfaces['lanif'];
             $networkoptions['wanif'] = $interfaces['wanif'];

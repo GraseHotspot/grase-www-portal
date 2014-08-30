@@ -26,8 +26,6 @@ require_once 'includes/pageaccess.inc.php';
 require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
 
-require_once 'includes/network_functions.inc.php';
-
 $error = array();
 $success = array();
 
@@ -79,8 +77,8 @@ $singlenetworkoptions = array(
 	"type" => "bool"),	
     );    
 
-$wanif = array(net_get_wan_if());
-$lanifs = available_lan_ifs($wanif[0]);
+$wanif = array(\Grase\Util::getNetworkWANIF());
+$lanifs = \Grase\Util::getAvailableLANIFS($wanif[0]);
 
 
 // Options for Chilli Config that can only be one but selected from a list
