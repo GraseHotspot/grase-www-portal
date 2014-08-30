@@ -180,23 +180,14 @@ if(isset($_GET['username']) && !DatabaseFunctions::getInstance()->checkUniqueUse
 
 	if(isset($_POST['deleteusersubmit'])) // Delete User
 	{
-		//if($_POST['DeleteUser'] == "Yes, I want to delete this user") //Really delete user (TODO: DEFINE CONSTANTS)
-		//{
-			database_delete_user($username); // TODO: Check for success
-			$success[] = sprintf(T_("User '%s' Deleted"),$username);
-			AdminLog::getInstance()->log("User $username deleted");			
-			//$users = database_get_user_names();
-			$smarty->assign("error", $error);
-			$smarty->assign("success", $success);
-			//$smarty->assign("users", $users);
-			//$smarty->display('listusers.tpl');
-			require('display.php');
-			die; // TODO: Recode so don't need die (too many nests?)
-		//}else
-		//{
-		//	$error[] = T('Please type "Yes, I want to delete this user" (without the quotes) into the box before clicking delete user');
-		//}
-		
+        DatabaseFunctions::getInstance()->deleteUser($username); // TODO: Check for success
+        $success[] = sprintf(T_("User '%s' Deleted"),$username);
+        AdminLog::getInstance()->log("User $username deleted");
+        $smarty->assign("error", $error);
+        $smarty->assign("success", $success);
+        require('display.php');
+        die; // TODO: Recode so don't need die (too many nests?)
+
 	}
 	
 

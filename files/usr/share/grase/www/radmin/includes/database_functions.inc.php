@@ -44,13 +44,7 @@ require_once 'load_settings.inc.php';
 *
 */
 
-function database_delete_user($username) 
-{
-    return DatabaseFunctions::getInstance()->deleteUser($username);
-
-}
-
-function database_increase_datalimit($username, $addmb) 
+function database_increase_datalimit($username, $addmb)
 {
     return DatabaseFunctions::getInstance()->increaseUserDatalimit($username, $addmb);
 
