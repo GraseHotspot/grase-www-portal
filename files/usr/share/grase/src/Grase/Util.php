@@ -149,14 +149,16 @@ class Util
                 $default_wanif = trim($parms[0]);
             }
         }
-       return $default_wanif;
+        return $default_wanif;
     }
 
     public static function getAvailableLANIFS($wanif = '')
     {
         // Show all available network interfaces that we can be using for the LAN interface
 
-        if($wanif == '') $wanif = self::getNetworkWANIF();
+        if ($wanif == '') {
+            $wanif = self::getNetworkWANIF();
+        }
         $devs = file('/proc/net/dev');
         $lanifs = array();
 
@@ -164,15 +166,17 @@ class Util
         array_shift($devs);
         array_shift($devs);
 
-        foreach($devs as $dev)
-        {
+        foreach ($devs as $dev) {
             $parms = explode(":", $dev, 2);
-            if(stripos($parms[0], 'tun') !== FALSE)
+            if (stripos($parms[0], 'tun') !== false) {
                 continue;
-            if(stripos($parms[0], 'lo') !== FALSE)
+            }
+            if (stripos($parms[0], 'lo') !== false) {
                 continue;
-            if(trim($parms[0]) != $wanif)
+            }
+            if (trim($parms[0]) != $wanif) {
                 $lanifs[] = trim($parms[0]);
+            }
         }
 
         return $lanifs;
@@ -184,16 +188,14 @@ class Util
         $lanifs = self::getAvailableLANIFS($default_wanif);
         $lanifs_order_pref = array('br0', 'wlan0', 'eth0', 'eth1');
         $lanifs = array_intersect($lanifs_order_pref, $lanifs);
-        if(count($lanifs) == 0)
-        {
+        if (count($lanifs) == 0) {
             // No valid lan interfaces in array, select next best
-            if($default_wanif != 'eth0')
-            {
+            if ($default_wanif != 'eth0') {
                 $default_lanif = 'eth0';
-            }else{
+            } else {
                 $default_lanif = 'eth1';
             }
-        }else{
+        } else {
             // Valid options in lanifs, select top option
             $default_lanif = array_shift($lanifs);
         }
