@@ -25,7 +25,7 @@ require_once('php-gettext/gettext.inc');
 
 define("APPLICATION_NAME", "GRASE");
 define("USERMIN_APPLICATION_NAME", T_("My Account"));
-define("APPLICATION_VERSION", "3.7.7.7-alpha");
+define("APPLICATION_VERSION", "3.7.7.12-alpha");
 
 // Account Status Constants (used in CSS) TODO: Obsolete these?
 
