@@ -27,9 +27,9 @@ require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
 if(isset($_GET['user']))
 {
-    $users = DatabaseFunctions::getInstance()->getMultipleUsersDetails(array(clean_text($_GET['user'])));
+    $users = DatabaseFunctions::getInstance()->getMultipleUsersDetails(array(\Grase\Clean::text($_GET['user'])));
 	if(!is_array($users)) $users = array();    
-	$title = clean_text($_GET['user']) . ' Voucher';
+	$title = \Grase\Clean::text($_GET['user']) . ' Voucher';
 }elseif(isset($_GET['batch']))
 {
     $batches = explode(',', $_GET['batch']);

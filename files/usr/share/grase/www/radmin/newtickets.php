@@ -135,8 +135,8 @@ if(isset($_POST['createticketssubmit']))
 {
 	$error = validate_form();
 	if($error ){
-		//$user['Username'] = clean_text($_POST['Username']);
-		//$user['Password'] = clean_text($_POST['Password']);
+		//$user['Username'] = \Grase\Clean::text($_POST['Username']);
+		//$user['Password'] = \Grase\Clean::text($_POST['Password']);
         $user['numberoftickets'] = clean_int($_POST['numberoftickets'] );    		
 		$user['MaxMb'] = \Grase\Locale::localeNumberFormat(clean_number($_POST['MaxMb']));
 		$user['Max_Mb'] = \Grase\Locale::localeNumberFormat(clean_number($_POST['Max_Mb']));
@@ -146,15 +146,15 @@ if(isset($_POST['createticketssubmit']))
 		$user['Max_Time'] = \Grase\Locale::localeNumberFormat(clean_int($_POST['Max_Time']));
 		if($_POST['Max_Time'] == 'inherit' ) $user['Max_Time'] = 'inherit';
 		
-		$user['Group'] = clean_text($_POST['Group']);
-		$user['Expiration'] = expiry_for_group(clean_text($_POST['Group'])); //"${_POST['Expirydate_Year']}-${_POST['Expirydate_Month']}-${_POST['Expirydate_Day']}";
-		$user['Comment'] = clean_text($_POST['Comment']);
+		$user['Group'] = \Grase\Clean::text($_POST['Group']);
+		$user['Expiration'] = expiry_for_group(\Grase\Clean::text($_POST['Group'])); //"${_POST['Expirydate_Year']}-${_POST['Expirydate_Month']}-${_POST['Expirydate_Day']}";
+		$user['Comment'] = \Grase\Clean::text($_POST['Comment']);
 		$templateEngine->assign("user", $user);
 		$templateEngine->assign("error", $error);
 		$templateEngine->displayPage('newtickets.tpl'); //TODO: What happens if this returns?
 	}else
 	{
-	    $group = clean_text($_POST['Group']);
+	    $group = \Grase\Clean::text($_POST['Group']);
 	    // Load group settings so we can use Expiry, MaxMb and MaxTime
 	    $groupsettings = $Settings->getGroup($group);
 	
@@ -177,7 +177,7 @@ if(isset($_POST['createticketssubmit']))
 
         // We create the batch first, then add users to it (prevents us having unattached users if the batch dies for some reason)
 		$batchID = $Settings->nextBatchID();
-		$Settings->saveBatch($batchID, array(), $Auth->getUsername(), clean_text($_POST['Comment']));
+		$Settings->saveBatch($batchID, array(), $Auth->getUsername(), \Grase\Clean::text($_POST['Comment']));
 		$Settings->setSetting('lastbatch', $batchID);
 
 		$failedusers= 0;
@@ -193,8 +193,8 @@ if(isset($_POST['createticketssubmit']))
 			    $MaxMb,
 			    $MaxTime,
 			    expiry_for_group($group, $groupsettings),
-			    clean_text($_POST['Group']),
-			    clean_text($_POST['Comment'])
+			    \Grase\Clean::text($_POST['Group']),
+			    \Grase\Clean::text($_POST['Comment'])
 		    ))
 		    {
 		        AdminLog::getInstance()->log("Created new user $username");

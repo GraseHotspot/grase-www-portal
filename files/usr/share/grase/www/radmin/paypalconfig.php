@@ -92,7 +92,7 @@ if(isset($_POST['submit']))
         switch ($attributes['type'])
         {
             case "string":
-                $postvalue = trim(clean_text($_POST[$singleoption]));
+                $postvalue = trim(\Grase\Clean::text($_POST[$singleoption]));
                 break;
             case "int":
                 $postvalue = trim(clean_int($_POST[$singleoption]));

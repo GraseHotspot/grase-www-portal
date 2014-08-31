@@ -38,16 +38,16 @@ if(isset($_GET['username']) && !DatabaseFunctions::getInstance()->checkUniqueUse
 	{   // Process form for changed items and do updates
 
         // Update password
-	    if(clean_text($_POST['Password']) && clean_text($_POST['Password']) != $user['Password'])
+	    if(\Grase\Clean::text($_POST['Password']) && \Grase\Clean::text($_POST['Password']) != $user['Password'])
 	    {
-            DatabaseFunctions::getInstance()->setUserPassword($username, clean_text($_POST['Password']));
+            DatabaseFunctions::getInstance()->setUserPassword($username, \Grase\Clean::text($_POST['Password']));
 	        // TODO: Check return for success		
 	        $success[] = T_("Password Changed");
 	        AdminLog::getInstance()->log("Password changed for $username");	    
         }
         
         // Update group if changed
-        if(clean_text($_POST['Group']) && clean_text($_POST['Group']) != $user['Group'])
+        if(\Grase\Clean::text($_POST['Group']) && \Grase\Clean::text($_POST['Group']) != $user['Group'])
         {
             $temperror =  validate_group($username, $_POST['Group']);
             if(array_filter($temperror))
@@ -56,7 +56,7 @@ if(isset($_GET['username']) && !DatabaseFunctions::getInstance()->checkUniqueUse
             }
             else
             {
-                DatabaseFunctions::getInstance()->setUserGroup($username, clean_text($_POST['Group']));
+                DatabaseFunctions::getInstance()->setUserGroup($username, \Grase\Clean::text($_POST['Group']));
 			    DatabaseFunctions::getInstance()->setUserExpiry($username,
 			        expiry_for_group(DatabaseFunctions::getInstance()->getUserGroup($username)));
 			    // TODO: Check return for success
@@ -66,18 +66,18 @@ if(isset($_GET['username']) && !DatabaseFunctions::getInstance()->checkUniqueUse
         }
         
         // Update comment if changed
-        if(clean_text($_POST['Comment']) != $user['Comment'])
+        if(\Grase\Clean::text($_POST['Comment']) != $user['Comment'])
         {
-            DatabaseFunctions::getInstance()->setUserComment($username, clean_text($_POST['Comment']));
+            DatabaseFunctions::getInstance()->setUserComment($username, \Grase\Clean::text($_POST['Comment']));
 			// TODO: Check return for success			
 			$success[] = T_("Comment Changed");
 			AdminLog::getInstance()->log("Comment changed for $username");        
         }
         
         // Lock/Unlock update
-        if(clean_text($_POST['LockReason']) != $user['LockReason'])
+        if(\Grase\Clean::text($_POST['LockReason']) != $user['LockReason'])
         {
-            if(clean_text($_POST['LockReason']) == ''){
+            if(\Grase\Clean::text($_POST['LockReason']) == ''){
 		        DatabaseFunctions::getInstance()->unlockUser($username);
 		        $success[] = T_("User Account Unlocked");
     			AdminLog::getInstance()->log("Account $username unlocked");        

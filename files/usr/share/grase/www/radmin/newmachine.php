@@ -53,12 +53,12 @@ if(isset($_POST['newmachinesubmit']))
 {
 	$error = validate_form();
 	if($error ){
-		$user['mac'] = clean_text($_POST['mac']);
+		$user['mac'] = \Grase\Clean::text($_POST['mac']);
 		$user['MaxMb'] = \Grase\Locale::localeNumberFormat(clean_number($_POST['MaxMb']));
 		$user['Max_Mb'] = \Grase\Locale::localeNumberFormat(clean_number($_POST['Max_Mb']));
 		$user['MaxTime'] = \Grase\Locale::localeNumberFormat(clean_int($_POST['MaxTime']));
 		$user['Max_Time'] = \Grase\Locale::localeNumberFormat(clean_int($_POST['Max_Time']));
-		$user['Comment'] = clean_text($_POST['Comment']);
+		$user['Comment'] = \Grase\Clean::text($_POST['Comment']);
 		$templateEngine->assign("machine", $user);
 		$templateEngine->assign("error", $error);
 		$templateEngine->displayPage('addmachine.tpl');
@@ -72,7 +72,7 @@ if(isset($_POST['newmachinesubmit']))
 		    $MaxTime =  clean_int($_POST['Max_Time']);
 		if(clean_int($_POST['MaxTime']))
 		    $MaxTime = clean_int($_POST['MaxTime']);
-		$mac = clean_text($_POST['mac']);
+		$mac = \Grase\Clean::text($_POST['mac']);
         DatabaseFunctions::getInstance()->createUser( // TODO: Check if successful
 			$mac,
 			DatabaseFunctions::getInstance()->getChilliConfigSingle('macpasswd'), // DONE: macpasswd comes from DB
@@ -80,7 +80,7 @@ if(isset($_POST['newmachinesubmit']))
 			$MaxTime,
 			'--', // No expiry for machine accounts
 			MACHINE_GROUP_NAME, // TODO: This needs to be linked to settings
-			clean_text($_POST['Comment'])
+			\Grase\Clean::text($_POST['Comment'])
 		);
 		$success[] = T_("Computer Account Successfully Created");
 		AdminLog::getInstance()->log("Created new computer $mac");

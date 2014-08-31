@@ -60,7 +60,7 @@ if(isset($_POST['newusersubmit']))
 	$error=validate_form();
 	if($error ){
 		$user['Username'] = clean_username($_POST['Username']);
-		$user['Password'] = clean_text($_POST['Password']);
+		$user['Password'] = \Grase\Clean::text($_POST['Password']);
 		
 		$user['MaxMb'] = \Grase\Locale::localeNumberFormat(clean_number($_POST['MaxMb']));
 		$user['Max_Mb'] = \Grase\Locale::localeNumberFormat(clean_number($_POST['Max_Mb']));
@@ -70,16 +70,16 @@ if(isset($_POST['newusersubmit']))
 		$user['Max_Time'] = \Grase\Locale::localeNumberFormat(clean_int($_POST['Max_Time']));
 		if($_POST['Max_Time'] == 'inherit' ) $user['Max_Time'] = 'inherit';
 		
-		$user['Group'] = clean_text($_POST['Group']);
-		$user['Expiration'] = expiry_for_group(clean_text($_POST['Group'])); //"${_POST['Expirydate_Year']}-${_POST['Expirydate_Month']}-${_POST['Expirydate_Day']}";
-		$user['Comment'] = clean_text($_POST['Comment']);
+		$user['Group'] = \Grase\Clean::text($_POST['Group']);
+		$user['Expiration'] = expiry_for_group(\Grase\Clean::text($_POST['Group'])); //"${_POST['Expirydate_Year']}-${_POST['Expirydate_Month']}-${_POST['Expirydate_Day']}";
+		$user['Comment'] = \Grase\Clean::text($_POST['Comment']);
 		$templateEngine->assign("user", $user);
 		$templateEngine->assign("error", $error);
 		$templateEngine->displayPage('adduser.tpl');
 	}else
 	{
 	    
-	    $group = clean_text($_POST['Group']);
+	    $group = \Grase\Clean::text($_POST['Group']);
 	    // Load group settings so we can use Expiry, MaxMb and MaxTime
 	    $groupsettings = $Settings->getGroup($group);
 	    
@@ -102,16 +102,16 @@ if(isset($_POST['newusersubmit']))
 
         DatabaseFunctions::getInstance()->createUser( // TODO: Check if valid
 			clean_username($_POST['Username']),
-			clean_text($_POST['Password']),
+			\Grase\Clean::text($_POST['Password']),
 			$MaxMb,
 			$MaxTime,
 			expiry_for_group($group, $groupsettings),
-			clean_text($_POST['Group']),
-			clean_text($_POST['Comment'])
+			\Grase\Clean::text($_POST['Group']),
+			\Grase\Clean::text($_POST['Comment'])
 		);
-		$success[] = sprintf(T_("User %s Successfully Created"),clean_text($_POST['Username']));
-		$success[] = "<a target='_tickets' href='printnewtickets?user=". clean_text($_POST['Username']) ."'>".sprintf(T_("Print Ticket for %s"), clean_text($_POST['Username']))."</a>";		
-		AdminLog::getInstance()->log(sprintf(T_("Created new user %s"),clean_text($_POST['Username'])));
+		$success[] = sprintf(T_("User %s Successfully Created"),\Grase\Clean::text($_POST['Username']));
+		$success[] = "<a target='_tickets' href='printnewtickets?user=". \Grase\Clean::text($_POST['Username']) ."'>".sprintf(T_("Print Ticket for %s"), \Grase\Clean::text($_POST['Username']))."</a>";
+		AdminLog::getInstance()->log(sprintf(T_("Created new user %s"),\Grase\Clean::text($_POST['Username'])));
 		$templateEngine->assign("success", $success);
 		display_adduser_form();
 	}

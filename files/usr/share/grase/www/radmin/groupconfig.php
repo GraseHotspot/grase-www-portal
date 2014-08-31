@@ -62,7 +62,7 @@ if(isset($_POST['submit']))
     foreach($groupnames as $key => $name)
     {
         // There are attributes set but no group name
-        if(clean_text($name) == '')
+        if(\Grase\Clean::text($name) == '')
         {
             if(
                 isset($groupcomment[$key]) ||
@@ -89,7 +89,7 @@ if(isset($_POST['submit']))
             
         }
         // Process expiry's    
-        $groupexpiries[clean_groupname($name)] = $groupexpiry[clean_text($key)];
+        $groupexpiries[clean_groupname($name)] = $groupexpiry[\Grase\Clean::text($key)];
         
         // Validate expiries
         if(isset($groupexpiry[$key]))
@@ -125,20 +125,20 @@ if(isset($_POST['submit']))
 	
 	    if(isset($grouprecurtime[$key]) xor isset($grouprecurtimelimit[$key]))
 	    {
-	        $error[] = sprintf(T_("Need both a time limit and recurrance for '%s'"), clean_text($name));
+	        $error[] = sprintf(T_("Need both a time limit and recurrance for '%s'"), \Grase\Clean::text($name));
 	    }
 	
 	    /*if(isset($grouprecurdata[$key]) xor isset($grouprecurdatalimit[$key]))
 	    {
-	        $error[] = sprintf(T_("Need both a data limit and recurrance for '%s'"), clean_text($name));
+	        $error[] = sprintf(T_("Need both a data limit and recurrance for '%s'"), \Grase\Clean::text($name));
 	    }*/	    
 	
         $groups[clean_groupname($name)] = array_filter(array(
             //'MaxMb' => clean_number($groupdatalimit[$key]),
             //'MaxTime' => clean_int($grouptimelimit[$key]),
-            'DataRecurTime' => clean_text($grouprecurdata[$key]),
+            'DataRecurTime' => \Grase\Clean::text($grouprecurdata[$key]),
             'DataRecurLimit' => clean_number($grouprecurdatalimit[$key]),
-            'TimeRecurTime' => @ clean_text($grouprecurtime[$key]),
+            'TimeRecurTime' => @ \Grase\Clean::text($grouprecurtime[$key]),
             'TimeRecurLimit' => @ clean_int($grouprecurtimelimit[$key]),
             'BandwidthDownLimit' => @ clean_int($groupdownlimit[$key]),
             'BandwidthUpLimit' => @ clean_int($groupuplimit[$key]),
@@ -147,8 +147,8 @@ if(isset($_POST['submit']))
         ));
         $groupsettings[clean_groupname($name)] = array_filter(array(
             'GroupName' => clean_groupname($name),
-            'Comment'   => clean_text($groupcomment[$key]),
-            'GroupLabel' => clean_text($name),
+            'Comment'   => \Grase\Clean::text($groupcomment[$key]),
+            'GroupLabel' => \Grase\Clean::text($name),
             'Expiry'    => @ $groupexpiry[$key],
             'MaxMb'     => @ clean_number($groupdatalimit[$key]),
             'MaxTime'   => @ clean_int($grouptimelimit[$key]),

@@ -33,18 +33,18 @@ $success = array();
 
 if(isset($_POST['submit']))
 {
-        $newlocationname    = clean_text($_POST['locationname']);
-        $newsupportcontact  = clean_text($_POST['supportcontact']);    
-        $newsupportlink     = clean_text($_POST['supportlink']);
+        $newlocationname    = \Grase\Clean::text($_POST['locationname']);
+        $newsupportcontact  = \Grase\Clean::text($_POST['supportcontact']);
+        $newsupportlink     = \Grase\Clean::text($_POST['supportlink']);
 //	$newpricemb         = clean_number($_POST['pricemb']);
 //	$newpricetime       = clean_number($_POST['pricetime']);
 	$newmboptions       = clean_numberarray($_POST['mboptions']);
 	$newtimeoptions     = clean_numberarray($_POST['timeoptions']);
 	$newbwoptions       = clean_numberarray($_POST['bwoptions']);	
-	//$newcurrency        = clean_text($_POST['currency']);
-	$newlocale          = clean_text($_POST['locale']);
-	$newwebsitename     = clean_text($_POST['websitename']);
-	$newwebsitelink     = clean_text($_POST['websitelink']);
+	//$newcurrency        = \Grase\Clean::text($_POST['currency']);
+	$newlocale          = \Grase\Clean::text($_POST['locale']);
+	$newwebsitename     = \Grase\Clean::text($_POST['websitename']);
+	$newwebsitelink     = \Grase\Clean::text($_POST['websitelink']);
 	//$newsellabledata    = clean_number($_POST['sellable_data']);
 	//$newuseabledata     = clean_number($_POST['useable_data']);	    
     // Check for changed items

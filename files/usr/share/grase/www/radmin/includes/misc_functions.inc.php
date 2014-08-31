@@ -335,38 +335,24 @@ function underscorespaces($text)
 function clean_groupname($text)
 {
   // Get the group name in a suitable format
-  return underscorespaces(clean_text($text));
+  return underscorespaces(\Grase\Clean::text($text));
 }
 
 function clean_username($text)
 {
     // Usernames should be stricter than other strings, ' and " just cause problems
-    $text = clean_text($text);
+    $text = \Grase\Clean::text($text);
     $text = str_replace("'", "", $text);
     $text = str_replace('"', "", $text);    
     // Maybe should also strip spaces?
     return $text;
 }
 
-
-function clean_text($text)
-{
-
-	$text = strip_tags($text);
-	$text = str_replace("<", "", $text);
-	$text = str_replace(">", "", $text);
-
-#	$text = htmlspecialchars($text, ENT_NOQUOTES);
-#	$text = mysql_real_escape_string($text);
-
-	return trim($text);
-}
-
 function clean_number($number)
 {
     global $locale;
     $fmt = new NumberFormatter( $locale, NumberFormatter::DECIMAL );
-    $cleannum = $fmt->parse(ereg_replace("[^\.,0-9]", "", clean_text($number)));
+    $cleannum = $fmt->parse(ereg_replace("[^\.,0-9]", "", \Grase\Clean::text($number)));
     return $cleannum;
 }
 
@@ -387,7 +373,7 @@ function clean_int($number)
 {
     if(!is_numeric(clean_number($number))) return clean_number($number);
     return bigintval(clean_number($number));
-    //ereg_replace("[^0-9]", "", clean_text($number));
+    //ereg_replace("[^0-9]", "", \Grase\Clean::text($number));
 }
 
 

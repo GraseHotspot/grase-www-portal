@@ -60,7 +60,7 @@ if(isset($_POST['submit']))
     foreach($vouchernames as $key => $name)
     {
         // There are attributes set but no group name
-        if(clean_text($name) == '')
+        if(\Grase\Clean::text($name) == '')
         {
             if(
                 isset($voucherprice[$key]) ||
@@ -107,12 +107,12 @@ if(isset($_POST['submit']))
 
         $vouchersettings[clean_groupname($name)] = array_filter(array(
             'VoucherName' => clean_groupname($name),
-            'VoucherLabel' => clean_text($name),
+            'VoucherLabel' => \Grase\Clean::text($name),
             'VoucherPrice' => @ clean_number($voucherprice[$key]),
             'VoucherGroup' => $vouchergroup[$key],
             'MaxMb'     => @ clean_number($vouchermaxmb[$key]),
             'MaxTime'   => @ clean_int($vouchermaxtime[$key]),
-            'Description' => @ clean_text($voucherdesc[$key]),
+            'Description' => @ \Grase\Clean::text($voucherdesc[$key]),
             'TopupVoucher' => $vouchertopup[$key] ? TRUE : FALSE,
             'InitVoucher' => $voucherinit[$key] ? TRUE : FALSE,            
             
