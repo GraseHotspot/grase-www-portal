@@ -242,7 +242,7 @@ class Upgrade
     }
 
     // < 1.5
-    private function  defaultNetworkSettings($Settings)
+    private function defaultNetworkSettings($Settings)
     {
         // Load default network settings (match old chilli config)
         $net['lanipaddress'] = '10.1.0.1';
