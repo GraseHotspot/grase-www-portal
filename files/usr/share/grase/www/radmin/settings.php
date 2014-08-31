@@ -117,7 +117,7 @@ load_global_settings(); // Reloads settings
 	$templateEngine->assign("website_name", $website_name);
 	$templateEngine->assign("website_link", $website_link);
 	
-	$templateEngine->assign("available_languages", get_available_languages());
+	$templateEngine->assign("available_languages", \Grase\Locale::getAvailableLanguages());
 	
 if(sizeof($error) > 0) $templateEngine->assign("error", $error);
 if(sizeof($success) > 0) $templateEngine->assign("success", $success);

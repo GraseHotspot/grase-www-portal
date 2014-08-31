@@ -68,4 +68,19 @@ class Locale
     {
         return self::localeNumberFormat($number, TRUE);
     }
+
+    public static function getAvailableLanguages()
+    {
+        $langs = array();
+        //TODO make directory not absolute path?
+        $lang_codes = glob('/usr/share/grase/locale/??', GLOB_ONLYDIR);
+        foreach($lang_codes as $code)
+        {
+            $lang['display'] = \Locale::getDisplayLanguage(basename($code), 'en');
+            $lang['code'] = basename($code);
+            $langs[] = $lang;
+        }
+
+        return $langs;
+    }
 } 
