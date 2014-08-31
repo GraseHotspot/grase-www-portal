@@ -34,22 +34,22 @@ class Formatting
 
         if ($bytes >= $gb)
         {
-            $output = displayLocales(sprintf ("%01.2f",$bytes/$gb)) . " GiB";
+            $output = \Grase\Locale::localeNumberFormat(sprintf ("%01.2f",$bytes/$gb)) . " GiB";
         }elseif ($bytes >= $mb)
         {
-            $output = displayLocales(sprintf ("%01.2f",$bytes/$mb)) . " MiB";
+            $output = \Grase\Locale::localeNumberFormat(sprintf ("%01.2f",$bytes/$mb)) . " MiB";
         }
         elseif ( $bytes >= $kb )
         {
-            $output = displayLocales(sprintf ("%01.0f",$bytes/1024)) . " KiB";
+            $output = \Grase\Locale::localeNumberFormat(sprintf ("%01.0f",$bytes/1024)) . " KiB";
         }
         elseif ($bytes == 1 )
         {
-            $output = displayLocales($bytes) . " B";        
+            $output = \Grase\Locale::localeNumberFormat($bytes) . " B";
         }
         else
         {
-            $output = displayLocales($bytes) . " B";
+            $output = \Grase\Locale::localeNumberFormat($bytes) . " B";
         }
      
         return $output;
@@ -67,22 +67,22 @@ class Formatting
 
         if ($bits >= $gb)
         {
-            $output = displayLocales(sprintf ("%01.2f",$bits/$gb)) . " Gibit/s";
+            $output = \Grase\Locale::localeNumberFormat(sprintf ("%01.2f",$bits/$gb)) . " Gibit/s";
         }elseif ($bits >= $mb)
         {
-            $output = displayLocales(sprintf ("%01.2f",$bits/$mb)) . " Mibit/s";
+            $output = \Grase\Locale::localeNumberFormat(sprintf ("%01.2f",$bits/$mb)) . " Mibit/s";
         }
         elseif ( $bits >= $kb )
         {
-            $output = displayLocales(sprintf ("%01.0f",$bits/1024)) . " Kibit/s";
+            $output = \Grase\Locale::localeNumberFormat(sprintf ("%01.0f",$bits/1024)) . " Kibit/s";
         }
         elseif ($bits == 1 )
         {
-            $output = displayLocales($bits) . " bit/s";        
+            $output = \Grase\Locale::localeNumberFormat($bits) . " bit/s";
         }
         else
         {
-            $output = displayLocales($bits) . " bit/s";
+            $output = \Grase\Locale::localeNumberFormat($bits) . " bit/s";
         }
      
         return $output;

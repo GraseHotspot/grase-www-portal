@@ -49,8 +49,8 @@ class Page
         //$this->te->registerPlugin('modifier', 'bytes', array("Formatting", "formatBytes"));
         $this->te->register_modifier('bytes', array("Formatting", "formatBytes"));
         $this->te->register_modifier('seconds', array("Formatting", "formatSec"));
-        $this->te->register_modifier('displayLocales', 'displayLocales');
-        $this->te->register_modifier('displayMoneyLocales', 'displayMoneyLocales');
+        $this->te->register_modifier('displayLocales', array('\Grase\Locale', 'localeNumberFormat'));
+        $this->te->register_modifier('displayMoneyLocales', array('\Grase\Locale', 'localeMoneyFormat'));
         $this->te->register_function('inputtype', 'input_type');
         $this->te->register_modifier("sortby", "smarty_modifier_sortby");
 

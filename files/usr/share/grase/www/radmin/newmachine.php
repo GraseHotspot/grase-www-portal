@@ -54,10 +54,10 @@ if(isset($_POST['newmachinesubmit']))
 	$error = validate_form();
 	if($error ){
 		$user['mac'] = clean_text($_POST['mac']);
-		$user['MaxMb'] = displayLocales(clean_number($_POST['MaxMb']));
-		$user['Max_Mb'] = displayLocales(clean_number($_POST['Max_Mb']));		
-		$user['MaxTime'] = displayLocales(clean_int($_POST['MaxTime']));
-		$user['Max_Time'] = displayLocales(clean_int($_POST['Max_Time']));	
+		$user['MaxMb'] = \Grase\Locale::localeNumberFormat(clean_number($_POST['MaxMb']));
+		$user['Max_Mb'] = \Grase\Locale::localeNumberFormat(clean_number($_POST['Max_Mb']));
+		$user['MaxTime'] = \Grase\Locale::localeNumberFormat(clean_int($_POST['MaxTime']));
+		$user['Max_Time'] = \Grase\Locale::localeNumberFormat(clean_int($_POST['Max_Time']));
 		$user['Comment'] = clean_text($_POST['Comment']);
 		$templateEngine->assign("machine", $user);
 		$templateEngine->assign("error", $error);

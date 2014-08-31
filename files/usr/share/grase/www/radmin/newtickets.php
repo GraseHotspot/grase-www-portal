@@ -138,12 +138,12 @@ if(isset($_POST['createticketssubmit']))
 		//$user['Username'] = clean_text($_POST['Username']);
 		//$user['Password'] = clean_text($_POST['Password']);
         $user['numberoftickets'] = clean_int($_POST['numberoftickets'] );    		
-		$user['MaxMb'] = displayLocales(clean_number($_POST['MaxMb']));
-		$user['Max_Mb'] = displayLocales(clean_number($_POST['Max_Mb']));
+		$user['MaxMb'] = \Grase\Locale::localeNumberFormat(clean_number($_POST['MaxMb']));
+		$user['Max_Mb'] = \Grase\Locale::localeNumberFormat(clean_number($_POST['Max_Mb']));
 		if($_POST['Max_Mb'] == 'inherit' ) $user['Max_Mb'] = 'inherit';
 				
-		$user['MaxTime'] = displayLocales(clean_int($_POST['MaxTime']));
-		$user['Max_Time'] = displayLocales(clean_int($_POST['Max_Time']));	
+		$user['MaxTime'] = \Grase\Locale::localeNumberFormat(clean_int($_POST['MaxTime']));
+		$user['Max_Time'] = \Grase\Locale::localeNumberFormat(clean_int($_POST['Max_Time']));
 		if($_POST['Max_Time'] == 'inherit' ) $user['Max_Time'] = 'inherit';
 		
 		$user['Group'] = clean_text($_POST['Group']);

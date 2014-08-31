@@ -406,32 +406,6 @@ if(!function_exists('bigintval')) {
     }
 }
 
-
-
-
-
-function displayMoneyLocales($number)
-{
-        return displayLocales($number, TRUE);
-}
-
-function displayLocales($number, $isMoney=FALSE, $lg='') {
-    global $locale;
-    if ( $lg == '') $lg = $locale;
-
-    if ( $number == '' ) return $number;
-
-    if($isMoney)
-    {
-        $fmt = new NumberFormatter( $lg, NumberFormatter::CURRENCY );
-        return $fmt->format($number);    
-    }else
-    {
-        $fmt = new NumberFormatter( $lg, NumberFormatter::DECIMAL );
-        return $fmt->format($number);    
-    }
-}
-
 function get_available_languages()
 {
     $langs = array();

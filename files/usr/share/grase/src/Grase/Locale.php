@@ -47,4 +47,25 @@ class Locale
         T_bind_textdomain_codeset("grase", "UTF-8");
         T_textdomain("grase");
     }
+
+    public static function localeNumberFormat($number, $isMoney=FALSE, $lg='') {
+        if ( $lg == '') $lg = self::$locale;
+
+        if ( $number == '' ) return $number;
+
+        if($isMoney)
+        {
+            $fmt = new \NumberFormatter( $lg, \NumberFormatter::CURRENCY );
+            return $fmt->format($number);
+        }else
+        {
+            $fmt = new \NumberFormatter( $lg, \NumberFormatter::DECIMAL );
+            return $fmt->format($number);
+        }
+    }
+
+    public static function localeMoneyFormat($number)
+    {
+        return self::localeNumberFormat($number, TRUE);
+    }
 } 
