@@ -13,4 +13,6 @@ class Clean {
         $text = str_replace(">", "", $text);
         return trim($text);
     }
+
+
 } 

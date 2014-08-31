@@ -372,24 +372,8 @@ function clean_numberarray($numberarray)
 function clean_int($number)
 {
     if(!is_numeric(clean_number($number))) return clean_number($number);
-    return bigintval(clean_number($number));
+    return \Grase\Util::bigIntVal(clean_number($number));
     //ereg_replace("[^0-9]", "", \Grase\Clean::text($number));
-}
-
-
-if(!function_exists('bigintval')) {
-    // bigintval taken from http://stackoverflow.com/questions/990406/php-intval-equivalent-for-numbers-2147483647
-    function bigintval($value) {
-      $value = trim($value);
-      if (ctype_digit($value)) {
-        return $value;
-      }
-      $value = preg_replace("/[^0-9](.*)$/", '', $value);
-      if (ctype_digit($value)) {
-        return $value;
-      }
-      return 0;
-    }
 }
 
 ?>

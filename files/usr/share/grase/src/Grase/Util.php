@@ -231,4 +231,17 @@ class Util
                 return T_('Unknown upload error');
         }
     }
+
+    // bigintval taken from http://stackoverflow.com/questions/990406/php-intval-equivalent-for-numbers-2147483647
+    public static function bigIntVal($value) {
+        $value = trim($value);
+        if (ctype_digit($value)) {
+            return $value;
+        }
+        $value = preg_replace("/[^0-9](.*)$/", '', $value);
+        if (ctype_digit($value)) {
+            return $value;
+        }
+        return 0;
+    }
 }

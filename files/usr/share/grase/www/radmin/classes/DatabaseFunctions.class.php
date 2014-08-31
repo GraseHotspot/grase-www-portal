@@ -20,24 +20,6 @@
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-/* To prevent us needing to include misc_functions, we redefine bigintval
-require_once 'includes/misc_functions.inc.php';
-*/
-if(!function_exists('bigintval')) {
-    // bigintval taken from http://stackoverflow.com/questions/990406/php-intval-equivalent-for-numbers-2147483647
-    function bigintval($value) {
-      $value = trim($value);
-      if (ctype_digit($value)) {
-        return $value;
-      }
-      $value = preg_replace("/[^0-9](.*)$/", '', $value);
-      if (ctype_digit($value)) {
-        return $value;
-      }
-      return 0;
-    }
-}
-
 class DatabaseFunctions
 {
 
@@ -1029,7 +1011,7 @@ class DatabaseFunctions
         
         if(isset($attributes['DataRecurLimit']))
         {
-            $attributes[$attributes['DataRecurTime'].'Data'] = bigintval($attributes['DataRecurLimit'] * 1024 * 1024);
+            $attributes[$attributes['DataRecurTime'].'Data'] = \Grase\Util::bigIntVal($attributes['DataRecurLimit'] * 1024 * 1024);
             unset($attributes['DataRecurLimit']);
             unset($attributes['DataRecurTime']);
         }  
@@ -1043,7 +1025,7 @@ class DatabaseFunctions
         
         if(isset($attributes['MaxMb']))
         {
-            $attributes['MaxOctets'] = bigintval($attributes['MaxMb'] * 1024 * 1024);
+            $attributes['MaxOctets'] = \Grase\Util::bigIntVal($attributes['MaxMb'] * 1024 * 1024);
             unset($attributes['MaxMb']);
         }
         
@@ -1289,7 +1271,7 @@ class DatabaseFunctions
             'Username'  => array ( 'value' => $username,    'key' => true),
             'Attribute' => array ( 'value' => 'Max-Octets',  'key' => true),
             'op'        => array ( 'value' => ':=' ),
-            'Value'     => array ( 'value' => bigintval($datalimitoctets))
+            'Value'     => array ( 'value' => \Grase\Util::bigIntVal($datalimitoctets))
             );   
         
         $result = $this->db->replace('radcheck', $fields);

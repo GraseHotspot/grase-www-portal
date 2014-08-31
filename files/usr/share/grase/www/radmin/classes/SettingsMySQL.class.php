@@ -541,7 +541,7 @@ class SettingsMySQL extends Settings
     
         if(isset($attributes['MaxMb']))
         {
-            $attributes['MaxOctets'] = bigintval($attributes['MaxMb'] * 1024 * 1024);
+            $attributes['MaxOctets'] = \Grase\Util::bigIntVal($attributes['MaxMb'] * 1024 * 1024);
             unset($attributes['MaxMb']);
         }
         
@@ -599,7 +599,7 @@ class SettingsMySQL extends Settings
     
         if(isset($attributes['MaxMb']))
         {
-            $attributes['MaxOctets'] = bigintval($attributes['MaxMb'] * 1024 * 1024);
+            $attributes['MaxOctets'] = \Grase\Util::bigIntVal($attributes['MaxMb'] * 1024 * 1024);
             unset($attributes['MaxMb']);
         }
         
