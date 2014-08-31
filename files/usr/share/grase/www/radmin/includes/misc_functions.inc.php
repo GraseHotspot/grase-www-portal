@@ -338,16 +338,6 @@ function clean_groupname($text)
   return underscorespaces(\Grase\Clean::text($text));
 }
 
-function clean_username($text)
-{
-    // Usernames should be stricter than other strings, ' and " just cause problems
-    $text = \Grase\Clean::text($text);
-    $text = str_replace("'", "", $text);
-    $text = str_replace('"', "", $text);    
-    // Maybe should also strip spaces?
-    return $text;
-}
-
 function clean_number($number)
 {
     global $locale;

@@ -30,7 +30,7 @@ function validate_form()
 {
 	global $expirydate;
 	$error = array();
-	$username = clean_username($_POST['Username']);
+	$username = \Grase\Clean::username($_POST['Username']);
 	if(! DatabaseFunctions::getInstance()->checkUniqueUsername($username)) $error[] = T_("Username already taken");
 	if ( ! $_POST['Username'] || !$_POST['Password'] ) $error[] = T_("Username and Password are both Required");
 	
@@ -59,7 +59,7 @@ if(isset($_POST['newusersubmit']))
 {
 	$error=validate_form();
 	if($error ){
-		$user['Username'] = clean_username($_POST['Username']);
+		$user['Username'] = \Grase\Clean::username($_POST['Username']);
 		$user['Password'] = \Grase\Clean::text($_POST['Password']);
 		
 		$user['MaxMb'] = \Grase\Locale::localeNumberFormat(clean_number($_POST['MaxMb']));
@@ -101,7 +101,7 @@ if(isset($_POST['newusersubmit']))
 
 
         DatabaseFunctions::getInstance()->createUser( // TODO: Check if valid
-			clean_username($_POST['Username']),
+			\Grase\Clean::username($_POST['Username']),
 			\Grase\Clean::text($_POST['Password']),
 			$MaxMb,
 			$MaxTime,
