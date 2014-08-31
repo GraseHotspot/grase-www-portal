@@ -24,9 +24,16 @@ $NONINTERACTIVE_SCRIPT = true;
 require_once('includes/constants.inc.php');
 require_once('includes/misc_functions.inc.php');
 
-function __autoload($class_name) {
-    require_once './classes/' . $class_name . '.class.php';
+require_once __DIR__.'/../../vendor/autoload.php';
+
+function grase_autoload($class_name) {
+    if( file_exists(__DIR__. '/classes/' . $class_name . '.class.php'))
+    {
+        include_once __DIR__. '/classes/' . $class_name . '.class.php';
+    }
 }
+
+spl_autoload_register('grase_autoload');
 
 // Special case for stale sessions, don't log it
 /*if(isset($_GET['clearstalesessions']))
@@ -39,9 +46,12 @@ AdminLog::getInstance()->log_cron("CRON");
 
 //$Settings = new SettingsMySQL(DatabaseConnections::getInstance()->getRadminDB());
 //$dbversion = $Settings->getSetting("DBVersion");
-
-$upgradedb = CronFunctions::getInstance()->upgradeDB();
-if($upgradedb) echo "$upgradedb\n";
+$DBs =& DatabaseConnections::getInstance();
+$radiusDB = new \Grase\Database\Database();
+$radminDB = new \Grase\Database\Database('/etc/grase/radmin.conf');
+$upgradeDB = new \Grase\Database\Upgrade($radiusDB, $radminDB, CronFunctions::getInstance());
+$upgradedbresults = $upgradeDB->upgradeDatabase(new SettingsMySQL($DBs->getRadminDB()));
+if($upgradedbresults) echo "$upgradedbresults\n";
 
 $stalesessions = CronFunctions::getInstance()->clearStaleSessions();
 if($stalesessions) echo "$stalesessions\n";

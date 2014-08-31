@@ -62,7 +62,6 @@ class DatabaseConnections
 
     private function loadSettingsFromFile($dbSettingsFile)
     {
-
         // Check that databaseSettingsFile is valid
         if (!is_readable($dbSettingsFile))
         {
@@ -77,31 +76,12 @@ class DatabaseConnections
         {
             list($key, $value) = explode(":", $setting);
             $db_settings[$key] = trim($value);
-//            $this->databaseSettings[$key] = trim($value);
         }
-//        $db_settings = $this->databaseSettings;        
         return $db_settings;
     }
         
     private function connectDatabase()
     {
-    
-#        // Check that databaseSettingsFile is valid
-#        if (!is_file($this->databaseSettingsFile))
-#        {
-#            \Grase\ErrorHandling::fatal_nodb_error('DB Config File(' . $this->databaseSettingsFile . ') isn\'t a valid file.');
-#        }
-#    
-#        // Connecting, selecting database
-#        $settings = file($this->databaseSettingsFile);
-
-#        foreach($settings as $setting) 
-#        {
-#            list($key, $value) = split(":", $setting);
-#            $this->databaseSettings[$key] = trim($value);
-#        }
-#        $db_settings = $this->databaseSettings;
-
         $this->radminDatabaseSettings = $this->loadSettingsFromFile($this->radminDatabaseSettingsFile);
         $this->radiusDatabaseSettings = $this->loadSettingsFromFile($this->radiusDatabaseSettingsFile);
         
