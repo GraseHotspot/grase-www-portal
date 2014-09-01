@@ -38,7 +38,7 @@ load_global_settings();
 
 function load_global_settings()
 {
-    global $Settings, $location, $pricemb, $pricetime, $currency, $sellable_data;
+    global $NewSettings, $location, $pricemb, $pricetime, $currency, $sellable_data;
     global $useable_data, $support_name, $support_link, $website_link;
     global $website_name, $locale, $mb_options, $time_options, $kbit_options, $DEMO_SITE;
     
