@@ -164,14 +164,14 @@ if(isset($_POST['submit']))
         //$NewSettings->setSetting("groups", serialize($groupexpiries));
         foreach($groupsettings as $attributes)
         {
-            $Settings->setGroup($attributes);
+            $NewSettings->setGroup($attributes);
         }
         
         // Delete groups no longer referenced
-        foreach($Settings->getGroup() as $oldgroup => $oldgroupsettings)
+        foreach($NewSettings->getGroup() as $oldgroup => $oldgroupsettings)
         {
             if(!isset($groupsettings[$oldgroup]))
-                $Settings->deleteGroup($oldgroup);
+                $NewSettings->deleteGroup($oldgroup);
         }
         
         // Delete groups from radgroupreply not in groupexpiries...

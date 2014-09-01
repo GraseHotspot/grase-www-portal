@@ -50,7 +50,7 @@ $DBs =& DatabaseConnections::getInstance();
 $radiusDB = new \Grase\Database\Database();
 $radminDB = new \Grase\Database\Database('/etc/grase/radmin.conf');
 $upgradeDB = new \Grase\Database\Upgrade($radiusDB, $radminDB, CronFunctions::getInstance());
-$upgradedbresults = $upgradeDB->upgradeDatabase(new SettingsMySQL($DBs->getRadminDB()));
+$upgradedbresults = $upgradeDB->upgradeDatabase(new Radmin($radminDB));
 if($upgradedbresults) echo "$upgradedbresults\n";
 
 $stalesessions = CronFunctions::getInstance()->clearStaleSessions();

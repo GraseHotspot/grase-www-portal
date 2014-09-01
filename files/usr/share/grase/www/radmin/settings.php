@@ -126,7 +126,7 @@ if(sizeof($success) > 0) $templateEngine->assign("success", $success);
 
 function update_location($location)
 {
-    global $error, $templateEngine, $Settings, $success;
+    global $error, $templateEngine, $NewSettings, $success;
     if($location == "") $error[] = T_("Location name not valid");
     else {
 	    if($NewSettings->setSetting('locationName', $location))
@@ -145,7 +145,7 @@ function update_location($location)
 // Website
 function update_websitename($websitename)
 {
-    global $error, $templateEngine, $Settings, $success;
+    global $error, $templateEngine, $NewSettings, $success;
     if($websitename == "") $error[] = T_("Website name not valid");    
     else
     {
@@ -163,7 +163,7 @@ function update_websitename($websitename)
 
 function update_websitelink($websitelink)
 {
-    global $error, $templateEngine, $Settings, $success;
+    global $error, $templateEngine, $NewSettings, $success;
     if($websitelink == "" || strpos($websitelink, ' ') !== false) $error[] = T_("Website link not valid");    
     else
     {
@@ -184,7 +184,7 @@ function update_websitelink($websitelink)
 /*
 function update_pricemb($pricemb)
 {
-    global $error, $smarty, $Settings, $success;
+    global $error, $smarty, $NewSettings, $success;
 	if($pricemb != "" && is_numeric($pricemb))
 	{
 		if($NewSettings->setSetting('priceMb', $pricemb))
@@ -205,7 +205,7 @@ function update_pricemb($pricemb)
 
 function update_pricetime($pricetime)
 {
-    global $error, $smarty, $Settings, $success;
+    global $error, $smarty, $NewSettings, $success;
 	if($pricetime != "" && is_numeric($pricetime))
 	{
 		if($NewSettings->setSetting('priceMinute', $pricetime))
@@ -227,7 +227,7 @@ function update_pricetime($pricetime)
 
 function update_locale($locale)
 {
-	global $error, $templateEngine, $Settings, $success;
+	global $error, $templateEngine, $NewSettings, $success;
 
 	//$locale = locale_accept_from_http($locale);
 	$newlocale = Locale::parseLocale($locale);
@@ -262,7 +262,7 @@ function update_locale($locale)
 // Support Contact
 function update_supportcontact($supportname)
 {
-    global $error, $templateEngine, $Settings, $success;
+    global $error, $templateEngine, $NewSettings, $success;
     if($supportname == "") $error[] = T_("Support name not valid");    
     else
     {
@@ -280,7 +280,7 @@ function update_supportcontact($supportname)
 
 function update_supportlink($supportlink)
 {
-    global $error, $templateEngine, $Settings, $success;
+    global $error, $templateEngine, $NewSettings, $success;
     if($supportlink == "" || strpos($supportlink, ' ') !== false) $error[] = T_("Support link not valid");    
     else
     {

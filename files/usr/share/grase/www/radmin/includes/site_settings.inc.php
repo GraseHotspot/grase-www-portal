@@ -26,12 +26,7 @@ $Radmin = new \Grase\Database\Database('/etc/grase/radmin.conf');
 $NewSettings = new \Grase\Database\Radmin($Radmin);
 
 /**** Site Settings ****/
-$Settings = new SettingsMySQL($DBs->getRadminDB());
-
-if($NewSettings->getSetting('locationName') == "") // Assume old settings and need to upgrade
-{
-    $Settings->upgradeFromFiles();    
-}
+$Settings = $NewSettings;
 
 load_global_settings();
 

@@ -239,7 +239,7 @@ if(isset($_POST['createticketssubmit']))
 
 function display_adduser_form()
 {
-	global $templateEngine, $Settings;
+	global $templateEngine, $Settings, $NewSettings;
 //    $user['Username'] = \Grase\Util::RandomUsername(5);
 	$user['Password'] = \Grase\Util::randomPassword(6);
 	
