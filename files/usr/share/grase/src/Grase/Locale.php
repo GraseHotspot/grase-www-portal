@@ -19,12 +19,15 @@
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-// This Locale stuff doesn't need any DB, so we can call it from anywhere and just apply the locale we want without DB calls!
 
 namespace Grase;
 
 // Probably not needed, but just to be sure for now we'll require the gettext.inc
 require_once('php-gettext/gettext.inc');
+
+/* This Locale stuff doesn't need any DB, so we can call it from anywhere and
+ * just apply the locale we want without DB calls!
+ */
 
 class Locale
 {
@@ -48,25 +51,31 @@ class Locale
         T_textdomain("grase");
     }
 
-    public static function localeNumberFormat($number, $isMoney=FALSE, $lg='') {
-        if ( $lg == '') $lg = self::$locale;
+    public static function localeNumberFormat(
+        $number,
+        $isMoney = false,
+        $lg = ''
+    ) {
+        if ($lg == '') {
+            $lg = self::$locale;
+        }
 
-        if ( $number == '' ) return $number;
+        if ($number == '') {
+            return $number;
+        }
 
-        if($isMoney)
-        {
-            $fmt = new \NumberFormatter( $lg, \NumberFormatter::CURRENCY );
+        if ($isMoney) {
+            $fmt = new \NumberFormatter($lg, \NumberFormatter::CURRENCY);
             return $fmt->format($number);
-        }else
-        {
-            $fmt = new \NumberFormatter( $lg, \NumberFormatter::DECIMAL );
+        } else {
+            $fmt = new \NumberFormatter($lg, \NumberFormatter::DECIMAL);
             return $fmt->format($number);
         }
     }
 
     public static function localeMoneyFormat($number)
     {
-        return self::localeNumberFormat($number, TRUE);
+        return self::localeNumberFormat($number, true);
     }
 
     public static function getAvailableLanguages()
@@ -74,13 +83,15 @@ class Locale
         $langs = array();
         //TODO make directory not absolute path?
         $lang_codes = glob('/usr/share/grase/locale/??', GLOB_ONLYDIR);
-        foreach($lang_codes as $code)
-        {
-            $lang['display'] = \Locale::getDisplayLanguage(basename($code), 'en');
+        foreach ($lang_codes as $code) {
+            $lang['display'] = \Locale::getDisplayLanguage(
+                basename($code),
+                'en'
+            );
             $lang['code'] = basename($code);
             $langs[] = $lang;
         }
 
         return $langs;
     }
-} 
+}
