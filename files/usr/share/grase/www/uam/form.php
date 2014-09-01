@@ -2,7 +2,7 @@
 header("Content-Type: text/javascript; charset=utf-8");
 
 require_once('includes/site.inc.php');
-if($Settings->getSetting('autocreategroup'))
+if($NewSettings->getSetting('autocreategroup'))
 {
     $templateEngine->assign('automac', true);
 }

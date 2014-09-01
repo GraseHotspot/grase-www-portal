@@ -29,9 +29,9 @@ function __autoload($class_name) {
 
 $NONINTERACTIVE_SCRIPT = TRUE;
 
-    $networkoptions = unserialize($Settings->getSetting('networkoptions'));
+    $networkoptions = unserialize($NewSettings->getSetting('networkoptions'));
     
-    $lastchangets = $Settings->getSetting('lastnetworkconf');
+    $lastchangets = $NewSettings->getSetting('lastnetworkconf');
 
 //print_r($networkoptions);
 

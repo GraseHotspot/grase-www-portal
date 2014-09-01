@@ -178,7 +178,7 @@ if(isset($_POST['createticketssubmit']))
         // We create the batch first, then add users to it (prevents us having unattached users if the batch dies for some reason)
 		$batchID = $Settings->nextBatchID();
 		$Settings->saveBatch($batchID, array(), $Auth->getUsername(), \Grase\Clean::text($_POST['Comment']));
-		$Settings->setSetting('lastbatch', $batchID);
+		$NewSettings->setSetting('lastbatch', $batchID);
 
 		$failedusers= 0;
 		for($i = 0; $i < $user['numberoftickets']; $i++)
@@ -251,7 +251,7 @@ function display_adduser_form()
 	$user['Expiration'] = "--";//date('Y-m-d', strtotime('+3 month'));
 	$templateEngine->assign("user", $user);
 	
-    $templateEngine->assign("last_batch", $Settings->getSetting('lastbatch'));
+    $templateEngine->assign("last_batch", $NewSettings->getSetting('lastbatch'));
     $templateEngine->assign("listbatches", $Settings->listBatches());
     
 	$templateEngine->displayPage('newtickets.tpl');

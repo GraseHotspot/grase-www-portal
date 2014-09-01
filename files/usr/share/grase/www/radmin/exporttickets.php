@@ -42,7 +42,7 @@ if(isset($_GET['batch']))
     $title = sprintf(T_('Batch_%s_details'), implode('-', $batches));	
 }else //TODO remove the lastbatch part?
 {
-        $batch = $Settings->getSetting('lastbatch');
+        $batch = $NewSettings->getSetting('lastbatch');
 	$users = DatabaseFunctions::getInstance()->getMultipleUsersDetails($Settings->getBatch($batch) );
 	if(!is_array($users)) $users = array();
 	$title = sprintf(T_('Batch_%s_details'), $batch);

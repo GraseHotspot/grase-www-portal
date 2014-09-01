@@ -47,7 +47,7 @@ if(isset($_GET['user']))
     $title = sprintf(T_('Batch %s Vouchers'), implode('-', $batches));	
 }else
 {
-    $batch = $Settings->getSetting('lastbatch');
+    $batch = $NewSettings->getSetting('lastbatch');
 	$users = DatabaseFunctions::getInstance()->getMultipleUsersDetails($Settings->getBatch($batch) );
 	if(!is_array($users)) $users = array();
 	$title = sprintf(T_('Batch %s Vouchers'), $batch);
@@ -83,13 +83,13 @@ function generate_pdf($users, $title)
 {
     global $Settings;
     /* The following will work in the future */
-    //$ssid = $Settings->getSetting('printSSID');
-    //$print_group = $Settings->getSetting('printGroup');
+    //$ssid = $NewSettings->getSetting('printSSID');
+    //$print_group = $NewSettings->getSetting('printGroup');
     
     $groupsettings = grouplist();
     
     // These settings are temporarily in network settings
-    $networksettings = unserialize($Settings->getSetting('networkoptions'));
+    $networksettings = unserialize($NewSettings->getSetting('networkoptions'));
     $ssid = $networksettings['printSSID'];
     $print_group = $networksettings['printGroup'];
     $print_expiry = $networksettings['printExpiry'];

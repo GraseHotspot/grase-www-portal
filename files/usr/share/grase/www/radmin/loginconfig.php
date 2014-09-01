@@ -142,7 +142,7 @@ if(isset($_POST['submit']))
         if($postvalue != $attributes['value'])
         {
             // Update options in database
-            $Settings->setSetting($singleoption, $postvalue);
+            $NewSettings->setSetting($singleoption, $postvalue);
 
             $success[] = sprintf(
                 T_("%s login config option update"),
@@ -210,7 +210,7 @@ function load_loginoptions()
     foreach($singleloginoptions as $singleoption => $attributes)
     {
         $singleloginoptions[$singleoption]['value'] = 
-            $Settings->getSetting($singleoption);
+            $NewSettings->getSetting($singleoption);
     }
     
     // Load all templates

@@ -55,21 +55,21 @@ $smarty->assign("Support", array("link" => $support_link, "name" => $support_nam
 $smarty->assign("website_name", $website_name);
 $smarty->assign("website_link", $website_link);
 
-$networkoptions = unserialize($Settings->getSetting("networkoptions"));
+$networkoptions = unserialize($NewSettings->getSetting("networkoptions"));
 $lanip = $networkoptions['lanipaddress'];
 $smarty->assign("serverip", $lanip);
 
 
 // Load login page settings from db and use defaults
-/*$smarty->assign("hidefooter", $Settings->getSetting('hidefooter') == 'TRUE' ? TRUE : FALSE);
-$smarty->assign("hideheader", $Settings->getSetting('hideheader') == 'TRUE' ? TRUE : FALSE);
-$smarty->assign("disableallcss", $Settings->getSetting('disableallcss') == 'TRUE' ? TRUE : FALSE);
-$smarty->assign("hidehelplink", $Settings->getSetting('hidehelplink') == 'TRUE' ? TRUE : FALSE);
-$smarty->assign("hidelogoutbookmark", $Settings->getSetting('hidelogoutbookmark') == 'TRUE' ? TRUE : FALSE);*/
+/*$smarty->assign("hidefooter", $NewSettings->getSetting('hidefooter') == 'TRUE' ? TRUE : FALSE);
+$smarty->assign("hideheader", $NewSettings->getSetting('hideheader') == 'TRUE' ? TRUE : FALSE);
+$smarty->assign("disableallcss", $NewSettings->getSetting('disableallcss') == 'TRUE' ? TRUE : FALSE);
+$smarty->assign("hidehelplink", $NewSettings->getSetting('hidehelplink') == 'TRUE' ? TRUE : FALSE);
+$smarty->assign("hidelogoutbookmark", $NewSettings->getSetting('hidelogoutbookmark') == 'TRUE' ? TRUE : FALSE);*/
 
 custom_settings(array('hidefooter', 'hideheader', 'disableallcss', 'hidehelplink', 'hidelogoutbookmark'));
 
-$logintitle = $Settings->getSetting('logintitle');
+$logintitle = $NewSettings->getSetting('logintitle');
 if($logintitle == '') $logintitle = "$location Hotspot";
 $smarty->assign("logintitle", $logintitle);
 
@@ -90,7 +90,7 @@ function custom_settings($settings = array())
     global $templateEngine, $Settings;
     foreach($settings as $setting)
     {
-        $templateEngine->assign($setting, $Settings->getSetting($setting) == 'TRUE' ? TRUE : FALSE);
+        $templateEngine->assign($setting, $NewSettings->getSetting($setting) == 'TRUE' ? TRUE : FALSE);
     }
 }
 

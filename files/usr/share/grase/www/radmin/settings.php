@@ -70,19 +70,19 @@ if(isset($_POST['submit']))
     
     if($new2timeoptions != $time_options)
     {
-        $Settings->setSetting('timeOptions', $new2timeoptions);
+        $NewSettings->setSetting('timeOptions', $new2timeoptions);
         $success[] = T_("Time Options Updated");
     }
     
     if($new2mboptions != $mb_options)
     {
-        $Settings->setSetting('mbOptions', $new2mboptions);
+        $NewSettings->setSetting('mbOptions', $new2mboptions);
         $success[] = T_("Data Options Updated");
     }
     
     if($new2bwoptions != $kbit_options)
     {
-        $Settings->setSetting('kbitOptions', $new2bwoptions);
+        $NewSettings->setSetting('kbitOptions', $new2bwoptions);
         $success[] = T_("Bandwidth Options Updated");
     }
 
@@ -129,7 +129,7 @@ function update_location($location)
     global $error, $templateEngine, $Settings, $success;
     if($location == "") $error[] = T_("Location name not valid");
     else {
-	    if($Settings->setSetting('locationName', $location))
+	    if($NewSettings->setSetting('locationName', $location))
 	    {
 		    $success[] = T_("Location name updated");
 		    AdminLog::getInstance()->log(T_("Location Name changed to")." $location");
@@ -149,7 +149,7 @@ function update_websitename($websitename)
     if($websitename == "") $error[] = T_("Website name not valid");    
     else
     {
-        if($Settings->setSetting('websiteName', $websitename))
+        if($NewSettings->setSetting('websiteName', $websitename))
         {
             $success[] = T_("Website name updated");
 			AdminLog::getInstance()->log(T_("Website name updated"));        
@@ -167,7 +167,7 @@ function update_websitelink($websitelink)
     if($websitelink == "" || strpos($websitelink, ' ') !== false) $error[] = T_("Website link not valid");    
     else
     {
-        if($Settings->setSetting('websiteLink', $websitelink))
+        if($NewSettings->setSetting('websiteLink', $websitelink))
         {
             $success[] = T_("Website link updated");
 			AdminLog::getInstance()->log(T_("Website link updated"));        
@@ -187,7 +187,7 @@ function update_pricemb($pricemb)
     global $error, $smarty, $Settings, $success;
 	if($pricemb != "" && is_numeric($pricemb))
 	{
-		if($Settings->setSetting('priceMb', $pricemb))
+		if($NewSettings->setSetting('priceMb', $pricemb))
 		{
 			$success[] = T_("Price per MiB updated");
 			AdminLog::getInstance()->log(T_("Price per MiB updated"));
@@ -208,7 +208,7 @@ function update_pricetime($pricetime)
     global $error, $smarty, $Settings, $success;
 	if($pricetime != "" && is_numeric($pricetime))
 	{
-		if($Settings->setSetting('priceMinute', $pricetime))
+		if($NewSettings->setSetting('priceMinute', $pricetime))
 		{
 			$success[] = T_("Price per Minute Updated");
 			AdminLog::getInstance()->log(T_("Price per Minute Updated"));
@@ -236,7 +236,7 @@ function update_locale($locale)
 	if(isset($newlocale['language']))
 	{
 		$locale = Locale::composeLocale($newlocale);
-		if($Settings->setSetting('locale', $locale))
+		if($NewSettings->setSetting('locale', $locale))
 		{
 			// Apply new locale so language displays correctly from now on
 			\Grase\Locale::applyLocale($locale);
@@ -266,7 +266,7 @@ function update_supportcontact($supportname)
     if($supportname == "") $error[] = T_("Support name not valid");    
     else
     {
-        if($Settings->setSetting('supportContactName', $supportname))
+        if($NewSettings->setSetting('supportContactName', $supportname))
         {
             $success[] = T_("Support name updated");
 			AdminLog::getInstance()->log(T_("Support name updated"));        
@@ -284,7 +284,7 @@ function update_supportlink($supportlink)
     if($supportlink == "" || strpos($supportlink, ' ') !== false) $error[] = T_("Support link not valid");    
     else
     {
-        if($Settings->setSetting('supportContactLink', $supportlink))
+        if($NewSettings->setSetting('supportContactLink', $supportlink))
         {
             $success[] = T_("Support link updated");
 			AdminLog::getInstance()->log(T_("Support link updated"));        

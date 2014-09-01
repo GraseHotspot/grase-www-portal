@@ -43,8 +43,8 @@ function automacuser($json = false)
 
     // Attempt to create user
     //
-    $autocreategroup = $Settings->getSetting('autocreategroup');
-    $autocreatepassword = $Settings->getSetting('autocreatepassword');
+    $autocreategroup = $NewSettings->getSetting('autocreategroup');
+    $autocreatepassword = $NewSettings->getSetting('autocreatepassword');
 
     if($autocreategroup && strlen($autousername) > 0)
     {

@@ -124,7 +124,7 @@ if(isset($_POST['submit']))
     {
 
         // No errors. Save groups
-        //$Settings->setSetting("groups", serialize($groupexpiries));
+        //$NewSettings->setSetting("groups", serialize($groupexpiries));
         foreach($vouchersettings as $attributes)
         {
             //$Settings->setGroup($attributes);

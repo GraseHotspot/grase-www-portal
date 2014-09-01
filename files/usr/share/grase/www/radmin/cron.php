@@ -45,7 +45,7 @@ spl_autoload_register('grase_autoload');
 AdminLog::getInstance()->log_cron("CRON");
 
 //$Settings = new SettingsMySQL(DatabaseConnections::getInstance()->getRadminDB());
-//$dbversion = $Settings->getSetting("DBVersion");
+//$dbversion = $NewSettings->getSetting("DBVersion");
 $DBs =& DatabaseConnections::getInstance();
 $radiusDB = new \Grase\Database\Database();
 $radminDB = new \Grase\Database\Database('/etc/grase/radmin.conf');

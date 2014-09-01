@@ -31,7 +31,7 @@ $challenge = @$_GET['challenge'];
 if($userurl == 'http://logout/') $userurl = '';
 if($userurl == 'http://1.0.0.0/') $userurl = '';
 
-if($Settings->getSetting('disablejavascript') == 'TRUE')
+if($NewSettings->getSetting('disablejavascript') == 'TRUE')
 {
     $nojs = true;
     $templateEngine->assign("nojs" , true);
@@ -52,7 +52,7 @@ if($Settings->getSetting('disablejavascript') == 'TRUE')
 $templateEngine->assign("user_url", $userurl);
 $templateEngine->assign("challenge", $challenge);
 $templateEngine->assign("RealHostname", trim(file_get_contents('/etc/hostname')));
-if($Settings->getSetting('autocreategroup'))
+if($NewSettings->getSetting('autocreategroup'))
 {
     $templateEngine->assign('automac', true);
 }
