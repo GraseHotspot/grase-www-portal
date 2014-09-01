@@ -43,7 +43,7 @@ if (is_file($config_file))
 
     // Check for if DB config file is valid is left upto DatabaseConnections class now    
 //    if (!is_file($CONFIG['database_config_file']))
-//        \Grase\ErrorHandling::fatal_nodb_error('database_config_file(' . $CONFIG['database_config_file'] . ') isn\'t a valid file.');
+//        \Grase\ErrorHandling::fatalNoDatabaseError('database_config_file(' . $CONFIG['database_config_file'] . ') isn\'t a valid file.');
 
 
 $DBs =& DatabaseConnections::getInstance($CONFIG['radius_database_config_file'], $CONFIG['radmin_database_config_file']);

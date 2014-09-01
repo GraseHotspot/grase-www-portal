@@ -42,7 +42,7 @@ class Database
     {
         // Check that databaseSettingsFile is valid
         if (!is_readable($dbSettingsFile)) {
-            \Grase\ErrorHandling::fatal_nodb_error(
+            \Grase\ErrorHandling::fatalNoDatabaseError(
                 T_("DB Config File isn't a valid file.") . "($dbSettingsFile)"
             );
         }

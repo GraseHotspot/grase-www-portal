@@ -101,7 +101,7 @@ class Paypal extends PaymentGateway
     	
     	$ch = curl_init();
     	if($ch == FALSE){
-    	    \Grase\ErrorHandling::fatal_error(T_('PHP cURL extension failed to initalise'));
+    	    \Grase\ErrorHandling::fatalError(T_('PHP cURL extension failed to initalise'));
     	}
     	curl_setopt_array($ch, $curlOptions);
     	
@@ -111,7 +111,7 @@ class Paypal extends PaymentGateway
     	// Check for cURL errors
     	if (curl_errno($ch)) {
     	    // TODO: Log in admin log more details of request?
-    	    \Grase\ErrorHandling::fatal_error(T_('cURL error occured') . ' '. curl_error($ch));
+    	    \Grase\ErrorHandling::fatalError(T_('cURL error occured') . ' '. curl_error($ch));
     	}else{
     	    curl_close($ch);
     	    $responseArray = array();

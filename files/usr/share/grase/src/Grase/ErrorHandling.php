@@ -26,7 +26,7 @@ namespace Grase;
 class ErrorHandling
 {
 
-    public static function fatal_error($error)
+    public static function fatalError($error)
     {
         $AdminLog =& \AdminLog::getInstance();
         $AdminLog->log_error($error);
@@ -65,7 +65,7 @@ class ErrorHandling
     }
 
     // Todo remove pear_error_obj and replace with PDOException?
-    public static function fatal_db_error($error, $pear_error_obj)
+    public static function fatalDatabaseError($error, $pear_error_obj)
     {
         $AdminLog =& \AdminLog::getInstance();
         $AdminLog->log_error($error . $pear_error_obj->toString());
@@ -106,7 +106,7 @@ class ErrorHandling
 
     }
 
-    public static function fatal_nodb_error($error)
+    public static function fatalNoDatabaseError($error)
     {
         global $NONINTERACTIVE_SCRIPT;
         if (isset($NONINTERACTIVE_SCRIPT) && $NONINTERACTIVE_SCRIPT) {

@@ -92,7 +92,7 @@ class Radmin
                 \PDO::FETCH_COLUMN
             );
         } catch (\PDOException $Exception) {
-            \Grase\ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatalDatabaseError(
                 T_(
                     'Get All Settings for caching Query failed: '
                 ) . $Exception->getMessage(),
@@ -179,7 +179,7 @@ class Radmin
         $result = $select->fetch();
         // Always check that result is not an error
         if ($result === false) {
-            \Grase\ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatalDatabaseError(
                 'Getting setting failed: ',
                 $result
             );
@@ -239,7 +239,7 @@ class Radmin
             \AdminLog::getInstance()->log(
                 "Setting $setting failed to update (to $value)"
             );
-            \Grase\ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatalDatabaseError(
                 'Updating setting failed: ',
                 null
             );
@@ -267,7 +267,7 @@ class Radmin
 
         // Always check that result is not an error
         if ($result == false) {
-            \Grase\ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatalDatabaseError(
                 'Getting template failed: ',
                 null
             );
@@ -299,7 +299,7 @@ class Radmin
         }
 
         if (!isset($this->templatemap[$template])) {
-            \Grase\ErrorHandling::fatal_error(
+            \Grase\ErrorHandling::fatalError(
                 'Attempt to update non-existent
                              template'
             );
@@ -326,7 +326,7 @@ class Radmin
             \AdminLog::getInstance()->log(
                 "Template $template failed to update"
             );
-            \Grase\ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatalDatabaseError(
                 'Updating template failed:
                             ',
                 null
@@ -364,7 +364,7 @@ class Radmin
             return $result;
         } else {
             AdminLog::getInstance()->log("Batches $batchID failed to add");
-            \Grase\ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatalDatabaseError(
                 'Adding batch failed: ',
                 null
             );
@@ -384,7 +384,7 @@ class Radmin
             return true;
         } else {
             AdminLog::getInstance()->log("Batch $batchID failed to add $user");
-            \Grase\ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatalDatabaseError(
                 'Adding user to batch failed: ',
                 null
             );
@@ -411,7 +411,7 @@ class Radmin
 
         // Always check that result is not an error
         if ($result == false) {
-            \Grase\ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatalDatabaseError(
                 'Getting list of batches failed: ',
                 $result
             );
@@ -435,7 +435,7 @@ class Radmin
 
         // Always check that result is not an error
         if ($result == false) {
-            \Grase\ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatalDatabaseError(
                 'Getting batch users failed: ',
                 $result
             );
@@ -455,7 +455,7 @@ class Radmin
         // Always check that result is not an error
         if ($nextBatchID == false) {
             \AdminLog::getInstance()->log("Unable to fetch nextBatchID");
-            \Grase\ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatalDatabaseError(
                 'Fetching nextBatchID
                             failed: ',
                 null
@@ -512,7 +512,7 @@ class Radmin
 
         // Always check that result is not an error
         if ($result == false) {
-            \Grase\ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatalDatabaseError(
                 'Getting groups failed: ',
                 $result
             );
@@ -574,7 +574,7 @@ class Radmin
 
         $result = $query->execute($fields);
         if ($result === false) {
-            \Grase\ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Adding Group query failed:  '),
                 $result
             );
@@ -596,7 +596,7 @@ class Radmin
         );
 
         if ($delete->execute(array($groupname)) === false) {
-            \Grase\ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Delete Group query failed:  '),
                 $result
             );
@@ -666,7 +666,7 @@ class Radmin
 
         $result = $query->execute($fields);
         if ($result === false) {
-            \Grase\ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Adding Voucher query failed:  '),
                 $result
             );
@@ -735,7 +735,7 @@ class Radmin
 
         // Always check that result is not an error
         if ($result === false) {
-            \Grase\ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatalDatabaseError(
                 'Getting vouchers failed: ',
                 $result
             );
@@ -771,7 +771,7 @@ class Radmin
         $result = $delete->execute(array($vouchername));
 
         if ($result === false) {
-            \Grase\ErrorHandling::fatal_db_error(
+            \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Delete Voucher query failed:  '),
                 $result
             );
