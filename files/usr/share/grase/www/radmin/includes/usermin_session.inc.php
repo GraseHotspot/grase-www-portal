@@ -24,6 +24,16 @@
 require_once "Auth.php";
 require_once "MDB2.php";
 
+function grase_autoload($class_name) {
+    if( file_exists(__DIR__. '/../classes/' . $class_name . '.class.php'))
+    {
+        include_once __DIR__. '/../classes/' . $class_name . '.class.php';
+    }
+}
+
+spl_autoload_register('grase_autoload');
+
+
 require_once 'load_settings.inc.php';
 require_once 'usermin_page_functions.inc.php';
 
@@ -31,17 +41,18 @@ require_once 'usermin_page_functions.inc.php';
    $mtime = microtime();
    $mtime = explode(" ",$mtime);
    $mtime = $mtime[1] + $mtime[0];
-   $pagestarttime = $mtime; 
+   $pagestarttime = $mtime;
 
-function __autoload($class_name) {
-    require_once './classes/' . $class_name . '.class.php';
-}
+
 
 function loginForm($username = null, $status = null, &$auth = null)
 {
     global $templateEngine;
-	$templateEngine->clear_assign('MenuItems');
-	$templateEngine->clear_assign("LoggedInUsername");
+
+    // TODO check if below 2 lines are still needed (we've not implemented
+    // clear_assign in the Page class)
+	//$templateEngine->clear_assign('MenuItems');
+	//$templateEngine->clear_assign("LoggedInUsername");
     $templateEngine->assign('username', $username);
     if(isset($_GET['user'])) $templateEngine->assign('username', $_GET['user']);
     
