@@ -3,7 +3,8 @@
 namespace Grase\Database;
 
 // All Radmin Database functions (Was Settings)
-class Radmin {
+class Radmin
+{
 
     protected $radmin;
 
@@ -76,7 +77,9 @@ class Radmin {
     public function __construct(Database $radmin)
     {
         $this->radmin = $radmin->conn;
-        if(! $this->checkTablesExist()) $this->createTables();
+        if (!$this->checkTablesExist()) {
+            $this->createTables();
+        }
 
         // Load all settings as we ALWAYS need settings (do we?) TODO
         $this->loadAllSettings();
@@ -88,24 +91,24 @@ class Radmin {
             $results = $this->radmin->query("SHOW TABLES")->fetchAll(\PDO::FETCH_COLUMN);
         } catch (\PDOException $Exception) {
             \Grase\ErrorHandling::fatal_db_error(
-                T_('Get All Settings for caching Query failed: ') . $Exception->getMessage(), NULL);
+                T_('Get All Settings for caching Query failed: ') . $Exception->getMessage(),
+                null
+            );
         }
 
-        foreach ($results as $row)
-        {
+        foreach ($results as $row) {
             // To ensure if database names change, we don't know the column name (it could be Tables_in_radmin) so just take the first column of the array
-            $tables[$row] = True;
+            $tables[$row] = true;
         }
 
-        if( isset($tables['settings']) &&
+        if (isset($tables['settings']) &&
             isset($tables['auth']) &&
             isset($tables['templates']) &&
-            isset($tables['batch'])  &&
+            isset($tables['batch']) &&
             isset($tables['batches']) &&
             isset($tables['groups']) &&
             isset($tables['vouchers'])
-        )
-        {
+        ) {
             return true;
         }
         return false;
@@ -133,15 +136,16 @@ class Radmin {
 
     private function loadAllSettings($force = true)
     {
-        if($this->settingcacheloaded && force == false) return true;
+        if ($this->settingcacheloaded && force == false) {
+            return true;
+        }
 
         // Load everything into a cache as needed (make sure we update the cache up updates
         $sql = "SELECT setting, value FROM settings";
 
         $results = $this->radmin->query($sql)->fetchAll();
 
-        foreach ($results as $row)
-        {
+        foreach ($results as $row) {
             $this->settingcache[$row['setting']] = $row['value'];
         }
 
@@ -152,9 +156,8 @@ class Radmin {
 
     public function getSetting($setting)
     {
-        if($this->settingcacheloaded)
-        {
-            if(isset($this->settingcache[$setting])){
+        if ($this->settingcacheloaded) {
+            if (isset($this->settingcache[$setting])) {
                 return $this->settingcache[$setting];
             }
             return null;
@@ -176,7 +179,9 @@ class Radmin {
 
     public function checkExistsSetting($setting)
     {
-        if($this->settingcacheloaded && isset($this->settingcache[$setting])) return true;
+        if ($this->settingcacheloaded && isset($this->settingcache[$setting])) {
+            return true;
+        }
 
         $sql = $this->radmin->prepare("SELECT COUNT(setting) as settingcount FROM settings WHERE setting = ? LIMIT 1");
         $sql->execute(array($setting));
@@ -186,32 +191,36 @@ class Radmin {
 
     public function setSetting($setting, $value)
     {
-        if($this->checkExistsSetting($setting) == 0)
-        {
+        if ($this->checkExistsSetting($setting) == 0) {
             // Insert new record
             $query = $this->radmin->prepare(
-                "INSERT INTO settings SET setting= ?, value=?");
+                "INSERT INTO settings SET setting= ?, value=?"
+            );
             $params = array($setting, $value);
-        }else
-        {
+        } else {
             // Update old record
             $query = $this->radmin->prepare(
-                "UPDATE settings SET value= ? WHERE setting= ?");
+                "UPDATE settings SET value= ? WHERE setting= ?"
+            );
             $params = array($value, $setting);
         }
 
-        if($query->execute($params)) {
+        if ($query->execute($params)) {
             // Update settings cache to prevent wrong data
-            if($this->settingcacheloaded) $this->settingcache[$setting] = $value;
+            if ($this->settingcacheloaded) {
+                $this->settingcache[$setting] = $value;
+            }
 
             // TODO: Do we still need to filter this out now?
-            if($setting != 'lastbatch') // lastbatch clogs admin log, filter it out
+            if ($setting != 'lastbatch') // lastbatch clogs admin log, filter it out
+            {
                 \AdminLog::getInstance()->log("Setting $setting updated to $value");
+            }
             return true;
 
-        }else{
+        } else {
             \AdminLog::getInstance()->log("Setting $setting failed to update (to $value)");
-            \Grase\ErrorHandling::fatal_db_error('Updating setting failed: ', NULL);
+            \Grase\ErrorHandling::fatal_db_error('Updating setting failed: ', null);
         }
     }
 } 
