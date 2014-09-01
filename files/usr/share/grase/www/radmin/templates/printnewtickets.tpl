@@ -93,7 +93,7 @@
    $totaltime = round(($endtime - $pagestarttime), 2);
    echo "Page generated in ".$totaltime." seconds on ";    
 {/php}{$RealHostname} using
-{php}echo Formatting::formatBytes(memory_get_peak_usage(true)) ;{/php} mem
+{php}echo \Grase\Util::formatBytes(memory_get_peak_usage(true)) ;{/php} mem
 </div>
 
 </div>

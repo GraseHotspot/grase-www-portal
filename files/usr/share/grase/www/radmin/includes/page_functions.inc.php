@@ -148,7 +148,7 @@ function datavals()
 	$mboptions = explode(" ", $mb_options);
 	foreach($mboptions as $mb)
 	{
-		$datavals["$mb"] = Formatting::formatBytes($mb*1024*1024);;
+		$datavals["$mb"] = \Grase\Util::formatBytes($mb*1024*1024);;
 	}
 	return $datavals;
 }
@@ -192,7 +192,7 @@ function bandwidth_options()
         $bits = $kbits * 1024;
         $kbytes = $kbits/8;
         $mbmin = round($kbytes * 60 / 1024, 2);
-        $label = Formatting::formatBits($bits) ." ($kbytes kbytes/sec, $mbmin MiB/min)";
+        $label = \Grase\Util::formatBits($bits) ." ($kbytes kbytes/sec, $mbmin MiB/min)";
         $options["$kbits"] = $label;
     }
     

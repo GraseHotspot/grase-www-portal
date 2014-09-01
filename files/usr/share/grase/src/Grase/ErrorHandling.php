@@ -64,6 +64,7 @@ class ErrorHandling
 
     }
 
+    // Todo remove pear_error_obj and replace with PDOException?
     public static function fatal_db_error($error, $pear_error_obj)
     {
         $AdminLog =& \AdminLog::getInstance();

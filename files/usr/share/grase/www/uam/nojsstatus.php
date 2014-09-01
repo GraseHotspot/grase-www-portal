@@ -47,8 +47,8 @@ if($username != '')
     $templateEngine->assign("error", $error);
 }
 
-    $templateEngine->register_modifier('bytes', array("Formatting", "formatBytes"));
-    $templateEngine->register_modifier('seconds', array("Formatting", "formatSec"));
+    $templateEngine->register_modifier('bytes', array("\Grase\Util", "formatBytes"));
+    $templateEngine->register_modifier('seconds', array("\Grase\Util", "formatSec"));
 
     $templateEngine->display('nojsstatus.tpl');
 

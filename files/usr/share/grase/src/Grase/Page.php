@@ -46,9 +46,9 @@ class Page
         //$this->te->error_reporting = E_ALL & ~E_NOTICE;
         $this->te->compile_check = true;
         //$this->te->register_outputfilter('smarty_outputfilter_strip');
-        //$this->te->registerPlugin('modifier', 'bytes', array("Formatting", "formatBytes"));
-        $this->te->register_modifier('bytes', array("Formatting", "formatBytes"));
-        $this->te->register_modifier('seconds', array("Formatting", "formatSec"));
+        //$this->te->registerPlugin('modifier', 'bytes', array("\Grase\Util", "formatBytes"));
+        $this->te->register_modifier('bytes', array("\Grase\Util", "formatBytes"));
+        $this->te->register_modifier('seconds', array("\Grase\Util", "formatSec"));
         $this->te->register_modifier('displayLocales', array('\Grase\Locale', 'localeNumberFormat'));
         $this->te->register_modifier('displayMoneyLocales', array('\Grase\Locale', 'localeMoneyFormat'));
         $this->te->register_function('inputtype', 'input_type');

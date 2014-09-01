@@ -38,7 +38,7 @@ function clean_dansguardian_log_array($loglines)
 		$size = $matches[3];
 		tally_domains($host, $size);
 		tally_http_traffic($size);				
-		$log[] = array("timestamp" => $timestamp, "URL" => $address, "host" => $host, "cached" => $cached, "request" => $action, "size" => Formatting::formatBytes($size));
+		$log[] = array("timestamp" => $timestamp, "URL" => $address, "host" => $host, "cached" => $cached, "request" => $action, "size" => \Grase\Util::formatBytes($size));
 	}
 	return $log;
 }
@@ -61,7 +61,7 @@ function clean_squid_log_array($loglines)
 		$query = $matches[3];		
 		tally_domains($host, $bytes);
 		tally_http_traffic($bytes);		
-		$log[] = array("timestamp" => date('Y-m-d H:i:s',$timestamp), "URL" => $URL,"address" => $clientip, "username"=> $username, "host" => $host, "cached" => '', "request" => $method, "size" => Formatting::formatBytes($bytes));
+		$log[] = array("timestamp" => date('Y-m-d H:i:s',$timestamp), "URL" => $URL,"address" => $clientip, "username"=> $username, "host" => $host, "cached" => '', "request" => $method, "size" => \Grase\Util::formatBytes($bytes));
 	}
 	
 	// The time consuming part is done, no more than 5s should be needed now
@@ -81,14 +81,14 @@ function tally_domains($domain, $size)
 	 	$domain_tally[$domain] = 1;
 		$domain_size[$domain] = $size;			 	
 	}
-	$domain_formatsize[$domain] = Formatting::formatBytes($domain_size[$domain]);
+	$domain_formatsize[$domain] = \Grase\Util::formatBytes($domain_size[$domain]);
 }
 
 function tally_http_traffic($size)
 {
 	global $http_traffic_size, $format_http_traffic_size;
 	$http_traffic_size = $http_traffic_size + $size;
-	$format_http_traffic_size = Formatting::formatBytes($http_traffic_size);
+	$format_http_traffic_size = \Grase\Util::formatBytes($http_traffic_size);
 }
 
 function format_date($datestr)
