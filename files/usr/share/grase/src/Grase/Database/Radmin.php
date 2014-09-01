@@ -62,16 +62,16 @@ class Radmin
 
     private $dbSchemaVouchers =
         "CREATE TABLE `vouchers` (
-            `VoucherName` VARCHAR(64) NOT NULL,
-            `VoucherLabel` VARCHAR(64) NOT NULL,
-            `VoucherPrice` VARCHAR(64) NOT NULL,
-            `VoucherGroup` VARCHAR(64) NOT NULL,
-            `MaxOctets` BIGINT(32) UNSIGNED NULL,
-            `MaxSeconds` BIGINT(32) UNSIGNED NULL,
-            `Description` VARCHAR(300) NULL,
-            `VoucherType` INT(32) UNSIGNED NOT NULL,
-            `lastupdated` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-            PRIMARY KEY `VoucherName` (`VoucherName`)
+        `VoucherName` VARCHAR(64) NOT NULL,
+        `VoucherLabel` VARCHAR(64) NOT NULL,
+        `VoucherPrice` VARCHAR(64) NOT NULL,
+        `VoucherGroup` VARCHAR(64) NOT NULL,
+        `MaxOctets` BIGINT(32) UNSIGNED NULL,
+        `MaxSeconds` BIGINT(32) UNSIGNED NULL,
+        `Description` VARCHAR(300) NULL,
+        `VoucherType` INT(32) UNSIGNED NOT NULL,
+        `lastupdated` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        PRIMARY KEY `VoucherName` (`VoucherName`)
         ) ENGINE=MyISAM COMMENT ='Vouchers'";
 
     public function __construct(Database $radmin)
@@ -88,16 +88,22 @@ class Radmin
     private function checkTablesExist()
     {
         try {
-            $results = $this->radmin->query("SHOW TABLES")->fetchAll(\PDO::FETCH_COLUMN);
+            $results = $this->radmin->query("SHOW TABLES")->fetchAll(
+                \PDO::FETCH_COLUMN
+            );
         } catch (\PDOException $Exception) {
             \Grase\ErrorHandling::fatal_db_error(
-                T_('Get All Settings for caching Query failed: ') . $Exception->getMessage(),
+                T_(
+                    'Get All Settings for caching Query failed: '
+                ) . $Exception->getMessage(),
                 null
             );
         }
 
         foreach ($results as $row) {
-            // To ensure if database names change, we don't know the column name (it could be Tables_in_radmin) so just take the first column of the array
+            /* To ensure if database names change, we don't know the column
+             * name (it could be Tables_in_radmin) so just take the first
+             * column of the array */
             $tables[$row] = true;
         }
 
@@ -140,7 +146,8 @@ class Radmin
             return true;
         }
 
-        // Load everything into a cache as needed (make sure we update the cache up updates
+        // Load everything into a cache as needed (make sure we update the
+        // cache on updates
         $sql = "SELECT setting, value FROM settings";
 
         $results = $this->radmin->query($sql)->fetchAll();
@@ -163,14 +170,19 @@ class Radmin
             return null;
         }
 
-        $select = $this->radmin->prepare("SELECT value FROM settings WHERE setting = ?");
+        $select = $this->radmin->prepare(
+            "SELECT value FROM settings WHERE setting = ?"
+        );
         $select->execute(array($setting));
 
 
         $result = $select->fetch();
         // Always check that result is not an error
         if ($result === false) {
-            \Grase\ErrorHandling::fatal_db_error('Getting setting failed: ', $result);
+            \Grase\ErrorHandling::fatal_db_error(
+                'Getting setting failed: ',
+                $result
+            );
         }
 
         return $result['value'];
@@ -183,7 +195,10 @@ class Radmin
             return true;
         }
 
-        $sql = $this->radmin->prepare("SELECT COUNT(setting) as settingcount FROM settings WHERE setting = ? LIMIT 1");
+        $sql = $this->radmin->prepare(
+            "SELECT COUNT(setting) as settingcount
+            FROM settings WHERE setting = ? LIMIT 1"
+        );
         $sql->execute(array($setting));
         return (bool)$sql->fetch()['settingcount'];
 
@@ -212,15 +227,22 @@ class Radmin
             }
 
             // TODO: Do we still need to filter this out now?
-            if ($setting != 'lastbatch') // lastbatch clogs admin log, filter it out
-            {
-                \AdminLog::getInstance()->log("Setting $setting updated to $value");
+            // lastbatch clogs admin log, filter it out
+            if ($setting != 'lastbatch') {
+                \AdminLog::getInstance()->log(
+                    "Setting $setting updated to $value"
+                );
             }
             return true;
 
         } else {
-            \AdminLog::getInstance()->log("Setting $setting failed to update (to $value)");
-            \Grase\ErrorHandling::fatal_db_error('Updating setting failed: ', null);
+            \AdminLog::getInstance()->log(
+                "Setting $setting failed to update (to $value)"
+            );
+            \Grase\ErrorHandling::fatal_db_error(
+                'Updating setting failed: ',
+                null
+            );
         }
     }
 } 
