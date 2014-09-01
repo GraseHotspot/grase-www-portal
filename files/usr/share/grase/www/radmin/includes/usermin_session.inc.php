@@ -49,10 +49,9 @@ function loginForm($username = null, $status = null, &$auth = null)
 {
     global $templateEngine;
 
-    // TODO check if below 2 lines are still needed (we've not implemented
-    // clear_assign in the Page class)
-	//$templateEngine->clear_assign('MenuItems');
-	//$templateEngine->clear_assign("LoggedInUsername");
+    // TODO make it so the clearAssign lines aren't needed
+	$templateEngine->clearAssign('MenuItems');
+	$templateEngine->clearAssign("LoggedInUsername");
     $templateEngine->assign('username', $username);
     if(isset($_GET['user'])) $templateEngine->assign('username', $_GET['user']);
     
