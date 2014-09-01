@@ -250,7 +250,7 @@ class Radmin
 
     // Template map is to make it easier to lookup templates via int not txt
     private $templatemap = array(
-        'maincss'   => 0,
+        'maincss' => 0,
         'loginhelptext' => 1,
         'helptext' => 2,
         'belowloginhtml' => 3,
@@ -261,13 +261,16 @@ class Radmin
     public function getTemplate($template)
     {
         $query = $this->radmin->prepare(
-            "SELECT tpl FROM templates WHERE id = ? LIMIT 1");
+            "SELECT tpl FROM templates WHERE id = ? LIMIT 1"
+        );
         $result = $query->execute(array($this->templatemap[$template]));
 
         // Always check that result is not an error
         if ($result == false) {
-            \Grase\ErrorHandling::fatal_db_error('Getting template failed: ',
-                NULL);
+            \Grase\ErrorHandling::fatal_db_error(
+                'Getting template failed: ',
+                null
+            );
         }
 
         $result = $query->fetch();
@@ -291,66 +294,80 @@ class Radmin
     public function setTemplate($template, $value)
     {
         // if $value == NULL we cause problems (assume user wants empty template
-        if($value == '') $value = ' ';
+        if ($value == '') {
+            $value = ' ';
+        }
 
-        if(!isset($this->templatemap[$template])){
-            \Grase\ErrorHandling::fatal_error('Attempt to update non-existent
-             template');
+        if (!isset($this->templatemap[$template])) {
+            \Grase\ErrorHandling::fatal_error(
+                'Attempt to update non-existent
+                             template'
+            );
         }
         // Check count not contents ^^
-        if($this->checkExistsTemplate($template) == 0)
-        {
+        if ($this->checkExistsTemplate($template) == 0) {
             // Insert new record
             $query = $this->radmin->prepare(
-                "INSERT INTO templates SET id=?, tpl=?");
+                "INSERT INTO templates SET id=?, tpl=?"
+            );
             $params = array($this->templatemap[$template], $value);
-        }else
-        {
+        } else {
             // Update old record
             $query = $this->radmin->prepare(
-                "UPDATE templates SET tpl=? WHERE id=?");
+                "UPDATE templates SET tpl=? WHERE id=?"
+            );
             $params = array($value, $this->templatemap[$template]);
         }
 
-        if($query->execute($params))
-        {
+        if ($query->execute($params)) {
             \AdminLog::getInstance()->log("Template $template updated");
             return true;
-        }else{
-            \AdminLog::getInstance()->log("Template $template failed to
-            update");
-            \Grase\ErrorHandling::fatal_db_error('Updating template failed:
-            ', NULL);
+        } else {
+            \AdminLog::getInstance()->log(
+                "Template $template failed to update"
+            );
+            \Grase\ErrorHandling::fatal_db_error(
+                'Updating template failed:
+                            ',
+                null
+            );
         }
     }
     /* End templates functions */
 
     /* Functions for managing batchs */
 
-    public function saveBatch($batchID, $users = array(), $createuser = 'Anon(System)', $comment = "")
-    {
+    public function saveBatch(
+        $batchID,
+        $users = array(),
+        $createuser = 'Anon(System)',
+        $comment = ""
+    ) {
         $result = 0;
 
         $insert = $this->radmin->prepare(
             "INSERT INTO batches SET
                         batchID=?,
                         createdBy=?,
-                        Comment=?");
-        if($insert->execute(array($batchID, $createuser, $comment)))
-        {
-            $result ++;
+                        Comment=?"
+        );
+        if ($insert->execute(array($batchID, $createuser, $comment))) {
+            $result++;
 
             // $users is an array of usernames, nothing more
-            foreach($users as $user)
-            {
-                if($this->addUserToBatch($batchID, $user)) $result ++;
+            foreach ($users as $user) {
+                if ($this->addUserToBatch($batchID, $user)) {
+                    $result++;
+                }
             }
 
             return $result;
-        }else{
+        } else {
             AdminLog::getInstance()->log("Batches $batchID failed to add");
-            \Grase\ErrorHandling::fatal_db_error('Adding batch failed: ',
-                NULL);
+            \Grase\ErrorHandling::fatal_db_error(
+                'Adding batch failed: ',
+                null
+            );
         }
 
     }
@@ -361,14 +378,16 @@ class Radmin
         $query = $this->radmin->prepare(
             "INSERT INTO batch SET
                         batchID=?,
-                        UserName=?");
-        if($query->execute(array($batchID, $user)))
-        {
+                        UserName=?"
+        );
+        if ($query->execute(array($batchID, $user))) {
             return true;
-        }else {
+        } else {
             AdminLog::getInstance()->log("Batch $batchID failed to add $user");
-            \Grase\ErrorHandling::fatal_db_error('Adding user to batch failed: ',
-                NULL);
+            \Grase\ErrorHandling::fatal_db_error(
+                'Adding user to batch failed: ',
+                null
+            );
         }
     }
 
@@ -392,7 +411,10 @@ class Radmin
 
         // Always check that result is not an error
         if ($result == false) {
-            \Grase\ErrorHandling::fatal_db_error('Getting list of batches failed: ', $result);
+            \Grase\ErrorHandling::fatal_db_error(
+                'Getting list of batches failed: ',
+                $result
+            );
         }
 
         return $result;
@@ -400,19 +422,23 @@ class Radmin
 
     public function getBatch($batchID = 0)
     {
-        if($batchID == 0) // Get lastbatch
+        if ($batchID == 0) // Get lastbatch
         {
             $batchID = $this->getSetting('lastbatch');
         }
 
         $batch = $this->radmin->prepare(
-            "SELECT UserName FROM batch WHERE batchID=?");
+            "SELECT UserName FROM batch WHERE batchID=?"
+        );
 
         $result = $batch->execute(array($batchID));
 
         // Always check that result is not an error
         if ($result == false) {
-            \Grase\ErrorHandling::fatal_db_error('Getting batch users failed: ', $result);
+            \Grase\ErrorHandling::fatal_db_error(
+                'Getting batch users failed: ',
+                $result
+            );
         }
         return $batch->fetchAll(\PDO::FETCH_COLUMN);
     }
@@ -429,8 +455,11 @@ class Radmin
         // Always check that result is not an error
         if ($nextBatchID == false) {
             \AdminLog::getInstance()->log("Unable to fetch nextBatchID");
-            \Grase\ErrorHandling::fatal_db_error('Fetching nextBatchID
-            failed: ', NULL);
+            \Grase\ErrorHandling::fatal_db_error(
+                'Fetching nextBatchID
+                            failed: ',
+                null
+            );
         }
 
         return $nextBatchID;
@@ -448,31 +477,34 @@ class Radmin
 
     public function getGroup($groupname = '')
     {
-        if($groupname != '')
-        {
-            $query = $this->radmin->prepare("SELECT
-                GroupName,
-                GroupLabel,
-                Expiry,
-                MaxOctets,
-                MaxSeconds,
-                Comment,
-                lastupdated
-                FROM groups
-                WHERE GroupName=?");
+        if ($groupname != '') {
+            $query = $this->radmin->prepare(
+                "SELECT
+                    GroupName,
+                    GroupLabel,
+                    Expiry,
+                    MaxOctets,
+                    MaxSeconds,
+                    Comment,
+                    lastupdated
+                    FROM groups
+                    WHERE GroupName=?"
+            );
             $query->execute(array($groupname));
 
-        }else{
-            $query = $this->radmin->query("SELECT
-                GroupName,
-                GroupLabel,
-                Expiry,
-                MaxOctets,
-                MaxSeconds,
-                Comment,
-                lastupdated
-                FROM groups
-                ORDER BY GroupName");
+        } else {
+            $query = $this->radmin->query(
+                "SELECT
+                    GroupName,
+                    GroupLabel,
+                    Expiry,
+                    MaxOctets,
+                    MaxSeconds,
+                    Comment,
+                    lastupdated
+                    FROM groups
+                    ORDER BY GroupName"
+            );
 
         }
 
@@ -480,16 +512,20 @@ class Radmin
 
         // Always check that result is not an error
         if ($result == false) {
-            \Grase\ErrorHandling::fatal_db_error('Getting groups failed: ', $result);
+            \Grase\ErrorHandling::fatal_db_error(
+                'Getting groups failed: ',
+                $result
+            );
         }
 
         $groups = array();
-        foreach ($result as $results)
-        {
-            if(isset($results['MaxSeconds']))
+        foreach ($result as $results) {
+            if (isset($results['MaxSeconds'])) {
                 $results['MaxTime'] = $results['MaxSeconds'] / 60;
-            if(isset($results['MaxOctets']))
-                $results['MaxMb'] = $results['MaxOctets'] /1024 /1024;
+            }
+            if (isset($results['MaxOctets'])) {
+                $results['MaxMb'] = $results['MaxOctets'] / 1024 / 1024;
+            }
             $groups[$results['GroupName']] = $results;
         }
 
@@ -500,31 +536,31 @@ class Radmin
     public function setGroup($attributes)
     {
 
-        if(isset($attributes['MaxMb']))
-        {
-            $attributes['MaxOctets'] = \Grase\Util::bigIntVal($attributes['MaxMb'] * 1024 * 1024);
+        if (isset($attributes['MaxMb'])) {
+            $attributes['MaxOctets'] = \Grase\Util::bigIntVal(
+                $attributes['MaxMb'] * 1024 * 1024
+            );
             unset($attributes['MaxMb']);
         }
 
-        if(isset($attributes['MaxTime']))
-        {
+        if (isset($attributes['MaxTime'])) {
             $attributes['MaxSeconds'] = $attributes['MaxTime'] * 60;
             unset($attributes['MaxTime']);
         }
 
         // We can't just use the $attributes array as it has to match exactly
         // the number and names of the prepared statement
-        $fields = array (
+        $fields = array(
             'GroupName' => $attributes['GroupName'],
             'GroupLabel' => $attributes['GroupLabel'],
-            'Expiry'    => @ $attributes['Expiry'],
+            'Expiry' => @ $attributes['Expiry'],
             'MaxOctets' => @ $attributes['MaxOctets'],
             'MaxSeconds' => @ $attributes['MaxSeconds'],
-            'Comment'   => @ $attributes['Comment']
+            'Comment' => @ $attributes['Comment']
         );
 
-        $query = $this->radmin->prepare("
-            INSERT INTO groups
+        $query = $this->radmin->prepare(
+            "INSERT INTO groups
             (GroupName, GroupLabel, Expiry, MaxOctets, MaxSeconds, Comment)
             VALUES
             (:GroupName, :GroupLabel, :Expiry, :MaxOctets, :MaxSeconds, :Comment)
@@ -533,17 +569,21 @@ class Radmin
             Expiry = :Expiry,
             MaxOctets = :MaxOctets,
             MaxSeconds = :MaxSeconds,
-            Comment = :Comment");
+            Comment = :Comment"
+        );
 
         $result = $query->execute($fields);
-        if ($result === false)
-        {
+        if ($result === false) {
             \Grase\ErrorHandling::fatal_db_error(
-                T_('Adding Group query failed:  '), $result);
+                T_('Adding Group query failed:  '),
+                $result
+            );
         }
 
-        \AdminLog::getInstance()->log("Group ".$attributes['GroupName']."
-        updated settings");
+        \AdminLog::getInstance()->log(
+            "Group " . $attributes['GroupName'] . "
+        updated settings"
+        );
 
         return $result;
 
@@ -552,12 +592,14 @@ class Radmin
     public function deleteGroup($groupname)
     {
         $delete = $this->radmin->prepare(
-            "DELETE FROM groups WHERE GroupName=?");
+            "DELETE FROM groups WHERE GroupName=?"
+        );
 
-        if ($delete->execute(array($groupname)) === false)
-        {
+        if ($delete->execute(array($groupname)) === false) {
             \Grase\ErrorHandling::fatal_db_error(
-                T_('Delete Group query failed:  '), $result);
+                T_('Delete Group query failed:  '),
+                $result
+            );
         }
 
         \AdminLog::getInstance()->log("Group $groupname deleted");
@@ -572,43 +614,41 @@ class Radmin
     public function setVoucher($attributes)
     {
 
-        if(isset($attributes['MaxMb']))
-        {
-            $attributes['MaxOctets'] = \Grase\Util::bigIntVal($attributes['MaxMb'] * 1024 * 1024);
+        if (isset($attributes['MaxMb'])) {
+            $attributes['MaxOctets'] = \Grase\Util::bigIntVal(
+                $attributes['MaxMb'] * 1024 * 1024
+            );
             unset($attributes['MaxMb']);
         }
 
-        if(isset($attributes['MaxTime']))
-        {
+        if (isset($attributes['MaxTime'])) {
             $attributes['MaxSeconds'] = $attributes['MaxTime'] * 60;
             unset($attributes['MaxTime']);
         }
 
         $attributes['VoucherType'] = 0;
-        if($attributes['InitVoucher'])
-        {
+        if ($attributes['InitVoucher']) {
             $attributes['VoucherType'] = 1 | $attributes['VoucherType'];
         }
 
-        if($attributes['TopupVoucher'])
-        {
+        if ($attributes['TopupVoucher']) {
             $attributes['VoucherType'] = 2 | $attributes['VoucherType'];
 
         }
 
-        $fields = array (
+        $fields = array(
             'VoucherName' => $attributes['VoucherName'],
             'VoucherLabel' => $attributes['VoucherLabel'],
             'VoucherPrice' => $attributes['VoucherPrice'] + 0,
-            'VoucherGroup'    => $attributes['VoucherGroup'],
+            'VoucherGroup' => $attributes['VoucherGroup'],
             'MaxOctets' => @ $attributes['MaxOctets'],
-            'MaxSeconds'   => @ $attributes['MaxSeconds'],
-            'Description'   => @ $attributes['Description'],
-            'VoucherType'   => $attributes['VoucherType']
+            'MaxSeconds' => @ $attributes['MaxSeconds'],
+            'Description' => @ $attributes['Description'],
+            'VoucherType' => $attributes['VoucherType']
         );
 
-        $query = $this->radmin->prepare("
-            INSERT INTO vouchers
+        $query = $this->radmin->prepare(
+            "INSERT INTO vouchers
             (VoucherName, VoucherLabel, VoucherPrice, VoucherGroup,
             MaxOctets, MaxSeconds, Description, VoucherType)
             VALUES
@@ -621,24 +661,31 @@ class Radmin
             MaxOctets = :MaxOctets,
             MaxSeconds = :MaxSeconds,
             Description = :Description,
-            VoucherType =:VoucherType");
+            VoucherType =:VoucherType"
+        );
 
         $result = $query->execute($fields);
-        if ($result === false)
-        {
+        if ($result === false) {
             \Grase\ErrorHandling::fatal_db_error(
-                T_('Adding Voucher query failed:  '), $result);
+                T_('Adding Voucher query failed:  '),
+                $result
+            );
         }
 
-        \AdminLog::getInstance()->log("Voucher ".$attributes['VoucherName']."
-         updated settings");
+        \AdminLog::getInstance()->log(
+            "Voucher " . $attributes['VoucherName'] . "
+         updated settings"
+        );
 
         return $result;
 
     }
 
-    public function getVoucher($vouchername = '', $vouchergroup = '', $vouchertype = '')
-    {
+    public function getVoucher(
+        $vouchername = '',
+        $vouchergroup = '',
+        $vouchertype = ''
+    ) {
         $sql = "SELECT
                 VoucherName,
                 VoucherLabel,
@@ -655,30 +702,30 @@ class Radmin
         $wheresql = '';
         $params = array();
 
-        if($vouchername != '')
-        {
+        if ($vouchername != '') {
             $wheresql .= "VoucherName=?";
             $params[] = $vouchername;
             $prev_stat = true;
         }
-        if($vouchergroup != '')
-        {
-            if($prev_stat) $wheresql .= " AND ";
+        if ($vouchergroup != '') {
+            if ($prev_stat) {
+                $wheresql .= " AND ";
+            }
             $wheresql .= "VoucherGroup=?";
             $params[] = $vouchergroup;
             $prev_stat = true;
         }
 
-        if($vouchertype != '')
-        {
-            if($prev_stat) $wheresql .= " AND ";
+        if ($vouchertype != '') {
+            if ($prev_stat) {
+                $wheresql .= " AND ";
+            }
             $wheresql .= "(VoucherType & ?) > 0";
             $params[] = $vouchertype;
             $prev_stat = true;
         }
 
-        if($prev_stat && $wheresql != '')
-        {
+        if ($prev_stat && $wheresql != '') {
             $sql .= " WHERE " . $wheresql;
         }
 
@@ -688,19 +735,26 @@ class Radmin
 
         // Always check that result is not an error
         if ($result === false) {
-            \Grase\ErrorHandling::fatal_db_error('Getting vouchers failed: ', $result);
+            \Grase\ErrorHandling::fatal_db_error(
+                'Getting vouchers failed: ',
+                $result
+            );
         }
 
-        foreach ($query->fetchAll() as $results)
-        {
-            if(isset($results['MaxSeconds']))
+        foreach ($query->fetchAll() as $results) {
+            if (isset($results['MaxSeconds'])) {
                 $results['MaxTime'] = $results['MaxSeconds'] / 60;
-            if(isset($results['MaxOctets']))
-                $results['MaxMb'] = $results['MaxOctets'] /1024 /1024;
-            if(isset($results['VoucherType']))
-            {
-                if(($results['VoucherType'] & 1) > 0) $results['InitVoucher'] = true;
-                if(($results['VoucherType'] & 2) > 0) $results['TopupVoucher'] = true;
+            }
+            if (isset($results['MaxOctets'])) {
+                $results['MaxMb'] = $results['MaxOctets'] / 1024 / 1024;
+            }
+            if (isset($results['VoucherType'])) {
+                if (($results['VoucherType'] & 1) > 0) {
+                    $results['InitVoucher'] = true;
+                }
+                if (($results['VoucherType'] & 2) > 0) {
+                    $results['TopupVoucher'] = true;
+                }
             }
             $vouchers[$results['VoucherName']] = $results;
         }
@@ -712,13 +766,15 @@ class Radmin
     public function deleteVoucher($vouchername)
     {
         $delete = $this->radmin->prepare(
-            "DELETE FROM vouchers WHERE VoucherName=?");
+            "DELETE FROM vouchers WHERE VoucherName=?"
+        );
         $result = $delete->execute(array($vouchername));
 
-        if ($result === false)
-        {
+        if ($result === false) {
             \Grase\ErrorHandling::fatal_db_error(
-                T_('Delete Voucher query failed:  '), $result);
+                T_('Delete Voucher query failed:  '),
+                $result
+            );
         }
 
         \AdminLog::getInstance()->log("Voucher $vouchername deleted");
