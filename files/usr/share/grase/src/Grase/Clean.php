@@ -1,10 +1,10 @@
 <?php
 
-/* Functions for "cleaning" different kinds of inputs */
-
 namespace Grase;
 
-class Clean {
+/* Functions for "cleaning" different kinds of inputs */
+class Clean
+{
 
     public static function text($text)
     {
@@ -23,5 +23,4 @@ class Clean {
         // Maybe should also strip spaces?
         return $text;
     }
-
-} 
+}
