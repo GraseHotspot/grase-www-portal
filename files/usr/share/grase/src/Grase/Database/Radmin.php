@@ -245,4 +245,83 @@ class Radmin
             );
         }
     }
+
+    /* "Settings" for templates */
+
+    // Template map is to make it easier to lookup templates via int not txt
+    private $templatemap = array(
+        'maincss'   => 0,
+        'loginhelptext' => 1,
+        'helptext' => 2,
+        'belowloginhtml' => 3,
+        'loggedinnojshtml' => 4,
+        'termsandconditions' => 5,
+    );
+
+    public function getTemplate($template)
+    {
+        $query = $this->radmin->prepare(
+            "SELECT tpl FROM templates WHERE id = ? LIMIT 1");
+        $result = $query->execute(array($this->templatemap[$template]));
+
+        // Always check that result is not an error
+        if ($result == false) {
+            \Grase\ErrorHandling::fatal_db_error('Getting template failed: ',
+                NULL);
+        }
+
+        $result = $query->fetch();
+
+        return $result['tpl'];
+
+    }
+
+    public function checkExistsTemplate($template)
+    {
+
+        $sql = $this->radmin->prepare(
+            "SELECT COUNT(id) as templatecount
+            FROM templates WHERE id = ? LIMIT 1"
+        );
+        $sql->execute(array($this->templatemap[$template]));
+        return (bool)$sql->fetch()['templatecount'];
+
+    }
+
+    public function setTemplate($template, $value)
+    {
+        // if $value == NULL we cause problems (assume user wants empty template
+        if($value == '') $value = ' ';
+
+        if(!isset($this->templatemap[$template])){
+            \Grase\ErrorHandling::fatal_error('Attempt to update non-existent
+             template');
+        }
+        // Check count not contents ^^
+        if($this->checkExistsTemplate($template) == 0)
+        {
+            // Insert new record
+            $query = $this->radmin->prepare(
+                "INSERT INTO templates SET id=?, tpl=?");
+            $params = array($this->templatemap[$template], $value);
+        }else
+        {
+            // Update old record
+            $query = $this->radmin->prepare(
+                "UPDATE templates SET tpl=? WHERE id=?");
+            $params = array($value, $this->templatemap[$template]);
+        }
+
+        if($query->execute($params))
+        {
+            \AdminLog::getInstance()->log("Template $template updated");
+            return true;
+        }else{
+            \AdminLog::getInstance()->log("Template $template failed to
+            update");
+            \Grase\ErrorHandling::fatal_db_error('Updating template failed:
+            ', NULL);
+        }
+    }
+    /* End templates functions */
 } 

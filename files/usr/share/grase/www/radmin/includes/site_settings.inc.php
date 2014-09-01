@@ -24,7 +24,6 @@ require_once __DIR__.'/../../../vendor/autoload.php';
 
 $Radmin = new \Grase\Database\Database('/etc/grase/radmin.conf');
 $NewSettings = new \Grase\Database\Radmin($Radmin);
-//var_dump($NewSettings->setSetting('websiteLink2', 'random2'));
 
 /**** Site Settings ****/
 $Settings = new SettingsMySQL($DBs->getRadminDB());
