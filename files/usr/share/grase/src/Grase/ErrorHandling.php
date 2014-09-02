@@ -67,8 +67,12 @@ class ErrorHandling
     // Todo remove pear_error_obj and replace with PDOException?
     public static function fatalDatabaseError($error, $pear_error_obj)
     {
+        if(is_object($pear_error_obj))
+        {
+            $error .= ": ". $pear_error_obj->toString();
+        }
         $AdminLog =& \AdminLog::getInstance();
-        $AdminLog->log_error($error . $pear_error_obj->toString());
+        $AdminLog->log_error($error);
 
         global $NONINTERACTIVE_SCRIPT;
         if (isset($NONINTERACTIVE_SCRIPT) && $NONINTERACTIVE_SCRIPT) {
@@ -77,7 +81,6 @@ class ErrorHandling
             echo "# An error has occured in the application\n";
             echo "# More information may be available in the server logs\n";
             echo "# ::$error::\n";
-            echo "#\n# " . $pear_error_obj->toString() . "\n"; // TODO: Do we really want to allow these error messages to be available without needing to access server logs?
             echo "# Memory used: " . memory_get_usage() . "\n";
             die();
 
@@ -98,7 +101,7 @@ class ErrorHandling
         smartyerrorblockt();
         $smarty->register_block('t', 'smarty_block_t'); // Needed even though message will be in English
         $smarty->assign("Application", APPLICATION_NAME);
-        $smarty->assign("error", $error . $pear_error_obj->getMessage());
+        $smarty->assign("error", $error);
 
         $smarty->display("error.tpl");
         //var_dump($pear_error_obj);
