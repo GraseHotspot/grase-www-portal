@@ -1,9 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
     ],
-    "hash": "a02e025f9d6ef674c869e8bc69634596",
+    "hash": "c4445489653211b554aaaa707a27ccb0",
     "packages": [
         {
             "name": "smarty-gettext/smarty-gettext",
@@ -56,11 +57,17 @@
         },
         {
             "name": "tecnick.com/tcpdf",
-            "version": "6.0.078",
+            "version": "6.0.093",
             "source": {
                 "type": "git",
-                "url": "git://git.code.sf.net/p/tcpdf/code",
-                "reference": "e1cbda79b99f3cdc8fdf26b39eb4870d2cd9fbac"
+                "url": "https://github.com/tecnickcom/TCPDF.git",
+                "reference": "8ec040b3ccedc2a0150a7b6b46c18c59d932ad59"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/8ec040b3ccedc2a0150a7b6b46c18c59d932ad59",
+                "reference": "8ec040b3ccedc2a0150a7b6b46c18c59d932ad59",
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
@@ -98,7 +105,7 @@
                     "homepage": "http://nicolaasuni.tecnick.com"
                 }
             ],
-            "description": "TCPDF is a PHP class for generating PDF documents.",
+            "description": "TCPDF is a PHP class for generating PDF documents and barcodes.",
             "homepage": "http://www.tcpdf.org/",
             "keywords": [
                 "PDFD32000-2008",
@@ -109,7 +116,7 @@
                 "pdf417",
                 "qrcode"
             ],
-            "time": "2014-05-12 19:50:13"
+            "time": "2014-09-02 19:31:33"
         }
     ],
     "packages-dev": [
@@ -123,6 +130,7 @@
         "smarty-gettext/smarty-gettext": 20,
         "tecnick.com/tcpdf": 0
     },
+    "prefer-stable": false,
     "platform": [
 
     ],
