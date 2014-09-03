@@ -271,7 +271,10 @@ class Upgrade
     // < 1.7
     private function addAccessLevelColumn()
     {
-        $this->radmin->exec("ALTER TABLE auth DROP COLUMN accesslevel");
+        try {
+            $this->radmin->exec("ALTER TABLE auth DROP COLUMN accesslevel");
+        } catch (\PDOException $e) {
+        }
 
         $this->rowsUpdated += $this->radmin->exec("ALTER TABLE auth ADD COLUMN accesslevel INT NOT NULL DEFAULT 1");
     }
