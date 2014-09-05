@@ -78,19 +78,20 @@ load_templates(array('maincss'));
 
 function load_templates($templates)
 {
-    global $Settings, $templateEngine;
+    global $Settings, $smarty;
     foreach($templates as $template)
     {
-        $templateEngine->assign('tpl_'.$template, $Settings->getTemplate($template));
+        $smarty->assign('tpl_'.$template, $Settings->getTemplate($template));
     }
 }
 
 function custom_settings($settings = array())
 {
-    global $templateEngine, $Settings;
+    global $smarty, $NewSettings;
     foreach($settings as $setting)
     {
-        $templateEngine->assign($setting, $NewSettings->getSetting($setting) == 'TRUE' ? TRUE : FALSE);
+        $smarty->assign($setting, $NewSettings->getSetting($setting) == 'TRUE'
+                ? TRUE : FALSE);
     }
 }
 

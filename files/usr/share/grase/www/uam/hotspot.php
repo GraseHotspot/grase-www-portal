@@ -34,27 +34,27 @@ if($userurl == 'http://1.0.0.0/') $userurl = '';
 if($NewSettings->getSetting('disablejavascript') == 'TRUE')
 {
     $nojs = true;
-    $templateEngine->assign("nojs" , true);
-    $templateEngine->assign("js" , false);
-    $templateEngine->assign("jsdisabled" , true);
+    $smarty->assign("nojs" , true);
+    $smarty->assign("js" , false);
+    $smarty->assign("jsdisabled" , true);
 }elseif( isset($_COOKIE['grasenojs']) && $_COOKIE['grasenojs'] == 'javascriptdisabled')
 {
     $nojs = true;
-    $templateEngine->assign("nojs" , true);
-    $templateEngine->assign("js" , false);
+    $smarty->assign("nojs" , true);
+    $smarty->assign("js" , false);
 }else
 {
     $nojs = false;
-    $templateEngine->assign("nojs" , false);
-    $templateEngine->assign("js" , true);
+    $smarty->assign("nojs" , false);
+    $smarty->assign("js" , true);
 }
 
-$templateEngine->assign("user_url", $userurl);
-$templateEngine->assign("challenge", $challenge);
-$templateEngine->assign("RealHostname", trim(file_get_contents('/etc/hostname')));
+$smarty->assign("user_url", $userurl);
+$smarty->assign("challenge", $challenge);
+$smarty->assign("RealHostname", trim(file_get_contents('/etc/hostname')));
 if($NewSettings->getSetting('autocreategroup'))
 {
-    $templateEngine->assign('automac', true);
+    $smarty->assign('automac', true);
 }
 
 /* Important parts of uamopts
@@ -92,7 +92,7 @@ switch($res)
         // Fall through to welcome page?
         if($nojs)
         {
-            $templateEngine->display('loggedin.tpl');
+            $smarty->display('loggedin.tpl');
             exit;
         }
         break;
@@ -101,7 +101,7 @@ switch($res)
         // Login failed? Show error and display login again
         $reply = array("Login Failed");
         if($_GET['reply'] != '') $reply = array($_GET['reply']);
-        $templateEngine->assign("error", $reply);
+        $smarty->assign("error", $reply);
         //break; // Fall through?
         
     case 'notyet':
@@ -121,7 +121,7 @@ switch($res)
         }
         //
         load_templates(array('loggedinnojshtml'));
-        $templateEngine->display('loggedin.tpl');
+        $smarty->display('loggedin.tpl');
         exit;
         break;        
         
@@ -130,12 +130,12 @@ switch($res)
 
 function setup_login_form()
 {
-    global $templateEngine;
-    $templateEngine->display('portal.tpl');
+    global $smarty;
+    $smarty->display('portal.tpl');
     exit;
 }
 
-$templateEngine->display('portal.tpl');
+$smarty->display('portal.tpl');
 
 
 ?>
