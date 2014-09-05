@@ -70,19 +70,19 @@ if(isset($_POST['submit']))
     
     if($new2timeoptions != $time_options)
     {
-        $NewSettings->setSetting('timeOptions', $new2timeoptions);
+        $Settings->setSetting('timeOptions', $new2timeoptions);
         $success[] = T_("Time Options Updated");
     }
     
     if($new2mboptions != $mb_options)
     {
-        $NewSettings->setSetting('mbOptions', $new2mboptions);
+        $Settings->setSetting('mbOptions', $new2mboptions);
         $success[] = T_("Data Options Updated");
     }
     
     if($new2bwoptions != $kbit_options)
     {
-        $NewSettings->setSetting('kbitOptions', $new2bwoptions);
+        $Settings->setSetting('kbitOptions', $new2bwoptions);
         $success[] = T_("Bandwidth Options Updated");
     }
 
@@ -126,10 +126,10 @@ if(sizeof($success) > 0) $templateEngine->assign("success", $success);
 
 function update_location($location)
 {
-    global $error, $templateEngine, $NewSettings, $success;
+    global $error, $templateEngine, $Settings, $success;
     if($location == "") $error[] = T_("Location name not valid");
     else {
-	    if($NewSettings->setSetting('locationName', $location))
+	    if($Settings->setSetting('locationName', $location))
 	    {
 		    $success[] = T_("Location name updated");
 		    AdminLog::getInstance()->log(T_("Location Name changed to")." $location");
@@ -145,11 +145,11 @@ function update_location($location)
 // Website
 function update_websitename($websitename)
 {
-    global $error, $templateEngine, $NewSettings, $success;
+    global $error, $templateEngine, $Settings, $success;
     if($websitename == "") $error[] = T_("Website name not valid");    
     else
     {
-        if($NewSettings->setSetting('websiteName', $websitename))
+        if($Settings->setSetting('websiteName', $websitename))
         {
             $success[] = T_("Website name updated");
 			AdminLog::getInstance()->log(T_("Website name updated"));        
@@ -163,11 +163,11 @@ function update_websitename($websitename)
 
 function update_websitelink($websitelink)
 {
-    global $error, $templateEngine, $NewSettings, $success;
+    global $error, $templateEngine, $Settings, $success;
     if($websitelink == "" || strpos($websitelink, ' ') !== false) $error[] = T_("Website link not valid");    
     else
     {
-        if($NewSettings->setSetting('websiteLink', $websitelink))
+        if($Settings->setSetting('websiteLink', $websitelink))
         {
             $success[] = T_("Website link updated");
 			AdminLog::getInstance()->log(T_("Website link updated"));        
@@ -184,10 +184,10 @@ function update_websitelink($websitelink)
 /*
 function update_pricemb($pricemb)
 {
-    global $error, $smarty, $NewSettings, $success;
+    global $error, $smarty, $Settings, $success;
 	if($pricemb != "" && is_numeric($pricemb))
 	{
-		if($NewSettings->setSetting('priceMb', $pricemb))
+		if($Settings->setSetting('priceMb', $pricemb))
 		{
 			$success[] = T_("Price per MiB updated");
 			AdminLog::getInstance()->log(T_("Price per MiB updated"));
@@ -205,10 +205,10 @@ function update_pricemb($pricemb)
 
 function update_pricetime($pricetime)
 {
-    global $error, $smarty, $NewSettings, $success;
+    global $error, $smarty, $Settings, $success;
 	if($pricetime != "" && is_numeric($pricetime))
 	{
-		if($NewSettings->setSetting('priceMinute', $pricetime))
+		if($Settings->setSetting('priceMinute', $pricetime))
 		{
 			$success[] = T_("Price per Minute Updated");
 			AdminLog::getInstance()->log(T_("Price per Minute Updated"));
@@ -227,7 +227,7 @@ function update_pricetime($pricetime)
 
 function update_locale($locale)
 {
-	global $error, $templateEngine, $NewSettings, $success;
+	global $error, $templateEngine, $Settings, $success;
 
 	//$locale = locale_accept_from_http($locale);
 	$newlocale = Locale::parseLocale($locale);
@@ -236,7 +236,7 @@ function update_locale($locale)
 	if(isset($newlocale['language']))
 	{
 		$locale = Locale::composeLocale($newlocale);
-		if($NewSettings->setSetting('locale', $locale))
+		if($Settings->setSetting('locale', $locale))
 		{
 			// Apply new locale so language displays correctly from now on
 			\Grase\Locale::applyLocale($locale);
@@ -262,11 +262,11 @@ function update_locale($locale)
 // Support Contact
 function update_supportcontact($supportname)
 {
-    global $error, $templateEngine, $NewSettings, $success;
+    global $error, $templateEngine, $Settings, $success;
     if($supportname == "") $error[] = T_("Support name not valid");    
     else
     {
-        if($NewSettings->setSetting('supportContactName', $supportname))
+        if($Settings->setSetting('supportContactName', $supportname))
         {
             $success[] = T_("Support name updated");
 			AdminLog::getInstance()->log(T_("Support name updated"));        
@@ -280,11 +280,11 @@ function update_supportcontact($supportname)
 
 function update_supportlink($supportlink)
 {
-    global $error, $templateEngine, $NewSettings, $success;
+    global $error, $templateEngine, $Settings, $success;
     if($supportlink == "" || strpos($supportlink, ' ') !== false) $error[] = T_("Support link not valid");    
     else
     {
-        if($NewSettings->setSetting('supportContactLink', $supportlink))
+        if($Settings->setSetting('supportContactLink', $supportlink))
         {
             $success[] = T_("Support link updated");
 			AdminLog::getInstance()->log(T_("Support link updated"));        

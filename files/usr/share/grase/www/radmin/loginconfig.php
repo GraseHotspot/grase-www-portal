@@ -210,7 +210,7 @@ function load_loginoptions()
     foreach($singleloginoptions as $singleoption => $attributes)
     {
         $singleloginoptions[$singleoption]['value'] = 
-            $NewSettings->getSetting($singleoption);
+            $Settings->getSetting($singleoption);
     }
     
     // Load all templates

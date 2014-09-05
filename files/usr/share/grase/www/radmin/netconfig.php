@@ -196,11 +196,11 @@ if(isset($_POST['submit']))
     
     // TODO: validate network settings
     
-    $NewSettings->setSetting('networkoptions', serialize($networkoptions));
+    $Settings->setSetting('networkoptions', serialize($networkoptions));
 
     // Update last change timestamp if we actually changed something
     //if(sizeof($success) > 0)
-        $NewSettings->setSetting('lastnetworkconf', time());
+        $Settings->setSetting('lastnetworkconf', time());
         
     // Call validate&change functions for changed items
     load_networkoptions(); // Reload due to changes in POST    
@@ -210,10 +210,11 @@ if(isset($_POST['submit']))
 
 function load_networkoptions()
 {
-    global $multinetworkoptions, $singlenetworkoptions, $selectnetworkoptions, $Settings;
+    global $multinetworkoptions, $singlenetworkoptions,
+           $selectnetworkoptions, $Settings;
     // Load all Multi option values from database 
     
-    $networkoptions = unserialize($NewSettings->getSetting('networkoptions'));
+    $networkoptions = unserialize($Settings->getSetting('networkoptions'));
 
     foreach($multinetworkoptions as $multioption => $attributes)
     {
@@ -239,7 +240,7 @@ function load_networkoptions()
 
     // Check when /etc/chilli/local.conf was last updated and compare to $Settings->gettSetting('lastchangechilliconfig');
     $localconfts = filemtime('/etc/dnsmasq.d/01-grasehotspot');
-    $lastchangets = $NewSettings->getSetting('lastnetworkconf');
+    $lastchangets = $Settings->getSetting('lastnetworkconf');
     if($localconfts < $lastchangets)
     {
         $error[] = T_("Changes pending Reload");

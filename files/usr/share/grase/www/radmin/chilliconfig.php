@@ -162,7 +162,7 @@ if(isset($_POST['submit']))
 
     // Update last change timestamp if we actually changed something
     if(sizeof($success) > 0)
-        $NewSettings->setSetting('lastchangechilliconf', time());
+        $Settings->setSetting('lastchangechilliconf', time());
         
     // Call validate&change functions for changed items
     load_chillioptions(); // Reload due to changes in POST    
@@ -192,7 +192,7 @@ function load_chillioptions()
 
     // Check when /etc/chilli/local.conf was last updated and compare to $Settings->gettSetting('lastchangechilliconfig');
     $localconfts = filemtime('/etc/chilli/local.conf');
-    $lastchangets = $NewSettings->getSetting('lastchangechilliconf');
+    $lastchangets = $Settings->getSetting('lastchangechilliconf');
     if($localconfts < $lastchangets)
     {
         $error[] = T_("Changes pending Coova Chilli Reload");

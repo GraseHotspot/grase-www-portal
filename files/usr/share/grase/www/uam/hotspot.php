@@ -31,7 +31,7 @@ $challenge = @$_GET['challenge'];
 if($userurl == 'http://logout/') $userurl = '';
 if($userurl == 'http://1.0.0.0/') $userurl = '';
 
-if($NewSettings->getSetting('disablejavascript') == 'TRUE')
+if($Settings->getSetting('disablejavascript') == 'TRUE')
 {
     $nojs = true;
     $smarty->assign("nojs" , true);
@@ -52,7 +52,7 @@ if($NewSettings->getSetting('disablejavascript') == 'TRUE')
 $smarty->assign("user_url", $userurl);
 $smarty->assign("challenge", $challenge);
 $smarty->assign("RealHostname", trim(file_get_contents('/etc/hostname')));
-if($NewSettings->getSetting('autocreategroup'))
+if($Settings->getSetting('autocreategroup'))
 {
     $smarty->assign('automac', true);
 }
