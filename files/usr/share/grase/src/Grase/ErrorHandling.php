@@ -22,6 +22,8 @@
 
 namespace Grase;
 
+require_once("smarty3/SmartyBC.class.php");
+
 // TODO Migrate to SmartyBC (or Twig)
 class ErrorHandling
 {
@@ -41,15 +43,6 @@ class ErrorHandling
             die();
 
         }
-
-        if (file_exists('/usr/share/php/smarty/libs/') && !is_link('/usr/share/php/smarty/libs/')) {
-            // Debian bug http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=514305
-            // Remove this code once fixed?
-            require_once('smarty/libs/Smarty.class.php');
-        } else {
-            require_once('smarty/Smarty.class.php');
-        }
-        //require_once 'libs/Smarty.class.php';
 
         $smarty = new \SmartyBC();
 
@@ -86,15 +79,6 @@ class ErrorHandling
 
         }
 
-        if (file_exists('/usr/share/php/smarty/libs/') && !is_link('/usr/share/php/smarty/libs/')) {
-            // Debian bug http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=514305
-            // Remove this code once fixed?
-            require_once('smarty/libs/Smarty.class.php');
-        } else {
-            require_once('smarty/Smarty.class.php');
-        }
-        //require_once 'libs/Smarty.class.php';
-
         $smarty = new \SmartyBC();
 
         $smarty->compile_check = true;
@@ -120,15 +104,6 @@ class ErrorHandling
             echo "# Memory used: " . memory_get_usage() . "\n";
             die();
 
-        }
-        //$AdminLog =& \AdminLog::getInstance();
-        //$AdminLog->log_error($error);
-        if (file_exists('/usr/share/php/smarty/libs/') && !is_link('/usr/share/php/smarty/libs/')) {
-            // Debian bug http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=514305
-            // Remove this code once fixed?
-            require_once('smarty/libs/Smarty.class.php');
-        } else {
-            require_once('smarty/Smarty.class.php');
         }
 
         $smarty = new \SmartyBC();
