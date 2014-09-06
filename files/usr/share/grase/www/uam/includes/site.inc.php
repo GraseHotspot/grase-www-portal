@@ -50,7 +50,6 @@ $smarty = new SmartyBC();
 #$smarty->register_block('t', 'smarty_block_t');
 
 $smarty->assign("Location", $location);
-$smarty->assign("pricemb", "$currency$pricemb");
 $smarty->assign("Support", array("link" => $support_link, "name" => $support_name));
 $smarty->assign("website_name", $website_name);
 $smarty->assign("website_link", $website_link);
@@ -59,13 +58,6 @@ $networkoptions = unserialize($Settings->getSetting("networkoptions"));
 $lanip = $networkoptions['lanipaddress'];
 $smarty->assign("serverip", $lanip);
 
-
-// Load login page settings from db and use defaults
-/*$smarty->assign("hidefooter", $Settings->getSetting('hidefooter') == 'TRUE' ? TRUE : FALSE);
-$smarty->assign("hideheader", $Settings->getSetting('hideheader') == 'TRUE' ? TRUE : FALSE);
-$smarty->assign("disableallcss", $Settings->getSetting('disableallcss') == 'TRUE' ? TRUE : FALSE);
-$smarty->assign("hidehelplink", $Settings->getSetting('hidehelplink') == 'TRUE' ? TRUE : FALSE);
-$smarty->assign("hidelogoutbookmark", $Settings->getSetting('hidelogoutbookmark') == 'TRUE' ? TRUE : FALSE);*/
 
 custom_settings(array('hidefooter', 'hideheader', 'disableallcss', 'hidehelplink', 'hidelogoutbookmark'));
 

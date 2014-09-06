@@ -45,15 +45,11 @@ if(isset($_POST['submit']))
 	$newlocale          = \Grase\Clean::text($_POST['locale']);
 	$newwebsitename     = \Grase\Clean::text($_POST['websitename']);
 	$newwebsitelink     = \Grase\Clean::text($_POST['websitelink']);
-	//$newsellabledata    = clean_number($_POST['sellable_data']);
-	//$newuseabledata     = clean_number($_POST['useable_data']);	    
     // Check for changed items
     
     if($newlocationname != $location) update_location($newlocationname);
     if($newsupportcontact != $support_name) update_supportcontact($newsupportcontact);    
     if($newsupportlink != $support_link) update_supportlink($newsupportlink);    
-//    if($newpricemb != $pricemb) update_pricemb($newpricemb);
-    //if($newtimeoptions != $time_options) update_timeoptions($newtimeoptions);
     if($newlocale != $locale) update_locale($newlocale);
     if($newwebsitename != $website_name) update_websitename($newwebsitename);
     if($newwebsitelink != $website_link) update_websitelink($newwebsitelink);
@@ -93,12 +89,10 @@ if(isset($_POST['submit']))
 load_global_settings(); // Reloads settings
 
 	$templateEngine->assign("location", $location);
-//	$smarty->assign("pricemb", displayLocales($pricemb));
-//	$smarty->assign("pricetime", displayLocales($pricetime));
 	$templateEngine->assign("mboptions", $mb_options);
 	$templateEngine->assign("timeoptions", $time_options);
 	$templateEngine->assign("bwoptions", $kbit_options);
-	//$smarty->assign("currency", $currency);
+
 	
 	// Locale stuff
 	
@@ -109,9 +103,6 @@ load_global_settings(); // Reloads settings
     $templateEngine->assign("region", locale_get_display_region($locale));
 	
 		
-	//$smarty->assign("dispcurrency", $CurrencySymbols[$currency]);
-	//$smarty->assign("sellable_data", $sellable_data);
-	//$smarty->assign("useable_data", $useable_data);
 	$templateEngine->assign("support_name", $support_name);
 	$templateEngine->assign("support_link", $support_link);
 	$templateEngine->assign("website_name", $website_name);
@@ -179,49 +170,6 @@ function update_websitelink($websitelink)
     }
 }
 
-// Pricing
-
-/*
-function update_pricemb($pricemb)
-{
-    global $error, $smarty, $Settings, $success;
-	if($pricemb != "" && is_numeric($pricemb))
-	{
-		if($Settings->setSetting('priceMb', $pricemb))
-		{
-			$success[] = T_("Price per MiB updated");
-			AdminLog::getInstance()->log(T_("Price per MiB updated"));
-		}
-		else
-		{
-			$error[] = T_("Error saving Price per MiB");
-		}
-	}
-	else
-	{
-		$error[] = T_("Invalid Price per MiB");
-	}
-}	
-
-function update_pricetime($pricetime)
-{
-    global $error, $smarty, $Settings, $success;
-	if($pricetime != "" && is_numeric($pricetime))
-	{
-		if($Settings->setSetting('priceMinute', $pricetime))
-		{
-			$success[] = T_("Price per Minute Updated");
-			AdminLog::getInstance()->log(T_("Price per Minute Updated"));
-		}else
-		{
-			$error[] = T_("Error saving Price per Minute");
-		}
-	}else
-	{
-		$error[] = T_("Invalid Price per Minute");
-	}
-}
-*/
 
 // Data and Time selections
 

@@ -29,21 +29,13 @@ load_global_settings();
 
 function load_global_settings()
 {
-    global $Settings, $location, $pricemb, $pricetime, $support_name,
-           $support_link, $website_link, $website_name, $locale, $mb_options,
-           $time_options, $kbit_options, $DEMO_SITE;
+    global $Settings, $location, $support_name, $support_link, $website_link,
+           $website_name, $locale, $mb_options, $time_options, $kbit_options,
+           $DEMO_SITE;
 
     $location = $Settings->getSetting('locationName');
     if ($location == "") {
         $location = "Default";
-    }
-    $pricemb = $Settings->getSetting('priceMb');
-    if ($pricemb == "") {
-        $pricemb = 0.6;
-    }
-    $pricetime = $Settings->getSetting('priceMinute');
-    if ($pricetime == "") {
-        $pricetime = 0.1;
     }
     $support_name = $Settings->getSetting('supportContactName');
     if ($support_name == "") {

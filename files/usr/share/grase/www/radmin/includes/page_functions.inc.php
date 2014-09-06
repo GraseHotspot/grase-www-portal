@@ -134,7 +134,7 @@ function createusefullinks()
 // TODO rename datacosts to better reflect that it just has inherit added to datavals
 function datacosts()
 {
-	global $datacosts;//, $pricemb, $currency;
+	global $datacosts;
 	$datacosts['inherit'] = T_('Inherit from group');
 	$datacosts = $datacosts + datavals();
 	return $datacosts;
@@ -143,7 +143,6 @@ function datacosts()
 function datavals()
 {
         global $mb_options;
-	//$disp_currency = $CurrencySymbols[$currency];
 	$datavals[''] = '';
 	$mboptions = explode(" ", $mb_options);
 	foreach($mboptions as $mb)
@@ -174,7 +173,7 @@ function timevals()
 
 function timecosts()
 {
-	global $timecosts;//, $pricetime, $currency, $time_options;
+	global $timecosts;
 	$timecosts['inherit'] = T_('Inherit from group');
 	$timecosts = $timecosts + timevals();
 		

@@ -122,15 +122,14 @@ if(isset($_POST['newusersubmit']))
 
 function display_adduser_form()
 {
-	global $templateEngine, $pricemb;
+	global $templateEngine;
 //    $user['Username'] = \Grase\Util::RandomUsername(5);
 	$user['Password'] = \Grase\Util::randomPassword(6);
 	
 	// TODO: make default settings customisable
 	$user['Max_Mb'] = 'inherit';
 	$user['Max_Time'] = 'inherit';
-	//$user['Max_Mb'] = round(10/$pricemb, 2); // TODO: Make a default setting for data and time and put in settings page
-	$user['Expiration'] = "--";//date('Y-m-d', strtotime('+3 month'));
+	$user['Expiration'] = "--";
 	$templateEngine->assign("user", $user);
 	$templateEngine->displayPage('adduser.tpl');
 }
