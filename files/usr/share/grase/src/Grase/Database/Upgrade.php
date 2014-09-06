@@ -344,7 +344,10 @@ class Upgrade
     private function fixGroupNameIndex()
     {
         // Remove uniq index on radgroupcheck
-        $this->rowsUpdated += $this->radius->exec("DROP INDEX GroupName ON radgroupcheck");
+        try {
+            $this->rowsUpdated += $this->radius->exec("DROP INDEX GroupName ON radgroupcheck");
+        }catch (\PDOException $e) { // We don't care if it doesn't exist causing the drop to fail
+        }
 
         $this->rowsUpdated += $this->radius->exec("ALTER TABLE radgroupcheck ADD KEY `GroupName` (`GroupName`(32))");
     }
@@ -354,14 +357,18 @@ class Upgrade
     {
         $this->truncatePostAuth();
 
-        // Just drop columns we are fixing, easier than checking for existance
-        $this->rowsUpdated += $this->radius->exec(
-            "
-                        ALTER TABLE radpostauth
-                          DROP COLUMN ServiceType,
-                          DROP COLUMN FramedIPAddress,
-                          DROP COLUMN CallingStationId"
-        );
+        try {
+            // Just drop columns we are fixing, easier than checking for existance
+
+            $this->rowsUpdated += $this->radius->exec(
+                "
+                            ALTER TABLE radpostauth
+                              DROP COLUMN ServiceType,
+                              DROP COLUMN FramedIPAddress,
+                              DROP COLUMN CallingStationId"
+            );
+        }catch (\PDOException $e) { // We don't care if it doesn't exist causing the drop to fail
+        }
 
         // Add columns back in correctly
         $this->rowsUpdated += $this->radius->exec(
