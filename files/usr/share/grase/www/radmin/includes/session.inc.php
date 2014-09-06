@@ -32,6 +32,8 @@ require_once "MDB2.php";
 require_once 'Auth/Container.php';
 require_once 'Auth/Container/MDB2.php';
 
+require_once __DIR__.'/../../../vendor/autoload.php';
+
 function grase_autoload($class_name) {
     if( file_exists(__DIR__. '/../classes/' . $class_name . '.class.php'))
     {
