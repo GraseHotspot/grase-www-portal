@@ -142,7 +142,7 @@ if(isset($_POST['submit']))
         if($postvalue != $attributes['value'])
         {
             // Update options in database
-            $NewSettings->setSetting($singleoption, $postvalue);
+            $Settings->setSetting($singleoption, $postvalue);
 
             $success[] = sprintf(
                 T_("%s login config option update"),

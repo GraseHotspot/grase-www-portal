@@ -75,7 +75,7 @@ function load_paypaloptions()
     foreach($singlepaypaloptions as $singleoption => $attributes)
     {
         $singlepaypaloptions[$singleoption]['value'] = 
-            $NewSettings->getSetting($singleoption);
+            $Settings->getSetting($singleoption);
     }
 }    
 
@@ -112,7 +112,7 @@ if(isset($_POST['submit']))
         if($postvalue != $attributes['value'])
         {
             // Update options in database
-            $NewSettings->setSetting($singleoption, $postvalue);
+            $Settings->setSetting($singleoption, $postvalue);
             $success[] = sprintf(
                 T_("%s PayPal config option update"),
                 $attributes['label']);

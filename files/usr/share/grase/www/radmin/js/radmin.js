@@ -115,7 +115,7 @@ $(document).ready(function(){
     
         // Make close buttons on tabs work
         //TODO migrate live to .on event
-        $( "#groupslist span.ui-icon-close" ).live( "click", function() {
+        $( document ).on( "click", "#groupslist span.ui-icon-close", function() {
 			var index = $( "li", $grouptabs ).index( $( this ).parent() );
 			$grouptabs.tabs( "remove", index );
 		});

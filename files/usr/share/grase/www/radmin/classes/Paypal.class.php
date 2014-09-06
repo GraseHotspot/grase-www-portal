@@ -44,9 +44,9 @@ class Paypal extends PaymentGateway
         // $Settings should be of class Settings/SettingsMySQL
         // $Settings can also be array
         if(is_object($Settings)){
-            $this->APIpassword = $NewSettings->getSetting('PayPalAPIpassword');
-            $this->APIusername = $NewSettings->getSetting('PayPalAPIusername');
-            $this->APIsignature = $NewSettings->getSetting('PayPalAPIsignature');
+            $this->APIpassword = $Settings->getSetting('PayPalAPIpassword');
+            $this->APIusername = $Settings->getSetting('PayPalAPIusername');
+            $this->APIsignature = $Settings->getSetting('PayPalAPIsignature');
         }else{ // Assume array instead (error check? TODO)
             $this->APIpassword = $Settings['APIpassword'];
             $this->APIusername = $Settings['APIusername'];
