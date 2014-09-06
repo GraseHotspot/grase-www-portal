@@ -51,7 +51,7 @@ class ErrorHandling
         }
         //require_once 'libs/Smarty.class.php';
 
-        $smarty = new \Smarty;
+        $smarty = new \SmartyBC();
 
         $smarty->compile_check = true;
         smartyerrorblockt();
@@ -95,7 +95,7 @@ class ErrorHandling
         }
         //require_once 'libs/Smarty.class.php';
 
-        $smarty = new \Smarty;
+        $smarty = new \SmartyBC();
 
         $smarty->compile_check = true;
         smartyerrorblockt();
@@ -131,7 +131,7 @@ class ErrorHandling
             require_once('smarty/Smarty.class.php');
         }
 
-        $smarty = new \Smarty;
+        $smarty = new \SmartyBC();
 
         $smarty->compile_check = true;
         smartyerrorblockt();
