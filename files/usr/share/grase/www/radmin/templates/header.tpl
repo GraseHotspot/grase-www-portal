@@ -11,7 +11,7 @@
 <!-- CSS Stylesheet -->
 <link rel="stylesheet" type="text/css" href="/grase/hotspot.css?{$hotspotcssversion}" id="hotspot_css" />
 <link rel="stylesheet" type="text/css" href="radmin.css?{$radmincssversion}" id="radmin_css" />
-        <link type="text/css" href="/grase/css/cupertino/jquery-ui-1.8.11.custom.css" rel="stylesheet" />	
+        <link type="text/css" href="/grase/css/cupertino/jquery-ui-1.8.11.custom.css" rel="stylesheet" />
 
     <script type="text/javascript" src="/grase/vendor/jquery/dist/jquery.min.js"></script>
 
