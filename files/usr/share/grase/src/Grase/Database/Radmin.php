@@ -266,7 +266,7 @@ class Radmin
         $result = $query->execute(array($this->templatemap[$template]));
 
         // Always check that result is not an error
-        if ($result == false) {
+        if ($result === false) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 'Getting template failed: ',
                 null
@@ -410,7 +410,7 @@ class Radmin
         $result = $this->radmin->query($sql)->fetchAll();
 
         // Always check that result is not an error
-        if ($result == false) {
+        if ($result === false) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 'Getting list of batches failed: ',
                 $result
@@ -434,7 +434,7 @@ class Radmin
         $result = $batch->execute(array($batchID));
 
         // Always check that result is not an error
-        if ($result == false) {
+        if ($result === false) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 'Getting batch users failed: ',
                 $result
@@ -453,7 +453,7 @@ class Radmin
         $nextBatchID = $this->radmin->query($sql)->fetchColumn();
 
         // Always check that result is not an error
-        if ($nextBatchID == false) {
+        if ($nextBatchID === false) {
             \AdminLog::getInstance()->log("Unable to fetch nextBatchID");
             \Grase\ErrorHandling::fatalDatabaseError(
                 'Fetching nextBatchID
@@ -511,7 +511,7 @@ class Radmin
         $result = $query->fetchAll();
 
         // Always check that result is not an error
-        if ($result == false) {
+        if ($result === false) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 'Getting groups failed: ',
                 $result
