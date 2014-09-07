@@ -52,16 +52,16 @@ if(isset($_GET['loginurl'])){
 	$loginlink2 = "http://$lanip:3990/prelogin";
 }
 
-$templateEngine->assign("user_url", $uamopts['userurl']);
+$smarty->assign("user_url", $uamopts['userurl']);
 
-$templateEngine->assign("loginlink", $loginlink);
-$templateEngine->assign("loginlink2", $loginlink2);
-$templateEngine->assign("RealHostname", trim(file_get_contents('/etc/hostname')));
+$smarty->assign("loginlink", $loginlink);
+$smarty->assign("loginlink2", $loginlink2);
+$smarty->assign("RealHostname", trim(file_get_contents('/etc/hostname')));
 
 if(isset($_GET['help'])){
-	$templateEngine->display('help.tpl');
+	$smarty->display('help.tpl');
 }else{
-	$templateEngine->display('welcome.tpl');
+	$smarty->display('welcome.tpl');
 }
 
 ?>

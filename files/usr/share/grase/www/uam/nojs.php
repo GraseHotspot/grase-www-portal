@@ -18,11 +18,11 @@ if(isset($_GET['loginurl'])){
 	$loginlink2 = "http://$lanip:3990/prelogin";
 }
 
-$templateEngine->assign("user_url", $uamopts['userurl']);
+$smarty->assign("user_url", $uamopts['userurl']);
 
-$templateEngine->assign("loginlink", $loginlink);
-$templateEngine->assign("loginlink2", $loginlink2);
+$smarty->assign("loginlink", $loginlink);
+$smarty->assign("loginlink2", $loginlink2);
 
-$templateEngine->display('nojs.tpl');
+$smarty->display('nojs.tpl');
 
 ?>

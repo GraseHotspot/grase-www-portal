@@ -17,8 +17,8 @@ if ($handle = opendir($dir)) {
     closedir($handle);
 }
 
-$templateEngine->assign("path", "Public/".$path);
-$templateEngine->assign("files", $files);
-$templateEngine->display('files.tpl');
+$smarty->assign("path", "Public/".$path);
+$smarty->assign("files", $files);
+$smarty->display('files.tpl');
 ?>
 

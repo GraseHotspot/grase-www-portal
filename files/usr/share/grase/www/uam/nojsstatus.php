@@ -39,18 +39,18 @@ if($username != '')
     if($timelimit != "")
         $user['RemainingTime'] = $timelimit - $user['TotalTimeMonth'];
         
-    $templateEngine->assign('user', $user);
-    $templateEngine->assign('session', $session);
+    $smarty->assign('user', $user);
+    $smarty->assign('session', $session);
 }else{
     $error = array("You don't appear to be logged in. If you have just logged in, try refreshing the page.<br/>
                     Otherwise, go back to the <a href='hotspot'>login form.</a>");
-    $templateEngine->assign("error", $error);
+    $smarty->assign("error", $error);
 }
 
-    $templateEngine->register_modifier('bytes', array("\Grase\Util", "formatBytes"));
-    $templateEngine->register_modifier('seconds', array("\Grase\Util", "formatSec"));
+    $smarty->register_modifier('bytes', array("\Grase\Util", "formatBytes"));
+    $smarty->register_modifier('seconds', array("\Grase\Util", "formatSec"));
 
-    $templateEngine->display('nojsstatus.tpl');
+    $smarty->display('nojsstatus.tpl');
 
 //print_r($user);
 
