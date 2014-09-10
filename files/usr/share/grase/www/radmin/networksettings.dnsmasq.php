@@ -26,6 +26,7 @@ chdir(__DIR__);
 function __autoload($class_name) {
     require_once './classes/' . $class_name . '.class.php';
 }
+require_once 'includes/site_settings.inc.php';
 
 $NONINTERACTIVE_SCRIPT = TRUE;
 
