@@ -79,6 +79,7 @@ if(isset($_POST['newmachinesubmit']))
 			$MaxMb,
 			$MaxTime,
 			'--', // No expiry for machine accounts
+            false, // No ExpireAfter for machine accounts
 			MACHINE_GROUP_NAME, // TODO: This needs to be linked to settings
 			\Grase\Clean::text($_POST['Comment'])
 		);

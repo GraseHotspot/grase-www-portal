@@ -3,6 +3,7 @@
     <tr>
         <th>{t}Name{/t}</th>
         <th>{t}Expiry{/t}</th>
+        <th>{t}Expire After{/t}</th>
         <th>{t}Max Data (Mb){/t}</th>
         <th>{t}Max Time (mins){/t}</th>
         <th>{t}Recur data limit{/t}</th>
@@ -16,6 +17,7 @@
     <tr>
         <td>{$attributes.GroupLabel}</td>
         <td>{$attributes.Expiry}</td>
+        <td>{$attributes.ExpireAfter}</td>
         <td>{$attributes.MaxMb}</td>
         <td>{$attributes.MaxTime}</td>        
         <td>{if $groupdata.$groupname.DataRecurLimit}{assign var=lim value=$groupdata.$groupname.DataRecurLimit}{$Datavals.$lim} per {$groupdata.$groupname.DataRecurTime} {/if}</td>

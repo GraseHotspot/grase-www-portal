@@ -217,7 +217,8 @@ switch($_SESSION['wizardpage'])
                 $Password, 
                 $MaxMb, 
                 $MaxTime, 
-                $Expiry, 
+                $Expiry,
+                false, // Don't currently have ExpireAfter for vouchers
                 $vouchers[$_SESSION['selectedvoucher']]['VoucherGroup'], 
                 $Comment
             );

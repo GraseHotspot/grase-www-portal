@@ -519,6 +519,10 @@ class DatabaseFunctions
             $Userdata['FormatExpiration'] = "--";
         }
 
+        if (isset($Userdata['GRASE-ExpireAfter'])) {
+            $Userdata['ExpireAfter'] = $Userdata['GRASE-ExpireAfter'];
+        }
+
         // User Account Lockout
         if (isset($Userdata['Auth-Type'])) {
             // Check we are actually locked (Reject)
@@ -852,6 +856,7 @@ class DatabaseFunctions
         $datalimitmb,
         $timelimitmins,
         $expirydate,
+        $expireAfter,
         $group,
         $comment
     ) {
@@ -879,6 +884,10 @@ class DatabaseFunctions
 
         if (trim($expirydate) && trim($expirydate) != '--') {
             $this->setUserExpiry($username, $expirydate);
+        }
+
+        if (trim($expireAfter)) {
+            $this->setUserExpireAfter($username, $expireAfter);
         }
 
         if (trim($comment)) {
@@ -1359,6 +1368,30 @@ class DatabaseFunctions
         if (PEAR::isError($result)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Setting User Password Query Failed: '),
+                $result
+            );
+        }
+
+        return $result;
+    }
+
+    public function setUserExpireAfter($username, $expireAfter)
+    {
+        $fields = array(
+            'Username' => array('value' => $username, 'key' => true),
+            'Attribute' => array(
+                'value' => 'GRASE-ExpireAfter',
+                'key' => true
+            ),
+            'op' => array('value' => ':='),
+            'Value' => array('value' => $expireAfter)
+        );
+
+        $result = $this->db->replace('radcheck', $fields);
+
+        if (PEAR::isError($result)) {
+            \Grase\ErrorHandling::fatalDatabaseError(
+                T_('Setting User ExpireAfter Query Failed: '),
                 $result
             );
         }

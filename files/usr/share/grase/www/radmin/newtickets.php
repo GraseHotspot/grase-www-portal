@@ -193,6 +193,7 @@ if(isset($_POST['createticketssubmit']))
 			    $MaxMb,
 			    $MaxTime,
 			    expiry_for_group($group, $groupsettings),
+                $groupsettings[$group]['ExpireAfter'],
 			    \Grase\Clean::text($_POST['Group']),
 			    \Grase\Clean::text($_POST['Comment'])
 		    ))

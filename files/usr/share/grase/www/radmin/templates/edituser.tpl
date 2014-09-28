@@ -45,6 +45,14 @@
 {/if}
 </div>
 
+<div>
+    <label>Expire After</label>
+    {if $user.ExpireAfter == ''}<strong>{t}No Expire After Set{/t}</strong>
+    {else}
+        {$user.ExpireAfter}
+    {/if}
+</div>
+
 {else}
 <div>
     <label>Expiration</label>

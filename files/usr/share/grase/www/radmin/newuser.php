@@ -99,13 +99,13 @@ if(isset($_POST['newusersubmit']))
 		    $MaxTime = $groupsettings[$group]['MaxTime'];
 
 
-
         DatabaseFunctions::getInstance()->createUser( // TODO: Check if valid
 			\Grase\Clean::username($_POST['Username']),
 			\Grase\Clean::text($_POST['Password']),
 			$MaxMb,
 			$MaxTime,
 			expiry_for_group($group, $groupsettings),
+            $groupsettings[$group]['ExpireAfter'],
 			\Grase\Clean::text($_POST['Group']),
 			\Grase\Clean::text($_POST['Comment'])
 		);

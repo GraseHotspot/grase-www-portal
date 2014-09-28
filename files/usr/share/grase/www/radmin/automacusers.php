@@ -45,6 +45,10 @@ function automacuser($json = false)
     //
     $autocreategroup = $Settings->getSetting('autocreategroup');
     $autocreatepassword = $Settings->getSetting('autocreatepassword');
+    $groupsettings = $Settings->getGroup($autocreategroup);
+    /* TODO Set at the group level and not in the radcheck table,
+     * requires changes to how DB class works
+     */
 
     if($autocreategroup && strlen($autousername) > 0)
     {
@@ -55,6 +59,7 @@ function automacuser($json = false)
             false, // Data limit
             false, // Time limit
             '--', // Expiry date
+            $groupsettings[$autocreategroup]['ExpireAfter'],
             $autocreategroup,
             "Auto created account for $mac at ". date('Ymd H:i:s')
         );

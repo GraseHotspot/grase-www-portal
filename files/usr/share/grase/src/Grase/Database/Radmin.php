@@ -11,7 +11,7 @@ class Radmin
     private $settingcache = array();
     private $settingcacheloaded = false;
 
-    private $dbSchemeVersion = "2.2";
+    private $dbSchemeVersion = "2.3";
     private $dbSchemeSettings =
         "CREATE TABLE IF NOT EXISTS `settings` (
           `setting` varchar(20) NOT NULL,
@@ -53,6 +53,7 @@ class Radmin
             `GroupName` VARCHAR(64) NOT NULL,
             `GroupLabel` VARCHAR(64) NOT NULL,
             `Expiry` VARCHAR(100) NULL,
+            `ExpireAfter` VARCHAR(100) NULL,
             `MaxOctets` BIGINT(32) UNSIGNED NULL,
             `MaxSeconds` BIGINT(32) UNSIGNED NULL,
             `Comment` VARCHAR(300) NULL,
@@ -80,9 +81,38 @@ class Radmin
         if (!$this->checkTablesExist()) {
             $this->createTables();
         }
+        $this->upgradeDatabase();
 
         // Load all settings as we ALWAYS need settings (do we?) TODO
         $this->loadAllSettings();
+    }
+
+    private function upgradeDatabase()
+    {
+        $oldSchemaVersion = $this->getSetting('DBSchemaVersion');
+        if ($oldSchemaVersion == $this->dbSchemeVersion) {
+            return false;
+        }
+
+        try {
+
+            if ($oldSchemaVersion < 2.3) {
+                $this->addExpireAfterColumn();
+                $this->setSetting('DBSchemaVersion', 2.3);
+            }
+        } catch (PDOException $Exception) {
+            \Grase\ErrorHandling::fatalDatabaseError(
+                T_(
+                    'Upgrading Radmin DB failed: '
+                ) . $Exception->getMessage(),
+                null
+            );
+        }
+    }
+
+    private function addExpireAfterColumn()
+    {
+        $this->radmin->query("ALTER TABLE groups ADD COLUMN ExpireAfter VARCHAR(100) NULL AFTER Expiry");
     }
 
     private function checkTablesExist()
@@ -483,6 +513,7 @@ class Radmin
                     GroupName,
                     GroupLabel,
                     Expiry,
+                    ExpireAfter,
                     MaxOctets,
                     MaxSeconds,
                     Comment,
@@ -498,6 +529,7 @@ class Radmin
                     GroupName,
                     GroupLabel,
                     Expiry,
+                    ExpireAfter,
                     MaxOctets,
                     MaxSeconds,
                     Comment,
@@ -554,6 +586,7 @@ class Radmin
             'GroupName' => $attributes['GroupName'],
             'GroupLabel' => $attributes['GroupLabel'],
             'Expiry' => @ $attributes['Expiry'],
+            'ExpireAfter' => @ $attributes['ExpireAfter'],
             'MaxOctets' => @ $attributes['MaxOctets'],
             'MaxSeconds' => @ $attributes['MaxSeconds'],
             'Comment' => @ $attributes['Comment']
@@ -561,12 +594,13 @@ class Radmin
 
         $query = $this->radmin->prepare(
             "INSERT INTO groups
-            (GroupName, GroupLabel, Expiry, MaxOctets, MaxSeconds, Comment)
+            (GroupName, GroupLabel, Expiry, ExpireAfter, MaxOctets, MaxSeconds, Comment)
             VALUES
-            (:GroupName, :GroupLabel, :Expiry, :MaxOctets, :MaxSeconds, :Comment)
+            (:GroupName, :GroupLabel, :Expiry, :ExpireAfter, :MaxOctets, :MaxSeconds, :Comment)
             ON DUPLICATE KEY UPDATE
             GroupLabel = :GroupLabel,
             Expiry = :Expiry,
+            ExpireAfter = :ExpireAfter,
             MaxOctets = :MaxOctets,
             MaxSeconds = :MaxSeconds,
             Comment = :Comment"
