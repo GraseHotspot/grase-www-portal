@@ -60,8 +60,7 @@ class ErrorHandling
     // Todo remove pear_error_obj and replace with PDOException?
     public static function fatalDatabaseError($error, $pear_error_obj)
     {
-        if(is_object($pear_error_obj))
-        {
+        if (is_object($pear_error_obj)) {
             $error .= ": ". $pear_error_obj->toString();
         }
         $AdminLog =& \AdminLog::getInstance();
@@ -117,9 +116,7 @@ class ErrorHandling
 
         $smarty->display("error.tpl");
         die();
-
     }
-
 }
 
 function smartyerrorblockt()
@@ -131,5 +128,3 @@ function smartyerrorblockt()
         }
     }
 }
-
-?>

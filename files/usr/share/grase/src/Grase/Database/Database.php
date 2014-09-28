@@ -20,6 +20,7 @@
 */
 namespace Grase\Database;
 
+use Grase\ErrorHandling;
 
 class Database
 {
@@ -32,8 +33,11 @@ class Database
     public function __construct($settingsFile = '/etc/grase/radius.conf')
     {
         $this->loadSettingsFromFile($settingsFile);
-        $this->conn = new \PDO("mysql:host=" . $this->host .
-            ";dbname=" . $this->db, $this->user, $this->pass);
+        $this->conn = new \PDO(
+            "mysql:host=" . $this->host . ";dbname=" . $this->db,
+            $this->user,
+            $this->pass
+        );
         $this->conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         $this->conn->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
     }
@@ -42,7 +46,7 @@ class Database
     {
         // Check that databaseSettingsFile is valid
         if (!is_readable($dbSettingsFile)) {
-            \Grase\ErrorHandling::fatalNoDatabaseError(
+            ErrorHandling::fatalNoDatabaseError(
                 T_("DB Config File isn't a valid file.") . "($dbSettingsFile)"
             );
         }
@@ -66,8 +70,7 @@ class Database
                 case 'sql_radmindatabase':
                     $this->db = $value;
                     break;
-
             }
         }
     }
-} 
+}

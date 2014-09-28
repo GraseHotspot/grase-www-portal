@@ -22,6 +22,8 @@ namespace Grase;
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+use Grase\Locale;
+
 class Util
 {
     // NOTE: This function is based on http://snipplr.com/view/5444/random-pronounceable-passwords-generator/
@@ -260,21 +262,21 @@ class Util
         $bytes = $bytes + 0; // Should never be needed now as unlimited ^^
 
         if ($bytes >= $gb) {
-            $output = \Grase\Locale::localeNumberFormat(
+            $output = Locale::localeNumberFormat(
                 sprintf("%01.2f", $bytes / $gb)
             ) . " GiB";
         } elseif ($bytes >= $mb) {
-            $output = \Grase\Locale::localeNumberFormat(
+            $output = Locale::localeNumberFormat(
                 sprintf("%01.2f", $bytes / $mb)
             ) . " MiB";
         } elseif ($bytes >= $kb) {
-            $output = \Grase\Locale::localeNumberFormat(
+            $output = Locale::localeNumberFormat(
                 sprintf("%01.0f", $bytes / 1024)
             ) . " KiB";
         } elseif ($bytes == 1) {
-            $output = \Grase\Locale::localeNumberFormat($bytes) . " B";
+            $output = Locale::localeNumberFormat($bytes) . " B";
         } else {
-            $output = \Grase\Locale::localeNumberFormat($bytes) . " B";
+            $output = Locale::localeNumberFormat($bytes) . " B";
         }
 
         return $output;
@@ -293,21 +295,21 @@ class Util
         $bits = $bits + 0; // Should never be needed now as unlimited ^^
 
         if ($bits >= $gb) {
-            $output = \Grase\Locale::localeNumberFormat(
+            $output = Locale::localeNumberFormat(
                 sprintf("%01.2f", $bits / $gb)
             ) . " Gibit/s";
         } elseif ($bits >= $mb) {
-            $output = \Grase\Locale::localeNumberFormat(
+            $output = Locale::localeNumberFormat(
                 sprintf("%01.2f", $bits / $mb)
             ) . " Mibit/s";
         } elseif ($bits >= $kb) {
-            $output = \Grase\Locale::localeNumberFormat(
+            $output = Locale::localeNumberFormat(
                 sprintf("%01.0f", $bits / 1024)
             ) . " Kibit/s";
         } elseif ($bits == 1) {
-            $output = \Grase\Locale::localeNumberFormat($bits) . " bit/s";
+            $output = Locale::localeNumberFormat($bits) . " bit/s";
         } else {
-            $output = \Grase\Locale::localeNumberFormat($bits) . " bit/s";
+            $output = Locale::localeNumberFormat($bits) . " bit/s";
         }
 
         return $output;

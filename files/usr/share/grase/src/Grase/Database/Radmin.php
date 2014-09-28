@@ -2,6 +2,9 @@
 
 namespace Grase\Database;
 
+use Grase\Util;
+use Grase\ErrorHandling;
+
 // All Radmin Database functions (Was Settings)
 class Radmin
 {
@@ -100,8 +103,8 @@ class Radmin
                 $this->addExpireAfterColumn();
                 $this->setSetting('DBSchemaVersion', 2.3);
             }
-        } catch (PDOException $Exception) {
-            \Grase\ErrorHandling::fatalDatabaseError(
+        } catch (\PDOException $Exception) {
+            ErrorHandling::fatalDatabaseError(
                 T_(
                     'Upgrading Radmin DB failed: '
                 ) . $Exception->getMessage(),
@@ -122,7 +125,7 @@ class Radmin
                 \PDO::FETCH_COLUMN
             );
         } catch (\PDOException $Exception) {
-            \Grase\ErrorHandling::fatalDatabaseError(
+            ErrorHandling::fatalDatabaseError(
                 T_(
                     'Get All Settings for caching Query failed: '
                 ) . $Exception->getMessage(),
@@ -172,7 +175,7 @@ class Radmin
 
     private function loadAllSettings($force = true)
     {
-        if ($this->settingcacheloaded && force == false) {
+        if ($this->settingcacheloaded && $force == false) {
             return true;
         }
 
@@ -209,7 +212,7 @@ class Radmin
         $result = $select->fetch();
         // Always check that result is not an error
         if ($result === false) {
-            \Grase\ErrorHandling::fatalDatabaseError(
+            ErrorHandling::fatalDatabaseError(
                 'Getting setting failed: ',
                 $result
             );
@@ -269,7 +272,7 @@ class Radmin
             \AdminLog::getInstance()->log(
                 "Setting $setting failed to update (to $value)"
             );
-            \Grase\ErrorHandling::fatalDatabaseError(
+            ErrorHandling::fatalDatabaseError(
                 'Updating setting failed: ',
                 null
             );
@@ -297,7 +300,7 @@ class Radmin
 
         // Always check that result is not an error
         if ($result === false) {
-            \Grase\ErrorHandling::fatalDatabaseError(
+            ErrorHandling::fatalDatabaseError(
                 'Getting template failed: ',
                 null
             );
@@ -329,7 +332,7 @@ class Radmin
         }
 
         if (!isset($this->templatemap[$template])) {
-            \Grase\ErrorHandling::fatalError(
+            ErrorHandling::fatalError(
                 'Attempt to update non-existent
                              template'
             );
@@ -356,7 +359,7 @@ class Radmin
             \AdminLog::getInstance()->log(
                 "Template $template failed to update"
             );
-            \Grase\ErrorHandling::fatalDatabaseError(
+            ErrorHandling::fatalDatabaseError(
                 'Updating template failed:
                             ',
                 null
@@ -394,7 +397,7 @@ class Radmin
             return $result;
         } else {
             AdminLog::getInstance()->log("Batches $batchID failed to add");
-            \Grase\ErrorHandling::fatalDatabaseError(
+            ErrorHandling::fatalDatabaseError(
                 'Adding batch failed: ',
                 null
             );
@@ -414,7 +417,7 @@ class Radmin
             return true;
         } else {
             AdminLog::getInstance()->log("Batch $batchID failed to add $user");
-            \Grase\ErrorHandling::fatalDatabaseError(
+            ErrorHandling::fatalDatabaseError(
                 'Adding user to batch failed: ',
                 null
             );
@@ -423,7 +426,6 @@ class Radmin
 
     public function listBatches()
     {
-        /* select batches.batchID, createTime, createdBy, comment, count(UserName) from batch, batches WHERE batches.batchID = batch.batchID;*/
         $sql = "SELECT
                   batches.batchID,
                   createTime,
@@ -441,7 +443,7 @@ class Radmin
 
         // Always check that result is not an error
         if ($result === false) {
-            \Grase\ErrorHandling::fatalDatabaseError(
+            ErrorHandling::fatalDatabaseError(
                 'Getting list of batches failed: ',
                 $result
             );
@@ -452,8 +454,8 @@ class Radmin
 
     public function getBatch($batchID = 0)
     {
-        if ($batchID == 0) // Get lastbatch
-        {
+        // Get lastbatch
+        if ($batchID == 0) {
             $batchID = $this->getSetting('lastbatch');
         }
 
@@ -465,7 +467,7 @@ class Radmin
 
         // Always check that result is not an error
         if ($result === false) {
-            \Grase\ErrorHandling::fatalDatabaseError(
+            ErrorHandling::fatalDatabaseError(
                 'Getting batch users failed: ',
                 $result
             );
@@ -478,14 +480,19 @@ class Radmin
         // Get next available BatchID
         // ISNULL/IFNULL aren't standards, COALESCE is
         // GREATEST isn't a standard
-        $sql = "SELECT GREATEST(COALESCE(MAX(batch.batchID),0),COALESCE(MAX(batches.batchID),0))+1 AS nextBatchID FROM batch, batches";
+        $sql = "SELECT
+          GREATEST(
+            COALESCE(MAX(batch.batchID),0),
+            COALESCE(MAX(batches.batchID),0)
+          )+1 AS nextBatchID
+          FROM batch, batches";
 
         $nextBatchID = $this->radmin->query($sql)->fetchColumn();
 
         // Always check that result is not an error
         if ($nextBatchID === false) {
             \AdminLog::getInstance()->log("Unable to fetch nextBatchID");
-            \Grase\ErrorHandling::fatalDatabaseError(
+            ErrorHandling::fatalDatabaseError(
                 'Fetching nextBatchID
                             failed: ',
                 null
@@ -544,7 +551,7 @@ class Radmin
 
         // Always check that result is not an error
         if ($result === false) {
-            \Grase\ErrorHandling::fatalDatabaseError(
+            ErrorHandling::fatalDatabaseError(
                 'Getting groups failed: ',
                 $result
             );
@@ -569,7 +576,7 @@ class Radmin
     {
 
         if (isset($attributes['MaxMb'])) {
-            $attributes['MaxOctets'] = \Grase\Util::bigIntVal(
+            $attributes['MaxOctets'] = Util::bigIntVal(
                 $attributes['MaxMb'] * 1024 * 1024
             );
             unset($attributes['MaxMb']);
@@ -608,7 +615,7 @@ class Radmin
 
         $result = $query->execute($fields);
         if ($result === false) {
-            \Grase\ErrorHandling::fatalDatabaseError(
+            ErrorHandling::fatalDatabaseError(
                 T_('Adding Group query failed:  '),
                 $result
             );
@@ -630,9 +637,9 @@ class Radmin
         );
 
         if ($delete->execute(array($groupname)) === false) {
-            \Grase\ErrorHandling::fatalDatabaseError(
+            ErrorHandling::fatalDatabaseError(
                 T_('Delete Group query failed:  '),
-                $result
+                $delete
             );
         }
 
@@ -649,7 +656,7 @@ class Radmin
     {
 
         if (isset($attributes['MaxMb'])) {
-            $attributes['MaxOctets'] = \Grase\Util::bigIntVal(
+            $attributes['MaxOctets'] = Util::bigIntVal(
                 $attributes['MaxMb'] * 1024 * 1024
             );
             unset($attributes['MaxMb']);
@@ -700,7 +707,7 @@ class Radmin
 
         $result = $query->execute($fields);
         if ($result === false) {
-            \Grase\ErrorHandling::fatalDatabaseError(
+            ErrorHandling::fatalDatabaseError(
                 T_('Adding Voucher query failed:  '),
                 $result
             );
@@ -769,12 +776,13 @@ class Radmin
 
         // Always check that result is not an error
         if ($result === false) {
-            \Grase\ErrorHandling::fatalDatabaseError(
+            ErrorHandling::fatalDatabaseError(
                 'Getting vouchers failed: ',
                 $result
             );
         }
 
+        $vouchers = array();
         foreach ($query->fetchAll() as $results) {
             if (isset($results['MaxSeconds'])) {
                 $results['MaxTime'] = $results['MaxSeconds'] / 60;
@@ -805,7 +813,7 @@ class Radmin
         $result = $delete->execute(array($vouchername));
 
         if ($result === false) {
-            \Grase\ErrorHandling::fatalDatabaseError(
+            ErrorHandling::fatalDatabaseError(
                 T_('Delete Voucher query failed:  '),
                 $result
             );

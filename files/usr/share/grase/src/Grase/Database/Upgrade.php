@@ -20,6 +20,7 @@
 */
 namespace Grase\Database;
 
+use Grase\Util;
 
 class Upgrade
 {
@@ -116,7 +117,7 @@ class Upgrade
                 $this->truncatePostAuth();
                 $Settings->setSetting("DBVersion", 2.5);
             }
-        } catch (PDOException $Exception) {
+        } catch (\PDOException $Exception) {
             return T_('Upgrading DB failed: ') . $Exception->getMessage() . ': ' . $Exception->getCode();
         }
 
@@ -282,7 +283,7 @@ class Upgrade
     // < 1.8
     private function defaultNetworkInterfaces($Settings)
     {
-        $interfaces = \Grase\Util::getDefaultNetworkIFS();
+        $interfaces = Util::getDefaultNetworkIFS();
         $networkoptions = unserialize($Settings->getSetting('networkoptions'));
         $networkoptions['lanif'] = $interfaces['lanif'];
         $networkoptions['wanif'] = $interfaces['wanif'];
@@ -308,7 +309,7 @@ class Upgrade
         if (is_array(unserialize($lastbatch))) {
             $lastbatchusers = unserialize($lastbatch);
             $nextBatchID = $Settings->nextBatchID();
-            $results += $Settings->saveBatch($nextBatchID, $lastbatchusers);
+            $Settings->saveBatch($nextBatchID, $lastbatchusers);
             // Lastbatch becomes an ID
             $Settings->setSetting('lastbatch', $nextBatchID);
         } else {
@@ -400,7 +401,7 @@ class Upgrade
         // Check that setting doesn't already exist as changing an existing
         // password will lock users out
         if (!$Settings->getSetting("autocreatepassword")) {
-            $Settings->setSetting("autocreatepassword", \Grase\Util::randomPassword(20));
+            $Settings->setSetting("autocreatepassword", Util::randomPassword(20));
 
             $this->rowsUpdated++;
         }
