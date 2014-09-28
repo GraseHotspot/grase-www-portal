@@ -63,7 +63,7 @@ copy_favicon(){
 }
 
 unlink_logo(){
-    if [[ -h /usr/share/grase/www/images/logo.png ]]
+    if [ -h /usr/share/grase/www/images/logo.png ]
     then
         rm /usr/share/grase/www/images/logo.png > /dev/null || true
     fi
