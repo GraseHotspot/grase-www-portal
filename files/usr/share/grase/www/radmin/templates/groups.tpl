@@ -36,7 +36,7 @@
             <label>{t}Name{/t}</label><input type="text" class="groupnameinput" name="groupname[]" value='{$settings.GroupLabel}'/>
             <label>{t}Description{/t}</label><textarea name="groupcomment[]" class="groupcommentinput" maxlength='250'>{$settings.Comment}</textarea>
             <label>{t}Expiry{/t}</label><input type="text" placeholder="{t}Never Expire{/t}" name="groupexpiry[]" value='{$settings.Expiry}'/>
-            <label>{t}Expire After{/t}</label><input type="text" name="groupexpireafter[]" value='{$settings.ExpireAfter}'/>
+            <label>{t}Expire After First login{/t}</label><input type="text" name="groupexpireafter[]" value='{$settings.ExpireAfter}'/>
             
             <label>{t}Login Times{/t}</label><input type="text" name="LoginTime[]" value='{$groupcurrentdata.$groupname.LoginTime}'/>            
             

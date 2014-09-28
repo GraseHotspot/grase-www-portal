@@ -46,7 +46,7 @@
 </div>
 
 <div>
-    <label>Expire After</label>
+    <label>Expire After First Login</label>
     {if $user.ExpireAfter == ''}<strong>{t}No Expire After Set{/t}</strong>
     {else}
         {$user.ExpireAfter}
