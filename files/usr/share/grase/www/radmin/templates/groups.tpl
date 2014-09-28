@@ -1,7 +1,11 @@
 {include file="header.tpl" Name="Groups" activepage="groups"}
 
 <h2>{t}Group Config{/t}</h2>
-<p>{t escape=no}Group expiry needs to be in a format understood by the <a target="_blank" href="http://www.php.net/manual/en/function.strtotime.php">strtotime</a> PHP function.{/t}<br/>{t}For example, "+1 month" will set an expiry for 1 month from when the account is created. "+2 weeks", "+3 days" etc.{/t} {t}Expiry is calculated to the second, so if you want it to a date for example, try "+1 week midnight".{/t}</p>
+<p>{t escape=no}Group expiry and expire after first login needs to be in a format understood by the
+    <a target="_blank" href="http://www.php.net/manual/en/function.strtotime.php">strtotime</a> PHP function.{/t}<br/>
+    {t}For example, "+1 month" will set an expiry for 1 month from when the account is created. "+2 weeks", "+3 days" etc.{/t}
+    {t}Expiry is calculated to the second, so if you want it to a date for example, try "+1 week midnight".{/t}
+    {t escape=no}Expire after first login also needs to conform to the <a href="http://search.cpan.org/~muir/Time-ParseDate-2013.1113/lib/Time/ParseDate.pm">ParseDate perl module</a>{/t}</p>
 
 <p>{t escape=no}Login Time must be in the format of UUCP time ranges. See <a target="_blank" href="http://ftp.gnu.org/pub/old-gnu/Manuals/radius/html_node/radius_186.html">http://ftp.gnu.org/pub/old-gnu/Manuals/radius/html_node/radius_186.html</a> for more details. Only basic format checking is done, so please ensure that the correct format is used. Leaving Login Times blank will allow login at any time.{/t}
 </p>
@@ -10,7 +14,7 @@
 
 <p>{t}The limits here are the default for group members, unless overridden when creating a member. The limits are applied at user creation time, if "Inherit from group" is selected. If multiple limits are specified, the first limit to be reached will disconnect the user.{/t}</p>
 
-<p>{t}Changing Expiry, Data or Time limits, will not change existing users of the group and will only apply to new users. Recurring limits, Bandwidth and simultaneous logins will all apply to existing and new members.{/t}</p>
+<p>{t}Changing Expiry, expire after first login, Data or Time limits, will not change existing users of the group and will only apply to new users. Recurring limits, Bandwidth and simultaneous logins will all apply to existing and new members.{/t}</p>
 
 <p class="ui-widget messagewidget error">{t}Recurring Data and Time limits must not be used with simultaneous login set to yes, otherwise users may be able to use more than the allocated limit. Data limits should only be used with larger time periods, and users may need to logout and log back in if they use past the time period.{/t}</p>
 <div id="GroupConfigForm">
