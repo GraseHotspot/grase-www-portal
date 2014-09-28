@@ -36,22 +36,52 @@ class CronFunctions extends DatabaseFunctions
     {
         // Static reference of this class's instance.
         static $instance;
-        if(!isset($instance)) {
+        if (!isset($instance)) {
             $instance = new CronFunctions();
         }
         return $instance;
-    }    
-/*    
-    private function __construct()
+    }
+
+
+    public function activateExpireAfterLogin()
     {
-        //parent::__construct();
-        $this->db =& DatabaseConnections::getInstance()->getRadiusDB();
-    }   */ 
-    
+        $rowsaffected = 0;
+
+        $query = "
+          SELECT
+            radcheck.UserName as username,
+            radcheck.value as expireafter,
+            UNIX_TIMESTAMP(radpostauth.authdate) as firstlogin
+          FROM radius.radcheck, radius.radpostauth
+          WHERE
+            radcheck.UserName = radpostauth.username
+            AND Attribute = 'GRASE-ExpireAfter'
+            AND reply = 'Access-Accept'
+          GROUP BY radcheck.Username
+          ORDER BY authdate";
+
+        $results = $this->db->queryAll($query);
+        if (PEAR::isError($results)) {
+            return T_('Unable to select users needing First Login Activiation') . $results->toString();
+        }
+
+        foreach ($results as $user) {
+            $this->setUserExpiry(
+                $user['username'],
+                date('Y-m-d H:i:s', strtotime($user['expireafter'], $user['firstlogin']))
+            );
+            $this->setUserExpireAfter($user['username'], '');
+            $rowsaffected++;
+        }
+
+        if($rowsaffected) return "($rowsaffected) " . T_('First login users activiated') . "\n";
+
+        return false;
+    }
 
     public function clearOldBatches()
     {
-        $rowsaffected = false;
+        $rowsaffected = 0;
         // Delete user names from batch that are no longer in radcheck table (gone)
 
         // Not the fastest way to do this, but due to it being in 2 different databases that we wish to keep user perms separate for, we need to execute extra queries and do some php processing

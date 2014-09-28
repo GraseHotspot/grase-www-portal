@@ -84,4 +84,6 @@ if(@ $_GET['deleteoutofdatausers'])
 $oldbatches = CronFunctions::getInstance()->clearOldBatches();
 if($oldbatches) echo "$oldbatches\n";
 
+echo CronFunctions::getInstance()->activateExpireAfterLogin();
+
 ?>

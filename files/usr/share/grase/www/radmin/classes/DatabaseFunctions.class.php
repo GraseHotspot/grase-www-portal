@@ -1377,26 +1377,49 @@ class DatabaseFunctions
 
     public function setUserExpireAfter($username, $expireAfter)
     {
-        $fields = array(
-            'Username' => array('value' => $username, 'key' => true),
-            'Attribute' => array(
-                'value' => 'GRASE-ExpireAfter',
-                'key' => true
-            ),
-            'op' => array('value' => ':='),
-            'Value' => array('value' => $expireAfter)
-        );
+        if (trim($expireAfter)) {
 
-        $result = $this->db->replace('radcheck', $fields);
-
-        if (PEAR::isError($result)) {
-            \Grase\ErrorHandling::fatalDatabaseError(
-                T_('Setting User ExpireAfter Query Failed: '),
-                $result
+            $fields = array(
+                'Username' => array('value' => $username, 'key' => true),
+                'Attribute' => array(
+                    'value' => 'GRASE-ExpireAfter',
+                    'key' => true
+                ),
+                'op' => array('value' => ':='),
+                'Value' => array('value' => $expireAfter)
             );
-        }
 
-        return $result;
+            $result = $this->db->replace('radcheck', $fields);
+
+            if (PEAR::isError($result)) {
+                \Grase\ErrorHandling::fatalDatabaseError(
+                    T_('Setting User ExpireAfter Query Failed: '),
+                    $result
+                );
+            }
+
+            return $result;
+        } else {
+            // No expire after, delete key from database
+            $sql = sprintf(
+                "DELETE FROM radcheck
+                                            WHERE Username=%s
+                                            AND Attribute=%s",
+                $this->db->quote($username),
+                $this->db->quote('GRASE-ExpireAfter')
+            );
+
+            $result = $this->db->queryOne($sql);
+
+            if (PEAR::isError($result)) {
+                \Grase\ErrorHandling::fatalDatabaseError(
+                    T_('Deleting User Expire After Query Failed: '),
+                    $result
+                );
+            }
+
+            return $result;
+        }
     }
 
     public function setUserExpiry($username, $expirydate)
