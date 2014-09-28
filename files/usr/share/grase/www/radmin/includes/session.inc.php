@@ -96,7 +96,7 @@ $options = array(
     // accesslevel contains the users access levels as a bitmask
     'db_fields' => array('accesslevel')
     );
-    
+
 $Auth = new Auth("MDB2_Salt", $options, "loginForm");
 
 $Auth->setAdvancedSecurity(array(
