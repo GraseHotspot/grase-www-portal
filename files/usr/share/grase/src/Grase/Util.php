@@ -22,8 +22,6 @@ namespace Grase;
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-use Grase\Locale;
-
 class Util
 {
     // NOTE: This function is based on http://snipplr.com/view/5444/random-pronounceable-passwords-generator/
