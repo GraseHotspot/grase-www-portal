@@ -117,6 +117,11 @@ class Upgrade
                 $this->truncatePostAuth();
                 $Settings->setSetting("DBVersion", 2.5);
             }
+
+            if ($olddbversion < 2.6) {
+                $this->decreaseChilliAdminInterval();
+                $Settings->setSetting("DBVersion", 2.6);
+            }
         } catch (\PDOException $Exception) {
             return T_('Upgrading DB failed: ') . $Exception->getMessage() . ': ' . $Exception->getCode();
         }
@@ -414,4 +419,12 @@ class Upgrade
         // truncated and so we'll just truncate postauth to save time
         $this->rowsUpdated += $this->radius->exec("TRUNCATE radpostauth");
     }
+
+    // < 2.6
+    private function decreaseChilliAdminInterval()
+    {
+        // Set Chilli Admin interval to be lower (10 minutes)
+        $this->rowsUpdated += $this->DBF->setChilliConfigSingle('interval', '600');
+    }
+
 } 

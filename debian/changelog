@@ -19,6 +19,8 @@ grase-www-portal (3.7.7.12) UNRELEASED; urgency=low
   * Allow "TOS" only login (via auto creation of MAC account)
   * Update to Smarty3
   * Install and use Composer and Bower to manage external dependencies
+  * Decrease Admin interval to 10 minutes to allow settings to take effect
+    sooner
 
  -- Tim White <tim@grasehotspot.org>  Tue, 22 Jan 2013 16:13:27 +1000
 
