@@ -302,7 +302,7 @@ class Upgrade
     private function walledGardenData()
     {
         // New chilli settings for garden
-        $this->rowsUpdated += $this->DBF->setChilliConfigSingle('nousergardendata', '');
+        $this->rowsUpdated += $this->DBF->setChilliConfigSingle('nousergardendata', true);
     }
 
     // < 1.9

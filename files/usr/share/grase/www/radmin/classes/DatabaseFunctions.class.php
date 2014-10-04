@@ -1715,7 +1715,7 @@ class DatabaseFunctions
         $this->delChilliConfig($option, '');
         // $value is '' so we delete any options as this is a single not multi
 
-        if ($value != '') {
+        if ($value !== true) {
             $test = "$option=$value";
         } else {
             $test = "$option";
