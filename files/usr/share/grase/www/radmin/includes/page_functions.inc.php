@@ -85,8 +85,6 @@ function createmenuitems()
 	        		
 	 );
 
-// TODO: Bring links page back when sysstatus is fixed and more links are active	
-//	$menubar['links'] = array("href" => "links", "label" => T_("Useful Links"));	
 	$menubar['passwd'] = array("href" => "passwd", "label" => T_("Admin Users"),
 	    "submenu" => array(
     	    'adminlog' => array("href" => "adminlog", "label" => T_("Admin Log") ),
@@ -123,12 +121,6 @@ function createmenuitems()
 	    }
 	}
 	return $newmenubar;
-}
-
-function createusefullinks()
-{
-	$links['sysstatus'] = array("href" => "/grase/radmin/sysstatus", "label" => T_("System Status"));
-	return $links;
 }
 
 // TODO rename datacosts to better reflect that it just has inherit added to datavals

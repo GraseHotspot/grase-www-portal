@@ -20,91 +20,45 @@
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-/*ini_set('include_path', 
-  ini_get('include_path') . PATH_SEPARATOR . '../ofc2/php5-ofc-library/lib/');
-  
-  require_once('../ofc2/php5-ofc-library/lib/OFC/OFC_Chart.php');*/
 $PAGE = 'reports';
 require_once 'includes/pageaccess.inc.php';
-
- 
 require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
 
-
-/* No longer using OFC
-if(isset($_GET['chart']))
-{
-    $Reports = new Reports(DatabaseConnections::getInstance());
-    switch($_GET['chart'])
-    {
-        case "months_usage":
-            echo $Reports->getMonthsUsageReport();
-            break;
-        case "current_month_users_usage":
-            echo $Reports->getThisMonthUsersUsageReport();
-            break;
-        case "current_month_usage":
-            echo $Reports->getThisMonthUsageReport();
-            break;
-        case "previous_months_usage":
-            echo $Reports->getPreviousMonthsUsageReport();
-            break;
-        case "daily_sessions":
-            echo $Reports->getDailySessionsReport();
-            break;              
-        case "daily_users":
-            echo $Reports->getDailyUsersReport();
-            break;            
-    }
-}
-else
-{ */
-//    $smarty->assign('chart1', $chart->toPrettyString());
 $Reports = new Reports(DatabaseConnections::getInstance());
 
-    $templateEngine->assign('monthsavailableaccounting', DatabaseFunctions::getInstance()->getMonthsAccountingDataAvailableFor());
+$templateEngine->assign(
+    'monthsavailableaccounting',
+    DatabaseFunctions::getInstance()->getMonthsAccountingDataAvailableFor()
+);
 
-    // Current month up and down
-    list($data1, $labels, $assoc1) = $Reports->getThisMonthDownUsageReport();
-    list($data2, $labels, $assoc2) = $Reports->getThisMonthUpUsageReport();
-    $templateEngine->assign('thismonthseries', json_encode(array($assoc1, $assoc2)));
-    $thismonthupdown[] = array('Day', 'Downloads', 'Uploads');
-    foreach($labels as $id => $label)
-    {
-        $thismonthupdown[] = array($label, $data1[$id], $data2[$id]);
-    }
-    $templateEngine->assign('thismonthupdownarray', json_encode($thismonthupdown));
-    
-    
-    // All months users usage
-    $templateEngine->assign('userusagebymontharray', json_encode($Reports->getUsersUsageByMonth()));
-    
-    // Previous months total usage
-    list($data, $labels, $assoc) = $Reports->getPreviousMonthsUsageReport();
-    $templateEngine->assign('previousmonthsseries', json_encode(array($assoc)));
-    
-    // Users usage - Current Month
-    list($data1, $data2, $labels, $month) = $Reports->getUsersUsageMonthReport($_GET['UsersUsageMonth']); //TODO: Sanatise input?
-    $templateEngine->assign('usersusagemonth', $month[0]);
-    $templateEngine->assign('usersusageprettymonth', $month[1]);
-    $templateEngine->assign('userdatausagemonthseries', json_encode(array($data1)));
-    $templateEngine->assign('usertimeusagemonthseries', json_encode(array($data2)));
-    
-    // Users usage - By Month
-    //list($data1, $data2, $labels) = $Reports->getThisMonthUsersUsageReport();
-    //$smarty->assign('thismonthusersseries', json_encode(array($data1, $data2)));
-    
-    
-    // Current month group usage
-    $templateEngine->assign('thismonthgroupdata', json_encode($Reports->getMonthGroupUsage()));
-    
+// Current month up and down
+list($data1, $labels, $assoc1) = $Reports->getThisMonthDownUsageReport();
+list($data2, $labels, $assoc2) = $Reports->getThisMonthUpUsageReport();
+$templateEngine->assign('thismonthseries', json_encode(array($assoc1, $assoc2)));
+$thisMonthUpDown[] = array('Day', 'Downloads', 'Uploads');
+foreach ($labels as $id => $label) {
+    $thisMonthUpDown[] = array($label, $data1[$id], $data2[$id]);
+}
+$templateEngine->assign('thismonthupdownarray', json_encode($thisMonthUpDown));
 
 
+// All months users usage
+$templateEngine->assign('userusagebymontharray', json_encode($Reports->getUsersUsageByMonth()));
 
-	$templateEngine->displayPage('reports.tpl');
+// Previous months total usage
+list($data, $labels, $assoc) = $Reports->getPreviousMonthsUsageReport();
+$templateEngine->assign('previousmonthsseries', json_encode(array($assoc)));
 
-//}
+// Users usage - Current Month
+list($data1, $data2, $labels, $month) = $Reports->getUsersUsageMonthReport(
+    $_GET['UsersUsageMonth']
+); //TODO: Sanatise input?
+$templateEngine->assign('usersusagemonth', $month[0]);
+$templateEngine->assign('usersusageprettymonth', $month[1]);
+$templateEngine->assign('userdatausagemonthseries', json_encode(array($data1)));
+$templateEngine->assign('usertimeusagemonthseries', json_encode(array($data2)));
 
-?>
-
+// Current month group usage
+$templateEngine->assign('thismonthgroupdata', json_encode($Reports->getMonthGroupUsage()));
+$templateEngine->displayPage('reports.tpl');

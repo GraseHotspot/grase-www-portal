@@ -1,17 +1,16 @@
 <?php
 
-// Auto MAC users allows us to automatically create users based on MAC 
-// address with a different password to computer accounts, in a group 
-// specifically for them. It's main use case will be to allow you to give 
-// "Free" access to users based on device, but still with limits, and still 
-// allowing them to be overridden with a voucher. I.e. anyone can have 30 mins 
-// free a day.
-//
+/* Auto MAC users allows us to automatically create users based on MAC address
+ * with a different password to computer accounts, in a group specifically for
+ * them. It's main use case will be to allow you to give "Free" access to users
+ * based on device, but still with limits, and still allowing them to be
+ * overridden with a voucher. I.e. anyone can have 30 minutes free a day.
+ */
 
 /* Basic structure
  *
  * From login screen (so someone not logged in), give them an Automatic login 
- * url that is basically an I Aggree to TOS button[1]
+ * url that is basically an I Agree to TOS button[1]
  * At automatic login. Get their MAC address. Turn it into our funky automatic 
  * login username, and check if it already exists. If it doesn't exist, create 
  * it in the special group for automatic created accounts[2]. We can actually 
@@ -39,113 +38,99 @@ function automacuser($json = false)
     global $Settings;
     // TODO MAC is passed in via uam
     $mac = DatabaseFunctions::getInstance()->latestMacFromIP(remoteip());
-    $autousername = mactoautousername($mac);
+    $autoUsername = mactoautousername($mac);
 
     // Attempt to create user
     //
-    $autocreategroup = $Settings->getSetting('autocreategroup');
-    $autocreatepassword = $Settings->getSetting('autocreatepassword');
-    $groupsettings = $Settings->getGroup($autocreategroup);
+    $autoCreateGroup = $Settings->getSetting('autocreategroup');
+    $autoCreatePassword = $Settings->getSetting('autocreatepassword');
+    $groupSettings = $Settings->getGroup($autoCreateGroup);
     /* TODO Set at the group level and not in the radcheck table,
      * requires changes to how DB class works
      */
 
-    if($autocreategroup && strlen($autousername) > 0)
-    {
+    if ($autoCreateGroup && strlen($autoUsername) > 0) {
         // Create user
         DatabaseFunctions::getInstance()->createUser(
-            $autousername,
-            $autocreatepassword,
+            $autoUsername,
+            $autoCreatePassword,
             false, // Data limit
             false, // Time limit
             '--', // Expiry date
-            $groupsettings[$autocreategroup]['ExpireAfter'],
-            $autocreategroup,
-            "Auto created account for $mac at ". date('Ymd H:i:s')
+            $groupSettings[$autoCreateGroup]['ExpireAfter'],
+            $autoCreateGroup,
+            "Auto created account for $mac at " . date('Ymd H:i:s')
         );
 
-        // Users password may not match the autocreatepassword if it's changed. 
+        // Users password may not match the autocreatepassword if it's changed.
         // Should we update the users password or get the users password?
         DatabaseFunctions::getInstance()->setUserPassword(
-            $autousername,
-            $autocreatepassword
+            $autoUsername,
+            $autoCreatePassword
         );
 
         // Create CHAP Challenge/Response token
         $challenge = $_GET['challenge'];
-        $response = chapchallengeresponse($challenge, $autocreatepassword);
+        $response = chapchallengeresponse($challenge, $autoCreatePassword);
 
-        $loginurl = uamloginurl($autousername, $response);
+        $loginURL = uamloginurl($autoUsername, $response);
 
-        if($json)
-        {
-            return json_encode(array('username' => $autousername, 'challenge' => $challenge, 'response' => $response));
-        }else{
-            header("Location: $loginurl");
+        if ($json) {
+            return json_encode(array('username' => $autoUsername, 'challenge' => $challenge, 'response' => $response));
+        } else {
+            header("Location: $loginURL");
             return false;
         }
     }
-
-    // Login redirect
+    return false;
 }
 
 function chapchallengeresponse($challenge, $password)
 {
     // Generates a response for a challenge response CHAP Auth
-    $hexchal = pack ("H32", $challenge);
-    $response = md5("\0" . $password . $hexchal);
+    $hexChallenge = pack("H32", $challenge);
+    $response = md5("\0" . $password . $hexChallenge);
 
     return $response;
 }
 
 function uamloginurl($username, $response)
 {
-    global $lanip;
+    global $lanIP;
     $username = urlencode($username);
     $response = urlencode($response);
-    return "http://$lanip:3990/login?username=$username&response=$response";
+    return "http://$lanIP:3990/login?username=$username&response=$response";
 }
 
 function mactoautousername($mac)
 {
     // Check it's a MAC
     //
-    // Turn it into a reversible username but isn't at first glace a mac 
+    // Turn it into a reversible username but isn't at first glace a mac
     // address?
 
     // Strip : and - from address, lowercase it, reverse it
-    $autousername = strrev(strtolower(str_replace(array(":", "-"), "", $mac)));
+    $autoUsername = strrev(strtolower(str_replace(array(":", "-"), "", $mac)));
 
-    return $autousername;
+    return $autoUsername;
 }
 
 /* TODO: Check where this code came from */
-    /* TODO move to central location as this is now used twice at least*/
-     function remoteip()
-     {
-        if (getenv('HTTP_CLIENT_IP'))
-        {
-           $ip = getenv('HTTP_CLIENT_IP');
-        }
-        elseif (getenv('HTTP_X_FORWARDED_FOR'))
-        {
-            $ip = getenv('HTTP_X_FORWARDED_FOR');
-        }
-        elseif (getenv('HTTP_X_FORWARDED'))
-        {
-            $ip = getenv('HTTP_X_FORWARDED');
-        }
-        elseif (getenv('HTTP_FORWARDED_FOR'))
-        {
-            $ip = getenv('HTTP_FORWARDED_FOR');
-        }
-        elseif (getenv('HTTP_FORWARDED'))
-        {
-            $ip = getenv('HTTP_FORWARDED');
-        }
-        else {
-            $ip = $_SERVER['REMOTE_ADDR'];
-        }
-        return $ip;
-	}
-?>
+/* TODO move to central location as this is now used twice at least*/
+function remoteip()
+{
+    if (getenv('HTTP_CLIENT_IP')) {
+        $ip = getenv('HTTP_CLIENT_IP');
+    } elseif (getenv('HTTP_X_FORWARDED_FOR')) {
+        $ip = getenv('HTTP_X_FORWARDED_FOR');
+    } elseif (getenv('HTTP_X_FORWARDED')) {
+        $ip = getenv('HTTP_X_FORWARDED');
+    } elseif (getenv('HTTP_FORWARDED_FOR')) {
+        $ip = getenv('HTTP_FORWARDED_FOR');
+    } elseif (getenv('HTTP_FORWARDED')) {
+        $ip = getenv('HTTP_FORWARDED');
+    } else {
+        $ip = $_SERVER['REMOTE_ADDR'];
+    }
+    return $ip;
+}

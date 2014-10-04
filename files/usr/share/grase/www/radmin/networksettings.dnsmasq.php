@@ -23,39 +23,38 @@
 // As this can be called from anywhere we need to chdir
 chdir(__DIR__);
 
-function __autoload($class_name) {
+function __autoload($class_name)
+{
     require_once './classes/' . $class_name . '.class.php';
 }
+
 require_once 'includes/site_settings.inc.php';
 
-$NONINTERACTIVE_SCRIPT = TRUE;
+$NONINTERACTIVE_SCRIPT = true;
 
-    $networkoptions = unserialize($Settings->getSetting('networkoptions'));
-    
-    $lastchangets = $Settings->getSetting('lastnetworkconf');
+$networkOptions = unserialize($Settings->getSetting('networkoptions'));
+$lastChangedTimestamp = $Settings->getSetting('lastnetworkconf');
 
-//print_r($networkoptions);
+$lanIP = $networkOptions['lanipaddress'];
+$netmask = $networkOptions['networkmask'];
 
-$lanip = $networkoptions['lanipaddress'];
-$netmask = $networkoptions['networkmask'];
+$lanIF = $networkOptions['lanif'];
+$wanIF = $networkOptions['wanif'];
 
-$lanif = $networkoptions['lanif'];
-$wanif = $networkoptions['wanif'];
-
-$networkip = long2ip(ip2long($lanip) & ip2long($netmask));
+$networkIP = long2ip(ip2long($lanIP) & ip2long($netmask));
 
 echo "#### This file is auto generated                              ####\n";
 echo "#### Please do not edit it.                                   ####\n";
 echo "#### Changes can be made in the Grase Hotspot Admin interface ####\n";
 
-echo "#chilli_lanip $lanip\n";
-echo "#chilli_wanif $wanif\n";
-echo "#chilli_lanif $lanif\n";
-echo "#chilli_network $networkip\n";
+echo "#chilli_lanip $lanIP\n";
+echo "#chilli_wanif $wanIF\n";
+echo "#chilli_lanif $lanIF\n";
+echo "#chilli_network $networkIP\n";
 echo "#chilli_netmask $netmask\n";
 echo "\n";
 //echo "address=/hotspot.lan/$lanip\n";
-echo "address=/grasehotspot.lan/$lanip\n";
+echo "address=/grasehotspot.lan/$lanIP\n";
 echo "address=/logout/1.0.0.0\n";
 echo "address=/logoff/1.0.0.0\n";
 echo "\n";
@@ -66,21 +65,18 @@ echo "expand-hosts\n";
 echo "domain=hotspot.lan\n";
 
 // No dns servers set so default to OpenDNS Famiyl Shield
-if(sizeof($networkoptions['dnsservers']) == 0)
-{
+if (sizeof($networkOptions['dnsservers']) == 0) {
     echo "#default dns servers and OpenDNS Family Shield\n";
     echo "server=208.67.222.123\n";
-    echo "server=208.67.220.123\n";    
-}else{
-    foreach($networkoptions['dnsservers'] as $dnsserver)
-    {
+    echo "server=208.67.220.123\n";
+} else {
+    foreach ($networkOptions['dnsservers'] as $dnsserver) {
         echo "server=$dnsserver\n";
     }
-
 }
 
-if($networkoptions['opendnsbogusnxdomain'])
-{   /* From http://johnewart.net/posts/2010/04/26/
+if ($networkOptions['opendnsbogusnxdomain']) {
+   /* From http://johnewart.net/posts/2010/04/26/
     "67.215.65.130" => "hit-adult.opendns.com",
     "67.215.65.131" => "hit-block.opendns.com",
     "67.215.65.132" => "hit-nxdomain.opendns.com",
@@ -92,7 +88,7 @@ if($networkoptions['opendnsbogusnxdomain'])
     "67.215.65.138" => "block.opendns.com",
     "67.215.65.139" => "guide.opendns.com",
     */
-    
+
     // Due to Bug #79 (http://trac.grasehotspot.org/ticket/79) we can't lookup the bogus nxdomain ips, as we block them!
     // Unless another solution is found for lookups we'll just have to update this if the ips ever change.
     echo "bogus-nxdomain=67.215.65.132\n";
@@ -107,14 +103,10 @@ if($networkoptions['opendnsbogusnxdomain'])
     }*/
 }
 
-if(is_array($networkoptions['bogusnx']))
-{
-    foreach($networkoptions['bogusnx'] as $ip){
+if (is_array($networkOptions['bogusnx'])) {
+    foreach ($networkOptions['bogusnx'] as $ip) {
         echo "bogus-nxdomain=$ip\n";
     }
 }
 
-echo "# last updated $lastchangets";
-?>
-
-
+echo "# last updated $lastChangedTimestamp";

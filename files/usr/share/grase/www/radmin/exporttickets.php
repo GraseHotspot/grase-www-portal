@@ -21,74 +21,73 @@
 */
 $PAGE = 'users';
 require_once 'includes/pageaccess.inc.php';
-
-
 require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
-if(isset($_GET['batch']))
-{
+
+if (isset($_GET['batch'])) {
     $batches = explode(',', $_GET['batch']);
-
     $users = array();
-    foreach($batches as $batch)
-    {
-        $batch = clean_number($batch);
-	    $fetchusers = DatabaseFunctions::getInstance()->getMultipleUsersDetails($Settings->getBatch($batch) );
-	    if(!is_array($fetchusers)) $fetchusers = array();
-	    $users = array_merge($users, $fetchusers);
-	}
-	
-	// TODO: replace , with _ in below
-    $title = sprintf(T_('Batch_%s_details'), implode('-', $batches));	
-}else //TODO remove the lastbatch part?
-{
-        $batch = $Settings->getSetting('lastbatch');
-	$users = DatabaseFunctions::getInstance()->getMultipleUsersDetails($Settings->getBatch($batch) );
-	if(!is_array($users)) $users = array();
-	$title = sprintf(T_('Batch_%s_details'), $batch);
-}	
 
-	generate_csv($users, $title);
-	
+    foreach ($batches as $batch) {
+        $batch = clean_number($batch);
+        $usersInBatch = DatabaseFunctions::getInstance()->getMultipleUsersDetails($Settings->getBatch($batch));
+        if (is_array($usersInBatch)) {
+            $users = array_merge($users, $usersInBatch);
+        }
+    }
+
+    // TODO: replace , with _ in below
+    $title = sprintf(T_('Batch_%s_details'), implode('-', $batches));
+} else {
+    //TODO remove the lastbatch part?
+    $batch = $Settings->getSetting('lastbatch');
+    $users = DatabaseFunctions::getInstance()->getMultipleUsersDetails($Settings->getBatch($batch));
+    if (!is_array($users)) {
+        $users = array();
+    }
+    $title = sprintf(T_('Batch_%s_details'), $batch);
+}
+
+generate_csv($users, $title);
+
 function generate_csv($users, $title)
 {
-    global $Settings;
-    
-    $groupsettings = grouplist();
-    
+    $groupSettings = grouplist();
+
     header("Content-type: text/csv");
     header("Content-Disposition: attachment; filename=$title.csv");
     header("Pragma: no-cache");
     header("Expires: 0");
-    
+
     $details = array();
     $details[] = array(
         T_("Username"),
         T_("Password"),
         T_("Expiry"),
-        T_("Voucher Type"));
-    
-    foreach($users as $user)
-    {
+        T_("Voucher Type")
+    );
+
+    foreach ($users as $user) {
         $expiry = $user['FormatExpiration'];
-        if($user['FormatExpiration'] == '--') $expiry = '';
+        if ($user['FormatExpiration'] == '--') {
+            $expiry = '';
+        }
         $details[] = array(
-                $user['Username'],
-                $user['Password'],
-                $expiry,
-                $groupsettings[$user['Group']]);
+            $user['Username'],
+            $user['Password'],
+            $expiry,
+            $groupSettings[$user['Group']]
+        );
     }
-    
+
     // Following based off http://www.php.net/manual/en/function.fputcsv.php#100033
     $outstream = fopen("php://output", 'w');
 
-    function __outputCSV(&$vals, $key, $filehandler) {
+    function __outputCSV(&$vals, $key, $filehandler)
+    {
         fputcsv($filehandler, $vals);
     }
+
     array_walk($details, '__outputCSV', $outstream);
-
     fclose($outstream);
-
-
-}	
-?>
+}

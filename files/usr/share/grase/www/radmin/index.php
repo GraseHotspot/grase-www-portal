@@ -21,14 +21,8 @@
 */
 $PAGE = 'main';
 require_once 'includes/pageaccess.inc.php';
-
 require_once 'includes/session.inc.php';
 
 $Sysinfo = new SystemInformation();
-
 $templateEngine->assign('Sysinfo', $Sysinfo);
-
 $templateEngine->displayPage('main.tpl');
-
-?>
-

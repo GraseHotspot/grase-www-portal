@@ -24,12 +24,12 @@ $NONINTERACTIVE_SCRIPT = true;
 require_once('includes/constants.inc.php');
 require_once('includes/misc_functions.inc.php');
 
-require_once __DIR__.'/../../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
-function grase_autoload($class_name) {
-    if( file_exists(__DIR__. '/classes/' . $class_name . '.class.php'))
-    {
-        include_once __DIR__. '/classes/' . $class_name . '.class.php';
+function grase_autoload($class_name)
+{
+    if (file_exists(__DIR__ . '/classes/' . $class_name . '.class.php')) {
+        include_once __DIR__ . '/classes/' . $class_name . '.class.php';
     }
 }
 
@@ -44,46 +44,57 @@ spl_autoload_register('grase_autoload');
 
 AdminLog::getInstance()->log_cron("CRON");
 
-//$Settings = new SettingsMySQL(DatabaseConnections::getInstance()->getRadminDB());
-//$dbversion = $Settings->getSetting("DBVersion");
 $DBs =& DatabaseConnections::getInstance();
 $radiusDB = new \Grase\Database\Database();
 $radminDB = new \Grase\Database\Database('/etc/grase/radmin.conf');
 $upgradeDB = new \Grase\Database\Upgrade($radiusDB, $radminDB, CronFunctions::getInstance());
-$upgradedbresults = $upgradeDB->upgradeDatabase(new \Grase\Database\Radmin($radminDB));
-if($upgradedbresults) echo "$upgradedbresults\n";
-
-$stalesessions = CronFunctions::getInstance()->clearStaleSessions();
-if($stalesessions) echo "$stalesessions\n";
-
-$expiredusers = CronFunctions::getInstance()->deleteExpiredUsers();
-if($expiredusers) echo "$expiredusers\n";
-
-$prevmonths = CronFunctions::getInstance()->condensePreviousMonthsAccounting();
-if($prevmonths) echo "$prevmonths\n";
-$oldpostdata = CronFunctions::getInstance()->clearOldPostAuth();
-if($oldpostdata) echo "$oldpostdata\n";
-
-$postauthmacreject = CronFunctions::getInstance()->clearPostAuthMacRejects();
-if($postauthmacreject) echo "$postauthmacreject\n";
-
-
-
-if(@ $_GET['deleteoutoftimeusers'])
-{
-    $outoftime = CronFunctions::getInstance()->deleteOutOfTimeUsers();
-    if($outoftime) echo "$outoftime\n";
+$upgradeDatabaseResults = $upgradeDB->upgradeDatabase(new \Grase\Database\Radmin($radminDB));
+if ($upgradeDatabaseResults) {
+    echo "$upgradeDatabaseResults\n";
 }
 
-if(@ $_GET['deleteoutofdatausers'])
-{
-    $outofdata = CronFunctions::getInstance()->deleteOutOfDataUsers();
-    if($outofdata) echo "$outofdata\n";
+$staleSessionsResult = CronFunctions::getInstance()->clearStaleSessions();
+if ($staleSessionsResult) {
+    echo "$staleSessionsResult\n";
 }
 
-$oldbatches = CronFunctions::getInstance()->clearOldBatches();
-if($oldbatches) echo "$oldbatches\n";
+$expiredUsersResults = CronFunctions::getInstance()->deleteExpiredUsers();
+if ($expiredUsersResults) {
+    echo "$expiredUsersResults\n";
+}
+
+$condensePreviousMonthsResults = CronFunctions::getInstance()->condensePreviousMonthsAccounting();
+if ($condensePreviousMonthsResults) {
+    echo "$condensePreviousMonthsResults\n";
+}
+$clearOldPostDataResults = CronFunctions::getInstance()->clearOldPostAuth();
+if ($clearOldPostDataResults) {
+    echo "$clearOldPostDataResults\n";
+}
+
+$clearPostAuthMACRejectResults = CronFunctions::getInstance()->clearPostAuthMacRejects();
+if ($clearPostAuthMACRejectResults) {
+    echo "$clearPostAuthMACRejectResults\n";
+}
+
+
+if (isset($_GET['deleteoutoftimeusers']) && $_GET['deleteoutoftimeusers']) {
+    $deleteOutOfTimeUsersResults = CronFunctions::getInstance()->deleteOutOfTimeUsers();
+    if ($deleteOutOfTimeUsersResults) {
+        echo "$deleteOutOfTimeUsersResults\n";
+    }
+}
+
+if (isset($_GET['deleteoutofdatausers']) && $_GET['deleteoutofdatausers']) {
+    $deleteOutOfDataUsersResults = CronFunctions::getInstance()->deleteOutOfDataUsers();
+    if ($deleteOutOfDataUsersResults) {
+        echo "$deleteOutOfDataUsersResults\n";
+    }
+}
+
+$clearOldBatchesResults = CronFunctions::getInstance()->clearOldBatches();
+if ($clearOldBatchesResults) {
+    echo "$clearOldBatchesResults\n";
+}
 
 echo CronFunctions::getInstance()->activateExpireAfterLogin();
-
-?>

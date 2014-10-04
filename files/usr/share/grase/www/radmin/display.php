@@ -25,18 +25,14 @@ require_once 'includes/pageaccess.inc.php';
 require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
 
-    DatabaseFunctions::getInstance()->loadAllUserDetails();
+DatabaseFunctions::getInstance()->loadAllUserDetails();
 
-	$users = DatabaseFunctions::getInstance()->getMultipleUsersDetails(DatabaseFunctions::getInstance()->getAllUserNames());
-	$users_groups = sort_users_into_groups($users); // TODO: Reports and then no longer sort user list by downloads??
-	$users_groups['All'] = $users; // TODO: Group names can't have space in name TODO: Translate all?
+$users = DatabaseFunctions::getInstance()->getMultipleUsersDetails(DatabaseFunctions::getInstance()->getAllUserNames());
+$users_groups = sort_users_into_groups($users); // TODO: Reports and then no longer sort user list by downloads??
+$users_groups['All'] = $users; // TODO: Group names can't have space in name TODO: Translate all?
 
-    $templateEngine->assign("groupdata", DatabaseFunctions::getInstance()->getGroupAttributes());
-	$templateEngine->assign("users", $users);
-	$templateEngine->assign("users_groups", $users_groups);
+$templateEngine->assign("groupdata", DatabaseFunctions::getInstance()->getGroupAttributes());
+$templateEngine->assign("users", $users);
+$templateEngine->assign("users_groups", $users_groups);
 
-	$templateEngine->displayPage('display.tpl');
-
-
-//var_dump(DatabaseFunctions::getInstance()->usercache);
-?>
+$templateEngine->displayPage('display.tpl');

@@ -13,7 +13,7 @@ if(isset($_GET['disablejs']))
     // Set cookie
     setcookie('grasenojs','javascriptdisabled', time()+60*60*24*30);
     // Redirect via header to reload page?
-    header("Location: http://$lanip:3990/prelogin");
+    header("Location: http://$lanIP:3990/prelogin");
 }
 
 if(isset($_GET['enablejs']))
@@ -21,7 +21,7 @@ if(isset($_GET['enablejs']))
     // Set cookie
     setcookie('grasenojs','', time()-60*60*24*30);
     // Redirect via header to reload page?
-    header("Location: http://$lanip:3990/prelogin");
+    header("Location: http://$lanIP:3990/prelogin");
 }
 
 $res = @$_GET['res'];
@@ -67,7 +67,7 @@ if($Settings->getSetting('autocreategroup'))
 if(!isset($_GET['res']))
 {
     // Redirect to prelogin
-        header("Location: http://$lanip:3990/prelogin");
+        header("Location: http://$lanIP:3990/prelogin");
 }
 
 // Already been through prelogin

@@ -16,7 +16,7 @@ $search = array(
     'Click to open the status window and continue to your site',
     );
 $replace = array(
-    $lanip,
+    $lanIP,
     T_('Username is required'),
     T_('Are you sure you want to disconnect now?'),
     T_('Error loading generic login form'),

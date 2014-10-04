@@ -22,7 +22,6 @@
 
 $PAGE = 'netconfig';
 require_once 'includes/pageaccess.inc.php';
-
 require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
 
@@ -30,24 +29,38 @@ $error = array();
 $success = array();
 
 // Options for Chilli Config that can be more than 1
-$multinetworkoptions = array(
+$multiNetworkOptions = array(
     'dnsservers' => array(
         "label" => T_("DNS Servers"),
-        "description" => T_("IP Addresses of DNS Servers. All clients will use the gateway as the DNS server which will use the addresses listed here to do DNS lookups. Dnsmasq WILL NOT get default servers from DHCP or /etc/resolv.conf and will default to OpenDNS Family Shield"),
-        "type" => "ip"),
+        "description" => T_(
+            "IP Addresses of DNS Servers. All clients will use the gateway as the DNS server which will use the
+            addresses listed here to do DNS lookups. Dnsmasq WILL NOT get default servers from DHCP or /etc/resolv.conf
+            and will default to OpenDNS Family Shield"
+        ),
+        "type" => "ip"
+    ),
     'bogusnx' => array(
         "label" => T_("Bogus NXDOMAIN"),
-        "description" => T_("IP Addresses of Bogus NXDOMAIN returns. All DNS replies that contain these ip address will be transformed into a NXDOMAIN result"),
-        "type" => "ip"),        
-    );
-    
+        "description" => T_(
+            "IP Addresses of Bogus NXDOMAIN returns. All DNS replies that contain these ip address will be transformed
+            into a NXDOMAIN result"
+        ),
+        "type" => "ip"
+    ),
+);
+
 // Options for Chilli Config that can only be one
-$singlenetworkoptions = array(
+$singleNetworkOptions = array(
     'lanipaddress' => array(
         "label" => T_("LAN IP Address"),
-        "description" => T_("The server IP address that is used on the LAN side (Coova-Chilli) of the network. This will be the gateway address for all clients, as well as the DNS server the clients access. For default Squid config this should be a private ip address."),
+        "description" => T_(
+            "The server IP address that is used on the LAN side (Coova-Chilli) of the network. This will be the gateway
+            address for all clients, as well as the DNS server the clients access. For default Squid config this should
+            be a private ip address."
+        ),
         "type" => "ip",
-        "required" => "true"),
+        "required" => "true"
+    ),
     /*'network' => array(
         "label" => T_("LAN Network Address"),
         "description" => T_("Network address to use for clients network. (i.e. 192.168.0.0)"),
@@ -55,210 +68,182 @@ $singlenetworkoptions = array(
         "required" => "true"),*/
     'networkmask' => array(
         "label" => T_("LAN Network Mask"),
-        "description" => T_("Network mask to use for clients network. (i.e. 255.255.255.0). DHCP range and network address will be calculated from this and the LAN IP Address."),
+        "description" => T_(
+            "Network mask to use for clients network. (i.e. 255.255.255.0). DHCP range and network address will be
+            calculated from this and the LAN IP Address."
+        ),
         "type" => "ip",
-        "required" => "true"),  
+        "required" => "true"
+    ),
     'opendnsbogusnxdomain' => array(
         "label" => T_("Bogus NXDOMAIN (OpenDNS)"),
-        "description" => T_("Some DNS Providers return bogus NXDOMAIN to redirect you to their search engine. Block the bogus ip's and return a real NXDOMAIN for OpenDNS."),
-        "type" => "bool"),
+        "description" => T_(
+            "Some DNS Providers return bogus NXDOMAIN to redirect you to their search engine. Block the bogus ip's and
+            return a real NXDOMAIN for OpenDNS."
+        ),
+        "type" => "bool"
+    ),
     /* TODO: Move printing options to own settings page */
     'printSSID' => array(
-	"label" => T_("Wireless Network Name (SSID)"),
-	"description" => T_("Wireless Network Name that clients connect to. Currently does not modify any settings but if set will print on the tickets"),
-	"type" => "string"),
+        "label" => T_("Wireless Network Name (SSID)"),
+        "description" => T_(
+            "Wireless Network Name that clients connect to. Currently does not modify any settings but if set will print
+            on the tickets"
+        ),
+        "type" => "string"
+    ),
     'printGroup' => array(
-	"label" => T_("Print Ticket Type"),
-	"description" => T_("Print the ticket type (Group name) on tickets"),
-	"type" => "bool"),
+        "label" => T_("Print Ticket Type"),
+        "description" => T_("Print the ticket type (Group name) on tickets"),
+        "type" => "bool"
+    ),
     'printExpiry' => array(
-	"label" => T_("Print Ticket Expiry"),
-	"description" => T_("Print the expiry on tickets"),
-	"type" => "bool"),	
-    );    
+        "label" => T_("Print Ticket Expiry"),
+        "description" => T_("Print the expiry on tickets"),
+        "type" => "bool"
+    ),
+);
 
 $wanif = array(\Grase\Util::getNetworkWANIF());
 $lanifs = \Grase\Util::getAvailableLANIFS($wanif[0]);
 
-
 // Options for Chilli Config that can only be one but selected from a list
-$selectnetworkoptions = array(
+$selectNetworkOptions = array(
     'lanif' => array(
         "label" => T_("LAN Network Interface"),
-        "description" => T_("The Network Interface that is connected to the LAN of the Hotspot (the side the clients connect to)"),
+        "description" => T_(
+            "The Network Interface that is connected to the LAN of the Hotspot (the side the clients connect to)"
+        ),
         "type" => "string",
         "required" => "true",
-        "options" => $lanifs),
+        "options" => $lanifs
+    ),
     'wanif' => array(
         "label" => T_("WAN Network Interface"),
-        "description" => T_("The Network Interface that is connected to the WAN of the Hotspot (the side the internet is connected to)"),
+        "description" => T_(
+            "The Network Interface that is connected to the WAN of the Hotspot (the side the internet is connected to)"
+        ),
         "type" => "string",
         "required" => "true",
-        "options" => $wanif),
-        
-    );    
+        "options" => $wanif
+    ),
 
-    
-load_networkoptions();   
+);
 
-if(isset($_POST['submit']))
-{
 
-    $networkoptions = array();
-    
-    foreach($singlenetworkoptions as $singleoption => $attributes)
-    {
-        switch ($attributes['type'])
-        {
+loadNetworkOptions();
+
+if (isset($_POST['submit'])) {
+    $networkOptions = array();
+    foreach ($singleNetworkOptions as $singleOption => $attributes) {
+        switch ($attributes['type']) {
             case "string":
-                $postvalue = trim(\Grase\Clean::text($_POST[$singleoption]));
+                $postValue = trim(\Grase\Clean::text($_POST[$singleOption]));
                 break;
             case "int":
-                $postvalue = trim(clean_int($_POST[$singleoption]));
+                $postValue = trim(clean_int($_POST[$singleOption]));
                 break;
             case "number":
-                $postvalue = trim(clean_number($_POST[$singleoption]));
+                $postValue = trim(clean_number($_POST[$singleOption]));
                 break;
             case "ip":
-                $postvalue = long2ip(ip2long(trim($_POST[$singleoption])));
+                $postValue = long2ip(ip2long(trim($_POST[$singleOption])));
                 break;
             case "bool":
-                $postvalue = isset($_POST[$singleoption]);
+                $postValue = isset($_POST[$singleOption]);
                 break;
-                
         }
-        
-        $networkoptions[$singleoption] = $postvalue;
-        
+        $networkOptions[$singleOption] = $postValue;
     }
-    
-    foreach($selectnetworkoptions as $selectoption => $attributes)
-    {
-        switch ($attributes['type'])
-        {
+
+    foreach ($selectNetworkOptions as $selectOption => $attributes) {
+        switch ($attributes['type']) {
             case "string":
-                $postvalue = trim(\Grase\Clean::text($_POST[$selectoption]));
+                $postValue = trim(\Grase\Clean::text($_POST[$selectOption]));
                 // TODO Validate from list of valid vars
                 break;
-            /*
-            case "int":
-                $postvalue = trim(clean_int($_POST[$singleoption]));
-                break;
-            case "number":
-                $postvalue = trim(clean_number($_POST[$singleoption]));
-                break;
-            case "ip":
-                $postvalue = long2ip(ip2long(trim($_POST[$singleoption])));
-                break;
-            case "bool":
-                $postvalue = isset($_POST[$singleoption]);
-                break;
-            */
-                
         }
-        
-        $networkoptions[$selectoption] = $postvalue;
-        
-    }    
-    
-    foreach($multinetworkoptions as $multioption => $attributes)
-    {
-        $postvalue = array();
-        foreach($_POST[$multioption] as $value)
-        {
-            switch ($attributes['type'])
-            {
+        $networkOptions[$selectOption] = $postValue;
+    }
+
+    foreach ($multiNetworkOptions as $multiOption => $attributes) {
+        $postValue = array();
+        foreach ($_POST[$multiOption] as $value) {
+            switch ($attributes['type']) {
                 case "string":
-                    $postvalue[] = \Grase\Clean::text($value);
+                    $postValue[] = \Grase\Clean::text($value);
                     break;
                 case "int":
-                    $postvalue[] = clean_int($value);
+                    $postValue[] = clean_int($value);
                     break;
                 case "number":
-                    $postvalue[] = clean_number($value);
+                    $postValue[] = clean_number($value);
                     break;
                 case "ip":
-                    if(trim($value))
-                        $postvalue[] = long2ip(ip2long(trim($value)));
-                    break;                     
-                    
+                    if (trim($value)) {
+                        $postValue[] = long2ip(ip2long(trim($value)));
+                    }
+                    break;
             }
-        
-//        if($postvalue != $attributes['value'])
-//        {
-//        }
         }
-        $postvalue = array_filter($postvalue);
-        
-        $networkoptions[$multioption] = $postvalue;
-     
+        $postValue = array_filter($postValue);
+        $networkOptions[$multiOption] = $postValue;
     }
-    
+
     // TODO: validate network settings
-    
-    $Settings->setSetting('networkoptions', serialize($networkoptions));
+    $Settings->setSetting('networkoptions', serialize($networkOptions));
 
     // Update last change timestamp if we actually changed something
     //if(sizeof($success) > 0)
-        $Settings->setSetting('lastnetworkconf', time());
-        
+    $Settings->setSetting('lastnetworkconf', time());
+
     // Call validate&change functions for changed items
-    load_networkoptions(); // Reload due to changes in POST    
+    // Reload due to changes in POST
+    loadNetworkOptions();
 }
 
-	
-
-function load_networkoptions()
+function loadNetworkOptions()
 {
-    global $multinetworkoptions, $singlenetworkoptions,
-           $selectnetworkoptions, $Settings;
-    // Load all Multi option values from database 
-    
-    $networkoptions = unserialize($Settings->getSetting('networkoptions'));
+    global $multiNetworkOptions, $singleNetworkOptions,
+           $selectNetworkOptions, $Settings;
 
-    foreach($multinetworkoptions as $multioption => $attributes)
-    {
-        $multinetworkoptions[$multioption]['value'] = $networkoptions[$multioption];
+    // Load all Multi option values from database
+    $networkOptions = unserialize($Settings->getSetting('networkoptions'));
+    foreach ($multiNetworkOptions as $multioption => $attributes) {
+        $multiNetworkOptions[$multioption]['value'] = $networkOptions[$multioption];
     }
-    
+
     // Load all Single option values from database
-
-    foreach($singlenetworkoptions as $singleoption => $attributes)
-    {
-        $singlenetworkoptions[$singleoption]['value'] = $networkoptions[$singleoption];
+    foreach ($singleNetworkOptions as $singleoption => $attributes) {
+        $singleNetworkOptions[$singleoption]['value'] = $networkOptions[$singleoption];
     }
-    
+
     // Load all Single Selection option values from database
-
-    foreach($selectnetworkoptions as $selectoption => $attributes)
-    {
-        $selectnetworkoptions[$selectoption]['value'] = $networkoptions[$selectoption];
+    foreach ($selectNetworkOptions as $selectoption => $attributes) {
+        $selectNetworkOptions[$selectoption]['value'] = $networkOptions[$selectoption];
     }
-    
-        
 }
 
-    // Check when /etc/chilli/local.conf was last updated and compare to $Settings->gettSetting('lastchangechilliconfig');
-    $localconfts = filemtime('/etc/dnsmasq.d/01-grasehotspot');
-    $lastchangets = $Settings->getSetting('lastnetworkconf');
-    if($localconfts < $lastchangets)
-    {
-        $error[] = T_("Changes pending Reload");
-    }else{
-        $success[] = T_("Settings match running config");
-    }
-    
-    $templateEngine->assign("networkconfigstatus", date('r',$localconfts));
-    $templateEngine->assign("lastnetworkconfigstatus", date('r',$lastchangets));
-    
-if(sizeof($error) > 0) $templateEngine->assign("error", $error);
-if(sizeof($success) > 0) $templateEngine->assign("success", $success);
+// Check when /etc/chilli/local.conf was last updated and compare to $Settings->getSetting('lastnetworkconf');
+$localConfTimestamp = filemtime('/etc/dnsmasq.d/01-grasehotspot');
+$lastChangedTimestamp = $Settings->getSetting('lastnetworkconf');
+if ($localConfTimestamp < $lastChangedTimestamp) {
+    $error[] = T_("Changes pending Reload");
+} else {
+    $success[] = T_("Settings match running config");
+}
 
-    $templateEngine->assign("singlenetworkoptions", $singlenetworkoptions);
-    $templateEngine->assign("selectnetworkoptions", $selectnetworkoptions);
-    $templateEngine->assign("multinetworkoptions", $multinetworkoptions);
-	$templateEngine->displayPage('netconfig.tpl');
+$templateEngine->assign("networkconfigstatus", date('r', $localConfTimestamp));
+$templateEngine->assign("lastnetworkconfigstatus", date('r', $lastChangedTimestamp));
 
-?>
+if (sizeof($error) > 0) {
+    $templateEngine->assign("error", $error);
+}
+if (sizeof($success) > 0) {
+    $templateEngine->assign("success", $success);
+}
 
-
+$templateEngine->assign("singlenetworkoptions", $singleNetworkOptions);
+$templateEngine->assign("selectnetworkoptions", $selectNetworkOptions);
+$templateEngine->assign("multinetworkoptions", $multiNetworkOptions);
+$templateEngine->displayPage('netconfig.tpl');

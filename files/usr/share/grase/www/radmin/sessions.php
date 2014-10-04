@@ -21,46 +21,43 @@
 */
 $PAGE = 'sessions';
 require_once 'includes/pageaccess.inc.php';
-
-
 require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
 
-    if(isset($_GET['username']))
-    {
-	    $templateEngine->assign("sessions", DatabaseFunctions::getInstance()->getRadiusUserSessionsDetails($_GET['username']));
-	    $templateEngine->assign("username", $_GET['username']);
-	}
-	elseif(isset($_GET['allsessions']))
-	{
-	    $sessions = DatabaseFunctions::getInstance()->getRadiusUserSessionsDetails();
-	    $totalrows = sizeof($sessions);
-	    $numPerPage = $_GET['items'] ? abs($_GET['items']) : 25; // TODO check this is safe
-	    $page = $_GET['page'] ? abs($_GET['page']) : 0; //TODO check this is safe
-	    
-	    $pages = floor($totalrows/$numPerPage);
-	    if($page > $pages) $page = $pages;
-	    $currentstartitem = $page * $numPerPage;
-	    
-	    $displaysessions = array_slice($sessions, $currentstartitem, $numPerPage, TRUE );
-    	$templateEngine->assign("sessions", $displaysessions);
-    	
-    	$templateEngine->assign("pages", $pages);
-    	$templateEngine->assign("perpage", $numPerPage);
-    	$templateEngine->assign("currentpage", $page);
-    }else{
-        $templateEngine->assign("activesessions", DatabaseFunctions::getInstance()->getActiveRadiusSessionsDetails());
-        if($_GET['refresh'])
-        {
-            $refresh = clean_int($_GET['refresh'])*60;
-            if($refresh < 60) $refresh = 60;
-            $templateEngine->assign("autorefresh", $refresh);
-        }
-    }
+if (isset($_GET['username'])) {
+    $templateEngine->assign(
+        "sessions",
+        DatabaseFunctions::getInstance()->getRadiusUserSessionsDetails($_GET['username'])
+    );
+    $templateEngine->assign("username", $_GET['username']);
+} elseif (isset($_GET['allsessions'])) {
+    $sessions = DatabaseFunctions::getInstance()->getRadiusUserSessionsDetails();
+    $totalRows = sizeof($sessions);
+    $numPerPage = $_GET['items'] ? abs($_GET['items']) : 25; // TODO check this is safe
+    $page = $_GET['page'] ? abs($_GET['page']) : 0; //TODO check this is safe
 
-	$templateEngine->displayPage('sessions.tpl');
+    $pages = floor($totalRows / $numPerPage);
+    if ($page > $pages) {
+        $page = $pages;
+    }
+    $currentStartItem = $page * $numPerPage;
+
+    $displaySessions = array_slice($sessions, $currentStartItem, $numPerPage, true);
+    $templateEngine->assign("sessions", $displaySessions);
+    $templateEngine->assign("pages", $pages);
+    $templateEngine->assign("perpage", $numPerPage);
+    $templateEngine->assign("currentpage", $page);
+} else {
+    $templateEngine->assign("activesessions", DatabaseFunctions::getInstance()->getActiveRadiusSessionsDetails());
+    if ($_GET['refresh']) {
+        $refresh = clean_int($_GET['refresh']) * 60;
+        if ($refresh < 60) {
+            $refresh = 60;
+        }
+        $templateEngine->assign("autorefresh", $refresh);
+    }
+}
+
+$templateEngine->displayPage('sessions.tpl');
 
 // TODO: Data usage over "forever"
-	
-
-?>

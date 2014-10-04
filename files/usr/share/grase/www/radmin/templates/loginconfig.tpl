@@ -64,30 +64,6 @@
 
     {/foreach}
 
-<p class="nojshelp">{t}For each of the following items, if you need multiple values you can submit the form and it will append a blank input below the last valid value{/t}<p>
-
-    {foreach from=$multiloginoptions item=attributes key=option name=multiloop}
-    <div>
-        <label for='{$option}'>{$attributes.label}</label>
-        {foreach from=$attributes.value item=attribute name=attributeloop}
-        <div class="jsmultioption"><input type="text" name="{$option}[]" value='{$attribute}'/>
-            <span class="jsremove">
-                <span class="jsremovebutton"></span>
-                <span class="jsaddremovetext" id="addtext"></span>
-            </span>
-        </div>
-        {/foreach}
-        <div class="jsmultioption"><input type="text" name="{$option}[]" id="{$option}" value=''/>
-            <span class="jsadd">
-                <span class="jsaddbutton"></span>
-                <span class="jsaddremovetext" id="addtext"></span>
-            </span>
-        </div>
-        <span id="{$option}Info">{$attributes.description}</span>
-
-    </div>
-    {/foreach}
-
     <button type="submit" name="submit">{t}Save Settings{/t}</button>
 
 </form>

@@ -21,7 +21,6 @@
 */
 $PAGE = 'groups';
 require_once 'includes/pageaccess.inc.php';
-
 require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
 
@@ -30,44 +29,44 @@ $success = array();
 
 if (isset($_POST['submit'])) {
     /* Filter out blanks. Key index is maintained with array_filter so name->expiry association is maintained */
-    $groupnames = $_POST['groupname'];
-    $groupcomment = array_filter($_POST['groupcomment']);
-    $groupexpiry = array_filter($_POST['groupexpiry']);
-    $groupexpireafter = array_filter($_POST['groupexpireafter']);
-    $groupdatalimit = array_filter($_POST['Group_Max_Mb']);
-    $grouptimelimit = array_filter($_POST['Group_Max_Time']);
-    $groupdownlimit = array_filter($_POST['Bandwidth_Down_Limit']);
-    $groupuplimit = array_filter($_POST['Bandwidth_Up_Limit']);
-    $grouprecurdatalimit = array_filter($_POST['Recur_Data_Limit']);
-    $grouprecurdata = array_filter($_POST['Recur_Data']);
-    $grouprecurtimelimit = array_filter($_POST['Recur_Time_Limit']);
-    $grouprecurtime = array_filter($_POST['Recur_Time']);
-    $simultaneoususe = array_filter($_POST['SimultaneousUse']);
-    $grouplogintime = array_filter($_POST['LoginTime']);
+    $groupNames = $_POST['groupname'];
+    $groupComment = array_filter($_POST['groupcomment']);
+    $groupExpiry = array_filter($_POST['groupexpiry']);
+    $groupExpireAfter = array_filter($_POST['groupexpireafter']);
+    $groupDataLimit = array_filter($_POST['Group_Max_Mb']);
+    $groupTimeLimit = array_filter($_POST['Group_Max_Time']);
+    $groupBandwidthDownLimit = array_filter($_POST['Bandwidth_Down_Limit']);
+    $groupBandwidthUpLimit = array_filter($_POST['Bandwidth_Up_Limit']);
+    $groupRecurDataLimit = array_filter($_POST['Recur_Data_Limit']);
+    $groupRecurData = array_filter($_POST['Recur_Data']);
+    $groupRecurTimeLimit = array_filter($_POST['Recur_Time_Limit']);
+    $groupRecurTime = array_filter($_POST['Recur_Time']);
+    $groupSimultaneousUse = array_filter($_POST['SimultaneousUse']);
+    $groupLoginTime = array_filter($_POST['LoginTime']);
 
-    if (sizeof($groupnames) == 0) {
+    if (sizeof($groupNames) == 0) {
         $error[] = T_("A minimum of one group is required");
     }
-    if (sizeof($groupexpiry) < sizeof($groupnames) - 1) {
+    if (sizeof($groupExpiry) < sizeof($groupNames) - 1) {
         $success[] = T_("It is not recommended having groups without expiries.");
     }
 
-    foreach ($groupnames as $key => $name) {
+    foreach ($groupNames as $key => $name) {
         // There are attributes set but no group name
         if (\Grase\Clean::text($name) == '') {
             if (
-                isset($groupcomment[$key]) ||
-                isset($groupexpiry[$key]) ||
-                isset($groupexpireafter[$key]) ||
-                isset($groupdatalimit[$key]) ||
-                isset($grouptimelimit[$key]) ||
-                isset($groupdownlimit[$key]) ||
-                isset($groupuplimit[$key]) ||
-                isset($grouprecurdatalimit[$key]) ||
-                isset($grouprecurdata[$key]) ||
-                isset($grouprecurtimelimit[$key]) ||
-                isset($grouprecurtime[$key]) ||
-                isset($grouplogintime[$key])
+                isset($groupComment[$key]) ||
+                isset($groupExpiry[$key]) ||
+                isset($groupExpireAfter[$key]) ||
+                isset($groupDataLimit[$key]) ||
+                isset($groupTimeLimit[$key]) ||
+                isset($groupBandwidthDownLimit[$key]) ||
+                isset($groupBandwidthUpLimit[$key]) ||
+                isset($groupRecurDataLimit[$key]) ||
+                isset($groupRecurData[$key]) ||
+                isset($groupRecurTimeLimit[$key]) ||
+                isset($groupRecurTime[$key]) ||
+                isset($groupLoginTime[$key])
             ) {
                 $error[] = T_("Invalid group name or group name missing");
             }
@@ -76,85 +75,85 @@ if (isset($_POST['submit'])) {
         }
 
         // Process expiry's
-        $groupexpiries[clean_groupname($name)] = $groupexpiry[\Grase\Clean::text($key)];
+        $groupExpiries[clean_groupname($name)] = $groupExpiry[\Grase\Clean::text($key)];
 
         // Validate expiries
-        if (isset($groupexpiry[$key])) {
-            if (strtotime($groupexpiry[$key]) == false) {
+        if (isset($groupExpiry[$key])) {
+            if (strtotime($groupExpiry[$key]) == false) {
                 $error[] = sprintf(T_("%s: Invalid expiry format"), $name);
-            } elseif (strtotime($groupexpiry[$key]) < time()) {
+            } elseif (strtotime($groupExpiry[$key]) < time()) {
                 $error[] = sprintf(T_("%s: Expiry can not be in the past"), $name);
             }
         }
 
         // Validate expire afters
-        if (isset($groupexpireafter[$key])) {
-            if (strtotime($groupexpireafter[$key]) == false) {
+        if (isset($groupExpireAfter[$key])) {
+            if (strtotime($groupExpireAfter[$key]) == false) {
                 $error[] = sprintf(T_("%s: Invalid Expire After format"), $name);
-            } elseif (strtotime($groupexpireafter[$key]) < time()) {
+            } elseif (strtotime($groupExpireAfter[$key]) < time()) {
                 $error[] = sprintf(T_("%s: Expire after can not be in the past"), $name);
             }
         }
 
         // Silence warnings (@) as we don't care if they are set or not'
-        $error[] = @ validate_timelimit($grouptimelimit[$key]);
-        $error[] = @ validate_timelimit($grouprecurtimelimit[$key]);
-        $error[] = @ validate_datalimit($grouprecurdatalimit[$key]);
-        $error[] = @ validate_recur($grouprecurtime[$key]);
-        $error[] = @ validate_recur($grouprecurdata[$key]);
-        $error[] = @ validate_recurtime($grouprecurtime[$key], $grouprecurtimelimit[$key]);
-        $error[] = @ validate_bandwidth($groupdownlimit[$key]);
-        $error[] = @ validate_bandwidth($groupuplimit[$key]);
+        $error[] = @ validate_timelimit($groupTimeLimit[$key]);
+        $error[] = @ validate_timelimit($groupRecurTimeLimit[$key]);
+        $error[] = @ validate_datalimit($groupRecurDataLimit[$key]);
+        $error[] = @ validate_recur($groupRecurTime[$key]);
+        $error[] = @ validate_recur($groupRecurData[$key]);
+        $error[] = @ validate_recurtime($groupRecurTime[$key], $groupRecurTimeLimit[$key]);
+        $error[] = @ validate_bandwidth($groupBandwidthDownLimit[$key]);
+        $error[] = @ validate_bandwidth($groupBandwidthUpLimit[$key]);
         //TODO we don't validate that it's not 0, relying on HTML5 to do that
-        $error[] = @ validate_int($simultaneoususe[$key], true);
+        $error[] = @ validate_int($groupSimultaneousUse[$key], true);
         // TODO: Validate Login-Time
-        $error[] = @ validate_uucptimerange($grouplogintime[$key]);
+        $error[] = @ validate_uucptimerange($groupLoginTime[$key]);
         $error = array_filter($error);
 
-        if (isset($grouprecurtime[$key]) xor isset($grouprecurtimelimit[$key])) {
+        if (isset($groupRecurTime[$key]) xor isset($groupRecurTimeLimit[$key])) {
             $error[] = sprintf(T_("Need both a time limit and recurrance for '%s'"), \Grase\Clean::text($name));
         }
 
 
         $groups[clean_groupname($name)] = array_filter(
             array(
-                'DataRecurTime' => \Grase\Clean::text($grouprecurdata[$key]),
-                'DataRecurLimit' => clean_number($grouprecurdatalimit[$key]),
-                'TimeRecurTime' => @ \Grase\Clean::text($grouprecurtime[$key]),
-                'TimeRecurLimit' => @ clean_int($grouprecurtimelimit[$key]),
-                'BandwidthDownLimit' => @ clean_int($groupdownlimit[$key]),
-                'BandwidthUpLimit' => @ clean_int($groupuplimit[$key]),
-                'SimultaneousUse' => @ clean_int($simultaneoususe[$key]),
-                'LoginTime' => @ $grouplogintime[$key]
+                'DataRecurTime' => \Grase\Clean::text($groupRecurData[$key]),
+                'DataRecurLimit' => clean_number($groupRecurDataLimit[$key]),
+                'TimeRecurTime' => @ \Grase\Clean::text($groupRecurTime[$key]),
+                'TimeRecurLimit' => @ clean_int($groupRecurTimeLimit[$key]),
+                'BandwidthDownLimit' => @ clean_int($groupBandwidthDownLimit[$key]),
+                'BandwidthUpLimit' => @ clean_int($groupBandwidthUpLimit[$key]),
+                'SimultaneousUse' => @ clean_int($groupSimultaneousUse[$key]),
+                'LoginTime' => @ $groupLoginTime[$key]
             )
         );
-        $groupsettings[clean_groupname($name)] = array_filter(
+        $groupSettings[clean_groupname($name)] = array_filter(
             array(
                 'GroupName' => clean_groupname($name),
-                'Comment' => \Grase\Clean::text($groupcomment[$key]),
+                'Comment' => \Grase\Clean::text($groupComment[$key]),
                 'GroupLabel' => \Grase\Clean::text($name),
-                'Expiry' => @ $groupexpiry[$key],
-                'ExpireAfter' => @ $groupexpireafter[$key],
-                'MaxMb' => @ clean_number($groupdatalimit[$key]),
-                'MaxTime' => @ clean_int($grouptimelimit[$key]),
+                'Expiry' => @ $groupExpiry[$key],
+                'ExpireAfter' => @ $groupExpireAfter[$key],
+                'MaxMb' => @ clean_number($groupDataLimit[$key]),
+                'MaxTime' => @ clean_int($groupTimeLimit[$key]),
             )
         );
     }
 
     if (sizeof($error) == 0) {
         // No errors. Save groups
-        foreach ($groupsettings as $attributes) {
+        foreach ($groupSettings as $attributes) {
             $Settings->setGroup($attributes);
         }
 
         // Delete groups no longer referenced
         foreach ($Settings->getGroup() as $oldgroup => $oldgroupsettings) {
-            if (!isset($groupsettings[$oldgroup])) {
+            if (!isset($groupSettings[$oldgroup])) {
                 $Settings->deleteGroup($oldgroup);
             }
         }
 
-        // Delete groups from radgroupreply not in groupexpiries...
+        // Delete groups from radgroupreply not in groupExpiries...
         // Deleting groups out of radgroupreply will modify current users
         // Need to do check for any users still using group, if no user then delete
         // TODO: check for groups that have not changed so don't run this on them

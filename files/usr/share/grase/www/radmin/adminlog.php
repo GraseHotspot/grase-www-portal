@@ -25,10 +25,7 @@ require_once 'includes/pageaccess.inc.php';
 require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
 
-    // TODO: Add "reset" option that archives old stuff? (Or deletes old stuff)
-	$templateEngine->assign("loglines", AdminLog::getInstance()->getLog());
-	$templateEngine->assign("lastcron", AdminLog::getInstance()->lastCron());
-	$templateEngine->displayPage('adminlog.tpl');
-
-?>
-
+// TODO: Add "reset" option that archives old stuff? (Or deletes old stuff)
+$templateEngine->assign("loglines", AdminLog::getInstance()->getLog());
+$templateEngine->assign("lastcron", AdminLog::getInstance()->lastCron());
+$templateEngine->displayPage('adminlog.tpl');
