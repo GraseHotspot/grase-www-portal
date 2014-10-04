@@ -48,13 +48,9 @@ function validate_form()
         $error[] = T_("Only set one Time limit field");
     }
 
-    /*
-     * TODO: Remove this limit as we now store batches in a new table
-     * (Remove once we have a nice easy way to manage batches, accidentally
-     * creating 1000 users and not being able to delete them is a bad thing)
-     */
-    if ($NumberTickets > 50) {
-        $error[] = T_("Max of 50 tickets per batch");
+    // 1000 seems like a reasonable number, if someone wants it increased we can now that we can delete batches
+    if ($NumberTickets > 1000) {
+        $error[] = T_("Max of 1000 tickets per batch");
     }
 
     $error[] = validate_group("", $_POST['Group']);
@@ -102,13 +98,13 @@ if (isset($_POST['batchesexport'])) {
 
 }
 
-// TODO Delete batches
+// Delete batches
 if (isset($_POST['batchesdelete'])) {
     $selectedBatches = array();
     foreach ($_POST['selectedbatches'] as $batch) {
         $selectedBatches[] = clean_number($batch);
     }
-    #$selectedbatches = implode(',', $selectedbatches);
+
     if (sizeof($selectedBatches) == 0) {
         $error[] = T_("Please select a batch to delete");
         $templateEngine->assign("error", $error);
@@ -122,12 +118,13 @@ if (isset($_POST['batchesdelete'])) {
             $users = array_merge($users, $fetchUsers);
         }
         foreach ($users as $user) {
-            print "Deleting " . $user['Username'];
-            // TODO Actually delete user
+            DatabaseFunctions::getInstance()->deleteUser($user['Username']);
+            $success[] = "Deleting " . $user['Username'];
             // Maybe delete user from batch as we go to ensure if we fail
             // at any point the batch is correct?
         }
-        // TODO Delete batch from settings
+        // Delete batch from settings using existing cron function
+        CronFunctions::getInstance()->clearOldBatches();
     }
 }
 
@@ -191,9 +188,8 @@ if (isset($_POST['createticketssubmit'])) {
 
         $failedUsers = 0;
         for ($i = 0; $i < $user['numberoftickets']; $i++) {
-            $username = \Grase\Util::randomUsername(
-                5
-            ); // DONE: Username uniqness is checked as user creation time in Database
+            // Creating lots of users at once could timeout a script. Maybe add a set_time_limit(1) on each loop?
+            $username = \Grase\Util::randomUsername(5);
             $password = \Grase\Util::randomPassword(6);
 
             // Attempt to create user. Will error if it's not a unique username
@@ -241,9 +237,8 @@ if (isset($_POST['createticketssubmit'])) {
         if ($failedUsers <= 20) {
             $success[] = T_("Tickets Successfully Created");
             $success[] = "<a target='_tickets' href='printnewtickets'>" . T_("Print Tickets") . "</a>";
+            unset($user);
         }
-        $templateEngine->assign("success", $success);
-        $templateEngine->assign("error", $error);
     }
 }
 
@@ -254,5 +249,8 @@ $templateEngine->assign("user", $user);
 
 $templateEngine->assign("last_batch", $Settings->getSetting('lastbatch'));
 $templateEngine->assign("listbatches", $Settings->listBatches());
+
+$templateEngine->assign("success", $success);
+$templateEngine->assign("error", $error);
 
 $templateEngine->displayPage('newtickets.tpl');
