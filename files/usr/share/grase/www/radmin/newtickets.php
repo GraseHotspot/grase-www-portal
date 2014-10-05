@@ -72,7 +72,7 @@ if (isset($_POST['batchesprint'])) {
     } else {
         header(
             "Location: http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) .
-            "/printnewtickets?batch=$selectedBatches"
+            "/export.php?batch=$selectedBatches&format=html"
         );
         exit;
     }
@@ -91,7 +91,7 @@ if (isset($_POST['batchesexport'])) {
     } else {
         header(
             "Location: http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) .
-            "/exporttickets?batch=$selectedBatches"
+            "/export.php?batch=$selectedBatches&format=csv"
         );
         exit;
     }
@@ -236,7 +236,7 @@ if (isset($_POST['createticketssubmit'])) {
         // Check if we managed to create all users or if batch failed
         if ($failedUsers <= 20) {
             $success[] = T_("Tickets Successfully Created");
-            $success[] = "<a target='_tickets' href='printnewtickets'>" . T_("Print Tickets") . "</a>";
+            $success[] = "<a target='_tickets' href='export.php?format=html&batch=$batchID'>" . T_("Print Tickets") . "</a>";
             unset($user);
         }
     }

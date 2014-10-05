@@ -119,7 +119,7 @@ if (isset($_POST['newusersubmit'])) {
             \Grase\Clean::text($_POST['Comment'])
         );
         $success[] = sprintf(T_("User %s Successfully Created"), \Grase\Clean::text($_POST['Username']));
-        $success[] = "<a target='_tickets' href='printnewtickets?user=" .
+        $success[] = "<a target='_tickets' href='export.php?format=html&user=" .
             \Grase\Clean::text($_POST['Username']) . "'>" .
             sprintf(
                 T_("Print Ticket for %s"),

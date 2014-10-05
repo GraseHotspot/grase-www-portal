@@ -24,31 +24,58 @@ require_once 'includes/pageaccess.inc.php';
 require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
 
-if (isset($_GET['batch'])) {
+$DBF = DatabaseFunctions::getInstance();
+
+if (isset($_GET['user'])) {
+    $users = $DBF->getMultipleUsersDetails(array(\Grase\Clean::text($_GET['user'])));
+    if (!is_array($users)) {
+        $users = array();
+    }
+    $title = \Grase\Clean::text($_GET['user']) . ' Voucher';
+} elseif (isset($_GET['batch'])) {
     $batches = explode(',', $_GET['batch']);
     $users = array();
 
     foreach ($batches as $batch) {
         $batch = clean_number($batch);
-        $usersInBatch = DatabaseFunctions::getInstance()->getMultipleUsersDetails($Settings->getBatch($batch));
+        $usersInBatch = $DBF->getMultipleUsersDetails($Settings->getBatch($batch));
         if (is_array($usersInBatch)) {
             $users = array_merge($users, $usersInBatch);
         }
     }
-
     // TODO: replace , with _ in below
     $title = sprintf(T_('Batch_%s_details'), implode('-', $batches));
-} else {
-    //TODO remove the lastbatch part?
-    $batch = $Settings->getSetting('lastbatch');
-    $users = DatabaseFunctions::getInstance()->getMultipleUsersDetails($Settings->getBatch($batch));
-    if (!is_array($users)) {
-        $users = array();
+
+} elseif (isset($_GET['group'])) {
+    $groups = explode(',', $_GET['group']);
+    $users = array();
+
+    foreach ($groups as $group) {
+        $group = clean_groupname($group);
+        $usersInGroup = $DBF->getMultipleUsersDetails($DBF->getUsersByGroup($group));
+        if (is_array($usersInGroup)) {
+            $users = array_merge($users, $usersInGroup);
+        }
     }
-    $title = sprintf(T_('Batch_%s_details'), $batch);
+    $title = sprintf(T_('Group_%s_details'), implode('-', $groups));
+
+} else {
+    echo T_("Need a group or batch");
+    // TODO Use error template
+    exit;
 }
 
-generate_csv($users, $title);
+if ($_GET['format'] == 'csv') {
+    generate_csv($users, $title);
+} elseif ($_GET['format'] == 'html') {
+    printTickets($users, $title);
+} else {
+    // TODO error page
+    echo T_("Need valid format");
+    exit;
+}
+
+
 
 function generate_csv($users, $title)
 {
@@ -72,6 +99,7 @@ function generate_csv($users, $title)
         if ($user['FormatExpiration'] == '--') {
             $expiry = '';
         }
+        // TODO? If the group is deleted, we can still export users in it, but groupSettings is NULL
         $details[] = array(
             $user['Username'],
             $user['Password'],
@@ -90,4 +118,16 @@ function generate_csv($users, $title)
 
     array_walk($details, '__outputCSV', $outstream);
     fclose($outstream);
+}
+
+function printTickets($users, $title)
+{
+    global $templateEngine, $Settings;
+    $users_groups = sort_users_into_groups($users);
+    $templateEngine->assign("batchTitle", $title);
+    $templateEngine->assign("users", $users);
+    $templateEngine->assign("users_groups", $users_groups);
+    $templateEngine->assign("groupsettings", grouplist());
+    $templateEngine->assign("networksettings", unserialize($Settings->getSetting('networkoptions')));
+    $templateEngine->displayPage('printnewtickets.tpl');
 }

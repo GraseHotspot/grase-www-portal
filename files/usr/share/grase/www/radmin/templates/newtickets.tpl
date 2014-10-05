@@ -26,7 +26,7 @@
 </form>
 {/if}
 
-{if $last_batch}<a href="printnewtickets?batch={$last_batch}" class="printlink" target="tickets">Print Last Batch of Tickets</a>{/if}
+{if $last_batch}<a href="export.php?format=html&batch={$last_batch}" class="printlink" target="tickets">Print Last Batch of Tickets</a>{/if}
 
 
 <div id="createticketsForm">
