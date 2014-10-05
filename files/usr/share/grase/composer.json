@@ -6,8 +6,7 @@
     }
     ],
     "require": {
-        "smarty-gettext/smarty-gettext": "@dev",
-        "tecnick.com/tcpdf": "@stable"
+        "smarty-gettext/smarty-gettext": "@dev"
     },
     "autoload":
     {

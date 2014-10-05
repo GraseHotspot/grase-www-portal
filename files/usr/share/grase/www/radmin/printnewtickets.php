@@ -53,63 +53,10 @@ if (isset($_GET['user'])) {
     $title = sprintf(T_('Batch %s Vouchers'), $batch);
 }
 
-$preset_labels['Avery 5160'] = array(
-    'name' => '5160',
-    'paper-size' => 'letter',
-    'metric' => 'mm',
-    'marginLeft' => 1.762,
-    'marginTop' => 10.7,
-    'NX' => 3,
-    'NY' => 10,
-    'SpaceX' => 3.175,
-    'SpaceY' => 0,
-    'width' => 66.675,
-    'height' => 25.4,
-    'font-size' => 8
-);
-
-generate_pdf($users, $title);
-
-function generate_pdf($users, $title)
-{
-    global $Settings;
-    /* The following will work in the future */
-    //$ssid = $Settings->getSetting('printSSID');
-    //$print_group = $Settings->getSetting('printGroup');
-
-    $groupsettings = grouplist();
-
-    // These settings are temporarily in network settings
-    $networksettings = unserialize($Settings->getSetting('networkoptions'));
-    $ssid = $networksettings['printSSID'];
-    $print_group = $networksettings['printGroup'];
-    $print_expiry = $networksettings['printExpiry'];
-
-    $labels = new PDFLabels('Overflow', $title);
-    foreach ($users as $user) {
-        $label = '';
-        if ($ssid) {
-            $label .= sprintf(T_("Wireless Network: %s"), $ssid) . "\n";
-        }
-
-        $label .= sprintf(T_("Username: %s"), $user['Username']) . "\n";
-        $label .= sprintf(T_("Password: %s"), $user['Password']) . "\n";
-
-        if ($print_group) {
-            $label .= sprintf(T_("Voucher Type: %s"), $groupsettings[$user['Group']]) . "\n";
-
-        }
-
-        if ($print_expiry
-            && $user['FormatExpiration']
-            && $user['FormatExpiration'] != '--'
-        ) {
-            $label .= sprintf(T_("Expiry: %s"), $user['FormatExpiration']) . "\n";
-        }
-
-
-        $labels->Add_PDF_Label($label);
-    }
-    $labels->Output_Doc();
-
-}
+$users_groups = sort_users_into_groups($users);
+$templateEngine->assign("batchTitle", $title);
+$templateEngine->assign("users", $users);
+$templateEngine->assign("users_groups", $users_groups);
+$templateEngine->assign("groupsettings", grouplist());
+$templateEngine->assign("networksettings", $networksettings = unserialize($Settings->getSetting('networkoptions')));
+$templateEngine->displayPage('printnewtickets.tpl');
