@@ -25,6 +25,7 @@ grase-www-portal (3.7.7.12) UNRELEASED; urgency=low
   * Removed TCPDF (and print to PDF) due to it being a very specific use case
     without customisations. It'll be easier to do pixel perfect layout with CSV
     export and mailmerge software.
+  * Added printing of group users (Fixes #41)
 
  -- Tim White <tim@grasehotspot.org>  Tue, 22 Jan 2013 16:13:27 +1000
 
