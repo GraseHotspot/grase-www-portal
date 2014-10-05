@@ -75,8 +75,6 @@ if ($_GET['format'] == 'csv') {
     exit;
 }
 
-
-
 function generate_csv($users, $title)
 {
     $groupSettings = grouplist();
