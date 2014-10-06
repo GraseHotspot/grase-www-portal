@@ -37,64 +37,8 @@ require_once 'includes/misc_functions.inc.php';
 session_name('GrasePurchaseWizard');
 session_start();
 
-// Make sure we have initial page, or set one
+$voucherWizard = new \Grase\VoucherWizard($Settings, $templateEngine, DatabaseFunctions::getInstance())
 
-if(!isset($_SESSION['wizardpage']))
-{
-    $_SESSION['wizardpage'] = 'initialpage';
-}
-
-if(isset($_SESSION['ExpireSession']) && $_SESSION['ExpireSession'] < time())
-{
-    // Session has expired. destroy
-    restart_wizard();
-}
-
-// Allow us to at any time restart the wizard
-if(isset($_POST['restartwizard']))
-{
-    restart_wizard();
-}
-
-// Groups and vouchers stuff
-
-$groups           = array();
-$vouchers         = $Settings->getVoucher();
-$grouped_vouchers = array();
-
-foreach($vouchers as $voucher)
-{
-    if($voucher['InitVoucher'])
-    {
-        $groups[$voucher['VoucherGroup']]             = true;
-        $grouped_vouchers[$voucher['VoucherGroup']][] = $voucher;
-        $valid_vouchers[]                             = $voucher['VoucherName'];
-    }
-}
-
-$groups_with_vouchers = array_intersect_key($Settings->getGroup(), $groups);
-
-// Payment gateway stuff
-
-$paymentgateways = array(
-    'PayPal' => array(
-        'Label'       => 'PayPal',
-        'Description' => 'Use your paypal account or credit card to pay',
-        'paid'        => true,
-    ),
-    'Dummy' => array(
-        'Label'       => 'Dummy Gateway',
-        'Description' => 'Dummy Gateway that always says you have paid',
-        'free'        => true,
-        'paid'        => true,
-        'pluginfile'  => 'dummy.inc.php',
-    ),
-    'SMS' => array(
-        'Label'       => 'SMS Token',
-        'Description' => 'Free account with limitations, details SMSed to your mobile',
-        'free'        => true,
-    ),
-);
 
 // Do the wizard page logic
 
@@ -110,7 +54,7 @@ switch($_SESSION['wizardpage'])
 
 
             // Check voucher is valid
-            if(!in_array($_POST['voucherselected'], $valid_vouchers))
+            if(!in_array($_POST['voucherselected'], $validVouchers))
             {
                 $valid = false;
             }
@@ -154,8 +98,8 @@ switch($_SESSION['wizardpage'])
                 $templateEngine->assign('error', $error);
             }
         }
-        $templateEngine->assign("groupsettings", $groups_with_vouchers);
-        $templateEngine->assign("vouchers", $grouped_vouchers);
+        $templateEngine->assign("groupsettings", array_intersect_key($Settings->getGroup(), $voucherGroups));
+        $templateEngine->assign("vouchers", $groupedVouchers);
         $templateEngine->assign('paymentgateways', $paymentgateways);
         $templateEngine->display('wizard_initial.tpl');
         break;
