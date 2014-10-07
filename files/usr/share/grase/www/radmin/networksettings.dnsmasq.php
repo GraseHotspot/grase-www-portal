@@ -53,7 +53,7 @@ echo "#chilli_lanif $lanIF\n";
 echo "#chilli_network $networkIP\n";
 echo "#chilli_netmask $netmask\n";
 echo "\n";
-//echo "address=/hotspot.lan/$lanip\n";
+//echo "address=/hotspot.lan/$lanIP\n";
 echo "address=/grasehotspot.lan/$lanIP\n";
 echo "address=/logout/1.0.0.0\n";
 echo "address=/logoff/1.0.0.0\n";

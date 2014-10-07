@@ -55,8 +55,8 @@ $smarty->assign("website_name", $website_name);
 $smarty->assign("website_link", $website_link);
 
 $networkoptions = unserialize($Settings->getSetting("networkoptions"));
-$lanip = $networkoptions['lanipaddress'];
-$smarty->assign("serverip", $lanip);
+$lanIP = $networkoptions['lanipaddress'];
+$smarty->assign("serverip", $lanIP);
 
 
 custom_settings(array('hidefooter', 'hideheader', 'disableallcss', 'hidehelplink', 'hidelogoutbookmark'));

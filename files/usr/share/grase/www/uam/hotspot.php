@@ -71,7 +71,7 @@ if(!isset($_GET['res']))
 }
 
 // Already been through prelogin
-/*$jsloginlink = "http://$lanip/grase/uam/mini?$query";
+/*$jsloginlink = "http://$lanIP/grase/uam/mini?$query";
 $nojsloginlink = $_GET['loginurl'];*/
     require_once '../radmin/automacusers.php';
 if(@$_GET['automac'])
