@@ -26,6 +26,7 @@ grase-www-portal (3.7.7.12) UNRELEASED; urgency=low
     without customisations. It'll be easier to do pixel perfect layout with CSV
     export and mailmerge software.
   * Added printing of group users (Fixes #41)
+  * Ability to customise CSS for printing of tickets
 
  -- Tim White <tim@grasehotspot.org>  Tue, 22 Jan 2013 16:13:27 +1000
 
