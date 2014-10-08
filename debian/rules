@@ -23,12 +23,10 @@ include /usr/share/cdbs/1/rules/debhelper.mk
 include /usr/share/cdbs/1/rules/config-package.mk
 
 build: build-stamp
+	chmod 0440 grase-www-portal/etc/sudoers.d/grase-www-portal
 
 build-stamp:
 	dh_testdir
 	$(MAKE)
 	touch $@
 
-override_dh_fixperms:
-	dh_fixperms
-	chmod 0440 grase-www-portal/etc/sudoers.d/grase-www-portal
