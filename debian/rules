@@ -31,4 +31,4 @@ build-stamp:
 
 override_dh_fixperms:
 	dh_fixperms
-	chmod 0440 etc/sudoers.d/grase-www-portal
+	chmod 0440 grase-www-portal/etc/sudoers.d/grase-www-portal
