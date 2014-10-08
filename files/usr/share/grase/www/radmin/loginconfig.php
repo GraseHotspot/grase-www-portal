@@ -136,6 +136,12 @@ $templateOptions = array(
         "description" => T_("Terms and Conditions of use (HTML)"),
         "type" => "html"
     ),
+    'ticketPrintCSS' => array(
+        "label" => T_("Ticket Printing CSS"),
+        "description" => T_("CSS that is applied to the ticket printing page for printing batches and groups of tickets."),
+        "type" => "css"
+    ),
+
 );
 
 loadLoginOptions($Settings);

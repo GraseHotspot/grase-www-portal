@@ -289,6 +289,7 @@ class Radmin
         'belowloginhtml' => 3,
         'loggedinnojshtml' => 4,
         'termsandconditions' => 5,
+        'ticketPrintCSS' => 6,
     );
 
     public function getTemplate($template)

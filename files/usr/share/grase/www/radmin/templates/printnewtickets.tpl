@@ -5,16 +5,10 @@
     <title>{$Title} - {$batchTitle}</title>
     <meta name="generator" content="{$Application} {$application_version}"/>
     <!-- CSS Stylesheet -->
-    <link rel="stylesheet" type="text/css" href="http://localhost/grase/hotspot.css" id="hotspot_css"
-          media="screen, projection"/>
-    <link rel="stylesheet" type="text/css" href="http://localhost/grase/radmin/radmin.css?{$css_version}"
-          id="radmin_css" media="screen, projection"/>
+    <style type="text/css" media="screen, print">
+{$ticketPrintCSS}
+    </style>
 
-    <link rel="stylesheet" href="http://localhost/grase/radmin/css/blueprint/screen.css" type="text/css"
-          media="screen, projection"/>
-    <link rel="stylesheet" href="http://localhost/grase/radmin/css/blueprint/print.css" type="text/css" media="print"/>
-
-    <link rel="stylesheet" href="http://localhost/grase/radmin/css/tickets_print.css" type="text/css" media="print"/>
 
     <script language="Javascript1.2">
         {literal}
@@ -28,15 +22,21 @@
 
 </head>
 
-<body onload="printpage()">
+<body onload="">
+<style media="print" type="text/css">
+    #printbutton {
+        display: none;
+    }
+</style>
+<button id="printbutton" onclick="printpage()">Print Page</button>
 
 <div class="container">
 
-    <div id="cutout_tickets span-24">
+    <div id="cutout_tickets">
 
         {foreach from=$users_groups item=group name=grouploop key=groupid}
             {foreach from=$group item=user key=userid name=usersloop}
-                <div class="cutout_ticket span-6">
+                <div class="cutout_ticket">
                     {if $networksettings.printSSID}
                         <span class="ticket_item_label">Wireless Network:</span>
                         <span class='info_username  last'>{$networksettings.printSSID}</span>
@@ -63,7 +63,7 @@
 
     </div>
 
-    <div id="generated" class="span-24">
+    <div id="generated" class="">
         {php}
             global $pagestarttime;
             $mtime = microtime();

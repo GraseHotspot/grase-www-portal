@@ -1,36 +1,32 @@
-/* Copyright 2010 Timothy White */
-
 body {
     line-height: 1.5;
-    color: black
-    background-color: white;
-/*    font-size: 75%;*/
+    color: black;
+    background-color : white;
     font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
 }
 
 .cutout_ticket {
-	outline: solid 1px black;
-	margin: 1%;
-	width: 30%;
-	float: left;
-    text-align: left;	
-
-
-
+    outline: solid 1px black;
+    margin: 0.1cm;
+    width: 5.5cm;
+    float: left;
+    text-align: left;
+    font-size: 10pt;
 }
 
 .ticket_item_label {
-    padding-left: 1em;
-    width: 40%;
+    padding-left: 0.3em;
+    width: 5.5em;
     display: block;
     float: left;
 }
 
 .info_username, .info_password {
-/*    font-family: courier, serif;*/
     font-weight: bold;
 }
 
-#generated, #userslist {
+#generated {
     display: none;
 }
