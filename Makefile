@@ -5,6 +5,7 @@ VERSION = $(shell sed -n '/grase-www-portal/s/[^ ]* (//;s/).*//p;q' debian/chang
 all: bower composer
 #files/usr/share/grase/www/radmin/includes/constants.inc.php: debian/changelog
 	sed -i 's/APPLICATION_VERSION", "[^"]*"/APPLICATION_VERSION", "$(VERSION)"/' files/usr/share/grase/www/radmin/includes/constants.inc.php
+	chmod 0440 sudo/grase-www-portal
 
 bower:
 	mkdir -p ext-libs/bower
