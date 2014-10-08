@@ -284,6 +284,7 @@ body {
     float: left;
     text-align: left;
     font-size: 10pt;
+    page-break-inside: avoid;
 }
 
 .ticket_item_label {
