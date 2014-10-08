@@ -1,1 +1,2 @@
 files/* /
+sudo/grase-www-portal /etc/sudoers.d/grase-www-portal

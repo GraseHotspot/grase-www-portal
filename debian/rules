@@ -17,6 +17,8 @@ export DH_OPTIONS=-X.git
 # These files are installed via dh_install from the files/ directory
 # (see debian/grase-conf-monit.install)
 
+DEB_FIXPERMS_EXCLUDE := /etc/sudoers.d/grase-www-portal
+
 include /usr/share/cdbs/1/rules/debhelper.mk
 include /usr/share/cdbs/1/rules/config-package.mk
 
@@ -26,3 +28,7 @@ build-stamp:
 	dh_testdir
 	$(MAKE)
 	touch $@
+
+override_dh_fixperms:
+	dh_fixperms
+	chmod 0440 etc/sudoers.d/grase-www-portal
