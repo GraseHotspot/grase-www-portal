@@ -64,7 +64,8 @@ function createmenuitems()
     	);
 	$menubar['sessions'] = array("href" => "sessions", "label" => T_("Monitor Sessions"),
 	    "submenu" => array(
-            'reports' => array("href" => "reports", "label" => T_("Reports")),	    
+            'reports' => array("href" => "reports", "label" => T_("Reports")),
+            'dhcpleases' => array("href" => "dhcpleases", "label" =>T_("DHCP Leases")),
             //'monthly_accounts' => array("href" => "datausage", "label" => "Monthly Reports"); // Not working atm TODO:
             
 	    )

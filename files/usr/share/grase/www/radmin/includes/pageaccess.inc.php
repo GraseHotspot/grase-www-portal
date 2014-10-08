@@ -15,6 +15,7 @@ $PAGESACCESS = array(
     
     'sessions'      => NORMALLEVEL,
      'reports'       => NORMALLEVEL | REPORTLEVEL,
+    'dhcpleases'    => POWERLEVEL | CREATEUSERLEVEL,
     
     'settings'      => ADMINLEVEL,
      'uploadlogo'    => ADMINLEVEL,
