@@ -290,8 +290,7 @@ body {
 .ticket_item_label {
     padding-left: 0.3em;
     width: 5.5em;
-    display: block;
-    float: left;
+    display: inline-block;
 }
 
 .info_username, .info_password {

@@ -38,21 +38,21 @@
             {foreach from=$group item=user key=userid name=usersloop}
                 <div class="cutout_ticket">
                     {if $networksettings.printSSID}
-                        <span class="ticket_item_label">Wireless Network:</span>
+                        <span class="ticket_item_label">{t}Wireless Network{/t}:</span>
                         <span class='info_username  last'>{$networksettings.printSSID}</span>
                         <br/>
                     {/if}
-                    <span class="ticket_item_label ">Username:</span> <span
+                    <span class="ticket_item_label ">{t}Username{/t}:</span> <span
                             class='info_username  last'>{$user.Username}</span><br/>
-                    <span class="ticket_item_label ">Password:</span> <span
+                    <span class="ticket_item_label ">{t}Password{/t}:</span> <span
                             class='info_password  last'>{$user.Password}</span><br/>
                     {if $networksettings.printGroup}
-                        <span class="ticket_item_label ">Voucher Type:</span>
+                        <span class="ticket_item_label ">{t}Voucher Type{/t}:</span>
                         <span class='info_username  last'>{$groupsettings.$groupid.GroupLabel}</span>
                         <br/>
                     {/if}
                     {if $networksettings.printExpiry && $user.FormatExpiration != '--'}
-                        <span class="ticket_item_label ">Expiry:</span>
+                        <span class="ticket_item_label ">{t}Expiry{/t}:</span>
                         <span class='info_expiry  last'>{$user.FormatExpiration}</span>
                         <br/>
                     {/if}
