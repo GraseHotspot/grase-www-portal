@@ -53,7 +53,6 @@ $j(document).ready(function(){
 </head>
 <body>
 <div id="page">
-    {literal}<!--[if lte IE 6]><script src="/grase/ie6/warning2.js"></script><![endif]-->{/literal}
     <div id="topbar">
         <h1>{$Title} (v{$application_version})</h1>
     </div>

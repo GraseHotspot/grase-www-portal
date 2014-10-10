@@ -85,9 +85,6 @@ body {
 {/if}
 </head>
 <body>
-{if $activepage != "mini"}
-{literal}<!--[if lte IE 6]><script src="/grase/ie6/warning2.js"></script><![endif]-->{/literal}
-{/if}
     <nav class="navbar navbar-default navbar-static-top navbar-inverse" role="navigation">
         <div class="container-fluid" style="max-width: 960px">
             <div class="navbar-header">
