@@ -18,7 +18,7 @@
 
     {if $error}
     <div class="ui-widget" id="errormessages">
-        <div class="ui-state-error ui-corner-all"  style="margin-top: 20px; padding: 0pt 0.7em;" >
+        <div class="ui-state-error ui-corner-all"  style="margin-top: 20px; padding: 0 0.7em;" >
             <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: 0.3em;"></span></p>
             <ul>{foreach from=$error item=msg}<li><strong>{$msg}</strong></li>{/foreach}</ul>
         </div>
@@ -56,14 +56,14 @@
 
     <div id="loggedin" style="display: none">
         <span id="loggedinuserName" style="display: none">{t}Logged in as{/t} <strong id="loggedinuserNameVal"></strong></span>
-        <span id="sessionTimeout" style="display: none"><br/>Remaining Time <strong id="sessionTimeoutVal"></strong></span>
-        <span id="sessionMaxTotalOctets" style="display: none"><br/>Remaining Data <strong id="sessionMaxTotalOctetsVal"></strong></span>
+        <span id="sessionTimeout" style="display: none"><br/>{t}Remaining Session Time{/t} <strong id="sessionTimeoutVal"></strong></span>
+        <span id="sessionMaxTotalOctets" style="display: none"><br/>{t}Remaining Session Data{/t} <strong id="sessionMaxTotalOctetsVal"></strong></span>
         <br/><a class="btn btn-danger" href="http://1.0.0.0" id="logofflink">{t}Logout{/t}</a> {if $activepage != 'mini'}<a href="/grase/uam/mini" class="btn btn-success" target="grase_uam" id='statuslink'>{t}Open Status Window{/t} <i class="fa fa-external-link"></i></a>{/if}
     </div>
 
     {$tpl_belowloginhtml}
 
-    <div style="clear: left; clear: right">&nbsp;</div>
+    <div style="clear: both">&nbsp;</div>
 
     {if $js}
         <script type="text/javascript" src="/grase/uam/js/chilliMD5.js"></script>

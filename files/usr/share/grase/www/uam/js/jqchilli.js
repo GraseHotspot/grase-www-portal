@@ -339,21 +339,27 @@ function process_reply(resp)
             {
                 switch (index)
                 {
-                case 'maxTotalOctets':
-                    $('#sessionMaxTotalOctets').show();
-                    $('#sessionMaxTotalOctetsVal').text(chilliController.formatBytes(value - resp.accounting.inputOctets - resp.accounting.outputOctets));
-                    break;
+                    case 'maxTotalOctets':
+                        $('#sessionMaxTotalOctets').show();
+                        // TODO Gigawords in resp.accounting
+                        $('#sessionMaxTotalOctetsVal').text(chilliController.formatBytes(value - resp.accounting.inputOctets - resp.accounting.outputOctets));
+                        break;
 
-                case 'sessionTimeout':
-                    $('#sessionTimeout').show();
-                    $('#sessionTimeoutVal').text(chilliController.formatTime(value - resp.accounting.sessionTime));
-                    break;
-                case 'userName':
-                    $('#loggedinuserName').show();
-                    $('#loggedinuserNameVal').text(value);
-
+                    case 'sessionTimeout':
+                        $('#sessionTimeout').show();
+                        $('#sessionTimeoutVal').text(chilliController.formatTime(value - resp.accounting.sessionTime));
+                        break;
+                    case 'userName':
+                        $('#loggedinuserName').show();
+                        $('#loggedinuserNameVal').text(value);
+                        break
                 }
             });
+
+            /*$.each(resp.accounting, function (index, value)
+            {
+                updateStatusPage(index, value);
+            });*/
 
         }
 
@@ -409,7 +415,13 @@ function display_loginform()
     $('#tosaccept').show();
     $('#loading').hide();
     $('#loggedin').hide();
+    resetStatusPage();
     logintype = "";
+}
+
+function resetStatusPage()
+{
+    $('#loggedin>span').hide();
 }
 
 function display_loadingform()
