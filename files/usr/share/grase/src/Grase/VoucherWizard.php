@@ -2,21 +2,15 @@
 
 namespace Grase;
 
-
 class VoucherWizard
 {
-    private $wizardPage = 'initialpage';
-    private $sessionExpiry = null;
 
     private $vouchers;
     private $voucherGroups = array();
     private $groupedVouchers = array();
     private $validVouchers;
 
-    private $selectedVoucher;
-    private $selectedPaymentGateway;
-    private $selectionConfirmed = false;
-    private $pendingAccount = false;
+    private $state;
 
     // Payment gateway stuff
 
@@ -41,10 +35,18 @@ class VoucherWizard
     );
 
 
-    public function __construct(Database\Radmin $Settings, $templateEngine, \DatabaseFunctions $databaseFunctions)
+    public function __construct(Database\Radmin $Settings, $templateEngine, \DatabaseFunctions $databaseFunctions, VoucherWizard\State $state)
     {
         $this->wakeUp($Settings, $templateEngine, $databaseFunctions);
         $this->loadVouchers();
+
+        $this->state = $state;
+
+    }
+
+    public function getState()
+    {
+        return $this->state;
     }
 
     public function wakeUp(Database\Radmin $Settings, $templateEngine, \DatabaseFunctions $databaseFunctions)
@@ -75,7 +77,7 @@ class VoucherWizard
 
     private function processCurrectPage()
     {
-        switch ($this->wizardPage) {
+        switch ($this->state->wizardPage) {
             case 'initialpage':
                 $this->processInitialPage();
                 break;
@@ -92,7 +94,7 @@ class VoucherWizard
 
     private function checkSessionExpired()
     {
-        if (!is_null($this->sessionExpiry) && $this->sessionExpiry < time()) {
+        if (!is_null($this->state->sessionExpiry) && $this->state->sessionExpiry < time()) {
             // Session has expired. Destroy it
             $this->restartWizard();
         }
@@ -147,9 +149,9 @@ class VoucherWizard
             if ($valid) {
                 // Valid submission
 
-                $this->wizardPage = 'confirmselectionpage';
-                $this->selectedVoucher = $_POST['voucherselected'];
-                $this->selectedPaymentGateway = $_POST['gatewayselected'];
+                $this->state->wizardPage = 'confirmselectionpage';
+                $this->state->selectedVoucher = $_POST['voucherselected'];
+                $this->state->selectedPaymentGateway = $_POST['gatewayselected'];
                 $this->reloadPage();
                 exit;
             } else {
@@ -172,8 +174,8 @@ class VoucherWizard
             // We have a form submitted, check it's valid and move to the next step
             if ($_POST['selectionconfirmed'] == 'correct') {
                 // We can continue with payment
-                $this->wizardPage = 'paymentpage';
-                $this->selectionConfirmed = true;
+                $this->state->wizardPage = 'paymentpage';
+                $this->state->selectionConfirmed = true;
                 // TODO store selection in database yet? i.e. make user but don't give them access to it's details until we've gotten payment?
                 $this->reloadPage();
                 exit;
@@ -182,8 +184,8 @@ class VoucherWizard
                 restart_wizard();
             }
         }
-        $this->templateEngine->assign('selectedgateway', $this->selectedPaymentGateway);
-        $this->templateEngine->assign('selectedvoucher', $this->selectedVoucher);
+        $this->templateEngine->assign('selectedgateway', $this->state->selectedPaymentGateway);
+        $this->templateEngine->assign('selectedvoucher', $this->state->selectedVoucher);
         $this->templateEngine->display('wizard_confirmselection.tpl');
     }
 
@@ -192,13 +194,13 @@ class VoucherWizard
 
         //TODO Create user account and lock it here, so it's ready for the plugin to do with as needed (i.e. send details)
 
-        if ($this->pendingAccount === false) {
+        if ($this->state->pendingAccount === false) {
             /* Create our locked random user */
 
-            $MaxMb = $this->vouchers[$this->selectedVoucher]['MaxMb'];
-            $MaxTime = $this->vouchers[$this->selectedVoucher]['MaxTime'];
-            $Expiry = expiry_for_group($this->vouchers[$this->selectedVoucher]['VoucherGroup']);
-            $Comment = $this->selectedVoucher . " Voucher purchased " . date('c');
+            $MaxMb = $this->vouchers[$this->state->selectedVoucher]['MaxMb'];
+            $MaxTime = $this->vouchers[$this->state->selectedVoucher]['MaxTime'];
+            $Expiry = expiry_for_group($this->vouchers[$this->state->selectedVoucher]['VoucherGroup']);
+            $Comment = $this->state->selectedVoucher . " Voucher purchased " . date('c');
             $Username = Util::randomUsername(5);
             $Password = Util::randomPassword(6);
 
@@ -212,7 +214,7 @@ class VoucherWizard
                 $MaxTime,
                 $Expiry,
                 false, // Don't currently have ExpireAfter for vouchers
-                $this->vouchers[$this->selectedVoucher]['VoucherGroup'],
+                $this->vouchers[$this->state->selectedVoucher]['VoucherGroup'],
                 $Comment
             );
 
@@ -220,24 +222,24 @@ class VoucherWizard
             $this->DBF->lockUser($Username, T_('Account Pending Payment and Activation'));
 
             // Store user account in session
-            $this->pendingAccount = array('Username' => $Username, 'Password' => $Password);
+            $this->state->pendingAccount = array('Username' => $Username, 'Password' => $Password);
         }
 
         /* */
 
 
         require_once('paymentgateways/PaymentGatewayPlugin.class.php');
-        if (!is_file('paymentgateways/' . $paymentgateways[$this->selectedPaymentGateway]['pluginfile'])) {
+        if (!is_file('paymentgateways/' . $paymentgateways[$this->state->selectedPaymentGateway]['pluginfile'])) {
             die('Invalid payment plugin<br/><form action="" method="POST"><input type="hidden" name="pgformsubmission" value="1"/><input name="restartwizard" type="submit" value="Restart Wizard"/>');
         }
 
         // TODO Clean up and make error detection lots lots better
 
-        require_once('paymentgateways/' . $paymentgateways[$this->selectedPaymentGateway]['pluginfile']);
+        require_once('paymentgateways/' . $paymentgateways[$this->state->selectedPaymentGateway]['pluginfile']);
 
         // Recreate object each time
 
-        $classname = "PG_" . $this->selectedPaymentGateway;
+        $classname = "PG_" . $this->state->selectedPaymentGateway;
         $paymentplugin = new $classname($_SESSION['PendingAccount'], $_SESSION['selectedvoucher']);
 
         //$paymentplugin-> // Load voucher and user details (at initilisation) TODO

@@ -1,5 +1,4 @@
 <?php
-exit(0); // DISABLED FOR RELEASE AS NOT YET READY FOR PRODUCTION
 /* Copyright 2012 Timothy White */
 /*  This file is part of GRASE Hotspot.
 
@@ -20,9 +19,16 @@ exit(0); // DISABLED FOR RELEASE AS NOT YET READY FOR PRODUCTION
 */
 
 
-function __autoload($class_name) {
-    require_once './classes/'.$class_name.'.class.php';
+require_once __DIR__.'/../../vendor/autoload.php';
+
+function grase_autoload($class_name) {
+    if( file_exists(__DIR__. '/classes/' . $class_name . '.class.php'))
+    {
+        include_once __DIR__. '/classes/' . $class_name . '.class.php';
+    }
 }
+
+spl_autoload_register('grase_autoload');
 
 require_once('php-gettext/gettext.inc');
 
@@ -37,8 +43,10 @@ require_once 'includes/misc_functions.inc.php';
 session_name('GrasePurchaseWizard');
 session_start();
 
-$voucherWizard = new \Grase\VoucherWizard($Settings, $templateEngine, DatabaseFunctions::getInstance())
+$voucherWizard = new \Grase\VoucherWizard($Settings, $templateEngine, DatabaseFunctions::getInstance(), new \Grase\VoucherWizard\State());
 
+echo serialize($voucherWizard->getState());
+exit;
 
 // Do the wizard page logic
 
