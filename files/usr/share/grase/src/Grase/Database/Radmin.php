@@ -233,7 +233,8 @@ class Radmin
             FROM settings WHERE setting = ? LIMIT 1"
         );
         $sql->execute(array($setting));
-        return (bool)$sql->fetch()['settingcount'];
+        $result = $sql->fetch();
+        return (bool)$result['settingcount'];
 
     }
 
@@ -321,7 +322,8 @@ class Radmin
             FROM templates WHERE id = ? LIMIT 1"
         );
         $sql->execute(array($this->templatemap[$template]));
-        return (bool)$sql->fetch()['templatecount'];
+        $result = $sql->fetch();
+        return (bool)$result['templatecount'];
 
     }
 

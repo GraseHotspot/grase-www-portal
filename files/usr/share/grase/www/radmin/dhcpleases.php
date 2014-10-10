@@ -35,6 +35,7 @@ function getChilliLeases()
     }
     return false;
 }
+$leases = getChilliLeases();
 
-$templateEngine->assign("chilliSessions", getChilliLeases()['sessions']);
+$templateEngine->assign("chilliSessions", $leases['sessions']);
 $templateEngine->displayPage('dhcpleases.tpl');
