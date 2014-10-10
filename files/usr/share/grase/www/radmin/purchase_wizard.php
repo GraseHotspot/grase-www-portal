@@ -1,4 +1,5 @@
 <?php
+exit(0); // Not ready for production
 /* Copyright 2012 Timothy White */
 /*  This file is part of GRASE Hotspot.
 
