@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "da2d7fb972754ddca1995a1c3a09510c",
+    "hash": "f2f4f2e3c788136d552f937f0825e2cf",
     "packages": [
         {
             "name": "smarty-gettext/smarty-gettext",
@@ -54,6 +54,50 @@
                 "source": "https://github.com/GraseHotspot/smarty-gettext/tree/master"
             },
             "time": "2014-05-18 05:18:45"
+        },
+        {
+            "name": "smarty/smarty",
+            "version": "v3.1.20",
+            "source": {
+                "type": "svn",
+                "url": "http://smarty-php.googlecode.com/svn",
+                "reference": "/tags/v3.1.20/@4884"
+            },
+            "require": {
+                "php": ">=5.2"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "libs/Smarty.class.php",
+                    "libs/SmartyBC.class.php",
+                    "libs/sysplugins/smarty_security.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Monte Ohrt",
+                    "email": "monte@ohrt.com"
+                },
+                {
+                    "name": "Uwe Tews",
+                    "email": "uwe.tews@googlemail.com"
+                },
+                {
+                    "name": "Rodney Rehm",
+                    "email": "rodney.rehm@medialize.de"
+                }
+            ],
+            "description": "Smarty - the compiling PHP template engine",
+            "homepage": "http://www.smarty.net",
+            "keywords": [
+                "templating"
+            ],
+            "time": "2014-10-09 23:12:20"
         }
     ],
     "packages-dev": [

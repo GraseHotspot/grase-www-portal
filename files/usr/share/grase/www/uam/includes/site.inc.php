@@ -25,20 +25,6 @@ spl_autoload_register('grase_autoload');
 require_once('../radmin/includes/load_settings.inc.php');
 require_once('../radmin/includes/misc_functions.inc.php');
 
-require("smarty3/SmartyBC.class.php");
-
-/*
-// put full path to Smarty.class.php
-if(file_exists('/usr/share/php/smarty/libs/') && ! is_link('/usr/share/php/smarty/libs/'))
-{
-    // Debian bug http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=514305
-    // Remove this code once fixed?
-    require_once('smarty/libs/Smarty.class.php');
-}else
-{
-    require_once('smarty/Smarty.class.php');
-}*/
-
 require_once __DIR__.'/../../../vendor/autoload.php';
 //require_once '../radmin/includes/block.t.php';
 

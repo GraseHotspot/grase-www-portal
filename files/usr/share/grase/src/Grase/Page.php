@@ -22,8 +22,6 @@ namespace Grase;
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-require_once("smarty3/SmartyBC.class.php");
-
 class Page
 {
     private $te;

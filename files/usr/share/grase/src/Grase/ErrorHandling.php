@@ -22,8 +22,6 @@
 
 namespace Grase;
 
-require_once("smarty3/SmartyBC.class.php");
-
 // TODO Migrate to SmartyBC (or Twig)
 class ErrorHandling
 {
