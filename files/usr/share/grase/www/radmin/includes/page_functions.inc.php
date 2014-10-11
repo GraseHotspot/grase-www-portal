@@ -135,9 +135,9 @@ function datacosts()
 
 function datavals()
 {
-        global $mb_options;
+    global $Settings;
 	$datavals[''] = '';
-	$mboptions = explode(" ", $mb_options);
+	$mboptions = explode(" ", $Settings->getSetting('mbOptions'));
 	foreach($mboptions as $mb)
 	{
 		$datavals["$mb"] = \Grase\Util::formatBytes($mb*1024*1024);;
@@ -147,9 +147,9 @@ function datavals()
 
 function timevals()
 {
-        global $time_options;
+        global $Settings;
 	$timevals[''] = '';
-	$timeoptions = explode(" ", $time_options);
+	$timeoptions = explode(" ", $Settings->getSetting('timeOptions'));
 	foreach($timeoptions as $time)
 	{
 	    if($time >= 60)
@@ -175,9 +175,9 @@ function timecosts()
 
 function bandwidth_options()
 {
-    global $kbit_options;
+    global $Settings;
     // kbits/second
-    $kbits_options = explode(" ", $kbit_options);
+    $kbits_options = explode(" ", $Settings->getSetting('kbitOptions'));
     $options[''] = '';
     foreach($kbits_options as $kbits)
     {
@@ -224,14 +224,14 @@ function yesno()
 
 $templateEngine = new \Grase\Page();
 
-\Grase\Locale::applyLocale($locale);
+\Grase\Locale::applyLocale($Settings->getSetting('locale'));
 
 
 
 
 function assign_vars($templateEngine)
 {
-	global $location, $website_name, $website_link, $DEMO_SITE, $Settings;
+	global $Settings;
 	
 	list($fileversions, $application_version)=css_file_version();
 	$templateEngine->assign("radmincssversion", $fileversions['radmin.css']);
@@ -262,9 +262,9 @@ function assign_vars($templateEngine)
 
 
 	// Settings
-	$templateEngine->assign("Title", $location . " - " . APPLICATION_NAME);
-	$templateEngine->assign("website_name", $website_name);
-	$templateEngine->assign("website_link", $website_link);
+	$templateEngine->assign("Title", $Settings->getSetting('locationName') . " - " . APPLICATION_NAME);
+	$templateEngine->assign("website_name", $Settings->getSetting('websiteName'));
+	$templateEngine->assign("website_link", $Settings->getSetting('websiteLink'));
     
 	// Group data for displaying group properties	
 	$templateEngine->assign("groupdata", DatabaseFunctions::getInstance()->getGroupAttributes());
@@ -272,7 +272,8 @@ function assign_vars($templateEngine)
 	$templateEngine->assign("groups", grouplist());
 	
 	// DEMO SITE flag
-	$templateEngine->assign("DEMOSITE", $DEMO_SITE);
+    // Allow extra things on Demo site (piwik tracking of admin interface)
+	$templateEngine->assign("DEMOSITE", $Settings->getSetting('demosite'));
 
 	// Usermin assign vars
 	if(function_exists('usermin_assign_vars')) usermin_assign_vars();

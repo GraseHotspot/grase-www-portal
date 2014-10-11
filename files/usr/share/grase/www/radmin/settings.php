@@ -41,24 +41,12 @@ if (isset($_POST['submit'])) {
     $newWebsiteLink = \Grase\Clean::text($_POST['websitelink']);
     // Check for changed items
 
-    if ($newLocationName != $location) {
-        updateLocation($newLocationName);
-    }
-    if ($newSupportContact != $support_name) {
-        updateSupportContactSetting($newSupportContact);
-    }
-    if ($newSupportLink != $support_link) {
-        updateSupportLinkSetting($newSupportLink);
-    }
-    if ($newLocale != $locale) {
-        updateLocaleSetting($newLocale);
-    }
-    if ($newWebsiteName != $website_name) {
-        updateWebsiteName($newWebsiteName);
-    }
-    if ($newWebsiteLink != $website_link) {
-        updateWebsiteLink($newWebsiteLink);
-    }
+    updateLocation($newLocationName);
+    updateSupportContactSetting($newSupportContact);
+    updateSupportLinkSetting($newSupportLink);
+    updateLocaleSetting($newLocale);
+    updateWebsiteName($newWebsiteName);
+    updateWebsiteLink($newWebsiteLink);
 
     // New functions to file, dont do messy way like above. Value will always be valid, as the cleaning functions should make it a valid value. We should still check the value fits how we want it to (i.e. isn't empty). We don't need to check for error up update as when we have errors we'll never come back here
     $new2timeoptions = checkGroupsTimeDropdowns($newTimeOptions);
@@ -76,17 +64,17 @@ if (isset($_POST['submit'])) {
         $error[] = T_("Some bandwidth options are still in use by current groups and have been added back in");
     }
 
-    if ($new2timeoptions != $time_options) {
+    if ($new2timeoptions != $Settings->getSetting('timeOptions')) {
         $Settings->setSetting('timeOptions', $new2timeoptions);
         $success[] = T_("Time Options Updated");
     }
 
-    if ($new2mboptions != $mb_options) {
+    if ($new2mboptions != $Settings->getSetting('mbOptions')) {
         $Settings->setSetting('mbOptions', $new2mboptions);
         $success[] = T_("Data Options Updated");
     }
 
-    if ($new2bwoptions != $kbit_options) {
+    if ($new2bwoptions != $Settings->getSetting('kbitOptions')) {
         $Settings->setSetting('kbitOptions', $new2bwoptions);
         $success[] = T_("Bandwidth Options Updated");
     }
@@ -94,27 +82,25 @@ if (isset($_POST['submit'])) {
     // Call validate&change functions for changed items
 }
 
-// TODO: Make a proper settings file?
-load_global_settings(); // Reloads settings
 
-$templateEngine->assign("location", $location);
-$templateEngine->assign("mboptions", $mb_options);
-$templateEngine->assign("timeoptions", $time_options);
-$templateEngine->assign("bwoptions", $kbit_options);
+$templateEngine->assign("location", $Settings->getSetting('locationName'));
+$templateEngine->assign("mboptions", $Settings->getSetting('mbOptions'));
+$templateEngine->assign("timeoptions", $Settings->getSetting('timeOptions'));
+$templateEngine->assign("bwoptions", $Settings->getSetting('kbitOptions'));
 
 
 // Locale stuff
-
+$locale = $Settings->getSetting('locale');
 $fmt = new NumberFormatter($locale, NumberFormatter::CURRENCY);
 $templateEngine->assign("locale", $locale);
 $templateEngine->assign("currency", $fmt->getSymbol(NumberFormatter::CURRENCY_SYMBOL));
 $templateEngine->assign("language", locale_get_display_language($locale));
 $templateEngine->assign("region", locale_get_display_region($locale));
 
-$templateEngine->assign("support_name", $support_name);
-$templateEngine->assign("support_link", $support_link);
-$templateEngine->assign("website_name", $website_name);
-$templateEngine->assign("website_link", $website_link);
+$templateEngine->assign("support_name", $Settings->getSetting('supportContactName'));
+$templateEngine->assign("support_link", $Settings->getSetting('supportContactLink'));
+$templateEngine->assign("website_name", $Settings->getSetting('websiteName'));
+$templateEngine->assign("website_link", $Settings->getSetting('websiteLink'));
 
 $templateEngine->assign("available_languages", \Grase\Locale::getAvailableLanguages());
 
@@ -130,6 +116,9 @@ if (sizeof($success) > 0) {
 function updateLocation($location)
 {
     global $error, $templateEngine, $Settings, $success;
+    if ($Settings->getSetting('locationName') == $location) {
+        return true;
+    }
     if ($location == "") {
         $error[] = T_("Location name not valid");
     } else {
@@ -150,6 +139,9 @@ function updateLocation($location)
 function updateWebsiteName($websiteName)
 {
     global $error, $Settings, $success;
+    if ($Settings->getSetting('websiteName') == $websiteName) {
+        return true;
+    }
     if ($websiteName == "") {
         $error[] = T_("Website name not valid");
     } else {
@@ -165,6 +157,11 @@ function updateWebsiteName($websiteName)
 function updateWebsiteLink($websiteLink)
 {
     global $error, $Settings, $success;
+
+    if ($Settings->getSetting('websiteLink') == $websiteLink) {
+        return true;
+    }
+
     if ($websiteLink == "" || strpos($websiteLink, ' ') !== false) {
         $error[] = T_("Website link not valid");
     } else {
@@ -183,12 +180,15 @@ function updateWebsiteLink($websiteLink)
 function updateLocaleSetting($locale)
 {
     global $error, $Settings, $success;
+    if ($Settings->getSetting('locale') == $locale) {
+        return true;
+    }
 
-    $newlocale = Locale::parseLocale($locale);
+    $newLocale = Locale::parseLocale($locale);
 
     // If ['language'] isn't set, then we can't pick a language, so whole Locale is invalid. Region part of Locale isn't as important as Language is. Could default to English if no langauge, so Region would work, but they could just append en_ to the locale themself
-    if (isset($newlocale['language'])) {
-        $locale = Locale::composeLocale($newlocale);
+    if (isset($newLocale['language'])) {
+        $locale = Locale::composeLocale($newLocale);
         if ($Settings->setSetting('locale', $locale)) {
             // Apply new locale so language displays correctly from now on
             \Grase\Locale::applyLocale($locale);
@@ -208,6 +208,9 @@ function updateLocaleSetting($locale)
 function updateSupportContactSetting($supportName)
 {
     global $error, $Settings, $success;
+    if($Settings->getSetting('supportContactName') == $supportName) {
+        return true;
+    }
     if ($supportName == "") {
         $error[] = T_("Support name not valid");
     } else {
@@ -223,6 +226,9 @@ function updateSupportContactSetting($supportName)
 function updateSupportLinkSetting($supportLink)
 {
     global $error, $Settings, $success;
+    if ($Settings->getSetting('supportContactLink') == $supportLink) {
+        return true;
+    }
     if ($supportLink == "" || strpos($supportLink, ' ') !== false) {
         $error[] = T_("Support link not valid");
     } else {

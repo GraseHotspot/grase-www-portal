@@ -25,58 +25,6 @@ require_once __DIR__ . '/../../../vendor/autoload.php';
 $Radmin = new \Grase\Database\Database('/etc/grase/radmin.conf');
 $Settings = new \Grase\Database\Radmin($Radmin);
 
-load_global_settings();
-
-function load_global_settings()
-{
-    global $Settings, $location, $support_name, $support_link, $website_link,
-           $website_name, $locale, $mb_options, $time_options, $kbit_options,
-           $DEMO_SITE;
-
-    $location = $Settings->getSetting('locationName');
-    if ($location == "") {
-        $location = "Default";
-    }
-    $support_name = $Settings->getSetting('supportContactName');
-    if ($support_name == "") {
-        $support_name = "Tim White";
-    }
-    $support_link = $Settings->getSetting('supportContactLink');
-    if ($support_link == "") {
-        $support_link = "http://grasehotspot.com/";
-    }
-
-    $website_link = $Settings->getSetting('websiteLink');
-    if ($website_link == "") {
-        $website_link = "http://grasehotspot.org/";
-    }
-    $website_name = $Settings->getSetting('websiteName');
-    if ($website_name == "") {
-        $website_name = "GRASE Hotspot Project";
-    }
-
-    $mb_options = $Settings->getSetting('mbOptions');
-    if ($mb_options == "") {
-        $mb_options = "10 50 100 250 500 1024 2048 4096 102400";
-    }
-    $time_options = $Settings->getSetting('timeOptions');
-    if ($time_options == "") {
-        $time_options = "5 10 20 30 45 60 90 120 180 240 600 6000";
-    }
-    $kbit_options = $Settings->getSetting('kbitOptions');
-    if ($kbit_options == "") {
-        $kbit_options = "64 128 256 512 1024 1536 2048 4096 8192";
-    }
-
-    $locale = $Settings->getSetting('locale');
-    if ($locale == '') {
-        $locale = "en_AU";
-    }
-
-    // Allow extra things on Demo site (piwik tracking of admin interface)
-    $DEMO_SITE = $Settings->getSetting('demosite');
-}
-
 /* PHP No longer correctly gets the timezone from the system. Try to set it */
 
 $tzfile = trim(file_get_contents('/etc/timezone'));

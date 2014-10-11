@@ -340,8 +340,8 @@ function clean_groupname($text)
 
 function clean_number($number)
 {
-    global $locale;
-    $fmt = new NumberFormatter( $locale, NumberFormatter::DECIMAL );
+    global $Settings;
+    $fmt = new NumberFormatter( $Settings->getSetting('locale'), NumberFormatter::DECIMAL );
     $cleannum = $fmt->parse(ereg_replace("[^\.,0-9]", "", \Grase\Clean::text($number)));
     return $cleannum;
 }

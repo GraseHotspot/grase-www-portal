@@ -107,6 +107,42 @@ class Radmin
         ) {
             $this->setSetting('usernameLength', 5);
         }
+
+        if ($this->getSetting('locationName') == null) {
+            $this->setSetting('locationName', 'Default');
+        }
+
+        if ($this->getSetting('supportContactName') == null) {
+            $this->setSetting('supportContactName', 'Tim White');
+        }
+
+        if ($this->getSetting('supportContactLink') == null) {
+            $this->setSetting('supportContactLink', 'http://grasehotspot.com/');
+        }
+
+        if ($this->getSetting('websiteLink') == null) {
+            $this->setSetting('websiteLink', 'httpL//grasehotspot.org/');
+        }
+
+        if ($this->getSetting('websiteName') == null) {
+            $this->setSetting('websiteName', 'GRASE Hotspot Project');
+        }
+
+        if ($this->getSetting('mbOptions') == null) {
+            $this->setSetting('mbOptions', '10 50 100 250 500 1024 2048 4096 10240 102400');
+        }
+
+        if ($this->getSetting('timeOptions') == null) {
+            $this->setSetting('timeOptions', '5 10 20 30 45 60 90 120 180 240 600 6000');
+        }
+
+        if ($this->getSetting('kBitOptions') == null) {
+            $this->setSetting('kBitOptions', '64 128 256 512 1024 1536 2048 4096 8192');
+        }
+
+        if ($this->getSetting('locale') == null) {
+            $this->setSetting('locale', 'en_AU');
+        }
     }
 
     private function upgradeDatabase()

@@ -45,14 +45,17 @@ require_once __DIR__.'/../../../vendor/autoload.php';
 $smarty = new SmartyBC();
 
 // TODO Detect browser settings and allow override of language?
-\Grase\Locale::applyLocale($locale);
+\Grase\Locale::applyLocale($Settings->getSetting('locale'));
 
 #$smarty->register_block('t', 'smarty_block_t');
 
-$smarty->assign("Location", $location);
-$smarty->assign("Support", array("link" => $support_link, "name" => $support_name));
-$smarty->assign("website_name", $website_name);
-$smarty->assign("website_link", $website_link);
+$smarty->assign("Location", $Settings->getSetting('locationName'));
+$smarty->assign("Support", array(
+        "link" => $Settings->getSetting('supportContactLink'),
+        "name" => $Settings->getSetting('supportContactName')
+    ));
+$smarty->assign("website_name", $Settings->getSetting('websiteName'));
+$smarty->assign("website_link", $Settings->getSetting('websiteLink'));
 
 $networkoptions = unserialize($Settings->getSetting("networkoptions"));
 $lanIP = $networkoptions['lanipaddress'];
@@ -62,7 +65,7 @@ $smarty->assign("serverip", $lanIP);
 custom_settings(array('hidefooter', 'hideheader', 'disableallcss', 'hidehelplink', 'hidelogoutbookmark'));
 
 $logintitle = $Settings->getSetting('logintitle');
-if($logintitle == '') $logintitle = "$location Hotspot";
+if($logintitle == '') $logintitle = $Settings->getSetting('locationName') ." Hotspot";
 $smarty->assign("logintitle", $logintitle);
 
 // Load templates needed by all pages

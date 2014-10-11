@@ -33,10 +33,10 @@ function usermin_createmenuitems()
 
 function usermin_assign_vars()
 {
-	global $templateEngine, $location;
+	global $templateEngine, $Settings;
 	$templateEngine->assign("Application", USERMIN_APPLICATION_NAME);
 
-	$templateEngine->assign("Title", $location . " - " . USERMIN_APPLICATION_NAME);
+	$templateEngine->assign("Title", $Settings->getSetting('locationName') . " - " . USERMIN_APPLICATION_NAME);
 
 	// Setup Menus
 	$templateEngine->assign("MenuItems", usermin_createmenuitems());
