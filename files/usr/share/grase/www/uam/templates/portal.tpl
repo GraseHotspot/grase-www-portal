@@ -42,9 +42,9 @@
             <h2>{t}Voucher Login{/t}</h2>
             <input class="form-control" id="username" name="username" type="text" required autofocus placeholder="{t}Username{/t}"/>
             <input class="form-control" id="password" name="password" type="password" required placeholder="{t}Password{/t}"/>
-            <input type="hidden" name="challenge" value="{$challenge}"/>
+            <input type="hidden" name="challenge" value="{$challenge|escape}"/>
             <input type="hidden" name="response" value=""/>
-            <input type="hidden" name="userurl" value="{$user_url}"/>
+            <input type="hidden" name="userurl" value="{$user_url|escape}"/>
             <button class="btn btn-primary btn-block" type="SUBMIT">Login</button>
             {if $nojs}<p style="font-size: smaller">{t}You have disabled the secure javascript login method.{/t} <a href="?enablejs">{t}Click here to re-enable it{/t}</a></p>{/if}
             </form>

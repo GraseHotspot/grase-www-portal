@@ -62,7 +62,6 @@ if (isset($_POST['newmachinesubmit'])) {
         $user['Comment'] = \Grase\Clean::text($_POST['Comment']);
         $templateEngine->assign("machine", $user);
         $templateEngine->assign("error", $error);
-        $templateEngine->displayPage('addmachine.tpl');
     } else {
         if (clean_number($_POST['Max_Mb'])) {
             $MaxMb = clean_number($_POST['Max_Mb']);

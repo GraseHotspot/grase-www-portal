@@ -24,7 +24,7 @@
 </div>
 <div>
     <label for='Comment'>{t}Comment{/t}</label>
-    <input type="text" name="Comment" id="Comment" value='{$user.Comment}'/>
+    <input type="text" name="Comment" id="Comment" value='{$user.Comment|escape}'/>
     <span id='CommentInfo'>{t}A comment about the user{/t}</span>
 </div>
 

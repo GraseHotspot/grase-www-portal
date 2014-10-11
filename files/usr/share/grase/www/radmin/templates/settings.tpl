@@ -7,26 +7,26 @@
 
     <div>
         <label for='locationname'>{t}Location Name{/t}</label>
-        <input type="text" name="locationname" id="locationname" value='{$location}'/>
+        <input type="text" name="locationname" id="locationname" value='{$location|escape}'/>
         <span id="locationnameInfo">{t}Enter a name that identifies this Hotspot Location{/t}</span>
     </div>
         
     <div>
         <label for='supportcontact'>{t}Support Contact Name{/t}</label>
-        <input type="text" name="supportcontact" id="supportcontact" value='{$support_name}'/>
+        <input type="text" name="supportcontact" id="supportcontact" value='{$support_name|escape}'/>
         <span id="supportcontactInfo">{t}Enter the name of the Support Contact{/t}</span>
     </div>
     
     <div>
         <label for='supportlink'>{t}Support Link{/t}</label>
-        <input type="url" name="supportlink" id="supportlink" value='{$support_link}'/>
+        <input type="url" name="supportlink" id="supportlink" value='{$support_link|escape}'/>
         <span id="supportlinkInfo">{t}This is the link for the support contact. http:// or mailto: are allowed. If using http:// ensure this is accessabile for users who aren't logged into the hotspot{/t}</span>
     </div>    
 
 
     <div>
         <label for='locale'>{t}Locale{/t}</label>
-        <input name="locale" type="text" id="locale" value="{$locale}"/>
+        <input name="locale" type="text" id="locale" value="{$locale|escape}"/>
                 <span class="helptext ui-icon-help">{t}Available languages:{/t}
             <dl>
                 {foreach from=$available_languages item=languageitem}
@@ -62,13 +62,13 @@
 
     <div>
         <label for='websitename'>{t}Website Name{/t}</label>
-        <input type="text" name="websitename" id="websitename" value='{$website_name}'/>
+        <input type="text" name="websitename" id="websitename" value='{$website_name|escape}'/>
         <span id="websitenameInfo">{t}Label for Website Footer link{/t}</span>
     </div>
     
     <div>
         <label for='websitelink'>{t}Website Link{/t}</label>
-        <input type="url" name="websitelink" id="websitelink" value='{$website_link}'/>
+        <input type="url" name="websitelink" id="websitelink" value='{$website_link|escape}'/>
         <span id="websitelinkInfo">{t}Link for Website Footer Link{/t}</span>
     </div>   
    

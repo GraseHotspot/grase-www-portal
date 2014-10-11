@@ -7,13 +7,13 @@
 
 <div>
     <label for='mac'>{t}MAC Address{/t}</label>
-    <input type="text" name="mac" id="mac" value="{$machine.mac}"/>
+    <input type="text" name="mac" id="mac" value="{$machine.mac|escape}"/>
     <span id="macInfo">Computer Hardware Address <a class="helpbutton  ui-icon ui-icon-info" title="{t}The MAC address is the network hardware address of the computer. It needs to be of the format XX-XX-XX-XX-XX-XX where XX is a hex number, typed in all capitals{/t}"><img src="/grase/images/icons/help.png" alt=""/></a></span>
 </div>
 
 <div>
     <label for='Comment'>{t}Comment{/t}</label>
-    <input type="text" name="Comment" id="Comment" value="{$machine.Comment}"/>
+    <input type="text" name="Comment" id="Comment" value="{$machine.Comment|escape}"/>
     <span id='CommentInfo'>{t}Identify the computer. i.e. "Bob's computer"{/t}</span>
 </div>
 

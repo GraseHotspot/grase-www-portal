@@ -48,7 +48,7 @@
 </div>
 <div>
     <label for='Comment'>Comment</label>
-    <input type="text" name="Comment" id="Comment" value='{$user.Comment}'/>
+    <input type="text" name="Comment" id="Comment" value='{$user.Comment|escape}'/>
     <span id='CommentInfo'>A comment that is applied to all tickets</span>
 </div>
 

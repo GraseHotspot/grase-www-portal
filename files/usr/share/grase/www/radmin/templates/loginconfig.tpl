@@ -22,7 +22,7 @@
     <div>
         <label for='{$option}'>{$attributes.label}</label>
         {if $attributes.type != 'bool'}
-            <input type="text" name="{$option}" id="{$option}" value='{$attributes.value}'/>
+            <input type="text" name="{$option}" id="{$option}" value="{$attributes.value|escape}"/>
         {else}
             <input type="checkbox" name="{$option}" id="{$option}" {if $attributes.value == "TRUE"}checked="checked"{/if}/>
         {/if}

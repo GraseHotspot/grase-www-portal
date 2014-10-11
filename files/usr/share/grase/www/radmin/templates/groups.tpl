@@ -37,8 +37,8 @@
         
     {foreach from=$groupsettings item=settings key=groupname name=groupsettingsloop}        
         <div class="jsmultioption" id="groupSettings_{$smarty.foreach.groupsettingsloop.iteration}" class="tabcontent">
-            <label>{t}Name{/t}</label><input type="text" class="groupnameinput" name="groupname[]" value='{$settings.GroupLabel}'/>
-            <label>{t}Description{/t}</label><textarea name="groupcomment[]" class="groupcommentinput" maxlength='250'>{$settings.Comment}</textarea>
+            <label>{t}Name{/t}</label><input type="text" class="groupnameinput" name="groupname[]" value='{$settings.GroupLabel|escape}'/>
+            <label>{t}Description{/t}</label><textarea name="groupcomment[]" class="groupcommentinput" maxlength='250'>{$settings.Comment|escape}</textarea>
             <label>{t}Expiry{/t}</label><input type="text" placeholder="{t}Never Expire{/t}" name="groupexpiry[]" value='{$settings.Expiry}'/>
             <label>{t}Expire After First login{/t}</label><input type="text" name="groupexpireafter[]" value='{$settings.ExpireAfter}'/>
             
