@@ -88,6 +88,25 @@ class Radmin
 
         // Load all settings as we ALWAYS need settings (do we?) TODO
         $this->loadAllSettings();
+
+        $this->defaultSettings();
+    }
+
+    private function defaultSettings()
+    {
+        if (
+            $this->getSetting('passwordLength') === null
+            || $this->getSetting('passwordLength') < 1
+        ) {
+            $this->setSetting('passwordLength', 6);
+        }
+
+        if (
+            $this->getSetting('usernameLength') === null
+            || $this->getSetting('usernameLength') < 1
+        ) {
+            $this->setSetting('usernameLength', 5);
+        }
     }
 
     private function upgradeDatabase()
@@ -190,8 +209,6 @@ class Radmin
         }
 
         $this->settingcacheloaded = true;
-
-
     }
 
     public function getSetting($setting)
@@ -220,6 +237,11 @@ class Radmin
 
         return $result['value'];
 
+    }
+
+    public function getSettingsCache()
+    {
+        return $this->settingcache;
     }
 
     public function checkExistsSetting($setting)

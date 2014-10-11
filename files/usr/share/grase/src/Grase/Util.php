@@ -72,28 +72,27 @@ class Util
     /* This function is a modified version of randomPassword function */
     public static function randomUsername($len)
     {
-        // It's the calling functions responsability to check the username doesn't already exist
         $c = "bcdfghjklmnprstvwz";
         $v = "aeiou";
-        $password = "";
+        $username = "";
         $syllables = 2; // Short due to username
 
         for ($i = 0; $i < ($len / $syllables); $i++) {
             if (rand(0, 1)) {
                 if ($i + 1 < ($len / $syllables)) {
-                    $password .= rand(1, 9);
+                    $username .= rand(1, 9);
                 }
-                $password .= $c[rand(0, strlen($c) - 1)];
-                $password .= $v[rand(0, strlen($v) - 1)];
+                $username .= $c[rand(0, strlen($c) - 1)];
+                $username .= $v[rand(0, strlen($v) - 1)];
             } else {
-                $password .= $v[rand(0, strlen($v) - 1)];
-                $password .= $c[rand(0, strlen($c) - 1)];
+                $username .= $v[rand(0, strlen($v) - 1)];
+                $username .= $c[rand(0, strlen($c) - 1)];
                 if ($i + 1 < ($len / $syllables)) {
-                    $password .= rand(1, 9);
+                    $username .= rand(1, 9);
                 }
             }
         }
-        return $password;
+        return $username;
     }
 
     /* NOTE: This function is from Smarty Docs http://www.smarty.net/docs/en/tips.dates.tpl */

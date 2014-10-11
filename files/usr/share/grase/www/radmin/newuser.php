@@ -131,7 +131,7 @@ if (isset($_POST['newusersubmit'])) {
     }
 }
 
-$user['Password'] = \Grase\Util::randomPassword(6);
+$user['Password'] = \Grase\Util::randomPassword($Settings->getSetting('passwordLength'));
 
 // TODO: make default settings customisable
 $user['Max_Mb'] = 'inherit';
