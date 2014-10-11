@@ -30,6 +30,7 @@ grase-www-portal (3.7.7.12) UNRELEASED; urgency=low
   * Added DHCP leases page to see current output of chilli_query
   * Hidden Advanced Settings Page
   * Make username/password length customisable
+  * Cleanup old settings
 
  -- Tim White <tim@grasehotspot.org>  Tue, 22 Jan 2013 16:13:27 +1000
 
