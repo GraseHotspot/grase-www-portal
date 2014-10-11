@@ -98,11 +98,18 @@ class Radmin
         $oldSettings = array(
             'priceMB',
             'priceMinute',
-            'currency'
+            'currency',
+            'sellableData',
+            'userableData'
         );
 
         foreach ($oldSettings as $setting) {
             $this->deleteSetting($setting);
+        }
+
+        // Special cases
+        if ($this->getSetting('groups') == 's:0:"";') {
+            $this->deleteSetting('groups');
         }
     }
 
