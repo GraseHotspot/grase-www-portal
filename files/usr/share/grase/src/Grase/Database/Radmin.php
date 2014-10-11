@@ -88,8 +88,22 @@ class Radmin
 
         // Load all settings as we ALWAYS need settings (do we?) TODO
         $this->loadAllSettings();
-
         $this->defaultSettings();
+        $this->removeOldSettings();
+    }
+
+    // Remove all settings that we aren't using anymore
+    private function removeOldSettings()
+    {
+        $oldSettings = array(
+            'priceMB',
+            'priceMinute',
+            'currency'
+        );
+
+        foreach ($oldSettings as $setting) {
+            $this->deleteSetting($setting);
+        }
     }
 
     private function defaultSettings()
@@ -337,6 +351,36 @@ class Radmin
             );
         }
     }
+
+    private function deleteSetting($setting)
+    {
+        if ($this->checkExistsSetting($setting) == 0) {
+            return true;
+        }
+
+        // Delete records
+        $query = $this->radmin->prepare(
+            "DELETE FROM settings WHERE setting= ?"
+        );
+
+        if ($query->execute(array($setting))) {
+            // Update settings cache to prevent wrong data
+            if ($this->settingcacheloaded) {
+                unset($this->settingcache[$setting]);
+            }
+
+            \AdminLog::getInstance()->log(
+                "Deleted Setting $setting"
+            );
+            return true;
+        } else {
+            \AdminLog::getInstance()->log(
+                "Deleting Setting $setting failed"
+            );
+            return false;
+        }
+    }
+
 
     /* "Settings" for templates */
 
