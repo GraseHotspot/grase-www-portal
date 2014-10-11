@@ -28,6 +28,8 @@ grase-www-portal (3.7.7.12) UNRELEASED; urgency=low
   * Added printing of group users (Fixes #41)
   * Ability to customise CSS for printing of tickets
   * Added DHCP leases page to see current output of chilli_query
+  * Hidden Advanced Settings Page
+  * Make username/password length customisable
 
  -- Tim White <tim@grasehotspot.org>  Tue, 22 Jan 2013 16:13:27 +1000
 

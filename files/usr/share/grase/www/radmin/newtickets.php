@@ -189,8 +189,8 @@ if (isset($_POST['createticketssubmit'])) {
         $failedUsers = 0;
         for ($i = 0; $i < $user['numberoftickets']; $i++) {
             // Creating lots of users at once could timeout a script. Maybe add a set_time_limit(1) on each loop?
-            $username = \Grase\Util::randomUsername(5);
-            $password = \Grase\Util::randomPassword(6);
+            $username = \Grase\Util::randomUsername($Settings->getSetting('usernameLength'));
+            $password = \Grase\Util::randomPassword($Settings->getSetting('passwordLength'));
 
             // Attempt to create user. Will error if it's not a unique username
             if (DatabaseFunctions::getInstance()->createUser(
