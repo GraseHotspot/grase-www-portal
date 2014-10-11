@@ -27,11 +27,10 @@ $Settings = new \Grase\Database\Radmin($Radmin);
 
 /* PHP No longer correctly gets the timezone from the system. Try to set it */
 
-$tzfile = trim(file_get_contents('/etc/timezone'));
+$timezoneFile = trim(file_get_contents('/etc/timezone'));
 
-if ($tzfile) {
-    date_default_timezone_set($tzfile);
-} // TODO Need to catch error here?
-else {
+if ($timezoneFile) {
+    date_default_timezone_set($timezoneFile);
+} else {
     date_default_timezone_set(@date_default_timezone_get());
 }
