@@ -30,6 +30,10 @@
     </div>
     {/foreach}
 
+    <button type="submit" name="submit">{t}Save Settings{/t}</button>
+    <hr/>
+    <h3>{t}HTML and CSS templates{/t}</h3>
+
 
     {foreach from=$templateoptions item=attributes key=option}
     <div>
@@ -60,11 +64,13 @@
 
             </script>
 
+        <button type="submit" name="submit">{t}Save Settings{/t}</button>
+
     </div>
 
     {/foreach}
 
-    <button type="submit" name="submit">{t}Save Settings{/t}</button>
+
 
 </form>
 
