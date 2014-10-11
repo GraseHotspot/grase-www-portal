@@ -31,6 +31,7 @@ grase-www-portal (3.7.7.12) UNRELEASED; urgency=low
   * Hidden Advanced Settings Page
   * Make username/password length customisable
   * Cleanup old settings
+  * Use Smarty3 from Composer instead of Debian/Ubuntu packages
 
  -- Tim White <tim@grasehotspot.org>  Tue, 22 Jan 2013 16:13:27 +1000
 
