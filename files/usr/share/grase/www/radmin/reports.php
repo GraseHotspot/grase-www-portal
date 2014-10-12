@@ -25,7 +25,7 @@ require_once 'includes/pageaccess.inc.php';
 require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
 
-$Reports = new Reports(DatabaseConnections::getInstance());
+$Reports = new Reports(new DatabaseConnections());
 
 $templateEngine->assign(
     'monthsavailableaccounting',

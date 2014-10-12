@@ -44,7 +44,7 @@ spl_autoload_register('grase_autoload');
 
 AdminLog::getInstance()->log_cron("CRON");
 
-$DBs =& DatabaseConnections::getInstance();
+$DBs = new DatabaseConnections();
 $radiusDB = new \Grase\Database\Database();
 $radminDB = new \Grase\Database\Database('/etc/grase/radmin.conf');
 $upgradeDB = new \Grase\Database\Upgrade($radiusDB, $radminDB, CronFunctions::getInstance());

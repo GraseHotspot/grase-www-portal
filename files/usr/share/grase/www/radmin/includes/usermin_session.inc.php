@@ -82,8 +82,8 @@ function loginForm($username = null, $status = null, &$auth = null)
     exit();
 }
 
-
-$Usermin = new DatabaseUsermin($DBs->getRadiusDB());
+$DatabaseConnections = new DatabaseConnections();
+$Usermin = new DatabaseUsermin($DatabaseConnections->getRadiusDB());
 
 
 $options = array(

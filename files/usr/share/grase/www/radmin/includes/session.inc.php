@@ -86,8 +86,10 @@ function loginForm($username = null, $status = null, &$auth = null)
     exit();
 }
 
+$DatabaseConnections = new DatabaseConnections();
+
 $options = array(
-    'dsn' => $DBs->getRadminDSN(),
+    'dsn' => $DatabaseConnections->getRadminDSN(),
     'cryptType' => 'sha1salt',
     'sessionName' => 'GRASE Radius Admin For Internet',
     // accesslevel contains the users access levels as a bitmask
@@ -105,7 +107,7 @@ $Auth->setAdvancedSecurity(
 );
 $Auth->setIdle(600);
 
-$AdminLog =& AdminLog::getInstance($DBs->getRadminDB(), $Auth);
+$AdminLog =& AdminLog::getInstance($DatabaseConnections->getRadminDB(), $Auth);
 
 if ($Auth->listUsers() == array()) {
     $templateEngine->assign("error", array(T_("No users defined in database. Please check your install")));

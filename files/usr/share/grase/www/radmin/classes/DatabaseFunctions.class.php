@@ -47,6 +47,7 @@ class DatabaseFunctions
         return $instance;
     }
 
+    // TODO Dependency Injection of DatabaseConnections
     public function __construct()
     {
         $this->db =& DatabaseConnections::getInstance()->getRadiusDB();
