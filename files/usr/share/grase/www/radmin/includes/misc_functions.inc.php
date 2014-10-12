@@ -115,7 +115,7 @@ function validate_uucptimerange($timeranges)
 
 function validate_group($username, $group)
 {
-	global $Settings;
+	global $Settings; //TODO Remove global
 	$groups = $Settings->getGroup();
 	if(isset($groups[$group]))
 	{
@@ -130,7 +130,7 @@ function validate_group($username, $group)
 
 function expiry_for_group($group, $groups = '')
 {
-	global $Settings;
+	global $Settings; //TODO Remove global
 	if($groups == '')
     	$groups = $Settings->getGroup($group);
 	if(isset($groups[$group]['Expiry']) && $groups[$group]['Expiry'] != '--') return date('Y-m-d H:i:s', strtotime($groups[$group]['Expiry']));
@@ -143,7 +143,7 @@ function expiry_for_group($group, $groups = '')
 
 function checkGroupsDataDropdowns($datavals)
 {
-        global $Settings;
+        global $Settings; //TODO Remove global
         $mb = explode(' ', $datavals);
         $group_settings = $Settings->getGroup();
         $group_attribs = DatabaseFunctions::getInstance()->getGroupAttributes();        
@@ -167,7 +167,7 @@ function checkGroupsDataDropdowns($datavals)
 
 function checkGroupsTimeDropdowns($datavals)
 {
-        global $Settings;
+        global $Settings; //TODO Remove global
         $time = explode(' ', $datavals);
         $group_settings = $Settings->getGroup();
         $group_attribs = DatabaseFunctions::getInstance()->getGroupAttributes();
@@ -191,7 +191,7 @@ function checkGroupsTimeDropdowns($datavals)
 
 function checkGroupsBandwidthDropdowns($datavals)
 {
-        global $Settings;
+        global $Settings; //TODO Remove global
         $bw = explode(' ', $datavals);
         $group_settings = $Settings->getGroup();
         $group_attribs = DatabaseFunctions::getInstance()->getGroupAttributes();
@@ -289,7 +289,7 @@ function clean_groupname($text)
 
 function clean_number($number)
 {
-    global $Settings;
+    global $Settings; //TODO Remove global
     $fmt = new NumberFormatter( $Settings->getSetting('locale'), NumberFormatter::DECIMAL );
     $cleannum = $fmt->parse(ereg_replace("[^\.,0-9]", "", \Grase\Clean::text($number)));
     return $cleannum;
