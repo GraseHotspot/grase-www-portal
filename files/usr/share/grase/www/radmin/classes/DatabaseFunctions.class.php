@@ -32,7 +32,7 @@ class DatabaseFunctions
     // radminDB only here because CronFunctions inherits from us. Maybe move this to CronFunctions? TODO:
     public $radminDB; // Radmin DB
 
-    private $groupdetails = array(); //cache group details 
+    private $groupdetails = array(); //cache group details
 
     private $usercache = array(); // Cache users details
     private $usercacheloaded = false;
