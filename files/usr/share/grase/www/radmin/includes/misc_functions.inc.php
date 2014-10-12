@@ -45,7 +45,7 @@ function input_type($params, &$smarty)
 // Validation functions
 function validate_bandwidth($kbits, $options)
 {
-    $options = bandwidth_options();
+    $options;
     if(!isset($options[$kbits]) ) return sprintf(T_("Invalid Bandwidth Limit '%s'"), $kbits);
 }
 
