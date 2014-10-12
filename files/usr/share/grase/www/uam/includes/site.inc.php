@@ -21,8 +21,8 @@ function grase_autoload($class_name)
 
 spl_autoload_register('grase_autoload');
 
-//require('/var/www/radmin/includes/site_settings.inc.php');
-require_once('../radmin/includes/load_settings.inc.php');
+require_once('../radmin/includes/constants.inc.php');
+require_once('../radmin/includes/site_settings.inc.php');
 require_once('../radmin/includes/misc_functions.inc.php');
 
 require_once __DIR__ . '/../../../vendor/autoload.php';

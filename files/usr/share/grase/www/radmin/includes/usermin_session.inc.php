@@ -34,7 +34,8 @@ function grase_autoload($class_name)
 spl_autoload_register('grase_autoload');
 
 
-require_once 'load_settings.inc.php';
+require_once('constants.inc.php');
+require_once('site_settings.inc.php');
 require_once 'usermin_page_functions.inc.php';
 
 
