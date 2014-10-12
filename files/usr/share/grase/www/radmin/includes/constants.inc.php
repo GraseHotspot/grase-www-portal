@@ -60,7 +60,3 @@ define("ALLLEVEL", 0); // 0
 define("ADMINUSER", 1); // 2^0
 define("POWERUSER", 2); //2^1
 define("NORMALUSER", 4); //2^2
-
-
-
-?>

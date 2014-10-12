@@ -110,8 +110,9 @@ $AdminLog =& AdminLog::getInstance($DBs->getRadminDB(), $Auth);
 
 if($Auth->listUsers() == array())
 {
-    $Upgrade = new Upgrade();
-    $Upgrade->upgradeAdminUsers($CONFIG['admin_users_passwd_file'], $DBs->getRadminDB()); //TODO: If admin_user_file doesn't exist?
+    $templateEngine->assign("error", array(T_("No users defined in database. Please check your install")));
+    $templateEngine->displayPage('loginform.tpl');
+    exit();
 }
 $Auth->start();
     
