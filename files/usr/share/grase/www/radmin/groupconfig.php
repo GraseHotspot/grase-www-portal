@@ -101,8 +101,8 @@ if (isset($_POST['submit'])) {
         if(!\Grase\Validate::dataLimit($groupRecurDataLimit[$key])) {
             $error[] = sprintf(T_("Invalid value '%s' for Data Limit"), $groupRecurDataLimit[$key]);
         }
-        $error[] = @ validate_recur($groupRecurTime[$key]);
-        $error[] = @ validate_recur($groupRecurData[$key]);
+        $error[] = @ validate_recur($groupRecurTime[$key], recurtimes());
+        $error[] = @ validate_recur($groupRecurData[$key], recurtimes());
         $error[] = @ validate_recurtime($groupRecurTime[$key], $groupRecurTimeLimit[$key]);
         $error[] = @ validate_bandwidth($groupBandwidthDownLimit[$key]);
         $error[] = @ validate_bandwidth($groupBandwidthUpLimit[$key]);

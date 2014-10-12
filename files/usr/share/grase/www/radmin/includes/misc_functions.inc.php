@@ -43,9 +43,8 @@ function input_type($params, &$smarty)
 
 
 // Validation functions
-function validate_recur($recurrance)
+function validate_recur($recurrance, $Recurtimes)
 {
-    global $Recurtimes;
     if(!isset($Recurtimes[$recurrance])) return sprintf(T_("Invalid recurrance interval '%s'"), $recurrance);
 	// TODO: Return what?    
 }
