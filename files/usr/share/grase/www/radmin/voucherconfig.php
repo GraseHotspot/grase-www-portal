@@ -98,7 +98,9 @@ if(isset($_POST['submit']))
 	
 	    // Silence warnings (@) as we don't care if they are set or not'
 	    $error[] = @ validate_timelimit($vouchermaxtime[$key]);
-	    $error[] = @ validate_datalimit($vouchermaxmb[$key]);
+        if(!\Grase\Validate::dataLimit($vouchermaxmb[$key])) {
+            $error[] = sprintf(T_("Invalid value '%s' for Data Limit"), $vouchermaxmb[$key]);
+        }
 	    
 	    // TODO validate groupname, it already comes in in the correct format though
 	    

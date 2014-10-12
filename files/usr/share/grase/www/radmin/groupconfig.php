@@ -98,7 +98,9 @@ if (isset($_POST['submit'])) {
         // Silence warnings (@) as we don't care if they are set or not'
         $error[] = @ validate_timelimit($groupTimeLimit[$key]);
         $error[] = @ validate_timelimit($groupRecurTimeLimit[$key]);
-        $error[] = @ validate_datalimit($groupRecurDataLimit[$key]);
+        if(!\Grase\Validate::dataLimit($groupRecurDataLimit[$key])) {
+            $error[] = sprintf(T_("Invalid value '%s' for Data Limit"), $groupRecurDataLimit[$key]);
+        }
         $error[] = @ validate_recur($groupRecurTime[$key]);
         $error[] = @ validate_recur($groupRecurData[$key]);
         $error[] = @ validate_recurtime($groupRecurTime[$key], $groupRecurTimeLimit[$key]);

@@ -37,8 +37,12 @@ function validate_form()
     $Max_Time = clean_int($_POST['Max_Time']);
 
     $error[] = validate_mac($_POST['mac']);
-    $error[] = validate_datalimit($MaxMb);
-    $error[] = validate_datalimit($Max_Mb);
+    if(!\Grase\Validate::dataLimit($MaxMb)) {
+        $error[] = sprintf(T_("Invalid value '%s' for Data Limit"), $MaxMb);
+    }
+    if(!\Grase\Validate::dataLimit($Max_Mb)) {
+        $error[] = sprintf(T_("Invalid value '%s' for Data Limit"), $Max_Mb);
+    }
     $error[] = validate_timelimit($MaxTime);
     $error[] = validate_timelimit($Max_Time);
     if ($Max_Mb && $MaxMb) {

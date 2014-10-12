@@ -42,6 +42,8 @@ $username = mysql_real_escape_string(
 $user = DatabaseFunctions::getInstance()->getUserDetails($_GET['username']);
 
 if (isset($_POST['updateusersubmit'])) {   // Process form for changed items and do updates
+    $addMb = clean_number($_POST['Add_Mb']);
+    $maxMb = clean_number($_POST['MaxMb']);
 
     // Update password
     if (\Grase\Clean::text($_POST['Password']) && \Grase\Clean::text($_POST['Password']) != $user['Password']) {
@@ -93,12 +95,12 @@ if (isset($_POST['updateusersubmit'])) {   // Process form for changed items and
     }
 
     // Increase Data Limit
-    if (clean_number($_POST['Add_Mb'])) {
-        $temperror[] = validate_datalimit(clean_number($_POST['Add_Mb']));
-        if (array_filter($temperror)) {
-            $error = array_merge($error, $temperror);
+
+    if ($addMb) {
+        if (!\Grase\Validate::dataLimit($addMb)) {
+            $error[] = sprintf(T_("Invalid value '%s' for Data Limit"),$addMb);
         } else {
-            DatabaseFunctions::getInstance()->increaseUserDatalimit($username, clean_number($_POST['Add_Mb']));
+            DatabaseFunctions::getInstance()->increaseUserDatalimit($username, $addMb));
             DatabaseFunctions::getInstance()->setUserExpiry(
                 $username,
                 expiry_for_group(DatabaseFunctions::getInstance()->getUserGroup($username))
@@ -110,13 +112,12 @@ if (isset($_POST['updateusersubmit'])) {   // Process form for changed items and
     }
 
     // If Data Limit is changed and Not added too, Change Data Limit
-    if (clean_number($_POST['MaxMb']) !== ''
-        && !clean_number($_POST['Add_Mb'])
-        && clean_number($_POST['MaxMb']) != clean_number($user['MaxMb'])
+    if ($maxMb !== ''
+        && !$addMb
+        && $maxMb != clean_number($user['MaxMb'])
     ) {
-        $temperror[] = validate_datalimit(clean_number($_POST['MaxMb']));
-        if (array_filter($temperror)) {
-            $error = array_merge($error, $temperror);
+        if (!\Grase\Validate::dataLimit($maxMb)) {
+            $error[] = sprintf(T_("Invalid value '%s' for Data Limit"),$maxMb)''
         } else {
             DatabaseFunctions::getInstance()->setUserDataLimit($username, clean_number($_POST['MaxMb']));
             DatabaseFunctions::getInstance()->setUserExpiry(

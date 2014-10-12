@@ -43,12 +43,6 @@ function input_type($params, &$smarty)
 
 
 // Validation functions
-function validate_datalimit($limit)
-{
-	if ($limit && ! is_numeric($limit) ) return sprintf(T_("Invalid value '%s' for Data Limit"),$limit);
-	// TODO: Return what?
-}
-
 function validate_recur($recurrance)
 {
     global $Recurtimes;
