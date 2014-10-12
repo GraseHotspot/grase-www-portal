@@ -21,11 +21,11 @@ function grase_autoload($class_name)
 
 spl_autoload_register('grase_autoload');
 
-require_once('../radmin/includes/constants.php');
+require_once __DIR__ . '/../../../vendor/autoload.php';
 require_once('../radmin/includes/site_settings.inc.php');
 require_once('../radmin/includes/misc_functions.inc.php');
 
-require_once __DIR__ . '/../../../vendor/autoload.php';
+
 //require_once '../radmin/includes/block.t.php';
 
 $smarty = new SmartyBC();

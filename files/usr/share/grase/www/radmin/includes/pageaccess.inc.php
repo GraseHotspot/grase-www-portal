@@ -1,7 +1,6 @@
 <?php
 
-// Load constants for access levels
-require_once 'includes/constants.php';
+require_once __DIR__.'/../../../vendor/autoload.php';
 
 // Load pages array of levels, key must match the $PAGE and the menubar keys
 $PAGESACCESS = array(
