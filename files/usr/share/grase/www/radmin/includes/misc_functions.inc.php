@@ -43,39 +43,6 @@ function input_type($params, &$smarty)
 
 
 // Validation functions
-function validate_post_expirydate() // OBSOLETE ?
-{
-	$error = array();
-	$expirydate ="${_POST['Expirydate_Year']}-${_POST['Expirydate_Month']}-${_POST['Expirydate_Day']}";
-	if ( ! $_POST['Expirydate_Day'] &&
-		 ! $_POST['Expirydate_Month'] &&
-		 ! $_POST['Expirydate_Year'])
-	{
-		$expirydate='';/* No Expiry */
-	}
-
-	if ($expirydate &&
-	 	! (	$_POST['Expirydate_Day'] &&
-	 		$_POST['Expirydate_Month'] &&
-	 		$_POST['Expirydate_Year'])
-	 	)
-	{
-	 	/* Invalid date */
-	 	$error[] = T_("Invalid Expiry Date");
-	}
-
-	if( $expirydate &&
-		\Grase\Util::makeTimeStamp(
-			$_POST['Expirydate_Year'],
-			$_POST['Expirydate_Month'],
-			$_POST['Expirydate_Day'] ) < time()
-		)
-	{
-		$error[] = T_("Expiry Date in the past");
-	}
-	return array($error,$expirydate);
-}
-
 function validate_datalimit($limit)
 {
 	if ($limit && ! is_numeric($limit) ) return sprintf(T_("Invalid value '%s' for Data Limit"),$limit);
