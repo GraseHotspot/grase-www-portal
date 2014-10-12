@@ -101,8 +101,12 @@ if (isset($_POST['submit'])) {
         if(!\Grase\Validate::dataLimit($groupRecurDataLimit[$key])) {
             $error[] = sprintf(T_("Invalid value '%s' for Data Limit"), $groupRecurDataLimit[$key]);
         }
-        $error[] = @ validate_recur($groupRecurTime[$key], recurtimes());
-        $error[] = @ validate_recur($groupRecurData[$key], recurtimes());
+        if(!\Grase\Validate::recurrenceInterval($groupRecurTime[$key], recurtimes())) {
+            $error[] = sprintf(T_("Invalid recurrence interval '%s'"), $groupRecurTime[$key]);
+        }
+        if(!\Grase\Validate::recurrenceInterval($groupRecurData[$key], recurtimes())) {
+            $error[] = sprintf(T_("Invalid recurrence interval '%s'"), $groupRecurData[$key]);
+        }
         $error[] = @ validate_recurtime($groupRecurTime[$key], $groupRecurTimeLimit[$key]);
         $error[] = @ validate_bandwidth($groupBandwidthDownLimit[$key]);
         $error[] = @ validate_bandwidth($groupBandwidthUpLimit[$key]);

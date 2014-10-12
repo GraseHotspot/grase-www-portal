@@ -15,4 +15,11 @@ class Validate {
         return $limit && is_numeric($limit);
     }
     //sprintf(T_("Invalid value '%s' for Data Limit"),$limit)
+
+    public static function recurrenceInterval($interval, $recurrenceIntervals)
+    {
+        return isset($recurrenceIntervals[$interval]));
+        //sprintf(T_("Invalid recurrence interval '%s'"), $recurrence);
+    }
+
 } 

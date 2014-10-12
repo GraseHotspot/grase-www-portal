@@ -43,12 +43,6 @@ function input_type($params, &$smarty)
 
 
 // Validation functions
-function validate_recur($recurrance, $Recurtimes)
-{
-    if(!isset($Recurtimes[$recurrance])) return sprintf(T_("Invalid recurrance interval '%s'"), $recurrance);
-	// TODO: Return what?    
-}
-
 function validate_yesno($yesno)
 {
     if($yesno != 'yes' && $yesno != 'no') return sprintf(T_("Invalid response to YesNo Question '%s'"), $yesno);
