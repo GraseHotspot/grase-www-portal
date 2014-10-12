@@ -3,8 +3,8 @@ BOWER_FILES = files/usr/share/grase/bower.json
 VERSION = $(shell sed -n '/grase-www-portal/s/[^ ]* (//;s/).*//p;q' debian/changelog)
 
 all: bower composer
-#files/usr/share/grase/www/radmin/includes/constants.inc.php: debian/changelog
-	sed -i 's/APPLICATION_VERSION", "[^"]*"/APPLICATION_VERSION", "$(VERSION)"/' files/usr/share/grase/www/radmin/includes/constants.inc.php
+#files/usr/share/grase/src/includes/constants.php: debian/changelog
+	sed -i 's/APPLICATION_VERSION", "[^"]*"/APPLICATION_VERSION", "$(VERSION)"/' files/usr/share/grase/src/includes/constants.php
 	chmod 0440 sudo/grase-www-portal
 
 bower:

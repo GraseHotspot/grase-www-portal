@@ -1,7 +1,7 @@
 <?php
 
 // Load constants for access levels
-require_once 'includes/constants.inc.php';
+require_once 'includes/constants.php';
 
 // Load pages array of levels, key must match the $PAGE and the menubar keys
 $PAGESACCESS = array(

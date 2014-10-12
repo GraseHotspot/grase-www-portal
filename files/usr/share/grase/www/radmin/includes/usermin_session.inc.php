@@ -24,6 +24,8 @@
 require_once "Auth.php";
 require_once "MDB2.php";
 
+require_once __DIR__ . '/../../../vendor/autoload.php';
+
 function grase_autoload($class_name)
 {
     if (file_exists(__DIR__ . '/../classes/' . $class_name . '.class.php')) {
@@ -34,7 +36,7 @@ function grase_autoload($class_name)
 spl_autoload_register('grase_autoload');
 
 
-require_once('constants.inc.php');
+
 require_once('site_settings.inc.php');
 require_once 'usermin_page_functions.inc.php';
 

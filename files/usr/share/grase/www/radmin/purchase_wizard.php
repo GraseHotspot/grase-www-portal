@@ -33,8 +33,6 @@ spl_autoload_register('grase_autoload');
 
 require_once('php-gettext/gettext.inc');
 
-
-require_once('includes/constants.inc.php');
 require_once('includes/site_settings.inc.php');
 require_once 'includes/page_functions.inc.php';
 

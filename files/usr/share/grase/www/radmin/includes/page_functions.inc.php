@@ -22,7 +22,7 @@
 require_once('php-gettext/gettext.inc');
 
 require_once('includes/accesscheck.inc.php');
-require_once('includes/constants.inc.php');
+require_once('includes/constants.php');
 require_once('includes/site_settings.inc.php');
 require_once 'includes/pageaccess.inc.php';
 
