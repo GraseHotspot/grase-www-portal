@@ -24,25 +24,22 @@ require_once 'includes/page_functions.inc.php';
 
 function usermin_createmenuitems()
 {
-	//	$menubar['id'] = array("href" => , "label" => );
-	$menubar['user'] = array("href" => "?user", "label" => "My Details");
-	$menubar['history'] = array("href" => "?history", "label" => "My History");
-	$menubar['logout'] = array("href" => "?logoff", "label" => "Logoff" );
-	return $menubar;
+    //	$menubar['id'] = array("href" => , "label" => );
+    $menubar['user'] = array("href" => "?user", "label" => "My Details");
+    $menubar['history'] = array("href" => "?history", "label" => "My History");
+    $menubar['logout'] = array("href" => "?logoff", "label" => "Logoff");
+    return $menubar;
 }
 
 function usermin_assign_vars()
 {
-	global $templateEngine, $Settings;
-	$templateEngine->assign("Application", USERMIN_APPLICATION_NAME);
+    global $templateEngine, $Settings;
+    $templateEngine->assign("Application", USERMIN_APPLICATION_NAME);
 
-	$templateEngine->assign("Title", $Settings->getSetting('locationName') . " - " . USERMIN_APPLICATION_NAME);
+    $templateEngine->assign("Title", $Settings->getSetting('locationName') . " - " . USERMIN_APPLICATION_NAME);
 
-	// Setup Menus
-	$templateEngine->assign("MenuItems", usermin_createmenuitems());
-	isset($_SESSION['username']) && $templateEngine->assign("LoggedInUsername", $_SESSION['username']);
+    // Setup Menus
+    $templateEngine->assign("MenuItems", usermin_createmenuitems());
+    isset($_SESSION['username']) && $templateEngine->assign("LoggedInUsername", $_SESSION['username']);
 
 }
-
-
-?>

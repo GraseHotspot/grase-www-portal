@@ -113,6 +113,3 @@ if (!$Auth->checkAuth()) {
 } else {
     $templateEngine->assign("LoggedInUsername", $Auth->getUsername());
 }
-
-
-?>
