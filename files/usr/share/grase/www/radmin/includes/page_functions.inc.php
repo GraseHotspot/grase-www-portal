@@ -218,11 +218,6 @@ function recurtimes()
     return $Recurtimes;
 }
 
-function yesno()
-{
-    return array('yes' => T_('Yes'), 'no' => T_('No'));
-}
-
 $templateEngine = new \Grase\Page();
 
 \Grase\Locale::applyLocale($Settings->getSetting('locale'));
@@ -259,7 +254,6 @@ function assign_vars($templateEngine)
 	$templateEngine->assign("Timevals", timevals());
 	$templateEngine->assign("Bandwidthvals", bandwidth_options());
 	$templateEngine->assign("Recurtimes",recurtimes());
-	$templateEngine->assign("YesNo", yesno());
 
 
 	// Settings

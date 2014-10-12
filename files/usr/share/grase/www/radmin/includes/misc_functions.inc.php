@@ -43,11 +43,6 @@ function input_type($params, &$smarty)
 
 
 // Validation functions
-function validate_yesno($yesno)
-{
-    if($yesno != 'yes' && $yesno != 'no') return sprintf(T_("Invalid response to YesNo Question '%s'"), $yesno);
-}
-
 function validate_bandwidth($kbits)
 {
     $options = bandwidth_options();
