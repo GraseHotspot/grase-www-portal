@@ -20,6 +20,8 @@
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+namespace Grase;
+
 class Reports
 {
     private $DatabaseConnections;
@@ -28,8 +30,9 @@ class Reports
     public function __construct($db)
     {
         $this->DatabaseConnections =& $db;
-        $this->DatabaseReports = new DatabaseReports(
-            $this->DatabaseConnections->getRadiusDB());
+        $this->DatabaseReports = new Database\Reports(
+            $this->DatabaseConnections->getRadiusDB()
+        );
     }
 
 

@@ -20,6 +20,8 @@
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+use Grase\Reports;
+
 $PAGE = 'reports';
 require_once 'includes/pageaccess.inc.php';
 require_once 'includes/session.inc.php';

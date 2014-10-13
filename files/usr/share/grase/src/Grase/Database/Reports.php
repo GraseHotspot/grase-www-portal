@@ -20,7 +20,11 @@
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-class DatabaseReports
+namespace Grase\Database;
+
+use PEAR;
+
+class Reports
 {
     private $db;
 
