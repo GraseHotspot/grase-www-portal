@@ -16,7 +16,7 @@ composer:
 	cd files/usr/share/grase/; /usr/local/bin/composer install
 	mkdir -p ext-libs/composer
 	cp -r $(COMPOSER_FILES) ext-libs/composer/
-	rm -r files/usr/share/grase/vendor
+	rm -fr files/usr/share/grase/vendor
 
 clean:
 	rm -fr ext-libs
