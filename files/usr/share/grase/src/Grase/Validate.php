@@ -56,4 +56,4 @@ class Validate {
         // TODO: Check that each XX pair is a valid hex number
     }
 
-} 
+}
