@@ -22,4 +22,9 @@ class Validate {
         //sprintf(T_("Invalid recurrence interval '%s'"), $recurrence);
     }
 
+    public static function bandwidthOptions($kbits, $options) {
+        return isset($options[$kbits]);
+        //sprintf(T_("Invalid Bandwidth Limit '%s'"), $kbits);
+    }
+
 } 

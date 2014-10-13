@@ -43,12 +43,6 @@ function input_type($params, &$smarty)
 
 
 // Validation functions
-function validate_bandwidth($kbits, $options)
-{
-    $options;
-    if(!isset($options[$kbits]) ) return sprintf(T_("Invalid Bandwidth Limit '%s'"), $kbits);
-}
-
 function validate_recurtime($recurrance, $time)
 {
     // $time is in minutes not seconds

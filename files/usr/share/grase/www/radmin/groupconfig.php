@@ -108,8 +108,12 @@ if (isset($_POST['submit'])) {
             $error[] = sprintf(T_("Invalid recurrence interval '%s'"), $groupRecurData[$key]);
         }
         $error[] = @ validate_recurtime($groupRecurTime[$key], $groupRecurTimeLimit[$key]);
-        $error[] = @ validate_bandwidth($groupBandwidthDownLimit[$key], bandwidth_options());
-        $error[] = @ validate_bandwidth($groupBandwidthUpLimit[$key], bandwidth_options());
+        if(!\Grase\Validate::bandwidthOptions($groupBandwidthDownLimit[$key], bandwidth_options())) {
+            $error[] = sprintf(T_("Invalid Bandwidth Limit '%s'"), $groupBandwidthDownLimit[$key]);
+        }
+        if(!\Grase\Validate::bandwidthOptions($groupBandwidthUpLimit[$key], bandwidth_options())) {
+            $error[] = sprintf(T_("Invalid Bandwidth Limit '%s'"), $groupBandwidthUpLimit[$key]);
+        }
         //TODO we don't validate that it's not 0, relying on HTML5 to do that
         $error[] = @ validate_int($groupSimultaneousUse[$key], true);
         // TODO: Validate Login-Time
