@@ -20,28 +20,6 @@
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-/* Smarty functions */
-
-function input_type($params, &$smarty)
-{
-    $val = $params['value'];
-    $checked = " ";
-    switch($params['type'])
-    {
-        case "ip":
-            return 'type="text" pattern="\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}" title="IP Address" value="'.$val.'"';
-            break;
-        case "bool":
-            if($val) $checked = "checked";
-            return 'type="checkbox" '.$checked;
-        default:
-            return 'type="text" value="'.$val.'"';
-    }
-}
-
-
-
-
 // Validation functions
 function validate_num($number, $error='')
 {

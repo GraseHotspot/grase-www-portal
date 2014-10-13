@@ -49,13 +49,31 @@ class Page
         $this->te->register_modifier('seconds', array("\Grase\Util", "formatSec"));
         $this->te->register_modifier('displayLocales', array('\Grase\Locale', 'localeNumberFormat'));
         $this->te->register_modifier('displayMoneyLocales', array('\Grase\Locale', 'localeMoneyFormat'));
-        $this->te->register_function('inputtype', 'input_type');
+        $this->te->register_function('inputtype', array('\Grase\Page', 'smartyInputType'));
         $this->te->register_modifier("sortby", "smarty_modifier_sortby");
 
         // i18n
         //$locale = (!isset($_GET["l"]))?"en_GB":$_GET["l"];
         $this->te->register_block('t', 'smarty_block_t');
 
+    }
+
+    public function smartyInputType($params, &$smarty)
+    {
+        $val = $params['value'];
+        $checked = " ";
+        switch ($params['type']) {
+            case "ip":
+                return 'type="text" pattern="\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}" title="IP Address" value="' . $val . '"';
+                break;
+            case "bool":
+                if ($val) {
+                    $checked = "checked";
+                }
+                return 'type="checkbox" ' . $checked;
+            default:
+                return 'type="text" value="' . $val . '"';
+        }
     }
 
     public function errorMessage($message)
