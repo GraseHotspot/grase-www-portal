@@ -187,6 +187,7 @@ class Radmin
                 null
             );
         }
+        return true;
     }
 
     private function addExpireAfterColumn()
@@ -266,6 +267,7 @@ class Radmin
         }
 
         $this->settingcacheloaded = true;
+        return true;
     }
 
     public function getSetting($setting)
@@ -356,6 +358,7 @@ class Radmin
                 'Updating setting failed: ',
                 null
             );
+            return false;
         }
     }
 
@@ -476,6 +479,7 @@ class Radmin
                             ',
                 null
             );
+            return false;
         }
     }
     /* End templates functions */
@@ -513,6 +517,7 @@ class Radmin
                 'Adding batch failed: ',
                 null
             );
+            return false;
         }
 
     }
@@ -533,6 +538,7 @@ class Radmin
                 'Adding user to batch failed: ',
                 null
             );
+            return false;
         }
     }
 
