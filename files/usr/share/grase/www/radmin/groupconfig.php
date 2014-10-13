@@ -107,7 +107,9 @@ if (isset($_POST['submit'])) {
         if(!\Grase\Validate::recurrenceInterval($groupRecurData[$key], recurtimes())) {
             $error[] = sprintf(T_("Invalid recurrence interval '%s'"), $groupRecurData[$key]);
         }
-        $error[] = @ validate_recurtime($groupRecurTime[$key], $groupRecurTimeLimit[$key]);
+        if(!\Grase\Validate::recurrenceTime($groupRecurTime[$key], $groupRecurTimeLimit[$key])) {
+            $error[] = T_("Recurring time limit must be less than interval");
+        }
         if(!\Grase\Validate::bandwidthOptions($groupBandwidthDownLimit[$key], bandwidth_options())) {
             $error[] = sprintf(T_("Invalid Bandwidth Limit '%s'"), $groupBandwidthDownLimit[$key]);
         }

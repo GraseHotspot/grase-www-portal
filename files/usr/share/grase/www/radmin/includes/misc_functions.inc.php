@@ -43,20 +43,6 @@ function input_type($params, &$smarty)
 
 
 // Validation functions
-function validate_recurtime($recurrance, $time)
-{
-    // $time is in minutes not seconds
-    $Recurtimevales = array(
-        'hour' => 60,
-        'day' => 60 * 24,
-        'week' => 60 * 24 * 7,
-        'month' => 60 * 24 * 30);
-    //print_r(array($Recurtimevales[$recurrance], $time, $recurrance));
-    if($Recurtimevales[$recurrance] < $time) return T_("Recurring time limit must be less than interval");
-
-	// TODO: Return what?    
-}
-
 function validate_timelimit($limit)
 {
 	if ($limit && ! is_numeric($limit) ) return sprintf(T_("Invalid value '%s' for Time Limit"), $limit);

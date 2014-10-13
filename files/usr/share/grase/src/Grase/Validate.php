@@ -27,4 +27,16 @@ class Validate {
         //sprintf(T_("Invalid Bandwidth Limit '%s'"), $kbits);
     }
 
+    public static function recurrenceTime($recurrenceInterval, $time) {
+        // $time is in minutes not seconds
+        $recurrenceTimeValues = array(
+            'hour' => 60,
+            'day' => 60 * 24,
+            'week' => 60 * 24 * 7,
+            'month' => 60 * 24 * 30);
+        return $recurrenceTimeValues[$recurrenceInterval] >= $time);
+        //T_("Recurring time limit must be less than interval");
+
+    }
+
 } 
