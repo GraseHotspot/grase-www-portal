@@ -6,8 +6,8 @@
         <th>{t}Expire After{/t}</th>
         <th>{t}Max Data (Mb){/t}</th>
         <th>{t}Max Time (mins){/t}</th>
-        <th>{t}Recur data limit{/t}</th>
-        <th>{t}Recur time limit{/t}</th>
+        <th>{t}Recurring data limit{/t}</th>
+        <th>{t}Recurring time limit{/t}</th>
         <th>{t}BW Limit Down{/t}</th>
         <th>{t}BW Limit Up{/t}</th>
     </tr>
