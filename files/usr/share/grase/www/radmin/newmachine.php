@@ -36,7 +36,9 @@ function validate_form()
     $MaxTime = clean_int($_POST['MaxTime']);
     $Max_Time = clean_int($_POST['Max_Time']);
 
-    $error[] = validate_mac($_POST['mac']);
+    if(!\Grase\Validate::MACAddress($_POST['mac'])) {
+        $error[] =T_("MAC Address not in correct format");
+    }
     if(!\Grase\Validate::numericLimit($MaxMb)) {
         $error[] = sprintf(T_("Invalid value '%s' for Data Limit"), $MaxMb);
     }

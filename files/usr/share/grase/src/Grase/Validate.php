@@ -48,7 +48,12 @@ class Validate {
             'month' => 60 * 24 * 30);
         return $recurrenceTimeValues[$recurrenceInterval] >= $time;
         //T_("Recurring time limit must be less than interval");
+    }
 
+    public static function MACAddress($MACAddress) {
+        // Check string is in format XX-XX-XX-XX-XX-XX (and upper case);
+        return preg_match('/([0-9A-F]{2}-){5}[0-9A-F]{2}/', $MACAddress);
+        // TODO: Check that each XX pair is a valid hex number
     }
 
 } 

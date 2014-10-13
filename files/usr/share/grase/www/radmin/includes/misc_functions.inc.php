@@ -43,13 +43,6 @@ function input_type($params, &$smarty)
 
 
 // Validation functions
-function validate_mac($macaddress)
-{
-    // Check string is in format XX-XX-XX-XX-XX-XX (and upper case);
-    if(! preg_match('/([0-9A-F]{2}-){5}[0-9A-F]{2}/', $macaddress)) return T_("MAC Address not in correct format");
-    // TODO: Check that each XX pair is a valid hex number
-}
-
 function validate_num($number, $error='')
 {
 	if ($number && is_numeric($number) && trim($number) != "") return "";
