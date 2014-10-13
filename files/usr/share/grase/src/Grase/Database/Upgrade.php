@@ -392,7 +392,7 @@ body {
 
         foreach ($groups as $group => $expiry) {
             $attributes = array();
-            $attributes['GroupName'] = clean_groupname($group);
+            $attributes['GroupName'] = \Grase\Clean::groupName($group);
             $attributes['GroupLabel'] = $group;
             $attributes['Expiry'] = @ $expiry;
             $attributes['MaxOctets'] = @ $groupattributes[$group]['MaxOctets'];

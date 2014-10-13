@@ -109,8 +109,8 @@ if(isset($_POST['submit']))
 	    $error = array_filter($error);
 	
 
-        $vouchersettings[clean_groupname($name)] = array_filter(array(
-            'VoucherName' => clean_groupname($name),
+        $vouchersettings[\Grase\Clean::groupName($name)] = array_filter(array(
+            'VoucherName' => \Grase\Clean::groupName($name),
             'VoucherLabel' => \Grase\Clean::text($name),
             'VoucherPrice' => @ clean_number($voucherprice[$key]),
             'VoucherGroup' => $vouchergroup[$key],

@@ -23,4 +23,16 @@ class Clean
         // Maybe should also strip spaces?
         return $text;
     }
+
+    private static function unsafeToUnderscores($text)
+    {
+        // This function is used to cleanup things like ids, so replace all chars that shouldn't be in id's and such
+        return str_replace(array(' ', '$', '(', ')'), '_', $text);
+    }
+
+    public static function groupName($text)
+    {
+        // Get the group name in a suitable format
+        return self::unsafeToUnderscores(self::text($text));
+    }
 }

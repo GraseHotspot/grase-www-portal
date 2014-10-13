@@ -220,18 +220,6 @@ function sort_users_into_groups($users)
 	return $users_group;
 }
 
-function underscorespaces($text)
-{
-    // This function is used to cleanup things like ids, so replace all chars that shouldn't be in id's and such
-    return str_replace(array(' ', '$', '(', ')'), '_', $text);
-}
-
-function clean_groupname($text)
-{
-  // Get the group name in a suitable format
-  return underscorespaces(\Grase\Clean::text($text));
-}
-
 function clean_number($number)
 {
     global $Settings; //TODO Remove global

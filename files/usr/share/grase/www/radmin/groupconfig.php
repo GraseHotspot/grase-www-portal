@@ -75,7 +75,7 @@ if (isset($_POST['submit'])) {
         }
 
         // Process expiry's
-        $groupExpiries[clean_groupname($name)] = $groupExpiry[\Grase\Clean::text($key)];
+        $groupExpiries[\Grase\Clean::groupName($name)] = $groupExpiry[\Grase\Clean::text($key)];
 
         // Validate expiries
         if (isset($groupExpiry[$key])) {
@@ -130,7 +130,7 @@ if (isset($_POST['submit'])) {
         }
 
 
-        $groups[clean_groupname($name)] = array_filter(
+        $groups[\Grase\Clean::groupName($name)] = array_filter(
             array(
                 'DataRecurTime' => \Grase\Clean::text($groupRecurData[$key]),
                 'DataRecurLimit' => clean_number($groupRecurDataLimit[$key]),
@@ -142,9 +142,9 @@ if (isset($_POST['submit'])) {
                 'LoginTime' => @ $groupLoginTime[$key]
             )
         );
-        $groupSettings[clean_groupname($name)] = array_filter(
+        $groupSettings[\Grase\Clean::groupName($name)] = array_filter(
             array(
-                'GroupName' => clean_groupname($name),
+                'GroupName' => \Grase\Clean::groupName($name),
                 'Comment' => \Grase\Clean::text($groupComment[$key]),
                 'GroupLabel' => \Grase\Clean::text($name),
                 'Expiry' => @ $groupExpiry[$key],

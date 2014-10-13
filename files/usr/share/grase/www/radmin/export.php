@@ -51,7 +51,7 @@ if (isset($_GET['user'])) {
     $users = array();
 
     foreach ($groups as $group) {
-        $group = clean_groupname($group);
+        $group = \Grase\Clean::groupName($group);
         $usersInGroup = $DBF->getMultipleUsersDetails($DBF->getUsersByGroup($group));
         if (is_array($usersInGroup)) {
             $users = array_merge($users, $usersInGroup);
