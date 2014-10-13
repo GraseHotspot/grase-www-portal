@@ -97,8 +97,10 @@ if(isset($_POST['submit']))
 	    //$error[] = validate_datalimit($groupdatalimit[$key]);
 	
 	    // Silence warnings (@) as we don't care if they are set or not'
-	    $error[] = @ validate_timelimit($vouchermaxtime[$key]);
-        if(!\Grase\Validate::dataLimit($vouchermaxmb[$key])) {
+        if(!\Grase\Validate::numericLimit($vouchermaxtime[$key])) {
+            $error[] = sprintf(T_("Invalid value '%s' for Time Limit"), $vouchermaxtime[$key]);
+        }
+        if(!\Grase\Validate::numericLimit($vouchermaxmb[$key])) {
             $error[] = sprintf(T_("Invalid value '%s' for Data Limit"), $vouchermaxmb[$key]);
         }
 	    

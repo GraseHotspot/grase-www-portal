@@ -43,12 +43,6 @@ function input_type($params, &$smarty)
 
 
 // Validation functions
-function validate_timelimit($limit)
-{
-	if ($limit && ! is_numeric($limit) ) return sprintf(T_("Invalid value '%s' for Time Limit"), $limit);
-	// TODO: Return what?
-}
-
 function validate_mac($macaddress)
 {
     // Check string is in format XX-XX-XX-XX-XX-XX (and upper case);

@@ -37,14 +37,18 @@ function validate_form()
     $Max_Time = clean_int($_POST['Max_Time']);
 
     $error[] = validate_mac($_POST['mac']);
-    if(!\Grase\Validate::dataLimit($MaxMb)) {
+    if(!\Grase\Validate::numericLimit($MaxMb)) {
         $error[] = sprintf(T_("Invalid value '%s' for Data Limit"), $MaxMb);
     }
-    if(!\Grase\Validate::dataLimit($Max_Mb)) {
+    if(!\Grase\Validate::numericLimit($Max_Mb)) {
         $error[] = sprintf(T_("Invalid value '%s' for Data Limit"), $Max_Mb);
     }
-    $error[] = validate_timelimit($MaxTime);
-    $error[] = validate_timelimit($Max_Time);
+    if(!\Grase\Validate::numericLimit($MaxTime)) {
+        $error[] = sprintf(T_("Invalid value '%s' for Time Limit"), $MaxTime);
+    }
+    if(!\Grase\Validate::numericLimit($Max_Time)) {
+        $error[] = sprintf(T_("Invalid value '%s' for Time Limit"), $Max_Time);
+    }
     if ($Max_Mb && $MaxMb) {
         $error[] = T_("Only set one Data limit field");
     }

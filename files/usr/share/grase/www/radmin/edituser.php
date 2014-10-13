@@ -44,6 +44,8 @@ $user = DatabaseFunctions::getInstance()->getUserDetails($_GET['username']);
 if (isset($_POST['updateusersubmit'])) {   // Process form for changed items and do updates
     $addMb = clean_number($_POST['Add_Mb']);
     $maxMb = clean_number($_POST['MaxMb']);
+    $addTime = clean_number($_POST['Add_Time']);
+    $maxTime = clean_number($_POST['MaxTime']);
 
     // Update password
     if (\Grase\Clean::text($_POST['Password']) && \Grase\Clean::text($_POST['Password']) != $user['Password']) {
@@ -97,7 +99,7 @@ if (isset($_POST['updateusersubmit'])) {   // Process form for changed items and
     // Increase Data Limit
 
     if ($addMb) {
-        if (!\Grase\Validate::dataLimit($addMb)) {
+        if (!\Grase\Validate::numericLimit($addMb)) {
             $error[] = sprintf(T_("Invalid value '%s' for Data Limit"),$addMb);
         } else {
             DatabaseFunctions::getInstance()->increaseUserDatalimit($username, $addMb));
@@ -116,8 +118,8 @@ if (isset($_POST['updateusersubmit'])) {   // Process form for changed items and
         && !$addMb
         && $maxMb != clean_number($user['MaxMb'])
     ) {
-        if (!\Grase\Validate::dataLimit($maxMb)) {
-            $error[] = sprintf(T_("Invalid value '%s' for Data Limit"),$maxMb)''
+        if (!\Grase\Validate::numericLimit($maxMb)) {
+            $error[] = sprintf(T_("Invalid value '%s' for Data Limit"),$maxMb);
         } else {
             DatabaseFunctions::getInstance()->setUserDataLimit($username, clean_number($_POST['MaxMb']));
             DatabaseFunctions::getInstance()->setUserExpiry(
@@ -131,12 +133,11 @@ if (isset($_POST['updateusersubmit'])) {   // Process form for changed items and
     }
 
     // Increase Time Limit
-    if (clean_number($_POST['Add_Time'])) {
-        $temperror[] = validate_timelimit(clean_number($_POST['Add_Time']));
-        if (array_filter($temperror)) {
-            $error = array_merge($error, $temperror);
+    if ($addTime) {
+        if (!\Grase\Validate::numericLimit($addTime)) {
+            $error[] = sprintf(T_("Invalid value '%s' for Time Limit"), $addTime);
         } else {
-            DatabaseFunctions::getInstance()->increaseUserTimelimit($username, clean_number($_POST['Add_Time']));
+            DatabaseFunctions::getInstance()->increaseUserTimelimit($username, $addTime);
             DatabaseFunctions::getInstance()->setUserExpiry(
                 $username,
                 expiry_for_group(DatabaseFunctions::getInstance()->getUserGroup($username))
@@ -148,15 +149,14 @@ if (isset($_POST['updateusersubmit'])) {   // Process form for changed items and
     }
 
     // If Time Limit is changed and Not added too, Change Time Limit
-    if (clean_number($_POST['MaxTime']) !== ''
-        && !clean_number($_POST['Add_Time'])
-        && clean_number($_POST['MaxTime']) != $user['MaxTime']
+    if ($maxTime !== ''
+        && !$addTime
+        && $maxTime != $user['MaxTime']
     ) {
-        $temperror[] = validate_timelimit(clean_number($_POST['MaxTime']));
-        if (array_filter($temperror)) {
-            $error = array_merge($error, $temperror);
+        if (!\Grase\Validate::numericLimit($maxTime)) {
+            $error[] = sprintf(T_("Invalid value '%s' for Time Limit"), $maxTime);
         } else {
-            DatabaseFunctions::getInstance()->setUserTimeLimit($username, clean_number($_POST['MaxTime']));
+            DatabaseFunctions::getInstance()->setUserTimeLimit($username, $maxTime);
             DatabaseFunctions::getInstance()->setUserExpiry(
                 $username,
                 expiry_for_group(DatabaseFunctions::getInstance()->getUserGroup($username))
