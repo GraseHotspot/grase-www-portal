@@ -1,11 +1,23 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: tim
- * Date: 13/10/14
- * Time: 6:50 AM
- */
+/* Copyright 2014 Timothy White */
 
+/*  This file is part of GRASE Hotspot.
+
+    http://grasehotspot.org/
+
+    GRASE Hotspot is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GRASE Hotspot is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
+*/
 namespace Grase;
 
 
@@ -18,12 +30,12 @@ class Validate {
 
     public static function recurrenceInterval($interval, $recurrenceIntervals)
     {
-        return isset($recurrenceIntervals[$interval]));
+        return isset($recurrenceIntervals[$interval]);
         //sprintf(T_("Invalid recurrence interval '%s'"), $recurrence);
     }
 
-    public static function bandwidthOptions($kbits, $options) {
-        return isset($options[$kbits]);
+    public static function bandwidthOptions($kBits, $options) {
+        return isset($options[$kBits]);
         //sprintf(T_("Invalid Bandwidth Limit '%s'"), $kbits);
     }
 
@@ -34,7 +46,7 @@ class Validate {
             'day' => 60 * 24,
             'week' => 60 * 24 * 7,
             'month' => 60 * 24 * 30);
-        return $recurrenceTimeValues[$recurrenceInterval] >= $time);
+        return $recurrenceTimeValues[$recurrenceInterval] >= $time;
         //T_("Recurring time limit must be less than interval");
 
     }
