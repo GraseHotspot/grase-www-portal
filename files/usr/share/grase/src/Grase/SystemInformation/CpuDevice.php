@@ -1,6 +1,7 @@
 <?php
+namespace Grase\SystemInformation;
 
-/* Copyright 2008 Timothy White */
+    /* Copyright 2008 Timothy White */
 
 /*  This file is part of GRASE Hotspot.
 
@@ -20,10 +21,11 @@
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-$PAGE = 'main';
-require_once 'includes/pageaccess.inc.php';
-require_once 'includes/session.inc.php';
-
-$Sysinfo = new Grase\SystemInformation();
-$templateEngine->assign('Sysinfo', $Sysinfo);
-$templateEngine->displayPage('main.tpl');
+class CpuDevice
+{
+    public $load;
+    public $speed;
+    public $model;
+    public $cache;
+    public $bogomips;
+}
