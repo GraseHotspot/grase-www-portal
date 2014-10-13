@@ -1,1014 +1,191 @@
 # 
 # Translators:
-# Jose  <mimaguila@hotmail.com>, 2011, 2012.
+# com <comxmc@gmail.com>, 2013
+# Jose <mimaguila@hotmail.com>, 2011, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Grase Hotspot\n"
-"Report-Msgid-Bugs-To: http://trac.grasehotspot.org/\n"
-"POT-Creation-Date: 2012-01-29 16:57+1000\n"
-"PO-Revision-Date: 2012-02-12 15:57+0000\n"
-"Last-Translator: Jose <mimaguila@hotmail.com>\n"
-"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/grase/team/es/)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-10-13 21:30+1000\n"
+"PO-Revision-Date: 2014-10-13 11:31+0000\n"
+"Last-Translator: Timothy White <tim@purewhite.id.au>\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/grase/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.4\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-Country: AUSTRALIA\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;T_\n"
-"X-Poedit-Language: English\n"
 "X-Poedit-SearchPath-0: ../../../www/radmin\n"
 "X-Poedit-SearchPath-1: ../../../www/uam\n"
 
 #: ../../../www/radmin/templates/smarty.c:1
-#: ../../../www/radmin/templates/smarty.c:45
-#: ../../../www/radmin/templates/smarty.c:113
-#: ../../../www/radmin/templates/smarty.c:148
-#: ../../../www/radmin/templates/smarty.c:163
-#: ../../../www/radmin/templates/smarty.c:180
-#: ../../../www/radmin/templates/smarty.c:222
-#: ../../../www/radmin/templates/smarty.c:238
-#: ../../../www/uam/templates/smarty.c:33
-msgid "Username"
-msgstr "Nombre de usuario"
+#: ../../../www/radmin/includes/page_functions.inc.php:81
+msgid "Portal Customisation"
+msgstr "Personalización Portal"
 
 #: ../../../www/radmin/templates/smarty.c:2
-msgid "Choose a username"
-msgstr "Elegir un nombre de usuario"
-
-#: ../../../www/radmin/templates/smarty.c:3
-#: ../../../www/radmin/templates/smarty.c:47
-#: ../../../www/radmin/templates/smarty.c:114
-#: ../../../www/radmin/templates/smarty.c:181
-#: ../../../www/uam/templates/smarty.c:34
-msgid "Password"
-msgstr "Contraseña"
-
 #: ../../../www/radmin/templates/smarty.c:4
-msgid "Choose a secure password for the user"
-msgstr "Elija una contraseña segura para el usuario"
-
-#: ../../../www/radmin/templates/smarty.c:5
-#: ../../../www/radmin/templates/smarty.c:223
-msgid "Group"
-msgstr "Grupo"
-
-#: ../../../www/radmin/templates/smarty.c:6
-#: ../../../www/radmin/templates/smarty.c:116
-msgid "Choose the users group (Expiry is based on the user group)"
-msgstr ""
-"Seleccione el grupo de usuarios (los limites se basan en el grupo de "
-"usuarios)"
-
-#: ../../../www/radmin/templates/smarty.c:7
-#: ../../../www/radmin/templates/smarty.c:121
-#: ../../../www/radmin/templates/smarty.c:234
-#: ../../../www/radmin/templates/smarty.c:255
-msgid "Comment"
-msgstr "Comentario"
-
-#: ../../../www/radmin/templates/smarty.c:8
-#: ../../../www/radmin/templates/smarty.c:122
-msgid "A comment about the user"
-msgstr "Un comentario sobre el usuario"
-
-#: ../../../www/radmin/templates/smarty.c:9
-#: ../../../www/radmin/templates/smarty.c:123
-#: ../../../www/radmin/templates/smarty.c:257
-#: ../../../www/radmin/templates/smarty.c:278
-msgid ""
-"When ether limit is reached, the user will be cut off. (i.e. after 1hour "
-"even if they still have data left)"
-msgstr ""
-"Cuando se alcanza el límite, el usuario será expulsado. (Es decir, después "
-"de una hora, aunque todavía tengan datos restantes para consumir)"
-
-#: ../../../www/radmin/templates/smarty.c:10
-#: ../../../www/radmin/templates/smarty.c:124
-#: ../../../www/radmin/templates/smarty.c:279
-msgid ""
-"A limit of 0 does not mean unlimited, it will immediately lock the user out."
-" To have an unlimited user, the user must be created without any limits."
-msgstr ""
-"Un límite de 0 no significa sin límite, inmediatamente se bloquea el "
-"usuario. Para tener un usuario ilimitado, el usuario debe ser creado sin "
-"ningún tipo de límites."
-
-#: ../../../www/radmin/templates/smarty.c:11
-#: ../../../www/radmin/templates/smarty.c:280
-msgid ""
-"If a limit is not set here, but is defined for the group, then the group "
-"limit will apply"
-msgstr ""
-"Si el límite no está establecido aquí, sino que se define para el grupo, "
-"entonces el límite de grupo se aplicará"
-
-#: ../../../www/radmin/templates/smarty.c:12
-#: ../../../www/radmin/templates/smarty.c:125
-#: ../../../www/radmin/templates/smarty.c:260
-msgid "Data Limit (MiB)"
-msgstr "Limite datos (MiB)"
-
-#: ../../../www/radmin/templates/smarty.c:13
-#: ../../../www/radmin/templates/smarty.c:17
-#: ../../../www/radmin/templates/smarty.c:261
-#: ../../../www/radmin/templates/smarty.c:264
-msgid "OR"
-msgstr "O"
-
-#: ../../../www/radmin/templates/smarty.c:14
-#: ../../../www/radmin/templates/smarty.c:126
-#: ../../../www/radmin/templates/smarty.c:262
-msgid "Type your own Mb Limit"
-msgstr "Escriba su propio límite Mb"
-
-#: ../../../www/radmin/templates/smarty.c:15
-msgid "Choose a Data Limit OR Type your own value"
-msgstr "Elija un límite de datos o escribe un valor"
-
-#: ../../../www/radmin/templates/smarty.c:16
-#: ../../../www/radmin/templates/smarty.c:130
-#: ../../../www/radmin/templates/smarty.c:263
-msgid "Time Limit (Minutes)"
-msgstr "Limite de tiempo (en minutos)"
-
-#: ../../../www/radmin/templates/smarty.c:18
-#: ../../../www/radmin/templates/smarty.c:131
-#: ../../../www/radmin/templates/smarty.c:265
-msgid "Type your own Time Limit"
-msgstr "Escriba su propio límite de tiempo"
-
-#: ../../../www/radmin/templates/smarty.c:19
-#: ../../../www/radmin/templates/smarty.c:266
-msgid "Choose a Time Limit OR Type your own value"
-msgstr "Elegir un límite de tiempo o escribe un valor"
-
-#: ../../../www/radmin/templates/smarty.c:20
-msgid "User Management Interface"
-msgstr "Interfaz de gestión de usuario "
-
-#: ../../../www/radmin/templates/smarty.c:21
-msgid "Device Information"
-msgstr "Información sobre el dispositivo"
-
-#: ../../../www/radmin/templates/smarty.c:22
-msgid "Model Name"
-msgstr "Nombre del Modelo"
-
-#: ../../../www/radmin/templates/smarty.c:23
-msgid "Host Name"
-msgstr "Nombre de host"
-
-#: ../../../www/radmin/templates/smarty.c:24
-msgid "HTTP Server"
-msgstr "Servidor HTTP"
-
-#: ../../../www/radmin/templates/smarty.c:25
-msgid "System Up-Time"
-msgstr "Up-Time de Sistema"
-
-#: ../../../www/radmin/templates/smarty.c:26
-msgid "Current Server Time"
-msgstr "Hora Actual del Servidor"
-
-#: ../../../www/radmin/templates/smarty.c:27
-msgid "Hardware Version"
-msgstr "Versión del hardware"
-
-#: ../../../www/radmin/templates/smarty.c:28
-msgid "Software Version"
-msgstr "Versión del software"
-
-#: ../../../www/radmin/templates/smarty.c:29
-msgid "Home URL"
-msgstr "URL de inicio"
-
-#: ../../../www/radmin/templates/smarty.c:30
-msgid "LAN"
-msgstr "LAN"
-
-#: ../../../www/radmin/templates/smarty.c:31
-#: ../../../www/radmin/templates/smarty.c:36
-#: ../../../www/radmin/templates/smarty.c:147
-msgid "IP Address"
-msgstr "Dirección IP"
-
-#: ../../../www/radmin/templates/smarty.c:32
-#: ../../../www/radmin/templates/smarty.c:37
-msgid "Subnet Mask"
-msgstr "Máscara de subred"
-
-#: ../../../www/radmin/templates/smarty.c:33
-#: ../../../www/radmin/templates/smarty.c:41
-#: ../../../www/radmin/templates/smarty.c:253
-msgid "MAC Address"
-msgstr "Direccion MAC "
-
-#: ../../../www/radmin/templates/smarty.c:34
-#: ../../../www/radmin/templates/smarty.c:42
-msgid "Network Interface"
-msgstr "Interfaz de red"
-
-#: ../../../www/radmin/templates/smarty.c:35
-msgid "WAN"
-msgstr "WAN"
-
-#: ../../../www/radmin/templates/smarty.c:38
-msgid "Gateway"
-msgstr "Puerta de enlace"
-
-#: ../../../www/radmin/templates/smarty.c:39
-msgid "DNS 1"
-msgstr "DNS 1"
-
-#: ../../../www/radmin/templates/smarty.c:40
-msgid "DNS 2"
-msgstr "DNS 2"
-
-#: ../../../www/radmin/templates/smarty.c:43
-#: ../../../www/radmin/templates/smarty.c:48
-msgid "Login"
-msgstr "Iniciar sesión"
-
-#: ../../../www/radmin/templates/smarty.c:44
-msgid ""
-"Login is required to access the Administration section of this website."
-msgstr ""
-"La identificacion es necesaria para acceder a la sección de Administración "
-"de este sitio web."
-
-#: ../../../www/radmin/templates/smarty.c:46
-msgid "Username for Admin interface (Different to internet access username)"
-msgstr ""
-"Nombre de usuario para la interfaz de administración (Es diferente al nombre"
-" de usuario de acceso a Internet)"
-
-#: ../../../www/radmin/templates/smarty.c:49
-msgid "Site Settings"
-msgstr "Configuración del sitio"
-
-#: ../../../www/radmin/templates/smarty.c:50
-msgid "Location Name"
-msgstr "Nombre Ubicación "
-
-#: ../../../www/radmin/templates/smarty.c:51
-msgid "Enter a name that identifies this Hotspot Location"
-msgstr "Escriba un nombre que identifique la ubicación de este Hotspot"
-
-#: ../../../www/radmin/templates/smarty.c:52
-msgid "Support Contact Name"
-msgstr "Nombre de Contacto para Soporte "
-
-#: ../../../www/radmin/templates/smarty.c:53
-msgid "Enter the name of the Support Contact"
-msgstr "Introduzca el nombre del contacto de soporte"
-
-#: ../../../www/radmin/templates/smarty.c:54
-msgid "Support Link"
-msgstr "Vínculo de Soporte"
-
-#: ../../../www/radmin/templates/smarty.c:55
-msgid ""
-"This is the link for the support contact. http:// or mailto: are allowed. If"
-" using http:// ensure this is accessabile for users who aren't logged into "
-"the hotspot"
-msgstr ""
-"Este es el link para el contacto con el soporte. http:// o mailto: están "
-"permitidos. Si se utiliza http:// asegurese que es accesible para los "
-"usuarios que no están identificados en el Hotspot"
-
-#: ../../../www/radmin/templates/smarty.c:56
-msgid "Locale"
-msgstr "Local"
-
-#: ../../../www/radmin/templates/smarty.c:57
-msgid "Available languages:"
-msgstr "Idiomas disponibles:"
-
-#: ../../../www/radmin/templates/smarty.c:58
-msgid "Select the appropriate Locale for your location"
-msgstr "Seleccione la localidad apropiada para su ubicación"
-
-#: ../../../www/radmin/templates/smarty.c:59
-msgid ""
-"A locale has 2 parts, the language and location.<br/><strong>en_AU</strong> "
-"for example has the Language set to English, and the location to "
-"Australia.<br/><strong>en_ZA</strong> has the language set to English, and "
-"the location to South Africa, while <strong>af_ZA</strong> has the language "
-"set to Afrikaans and the location to South Africa."
-msgstr ""
-"Un local tiene 2 partes, el idioma y la ubicación. <br/> "
-"<strong>en_AU</strong> por ejemplo, tiene establecido el idioma a Inglés, y "
-"la ubicación de Australia. <br/> <strong>en_ZA</strong> está en el idioma "
-"establecido en Inglés, y la ubicación de Sudáfrica, mientras que "
-"<strong>af_ZA</strong> tiene el conjunto de lenguaje afrikaans y el lugar en"
-" Sudáfrica."
-
-#: ../../../www/radmin/templates/smarty.c:60
-msgid ""
-"The locale defines the number formats, currency and language. If the "
-"language selected is not available, it will fallback to English."
-msgstr ""
-"El entorno local define los formatos de número, moneda y el idioma. Si el "
-"idioma seleccionado no está disponible, se usara el Inglés."
-
-#: ../../../www/radmin/templates/smarty.c:61
-msgid ""
-"Current locale is %1, which sets the language to %2, and location to %3."
-msgstr ""
-"Localización actual es %1, lo que establece el idioma en  %2, y la ubicación"
-" de %3."
-
-#: ../../../www/radmin/templates/smarty.c:62
-msgid "Currency symbol is %1"
-msgstr "Símbolo de moneda es el %1"
-
-#: ../../../www/radmin/templates/smarty.c:63
-msgid "How much to charge per Mb"
-msgstr "¿Cuánto cobrar por Mb?"
-
-#: ../../../www/radmin/templates/smarty.c:64
-msgid "Cost per Minute"
-msgstr "El costo por minuto"
-
-#: ../../../www/radmin/templates/smarty.c:65
-msgid "How much to charge per Minute"
-msgstr "¿Cuánto cobrar por minuto?"
-
-#: ../../../www/radmin/templates/smarty.c:66
-msgid "Website Name"
-msgstr "Nombre del Sitio Web "
-
-#: ../../../www/radmin/templates/smarty.c:67
-msgid "Label for Website Footer link"
-msgstr "Etiqueta para la web en el vínculo pie de página"
-
-#: ../../../www/radmin/templates/smarty.c:68
-msgid "Website Link"
-msgstr "Enlace página web"
-
-#: ../../../www/radmin/templates/smarty.c:69
-msgid "Link for Website Footer Link"
-msgstr "Enlace para la web en el enlace pie de página"
-
-#: ../../../www/radmin/templates/smarty.c:70
-msgid "Sellable Graph Max"
-msgstr "Gráfico Max Vendibles  "
-
-#: ../../../www/radmin/templates/smarty.c:71
-#, c-format
-msgid "Select what is 100% on the Sellable Data Graph"
-msgstr "Seleccione lo que es el 100% en el gráfico de datos vendibles"
-
-#: ../../../www/radmin/templates/smarty.c:72
-msgid "Useable Graph Max"
-msgstr "Gráfico Max Utilizable "
-
-#: ../../../www/radmin/templates/smarty.c:73
-#, c-format
-msgid "Select what is 100% on the Useable Data Graph"
-msgstr "Seleccione lo que es el 100% en el gráfico de datos utilizable"
-
-#: ../../../www/radmin/templates/smarty.c:74
-#: ../../../www/radmin/templates/smarty.c:109
-#: ../../../www/radmin/templates/smarty.c:207
-#: ../../../www/radmin/templates/smarty.c:217
-#: ../../../www/radmin/templates/smarty.c:271
+#: ../../../www/radmin/templates/smarty.c:175
+#: ../../../www/radmin/templates/smarty.c:205
+#: ../../../www/radmin/templates/smarty.c:282
+#: ../../../www/radmin/templates/smarty.c:289
+#: ../../../www/radmin/templates/smarty.c:354
 msgid "Save Settings"
 msgstr "Guardar configuración"
 
-#: ../../../www/radmin/templates/smarty.c:75
+#: ../../../www/radmin/templates/smarty.c:3
+msgid "HTML and CSS templates"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:5
+msgid "First"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:6
+msgid "Prev"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:7
+msgid "Displaying page %1 of %2"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:8
+msgid "Next"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:9
+msgid "Last"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:10
+msgid "User Management Interface"
+msgstr "Interfaz de gestión de usuario "
+
+#: ../../../www/radmin/templates/smarty.c:11
+msgid "Device Information"
+msgstr "Información sobre el dispositivo"
+
+#: ../../../www/radmin/templates/smarty.c:12
+msgid "Model Name"
+msgstr "Nombre del Modelo"
+
+#: ../../../www/radmin/templates/smarty.c:13
+msgid "Host Name"
+msgstr "Nombre de host"
+
+#: ../../../www/radmin/templates/smarty.c:14
+msgid "HTTP Server"
+msgstr "Servidor HTTP"
+
+#: ../../../www/radmin/templates/smarty.c:15
+msgid "System Up-Time"
+msgstr "Up-Time de Sistema"
+
+#: ../../../www/radmin/templates/smarty.c:16
+msgid "Current Server Time"
+msgstr "Hora Actual del Servidor"
+
+#: ../../../www/radmin/templates/smarty.c:17
+msgid "Hardware Version"
+msgstr "Versión del hardware"
+
+#: ../../../www/radmin/templates/smarty.c:18
+msgid "Software Version"
+msgstr "Versión del software"
+
+#: ../../../www/radmin/templates/smarty.c:19
+msgid "Home URL"
+msgstr "URL de inicio"
+
+#: ../../../www/radmin/templates/smarty.c:20
+msgid "LAN"
+msgstr "LAN"
+
+#: ../../../www/radmin/templates/smarty.c:21
+#: ../../../www/radmin/templates/smarty.c:26
+#: ../../../www/radmin/templates/smarty.c:215
+msgid "IP Address"
+msgstr "Dirección IP"
+
+#: ../../../www/radmin/templates/smarty.c:22
+#: ../../../www/radmin/templates/smarty.c:27
+msgid "Subnet Mask"
+msgstr "Máscara de subred"
+
+#: ../../../www/radmin/templates/smarty.c:23
+#: ../../../www/radmin/templates/smarty.c:31
+#: ../../../www/radmin/templates/smarty.c:36
+#: ../../../www/radmin/templates/smarty.c:216
+msgid "MAC Address"
+msgstr "Direccion MAC "
+
+#: ../../../www/radmin/templates/smarty.c:24
+#: ../../../www/radmin/templates/smarty.c:32
+msgid "Network Interface"
+msgstr "Interfaz de red"
+
+#: ../../../www/radmin/templates/smarty.c:25
+msgid "WAN"
+msgstr "WAN"
+
+#: ../../../www/radmin/templates/smarty.c:28
+msgid "Gateway"
+msgstr "Puerta de enlace"
+
+#: ../../../www/radmin/templates/smarty.c:29
+msgid "DNS 1"
+msgstr "DNS 1"
+
+#: ../../../www/radmin/templates/smarty.c:30
+msgid "DNS 2"
+msgstr "DNS 2"
+
+#: ../../../www/radmin/templates/smarty.c:33
 msgid "Access Denied"
 msgstr "Acceso denegado"
 
-#: ../../../www/radmin/templates/smarty.c:76
+#: ../../../www/radmin/templates/smarty.c:34
 msgid ""
 "You have attempted to access a page outside of your access level. Please "
 "return to an area you have access to."
-msgstr ""
-"Ha intentado acceder a una página fuera de su nivel de acceso. Por favor, "
-"regrese a una zona en la que tenga acceso."
+msgstr "Ha intentado acceder a una página fuera de su nivel de acceso. Por favor, regrese a una zona en la que tenga acceso."
 
-#: ../../../www/radmin/templates/smarty.c:77
-msgid "Group Config"
-msgstr "Configuración de Grupo "
-
-#: ../../../www/radmin/templates/smarty.c:78
-msgid ""
-"Group expiry needs to be in a format understood by the <a target=\"_blank\" "
-"href=\"http://www.php.net/manual/en/function.strtotime.php\">strtotime</a> "
-"PHP function."
-msgstr ""
-"Los vencimiento de Grupo debe ser en un formato comprensible para el <a "
-"target=\"_blank\" "
-"href=\"http://www.php.net/manual/en/function.strtotime.php\">strtotime</a>  "
-"PHP."
-
-#: ../../../www/radmin/templates/smarty.c:79
-msgid ""
-"For example, \"+1 month\" will set an expiry for 1 month from when the "
-"account is created. \"+2 weeks\", \"+3 days\" etc."
-msgstr ""
-"Por ejemplo, \"un mes\", se establece una limite de un mes desde que se crea"
-" la cuenta. \"Dos semanas\", \"tres días\", etc"
-
-#: ../../../www/radmin/templates/smarty.c:80
-msgid ""
-"Expiry is calculated to the second, so if you want it to a date for example,"
-" try \"+1 week midnight\"."
-msgstr ""
-"El vencimiento se calcula a la segunda, así que si usted lo quiere a una "
-"fecha, por ejemplo, trate de \"una noche la semana\"."
-
-#: ../../../www/radmin/templates/smarty.c:81
-msgid ""
-"Deleting a group won't delete it's users. Next time the user is edited it's "
-"group will become the default group unless a new group is selected."
-msgstr ""
-"La eliminación de un grupo no elimina a sus usuarios. La próxima vez que el "
-"usuario sea editado, el grupo se convertirá en el grupo por defecto a menos "
-"que un nuevo grupo sea seleccionado."
-
-#: ../../../www/radmin/templates/smarty.c:82
-msgid ""
-"The limits here are the default for group members, unless overridden when "
-"creating a member. If multiple limits are specified, the first limit to be "
-"reached will disconnect the user."
-msgstr ""
-"Los límites aquí son los valores predeterminados para los miembros del "
-"grupo,a menos que se sustituya a la hora de crear un miembro. Si se "
-"especifican varios límites , el primer límite alcanzado procedera a "
-"desconectar al usuario."
-
-#: ../../../www/radmin/templates/smarty.c:83
-msgid ""
-"Changing Expiry, Data or Time limits, will not change existing users of the "
-"group and will only apply to new users. Recurring limits, Bandwidth and "
-"simultaneous logins will all apply to existing and new members."
-msgstr ""
-"Cambio de caducidad, datos o límites de tiempo, no va a cambiar los actuales"
-" usuarios del grupo y sólo se aplicará a los nuevos usuarios. Límites que se"
-" repiten, Tráfico e inicios de sesión simultáneos se aplicarán a todos los "
-"miembros nuevos y existentes."
-
-#: ../../../www/radmin/templates/smarty.c:84
-msgid "Groups"
-msgstr "Grupos"
-
-#: ../../../www/radmin/templates/smarty.c:85
-#: ../../../www/radmin/templates/smarty.c:97
-#: ../../../www/radmin/templates/smarty.c:242
-msgid "Name"
-msgstr "Nombre"
-
-#: ../../../www/radmin/templates/smarty.c:86
-#: ../../../www/radmin/templates/smarty.c:98
-#: ../../../www/radmin/templates/smarty.c:243
-msgid "Expiry"
-msgstr "Vencimiento"
-
-#: ../../../www/radmin/templates/smarty.c:87
-#: ../../../www/radmin/templates/smarty.c:99
-msgid "Default Data Limit (MiB)"
-msgstr "Límite de datos por defecto  (MiB)"
-
-#: ../../../www/radmin/templates/smarty.c:88
-#: ../../../www/radmin/templates/smarty.c:100
-msgid "Default Time Limit (Minutes)"
-msgstr "Limite de tiempo por defecto (minutos)"
-
-#: ../../../www/radmin/templates/smarty.c:89
-#: ../../../www/radmin/templates/smarty.c:101
-msgid "Recurring Data Limit (MiB)"
-msgstr "Límite de datos restantes (MiB)"
-
-#: ../../../www/radmin/templates/smarty.c:90
-#: ../../../www/radmin/templates/smarty.c:92
-#: ../../../www/radmin/templates/smarty.c:102
-#: ../../../www/radmin/templates/smarty.c:104
-msgid "per"
-msgstr "por"
-
-#: ../../../www/radmin/templates/smarty.c:91
-#: ../../../www/radmin/templates/smarty.c:103
-msgid "Recurring Time Limit (Minutes)"
-msgstr "Límite de tiempo restante (minutos)"
-
-#: ../../../www/radmin/templates/smarty.c:93
-#: ../../../www/radmin/templates/smarty.c:105
-msgid "Bandwidth Limit Down"
-msgstr "Límite de ancho de banda para bajada"
-
-#: ../../../www/radmin/templates/smarty.c:94
-#: ../../../www/radmin/templates/smarty.c:106
-msgid "Bandwidth Limit Up"
-msgstr "Límite de ancho de banda para subida"
-
-#: ../../../www/radmin/templates/smarty.c:95
-#: ../../../www/radmin/templates/smarty.c:107
-msgid "Allow simultaneous logins?"
-msgstr "Permitir conexiones simultáneas?"
-
-#: ../../../www/radmin/templates/smarty.c:96
-#: ../../../www/radmin/templates/smarty.c:110
-msgid "Delete Group"
-msgstr "Eliminar grupo"
-
-#: ../../../www/radmin/templates/smarty.c:108
-msgid "Add Another Group"
-msgstr "Añadir otro grupo"
-
-#: ../../../www/radmin/templates/smarty.c:111
-msgid "Edit Computer Account"
-msgstr "Editar cuenta de equipo"
-
-#: ../../../www/radmin/templates/smarty.c:112
-msgid "Edit User"
-msgstr "Editar usuario"
-
-#: ../../../www/radmin/templates/smarty.c:115
-msgid "Choose a secure password for the user. Leave blank to not change"
-msgstr ""
-"Elija una contraseña segura para el usuario. Dejar en blanco para no cambiar"
-
-#: ../../../www/radmin/templates/smarty.c:117
-msgid "This user account never expires"
-msgstr "Esta cuenta de usuario nunca caduca"
-
-#: ../../../www/radmin/templates/smarty.c:118
-msgid "This user account has expired"
-msgstr "Esta cuenta de usuario ha expirado"
-
-#: ../../../www/radmin/templates/smarty.c:119
-msgid "Reset expiry"
-msgstr "Restablecer caducidad"
-
-#: ../../../www/radmin/templates/smarty.c:120
-msgid "Computer Accounts never expire"
-msgstr "Cuentas de equipo que nunca caducan"
-
-#: ../../../www/radmin/templates/smarty.c:127
-msgid "Change the Data Limit"
-msgstr "Cambiar el límite de datos"
-
-#: ../../../www/radmin/templates/smarty.c:128
-msgid "Add Data to Limit (MiB)"
-msgstr "Agregar límite de datos (MiB)"
-
-#: ../../../www/radmin/templates/smarty.c:129
-msgid "Add to the Data Limit (Will ignore changes made above)"
-msgstr ""
-"Añadir al límite de datos (Se ignoran los cambios realizados anteriormente)"
-
-#: ../../../www/radmin/templates/smarty.c:132
-msgid "Change the Time Limit"
-msgstr "Cambiar el límite de tiempo"
-
-#: ../../../www/radmin/templates/smarty.c:133
-msgid "Add Time to Limit (Minutes)"
-msgstr "Añadir tiempo para limitar (en minutos)"
-
-#: ../../../www/radmin/templates/smarty.c:134
-msgid "Add to the Time Limit (Will ignore changes made above)"
-msgstr ""
-"Añadir al limite del tiempo (Se ignoran los cambios realizados "
-"anteriormente)"
-
-#: ../../../www/radmin/templates/smarty.c:135
-#: ../../../www/radmin/templates/smarty.c:136
-msgid "Update User Details"
-msgstr "Actualizar detalles de usuario"
-
-#: ../../../www/radmin/templates/smarty.c:137
-msgid "Delete Computer Account"
-msgstr "Eliminar cuenta de equipo"
-
-#: ../../../www/radmin/templates/smarty.c:138
-#: ../../../www/radmin/templates/smarty.c:140
-msgid "Delete User"
-msgstr "Eliminar usuario"
-
-#: ../../../www/radmin/templates/smarty.c:139
-msgid ""
-"User accounts are automatically deleted 2 months after expiry. Only accounts"
-" with zero usage should be manually deleted to prevent errors in the reports"
-" or statistics."
-msgstr ""
-"Las cuentas de usuario se eliminan automáticamente 2 meses después de su "
-"vencimiento. Sólo las cuentas sin uso deben ser eliminadas manualmente para "
-"evitar errores en los informes o estadísticas."
-
-#: ../../../www/radmin/templates/smarty.c:141
-msgid "Are you sure you want to delete this user?"
-msgstr "¿Está seguro que desea eliminar este usuario?"
-
-#: ../../../www/radmin/templates/smarty.c:142
-msgid "Delete User %1"
-msgstr "Eliminar usuario %1"
-
-#: ../../../www/radmin/templates/smarty.c:143
-msgid "Sessions for %1"
-msgstr "Sesiones de %1"
-
-#: ../../../www/radmin/templates/smarty.c:144
-#: ../../../www/uam/templates/smarty.c:10
-msgid "Start Time"
-msgstr "Hora de inicio"
-
-#: ../../../www/radmin/templates/smarty.c:145
-msgid "Stop Time"
-msgstr "Hora de stop"
-
-#: ../../../www/radmin/templates/smarty.c:146
-msgid "Time"
-msgstr "Tiempo"
-
-#: ../../../www/radmin/templates/smarty.c:149
-msgid "Download"
-msgstr "Bajado"
-
-#: ../../../www/radmin/templates/smarty.c:150
-#: ../../../www/uam/templates/smarty.c:18
-msgid "Uploaded"
-msgstr "Subido"
-
-#: ../../../www/radmin/templates/smarty.c:151
-msgid "Data Usage"
-msgstr "Uso de datos"
-
-#: ../../../www/radmin/templates/smarty.c:152
-msgid "Reason: "
-msgstr "Razón:"
-
-#: ../../../www/radmin/templates/smarty.c:153
-msgid "Computers hardware (MAC) address is %1"
-msgstr "Hardware de ordenadores (MAC) es  %1"
-
-#: ../../../www/radmin/templates/smarty.c:154
-msgid "Captive Portal Config Login"
-msgstr "Configuración identificacion Portal Cautivo"
-
-#: ../../../www/radmin/templates/smarty.c:155
-#: ../../../www/radmin/templates/smarty.c:159
-msgid "Upload Logo"
-msgstr "Subir Logo"
-
-#: ../../../www/radmin/templates/smarty.c:156
-msgid "Logo Image"
-msgstr "Imagen del logo"
-
-#: ../../../www/radmin/templates/smarty.c:157
-msgid "Select new logo file."
-msgstr "Seleccione el archivo con el nuevo logo."
-
-#: ../../../www/radmin/templates/smarty.c:158
-msgid ""
-"Logo file needs to be in png format, and relatively small (remember, every "
-"page has the logo). 10 Kilobytes maximum. It's physical size shouldn't be "
-"bigger than about 220px in both directions."
-msgstr ""
-"Archivo de logo debe ser en formato png, y relativamente pequeño (recuerden,"
-" cada página tiene el logo). 10 Kilobytes máximo. Su tamaño físico no debe "
-"ser mayor de 220px en ambas direcciones."
-
-#: ../../../www/radmin/templates/smarty.c:160
-msgid ""
-"For more advanced logos, (different file type, size, placement}, manually "
-"upload the file to /var/www/ or /usr/share/grase/www/images/ and use the "
-"custom CSS to override this logo. The logo is defined in the #page container"
-" as the background."
-msgstr ""
-"Para logotipos más avanzados, (tipo de archivo diferente, el tamaño, la "
-"colocación}, de forma manual cargar el archivo en / var / www / o / usr / "
-"share / grase / www / images / y utilizar el CSS personalizado para "
-"sobrescribir este logo. El logo es definido en el contenedor #page como "
-"fondo."
-
-#: ../../../www/radmin/templates/smarty.c:161
-#: ../../../www/radmin/templates/smarty.c:169
-msgid "Admin Users"
-msgstr "Los usuarios admin"
-
-#: ../../../www/radmin/templates/smarty.c:162
-#: ../../../www/radmin/templates/smarty.c:167
-#: ../../../www/radmin/templates/smarty.c:168
-msgid "Change Password"
-msgstr "Cambio de contraseña"
-
-#: ../../../www/radmin/templates/smarty.c:164
-msgid "Old Password"
-msgstr "Contraseña anterior"
-
-#: ../../../www/radmin/templates/smarty.c:165
-msgid "New Password"
-msgstr "Nueva Contraseña"
-
-#: ../../../www/radmin/templates/smarty.c:166
-msgid "Confirm New Password"
-msgstr "Confirmar nueva contraseña"
-
-#: ../../../www/radmin/templates/smarty.c:170
-#: ../../../www/radmin/templates/smarty.c:184
-msgid "Deleting or modifying the support user will prevent remote assistance."
-msgstr ""
-"Borrar o modificar el usuario evitará el soporte de asistencia remota."
-
-#: ../../../www/radmin/templates/smarty.c:171
-#: ../../../www/radmin/templates/smarty.c:172
-msgid "Admin User"
-msgstr "Usuario administrador"
-
-#: ../../../www/radmin/templates/smarty.c:173
-#: ../../../www/radmin/templates/smarty.c:174
-msgid "Power User"
-msgstr "Usuario Power"
-
-#: ../../../www/radmin/templates/smarty.c:175
-#: ../../../www/radmin/templates/smarty.c:176
-msgid "Normal User"
-msgstr "Usuario normal"
-
-#: ../../../www/radmin/templates/smarty.c:177
-#: ../../../www/radmin/templates/smarty.c:185
-msgid "Are you sure you want to delete %1?"
-msgstr "¿Está seguro que desea eliminar %1?"
-
-#: ../../../www/radmin/templates/smarty.c:178
-#: ../../../www/radmin/templates/smarty.c:186
-msgid "Delete %1"
-msgstr "Eliminar el %1"
-
-#: ../../../www/radmin/templates/smarty.c:179
-#: ../../../www/radmin/templates/smarty.c:182
-msgid "Create new Admin User"
-msgstr "Crear nuevo usuario admin"
-
-#: ../../../www/radmin/templates/smarty.c:183
-msgid "Delete Admin User"
-msgstr "Eliminar usuario admin"
-
-#: ../../../www/radmin/templates/smarty.c:187
-msgid "Cannot delete current user"
-msgstr "No se puede eliminar el usuario actual"
-
-#: ../../../www/radmin/templates/smarty.c:188
-msgid "Logged in as <b>%1</b>"
-msgstr "Conectado como <b>%1</b>"
-
-#: ../../../www/radmin/templates/smarty.c:189
-msgid "Session logs for %1 on %2"
-msgstr "Registro sesión de %1 en %2"
-
-#: ../../../www/radmin/templates/smarty.c:190
-msgid "Computers hardware (MAC) address is"
-msgstr "Hardware de ordenadores (MAC) es"
-
-#: ../../../www/radmin/templates/smarty.c:191
-msgid "Between %1 and %2"
-msgstr "Entre %1 y %2"
-
-#: ../../../www/radmin/templates/smarty.c:192
-msgid "Total HTTP (WWW) Traffic Size:"
-msgstr "Total HTTP (WWW) Tamaño de tráfico:"
-
-#: ../../../www/radmin/templates/smarty.c:193
-msgid "Domain"
-msgstr "Dominio"
-
-#: ../../../www/radmin/templates/smarty.c:194
-msgid "Count"
-msgstr "Contar"
-
-#: ../../../www/radmin/templates/smarty.c:195
-#: ../../../www/radmin/templates/smarty.c:201
-msgid "Size"
-msgstr "Tamaño"
-
-#: ../../../www/radmin/templates/smarty.c:196
-#: ../../../www/radmin/templates/smarty.c:237
-msgid "Timestamp"
-msgstr "Fecha y hora"
-
-#: ../../../www/radmin/templates/smarty.c:197
-msgid "Address"
-msgstr "Dirección"
-
-#: ../../../www/radmin/templates/smarty.c:198
-msgid "Host"
-msgstr "Anfitrión"
-
-#: ../../../www/radmin/templates/smarty.c:199
-msgid "Cached"
-msgstr "En caché"
-
-#: ../../../www/radmin/templates/smarty.c:200
-msgid "Request Type"
-msgstr "Tipo de solicitud"
-
-#: ../../../www/radmin/templates/smarty.c:202
-msgid "Network Settings"
-msgstr "Configuración de red"
-
-#: ../../../www/radmin/templates/smarty.c:203
-msgid ""
-"These settings are used by Coova Chilli and Dnsmasq. Both Coova Chilli and "
-"Dnsmasq will need to be reloaded when these settings change. A cron job will"
-" automatically check for changes every 5 minutes and reload these daemons if"
-" needed."
-msgstr ""
-"Estos valores son utilizados por Chilli Coova y Dnsmasq. Ambos, Chilli Coova"
-" y Dnsmasq, se tendrán que volver a cargar cuando se modifican estos "
-"valores. Una tarea cron comprueba automáticamente si hay cambios cada 5 "
-"minutos y cargara estos cambios si es necesario."
-
-#: ../../../www/radmin/templates/smarty.c:204
-msgid "Network Config last reloaded %1"
-msgstr "Última recarga configuracion red %1"
-
-#: ../../../www/radmin/templates/smarty.c:205
-msgid "Network Config last updated %1"
-msgstr "Última actualización configuracion red %1"
-
-#: ../../../www/radmin/templates/smarty.c:206
-#: ../../../www/radmin/templates/smarty.c:216
-#: ../../../www/radmin/templates/smarty.c:270
-msgid ""
-"For each of the following items, if you need multiple values you can submit "
-"the form and it will append a blank input below the last valid value"
-msgstr ""
-"Para cada uno de los siguientes elementos, si necesita varios valores, puede"
-" enviar el formulario y se agregará una entrada en blanco por debajo del "
-"último valor válido"
-
-#: ../../../www/radmin/templates/smarty.c:208
-msgid "Help Page"
-msgstr "Página de ayuda"
-
-#: ../../../www/radmin/templates/smarty.c:209
-msgid "My Account"
-msgstr "Mi Cuenta"
-
-#: ../../../www/radmin/templates/smarty.c:210
-msgid "Admin"
-msgstr "Administración"
-
-#: ../../../www/radmin/templates/smarty.c:211
-msgid "Coova Chilli Settings"
-msgstr "Configuración Coova Chilli"
-
-#: ../../../www/radmin/templates/smarty.c:212
-msgid ""
-"These settings are used by Coova Chilli. Coova Chilli only reloads it's "
-"config roughly once an hour, or when it's restarted."
-msgstr ""
-"Estos valores son utilizados por Chilli Coova. Coova Chilli sólo recarga su "
-"configuración más o menos una vez cada hora, o cuando se reinicia."
-
-#: ../../../www/radmin/templates/smarty.c:213
-msgid ""
-"If you change the MAC Auth Password, no computer accounts will be able to "
-"login until Coova Chilli reloads it's config, or is manually restarted."
-msgstr ""
-"Si cambia la contraseña del MAC Auth, ninguna cuenta de equipo será capaz de"
-" entrar hasta que Chilli Coova recargue su configuración, o se reinicie "
-"manualmente."
-
-#: ../../../www/radmin/templates/smarty.c:214
-msgid "Chilli Config last updated %1"
-msgstr "Última actualización Chilli Config  %1"
-
-#: ../../../www/radmin/templates/smarty.c:215
-msgid "Portal Config last updated %1"
-msgstr "Última actualización Portal Config %1"
-
-#: ../../../www/radmin/templates/smarty.c:218
-#: ../../../www/radmin/templates/smarty.c:224
-msgid "Data Limit"
-msgstr "Limite Datos"
-
-#: ../../../www/radmin/templates/smarty.c:219
-#: ../../../www/radmin/templates/smarty.c:229
-#: ../../../www/uam/templates/smarty.c:14
-msgid "Time Limit"
-msgstr "Limite Tiempo"
-
-#: ../../../www/radmin/templates/smarty.c:220
-msgid "%1 Time Limit"
-msgstr "%1 Limite Tiempo"
-
-#: ../../../www/radmin/templates/smarty.c:221
-msgid "%1 Data Limit"
-msgstr "%1 Limite Datos"
-
-#: ../../../www/radmin/templates/smarty.c:225
-msgid "Total Data usage for the current month"
-msgstr "Uso de datos total para el mes actual"
-
-#: ../../../www/radmin/templates/smarty.c:226
-msgid "Data Usage (M)"
-msgstr "Uso Datos (M)"
-
-#: ../../../www/radmin/templates/smarty.c:227
-msgid "Total Data usage, from previous months, excluding current month"
-msgstr ""
-"Uso de datos total, de los meses anteriores, con exclusión del mes en curso"
-
-#: ../../../www/radmin/templates/smarty.c:228
-msgid "Data Usage (T)"
-msgstr "Uso Datos (T)"
-
-#: ../../../www/radmin/templates/smarty.c:230
-msgid "Time Usage (Month)"
-msgstr "Tiempo Usado (mes)"
-
-#: ../../../www/radmin/templates/smarty.c:231
-msgid "Account Expiry"
-msgstr "Vencimiento de Cuenta"
-
-#: ../../../www/radmin/templates/smarty.c:232
-msgid "Last Logoff timestamp from current month only"
-msgstr "Fecha y hora del ultimo cierre de sesión, solo para el mes en curso"
-
-#: ../../../www/radmin/templates/smarty.c:233
-msgid "Last Logoff"
-msgstr "Ultimo cierre de sesión"
-
-#: ../../../www/radmin/templates/smarty.c:235
-msgid "Password Hidden"
-msgstr "Contraseña oculta"
-
-#: ../../../www/radmin/templates/smarty.c:236
-msgid "Admin Log"
-msgstr "Admin Log"
-
-#: ../../../www/radmin/templates/smarty.c:239
-msgid "IP"
-msgstr "IP"
-
-#: ../../../www/radmin/templates/smarty.c:240
-msgid "Action"
-msgstr "Acción"
-
-#: ../../../www/radmin/templates/smarty.c:241
-msgid "Group Properties"
-msgstr "Propiedades del grupo"
-
-#: ../../../www/radmin/templates/smarty.c:244
-msgid "Max Data (Mb)"
-msgstr "Max datos (Mb)"
-
-#: ../../../www/radmin/templates/smarty.c:245
-msgid "Max Time (mins)"
-msgstr "Max tiempo (min.)"
-
-#: ../../../www/radmin/templates/smarty.c:246
-msgid "Recur time limit"
-msgstr "Repeticion limite tiempo"
-
-#: ../../../www/radmin/templates/smarty.c:247
-msgid "BW Limit Down"
-msgstr "BW Limite Bajada"
-
-#: ../../../www/radmin/templates/smarty.c:248
-msgid "BW Limit Up"
-msgstr "BW Limite Subida"
-
-#: ../../../www/radmin/templates/smarty.c:249
-#: ../../../www/uam/templates/smarty.c:38
-msgid "Error"
-msgstr "Error"
-
-#: ../../../www/radmin/templates/smarty.c:250
-#: ../../../www/uam/templates/smarty.c:39
-msgid "An Error has occured. Please report the error to the administrator"
-msgstr "Un error ha ocurrido. Por favor, informar del error al administrador"
-
-#: ../../../www/radmin/templates/smarty.c:251
-msgid ""
-"There may be more information available to the administrator in the logs"
-msgstr ""
-"Es posible que haya más información disponible para el administrador en los "
-"registros"
-
-#: ../../../www/radmin/templates/smarty.c:252
+#: ../../../www/radmin/templates/smarty.c:35
 msgid "Create Computer Account"
 msgstr "Crear cuentas de equipo"
 
-#: ../../../www/radmin/templates/smarty.c:254
+#: ../../../www/radmin/templates/smarty.c:37
 msgid ""
 "The MAC address is the network hardware address of the computer. It needs to"
 " be of the format XX-XX-XX-XX-XX-XX where XX is a hex number, typed in all "
 "capitals"
-msgstr ""
-"La dirección MAC es la dirección de hardware de red del equipo. Tiene que "
-"ser en formato XX-XX-XX-XX-XX-XX donde XX es un número hexadecimal"
+msgstr "La dirección MAC es la dirección de hardware de red del equipo. Tiene que ser en formato XX-XX-XX-XX-XX-XX donde XX es un número hexadecimal"
 
-#: ../../../www/radmin/templates/smarty.c:256
+#: ../../../www/radmin/templates/smarty.c:38
+#: ../../../www/radmin/templates/smarty.c:93
+#: ../../../www/radmin/templates/smarty.c:127
+#: ../../../www/radmin/templates/smarty.c:235
+#: ../../../www/radmin/templates/smarty.c:359
+msgid "Comment"
+msgstr "Comentario"
+
+#: ../../../www/radmin/templates/smarty.c:39
 msgid "Identify the computer. i.e. \"Bob's computer\""
 msgstr "Identificar el equipo. por ejemplo, \"Equipo de Bob\""
 
-#: ../../../www/radmin/templates/smarty.c:258
+#: ../../../www/radmin/templates/smarty.c:40
+#: ../../../www/radmin/templates/smarty.c:95
+#: ../../../www/radmin/templates/smarty.c:131
+#: ../../../www/radmin/templates/smarty.c:361
+msgid ""
+"When ether limit is reached, the user will be cut off. (i.e. after 1hour "
+"even if they still have data left)"
+msgstr "Cuando se alcanza el límite, el usuario será expulsado. (Es decir, después de una hora, aunque todavía tengan datos restantes para consumir)"
+
+#: ../../../www/radmin/templates/smarty.c:41
 msgid ""
 "Computer accounts are intended to be used for computers that need internet "
 "access at all times. For example, an office computer. Computer accounts "
@@ -1016,657 +193,1203 @@ msgid ""
 "occur at startup. If a limit is set, when the limit is reached the computer "
 "will revert to the normal login screen for internet access. Computer "
 "accounts can not be edited to add more data or time, only deleted."
-msgstr ""
-"Las cuentas de equipo son destinadas para ser utilizadas en equipos que "
-"necesita acceso a Internet en todo momento. Por ejemplo, una computadora de "
-"oficina. Las cuentas de equipo, inician sesión de forma automática tan "
-"pronto como tienen acceso a la red, normalmente se producen en el inicio. Si"
-" se establece un límite, cuando se alcanza el límite, el equipo volverá a la"
-" pantalla de inicio de sesión normal de acceso a Internet. Las cuentas de "
-"equipo no se pueden editar para agregar más datos o de tiempo, sólo se "
-"eliminan."
+msgstr "Las cuentas de equipo son destinadas para ser utilizadas en equipos que necesita acceso a Internet en todo momento. Por ejemplo, una computadora de oficina. Las cuentas de equipo, inician sesión de forma automática tan pronto como tienen acceso a la red, normalmente se producen en el inicio. Si se establece un límite, cuando se alcanza el límite, el equipo volverá a la pantalla de inicio de sesión normal de acceso a Internet. Las cuentas de equipo no se pueden editar para agregar más datos o de tiempo, sólo se eliminan."
 
-#: ../../../www/radmin/templates/smarty.c:259
+#: ../../../www/radmin/templates/smarty.c:42
 msgid ""
 "It is not recommended setting a time or data limit for computer accounts."
-msgstr ""
-"No se recomienda el establecimiento de un límite de tiempo o datos para las "
-"cuentas de equipo."
+msgstr "No se recomienda el establecimiento de un límite de tiempo o datos para las cuentas de equipo."
 
-#: ../../../www/radmin/templates/smarty.c:267
-#: ../../../www/radmin/templates/smarty.c:268
+#: ../../../www/radmin/templates/smarty.c:43
+#: ../../../www/radmin/templates/smarty.c:98
+#: ../../../www/radmin/templates/smarty.c:133
+msgid "Data Limit (MiB)"
+msgstr "Limite datos (MiB)"
+
+#: ../../../www/radmin/templates/smarty.c:44
+#: ../../../www/radmin/templates/smarty.c:47
+#: ../../../www/radmin/templates/smarty.c:99
+#: ../../../www/radmin/templates/smarty.c:103
+msgid "OR"
+msgstr "O"
+
+#: ../../../www/radmin/templates/smarty.c:45
+#: ../../../www/radmin/templates/smarty.c:100
+#: ../../../www/radmin/templates/smarty.c:134
+msgid "Type your own Mb Limit"
+msgstr "Escriba su propio límite Mb"
+
+#: ../../../www/radmin/templates/smarty.c:46
+#: ../../../www/radmin/templates/smarty.c:102
+#: ../../../www/radmin/templates/smarty.c:138
+msgid "Time Limit (Minutes)"
+msgstr "Limite de tiempo (en minutos)"
+
+#: ../../../www/radmin/templates/smarty.c:48
+#: ../../../www/radmin/templates/smarty.c:104
+#: ../../../www/radmin/templates/smarty.c:139
+msgid "Type your own Time Limit"
+msgstr "Escriba su propio límite de tiempo"
+
+#: ../../../www/radmin/templates/smarty.c:49
+#: ../../../www/radmin/templates/smarty.c:105
+msgid "Choose a Time Limit OR Type your own value"
+msgstr "Elegir un límite de tiempo o escribe un valor"
+
+#: ../../../www/radmin/templates/smarty.c:50
+#: ../../../www/radmin/templates/smarty.c:51
 msgid "Create New Computer Account"
 msgstr "Crear nueva cuenta de equipo"
 
+#: ../../../www/radmin/templates/smarty.c:52
+#: ../../../www/radmin/templates/smarty.c:60
+#: ../../../www/radmin/includes/page_functions.inc.php:90
+msgid "Admin Users"
+msgstr "Los usuarios admin"
+
+#: ../../../www/radmin/templates/smarty.c:53
+#: ../../../www/radmin/templates/smarty.c:58
+#: ../../../www/radmin/templates/smarty.c:59
+msgid "Change Password"
+msgstr "Cambio de contraseña"
+
+#: ../../../www/radmin/templates/smarty.c:54
+#: ../../../www/radmin/templates/smarty.c:61
+#: ../../../www/radmin/templates/smarty.c:70
+#: ../../../www/radmin/templates/smarty.c:87
+#: ../../../www/radmin/templates/smarty.c:118
+#: ../../../www/radmin/templates/smarty.c:187
+#: ../../../www/radmin/templates/smarty.c:210
+#: ../../../www/radmin/templates/smarty.c:223
+#: ../../../www/radmin/templates/smarty.c:315
+#: ../../../www/radmin/templates/smarty.c:325
+#: ../../../www/radmin/templates/smarty.c:331
+#: ../../../www/radmin/templates/smarty.c:336
+#: ../../../www/uam/templates/smarty.c:12 ../../../www/radmin/export.php:89
+msgid "Username"
+msgstr "Nombre de usuario"
+
+#: ../../../www/radmin/templates/smarty.c:55
+msgid "Old Password"
+msgstr "Contraseña anterior"
+
+#: ../../../www/radmin/templates/smarty.c:56
+msgid "New Password"
+msgstr "Nueva Contraseña"
+
+#: ../../../www/radmin/templates/smarty.c:57
+msgid "Confirm New Password"
+msgstr "Confirmar nueva contraseña"
+
+#: ../../../www/radmin/templates/smarty.c:62
+msgid "User Group"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:63
+#: ../../../www/radmin/templates/smarty.c:146
+#: ../../../www/radmin/templates/smarty.c:148
+msgid "Delete User"
+msgstr "Eliminar usuario"
+
+#: ../../../www/radmin/templates/smarty.c:64
+#: ../../../www/radmin/templates/smarty.c:82
+msgid "Deleting or modifying the support user will prevent remote assistance."
+msgstr "Borrar o modificar el usuario evitará el soporte de asistencia remota."
+
+#: ../../../www/radmin/templates/smarty.c:65
+#: ../../../www/radmin/templates/smarty.c:67
+#: ../../../www/radmin/templates/smarty.c:83
+#: ../../../www/radmin/templates/smarty.c:85
+msgid "Delete %1"
+msgstr "Eliminar el %1"
+
+#: ../../../www/radmin/templates/smarty.c:66
+#: ../../../www/radmin/templates/smarty.c:84
+msgid "Are you sure you want to delete %1?"
+msgstr "¿Está seguro que desea eliminar %1?"
+
+#: ../../../www/radmin/templates/smarty.c:68
+#: ../../../www/radmin/templates/smarty.c:86
+msgid "Cannot delete current user"
+msgstr "No se puede eliminar el usuario actual"
+
+#: ../../../www/radmin/templates/smarty.c:69
+#: ../../../www/radmin/templates/smarty.c:80
+msgid "Create new Admin User"
+msgstr "Crear nuevo usuario admin"
+
+#: ../../../www/radmin/templates/smarty.c:71
+#: ../../../www/radmin/templates/smarty.c:89
+#: ../../../www/radmin/templates/smarty.c:119
+#: ../../../www/radmin/templates/smarty.c:188
+#: ../../../www/radmin/templates/smarty.c:211
+#: ../../../www/radmin/templates/smarty.c:338
+#: ../../../www/uam/templates/smarty.c:13 ../../../www/radmin/export.php:90
+msgid "Password"
+msgstr "Contraseña"
+
+#: ../../../www/radmin/templates/smarty.c:72
+msgid "Admin User Access Level"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:73
+#: ../../../www/radmin/templates/smarty.c:74
+#: ../../../www/radmin/passwd.php:126
+msgid "Admin User"
+msgstr "Usuario administrador"
+
+#: ../../../www/radmin/templates/smarty.c:75
+#: ../../../www/radmin/templates/smarty.c:76
+#: ../../../www/radmin/passwd.php:129
+msgid "Power User"
+msgstr "Usuario Power"
+
+#: ../../../www/radmin/templates/smarty.c:77
+msgid "Normal User"
+msgstr "Usuario normal"
+
+#: ../../../www/radmin/templates/smarty.c:78
+#: ../../../www/radmin/passwd.php:132
+msgid "Limited User"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:79
+msgid "Sets the users access level. Once set, this can't be changed"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:81
+msgid "Delete Admin User"
+msgstr "Eliminar usuario admin"
+
+#: ../../../www/radmin/templates/smarty.c:88
+msgid "Choose a username"
+msgstr "Elegir un nombre de usuario"
+
+#: ../../../www/radmin/templates/smarty.c:90
+msgid "Choose a secure password for the user"
+msgstr "Elija una contraseña segura para el usuario"
+
+#: ../../../www/radmin/templates/smarty.c:91
+#: ../../../www/radmin/templates/smarty.c:195
+#: ../../../www/radmin/templates/smarty.c:224
+msgid "Group"
+msgstr "Grupo"
+
+#: ../../../www/radmin/templates/smarty.c:92
+#: ../../../www/radmin/templates/smarty.c:121
+msgid "Choose the users group (Expiry is based on the user group)"
+msgstr "Seleccione el grupo de usuarios (los limites se basan en el grupo de usuarios)"
+
+#: ../../../www/radmin/templates/smarty.c:94
+#: ../../../www/radmin/templates/smarty.c:128
+msgid "A comment about the user"
+msgstr "Un comentario sobre el usuario"
+
+#: ../../../www/radmin/templates/smarty.c:96
+#: ../../../www/radmin/templates/smarty.c:132
+#: ../../../www/radmin/templates/smarty.c:362
+msgid ""
+"A limit of 0 does not mean unlimited, it will immediately lock the user out."
+" To have an unlimited user, the user must be created without any limits."
+msgstr "Un límite de 0 no significa sin límite, inmediatamente se bloquea el usuario. Para tener un usuario ilimitado, el usuario debe ser creado sin ningún tipo de límites."
+
+#: ../../../www/radmin/templates/smarty.c:97
+#: ../../../www/radmin/templates/smarty.c:363
+msgid ""
+"If a limit is not set here, but is defined for the group, then the group "
+"limit will apply"
+msgstr "Si el límite no está establecido aquí, sino que se define para el grupo, entonces el límite de grupo se aplicará"
+
+#: ../../../www/radmin/templates/smarty.c:101
+msgid "Choose a Data Limit OR Type your own value"
+msgstr "Elija un límite de datos o escribe un valor"
+
+#: ../../../www/radmin/templates/smarty.c:106
+msgid "Group Properties"
+msgstr "Propiedades del grupo"
+
+#: ../../../www/radmin/templates/smarty.c:107
+#: ../../../www/radmin/templates/smarty.c:179
+#: ../../../www/radmin/templates/smarty.c:201
+#: ../../../www/radmin/templates/smarty.c:203
+#: ../../../www/radmin/templates/smarty.c:249
+#: ../../../www/radmin/templates/smarty.c:266
+msgid "Name"
+msgstr "Nombre"
+
+#: ../../../www/radmin/templates/smarty.c:108
+#: ../../../www/radmin/templates/smarty.c:213
+#: ../../../www/radmin/templates/smarty.c:251
+#: ../../../www/radmin/templates/smarty.c:268
+#: ../../../www/radmin/export.php:91
+msgid "Expiry"
+msgstr "Vencimiento"
+
+#: ../../../www/radmin/templates/smarty.c:109
+#: ../../../www/radmin/templates/smarty.c:270
+msgid "Expire After"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:110
+msgid "Max Data (Mb)"
+msgstr "Max datos (Mb)"
+
+#: ../../../www/radmin/templates/smarty.c:111
+msgid "Max Time (mins)"
+msgstr "Max tiempo (min.)"
+
+#: ../../../www/radmin/templates/smarty.c:112
+msgid "Recurring data limit"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:113
+msgid "Recurring time limit"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:114
+msgid "BW Limit Down"
+msgstr "BW Limite Bajada"
+
+#: ../../../www/radmin/templates/smarty.c:115
+msgid "BW Limit Up"
+msgstr "BW Limite Subida"
+
+#: ../../../www/radmin/templates/smarty.c:116
+msgid "Edit Computer Account"
+msgstr "Editar cuenta de equipo"
+
+#: ../../../www/radmin/templates/smarty.c:117
+msgid "Edit User"
+msgstr "Editar usuario"
+
+#: ../../../www/radmin/templates/smarty.c:120
+msgid "Choose a secure password for the user. Leave blank to not change"
+msgstr "Elija una contraseña segura para el usuario. Dejar en blanco para no cambiar"
+
+#: ../../../www/radmin/templates/smarty.c:122
+msgid "This user account never expires"
+msgstr "Esta cuenta de usuario nunca caduca"
+
+#: ../../../www/radmin/templates/smarty.c:123
+msgid "This user account has expired"
+msgstr "Esta cuenta de usuario ha expirado"
+
+#: ../../../www/radmin/templates/smarty.c:124
+msgid "Reset expiry"
+msgstr "Restablecer caducidad"
+
+#: ../../../www/radmin/templates/smarty.c:125
+msgid "No Expire After Set"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:126
+msgid "Computer Accounts never expire"
+msgstr "Cuentas de equipo que nunca caducan"
+
+#: ../../../www/radmin/templates/smarty.c:129
+msgid "Account Lock Reason"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:130
+msgid ""
+"Enter a reason in here to lock the users account. Clear the reason to unlock"
+" the account"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:135
+msgid "Change the Data Limit"
+msgstr "Cambiar el límite de datos"
+
+#: ../../../www/radmin/templates/smarty.c:136
+msgid "Add Data to Limit (MiB)"
+msgstr "Agregar límite de datos (MiB)"
+
+#: ../../../www/radmin/templates/smarty.c:137
+msgid "Add to the Data Limit (Will ignore changes made above)"
+msgstr "Añadir al límite de datos (Se ignoran los cambios realizados anteriormente)"
+
+#: ../../../www/radmin/templates/smarty.c:140
+msgid "Change the Time Limit"
+msgstr "Cambiar el límite de tiempo"
+
+#: ../../../www/radmin/templates/smarty.c:141
+msgid "Add Time to Limit (Minutes)"
+msgstr "Añadir tiempo para limitar (en minutos)"
+
+#: ../../../www/radmin/templates/smarty.c:142
+msgid "Add to the Time Limit (Will ignore changes made above)"
+msgstr "Añadir al limite del tiempo (Se ignoran los cambios realizados anteriormente)"
+
+#: ../../../www/radmin/templates/smarty.c:143
+#: ../../../www/radmin/templates/smarty.c:144
+msgid "Update User Details"
+msgstr "Actualizar detalles de usuario"
+
+#: ../../../www/radmin/templates/smarty.c:145
+msgid "Delete Computer Account"
+msgstr "Eliminar cuenta de equipo"
+
+#: ../../../www/radmin/templates/smarty.c:147
+msgid ""
+"User accounts are automatically deleted 2 months after expiry. Only accounts"
+" with zero usage should be manually deleted to prevent errors in the reports"
+" or statistics."
+msgstr "Las cuentas de usuario se eliminan automáticamente 2 meses después de su vencimiento. Sólo las cuentas sin uso deben ser eliminadas manualmente para evitar errores en los informes o estadísticas."
+
+#: ../../../www/radmin/templates/smarty.c:149
+msgid "Are you sure you want to delete this user?"
+msgstr "¿Está seguro que desea eliminar este usuario?"
+
+#: ../../../www/radmin/templates/smarty.c:150
+msgid "Delete User %1"
+msgstr "Eliminar usuario %1"
+
+#: ../../../www/radmin/templates/smarty.c:151
+msgid "Site Settings"
+msgstr "Configuración del sitio"
+
+#: ../../../www/radmin/templates/smarty.c:152
+msgid "Location Name"
+msgstr "Nombre Ubicación "
+
+#: ../../../www/radmin/templates/smarty.c:153
+msgid "Enter a name that identifies this Hotspot Location"
+msgstr "Escriba un nombre que identifique la ubicación de este Hotspot"
+
+#: ../../../www/radmin/templates/smarty.c:154
+msgid "Support Contact Name"
+msgstr "Nombre de Contacto para Soporte "
+
+#: ../../../www/radmin/templates/smarty.c:155
+msgid "Enter the name of the Support Contact"
+msgstr "Introduzca el nombre del contacto de soporte"
+
+#: ../../../www/radmin/templates/smarty.c:156
+msgid "Support Link"
+msgstr "Vínculo de Soporte"
+
+#: ../../../www/radmin/templates/smarty.c:157
+msgid ""
+"This is the link for the support contact. http:// or mailto: are allowed. If"
+" using http:// ensure this is accessabile for users who aren't logged into "
+"the hotspot"
+msgstr "Este es el link para el contacto con el soporte. http:// o mailto: están permitidos. Si se utiliza http:// asegurese que es accesible para los usuarios que no están identificados en el Hotspot"
+
+#: ../../../www/radmin/templates/smarty.c:158
+msgid "Locale"
+msgstr "Local"
+
+#: ../../../www/radmin/templates/smarty.c:159
+msgid "Available languages:"
+msgstr "Idiomas disponibles:"
+
+#: ../../../www/radmin/templates/smarty.c:160
+msgid "Select the appropriate Locale for your location"
+msgstr "Seleccione la localidad apropiada para su ubicación"
+
+#: ../../../www/radmin/templates/smarty.c:161
+msgid ""
+"A locale has 2 parts, the language and location.<br/><strong>en_AU</strong> "
+"for example has the Language set to English, and the location to "
+"Australia.<br/><strong>en_ZA</strong> has the language set to English, and "
+"the location to South Africa, while <strong>af_ZA</strong> has the language "
+"set to Afrikaans and the location to South Africa."
+msgstr "Un local tiene 2 partes, el idioma y la ubicación. <br/> <strong>en_AU</strong> por ejemplo, tiene establecido el idioma a Inglés, y la ubicación de Australia. <br/> <strong>en_ZA</strong> está en el idioma establecido en Inglés, y la ubicación de Sudáfrica, mientras que <strong>af_ZA</strong> tiene el conjunto de lenguaje afrikaans y el lugar en Sudáfrica."
+
+#: ../../../www/radmin/templates/smarty.c:162
+msgid ""
+"The locale defines the number formats, currency and language. If the "
+"language selected is not available, it will fallback to English."
+msgstr "El entorno local define los formatos de número, moneda y el idioma. Si el idioma seleccionado no está disponible, se usara el Inglés."
+
+#: ../../../www/radmin/templates/smarty.c:163
+msgid ""
+"Current locale is %1, which sets the language to %2, and location to %3."
+msgstr "Localización actual es %1, lo que establece el idioma en  %2, y la ubicación de %3."
+
+#: ../../../www/radmin/templates/smarty.c:164
+msgid "Currency symbol is %1"
+msgstr "Símbolo de moneda es el %1"
+
+#: ../../../www/radmin/templates/smarty.c:165
+msgid "Data Options"
+msgstr "Opciones de datos"
+
+#: ../../../www/radmin/templates/smarty.c:166
+msgid ""
+"Space separated list of Data Options in MB's to populate dropdown boxes"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:167
+msgid "Time Options"
+msgstr "Opciones de tiempo"
+
+#: ../../../www/radmin/templates/smarty.c:168
+msgid ""
+"Space separated list of Time options in minutes to populate dropdown boxes."
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:169
+msgid "Bandwidth Options"
+msgstr "Opciones de ancho de banda"
+
+#: ../../../www/radmin/templates/smarty.c:170
+msgid ""
+"Space separated list of Bandwidth options in kbit/s to populate dropdown "
+"boxes."
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:171
+msgid "Website Name"
+msgstr "Nombre del Sitio Web "
+
+#: ../../../www/radmin/templates/smarty.c:172
+msgid "Label for Website Footer link"
+msgstr "Etiqueta para la web en el vínculo pie de página"
+
+#: ../../../www/radmin/templates/smarty.c:173
+msgid "Website Link"
+msgstr "Enlace página web"
+
+#: ../../../www/radmin/templates/smarty.c:174
+msgid "Link for Website Footer Link"
+msgstr "Enlace para la web en el enlace pie de página"
+
+#: ../../../www/radmin/templates/smarty.c:176
+msgid "Advanced Settings"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:177
+msgid ""
+"All settings in the Radmin Settings table are shown here. Modifying settings"
+" here isn't recommended as no validation is done. This page allows you to "
+"see and modify hidden settings. Some settings may reset back to defaults if "
+"you try to set them to an incorrect value, others will just break."
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:178
+msgid ""
+"CAUTION: Some settings here are internal and modifying them will break "
+"things"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:180
+msgid "Value"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:181
+msgid "Setting name"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:182
+msgid "Setting value"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:183
+msgid "Save Setting"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:184
+#: ../../../www/radmin/templates/smarty.c:341
+msgid "Please select your preferred payment method"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:185
+msgid "Logged in as <b>%1</b>"
+msgstr "Conectado como <b>%1</b>"
+
+#: ../../../www/radmin/templates/smarty.c:186
+#: ../../../www/radmin/templates/smarty.c:189
+#: ../../../www/radmin/templates/smarty.c:334
+#: ../../../www/radmin/templates/smarty.c:339
+msgid "Login"
+msgstr "Iniciar sesión"
+
+#: ../../../www/radmin/templates/smarty.c:190
+msgid "Voucher Config"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:191
+msgid ""
+"Vouchers are disabled if nether Initial Voucher, or Topup Voucher are "
+"selected."
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:192
+msgid ""
+"Vouchers without a Time or Data limit do not inherit the default limits from"
+" the group, but any Recurring limits will apply."
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:193
+msgid "Voucher Name"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:194
+#: ../../../www/radmin/templates/smarty.c:202
+#: ../../../www/radmin/templates/smarty.c:204
+msgid "Price"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:196
+#: ../../../www/radmin/templates/smarty.c:219
+#: ../../../www/radmin/templates/smarty.c:225
+msgid "Data Limit"
+msgstr "Limite Datos"
+
+#: ../../../www/radmin/templates/smarty.c:197
+#: ../../../www/radmin/templates/smarty.c:220
+#: ../../../www/uam/templates/smarty.c:38
+msgid "Time Limit"
+msgstr "Limite Tiempo"
+
+#: ../../../www/radmin/templates/smarty.c:198
+msgid "Initial Voucher"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:199
+msgid "Topup Voucher"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:200
+#: ../../../www/radmin/templates/smarty.c:250
+#: ../../../www/radmin/templates/smarty.c:267
+msgid "Description"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:206
+msgid "Help Page"
+msgstr "Página de ayuda"
+
+#: ../../../www/radmin/templates/smarty.c:207
+#: ../../../www/radmin/includes/usermin_page_functions.inc.php:37
+#: ../../../www/radmin/includes/usermin_page_functions.inc.php:39
+msgid "My Account"
+msgstr "Mi Cuenta"
+
+#: ../../../www/radmin/templates/smarty.c:208
+msgid "Admin"
+msgstr "Administración"
+
+#: ../../../www/radmin/templates/smarty.c:209
+msgid "Wireless Network"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:212
+#: ../../../www/radmin/export.php:92
+msgid "Voucher Type"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:214
+#: ../../../www/radmin/includes/page_functions.inc.php:69
+msgid "DHCP Leases"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:217
+msgid "DHCP State"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:218
+msgid "UserName"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:221
+msgid "%1 Time Limit"
+msgstr "%1 Limite Tiempo"
+
+#: ../../../www/radmin/templates/smarty.c:222
+msgid "%1 Data Limit"
+msgstr "%1 Limite Datos"
+
+#: ../../../www/radmin/templates/smarty.c:226
+msgid "Total Data usage for the current month"
+msgstr "Uso de datos total para el mes actual"
+
+#: ../../../www/radmin/templates/smarty.c:227
+msgid "Data Usage (M)"
+msgstr "Uso Datos (M)"
+
+#: ../../../www/radmin/templates/smarty.c:228
+msgid "Total Data usage, from previous months, excluding current month"
+msgstr "Uso de datos total, de los meses anteriores, con exclusión del mes en curso"
+
+#: ../../../www/radmin/templates/smarty.c:229
+msgid "Data Usage (T)"
+msgstr "Uso Datos (T)"
+
+#: ../../../www/radmin/templates/smarty.c:230
+msgid "Time Remaining"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:231
+msgid "Time Usage (Total)"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:232
+msgid "Account Expiry"
+msgstr "Vencimiento de Cuenta"
+
+#: ../../../www/radmin/templates/smarty.c:233
+msgid "Last Logoff timestamp from current month only"
+msgstr "Fecha y hora del ultimo cierre de sesión, solo para el mes en curso"
+
+#: ../../../www/radmin/templates/smarty.c:234
+msgid "Last Logoff"
+msgstr "Ultimo cierre de sesión"
+
+#: ../../../www/radmin/templates/smarty.c:236
+msgid "Password Hidden"
+msgstr "Contraseña oculta"
+
+#: ../../../www/radmin/templates/smarty.c:237
+msgid "(Account Locked)"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:238
+msgid "Group Config"
+msgstr "Configuración de Grupo "
+
+#: ../../../www/radmin/templates/smarty.c:239
+msgid ""
+"Group expiry and expire after first login needs to be in a format understood by the\n"
+"    <a target=\"_blank\" href=\"http://www.php.net/manual/en/function.strtotime.php\">strtotime</a> PHP function."
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:240
+msgid ""
+"For example, \"+1 month\" will set an expiry for 1 month from when the "
+"account is created. \"+2 weeks\", \"+3 days\" etc."
+msgstr "Por ejemplo, \"un mes\", se establece una limite de un mes desde que se crea la cuenta. \"Dos semanas\", \"tres días\", etc"
+
+#: ../../../www/radmin/templates/smarty.c:241
+msgid ""
+"Expiry is calculated to the second, so if you want it to a date for example,"
+" try \"+1 week midnight\"."
+msgstr "El vencimiento se calcula a la segunda, así que si usted lo quiere a una fecha, por ejemplo, trate de \"una noche la semana\"."
+
+#: ../../../www/radmin/templates/smarty.c:242
+msgid ""
+"Expire after first login also needs to conform to the <a "
+"href=\"http://search.cpan.org/~muir/Time-"
+"ParseDate-2013.1113/lib/Time/ParseDate.pm\">ParseDate perl module</a>"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:243
+msgid ""
+"Login Time must be in the format of UUCP time ranges. See <a "
+"target=\"_blank\" href=\"http://ftp.gnu.org/pub/old-"
+"gnu/Manuals/radius/html_node/radius_186.html\">http://ftp.gnu.org/pub/old-"
+"gnu/Manuals/radius/html_node/radius_186.html</a> for more details. Only "
+"basic format checking is done, so please ensure that the correct format is "
+"used. Leaving Login Times blank will allow login at any time."
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:244
+msgid ""
+"Deleting a group won't delete it's users. Next time the user is edited it's "
+"group will become the default group unless a new group is selected."
+msgstr "La eliminación de un grupo no elimina a sus usuarios. La próxima vez que el usuario sea editado, el grupo se convertirá en el grupo por defecto a menos que un nuevo grupo sea seleccionado."
+
+#: ../../../www/radmin/templates/smarty.c:245
+msgid ""
+"The limits here are the default for group members, unless overridden when "
+"creating a member. The limits are applied at user creation time, if "
+"\"Inherit from group\" is selected. If multiple limits are specified, the "
+"first limit to be reached will disconnect the user."
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:246
+msgid ""
+"Changing Expiry, expire after first login, Data or Time limits, will not "
+"change existing users of the group and will only apply to new users. "
+"Recurring limits, Bandwidth and simultaneous logins will all apply to "
+"existing and new members."
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:247
+msgid ""
+"Recurring Data and Time limits must not be used with simultaneous login set "
+"to yes, otherwise users may be able to use more than the allocated limit. "
+"Data limits should only be used with larger time periods, and users may need"
+" to logout and log back in if they use past the time period."
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:248
+#: ../../../www/radmin/includes/page_functions.inc.php:82
+msgid "Groups"
+msgstr "Grupos"
+
+#: ../../../www/radmin/templates/smarty.c:252
 #: ../../../www/radmin/templates/smarty.c:269
-msgid "Portal Customisation"
-msgstr "Personalización Portal"
+msgid "Never Expire"
+msgstr ""
 
+#: ../../../www/radmin/templates/smarty.c:253
+msgid "Expire After First login"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:254
+#: ../../../www/radmin/templates/smarty.c:271
+msgid "Login Times"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:255
 #: ../../../www/radmin/templates/smarty.c:272
-msgid "Sold"
-msgstr "Vendido"
+msgid "Default Data Limit (MiB)"
+msgstr "Límite de datos por defecto  (MiB)"
 
+#: ../../../www/radmin/templates/smarty.c:256
 #: ../../../www/radmin/templates/smarty.c:273
+msgid "Default Time Limit (Minutes)"
+msgstr "Limite de tiempo por defecto (minutos)"
+
+#: ../../../www/radmin/templates/smarty.c:257
+#: ../../../www/radmin/templates/smarty.c:274
+msgid "Recurring Data Limit (MiB)"
+msgstr "Límite de datos restantes (MiB)"
+
+#: ../../../www/radmin/templates/smarty.c:258
+#: ../../../www/radmin/templates/smarty.c:260
 #: ../../../www/radmin/templates/smarty.c:275
 #: ../../../www/radmin/templates/smarty.c:277
-msgid "%1 of %2"
-msgstr "%1 de %2"
+msgid "per"
+msgstr "por"
 
-#: ../../../www/radmin/templates/smarty.c:274
-msgid "This Month Used"
-msgstr "Este mes Usado"
-
+#: ../../../www/radmin/templates/smarty.c:259
 #: ../../../www/radmin/templates/smarty.c:276
-msgid "Last Month Used"
-msgstr "El mes pasado Usado"
+msgid "Recurring Time Limit (Minutes)"
+msgstr "Límite de tiempo restante (minutos)"
 
-#: ../../../www/uam/templates/smarty.c:1
-msgid "You are logged in as:"
-msgstr "Estás conectado como:"
+#: ../../../www/radmin/templates/smarty.c:261
+#: ../../../www/radmin/templates/smarty.c:278
+msgid "Bandwidth Limit Down"
+msgstr "Límite de ancho de banda para bajada"
 
-#: ../../../www/uam/templates/smarty.c:2
-msgid "User"
-msgstr "Usuario"
+#: ../../../www/radmin/templates/smarty.c:262
+#: ../../../www/radmin/templates/smarty.c:279
+msgid "Bandwidth Limit Up"
+msgstr "Límite de ancho de banda para subida"
 
-#: ../../../www/uam/templates/smarty.c:3
-msgid "Usage this session"
-msgstr "Uso de esta sesión"
+#: ../../../www/radmin/templates/smarty.c:263
+#: ../../../www/radmin/templates/smarty.c:280
+msgid "Number of simultaneous logins. Leave Blank for unlimited"
+msgstr ""
 
-#: ../../../www/uam/templates/smarty.c:4
-msgid "Remaining Quota"
-msgstr "Cuota restante"
-
-#: ../../../www/uam/templates/smarty.c:5 ../../../www/uam/templates/smarty.c:7
-#: ../../../www/uam/templates/smarty.c:13
-#: ../../../www/uam/templates/smarty.c:15
+#: ../../../www/radmin/templates/smarty.c:264
+#: ../../../www/radmin/templates/smarty.c:281
+#: ../../../www/uam/templates/smarty.c:29
+#: ../../../www/uam/templates/smarty.c:31
+#: ../../../www/uam/templates/smarty.c:37
+#: ../../../www/uam/templates/smarty.c:39
 msgid "Unlimited"
 msgstr "Ilimitado"
 
-#: ../../../www/uam/templates/smarty.c:6
-msgid "Quota allocation"
-msgstr "Asignación cuota"
+#: ../../../www/radmin/templates/smarty.c:265
+msgid "Delete Group"
+msgstr "Eliminar grupo"
 
-#: ../../../www/uam/templates/smarty.c:8
-msgid "Max Session Time"
-msgstr "Tiempo máximo de sesión"
+#: ../../../www/radmin/templates/smarty.c:283
+#: ../../../www/radmin/includes/page_functions.inc.php:80
+msgid "Coova Chilli Settings"
+msgstr "Configuración Coova Chilli"
 
-#: ../../../www/uam/templates/smarty.c:9
-msgid "Max Idle Time"
-msgstr "Tiempo máximo de inactividad"
+#: ../../../www/radmin/templates/smarty.c:284
+msgid ""
+"These settings are used by Coova Chilli. Coova Chilli reloads it's config "
+"roughly every 10 minutes, or when it's restarted."
+msgstr ""
 
-#: ../../../www/uam/templates/smarty.c:11
-msgid "Session Time"
-msgstr "Tiempo de la sesión"
+#: ../../../www/radmin/templates/smarty.c:285
+msgid ""
+"If you change the MAC Auth Password, no computer accounts will be able to "
+"login until Coova Chilli reloads it's config, or is manually restarted."
+msgstr "Si cambia la contraseña del MAC Auth, ninguna cuenta de equipo será capaz de entrar hasta que Chilli Coova recargue su configuración, o se reinicie manualmente."
 
-#: ../../../www/uam/templates/smarty.c:12
-msgid "Remaining Time"
-msgstr "Tiempo restante"
+#: ../../../www/radmin/templates/smarty.c:286
+msgid "Chilli Config last updated %1"
+msgstr "Última actualización Chilli Config  %1"
 
-#: ../../../www/uam/templates/smarty.c:16
-msgid "Idle Time"
-msgstr "Tiempo de inactividad"
+#: ../../../www/radmin/templates/smarty.c:287
+msgid "Portal Config last updated %1"
+msgstr "Última actualización Portal Config %1"
 
-#: ../../../www/uam/templates/smarty.c:17
-msgid "Downloaded"
-msgstr "Descargado"
+#: ../../../www/radmin/templates/smarty.c:288
+#: ../../../www/radmin/templates/smarty.c:353
+msgid ""
+"For each of the following items, if you need multiple values you can submit "
+"the form and it will append a blank input below the last valid value"
+msgstr "Para cada uno de los siguientes elementos, si necesita varios valores, puede enviar el formulario y se agregará una entrada en blanco por debajo del último valor válido"
 
-#: ../../../www/uam/templates/smarty.c:19
-msgid "Help"
-msgstr "Ayuda"
+#: ../../../www/radmin/templates/smarty.c:290
+msgid "Session logs for %1 on %2"
+msgstr "Registro sesión de %1 en %2"
 
-#: ../../../www/uam/templates/smarty.c:20
-msgid "Support"
-msgstr "Soporte"
+#: ../../../www/radmin/templates/smarty.c:291
+msgid "Computers hardware (MAC) address is"
+msgstr "Hardware de ordenadores (MAC) es"
 
-#: ../../../www/uam/templates/smarty.c:21
-msgid "Successful Login"
-msgstr "Inicio de sesión con éxito"
+#: ../../../www/radmin/templates/smarty.c:292
+msgid "Between %1 and %2"
+msgstr "Entre %1 y %2"
 
-#: ../../../www/uam/templates/smarty.c:22
-msgid "Continue to your site"
-msgstr "Continuar a su sitio web"
+#: ../../../www/radmin/templates/smarty.c:293
+msgid "Total HTTP (WWW) Traffic Size:"
+msgstr "Total HTTP (WWW) Tamaño de tráfico:"
 
-#: ../../../www/uam/templates/smarty.c:23
+#: ../../../www/radmin/templates/smarty.c:294
+msgid "Domain"
+msgstr "Dominio"
+
+#: ../../../www/radmin/templates/smarty.c:295
+msgid "Count"
+msgstr "Contar"
+
+#: ../../../www/radmin/templates/smarty.c:296
+#: ../../../www/radmin/templates/smarty.c:302
+msgid "Size"
+msgstr "Tamaño"
+
+#: ../../../www/radmin/templates/smarty.c:297
+#: ../../../www/radmin/templates/smarty.c:330
+msgid "Timestamp"
+msgstr "Fecha y hora"
+
+#: ../../../www/radmin/templates/smarty.c:298
+msgid "Address"
+msgstr "Dirección"
+
+#: ../../../www/radmin/templates/smarty.c:299
+msgid "Host"
+msgstr "Anfitrión"
+
+#: ../../../www/radmin/templates/smarty.c:300
+msgid "Cached"
+msgstr "En caché"
+
+#: ../../../www/radmin/templates/smarty.c:301
+msgid "Request Type"
+msgstr "Tipo de solicitud"
+
+#: ../../../www/radmin/templates/smarty.c:303
+msgid "Sessions for %1"
+msgstr "Sesiones de %1"
+
+#: ../../../www/radmin/templates/smarty.c:304
+#: ../../../www/radmin/templates/smarty.c:307
+msgid "Active Sessions"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:305
+msgid "No active sessions"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:306
+#: ../../../www/radmin/templates/smarty.c:308
+msgid "Display all Sessions"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:309
+msgid "Stop Auto Refresh Page"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:310
+msgid "Auto Refresh Page"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:311
+#: ../../../www/radmin/templates/smarty.c:321
+#: ../../../www/uam/templates/smarty.c:34
+msgid "Start Time"
+msgstr "Hora de inicio"
+
+#: ../../../www/radmin/templates/smarty.c:312
+#: ../../../www/radmin/templates/smarty.c:322
+msgid "Stop Time"
+msgstr "Hora de stop"
+
+#: ../../../www/radmin/templates/smarty.c:313
+#: ../../../www/radmin/templates/smarty.c:323
+msgid "Time"
+msgstr "Tiempo"
+
+#: ../../../www/radmin/templates/smarty.c:314
+#: ../../../www/radmin/templates/smarty.c:324
+msgid "IP/MAC Address"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:316
+#: ../../../www/radmin/templates/smarty.c:326
+msgid "Data Usage"
+msgstr "Uso de datos"
+
+#: ../../../www/radmin/templates/smarty.c:317
+#: ../../../www/radmin/templates/smarty.c:327
+msgid "Reason: "
+msgstr "Razón:"
+
+#: ../../../www/radmin/templates/smarty.c:318
+#: ../../../www/radmin/templates/smarty.c:328
+msgid "Captive Portal Config Login"
+msgstr "Configuración identificacion Portal Cautivo"
+
+#: ../../../www/radmin/templates/smarty.c:319
+msgid "All Sessions"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:320
+msgid "Display just active Sessions"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:329
+#: ../../../www/radmin/includes/page_functions.inc.php:92
+msgid "Admin Log"
+msgstr "Admin Log"
+
+#: ../../../www/radmin/templates/smarty.c:332
+msgid "IP"
+msgstr "IP"
+
+#: ../../../www/radmin/templates/smarty.c:333
+msgid "Action"
+msgstr "Acción"
+
+#: ../../../www/radmin/templates/smarty.c:335
+msgid ""
+"Login is required to access the Administration section of this website."
+msgstr "La identificacion es necesaria para acceder a la sección de Administración de este sitio web."
+
+#: ../../../www/radmin/templates/smarty.c:337
+msgid "Username for Admin interface (Different to internet access username)"
+msgstr "Nombre de usuario para la interfaz de administración (Es diferente al nombre de usuario de acceso a Internet)"
+
+#: ../../../www/radmin/templates/smarty.c:340
+msgid "Please select your voucher type"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:342
+msgid "Proceed to Payment"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:343
+#: ../../../www/radmin/templates/smarty.c:347
+msgid "Upload Logo"
+msgstr "Subir Logo"
+
+#: ../../../www/radmin/templates/smarty.c:344
+msgid "Logo Image"
+msgstr "Imagen del logo"
+
+#: ../../../www/radmin/templates/smarty.c:345
+msgid "Select new logo file."
+msgstr "Seleccione el archivo con el nuevo logo."
+
+#: ../../../www/radmin/templates/smarty.c:346
+msgid ""
+"Logo file needs to be in png format, and relatively small (remember, every "
+"page has the logo). 10 Kilobytes maximum. It's physical size shouldn't be "
+"bigger than about 220px in both directions."
+msgstr "Archivo de logo debe ser en formato png, y relativamente pequeño (recuerden, cada página tiene el logo). 10 Kilobytes máximo. Su tamaño físico no debe ser mayor de 220px en ambas direcciones."
+
+#: ../../../www/radmin/templates/smarty.c:348
+msgid ""
+"For more advanced logos, (different file type, size, placement}, manually "
+"upload the file to /var/www/ or /usr/share/grase/www/images/ and use the "
+"custom CSS to override this logo. The logo is defined in the #page container"
+" as the background."
+msgstr "Para logotipos más avanzados, (tipo de archivo diferente, el tamaño, la colocación}, de forma manual cargar el archivo en / var / www / o / usr / share / grase / www / images / y utilizar el CSS personalizado para sobrescribir este logo. El logo es definido en el contenedor #page como fondo."
+
+#: ../../../www/radmin/templates/smarty.c:349
+#: ../../../www/radmin/includes/page_functions.inc.php:79
+msgid "Network Settings"
+msgstr "Configuración de red"
+
+#: ../../../www/radmin/templates/smarty.c:350
+msgid ""
+"These settings are used by Coova Chilli and Dnsmasq. Both Coova Chilli and "
+"Dnsmasq will need to be reloaded when these settings change. A cron job will"
+" automatically check for changes every 5 minutes and reload these daemons if"
+" needed."
+msgstr "Estos valores son utilizados por Chilli Coova y Dnsmasq. Ambos, Chilli Coova y Dnsmasq, se tendrán que volver a cargar cuando se modifican estos valores. Una tarea cron comprueba automáticamente si hay cambios cada 5 minutos y cargara estos cambios si es necesario."
+
+#: ../../../www/radmin/templates/smarty.c:351
+msgid "Network Config last reloaded %1"
+msgstr "Última recarga configuracion red %1"
+
+#: ../../../www/radmin/templates/smarty.c:352
+msgid "Network Config last updated %1"
+msgstr "Última actualización configuracion red %1"
+
+#: ../../../www/radmin/templates/smarty.c:355
+msgid "Batch ID"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:356
+msgid "Date Created"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:357
+msgid "Created By"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:358
+msgid "Number of Tickets"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:360
+msgid ""
+"Are you sure you want to delete the selected batches and all users in them?"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:364
+msgid "Create Tickets"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:365
+#: ../../../www/uam/templates/smarty.c:43
+msgid "Error"
+msgstr "Error"
+
+#: ../../../www/radmin/templates/smarty.c:366
+#: ../../../www/uam/templates/smarty.c:44
+msgid "An Error has occured. Please report the error to the administrator"
+msgstr "Un error ha ocurrido. Por favor, informar del error al administrador"
+
+#: ../../../www/radmin/templates/smarty.c:367
+msgid ""
+"There may be more information available to the administrator in the logs"
+msgstr "Es posible que haya más información disponible para el administrador en los registros"
+
+#: ../../../www/uam/templates/smarty.c:1
 msgid "Free Downloads"
 msgstr "Descargas gratis"
 
+#: ../../../www/uam/templates/smarty.c:2
 #: ../../../www/uam/templates/smarty.c:24
-msgid ""
-"Welcome to the %1 Hotspot. Please read the following before logging in."
+msgid "Help"
+msgstr "Ayuda"
+
+#: ../../../www/uam/templates/smarty.c:3
+msgid "Successful Login"
+msgstr "Inicio de sesión con éxito"
+
+#: ../../../www/uam/templates/smarty.c:4
+msgid "Continue to your site"
+msgstr "Continuar a su sitio web"
+
+#: ../../../www/uam/templates/smarty.c:5
+msgid "Support"
+msgstr "Soporte"
+
+#: ../../../www/uam/templates/smarty.c:6
+msgid "By continuing, you agree to the below terms and conditions."
 msgstr ""
-"Bienvenido a el %1 Hotspot. Por favor lea lo siguiente antes de iniciar "
-"sesion."
 
-#: ../../../www/uam/templates/smarty.c:25
-msgid "Information and Help"
-msgstr "Información y ayuda"
-
-#: ../../../www/uam/templates/smarty.c:26
-msgid "For a quick logout, bookmark <a href=\"%1\">LOGOUT</a>"
+#: ../../../www/uam/templates/smarty.c:7
+msgid "Show Terms and Conditions"
 msgstr ""
-"Para un cierre de sesión rápido ,agrege a favoritos <a href=\"%1\">Cerrar "
-"sesion</a>"
 
-#: ../../../www/uam/templates/smarty.c:27
+#: ../../../www/uam/templates/smarty.c:8
 msgid "If you are already logged in, continue to your site"
 msgstr "Si ya está identificado, continué a su sitio"
 
-#: ../../../www/uam/templates/smarty.c:28
-msgid "You are using the less secure login method."
-msgstr "Está utilizando el método de acceso menos seguro."
-
-#: ../../../www/uam/templates/smarty.c:29
-msgid ""
-"If you have javascript disabled, please try enabling it for the secure login"
-" method."
+#: ../../../www/uam/templates/smarty.c:9
+#: ../../../www/uam/templates/smarty.c:10
+msgid "Free Access"
 msgstr ""
-"Usted tiene deshabilitado Javascript, por favor intente habilitarlo para el "
-"método de acceso seguro."
 
-#: ../../../www/uam/templates/smarty.c:30
-msgid ""
-"Use this less secure login form if the javascript version is giving you "
-"trouble"
+#: ../../../www/uam/templates/smarty.c:11
+msgid "Voucher Login"
 msgstr ""
-"Utilice este formulario de acceso menos seguro si la versión de Javascript "
-"te da problemas"
 
-#: ../../../www/uam/templates/smarty.c:31
+#: ../../../www/uam/templates/smarty.c:14
 msgid "You have disabled the secure javascript login method."
 msgstr "Ha desactivado el método seguro de inicio de sesión Javascript ."
 
-#: ../../../www/uam/templates/smarty.c:32
+#: ../../../www/uam/templates/smarty.c:15
 msgid "Click here to re-enable it"
 msgstr "Haga clic aquí para volver a habilitarlo"
 
-#: ../../../www/uam/templates/smarty.c:35
+#: ../../../www/uam/templates/smarty.c:16
+msgid "Attempting Login..."
+msgstr ""
+
+#: ../../../www/uam/templates/smarty.c:17
+msgid "Logged in as"
+msgstr ""
+
+#: ../../../www/uam/templates/smarty.c:18
+msgid "Remaining Session Time"
+msgstr ""
+
+#: ../../../www/uam/templates/smarty.c:19
+msgid "Remaining Session Data"
+msgstr ""
+
+#: ../../../www/uam/templates/smarty.c:20
+msgid "Logout"
+msgstr ""
+
+#: ../../../www/uam/templates/smarty.c:21
+msgid "Open Status Window"
+msgstr ""
+
+#: ../../../www/uam/templates/smarty.c:22
 msgid "Trouble logging in?"
 msgstr "¿Problemas para iniciar sesión?"
 
+#: ../../../www/uam/templates/smarty.c:23
+msgid "Click here to try a less secure login."
+msgstr ""
+
+#: ../../../www/uam/templates/smarty.c:25
+msgid "You are logged in as:"
+msgstr "Estás conectado como:"
+
+#: ../../../www/uam/templates/smarty.c:26
+msgid "User"
+msgstr "Usuario"
+
+#: ../../../www/uam/templates/smarty.c:27
+msgid "Usage this session"
+msgstr "Uso de esta sesión"
+
+#: ../../../www/uam/templates/smarty.c:28
+msgid "Remaining Quota"
+msgstr "Cuota restante"
+
+#: ../../../www/uam/templates/smarty.c:30
+msgid "Quota allocation"
+msgstr "Asignación cuota"
+
+#: ../../../www/uam/templates/smarty.c:32
+msgid "Max Session Time"
+msgstr "Tiempo máximo de sesión"
+
+#: ../../../www/uam/templates/smarty.c:33
+msgid "Max Idle Time"
+msgstr "Tiempo máximo de inactividad"
+
+#: ../../../www/uam/templates/smarty.c:35
+msgid "Session Time"
+msgstr "Tiempo de la sesión"
+
 #: ../../../www/uam/templates/smarty.c:36
-msgid "Click here to disable the javascript login forms."
-msgstr "Haga clic aquí para desactiva el formulario de ingreso javascript."
+msgid "Remaining Time"
+msgstr "Tiempo restante"
 
-#: ../../../www/uam/templates/smarty.c:37
-msgid "This will use a less secure login method"
-msgstr "Esto utilizará un método de acceso menos seguro"
+#: ../../../www/uam/templates/smarty.c:40
+msgid "Idle Time"
+msgstr "Tiempo de inactividad"
 
-#: ../../../www/radmin/newmachine.php:32
-msgid "MAC Address already has an account"
-msgstr "Esta Dirección MAC ya tiene una cuenta"
+#: ../../../www/uam/templates/smarty.c:41
+msgid "Downloaded"
+msgstr "Descargado"
 
-#: ../../../www/radmin/newmachine.php:45
-msgid "Only set one Data limit field"
-msgstr "Establece solo un campo límite de datos"
+#: ../../../www/uam/templates/smarty.c:42
+msgid "Uploaded"
+msgstr "Subido"
 
-#: ../../../www/radmin/newmachine.php:46
-msgid "Only set one Time limit field"
-msgstr "Establece solo un campo límite de tiempo"
-
-#: ../../../www/radmin/newmachine.php:86
-msgid "Computer Account Successfully Created"
-msgstr "La Cuenta de equipo se creó correctamente"
-
-#: ../../../www/radmin/chilliconfig.php:36
-msgid "Walled Garden allowed hosts"
-msgstr "Walled Garden Host permitidos"
-
-#: ../../../www/radmin/chilliconfig.php:37
-msgid ""
-"IP's and Hostnames that are accesible without logging in. DNS Lookup is only"
-" done at startup time so not suitable for domains with Round Robin IP "
-"Addresses"
-msgstr ""
-"IP y nombres de hosts que son accesibles sin iniciar sesión. La búsqueda de "
-"DNS sólo se realiza en el momento de inicio, no es adecuado para los "
-"dominios con Round Robin IP"
-
-#: ../../../www/radmin/chilliconfig.php:40
-msgid "Walled Garden allowed domains"
-msgstr "Walled Garden Dominios permitidos"
-
-#: ../../../www/radmin/chilliconfig.php:41
-msgid "Domains (and their subdomains) that are accesible without logging in."
-msgstr "Dominios (y sus subdominios) que son accesibles sin iniciar sesión"
-
-#: ../../../www/radmin/chilliconfig.php:48
-msgid "MAC Auth Password"
-msgstr "Contraseña MAC autenticación "
-
-#: ../../../www/radmin/chilliconfig.php:49
-msgid ""
-"The MAC Password used to autologin Computer Accounts. Change this to "
-"something obscure as it can be used to login using a known MAC address as "
-"the username."
-msgstr ""
-"La contraseña MAC se utiliza para el autologin en las cuentas de equipo. "
-"Cambie esto a algo oscuro, ya que puede ser utilizado para iniciar la sesión"
-" utilizando una dirección MAC conocida como el nombre de usuario."
-
-#: ../../../www/radmin/chilliconfig.php:52
-msgid "Default Session Idle Timeout"
-msgstr "Tiempo de espera predeterminado sesión inactiva"
-
-#: ../../../www/radmin/chilliconfig.php:53
-msgid ""
-"Default Idle Timeout for sessions. Logout after this number of seconds have "
-"passed without any traffic."
-msgstr ""
-"Tiempo de espera de inactividad de las sesiones. Cerrar sesion  después de "
-"este número de segundos sin ningún tipo de tráfico."
-
-#: ../../../www/radmin/chilliconfig.php:56
-msgid "DHCP Lease time"
-msgstr "Tiempo de concesión DHCP"
-
-#: ../../../www/radmin/chilliconfig.php:57
-msgid "DHCP lease time in seconds."
-msgstr "Tiempo de concesión DHCP en segundos."
-
-#: ../../../www/radmin/chilliconfig.php:97
-#: ../../../www/radmin/chilliconfig.php:138
-#, php-format
-msgid "%s Coova Chilli config option update"
-msgstr "%s Opción de actualización Chilli Coova config "
-
-#: ../../../www/radmin/chilliconfig.php:183
-msgid "Changes pending Coova Chilli Reload"
-msgstr "Actualizar los cambios pendientes Coova Chilli"
-
-#: ../../../www/radmin/chilliconfig.php:185
-#: ../../../www/radmin/netconfig.php:250
-msgid "Settings match running config"
-msgstr "Configuración coincide con configuración en ejecución"
-
-#: ../../../www/radmin/usermin.php:42
-msgid "New Passwords must match"
-msgstr "Nuevas contraseñas deben coincidir"
-
-#: ../../../www/radmin/usermin.php:45
-msgid "Password must not be blank"
-msgstr "La contraseña no debe estar en blanco"
-
-#: ../../../www/radmin/usermin.php:50 ../../../www/radmin/edituser.php:45
-#: ../../../www/radmin/passwd.php:65 ../../../www/radmin/passwd.php:66
-msgid "Password Changed"
-msgstr "Contraseña cambiada"
-
-#: ../../../www/radmin/usermin.php:53
-msgid "Password not updated"
-msgstr "La contraseña no se actualiza"
-
-#: ../../../www/radmin/netconfig.php:38
-msgid "DNS Servers"
-msgstr "Servidores DNS"
-
-#: ../../../www/radmin/netconfig.php:39
-msgid ""
-"IP Addresses of DNS Servers. All clients will use the gateway as the DNS "
-"server which will use the addresses listed here to do DNS lookups. Dnsmasq "
-"WILL NOT get default servers from DHCP or /etc/resolv.conf and will default "
-"to OpenDNS Family Shield"
-msgstr ""
-"Las direcciones IP de servidores DNS. Todos los clientes utilizaran la "
-"puerta de enlace como servidor DNS que aparecen aquí para hacer las "
-"búsquedas de DNS. Dnsmasq NO obtiene servidores por defecto de DHCP o "
-"/etc/resolv.conf y por defecto usara OpenDNS Family Shield"
-
-#: ../../../www/radmin/netconfig.php:42
-msgid "Bogus NXDOMAIN"
-msgstr "Bogus NXDOMAIN"
-
-#: ../../../www/radmin/netconfig.php:43
-msgid ""
-"IP Addresses of Bogus NXDOMAIN returns. All DNS replies that contain these "
-"ip address will be transformed into a NXDOMAIN result"
-msgstr ""
-"Las direcciones IP de los retornos NXDOMAIN Bogus. Todas las respuestas DNS "
-"que contienen estas direcciones IP se transforman en un resultado NXDOMAIN"
-
-#: ../../../www/radmin/netconfig.php:50
-msgid "LAN IP Address"
-msgstr "Dirección IP de LAN"
-
-#: ../../../www/radmin/netconfig.php:51
-msgid ""
-"The server IP address that is used on the LAN side (Coova-Chilli) of the "
-"network. This will be the gateway address for all clients, as well as the "
-"DNS server the clients access. For default Squid config this should be a "
-"private ip address."
-msgstr ""
-"La dirección IP del servidor que se utiliza en el lado LAN (Coova-Chilli) de"
-" la red. Esta será la dirección de gateway para todos los clientes, así como"
-" el servidor DNS de los clientes de acceso. Para la configuración por "
-"defecto de Squid esta debe ser una dirección IP privada."
-
-#: ../../../www/radmin/netconfig.php:60
-msgid "LAN Network Mask"
-msgstr "Mascara Red LAN "
-
-#: ../../../www/radmin/netconfig.php:61
-msgid ""
-"Network mask to use for clients network. (i.e. 255.255.255.0). DHCP range "
-"and network address will be calculated from this and the LAN IP Address."
-msgstr ""
-"Máscara de red a utilizar para la red de clientes. (Por ejemplo: "
-"255.255.255.0). Rango DHCP y la dirección de la red se calcula a partir de "
-"este y la dirección IP LAN."
-
-#: ../../../www/radmin/netconfig.php:65
-msgid "Bogus NXDOMAIN (OpenDNS)"
-msgstr "Bogus NXDOMAIN (OpenDNS)"
-
-#: ../../../www/radmin/netconfig.php:66
-msgid ""
-"Some DNS Providers return bogus NXDOMAIN to redirect you to their search "
-"engine. Block the bogus ip's and return a real NXDOMAIN for OpenDNS."
-msgstr ""
-"Algunos proveedores de DNS retornan bogus NXDOMAIN para volver a su motor de"
-" búsqueda. Bloquear la IP bogus y devolver un NXDOMAIN real para OpenDNS."
-
-#: ../../../www/radmin/netconfig.php:70
-msgid "Wireless Network Name (SSID)"
-msgstr "Nombre de red inalámbrica (SSID)"
-
-#: ../../../www/radmin/netconfig.php:71
-msgid ""
-"Wireless Network Name that clients connect to. Currently does not modify any"
-" settings but if set will print on the tickets"
-msgstr ""
-"Nombre de red inalámbrica que se conecta a los clientes. Actualmente no se "
-"modificar ninguna configuración, pero si se imprimirá en los billetes"
-
-#: ../../../www/radmin/netconfig.php:74
-msgid "Print Ticket Type"
-msgstr "Imprimir Tipo de Ticket"
-
-#: ../../../www/radmin/netconfig.php:75
-msgid "Print the ticket type (Group name) on tickets"
-msgstr "Imprimir el tipo de ticket (nombre del grupo) en los tickets"
-
-#: ../../../www/radmin/netconfig.php:78
-msgid "Print Ticket Expiry"
-msgstr "Imprimir caducidad Ticket"
-
-#: ../../../www/radmin/netconfig.php:79
-msgid "Print the expiry on tickets"
-msgstr "Imprimir la expiración en los tickets"
-
-#: ../../../www/radmin/netconfig.php:90
-msgid "LAN Network Interface"
-msgstr "Interfaz de red LAN"
-
-#: ../../../www/radmin/netconfig.php:91
-msgid ""
-"The Network Interface that is connected to the LAN of the Hotspot (the side "
-"the clients connect to)"
-msgstr ""
-"La interfaz de red que está conectado a la LAN del hotspot (la parte donde "
-"los clientes se conectan)"
-
-#: ../../../www/radmin/netconfig.php:96
-msgid "WAN Network Interface"
-msgstr "Interface de red WAN"
-
-#: ../../../www/radmin/netconfig.php:97
-msgid ""
-"The Network Interface that is connected to the WAN of the Hotspot (the side "
-"the internet is connected to)"
-msgstr ""
-"La interfaz de red que está conectado a la WAN del hotspot (la parte donde "
-"Internet está conectado)"
-
-#: ../../../www/radmin/netconfig.php:248
-msgid "Changes pending Reload"
-msgstr "Actualizar los cambios pendientes"
-
-#: ../../../www/radmin/edituser.php:63
-msgid "Group Changed"
-msgstr "Grupo Cambiado"
-
-#: ../../../www/radmin/edituser.php:73
-msgid "Comment Changed"
-msgstr "Comentario Cambiado"
-
-#: ../../../www/radmin/edituser.php:90
-msgid "Data Limit Increased"
-msgstr "Aumento Limite Datos"
-
-#: ../../../www/radmin/edituser.php:91
-#, php-format
-msgid "Data Limit increased for %s"
-msgstr "Limite de Datos incrementando por %s"
-
-#: ../../../www/radmin/edituser.php:111
-msgid "Max Data Limit Updated"
-msgstr "Max Limite Datos Actualizado"
-
-#: ../../../www/radmin/edituser.php:112
-#, php-format
-msgid "Max Data Limit changed for %s"
-msgstr "Max Limite datos cambiado por %s"
-
-#: ../../../www/radmin/edituser.php:129
-msgid "Time Limit Increased"
-msgstr "Tiempo Limite incrementado"
-
-#: ../../../www/radmin/edituser.php:130
-#, php-format
-msgid "Time Limit increased for %s"
-msgstr "Tiempo limite incrementado por %s"
-
-#: ../../../www/radmin/edituser.php:149
-msgid "Max Time Limit Updated"
-msgstr "Max Limite Tiempo Actualizado"
-
-#: ../../../www/radmin/edituser.php:150
-#, php-format
-msgid "Max Time Limit changed for %s"
-msgstr "Max Limite tiempo cambiado por %s"
-
-#: ../../../www/radmin/edituser.php:159
-msgid "Expiry updated"
-msgstr "Vencimiento actualizado"
-
-#: ../../../www/radmin/edituser.php:169
-#, php-format
-msgid "User '%s' Deleted"
-msgstr "usuario '%s'  eliminado"
-
-#: ../../../www/radmin/passwd.php:57
-msgid "Old Password incorrect"
-msgstr "Contraseña anterior incorrecta"
-
-#: ../../../www/radmin/passwd.php:60
-msgid "New passwords don't match"
-msgstr "Las nuevas contraseñas no coinciden"
-
-#: ../../../www/radmin/passwd.php:68
-msgid "Please fill in all password fields"
-msgstr "Por favor, rellene todos los campos de contraseña"
-
-#: ../../../www/radmin/passwd.php:75
-#, php-format
-msgid "User %s already exists"
-msgstr "El usuario %s ya existe"
-
-#: ../../../www/radmin/passwd.php:78
-msgid "User Created"
-msgstr "Usuario creado"
-
-#: ../../../www/radmin/passwd.php:81
-msgid "Need both username and password"
-msgstr "Necesita nombre de usuario y contraseña"
-
-#: ../../../www/radmin/passwd.php:87
-#, php-format
-msgid "User %s Deleted"
-msgstr "El usuario %s a sido eliminado"
-
-#: ../../../www/radmin/passwd.php:90
-msgid "Invalid Delete Request"
-msgstr "Solicitud de eliminacion inválida"
-
-#: ../../../www/radmin/loginconfig.php:48
-msgid "Login Screen Title"
-msgstr "Título de la pantalla de inicio de sesión"
-
-#: ../../../www/radmin/loginconfig.php:49
-msgid "Hide Title (header) from login screen"
-msgstr "Ocultar el título (encabezado) de la pantalla de inicio de sesión"
-
-#: ../../../www/radmin/loginconfig.php:52
-msgid "Login Screen Footer"
-msgstr "Pie de página de la pantalla para el inicio de sesión"
-
-#: ../../../www/radmin/loginconfig.php:53
-msgid ""
-"Hide footer from login screen. Please consider adding a link back to "
-"http://grasehotspot.org if you are hiding the footer"
-msgstr ""
-"Ocultar pie de la pantalla de inicio de sesión. Por favor, considere agregar"
-" un enlace a http://grasehotspot.org si usted está ocultando el pie de "
-"página"
-
-#: ../../../www/radmin/loginconfig.php:56
-msgid "Logout Bookmark"
-msgstr "Marcador de Cierre Sesion "
-
-#: ../../../www/radmin/loginconfig.php:57
-msgid "Hide Bookmark logout link"
-msgstr "Ocultar enlace marcador para el cierre de sesion"
-
-#: ../../../www/radmin/loginconfig.php:60
-msgid "Help Link"
-msgstr " Enlace Ayuda"
-
-#: ../../../www/radmin/loginconfig.php:61
-msgid ""
-"Hide Help and Information link from login page (still shows in footer if "
-"footer is enabled)"
-msgstr ""
-"Esconder ayuda y Información de la página de inicio de sesión (aún muestra "
-"en el pie de pie de página si está habilitado)"
-
-#: ../../../www/radmin/loginconfig.php:64
-msgid "Disable Javascript Login"
-msgstr "Desactivar Javascript Login"
-
-#: ../../../www/radmin/loginconfig.php:65
-msgid "Force all logins to be through the less secure non-javascript method"
-msgstr "Obligar a todos los inicios de sesión usar el metodo no Javascript"
-
-#: ../../../www/radmin/loginconfig.php:68
-msgid "Disable All Default CSS"
-msgstr "Deshabilitar todos los CSS por defecto"
-
-#: ../../../www/radmin/loginconfig.php:69
-msgid ""
-"All css files will be excluded from the login pages, and only the css below "
-"(Main CSS) will be used"
-msgstr ""
-"Todos los archivos css serán excluidos de las páginas de inicio de sesión, y"
-" sólo el CSS below (CSS Main) se utilizará"
-
-#: ../../../www/radmin/loginconfig.php:73
-msgid "Page Title"
-msgstr "Título de la página"
-
-#: ../../../www/radmin/loginconfig.php:74
-msgid "The page title that is displayed on the login page"
-msgstr "El título de la página que se muestra en la página de inicio"
-
-#: ../../../www/radmin/loginconfig.php:82
-msgid "Main CSS"
-msgstr "CSS Principal "
-
-#: ../../../www/radmin/loginconfig.php:83
-msgid ""
-"Cascading style sheet that is applied to all portal pages (use !important to"
-" override a style if your settings here don't seem to work, it may be that "
-"the builtin css has a more specific selector than your one here, look at "
-"radmin.css for id's and classes)"
-msgstr ""
-"Hojas de estilo en cascada se aplican a todas las páginas del portal (use "
-"!Important para sobrescribir un estilo si la configuración de aquí no "
-"parecen funcionar, puede ser que el css incorporado tiene un selector más "
-"específico que el de aquí, mirar Radmin.css para las identidades y las "
-"clases)"
-
-#: ../../../www/radmin/loginconfig.php:86
-msgid "Help and Information Page"
-msgstr " Página de información y Ayuda"
-
-#: ../../../www/radmin/loginconfig.php:87
-msgid "Help and Information page contents"
-msgstr "Ayuda y contenidos de la pagina de informacion"
-
-#: ../../../www/radmin/loginconfig.php:91
-msgid "Login Help HTML"
-msgstr "Ayuda HTML Inicio de sesion"
-
-#: ../../../www/radmin/loginconfig.php:92
-msgid "Help text (and HTML) displayed on login page above login form"
-msgstr ""
-"Texto de ayuda (y HTML) mostrado en la página de inicio de sesión por encima"
-" del formulario para el inicio de sesión"
-
-#: ../../../www/radmin/loginconfig.php:97
-msgid "HTML Below login form"
-msgstr "HTML formulario de acceso"
-
-#: ../../../www/radmin/loginconfig.php:98
-msgid "HTML to insert below login form"
-msgstr ""
-"HTML para insertar a continuación del formulario para el inicio de sesión"
-
-#: ../../../www/radmin/loginconfig.php:101
-msgid "Logged In HTML"
-msgstr "Identificado En HTML"
-
-#: ../../../www/radmin/loginconfig.php:102
-msgid "HTML for successful login when not using javascript"
-msgstr ""
-"HTML para inicios de sesión correctos cuando no esté usando Javascript"
-
-#: ../../../www/radmin/loginconfig.php:140
-#: ../../../www/radmin/loginconfig.php:177
-#, php-format
-msgid "%s login config option update"
-msgstr "%s config login opción de actualización"
-
-#: ../../../www/radmin/groupconfig.php:54
-msgid "A minimum of one group is required"
-msgstr "Un mínimo de un grupo es necesario"
-
-#: ../../../www/radmin/groupconfig.php:58
-msgid "It is not recommended having groups without expiries."
-msgstr "No se recomienda tener grupos sin vencimientos."
-
-#: ../../../www/radmin/groupconfig.php:80
-msgid "Invalid group name or group name missing"
-msgstr "Nombre de grupo no válido  o grupo no encontrado"
-
-#: ../../../www/radmin/groupconfig.php:98
-#, php-format
-msgid "%s: Invalid expiry format"
-msgstr "%s: formato de vencimiento no válido"
-
-#: ../../../www/radmin/groupconfig.php:102
-#, php-format
-msgid "%s: Expiry can not be in the past"
-msgstr "%s: El vencimiento no puede ser en el pasado"
-
-#: ../../../www/radmin/groupconfig.php:125
-#, php-format
-msgid "Need both a time limit and recurrance for '%s'"
-msgstr "Necesitan un límite de tiempo y recurrencia de '%s'"
-
-#: ../../../www/radmin/groupconfig.php:184
-msgid "Groups updated"
-msgstr "Grupos actualizados"
-
-#: ../../../www/radmin/newuser.php:34
+#: ../../../www/radmin/newuser.php:32
 msgid "Username already taken"
 msgstr "El Nombre de usuario ya esta en uso"
 
@@ -1674,663 +1397,1232 @@ msgstr "El Nombre de usuario ya esta en uso"
 msgid "Username and Password are both Required"
 msgstr "Nombre de usuario y contraseña son requeridos"
 
-#: ../../../www/radmin/newuser.php:112
-#, php-format
-msgid "User %s Successfully Created"
-msgstr "Usuario %s  creado correctamente"
-
-#: ../../../www/radmin/newuser.php:113
-#, php-format
-msgid "Print Ticket for %s"
-msgstr "Imprimir Tickets para %s"
-
-#: ../../../www/radmin/newuser.php:114
-#, php-format
-msgid "Created new user %s"
-msgstr "Creado nuevo usuario %s"
-
-#: ../../../www/radmin/printnewtickets.php:48
-#: ../../../www/radmin/printnewtickets.php:54
-#, php-format
-msgid "Batch %s Vouchers"
-msgstr " Cupones por lotes %s"
-
-#: ../../../www/radmin/printnewtickets.php:103
-#, php-format
-msgid "Wireless Network: %s"
-msgstr "Red inalámbrica: %s"
-
-#: ../../../www/radmin/printnewtickets.php:105
-#, php-format
-msgid "Username: %s"
-msgstr "Nombre de usuario: %s"
-
-#: ../../../www/radmin/printnewtickets.php:106
-#, php-format
-msgid "Password: %s"
-msgstr "Contraseña: %s"
-
-#: ../../../www/radmin/printnewtickets.php:110
-#, php-format
-msgid "Voucher Type: %s"
-msgstr "Tipo de cupón: %s"
-
-#: ../../../www/radmin/printnewtickets.php:118
-#, php-format
-msgid "Expiry: %s"
-msgstr "Expiración: %s"
-
-#: ../../../www/radmin/newtickets.php:58
-msgid "Max of 50 tickets per batch"
-msgstr "Máximo de 50 tickets por lote"
-
-#: ../../../www/radmin/newtickets.php:139
-msgid "Tickets Successfully Created"
-msgstr "Tickets creados correctamente"
-
-#: ../../../www/radmin/newtickets.php:140
-msgid "Print Tickets"
-msgstr "Imprimir Tickets"
-
-#: ../../../www/radmin/settings.php:101
-msgid "Location name not valid"
-msgstr "Nombre de ubicación no valido"
-
-#: ../../../www/radmin/settings.php:105
-msgid "Location name updated"
-msgstr "Nombre de ubicación requerido"
-
-#: ../../../www/radmin/settings.php:106
-msgid "Location Name changed to"
-msgstr "Nombre de ubicación cambiado a"
-
-#: ../../../www/radmin/settings.php:111
-msgid "Error Saving Location Name"
-msgstr "Error guardando el nombre de ubicación"
-
-#: ../../../www/radmin/settings.php:120
-msgid "Website name not valid"
-msgstr "Nombre Sitio Web no valido"
-
-#: ../../../www/radmin/settings.php:125 ../../../www/radmin/settings.php:126
-msgid "Website name updated"
-msgstr "Nombre Sitio Web actualizado"
-
-#: ../../../www/radmin/settings.php:130
-msgid "Error Saving Website Name"
-msgstr "Error guardando el nombre del Sitio Web"
-
-#: ../../../www/radmin/settings.php:138
-msgid "Website link not valid"
-msgstr "Enlace del Sitio Web no valido"
-
-#: ../../../www/radmin/settings.php:143 ../../../www/radmin/settings.php:144
-msgid "Website link updated"
-msgstr "Enlace del Sitio Web actualizado"
-
-#: ../../../www/radmin/settings.php:148
-msgid "Error Saving Website link"
-msgstr "Error guardando enlace del Sitio Web"
-
-#: ../../../www/radmin/settings.php:162 ../../../www/radmin/settings.php:163
-msgid "Price per MiB updated"
-msgstr "Precio por MiB actualizado"
-
-#: ../../../www/radmin/settings.php:167
-msgid "Error saving Price per MiB"
-msgstr "Error al guardar Precio por MiB"
-
-#: ../../../www/radmin/settings.php:172
-msgid "Invalid Price per MiB"
-msgstr "Precio invalido por MiB"
-
-#: ../../../www/radmin/settings.php:183 ../../../www/radmin/settings.php:184
-msgid "Price per Minute Updated"
-msgstr "Precio por minuto Actualizado"
-
-#: ../../../www/radmin/settings.php:187
-msgid "Error saving Price per Minute"
-msgstr "Error al guardar el precio por minuto"
-
-#: ../../../www/radmin/settings.php:191
-msgid "Invalid Price per Minute"
-msgstr "Precio por minuto invalido"
-
-#: ../../../www/radmin/settings.php:202
-msgid "Currency updated"
-msgstr "Moneda actualizada"
-
-#: ../../../www/radmin/settings.php:203
-msgid "Currency updated to"
-msgstr "Moneda actualizado para"
-
-#: ../../../www/radmin/settings.php:207
-msgid "Error saving Currency"
-msgstr "Error guardando moneda"
-
-#: ../../../www/radmin/settings.php:211
-msgid "Invalid Currency"
-msgstr "Moneda invalida"
-
-#: ../../../www/radmin/settings.php:233
-msgid "Locale updated"
-msgstr "Local actualizado"
-
-#: ../../../www/radmin/settings.php:234
-msgid "Locale updated to"
-msgstr "Local actualizado para"
-
-#: ../../../www/radmin/settings.php:238
-msgid "Error updating Locale"
-msgstr "Error al actualizar la configuración regional"
-
-#: ../../../www/radmin/settings.php:242
-msgid "Invalid Locale"
-msgstr "No válido de configuración regional"
-
-#: ../../../www/radmin/settings.php:258 ../../../www/radmin/settings.php:259
-msgid "Sellable Data Limit Update"
-msgstr "Limite de datos vendibles actualizado"
-
-#: ../../../www/radmin/settings.php:263
-msgid "Error updating Sellable Data Limit"
-msgstr "Error actualizando limite de datos vendibles"
-
-#: ../../../www/radmin/settings.php:268
-msgid "Invalid value for Sellable Data"
-msgstr "Valor no válido para datos vendible"
-
-#: ../../../www/radmin/settings.php:279 ../../../www/radmin/settings.php:280
-msgid "Useable Data Limit Update"
-msgstr "Limite de datos disponibles actualizado"
-
-#: ../../../www/radmin/settings.php:284
-msgid "Error updating Useable Data Limit"
-msgstr "Error actualizando el limite de datos disponible"
-
-#: ../../../www/radmin/settings.php:289
-msgid "Invalid value for Useable Data"
-msgstr "Valor no válido para datos disponibles"
-
-#: ../../../www/radmin/settings.php:297
-msgid "Support name not valid"
-msgstr "Nombre de soporte no valido"
-
-#: ../../../www/radmin/settings.php:302 ../../../www/radmin/settings.php:303
-msgid "Support name updated"
-msgstr "Nombre de soporte actualizado"
-
-#: ../../../www/radmin/settings.php:307
-msgid "Error Saving Support Name"
-msgstr "Error guardando el nombre del soporte"
-
-#: ../../../www/radmin/settings.php:315
-msgid "Support link not valid"
-msgstr "Enlace de soporte no valido"
-
-#: ../../../www/radmin/settings.php:320 ../../../www/radmin/settings.php:321
-msgid "Support link updated"
-msgstr "Enlace de soporte actualizado"
-
-#: ../../../www/radmin/settings.php:325
-msgid "Error Saving Support link"
-msgstr "Error guardando enlace de soporte"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:70
-#: ../../../www/radmin/classes/CronFunctions.class.php:105
-#: ../../../www/radmin/classes/CronFunctions.class.php:153
-#: ../../../www/radmin/classes/CronFunctions.class.php:209
-msgid "Upgrading DB failed: "
-msgstr "Actualización de base de datos ha fallado:"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:153
-msgid "Including default_templates file failed"
-msgstr "Incluir el fichero default_templates ha fallado"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:287
-msgid "Database upgraded"
-msgstr "Base de datos actualizada"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:306
-msgid "Unable to select user from radcheck"
-msgstr "No se puede seleccionar el usuario del radcheck"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:324
-msgid "Unable to cleanup old users from batch "
-msgstr "No es posible limpieza para los usuarios antiguos por lotes"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:333
-msgid "Unable to cleanup old batches "
-msgstr "No es posible eliminar viejos lotes"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:338
-msgid "Old Batches Cleaned"
-msgstr "Lotes viejos eliminados"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:370
-msgid "Clearing stale sessions failed: "
-msgstr "Eliminar Sesiones Falladas"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:374
-msgid "Stale sessions cleared"
-msgstr "Sesiones Stale limpiadas"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:407
-msgid "Fetching users to delete failed"
-msgstr "Fallo de obtención de los usuarios para eliminar "
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:419
-msgid "Expired users deleted"
-msgstr "Vencimientos Usuarios eliminados"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:472
-msgid "Unable to insert data into mtotaccttmp: "
-msgstr "No se puede insertar datos en mtotaccttmp:"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:490
-msgid "Unable to delete old radacct data: "
-msgstr "No se puede eliminar datos antiguos radacct:"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:511
-msgid "Unable to update users Max-Octets: "
-msgstr "No se puede actualizar los usuarios de Max-Octets:"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:530
-msgid "Unable to update users Max-All-Session: "
-msgstr "No se puede actualizar los usuarios de Max-Todas las sesiones:"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:566
-msgid "Unable to move mtotaccttmp data to mtotacct: "
-msgstr "No se puede mover datos a mtotaccttmp mtotacct:"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:579
-msgid "Unable to truncate mtotaccttmp: "
-msgstr "No se pueden truncar mtotaccttmp:"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:599
-msgid "Unable to ensure positive values in radcheck: "
-msgstr "No es posible garantizar valores positivos en radcheck:"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:617
-msgid "Unable to delete ancient radacct data: "
-msgstr "No se puede eliminar datos antiguos radacct:"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:626
-msgid "Old Radius Accounting Data Archived"
-msgstr "Antiguos datos de cuentas RADIUS Archivado"
-
-#: ../../../www/radmin/classes/SettingsMySQL.class.php:471
-msgid "Adding Group query failed:  "
-msgstr "Agregar consulta del Grupo ha fallado:"
-
-#: ../../../www/radmin/classes/SettingsMySQL.class.php:487
-msgid "Delete Group query failed:  "
-msgstr "Eliminar consulta de Grupo ha fallado:"
-
-#: ../../../www/radmin/classes/DatabaseConnections.class.php:70
-msgid "DB Config File isn't a valid file."
-msgstr "Archivo de configuración de base de datos no es un archivo válido."
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:129
-msgid "Retrieving Sold Usage failed: "
-msgstr "Fallo la recuperación de Uso vendido"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:163
-msgid "Retrieving Month Usage failed: "
-msgstr "Fallo la recuperación de Uso mensual"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:180
-msgid "Retrieving Current Month Usage failed: "
-msgstr "Fallo la recuperación de Uso mes en curso"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:211
-msgid "Retrieving Session by RadAcctID failed: "
-msgstr "Fallo la recuperación de sesión por RadAcctID:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:243
-msgid "Retrieving Sessions by Username failed: "
-msgstr "Fallo la recuperación de sesiones por nombre de usuario:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:264
-msgid "Retrieving Current Session by Username failed: "
-msgstr "Fallo la recuperación de sesion por nombre de usuario:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:285
-msgid "Retrieving Username by Active Session (ipadddress): "
-msgstr "Recuperar nombre de usuario por sesión activa (ipadddress):"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:309
-msgid "Get User details Query failed: "
-msgstr "Obtenga los detalles del usuario consulta falló:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:402
-msgid "Get User Group Query failed: "
-msgstr "Obtener consultas de grupos de usuarios falló:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:429
-msgid "Get All Usernames Query Failed: "
-msgstr "Obtenga todas las consultas de nombres de usuario Error:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:453
-msgid "Get Users By Group Query Failed: "
-msgstr "Obtener usuarios por grupo, falló:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:479
-msgid "Get User Last Logout Query Failed: "
-msgstr "Obtener consulta ultimo cierre sesión de usuario falló:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:508
-msgid "Get User Total Session Time Query failed: "
-msgstr "Obtener número total de consultas de tiempo de sesión ha fallado:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:529
-msgid "Get User Data Usage Query failed: "
-msgstr "Obtener uso de datos de usuario ha fallado:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:550
-msgid "Get User Data Usage (Total) Query failed: "
-msgstr "Obtener uso de datos (Total) de usuario ha fallado:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:570
-msgid "Get Monthly Data Usage Query failed: "
-msgstr "Obtener consultas mensuales de acceso de datos ha fallado:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:598
-msgid "Get Monthly Data Usage Totals Query failed: "
-msgstr "Obtener consultas mensuales (Total) de acceso de datos ha fallado:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:624
-msgid "Get User Comment failed: "
-msgstr "Obtener comentarios del usuario ha fallado:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:667
-msgid "Deleting radgroupcheck query failed: "
-msgstr "Eliminación de consulta radgroupcheck ha fallado:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:683
-msgid "Adding Group Check Attributes query failed:  "
-msgstr "Agregar atributos de verificación del grupo de consulta falló:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:717
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:730
-msgid "Deleting radgroupreply query failed: "
-msgstr "Eliminar radgroupreply consulta falló:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:812
-msgid "Adding Group Attributes query failed:  "
-msgstr "Agregar atributos de grupo de consulta falló:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:861
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:870
-msgid "Get Groups details Query failed: "
-msgstr "Fallo obterner detalles grupos:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:894
-msgid "Hourly"
-msgstr "Cada hora"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:895
-msgid "Daily"
-msgstr "Diario"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:896
-msgid "Weekly"
-msgstr "Semanal"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:897
-msgid "Monthly"
-msgstr "Mensual"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:963
-msgid "Setting User Comment Query Failed: "
-msgstr "Consulta de configuración Usuario Comentario Error:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:982
-msgid "Setting User Group Query Failed: "
-msgstr "Consulta de configuración de grupo de usuarios de Error:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1003
-msgid "Setting User Datalimit Query Failed: "
-msgstr "Consulta de configuración de usuario Datalimit Error:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1028
-msgid "Getting User Current Data Limit to increase failed: "
-msgstr "Obtención de datos del usuario actual límite de aumento Error:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1050
-msgid "Setting User Timelimit Query Failed: "
-msgstr "Consulta de configuración de límite de tiempo del usuario Error:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1074
-msgid "Getting User Current Time Limit to increase failed: "
-msgstr "Obtención de Límite de usuarios Hora Actual para aumentar Error:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1095
-msgid "Setting User Password Query Failed: "
-msgstr "Consulta de configuración de usuario Contraseña Error:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1118
-msgid "Setting User Expiry Date Query Failed: "
-msgstr "Consulta configuración fecha caducidad de usuario Error:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1138
-msgid "Deleting User Expiry Date Query Failed: "
-msgstr "Consulta eliminación de vencimiento del usuario fecha Error:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1159
-msgid "Deleting user failed: "
-msgstr "Eliminar el usuario ha fallado:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1172
-msgid "Deleting users group failed: "
-msgstr "Eliminar grupo de usuarios ha fallado:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1185
-msgid "Deleting users comment failed: "
-msgstr "Eliminar comentario usuarios ha fallado:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1205
-msgid "Checking Uniq Username failed: "
-msgstr "Comprobación de Usuario Uniq  Error:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1235
-msgid "Retrieving Chilli Config Single Value failed: "
-msgstr "Recuperación de Valor Chilli Config ha fallado:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1269
-msgid "Deleting Chilli Config Query Failed: "
-msgstr "Eliminación de consultas Chilli Config Error:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1302
-msgid "Setting Chilli Config Single Query Failed: "
-msgstr "Consulta configuración Chilli Config Error:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1324
-msgid "Setting Chilli Config Multi Query Failed: "
-msgstr "Consulta establecimiento de Chilli configuración Multi Error:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1345
-msgid "Retrieving Chilli Config Multi Value failed: "
-msgstr "Recuperación de valor de configuración Multi Chilli Error:"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:83
-msgid "Status"
-msgstr "Estado"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:84
-msgid "Users"
-msgstr "Usuarios"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:86
-msgid "New User"
-msgstr "Nuevo usuario"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:87
-msgid "Batch Users"
-msgstr "Usuarios por lotes"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:88
-msgid "Computer Account"
-msgstr "Cuenta de Equipo"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:91
-msgid "Monitor Sessions"
-msgstr "Monitor de Sesiones"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:93
-msgid "Reports"
-msgstr "Informes"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:100
-msgid "Settings"
-msgstr "Configuración"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:102
-msgid "Site Logo"
-msgstr "Logo del sitio"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:122
-msgid "Logoff"
-msgstr "Cierre de sesión"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:157
-msgid "System Status"
-msgstr "Estado del sistema"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:165
-#: ../../../www/radmin/includes/page_functions.inc.php:227
-msgid "Inherit from group"
-msgstr "Heredar del grupo"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:326
-msgid "Hour"
-msgstr "Hora"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:327
-msgid "Day"
-msgstr "Día"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:328
-msgid "Week"
-msgstr "Semana"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:329
-msgid "Month"
-msgstr "Mes"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:335
-msgid "Yes"
-msgstr "Sí"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:335
-msgid "No"
-msgstr "No"
-
-#: ../../../www/radmin/includes/session.inc.php:65
-msgid "Your session has expired. Please login again"
-msgstr "Su sesión ha caducado. Por favor, ingresa de nuevo"
-
-#: ../../../www/radmin/includes/session.inc.php:69
-msgid "Incorrect Login"
-msgstr "Inicio de sesión incorrecto"
-
-#: ../../../www/radmin/includes/session.inc.php:73
-msgid "Security Issue. Please login again"
-msgstr "Problema de seguridad. Por favor, ingresa de nuevo"
-
-#: ../../../www/radmin/includes/session.inc.php:77
-msgid "Authentication Issue. Please report to Admin"
-msgstr "Problema de autenticación. Por favor, informe a la Administración"
-
-#: ../../../www/radmin/includes/misc_functions.inc.php:160
-msgid "Invalid Expiry Date"
-msgstr "No válida Fecha de Expiración"
-
-#: ../../../www/radmin/includes/misc_functions.inc.php:170
-msgid "Expiry Date in the past"
-msgstr "Fecha de caducidad en el pasado"
-
-#: ../../../www/radmin/includes/misc_functions.inc.php:177
+#: ../../../www/radmin/newuser.php:44 ../../../www/radmin/newuser.php:47
+#: ../../../www/radmin/newtickets.php:41 ../../../www/radmin/newtickets.php:44
+#: ../../../www/radmin/edituser.php:103 ../../../www/radmin/edituser.php:122
+#: ../../../www/radmin/newmachine.php:43 ../../../www/radmin/newmachine.php:46
+#: ../../../www/radmin/groupconfig.php:105
+#: ../../../www/radmin/voucherconfig.php:104
 #, php-format
 msgid "Invalid value '%s' for Data Limit"
 msgstr "Valor no válido '%s' para el límite de datos"
 
-#: ../../../www/radmin/includes/misc_functions.inc.php:184
-#, php-format
-msgid "Invalid recurrance interval '%s'"
-msgstr "Intervalo de recurrencia no válida '%s'"
-
-#: ../../../www/radmin/includes/misc_functions.inc.php:190
-#, php-format
-msgid "Invalid response to YesNo Question '%s'"
-msgstr "No válida la respuesta a la pregunta Yes No '%s'"
-
-#: ../../../www/radmin/includes/misc_functions.inc.php:196
-#, php-format
-msgid "Invalid Bandwidth Limit '%s'"
-msgstr "Límite de ancho de banda no válido '%s'"
-
-#: ../../../www/radmin/includes/misc_functions.inc.php:208
-msgid "Recurring time limit must be less than interval"
-msgstr "Límite de tiempo recurrente debe ser menor que el intervalo"
-
-#: ../../../www/radmin/includes/misc_functions.inc.php:215
+#: ../../../www/radmin/newuser.php:50 ../../../www/radmin/newuser.php:53
+#: ../../../www/radmin/newtickets.php:47 ../../../www/radmin/newtickets.php:50
+#: ../../../www/radmin/edituser.php:138 ../../../www/radmin/edituser.php:157
+#: ../../../www/radmin/newmachine.php:49 ../../../www/radmin/newmachine.php:52
+#: ../../../www/radmin/groupconfig.php:99
+#: ../../../www/radmin/groupconfig.php:102
+#: ../../../www/radmin/voucherconfig.php:101
 #, php-format
 msgid "Invalid value '%s' for Time Limit"
 msgstr "Valor no válido '%s' para el límite de tiempo"
 
-#: ../../../www/radmin/includes/misc_functions.inc.php:222
+#: ../../../www/radmin/newuser.php:56 ../../../www/radmin/newtickets.php:53
+#: ../../../www/radmin/newmachine.php:55
+msgid "Only set one Data limit field"
+msgstr "Establece solo un campo límite de datos"
+
+#: ../../../www/radmin/newuser.php:59 ../../../www/radmin/newtickets.php:56
+#: ../../../www/radmin/newmachine.php:58
+msgid "Only set one Time limit field"
+msgstr "Establece solo un campo límite de tiempo"
+
+#: ../../../www/radmin/newuser.php:129
+#, php-format
+msgid "User %s Successfully Created"
+msgstr "Usuario %s  creado correctamente"
+
+#: ../../../www/radmin/newuser.php:133
+#, php-format
+msgid "Print Ticket for %s"
+msgstr "Imprimir Tickets para %s"
+
+#: ../../../www/radmin/newuser.php:137
+#, php-format
+msgid "Created new user %s"
+msgstr "Creado nuevo usuario %s"
+
+#: ../../../www/radmin/newtickets.php:61
+msgid "Max of 1000 tickets per batch"
+msgstr ""
+
+#: ../../../www/radmin/newtickets.php:78
+msgid "Please select a batch to print"
+msgstr ""
+
+#: ../../../www/radmin/newtickets.php:97
+msgid "Please select a batch to export"
+msgstr ""
+
+#: ../../../www/radmin/newtickets.php:117
+msgid "Please select a batch to delete"
+msgstr ""
+
+#: ../../../www/radmin/newtickets.php:231
+#, php-format
+msgid ""
+"Too many users failed to create. Batch creation stopped. %s users have been "
+"successfully created"
+msgstr ""
+
+#: ../../../www/radmin/newtickets.php:246
+msgid "Tickets Successfully Created"
+msgstr "Tickets creados correctamente"
+
+#: ../../../www/radmin/newtickets.php:247
+msgid "Print Tickets"
+msgstr "Imprimir Tickets"
+
+#: ../../../www/radmin/netconfig.php:34
+msgid "DNS Servers"
+msgstr "Servidores DNS"
+
+#: ../../../www/radmin/netconfig.php:36
+msgid ""
+"IP Addresses of DNS Servers. All clients will use the gateway as the DNS server which will use the\n"
+"            addresses listed here to do DNS lookups. Dnsmasq WILL NOT get default servers from DHCP or /etc/resolv.conf\n"
+"            and will default to OpenDNS Family Shield"
+msgstr ""
+
+#: ../../../www/radmin/netconfig.php:43
+msgid "Bogus NXDOMAIN"
+msgstr "Bogus NXDOMAIN"
+
+#: ../../../www/radmin/netconfig.php:45
+msgid ""
+"IP Addresses of Bogus NXDOMAIN returns. All DNS replies that contain these ip address will be transformed\n"
+"            into a NXDOMAIN result"
+msgstr ""
+
+#: ../../../www/radmin/netconfig.php:55
+msgid "LAN IP Address"
+msgstr "Dirección IP de LAN"
+
+#: ../../../www/radmin/netconfig.php:57
+msgid ""
+"The server IP address that is used on the LAN side (Coova-Chilli) of the network. This will be the gateway\n"
+"            address for all clients, as well as the DNS server the clients access. For default Squid config this should\n"
+"            be a private ip address."
+msgstr ""
+
+#: ../../../www/radmin/netconfig.php:70
+msgid "LAN Network Mask"
+msgstr "Mascara Red LAN "
+
+#: ../../../www/radmin/netconfig.php:72
+msgid ""
+"Network mask to use for clients network. (i.e. 255.255.255.0). DHCP range and network address will be\n"
+"            calculated from this and the LAN IP Address."
+msgstr ""
+
+#: ../../../www/radmin/netconfig.php:79
+msgid "Bogus NXDOMAIN (OpenDNS)"
+msgstr "Bogus NXDOMAIN (OpenDNS)"
+
+#: ../../../www/radmin/netconfig.php:81
+msgid ""
+"Some DNS Providers return bogus NXDOMAIN to redirect you to their search engine. Block the bogus ip's and\n"
+"            return a real NXDOMAIN for OpenDNS."
+msgstr ""
+
+#: ../../../www/radmin/netconfig.php:88
+msgid "Wireless Network Name (SSID)"
+msgstr "Nombre de red inalámbrica (SSID)"
+
+#: ../../../www/radmin/netconfig.php:90
+msgid ""
+"Wireless Network Name that clients connect to. Currently does not modify any settings but if set will print\n"
+"            on the tickets"
+msgstr ""
+
+#: ../../../www/radmin/netconfig.php:96
+msgid "Print Ticket Type"
+msgstr "Imprimir Tipo de Ticket"
+
+#: ../../../www/radmin/netconfig.php:97
+msgid "Print the ticket type (Group name) on tickets"
+msgstr "Imprimir el tipo de ticket (nombre del grupo) en los tickets"
+
+#: ../../../www/radmin/netconfig.php:101
+msgid "Print Ticket Expiry"
+msgstr "Imprimir caducidad Ticket"
+
+#: ../../../www/radmin/netconfig.php:102
+msgid "Print the expiry on tickets"
+msgstr "Imprimir la expiración en los tickets"
+
+#: ../../../www/radmin/netconfig.php:113
+msgid "LAN Network Interface"
+msgstr "Interfaz de red LAN"
+
+#: ../../../www/radmin/netconfig.php:115
+msgid ""
+"The Network Interface that is connected to the LAN of the Hotspot (the side "
+"the clients connect to)"
+msgstr "La interfaz de red que está conectado a la LAN del hotspot (la parte donde los clientes se conectan)"
+
+#: ../../../www/radmin/netconfig.php:122
+msgid "WAN Network Interface"
+msgstr "Interface de red WAN"
+
+#: ../../../www/radmin/netconfig.php:124
+msgid ""
+"The Network Interface that is connected to the WAN of the Hotspot (the side "
+"the internet is connected to)"
+msgstr "La interfaz de red que está conectado a la WAN del hotspot (la parte donde Internet está conectado)"
+
+#: ../../../www/radmin/netconfig.php:231
+msgid "Changes pending Reload"
+msgstr "Actualizar los cambios pendientes"
+
+#: ../../../www/radmin/netconfig.php:233
+#: ../../../www/radmin/chilliconfig.php:195
+msgid "Settings match running config"
+msgstr "Configuración coincide con configuración en ejecución"
+
+#: ../../../www/radmin/edituser.php:54 ../../../www/radmin/passwd.php:62
+#: ../../../www/radmin/passwd.php:63 ../../../www/radmin/usermin.php:49
+msgid "Password Changed"
+msgstr "Contraseña cambiada"
+
+#: ../../../www/radmin/edituser.php:70
+msgid "Group Changed"
+msgstr "Grupo Cambiado"
+
+#: ../../../www/radmin/edituser.php:79
+msgid "Comment Changed"
+msgstr "Comentario Cambiado"
+
+#: ../../../www/radmin/edituser.php:87
+msgid "User Account Unlocked"
+msgstr ""
+
+#: ../../../www/radmin/edituser.php:92
+msgid "User Account Locked"
+msgstr ""
+
+#: ../../../www/radmin/edituser.php:111
+msgid "Data Limit Increased"
+msgstr "Aumento Limite Datos"
+
+#: ../../../www/radmin/edituser.php:112
+#, php-format
+msgid "Data Limit increased for %s"
+msgstr "Limite de Datos incrementando por %s"
+
+#: ../../../www/radmin/edituser.php:130
+msgid "Max Data Limit Updated"
+msgstr "Max Limite Datos Actualizado"
+
+#: ../../../www/radmin/edituser.php:131
+#, php-format
+msgid "Max Data Limit changed for %s"
+msgstr "Max Limite datos cambiado por %s"
+
+#: ../../../www/radmin/edituser.php:146
+msgid "Time Limit Increased"
+msgstr "Tiempo Limite incrementado"
+
+#: ../../../www/radmin/edituser.php:147
+#, php-format
+msgid "Time Limit increased for %s"
+msgstr "Tiempo limite incrementado por %s"
+
+#: ../../../www/radmin/edituser.php:165
+msgid "Max Time Limit Updated"
+msgstr "Max Limite Tiempo Actualizado"
+
+#: ../../../www/radmin/edituser.php:166
+#, php-format
+msgid "Max Time Limit changed for %s"
+msgstr "Max Limite tiempo cambiado por %s"
+
+#: ../../../www/radmin/edituser.php:177
+msgid "Expiry updated"
+msgstr "Vencimiento actualizado"
+
+#: ../../../www/radmin/edituser.php:183
+#, php-format
+msgid "User '%s' Deleted"
+msgstr "usuario '%s'  eliminado"
+
+#: ../../../www/radmin/edituser.php:205
+msgid "User account is locked and will not be able to login"
+msgstr ""
+
+#: ../../../www/radmin/newmachine.php:31
+msgid "MAC Address already has an account"
+msgstr "Esta Dirección MAC ya tiene una cuenta"
+
+#: ../../../www/radmin/newmachine.php:40
 msgid "MAC Address not in correct format"
 msgstr "Dirección MAC no esta en formato correcto"
 
-#: ../../../www/radmin/includes/misc_functions.inc.php:229
+#: ../../../www/radmin/newmachine.php:101
+msgid "Computer Account Successfully Created"
+msgstr "La Cuenta de equipo se creó correctamente"
+
+#: ../../../www/radmin/loginconfig.php:51
+msgid "Login Screen Title"
+msgstr "Título de la pantalla de inicio de sesión"
+
+#: ../../../www/radmin/loginconfig.php:52
+msgid "Hide Title (header) from login screen"
+msgstr "Ocultar el título (encabezado) de la pantalla de inicio de sesión"
+
+#: ../../../www/radmin/loginconfig.php:56
+msgid "Login Screen Footer"
+msgstr "Pie de página de la pantalla para el inicio de sesión"
+
+#: ../../../www/radmin/loginconfig.php:58
+msgid ""
+"Hide footer from login screen.\n"
+"            Please consider adding a link back to http://grasehotspot.org if you are hiding the footer"
+msgstr ""
+
+#: ../../../www/radmin/loginconfig.php:64
+msgid "Logout Bookmark"
+msgstr "Marcador de Cierre Sesion "
+
+#: ../../../www/radmin/loginconfig.php:65
+msgid "Hide Bookmark logout link"
+msgstr "Ocultar enlace marcador para el cierre de sesion"
+
+#: ../../../www/radmin/loginconfig.php:69
+msgid "Help Link"
+msgstr " Enlace Ayuda"
+
+#: ../../../www/radmin/loginconfig.php:71
+msgid ""
+"Hide Help and Information link from login page (still shows in footer if "
+"footer is enabled)"
+msgstr "Esconder ayuda y Información de la página de inicio de sesión (aún muestra en el pie de pie de página si está habilitado)"
+
+#: ../../../www/radmin/loginconfig.php:76
+msgid "Disable Javascript Login"
+msgstr "Desactivar Javascript Login"
+
+#: ../../../www/radmin/loginconfig.php:77
+msgid "Force all logins to be through the less secure non-javascript method"
+msgstr "Obligar a todos los inicios de sesión usar el metodo no Javascript"
+
+#: ../../../www/radmin/loginconfig.php:81
+msgid "Disable All Default CSS"
+msgstr "Deshabilitar todos los CSS por defecto"
+
+#: ../../../www/radmin/loginconfig.php:83
+msgid ""
+"All css files will be excluded from the login pages, and only the css below "
+"(Main CSS) will be used"
+msgstr "Todos los archivos css serán excluidos de las páginas de inicio de sesión, y sólo el CSS below (CSS Main) se utilizará"
+
+#: ../../../www/radmin/loginconfig.php:88
+msgid "Page Title"
+msgstr "Título de la página"
+
+#: ../../../www/radmin/loginconfig.php:89
+msgid "The page title that is displayed on the login page"
+msgstr "El título de la página que se muestra en la página de inicio"
+
+#: ../../../www/radmin/loginconfig.php:93
+msgid "Free Login Group"
+msgstr ""
+
+#: ../../../www/radmin/loginconfig.php:94
+msgid ""
+"The group to create 'Free Login' users in. Leave blank to disable free "
+"logins"
+msgstr ""
+
+#: ../../../www/radmin/loginconfig.php:104
+msgid "Main CSS"
+msgstr "CSS Principal "
+
+#: ../../../www/radmin/loginconfig.php:106
+msgid ""
+"Cascading style sheet that is applied to all portal pages (use !important to override a style if your\n"
+"            settings here don't seem to work, it may be that the builtin css has a more specific selector than your one\n"
+"            here, look at radmin.css for id's and classes)"
+msgstr ""
+
+#: ../../../www/radmin/loginconfig.php:113
+msgid "Help and Information Page"
+msgstr " Página de información y Ayuda"
+
+#: ../../../www/radmin/loginconfig.php:114
+msgid "Help and Information page contents"
+msgstr "Ayuda y contenidos de la pagina de informacion"
+
+#: ../../../www/radmin/loginconfig.php:119
+msgid "Login Help HTML"
+msgstr "Ayuda HTML Inicio de sesion"
+
+#: ../../../www/radmin/loginconfig.php:120
+msgid "Help text (and HTML) displayed on login page above login form"
+msgstr "Texto de ayuda (y HTML) mostrado en la página de inicio de sesión por encima del formulario para el inicio de sesión"
+
+#: ../../../www/radmin/loginconfig.php:125
+msgid "HTML Below login form"
+msgstr "HTML formulario de acceso"
+
+#: ../../../www/radmin/loginconfig.php:126
+msgid "HTML to insert below login form"
+msgstr "HTML para insertar a continuación del formulario para el inicio de sesión"
+
+#: ../../../www/radmin/loginconfig.php:130
+msgid "Logged In HTML"
+msgstr "Identificado En HTML"
+
+#: ../../../www/radmin/loginconfig.php:131
+msgid "HTML for successful login when not using javascript"
+msgstr "HTML para inicios de sesión correctos cuando no esté usando Javascript"
+
+#: ../../../www/radmin/loginconfig.php:135
+msgid "Terms and Conditions"
+msgstr ""
+
+#: ../../../www/radmin/loginconfig.php:136
+msgid "Terms and Conditions of use (HTML)"
+msgstr ""
+
+#: ../../../www/radmin/loginconfig.php:140
+msgid "Ticket Printing CSS"
+msgstr ""
+
+#: ../../../www/radmin/loginconfig.php:141
+msgid ""
+"CSS that is applied to the ticket printing page for printing batches and "
+"groups of tickets."
+msgstr ""
+
+#: ../../../www/radmin/loginconfig.php:178
+#: ../../../www/radmin/loginconfig.php:194
+#, php-format
+msgid "%s login config option update"
+msgstr "%s config login opción de actualización"
+
+#: ../../../www/radmin/chilliconfig.php:35
+msgid "Walled Garden allowed hosts"
+msgstr "Walled Garden Host permitidos"
+
+#: ../../../www/radmin/chilliconfig.php:37
+msgid ""
+"IP's and Hostnames that are accessible without logging in. DNS Lookup is only done at startup time so not\n"
+"            suitable for domains with Round Robin IP Addresses"
+msgstr ""
+
+#: ../../../www/radmin/chilliconfig.php:43
+msgid "Walled Garden allowed domains"
+msgstr "Walled Garden Dominios permitidos"
+
+#: ../../../www/radmin/chilliconfig.php:44
+msgid "Domains (and their subdomains) that are accesible without logging in."
+msgstr "Dominios (y sus subdominios) que son accesibles sin iniciar sesión"
+
+#: ../../../www/radmin/chilliconfig.php:52
+msgid "MAC Auth Password"
+msgstr "Contraseña MAC autenticación "
+
+#: ../../../www/radmin/chilliconfig.php:54
+msgid ""
+"The MAC Password used to autologin Computer Accounts. Change this to something obscure as it can be used to\n"
+"             login using a known MAC address as the username."
+msgstr ""
+
+#: ../../../www/radmin/chilliconfig.php:60
+msgid "Default Session Idle Timeout"
+msgstr "Tiempo de espera predeterminado sesión inactiva"
+
+#: ../../../www/radmin/chilliconfig.php:62
+msgid ""
+"Default Idle Timeout for sessions. Logout after this number of seconds have "
+"passed without any traffic."
+msgstr "Tiempo de espera de inactividad de las sesiones. Cerrar sesion  después de este número de segundos sin ningún tipo de tráfico."
+
+#: ../../../www/radmin/chilliconfig.php:67
+msgid "DHCP Lease time"
+msgstr "Tiempo de concesión DHCP"
+
+#: ../../../www/radmin/chilliconfig.php:68
+msgid "DHCP lease time in seconds."
+msgstr "Tiempo de concesión DHCP en segundos."
+
+#: ../../../www/radmin/chilliconfig.php:73
+msgid "DHCP Start"
+msgstr ""
+
+#: ../../../www/radmin/chilliconfig.php:74
+msgid "Start of DHCP Range (offset from start of network range)"
+msgstr ""
+
+#: ../../../www/radmin/chilliconfig.php:78
+msgid "DHCP End"
+msgstr ""
+
+#: ../../../www/radmin/chilliconfig.php:79
+msgid "End of DHCP Range (offset from start of network range)"
+msgstr ""
+
+#: ../../../www/radmin/chilliconfig.php:117
+#: ../../../www/radmin/chilliconfig.php:156
+#, php-format
+msgid "%s Coova Chilli config option update"
+msgstr "%s Opción de actualización Chilli Coova config "
+
+#: ../../../www/radmin/chilliconfig.php:193
+msgid "Changes pending Coova Chilli Reload"
+msgstr "Actualizar los cambios pendientes Coova Chilli"
+
+#: ../../../www/radmin/passwd.php:54
+msgid "Old Password incorrect"
+msgstr "Contraseña anterior incorrecta"
+
+#: ../../../www/radmin/passwd.php:56
+msgid "New passwords don't match"
+msgstr "Las nuevas contraseñas no coinciden"
+
+#: ../../../www/radmin/passwd.php:66
+msgid "Please fill in all password fields"
+msgstr "Por favor, rellene todos los campos de contraseña"
+
+#: ../../../www/radmin/passwd.php:84
+msgid "Invalid Access level"
+msgstr ""
+
+#: ../../../www/radmin/passwd.php:87
+msgid "Need an access level to create admin user"
+msgstr ""
+
+#: ../../../www/radmin/passwd.php:90
+#, php-format
+msgid "User %s already exists"
+msgstr "El usuario %s ya existe"
+
+#: ../../../www/radmin/passwd.php:93
+msgid "Need both username and password"
+msgstr "Necesita nombre de usuario y contraseña"
+
+#: ../../../www/radmin/passwd.php:99
+msgid "User Created"
+msgstr "Usuario creado"
+
+#: ../../../www/radmin/passwd.php:102
+msgid "Error Creating Admin User"
+msgstr ""
+
+#: ../../../www/radmin/passwd.php:110
+#, php-format
+msgid "User %s Deleted"
+msgstr "El usuario %s a sido eliminado"
+
+#: ../../../www/radmin/passwd.php:114
+msgid "Invalid Delete Request"
+msgstr "Solicitud de eliminacion inválida"
+
+#: ../../../www/radmin/passwd.php:135
+msgid "Unknown Access Level"
+msgstr ""
+
+#: ../../../www/radmin/settings.php:54
+msgid ""
+"Some time options are still in use by current groups and have been added "
+"back in"
+msgstr ""
+
+#: ../../../www/radmin/settings.php:59
+msgid ""
+"Some data options are still in use by current groups and have been added "
+"back in"
+msgstr ""
+
+#: ../../../www/radmin/settings.php:64
+msgid ""
+"Some bandwidth options are still in use by current groups and have been "
+"added back in"
+msgstr ""
+
+#: ../../../www/radmin/settings.php:69
+msgid "Time Options Updated"
+msgstr ""
+
+#: ../../../www/radmin/settings.php:74
+msgid "Data Options Updated"
+msgstr ""
+
+#: ../../../www/radmin/settings.php:79
+msgid "Bandwidth Options Updated"
+msgstr ""
+
+#: ../../../www/radmin/settings.php:123
+msgid "Location name not valid"
+msgstr "Nombre de ubicación no valido"
+
+#: ../../../www/radmin/settings.php:126
+msgid "Location name updated"
+msgstr "Nombre de ubicación requerido"
+
+#: ../../../www/radmin/settings.php:127
+msgid "Location Name changed to"
+msgstr "Nombre de ubicación cambiado a"
+
+#: ../../../www/radmin/settings.php:133
+msgid "Error Saving Location Name"
+msgstr "Error guardando el nombre de ubicación"
+
+#: ../../../www/radmin/settings.php:146
+msgid "Website name not valid"
+msgstr "Nombre Sitio Web no valido"
+
+#: ../../../www/radmin/settings.php:149 ../../../www/radmin/settings.php:150
+msgid "Website name updated"
+msgstr "Nombre Sitio Web actualizado"
+
+#: ../../../www/radmin/settings.php:152
+msgid "Error Saving Website Name"
+msgstr "Error guardando el nombre del Sitio Web"
+
+#: ../../../www/radmin/settings.php:166
+msgid "Website link not valid"
+msgstr "Enlace del Sitio Web no valido"
+
+#: ../../../www/radmin/settings.php:169 ../../../www/radmin/settings.php:170
+msgid "Website link updated"
+msgstr "Enlace del Sitio Web actualizado"
+
+#: ../../../www/radmin/settings.php:172
+msgid "Error Saving Website link"
+msgstr "Error guardando enlace del Sitio Web"
+
+#: ../../../www/radmin/settings.php:196
+msgid "Locale updated"
+msgstr "Local actualizado"
+
+#: ../../../www/radmin/settings.php:197
+msgid "Locale updated to"
+msgstr "Local actualizado para"
+
+#: ../../../www/radmin/settings.php:199
+msgid "Error updating Locale"
+msgstr "Error al actualizar la configuración regional"
+
+#: ../../../www/radmin/settings.php:202
+msgid "Invalid Locale"
+msgstr "No válido de configuración regional"
+
+#: ../../../www/radmin/settings.php:215
+msgid "Support name not valid"
+msgstr "Nombre de soporte no valido"
+
+#: ../../../www/radmin/settings.php:218 ../../../www/radmin/settings.php:219
+msgid "Support name updated"
+msgstr "Nombre de soporte actualizado"
+
+#: ../../../www/radmin/settings.php:221
+msgid "Error Saving Support Name"
+msgstr "Error guardando el nombre del soporte"
+
+#: ../../../www/radmin/settings.php:233
+msgid "Support link not valid"
+msgstr "Enlace de soporte no valido"
+
+#: ../../../www/radmin/settings.php:236 ../../../www/radmin/settings.php:237
+msgid "Support link updated"
+msgstr "Enlace de soporte actualizado"
+
+#: ../../../www/radmin/settings.php:239
+msgid "Error Saving Support link"
+msgstr "Error guardando enlace de soporte"
+
+#: ../../../www/radmin/purchase_wizard.php:72
+msgid "Your selected payment gateway doesn't support free vouchers"
+msgstr ""
+
+#: ../../../www/radmin/purchase_wizard.php:80
+msgid "Your selected payment gateway doesn't support paid vouchers"
+msgstr ""
+
+#: ../../../www/radmin/purchase_wizard.php:96
+msgid "Invalid Voucher or Payment Selection"
+msgstr ""
+
+#: ../../../www/radmin/purchase_wizard.php:170
+msgid "Account Pending Payment and Activation"
+msgstr ""
+
+#: ../../../www/radmin/advancedsettings.php:34
+#, php-format
+msgid "Updated %s setting with value %s"
+msgstr ""
+
+#: ../../../www/radmin/groupconfig.php:48
+msgid "A minimum of one group is required"
+msgstr "Un mínimo de un grupo es necesario"
+
+#: ../../../www/radmin/groupconfig.php:51
+msgid "It is not recommended having groups without expiries."
+msgstr "No se recomienda tener grupos sin vencimientos."
+
+#: ../../../www/radmin/groupconfig.php:71
+msgid "Invalid group name or group name missing"
+msgstr "Nombre de grupo no válido  o grupo no encontrado"
+
+#: ../../../www/radmin/groupconfig.php:83
+#, php-format
+msgid "%s: Invalid expiry format"
+msgstr "%s: formato de vencimiento no válido"
+
+#: ../../../www/radmin/groupconfig.php:85
+#, php-format
+msgid "%s: Expiry can not be in the past"
+msgstr "%s: El vencimiento no puede ser en el pasado"
+
+#: ../../../www/radmin/groupconfig.php:92
+#, php-format
+msgid "%s: Invalid Expire After format"
+msgstr ""
+
+#: ../../../www/radmin/groupconfig.php:94
+#, php-format
+msgid "%s: Expire after can not be in the past"
+msgstr ""
+
+#: ../../../www/radmin/groupconfig.php:108
+#: ../../../www/radmin/groupconfig.php:111
+#, php-format
+msgid "Invalid recurrence interval '%s'"
+msgstr ""
+
+#: ../../../www/radmin/groupconfig.php:114
+msgid "Recurring time limit must be less than interval"
+msgstr "Límite de tiempo recurrente debe ser menor que el intervalo"
+
+#: ../../../www/radmin/groupconfig.php:117
+#: ../../../www/radmin/groupconfig.php:120
+#, php-format
+msgid "Invalid Bandwidth Limit '%s'"
+msgstr "Límite de ancho de banda no válido '%s'"
+
+#: ../../../www/radmin/groupconfig.php:129
+#, php-format
+msgid "Need both a time limit and recurrance for '%s'"
+msgstr "Necesitan un límite de tiempo y recurrencia de '%s'"
+
+#: ../../../www/radmin/groupconfig.php:181
+msgid "Groups updated"
+msgstr "Grupos actualizados"
+
+#: ../../../www/radmin/voucherconfig.php:56
+msgid ""
+"No Initial vouchers defined, users will be unable to purchase a new account"
+msgstr ""
+
+#: ../../../www/radmin/voucherconfig.php:74
+msgid "Invalid voucher name or voucher name missing"
+msgstr ""
+
+#: ../../../www/radmin/voucherconfig.php:83
+msgid "Vouchers need a price"
+msgstr ""
+
+#: ../../../www/radmin/voucherconfig.php:86
+msgid "Invalid price"
+msgstr ""
+
+#: ../../../www/radmin/voucherconfig.php:92
+msgid "It is not recommended having vouchers without a data or time limit"
+msgstr ""
+
+#: ../../../www/radmin/voucherconfig.php:145
+msgid "Vouchers updated"
+msgstr ""
+
+#: ../../../www/radmin/export.php:47
+#, php-format
+msgid "Batch_%s_details"
+msgstr ""
+
+#: ../../../www/radmin/export.php:60
+#, php-format
+msgid "Group_%s_details"
+msgstr ""
+
+#: ../../../www/radmin/export.php:63
+msgid "Need a group or batch"
+msgstr ""
+
+#: ../../../www/radmin/export.php:74
+msgid "Need valid format"
+msgstr ""
+
+#: ../../../www/radmin/usermin.php:41
+msgid "New Passwords must match"
+msgstr "Nuevas contraseñas deben coincidir"
+
+#: ../../../www/radmin/usermin.php:44
+msgid "Password must not be blank"
+msgstr "La contraseña no debe estar en blanco"
+
+#: ../../../www/radmin/usermin.php:52
+msgid "Password not updated"
+msgstr "La contraseña no se actualiza"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:51
+#, php-format
+msgid "Invalid number %s"
+msgstr ""
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:59
 #, php-format
 msgid "Invalid number '%s' (Must be whole number)"
 msgstr "Número no válido '%s' (Debe ser un número entero)"
 
-#: ../../../www/radmin/includes/misc_functions.inc.php:240
+#: ../../../www/radmin/includes/misc_functions.inc.php:78
+msgid "Invalid Time Range "
+msgstr ""
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:90
 msgid "Only Machines can be in the Machine group"
 msgstr "Las máquinas sólo pueden estar en el grupo de máquinas"
 
-#: ../../../www/radmin/includes/misc_functions.inc.php:244
+#: ../../../www/radmin/includes/misc_functions.inc.php:94
 msgid "Invalid Group"
 msgstr "Grupo no válido"
 
-#: ../../../www/radmin/includes/misc_functions.inc.php:319
+#: ../../../www/radmin/includes/misc_functions.inc.php:230
 msgid "Computers"
 msgstr "Computadoras"
 
-#: ../../../www/radmin/includes/misc_functions.inc.php:322
+#: ../../../www/radmin/includes/misc_functions.inc.php:234
 msgid "Expired"
 msgstr "Expirado"
 
-#: ../../../www/radmin/includes/misc_functions.inc.php:399
-msgid "Uploaded Image was too big"
-msgstr "Imagen subida demasiado grande"
+#: ../../../www/radmin/includes/misc_functions.inc.php:237
+msgid "Out Of Quota"
+msgstr ""
 
-#: ../../../www/radmin/includes/misc_functions.inc.php:402
-msgid "Error In Uploading"
-msgstr "Error en la carga"
+#: ../../../www/radmin/includes/misc_functions.inc.php:240
+msgid "Low Quota"
+msgstr ""
 
-#: ../../../www/radmin/includes/misc_functions.inc.php:405
-msgid "No file was uploaded"
-msgstr "No existe el fichero que ha subido"
+#: ../../../www/radmin/includes/session.inc.php:58
+msgid "Your session has expired. Please login again"
+msgstr "Su sesión ha caducado. Por favor, ingresa de nuevo"
 
-#: ../../../www/radmin/includes/misc_functions.inc.php:408
-msgid "Missing a temporary folder"
-msgstr "Falta una carpeta temporal"
+#: ../../../www/radmin/includes/session.inc.php:62
+msgid "Incorrect Login"
+msgstr "Inicio de sesión incorrecto"
 
-#: ../../../www/radmin/includes/misc_functions.inc.php:411
-msgid "Failed to write file to disk"
-msgstr "No se pudo escribir el archivo en el disco"
+#: ../../../www/radmin/includes/session.inc.php:66
+msgid "Security Issue. Please login again"
+msgstr "Problema de seguridad. Por favor, ingresa de nuevo"
 
-#: ../../../www/radmin/includes/misc_functions.inc.php:414
-msgid "File upload stopped by extension"
-msgstr "Carga de archivos por extensión, se detuvo"
+#: ../../../www/radmin/includes/session.inc.php:70
+msgid "Authentication Issue. Please report to Admin"
+msgstr "Problema de autenticación. Por favor, informe a la Administración"
 
-#: ../../../www/radmin/includes/misc_functions.inc.php:417
-msgid "Unknown upload error"
-msgstr "Error desconocido carga"
+#: ../../../www/radmin/includes/session.inc.php:104
+msgid "No users defined in database. Please check your install"
+msgstr ""
+
+#: ../../../www/radmin/includes/page_functions.inc.php:58
+msgid "Status"
+msgstr "Estado"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:59
+msgid "Users"
+msgstr "Usuarios"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:61
+msgid "New User"
+msgstr "Nuevo usuario"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:62
+msgid "Batch Users"
+msgstr "Usuarios por lotes"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:63
+msgid "Computer Account"
+msgstr "Cuenta de Equipo"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:66
+msgid "Monitor Sessions"
+msgstr "Monitor de Sesiones"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:68
+msgid "Reports"
+msgstr "Informes"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:76
+msgid "Settings"
+msgstr "Configuración"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:78
+msgid "Site Logo"
+msgstr "Logo del sitio"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:98
+msgid "Logoff"
+msgstr "Cierre de sesión"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:132
+#: ../../../www/radmin/includes/page_functions.inc.php:171
+msgid "Inherit from group"
+msgstr "Heredar del grupo"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:214
+msgid "Hour"
+msgstr "Hora"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:215
+msgid "Day"
+msgstr "Día"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:216
+msgid "Week"
+msgstr "Semana"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:217
+msgid "Month"
+msgstr "Mes"
+
+#: ../../../www/radmin/classes/DatabaseConnections.class.php:67
+msgid "DB Config File isn't a valid file."
+msgstr "Archivo de configuración de base de datos no es un archivo válido."
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:65
+msgid "Unable to select users needing First Login Activiation"
+msgstr ""
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:77
+msgid "First login users activiated"
+msgstr ""
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:94
+msgid "Unable to select user from radcheck"
+msgstr "No se puede seleccionar el usuario del radcheck"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:112
+msgid "Unable to cleanup old users from batch "
+msgstr "No es posible limpieza para los usuarios antiguos por lotes"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:121
+msgid "Unable to cleanup old batches "
+msgstr "No es posible eliminar viejos lotes"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:126
+msgid "Old Batches Cleaned"
+msgstr "Lotes viejos eliminados"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:158
+msgid "Clearing stale sessions failed: "
+msgstr "Eliminar Sesiones Falladas"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:162
+msgid "Stale sessions cleared"
+msgstr "Sesiones Stale limpiadas"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:195
+#: ../../../www/radmin/classes/CronFunctions.class.php:232
+#: ../../../www/radmin/classes/CronFunctions.class.php:269
+msgid "Fetching users to delete failed"
+msgstr "Fallo de obtención de los usuarios para eliminar "
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:207
+msgid "Expired users deleted"
+msgstr "Vencimientos Usuarios eliminados"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:244
+msgid "OutOfTime users deleted"
+msgstr ""
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:281
+msgid "OutOfData users deleted"
+msgstr ""
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:334
+msgid "Unable to insert data into mtotaccttmp: "
+msgstr "No se puede insertar datos en mtotaccttmp:"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:352
+msgid "Unable to delete old radacct data: "
+msgstr "No se puede eliminar datos antiguos radacct:"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:373
+msgid "Unable to update users Max-Octets: "
+msgstr "No se puede actualizar los usuarios de Max-Octets:"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:392
+msgid "Unable to update users Max-All-Session: "
+msgstr "No se puede actualizar los usuarios de Max-Todas las sesiones:"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:428
+msgid "Unable to move mtotaccttmp data to mtotacct: "
+msgstr "No se puede mover datos a mtotaccttmp mtotacct:"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:441
+msgid "Unable to truncate mtotaccttmp: "
+msgstr "No se pueden truncar mtotaccttmp:"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:463
+#: ../../../www/radmin/classes/CronFunctions.class.php:482
+msgid "Unable to ensure positive values in radcheck: "
+msgstr "No es posible garantizar valores positivos en radcheck:"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:511
+msgid "Old Radius Accounting Data Archived"
+msgstr "Antiguos datos de cuentas RADIUS Archivado"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:525
+msgid "Unable to clear old Postauth rows: "
+msgstr ""
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:528
+msgid "Old Postauth rows cleared"
+msgstr ""
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:541
+msgid "Unable to get PostAuth MAC Reject IDs: "
+msgstr ""
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:557
+msgid "Unable to delete PostAuth MAC Reject entry: "
+msgstr ""
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:565
+msgid "PostAuth MAC Reject rows cleared"
+msgstr ""
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:95
+msgid "Retrieving Months Accounting Data Available For failed: "
+msgstr ""
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:140
+msgid "Retrieving Session by RadAcctID failed: "
+msgstr "Fallo la recuperación de sesión por RadAcctID:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:180
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:221
+msgid "Retrieving Sessions by Username failed: "
+msgstr "Fallo la recuperación de sesiones por nombre de usuario:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:245
+msgid "Retrieving Current Session by Username failed: "
+msgstr "Fallo la recuperación de sesion por nombre de usuario:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:269
+msgid "Retrieving Username by Active Session (ipadddress): "
+msgstr "Recuperar nombre de usuario por sesión activa (ipadddress):"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:295
+msgid "Get All User radcheck details Query failed: "
+msgstr ""
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:313
+msgid "Get All User radreply details Query failed: "
+msgstr ""
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:332
+msgid "Get All User Group details Query failed: "
+msgstr ""
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:350
+msgid "Get All User Comment details Query failed: "
+msgstr ""
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:375
+msgid "Get All User radacct details Query failed: "
+msgstr ""
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:403
+msgid "Get All User mtotacct details Query failed: "
+msgstr ""
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:454
+msgid "Get User details Query failed: "
+msgstr "Obtenga los detalles del usuario consulta falló:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:475
+msgid "Get User radreply details Query failed: "
+msgstr ""
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:604
+msgid "Get User Group Query failed: "
+msgstr "Obtener consultas de grupos de usuarios falló:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:632
+msgid "Get All Usernames Query Failed: "
+msgstr "Obtenga todas las consultas de nombres de usuario Error:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:658
+msgid "Get Users By Group Query Failed: "
+msgstr "Obtener usuarios por grupo, falló:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:689
+msgid "Get User Last Logout Query Failed: "
+msgstr "Obtener consulta ultimo cierre sesión de usuario falló:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:725
+msgid "Get User Total Session Time Query failed: "
+msgstr "Obtener número total de consultas de tiempo de sesión ha fallado:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:753
+msgid "Get User Time Usage (Total) Query failed: "
+msgstr ""
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:787
+msgid "Get User Data Usage Query failed: "
+msgstr "Obtener uso de datos de usuario ha fallado:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:816
+msgid "Get User Data Usage (Total) Query failed: "
+msgstr "Obtener uso de datos (Total) de usuario ha fallado:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:846
+msgid "Get User Comment failed: "
+msgstr "Obtener comentarios del usuario ha fallado:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:914
+msgid "Deleting radgroupcheck query failed: "
+msgstr "Eliminación de consulta radgroupcheck ha fallado:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:934
+msgid "Adding Group Check Attributes query failed:  "
+msgstr "Agregar atributos de verificación del grupo de consulta falló:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:971
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:986
+msgid "Deleting radgroupreply query failed: "
+msgstr "Eliminar radgroupreply consulta falló:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1065
+msgid "Adding Group Attributes query failed:  "
+msgstr "Agregar atributos de grupo de consulta falló:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1120
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1130
+msgid "Get Groups details Query failed: "
+msgstr "Fallo obterner detalles grupos:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1157
+msgid "Hourly"
+msgstr "Cada hora"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1158
+msgid "Daily"
+msgstr "Diario"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1159
+msgid "Weekly"
+msgstr "Semanal"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1160
+msgid "Monthly"
+msgstr "Mensual"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1221
+msgid "Setting User Comment Query Failed: "
+msgstr "Consulta de configuración Usuario Comentario Error:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1241
+msgid "Setting User Group Query Failed: "
+msgstr "Consulta de configuración de grupo de usuarios de Error:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1267
+msgid "Setting User Datalimit Query Failed: "
+msgstr "Consulta de configuración de usuario Datalimit Error:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1294
+msgid "Getting User Current Data Limit to increase failed: "
+msgstr "Obtención de datos del usuario actual límite de aumento Error:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1320
+msgid "Setting User Timelimit Query Failed: "
+msgstr "Consulta de configuración de límite de tiempo del usuario Error:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1346
+msgid "Getting User Current Time Limit to increase failed: "
+msgstr "Obtención de Límite de usuarios Hora Actual para aumentar Error:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1371
+msgid "Setting User Password Query Failed: "
+msgstr "Consulta de configuración de usuario Contraseña Error:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1397
+msgid "Setting User ExpireAfter Query Failed: "
+msgstr ""
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1417
+msgid "Deleting User Expire After Query Failed: "
+msgstr ""
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1441
+msgid "Setting User Expiry Date Query Failed: "
+msgstr "Consulta configuración fecha caducidad de usuario Error:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1461
+msgid "Deleting User Expiry Date Query Failed: "
+msgstr "Consulta eliminación de vencimiento del usuario fecha Error:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1484
+msgid "Locking User Account Query Failed: "
+msgstr ""
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1501
+msgid "User Account Lock Reason Query Failed: "
+msgstr ""
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1526
+msgid "Removing User Lock Query Failed: "
+msgstr ""
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1543
+msgid "Removing User Lock Message Query Failed: "
+msgstr ""
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1567
+msgid "Deleting user failed: "
+msgstr "Eliminar el usuario ha fallado:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1583
+msgid "Deleting user radreply data failed: "
+msgstr ""
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1599
+msgid "Deleting users group failed: "
+msgstr "Eliminar grupo de usuarios ha fallado:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1615
+msgid "Deleting users comment failed: "
+msgstr "Eliminar comentario usuarios ha fallado:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1638
+msgid "Checking Uniq Username failed: "
+msgstr "Comprobación de Usuario Uniq  Error:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1670
+msgid "Retrieving Chilli Config Single Value failed: "
+msgstr "Recuperación de Valor Chilli Config ha fallado:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1703
+msgid "Deleting Chilli Config Query Failed: "
+msgstr "Eliminación de consultas Chilli Config Error:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1736
+msgid "Setting Chilli Config Single Query Failed: "
+msgstr "Consulta configuración Chilli Config Error:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1761
+msgid "Setting Chilli Config Multi Query Failed: "
+msgstr "Consulta establecimiento de Chilli configuración Multi Error:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1785
+msgid "Retrieving Chilli Config Multi Value failed: "
+msgstr "Recuperación de valor de configuración Multi Chilli Error:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1855
+msgid "Retrieving MAC from IP failed: "
+msgstr ""
 
 #: ../../../www/uam/js.php:20
 msgid "Username is required"
@@ -2348,9 +2640,7 @@ msgstr "Error genérico en carga de inicio de sesión"
 msgid ""
 "Popup Blocked. Click link below to continue to your website and open the "
 "status window"
-msgstr ""
-"Emergente bloqueado. Haga clic en enlace de abajo para seguir a su sitio web"
-" y abrir la ventana de estado"
+msgstr "Emergente bloqueado. Haga clic en enlace de abajo para seguir a su sitio web y abrir la ventana de estado"
 
 #: ../../../www/uam/js.php:24
 msgid "Logged In"
@@ -2359,5 +2649,3 @@ msgstr "Identificando en"
 #: ../../../www/uam/js.php:25
 msgid "Click to open the status window and continue to your site"
 msgstr "Haga clic para abrir la ventana de estado y continuar"
-
-
