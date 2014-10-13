@@ -64,7 +64,8 @@ class Page
         $checked = " ";
         switch ($params['type']) {
             case "ip":
-                return 'type="text" pattern="\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}" title="IP Address" value="' . $val . '"';
+                return 'type="text" pattern="\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}" title="IP Address" value="'
+                    . $val . '"';
                 break;
             case "bool":
                 if ($val) {

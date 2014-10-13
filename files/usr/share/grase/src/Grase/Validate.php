@@ -21,11 +21,14 @@
 namespace Grase;
 
 
-class Validate {
+class Validate
+{
 
-    public static function numericLimit($limit) {
+    public static function numericLimit($limit)
+    {
         return $limit && is_numeric($limit);
     }
+
     //sprintf(T_("Invalid value '%s' for Data Limit"),$limit)
 
     public static function recurrenceInterval($interval, $recurrenceIntervals)
@@ -34,26 +37,29 @@ class Validate {
         //sprintf(T_("Invalid recurrence interval '%s'"), $recurrence);
     }
 
-    public static function bandwidthOptions($kBits, $options) {
+    public static function bandwidthOptions($kBits, $options)
+    {
         return isset($options[$kBits]);
         //sprintf(T_("Invalid Bandwidth Limit '%s'"), $kbits);
     }
 
-    public static function recurrenceTime($recurrenceInterval, $time) {
+    public static function recurrenceTime($recurrenceInterval, $time)
+    {
         // $time is in minutes not seconds
         $recurrenceTimeValues = array(
             'hour' => 60,
             'day' => 60 * 24,
             'week' => 60 * 24 * 7,
-            'month' => 60 * 24 * 30);
+            'month' => 60 * 24 * 30
+        );
         return $recurrenceTimeValues[$recurrenceInterval] >= $time;
         //T_("Recurring time limit must be less than interval");
     }
 
-    public static function MACAddress($MACAddress) {
+    public static function MACAddress($MACAddress)
+    {
         // Check string is in format XX-XX-XX-XX-XX-XX (and upper case);
         return preg_match('/([0-9A-F]{2}-){5}[0-9A-F]{2}/', $MACAddress);
         // TODO: Check that each XX pair is a valid hex number
     }
-
 }

@@ -69,11 +69,6 @@ class SystemInformation
         }
     }
 
-    public function SoftwareVersion()
-    {
-
-    }
-
     private function discoverLANInterface()
     {
         // Destination     Gateway         Genmask         Flags Metric Ref    Use Iface

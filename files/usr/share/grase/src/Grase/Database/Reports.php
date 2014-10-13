@@ -92,7 +92,7 @@ class Reports
 
     public function getMonthGroupUsage()
     {
-        $sql = "SELECT
+        $sql = 'SELECT
                     SUM(AcctInputOctets + AcctOutputOctets)/1024/1024 AS Data,
                     radusergroup.GroupName AS Label
                 FROM
@@ -100,7 +100,7 @@ class Reports
                     radusergroup
                 WHERE
                     radacct.UserName = radusergroup.UserName
-                GROUP BY radusergroup.GroupName";
+                GROUP BY radusergroup.GroupName';
         return $this->processAssociativeResults($sql);
 
     }
@@ -108,31 +108,50 @@ class Reports
     public function getThisMonthDownUsage()
     {
 
-        $sql = "SELECT SUM(TotalOctets) AS TotalOctets, Label FROM (
-        SELECT
-            SUM(AcctInputOctets) AS TotalOctets,
-            DATE(AcctStartTime) AS Label
-            FROM radacct
-            WHERE ServiceType != 'Administrative-User'
-            GROUP BY DATE(AcctStartTime)
-            UNION
-            SELECT '0' AS TotalOctets, CONCAT(dt.d, '-', days.d) AS Label
-        FROM
-            (
-                SELECT CONCAT(a1,b1) AS d
-                FROM
-                    (
-                    SELECT '0' AS a1 UNION ALL SELECT '1' UNION ALL SELECT '2' UNION ALL SELECT '3'
-                    ) a
-                    JOIN
-                    (
-                    SELECT '0' AS b1 UNION ALL SELECT '1' UNION ALL SELECT '2' UNION ALL SELECT '3' UNION ALL SELECT '4' UNION ALL SELECT '5' UNION ALL SELECT '6' UNION ALL SELECT '7' UNION ALL SELECT '8' UNION ALL SELECT '9'
-                    ) b
-                WHERE CONVERT(CONCAT(a1, b1), UNSIGNED ) <=
-                ( SELECT DAY(NOW()) ) AND CONCAT(a1,b1)<>'00') days JOIN (SELECT DATE_FORMAT(NOW(),'%Y-%m') AS d) dt ORDER BY Label) dailyusage
-        WHERE Label LIKE (SELECT DATE_FORMAT(NOW(),'%Y-%m-%%') AS d)
-        GROUP BY Label
-        ";
+        $sql = <<<'SQL'
+SELECT
+  SUM(TotalOctets) AS TotalOctets,
+  Label
+FROM (
+       SELECT
+         SUM(AcctInputOctets) AS TotalOctets,
+         DATE(AcctStartTime)  AS Label
+       FROM radacct
+       WHERE ServiceType != 'Administrative-User'
+       GROUP BY DATE(AcctStartTime)
+       UNION
+       SELECT
+         '0'                       AS TotalOctets,
+         CONCAT(dt.d, '-', days.d) AS Label
+       FROM
+         (
+           SELECT CONCAT(a1, b1) AS d
+           FROM
+             (
+               SELECT '0' AS a1
+               UNION ALL SELECT '1'
+               UNION ALL SELECT '2'
+               UNION ALL SELECT '3'
+             ) a
+             JOIN
+             (
+               SELECT '0' AS b1
+               UNION ALL SELECT '1'
+               UNION ALL SELECT '2'
+               UNION ALL SELECT '3'
+               UNION ALL SELECT '4'
+               UNION ALL SELECT '5'
+               UNION ALL SELECT '6'
+               UNION ALL SELECT '7'
+               UNION ALL SELECT '8'
+               UNION ALL SELECT '9'
+             ) b
+           WHERE CONVERT(CONCAT(a1, b1), UNSIGNED) <=
+                 (SELECT DAY(NOW())) AND CONCAT(a1, b1) <> '00') days JOIN (SELECT DATE_FORMAT(NOW(), '%Y-%m') AS d) dt
+       ORDER BY Label) dailyusage
+WHERE Label LIKE (SELECT DATE_FORMAT(NOW(), '%Y-%m-%%') AS d)
+GROUP BY Label
+SQL;
 
         return $this->processDataResults($sql);
     }

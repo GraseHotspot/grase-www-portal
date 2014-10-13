@@ -538,8 +538,8 @@ class Radmin
                 'Adding user to batch failed: ',
                 null
             );
-            return false;
         }
+        return false;
     }
 
     public function listBatches()

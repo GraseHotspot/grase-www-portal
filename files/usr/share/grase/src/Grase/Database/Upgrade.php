@@ -220,7 +220,6 @@ class Upgrade
     <li><strong>You will not attempt to access any system on this network</strong></li>
 </ul>
 EOT
-
             );
             $this->rowsUpdated++;
         }
@@ -261,7 +260,6 @@ EOT
                 <<<'EOT'
 <p>Your login was successful. Please click <a href="nojsstatus" target="grasestatus">HERE</a> to open a status window<br/>If you don't open a status window, then bookmark the link <a href="http://logout/">http://logout/</a> so you can logout when finished.</p>
 EOT
-
             );
             $this->rowsUpdated++;
         }
@@ -415,7 +413,7 @@ EOT
         // Remove uniq index on radgroupcheck
         try {
             $this->rowsUpdated += $this->radius->exec("DROP INDEX GroupName ON radgroupcheck");
-        }catch (\PDOException $e) { // We don't care if it doesn't exist causing the drop to fail
+        } catch (\PDOException $e) { // We don't care if it doesn't exist causing the drop to fail
         }
 
         $this->rowsUpdated += $this->radius->exec("ALTER TABLE radgroupcheck ADD KEY `GroupName` (`GroupName`(32))");
@@ -436,15 +434,15 @@ EOT
                               DROP COLUMN FramedIPAddress,
                               DROP COLUMN CallingStationId"
             );
-        }catch (\PDOException $e) { // We don't care if it doesn't exist causing the drop to fail
+        } catch (\PDOException $e) { // We don't care if it doesn't exist causing the drop to fail
         }
 
         // Add columns back in correctly
         $this->rowsUpdated += $this->radius->exec(
             "ALTER TABLE radpostauth
-                ADD COLUMN ServiceType varchar(32) DEFAULT NULL,
-                ADD COLUMN FramedIPAddress varchar(15) DEFAULT NULL,
-                ADD COLUMN CallingStationId varchar(50) DEFAULT NULL"
+                ADD COLUMN ServiceType VARCHAR(32) DEFAULT NULL,
+                ADD COLUMN FramedIPAddress VARCHAR(15) DEFAULT NULL,
+                ADD COLUMN CallingStationId VARCHAR(50) DEFAULT NULL"
         );
     }
 
@@ -489,5 +487,4 @@ EOT
         // Set Chilli Admin interval to be lower (10 minutes)
         $this->rowsUpdated += $this->DBF->setChilliConfigSingle('interval', '600');
     }
-
-} 
+}

@@ -17,4 +17,4 @@ class State
     public $selectedPaymentGateway;
     public $selectionConfirmed = false;
     public $pendingAccount = false;
-} 
+}

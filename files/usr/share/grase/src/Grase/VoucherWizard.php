@@ -35,8 +35,12 @@ class VoucherWizard
     );
 
 
-    public function __construct(Database\Radmin $Settings, $templateEngine, \DatabaseFunctions $databaseFunctions, VoucherWizard\State $state)
-    {
+    public function __construct(
+        Database\Radmin $Settings,
+        $templateEngine,
+        \DatabaseFunctions $databaseFunctions,
+        VoucherWizard\State $state
+    ) {
         $this->wakeUp($Settings, $templateEngine, $databaseFunctions);
         $this->loadVouchers();
 
@@ -75,7 +79,7 @@ class VoucherWizard
         $this->checkWizardRestart();
     }
 
-    private function processCurrectPage()
+    private function processCurrentPage()
     {
         switch ($this->state->wizardPage) {
             case 'initialpage':
@@ -277,11 +281,16 @@ class VoucherWizard
             // TODO provide link to clear details
             $_SESSION['ExpireSession'] = time() + 300;
 
-            // TODO Store purchase details in database, along with payment details including price and plugin used, and any reciept number
+            /* TODO Store purchase details in database, along with payment details
+             * including price and plugin used, and any receipt number
+             */
             //print $paymentplugin->getPaymentDetails(); TODO TODO TODO TODO
         }
 
-        // Regardless of payment completion and page processing, we now display the page. If anything is wrong with the processing this page will let us know as the plugin handles which state we are in.
+        /* Regardless of payment completion and page processing, we now display the page.
+         * If anything is wrong with the processing this page will let us know as the plugin
+         * handles which state we are in.
+         */
 
         $pagecontents = $paymentplugin->getPageContents($nextpage);
         echo '<form action="" method="POST"><input type="hidden" name="pgformsubmission" value="1"/>';
