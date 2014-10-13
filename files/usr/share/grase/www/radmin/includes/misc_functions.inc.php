@@ -224,8 +224,14 @@ function clean_number($number)
 {
     global $Settings; //TODO Remove global
     $fmt = new NumberFormatter( $Settings->getSetting('locale'), NumberFormatter::DECIMAL );
-    $cleannum = $fmt->parse(ereg_replace("[^\.,0-9]", "", \Grase\Clean::text($number)));
+    $cleannum = $fmt->parse(preg_replace("/[^\.,0-9]/", "", \Grase\Clean::text($number)));
     return $cleannum;
+}
+
+function underscorespaces($text)
+{
+    //TODO this function is used in templates, so can't be moved yet
+    return \Grase\Clean::groupName($text);
 }
 
 function clean_numberarray($numberarray)
@@ -247,5 +253,3 @@ function clean_int($number)
     return \Grase\Util::bigIntVal(clean_number($number));
     //ereg_replace("[^0-9]", "", \Grase\Clean::text($number));
 }
-
-?>

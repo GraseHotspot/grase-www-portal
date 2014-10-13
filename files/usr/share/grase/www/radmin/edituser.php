@@ -102,7 +102,7 @@ if (isset($_POST['updateusersubmit'])) {   // Process form for changed items and
         if (!\Grase\Validate::numericLimit($addMb)) {
             $error[] = sprintf(T_("Invalid value '%s' for Data Limit"),$addMb);
         } else {
-            DatabaseFunctions::getInstance()->increaseUserDatalimit($username, $addMb));
+            DatabaseFunctions::getInstance()->increaseUserDatalimit($username, $addMb);
             DatabaseFunctions::getInstance()->setUserExpiry(
                 $username,
                 expiry_for_group(DatabaseFunctions::getInstance()->getUserGroup($username))
