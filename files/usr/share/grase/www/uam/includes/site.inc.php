@@ -17,8 +17,6 @@ require_once('../radmin/includes/site_settings.inc.php');
 require_once('../radmin/includes/misc_functions.inc.php');
 
 
-//require_once '../radmin/includes/block.t.php';
-
 $smarty = new SmartyBC();
 
 // TODO Detect browser settings and allow override of language?
