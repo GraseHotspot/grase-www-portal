@@ -32,15 +32,6 @@ require_once 'Auth/Container/MDB2.php';
 
 require_once __DIR__ . '/../../../vendor/autoload.php';
 
-function grase_autoload($class_name)
-{
-    if (file_exists(__DIR__ . '/../classes/' . $class_name . '.class.php')) {
-        include_once __DIR__ . '/../classes/' . $class_name . '.class.php';
-    }
-}
-
-spl_autoload_register('grase_autoload');
-
 require_once('php-gettext/gettext.inc');
 require_once('accesscheck.inc.php');
 require_once('site_settings.inc.php');

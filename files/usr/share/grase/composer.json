@@ -15,6 +15,7 @@
         {
             "Grase\\": "src/Grase/"
         },
-        "files": ["src/includes/constants.php"]
+        "files": ["src/includes/constants.php"],
+        "classmap" : ["www/radmin/classes/"]
     }
 }

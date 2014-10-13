@@ -22,15 +22,6 @@ exit(0); // Not ready for production
 
 require_once __DIR__.'/../../vendor/autoload.php';
 
-function grase_autoload($class_name) {
-    if( file_exists(__DIR__. '/classes/' . $class_name . '.class.php'))
-    {
-        include_once __DIR__. '/classes/' . $class_name . '.class.php';
-    }
-}
-
-spl_autoload_register('grase_autoload');
-
 require_once('php-gettext/gettext.inc');
 
 require_once('includes/site_settings.inc.php');

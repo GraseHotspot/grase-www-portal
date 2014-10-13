@@ -25,15 +25,6 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 require_once('includes/misc_functions.inc.php');
 
-function grase_autoload($class_name)
-{
-    if (file_exists(__DIR__ . '/classes/' . $class_name . '.class.php')) {
-        include_once __DIR__ . '/classes/' . $class_name . '.class.php';
-    }
-}
-
-spl_autoload_register('grase_autoload');
-
 // Special case for stale sessions, don't log it
 /*if(isset($_GET['clearstalesessions']))
 {

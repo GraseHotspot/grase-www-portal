@@ -26,9 +26,7 @@ http_access deny Banned_Hosts
 
 chdir(__DIR__ . '/../');
 
-function __autoload($class_name) {
-    require_once './classes/' . $class_name . '.class.php';
-}
+require_once __DIR__ . '/../../../vendor/autoload.php';
 
 $NONINTERACTIVE_SCRIPT = TRUE;
 
