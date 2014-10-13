@@ -15,7 +15,9 @@ bower:
 composer:
 	mkdir -p ext-libs/composer
 	cp $(COMPOSER_FILES) ext-libs/composer
+	ln -s ../../files/usr/share/grase/www ext-libs/composer/www
 	cd ext-libs/composer; /usr/local/bin/composer install
+	rm ext-libs/composer/www
 
 
 clean:
