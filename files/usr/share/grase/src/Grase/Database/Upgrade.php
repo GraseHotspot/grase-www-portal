@@ -37,92 +37,92 @@ class Upgrade
         $this->DBF = $databasefunctions;
     }
 
-    public function upgradeDatabase($Settings)
+    public function upgradeDatabase(Radmin $Settings)
     {
-        $olddbversion = $Settings->getSetting("DBVersion");
+        $oldDBVersion = $Settings->getSetting("DBVersion");
 
         try {
             // Somethings we can run anytime
             $this->defaultTemplates($Settings);
 
             // The rest we can only run if the Database hasn't been updated
-            if ($olddbversion < 1.1) {
+            if ($oldDBVersion < 1.1) {
                 $this->cleartextAttribute();
                 $Settings->setSetting("DBVersion", 1.1);
             }
 
-            if ($olddbversion < 1.2) {
+            if ($oldDBVersion < 1.2) {
                 $this->onePointTwo($Settings);
                 $Settings->setSetting("DBVersion", 1.2);
             }
 
-            if ($olddbversion < 1.3) {
+            if ($oldDBVersion < 1.3) {
                 $this->groupSimultaneousDefaults();
                 $Settings->setSetting("DBVersion", 1.3);
             }
 
-            if ($olddbversion < 1.4) {
+            if ($oldDBVersion < 1.4) {
                 //$this->defaultTemplates($Settings);
                 //$Settings->setSetting("DBVersion", 1.4);
             }
 
-            if ($olddbversion < 1.5) {
+            if ($oldDBVersion < 1.5) {
                 $this->defaultNetworkSettings($Settings);
                 $Settings->setSetting("DBVersion", 1.5);
             }
 
-            if ($olddbversion < 1.6) {
+            if ($oldDBVersion < 1.6) {
                 $this->fixGroupAttributes();
                 $Settings->setSetting("DBVersion", 1.6);
             }
 
-            if ($olddbversion < 1.7) {
+            if ($oldDBVersion < 1.7) {
                 $this->addAccessLevelColumn();
                 $Settings->setSetting("DBVersion", 1.7);
             }
 
-            if ($olddbversion < 1.8) {
+            if ($oldDBVersion < 1.8) {
                 $this->defaultNetworkInterfaces($Settings);
                 $this->walledGardenData();
                 $Settings->setSetting("DBVersion", 1.8);
             }
 
-            if ($olddbversion < 1.9) {
+            if ($oldDBVersion < 1.9) {
                 $this->migrateLastBatch($Settings);
                 $Settings->setSetting("DBVersion", 1.9);
             }
 
-            if ($olddbversion < 2.0) {
+            if ($oldDBVersion < 2.0) {
                 $this->migrateGroups($Settings);
                 $Settings->setSetting("DBVersion", 2.0);
             }
 
-            if ($olddbversion < 2.1) {
+            if ($oldDBVersion < 2.1) {
                 $this->fixGroupNameIndex();
                 $Settings->setSetting("DBVersion", 2.1);
             }
 
-            if ($olddbversion < 2.2) {
+            if ($oldDBVersion < 2.2) {
                 $this->fixPostAuthTable();
                 $Settings->setSetting("DBVersion", 2.2);
             }
 
-            if ($olddbversion < 2.3) {
+            if ($oldDBVersion < 2.3) {
                 $this->fixServiceTypeOP();
                 $Settings->setSetting("DBVersion", 2.3);
             }
 
-            if ($olddbversion < 2.4) {
+            if ($oldDBVersion < 2.4) {
                 $this->createAutocreatePassword($Settings);
                 $Settings->setSetting("DBVersion", 2.4);
             }
 
-            if ($olddbversion < 2.5) {
+            if ($oldDBVersion < 2.5) {
                 $this->truncatePostAuth();
                 $Settings->setSetting("DBVersion", 2.5);
             }
 
-            if ($olddbversion < 2.6) {
+            if ($oldDBVersion < 2.6) {
                 $this->decreaseChilliAdminInterval();
                 $Settings->setSetting("DBVersion", 2.6);
             }
