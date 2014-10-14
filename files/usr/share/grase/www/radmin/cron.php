@@ -37,8 +37,8 @@ AdminLog::getInstance()->log_cron("CRON");
 $DBs = new DatabaseConnections();
 $radiusDB = new \Grase\Database\Database();
 $radminDB = new \Grase\Database\Database('/etc/grase/radmin.conf');
-$upgradeDB = new \Grase\Database\Upgrade($radiusDB, $radminDB, CronFunctions::getInstance());
-$upgradeDatabaseResults = $upgradeDB->upgradeDatabase(new \Grase\Database\Radmin($radminDB));
+$upgradeDB = new \Grase\Database\Upgrade($radiusDB, $radminDB, new \Grase\Database\Radmin($radminDB), CronFunctions::getInstance());
+$upgradeDatabaseResults = $upgradeDB->upgradeDatabase();
 if ($upgradeDatabaseResults) {
     echo "$upgradeDatabaseResults\n";
 }
