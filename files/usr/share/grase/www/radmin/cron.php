@@ -24,7 +24,7 @@ $NONINTERACTIVE_SCRIPT = true;
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 require_once('includes/misc_functions.inc.php');
-
+require_once('php-gettext/gettext.inc');
 // Special case for stale sessions, don't log it
 /*if(isset($_GET['clearstalesessions']))
 {
