@@ -26,7 +26,7 @@ class Validate
 
     public static function numericLimit($limit)
     {
-        return $limit && is_numeric($limit);
+        return $limit === null || is_numeric($limit);
     }
 
     //sprintf(T_("Invalid value '%s' for Data Limit"),$limit)
