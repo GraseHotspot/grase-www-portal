@@ -178,7 +178,7 @@ function bandwidth_options()
 {
     global $Settings;
     // kbits/second
-    $kbits_options = explode(" ", $Settings->getSetting('kbitOptions'));
+    $kbits_options = explode(" ", $Settings->getSetting('kBitOptions'));
     $options[''] = '';
     foreach($kbits_options as $kbits)
     {

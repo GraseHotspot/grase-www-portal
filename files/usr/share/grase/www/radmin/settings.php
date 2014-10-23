@@ -74,8 +74,8 @@ if (isset($_POST['submit'])) {
         $success[] = T_("Data Options Updated");
     }
 
-    if ($new2bwoptions != $Settings->getSetting('kbitOptions')) {
-        $Settings->setSetting('kbitOptions', $new2bwoptions);
+    if ($new2bwoptions != $Settings->getSetting('kBitOptions')) {
+        $Settings->setSetting('kBitOptions', $new2bwoptions);
         $success[] = T_("Bandwidth Options Updated");
     }
 
@@ -86,8 +86,7 @@ if (isset($_POST['submit'])) {
 $templateEngine->assign("location", $Settings->getSetting('locationName'));
 $templateEngine->assign("mboptions", $Settings->getSetting('mbOptions'));
 $templateEngine->assign("timeoptions", $Settings->getSetting('timeOptions'));
-$templateEngine->assign("bwoptions", $Settings->getSetting('kbitOptions'));
-
+$templateEngine->assign("bwoptions", $Settings->getSetting('kBitOptions'));
 
 // Locale stuff
 $locale = $Settings->getSetting('locale');
