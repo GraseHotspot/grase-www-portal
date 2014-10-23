@@ -27,104 +27,106 @@ class Upgrade
     protected $radius;
     protected $radmin;
     protected $DBF;
+    protected $Settings;
 
     protected $rowsUpdated = 0;
 
-    public function __construct(Database $radius, Database $radmin, $databasefunctions)
+    public function __construct(Database $radius, Database $radmin, Radmin $Settings, $databasefunctions)
     {
         $this->radius = $radius->conn;
         $this->radmin = $radmin->conn;
+        $this->Settings = $Settings;
         $this->DBF = $databasefunctions;
     }
 
-    public function upgradeDatabase($Settings)
+    public function upgradeDatabase()
     {
-        $olddbversion = $Settings->getSetting("DBVersion");
+        $oldDBVersion = $this->Settings->getSetting("DBVersion");
 
         try {
             // Somethings we can run anytime
-            $this->defaultTemplates($Settings);
+            $this->defaultTemplates();
 
             // The rest we can only run if the Database hasn't been updated
-            if ($olddbversion < 1.1) {
+            if ($oldDBVersion < 1.1) {
                 $this->cleartextAttribute();
-                $Settings->setSetting("DBVersion", 1.1);
+                $this->Settings->setSetting("DBVersion", 1.1);
             }
 
-            if ($olddbversion < 1.2) {
-                $this->onePointTwo($Settings);
-                $Settings->setSetting("DBVersion", 1.2);
+            if ($oldDBVersion < 1.2) {
+                $this->onePointTwo();
+                $this->Settings->setSetting("DBVersion", 1.2);
             }
 
-            if ($olddbversion < 1.3) {
+            if ($oldDBVersion < 1.3) {
                 $this->groupSimultaneousDefaults();
-                $Settings->setSetting("DBVersion", 1.3);
+                $this->Settings->setSetting("DBVersion", 1.3);
             }
 
-            if ($olddbversion < 1.4) {
-                //$this->defaultTemplates($Settings);
-                //$Settings->setSetting("DBVersion", 1.4);
+            if ($oldDBVersion < 1.4) {
+                //$this->defaultTemplates($this->Settings);
+                //$this->Settings->setSetting("DBVersion", 1.4);
             }
 
-            if ($olddbversion < 1.5) {
-                $this->defaultNetworkSettings($Settings);
-                $Settings->setSetting("DBVersion", 1.5);
+            if ($oldDBVersion < 1.5) {
+                $this->defaultNetworkSettings();
+                $this->Settings->setSetting("DBVersion", 1.5);
             }
 
-            if ($olddbversion < 1.6) {
+            if ($oldDBVersion < 1.6) {
                 $this->fixGroupAttributes();
-                $Settings->setSetting("DBVersion", 1.6);
+                $this->Settings->setSetting("DBVersion", 1.6);
             }
 
-            if ($olddbversion < 1.7) {
+            if ($oldDBVersion < 1.7) {
                 $this->addAccessLevelColumn();
-                $Settings->setSetting("DBVersion", 1.7);
+                $this->Settings->setSetting("DBVersion", 1.7);
             }
 
-            if ($olddbversion < 1.8) {
-                $this->defaultNetworkInterfaces($Settings);
+            if ($oldDBVersion < 1.8) {
+                $this->defaultNetworkInterfaces();
                 $this->walledGardenData();
-                $Settings->setSetting("DBVersion", 1.8);
+                $this->Settings->setSetting("DBVersion", 1.8);
             }
 
-            if ($olddbversion < 1.9) {
-                $this->migrateLastBatch($Settings);
-                $Settings->setSetting("DBVersion", 1.9);
+            if ($oldDBVersion < 1.9) {
+                $this->migrateLastBatch();
+                $this->Settings->setSetting("DBVersion", 1.9);
             }
 
-            if ($olddbversion < 2.0) {
-                $this->migrateGroups($Settings);
-                $Settings->setSetting("DBVersion", 2.0);
+            if ($oldDBVersion < 2.0) {
+                $this->migrateGroups();
+                $this->Settings->setSetting("DBVersion", 2.0);
             }
 
-            if ($olddbversion < 2.1) {
+            if ($oldDBVersion < 2.1) {
                 $this->fixGroupNameIndex();
-                $Settings->setSetting("DBVersion", 2.1);
+                $this->Settings->setSetting("DBVersion", 2.1);
             }
 
-            if ($olddbversion < 2.2) {
+            if ($oldDBVersion < 2.2) {
                 $this->fixPostAuthTable();
-                $Settings->setSetting("DBVersion", 2.2);
+                $this->Settings->setSetting("DBVersion", 2.2);
             }
 
-            if ($olddbversion < 2.3) {
+            if ($oldDBVersion < 2.3) {
                 $this->fixServiceTypeOP();
-                $Settings->setSetting("DBVersion", 2.3);
+                $this->Settings->setSetting("DBVersion", 2.3);
             }
 
-            if ($olddbversion < 2.4) {
-                $this->createAutocreatePassword($Settings);
-                $Settings->setSetting("DBVersion", 2.4);
+            if ($oldDBVersion < 2.4) {
+                $this->createAutocreatePassword();
+                $this->Settings->setSetting("DBVersion", 2.4);
             }
 
-            if ($olddbversion < 2.5) {
+            if ($oldDBVersion < 2.5) {
                 $this->truncatePostAuth();
-                $Settings->setSetting("DBVersion", 2.5);
+                $this->Settings->setSetting("DBVersion", 2.5);
             }
 
-            if ($olddbversion < 2.6) {
+            if ($oldDBVersion < 2.6) {
                 $this->decreaseChilliAdminInterval();
-                $Settings->setSetting("DBVersion", 2.6);
+                $this->Settings->setSetting("DBVersion", 2.6);
             }
 
 
@@ -151,7 +153,7 @@ class Upgrade
     }
 
     // < 1.2
-    private function onePointTwo($Settings)
+    private function onePointTwo()
     {
         try {
             // remove unique key from radreply
@@ -183,7 +185,7 @@ class Upgrade
         $this->rowsUpdated += $this->DBF->setChilliConfigSingle('defidletimeout', '600');
 
         // Set last change time
-        $Settings->setSetting('lastchangechilliconf', time());
+        $this->Settings->setSetting('lastchangechilliconf', time());
         $this->rowsUpdated += 1;
 
         //Install default groups
@@ -191,7 +193,7 @@ class Upgrade
         $dgroup["Ministry"] = "+6 months";
         $dgroup["Students"] = "+3 months";
         $dgroup["Visitors"] = "+1 months";
-        $Settings->setSetting("groups", serialize($dgroup));
+        $this->Settings->setSetting("groups", serialize($dgroup));
         $this->rowsUpdated += 1;
     }
 
@@ -206,11 +208,11 @@ class Upgrade
     }
 
     // < 1.4
-    private function defaultTemplates($Settings)
+    private function defaultTemplates()
     {
-        if ($Settings->getTemplate('loginhelptext') === null) {
+        if ($this->Settings->getTemplate('loginhelptext') === null) {
             // loginhelptext: displayed above login form in main portal page
-            $Settings->setTemplate(
+            $this->Settings->setTemplate(
                 'loginhelptext',
                 <<<'EOT'
 <p>By logging in, you are agreeing to the following:</p>
@@ -226,8 +228,8 @@ EOT
 
 
         // helptext: page contents of info & help file
-        if ($Settings->getTemplate('helptext') === null) {
-            $Settings->setTemplate(
+        if ($this->Settings->getTemplate('helptext') === null) {
+            $this->Settings->setTemplate(
                 'helptext',
                 <<< 'EOT'
 <p>For payment and an account, please contact the Office during office hours.</p>
@@ -247,15 +249,15 @@ EOT
             $this->rowsUpdated++;
         }
 
-        if ($Settings->getTemplate('maincss') === null) {
+        if ($this->Settings->getTemplate('maincss') === null) {
             // maincss: main css override for login portal
-            $Settings->setTemplate('maincss', '');
+            $this->Settings->setTemplate('maincss', '');
             $this->rowsUpdated++;
         }
 
         // loggedinnojshtml: html to show on successful login
-        if ($Settings->getTemplate('loggedinnojshtml') === null) {
-            $Settings->setTemplate(
+        if ($this->Settings->getTemplate('loggedinnojshtml') === null) {
+            $this->Settings->setTemplate(
                 'loggedinnojshtml',
                 <<<'EOT'
 <p>Your login was successful. Please click <a href="nojsstatus" target="grasestatus">HERE</a> to open a status window<br/>If you don't open a status window, then bookmark the link <a href="http://logout/">http://logout/</a> so you can logout when finished.</p>
@@ -265,8 +267,8 @@ EOT
         }
 
         //ticketPrintCSS
-        if ($Settings->getTemplate('ticketPrintCSS') === null) {
-            $Settings->setTemplate(
+        if ($this->Settings->getTemplate('ticketPrintCSS') === null) {
+            $this->Settings->setTemplate(
                 'ticketPrintCSS',
                 <<<'EOT'
 body {
@@ -309,7 +311,7 @@ EOT
     }
 
     // < 1.5
-    private function defaultNetworkSettings($Settings)
+    private function defaultNetworkSettings()
     {
         // Load default network settings (match old chilli config)
         $net['lanipaddress'] = '10.1.0.1';
@@ -318,8 +320,8 @@ EOT
         $net['dnsservers'] = array('208.67.222.123', '208.67.220.123'); // OpenDNS Family Shield
         $net['bogusnx'] = array();
 
-        $Settings->setSetting('networkoptions', serialize($net));
-        $Settings->setSetting('lastnetworkconf', time());
+        $this->Settings->setSetting('networkoptions', serialize($net));
+        $this->Settings->setSetting('lastnetworkconf', time());
 
         $this->rowsUpdated += 2;
     }
@@ -347,16 +349,16 @@ EOT
     }
 
     // < 1.8
-    private function defaultNetworkInterfaces($Settings)
+    private function defaultNetworkInterfaces()
     {
         $interfaces = Util::getDefaultNetworkIFS();
-        $networkoptions = unserialize($Settings->getSetting('networkoptions'));
+        $networkoptions = unserialize($this->Settings->getSetting('networkoptions'));
         $networkoptions['lanif'] = $interfaces['lanif'];
         $networkoptions['wanif'] = $interfaces['wanif'];
 
-        $Settings->setSetting('networkoptions', serialize($networkoptions));
+        $this->Settings->setSetting('networkoptions', serialize($networkoptions));
 
-        $Settings->setSetting('lastnetworkconf', time());
+        $this->Settings->setSetting('lastnetworkconf', time());
         $this->rowsUpdated += 2;
     }
 
@@ -367,27 +369,27 @@ EOT
     }
 
     // < 1.9
-    private function migrateLastBatch($Settings)
+    private function migrateLastBatch()
     {
         // Get last batch and migrate it to new batch system
-        $lastbatch = $Settings->getSetting('lastbatch');
+        $lastbatch = $this->Settings->getSetting('lastbatch');
         // Check if lastbatch is an array, if so then we migrate
         if (is_array(unserialize($lastbatch))) {
             $lastbatchusers = unserialize($lastbatch);
-            $nextBatchID = $Settings->nextBatchID();
-            $Settings->saveBatch($nextBatchID, $lastbatchusers);
+            $nextBatchID = $this->Settings->nextBatchID();
+            $this->Settings->saveBatch($nextBatchID, $lastbatchusers);
             // Lastbatch becomes an ID
-            $Settings->setSetting('lastbatch', $nextBatchID);
+            $this->Settings->setSetting('lastbatch', $nextBatchID);
         } else {
-            $Settings->setSetting('lastbatch', 0);
+            $this->Settings->setSetting('lastbatch', 0);
         }
     }
 
     // < 2.0
-    private function migrateGroups($Settings)
+    private function migrateGroups()
     {
         // Migrate groups to new system
-        $groups = unserialize($Settings->getSetting('groups'));
+        $groups = unserialize($this->Settings->getSetting('groups'));
 
         $groupattributes = $this->DBF->getGroupAttributes();
 
@@ -401,10 +403,10 @@ EOT
             // No comment stored, but oh well
             $attributes['Comment'] = @ $groupattributes[$group]['Comment'];
 
-            $this->rowsUpdated += $Settings->setGroup($attributes);
+            $this->rowsUpdated += $this->Settings->setGroup($attributes);
         }
 
-        $Settings->setSetting('groups', serialize(''));
+        $this->Settings->setSetting('groups', serialize(''));
     }
 
     // < 2.1
@@ -460,14 +462,14 @@ EOT
     }
 
     // < 2.4
-    private function createAutocreatePassword($Settings)
+    private function createAutocreatePassword()
     {
         // Create the autocreatepassword setting, with a random string if it
         // doesn't already exist
         // Check that setting doesn't already exist as changing an existing
         // password will lock users out
-        if (!$Settings->getSetting("autocreatepassword")) {
-            $Settings->setSetting("autocreatepassword", Util::randomPassword(20));
+        if (!$this->Settings->getSetting("autocreatepassword")) {
+            $this->Settings->setSetting("autocreatepassword", Util::randomPassword(20));
 
             $this->rowsUpdated++;
         }

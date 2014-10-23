@@ -11,8 +11,8 @@ class Radmin
 
     protected $radmin;
 
-    private $settingcache = array();
-    private $settingcacheloaded = false;
+    private $settingsCache = array();
+    private $settingsCacheLoaded = false;
 
     private $dbSchemeVersion = "2.3";
     private $dbSchemeSettings =
@@ -252,7 +252,7 @@ class Radmin
 
     private function loadAllSettings($force = true)
     {
-        if ($this->settingcacheloaded && $force == false) {
+        if ($this->settingsCacheLoaded && $force == false) {
             return true;
         }
 
@@ -263,18 +263,18 @@ class Radmin
         $results = $this->radmin->query($sql)->fetchAll();
 
         foreach ($results as $row) {
-            $this->settingcache[$row['setting']] = $row['value'];
+            $this->settingsCache[$row['setting']] = $row['value'];
         }
 
-        $this->settingcacheloaded = true;
+        $this->settingsCacheLoaded = true;
         return true;
     }
 
     public function getSetting($setting)
     {
-        if ($this->settingcacheloaded) {
-            if (isset($this->settingcache[$setting])) {
-                return $this->settingcache[$setting];
+        if ($this->settingsCacheLoaded) {
+            if (isset($this->settingsCache[$setting])) {
+                return $this->settingsCache[$setting];
             }
             return null;
         }
@@ -300,12 +300,12 @@ class Radmin
 
     public function getSettingsCache()
     {
-        return $this->settingcache;
+        return $this->settingsCache;
     }
 
     public function checkExistsSetting($setting)
     {
-        if ($this->settingcacheloaded && isset($this->settingcache[$setting])) {
+        if ($this->settingsCacheLoaded && isset($this->settingsCache[$setting])) {
             return true;
         }
 
@@ -337,8 +337,8 @@ class Radmin
 
         if ($query->execute($params)) {
             // Update settings cache to prevent wrong data
-            if ($this->settingcacheloaded) {
-                $this->settingcache[$setting] = $value;
+            if ($this->settingsCacheLoaded) {
+                $this->settingsCache[$setting] = $value;
             }
 
             // TODO: Do we still need to filter this out now?
@@ -375,8 +375,8 @@ class Radmin
 
         if ($query->execute(array($setting))) {
             // Update settings cache to prevent wrong data
-            if ($this->settingcacheloaded) {
-                unset($this->settingcache[$setting]);
+            if ($this->settingsCacheLoaded) {
+                unset($this->settingsCache[$setting]);
             }
 
             \AdminLog::getInstance()->log(
@@ -512,7 +512,7 @@ class Radmin
 
             return $result;
         } else {
-            AdminLog::getInstance()->log("Batches $batchID failed to add");
+            \AdminLog::getInstance()->log("Batches $batchID failed to add");
             ErrorHandling::fatalDatabaseError(
                 'Adding batch failed: ',
                 null
@@ -533,7 +533,7 @@ class Radmin
         if ($query->execute(array($batchID, $user))) {
             return true;
         } else {
-            AdminLog::getInstance()->log("Batch $batchID failed to add $user");
+            \AdminLog::getInstance()->log("Batch $batchID failed to add $user");
             ErrorHandling::fatalDatabaseError(
                 'Adding user to batch failed: ',
                 null

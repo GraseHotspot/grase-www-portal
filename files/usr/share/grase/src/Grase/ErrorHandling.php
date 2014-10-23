@@ -45,7 +45,6 @@ class ErrorHandling
         $smarty = new \SmartyBC();
 
         $smarty->compile_check = true;
-        smartyerrorblockt();
         $smarty->register_block('t', 'smarty_block_t'); // Needed even though message will be in English
         $smarty->assign("Application", APPLICATION_NAME);
         $smarty->assign("error", $error);
@@ -79,7 +78,6 @@ class ErrorHandling
         $smarty = new \SmartyBC();
 
         $smarty->compile_check = true;
-        smartyerrorblockt();
         $smarty->register_block('t', 'smarty_block_t'); // Needed even though message will be in English
         $smarty->assign("Application", APPLICATION_NAME);
         $smarty->assign("error", $error);
@@ -106,7 +104,6 @@ class ErrorHandling
         $smarty = new \SmartyBC();
 
         $smarty->compile_check = true;
-        smartyerrorblockt();
         $smarty->register_block('t', 'smarty_block_t'); // Needed even though message will be in English
         $smarty->assign("Application", APPLICATION_NAME);
         $smarty->assign("error", $error);
@@ -114,15 +111,5 @@ class ErrorHandling
 
         $smarty->display("error.tpl");
         die();
-    }
-}
-
-function smartyerrorblockt()
-{
-    if (!function_exists('smarty_block_t')) {
-        function smarty_block_t($params, $text, &$smarty)
-        {
-            return "$text";
-        }
     }
 }
