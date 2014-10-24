@@ -26,7 +26,8 @@ class Validate
 
     public static function numericLimit($limit)
     {
-        return $limit === null || is_numeric($limit);
+        // Should we be checking for null and false here, or force the callers to check?
+        return $limit === null || $limit === false || is_numeric($limit);
     }
 
     //sprintf(T_("Invalid value '%s' for Data Limit"),$limit)
