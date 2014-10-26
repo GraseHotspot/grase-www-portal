@@ -79,6 +79,7 @@ function createmenuitems()
 	        'netconfig' => array("href" => "netconfig", "label" => T_("Network Settings") ),
             'chilliconfig' => array("href" => "chilliconfig", "label" => T_("Coova Chilli Settings") ),
             'loginconfig' => array("href" => "loginconfig", "label" => T_("Portal Customisation") ),
+            'ticketprintconfig' => array("href" => "ticketprintconfig.php", "label" => T_("Ticket Print Settings") ),
             'groups' => array("href" => "groupconfig", "label" => T_("Groups") ),	
             //'vouchers' => array("href" => "voucherconfig", "label" => T_("Vouchers") ), // DISABLED FOR RELEASE AS NOT YET READY FOR PRODUCTION
 

@@ -18,6 +18,7 @@ $PAGESACCESS = array(
     'netconfig' => ADMINLEVEL,
     'chilliconfig' => ADMINLEVEL,
     'loginconfig' => ADMINLEVEL,
+    'ticketprintconfig' => ADMINLEVEL,
     'groups' => POWERLEVEL | ADMINLEVEL,
     'vouchers' => POWERLEVEL | ADMINLEVEL,
     'passwd' => ADMINLEVEL,

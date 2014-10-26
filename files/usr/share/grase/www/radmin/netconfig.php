@@ -83,25 +83,6 @@ $singleNetworkOptions = array(
         ),
         "type" => "bool"
     ),
-    /* TODO: Move printing options to own settings page */
-    'printSSID' => array(
-        "label" => T_("Wireless Network Name (SSID)"),
-        "description" => T_(
-            "Wireless Network Name that clients connect to. Currently does not modify any settings but if set will print
-            on the tickets"
-        ),
-        "type" => "string"
-    ),
-    'printGroup' => array(
-        "label" => T_("Print Ticket Type"),
-        "description" => T_("Print the ticket type (Group name) on tickets"),
-        "type" => "bool"
-    ),
-    'printExpiry' => array(
-        "label" => T_("Print Ticket Expiry"),
-        "description" => T_("Print the expiry on tickets"),
-        "type" => "bool"
-    ),
 );
 
 $wanif = array(\Grase\Util::getNetworkWANIF());
@@ -242,6 +223,7 @@ if (sizeof($error) > 0) {
 if (sizeof($success) > 0) {
     $templateEngine->assign("success", $success);
 }
+
 
 $templateEngine->assign("singlenetworkoptions", $singleNetworkOptions);
 $templateEngine->assign("selectnetworkoptions", $selectNetworkOptions);

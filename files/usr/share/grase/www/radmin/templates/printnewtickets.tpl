@@ -37,6 +37,7 @@
         {foreach from=$users_groups item=group name=grouploop key=groupid}
             {foreach from=$group item=user key=userid name=usersloop}
                 <div class="cutout_ticket">
+                    {$preTicketHTML}
                     {if $networksettings.printSSID}
                         <span class="ticket_item_label">{t}Wireless Network{/t}:</span>
                         <span class='info_username  last'>{$networksettings.printSSID}</span>
@@ -56,7 +57,7 @@
                         <span class='info_expiry  last'>{$user.FormatExpiration}</span>
                         <br/>
                     {/if}
-
+                    {$postTicketHTML}
                 </div>
             {/foreach}
         {/foreach}

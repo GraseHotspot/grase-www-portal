@@ -129,6 +129,10 @@ class Upgrade
                 $this->Settings->setSetting("DBVersion", 2.6);
             }
 
+            if ($oldDBVersion < 2.7) {
+                $this->moveTicketPrintSettings();
+                $this->Settings->setSetting("DBVersion", 2.7);
+            }
 
         } catch (\PDOException $Exception) {
             return T_('Upgrading DB failed: ') . $Exception->getMessage() . ': ' . $Exception->getCode();
@@ -488,5 +492,19 @@ EOT
     {
         // Set Chilli Admin interval to be lower (10 minutes)
         $this->rowsUpdated += $this->DBF->setChilliConfigSingle('interval', '600');
+    }
+
+    // < 2.7
+    private function moveTicketPrintSettings()
+    {
+        $networkSettings = unserialize($this->Settings->getSetting('networkoptions'));
+        $this->Settings->setSetting('printSSID', $networkSettings['printSSID']);
+        unset($networkSettings['printSSID']);
+        $this->Settings->setSetting('printGroup', $networkSettings['printGroup']);
+        unset($networkSettings['printGroup']);
+        $this->Settings->setSetting('printExpiry', $networkSettings['printExpiry']);
+        unset($networkSettings['printExpiry']);
+        $this->Settings->setSetting('networkoptions', serialize($networkSettings));
+        $this->rowsUpdated += 3;
     }
 }

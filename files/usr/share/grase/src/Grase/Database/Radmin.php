@@ -403,6 +403,8 @@ class Radmin
         'loggedinnojshtml' => 4,
         'termsandconditions' => 5,
         'ticketPrintCSS' => 6,
+        'preTicketHTML' => 7,
+        'postTicketHTML' => 8
     );
 
     public function getTemplate($template)
