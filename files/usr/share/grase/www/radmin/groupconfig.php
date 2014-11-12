@@ -43,6 +43,7 @@ if (isset($_POST['submit'])) {
     $groupRecurTime = array_filter($_POST['Recur_Time']);
     $groupSimultaneousUse = array_filter($_POST['SimultaneousUse']);
     $groupLoginTime = array_filter($_POST['LoginTime']);
+    $groupIdleTimeout = array_filter($_POST['IdleTimeout']);
 
     if (sizeof($groupNames) == 0) {
         $error[] = T_("A minimum of one group is required");
@@ -66,7 +67,8 @@ if (isset($_POST['submit'])) {
                 isset($groupRecurData[$key]) ||
                 isset($groupRecurTimeLimit[$key]) ||
                 isset($groupRecurTime[$key]) ||
-                isset($groupLoginTime[$key])
+                isset($groupLoginTime[$key]) ||
+                isset($groupIdleTimeout[$key])
             ) {
                 $error[] = T_("Invalid group name or group name missing");
             }
@@ -104,6 +106,9 @@ if (isset($_POST['submit'])) {
         if(!\Grase\Validate::numericLimit($groupRecurDataLimit[$key])) {
             $error[] = sprintf(T_("Invalid value '%s' for Data Limit"), $groupRecurDataLimit[$key]);
         }
+        if(!\Grase\Validate::numericLimit($groupIdleTimeout[$key])) {
+            $error[] = sprintf(T_("Invalid value '%s' for Idle Timeout"), $groupIdleTimeout[$key]);
+        }
         if(!\Grase\Validate::recurrenceInterval($groupRecurTime[$key], recurtimes())) {
             $error[] = sprintf(T_("Invalid recurrence interval '%s'"), $groupRecurTime[$key]);
         }
@@ -139,7 +144,8 @@ if (isset($_POST['submit'])) {
                 'BandwidthDownLimit' => @ clean_int($groupBandwidthDownLimit[$key]),
                 'BandwidthUpLimit' => @ clean_int($groupBandwidthUpLimit[$key]),
                 'SimultaneousUse' => @ clean_int($groupSimultaneousUse[$key]),
-                'LoginTime' => @ $groupLoginTime[$key]
+                'LoginTime' => @ $groupLoginTime[$key],
+                'IdleTimeout' => @ clean_int($groupIdleTimeout[$key])
             )
         );
         $groupSettings[\Grase\Clean::groupName($name)] = array_filter(

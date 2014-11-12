@@ -943,6 +943,7 @@ class DatabaseFunctions
 
     public function setGroupAttributes($name, $attributes)
     {
+        // Any items not in Check Items will be added to Radreply
         $checkitems = array(
             'SimultaneousUse',
             'MaxOctets',
@@ -1022,6 +1023,7 @@ class DatabaseFunctions
 
         }
 
+        // TODO Move to class variable
         $attributelookup = array(
             'MaxOctets' => 'Max-Octets',
             'MaxSeconds' => 'Max-All-Session',
@@ -1037,6 +1039,7 @@ class DatabaseFunctions
             'BandwidthUpLimit' => 'ChilliSpot-Bandwidth-Max-Up',
             'SimultaneousUse' => 'Simultaneous-Use',
             'LoginTime' => 'Login-Time',
+            'IdleTimeout' => 'Idle-Timeout'
 
         );
         // Insert each attribute
@@ -1135,6 +1138,7 @@ class DatabaseFunctions
         // Merge results of check and reply
         $results = array_merge($results, $results2);
 
+        // TODO Move to class variable
         $attributelookup = array(
             'Max-Octets' => 'MaxOctets',
             'Max-All-Session' => 'MaxSeconds',
@@ -1150,6 +1154,7 @@ class DatabaseFunctions
             'ChilliSpot-Bandwidth-Max-Down' => 'BandwidthDownLimit',
             'Simultaneous-Use' => 'Simultaneous-Use',
             'Login-Time' => 'LoginTime',
+            'Idle-Timeout' => 'IdleTimeout'
 
         );
 

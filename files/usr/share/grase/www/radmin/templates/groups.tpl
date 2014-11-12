@@ -32,48 +32,46 @@
         <ul id="tabselector">
                  
         </ul>
-      
 
-        
-    {foreach from=$groupsettings item=settings key=groupname name=groupsettingsloop}        
+    {foreach from=$groupsettings item=settings key=groupname name=groupsettingsloop}
         <div class="jsmultioption" id="groupSettings_{$smarty.foreach.groupsettingsloop.iteration}" class="tabcontent">
             <label>{t}Name{/t}</label><input type="text" class="groupnameinput" name="groupname[]" value='{$settings.GroupLabel|escape}'/>
             <label>{t}Description{/t}</label><textarea name="groupcomment[]" class="groupcommentinput" maxlength='250'>{$settings.Comment|escape}</textarea>
             <label>{t}Expiry{/t}</label><input type="text" placeholder="{t}Never Expire{/t}" name="groupexpiry[]" value='{$settings.Expiry}'/>
             <label>{t}Expire After First login{/t}</label><input type="text" name="groupexpireafter[]" value='{$settings.ExpireAfter}'/>
-            
-            <label>{t}Login Times{/t}</label><input type="text" name="LoginTime[]" value='{$groupcurrentdata.$groupname.LoginTime}'/>            
-            
+            <label>{t}Login Times{/t}</label><input type="text" name="LoginTime[]" value='{$groupcurrentdata.$groupname.LoginTime}'/>
+            <label>{t}Idle Timeout (seconds){/t}</label><input type="text" name="IdleTimeout[]" value='{$groupcurrentdata.$groupname.IdleTimeout}'/>
+
             <label>{t}Default Data Limit (MiB){/t}</label>
             {html_options name="Group_Max_Mb[]" options=$GroupDatacosts selected=$settings.MaxMb}
-            
+
             <label>{t}Default Time Limit (Minutes){/t}</label>
             {html_options name="Group_Max_Time[]" options=$GroupTimecosts selected=$settings.MaxTime}
-            
+
             <label>{t}Recurring Data Limit (MiB){/t}</label>
             {html_options name="Recur_Data_Limit[]" options=$Datavals selected=$groupcurrentdata.$groupname.DataRecurLimit}{t}per{/t}
             {html_options name="Recur_Data[]" options=$Recurtimes selected=$groupcurrentdata.$groupname.DataRecurTime}
-            
+
             <label>{t}Recurring Time Limit (Minutes){/t}</label>
             {html_options name="Recur_Time_Limit[]" options=$Timevals selected=$groupcurrentdata.$groupname.TimeRecurLimit}{t}per{/t}
             {html_options name="Recur_Time[]" options=$Recurtimes selected=$groupcurrentdata.$groupname.TimeRecurTime}
-            
+
             <label>{t}Bandwidth Limit Down{/t}</label>
-            {html_options name="Bandwidth_Down_Limit[]" options=$Bandwidthvals selected=$groupcurrentdata.$groupname.BandwidthDownLimit}           
-            
+            {html_options name="Bandwidth_Down_Limit[]" options=$Bandwidthvals selected=$groupcurrentdata.$groupname.BandwidthDownLimit}
+
             <label>{t}Bandwidth Limit Up{/t}</label>
             {html_options name="Bandwidth_Up_Limit[]" options=$Bandwidthvals selected=$groupcurrentdata.$groupname.BandwidthUpLimit}
-            
+
             <label>{t}Number of simultaneous logins. Leave Blank for unlimited{/t}</label>
             <input type="number" min="1" placeholder="{t}Unlimited{/t}" name="SimultaneousUse[]" value="{$groupcurrentdata.$groupname.SimultaneousUse}"/>
-            
-            
-            
+
+
+
             <!--<div class="jsremove ui-widget-content">
                 <span class="jsremovebutton"></span>
                 <span class="jsaddremovetext">{t}Delete Group{/t}</span>
             </div> -->
-            <hr/>           
+            <hr/>
         </div>
 
     {/foreach}
@@ -82,7 +80,8 @@
             <label>{t}Description{/t}</label><textarea name="groupcomment[]" class="groupcommentinput" maxlength='250'></textarea>
             <label>{t}Expiry{/t}</label><input type="text" placeholder="{t}Never Expire{/t}" name="groupexpiry[]" value=''/>
             <label>{t}Expire After{/t}</label><input type="text" name="groupexpireafter[]" value=''/>
-            <label>{t}Login Times{/t}</label><input type="text" name="LoginTime[]" value=''/>  
+            <label>{t}Login Times{/t}</label><input type="text" name="LoginTime[]" value=''/>
+            <label>{t}Idle Timeout (seconds){/t}</label><input type="text" name="IdleTimeout[]" value=''/>
             <label>{t}Default Data Limit (MiB){/t}</label>
             {html_options name="Group_Max_Mb[]" options=$GroupDatacosts}
             <label>{t}Default Time Limit (Minutes){/t}</label>
