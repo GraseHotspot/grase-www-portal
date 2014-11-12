@@ -12,7 +12,9 @@
 
 <p>{t}Deleting a group won't delete it's users. Next time the user is edited it's group will become the default group unless a new group is selected.{/t}</p>
 
-<p>{t}The limits here are the default for group members, unless overridden when creating a member. The limits are applied at user creation time, if "Inherit from group" is selected. If multiple limits are specified, the first limit to be reached will disconnect the user.{/t}</p>
+<p>{t}The limits here are the default for group members, unless overridden when creating a member. The limits are applied at user creation time, if "Inherit from group" is selected. If multiple limits are specified, the first limit to be reached will disconnect the user.{/t}
+{t}Idle Timeout overrides the default timeout set in Coova Chilli Settings.{/t}
+</p>
 
 <p>{t}Changing Expiry, expire after first login, Data or Time limits, will not change existing users of the group and will only apply to new users. Recurring limits, Bandwidth and simultaneous logins will all apply to existing and new members.{/t}</p>
 
