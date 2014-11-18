@@ -100,8 +100,8 @@ if (isset($_POST['submit'])) {
         if(!\Grase\Validate::numericLimit($groupTimeLimit[$key])) {
             $error[] = sprintf(T_("Invalid value '%s' for Time Limit"), $groupTimeLimit[$key]);
         }
-        if(!\Grase\Validate::numericLimit($groupRecurLimit[$key])) {
-            $error[] = sprintf(T_("Invalid value '%s' for Time Limit"), $groupRecurLimit[$key]);
+        if(!\Grase\Validate::numericLimit($groupRecurTimeLimit[$key])) {
+            $error[] = sprintf(T_("Invalid value '%s' for Time Limit"), $groupRecurTimeLimit[$key]);
         }
         if(!\Grase\Validate::numericLimit($groupRecurDataLimit[$key])) {
             $error[] = sprintf(T_("Invalid value '%s' for Data Limit"), $groupRecurDataLimit[$key]);
