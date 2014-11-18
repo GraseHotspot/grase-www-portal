@@ -136,7 +136,3 @@ function setup_login_form()
 }
 
 $smarty->display('portal.tpl');
-
-
-?>
-
