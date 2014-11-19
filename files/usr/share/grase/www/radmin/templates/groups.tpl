@@ -104,7 +104,7 @@
             {html_options name="Bandwidth_Up_Limit[]" options=$Bandwidthvals}
             
             <label>{t}Number of simultaneous logins. Leave Blank for unlimited{/t}</label>
-            <input type="number" min="1"  placeholder="{t}Unlimited{/t}" nname="SimultaneousUse[]" value=""/>
+            <input type="number" min="1"  placeholder="{t}Unlimited{/t}" name="SimultaneousUse[]" value=""/>
             
         </div>
         <span id="groupsInfo"></span>
