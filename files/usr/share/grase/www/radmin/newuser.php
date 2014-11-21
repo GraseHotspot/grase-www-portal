@@ -79,7 +79,7 @@ function validate_form($userDetails, $type = 'User')
         $error[] = T_("Only set one Time limit field");
     }
 
-    $error[] = validate_group($userDetails['Username'], $userDetails['Group']);
+    $error[] = validate_group($userDetails['Group']);
     return array_filter($error);
 }
 

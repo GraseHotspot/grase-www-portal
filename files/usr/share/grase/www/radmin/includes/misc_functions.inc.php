@@ -58,7 +58,7 @@ function validate_uucptimerange($timeranges)
     }
 }
 
-function validate_group($username, $group)
+function validate_group($group)
 {
     global $Settings; //TODO Remove global
     $groups = $Settings->getGroup();
