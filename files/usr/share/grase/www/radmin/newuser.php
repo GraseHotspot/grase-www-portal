@@ -24,118 +24,126 @@ require_once 'includes/pageaccess.inc.php';
 require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
 
-function validate_form()
+function validate_form($userDetails, $type = 'User')
 {
     $error = array();
-    $username = \Grase\Clean::username($_POST['Username']);
-    if (!DatabaseFunctions::getInstance()->checkUniqueUsername($username)) {
-        $error[] = T_("Username already taken");
-    }
-    if (!$_POST['Username'] || !$_POST['Password']) {
-        $error[] = T_("Username and Password are both Required");
+    if ($type = 'User') {
+        if (!DatabaseFunctions::getInstance()->checkUniqueUsername($userDetails['Username'])) {
+            $error[] = T_("Username already taken");
+        }
+
+        if (!$userDetails['Username'] || !$userDetails['Password']) {
+            $error[] = T_("Username and Password are both Required");
+        }
+
     }
 
-    $MaxMb = clean_number($_POST['MaxMb']);
-    $Max_Mb = clean_number($_POST['Max_Mb']);
-    $MaxTime = clean_int($_POST['MaxTime']);
-    $Max_Time = clean_int($_POST['Max_Time']);
+    if ($type = 'Computer') {
+        if (!DatabaseFunctions::getInstance()->checkUniqueUsername($userDetails['mac'])) {
+            $error[] = T_("MAC Address already has an account");
+        }
 
-    if(!\Grase\Validate::numericLimit($MaxMb)) {
-        $error[] = sprintf(T_("Invalid value '%s' for Data Limit"), $MaxMb);
+        if(!\Grase\Validate::MACAddress($userDetails['mac'])) {
+            $error[] =T_("MAC Address not in correct format");
+        }
     }
-    if(!\Grase\Validate::numericLimit($Max_Mb)) {
-        $error[] = sprintf(T_("Invalid value '%s' for Data Limit"), $Max_Mb);
+
+    if (!\Grase\Validate::numericLimit($userDetails['MaxMb']) && $userDetails['MaxMb'] != '') {
+        $error[] = sprintf(T_("Invalid value '%s' for 1 Data Limit"), $userDetails['MaxMb']);
     }
-    if(!\Grase\Validate::numericLimit($MaxTime)) {
-        $error[] = sprintf(T_("Invalid value '%s' for Time Limit"), $MaxTime);
+    if (!\Grase\Validate::numericLimit($userDetails['Max_Mb']) && $userDetails['Max_Mb'] != 'inherit') {
+        $error[] = sprintf(T_("Invalid value '%s' for Data Limit"), $userDetails['Max_Mb']);
     }
-    if(!\Grase\Validate::numericLimit($Max_Time)) {
-        $error[] = sprintf(T_("Invalid value '%s' for Time Limit"), $Max_Time);
+    if (!\Grase\Validate::numericLimit($userDetails['MaxTime']) && $userDetails['MaxTime'] != '') {
+        $error[] = sprintf(T_("Invalid value '%s' for Time Limit"), $userDetails['MaxTime']);
     }
-    if ((is_numeric($Max_Mb) || $_POST['Max_Mb'] == 'inherit') && is_numeric($MaxMb)) {
+    if (!\Grase\Validate::numericLimit($userDetails['Max_Time']) && $userDetails['Max_Time'] != 'inherit') {
+        $error[] = sprintf(T_("Invalid value '%s' for Time Limit"), $userDetails['Max_Time']);
+    }
+    if ((is_numeric($userDetails['Max_Mb']) || $userDetails['Max_Mb'] == 'inherit') && is_numeric(
+        $userDetails['MaxMb']
+    )
+    ) {
         $error[] = T_("Only set one Data limit field");
     }
-    if ((is_numeric($Max_Time) || $_POST['Max_Time'] == 'inherit') && is_numeric($MaxTime)) {
+    if ((is_numeric($userDetails['Max_Time']) || $userDetails['Max_Time'] == 'inherit') && is_numeric(
+        $userDetails['MaxTime']
+    )
+    ) {
         $error[] = T_("Only set one Time limit field");
     }
 
-    $error[] = validate_group($_POST['Username'], $_POST['Group']);
+    $error[] = validate_group($userDetails['Username'], $userDetails['Group']);
     return array_filter($error);
 }
 
 if (isset($_POST['newusersubmit'])) {
-    $error = validate_form();
+    // Fill details from form
+    $user['Username'] = \Grase\Clean::username($_POST['Username']);
+    $user['Password'] = \Grase\Clean::text($_POST['Password']);
+
+    $user['MaxMb'] = $_POST['MaxMb'];
+    $user['Max_Mb'] = clean_number($_POST['Max_Mb']);
+    if ($_POST['Max_Mb'] == 'inherit') {
+        $user['Max_Mb'] = 'inherit';
+    }
+
+    $user['MaxTime'] = $_POST['MaxTime'];
+    $user['Max_Time'] = clean_int($_POST['Max_Time']);
+    if ($_POST['Max_Time'] == 'inherit') {
+        $user['Max_Time'] = 'inherit';
+    }
+
+    $user['Group'] = \Grase\Clean::text($_POST['Group']);
+    $user['Expiration'] = expiry_for_group(\Grase\Clean::text($_POST['Group']));
+    $user['Comment'] = \Grase\Clean::text($_POST['Comment']);
+
+    // Validate details
+    $error = validate_form($user);
     if ($error) {
-        $user['Username'] = \Grase\Clean::username($_POST['Username']);
-        $user['Password'] = \Grase\Clean::text($_POST['Password']);
-
-        $user['MaxMb'] = \Grase\Locale::localeNumberFormat(clean_number($_POST['MaxMb']));
-        $user['Max_Mb'] = \Grase\Locale::localeNumberFormat(clean_number($_POST['Max_Mb']));
-        if ($_POST['Max_Mb'] == 'inherit') {
-            $user['Max_Mb'] = 'inherit';
-        }
-
-        $user['MaxTime'] = \Grase\Locale::localeNumberFormat(clean_int($_POST['MaxTime']));
-        $user['Max_Time'] = \Grase\Locale::localeNumberFormat(clean_int($_POST['Max_Time']));
-        if ($_POST['Max_Time'] == 'inherit') {
-            $user['Max_Time'] = 'inherit';
-        }
-
-        $user['Group'] = \Grase\Clean::text($_POST['Group']);
-        $user['Expiration'] = expiry_for_group(\Grase\Clean::text($_POST['Group']));
-        $user['Comment'] = \Grase\Clean::text($_POST['Comment']);
         $templateEngine->assign("user", $user);
         $templateEngine->assign("error", $error);
         $templateEngine->displayPage('adduser.tpl');
         exit();
     } else {
 
-        $group = \Grase\Clean::text($_POST['Group']);
         // Load group settings so we can use Expiry, MaxMb and MaxTime
-        $groupSettings = $Settings->getGroup($group);
+        $groupSettings = $Settings->getGroup($user['Group']);
 
         // TODO: Create function to make these the same across all locations
-        if (is_numeric(clean_number($_POST['Max_Mb']))) {
-            $MaxMb = clean_number($_POST['Max_Mb']);
-        }
-        if (is_numeric(clean_number($_POST['MaxMb']))) {
-            $MaxMb = clean_number($_POST['MaxMb']);
-        }
-        if ($_POST['Max_Mb'] == 'inherit') {
-            $MaxMb = $groupSettings[$group]['MaxMb'];
+        // Check if we are using the dropdown, or inherit to override the input field
+        if (is_numeric($user['Max_Mb'])) {
+            $user['MaxMb'] = $user['Max_Mb'];
+        } elseif ($user['Max_Mb'] == 'inherit') {
+            $user['MaxMb'] = $groupSettings[$user['Group']]['MaxMb'];
         }
 
-        if (is_numeric(clean_int($_POST['Max_Time']))) {
-            $MaxTime = clean_int($_POST['Max_Time']);
-        }
-        if (is_numeric(clean_number($_POST['MaxTime']))) {
-            $MaxTime = clean_int($_POST['MaxTime']);
-        }
-        if ($_POST['Max_Time'] == 'inherit') {
-            $MaxTime = $groupSettings[$group]['MaxTime'];
+        // Check if we are using the dropdown, or inherit to override the input field
+        if (is_numeric($user['Max_Time'])) {
+            $user['MaxTime'] = $user['Max_Time'];
+        } elseif ($user['Max_Time'] == 'inherit') {
+            $user['MaxTime'] = $groupSettings[$user['Group']]['MaxTime'];
         }
 
         // TODO: Check if valid
         DatabaseFunctions::getInstance()->createUser(
-            \Grase\Clean::username($_POST['Username']),
-            \Grase\Clean::text($_POST['Password']),
-            $MaxMb,
-            $MaxTime,
-            expiry_for_group($group, $groupSettings),
-            $groupSettings[$group]['ExpireAfter'],
-            \Grase\Clean::text($_POST['Group']),
-            \Grase\Clean::text($_POST['Comment'])
+            $user['Username'],
+            $user['Password'],
+            $user['MaxMb'],
+            $user['MaxTime'],
+            expiry_for_group($user['Group'], $groupSettings),
+            $groupSettings[$user['Group']]['ExpireAfter'],
+            $user['Group'],
+            $user['Comment']
         );
-        $success[] = sprintf(T_("User %s Successfully Created"), \Grase\Clean::text($_POST['Username']));
-        $success[] = "<a target='_tickets' href='export.php?format=html&user=" .
-            \Grase\Clean::text($_POST['Username']) . "'>" .
-            sprintf(
-                T_("Print Ticket for %s"),
-                \Grase\Clean::text($_POST['Username'])
-            )
-            . "</a>";
-        AdminLog::getInstance()->log(sprintf(T_("Created new user %s"), \Grase\Clean::text($_POST['Username'])));
+        $success[] = sprintf(T_("User %s Successfully Created"), $user['Username']);
+        $success[] = "<a target='_tickets' href='export.php?format=html&user=${user['Username']}'>" .
+            sprintf(T_("Print Ticket for %s"), $user['Username']) . "</a>";
+        AdminLog::getInstance()->log(sprintf(T_("Created new user %s"), $user['Username']));
         $templateEngine->assign("success", $success);
+
+        // We are now loading the form afresh, ensure we clear the $user array
+        $user = array();
     }
 }
 
