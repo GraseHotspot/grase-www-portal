@@ -60,7 +60,7 @@ function createmenuitems()
 	    "submenu" => array(
 	        'createuser' => array("href" => "newuser", "label" => T_("New User")),
 	        'createtickets' => array("href" => "newtickets", "label" => T_("Batch Users")),
-	        'createmachine' => array("href" => "newmachine", "label" => T_("Computer Account"))	
+	        'createmachine' => array("href" => "newuser?computer", "label" => T_("Computer Account"))
 	        )
     	);
 	$menubar['sessions'] = array("href" => "sessions", "label" => T_("Monitor Sessions"),
