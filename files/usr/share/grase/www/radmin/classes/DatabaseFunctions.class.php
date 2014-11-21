@@ -666,7 +666,12 @@ class DatabaseFunctions
             );
         }
 
-        return array_values($results);
+        $users = array();
+        foreach ($results as $user) {
+            $users[] = $user['UserName'];
+        }
+
+        return $users;
     }
 
     public function getComputerUsers()
@@ -685,7 +690,12 @@ class DatabaseFunctions
             );
         }
 
-        return array_values($results);
+        $users = array();
+        foreach ($results as $user) {
+            $users[] = $user['UserName'];
+        }
+
+        return $users;
     }
 
 
