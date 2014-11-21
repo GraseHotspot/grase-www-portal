@@ -666,12 +666,28 @@ class DatabaseFunctions
             );
         }
 
-        foreach ($results as $user) {
-            $users[] = $user['UserName'];
+        return array_values($results);
+    }
+
+    public function getComputerUsers()
+    {
+        // Gets an array of all usernames in radcheck table that match a computer account
+        $sql = "SELECT UserName
+                            FROM radcheck
+                            WHERE UserName REGEXP '^([[:xdigit:]]{2}-){5}[[:xdigit:]]{2}$'";
+
+        $results = $this->db->queryAll($sql);
+
+        if (PEAR::isError($results)) {
+            \Grase\ErrorHandling::fatalDatabaseError(
+                T_('Get Computer Users Query Failed: '),
+                $results
+            );
         }
 
-        return $users;
+        return array_values($results);
     }
+
 
     public function getUserLastLogoutTime($username)
     {
