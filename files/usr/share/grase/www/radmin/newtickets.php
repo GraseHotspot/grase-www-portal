@@ -61,7 +61,7 @@ function validate_form()
         $error[] = T_("Max of 1000 tickets per batch");
     }
 
-    $error[] = validate_group("", $_POST['Group']);
+    $error[] = validate_group($_POST['Group']);
     return array_filter($error);
 }
 

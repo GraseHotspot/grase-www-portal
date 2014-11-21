@@ -134,6 +134,11 @@ class Upgrade
                 $this->Settings->setSetting("DBVersion", 2.7);
             }
 
+            if ($oldDBVersion < 2.8) {
+                $this->createComputerGroup();
+                $this->Settings->setSetting("DBVersion", 2.8);
+            };
+
         } catch (\PDOException $Exception) {
             return T_('Upgrading DB failed: ') . $Exception->getMessage() . ': ' . $Exception->getCode();
         }
@@ -506,5 +511,21 @@ EOT
         unset($networkSettings['printExpiry']);
         $this->Settings->setSetting('networkoptions', serialize($networkSettings));
         $this->rowsUpdated += 3;
+    }
+
+    // < 2.8
+    private function createComputerGroup()
+    {
+        // The special computer group is becoming a normal group
+        if (! $this->Settings->getGroup("Computer")) {
+            $this->Settings->setGroup(
+                array(
+                    "GroupName" => "Computer",
+                    "GroupLabel" => "Computer",
+                    "Comment" => "Autocreated Computers group"
+                )
+            );
+            $this->rowsUpdated ++;
+        }
     }
 }

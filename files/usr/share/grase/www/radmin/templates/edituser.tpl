@@ -1,7 +1,7 @@
 {include file="header.tpl" Name="Edit User" activepage="users"}
 
 <div id="edituserForm">
-{if $user.Group eq MACHINE_GROUP_NAME}
+{if $user.isComputer}
 <h2>{t}Edit Computer Account{/t}</h2>
 {else}
 <h2>{t}Edit User{/t}</h2>
@@ -14,7 +14,7 @@
     <span id="UsernameInfo">&nbsp;</span>
 </div>
 
-{if $user.Group ne MACHINE_GROUP_NAME}
+{if ! $user.isComputer}
 <div>
     <label for='Password'>{t}Password{/t}</label>
     <input type="text" name="Password" value='' onkeyup="runPassword(this.value, 'newpassword');" />
@@ -22,6 +22,7 @@
                                 <span id="newpassword_text" ></span>
                                 <span id="newpassword_bar" style="font-size: 1px; height: 2px; width: 0px; border: 1px solid white;"></span> 
 </div>
+{/if}
 
 <div>
     <label for='Group'>Group</label>
@@ -53,12 +54,7 @@
     {/if}
 </div>
 
-{else}
-<div>
-    <label>Expiration</label>
-    <strong>{t}Computer Accounts never expire{/t}</strong>
-</div>
-{/if}
+
 
 <div>
     <label for='Comment'>{t}Comment{/t}</label>
@@ -99,7 +95,7 @@
 <button type="submit" name="updateusersubmit" value="{t}Update User Details{/t}"><img src="/grase/images/icons/tick.png" alt=""/>{t}Update User Details{/t}</button>
 </form>
 
-{if $user.Group eq MACHINE_GROUP_NAME}
+{if $user.isComputer}
 <h3>{t}Delete Computer Account{/t}</h3>
 {else}
 <h3>{t}Delete User{/t}</h3>

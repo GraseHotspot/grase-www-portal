@@ -105,7 +105,7 @@ if (isset($_POST['submit'])) {
         if ($postValue != $attributes['value']) {
             // TODO: Special case to change all machine account passwords
             if ($singleOption == 'macpasswd') {
-                $machineAccounts = DatabaseFunctions::getInstance()->getUsersByGroup(MACHINE_GROUP_NAME);
+                $machineAccounts = DatabaseFunctions::getInstance()->getComputerUsers();
                 foreach ($machineAccounts as $machine) {
                     DatabaseFunctions::getInstance()->setUserPassword($machine, $postValue);
                 }

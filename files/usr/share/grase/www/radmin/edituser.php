@@ -57,7 +57,7 @@ if (isset($_POST['updateusersubmit'])) {   // Process form for changed items and
 
     // Update group if changed
     if (\Grase\Clean::text($_POST['Group']) && \Grase\Clean::text($_POST['Group']) != $user['Group']) {
-        $temperror = validate_group($username, $_POST['Group']);
+        $temperror = validate_group($_POST['Group']);
         if (array_filter($temperror)) {
             $error = array_merge($error, $temperror);
         } else {

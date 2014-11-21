@@ -58,19 +58,15 @@ function validate_uucptimerange($timeranges)
     }
 }
 
-function validate_group($username, $group)
+function validate_group($group)
 {
-	global $Settings; //TODO Remove global
-	$groups = $Settings->getGroup();
-	if(isset($groups[$group]))
-	{
-		if($group == MACHINE_GROUP_NAME && strpos($username, "-dev") === false) // TODO: This no longer works for newer coovachilli, check for mac address format 00-00-00-00-00-00
-			return T_("Only Machines can be in the Machine group"); // TODO: Internationalsation of all strings
-		return "";
-	}else
-	{
-		return T_("Invalid Group");
-	}
+    global $Settings; //TODO Remove global
+    $groups = $Settings->getGroup();
+    if (isset($groups[$group])) {
+        return "";
+    } else {
+        return T_("Invalid Group");
+    }
 }
 
 function expiry_for_group($group, $groups = '')
@@ -198,15 +194,7 @@ function sort_users_into_groups($users)
     
     // Sort array alphabetically
 	ksort($users_group);
-	
-	// Remove machines from spot alphapbetically
-	$machines = $users_group[MACHINE_GROUP_NAME];
-	unset($users_group[MACHINE_GROUP_NAME]);
-	
-	// Insert machines at end of list (will appear before "All")
-	if(sizeof($machines) > 0)
-    	$users_group[T_("Computers")] = $machines;
-	
+
 	// Built in sort groups (can't have spaces in name)
 	if(sizeof($expiredusers) > 0)
 	    $users_group[T_("Expired")] = $expiredusers;

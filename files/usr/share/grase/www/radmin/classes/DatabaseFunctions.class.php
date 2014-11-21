@@ -359,7 +359,7 @@ class DatabaseFunctions
         }
         // AcctTotalOctets from radacct
         // AcctSessionTime from radacct
-        // Last logout from radacct            
+        // Last logout from radacct
         $sql = "SELECT UserName,
             SUM(radacct.AcctInputOctets)+SUM(radacct.AcctOutputOctets)
             AS AcctTotalOctets,
@@ -389,8 +389,8 @@ class DatabaseFunctions
             )]['LastLogout'] = $user['LastLogout'];
         }
 
-        // TotalTime from mtotacct        
-        // TotalOctets from mtotacct        
+        // TotalTime from mtotacct
+        // TotalOctets from mtotacct
         $sql = "SELECT UserName,
             SUM(mtotacct.ConnTotDuration) AS TotalTime,
             SUM(mtotacct.InputOctets) + SUM(mtotacct.OutputOctets) AS TotalOctets
@@ -571,6 +571,12 @@ class DatabaseFunctions
         // Get User Comment
         $Userdata['Comment'] = $this->getUserComment($username);
 
+        // Determin if this is a computer account
+        $Userdata['isComputer'] = false;
+        if (\Grase\Validate::MACAddress($username)) {
+            $Userdata['isComputer'] = true;
+        }
+
         // Get Information about groups (it's cached, so might as well fetch it all)
         $groupdata = $this->getGroupAttributes();
 
@@ -660,12 +666,38 @@ class DatabaseFunctions
             );
         }
 
+        $users = array();
         foreach ($results as $user) {
             $users[] = $user['UserName'];
         }
 
         return $users;
     }
+
+    public function getComputerUsers()
+    {
+        // Gets an array of all usernames in radcheck table that match a computer account
+        $sql = "SELECT UserName
+                            FROM radcheck
+                            WHERE UserName REGEXP '^([[:xdigit:]]{2}-){5}[[:xdigit:]]{2}$'";
+
+        $results = $this->db->queryAll($sql);
+
+        if (PEAR::isError($results)) {
+            \Grase\ErrorHandling::fatalDatabaseError(
+                T_('Get Computer Users Query Failed: '),
+                $results
+            );
+        }
+
+        $users = array();
+        foreach ($results as $user) {
+            $users[] = $user['UserName'];
+        }
+
+        return $users;
+    }
+
 
     public function getUserLastLogoutTime($username)
     {
@@ -1825,8 +1857,6 @@ class DatabaseFunctions
         } // TODO: Change this to a percentage?
         elseif (isset($Userdata['Max-Octets']) && ($Userdata['AcctTotalOctets'] / $Userdata['Max-Octets']) > 0.90) {
             $status = LOWDATA_ACCOUNT;
-        } elseif ($Userdata['Group'] == MACHINE_GROUP_NAME) {
-            $status = MACHINE_ACCOUNT;
         } elseif ($Userdata['Group'] != "") {
             $status = NORMAL_ACCOUNT;
         } else {
