@@ -1847,8 +1847,6 @@ class DatabaseFunctions
         } // TODO: Change this to a percentage?
         elseif (isset($Userdata['Max-Octets']) && ($Userdata['AcctTotalOctets'] / $Userdata['Max-Octets']) > 0.90) {
             $status = LOWDATA_ACCOUNT;
-        } elseif ($Userdata['Group'] == MACHINE_GROUP_NAME) {
-            $status = MACHINE_ACCOUNT;
         } elseif ($Userdata['Group'] != "") {
             $status = NORMAL_ACCOUNT;
         } else {

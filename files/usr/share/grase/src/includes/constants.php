@@ -30,7 +30,6 @@ define("EXPIRED_ACCOUNT", "expired");
 define("LOCKED_ACCOUNT", "locked");
 define("LOWDATA_ACCOUNT", "lowdata");
 define("LOWTIME_ACCOUNT", "lowtime");
-define("MACHINE_ACCOUNT", "machine");
 define("NORMAL_ACCOUNT", "normal");
 define("NOGROUP_ACCOUNT", "nogroup");
 
