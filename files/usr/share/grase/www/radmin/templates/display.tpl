@@ -17,7 +17,7 @@ Click on ether the Data Usage or Time Usage to see the users sessions"}
     {if $groupdata.$groupname.DataRecurLimit}{t 1=$groupdata.$groupname.DataRecurTimeFormatted}%1 Data Limit{/t} {$groupdata.$groupname.DataRecurLimitB|bytes}<br/>{/if}
     *}
         {* TODO This below if statement is faulty due to it trying to match a translated string. Find a better way to do this? *}
-        {if $groupname != 'All' && $groupname != 'Out Of Quota' && $groupname != 'Low Quota' && $groupname != 'Expired' && $groupname != 'Computers'}
+        {if $groupname != 'All' && $groupname != 'Out Of Quota' && $groupname != 'Low Quota' && $groupname != 'Expired'}
             <small><a href="export.php?format=html&group={$groupname|underscorespaces}" target="print_html">Print
                     Group</a> | <a href="export.php?format=csv&group={$groupname|underscorespaces}" target="print_html">Export
                     Group (CSV)</a></small>
