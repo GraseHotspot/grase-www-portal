@@ -359,7 +359,7 @@ class DatabaseFunctions
         }
         // AcctTotalOctets from radacct
         // AcctSessionTime from radacct
-        // Last logout from radacct            
+        // Last logout from radacct
         $sql = "SELECT UserName,
             SUM(radacct.AcctInputOctets)+SUM(radacct.AcctOutputOctets)
             AS AcctTotalOctets,
@@ -389,8 +389,8 @@ class DatabaseFunctions
             )]['LastLogout'] = $user['LastLogout'];
         }
 
-        // TotalTime from mtotacct        
-        // TotalOctets from mtotacct        
+        // TotalTime from mtotacct
+        // TotalOctets from mtotacct
         $sql = "SELECT UserName,
             SUM(mtotacct.ConnTotDuration) AS TotalTime,
             SUM(mtotacct.InputOctets) + SUM(mtotacct.OutputOctets) AS TotalOctets
@@ -570,6 +570,12 @@ class DatabaseFunctions
 
         // Get User Comment
         $Userdata['Comment'] = $this->getUserComment($username);
+
+        // Determin if this is a computer account
+        $Userdata['isComputer'] = false;
+        if (\Grase\Validate::MACAddress($username)) {
+            $Userdata['isComputer'] = true;
+        }
 
         // Get Information about groups (it's cached, so might as well fetch it all)
         $groupdata = $this->getGroupAttributes();

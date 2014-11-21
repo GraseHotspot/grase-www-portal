@@ -47,7 +47,7 @@ Click on ether the Data Usage or Time Usage to see the users sessions"}
 		{foreach from=$group item=user name=usersloop}
 
 		<tr id="user_{$user.Username}_{$groupname|underscorespaces}_Row" class="userrow {$user.account_status}">
-			<td class='info_username'><span class='info_password'>{if $user.Group eq 'Machine'}<span title="{t}Password Hidden{/t}">*</span>{else}<span title="{$user.Password}"><a href='javascript:alert("Password for {$user.Username} is {$user.Password}")'>*</a></span>{/if}</span><a href="edituser?username={$user.Username|escape:'url'}">{$user.Username}</a> {if $user.AccountLock}{t}(Account Locked){/t}{/if}</td>
+			<td class='info_username'>{if $user.isComputer}# {/if}<span class='info_password'>{if $user.Group eq 'Machine'}<span title="{t}Password Hidden{/t}">*</span>{else}<span title="{$user.Password}"><a href='javascript:alert("Password for {$user.Username} is {$user.Password}")'>*</a></span>{/if}</span><a href="edituser?username={$user.Username|escape:'url'}">{$user.Username}</a> {if $user.AccountLock}{t}(Account Locked){/t}{/if}</td>
 
 			{if $groupname == 'All'}<td class='info_group'>{$user.Group}</td>{/if}
 			<td class='info_datalimit' title='{$user.MaxOctets}'>{$user.MaxOctets|bytes}</td>
