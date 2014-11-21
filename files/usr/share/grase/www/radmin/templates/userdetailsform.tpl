@@ -1,11 +1,18 @@
 <div id="{$useraction}Form">
 <h2>{t}{$useractionTitle}{/t}</h2>
 
-<form method='post' id='newuserform' action='?' class='generalForm'>
+<form method='post' id='{$useraction}form' action='' class='generalForm'>
 
+{if $useraction == 'newmachine'}
+<div>
+    <label for='mac'>{t}MAC Address{/t}</label>
+    <input type="text" name="mac" id="mac" value="{$machine.mac|escape}" required="required"/>
+    <span id="macInfo">Computer Hardware Address <a class="helpbutton  ui-icon ui-icon-info" title="{t}The MAC address is the network hardware address of the computer. It needs to be of the format XX-XX-XX-XX-XX-XX where XX is a hex number, typed in all capitals{/t}"><img src="/grase/images/icons/help.png" alt=""/></a></span>
+</div>
+{else}
 <div>
     <label for='Username'>{t}Username{/t}</label>
-    <input {if $usernamelock}disabled='disabled'{/if} type="text" id="Username" name="Username" value='{$user.Username}' required="required"/>
+    <input type="text" id="Username" name="Username" value='{$user.Username}' required="required"/>
     <span id="UsernameInfo">{t}Choose a username{/t}</span>
 </div>
 <div>
@@ -16,6 +23,7 @@
                                 <span id="newpassword_bar" style="font-size: 1px; height: 2px; width: 0px; border: 1px solid white;"></span> 
     
 </div>
+{/if}
 <div>
     <label for='Group'>{t}Group{/t}</label>
     {html_options name="Group" id="Group" options=$groups selected=$user.Group}    

@@ -19,7 +19,13 @@
     You should have received a copy of the GNU General Public License
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
-$PAGE = 'createuser';
+if(isset($_GET['computer'])) {
+    $PAGE = 'createmachine';
+    $templateFile = 'addmachine.tpl';
+}else {
+    $PAGE = 'createuser';
+    $templateFile = 'adduser.tpl';
+}
 require_once 'includes/pageaccess.inc.php';
 require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
@@ -27,7 +33,7 @@ require_once 'includes/misc_functions.inc.php';
 function validate_form($userDetails, $type = 'User')
 {
     $error = array();
-    if ($type = 'User') {
+    if ($type == 'User') {
         if (!DatabaseFunctions::getInstance()->checkUniqueUsername($userDetails['Username'])) {
             $error[] = T_("Username already taken");
         }
@@ -38,12 +44,12 @@ function validate_form($userDetails, $type = 'User')
 
     }
 
-    if ($type = 'Computer') {
+    if ($type == 'Computer') {
         if (!DatabaseFunctions::getInstance()->checkUniqueUsername($userDetails['mac'])) {
             $error[] = T_("MAC Address already has an account");
         }
 
-        if(!\Grase\Validate::MACAddress($userDetails['mac'])) {
+        if (!\Grase\Validate::MACAddress($userDetails['mac'])) {
             $error[] =T_("MAC Address not in correct format");
         }
     }
@@ -77,10 +83,25 @@ function validate_form($userDetails, $type = 'User')
     return array_filter($error);
 }
 
-if (isset($_POST['newusersubmit'])) {
+if (isset($_POST['newusersubmit']) || isset($_POST['newmachinesubmit'])) {
     // Fill details from form
-    $user['Username'] = \Grase\Clean::username($_POST['Username']);
-    $user['Password'] = \Grase\Clean::text($_POST['Password']);
+    if (isset($_POST['newusersubmit'])) {
+        $type = 'User';
+    }
+    if (isset($_POST['newmachinesubmit'])) {
+        $type = 'Computer';
+    }
+
+    if ($type == 'User') {
+        $user['Username'] = \Grase\Clean::username($_POST['Username']);
+        $user['Password'] = \Grase\Clean::text($_POST['Password']);
+    }
+
+    if ($type == 'Computer') {
+        $user['Username'] = \Grase\Clean::username($_POST['mac']);
+        $user['mac'] = $user['Username'];
+        $user['Password'] = DatabaseFunctions::getInstance()->getChilliConfigSingle('macpasswd');
+    }
 
     $user['MaxMb'] = $_POST['MaxMb'];
     $user['Max_Mb'] = clean_number($_POST['Max_Mb']);
@@ -99,11 +120,11 @@ if (isset($_POST['newusersubmit'])) {
     $user['Comment'] = \Grase\Clean::text($_POST['Comment']);
 
     // Validate details
-    $error = validate_form($user);
+    $error = validate_form($user, $type);
     if ($error) {
         $templateEngine->assign("user", $user);
         $templateEngine->assign("error", $error);
-        $templateEngine->displayPage('adduser.tpl');
+        $templateEngine->displayPage($templateFile);
         exit();
     } else {
 
@@ -154,4 +175,4 @@ $user['Max_Mb'] = 'inherit';
 $user['Max_Time'] = 'inherit';
 $user['Expiration'] = "--";
 $templateEngine->assign("user", $user);
-$templateEngine->displayPage('adduser.tpl');
+$templateEngine->displayPage($templateFile);
