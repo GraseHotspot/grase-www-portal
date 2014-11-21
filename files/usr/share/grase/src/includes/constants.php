@@ -33,10 +33,6 @@ define("LOWTIME_ACCOUNT", "lowtime");
 define("NORMAL_ACCOUNT", "normal");
 define("NOGROUP_ACCOUNT", "nogroup");
 
-// Group Constants TODO: Obsolete these?
-define("MACHINE_GROUP_NAME", "Computer");
-//define("DEFAULT_GROUP_NAME", "Default");
-
 // RADIUS ChilliSpot Config Constants
 define("RADIUS_CONFIG_USER", "CoovaChilli");
 define("RADIUS_CONFIG_PASSWORD", "radmin");
