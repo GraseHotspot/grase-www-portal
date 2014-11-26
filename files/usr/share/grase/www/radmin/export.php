@@ -126,7 +126,9 @@ function printTickets($users, $title)
     $templateEngine->assign("users", $users);
     $templateEngine->assign("users_groups", $users_groups);
     $templateEngine->assign("groupsettings", grouplist());
-    $templateEngine->assign("networksettings", unserialize($Settings->getSetting('networkoptions')));
+    $templateEngine->assign("printSSID", $Settings->getSetting('printSSID'));
+    $templateEngine->assign("printGroup", $Settings->getSetting('printGroup'));
+    $templateEngine->assign("printExpiry", $Settings->getSetting('printExpiry'));
     $templateEngine->assign("ticketPrintCSS", $Settings->getTemplate('ticketPrintCSS'));
     $templateEngine->assign("preTicketHTML", $Settings->getTemplate('preTicketHTML'));
     $templateEngine->assign("postTicketHTML", $Settings->getTemplate('postTicketHTML'));
