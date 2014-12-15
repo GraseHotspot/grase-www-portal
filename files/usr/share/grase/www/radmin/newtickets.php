@@ -37,16 +37,16 @@ function validate_form()
     $Max_Time = clean_int($_POST['Max_Time']);
 
     $error[] = validate_int($NumberTickets);
-    if(!\Grase\Validate::numericLimit($MaxMb)) {
+    if (!\Grase\Validate::numericLimit($MaxMb)) {
         $error[] = sprintf(T_("Invalid value '%s' for Data Limit"), $MaxMb);
     }
-    if(!\Grase\Validate::numericLimit($Max_Mb)) {
+    if (!\Grase\Validate::numericLimit($Max_Mb)) {
         $error[] = sprintf(T_("Invalid value '%s' for Data Limit"), $Max_Mb);
     }
-    if(!\Grase\Validate::numericLimit($MaxTime)) {
+    if (!\Grase\Validate::numericLimit($MaxTime)) {
         $error[] = sprintf(T_("Invalid value '%s' for Time Limit"), $MaxTime);
     }
-    if(!\Grase\Validate::numericLimit($Max_Time)) {
+    if (!\Grase\Validate::numericLimit($Max_Time)) {
         $error[] = sprintf(T_("Invalid value '%s' for Time Limit"), $Max_Time);
     }
     if ((is_numeric($Max_Mb) || $_POST['Max_Mb'] == 'inherit') && is_numeric($MaxMb)) {
@@ -197,8 +197,16 @@ if (isset($_POST['createticketssubmit'])) {
         $failedUsers = 0;
         for ($i = 0; $i < $user['numberoftickets']; $i++) {
             // Creating lots of users at once could timeout a script. Maybe add a set_time_limit(1) on each loop?
-            $username = \Grase\Util::randomUsername($Settings->getSetting('usernameLength'));
-            $password = \Grase\Util::randomPassword($Settings->getSetting('passwordLength'));
+            if ($Settings->getSetting('simpleUsername')) {
+                $username = \Grase\Util::randomLowercase($Settings->getSetting('usernameLength'));
+            } else {
+                $username = \Grase\Util::randomUsername($Settings->getSetting('usernameLength'));
+            }
+            if ($Settings->getSetting('numericPassword')) {
+                $password = \Grase\Util::randomNumericPassword($Settings->getSetting('passwordLength'));
+            } else {
+                $password = \Grase\Util::randomPassword($Settings->getSetting('passwordLength'));
+            }
 
             // Attempt to create user. Will error if it's not a unique username
             if (DatabaseFunctions::getInstance()->createUser(

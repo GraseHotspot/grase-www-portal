@@ -139,6 +139,11 @@ class Upgrade
                 $this->Settings->setSetting("DBVersion", 2.8);
             };
 
+            if ($oldDBVersion < 2.9) {
+                $this->defaultUsernamePasswordComplexity();
+                $this->Settings->setSetting("DBVersion", 2.9);
+            }
+
         } catch (\PDOException $Exception) {
             return T_('Upgrading DB failed: ') . $Exception->getMessage() . ': ' . $Exception->getCode();
         }
@@ -525,6 +530,20 @@ EOT
                     "Comment" => "Autocreated Computers group"
                 )
             );
+            $this->rowsUpdated ++;
+        }
+    }
+
+    // < 2.9
+    private function defaultUsernamePasswordComplexity()
+    {
+        // Set default complexity options for generating username/password
+        if (! $this->Settings->getSetting('numericPassword')) {
+            $this->Settings->setSetting('numericPassword', false);
+            $this->rowsUpdated ++;
+        }
+        if (! $this->Settings->getSetting('simpleUsername')) {
+            $this->Settings->setSetting('simpleUsername', false);
             $this->rowsUpdated ++;
         }
     }

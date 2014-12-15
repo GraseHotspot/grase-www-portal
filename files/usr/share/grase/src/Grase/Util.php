@@ -24,6 +24,36 @@ namespace Grase;
 
 class Util
 {
+    public static function randomNumericPassword($len)
+    {
+        $password = '';
+        while (strlen($password) < $len) {
+            $password .= rand(0, 9);
+        }
+        return $password;
+    }
+
+    public static function randomLowercase($len)
+    {
+        $c = "bcdfghjklmnprstvwz";
+        $v = "aeiou";
+        $r = $c . $v;
+
+        $password = "";
+        while (strlen($password) < $len) {
+            if (!rand(0, 1)) {
+                $password .= $c[rand(0, strlen($c) - 1)];
+                $password .= $v[rand(0, strlen($v) - 1)];
+                $password .= $c[rand(0, strlen($c) - 1)];
+            } else {
+                $password .= $r[rand(0, strlen($r) - 1)];
+                $password .= $r[rand(0, strlen($r) - 1)];
+            }
+        }
+
+        return $password;
+    }
+
     // NOTE: This function is based on http://snipplr.com/view/5444/random-pronounceable-passwords-generator/
     public static function randomPassword($len)
     {
