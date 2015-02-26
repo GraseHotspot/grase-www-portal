@@ -67,7 +67,6 @@ class Util
 
         for ($i = 0; $i < ($len / $syllables); $i++) {
             if (!rand(0, 1)) {
-
                 $password .= $c[rand(0, strlen($c) - 1)];
                 $password .= $v[rand(0, strlen($v) - 1)];
                 $password .= $c[rand(0, strlen($c) - 1)];
@@ -371,30 +370,19 @@ class Util
     // TODO: Not sure where this came from, find out where
     public static function remoteIP()
     {
-        if (getenv('HTTP_CLIENT_IP'))
-        {
+        if (getenv('HTTP_CLIENT_IP')) {
             $ip = getenv('HTTP_CLIENT_IP');
-        }
-        elseif (getenv('HTTP_X_FORWARDED_FOR'))
-        {
+        } elseif (getenv('HTTP_X_FORWARDED_FOR')) {
             $ip = getenv('HTTP_X_FORWARDED_FOR');
-        }
-        elseif (getenv('HTTP_X_FORWARDED'))
-        {
+        } elseif (getenv('HTTP_X_FORWARDED')) {
             $ip = getenv('HTTP_X_FORWARDED');
-        }
-        elseif (getenv('HTTP_FORWARDED_FOR'))
-        {
+        } elseif (getenv('HTTP_FORWARDED_FOR')) {
             $ip = getenv('HTTP_FORWARDED_FOR');
-        }
-        elseif (getenv('HTTP_FORWARDED'))
-        {
+        } elseif (getenv('HTTP_FORWARDED')) {
             $ip = getenv('HTTP_FORWARDED');
-        }
-        else {
+        } else {
             $ip = $_SERVER['REMOTE_ADDR'];
         }
         return $ip;
     }
-
 }

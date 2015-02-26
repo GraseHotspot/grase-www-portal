@@ -115,15 +115,13 @@ class Radmin
 
     private function defaultSettings()
     {
-        if (
-            $this->getSetting('passwordLength') === null
+        if ($this->getSetting('passwordLength') === null
             || $this->getSetting('passwordLength') < 1
         ) {
             $this->setSetting('passwordLength', 6);
         }
 
-        if (
-            $this->getSetting('usernameLength') === null
+        if ($this->getSetting('usernameLength') === null
             || $this->getSetting('usernameLength') < 1
         ) {
             $this->setSetting('usernameLength', 5);
@@ -174,7 +172,6 @@ class Radmin
         }
 
         try {
-
             if ($oldSchemaVersion < 2.3) {
                 $this->addExpireAfterColumn();
                 $this->setSetting('DBSchemaVersion', 2.3);

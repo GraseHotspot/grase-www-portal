@@ -2,7 +2,6 @@
 
 namespace Grase;
 
-
 class AnonAuth
 {
     public function getUsername()

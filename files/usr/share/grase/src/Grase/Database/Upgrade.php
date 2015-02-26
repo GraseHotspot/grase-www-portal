@@ -172,7 +172,8 @@ class Upgrade
         try {
             // remove unique key from radreply
             $this->rowsUpdated += $this->radius->exec("DROP INDEX userattribute ON radreply");
-        } catch (\PDOException $Exception) { // We want to ignore this exception as we don't care if the index exists
+        } catch (\PDOException $Exception) {
+// We want to ignore this exception as we don't care if the index exists
         }
 
 
@@ -345,7 +346,6 @@ EOT
     {
         // Move groupAttributes to the correct table
         foreach ($this->DBF->getGroupAttributes() as $name => $group) {
-
             $this->DBF->setGroupAttributes($name, $group);
             $this->rowsUpdated++;
         }
@@ -429,7 +429,8 @@ EOT
         // Remove uniq index on radgroupcheck
         try {
             $this->rowsUpdated += $this->radius->exec("DROP INDEX GroupName ON radgroupcheck");
-        } catch (\PDOException $e) { // We don't care if it doesn't exist causing the drop to fail
+        } catch (\PDOException $e) {
+// We don't care if it doesn't exist causing the drop to fail
         }
 
         $this->rowsUpdated += $this->radius->exec("ALTER TABLE radgroupcheck ADD KEY `GroupName` (`GroupName`(32))");
@@ -450,7 +451,8 @@ EOT
                               DROP COLUMN FramedIPAddress,
                               DROP COLUMN CallingStationId"
             );
-        } catch (\PDOException $e) { // We don't care if it doesn't exist causing the drop to fail
+        } catch (\PDOException $e) {
+// We don't care if it doesn't exist causing the drop to fail
         }
 
         // Add columns back in correctly

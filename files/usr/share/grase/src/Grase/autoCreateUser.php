@@ -121,7 +121,7 @@ class autoCreateUser
     }
 
         public function mactoautousername($mac)
-    {
+        {
         // Check it's a MAC
         //
         // Turn it into a reversible username but isn't at first glace a mac
@@ -131,5 +131,5 @@ class autoCreateUser
         $autoUsername = strrev(strtolower(str_replace(array(":", "-"), "", $mac)));
 
         return $autoUsername;
-    }
+        }
 }

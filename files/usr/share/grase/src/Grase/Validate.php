@@ -20,7 +20,6 @@
 */
 namespace Grase;
 
-
 class Validate
 {
 

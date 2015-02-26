@@ -77,7 +77,6 @@ class SystemInformation
         $this->lan->iface = $details[7];
 
         if ($this->lan->iface) {
-
             $this->lan->mac = $this->discoverMAC($this->lan->iface);
             $this->lan->ipaddress = $this->discoverIPAddress($this->lan->iface);
             $this->lan->netmask = $this->discoverNetmask($this->lan->iface);

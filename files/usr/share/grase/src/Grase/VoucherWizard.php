@@ -130,8 +130,7 @@ class VoucherWizard
 
             // Check for "free" vouchers that the selected payment gateway supports free tickets
 
-            if (
-                $this->vouchers[$_POST['voucherselected']]['VoucherPrice'] == 0 &&
+            if ($this->vouchers[$_POST['voucherselected']]['VoucherPrice'] == 0 &&
                 !$this->paymentgateways[$_POST['gatewayselected']]['free']
             ) {
                 $valid = false;
@@ -140,8 +139,7 @@ class VoucherWizard
 
             // Check for "paid" vouchers that the selected payment gateway supports paid tickets
 
-            if (
-                $this->vouchers[$_POST['voucherselected']]['VoucherPrice'] != 0 &&
+            if ($this->vouchers[$_POST['voucherselected']]['VoucherPrice'] != 0 &&
                 !$this->paymentgateways[$_POST['gatewayselected']]['paid']
             ) {
                 $valid = false;

@@ -8,7 +8,6 @@
 
 namespace Grase\VoucherWizard;
 
-
 class State
 {
     public $wizardPage = 'initialpage';
