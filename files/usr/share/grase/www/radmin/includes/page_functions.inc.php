@@ -280,5 +280,3 @@ function assign_vars($templateEngine)
 recurtimes();
 //usergroups();
 //groupexpirys();
-
-?>

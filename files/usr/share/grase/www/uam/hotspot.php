@@ -67,14 +67,13 @@ if($Settings->getSetting('autocreategroup'))
 if(!isset($_GET['res']))
 {
     // Redirect to prelogin
-    header("Location: http://$lanIP:3990/prelogin");
+        header("Location: http://$lanIP:3990/prelogin");
 }
 
 // Already been through prelogin
 /*$jsloginlink = "http://$lanIP/grase/uam/mini?$query";
 $nojsloginlink = $_GET['loginurl'];*/
-
-$automac = new \Grase\autoCreateUser($Settings, $DatabaseFunctions);
+$automac = new \Grase\AutoCreateUser($Settings, $DatabaseFunctions);
 if(@$_GET['automac'])
 {
     // TODO only if this is enabled? (Although the function will do that 
