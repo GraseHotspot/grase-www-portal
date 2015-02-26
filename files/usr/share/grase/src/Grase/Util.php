@@ -367,4 +367,34 @@ class Util
         }
         return sprintf("%dd %02d:%02d:%02d", $days, $hours, $minutes, $seconds);
     }
+
+    // TODO: Not sure where this came from, find out where
+    public static function remoteIP()
+    {
+        if (getenv('HTTP_CLIENT_IP'))
+        {
+            $ip = getenv('HTTP_CLIENT_IP');
+        }
+        elseif (getenv('HTTP_X_FORWARDED_FOR'))
+        {
+            $ip = getenv('HTTP_X_FORWARDED_FOR');
+        }
+        elseif (getenv('HTTP_X_FORWARDED'))
+        {
+            $ip = getenv('HTTP_X_FORWARDED');
+        }
+        elseif (getenv('HTTP_FORWARDED_FOR'))
+        {
+            $ip = getenv('HTTP_FORWARDED_FOR');
+        }
+        elseif (getenv('HTTP_FORWARDED'))
+        {
+            $ip = getenv('HTTP_FORWARDED');
+        }
+        else {
+            $ip = $_SERVER['REMOTE_ADDR'];
+        }
+        return $ip;
+    }
+
 }

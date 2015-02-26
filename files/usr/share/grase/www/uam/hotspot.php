@@ -67,13 +67,14 @@ if($Settings->getSetting('autocreategroup'))
 if(!isset($_GET['res']))
 {
     // Redirect to prelogin
-        header("Location: http://$lanIP:3990/prelogin");
+    header("Location: http://$lanIP:3990/prelogin");
 }
 
 // Already been through prelogin
 /*$jsloginlink = "http://$lanIP/grase/uam/mini?$query";
 $nojsloginlink = $_GET['loginurl'];*/
-    require_once '../radmin/automacusers.php';
+
+$automac = new \Grase\autoCreateUser($Settings, $DatabaseFunctions);
 if(@$_GET['automac'])
 {
     // TODO only if this is enabled? (Although the function will do that 
@@ -81,7 +82,8 @@ if(@$_GET['automac'])
     //
     // TODO need to ensure we have a challenge otherwise we need a fresh one, 
     // maybe if we AJAX the call so we always have a challenge?
-    automacuser();
+
+    $automac->automacuser();
     exit;
 }
 
@@ -115,7 +117,7 @@ switch($res)
         // If this is an automac login (check UID vs MAC) then we skip the 
         // normal success and go back to portal which should work better as 
         // it's not a nojs login
-        if($_GET['uid'] == mactoautousername($_GET['mac']))
+        if($_GET['uid'] == $automac->mactoautousername($_GET['mac']))
         {
             break;
         }

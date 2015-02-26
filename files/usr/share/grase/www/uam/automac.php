@@ -1,5 +1,5 @@
 <?php
 require_once('includes/site.inc.php');
-require_once('../radmin/automacusers.php');
-echo $_GET['callback'] . '('. automacuser(true) .')';
-?>
+
+$automac = new \Grase\autoCreateUser($Settings, $DatabaseFunctions);
+echo $_GET['callback'] . '('. $automac->automacuser(true) .')';

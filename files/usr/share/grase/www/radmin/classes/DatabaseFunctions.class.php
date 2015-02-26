@@ -48,10 +48,10 @@ class DatabaseFunctions
     }
 
     // TODO Dependency Injection of DatabaseConnections
-    public function __construct()
+    public function __construct(DatabaseConnections $dbConnections)
     {
-        $this->db =& DatabaseConnections::getInstance()->getRadiusDB();
-        $this->radminDB =& DatabaseConnections::getInstance()->getRadminDB();
+        $this->db =& $dbConnections->getRadiusDB();
+        $this->radminDB =& $dbConnections->getRadminDB();
 
         // Share SQL Query between functions
         $this->insert_radius_values_sql = $this->db->prepare(
