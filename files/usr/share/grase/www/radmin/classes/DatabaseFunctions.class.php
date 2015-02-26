@@ -566,7 +566,7 @@ class DatabaseFunctions
         $Userdata['LastLogout'] = $this->getUserLastLogoutTime($username);
 
         // Get Account Status
-        $Userdata['account_status'] = $this->_userAccountStatus($Userdata);
+        $Userdata['account_status'] = $this->userAccountStatus($Userdata);
 
         // Get User Comment
         $Userdata['Comment'] = $this->getUserComment($username);
@@ -1466,7 +1466,7 @@ class DatabaseFunctions
                 'Username' => array('value' => $username, 'key' => true),
                 'Attribute' => array('value' => 'Expiration', 'key' => true),
                 'op' => array('value' => ':='),
-                'Value' => array('value' => $this->_expiryFormat($expirydate))
+                'Value' => array('value' => $this->expiryFormat($expirydate))
             );
 
             $result = $this->db->replace('radcheck', $fields);
@@ -1833,13 +1833,13 @@ class DatabaseFunctions
 
     /* Private functions */
 
-    private function _expiryFormat($date)
+    private function expiryFormat($date)
     {
         // This function is only called with a valid $date, don't error check.
         return date("F d Y H:i:s", strtotime($date));
     }
 
-    private function _userAccountStatus($Userdata)
+    private function userAccountStatus($Userdata)
     {
         // NOTE: It would be nice if all this could be changed at some time
         if (isset($Userdata['ExpirationTimestamp']) && $Userdata['ExpirationTimestamp'] < time(

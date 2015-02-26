@@ -86,7 +86,10 @@ class CronFunctions extends DatabaseFunctions
         $rowsaffected = 0;
         // Delete user names from batch that are no longer in radcheck table (gone)
 
-        // Not the fastest way to do this, but due to it being in 2 different databases that we wish to keep user perms separate for, we need to execute extra queries and do some php processing
+        /*
+         * Not the fastest way to do this, but due to it being in 2 different databases that we wish to keep user perms
+         * separate for, we need to execute extra queries and do some php processing
+         */
         $sql = "SELECT UserName FROM radcheck";
         
         $result = $this->db->queryAll($sql);
@@ -287,8 +290,11 @@ class CronFunctions extends DatabaseFunctions
     {
         $rowsaffected = 0;
         $months = array(-2, -3, -4, -5, -6, -7, -8, -9, -10, -11, -12);
-        // If we remove -1 and leave last months data, the recurring data limits will work better, however lots of other code will need to change to search both mtotacct and radacct for information.
-        // Probably better to implement the extra code as this will preserve more accounting data for longer TODO:
+        /*
+         * If we remove -1 and leave last months data, the recurring data limits will work better, however lots of other
+         * code will need to change to search both mtotacct and radacct for information.
+         * Probably better to implement the extra code as this will preserve more accounting data for longer TODO:
+         */
         foreach ($months as $month) {
         // Generate start and end dates for each month in question
             $startdate = strftime("%Y-%m-%d", strtotime("first day of $month months"));
@@ -357,7 +363,8 @@ class CronFunctions extends DatabaseFunctions
             $sql = sprintf(
                 "UPDATE radcheck, mtotaccttmp
                             SET
-                            radcheck.value = CAST(radcheck.value AS SIGNED INTEGER) - (mtotaccttmp.InputOctets + mtotaccttmp.OutputOctets)
+                            radcheck.value = CAST(radcheck.value AS SIGNED INTEGER) -
+                                (mtotaccttmp.InputOctets + mtotaccttmp.OutputOctets)
                             WHERE radcheck.Attribute=%s
                             AND radcheck.UserName=mtotaccttmp.UserName
                             AND mtotaccttmp.AcctDate=%s",
@@ -393,8 +400,9 @@ class CronFunctions extends DatabaseFunctions
             $rowsaffected += $result;
         
             // Insert mtotaccttmp details into mtotacct (update what is already in there?)
-            // TODO: Do we need to do a select & delete from mtotacct into mtotaccttmp to ensure only a single line for each user per month in mtotacct?
-            
+            /* TODO: Do we need to do a select & delete from mtotacct into mtotaccttmp to ensure only a single line for
+             * each user per month in mtotacct?
+             * */
             $sql = "INSERT INTO mtotacct (
                     UserName,
                     AcctDate,
@@ -481,7 +489,7 @@ class CronFunctions extends DatabaseFunctions
             $rowsaffected += $result;
         
             
-            // Disabled, as we can have old accounting data due to clocks not being set. Need another way to handle this.
+            // Disabled, as we can have old accounting data due to clocks not being set. Need another way to handle this
             // Clear all data in radacct older than X months that has been missed?
             // TODO
             /*if($month == "-12")
@@ -532,7 +540,20 @@ class CronFunctions extends DatabaseFunctions
 
     public function clearPostAuthMacRejects()
     {
-        $sql = "SELECT id from radpostauth R JOIN (select username, max(AuthDate) AS maxauthdate from radpostauth WHERE username LIKE '__-__-__-__-__-__' AND reply = 'Access-Reject' GROUP BY username) A ON (R.username = A.username) WHERE reply= 'Access-Reject' AND authdate <> maxauthdate";
+        $sql = "
+                SELECT id
+                FROM radpostauth R
+                  JOIN (
+                         SELECT
+                           username,
+                           max(AuthDate) AS maxauthdate
+                         FROM radpostauth
+                         WHERE username LIKE '__-__-__-__-__-__'
+                               AND reply = 'Access-Reject'
+                         GROUP BY username
+                       ) A ON (R.username = A.username)
+                WHERE reply = 'Access-Reject'
+                      AND authdate <> maxauthdate";
 
         $result =& $this->db->query($sql);
 
@@ -573,17 +594,22 @@ class CronFunctions extends DatabaseFunctions
 /* Post auth needs some cleaning up.
 
 DELETE all access-rejects for mac addresses except last 1
-DELETE R from radpostauth R JOIN (select username, max(AuthDate) AS maxauthdate from radpostauth WHERE username LIKE '__-__-__-__-__-__' AND reply = 'Access-Reject' GROUP BY username) A ON (R.username = A.username) WHERE reply= 'Access-Reject' AND authdate <> maxauthdate;
+DELETE R from radpostauth R JOIN (select username, max(AuthDate) AS maxauthdate from radpostauth
+WHERE username LIKE '__-__-__-__-__-__' AND reply = 'Access-Reject' GROUP BY username) A ON (R.username = A.username)
+WHERE reply= 'Access-Reject' AND authdate <> maxauthdate;
 
 ^^^ SQL is SOOOO slow
 
 INSTEAD we do following select which might take a minute
 
-SELECT id from radpostauth R JOIN (select username, max(AuthDate) AS maxauthdate from radpostauth WHERE username LIKE '__-__-__-__-__-__' AND reply = 'Access-Reject' GROUP BY username) A ON (R.username = A.username) WHERE reply= 'Access-Reject' AND authdate <> maxauthdate;
+SELECT id from radpostauth R JOIN (select username, max(AuthDate) AS maxauthdate from radpostauth
+WHERE username LIKE '__-__-__-__-__-__' AND reply = 'Access-Reject' GROUP BY username) A ON (R.username = A.username)
+WHERE reply= 'Access-Reject' AND authdate <> maxauthdate;
 
 THEN WE DELETE 1 by 1
 This will cleanup all mac address auths and coovachilli auths, leaving only the last attempt
-DELETE t1 from radpostauth t1, radpostauth t2 WHERE t1.username=t2.username AND t1.reply = t2.reply AND t1.id < t2.id AND (t1.username  REGEXP '^([[:xdigit:]]{2}-){5}[[:xdigit:]]{2}' OR t1.username = "CoovaChilli")
+DELETE t1 from radpostauth t1, radpostauth t2 WHERE t1.username=t2.username AND t1.reply = t2.reply AND t1.id < t2.id
+AND (t1.username  REGEXP '^([[:xdigit:]]{2}-){5}[[:xdigit:]]{2}' OR t1.username = "CoovaChilli")
 
 Probably only need to clear rejects for mac address, and clear accepts for coovachilli admin user
 */

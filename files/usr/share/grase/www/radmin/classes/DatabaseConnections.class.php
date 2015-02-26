@@ -225,16 +225,16 @@ class DatabaseConnections
 class Explain_Queries
 {
     // how many queries were executed
-    var $query_count = 0;
+    private $query_count = 0;
     // which queries and their count
-    var $queries = array();
+    private $queries = array();
     // BT to each query
-    var $qbt = array();
+    private $qbt = array();
 
     // results of EXPLAIN-ed SELECTs
-    var $explains = array();
+    private $explains = array();
     // the MDB2 instance
-    var $db = false;
+    private $db = false;
 
     // constructor that accepts MDB2 reference
     function Explain_Queries(&$db)
