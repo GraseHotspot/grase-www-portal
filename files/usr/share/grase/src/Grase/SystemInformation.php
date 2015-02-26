@@ -218,7 +218,7 @@ class SystemInformation
      *
      * @return Integer
      */
-    private function _parseProcStat($cpuline)
+    private function parseProcStat($cpuline)
     {
         $load = 0;
         $load2 = 0;

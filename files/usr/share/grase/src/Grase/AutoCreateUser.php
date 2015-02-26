@@ -34,7 +34,7 @@
 
 namespace Grase;
 
-class autoCreateUser
+class AutoCreateUser
 {
 
     private $settings;
