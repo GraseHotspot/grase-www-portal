@@ -248,8 +248,7 @@ class Explain_Queries
         $scope,
         $message,
         $is_manip = null
-    )
-    {
+    ) {
         // increment the total number of queries
         $this->query_count++;
         // the SQL is a key in the queries array

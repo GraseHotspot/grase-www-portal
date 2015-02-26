@@ -24,17 +24,17 @@ class AdminLog
 {
     /* This class logs all admin/usermin actions to a database table with timestamp
      * admin/usermin username, ip address, action performed */
-     
-     /*
-             CREATE TABLE adminlog (
-	        id INT NOT NULL AUTO_INCREMENT,
-	        timestamp DATETIME NOT NULL,
-	        username VARCHAR(100) NULL,
-	        ipaddress VARCHAR(16) NULL,
-	        action TEXT(1000) NOT NULL,
-	        PRIMARY KEY id (id)
-        ) EMGOME=innoDB COMMENT ='Log of Admin/Usermin Actions';
-     */
+
+    /*
+            CREATE TABLE adminlog (
+           id INT NOT NULL AUTO_INCREMENT,
+           timestamp DATETIME NOT NULL,
+           username VARCHAR(100) NULL,
+           ipaddress VARCHAR(16) NULL,
+           action TEXT(1000) NOT NULL,
+           PRIMARY KEY id (id)
+       ) EMGOME=innoDB COMMENT ='Log of Admin/Usermin Actions';
+    */
 
     private $dbSchemeAdminLog =
         "CREATE TABLE IF NOT EXISTS  `adminlog` (
@@ -45,24 +45,24 @@ class AdminLog
             `action` TEXT(1000) NOT NULL,
             PRIMARY KEY `id` (`id`)
         ) ENGINE=innoDB COMMENT ='Log of Admin/Usermin Actions'";
-     
-     private $db;
 
-     private $log_sql;
-     
-     private function __construct($db, $Auth)
-     {
+    private $db;
+
+    private $log_sql;
+
+    private function __construct($db, $Auth)
+    {
         $this->db =& $db;
         $this->Auth =& $Auth;
-        
+
         $this->ip = \Grase\Util::remoteIP();
-        
-        if (! $this->checkTablesExist()) {
+
+        if (!$this->checkTablesExist()) {
             $this->createTables();
         }
 
-    // TODO: Make timestamp auto update in sql
-    // Share SQL Query between functions
+        // TODO: Make timestamp auto update in sql
+        // Share SQL Query between functions
         $this->log_sql = $this->db->prepare(
             'INSERT INTO adminlog
         	(`timestamp`, username, ipaddress, action)
@@ -70,134 +70,134 @@ class AdminLog
             array('timestamp', 'text', 'text', 'text'),
             MDB2_PREPARE_MANIP
         );
-        
+
         //var_dump($this->db);
         //var_dump($this->log_sql);
         if (PEAR::isError($this->log_sql)) {
-            \Grase\ErrorHandling::fatalNoDatabaseError("Preparing logging statement failed: ". $this->log_sql->getMessage());
+            \Grase\ErrorHandling::fatalNoDatabaseError("Preparing logging statement failed: " . $this->log_sql->getMessage());
         }
-        }
-    
-    
+    }
+
+
     /* To prevent multiple instances of the log, but also allowing us to use the log
      * from multiple locations without global vars, we get the AdminLog instance with
      * $AdminLog =& AdminLog::getInstance();
      */
-     
-        public function &getInstance($db = false, $Auth = false)
-        {
-            // Static reference of this class's instance.
-            static $instance;
-            if (!isset($instance)) {
-                if ($db == false) {
-                    $db = DatabaseConnections::getInstance()->getRadminDB();
-                }
-                if ($Auth == false) {
-                    $Auth = new \Grase\AnonAuth();
-                }
-                $instance = new AdminLog($db, $Auth);
+
+    public function &getInstance($db = false, $Auth = false)
+    {
+        // Static reference of this class's instance.
+        static $instance;
+        if (!isset($instance)) {
+            if ($db == false) {
+                $db = DatabaseConnections::getInstance()->getRadminDB();
             }
-            if (isset($instance) && $Auth != false) {
-                $instance->Auth =& $Auth;
+            if ($Auth == false) {
+                $Auth = new \Grase\AnonAuth();
             }
-            return $instance;
+            $instance = new AdminLog($db, $Auth);
         }
-    
-        public function getLog()
-        {
-            $sql = "SELECT `timestamp`, username, ipaddress, action FROM adminlog WHERE NOT username = 'CRON' ORDER BY id DESC";
-        
-            $res =& $this->db->query($sql);
-        
-            //print_r($res);
-            // Always check that result is not an error
-            if (PEAR::isError($res)) {
-                \Grase\ErrorHandling::fatalError("Getting Admin Log Failed: ". $res->getMessage());
-            }
-        
-            $results = $res->fetchAll(MDB2_FETCHMODE_ASSOC, false, false);
-            return $results;
-        
+        if (isset($instance) && $Auth != false) {
+            $instance->Auth =& $Auth;
         }
-    
-        public function lastCron()
-        {
-            $sql = "SELECT `timestamp` FROM adminlog WHERE username = 'CRON' ORDER BY id DESC LIMIT 1";
-        
-            $res =& $this->db->query($sql);
-        
-            //print_r($res);
-            // Always check that result is not an error
-            if (PEAR::isError($res)) {
-                \Grase\ErrorHandling::fatalError("Getting Admin Log Failed: ". $res->getMessage());
-            }
-        
-            $result = $res->fetchOne();
-            return $result;
+        return $instance;
+    }
+
+    public function getLog()
+    {
+        $sql = "SELECT `timestamp`, username, ipaddress, action FROM adminlog WHERE NOT username = 'CRON' ORDER BY id DESC";
+
+        $res =& $this->db->query($sql);
+
+        //print_r($res);
+        // Always check that result is not an error
+        if (PEAR::isError($res)) {
+            \Grase\ErrorHandling::fatalError("Getting Admin Log Failed: " . $res->getMessage());
         }
 
-     
-        public function log($action)
-        {
+        $results = $res->fetchAll(MDB2_FETCHMODE_ASSOC, false, false);
+        return $results;
+
+    }
+
+    public function lastCron()
+    {
+        $sql = "SELECT `timestamp` FROM adminlog WHERE username = 'CRON' ORDER BY id DESC LIMIT 1";
+
+        $res =& $this->db->query($sql);
+
+        //print_r($res);
+        // Always check that result is not an error
+        if (PEAR::isError($res)) {
+            \Grase\ErrorHandling::fatalError("Getting Admin Log Failed: " . $res->getMessage());
+        }
+
+        $result = $res->fetchOne();
+        return $result;
+    }
+
+
+    public function log($action)
+    {
         // TODO: Make timestamp auto update in sql
-            $affected =& $this->log_sql->execute(array(date('Y-m-d H:i:s'),
-                $this->Auth->getUsername(),
-                $this->ip,
-                $action));
+        $affected =& $this->log_sql->execute(array(date('Y-m-d H:i:s'),
+            $this->Auth->getUsername(),
+            $this->ip,
+            $action));
 
-            // Always check that result is not an error
-            if (PEAR::isError($affected)) {
-                \Grase\ErrorHandling::fatalError('Creating Log Entry failed: '. $affected->getMessage());
-            }
-        
-            return $affected;
-     
-        }
-    
-        public function log_cron($action)
-        {
-            $affected =& $this->log_sql->execute(array(date('Y-m-d H:i:s'),
-                'CRON',
-                $this->ip,
-                $action));
-
-            // Always check that result is not an error
-            if (PEAR::isError($affected)) {
-                \Grase\ErrorHandling::fatalError('Creating CRON Log Entry failed: '. $affected->getMessage());
-            }
-        
-            return $affected;
-     
-        }
-    
-        public function log_error($action)
-        {
-            $affected =& $this->log_sql->execute(array(date('Y-m-d H:i:s'),
-                $this->Auth->getUsername(),
-                $this->ip,
-                "FATAL: ".$action));
-
-            // Always check that result is not an error
-            /*if (PEAR::isError($affected)) {
-            die('Creating Log Entry failed: '. $affected->getMessage());
-            }*/ // Don't check for error here as this is for error handling
-        
-            return $affected;
-     
+        // Always check that result is not an error
+        if (PEAR::isError($affected)) {
+            \Grase\ErrorHandling::fatalError('Creating Log Entry failed: ' . $affected->getMessage());
         }
 
-        private function checkTablesExist()
-        {
-            if ($this->db->query("SHOW TABLES LIKE 'adminlog'")->numRows()) {
-                return true;
-            }
-            return false;
+        return $affected;
 
+    }
+
+    public function log_cron($action)
+    {
+        $affected =& $this->log_sql->execute(array(date('Y-m-d H:i:s'),
+            'CRON',
+            $this->ip,
+            $action));
+
+        // Always check that result is not an error
+        if (PEAR::isError($affected)) {
+            \Grase\ErrorHandling::fatalError('Creating CRON Log Entry failed: ' . $affected->getMessage());
         }
-    
-        private function createTables()
-        {
-            // Adminlog Table
-            $this->db->query($this->dbSchemeAdminLog);
+
+        return $affected;
+
+    }
+
+    public function log_error($action)
+    {
+        $affected =& $this->log_sql->execute(array(date('Y-m-d H:i:s'),
+            $this->Auth->getUsername(),
+            $this->ip,
+            "FATAL: " . $action));
+
+        // Always check that result is not an error
+        /*if (PEAR::isError($affected)) {
+        die('Creating Log Entry failed: '. $affected->getMessage());
+        }*/ // Don't check for error here as this is for error handling
+
+        return $affected;
+
+    }
+
+    private function checkTablesExist()
+    {
+        if ($this->db->query("SHOW TABLES LIKE 'adminlog'")->numRows()) {
+            return true;
         }
+        return false;
+
+    }
+
+    private function createTables()
+    {
+        // Adminlog Table
+        $this->db->query($this->dbSchemeAdminLog);
+    }
 }
