@@ -30,7 +30,6 @@ function check_page_access()
 {
     global $ACCESS_LEVEL, $templateEngine;
     if (!check_level($ACCESS_LEVEL)) {
-
         $templateEngine->displayPage('accessdenied.tpl');
         exit;
     }

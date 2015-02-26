@@ -19,10 +19,10 @@
     You should have received a copy of the GNU General Public License
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
-if(isset($_GET['computer'])) {
+if (isset($_GET['computer'])) {
     $PAGE = 'createmachine';
     $templateFile = 'addmachine.tpl';
-}else {
+} else {
     $PAGE = 'createuser';
     $templateFile = 'adduser.tpl';
 }
@@ -127,7 +127,6 @@ if (isset($_POST['newusersubmit']) || isset($_POST['newmachinesubmit'])) {
         $templateEngine->displayPage($templateFile);
         exit();
     } else {
-
         // Load group settings so we can use Expiry, MaxMb and MaxTime
         $groupSettings = $Settings->getGroup($user['Group']);
 

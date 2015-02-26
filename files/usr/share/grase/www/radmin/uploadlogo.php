@@ -30,9 +30,8 @@ require_once 'includes/misc_functions.inc.php';
 
 $error = false;
 $success = false;
-if (isset($_POST['newlogosubmit'])) // Upload new logo
-{
-
+if (isset($_POST['newlogosubmit'])) {
+// Upload new logo
     if ($_FILES['newlogo']['error'] === UPLOAD_ERR_OK) {
         //print "Uploading image...";
         if (!file_exists($_FILES['newlogo']['tmp_name'])) {

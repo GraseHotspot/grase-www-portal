@@ -142,7 +142,6 @@ $templateOptions = array(
 loadLoginOptions($Settings);
 
 if (isset($_POST['submit'])) {
-
     foreach ($singleLoginOptions as $singleOption => $attributes) {
         switch ($attributes['type']) {
             default:

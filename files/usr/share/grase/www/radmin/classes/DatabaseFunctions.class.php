@@ -108,7 +108,8 @@ class DatabaseFunctions
         }
 
         ksort($monthsavailable);
-        return $monthsavailable;;
+        return $monthsavailable;
+        ;
     }
 
 
@@ -436,7 +437,6 @@ class DatabaseFunctions
             )]['radreply'];
             $Userdata['Username'] = $username;
         } else {
-
             $Userdata['Username'] = $username;
 
             // Get radcheck attributes
@@ -948,8 +948,8 @@ class DatabaseFunctions
             );
         }
 
-        if ($value > 0) // We leave deleted if < 0
-        {
+        if ($value > 0) {
+// We leave deleted if < 0
             $fields = array(
                 'GroupName' => array('value' => $name, 'key' => true),
                 'Attribute' => array(
@@ -1114,8 +1114,8 @@ class DatabaseFunctions
             return $this->groupdetails;
         }
         if (!$clearcache && $groupname == '' && sizeof(
-                $this->groupdetails
-            ) > 0
+            $this->groupdetails
+        ) > 0
         ) {
             return $this->groupdetails;
         }
@@ -1126,7 +1126,7 @@ class DatabaseFunctions
         }
 
 
-        // setup sql for getting group and check attributes     
+        // setup sql for getting group and check attributes
         if ($groupname != '') {
             $sql = sprintf(
                 "SELECT GroupName, Attribute, Value
@@ -1139,7 +1139,6 @@ class DatabaseFunctions
                 $this->db->quote($groupname)
             );
         } else {
-
             $sql = "SELECT GroupName, Attribute, Value
                 FROM radgroupreply";
             $sql2 = "SELECT GroupName, Attribute, Value
@@ -1147,7 +1146,7 @@ class DatabaseFunctions
         }
 
 
-        // Get radgroupreply items    
+        // Get radgroupreply items
         $results = $this->db->queryAll($sql);
 
         if (PEAR::isError($results)) {
@@ -1292,8 +1291,8 @@ class DatabaseFunctions
             'op' => array('value' => ':='),
             'Value' => array(
                 'value' => \Grase\Util::bigIntVal(
-                        $datalimitoctets
-                    )
+                    $datalimitoctets
+                )
             )
         );
 
@@ -1416,7 +1415,6 @@ class DatabaseFunctions
     public function setUserExpireAfter($username, $expireAfter)
     {
         if (trim($expireAfter)) {
-
             $fields = array(
                 'Username' => array('value' => $username, 'key' => true),
                 'Attribute' => array(
@@ -1845,7 +1843,7 @@ class DatabaseFunctions
     {
         // NOTE: It would be nice if all this could be changed at some time
         if (isset($Userdata['ExpirationTimestamp']) && $Userdata['ExpirationTimestamp'] < time(
-            )
+        )
         ) {
             $status = EXPIRED_ACCOUNT;
         } elseif (isset($Userdata['Max-Octets']) && ($Userdata['Max-Octets'] - $Userdata['AcctTotalOctets']) <= 0) {
@@ -1869,8 +1867,8 @@ class DatabaseFunctions
 
     public function latestMacFromIP($ipaddress)
     {
-        // We limit the selection to a machine that has connected in the last 
-        // hour, (this may need to be updated in the future with 
+        // We limit the selection to a machine that has connected in the last
+        // hour, (this may need to be updated in the future with
         // CallingStationId for multiple APs)
         $sql = sprintf(
             "SELECT username from radpostauth

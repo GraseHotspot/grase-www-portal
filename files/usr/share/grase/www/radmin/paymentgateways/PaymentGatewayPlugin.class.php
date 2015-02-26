@@ -82,8 +82,4 @@ class PaymentGatewayPlugin
         {
                 $this->state['currentpage'] = $page;
         }
-              
-
 }
-
-?>

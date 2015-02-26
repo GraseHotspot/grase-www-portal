@@ -27,5 +27,3 @@ $replace = array(
 $jsfilecontents = str_replace($search, $replace, $jsfilecontents);
 
 echo "$jsfilecontents";
-
-?>

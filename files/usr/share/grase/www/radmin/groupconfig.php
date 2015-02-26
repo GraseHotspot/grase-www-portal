@@ -55,8 +55,7 @@ if (isset($_POST['submit'])) {
     foreach ($groupNames as $key => $name) {
         // There are attributes set but no group name
         if (\Grase\Clean::text($name) == '') {
-            if (
-                isset($groupComment[$key]) ||
+            if (isset($groupComment[$key]) ||
                 isset($groupExpiry[$key]) ||
                 isset($groupExpireAfter[$key]) ||
                 isset($groupDataLimit[$key]) ||
@@ -97,31 +96,31 @@ if (isset($_POST['submit'])) {
             }
         }
 
-        if(!\Grase\Validate::numericLimit($groupTimeLimit[$key])) {
+        if (!\Grase\Validate::numericLimit($groupTimeLimit[$key])) {
             $error[] = sprintf(T_("Invalid value '%s' for Time Limit"), $groupTimeLimit[$key]);
         }
-        if(!\Grase\Validate::numericLimit($groupRecurTimeLimit[$key])) {
+        if (!\Grase\Validate::numericLimit($groupRecurTimeLimit[$key])) {
             $error[] = sprintf(T_("Invalid value '%s' for Time Limit"), $groupRecurTimeLimit[$key]);
         }
-        if(!\Grase\Validate::numericLimit($groupRecurDataLimit[$key])) {
+        if (!\Grase\Validate::numericLimit($groupRecurDataLimit[$key])) {
             $error[] = sprintf(T_("Invalid value '%s' for Data Limit"), $groupRecurDataLimit[$key]);
         }
-        if(!\Grase\Validate::numericLimit($groupIdleTimeout[$key])) {
+        if (!\Grase\Validate::numericLimit($groupIdleTimeout[$key])) {
             $error[] = sprintf(T_("Invalid value '%s' for Idle Timeout"), $groupIdleTimeout[$key]);
         }
-        if(!\Grase\Validate::recurrenceInterval($groupRecurTime[$key], recurtimes())) {
+        if (!\Grase\Validate::recurrenceInterval($groupRecurTime[$key], recurtimes())) {
             $error[] = sprintf(T_("Invalid recurrence interval '%s'"), $groupRecurTime[$key]);
         }
-        if(!\Grase\Validate::recurrenceInterval($groupRecurData[$key], recurtimes())) {
+        if (!\Grase\Validate::recurrenceInterval($groupRecurData[$key], recurtimes())) {
             $error[] = sprintf(T_("Invalid recurrence interval '%s'"), $groupRecurData[$key]);
         }
-        if(!\Grase\Validate::recurrenceTime($groupRecurTime[$key], $groupRecurTimeLimit[$key])) {
+        if (!\Grase\Validate::recurrenceTime($groupRecurTime[$key], $groupRecurTimeLimit[$key])) {
             $error[] = T_("Recurring time limit must be less than interval");
         }
-        if(!\Grase\Validate::bandwidthOptions($groupBandwidthDownLimit[$key], bandwidth_options())) {
+        if (!\Grase\Validate::bandwidthOptions($groupBandwidthDownLimit[$key], bandwidth_options())) {
             $error[] = sprintf(T_("Invalid Bandwidth Limit '%s'"), $groupBandwidthDownLimit[$key]);
         }
-        if(!\Grase\Validate::bandwidthOptions($groupBandwidthUpLimit[$key], bandwidth_options())) {
+        if (!\Grase\Validate::bandwidthOptions($groupBandwidthUpLimit[$key], bandwidth_options())) {
             $error[] = sprintf(T_("Invalid Bandwidth Limit '%s'"), $groupBandwidthUpLimit[$key]);
         }
         //TODO we don't validate that it's not 0, relying on HTML5 to do that
@@ -200,7 +199,6 @@ if (isset($_POST['submit'])) {
     $templateEngine->displayPage('groups.tpl');
 
 } else {
-
     $templateEngine->assign("groupcurrentdata", DatabaseFunctions::getInstance()->getGroupAttributes());
     $templateEngine->assign("groupsettings", $Settings->getGroup());
     $templateEngine->displayPage('groups.tpl');

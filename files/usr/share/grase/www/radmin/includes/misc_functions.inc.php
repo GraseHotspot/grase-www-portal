@@ -21,39 +21,47 @@
 */
 
 // Validation functions
-function validate_num($number, $error='')
+function validate_num($number, $error = '')
 {
-	if ($number && is_numeric($number) && trim($number) != "") return "";
-	if ($number + 0 === 0) return "";
-	if($error != '') return $error; // Return the error message sent to us if defined
-        return sprintf(T_("Invalid number %s"), $number);
-	// TODO: Return what?
+    if ($number && is_numeric($number) && trim($number) != "") {
+        return "";
+    }
+    if ($number + 0 === 0) {
+        return "";
+    }
+    if ($error != '') {
+        return $error; // Return the error message sent to us if defined
+    }        return sprintf(T_("Invalid number %s"), $number);
+    // TODO: Return what?
 }
 
 function validate_int($number, $option = false) //TODO make this actually validate int?
 {
-    if ($number && is_numeric($number) && trim($number) != "") return "";
-    if($option && trim($number) == "") return "";
+    if ($number && is_numeric($number) && trim($number) != "") {
+        return "";
+    }
+    if ($option && trim($number) == "") {
+        return "";
+    }
     return sprintf(T_("Invalid number '%s' (Must be whole number)"), $number);
-	// TODO: Return what?
+    // TODO: Return what?
 }
 
 function validate_uucptimerange($timeranges)
 {
     // We can have multiple time ranges, so split on comma (and |)
-    if(trim($timeranges))
-    {
+    if (trim($timeranges)) {
         $timerange = str_replace('|', ',', $timeranges);
         
         $timerange = explode(',', $timerange);
         
         // For each range, check we start with valid start, followed by range
-        foreach($timerange as $range)
-        {
+        foreach ($timerange as $range) {
             $result = preg_match('/^(Su|Mo|Tu|We|Th|Fr|Sa|Sun|Mon|Tue|Wed|Thur|Fri|Sat|Wk|Any|Al|Never)(\d{4}-\d{4})?$/', $range);
-            //var_dump(array($range, $result));        
-            if($result == 0)
+            //var_dump(array($range, $result));
+            if ($result == 0) {
                 return T_('Invalid Time Range ' . $timeranges);
+            }
         }
     }
 }
@@ -71,13 +79,16 @@ function validate_group($group)
 
 function expiry_for_group($group, $groups = '')
 {
-	global $Settings; //TODO Remove global
-	if($groups == '')
-    	$groups = $Settings->getGroup($group);
-	if(isset($groups[$group]['Expiry']) && $groups[$group]['Expiry'] != '--') return date('Y-m-d H:i:s', strtotime($groups[$group]['Expiry']));
-	//if(isset($Expiry[$group]) && ( $Expiry[$group] == '--' || $Expiry[$group] == '')) return "--";
-	//return date('Y-m-d', strtotime($Expiry[DEFAULT_GROUP_NAME]));
-	return "--";
+    global $Settings; //TODO Remove global
+    if ($groups == '') {
+        $groups = $Settings->getGroup($group);
+    }
+    if (isset($groups[$group]['Expiry']) && $groups[$group]['Expiry'] != '--') {
+        return date('Y-m-d H:i:s', strtotime($groups[$group]['Expiry']));
+    }
+    //if(isset($Expiry[$group]) && ( $Expiry[$group] == '--' || $Expiry[$group] == '')) return "--";
+    //return date('Y-m-d', strtotime($Expiry[DEFAULT_GROUP_NAME]));
+    return "--";
 }
 
 /* Functions to check the group settings to ensure all currently used values are present in the dropdown boxes */
@@ -87,20 +98,19 @@ function checkGroupsDataDropdowns($datavals)
         global $Settings; //TODO Remove global
         $mb = explode(' ', $datavals);
         $group_settings = $Settings->getGroup();
-        $group_attribs = DatabaseFunctions::getInstance()->getGroupAttributes();        
+        $group_attribs = DatabaseFunctions::getInstance()->getGroupAttributes();
 
-        foreach($group_settings as $name => $group)
-        {       
-                if(
-                        isset($group['MaxMb']) &&
-                        !in_array($group['MaxMb'], $mb) )
-                                $mb[] = $group['MaxMb'];
-
-                if(
-                        isset($group_attribs[$name]['DataRecurLimit']) &&
-                        !in_array($group_attribs[$name]['DataRecurLimit'], $mb))
-                                $mb[] = $group_attribs[$name]['DataRecurLimit'];
+    foreach ($group_settings as $name => $group) {
+        if (isset($group['MaxMb']) &&
+                    !in_array($group['MaxMb'], $mb) ) {
+                        $mb[] = $group['MaxMb'];
         }
+
+        if (isset($group_attribs[$name]['DataRecurLimit']) &&
+                    !in_array($group_attribs[$name]['DataRecurLimit'], $mb)) {
+                        $mb[] = $group_attribs[$name]['DataRecurLimit'];
+        }
+    }
         asort($mb);
         $mb = trim(implode(" ", $mb));
         return $mb;
@@ -113,18 +123,17 @@ function checkGroupsTimeDropdowns($datavals)
         $group_settings = $Settings->getGroup();
         $group_attribs = DatabaseFunctions::getInstance()->getGroupAttributes();
 
-        foreach($group_settings as $name => $group)
-        {       
-                if(
-                        isset($group['MaxTime']) &&
-                        !in_array($group['MaxTime'], $time))
-                                $time[] = $group['MaxTime'];
-
-                if(
-                        isset($group_attribs[$name]['TimeRecurLimit']) &&
-                        !in_array($group_attribs[$name]['TimeRecurLimit'], $time))
-                                $time[] = $group_attribs[$name]['TimeRecurLimit'];
+    foreach ($group_settings as $name => $group) {
+        if (isset($group['MaxTime']) &&
+                    !in_array($group['MaxTime'], $time)) {
+                        $time[] = $group['MaxTime'];
         }
+
+        if (isset($group_attribs[$name]['TimeRecurLimit']) &&
+                    !in_array($group_attribs[$name]['TimeRecurLimit'], $time)) {
+                        $time[] = $group_attribs[$name]['TimeRecurLimit'];
+        }
+    }
         asort($time);
         $time = trim(implode(" ", $time));
         return $time;
@@ -137,18 +146,16 @@ function checkGroupsBandwidthDropdowns($datavals)
         $group_settings = $Settings->getGroup();
         $group_attribs = DatabaseFunctions::getInstance()->getGroupAttributes();
 
-        foreach($group_settings as $name => $group)
-        {       
-
-                if(
-                        isset($group_attribs[$name]['BandwidthUpLimit']) &&
-                        !in_array($group_attribs[$name]['BandwidthUpLimit'], $bw))
-                                $bw[] = $group_attribs[$name]['BandwidthUpLimit'];
-                if(
-                        isset($group_attribs[$name]['BandwidthDownLimit']) &&
-                        !in_array($group_attribs[$name]['BandwidthDownLimit'], $bw))
-                                $bw[] = $group_attribs[$name]['BandwidthDownLimit'];
+    foreach ($group_settings as $name => $group) {
+        if (isset($group_attribs[$name]['BandwidthUpLimit']) &&
+                    !in_array($group_attribs[$name]['BandwidthUpLimit'], $bw)) {
+                        $bw[] = $group_attribs[$name]['BandwidthUpLimit'];
         }
+        if (isset($group_attribs[$name]['BandwidthDownLimit']) &&
+                    !in_array($group_attribs[$name]['BandwidthDownLimit'], $bw)) {
+                        $bw[] = $group_attribs[$name]['BandwidthDownLimit'];
+        }
+    }
         asort($bw);
         $bw = trim(implode(" ", $bw));
         return $bw;
@@ -158,60 +165,57 @@ function checkGroupsBandwidthDropdowns($datavals)
 
 function sort_users_into_groups($users)
 {
-	$users_group = array();
-	$expiredusers = array();
-	$lockedusers = array();
-	$lowusers = array();
-	
-	foreach($users as $user)
-	{
-		if(isset($user['Group']) && $user['Group'] != '')
-		{
-			$users_group[$user['Group']][] = $user;
-		}else
-		{
-			$users_group['Nogroup'][] = $user;
-		}
-		
-		
-		if($user['account_status'] == EXPIRED_ACCOUNT)
-		{
-		    $expiredusers[] = $user;
-		}
-		
-		if($user['account_status'] == LOCKED_ACCOUNT)
-		{
-		    $lockedusers[] = $user;
-		}
-		
+    $users_group = array();
+    $expiredusers = array();
+    $lockedusers = array();
+    $lowusers = array();
+    
+    foreach ($users as $user) {
+        if (isset($user['Group']) && $user['Group'] != '') {
+            $users_group[$user['Group']][] = $user;
+        } else {
+            $users_group['Nogroup'][] = $user;
+        }
+        
+        
+        if ($user['account_status'] == EXPIRED_ACCOUNT) {
+            $expiredusers[] = $user;
+        }
+        
+        if ($user['account_status'] == LOCKED_ACCOUNT) {
+            $lockedusers[] = $user;
+        }
+        
 
-		if($user['account_status'] == LOWDATA_ACCOUNT || $user['account_status'] == LOWTIME_ACCOUNT)
-		{
-		    $lowusers[] = $user;
-		}		
-		
-	}
+        if ($user['account_status'] == LOWDATA_ACCOUNT || $user['account_status'] == LOWTIME_ACCOUNT) {
+            $lowusers[] = $user;
+        }
+        
+    }
     
     // Sort array alphabetically
-	ksort($users_group);
+    ksort($users_group);
 
-	// Built in sort groups (can't have spaces in name)
-	if(sizeof($expiredusers) > 0)
-	    $users_group[T_("Expired")] = $expiredusers;
-	    
-	if(sizeof($lockedusers) > 0)
-	    $users_group[T_("Out Of Quota")] = $lockedusers;
-	    
-	if(sizeof($lowusers) > 0)
-	    $users_group[T_("Low Quota")] = $lowusers;	    	    
-	    
-	return $users_group;
+    // Built in sort groups (can't have spaces in name)
+    if (sizeof($expiredusers) > 0) {
+        $users_group[T_("Expired")] = $expiredusers;
+    }
+        
+    if (sizeof($lockedusers) > 0) {
+        $users_group[T_("Out Of Quota")] = $lockedusers;
+    }
+        
+    if (sizeof($lowusers) > 0) {
+        $users_group[T_("Low Quota")] = $lowusers;
+    }
+        
+    return $users_group;
 }
 
 function clean_number($number)
 {
     global $Settings; //TODO Remove global
-    $fmt = new NumberFormatter( $Settings->getSetting('locale'), NumberFormatter::DECIMAL );
+    $fmt = new NumberFormatter($Settings->getSetting('locale'), NumberFormatter::DECIMAL);
     $cleannum = $fmt->parse(preg_replace("/[^\.,0-9]/", "", \Grase\Clean::text($number)));
     return $cleannum;
 }
@@ -226,10 +230,9 @@ function clean_numberarray($numberarray)
 {
         //Explode it into it's array using " " (as this can't appear in numbers anywhere in the world)
         $numarray = explode(' ', $numberarray);
-        foreach($numarray as $num)
-        {
-                $numericarray[] = clean_number($num);
-        }
+    foreach ($numarray as $num) {
+        $numericarray[] = clean_number($num);
+    }
         
         return implode(" ", $numericarray);
 }
@@ -237,7 +240,9 @@ function clean_numberarray($numberarray)
 
 function clean_int($number)
 {
-    if(!is_numeric(clean_number($number))) return clean_number($number);
+    if (!is_numeric(clean_number($number))) {
+        return clean_number($number);
+    }
     return \Grase\Util::bigIntVal(clean_number($number));
     //ereg_replace("[^0-9]", "", \Grase\Clean::text($number));
 }

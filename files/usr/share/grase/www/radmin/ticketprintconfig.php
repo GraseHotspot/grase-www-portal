@@ -87,7 +87,6 @@ foreach ($templateTicketPrintOptions as $template => $attributes) {
 }
 
 if (isset($_POST['submit'])) {
-
     foreach ($singleTicketPrintOptions as $singleOption => $attributes) {
         switch ($attributes['type']) {
             default:

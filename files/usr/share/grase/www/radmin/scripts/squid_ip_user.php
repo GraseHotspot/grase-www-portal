@@ -28,33 +28,34 @@ chdir(__DIR__ . '/../');
 
 require_once __DIR__ . '/../../../vendor/autoload.php';
 
-$NONINTERACTIVE_SCRIPT = TRUE;
+$NONINTERACTIVE_SCRIPT = true;
 
 
 
 $fp = fopen('php://stdin', 'r');
-while($IP = trim(fgets($fp, 4096))){
+while ($IP = trim(fgets($fp, 4096))) {
 //	echo "$IP ".database_radacct_ip_to_username($IP)."\n";
     // TODO: See about converting this back to DB lookup
-	//$username = chilli_ip_to_username($IP);
-	$username = DatabaseFunctions::getInstance()->activeSessionUsername($IP);
-	if($username != "ERR" && $username){
-		print "OK user=$username\n";
-	}else{
-		//print "OK\n";
-		print "ERR\n";
-	}
+    //$username = chilli_ip_to_username($IP);
+    $username = DatabaseFunctions::getInstance()->activeSessionUsername($IP);
+    if ($username != "ERR" && $username) {
+        print "OK user=$username\n";
+    } else {
+        //print "OK\n";
+        print "ERR\n";
+    }
 }
 
 // Old function. Hopefully DatabaseFunctions will do this for us now
-function chilli_ip_to_username($IP){
-	$current_sessions = `chilli_query list`;
-	$current_sessions = split("\n", $current_sessions);
-	foreach($current_sessions as $session){
-		list($MAC_Address, $IP_Address, $InternalState, $SessionID, $AuthenticatedState, $Username, $Duration, $Idle, $URL) = split(" ", $session);
-		if($IP_Address == $IP && $AuthenticatedState == '1') return $Username;
-	}
-	return "";
+function chilli_ip_to_username($IP)
+{
+    $current_sessions = `chilli_query list`;
+    $current_sessions = split("\n", $current_sessions);
+    foreach ($current_sessions as $session) {
+        list($MAC_Address, $IP_Address, $InternalState, $SessionID, $AuthenticatedState, $Username, $Duration, $Idle, $URL) = split(" ", $session);
+        if ($IP_Address == $IP && $AuthenticatedState == '1') {
+            return $Username;
+        }
+    }
+    return "";
 }
-
-

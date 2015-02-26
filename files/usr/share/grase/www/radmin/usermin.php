@@ -23,33 +23,24 @@
 require_once 'includes/usermin_session.inc.php';
 
 
-if(isset($_GET['history']))
-{
+if (isset($_GET['history'])) {
     $templateEngine->assign("sessions", DatabaseFunctions::getInstance()->getRadiusUserSessionsDetails($Auth->getUsername()));
     $templateEngine->displayPage('usermin_history.tpl');
-}
-else
-{
+} else {
     $error = array();
-    if(isset($_POST['changepasswordsubmit']))
-    {
+    if (isset($_POST['changepasswordsubmit'])) {
         $newpass1 = trim($_POST['NewPassword']);
-        $newpass2 = trim($_POST['PasswordVerify']);        
+        $newpass2 = trim($_POST['PasswordVerify']);
         // Work on changing password
-        if($newpass1 != $newpass2)
-        {
+        if ($newpass1 != $newpass2) {
             $error[] = T_("New Passwords must match");
-        }elseif($newpass1 == '')
-        {
+        } elseif ($newpass1 == '') {
             $error[] = T_("Password must not be blank");
-        }else
-        {
-            if(DatabaseFunctions::getInstance()->setUserPassword($Auth->getUsername(), $newpass1))
-            {
+        } else {
+            if (DatabaseFunctions::getInstance()->setUserPassword($Auth->getUsername(), $newpass1)) {
                 $success[] = T_("Password Changed");
-            }else
-            {
-                $error[] = T_("Password not updated");            
+            } else {
+                $error[] = T_("Password not updated");
             }
         }
 
@@ -61,5 +52,3 @@ else
     $templateEngine->displayPage('usermin_userdetails.tpl');
 
 }
-?>
-

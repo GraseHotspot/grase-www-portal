@@ -45,12 +45,11 @@ class DatabaseUsermin
         
         $results = $res->fetchAll(MDB2_FETCHMODE_ASSOC, false, false);
         
-        foreach($results as $user)
-        {
-            $users[$user['UserName']] = $user['Value'];
+        foreach ($results as $user) {
+        $users[$user['UserName']] = $user['Value'];
         }
                 
-        $this->users = $users;        
+        $this->users = $users;
     }
     
     public function getUsers()

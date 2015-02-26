@@ -207,7 +207,7 @@ function updateLocaleSetting($locale)
 function updateSupportContactSetting($supportName)
 {
     global $error, $Settings, $success;
-    if($Settings->getSetting('supportContactName') == $supportName) {
+    if ($Settings->getSetting('supportContactName') == $supportName) {
         return true;
     }
     if ($supportName == "") {

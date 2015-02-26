@@ -44,55 +44,48 @@ exit;
 switch($_SESSION['wizardpage'])
 {
     case 'initialpage':
-        if(isset($_POST['gotopayment']))
-        {
-            // Assume form is valid
+        if (isset($_POST['gotopayment'])) {
+        // Assume form is valid
             $valid = true;
 
             // We have a form submitted, check it's valid and move to the next step
 
 
             // Check voucher is valid
-            if(!in_array($_POST['voucherselected'], $validVouchers))
-            {
+            if (!in_array($_POST['voucherselected'], $validVouchers)) {
                 $valid = false;
             }
 
             // Check payment gateway is valid
-            if(!array_key_exists($_POST['gatewayselected'], $paymentgateways))
-            {
+            if (!array_key_exists($_POST['gatewayselected'], $paymentgateways)) {
                 $valid = false;
             }
 
             // Check for "free" vouchers that the selected payment gateway supports free tickets
 
-            if($vouchers[$_POST['voucherselected']]['VoucherPrice'] == 0 && !$paymentgateways[$_POST['gatewayselected']]['free'])
-            {
+            if ($vouchers[$_POST['voucherselected']]['VoucherPrice'] == 0 && !$paymentgateways[$_POST['gatewayselected']]['free']) {
                 $valid = false;
                 $error = T_("Your selected payment gateway doesn't support free vouchers");
             }
 
             // Check for "paid" vouchers that the selected payment gateway supports paid tickets
 
-            if($vouchers[$_POST['voucherselected']]['VoucherPrice'] != 0 && !$paymentgateways[$_POST['gatewayselected']]['paid'])
-            {
+            if ($vouchers[$_POST['voucherselected']]['VoucherPrice'] != 0 && !$paymentgateways[$_POST['gatewayselected']]['paid']) {
                 $valid = false;
                 $error = T_("Your selected payment gateway doesn't support paid vouchers");
             }
 
             // If we have a valid selection, continue
 
-            if($valid)
-            {
-                // Valid submission
+            if ($valid) {
+            // Valid submission
 
                 $_SESSION['wizardpage']             = 'confirmselectionpage';
                 $_SESSION['selectedvoucher']        = $_POST['voucherselected'];
                 $_SESSION['selectedpaymentgateway'] = $_POST['gatewayselected'];
                 reload_page();
                 exit;
-            } else
-            {
+            } else {
                 $error = $error ? $error : T_('Invalid Voucher or Payment Selection');
                 $templateEngine->assign('error', $error);
             }
@@ -105,24 +98,20 @@ switch($_SESSION['wizardpage'])
 
     
     case 'confirmselectionpage':
-        if(isset($_POST['selectionconfirmed']))
-        {
-            // We have a form submitted, check it's valid and move to the next step
+        if (isset($_POST['selectionconfirmed'])) {
+        // We have a form submitted, check it's valid and move to the next step
 
-            if($_POST['selectionconfirmed'] == 'correct')
-            {
-                // We can continue with payment
+            if ($_POST['selectionconfirmed'] == 'correct') {
+            // We can continue with payment
 
                 $_SESSION['wizardpage'] = 'paymentpage';
-                $_SESSION['selectionconfirmed'] = TRUE;
+                $_SESSION['selectionconfirmed'] = true;
 
                 // TODO store selection in database yet? i.e. make user but don't give them access to it's details until we've gotten payment?
 
                 reload_page();
                 exit;
-            } else
-            {
-
+            } else {
                 // Selection is not confirmed, start again
                 restart_wizard();
 
@@ -142,9 +131,8 @@ switch($_SESSION['wizardpage'])
         //var_dump($_POST);
         //var_dump($vouchers);
 
-        if(!isset($_SESSION['PendingAccount']))
-        {
-            /* Create our locked random user */
+        if (!isset($_SESSION['PendingAccount'])) {
+        /* Create our locked random user */
 
             $MaxMb    = $vouchers[$_SESSION['selectedvoucher']]['MaxMb'];
             $MaxTime  = $vouchers[$_SESSION['selectedvoucher']]['MaxTime'];
@@ -155,14 +143,15 @@ switch($_SESSION['wizardpage'])
 
             // TODO Maybe set expiry to a few days so if payment isn't valid then we expire soon, and after sucessful payment we update expiry?
 
-            DatabaseFunctions::getInstance()->createUser(// TODO: Check if valid
-                $Username, 
-                $Password, 
-                $MaxMb, 
-                $MaxTime, 
+            DatabaseFunctions::getInstance()->createUser(
+                // TODO: Check if valid
+                $Username,
+                $Password,
+                $MaxMb,
+                $MaxTime,
                 $Expiry,
                 false, // Don't currently have ExpireAfter for vouchers
-                $vouchers[$_SESSION['selectedvoucher']]['VoucherGroup'], 
+                $vouchers[$_SESSION['selectedvoucher']]['VoucherGroup'],
                 $Comment
             );
             
@@ -177,8 +166,7 @@ switch($_SESSION['wizardpage'])
         
 
         require_once('paymentgateways/PaymentGatewayPlugin.class.php');
-        if(!is_file('paymentgateways/'.$paymentgateways[$_SESSION['selectedpaymentgateway']]['pluginfile']))
-        {
+        if (!is_file('paymentgateways/'.$paymentgateways[$_SESSION['selectedpaymentgateway']]['pluginfile'])) {
             die('Invalid payment plugin<br/><form action="" method="POST"><input type="hidden" name="pgformsubmission" value="1"/><input name="restartwizard" type="submit" value="Restart Wizard"/>');
         }
 
@@ -194,8 +182,7 @@ switch($_SESSION['wizardpage'])
         //$paymentplugin-> // Load voucher and user details (at initilisation) TODO
         // Load state from SESSION
 
-        if(isset($_SESSION['paymentGatewayPluginState']))
-        {
+        if (isset($_SESSION['paymentGatewayPluginState'])) {
             $paymentplugin->setState($_SESSION['paymentGatewayPluginState']);
         }
         
@@ -203,13 +190,11 @@ switch($_SESSION['wizardpage'])
 
         // Check if payment is complete
 
-        if(!$paymentplugin->isPaymentCompleted())
-        {
-            // Payment isn't completed
+        if (!$paymentplugin->isPaymentCompleted()) {
+        // Payment isn't completed
             // Check for page submission
 
-            if(isset($_POST['pgformsubmission']))
-            {
+            if (isset($_POST['pgformsubmission'])) {
                 $nextpage = $paymentplugin->processPage($nextpage);
 
                 // TODO After processing page, again check if payment is complete
@@ -218,9 +203,8 @@ switch($_SESSION['wizardpage'])
 
         // Page has been processed, we now check if payment is complete and do what we need
 
-        if($paymentplugin->isPaymentCompleted() && ! isset($_SESSION['AccountActivated']))
-        {
-            // Payment completed, display user details, activate user, cleanup
+        if ($paymentplugin->isPaymentCompleted() && ! isset($_SESSION['AccountActivated'])) {
+        // Payment completed, display user details, activate user, cleanup
 
             // Activate the account. It's upto the plugin to display things
             DatabaseFunctions::getInstance()->unlockUser($_SESSION['PendingAccount']['Username']);
@@ -263,5 +247,3 @@ function reload_page($extra = 'purchase_wizard')
     header("Location: http://$host$uri/$extra");
     exit;
 }
-
-?>

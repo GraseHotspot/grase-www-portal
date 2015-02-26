@@ -41,7 +41,8 @@ $username = mysql_real_escape_string(
 ); // TODO change this? i.e. make database class do it if it doesn't already
 $user = DatabaseFunctions::getInstance()->getUserDetails($_GET['username']);
 
-if (isset($_POST['updateusersubmit'])) {   // Process form for changed items and do updates
+if (isset($_POST['updateusersubmit'])) {
+// Process form for changed items and do updates
     $addMb = clean_number($_POST['Add_Mb']);
     $maxMb = clean_number($_POST['MaxMb']);
     $addTime = clean_number($_POST['Add_Time']);
@@ -100,7 +101,7 @@ if (isset($_POST['updateusersubmit'])) {   // Process form for changed items and
 
     if ($addMb) {
         if (!\Grase\Validate::numericLimit($addMb)) {
-            $error[] = sprintf(T_("Invalid value '%s' for Data Limit"),$addMb);
+            $error[] = sprintf(T_("Invalid value '%s' for Data Limit"), $addMb);
         } else {
             DatabaseFunctions::getInstance()->increaseUserDatalimit($username, $addMb);
             DatabaseFunctions::getInstance()->setUserExpiry(
@@ -119,7 +120,7 @@ if (isset($_POST['updateusersubmit'])) {   // Process form for changed items and
         && $maxMb != clean_number($user['MaxMb'])
     ) {
         if (!\Grase\Validate::numericLimit($maxMb)) {
-            $error[] = sprintf(T_("Invalid value '%s' for Data Limit"),$maxMb);
+            $error[] = sprintf(T_("Invalid value '%s' for Data Limit"), $maxMb);
         } else {
             DatabaseFunctions::getInstance()->setUserDataLimit($username, clean_number($_POST['MaxMb']));
             DatabaseFunctions::getInstance()->setUserExpiry(

@@ -6,8 +6,7 @@ require_once('includes/site.inc.php');
 
 header("Content-Type: text/javascript;");
 
-if($_GET['username']){
-
+if ($_GET['username']) {
     $user = DatabaseFunctions::getInstance()->getUserDetails(mysql_real_escape_string($_GET['username'])); // TODO: sanitize INPUT
     
     $maxoctets = "";
@@ -15,15 +14,26 @@ if($_GET['username']){
     
     // TODO Show remaining time for hour/day limits
     // TODO Group limits
-    if(isset($user['Max-Octets'])) $maxoctets = $user['Max-Octets'];
-    if(isset($user['Max-All-Session'])) $timelimit = $user['Max-All-Session'];
+    if (isset($user['Max-Octets'])) {
+        $maxoctets = $user['Max-Octets'];
+    }
+    if (isset($user['Max-All-Session'])) {
+        $timelimit = $user['Max-All-Session'];
+    }
     
-    if(isset($user['GroupSettings']['MaxOctets']) && ! $maxoctets) $maxoctets = $user['GroupSettings']['MaxOctets'];
-    if(isset($user['GroupSettings']['MaxSeconds']) && ! $timelimit) $timelimit = $user['GroupSettings']['MaxSeconds'];
+    if (isset($user['GroupSettings']['MaxOctets']) && ! $maxoctets) {
+        $maxoctets = $user['GroupSettings']['MaxOctets'];
+    }
+    if (isset($user['GroupSettings']['MaxSeconds']) && ! $timelimit) {
+        $timelimit = $user['GroupSettings']['MaxSeconds'];
+    }
 
     
 ?>
 chilliJSON.reply({"version":"1.0","clientState":1,"user_details":{"monthlyusagelimit":"<?php echo $maxoctets;?>","monthlytimelimit":"<?php echo $timelimit;?>"}})
-<?php }else{?>
+<?php
+} else {
+?>
 chilliJSON.reply({"version":"1.0","clientState":0})
-<?php }?>
+<?php
+}

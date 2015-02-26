@@ -39,21 +39,17 @@ chdir(dirname(__FILE__) . '/../');
 $group = trim($argv[1]);
 
 $fp = fopen('php://stdin', 'r');
-while($data = trim(fgets($fp, 4096))){
+while ($data = trim(fgets($fp, 4096))) {
 //	echo "$IP ".convertRadacctIPtoUsername($IP)."\n";
-	list($Username, $group) = split(" ", $data, 2);
-	$usergroup=trim(DatabaseFunctions::getInstance()->getUserGroup($Username));
-	if($usergroup == $group && $usergroup != ""){
-		print "OK\n";
-	}else{
-		//print "OK\n";
-		print "ERR message='User Group not permitted to access this site'\n";
-	}
-	
-	// TODO: Is this debugging? Remove
-	file_put_contents("/tmp/usergroup", "$Username, $group, $usergroup\n", FILE_APPEND);
+    list($Username, $group) = split(" ", $data, 2);
+    $usergroup=trim(DatabaseFunctions::getInstance()->getUserGroup($Username));
+    if ($usergroup == $group && $usergroup != "") {
+        print "OK\n";
+    } else {
+        //print "OK\n";
+        print "ERR message='User Group not permitted to access this site'\n";
+    }
+    
+    // TODO: Is this debugging? Remove
+    file_put_contents("/tmp/usergroup", "$Username, $group, $usergroup\n", FILE_APPEND);
 }
-
-
-?>
-

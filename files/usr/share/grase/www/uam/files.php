@@ -10,8 +10,8 @@ $dir = "../public/$path";
 
 if ($handle = opendir($dir)) {
     while (false !== ($file = readdir($handle))) {
-        if ($file != "." && $file != ".svn" && stristr($file, "php") === FALSE && stristr($file, "htaccess") === FALSE ) {
-            $files[] = array("name" => $file, "size" => filesize("$dir/$file"));            
+        if ($file != "." && $file != ".svn" && stristr($file, "php") === false && stristr($file, "htaccess") === false) {
+            $files[] = array("name" => $file, "size" => filesize("$dir/$file"));
         }
     }
     closedir($handle);
@@ -20,5 +20,3 @@ if ($handle = opendir($dir)) {
 $smarty->assign("path", "Public/".$path);
 $smarty->assign("files", $files);
 $smarty->display('files.tpl');
-?>
-
