@@ -34,14 +34,14 @@ class DatabaseConnections
     private $radiusDSN;
     private $radminOptions;
     private $radiusOptions;
-    
+
     /* To prevent multiple instances of the DB, but also allowing us to use the DB
      * from multiple locations without global vars, we get the instance with
      * $DBs =& DatabaseConnections::getInstance();
      * Initial call is
      * $DBs =& DatabaseConnections::getInstance('database_config_file');
      */
-     
+
     public function &getInstance($radiusDatabaseSettingsFile = '/etc/grase/radius.conf', $radminDatabaseSettingsFile = '/etc/grase/radmin.conf')
     {
         // Static reference of this class's instance.
@@ -51,7 +51,7 @@ class DatabaseConnections
         }
         return $instance;
     }
-    
+
     public function __construct($radiusDatabaseSettingsFile = '/etc/grase/radius.conf', $radminDatabaseSettingsFile = '/etc/grase/radmin.conf')
     {
         $this->radiusDatabaseSettingsFile = $radiusDatabaseSettingsFile;
@@ -224,39 +224,40 @@ class DatabaseConnections
 //
 class Explain_Queries
 {
-  // how many queries were executed
+    // how many queries were executed
     var $query_count = 0;
-  // which queries and their count
+    // which queries and their count
     var $queries = array();
-  // BT to each query
+    // BT to each query
     var $qbt = array();
-  
-  // results of EXPLAIN-ed SELECTs
+
+    // results of EXPLAIN-ed SELECTs
     var $explains = array();
-  // the MDB2 instance
+    // the MDB2 instance
     var $db = false;
 
-  // constructor that accepts MDB2 reference
+    // constructor that accepts MDB2 reference
     function Explain_Queries(&$db)
     {
         $this->db = $db;
     }
 
-  // this method is called on every query
+    // this method is called on every query
     function collectInfo(
         &$db,
         $scope,
         $message,
         $is_manip = null
-    ) {
-      // increment the total number of queries
+    )
+    {
+        // increment the total number of queries
         $this->query_count++;
-      // the SQL is a key in the queries array
-      // the value will be the count of how
-      // many times each query was executed
+        // the SQL is a key in the queries array
+        // the value will be the count of how
+        // many times each query was executed
         @$this->queries[$message]++;
-    
-      // Add trace info if needed
+
+        // Add trace info if needed
         if (isset($_GET['bt'])) {
             $trace = array();
             $trace = debug_backtrace();
@@ -265,16 +266,16 @@ class Explain_Queries
                 unset($t['args']);
                 unset($t['object']);
             }
-        
+
             $this->qbt[$message][] = $trace;
         }
     }
 
-  // print the debug information
+    // print the debug information
     function dumpInfo()
     {
         echo '<h3>Queries on this page</h3>';
-        echo 'Number: '.$this->query_count;
+        echo 'Number: ' . $this->query_count;
         echo '<pre>';
         print_r($this->queries);
         echo '</pre>';
@@ -287,56 +288,56 @@ class Explain_Queries
         echo '</pre>';
     }
 
-  // the method that will execute all SELECTs
-  // with and without an EXPLAIN and will
-  // create $this->explains array of debug
-  // information
-  // SHOW WARNINGS will be called after each
-  // EXPLAIN for more information
+    // the method that will execute all SELECTs
+    // with and without an EXPLAIN and will
+    // create $this->explains array of debug
+    // information
+    // SHOW WARNINGS will be called after each
+    // EXPLAIN for more information
     function executeAndExplain()
-  {
+    {
 
-      // at this point, stop debugging
+        // at this point, stop debugging
         $this->db->setOption('debug', 0);
         $this->db->loadModule('Extended');
 
-      // take the SQL for all the unique queries
+        // take the SQL for all the unique queries
         $queries = array_keys($this->queries);
         foreach ($queries as $sql) {
-          // for all SELECTs…
+            // for all SELECTs…
             $sql = trim($sql);
             if (stristr($sql, "SELECT") !== false) {
-              // note the start time
+                // note the start time
                 $start_time = array_sum(
                     explode(" ", microtime())
                 );
-              // execute query
+                // execute query
                 $this->db->query($sql);
-              // note the end time
+                // note the end time
                 $end_time = array_sum(
                     explode(" ", microtime())
                 );
-              // the time the query took
+                // the time the query took
                 $total_time = $end_time - $start_time;
 
-              // now execute the same query with
-              // EXPLAIN EXTENDED prepended
+                // now execute the same query with
+                // EXPLAIN EXTENDED prepended
                 $explain = $this->db->getAll(
                     'EXPLAIN EXTENDED ' . $sql
                 );
 
                 $this->explains[$sql] = array();
-              // update the debug array with the
-              // new data from
-              // EXPLAIN and SHOW WARNINGS
+                // update the debug array with the
+                // new data from
+                // EXPLAIN and SHOW WARNINGS
                 if (!PEAR::isError($explain)) {
                     $this->explains[$sql]['explain'] = $explain;
                     $this->explains[$sql]['warnings'] =
-                     $this->db->getAll('SHOW WARNINGS');
+                        $this->db->getAll('SHOW WARNINGS');
                 }
 
-              // update the debug array with the
-              // count and time
+                // update the debug array with the
+                // count and time
                 $this->explains[$sql]['time'] = $total_time;
             }
         }

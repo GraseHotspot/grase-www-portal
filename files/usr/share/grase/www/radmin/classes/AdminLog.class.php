@@ -76,7 +76,7 @@ class AdminLog
         if (PEAR::isError($this->log_sql)) {
             \Grase\ErrorHandling::fatalNoDatabaseError("Preparing logging statement failed: ". $this->log_sql->getMessage());
         }
-     }
+        }
     
     
     /* To prevent multiple instances of the log, but also allowing us to use the log
