@@ -508,10 +508,21 @@ EOT
     private function moveTicketPrintSettings()
     {
         $networkSettings = unserialize($this->Settings->getSetting('networkoptions'));
+        if ($networkSettings['printSSID'] === null) {
+            $networkSettings['printSSID'] = "";
+        }
         $this->Settings->setSetting('printSSID', $networkSettings['printSSID']);
         unset($networkSettings['printSSID']);
+
+        if ($networkSettings['printGroup'] === null) {
+            $networkSettings['printGroup'] = "";
+        }
         $this->Settings->setSetting('printGroup', $networkSettings['printGroup']);
         unset($networkSettings['printGroup']);
+
+        if ($networkSettings['printExpiry'] === null) {
+            $networkSettings['printExpiry'] = "";
+        }
         $this->Settings->setSetting('printExpiry', $networkSettings['printExpiry']);
         unset($networkSettings['printExpiry']);
         $this->Settings->setSetting('networkoptions', serialize($networkSettings));
