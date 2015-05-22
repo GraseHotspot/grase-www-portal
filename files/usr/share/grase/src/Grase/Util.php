@@ -367,4 +367,15 @@ class Util
         }
         return sprintf("%dd %02d:%02d:%02d", $days, $hours, $minutes, $seconds);
     }
+
+    public static function getChilliLeases()
+    {
+        exec('sudo /usr/sbin/chilli_query -json list', $output, $return);
+
+        if ($return === 0) {
+            // Command worked
+            return json_decode($output[0], true);
+        }
+        return false;
+    }
 }

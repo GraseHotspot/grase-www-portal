@@ -27,6 +27,7 @@
 			<th><!--FramedIPAddress-->{t}IP/MAC Address{/t}</th>
 			<th>{t}Username{/t}</th>
 			<th>{t}Data Usage{/t}</th>
+            <th></th>
 		</tr>	
 		</thead>
 		<tbody>
@@ -44,7 +45,13 @@
 			<a href="?username={$session.Username}">{$session.Username}</a><a class="ui-icon ui-icon-person" style="display:inline-block" href="edituser?username={$session.Username}"></a>
 			{/if}
 			</td>
-			<td title='{$session.AcctTotalOctets}'>{$session.AcctTotalOctets|bytes}<br/><span class="ui-icon ui-icon-arrowthick-1-s" style="display:inline-block"></span>{$session.AcctInputOctets|bytes} <span class="ui-icon ui-icon-arrowthick-1-n" style="display:inline-block"></span>{$session.AcctOutputOctets|bytes} </td>				
+			<td title='{$session.AcctTotalOctets}'>{$session.AcctTotalOctets|bytes}<br/><span class="ui-icon ui-icon-arrowthick-1-s" style="display:inline-block"></span>{$session.AcctInputOctets|bytes} <span class="ui-icon ui-icon-arrowthick-1-n" style="display:inline-block"></span>{$session.AcctOutputOctets|bytes} </td>
+            <td>{if ! $session.AcctStopTime}
+                    <form method="post">
+                        <button type="submit" name="logout_mac" value="{$session.CallingStationId}"><i class="fa fa-times"></i></button>
+                    </form>
+                {/if}
+            </td>
 		</tr>
 		{/foreach}
 		</tbody>
@@ -72,6 +79,7 @@
 			<th><!--FramedIPAddress-->{t}IP/MAC Address{/t}</th>
 			<th>{t}Username{/t}</th>
 			<th>{t}Data Usage{/t}</th>
+            <th></th>
 		</tr>	
 		</thead>
 		<tbody>

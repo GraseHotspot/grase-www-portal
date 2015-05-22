@@ -24,6 +24,23 @@ require_once 'includes/pageaccess.inc.php';
 require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
 
+if (isset($_POST['logout_mac'])) {
+    // Logout a specific MAC address
+    $leases = \Grase\Util::getChilliLeases();
+    foreach ($leases['sessions'] as $session) {
+        if ($session['macAddress'] == $_POST['logout'] && strlen($session['macAddress']) == 17) {
+            exec('sudo /usr/sbin/chilli_query logout '.$session['macAddress'], $output, $return);
+            if ($return === 0) {
+                // Command worked
+                $templateEngine->successMessage(T_("Logged out %s", $session['macAddress']));
+                break;
+            }
+        }
+    }
+    $templateEngine->errorMessage(T_("Unable to find active session for %s", Grase\Clean::text($_POST['logout_mac'])));
+
+}
+
 if (isset($_GET['username'])) {
     $templateEngine->assign(
         "sessions",
