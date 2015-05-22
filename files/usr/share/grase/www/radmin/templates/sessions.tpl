@@ -27,7 +27,7 @@
 			<th><!--FramedIPAddress-->{t}IP/MAC Address{/t}</th>
 			<th>{t}Username{/t}</th>
 			<th>{t}Data Usage{/t}</th>
-            <th></th>
+            <th>{t}Logout Session{/t}</th>
 		</tr>	
 		</thead>
 		<tbody>
@@ -48,7 +48,7 @@
 			<td title='{$session.AcctTotalOctets}'>{$session.AcctTotalOctets|bytes}<br/><span class="ui-icon ui-icon-arrowthick-1-s" style="display:inline-block"></span>{$session.AcctInputOctets|bytes} <span class="ui-icon ui-icon-arrowthick-1-n" style="display:inline-block"></span>{$session.AcctOutputOctets|bytes} </td>
             <td>{if ! $session.AcctStopTime}
                     <form method="post">
-                        <button type="submit" name="logout_mac" value="{$session.CallingStationId}"><i class="fa fa-times"></i></button>
+                        <button class="negative btn btn-danger" type="submit" name="logout_mac" value="{$session.CallingStationId}" onClick="return confirm('{t}Are you sure you want to logout this session?{/t}')"><i class="fa fa-times"></i></button>
                     </form>
                 {/if}
             </td>
@@ -79,7 +79,7 @@
 			<th><!--FramedIPAddress-->{t}IP/MAC Address{/t}</th>
 			<th>{t}Username{/t}</th>
 			<th>{t}Data Usage{/t}</th>
-            <th></th>
+            <th>{t}Logout Session{/t}</th>
 		</tr>	
 		</thead>
 		<tbody>
@@ -100,7 +100,7 @@
 			<td title='{$session.AcctTotalOctets}'>{$session.AcctTotalOctets|bytes}<br/><span class="ui-icon ui-icon-arrowthick-1-s" style="display:inline-block"></span>{$session.AcctInputOctets|bytes} <span class="ui-icon ui-icon-arrowthick-1-n" style="display:inline-block"></span>{$session.AcctOutputOctets|bytes} </td>
             <td>{if ! $session.AcctStopTime}
                     <form method="post">
-                        <button type="submit" name="logout_mac" value="{$session.CallingStationId}"><i class="fa fa-times"></i></button>
+                        <button class="negative btn btn-danger" type="submit" name="logout_mac" value="{$session.CallingStationId}" onClick="return confirm('{t}Are you sure you want to logout this session?{/t}')"><i class="fa fa-times"></i></button>
                     </form>
                 {/if}
             </td>
