@@ -20,14 +20,6 @@
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-class AnonAuth
-{
-    public function getUsername()
-    {
-        return "Anon";
-    }
-}
-
 class AdminLog
 {
     /* This class logs all admin/usermin actions to a database table with timestamp
@@ -98,7 +90,7 @@ class AdminLog
             }
             if($Auth == false)
             {
-                $Auth = new AnonAuth();
+                $Auth = new \Grase\AnonAuth();
             }
             $instance = new AdminLog($db, $Auth);
         }
@@ -237,5 +229,3 @@ class AdminLog
         $this->db->query($this->dbSchemeAdminLog);
     }
 }
-
-?>
