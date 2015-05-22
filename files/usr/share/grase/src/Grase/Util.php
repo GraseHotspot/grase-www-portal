@@ -378,4 +378,19 @@ class Util
         }
         return false;
     }
+
+    public static function logoutChilliSession($mac)
+    {
+        // Logout a specific MAC address
+        $leases = Util::getChilliLeases();
+        foreach ($leases['sessions'] as $session) {
+            if ($session['macAddress'] == $mac && strlen($session['macAddress']) == 17) {
+                exec('sudo /usr/sbin/chilli_query logout '.$session['macAddress'], $output, $return);
+                if ($return === 0) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
