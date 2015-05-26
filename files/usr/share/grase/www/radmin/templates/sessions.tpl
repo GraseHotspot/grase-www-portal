@@ -17,7 +17,8 @@
 	    <col style="width: 2em"/>
 	    <col span="2" style="width: 6em"/>	    	    
 	    <col span="1" style="width: 3em"/>
-	    <col span="3" style="width: 5em"/>		    
+	    <col span="3" style="width: 5em"/>
+        <col span="1" style="width: 3em"/>
 		<thead>
 		<tr id='activesessionsattributesRow' class="sessionheader">
 			<th>#</th>
@@ -67,9 +68,10 @@
 <div id='sessionslist' style='display:block;'>
 	<table border="0" id='sessionslistTable' class="stripeMe">
 	    <col style="width: 2em"/>
-	    <col span="2" style="width: 6em"/>	    	    
+	    <col span="2" style="width: 6em"/>
 	    <col span="1" style="width: 3em"/>
-	    <col span="3" style="width: 5em"/>	
+	    <col span="3" style="width: 5em"/>
+        <col span="1" style="width: 3em"/>
 		<thead>
 		<tr id='sessionsattributesRow' class="sessionheader">
 			<th>#</th>
