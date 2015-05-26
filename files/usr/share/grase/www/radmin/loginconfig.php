@@ -105,6 +105,11 @@ $singleLoginOptions = array(
 
 // Templates    
 $templateOptions = array(
+    'termsandconditions' => array(
+        "label" => T_("Terms and Conditions"),
+        "description" => T_("Terms and Conditions of use (HTML) - Leave empty to not display"),
+        "type" => "html"
+    ),
     'maincss' => array(
         "label" => T_("Main CSS"),
         "description" => T_(
@@ -116,7 +121,7 @@ $templateOptions = array(
     ),
     'helptext' => array(
         "label" => T_("Help and Information Page"),
-        "description" => T_("Help and Information page contents"),
+        "description" => T_("Help and Information page contents, leaving this blank does not remove the link, see above options for removing the link."),
 //        "location" => "div id: tpl_helptext",
         "type" => "html"
     ),
@@ -136,11 +141,7 @@ $templateOptions = array(
         "description" => T_("HTML for successful login when not using javascript"),
         "type" => "html"
     ),
-    'termsandconditions' => array(
-        "label" => T_("Terms and Conditions"),
-        "description" => T_("Terms and Conditions of use (HTML)"),
-        "type" => "html"
-    ),
+
 
 );
 
