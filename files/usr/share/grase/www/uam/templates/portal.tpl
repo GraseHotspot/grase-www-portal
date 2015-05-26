@@ -30,6 +30,8 @@
     </div>
     {/if}
 
+    <!-- Above Login HTML Template -->{$tpl_aboveloginhtml}<!-- End Above Login HTML Template -->
+
     <!-- Voucher Error messages (not found, expired, etc) will be displayed using this variable - do not remove -->
     <div class="error center-block" id="errormessages" style="margin-top: 1em; max-width: 300px; text-align: center;"></div>
 
@@ -67,7 +69,7 @@
         <br/><a class="btn btn-danger" href="http://1.0.0.0" id="logofflink">{t}Logout{/t}</a> {if $activepage != 'mini'}<a href="/grase/uam/mini" class="btn btn-success" target="grase_uam" id='statuslink'>{t}Open Status Window{/t} <i class="fa fa-external-link"></i></a>{/if}
     </div>
 
-    {$tpl_belowloginhtml}
+    <!-- Below Login HTML Template -->{$tpl_belowloginhtml}<!-- End Below Login HTML Template -->
 
     <div style="clear: both">&nbsp;</div>
 

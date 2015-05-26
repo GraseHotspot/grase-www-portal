@@ -136,6 +136,11 @@ $templateOptions = array(
 //        "location" => "div id: tpl_loginhelptext",
         "type" => "html"
     ),
+    'aboveloginhtml' => array(
+        "label" => T_("HTML Above login form"),
+        "description" => T_("HTML to insert above login form (and free login)"),
+        "type" => "html"
+    ),
     'belowloginhtml' => array(
         "label" => T_("HTML Below login form"),
         "description" => T_("HTML to insert below login form"),
