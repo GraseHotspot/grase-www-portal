@@ -69,6 +69,7 @@ if (isset($_GET['username'])) {
     }
 }
 
+$templateEngine->assign('usercomments', DatabaseFunctions::getInstance()->getAllUsersComments());
 $templateEngine->displayPage('sessions.tpl');
 
 // TODO: Data usage over "forever"

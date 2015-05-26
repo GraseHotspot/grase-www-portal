@@ -20,7 +20,7 @@
             <col span="2" style="width: 6em"/>
             <col span="1" style="width: 3em"/>
             <col span="3" style="width: 5em"/>
-            <col span="1" style="width: 3em"/>
+            <col span="1" style="width: 8em"/>
             <thead>
             <tr id='activesessionsattributesRow' class="sessionheader">
                 <th>#</th>
@@ -30,7 +30,7 @@
                 <th><!--FramedIPAddress-->{t}IP/MAC Address{/t}</th>
                 <th>{t}Username{/t}</th>
                 <th>{t}Data Usage{/t}</th>
-                <th>{t}Logout Session{/t}</th>
+                <th>{t}Account Comment{/t}</th>
             </tr>
             </thead>
             <tbody>
@@ -39,6 +39,15 @@
                     class="sessionrow {if $smarty.foreach.sessionsloop.iteration is even}even{else}odd{/if}">
                     <td>
                         <span><a href="logview?acctid={$session.RadAcctId|urlencode}&amp;starttime={$session.AcctStartTime|urlencode}&amp;finishtime={$session.AcctStopTime|urlencode}&amp;ipaddress={$session.FramedIPAddress|urlencode}&amp;username={$session.Username|urlencode}">{$session.RadAcctId}</a></span>
+                        {if ! $session.AcctStopTime && $session.CallingStationId != "00-00-00-00-00-00"}
+                            <form method="post">
+                                <button class="negative btn btn-danger" type="submit" name="logout_mac"
+                                        value="{$session.CallingStationId}" title="{t}Logout this session{/t}"
+                                        onClick="return confirm('{t}Are you sure you want to logout this session?{/t}')">
+                                    <i class="fa fa-times"></i></button>
+                            </form>
+                        {/if}
+
                     </td>
                     <td>{$session.AcctStartTime}</td>
                     <td><a class="helpbutton"
@@ -60,15 +69,7 @@
                                 style="display:inline-block"></span>{$session.AcctInputOctets|bytes} <span
                                 class="ui-icon ui-icon-arrowthick-1-n"
                                 style="display:inline-block"></span>{$session.AcctOutputOctets|bytes} </td>
-                    <td>{if ! $session.AcctStopTime && $session.CallingStationId != "00-00-00-00-00-00"}
-                            <form method="post">
-                                <button class="negative btn btn-danger" type="submit" name="logout_mac"
-                                        value="{$session.CallingStationId}"
-                                        onClick="return confirm('{t}Are you sure you want to logout this session?{/t}')">
-                                    <i class="fa fa-times"></i></button>
-                            </form>
-                        {/if}
-                    </td>
+                    <td>{$usercomments[$session.Username]|truncate:50:"..."}</td>
                 </tr>
             {/foreach}
             </tbody>
@@ -86,7 +87,7 @@
             <col span="2" style="width: 6em"/>
             <col span="1" style="width: 3em"/>
             <col span="3" style="width: 5em"/>
-            <col span="1" style="width: 3em"/>
+            <col span="1" style="width: 8em"/>
             <thead>
             <tr id='sessionsattributesRow' class="sessionheader">
                 <th>#</th>
@@ -96,7 +97,7 @@
                 <th><!--FramedIPAddress-->{t}IP/MAC Address{/t}</th>
                 <th>{t}Username{/t}</th>
                 <th>{t}Data Usage{/t}</th>
-                <th>{t}Logout Session{/t}</th>
+                <th>{t}Account Comment{/t}</th>
             </tr>
             </thead>
             <tbody>
@@ -105,6 +106,14 @@
                     class="sessionrow {if $smarty.foreach.sessionsloop.iteration is even}even{else}odd{/if}">
                     <td>
                         <span><a href="logview?acctid={$session.RadAcctId|urlencode}&amp;starttime={$session.AcctStartTime|urlencode}&amp;finishtime={$session.AcctStopTime|urlencode}&amp;ipaddress={$session.FramedIPAddress|urlencode}&amp;username={$session.Username|urlencode}">{$session.RadAcctId}</a></span>
+                        {if ! $session.AcctStopTime && $session.CallingStationId != "00-00-00-00-00-00"}
+                            <form method="post">
+                                <button class="negative btn btn-danger" type="submit" name="logout_mac"
+                                        value="{$session.CallingStationId}" title="{t}Logout this session{/t}"
+                                        onClick="return confirm('{t}Are you sure you want to logout this session?{/t}')">
+                                    <i class="fa fa-times"></i></button>
+                            </form>
+                        {/if}
                     </td>
                     <td>{$session.AcctStartTime}</td>
                     <td><a class="helpbutton"
@@ -126,16 +135,7 @@
                                 style="display:inline-block"></span>{$session.AcctInputOctets|bytes} <span
                                 class="ui-icon ui-icon-arrowthick-1-n"
                                 style="display:inline-block"></span>{$session.AcctOutputOctets|bytes} </td>
-                    <td>{if ! $session.AcctStopTime && $session.CallingStationId != "00-00-00-00-00-00"}
-                            <form method="post">
-                                <button class="negative btn btn-danger" type="submit" name="logout_mac"
-                                        value="{$session.CallingStationId}"
-                                        onClick="return confirm('{t}Are you sure you want to logout this session?{/t}')">
-                                    <i class="fa fa-times"></i></button>
-                            </form>
-                        {/if}
-                    </td>
-
+                    <td>{$usercomments[$session.Username]|truncate:50:"..."}</td>
                 </tr>
             {/foreach}
             </tbody>
