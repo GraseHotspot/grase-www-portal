@@ -28,4 +28,5 @@ require_once 'includes/misc_functions.inc.php';
 $leases = \Grase\Util::getChilliLeases();
 
 $templateEngine->assign("chilliSessions", $leases['sessions']);
+$templateEngine->assign('usercomments', DatabaseFunctions::getInstance()->getAllUsersComments());
 $templateEngine->displayPage('dhcpleases.tpl');

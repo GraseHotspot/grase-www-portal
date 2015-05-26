@@ -9,6 +9,7 @@
         <th>{t}MAC Address{/t}</th>
         <th>{t}DHCP State{/t}</th>
         <th>{t}UserName{/t}</th>
+        <th>{t}Account Comment{/t}</th>
     </tr>
     </thead>
 {foreach from=$chilliSessions item=session}
@@ -17,6 +18,7 @@
         <td>{$session.macAddress}</td>
         <td>{$session.dhcpState}</td>
         <td>{$session.session.userName}</td>
+        <td>{$usercomments[$session.session.userName]|truncate:50:"..."}</td>
     </tr>
 {/foreach}
 </table>
