@@ -444,8 +444,8 @@ class Radmin
     public function setTemplate($template, $value)
     {
         // if $value == NULL we cause problems (assume user wants empty template
-        if ($value == '') {
-            $value = ' ';
+        if ($value === null) {
+            $value = '';
         }
 
         if (!isset($this->templatemap[$template])) {

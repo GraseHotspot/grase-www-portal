@@ -186,7 +186,7 @@ if (isset($_POST['submit'])) {
         // TODO: check that length isn't longer than maximum database length as it will be truncated
         $postValue = trim($_POST[$templateOption]);
 
-        if ($postValue != $attributes['value']) {
+        if ($postValue !== $attributes['value']) {
             // Update options in database
             $Settings->setTemplate($templateOption, $postValue);
 
