@@ -36,7 +36,10 @@ function validate_form()
     $MaxTime = clean_int($_POST['MaxTime']);
     $Max_Time = clean_int($_POST['Max_Time']);
 
-    $error[] = validate_int($NumberTickets);
+    if (!\Grase\Validate::validateInt($NumberTickets) || $NumberTickets === 0) {
+        $error[] = sprintf(T_("Invalid number of tickets '%s'"), $NumberTickets);
+    }
+
     if (!\Grase\Validate::numericLimit($MaxMb)) {
         $error[] = sprintf(T_("Invalid value '%s' for Data Limit"), $MaxMb);
     }

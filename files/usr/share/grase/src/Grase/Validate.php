@@ -41,6 +41,17 @@ class Validate
         return false;
     }
 
+    public static function validateInt($number, $optional = false)
+    {
+        if ($number && is_numeric($number) && is_int($number) && trim($number) != "") {
+            return true;
+        }
+        if ($optional && is_int($number) && trim($number) == "") {
+            return true;
+        }
+        return false;
+    }
+
 
     //sprintf(T_("Invalid value '%s' for Data Limit"),$limit)
 

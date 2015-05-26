@@ -22,18 +22,6 @@
 
 // Validation functions
 
-function validate_int($number, $option = false) //TODO make this actually validate int?
-{
-    if ($number && is_numeric($number) && trim($number) != "") {
-        return "";
-    }
-    if ($option && trim($number) == "") {
-        return "";
-    }
-    return sprintf(T_("Invalid number '%s' (Must be whole number)"), $number);
-    // TODO: Return what?
-}
-
 function validate_uucptimerange($timeranges)
 {
     // We can have multiple time ranges, so split on comma (and |)

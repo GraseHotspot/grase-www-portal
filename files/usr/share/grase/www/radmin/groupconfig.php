@@ -123,8 +123,11 @@ if (isset($_POST['submit'])) {
         if (!\Grase\Validate::bandwidthOptions($groupBandwidthUpLimit[$key], bandwidth_options())) {
             $error[] = sprintf(T_("Invalid Bandwidth Limit '%s'"), $groupBandwidthUpLimit[$key]);
         }
-        //TODO we don't validate that it's not 0, relying on HTML5 to do that
-        $error[] = @ validate_int($groupSimultaneousUse[$key], true);
+
+        if (!\Grase\Validate::validateInt($groupSimultaneousUse[$key], true) || $groupSimultaneousUse[$key] === 0) {
+            $error[] = sprintf(T_("Invalid number for Simultaneous Use '%s' (Must be whole number)"), $groupSimultaneousUse[$key]);
+        }
+
         // TODO: Validate Login-Time
         $error[] = @ validate_uucptimerange($groupLoginTime[$key]);
         $error = array_filter($error);
