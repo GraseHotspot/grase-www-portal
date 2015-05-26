@@ -19,8 +19,6 @@
     You should have received a copy of the GNU General Public License
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
-require_once('php-gettext/gettext.inc');
-
 require_once __DIR__.'/../../../vendor/autoload.php';
 require_once('includes/accesscheck.inc.php');
 require_once('includes/site_settings.inc.php');
