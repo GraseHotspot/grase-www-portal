@@ -77,8 +77,10 @@ if (isset($_POST['submit'])) {
             $error[] = T_("Vouchers need a price");
 
         } else {
-// Don't want to show both errors
-                $error[] = @ validate_num($voucherprice[$key], T_('Invalid price'));
+            // Don't want to show both errors
+            if(!\Grase\Validate::validateNumber($voucherprice[$key])) {
+                $error[] = T_('Invalid price');
+            }
         }
         
         

@@ -29,6 +29,19 @@ class Validate
         return $limit === null || $limit === false || is_numeric($limit);
     }
 
+    // Validation functions
+    public static function validateNumber($number)
+    {
+        if ($number && is_numeric($number) && trim($number) != "") {
+            return true;
+        }
+        if ($number + 0 === 0) {
+            return true;
+        }
+        return false;
+    }
+
+
     //sprintf(T_("Invalid value '%s' for Data Limit"),$limit)
 
     public static function recurrenceInterval($interval, $recurrenceIntervals)

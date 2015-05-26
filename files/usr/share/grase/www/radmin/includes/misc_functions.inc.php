@@ -21,19 +21,6 @@
 */
 
 // Validation functions
-function validate_num($number, $error = '')
-{
-    if ($number && is_numeric($number) && trim($number) != "") {
-        return "";
-    }
-    if ($number + 0 === 0) {
-        return "";
-    }
-    if ($error != '') {
-        return $error; // Return the error message sent to us if defined
-    }        return sprintf(T_("Invalid number %s"), $number);
-    // TODO: Return what?
-}
 
 function validate_int($number, $option = false) //TODO make this actually validate int?
 {
