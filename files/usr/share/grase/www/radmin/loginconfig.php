@@ -52,6 +52,11 @@ $singleLoginOptions = array(
         "description" => T_("Hide Title (header) from login screen"),
         "type" => "bool"
     ),
+    'hidemenu' => array(
+        "label" => T_("Login Screen Menu"),
+        "description" => T_("Hide Menubar from login screen"),
+        "type" => "bool"
+    ),
     'hidefooter' => array(
         "label" => T_("Login Screen Footer"),
         "description" => T_(

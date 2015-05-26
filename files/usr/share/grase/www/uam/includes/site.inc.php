@@ -40,7 +40,7 @@ $lanIP = $networkoptions['lanipaddress'];
 $smarty->assign("serverip", $lanIP);
 
 
-custom_settings(array('hidefooter', 'hideheader', 'disableallcss', 'hidehelplink', 'hidelogoutbookmark'));
+custom_settings(array('hidefooter', 'hideheader', 'hidemenu', 'disableallcss', 'hidehelplink', 'hidelogoutbookmark'));
 
 $logintitle = $Settings->getSetting('logintitle');
 if ($logintitle == '') {

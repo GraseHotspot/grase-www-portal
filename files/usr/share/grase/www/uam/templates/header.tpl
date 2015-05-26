@@ -85,6 +85,7 @@ body {
 {/if}
 </head>
 <body>
+{if !$hidemenu }
     <nav class="navbar navbar-default navbar-static-top navbar-inverse" role="navigation">
         <div class="container-fluid" style="max-width: 960px">
             <div class="navbar-header">
@@ -111,4 +112,5 @@ body {
 {/if}
         </div>
     </nav>
+{/if}
 <div class="container">
