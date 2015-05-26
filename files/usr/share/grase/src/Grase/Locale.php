@@ -22,9 +22,6 @@
 
 namespace Grase;
 
-// Probably not needed, but just to be sure for now we'll require the gettext.inc
-require_once('php-gettext/gettext.inc');
-
 /* This Locale stuff doesn't need any DB, so we can call it from anywhere and
  * just apply the locale we want without DB calls!
  */

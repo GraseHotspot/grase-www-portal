@@ -32,7 +32,6 @@ require_once 'Auth/Container/MDB2.php';
 
 require_once __DIR__ . '/../../../vendor/autoload.php';
 
-require_once('php-gettext/gettext.inc');
 require_once('accesscheck.inc.php');
 require_once('site_settings.inc.php');
 require_once 'page_functions.inc.php';
