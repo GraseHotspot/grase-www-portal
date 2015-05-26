@@ -22,24 +22,6 @@
 
 // Validation functions
 
-function validate_uucptimerange($timeranges)
-{
-    // We can have multiple time ranges, so split on comma (and |)
-    if (trim($timeranges)) {
-        $timerange = str_replace('|', ',', $timeranges);
-        
-        $timerange = explode(',', $timerange);
-        
-        // For each range, check we start with valid start, followed by range
-        foreach ($timerange as $range) {
-            $result = preg_match('/^(Su|Mo|Tu|We|Th|Fr|Sa|Sun|Mon|Tue|Wed|Thur|Fri|Sat|Wk|Any|Al|Never)(\d{4}-\d{4})?$/', $range);
-            //var_dump(array($range, $result));
-            if ($result == 0) {
-                return T_('Invalid Time Range ' . $timeranges);
-            }
-        }
-    }
-}
 
 function validate_group($group)
 {

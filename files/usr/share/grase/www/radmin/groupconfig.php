@@ -128,8 +128,10 @@ if (isset($_POST['submit'])) {
             $error[] = sprintf(T_("Invalid number for Simultaneous Use '%s' (Must be whole number)"), $groupSimultaneousUse[$key]);
         }
 
-        // TODO: Validate Login-Time
-        $error[] = @ validate_uucptimerange($groupLoginTime[$key]);
+        if(!\Grase\Validate::validateUUCPTimerange($groupLoginTime[$key])) {
+            $error[] = T_('Invalid Time Range: ') . $groupLoginTime[$key];
+        }
+
         $error = array_filter($error);
 
         if (isset($groupRecurTime[$key]) xor isset($groupRecurTimeLimit[$key])) {

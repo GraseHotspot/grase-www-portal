@@ -52,6 +52,25 @@ class Validate
         return false;
     }
 
+    public static function validateUUCPTimerange($timeRanges)
+    {
+        // We can have multiple time ranges, so split on comma (and |)
+        if (trim($timeRanges)) {
+            $timeRange = str_replace('|', ',', $timeRanges);
+
+            $timeRange = explode(',', $timeRange);
+
+            // For each range, check we start with valid start, followed by range
+            foreach ($timeRange as $range) {
+                $result = preg_match('/^(Su|Mo|Tu|We|Th|Fr|Sa|Sun|Mon|Tue|Wed|Thur|Fri|Sat|Wk|Any|Al|Never)(\d{4}-\d{4})?$/', $range);
+                if ($result == 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
 
     //sprintf(T_("Invalid value '%s' for Data Limit"),$limit)
 
