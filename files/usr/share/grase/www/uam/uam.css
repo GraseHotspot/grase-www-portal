@@ -5,6 +5,8 @@
 #return {
     background: url('/grase/images/logo.png') bottom right no-repeat;
     padding-bottom: 150px;
+    font-size: smaller;
+    text-align: center;
 }
 
 body {
