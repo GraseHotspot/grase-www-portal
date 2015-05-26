@@ -224,10 +224,9 @@ class Upgrade
     // < 1.4
     private function defaultTemplates()
     {
-        if ($this->Settings->getTemplate('loginhelptext') === null) {
-            // loginhelptext: displayed above login form in main portal page
+        if ($this->Settings->getTemplate('termsandconditions') === null) {
             $this->Settings->setTemplate(
-                'loginhelptext',
+                'termsandconditions',
                 <<<'EOT'
 <p>By logging in, you are agreeing to the following:</p>
 <ul>

@@ -130,12 +130,6 @@ $templateOptions = array(
 //        "location" => "div id: tpl_helptext",
         "type" => "html"
     ),
-    'loginhelptext' => array(
-        "label" => T_("Login Help HTML"),
-        "description" => T_("Help text (and HTML) displayed on login page above login form"),
-//        "location" => "div id: tpl_loginhelptext",
-        "type" => "html"
-    ),
     'aboveloginhtml' => array(
         "label" => T_("HTML Above login form"),
         "description" => T_("HTML to insert above login form (and free login)"),

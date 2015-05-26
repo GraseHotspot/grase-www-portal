@@ -397,7 +397,7 @@ class Radmin
     // Template map is to make it easier to lookup templates via int not txt
     private $templatemap = array(
         'maincss' => 0,
-        'loginhelptext' => 1,
+        //'loginhelptext' => 1,
         'helptext' => 2,
         'belowloginhtml' => 3,
         'loggedinnojshtml' => 4,
