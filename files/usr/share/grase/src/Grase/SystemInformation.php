@@ -72,7 +72,7 @@ class SystemInformation
     private function discoverLANInterface()
     {
         // Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
-        $details = preg_split("/\s+/", `/sbin/route -n |grep -v 10.64.63|grep tun`);
+        $details = preg_split("/\s+/", `/sbin/route -n |grep -v 10.64.6|grep tun`);
         $this->lan->netmask = $details[2];
         $this->lan->iface = $details[7];
 

@@ -17,7 +17,8 @@
         },
         "files": [
           "src/includes/constants.php",
-          "src/includes/bootstrap.php"
+          "src/includes/bootstrap.php",
+          "src/includes/grase-bootstrap.php"
         ],
         "classmap" : ["www/radmin/classes/"]
     }

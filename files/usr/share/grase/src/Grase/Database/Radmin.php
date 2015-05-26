@@ -394,14 +394,15 @@ class Radmin
     // Template map is to make it easier to lookup templates via int not txt
     private $templatemap = array(
         'maincss' => 0,
-        'loginhelptext' => 1,
+        //'loginhelptext' => 1,
         'helptext' => 2,
         'belowloginhtml' => 3,
         'loggedinnojshtml' => 4,
         'termsandconditions' => 5,
         'ticketPrintCSS' => 6,
         'preTicketHTML' => 7,
-        'postTicketHTML' => 8
+        'postTicketHTML' => 8,
+        'aboveloginhtml' => 9,
     );
 
     public function getTemplate($template)
@@ -441,8 +442,8 @@ class Radmin
     public function setTemplate($template, $value)
     {
         // if $value == NULL we cause problems (assume user wants empty template
-        if ($value == '') {
-            $value = ' ';
+        if ($value === null) {
+            $value = '';
         }
 
         if (!isset($this->templatemap[$template])) {

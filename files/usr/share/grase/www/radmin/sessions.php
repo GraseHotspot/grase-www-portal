@@ -24,6 +24,17 @@ require_once 'includes/pageaccess.inc.php';
 require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
 
+if (isset($_POST['logout_mac'])) {
+    // Logout a specific MAC address
+    if (\Grase\Util::logoutChilliSession($_POST['logout_mac'])) {
+        $templateEngine->successMessage(T_("Logged out: ") . Grase\Clean::text($_POST['logout_mac']));
+    } else {
+        $templateEngine->errorMessage(
+            T_("Unable to find active session for: ") . Grase\Clean::text($_POST['logout_mac'])
+        );
+    }
+}
+
 if (isset($_GET['username'])) {
     $templateEngine->assign(
         "sessions",
@@ -58,6 +69,7 @@ if (isset($_GET['username'])) {
     }
 }
 
+$templateEngine->assign('usercomments', DatabaseFunctions::getInstance()->getAllUsersComments());
 $templateEngine->displayPage('sessions.tpl');
 
 // TODO: Data usage over "forever"

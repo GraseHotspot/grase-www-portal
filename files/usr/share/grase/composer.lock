@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "57ff2d6059e20828b6508983391503b6",
+    "hash": "6a8f1619b6dd9e349ee3c6a7911a0f1f",
     "packages": [
         {
             "name": "smarty-gettext/smarty-gettext",
@@ -57,21 +57,32 @@
         },
         {
             "name": "smarty/smarty",
-            "version": "v3.1.20",
+            "version": "v3.1.23",
             "source": {
-                "type": "svn",
-                "url": "http://smarty-php.googlecode.com/svn",
-                "reference": "/tags/v3.1.20/@4884"
+                "type": "git",
+                "url": "https://github.com/smarty-php/smarty.git",
+                "reference": "04f0090c40b1a0e1fb55dbe0297f08386b36de21"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/smarty-php/smarty/zipball/04f0090c40b1a0e1fb55dbe0297f08386b36de21",
+                "reference": "04f0090c40b1a0e1fb55dbe0297f08386b36de21",
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.2"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1.x-dev"
+                }
+            },
             "autoload": {
                 "classmap": [
                     "libs/Smarty.class.php",
                     "libs/SmartyBC.class.php",
-                    "libs/sysplugins/smarty_security.php"
+                    "libs/sysplugins/"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -97,24 +108,16 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2014-10-09 23:12:20"
+            "time": "2015-05-12 02:08:22"
         }
     ],
-    "packages-dev": [
-
-    ],
-    "aliases": [
-
-    ],
+    "packages-dev": [],
+    "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
         "smarty-gettext/smarty-gettext": 20
     },
     "prefer-stable": false,
-    "platform": [
-
-    ],
-    "platform-dev": [
-
-    ]
+    "platform": [],
+    "platform-dev": []
 }

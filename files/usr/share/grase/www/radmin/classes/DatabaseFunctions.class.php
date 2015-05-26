@@ -856,6 +856,33 @@ class DatabaseFunctions
         ) + $results + 0; // Need to zero it if null
     }
 
+    public function getAllUsersComments()
+    {
+        if ($this->usercacheloaded) {
+            $comments = array();
+            foreach ($this->usercache as $username => $details) {
+                $comments[$username] = $details['Comment'];
+            }
+            return $comments;
+        }
+
+        $sql = "SELECT UserName, Comment FROM radusercomment";
+
+        $results = $this->db->queryAll($sql);
+
+        if (PEAR::isError($results)) {
+            \Grase\ErrorHandling::fatalDatabaseError(
+                T_('Get All Users Comments Query failed: '),
+                $results
+            );
+        }
+
+        foreach ($results as $user) {
+            $comments[$user['UserName']] = $user['Comment'];
+        }
+        return $comments;
+    }
+
     public function getUserComment($username)
     {
         if ($this->usercacheloaded) {

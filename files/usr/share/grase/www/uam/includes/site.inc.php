@@ -40,13 +40,19 @@ $lanIP = $networkoptions['lanipaddress'];
 $smarty->assign("serverip", $lanIP);
 
 
-custom_settings(array('hidefooter', 'hideheader', 'disableallcss', 'hidehelplink', 'hidelogoutbookmark'));
+custom_settings(array('hidefooter', 'hideheader', 'hidemenu', 'disableallcss', 'hidehelplink', 'hidenormallogin'));
 
 $logintitle = $Settings->getSetting('logintitle');
 if ($logintitle == '') {
     $logintitle = $Settings->getSetting('locationName') . " Hotspot";
 }
 $smarty->assign("logintitle", $logintitle);
+
+$freeloginbuttontext = $Settings->getSetting('freeloginbuttontext');
+if ($freeloginbuttontext == '') {
+    $freeloginbuttontext = T_('Free Access');
+}
+$smarty->assign("freeloginbuttontext", $freeloginbuttontext);
 
 // Load templates needed by all pages
 load_templates(array('maincss'));

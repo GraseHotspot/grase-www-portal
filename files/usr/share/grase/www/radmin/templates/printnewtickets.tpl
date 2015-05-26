@@ -65,15 +65,8 @@
     </div>
 
     <div id="generated" class="">
-        {php}
-            global $pagestarttime;
-            $mtime = microtime();
-            $mtime = explode(" ",$mtime);
-            $mtime = $mtime[1] + $mtime[0];
-            $endtime = $mtime;
-            $totaltime = round(($endtime - $pagestarttime), 2);
-            echo "Page generated in ".$totaltime." seconds on ";
-        {/php}{$RealHostname} using
+        {php}global $pagestarttime; $mtime = microtime();  $mtime = explode(" ",$mtime); $mtime = $mtime[1] + $mtime[0]; $endtime = $mtime; $totaltime = round(($endtime - $pagestarttime), 2); echo "Page generated in ".$totaltime." seconds on ";{/php}
+        {$RealHostname} using
         {php}echo \Grase\Util::formatBytes(memory_get_peak_usage(true)) ;{/php} mem
     </div>
 

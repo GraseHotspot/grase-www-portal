@@ -25,17 +25,8 @@ require_once 'includes/pageaccess.inc.php';
 require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
 
-function getChilliLeases()
-{
-    exec('sudo /usr/sbin/chilli_query -json list', $output, $return);
-
-    if ($return === 0) {
-        // Command worked
-        return json_decode($output[0], true);
-    }
-    return false;
-}
-$leases = getChilliLeases();
+$leases = \Grase\Util::getChilliLeases();
 
 $templateEngine->assign("chilliSessions", $leases['sessions']);
+$templateEngine->assign('usercomments', DatabaseFunctions::getInstance()->getAllUsersComments());
 $templateEngine->displayPage('dhcpleases.tpl');

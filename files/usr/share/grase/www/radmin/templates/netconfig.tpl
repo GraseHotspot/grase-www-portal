@@ -22,8 +22,8 @@
     <div>
         <label for='{$option}'>{$attributes.label}</label>
         <select name='{$option}' id='{$option}'>
-        {foreach from=$attributes.options item=option}
-            <option value='{$option}' {if $option == $attributes.value}selected="selected"{/if}>{$option}</option>
+        {foreach from=$attributes.options item=itemoption}
+            <option value='{$itemoption}' {if $itemoption == $attributes.value}selected="selected"{/if}>{$itemoption}</option>
         {/foreach}
         </select>
         <span id="{$option}Info">{$attributes.description}</span>

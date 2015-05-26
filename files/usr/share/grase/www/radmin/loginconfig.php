@@ -52,6 +52,11 @@ $singleLoginOptions = array(
         "description" => T_("Hide Title (header) from login screen"),
         "type" => "bool"
     ),
+    'hidemenu' => array(
+        "label" => T_("Login Screen Menu"),
+        "description" => T_("Hide Menubar from login screen"),
+        "type" => "bool"
+    ),
     'hidefooter' => array(
         "label" => T_("Login Screen Footer"),
         "description" => T_(
@@ -60,15 +65,10 @@ $singleLoginOptions = array(
         ),
         "type" => "bool"
     ),
-    'hidelogoutbookmark' => array(
-        "label" => T_("Logout Bookmark"),
-        "description" => T_("Hide Bookmark logout link"),
-        "type" => "bool"
-    ),
     'hidehelplink' => array(
         "label" => T_("Help Link"),
         "description" => T_(
-            "Hide Help and Information link from login page (still shows in footer if footer is enabled)"
+            "Hide Help link from menu and footer"
         ),
         "type" => "bool"
     ),
@@ -94,12 +94,27 @@ $singleLoginOptions = array(
         "description" => T_("The group to create 'Free Login' users in. Leave blank to disable free logins"),
         "type" => "text"
     ),
+    'freeloginbuttontext' => array(
+        "label" => T_("Free Login Button Text"),
+        "description" => T_("Text to show on the Free Login button if enabled above. Defaults to 'Free Access'"),
+        "type" => "text"
+    ),
+    'hidenormallogin' => array(
+        "label" => T_("Hide Username/Password (Voucher) login form"),
+        "description" => T_("Hides the login form (username/password fields). Useful if you only want a free login button"),
+        "type" => "bool"
+    ),
 
 );
 
 
 // Templates    
 $templateOptions = array(
+    'termsandconditions' => array(
+        "label" => T_("Terms and Conditions"),
+        "description" => T_("Terms and Conditions of use (HTML) - Leave empty to not display"),
+        "type" => "html"
+    ),
     'maincss' => array(
         "label" => T_("Main CSS"),
         "description" => T_(
@@ -111,14 +126,13 @@ $templateOptions = array(
     ),
     'helptext' => array(
         "label" => T_("Help and Information Page"),
-        "description" => T_("Help and Information page contents"),
+        "description" => T_("Help and Information page contents, leaving this blank does not remove the link, see above options for removing the link."),
 //        "location" => "div id: tpl_helptext",
         "type" => "html"
     ),
-    'loginhelptext' => array(
-        "label" => T_("Login Help HTML"),
-        "description" => T_("Help text (and HTML) displayed on login page above login form"),
-//        "location" => "div id: tpl_loginhelptext",
+    'aboveloginhtml' => array(
+        "label" => T_("HTML Above login form"),
+        "description" => T_("HTML to insert above login form (and free login)"),
         "type" => "html"
     ),
     'belowloginhtml' => array(
@@ -131,11 +145,7 @@ $templateOptions = array(
         "description" => T_("HTML for successful login when not using javascript"),
         "type" => "html"
     ),
-    'termsandconditions' => array(
-        "label" => T_("Terms and Conditions"),
-        "description" => T_("Terms and Conditions of use (HTML)"),
-        "type" => "html"
-    ),
+
 
 );
 
@@ -180,7 +190,7 @@ if (isset($_POST['submit'])) {
         // TODO: check that length isn't longer than maximum database length as it will be truncated
         $postValue = trim($_POST[$templateOption]);
 
-        if ($postValue != $attributes['value']) {
+        if ($postValue !== $attributes['value']) {
             // Update options in database
             $Settings->setTemplate($templateOption, $postValue);
 

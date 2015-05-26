@@ -22,8 +22,6 @@ exit(0); // Not ready for production
 
 require_once __DIR__.'/../../vendor/autoload.php';
 
-require_once('php-gettext/gettext.inc');
-
 require_once('includes/site_settings.inc.php');
 require_once 'includes/page_functions.inc.php';
 
