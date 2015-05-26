@@ -404,7 +404,8 @@ class Radmin
         'termsandconditions' => 5,
         'ticketPrintCSS' => 6,
         'preTicketHTML' => 7,
-        'postTicketHTML' => 8
+        'postTicketHTML' => 8,
+        'aboveloginhtml' => 9,
     );
 
     public function getTemplate($template)
