@@ -94,6 +94,16 @@ $singleLoginOptions = array(
         "description" => T_("The group to create 'Free Login' users in. Leave blank to disable free logins"),
         "type" => "text"
     ),
+    'freeloginbuttontext' => array(
+        "label" => T_("Free Login Button Text"),
+        "description" => T_("Text to show on the Free Login button if enabled above. Defaults to 'Free Access'"),
+        "type" => "text"
+    ),
+    'hidenormallogin' => array(
+        "label" => T_("Hide Username/Password (Voucher) login form"),
+        "description" => T_("Hides the login form (username/password fields). Useful if you only want a free login button"),
+        "type" => "bool"
+    ),
 
 );
 

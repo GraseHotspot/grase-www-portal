@@ -8,69 +8,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- CSS Stylesheet -->
 {if !$disableallcss}
-<link rel="stylesheet" href="/grase/vendor/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="/grase/vendor/fontawesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/grase/vendor/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/grase/vendor/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/grase/uam/uam.css">
 {/if}
 <style type="text/css">
 {$tpl_maincss}
-{literal}
-#errormessages:empty
-{
-    display: none;
-}
-#return {
-    background: url('/grase/images/logo.png') bottom right no-repeat;
-    padding-bottom: 150px;
-}
-
-body {
-/*  padding-top: 40px;
-  padding-bottom: 40px;*/
-  background-color: #eee;
-}
-
-.form-signin {
-  max-width: 330px;
-  padding: 15px;
-  padding-top: 0;
-  margin: 0 auto;
-}
-.form-signin .form-signin-heading,
-.form-signin .checkbox {
-  margin-bottom: 10px;
-}
-.form-signin .checkbox {
-  font-weight: normal;
-}
-.form-signin .form-control {
-  position: relative;
-  height: auto;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-  padding: 10px;
-  font-size: 16px;
-}
-.form-signin .form-control:focus {
-  z-index: 2;
-}
-.form-signin input[type="text"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-
-#loginform h2 {
-    margin-top: 0;
-}
-        
-
-{/literal}
 </style>
 <!-- / CSS Stylesheet -->
 <!-- Favicon -->

@@ -32,12 +32,13 @@
     {if $automac}
     <div class="" style="" id="tosaccept">
         <form class="form-signin" method="get" action="//{$smarty.server.HTTP_HOST}{$smarty.server.REQUEST_URI}&automac=1">
-            <h2>{t}Free Access{/t}</h2>
-            <button class="btn btn-success btn-block" type="submit">{t}Free Access{/t}</button>
+            <h2>{$freeloginbuttontext}</h2>
+            <button class="btn btn-success btn-block" type="submit">{$freeloginbuttontext}</button>
         </form>
     </div>{/if}
 
     <div id="loginform">
+        {if !$hidenormallogin}
         <form method="post"  action="nojslogin.php" autocomplete="off" class="form-signin">
             <h2>{t}Voucher Login{/t}</h2>
             <input class="form-control" id="username" name="username" type="text" required autofocus placeholder="{t}Username{/t}"/>
@@ -46,8 +47,9 @@
             <input type="hidden" name="response" value=""/>
             <input type="hidden" name="userurl" value="{$user_url|escape}"/>
             <button class="btn btn-primary btn-block" type="SUBMIT">Login</button>
-            {if $nojs}<p style="font-size: smaller">{t}You have disabled the secure javascript login method.{/t} <a href="?enablejs">{t}Click here to re-enable it{/t}</a></p>{/if}
+
             </form>
+        {/if}
     </div>
 
     <div id="loading" class="well center-block" style="margin-top: 1em; max-width: 300px; display: none; text-align: center">
@@ -68,7 +70,10 @@
     {if $js}
         <script type="text/javascript" src="/grase/uam/js/chilliMD5.js"></script>
         <script type="text/javascript" id='chillijs' src='/grase/uam/js.php?js=jqchilli.js'></script>
-        <p style="font-size: smaller; text-align: center">{t}Trouble logging in?{/t} <a href="?disablejs">{t}Click here to try a less secure login.{/t}</a></p>
+        <p class="javascriptdisabletoggle">{t}Trouble logging in?{/t} <a href="?disablejs">{t}Click here to try a less secure login.{/t}</a></p>
+    {/if}
+    {if $nojs}
+        <p class="javascriptdisabletoggle">{t}You have disabled the secure javascript login method.{/t} <a href="?enablejs">{t}Click here to re-enable it{/t}</a></p>
     {/if}
 
 <!-- close page div? -->
