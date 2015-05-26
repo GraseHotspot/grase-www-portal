@@ -34,7 +34,7 @@
     <div class="error center-block" id="errormessages" style="margin-top: 1em; max-width: 300px; text-align: center;"></div>
 
     {if $automac}
-    <div class="" style="" id="tosaccept">
+    <div id="tosaccept">
         <form class="form-signin" method="get" action="//{$smarty.server.HTTP_HOST}{$smarty.server.REQUEST_URI}&automac=1">
             <h2>{$freeloginbuttontext}</h2>
             <button class="btn btn-success btn-block" type="submit">{$freeloginbuttontext}</button>
