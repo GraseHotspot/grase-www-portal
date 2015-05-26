@@ -1,6 +1,6 @@
 {if !$hide && !$hidefooter}
 <div id="return">
-<a href="/grase/uam/help">Help</a>&nbsp;|&nbsp;
+    {if !$hidehelplink}<a href="/grase/uam/help">Help</a>&nbsp;|&nbsp;{/if}
 <a href="{$website_link}">{$website_name}</a>&nbsp;|&nbsp;
 <a href="/grase/radmin/usermin">My Account</a>&nbsp;|&nbsp;
 <a href="{$Support.link}">{t}Support{/t}: {$Support.name}</a>&nbsp;|&nbsp;

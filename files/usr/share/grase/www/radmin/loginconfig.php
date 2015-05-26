@@ -68,7 +68,7 @@ $singleLoginOptions = array(
     'hidehelplink' => array(
         "label" => T_("Help Link"),
         "description" => T_(
-            "Hide Help and Information link from login page (still shows in footer if footer is enabled)"
+            "Hide Help link from menu and footer"
         ),
         "type" => "bool"
     ),
