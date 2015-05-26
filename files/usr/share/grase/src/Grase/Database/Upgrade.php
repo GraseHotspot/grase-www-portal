@@ -228,7 +228,6 @@ class Upgrade
             $this->Settings->setTemplate(
                 'termsandconditions',
                 <<<'EOT'
-<p>By logging in, you are agreeing to the following:</p>
 <ul>
     <li><strong>All network activity will be monitored, this includes: websites, bandwidth usage, protocols</strong></li>
     <li><strong>You will not access sites containing explicit or inappropriate material</strong></li>
