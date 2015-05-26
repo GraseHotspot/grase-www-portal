@@ -65,11 +65,6 @@ $singleLoginOptions = array(
         ),
         "type" => "bool"
     ),
-    'hidelogoutbookmark' => array(
-        "label" => T_("Logout Bookmark"),
-        "description" => T_("Hide Bookmark logout link"),
-        "type" => "bool"
-    ),
     'hidehelplink' => array(
         "label" => T_("Help Link"),
         "description" => T_(
