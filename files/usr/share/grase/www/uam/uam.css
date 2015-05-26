@@ -57,3 +57,19 @@ body {
     font-size: smaller;
     text-align: center;
 }
+
+.tos_block p {
+    text-align: center;
+}
+
+.tos_toggle {
+    padding: 0 15px; max-width: 330px;
+}
+
+.tos_toggle button {
+    max-width: 300px; margin: 0 auto;
+}
+
+#tos {
+    height:8em;width:100%; max-width: 960px; border:1px solid #ccc;overflow:auto;
+}

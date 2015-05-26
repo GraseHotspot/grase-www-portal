@@ -7,11 +7,15 @@
     {/if}
 
     {if $tpl_termsandconditions}
-    <div >
-        <p style="text-align:center"><strong>{t}By continuing, you agree to the below terms and conditions.{/t}</strong></p>
-        <div style="padding: 0 15px; max-width: 330px;" class="center-block"><button class="showLink visible-xs btn btn-sm btn-block"  style="max-width: 300px; margin: 0 auto; "  onclick="$('#tos').toggleClass('hidden-xs')">{t}Show Terms and Conditions{/t}</button></div>
-        <div id="tos" class="hidden-xs center-block" style="height:8em;width:100%; max-width: 960px; border:1px solid #ccc;overflow:auto;"><!-- Terms and Conditions -->{$tpl_termsandconditions}</div>
-    </div>
+        <div class="tos_block">
+            <p><strong>{t}By continuing, you agree to the below terms and conditions.{/t}</strong></p>
+
+            <div class="center-block tos_toggle">
+                <button class="showLink visible-xs btn btn-sm btn-block"
+                        onclick="$('#tos').toggleClass('hidden-xs')">{t}Show Terms and Conditions{/t}</button>
+            </div>
+            <div id="tos" class="hidden-xs center-block"><!-- Terms and Conditions -->{$tpl_termsandconditions}</div>
+        </div>
     {/if}
 
     {if $user_url}{if $js}<noscript>{/if}<p id="userurlnojs" style="text-align: center;">{t}If you are already logged in, continue to your site{/t} <br/><a href="{$user_url}" style="font-size: smaller">'{$user_url|truncate:60}'</a></p>{if $js}</noscript>{/if}{/if}
