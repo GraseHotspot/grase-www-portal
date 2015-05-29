@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>Server Monitor</h1>
-<p>This page is not actively maintained and is only currently here for historical purposes. It may be useful to get a quick idea of what services are running and which are not running. In the future it will become integrated with the main admin page.</p>
+<p style="color: red">This page is not actively maintained and is only currently here for historical purposes. It may be useful to get a quick idea of what services are running and which are not running. In the future it will become integrated with the main admin page.</p>
 <ul id="statusmon">
 
 <?php
@@ -62,32 +62,21 @@ function proc_running_time($pid)
 		return false;
 		
 }
-$monitored_processes[] = array("label" => "Load", "load" => '');
+
 $monitored_processes[] = array("label" => "Uptime", "uptime" => '');
 $monitored_processes[] = array("label" => "*HotSpot (Captive Portal, CoovaChilli)", "procname" => "chilli", "pid" => "/var/run/chilli.eth1.pid");
 $monitored_processes[] = array("label" => "*Webserver (Apache2)", "procname" => "apache2", "pid" => "/var/run/apache2.pid");
 $monitored_processes[] = array("label" => "*Authentication (FreeRADIUS)", "procname" => "freeradius", "pid" => "/var/run/freeradius/freeradius.pid");
 $monitored_processes[] = array("label" => "*Database (MySQL)", "procname" => "mysqld", "pid_error" => "/var/run/mysqld/mysqld.pid");
 $monitored_processes[] = array("label" => "*Proxy (Squid3)", "procname" => "squid3", "pid" => "/var/run/squid3.pid");
-$monitored_processes[] = array("label" => "Filter (Dansguardian)", "procname" => "dansguardian", "pid" => "/var/run/dansguardian.pid");
-$monitored_processes[] = array("label" => "Ad Filter (Adzapper through Squid)", "procname" => "adzapper");
 $monitored_processes[] = array("label" => "DNS (Dnsmasq)", "procname" => "dnsmasq", "pid" => "/var/run/dnsmasq.pid");
 $monitored_processes[] = array("label" => "*SSH", "procname" => "sshd", "pid" => "/var/run/sshd.pid");
-$monitored_processes[] = array("label" => "*OpenVPN UDP", "procname" => "openvpn", "pid" => "/var/run/openvpn.grase.pid");
-//$monitored_processes[] = array("label" => "OpenVPN TCP", "procname" => "openvpn", "pid" => "/var/run/openvpn.client-tcp.pid");
-$monitored_processes[] = array("label" => "Postfix (Mail)", "procname" => "master");
-#$monitored_processes[] = array("label" => "Email (IMAP/POP3, Dovecot)", "procname" => "dovecot", "pid_error" => "/var/run/dovecot/master.pid");
-//$monitored_processes[] = array("label" => "Ejabberd", "procname" => "dnsmasq", "pid" => "/var/run/dnsmasq.pid");
-#$monitored_processes[] = array("label" => "Monitor Bot", "procname" => "jimbo.py");
-#$monitored_processes[] = array("label" => "Network Workgroup (Winbind)", "procname" => "winbind", "pid" => "/var/run/samba/winbindd.pid");
-#$monitored_processes[] = array("label" => "*Internet (TrueTech)", "ping" => "trueserver");
+$monitored_processes[] = array("label" => "*OpenVPN", "procname" => "openvpn", "pid" => "/var/run/openvpn.grase.pid");
 $gateway_ip=shell_exec('/sbin/route -n |grep -o ^0\.0\.0\.0[[:space:]]*[^[:space:]]*| awk \'{print $2 }\'');
 $monitored_processes[] = array("label" => "*Network (Gateway:$gateway_ip)", "ping" => $gateway_ip);
-#route -n |grep -o ^0\.0\.0\.0[[:space:]]*[^[:space:]]*| awk '{print $2 }'
-#$monitored_processes[] = array("label" => "*Internet (Open DNS)", "ping" => "208.67.220.220");
-$monitored_processes[] = array("label" => "Internet (Google SA)", "ping" => "google.co.za");
+$monitored_processes[] = array("label" => "Internet (Google US)", "ping" => "google.com");
 $monitored_processes[] = array("label" => "Internet (Google AU)", "ping" => "google.com.au");
-$monitored_processes[] = array("label" => "VPN (VPN Endpoint)", "ping" => "10.64.63.1");
+$monitored_processes[] = array("label" => "VPN (VPN Endpoint)", "ping" => "10.64.62.1");
 $monitored_processes[] = array("label" => "Network (VPN Server)", "ping" => "vpn.grasehotspot.net");
 
 
@@ -155,6 +144,7 @@ function output_status($proc, $status, $time, $type='proc')
 	if($status === -1) $status = 'nomon'; //$status = "<img src='images/blue.png'/>No plugin for this monitor";
 //	print "<tr><td>${proc['label']}</td><td>$status</td><td>$ftime</td></tr>\n";
 	print "<li class='$status'> ${proc['label']}<br/><span class='time'>$ftime</span></li>\n";
+    flush();
 }
 
 function format_oldtime($sec)
