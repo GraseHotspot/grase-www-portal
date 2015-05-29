@@ -308,7 +308,7 @@ class CronFunctions extends DatabaseFunctions
                              InputOctets,
                              OutputOctets,
                              NASIPAddress)
-                             SELECT LOWER(UserName) AS UserName
+                             SELECT LOWER(UserName) AS UserName,
                              %s,
                              COUNT(*),
                              SUM(AcctSessionTime),
