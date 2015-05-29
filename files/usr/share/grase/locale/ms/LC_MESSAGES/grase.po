@@ -1,6 +1,6 @@
 # 
 # Translators:
-# vreyz <pangeran_kodoqs@yahoo.com>, 2011, 2012
+# Muhammad Syafiq Mazli <creativeneuron8@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Grase Hotspot\n"
@@ -8,11 +8,11 @@ msgstr ""
 "POT-Creation-Date: 2015-05-29 19:12+1000\n"
 "PO-Revision-Date: 2015-05-29 09:14+0000\n"
 "Last-Translator: Timothy White <tim@purewhite.id.au>\n"
-"Language-Team: Indonesian (http://www.transifex.com/projects/p/grase/language/id/)\n"
+"Language-Team: Malay (http://www.transifex.com/projects/p/grase/language/ms/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: id\n"
+"Language: ms\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 1.6.10\n"
 "X-Poedit-Basepath: .\n"
@@ -23,7 +23,7 @@ msgstr ""
 #: ../../../www/radmin/templates/smarty.c:1
 #: ../../../www/radmin/includes/page_functions.inc.php:79
 msgid "Portal Customisation"
-msgstr "Kostumisasi Portal"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:2
 #: ../../../www/radmin/templates/smarty.c:4
@@ -35,7 +35,7 @@ msgstr "Kostumisasi Portal"
 #: ../../../www/radmin/templates/smarty.c:281
 #: ../../../www/radmin/templates/smarty.c:352
 msgid "Save Settings"
-msgstr "Simpan Pengaturan"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:3
 #: ../../../www/radmin/templates/smarty.c:176
@@ -64,19 +64,19 @@ msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:10
 msgid "User Management Interface"
-msgstr "Pengaturan user"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:11
 msgid "Device Information"
-msgstr "Informasi Server"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:12
 msgid "Model Name"
-msgstr "Nama Model"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:13
 msgid "Host Name"
-msgstr "Nama Host"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:14
 msgid "HTTP Server"
@@ -84,66 +84,66 @@ msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:15
 msgid "System Up-Time"
-msgstr "Lama sistem menyala"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:16
 msgid "Current Server Time"
-msgstr "Waktu Server Saat ini"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:17
 msgid "Hardware Version"
-msgstr "Versi hardware"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:18
 msgid "Software Version"
-msgstr "Versi Perangkat Lunak"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:19
 msgid "Home URL"
-msgstr "Alamat Halaman Awal"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:20
 msgid "LAN"
-msgstr "LAN"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:21
 #: ../../../www/radmin/templates/smarty.c:26
 #: ../../../www/radmin/templates/smarty.c:203
 msgid "IP Address"
-msgstr "Alamat IP"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:22
 #: ../../../www/radmin/templates/smarty.c:27
 msgid "Subnet Mask"
-msgstr "Subnet Mask"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:23
 #: ../../../www/radmin/templates/smarty.c:31
 #: ../../../www/radmin/templates/smarty.c:70
 #: ../../../www/radmin/templates/smarty.c:204
 msgid "MAC Address"
-msgstr "Alamat MAC"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:24
 #: ../../../www/radmin/templates/smarty.c:32
 msgid "Network Interface"
-msgstr "Kartu Jaringan"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:25
 msgid "WAN"
-msgstr "WAN"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:28
 msgid "Gateway"
-msgstr "Gateway"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:29
 msgid "DNS 1"
-msgstr "DNS 1"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:30
 msgid "DNS 2"
-msgstr "DNS 2"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:33
 msgid "Access Denied"
@@ -159,13 +159,13 @@ msgstr ""
 #: ../../../www/radmin/templates/smarty.c:43
 #: ../../../www/radmin/includes/page_functions.inc.php:89
 msgid "Admin Users"
-msgstr "Admin User"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:36
 #: ../../../www/radmin/templates/smarty.c:41
 #: ../../../www/radmin/templates/smarty.c:42
 msgid "Change Password"
-msgstr "Ubah Password"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:37
 #: ../../../www/radmin/templates/smarty.c:44
@@ -181,19 +181,19 @@ msgstr "Ubah Password"
 #: ../../../www/radmin/templates/smarty.c:334
 #: ../../../www/uam/templates/smarty.c:9 ../../../www/radmin/export.php:89
 msgid "Username"
-msgstr "Username"
+msgstr "Nama Pengguna"
 
 #: ../../../www/radmin/templates/smarty.c:38
 msgid "Old Password"
-msgstr "Password Lama"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:39
 msgid "New Password"
-msgstr "Password Baru"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:40
 msgid "Confirm New Password"
-msgstr "Konfirmasi Password Baru"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:45
 msgid "User Group"
@@ -203,12 +203,12 @@ msgstr ""
 #: ../../../www/radmin/templates/smarty.c:130
 #: ../../../www/radmin/templates/smarty.c:132
 msgid "Delete User"
-msgstr "Hapus user"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:47
 #: ../../../www/radmin/templates/smarty.c:65
 msgid "Deleting or modifying the support user will prevent remote assistance."
-msgstr "Menghapus atau memodifikasi user support akan mencegah bantuan secara remote."
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:48
 #: ../../../www/radmin/templates/smarty.c:50
@@ -225,12 +225,12 @@ msgstr ""
 #: ../../../www/radmin/templates/smarty.c:51
 #: ../../../www/radmin/templates/smarty.c:69
 msgid "Cannot delete current user"
-msgstr "Tidak dapat menghapus user ini"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:52
 #: ../../../www/radmin/templates/smarty.c:63
 msgid "Create new Admin User"
-msgstr "Buat User Admin baru"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:54
 #: ../../../www/radmin/templates/smarty.c:74
@@ -240,7 +240,7 @@ msgstr "Buat User Admin baru"
 #: ../../../www/radmin/templates/smarty.c:336
 #: ../../../www/uam/templates/smarty.c:10 ../../../www/radmin/export.php:90
 msgid "Password"
-msgstr "Sandi/Password"
+msgstr "Kata Laluan"
 
 #: ../../../www/radmin/templates/smarty.c:55
 msgid "Admin User Access Level"
@@ -273,45 +273,45 @@ msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:64
 msgid "Delete Admin User"
-msgstr "Hapus User Admin "
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:71
 msgid ""
 "The MAC address is the network hardware address of the computer. It needs to"
 " be of the format XX-XX-XX-XX-XX-XX where XX is a hex number, typed in all "
 "capitals"
-msgstr "Alamat MAC adalah alamat perangkat keras jaringan komputer. Formatnya adalah XX-XX-XX-XX-XX-XX di mana XX adalah nomor hex, diketik huruf kapital semua"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:73
 msgid "Choose a username"
-msgstr "Pilih username"
+msgstr "Pilih satu nama pengguna"
 
 #: ../../../www/radmin/templates/smarty.c:75
 msgid "Choose a secure password for the user"
-msgstr "Pilih sebuah password yang aman bagi user"
+msgstr "Pilih kata laluan yang selamat untuk pengguna"
 
 #: ../../../www/radmin/templates/smarty.c:76
 #: ../../../www/radmin/templates/smarty.c:183
 #: ../../../www/radmin/templates/smarty.c:213
 msgid "Group"
-msgstr "Group "
+msgstr "Kumpulan"
 
 #: ../../../www/radmin/templates/smarty.c:77
 #: ../../../www/radmin/templates/smarty.c:106
 msgid "Choose the users group (Expiry is based on the user group)"
-msgstr "Pilih group user (kadaluarsa didasarkan pada group user)"
+msgstr "Pilih kumpulan pengguna (Tamat tempoh bergantung pada ahli pengguna)"
 
 #: ../../../www/radmin/templates/smarty.c:78
 #: ../../../www/radmin/templates/smarty.c:111
 #: ../../../www/radmin/templates/smarty.c:224
 #: ../../../www/radmin/templates/smarty.c:357
 msgid "Comment"
-msgstr "Komentar"
+msgstr "Komen"
 
 #: ../../../www/radmin/templates/smarty.c:79
 #: ../../../www/radmin/templates/smarty.c:112
 msgid "A comment about the user"
-msgstr "Komentar tentang user"
+msgstr "Satu komen mengenai pengguna"
 
 #: ../../../www/radmin/templates/smarty.c:80
 #: ../../../www/radmin/templates/smarty.c:115
@@ -319,7 +319,7 @@ msgstr "Komentar tentang user"
 msgid ""
 "When ether limit is reached, the user will be cut off. (i.e. after 1hour "
 "even if they still have data left)"
-msgstr "Bila batas penggunaan tercapai, user akan dikeluarkan dari jaringan. (contoh:setelah 1 jam bahkan jika mereka masih memiliki data yang tersisa)"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:81
 #: ../../../www/radmin/templates/smarty.c:116
@@ -327,51 +327,51 @@ msgstr "Bila batas penggunaan tercapai, user akan dikeluarkan dari jaringan. (co
 msgid ""
 "A limit of 0 does not mean unlimited, it will immediately lock the user out."
 " To have an unlimited user, the user must be created without any limits."
-msgstr "Batas \"0\" bukan berarti tak terbatas, sistem akan segera mengeluarkan user dari jaringan. Untuk membuat user yang tak terbatas, user harus diciptakan tanpa batasan."
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:82
 #: ../../../www/radmin/templates/smarty.c:361
 msgid ""
 "If a limit is not set here, but is defined for the group, then the group "
 "limit will apply"
-msgstr "Jika batas tidak diatur di sini, tapi didefinisikan di batasan group, maka batasan yang digunakan adalah batasan yang ada pada group."
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:83
 #: ../../../www/radmin/templates/smarty.c:117
 msgid "Data Limit (MiB)"
-msgstr "Batasan Data (MiB)"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:84
 #: ../../../www/radmin/templates/smarty.c:88
 msgid "OR"
-msgstr "ATAU"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:85
 #: ../../../www/radmin/templates/smarty.c:118
 msgid "Type your own Mb Limit"
-msgstr "Tulis aturan batasan sendiri dalam Mb"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:86
 msgid "Choose a Data Limit OR Type your own value"
-msgstr "Pilih batasan data ATAU Ketik nilai batasan sendiri"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:87
 #: ../../../www/radmin/templates/smarty.c:122
 msgid "Time Limit (Minutes)"
-msgstr "Batasan Waktu (Menit)"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:89
 #: ../../../www/radmin/templates/smarty.c:123
 msgid "Type your own Time Limit"
-msgstr "Tulis batasan waktu yang lain"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:90
 msgid "Choose a Time Limit OR Type your own value"
-msgstr "Pilih Batasan Waktu ATAU Ketik nilai batasan sendiri"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:91
 msgid "Group Properties"
-msgstr "Grup Properti"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:92
 #: ../../../www/radmin/templates/smarty.c:163
@@ -380,7 +380,7 @@ msgstr "Grup Properti"
 #: ../../../www/radmin/templates/smarty.c:239
 #: ../../../www/radmin/templates/smarty.c:257
 msgid "Name"
-msgstr "Nama"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:93
 #: ../../../www/radmin/templates/smarty.c:201
@@ -388,7 +388,7 @@ msgstr "Nama"
 #: ../../../www/radmin/templates/smarty.c:259
 #: ../../../www/radmin/export.php:91
 msgid "Expiry"
-msgstr "Kadaluarsa"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:94
 #: ../../../www/radmin/templates/smarty.c:261
@@ -397,11 +397,11 @@ msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:95
 msgid "Max Data (Mb)"
-msgstr "Max data (Mb)"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:96
 msgid "Max Time (mins)"
-msgstr "Max Waktu (menit)"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:97
 msgid "Recurring data limit"
@@ -413,35 +413,35 @@ msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:99
 msgid "BW Limit Down"
-msgstr "Bandwidth Limit Down"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:100
 msgid "BW Limit Up"
-msgstr "Bandwidth Limit Up"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:101
 msgid "Edit Computer Account"
-msgstr "Edit Rekening Komputer"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:102
 msgid "Edit User"
-msgstr "Ubah user"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:105
 msgid "Choose a secure password for the user. Leave blank to not change"
-msgstr "Pilih sebuah kata password yang aman bagi user. Biarkan kosong untuk tidak mengubah"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:107
 msgid "This user account never expires"
-msgstr "Akun ini tidak mempunyai masa kadaluarsa"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:108
 msgid "This user account has expired"
-msgstr "Akun ini telah kedaluwarsa"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:109
 msgid "Reset expiry"
-msgstr "Reset kadaluwarsa"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:110
 msgid "No Expire After Set"
@@ -459,47 +459,47 @@ msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:119
 msgid "Change the Data Limit"
-msgstr "Mengubah batasan data"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:120
 msgid "Add Data to Limit (MiB)"
-msgstr "Tambahan batasan untuk limit data (MiB)"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:121
 msgid "Add to the Data Limit (Will ignore changes made above)"
-msgstr "Tambahan batasan untuk limit data (Akan mengabaikan perubahan yang dibuat di atas)"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:124
 msgid "Change the Time Limit"
-msgstr "Mengubah Batas Waktu"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:125
 msgid "Add Time to Limit (Minutes)"
-msgstr "Tambahan batasan untuk limit waktu (Menit)"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:126
 msgid "Add to the Time Limit (Will ignore changes made above)"
-msgstr "Tambahan batasan untuk limit waktu (akan mengabaikan perubahan yang dibuat di atas)"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:127
 #: ../../../www/radmin/templates/smarty.c:128
 msgid "Update User Details"
-msgstr "Perubahan detail user"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:129
 msgid "Delete Computer Account"
-msgstr "Hapus Akun Komputer"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:131
 msgid ""
 "User accounts are automatically deleted 2 months after expiry. Only accounts"
 " with zero usage should be manually deleted to prevent errors in the reports"
 " or statistics."
-msgstr "Akun user secara otomatis dihapus 2 bulan setelah kadaluwarsa. Khusus akun dengan penggunaan nol harus dihapus secara manual untuk mencegah kesalahan dalam laporan atau statistik."
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:133
 msgid "Are you sure you want to delete this user?"
-msgstr "Apakah Anda yakin ingin menghapus userini?"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:134
 msgid "Delete User %1"
@@ -507,38 +507,38 @@ msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:135
 msgid "Site Settings"
-msgstr "Situs Pengaturan"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:136
 msgid "Location Name"
-msgstr "Lokasi"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:137
 msgid "Enter a name that identifies this Hotspot Location"
-msgstr "Masukkan nama yang mengidentifikasi Lokasi Hotspot ini"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:138
 msgid "Support Contact Name"
-msgstr "Nama Teknisi"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:139
 msgid "Enter the name of the Support Contact"
-msgstr "Masukkan nama Teknisi"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:140
 msgid "Support Link"
-msgstr "Link Dukungan"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:141
 msgid ""
 "This is the link for the support contact. http:// or mailto: are allowed. If"
 " using http:// ensure this is accessabile for users who aren't logged into "
 "the hotspot"
-msgstr "Ini adalah link untuk kontak dukungan. http:// atau silahkan email ke: . Jika menggunakan http:// pastikan link ini dapat diaksess untuk user yang tidak login ke hotspot"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:142
 msgid "Locale"
-msgstr "Lokasi"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:143
 msgid "Available languages:"
@@ -546,7 +546,7 @@ msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:144
 msgid "Select the appropriate Locale for your location"
-msgstr "Pilih tempat yang sesuai dengan lokasi Anda"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:145
 msgid ""
@@ -555,13 +555,13 @@ msgid ""
 "Australia.<br/><strong>en_ZA</strong> has the language set to English, and "
 "the location to South Africa, while <strong>af_ZA</strong> has the language "
 "set to Afrikaans and the location to South Africa."
-msgstr "Lokasi memiliki 2 bagian, yaitu bahasa dan lokasi. <br/> <strong>en_AU</strong> misalnya memiliki set Bahasa ke Bahasa Inggris, dan lokasi ke Australia. <br/> <strong>en_ZA</strong> memiliki set Bahasa Inggris, dan lokasi ke Afrika Selatan, sementara <strong>af_ZA</strong> memiliki set bahasa ke Afrikaans dan lokasi ke Afrika Selatan."
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:146
 msgid ""
 "The locale defines the number formats, currency and language. If the "
 "language selected is not available, it will fallback to English."
-msgstr "Lokasi mendefinisikan format nomor, mata uang dan bahasa. Jika bahasa yang dipilih tidak tersedia, maka akan kembali ke Inggris."
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:147
 msgid ""
@@ -602,19 +602,19 @@ msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:155
 msgid "Website Name"
-msgstr "Nama Website"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:156
 msgid "Label for Website Footer link"
-msgstr "Label untuk Link Website yang ada di Footer"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:157
 msgid "Website Link"
-msgstr "Link Website"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:158
 msgid "Link for Website Footer Link"
-msgstr "Link untuk Link Website yang ada di Footer"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:160
 msgid "Advanced Settings"
@@ -664,7 +664,7 @@ msgstr ""
 #: ../../../www/radmin/templates/smarty.c:332
 #: ../../../www/radmin/templates/smarty.c:337
 msgid "Login"
-msgstr "Login"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:174
 msgid "Ticket Printing Settings"
@@ -700,13 +700,13 @@ msgstr ""
 #: ../../../www/radmin/templates/smarty.c:208
 #: ../../../www/radmin/templates/smarty.c:214
 msgid "Data Limit"
-msgstr "Limit Data"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:185
 #: ../../../www/radmin/templates/smarty.c:209
 #: ../../../www/uam/templates/smarty.c:35
 msgid "Time Limit"
-msgstr "Limit Waktu"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:186
 msgid "Initial Voucher"
@@ -724,17 +724,17 @@ msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:194
 msgid "Help Page"
-msgstr "Halaman Bantuan"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:195
 #: ../../../www/radmin/includes/usermin_page_functions.inc.php:37
 #: ../../../www/radmin/includes/usermin_page_functions.inc.php:39
 msgid "My Account"
-msgstr "Akun Saya"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:196
 msgid "Admin"
-msgstr "Admin"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:197
 msgid "Wireless Network"
@@ -774,19 +774,19 @@ msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:215
 msgid "Total Data usage for the current month"
-msgstr "Jumlah penggunaan data untuk bulan ini"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:216
 msgid "Data Usage (M)"
-msgstr "Penggunaan Data  (M)"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:217
 msgid "Total Data usage, from previous months, excluding current month"
-msgstr "Jumlah penggunaan data, dari bulan sebelumnya, termasuk bulan berjalan"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:218
 msgid "Data Usage (T)"
-msgstr "Penggunaan Data  (T)"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:219
 msgid "Time Remaining"
@@ -798,19 +798,19 @@ msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:221
 msgid "Account Expiry"
-msgstr "Akun kadaluarsa"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:222
 msgid "Last Logoff timestamp from current month only"
-msgstr "waktu logoff terakhir dari bulan ini saja."
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:223
 msgid "Last Logoff"
-msgstr "Terakhir Logoff"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:225
 msgid "Password Hidden"
-msgstr "Password Tersembunyi"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:226
 msgid "(Account Locked)"
@@ -818,7 +818,7 @@ msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:227
 msgid "Group Config"
-msgstr "Pengaturan group"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:228
 msgid ""
@@ -830,13 +830,13 @@ msgstr ""
 msgid ""
 "For example, \"+1 month\" will set an expiry for 1 month from when the "
 "account is created. \"+2 weeks\", \"+3 days\" etc."
-msgstr "Misalnya, \"+1 month\" akan menetapkan kadaluwarsa selama 1 bulan dari saat account dibuat. \"+2 weeks\", \"+3 days\" dll"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:230
 msgid ""
 "Expiry is calculated to the second, so if you want it to a date for example,"
 " try \"+1 week midnight\"."
-msgstr "Kadaluwarsa dihitung untuk kedua, jadi jika Anda ingin tanngal tertentu misalnya, cobalah \"+1 week midnight\"."
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:231
 msgid ""
@@ -859,7 +859,7 @@ msgstr ""
 msgid ""
 "Deleting a group won't delete it's users. Next time the user is edited it's "
 "group will become the default group unless a new group is selected."
-msgstr "Menghapus grup tidak akan menghapus user itu. Ketika user diedit group yang lama akan menjadi grup default kecuali grup baru dipilih."
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:234
 msgid ""
@@ -893,7 +893,7 @@ msgstr ""
 #: ../../../www/radmin/templates/smarty.c:238
 #: ../../../www/radmin/includes/page_functions.inc.php:81
 msgid "Groups"
-msgstr "Group"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:242
 #: ../../../www/radmin/templates/smarty.c:260
@@ -917,39 +917,39 @@ msgstr ""
 #: ../../../www/radmin/templates/smarty.c:246
 #: ../../../www/radmin/templates/smarty.c:264
 msgid "Default Data Limit (MiB)"
-msgstr "Batas data standar (MiB)"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:247
 #: ../../../www/radmin/templates/smarty.c:265
 msgid "Default Time Limit (Minutes)"
-msgstr "Standar Batas Waktu (Menit)"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:248
 #: ../../../www/radmin/templates/smarty.c:266
 msgid "Recurring Data Limit (MiB)"
-msgstr "Batasan data yang berulang (MiB)"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:249
 #: ../../../www/radmin/templates/smarty.c:251
 #: ../../../www/radmin/templates/smarty.c:267
 #: ../../../www/radmin/templates/smarty.c:269
 msgid "per"
-msgstr "per"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:250
 #: ../../../www/radmin/templates/smarty.c:268
 msgid "Recurring Time Limit (Minutes)"
-msgstr "Batasan waktu yang berulang (Menit)"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:252
 #: ../../../www/radmin/templates/smarty.c:270
 msgid "Bandwidth Limit Down"
-msgstr "Batasan Bandwidth Download"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:253
 #: ../../../www/radmin/templates/smarty.c:271
 msgid "Bandwidth Limit Up"
-msgstr "Batasan Bandwidth Upload"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:254
 #: ../../../www/radmin/templates/smarty.c:272
@@ -967,12 +967,12 @@ msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:256
 msgid "Delete Group"
-msgstr "Hapus group "
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:275
 #: ../../../www/radmin/includes/page_functions.inc.php:78
 msgid "Coova Chilli Settings"
-msgstr "Pengaturan Coova Chilli "
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:276
 msgid ""
@@ -984,7 +984,7 @@ msgstr ""
 msgid ""
 "If you change the MAC Auth Password, no computer accounts will be able to "
 "login until Coova Chilli reloads it's config, or is manually restarted."
-msgstr "Jika Anda mengubah Password untuk autentifikasi MAC, semua account komputer tidak akan dapat login sampai Coova Chilli mereload konfigurasinya, atau secara manual direstart."
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:278
 msgid "Chilli Config last updated %1"
@@ -999,7 +999,7 @@ msgstr ""
 msgid ""
 "For each of the following items, if you need multiple values you can submit "
 "the form and it will append a blank input below the last valid value"
-msgstr "Untuk masing-masing item berikut, jika Anda membutuhkan beberapa nilai Anda dapat mengirimkan formulir dan akan menambahkan input kosong di bawah nilai terakhir yang valid"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:282
 msgid "Session logs for %1 on %2"
@@ -1007,7 +1007,7 @@ msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:283
 msgid "Computers hardware (MAC) address is"
-msgstr "Komputer hardware (MAC) adalah"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:284
 msgid "Between %1 and %2"
@@ -1015,41 +1015,41 @@ msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:285
 msgid "Total HTTP (WWW) Traffic Size:"
-msgstr "Jumlah HTTP (WWW) Ukuran trafik data:"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:286
 msgid "Domain"
-msgstr "Domain"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:287
 msgid "Count"
-msgstr "Menghitung"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:288
 #: ../../../www/radmin/templates/smarty.c:294
 msgid "Size"
-msgstr "Ukuran"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:289
 #: ../../../www/radmin/templates/smarty.c:328
 msgid "Timestamp"
-msgstr "Timestamp"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:290
 msgid "Address"
-msgstr "Alamat"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:291
 msgid "Host"
-msgstr "Host"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:292
 msgid "Cached"
-msgstr "Cached"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:293
 msgid "Request Type"
-msgstr "Jenis Permintaan"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:295
 msgid "Sessions for %1"
@@ -1081,17 +1081,17 @@ msgstr ""
 #: ../../../www/radmin/templates/smarty.c:316
 #: ../../../www/uam/templates/smarty.c:31
 msgid "Start Time"
-msgstr "Waktu Mulai "
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:304
 #: ../../../www/radmin/templates/smarty.c:317
 msgid "Stop Time"
-msgstr "Waktu Berhenti"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:305
 #: ../../../www/radmin/templates/smarty.c:318
 msgid "Time"
-msgstr "Waktu"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:306
 #: ../../../www/radmin/templates/smarty.c:319
@@ -1101,7 +1101,7 @@ msgstr ""
 #: ../../../www/radmin/templates/smarty.c:308
 #: ../../../www/radmin/templates/smarty.c:321
 msgid "Data Usage"
-msgstr "Penggunaan data"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:310
 #: ../../../www/radmin/templates/smarty.c:323
@@ -1116,12 +1116,12 @@ msgstr ""
 #: ../../../www/radmin/templates/smarty.c:312
 #: ../../../www/radmin/templates/smarty.c:325
 msgid "Reason: "
-msgstr "Alasan:"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:313
 #: ../../../www/radmin/templates/smarty.c:326
 msgid "Captive Portal Config Login"
-msgstr "Portal Captive Config Login"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:314
 msgid "All Sessions"
@@ -1134,24 +1134,24 @@ msgstr ""
 #: ../../../www/radmin/templates/smarty.c:327
 #: ../../../www/radmin/includes/page_functions.inc.php:91
 msgid "Admin Log"
-msgstr "Admin Log"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:330
 msgid "IP"
-msgstr "IP"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:331
 msgid "Action"
-msgstr "Aksi"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:333
 msgid ""
 "Login is required to access the Administration section of this website."
-msgstr "Login diperlukan untuk mengakses bagian Administrasi dari website ini."
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:335
 msgid "Username for Admin interface (Different to internet access username)"
-msgstr "Nama user untuk antarmuka Admin (Berbeda dengan nama user akses internet)"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:338
 msgid "Please select your voucher type"
@@ -1164,22 +1164,22 @@ msgstr ""
 #: ../../../www/radmin/templates/smarty.c:341
 #: ../../../www/radmin/templates/smarty.c:345
 msgid "Upload Logo"
-msgstr "Upload Logo"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:342
 msgid "Logo Image"
-msgstr "Logo Gambar"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:343
 msgid "Select new logo file."
-msgstr "Pilih file logo baru."
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:344
 msgid ""
 "Logo file needs to be in png format, and relatively small (remember, every "
 "page has the logo). 10 Kilobytes maximum. It's physical size shouldn't be "
 "bigger than about 220px in both directions."
-msgstr "File logo harus dalam format png, dan relatif kecil (ingat setiap halaman memiliki logo). Maksimum 10 Kilobyte. Ini ukuran fisik tidak harus lebih besar dari sekitar 220px di kedua arah."
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:346
 msgid ""
@@ -1187,12 +1187,12 @@ msgid ""
 "upload the file to /var/www/ or /usr/share/grase/www/images/ and use the "
 "custom CSS to override this logo. The logo is defined in the #page container"
 " as the background."
-msgstr "Untuk logo yg lebih kompleks, (jenis file yang berbeda, ukuran, penempatan}, secara manual meng-upload file ke / var / www / atau / usr / share / grase / www / gambar / dan menggunakan CSS kustom untuk menimpa logo ini. Logo ini didefinisikan dalam wadah # halaman sebagai latar belakang."
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:347
 #: ../../../www/radmin/includes/page_functions.inc.php:77
 msgid "Network Settings"
-msgstr "Pengaturan Jaringan"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:348
 msgid ""
@@ -1200,7 +1200,7 @@ msgid ""
 "Dnsmasq will need to be reloaded when these settings change. A cron job will"
 " automatically check for changes every 5 minutes and reload these daemons if"
 " needed."
-msgstr "Pengaturan ini digunakan oleh Coova Chilli dan dnsmasq. Kedua Coova Chilli dan dnsmasq akan perlu direload ketika mengubah pengaturan. Cron secara otomatis akan memeriksa perubahan setiap 5 menit dan mereload daemon jika diperlukan."
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:349
 msgid "Network Config last reloaded %1"
@@ -1238,34 +1238,34 @@ msgstr ""
 #: ../../../www/radmin/templates/smarty.c:363
 #: ../../../www/uam/templates/smarty.c:40
 msgid "Error"
-msgstr "Error"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:364
 #: ../../../www/uam/templates/smarty.c:41
 msgid "An Error has occured. Please report the error to the administrator"
-msgstr "Kesalahan telah terjadi. Silakan laporkan kesalahan ke administrator"
+msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:365
 msgid ""
 "There may be more information available to the administrator in the logs"
-msgstr "Mungkin ada informasi lebih lanjut tersedia untuk administrator dalam log"
+msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:1
 #: ../../../www/uam/templates/smarty.c:21
 msgid "Help"
-msgstr "Bantuan"
+msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:2
 msgid "Successful Login"
-msgstr "Sukses Masuk"
+msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:3
 msgid "Continue to your site"
-msgstr "Lanjutkan ke situs Anda"
+msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:4
 msgid "Support"
-msgstr "Dukungan"
+msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:5
 msgid "By continuing, you agree to the below terms and conditions."
@@ -1277,7 +1277,7 @@ msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:7
 msgid "If you are already logged in, continue to your site"
-msgstr "Jika Anda sudah log in, lanjutkan ke situs Anda"
+msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:8
 msgid "Voucher Login"
@@ -1309,7 +1309,7 @@ msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:17
 msgid "Trouble logging in?"
-msgstr "Masalah saat log in?"
+msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:18
 msgid "Click here to try a less secure login."
@@ -1317,59 +1317,59 @@ msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:19
 msgid "You have disabled the secure javascript login method."
-msgstr "Anda telah menonaktifkan metode login yang menggunakan javascript."
+msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:20
 msgid "Click here to re-enable it"
-msgstr "Klik di sini untuk mengaktifkannya kembali"
+msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:22
 msgid "You are logged in as:"
-msgstr "Anda login sebagai:"
+msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:23
 msgid "User"
-msgstr "User"
+msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:24
 msgid "Usage this session"
-msgstr "Penggunaan sesi ini"
+msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:25
 msgid "Remaining Quota"
-msgstr "Sisa Kuota"
+msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:27
 msgid "Quota allocation"
-msgstr "Alokasi Kuota "
+msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:29
 msgid "Max Session Time"
-msgstr "Sesi Waktu Max "
+msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:30
 msgid "Max Idle Time"
-msgstr "Max Waktu Idle"
+msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:32
 msgid "Session Time"
-msgstr "Waktu"
+msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:33
 msgid "Remaining Time"
-msgstr "Sisa Waktu"
+msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:37
 msgid "Idle Time"
-msgstr "Waktu Idle"
+msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:38
 msgid "Downloaded"
-msgstr "Download"
+msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:39
 msgid "Uploaded"
-msgstr "Upload"
+msgstr ""
 
 #: ../../../www/radmin/advancedsettings.php:34
 #, php-format
@@ -1378,7 +1378,7 @@ msgstr ""
 
 #: ../../../www/radmin/chilliconfig.php:35
 msgid "Walled Garden allowed hosts"
-msgstr "Host yang diperbolehkan diakses tanpa harus login"
+msgstr ""
 
 #: ../../../www/radmin/chilliconfig.php:37
 msgid ""
@@ -1388,7 +1388,7 @@ msgstr ""
 
 #: ../../../www/radmin/chilliconfig.php:43
 msgid "Walled Garden allowed domains"
-msgstr "Domain yang diperbolehkan diakses tanpa harus login"
+msgstr ""
 
 #: ../../../www/radmin/chilliconfig.php:44
 msgid "Domains (and their subdomains) that are accesible without logging in."
@@ -1396,7 +1396,7 @@ msgstr ""
 
 #: ../../../www/radmin/chilliconfig.php:52
 msgid "MAC Auth Password"
-msgstr "Password Autentifikasi MAC"
+msgstr ""
 
 #: ../../../www/radmin/chilliconfig.php:54
 msgid ""
@@ -1406,7 +1406,7 @@ msgstr ""
 
 #: ../../../www/radmin/chilliconfig.php:60
 msgid "Default Session Idle Timeout"
-msgstr "Default timeout Sesi Idle"
+msgstr ""
 
 #: ../../../www/radmin/chilliconfig.php:62
 msgid ""
@@ -1446,12 +1446,12 @@ msgstr ""
 
 #: ../../../www/radmin/chilliconfig.php:193
 msgid "Changes pending Coova Chilli Reload"
-msgstr "Perubahan Coova Chilli tertunda "
+msgstr ""
 
 #: ../../../www/radmin/chilliconfig.php:195
 #: ../../../www/radmin/netconfig.php:214
 msgid "Settings match running config"
-msgstr "Setting sudah sama"
+msgstr ""
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:65
 msgid "Unable to select users needing First Login Activation"
@@ -1802,15 +1802,15 @@ msgstr ""
 #: ../../../www/radmin/edituser.php:52 ../../../www/radmin/passwd.php:62
 #: ../../../www/radmin/passwd.php:63 ../../../www/radmin/usermin.php:49
 msgid "Password Changed"
-msgstr "Password Berubah"
+msgstr ""
 
 #: ../../../www/radmin/edituser.php:68
 msgid "Group Changed"
-msgstr "Group Berubah"
+msgstr ""
 
 #: ../../../www/radmin/edituser.php:77
 msgid "Comment Changed"
-msgstr "Komentar Berubah"
+msgstr ""
 
 #: ../../../www/radmin/edituser.php:85
 msgid "User Account Unlocked"
@@ -1831,7 +1831,7 @@ msgstr ""
 
 #: ../../../www/radmin/edituser.php:109
 msgid "Data Limit Increased"
-msgstr "Batas Data Telah ditingkatkan"
+msgstr ""
 
 #: ../../../www/radmin/edituser.php:110
 #, php-format
@@ -1840,7 +1840,7 @@ msgstr ""
 
 #: ../../../www/radmin/edituser.php:128
 msgid "Max Data Limit Updated"
-msgstr "Max Data Limit telah di perbaharui"
+msgstr ""
 
 #: ../../../www/radmin/edituser.php:129
 #, php-format
@@ -1859,7 +1859,7 @@ msgstr ""
 
 #: ../../../www/radmin/edituser.php:144
 msgid "Time Limit Increased"
-msgstr "Batas waktu  telah ditingkatkan"
+msgstr ""
 
 #: ../../../www/radmin/edituser.php:145
 #, php-format
@@ -1868,7 +1868,7 @@ msgstr ""
 
 #: ../../../www/radmin/edituser.php:163
 msgid "Max Time Limit Updated"
-msgstr "Max Time Limit telah di perbaharui"
+msgstr ""
 
 #: ../../../www/radmin/edituser.php:164
 #, php-format
@@ -1877,7 +1877,7 @@ msgstr ""
 
 #: ../../../www/radmin/edituser.php:175
 msgid "Expiry updated"
-msgstr "Expiry diperbarui"
+msgstr ""
 
 #: ../../../www/radmin/edituser.php:181
 #, php-format
@@ -1908,7 +1908,7 @@ msgstr ""
 
 #: ../../../www/radmin/groupconfig.php:49
 msgid "A minimum of one group is required"
-msgstr "minimal satu kelompok diperlukan"
+msgstr ""
 
 #: ../../../www/radmin/groupconfig.php:52
 msgid "It is not recommended having groups without expiries."
@@ -2085,11 +2085,11 @@ msgstr ""
 
 #: ../../../www/radmin/loginconfig.php:51
 msgid "Login Screen Title"
-msgstr "udul Halaman Login"
+msgstr ""
 
 #: ../../../www/radmin/loginconfig.php:52
 msgid "Hide Title (header) from login screen"
-msgstr "Sembunyikan judul (header) dari halaman login"
+msgstr ""
 
 #: ../../../www/radmin/loginconfig.php:56
 msgid "Login Screen Menu"
@@ -2111,7 +2111,7 @@ msgstr ""
 
 #: ../../../www/radmin/loginconfig.php:69
 msgid "Help Link"
-msgstr "Link Bantuan "
+msgstr ""
 
 #: ../../../www/radmin/loginconfig.php:71
 msgid "Hide Help link from menu and footer"
@@ -2119,7 +2119,7 @@ msgstr ""
 
 #: ../../../www/radmin/loginconfig.php:76
 msgid "Disable Javascript Login"
-msgstr "Non Aktifkan Login dengan javascript"
+msgstr ""
 
 #: ../../../www/radmin/loginconfig.php:77
 msgid "Force all logins to be through the less secure non-javascript method"
@@ -2127,7 +2127,7 @@ msgstr ""
 
 #: ../../../www/radmin/loginconfig.php:81
 msgid "Disable All Default CSS"
-msgstr "Nonaktifkan Semua CSS default "
+msgstr ""
 
 #: ../../../www/radmin/loginconfig.php:83
 msgid ""
@@ -2137,7 +2137,7 @@ msgstr ""
 
 #: ../../../www/radmin/loginconfig.php:88
 msgid "Page Title"
-msgstr "Judul Halaman"
+msgstr ""
 
 #: ../../../www/radmin/loginconfig.php:89
 msgid "The page title that is displayed on the login page"
@@ -2183,7 +2183,7 @@ msgstr ""
 
 #: ../../../www/radmin/loginconfig.php:119
 msgid "Main CSS"
-msgstr "CSS Utama "
+msgstr ""
 
 #: ../../../www/radmin/loginconfig.php:121
 msgid ""
@@ -2212,7 +2212,7 @@ msgstr ""
 
 #: ../../../www/radmin/loginconfig.php:139
 msgid "HTML Below login form"
-msgstr "HTML Di bawah login form"
+msgstr ""
 
 #: ../../../www/radmin/loginconfig.php:140
 msgid "HTML to insert below login form"
@@ -2220,7 +2220,7 @@ msgstr ""
 
 #: ../../../www/radmin/loginconfig.php:144
 msgid "Logged In HTML"
-msgstr "Logged in HTML"
+msgstr ""
 
 #: ../../../www/radmin/loginconfig.php:145
 msgid "HTML for successful login when not using javascript"
@@ -2234,7 +2234,7 @@ msgstr ""
 
 #: ../../../www/radmin/netconfig.php:34
 msgid "DNS Servers"
-msgstr "DNS Server"
+msgstr ""
 
 #: ../../../www/radmin/netconfig.php:36
 msgid ""
@@ -2245,7 +2245,7 @@ msgstr ""
 
 #: ../../../www/radmin/netconfig.php:43
 msgid "Bogus NXDOMAIN"
-msgstr "Bogus NXDOMAIN"
+msgstr ""
 
 #: ../../../www/radmin/netconfig.php:45
 msgid ""
@@ -2255,7 +2255,7 @@ msgstr ""
 
 #: ../../../www/radmin/netconfig.php:55
 msgid "LAN IP Address"
-msgstr "Alamat IP LAN"
+msgstr ""
 
 #: ../../../www/radmin/netconfig.php:57
 msgid ""
@@ -2266,7 +2266,7 @@ msgstr ""
 
 #: ../../../www/radmin/netconfig.php:70
 msgid "LAN Network Mask"
-msgstr "Mask Jaringan LAN"
+msgstr ""
 
 #: ../../../www/radmin/netconfig.php:72
 msgid ""
@@ -2276,7 +2276,7 @@ msgstr ""
 
 #: ../../../www/radmin/netconfig.php:79
 msgid "Bogus NXDOMAIN (OpenDNS)"
-msgstr "Bogus NXDOMAIN (OpenDNS)"
+msgstr ""
 
 #: ../../../www/radmin/netconfig.php:81
 msgid ""
@@ -2306,15 +2306,15 @@ msgstr ""
 
 #: ../../../www/radmin/netconfig.php:212
 msgid "Changes pending Reload"
-msgstr "Perubahan tertunda "
+msgstr ""
 
 #: ../../../www/radmin/newtickets.php:53 ../../../www/radmin/newuser.php:73
 msgid "Only set one Data limit field"
-msgstr "Tetapkan hanya satu field batas data "
+msgstr ""
 
 #: ../../../www/radmin/newtickets.php:56 ../../../www/radmin/newuser.php:79
 msgid "Only set one Time limit field"
-msgstr "Tetapkan hanya satu field batas waktu"
+msgstr ""
 
 #: ../../../www/radmin/newtickets.php:61
 msgid "Max of 1000 tickets per batch"
@@ -2357,7 +2357,7 @@ msgstr ""
 
 #: ../../../www/radmin/newuser.php:49
 msgid "MAC Address already has an account"
-msgstr "Alamat MAC ini sudah memiliki akun"
+msgstr ""
 
 #: ../../../www/radmin/newuser.php:53
 msgid "MAC Address not in correct format"
@@ -2385,11 +2385,11 @@ msgstr ""
 
 #: ../../../www/radmin/passwd.php:54
 msgid "Old Password incorrect"
-msgstr "Password lama tidak sesuai"
+msgstr ""
 
 #: ../../../www/radmin/passwd.php:56
 msgid "New passwords don't match"
-msgstr "Password baru tidak sesuai"
+msgstr ""
 
 #: ../../../www/radmin/passwd.php:66
 msgid "Please fill in all password fields"
@@ -2410,11 +2410,11 @@ msgstr ""
 
 #: ../../../www/radmin/passwd.php:93
 msgid "Need both username and password"
-msgstr "Dibutuhkan username dan pasword"
+msgstr ""
 
 #: ../../../www/radmin/passwd.php:99
 msgid "User Created"
-msgstr "User telah dibuat"
+msgstr ""
 
 #: ../../../www/radmin/passwd.php:102
 msgid "Error Creating Admin User"
@@ -2427,7 +2427,7 @@ msgstr ""
 
 #: ../../../www/radmin/passwd.php:114
 msgid "Invalid Delete Request"
-msgstr "Request Gagal"
+msgstr ""
 
 #: ../../../www/radmin/passwd.php:135
 msgid "Unknown Access Level"
@@ -2627,15 +2627,15 @@ msgstr ""
 
 #: ../../../www/radmin/usermin.php:41
 msgid "New Passwords must match"
-msgstr "Password baru harus sesuai"
+msgstr ""
 
 #: ../../../www/radmin/usermin.php:44
 msgid "Password must not be blank"
-msgstr "Password tidak boleh kosong"
+msgstr ""
 
 #: ../../../www/radmin/usermin.php:52
 msgid "Password not updated"
-msgstr "Password belum diperbarui"
+msgstr ""
 
 #: ../../../www/radmin/voucherconfig.php:56
 msgid ""
