@@ -12,9 +12,6 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 #3 5     1,2 * * root    /usr/share/grase/www/radmin/scripts/radius_stale > /dev/null
 #17 5	1,2 * * root    /usr/share/grase/www/radmin/scripts/radius_monthly_acct
 #37 3	3 * *	root    /usr/share/grase/www/radmin/scripts/radius_old_users
-@monthly	    nobody    /usr/share/grase/www/radmin/scripts/mirror_common_apps.sh
-#30 2	* * *	root    /usr/share/grase/www/radmin/scripts/avast_mirror
-
 @daily		    root    /usr/share/grase/www/radmin/scripts/mysql_backup
 
 # Most cron scripts have moved to PHP classes actived by cron.php
