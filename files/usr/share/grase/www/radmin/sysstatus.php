@@ -166,14 +166,14 @@
         }
         if ($status === 1) {
             $status = 'running';
-        }//$status = "<img src='images/green.png'/>Running";
+        }
         if ($status === 0) {
             $status = 'stopped';
-        }//$status = "<img src='images/red.png'/>Not Running";
+        }
         if ($status === -1) {
             $status = 'nomon';
-        } //$status = "<img src='images/blue.png'/>No plugin for this monitor";
-//	print "<tr><td>${proc['label']}</td><td>$status</td><td>$ftime</td></tr>\n";
+        }
+
         print "<li class='$status'> ${proc['label']}<br/><span class='time'>$ftime</span></li>\n";
         flush();
     }
