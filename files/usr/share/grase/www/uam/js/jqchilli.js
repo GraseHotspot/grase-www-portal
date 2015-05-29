@@ -9,7 +9,7 @@
  *
  */
 
-var challenge = 0;
+var challenge = null;
 
 var ident = '00';
 
@@ -318,7 +318,7 @@ function process_reply(resp)
                 var userurl = getQueryVariable('userurl');
                 if (typeof (userurl) == 'string')
                 {
-                    userurl = decodeURIComponent(userurl)
+                    userurl = decodeURIComponent(userurl);
                     error_message("Continue to your site <a target='_blank' href='" + userurl + "'>" + userurl + "</a>", 'alert-success');
                 }
 
