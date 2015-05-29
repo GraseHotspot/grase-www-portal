@@ -33,6 +33,7 @@ grase-www-portal (3.7.7.12) UNRELEASED; urgency=low
   * Fix LAN/WAN display issues (Closes #126)
   * Use referrer meta tag to only send Origin, and not the full URL when clicking links to prevent things like MAC addresses from leaking. (Closes #100)
   * Simultaneous Use can now be a number instead of a boolean (Closes #3)
+  * New Login page look
 
 
  -- Tim White <tim@grasehotspot.org>  Tue, 22 Jan 2013 16:13:27 +1000
