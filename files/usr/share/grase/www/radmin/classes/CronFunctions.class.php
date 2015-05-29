@@ -31,7 +31,7 @@ class CronFunctions extends DatabaseFunctions
      * 
      * $db is Radius DB handle
      */
-     
+
     public function &getInstance()
     {
         // Static reference of this class's instance.
@@ -49,9 +49,9 @@ class CronFunctions extends DatabaseFunctions
 
         $query = "
           SELECT
-            LOWER(radcheck.UserName) as username,
-            radcheck.value as expireafter,
-            UNIX_TIMESTAMP(radpostauth.authdate) as firstlogin
+            LOWER(radcheck.UserName) AS username,
+            radcheck.value AS expireafter,
+            UNIX_TIMESTAMP(radpostauth.authdate) AS firstlogin
           FROM radius.radcheck, radius.radpostauth
           WHERE
             radcheck.UserName = radpostauth.username
@@ -74,7 +74,9 @@ class CronFunctions extends DatabaseFunctions
             $rowsaffected++;
         }
 
-        if($rowsaffected) return "($rowsaffected) " . T_('First login users activiated') . "\n";
+        if ($rowsaffected) {
+            return "($rowsaffected) " . T_('First login users activiated') . "\n";
+        }
 
         return false;
     }
@@ -86,47 +88,45 @@ class CronFunctions extends DatabaseFunctions
 
         // Not the fastest way to do this, but due to it being in 2 different databases that we wish to keep user perms separate for, we need to execute extra queries and do some php processing
         $sql = "SELECT UserName FROM radcheck";
-        
+
         $result = $this->db->queryAll($sql);
-        
-        if (PEAR::isError($result))
-        {
+
+        if (PEAR::isError($result)) {
             return T_('Unable to select user from radcheck') . $result->toString();
         }
-        
-        foreach($result as $user)
-        {
+
+        foreach ($result as $user) {
             $users[] = $this->db->quote($user['UserName']);
         }
-        $users = implode( ', ' , $users);
-        
+        $users = implode(', ', $users);
+
         // $users has already been escaped above
         $sql = "DELETE FROM batch WHERE UserName NOT IN ($users)";
-        
+
         $sql2 = "DELETE FROM batches WHERE batchID NOT IN (SELECT batchID FROM batch)";
-        
+
         $result = $this->radminDB->exec($sql);
-        
-        if (PEAR::isError($result))
-        {
+
+        if (PEAR::isError($result)) {
             return T_('Unable to cleanup old users from batch ') . $result->toString();
         }
-                         
-        $rowsaffected += $result;        
-        
-        $result = $this->radminDB->exec($sql2);
-        
-        if (PEAR::isError($result))
-        {
-            return T_('Unable to cleanup old batches ') . $result->toString();
-        }
-                         
+
         $rowsaffected += $result;
 
-        if($rowsaffected) return "($rowsaffected) " . T_('Old Batches Cleaned');
-        
+        $result = $this->radminDB->exec($sql2);
+
+        if (PEAR::isError($result)) {
+            return T_('Unable to cleanup old batches ') . $result->toString();
+        }
+
+        $rowsaffected += $result;
+
+        if ($rowsaffected) {
+            return "($rowsaffected) " . T_('Old Batches Cleaned');
+        }
+
         return false;
-    }         
+    }
 
     public function clearStaleSessions()
     {
@@ -150,103 +150,102 @@ class CronFunctions extends DatabaseFunctions
                                             )
                                      )
                             ) > 300";
-        
+
         $result = $this->db->exec($sql);
-        
-        if (PEAR::isError($result))
-        {
+
+        if (PEAR::isError($result)) {
             return T_('Clearing stale sessions failed: ') . $result->toString();
         }
 
-        if($result > 0)        
+        if ($result > 0) {
             return T_('Stale sessions cleared') . $result;
-        
+        }
+
         return false;
 
     }
-    
+
     public function deleteExpiredUsers()
     {
         /* Do select to get list of usernames
          * Run deleteUser over each username (this clears all junk easily
          * can be condensed into less queries but this removes complexity
          * */
-         
+
         //  SELECT UserName FROM radcheck WHERE Attribute = 'Expiration' AND Value LIKE 'January __ 2011 00:00:00'
-         
+
         // Loop through previous months encase they have been missed. Bit of overkill but works. Time is cheap
         $months = array(-2, -3, -4, -5, -6, -7, -8, -9, -10, -11, -12);
         $deleted_results = 0;
-        foreach($months as $month)
-        {
+        foreach ($months as $month) {
             $timepattern = strftime("%B %% %Y __:__:__", strtotime("$month months"));
-            $sql = sprintf("SELECT UserName
+            $sql = sprintf(
+                "SELECT UserName
                             FROM radcheck
                             WHERE Attribute = %s AND
                             Value LIKE %s",
-                            $this->db->quote('Expiration'),
-                            $this->db->quote($timepattern)
-                            );
-            
+                $this->db->quote('Expiration'),
+                $this->db->quote($timepattern)
+            );
+
             $results = $this->db->queryAll($sql);
-            
-            if (PEAR::isError($results))
-            {
+
+            if (PEAR::isError($results)) {
                 return T_('Fetching users to delete failed') . $results->toString();
             }
-            
-            foreach($results as $user)
-            {
+
+            foreach ($results as $user) {
                 AdminLog::getInstance()->log_cron("Cron Deleting Expired ${user['UserName']}");
                 $this->deleteUser($user['UserName']);
             }
             $deleted_results += sizeof($results);
         }
 
-        if($deleted_results)
+        if ($deleted_results) {
             return "($deleted_results) " . T_('Expired users deleted');
-            
+        }
+
         return false;
-         
+
     }
-    
+
     public function deleteOutOfTimeUsers()
     {
         /* Do select to get list of usernames
          * Run deleteUser over each username (this clears all junk easily
          * can be condensed into less queries but this removes complexity
          * */
-         
+
         $deleted_results = 0;
-        $sql = sprintf("SELECT UserName
+        $sql = sprintf(
+            "SELECT UserName
                         FROM radcheck
                         WHERE Attribute = %s AND
                         Value = 0",
-                        $this->db->quote('Max-All-Session')
-                        );
-        
+            $this->db->quote('Max-All-Session')
+        );
+
         $results = $this->db->queryAll($sql);
-        
-        if (PEAR::isError($results))
-        {
+
+        if (PEAR::isError($results)) {
             return T_('Fetching users to delete failed') . $results->toString();
         }
-        
-        foreach($results as $user)
-        {
+
+        foreach ($results as $user) {
             AdminLog::getInstance()->log_cron("Cron Deleting OutOfTime ${user['UserName']}");
             $this->deleteUser($user['UserName']);
         }
         $deleted_results += sizeof($results);
 
 
-        if($deleted_results)
+        if ($deleted_results) {
             return "($deleted_results) " . T_('OutOfTime users deleted');
-            
+        }
+
         return false;
-         
-    }    
-    
+
+    }
+
     public function deleteOutOfDataUsers()
     {
         /* Do select to get list of usernames
@@ -255,43 +254,42 @@ class CronFunctions extends DatabaseFunctions
          * */
 
         $deleted_results = 0;
-        $sql = sprintf("SELECT UserName
+        $sql = sprintf(
+            "SELECT UserName
                         FROM radcheck
                         WHERE Attribute = %s AND
                         Value = 0",
-                        $this->db->quote('Max-Octets')
-                        );
-        
+            $this->db->quote('Max-Octets')
+        );
+
         $results = $this->db->queryAll($sql);
-        
-        if (PEAR::isError($results))
-        {
+
+        if (PEAR::isError($results)) {
             return T_('Fetching users to delete failed') . $results->toString();
         }
-        
-        foreach($results as $user)
-        {
+
+        foreach ($results as $user) {
             AdminLog::getInstance()->log_cron("Cron Deleting OutOfData ${user['UserName']}");
             $this->deleteUser($user['UserName']);
         }
         $deleted_results += sizeof($results);
 
 
-        if($deleted_results)
+        if ($deleted_results) {
             return "($deleted_results) " . T_('OutOfData users deleted');
-            
+        }
+
         return false;
-         
-    }        
-    
+
+    }
+
     public function condensePreviousMonthsAccounting()
     {
         $rowsaffected = 0;
         $months = array(-2, -3, -4, -5, -6, -7, -8, -9, -10, -11, -12);
         // If we remove -1 and leave last months data, the recurring data limits will work better, however lots of other code will need to change to search both mtotacct and radacct for information.
         // Probably better to implement the extra code as this will preserve more accounting data for longer TODO:
-        foreach($months as $month)
-        {
+        foreach ($months as $month) {
             // Generate start and end dates for each month in question        
             $startdate = strftime("%Y-%m-%d", strtotime("first day of $month months"));
             $nextmonth = $month + 1;
@@ -299,7 +297,8 @@ class CronFunctions extends DatabaseFunctions
 
             // Select all radacct data for month into mtotaccttmp
             // (which totals it)            
-            $sql = sprintf("INSERT INTO mtotaccttmp
+            $sql = sprintf(
+                "INSERT INTO mtotaccttmp
                              (UserName,
                              AcctDate,
                              ConnNum,
@@ -309,7 +308,7 @@ class CronFunctions extends DatabaseFunctions
                              InputOctets,
                              OutputOctets,
                              NASIPAddress)
-                             SELECT LOWER(UserName) as UserName
+                             SELECT LOWER(UserName) AS UserName
                              %s,
                              COUNT(*),
                              SUM(AcctSessionTime),
@@ -322,81 +321,80 @@ class CronFunctions extends DatabaseFunctions
                              WHERE AcctStopTime >= %s AND
                              AcctStopTime < %s
                              GROUP BY UserName,NASIPAddress",
-                             $this->db->quote($startdate),
-                             $this->db->quote($startdate),
-                             $this->db->quote($enddate)
-                             );
-                             
+                $this->db->quote($startdate),
+                $this->db->quote($startdate),
+                $this->db->quote($enddate)
+            );
+
             $result = $this->db->exec($sql);
-            
-            if (PEAR::isError($result))
-            {
+
+            if (PEAR::isError($result)) {
                 return T_('Unable to insert data into mtotaccttmp: ') . $result->toString();
             }
-                             
+
             $rowsaffected += $result;
 
             // Remove user details from radacct that we just put into mtotaccttmp
-        
-            $sql = sprintf("DELETE FROM radacct
+
+            $sql = sprintf(
+                "DELETE FROM radacct
                             WHERE AcctStopTime >= %s
                             AND AcctStopTime < %s",
-                            $this->db->quote($startdate),
-                            $this->db->quote($enddate)
-                            );
-                            
-            $result = $this->db->exec($sql);
-            
-            if (PEAR::isError($result))
-            {
-                return T_('Unable to delete old radacct data: ') . $result->toString();
-            }          
+                $this->db->quote($startdate),
+                $this->db->quote($enddate)
+            );
 
-            $rowsaffected += $result;                              
-        
+            $result = $this->db->exec($sql);
+
+            if (PEAR::isError($result)) {
+                return T_('Unable to delete old radacct data: ') . $result->toString();
+            }
+
+            $rowsaffected += $result;
+
             // Update users details in radcheck for Max-octets and Max-All-Session
-            
-            $sql = sprintf("UPDATE radcheck, mtotaccttmp
+
+            $sql = sprintf(
+                "UPDATE radcheck, mtotaccttmp
                             SET
                             radcheck.value = CAST(radcheck.value AS SIGNED INTEGER) - (mtotaccttmp.InputOctets + mtotaccttmp.OutputOctets)
                             WHERE radcheck.Attribute=%s
                             AND radcheck.UserName=mtotaccttmp.UserName
                             AND mtotaccttmp.AcctDate=%s",
-                            $this->db->quote('Max-Octets'),
-                            $this->db->quote($startdate)
-                            );
-                            
+                $this->db->quote('Max-Octets'),
+                $this->db->quote($startdate)
+            );
+
             $result = $this->db->exec($sql);
-            
-            if (PEAR::isError($result))
-            {
+
+            if (PEAR::isError($result)) {
                 return T_('Unable to update users Max-Octets: ') . $result->toString();
-            }   
-            
-            $rowsaffected += $result;                                     
-                            
-            $sql = sprintf("UPDATE radcheck, mtotaccttmp
+            }
+
+            $rowsaffected += $result;
+
+            $sql = sprintf(
+                "UPDATE radcheck, mtotaccttmp
                             SET
                             radcheck.value = CAST(radcheck.value AS SIGNED INTEGER) - mtotaccttmp.ConnTotDuration 
                             WHERE radcheck.Attribute = %s
                             AND radcheck.UserName = mtotaccttmp.UserName
                             AND mtotaccttmp.AcctDate = %s",
-                            $this->db->quote('Max-All-Session'),
-                            $this->db->quote($startdate)
-                            );
-                            
+                $this->db->quote('Max-All-Session'),
+                $this->db->quote($startdate)
+            );
+
             $result = $this->db->exec($sql);
-            
-            if (PEAR::isError($result))
-            {
+
+            if (PEAR::isError($result)) {
                 return T_('Unable to update users Max-All-Session: ') . $result->toString();
-            }   
-            
-            $rowsaffected += $result;                                     
-        
+            }
+
+            $rowsaffected += $result;
+
             // Insert mtotaccttmp details into mtotacct (update what is already in there?)
             // TODO: Do we need to do a select & delete from mtotacct into mtotaccttmp to ensure only a single line for each user per month in mtotacct?
-            
+
             $sql = "INSERT INTO mtotacct (
                     UserName,
                     AcctDate,
@@ -409,7 +407,7 @@ class CronFunctions extends DatabaseFunctions
                     NASIPAddress
                     )
                     SELECT 
-                    LOWER(UserName) as UserName,
+                    LOWER(UserName) AS UserName,
                     AcctDate, 
                     ConnNum, 
                     ConnTotDuration, 
@@ -420,71 +418,69 @@ class CronFunctions extends DatabaseFunctions
                     NASIPAddress
                     FROM 
                     mtotaccttmp";
-                    
+
             $result = $this->db->exec($sql);
-            
-            if (PEAR::isError($result))
-            {
+
+            if (PEAR::isError($result)) {
                 return T_('Unable to move mtotaccttmp data to mtotacct: ') . $result->toString();
-            }   
-            
-            $rowsaffected += $result;                             
-        
+            }
+
+            $rowsaffected += $result;
+
             // Clear mtotaccttmp
-            
+
             $sql = "TRUNCATE mtotaccttmp";
-            
+
             $result = $this->db->exec($sql);
-            
-            if (PEAR::isError($result))
-            {
+
+            if (PEAR::isError($result)) {
                 return T_('Unable to truncate mtotaccttmp: ') . $result->toString();
-            }   
-            
-            $rowsaffected += $result;                     
-        
+            }
+
+            $rowsaffected += $result;
+
             // Ensure all radcheck values are > 0 where appropriate
-	    // TODO: Check if any other attributes may need "resetting"
+            // TODO: Check if any other attributes may need "resetting"
 
-	    // Max-Octets reset            
-            $sql = sprintf("UPDATE radcheck 
+            // Max-Octets reset
+            $sql = sprintf(
+                "UPDATE radcheck
                             SET
                             radcheck.value = 0 
                             WHERE
                             radcheck.Attribute = %s
                             AND CAST(radcheck.value AS SIGNED INTEGER) < 0",
-                            $this->db->quote('Max-Octets')
-                            );
-                            
+                $this->db->quote('Max-Octets')
+            );
+
             $result = $this->db->exec($sql);
-            
-            if (PEAR::isError($result))
-            {
+
+            if (PEAR::isError($result)) {
                 return T_('Unable to ensure positive values in radcheck: ') . $result->toString();
             }
-            
-            $rowsaffected += $result;                                        
 
-	    // Max-All-Session reset            
-            $sql = sprintf("UPDATE radcheck 
+            $rowsaffected += $result;
+
+            // Max-All-Session reset
+            $sql = sprintf(
+                "UPDATE radcheck
                             SET
                             radcheck.value = 0 
                             WHERE
                             radcheck.Attribute = %s
                             AND CAST(radcheck.value AS SIGNED INTEGER) < 0",
-                            $this->db->quote('Max-All-Session')
-                            );
-                            
+                $this->db->quote('Max-All-Session')
+            );
+
             $result = $this->db->exec($sql);
-            
-            if (PEAR::isError($result))
-            {
+
+            if (PEAR::isError($result)) {
                 return T_('Unable to ensure positive values in radcheck: ') . $result->toString();
             }
-            
-            $rowsaffected += $result;                                        
-        
-            
+
+            $rowsaffected += $result;
+
+
             // Disabled, as we can have old accounting data due to clocks not being set. Need another way to handle this.
             // Clear all data in radacct older than X months that has been missed?
             // TODO
@@ -506,38 +502,42 @@ class CronFunctions extends DatabaseFunctions
                 
             }*/
         }
-        
-        if($rowsaffected > 0)        
+
+        if ($rowsaffected > 0) {
             return T_('Old Radius Accounting Data Archived') . $rowsaffected;
-        
+        }
+
         return false;
     }
+
     public function clearOldPostAuth()
     {
         $twomonthsago = strftime("%Y-%m-%d", strtotime("first day of -1 months"));
-        $sql = sprintf("DELETE FROM radpostauth WHERE AuthDate < %s",
-                        $this->db->quote($twomonthsago));
+        $sql = sprintf(
+            "DELETE FROM radpostauth WHERE AuthDate < %s",
+            $this->db->quote($twomonthsago)
+        );
 
         $result = $this->db->exec($sql);
 
-        if (PEAR::isError($result))
-        {
+        if (PEAR::isError($result)) {
             return T_('Unable to clear old Postauth rows: ') . $result->toString();
         }
 
-        if($result) return "($result) " . T_('Old Postauth rows cleared');
+        if ($result) {
+            return "($result) " . T_('Old Postauth rows cleared');
+        }
 
         return false;
     }
 
     public function clearPostAuthMacRejects()
     {
-        $sql = "SELECT id from radpostauth R JOIN (select username, max(AuthDate) AS maxauthdate from radpostauth WHERE username LIKE '__-__-__-__-__-__' AND reply = 'Access-Reject' GROUP BY username) A ON (R.username = A.username) WHERE reply= 'Access-Reject' AND authdate <> maxauthdate";
+        $sql = "SELECT id FROM radpostauth R JOIN (SELECT username, max(AuthDate) AS maxauthdate FROM radpostauth WHERE username LIKE '__-__-__-__-__-__' AND reply = 'Access-Reject' GROUP BY username) A ON (R.username = A.username) WHERE reply= 'Access-Reject' AND authdate <> maxauthdate";
 
         $result =& $this->db->query($sql);
 
-        if (PEAR::isError($result))
-        {
+        if (PEAR::isError($result)) {
             return T_('Unable to get PostAuth MAC Reject IDs: ') . $result->toString();
         }
 
@@ -545,15 +545,16 @@ class CronFunctions extends DatabaseFunctions
         $rows = 0;
         $time_start = microtime(true);
         while (($row = $result->fetchRow())) {
-            set_time_limit (30);
-            $sql = sprintf("DELETE from radpostauth WHERE id = %s",
-                            $this->db->quote($row['id']));
+            set_time_limit(30);
+            $sql = sprintf(
+                "DELETE FROM radpostauth WHERE id = %s",
+                $this->db->quote($row['id'])
+            );
 
             $rowresult = $this->db->exec($sql);
 
 
-            if (PEAR::isError($rowresult))
-            {
+            if (PEAR::isError($rowresult)) {
                 return T_('Unable to delete PostAuth MAC Reject entry: ' . $rowresult->toString());
             }
 
@@ -562,7 +563,9 @@ class CronFunctions extends DatabaseFunctions
         }
         $time_end = microtime(true);
         $time = $time_end - $time_start;
-        if($rows) return "Deleted $rows in $time seconds: " . T_('PostAuth MAC Reject rows cleared');
+        if ($rows) {
+            return "Deleted $rows in $time seconds: " . T_('PostAuth MAC Reject rows cleared');
+        }
 
         return false;
     }
