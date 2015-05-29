@@ -188,7 +188,7 @@ function get_challenge()
                 /// ...
 
                 // Got valid challenge and not logged in
-                challenge = json.challenge;
+                challenge = resp.challenge;
 
                 get_login();
 
