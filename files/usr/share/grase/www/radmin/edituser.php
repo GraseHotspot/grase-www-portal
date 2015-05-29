@@ -36,10 +36,8 @@ if (!isset($_GET['username']) || DatabaseFunctions::getInstance()->checkUniqueUs
 $error = array();
 $success = array();
 
-$username = mysql_real_escape_string(
-    $_GET['username']
-); // TODO change this? i.e. make database class do it if it doesn't already
 $user = DatabaseFunctions::getInstance()->getUserDetails($_GET['username']);
+$username = $user['Username'];
 
 if (isset($_POST['updateusersubmit'])) {   // Process form for changed items and do updates
     $addMb = clean_number($_POST['Add_Mb']);
