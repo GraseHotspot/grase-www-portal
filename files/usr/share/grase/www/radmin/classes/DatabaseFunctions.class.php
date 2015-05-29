@@ -122,7 +122,7 @@ class DatabaseFunctions
                         AcctTerminateCause,
                         ServiceType,
                         FramedIPAddress,
-                        Username,
+                        LOWER(Username) as Username,
                         AcctInputOctets,
                         AcctOutputOctets,
                         (AcctInputOctets + AcctOutputOctets) AS AcctTotalOctets,
@@ -162,7 +162,7 @@ class DatabaseFunctions
                         AcctTerminateCause,
                         ServiceType,
                         FramedIPAddress,
-                        Username,
+                        LOWER(Username) as Username,
                         AcctInputOctets,
                         AcctOutputOctets,
                         AcctInputOctets + AcctOutputOctets AS AcctTotalOctets,
@@ -202,7 +202,7 @@ class DatabaseFunctions
                         AcctTerminateCause,
                         ServiceType,
                         FramedIPAddress,
-                        Username,
+                        LOWER(Username) as Username,
                         AcctInputOctets,
                         AcctOutputOctets,
                         AcctInputOctets + AcctOutputOctets AS AcctTotalOctets,
@@ -923,6 +923,7 @@ class DatabaseFunctions
         $group,
         $comment
     ) {
+        $username = mb_strtolower($username);
         // Check unique user
         if (!$this->checkUniqueUsername(
             $username

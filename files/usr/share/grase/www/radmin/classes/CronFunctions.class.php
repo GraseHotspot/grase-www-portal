@@ -49,7 +49,7 @@ class CronFunctions extends DatabaseFunctions
 
         $query = "
           SELECT
-            radcheck.UserName as username,
+            LOWER(radcheck.UserName) as username,
             radcheck.value as expireafter,
             UNIX_TIMESTAMP(radpostauth.authdate) as firstlogin
           FROM radius.radcheck, radius.radpostauth
@@ -62,7 +62,7 @@ class CronFunctions extends DatabaseFunctions
 
         $results = $this->db->queryAll($query);
         if (PEAR::isError($results)) {
-            return T_('Unable to select users needing First Login Activiation') . $results->toString();
+            return T_('Unable to select users needing First Login Activation') . $results->toString();
         }
 
         foreach ($results as $user) {
@@ -309,7 +309,7 @@ class CronFunctions extends DatabaseFunctions
                              InputOctets,
                              OutputOctets,
                              NASIPAddress)
-                             SELECT UserName,
+                             SELECT LOWER(UserName) as UserName
                              %s,
                              COUNT(*),
                              SUM(AcctSessionTime),
@@ -409,7 +409,7 @@ class CronFunctions extends DatabaseFunctions
                     NASIPAddress
                     )
                     SELECT 
-                    UserName, 
+                    LOWER(UserName) as UserName,
                     AcctDate, 
                     ConnNum, 
                     ConnTotDuration, 
@@ -585,5 +585,3 @@ DELETE t1 from radpostauth t1, radpostauth t2 WHERE t1.username=t2.username AND 
 
 Probably only need to clear rejects for mac address, and clear accepts for coovachilli admin user
 */
-
-?>
