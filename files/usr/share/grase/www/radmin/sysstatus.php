@@ -110,8 +110,7 @@
 
 
     foreach ($monitored_processes as $proc) {
-        if (isset($proc['pid']) && file_exists($proc['pid'])) // PID File
-        {
+        if (isset($proc['pid']) && file_exists($proc['pid'])) {
             // Read file
             $pid = file_get_contents($proc['pid']);
             $stime = pid_running_time($pid);
@@ -120,16 +119,14 @@
             } else {
                 output_status($proc, 0, "");
             }
-        } elseif (isset($proc['procname'])) // Check if proc is running, etc
-        {
+        } elseif (isset($proc['procname'])) {
             $stime = proc_running_time($proc['procname']);
             if ($stime) {
                 output_status($proc, 1, $stime);
             } else {
                 output_status($proc, 0, "");
             }
-        } elseif (isset($proc['ping']))// Ping host to see if up
-        {
+        } elseif (isset($proc['ping'])) {
             unset($output_dummy);
             exec('ping -c 3 -q ' . $proc['ping'], $output_dummy, $return);
             $avg_time = shell_exec("echo " . array_pop($output_dummy) . "|tail -n 1|cut -f 2 -d '='|cut -f 2 -d '/'");
@@ -142,8 +139,7 @@
             if ($return == 0) {
                 output_status($proc, 1, $avg_time, 'ping');
             }// Host up
-        } elseif (isset($proc['uptime'])) // Uptime
-        {
+        } elseif (isset($proc['uptime'])) {
             // read in the uptime (using exec)
             $uptime = exec("cat /proc/uptime");
             $uptime = split(" ", $uptime);
