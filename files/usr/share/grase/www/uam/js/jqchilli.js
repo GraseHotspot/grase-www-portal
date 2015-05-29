@@ -459,7 +459,8 @@ $('#loginform').submit(function ()
 {
     logintype = "USER";
     display_loadingform();
-    clear_error_messages()
+    clear_error_messages();
+    challenge = null;
     get_challenge();
     return false;
 });
@@ -468,7 +469,8 @@ $('#tosaccept').submit(function ()
 {
     logintype = "TOS";
     display_loadingform();
-    clear_error_messages()
+    clear_error_messages();
+    challenge = null;
     get_challenge();
     return false;
 });
