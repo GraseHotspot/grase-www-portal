@@ -326,7 +326,7 @@ SQL;
                     (SELECT
                         0 AS TotalOctets,
                         radcheck.Value AS TotalQuota, 
-                        radcheck.UserName AS Label
+                        LOWER(radcheck.UserName) AS Label
                     FROM
                         radcheck
                     WHERE
@@ -335,7 +335,7 @@ SQL;
                     SELECT
                         SUM(radacct.AcctInputOctets) + SUM(radacct.AcctOutputOctets) AS TotalOctets, 
                         0 AS TotalQuota, 
-                        radacct.UserName AS Label
+                        SELECT(radacct.UserName) AS Label
                     FROM
                         radacct
                     WHERE UserName != " . $this->db->quote(RADIUS_CONFIG_USER) . "
@@ -380,7 +380,7 @@ SQL;
                 SELECT
                     SUM(radacct.AcctInputOctets) + SUM(radacct.AcctOutputOctets) AS TotalOctets,
                     SUM(radacct.AcctSessionTime) AS TotalTime,  
-                    radacct.UserName AS Label,
+                    LOWER(radacct.UserName) AS Label,
                     DATE_FORMAT(radacct.AcctStartTime, '%b %Y') AS Month
                 FROM
                     radacct
@@ -393,7 +393,7 @@ SQL;
                 SELECT
                     SUM(mtotacct.InputOctets) + SUM(mtotacct.OutputOctets) AS TotalOctets,
                     SUM(mtotacct.ConnTotDuration) AS TotalTime,  
-                    mtotacct.UserName AS Label,
+                    LOWER(mtotacct.UserName) AS Label,
                     DATE_FORMAT(mtotacct.AcctDate, '%b %Y') AS Month
                 FROM
                     mtotacct
@@ -450,7 +450,7 @@ SQL;
                 SELECT
                     SUM(radacct.AcctInputOctets) + SUM(radacct.AcctOutputOctets) AS TotalOctets,
                     SUM(radacct.AcctSessionTime) AS TotalTime,  
-                    radacct.UserName AS Label,
+                    LOWER(radacct.UserName) AS Label,
                     DATE_FORMAT(radacct.AcctStartTime, '%b %Y') AS Month
                 FROM
                     radacct
@@ -462,7 +462,7 @@ SQL;
                 SELECT
                     SUM(mtotacct.InputOctets) + SUM(mtotacct.OutputOctets) AS TotalOctets,
                     SUM(mtotacct.ConnTotDuration) AS TotalTime,  
-                    mtotacct.UserName AS Label,
+                    LOWER(mtotacct.UserName) AS Label,
                     DATE_FORMAT(mtotacct.AcctDate, '%b %Y') AS Month
                 FROM
                     mtotacct
