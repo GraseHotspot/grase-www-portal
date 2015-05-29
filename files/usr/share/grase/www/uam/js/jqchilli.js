@@ -136,7 +136,7 @@ function tos_getresponse()
     // and the username (so we never know the password clientside)
 
     /* Build automac URL */
-    var tosUrl = 'http://' + window.location.hostname + '/grase/uam/automac?challenge=' + escape(challenge);
+    var tosUrl = 'http://' + window.location.hostname + '/grase/uam/automac?challenge=' + encodeURIComponent(challenge);
 
     chilliController.clientState = chilliController.stateCodes.AUTH_PENDING;
 
@@ -229,7 +229,7 @@ function get_login()
     var chappassword = myMD5.chap(ident, password, challenge);
 
     /* Build /logon command URL */
-    var logonUrl = urlRoot + 'logon?username=' + escape(username) + '&response=' + chappassword;
+    var logonUrl = urlRoot + 'logon?username=' + encodeURIComponent(username) + '&response=' + encodeURIComponent(chappassword);
 
     chilliController.clientState = chilliController.stateCodes.AUTH_PENDING;
 
@@ -257,7 +257,7 @@ function tos_get_login(resp)
     }
 
     /* Build /logon command URL */
-    var logonUrl = urlRoot + 'logon?username=' + escape(resp.username) + '&response=' + resp.response;
+    var logonUrl = urlRoot + 'logon?username=' + encodeURIComponent(resp.username) + '&response=' + encodeURIComponent(resp.response);
 
     chilliController.clientState = chilliController.stateCodes.AUTH_PENDING;
 
@@ -376,7 +376,7 @@ function process_reply(resp)
     }
 
     // Clear any previous timeout we have running
-    timeoutvar = setTimeout('update_status()', 10000);
+    timeoutvar = setTimeout(update_status, 10000);
 }
 
 function update_status()
