@@ -6,7 +6,7 @@
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 #MAILTO=
 ## NEEDS USERNAME
-@daily		    root    /usr/share/grase/www/radmin/scripts/mysql_backup
+@daily		    root    /usr/share/grase/scripts/mysql_backup
 
 # Most cron scripts have moved to PHP classes actived by cron.php
 @hourly         nobody  wget -q http://127.0.0.1/grase/radmin/cron.php -O -
