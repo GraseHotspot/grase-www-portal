@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Grase Hotspot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-05-29 19:12+1000\n"
-"PO-Revision-Date: 2015-05-29 09:14+0000\n"
-"Last-Translator: Timothy White <tim@purewhite.id.au>\n"
+"PO-Revision-Date: 2015-05-29 10:22+0000\n"
+"Last-Translator: Jose <mimaguila@hotmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/grase/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -671,7 +671,7 @@ msgstr "Iniciar sesión"
 
 #: ../../../www/radmin/templates/smarty.c:174
 msgid "Ticket Printing Settings"
-msgstr ""
+msgstr "Ajustes impresion Ticket"
 
 #: ../../../www/radmin/templates/smarty.c:178
 msgid "Voucher Config"
@@ -765,7 +765,7 @@ msgstr "Nombre de usuario"
 #: ../../../www/radmin/templates/smarty.c:309
 #: ../../../www/radmin/templates/smarty.c:322
 msgid "Account Comment"
-msgstr ""
+msgstr "Comentarios cuenta"
 
 #: ../../../www/radmin/templates/smarty.c:210
 msgid "%1 Time Limit"
@@ -1109,12 +1109,12 @@ msgstr "Uso de datos"
 #: ../../../www/radmin/templates/smarty.c:310
 #: ../../../www/radmin/templates/smarty.c:323
 msgid "Logout this session"
-msgstr ""
+msgstr "Finalizar esta sesion"
 
 #: ../../../www/radmin/templates/smarty.c:311
 #: ../../../www/radmin/templates/smarty.c:324
 msgid "Are you sure you want to logout this session?"
-msgstr ""
+msgstr "¿Estas seguro que deseas finalizar esta sesión?"
 
 #: ../../../www/radmin/templates/smarty.c:312
 #: ../../../www/radmin/templates/smarty.c:325
@@ -2039,7 +2039,7 @@ msgstr "Logo del sitio"
 
 #: ../../../www/radmin/includes/page_functions.inc.php:80
 msgid "Ticket Print Settings"
-msgstr ""
+msgstr "Ajustes impresion Ticket"
 
 #: ../../../www/radmin/includes/page_functions.inc.php:97
 msgid "Logoff"
@@ -2096,11 +2096,11 @@ msgstr "Ocultar el título (encabezado) de la pantalla de inicio de sesión"
 
 #: ../../../www/radmin/loginconfig.php:56
 msgid "Login Screen Menu"
-msgstr ""
+msgstr "Menú pantalla de inicio de sesión"
 
 #: ../../../www/radmin/loginconfig.php:57
 msgid "Hide Menubar from login screen"
-msgstr ""
+msgstr "Ocultar la barra de menú de la pantalla de inicio de sesión"
 
 #: ../../../www/radmin/loginconfig.php:61
 msgid "Login Screen Footer"
@@ -2182,7 +2182,7 @@ msgstr "Terminos y Condiciones"
 
 #: ../../../www/radmin/loginconfig.php:115
 msgid "Terms and Conditions of use (HTML) - Leave empty to not display"
-msgstr ""
+msgstr "Terminos y Condiciones de uso (HTML) - Dejar en blanco para no mostrarlo"
 
 #: ../../../www/radmin/loginconfig.php:119
 msgid "Main CSS"
