@@ -1,14 +1,14 @@
 # 
 # Translators:
-# tomas213 <tomas213@gmail.com>, 2013-2014
+# tomas213 <tomas213@gmail.com>, 2013-2015
 # tomas213 <tomas213@gmail.com>, 2011-2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Grase Hotspot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-05-29 19:12+1000\n"
-"PO-Revision-Date: 2015-05-29 09:14+0000\n"
-"Last-Translator: Timothy White <tim@purewhite.id.au>\n"
+"PO-Revision-Date: 2015-05-29 12:57+0000\n"
+"Last-Translator: tomas213 <tomas213@gmail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/projects/p/grase/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -41,7 +41,7 @@ msgstr "Αποθήκευση ρυθμίσεων"
 #: ../../../www/radmin/templates/smarty.c:3
 #: ../../../www/radmin/templates/smarty.c:176
 msgid "HTML and CSS templates"
-msgstr ""
+msgstr "Πρότυπα HTML και CSS"
 
 #: ../../../www/radmin/templates/smarty.c:5
 msgid "First"
@@ -198,7 +198,7 @@ msgstr "Επιβεβαιώστε τον νέο κωδικό"
 
 #: ../../../www/radmin/templates/smarty.c:45
 msgid "User Group"
-msgstr ""
+msgstr "Ομάδα Χρηστών"
 
 #: ../../../www/radmin/templates/smarty.c:46
 #: ../../../www/radmin/templates/smarty.c:130
@@ -245,7 +245,7 @@ msgstr "Κωδικός"
 
 #: ../../../www/radmin/templates/smarty.c:55
 msgid "Admin User Access Level"
-msgstr ""
+msgstr "Επίπεδο πρόσβασης διαχειριστή"
 
 #: ../../../www/radmin/templates/smarty.c:56
 #: ../../../www/radmin/templates/smarty.c:57
@@ -266,11 +266,11 @@ msgstr "Κανονικός χρήστης"
 #: ../../../www/radmin/templates/smarty.c:61
 #: ../../../www/radmin/passwd.php:132
 msgid "Limited User"
-msgstr ""
+msgstr "Περιορισμένος χρήστης"
 
 #: ../../../www/radmin/templates/smarty.c:62
 msgid "Sets the users access level. Once set, this can't be changed"
-msgstr ""
+msgstr "Ρυθμίζει το επίπεδο πρόσβασης των χρηστών. Μόλις ενεργοποιηθεί,  δεν μπορεί να αλλάξει"
 
 #: ../../../www/radmin/templates/smarty.c:64
 msgid "Delete Admin User"
@@ -394,7 +394,7 @@ msgstr "Λήξη"
 #: ../../../www/radmin/templates/smarty.c:94
 #: ../../../www/radmin/templates/smarty.c:261
 msgid "Expire After"
-msgstr ""
+msgstr "Λήγουν μετά"
 
 #: ../../../www/radmin/templates/smarty.c:95
 msgid "Max Data (Mb)"
@@ -406,11 +406,11 @@ msgstr "Μέγιστος χρόνος (λεπτά)"
 
 #: ../../../www/radmin/templates/smarty.c:97
 msgid "Recurring data limit"
-msgstr ""
+msgstr "Επαναλαμβανόμενο όριο δεδομένων"
 
 #: ../../../www/radmin/templates/smarty.c:98
 msgid "Recurring time limit"
-msgstr ""
+msgstr "Επαναλαμβανόμενο χρονικό όριο"
 
 #: ../../../www/radmin/templates/smarty.c:99
 msgid "BW Limit Down"
@@ -446,7 +446,7 @@ msgstr "Επαναφορά λήξης"
 
 #: ../../../www/radmin/templates/smarty.c:110
 msgid "No Expire After Set"
-msgstr ""
+msgstr "Δεν λήγουν μετά από"
 
 #: ../../../www/radmin/templates/smarty.c:113
 msgid "Account Lock Reason"
@@ -619,7 +619,7 @@ msgstr "Link για το link της υποσελίδας"
 
 #: ../../../www/radmin/templates/smarty.c:160
 msgid "Advanced Settings"
-msgstr ""
+msgstr "Προηγμένες Ρυθμίσεις"
 
 #: ../../../www/radmin/templates/smarty.c:161
 msgid ""
@@ -627,29 +627,29 @@ msgid ""
 " here isn't recommended as no validation is done. This page allows you to "
 "see and modify hidden settings. Some settings may reset back to defaults if "
 "you try to set them to an incorrect value, others will just break."
-msgstr ""
+msgstr "Όλες οι ρυθμίσεις στον πίνακα Radmin παρουσιάζεται εδώ. Τροποποίηση των ρυθμίσεων εδώ δεν συνιστάται καθώς δεν γίνεται καμιία επικύρωση. Αυτή η σελίδα σας επιτρέπει να δείτε και να τροποποιήσετε κρυφές ρυθμίσεις. Ορισμένες ρυθμίσεις μπορεί να επαναφέρει πίσω τις αρχικές ρυθμίσεις αν προσπαθήσετε να τα ρυθμίσετε σε μια εσφαλμένη τιμή."
 
 #: ../../../www/radmin/templates/smarty.c:162
 msgid ""
 "CAUTION: Some settings here are internal and modifying them will break "
 "things"
-msgstr ""
+msgstr "ΠΡΟΣΟΧΗ: Ορισμένες ρυθμίσεις εδώ είναι εσωτερικές και τροποποιώντας τες, θα τις χαλάσει"
 
 #: ../../../www/radmin/templates/smarty.c:164
 msgid "Value"
-msgstr ""
+msgstr "Τιμή"
 
 #: ../../../www/radmin/templates/smarty.c:165
 msgid "Setting name"
-msgstr ""
+msgstr "Όνομα ρύθμισης"
 
 #: ../../../www/radmin/templates/smarty.c:166
 msgid "Setting value"
-msgstr ""
+msgstr "Όνομα τιμής"
 
 #: ../../../www/radmin/templates/smarty.c:167
 msgid "Save Setting"
-msgstr ""
+msgstr "Αποθήκευση ρυθμίσεων"
 
 #: ../../../www/radmin/templates/smarty.c:168
 #: ../../../www/radmin/templates/smarty.c:339
@@ -669,7 +669,7 @@ msgstr "Είσοδος"
 
 #: ../../../www/radmin/templates/smarty.c:174
 msgid "Ticket Printing Settings"
-msgstr ""
+msgstr "Ρυθμίσεις εκτύπωσης εισιτηρίου"
 
 #: ../../../www/radmin/templates/smarty.c:178
 msgid "Voucher Config"
@@ -739,7 +739,7 @@ msgstr "Διαχειριστής"
 
 #: ../../../www/radmin/templates/smarty.c:197
 msgid "Wireless Network"
-msgstr ""
+msgstr "Ασύρματο δίκτυο"
 
 #: ../../../www/radmin/templates/smarty.c:200
 #: ../../../www/radmin/export.php:92
@@ -749,21 +749,21 @@ msgstr "Είδους κουπονιού"
 #: ../../../www/radmin/templates/smarty.c:202
 #: ../../../www/radmin/includes/page_functions.inc.php:67
 msgid "DHCP Leases"
-msgstr ""
+msgstr "Χρόνος αποδεύσμευσης DHCP"
 
 #: ../../../www/radmin/templates/smarty.c:205
 msgid "DHCP State"
-msgstr ""
+msgstr "Κατάσταση DHCP"
 
 #: ../../../www/radmin/templates/smarty.c:206
 msgid "UserName"
-msgstr ""
+msgstr "Όνομα χρήστη"
 
 #: ../../../www/radmin/templates/smarty.c:207
 #: ../../../www/radmin/templates/smarty.c:309
 #: ../../../www/radmin/templates/smarty.c:322
 msgid "Account Comment"
-msgstr ""
+msgstr "Σχόλιο λογαριασμού"
 
 #: ../../../www/radmin/templates/smarty.c:210
 msgid "%1 Time Limit"
@@ -825,7 +825,7 @@ msgstr "Ρυθμίσεις ομάδος"
 msgid ""
 "Group expiry and expire after first login needs to be in a format understood by the\n"
 "    <a target=\"_blank\" href=\"http://www.php.net/manual/en/function.strtotime.php\">strtotime</a> PHP function."
-msgstr ""
+msgstr "Η λήξη της ομάδας πρέπει να είναι σε μορφή κατανοητή από την <a target=\"_blank\" href=\"http://www.php.net/manual/en/function.strtotime.php\"> strtotime </ a> PHP συνάρτηση."
 
 #: ../../../www/radmin/templates/smarty.c:229
 msgid ""
@@ -844,7 +844,7 @@ msgid ""
 "Expire after first login also needs to conform to the <a "
 "href=\"http://search.cpan.org/~muir/Time-"
 "ParseDate-2013.1113/lib/Time/ParseDate.pm\">ParseDate perl module</a>"
-msgstr ""
+msgstr "Η λήξη μετά την πρώτη είσοδο πρέπει να είναι συμβατή με το  <a href=\"http://search.cpan.org/~muir/Time-ParseDate-2013.1113/lib/Time/ParseDate.pm\">ParseDate perl module</a>"
 
 #: ../../../www/radmin/templates/smarty.c:232
 msgid ""
@@ -899,11 +899,11 @@ msgstr "Ομάδες"
 #: ../../../www/radmin/templates/smarty.c:242
 #: ../../../www/radmin/templates/smarty.c:260
 msgid "Never Expire"
-msgstr ""
+msgstr "Δεν λήγει ποτέ"
 
 #: ../../../www/radmin/templates/smarty.c:243
 msgid "Expire After First login"
-msgstr ""
+msgstr "Λήξη μετά την πρώτη είσοδο"
 
 #: ../../../www/radmin/templates/smarty.c:244
 #: ../../../www/radmin/templates/smarty.c:262
@@ -913,7 +913,7 @@ msgstr "Αριθμός εισόδων"
 #: ../../../www/radmin/templates/smarty.c:245
 #: ../../../www/radmin/templates/smarty.c:263
 msgid "Idle Timeout (seconds)"
-msgstr ""
+msgstr "Χρόνο αδράνειας (δευτερόλεπτα)"
 
 #: ../../../www/radmin/templates/smarty.c:246
 #: ../../../www/radmin/templates/smarty.c:264
@@ -955,7 +955,7 @@ msgstr "Όριο bandwidth στο ανέβασμα"
 #: ../../../www/radmin/templates/smarty.c:254
 #: ../../../www/radmin/templates/smarty.c:272
 msgid "Number of simultaneous logins. Leave Blank for unlimited"
-msgstr ""
+msgstr "Αριθμός ταυτόχρονων συνδέσεων. Αφήστε το κενό για απεριόριστο"
 
 #: ../../../www/radmin/templates/smarty.c:255
 #: ../../../www/radmin/templates/smarty.c:273
@@ -979,7 +979,7 @@ msgstr "Ρυθμίσεις Coova Chilli"
 msgid ""
 "These settings are used by Coova Chilli. Coova Chilli reloads it's config "
 "roughly every 10 minutes, or when it's restarted."
-msgstr ""
+msgstr "Αυτές οι ρυθμίσεις χρησιμοποιούνται από Coova Chilli. Φορτώνει τις ρυθμίσεις περίπου κάθε 10 λεπτά, ή όταν γίνεται επανεκκίνηση."
 
 #: ../../../www/radmin/templates/smarty.c:277
 msgid ""
@@ -1063,7 +1063,7 @@ msgstr "Ενεργές συνδέσεις"
 
 #: ../../../www/radmin/templates/smarty.c:297
 msgid "No active sessions"
-msgstr ""
+msgstr "Καμία ενεργή σύνδεση"
 
 #: ../../../www/radmin/templates/smarty.c:298
 #: ../../../www/radmin/templates/smarty.c:300
@@ -1072,11 +1072,11 @@ msgstr "Εμφάνιση όλων των συνδέσεων"
 
 #: ../../../www/radmin/templates/smarty.c:301
 msgid "Stop Auto Refresh Page"
-msgstr ""
+msgstr "Διακοπή αυτόματης ανανέωση σελίδας"
 
 #: ../../../www/radmin/templates/smarty.c:302
 msgid "Auto Refresh Page"
-msgstr ""
+msgstr "Αυτόματη ανανέωση σελίδας"
 
 #: ../../../www/radmin/templates/smarty.c:303
 #: ../../../www/radmin/templates/smarty.c:316
@@ -1107,12 +1107,12 @@ msgstr "Χρήση δεδομένων"
 #: ../../../www/radmin/templates/smarty.c:310
 #: ../../../www/radmin/templates/smarty.c:323
 msgid "Logout this session"
-msgstr ""
+msgstr "Αποσύνδεση αυτής την συνόδου"
 
 #: ../../../www/radmin/templates/smarty.c:311
 #: ../../../www/radmin/templates/smarty.c:324
 msgid "Are you sure you want to logout this session?"
-msgstr ""
+msgstr "Είστε σίγουρος πως θέλετε να αποσυνδεθείτε από αυτή την σύνοδο?"
 
 #: ../../../www/radmin/templates/smarty.c:312
 #: ../../../www/radmin/templates/smarty.c:325
@@ -1230,11 +1230,11 @@ msgstr "Αριθμός εισιτηρίων"
 #: ../../../www/radmin/templates/smarty.c:358
 msgid ""
 "Are you sure you want to delete the selected batches and all users in them?"
-msgstr ""
+msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε τις επιλεγμένες παρτίδες και όλους τους χρήστες σε αυτές ;"
 
 #: ../../../www/radmin/templates/smarty.c:362
 msgid "Create Tickets"
-msgstr ""
+msgstr "Δημιουργία εισιτηρίων"
 
 #: ../../../www/radmin/templates/smarty.c:363
 #: ../../../www/uam/templates/smarty.c:40
@@ -1270,11 +1270,11 @@ msgstr "Υποστήριξη"
 
 #: ../../../www/uam/templates/smarty.c:5
 msgid "By continuing, you agree to the below terms and conditions."
-msgstr ""
+msgstr "Συνεχίζοντας, συμφωνείτε με τους παρακάτω όρους και προϋποθέσεις."
 
 #: ../../../www/uam/templates/smarty.c:6
 msgid "Show Terms and Conditions"
-msgstr ""
+msgstr "Εμφάνιση Όρων και Προϋποθέσεων"
 
 #: ../../../www/uam/templates/smarty.c:7
 msgid "If you are already logged in, continue to your site"
@@ -1282,31 +1282,31 @@ msgstr "Αν είστε ήδη συνδεμένοι, προχωρήστε στο
 
 #: ../../../www/uam/templates/smarty.c:8
 msgid "Voucher Login"
-msgstr ""
+msgstr "Είσοδος κουπονιού"
 
 #: ../../../www/uam/templates/smarty.c:11
 msgid "Attempting Login..."
-msgstr ""
+msgstr "Γίνεται προσπάθεια για είσοδο..."
 
 #: ../../../www/uam/templates/smarty.c:12
 msgid "Logged in as"
-msgstr ""
+msgstr "Συνδεμένος σαν"
 
 #: ../../../www/uam/templates/smarty.c:13
 msgid "Remaining Session Time"
-msgstr ""
+msgstr "Υπόλοιπος χρόνος συνόδου"
 
 #: ../../../www/uam/templates/smarty.c:14
 msgid "Remaining Session Data"
-msgstr ""
+msgstr "Υπόλοιπο δεδομένα συνόδου"
 
 #: ../../../www/uam/templates/smarty.c:15
 msgid "Logout"
-msgstr ""
+msgstr "Αποσύνδεση"
 
 #: ../../../www/uam/templates/smarty.c:16
 msgid "Open Status Window"
-msgstr ""
+msgstr "Ανοικτό Παράθυρο Κατάστασης"
 
 #: ../../../www/uam/templates/smarty.c:17
 msgid "Trouble logging in?"
@@ -1314,7 +1314,7 @@ msgstr "Πρόβλημα κατά την είσοδο;"
 
 #: ../../../www/uam/templates/smarty.c:18
 msgid "Click here to try a less secure login."
-msgstr ""
+msgstr "Κάντε κλικ εδώ για να δοκιμάσετε μια λιγότερο ασφαλή σύνδεση."
 
 #: ../../../www/uam/templates/smarty.c:19
 msgid "You have disabled the secure javascript login method."
@@ -1730,7 +1730,7 @@ msgstr ""
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:1485
 msgid "Deleting User Expire After Query Failed: "
-msgstr ""
+msgstr "Διαγραφή Λήξη Χρήστη Μετά Από απέτυχε :"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:1509
 msgid "Setting User Expiry Date Query Failed: "
@@ -1742,7 +1742,7 @@ msgstr "Διαγραφή ημερομηνία λήξης χρήστη απέτυ
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:1552
 msgid "Locking User Account Query Failed: "
-msgstr ""
+msgstr "Αποτυχία κλειδώματος χρήστη :"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:1569
 msgid "User Account Lock Reason Query Failed: "
@@ -1762,7 +1762,7 @@ msgstr "Διαγραφή χρήστη απέτυχε"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:1651
 msgid "Deleting user radreply data failed: "
-msgstr ""
+msgstr "Διαγραφή χρήστη radreply απέτυχε:"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:1667
 msgid "Deleting users group failed: "
@@ -1798,7 +1798,7 @@ msgstr "Αποτυχία ανάκτησης πολλαπών τιμών του �
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:1921
 msgid "Retrieving MAC from IP failed: "
-msgstr ""
+msgstr "Ανάκτηση MAC από IP απέτυχε"
 
 #: ../../../www/radmin/edituser.php:52 ../../../www/radmin/passwd.php:62
 #: ../../../www/radmin/passwd.php:63 ../../../www/radmin/usermin.php:49
@@ -1897,7 +1897,7 @@ msgstr "Λεπτομέρεις_%s_παρτίδας"
 #: ../../../www/radmin/export.php:60
 #, php-format
 msgid "Group_%s_details"
-msgstr ""
+msgstr "Λεπτομέρεις_%s_Ομάδας"
 
 #: ../../../www/radmin/export.php:63
 msgid "Need a group or batch"
@@ -1905,7 +1905,7 @@ msgstr ""
 
 #: ../../../www/radmin/export.php:74
 msgid "Need valid format"
-msgstr ""
+msgstr "Χρειάζεται έγκυρη μορφή"
 
 #: ../../../www/radmin/groupconfig.php:49
 msgid "A minimum of one group is required"
@@ -2037,7 +2037,7 @@ msgstr "Λογότυπο site"
 
 #: ../../../www/radmin/includes/page_functions.inc.php:80
 msgid "Ticket Print Settings"
-msgstr ""
+msgstr "Ρυθμίσεις εκτύπωσης εισιτηρίου"
 
 #: ../../../www/radmin/includes/page_functions.inc.php:97
 msgid "Logoff"
@@ -2082,7 +2082,7 @@ msgstr "Πρόβλημα στην ταυτοποίησης. Παρακαλώ α�
 
 #: ../../../www/radmin/includes/session.inc.php:103
 msgid "No users defined in database. Please check your install"
-msgstr ""
+msgstr "Δεν υπάρχουν χρήστες που ορίζονται στη βάση δεδομένων. Παρακαλώ ελέγξτε την εγκατάσταση σας"
 
 #: ../../../www/radmin/loginconfig.php:51
 msgid "Login Screen Title"
@@ -2094,11 +2094,11 @@ msgstr "Απόκρυψε τον τίτλο (κεφαλίδα) από την σε
 
 #: ../../../www/radmin/loginconfig.php:56
 msgid "Login Screen Menu"
-msgstr ""
+msgstr "Είσοδος στην οθόνη του μενού"
 
 #: ../../../www/radmin/loginconfig.php:57
 msgid "Hide Menubar from login screen"
-msgstr ""
+msgstr "Απόκρυψε την γραμμή μενού από την οθόνη σύνδεσης"
 
 #: ../../../www/radmin/loginconfig.php:61
 msgid "Login Screen Footer"
@@ -2116,7 +2116,7 @@ msgstr "Link Βοήθειας"
 
 #: ../../../www/radmin/loginconfig.php:71
 msgid "Hide Help link from menu and footer"
-msgstr ""
+msgstr "Απόκρυψε το μενού της \"Βοήθειας\" από το μενού και υποσέλιδο"
 
 #: ../../../www/radmin/loginconfig.php:76
 msgid "Disable Javascript Login"
@@ -2146,17 +2146,17 @@ msgstr "Ο τίτλος της σελίδας που εμφανίζεται στ
 
 #: ../../../www/radmin/loginconfig.php:93
 msgid "Free Login Group"
-msgstr ""
+msgstr "Ομάδα δωρεάν πρόσβασης"
 
 #: ../../../www/radmin/loginconfig.php:94
 msgid ""
 "The group to create 'Free Login' users in. Leave blank to disable free "
 "logins"
-msgstr ""
+msgstr "Η ομάδα για τη δημιουργία χρηστών \"Δωρεάν Είσοδος\". Αφήστε κενό για να απενεργοποιήσετε τις δωρεάν συνδέσεις"
 
 #: ../../../www/radmin/loginconfig.php:98
 msgid "Free Login Button Text"
-msgstr ""
+msgstr "Κείμενο κουμπιού για δωρεάν πρόσβαση"
 
 #: ../../../www/radmin/loginconfig.php:99
 msgid ""
@@ -2166,17 +2166,17 @@ msgstr ""
 
 #: ../../../www/radmin/loginconfig.php:103
 msgid "Hide Username/Password (Voucher) login form"
-msgstr ""
+msgstr "Απόκρυψη φόρμας σύνδεσης για όνομα χρήστη / κωδικού (κουπόνι)"
 
 #: ../../../www/radmin/loginconfig.php:104
 msgid ""
 "Hides the login form (username/password fields). Useful if you only want a "
 "free login button"
-msgstr ""
+msgstr "Κρύβει τη φόρμα σύνδεσης (πεδία username / password). Χρήσιμο μόνο εάν θέλετε ένα κουμπί για ελεύθερη είσοδο"
 
 #: ../../../www/radmin/loginconfig.php:114
 msgid "Terms and Conditions"
-msgstr ""
+msgstr "Όροι και προϋποθέσεις"
 
 #: ../../../www/radmin/loginconfig.php:115
 msgid "Terms and Conditions of use (HTML) - Leave empty to not display"
@@ -2205,11 +2205,11 @@ msgstr ""
 
 #: ../../../www/radmin/loginconfig.php:134
 msgid "HTML Above login form"
-msgstr ""
+msgstr "HTML πάνω από την φόρμα εισόδου"
 
 #: ../../../www/radmin/loginconfig.php:135
 msgid "HTML to insert above login form (and free login)"
-msgstr ""
+msgstr "HTML κώδικας για εισαγωγή πάνω από την φόρμα εισόδου (και της δωρεάν εισόδου)"
 
 #: ../../../www/radmin/loginconfig.php:139
 msgid "HTML Below login form"
@@ -2319,7 +2319,7 @@ msgstr "Ορίστε μόνο ένα πεδίο χρονικού ορίου"
 
 #: ../../../www/radmin/newtickets.php:61
 msgid "Max of 1000 tickets per batch"
-msgstr ""
+msgstr "Μέγιστο 1000 εισιτήρια ανά παρτίδα"
 
 #: ../../../www/radmin/newtickets.php:78
 msgid "Please select a batch to print"
@@ -2338,7 +2338,7 @@ msgstr ""
 msgid ""
 "Too many users failed to create. Batch creation stopped. %s users have been "
 "successfully created"
-msgstr ""
+msgstr "Πάρα πολλοί χρήστες απέτυχαν να δημιουργηθούν. Η μαζική δημιουργία σταμάτησε. %s χρήστες δημιουργήθηκε με επιτυχία."
 
 #: ../../../www/radmin/newtickets.php:254
 msgid "Tickets Successfully Created"
@@ -2398,11 +2398,11 @@ msgstr "Παρακαλώ συμπληρώστε όλα τα πεδία των κ
 
 #: ../../../www/radmin/passwd.php:84
 msgid "Invalid Access level"
-msgstr ""
+msgstr "Ανύπαρκτο επίπεδο Admin "
 
 #: ../../../www/radmin/passwd.php:87
 msgid "Need an access level to create admin user"
-msgstr ""
+msgstr "Χρειάζεστε ένα επίπεδο πρόσβασης για τη δημιουργία διαχειριστή"
 
 #: ../../../www/radmin/passwd.php:90
 #, php-format
@@ -2419,7 +2419,7 @@ msgstr "Ο χρήστης δημιουργήθηκε"
 
 #: ../../../www/radmin/passwd.php:102
 msgid "Error Creating Admin User"
-msgstr ""
+msgstr "Πρόβλημα στην δημιουργία Admin χρήστη"
 
 #: ../../../www/radmin/passwd.php:110
 #, php-format
@@ -2432,7 +2432,7 @@ msgstr "Άκυρη αίτηση διαγραφής"
 
 #: ../../../www/radmin/passwd.php:135
 msgid "Unknown Access Level"
-msgstr ""
+msgstr "Άγνωστο επίπεδο πρόσβασης"
 
 #: ../../../www/radmin/purchase_wizard.php:70
 msgid "Your selected payment gateway doesn't support free vouchers"
@@ -2452,7 +2452,7 @@ msgstr "Αναμονή λογαριασμού για πληρωμή και εν�
 
 #: ../../../www/radmin/sessions.php:30
 msgid "Logged out: "
-msgstr ""
+msgstr "Αποσύνδεση :"
 
 #: ../../../www/radmin/sessions.php:33
 msgid "Unable to find active session for: "
@@ -2665,7 +2665,7 @@ msgstr "Τα κουπόνια ανανεώθηκαν"
 
 #: ../../../www/uam/includes/site.inc.php:53
 msgid "Free Access"
-msgstr ""
+msgstr "Δωρεάν πρόσβαση"
 
 #: ../../../www/uam/js.php:20
 msgid "Username is required"
