@@ -131,6 +131,7 @@ function tos_getresponse() {
             timeout: 5000,
             jsonpCallback: "tos_get_login",
             error: function () {
+                clear_error_messages();
                 display_error("No response from TOS server");
             }
         });
@@ -150,11 +151,13 @@ function get_challenge() {
                     // Check for valid challenge
 
                     if (typeof (resp.challenge) != 'string') {
+                        clear_error_messages();
                         display_error('Unable to get secure challenge');
                         return false;
                     }
                     if (resp.clientState === chilliController.stateCodes.AUTH) {
                         display_loggedinform();
+                        clear_error_messages();
                         error_message('Already logged in. Aborting login attempt');
 
                         return false;
@@ -170,6 +173,7 @@ function get_challenge() {
 
                 },
                 error: function () {
+                    clear_error_messages();
                     display_error("Server Timed Out. Please try again");
                 }
 
@@ -211,6 +215,7 @@ function get_login() {
             timeout: 5000,
             jsonpCallback: "process_reply",
             error: function () {
+                clear_error_messages();
                 display_error("Login Failed due to server error. Please try again");
             }
         });
@@ -236,6 +241,7 @@ function tos_get_login(resp) {
             timeout: 5000,
             jsonpCallback: "process_reply",
             error: function () {
+                clear_error_messages();
                 display_error("TOS login failed due to server error. Please try again");
             }
         });
