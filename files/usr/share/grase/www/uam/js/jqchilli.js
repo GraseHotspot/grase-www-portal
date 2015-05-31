@@ -128,7 +128,7 @@ function tos_getresponse() {
         {
             url: tosUrl,
             dataType: "jsonp",
-            timeout: 1000,
+            timeout: 5000,
             jsonpCallback: "tos_get_login",
             error: function () {
                 display_error("No response from TOS server");
@@ -208,7 +208,7 @@ function get_login() {
         {
             url: logonUrl,
             dataType: "jsonp",
-            timeout: 1000,
+            timeout: 5000,
             jsonpCallback: "process_reply",
             error: function () {
                 display_error("Login Failed due to server error. Please try again");
@@ -233,7 +233,7 @@ function tos_get_login(resp) {
         {
             url: logonUrl,
             dataType: "jsonp",
-            timeout: 1000,
+            timeout: 5000,
             jsonpCallback: "process_reply",
             error: function () {
                 display_error("TOS login failed due to server error. Please try again");
@@ -342,7 +342,7 @@ function update_status() {
         {
             url: urlRoot + 'status',
             dataType: "jsonp",
-            timeout: 1000,
+            timeout: 5000,
             jsonpCallback: "process_reply"
         });
 }
@@ -352,7 +352,7 @@ function logoff() {
         {
             url: urlRoot + 'logoff',
             dataType: "jsonp",
-            timeout: 1000,
+            timeout: 5000,
             jsonpCallback: "process_reply",
             error: function () {
                 display_error("Failed to logoff. Please try again");
