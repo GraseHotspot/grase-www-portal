@@ -1,0 +1,31 @@
+{% extends "TwigBundle::layout.html.twig" %}
+
+{% block head %}
+    <link rel="icon" sizes="16x16" href="{{ asset('favicon.ico') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/grase/css/demo.css') }}" />
+{% endblock %}
+
+{% block title 'Grase' %}
+
+{% block body %}
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-message">
+            <em>Notice</em>: {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    {% block content_header %}
+        <ul id="menu">
+            {% block content_header_more %}
+                <li><a href="{{ path('grase_radmin_homepage') }}">Grase Home</a></li>
+            {% endblock %}
+        </ul>
+
+        <div style="clear: both"></div>
+    {% endblock %}
+
+    <div class="block">
+        {% block content %}{% endblock %}
+    </div>
+
+{% endblock %}

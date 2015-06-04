@@ -1,3 +1,35 @@
 DONORS
 files/usr/share/grase/www/*/templates_c/
 files/usr/share/grase/www/vendor/
+
+# Cache and logs (Symfony2)
+/files/usr/share/grase/symfony/app/cache/*
+/files/usr/share/grase/symfony/app/logs/*
+!app/cache/.gitkeep
+!app/logs/.gitkeep
+
+# Parameters
+/files/usr/share/grase/symfony/app/config/parameters.yml
+/files/usr/share/grase/symfony/app/config/parameters.ini
+
+# Managed by Composer
+/files/usr/share/grase/symfony/app/bootstrap.php.cache
+/files/usr/share/grase/symfony/var/bootstrap.php.cache
+/files/usr/share/grase/symfony/bin/*
+!files/usr/share/grase/symfony/bin/console
+!files/usr/share/grase/symfony/bin/symfony_requirements
+/files/usr/share/grase/symfony/vendor/
+
+# Assets and user uploads
+/files/usr/share/grase/symfony/web/bundles/
+/files/usr/share/grase/symfony/web/uploads/
+
+# PHPUnit
+/files/usr/share/grase/symfony/app/phpunit.xml
+/files/usr/share/grase/symfony/phpunit.xml
+
+# Build data
+/files/usr/share/grase/symfony/build/
+
+# Composer PHAR
+/files/usr/share/grase/symfony/composer.phar

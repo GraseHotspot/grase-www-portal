@@ -1,0 +1,8 @@
+grase_radmin_homepage:
+    #path:     /hello/{name}
+    path:     /
+    defaults: { _controller: GraseRadminBundle:Default:index }
+
+grase_security:
+    resource: "@GraseRadminBundle/Controller/SecurityController.php"
+    type:     annotation

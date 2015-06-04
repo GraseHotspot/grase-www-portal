@@ -1,0 +1,7 @@
+grase_radmin:
+    resource: "@GraseRadminBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: @AppBundle/Controller/
+    type:     annotation
