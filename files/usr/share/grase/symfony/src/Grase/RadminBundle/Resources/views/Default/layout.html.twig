@@ -1,4 +1,4 @@
-{% extends "TwigBundle::layout.html.twig" %}
+{% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
 
 {% block head %}
     <link rel="icon" sizes="16x16" href="{{ asset('favicon.ico') }}" />
@@ -7,7 +7,7 @@
 
 {% block title 'Grase' %}
 
-{% block body %}
+{% block page_content %}
     {% for flashMessage in app.session.flashbag.get('notice') %}
         <div class="flash-message">
             <em>Notice</em>: {{ flashMessage }}
