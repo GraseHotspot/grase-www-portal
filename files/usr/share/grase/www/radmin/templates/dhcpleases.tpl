@@ -18,7 +18,7 @@
         <td>{$session.macAddress}</td>
         <td>{$session.dhcpState}</td>
         <td>{$session.session.userName}</td>
-        <td>{$usercomments[$session.session.userName]|truncate:50:"..."}</td>
+        <td>{$usercomments[$session.session.userName|lower]|truncate:50:"..."}</td>
     </tr>
 {/foreach}
 </table>
