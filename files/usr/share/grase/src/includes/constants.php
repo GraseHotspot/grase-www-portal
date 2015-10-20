@@ -22,7 +22,7 @@
 /* Define all Constants here */
 
 define("APPLICATION_NAME", "GRASE");
-define("APPLICATION_VERSION", "3.8.0~rc1");
+define("APPLICATION_VERSION", "3.8.0~rc2");
 
 // Account Status Constants (used in CSS) TODO: Obsolete these?
 
