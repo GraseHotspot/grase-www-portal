@@ -1,15 +1,16 @@
 # 
 # Translators:
 # Ifeoluwa Opeyemi A <info@htreasure.com>, 2011
+# guino <olivier.guin@ariasnet.com>, 2015
 # vgregoire <103vali@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Grase Hotspot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-05-29 19:12+1000\n"
-"PO-Revision-Date: 2015-05-29 09:14+0000\n"
-"Last-Translator: Timothy White <tim@purewhite.id.au>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/grase/language/fr/)\n"
+"PO-Revision-Date: 2015-10-03 13:23+0000\n"
+"Last-Translator: guino <olivier.guin@ariasnet.com>\n"
+"Language-Team: French (http://www.transifex.com/purewhite/grase/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -198,7 +199,7 @@ msgstr "Confirmer le nouveau mot de passe"
 
 #: ../../../www/radmin/templates/smarty.c:45
 msgid "User Group"
-msgstr ""
+msgstr "Groupe utilisateur"
 
 #: ../../../www/radmin/templates/smarty.c:46
 #: ../../../www/radmin/templates/smarty.c:130
@@ -245,7 +246,7 @@ msgstr "Mot de passe"
 
 #: ../../../www/radmin/templates/smarty.c:55
 msgid "Admin User Access Level"
-msgstr ""
+msgstr "Niveau d'accès administrateur"
 
 #: ../../../www/radmin/templates/smarty.c:56
 #: ../../../www/radmin/templates/smarty.c:57
@@ -394,7 +395,7 @@ msgstr "Expiration"
 #: ../../../www/radmin/templates/smarty.c:94
 #: ../../../www/radmin/templates/smarty.c:261
 msgid "Expire After"
-msgstr ""
+msgstr "Expire après"
 
 #: ../../../www/radmin/templates/smarty.c:95
 msgid "Max Data (Mb)"
@@ -593,7 +594,7 @@ msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:153
 msgid "Bandwidth Options"
-msgstr ""
+msgstr "Options de bande passante"
 
 #: ../../../www/radmin/templates/smarty.c:154
 msgid ""
@@ -619,7 +620,7 @@ msgstr "Lien pour le pied-de-page du site Web"
 
 #: ../../../www/radmin/templates/smarty.c:160
 msgid "Advanced Settings"
-msgstr ""
+msgstr "Configuration avancé"
 
 #: ../../../www/radmin/templates/smarty.c:161
 msgid ""
@@ -673,7 +674,7 @@ msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:178
 msgid "Voucher Config"
-msgstr ""
+msgstr "Configuration du coupon"
 
 #: ../../../www/radmin/templates/smarty.c:179
 msgid ""
@@ -753,7 +754,7 @@ msgstr "Durée du bail DHCP"
 
 #: ../../../www/radmin/templates/smarty.c:205
 msgid "DHCP State"
-msgstr ""
+msgstr "Etat du DHCP"
 
 #: ../../../www/radmin/templates/smarty.c:206
 msgid "UserName"
@@ -763,7 +764,7 @@ msgstr "Nom d'utilisateur"
 #: ../../../www/radmin/templates/smarty.c:309
 #: ../../../www/radmin/templates/smarty.c:322
 msgid "Account Comment"
-msgstr ""
+msgstr "Commentaire du compte"
 
 #: ../../../www/radmin/templates/smarty.c:210
 msgid "%1 Time Limit"
@@ -795,7 +796,7 @@ msgstr "Temps restant"
 
 #: ../../../www/radmin/templates/smarty.c:220
 msgid "Time Usage (Total)"
-msgstr ""
+msgstr "Temps d'utilisation (Total)"
 
 #: ../../../www/radmin/templates/smarty.c:221
 msgid "Account Expiry"
@@ -899,11 +900,11 @@ msgstr "Groupes"
 #: ../../../www/radmin/templates/smarty.c:242
 #: ../../../www/radmin/templates/smarty.c:260
 msgid "Never Expire"
-msgstr ""
+msgstr "N'expire jamais"
 
 #: ../../../www/radmin/templates/smarty.c:243
 msgid "Expire After First login"
-msgstr ""
+msgstr "Expire après la première connexion"
 
 #: ../../../www/radmin/templates/smarty.c:244
 #: ../../../www/radmin/templates/smarty.c:262
@@ -955,7 +956,7 @@ msgstr "Bande passante limite jusqu'à"
 #: ../../../www/radmin/templates/smarty.c:254
 #: ../../../www/radmin/templates/smarty.c:272
 msgid "Number of simultaneous logins. Leave Blank for unlimited"
-msgstr ""
+msgstr "Nombre d'accès simultanés. Laisser vide pour illimité"
 
 #: ../../../www/radmin/templates/smarty.c:255
 #: ../../../www/radmin/templates/smarty.c:273
@@ -964,7 +965,7 @@ msgstr ""
 #: ../../../www/uam/templates/smarty.c:34
 #: ../../../www/uam/templates/smarty.c:36
 msgid "Unlimited"
-msgstr ""
+msgstr "Illimité"
 
 #: ../../../www/radmin/templates/smarty.c:256
 msgid "Delete Group"
@@ -1059,24 +1060,24 @@ msgstr "Sessions pour %1"
 #: ../../../www/radmin/templates/smarty.c:296
 #: ../../../www/radmin/templates/smarty.c:299
 msgid "Active Sessions"
-msgstr ""
+msgstr "Sessions actives"
 
 #: ../../../www/radmin/templates/smarty.c:297
 msgid "No active sessions"
-msgstr ""
+msgstr "Aucune sessions actives"
 
 #: ../../../www/radmin/templates/smarty.c:298
 #: ../../../www/radmin/templates/smarty.c:300
 msgid "Display all Sessions"
-msgstr ""
+msgstr "Afficher toutes les sessions"
 
 #: ../../../www/radmin/templates/smarty.c:301
 msgid "Stop Auto Refresh Page"
-msgstr ""
+msgstr "Stopper le rafraîchissement automatique de la page"
 
 #: ../../../www/radmin/templates/smarty.c:302
 msgid "Auto Refresh Page"
-msgstr ""
+msgstr "Rafraîchissement automatique de la page"
 
 #: ../../../www/radmin/templates/smarty.c:303
 #: ../../../www/radmin/templates/smarty.c:316
@@ -1097,7 +1098,7 @@ msgstr "Heure"
 #: ../../../www/radmin/templates/smarty.c:306
 #: ../../../www/radmin/templates/smarty.c:319
 msgid "IP/MAC Address"
-msgstr ""
+msgstr "Adresse IP/MAC"
 
 #: ../../../www/radmin/templates/smarty.c:308
 #: ../../../www/radmin/templates/smarty.c:321
@@ -1107,12 +1108,12 @@ msgstr "Utilisation des données"
 #: ../../../www/radmin/templates/smarty.c:310
 #: ../../../www/radmin/templates/smarty.c:323
 msgid "Logout this session"
-msgstr ""
+msgstr "Quitter cette session"
 
 #: ../../../www/radmin/templates/smarty.c:311
 #: ../../../www/radmin/templates/smarty.c:324
 msgid "Are you sure you want to logout this session?"
-msgstr ""
+msgstr "Etes-vous sûr de vouloir quitter cette session ?"
 
 #: ../../../www/radmin/templates/smarty.c:312
 #: ../../../www/radmin/templates/smarty.c:325
@@ -1126,11 +1127,11 @@ msgstr "Connexion pour la configuration de Captive Portal"
 
 #: ../../../www/radmin/templates/smarty.c:314
 msgid "All Sessions"
-msgstr ""
+msgstr "Toutes les sessions"
 
 #: ../../../www/radmin/templates/smarty.c:315
 msgid "Display just active Sessions"
-msgstr ""
+msgstr "N'afficher que les sessions actives"
 
 #: ../../../www/radmin/templates/smarty.c:327
 #: ../../../www/radmin/includes/page_functions.inc.php:91
@@ -1156,7 +1157,7 @@ msgstr "Nom de l'utilisateur pour l'interface d'administration (différent de l'
 
 #: ../../../www/radmin/templates/smarty.c:338
 msgid "Please select your voucher type"
-msgstr ""
+msgstr "Veuillez sélectionner le type de coupon"
 
 #: ../../../www/radmin/templates/smarty.c:340
 msgid "Proceed to Payment"
@@ -1205,7 +1206,7 @@ msgstr "Ces paramètres sont utilisés par Chilli Coova et dnsmasq. Les deux Chi
 
 #: ../../../www/radmin/templates/smarty.c:349
 msgid "Network Config last reloaded %1"
-msgstr ""
+msgstr "La dernier rechargement de la config réseau %1"
 
 #: ../../../www/radmin/templates/smarty.c:350
 msgid "Network Config last updated %1"
@@ -1213,7 +1214,7 @@ msgstr "Network Config last updated %1"
 
 #: ../../../www/radmin/templates/smarty.c:353
 msgid "Batch ID"
-msgstr ""
+msgstr "ID Batch"
 
 #: ../../../www/radmin/templates/smarty.c:354
 msgid "Date Created"
@@ -1270,11 +1271,11 @@ msgstr "Soutien"
 
 #: ../../../www/uam/templates/smarty.c:5
 msgid "By continuing, you agree to the below terms and conditions."
-msgstr ""
+msgstr "En continuant, vous agréez les termes et conditions ci-dessous"
 
 #: ../../../www/uam/templates/smarty.c:6
 msgid "Show Terms and Conditions"
-msgstr ""
+msgstr "Afficher les termes et les conditions"
 
 #: ../../../www/uam/templates/smarty.c:7
 msgid "If you are already logged in, continue to your site"
@@ -1282,7 +1283,7 @@ msgstr "Si vous êtes déjà connecté, continuez sur votre site"
 
 #: ../../../www/uam/templates/smarty.c:8
 msgid "Voucher Login"
-msgstr ""
+msgstr "Identifiant avec le coupon"
 
 #: ../../../www/uam/templates/smarty.c:11
 msgid "Attempting Login..."
@@ -1306,7 +1307,7 @@ msgstr "Se déconnecter"
 
 #: ../../../www/uam/templates/smarty.c:16
 msgid "Open Status Window"
-msgstr ""
+msgstr "Afficher la fenêtre du status"
 
 #: ../../../www/uam/templates/smarty.c:17
 msgid "Trouble logging in?"
@@ -1314,7 +1315,7 @@ msgstr "Problème de connexion?"
 
 #: ../../../www/uam/templates/smarty.c:18
 msgid "Click here to try a less secure login."
-msgstr ""
+msgstr "Cliquez ici pour lancer une connexion moins sûr."
 
 #: ../../../www/uam/templates/smarty.c:19
 msgid "You have disabled the secure javascript login method."
@@ -2176,11 +2177,11 @@ msgstr ""
 
 #: ../../../www/radmin/loginconfig.php:114
 msgid "Terms and Conditions"
-msgstr ""
+msgstr "Termes et conditions"
 
 #: ../../../www/radmin/loginconfig.php:115
 msgid "Terms and Conditions of use (HTML) - Leave empty to not display"
-msgstr ""
+msgstr "Termes et conditions d'utilisation (HTML) - Laissez vide pour ne pas afficher"
 
 #: ../../../www/radmin/loginconfig.php:119
 msgid "Main CSS"
@@ -2287,23 +2288,23 @@ msgstr ""
 
 #: ../../../www/radmin/netconfig.php:94
 msgid "LAN Network Interface"
-msgstr ""
+msgstr "Interface LAN"
 
 #: ../../../www/radmin/netconfig.php:96
 msgid ""
 "The Network Interface that is connected to the LAN of the Hotspot (the side "
 "the clients connect to)"
-msgstr ""
+msgstr "L'interface réseau qui est connecté sur le LAN du Hotspot (où les clients se connectent)"
 
 #: ../../../www/radmin/netconfig.php:103
 msgid "WAN Network Interface"
-msgstr ""
+msgstr "Interface WAN"
 
 #: ../../../www/radmin/netconfig.php:105
 msgid ""
 "The Network Interface that is connected to the WAN of the Hotspot (the side "
 "the internet is connected to)"
-msgstr ""
+msgstr "L'interface réseau qui est connecté sur le WAN du Hotspot (Internet)"
 
 #: ../../../www/radmin/netconfig.php:212
 msgid "Changes pending Reload"
@@ -2398,7 +2399,7 @@ msgstr "Prière de compléter tous les champs du mot de passe"
 
 #: ../../../www/radmin/passwd.php:84
 msgid "Invalid Access level"
-msgstr ""
+msgstr "Niveau d'accès invalide"
 
 #: ../../../www/radmin/passwd.php:87
 msgid "Need an access level to create admin user"
@@ -2432,7 +2433,7 @@ msgstr "Requête de suppression invalide"
 
 #: ../../../www/radmin/passwd.php:135
 msgid "Unknown Access Level"
-msgstr ""
+msgstr "Niveau d'accès inconnu"
 
 #: ../../../www/radmin/purchase_wizard.php:70
 msgid "Your selected payment gateway doesn't support free vouchers"
