@@ -4,10 +4,11 @@ namespace Grase\RadminBundle\Entity\Radius;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * Check
  *
- * @ORM\Table()
+ * @ORM\Table(name="radius.radcheck")
  * @ORM\Entity(repositoryClass="Grase\RadminBundle\Entity\Radius\CheckRepository")
  */
 class Check
@@ -21,12 +22,13 @@ class Check
      */
     private $id;
 
+
     /**
-     * @var string
-     *
-     * @ORM\Column(name="UserName", type="string", length=64)
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="radiuscheck")
+     * @ORM\JoinColumn(name="UserName", referencedColumnName="username", nullable=false)
      */
     private $username;
+
 
     /**
      * @var string
@@ -150,5 +152,28 @@ class Check
     public function getValue()
     {
         return $this->value;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Grase\RadminBundle\Entity\Radius\User $user
+     * @return Check
+     */
+    public function setUser(\Grase\RadminBundle\Entity\Radius\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Grase\RadminBundle\Entity\Radius\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

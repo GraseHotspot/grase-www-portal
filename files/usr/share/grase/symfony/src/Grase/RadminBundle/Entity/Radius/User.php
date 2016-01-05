@@ -2,12 +2,15 @@
 
 namespace Grase\RadminBundle\Entity\Radius;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
+use Grase\RadminBundle\Entity\Radius\Check;
 
 /**
  * User
  *
- * @ORM\Table()
+ * @ORM\Table(name="radius.users")
  * @ORM\Entity(repositoryClass="Grase\RadminBundle\Entity\Radius\UserRepository")
  */
 class User
@@ -36,6 +39,12 @@ class User
     public function getUsername()
     {
         return $this->username;
+    }
+
+    public function getPasswordCheck()
+    {
+        $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'Cleartext-Password'));
+        return $this->getRadiuscheck()->matching($criteria);
     }
 
     /**
