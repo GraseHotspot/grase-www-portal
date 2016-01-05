@@ -3,6 +3,10 @@ grase_radmin_homepage:
     path:     /
     defaults: { _controller: GraseRadminBundle:Default:index }
 
+grase_users:
+    path:     /users/{group}
+    defaults: {}
+
 grase_security:
     resource: "@GraseRadminBundle/Controller/SecurityController.php"
     type:     annotation
