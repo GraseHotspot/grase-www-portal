@@ -11,3 +11,9 @@ services:
             - { name: kernel.event_listener, event: theme.sidebar_setup_menu, method: onSetupMenu }
         arguments: [@security.authorization_checker]
 
+    grase.show_user_listener:
+        class: Grase\RadminBundle\EventListener\ShowUserListener
+        tags:
+            - { name: kernel.event_listener, event: theme.navbar_user, method: onShowUser }
+        arguments: [@session, @doctrine, @service_container]
+

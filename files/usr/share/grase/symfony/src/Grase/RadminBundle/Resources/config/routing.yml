@@ -10,3 +10,11 @@ grase_users:
 grase_security:
     resource: "@GraseRadminBundle/Controller/SecurityController.php"
     type:     annotation
+
+avanzu_admin_logout:
+      path: /logout
+
+avanzu_admin_profile:
+    path: /profile/
+    defaults: {}
+

@@ -5,12 +5,13 @@ namespace Grase\RadminBundle\Entity\Radmin;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Avanzu\AdminThemeBundle\Model\UserInterface as ThemeUser;
 
 /**
  * @ORM\Table(name="auth")
  * @ORM\Entity(repositoryClass="Grase\RadminBundle\Entity\Radmin\UserRepository")
  */
-class User implements UserInterface, \Serializable
+class User implements UserInterface, \Serializable, ThemeUser
 {
     /**
      * Column(type="integer")
@@ -151,5 +152,26 @@ class User implements UserInterface, \Serializable
     public function getAccessLevel()
     {
         return $this->accessLevel;
+    }
+
+    public function getAvatar() {
+        return null;
+    }
+    public function getName(){
+        return $this->username;
+    }
+    public function getMemberSince(){
+        return null;
+    }
+    public function isOnline(){
+        return true;
+    }
+    public function getIdentifier()
+    {
+        return null;
+    }
+    public function getTitle()
+    {
+        return $this->username;
     }
 }
