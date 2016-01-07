@@ -27,7 +27,7 @@ class Check
      * @ORM\ManyToOne(targetEntity="User", inversedBy="radiuscheck")
      * @ORM\JoinColumn(name="UserName", referencedColumnName="username", nullable=false)
      */
-    private $username;
+    private $user;
 
 
     /**
@@ -60,29 +60,6 @@ class Check
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set username
-     *
-     * @param string $username
-     * @return Check
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-
-        return $this;
-    }
-
-    /**
-     * Get username
-     *
-     * @return string 
-     */
-    public function getUsername()
-    {
-        return $this->username;
     }
 
     /**
@@ -170,7 +147,7 @@ class Check
     /**
      * Get user
      *
-     * @return \Grase\RadminBundle\Entity\Radius\User 
+     * @return \Grase\RadminBundle\Entity\Radius\User
      */
     public function getUser()
     {

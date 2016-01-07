@@ -4,8 +4,13 @@ grase_radmin_homepage:
     defaults: { _controller: GraseRadminBundle:Default:index }
 
 grase_users:
+    path:     /users/
+    defaults: { _controller: GraseRadminBundle:Default:displayUsers}
+
+grase_users_group:
     path:     /users/{group}
-    defaults: {}
+    defaults: { _controller: GraseRadminBundle:Default:displayUsers}
+
 
 grase_security:
     resource: "@GraseRadminBundle/Controller/SecurityController.php"
