@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3f4dda2a987cb2b0296b43d37840bc4d",
-    "content-hash": "0df3311eff79e862915e86b4dd0f4495",
+    "hash": "1647b89fd6f1c611113854ab93939985",
+    "content-hash": "1050abd9c584493086c639a9ba62954f",
     "packages": [
         {
             "name": "avanzu/admin-theme-bundle",
-            "version": "1.3.0",
+            "version": "1.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/avanzu/AdminThemeBundle.git",
-                "reference": "41fc37c4f7a5616f475b5db39e48b1f085a0aa72"
+                "reference": "24a1ac93ace744b5e8cffe6681009a4cc8f3a133"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/avanzu/AdminThemeBundle/zipball/41fc37c4f7a5616f475b5db39e48b1f085a0aa72",
-                "reference": "41fc37c4f7a5616f475b5db39e48b1f085a0aa72",
+                "url": "https://api.github.com/repos/avanzu/AdminThemeBundle/zipball/24a1ac93ace744b5e8cffe6681009a4cc8f3a133",
+                "reference": "24a1ac93ace744b5e8cffe6681009a4cc8f3a133",
                 "shasum": ""
             },
             "require": {
@@ -50,7 +50,7 @@
                 }
             ],
             "description": "Admin Theme based on the AdminLTE Template for easy integration into symfony",
-            "time": "2015-03-21 14:47:51"
+            "time": "2015-12-29 23:17:55"
         },
         {
             "name": "doctrine/annotations",
