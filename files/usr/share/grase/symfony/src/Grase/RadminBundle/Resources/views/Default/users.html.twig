@@ -8,6 +8,7 @@
                 <th>Username</th>
                 <th>Data Limit</th>
                 <th>Time Limit</th>
+                <th>Comment</th>
             </tr>
         </thead>
     {% for user in users %}
@@ -15,6 +16,8 @@
             <td>{{ user.username }} <span>{{ user.password }}</span></td>
             <td>{{ user.datalimit|format_bytes }}</td>
             <td>{{ user.timelimit }}</td>
+            <td>{{ user.expiry|localizeddate('medium', 'short') }}</td>
+            <td>{{ user.comment }}</td>
         </tr>
     {% endfor %}
     </table>

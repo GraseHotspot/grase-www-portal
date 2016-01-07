@@ -102,6 +102,23 @@ class User
         return $this->getRadiuscheck()->matching($criteria)[0];
     }
 
+    public function getExpiry()
+    {
+        if ($this->getExpiryCheck()) {
+            return new \DateTime($this->getExpiryCheck()->getValue());
+        }
+        return null;
+    }
+
+    /**
+     * @return Check
+     */
+    private function getExpiryCheck()
+    {
+        $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'Expiration'));
+        return $this->getRadiuscheck()->matching($criteria)[0];
+    }
+
 
     /**
      * Set username
@@ -138,4 +155,22 @@ class User
     {
         $this->radiuscheck->removeElement($radiuscheck);
     }
+
+    /**
+     * @return string
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * @param string $comment
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+    }
+
+
 }
