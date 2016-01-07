@@ -38,13 +38,17 @@ class MenuItemListListener
                     "label" => "User Accounts",
                     // TODO Make this dynamically generated based on available groups
                     'children' => [
+                        'grase_users' => [
+                            'label' => 'All',
+                        ],
+
                         'users_computers' => [
-                            'route' => 'grase_users',
+                            'route' => 'grase_users_group',
                             'label' => 'Computer Accounts',
                             'route_args' => ['group' => 'computers']
                         ],
                         'users_staff' => [
-                            'route' => 'grase_users',
+                            'route' => 'grase_users_group',
                             'label' => 'Staff Accounts',
                             'route_args' => ['group' => 'staff']
                         ]

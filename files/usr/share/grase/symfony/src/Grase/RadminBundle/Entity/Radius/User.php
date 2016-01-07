@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
 use Grase\RadminBundle\Entity\Radius\Check;
+use Grase\Util\DateIntervalEnhanced;
 
 /**
  * User
@@ -22,7 +23,13 @@ class User
     private $username;
 
     /**
-     * @ORM\OneToMany(targetEntity="Check", mappedBy="username")
+     * @ORM\Column(type="string")
+     */
+    private $comment;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="Check", mappedBy="user", fetch="EAGER")
      */
     private $radiuscheck;
 
@@ -41,11 +48,77 @@ class User
         return $this->username;
     }
 
-    public function getPasswordCheck()
+    public function getPassword()
+    {
+        if ($this->getPasswordCheck()) {
+            return $this->getPasswordCheck()->getValue();
+        }
+
+        return null;
+    }
+
+
+    /**
+     * @return Check
+     */
+    private function getPasswordCheck()
     {
         $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'Cleartext-Password'));
-        return $this->getRadiuscheck()->matching($criteria);
+        return $this->getRadiuscheck()->matching($criteria)[0];
     }
+
+    public function getTimeLimit()
+    {
+        if ($this->getTimeLimitCheck()) {
+            $timeLimit = new DateIntervalEnhanced('PT'. $this->getTimeLimitCheck()->getValue() . 'S');
+            return $timeLimit->recalculate()->format('%H:%I:%S');
+        }
+        return null;
+    }
+
+    /**
+     * @return Check
+     */
+    private function getTimeLimitCheck()
+    {
+        $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'Max-All-Session'));
+        return $this->getRadiuscheck()->matching($criteria)[0];
+    }
+
+    public function getDataLimit()
+    {
+        if ($this->getDataLimitCheck()) {
+            return $this->getDataLimitCheck()->getValue();
+        }
+        return null;
+    }
+
+    /**
+     * @return Check
+     */
+    private function getDataLimitCheck()
+    {
+        $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'Max-Octets'));
+        return $this->getRadiuscheck()->matching($criteria)[0];
+    }
+
+    public function getExpiry()
+    {
+        if ($this->getExpiryCheck()) {
+            return new \DateTime($this->getExpiryCheck()->getValue());
+        }
+        return null;
+    }
+
+    /**
+     * @return Check
+     */
+    private function getExpiryCheck()
+    {
+        $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'Expiration'));
+        return $this->getRadiuscheck()->matching($criteria)[0];
+    }
+
 
     /**
      * Set username
@@ -82,4 +155,22 @@ class User
     {
         $this->radiuscheck->removeElement($radiuscheck);
     }
+
+    /**
+     * @return string
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * @param string $comment
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+    }
+
+
 }

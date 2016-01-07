@@ -16,4 +16,11 @@ class DefaultController extends Controller
 
         return $this->render('GraseRadminBundle:Default:index.html.twig', array('name' => $name));
     }
+
+    public function displayUsersAction($group = null) {
+        $users_repo = $this->getDoctrine()->getManager()->getRepository('Grase\RadminBundle\Entity\Radius\User');
+        //dump($users_repo->findAll()[3]->getPasswordCheck());
+
+        return $this->render('GraseRadminBundle:Default:users.html.twig', array('users' => $users_repo->findAll()));
+    }
 }

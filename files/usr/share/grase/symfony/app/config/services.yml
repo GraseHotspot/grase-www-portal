@@ -10,3 +10,15 @@ services:
 
     sha1salted_encoder:
         class: Grase\RadminBundle\Service\Sha1Salted
+
+    twig_extension_numbers:
+            class: Twig_Extensions_Extension_Number
+            public: false
+            tags:
+                - { name: twig.extension }
+
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }
+
