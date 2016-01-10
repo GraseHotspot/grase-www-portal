@@ -1,5 +1,6 @@
 # 
 # Translators:
+# Nikolaos Papapanagiotou <nikolaosp@gmail.com>, 2015
 # tomas213 <tomas213@gmail.com>, 2013-2015
 # tomas213 <tomas213@gmail.com>, 2011-2013
 msgid ""
@@ -7,9 +8,9 @@ msgstr ""
 "Project-Id-Version: Grase Hotspot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-05-29 19:12+1000\n"
-"PO-Revision-Date: 2015-05-29 12:57+0000\n"
+"PO-Revision-Date: 2015-09-04 20:28+0000\n"
 "Last-Translator: tomas213 <tomas213@gmail.com>\n"
-"Language-Team: Greek (http://www.transifex.com/projects/p/grase/language/el/)\n"
+"Language-Team: Greek (http://www.transifex.com/purewhite/grase/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -69,7 +70,7 @@ msgstr "Περιβάλλον εργασίας χρήστη"
 
 #: ../../../www/radmin/templates/smarty.c:11
 msgid "Device Information"
-msgstr "Επιλογές "
+msgstr "Πληροφορίες συσκευής"
 
 #: ../../../www/radmin/templates/smarty.c:12
 msgid "Model Name"
@@ -85,7 +86,7 @@ msgstr "HTTP Server"
 
 #: ../../../www/radmin/templates/smarty.c:15
 msgid "System Up-Time"
-msgstr "Χρόνους απρόσκοπτης λειτουργίας συστήματος"
+msgstr "Χρόνος απρόσκοπτης λειτουργίας συστήματος"
 
 #: ../../../www/radmin/templates/smarty.c:16
 msgid "Current Server Time"
@@ -209,7 +210,7 @@ msgstr "Διαγραφή χρήστη"
 #: ../../../www/radmin/templates/smarty.c:47
 #: ../../../www/radmin/templates/smarty.c:65
 msgid "Deleting or modifying the support user will prevent remote assistance."
-msgstr "Διαγραγή ή τροποποίηση του χρήστη υποστήριξης θα αποτρέψει την απομακρυσμένη βοήθεια"
+msgstr "Διαγραφή ή τροποποίηση του χρήστη υποστήριξης θα αποτρέψει την απομακρυσμένη βοήθεια"
 
 #: ../../../www/radmin/templates/smarty.c:48
 #: ../../../www/radmin/templates/smarty.c:50
@@ -226,7 +227,7 @@ msgstr "Είστε σίγουρος πως θέλετε να διαγράψετ�
 #: ../../../www/radmin/templates/smarty.c:51
 #: ../../../www/radmin/templates/smarty.c:69
 msgid "Cannot delete current user"
-msgstr "Δεν μπορεί να γίνει διαγραγή του τρέχων χρήστη"
+msgstr "Δεν μπορεί να γίνει διαγραφή του τρέχοντα χρήστη"
 
 #: ../../../www/radmin/templates/smarty.c:52
 #: ../../../www/radmin/templates/smarty.c:63
@@ -281,7 +282,7 @@ msgid ""
 "The MAC address is the network hardware address of the computer. It needs to"
 " be of the format XX-XX-XX-XX-XX-XX where XX is a hex number, typed in all "
 "capitals"
-msgstr "Η διεύθυνση MAC είναι η διεύθυνση υλικού του δικτύου του υπολογιστή. Πρέπει να του τη μορφή XX-XX-XX-XX-XX-XX, όπου ΧΧ είναι ένα δεκαεξαδικό αριθμό, δακτυλογραφημένο σε όλες τις πρωτεύουσες"
+msgstr "Η διεύθυνση MAC είναι η διεύθυνση υλικού του δικτύου του υπολογιστή. Πρέπει να του τη μορφή XX-XX-XX-XX-XX-XX, όπου ΧΧ είναι ένας δεκαεξαδικός αριθμός, δακτυλογραφημένος με κεφαλαία λατινικά"
 
 #: ../../../www/radmin/templates/smarty.c:73
 msgid "Choose a username"
@@ -320,7 +321,7 @@ msgstr "Σχόλιο σχετικά με τον χρήστη"
 msgid ""
 "When ether limit is reached, the user will be cut off. (i.e. after 1hour "
 "even if they still have data left)"
-msgstr "Όταν το όριο έχει φτάσει, ο χρήστης θα αποσυνδεθεί (π.χ. μετά από 1 ώρα, ακόμα αν έχει υπόλοιπο δεδομένων)."
+msgstr "Όταν όποιο από τα όρια έχει φτάσει, ο χρήστης θα αποσυνδεθεί (π.χ. μετά από 1 ώρα, ακόμα αν έχει υπόλοιπο δεδομένων)."
 
 #: ../../../www/radmin/templates/smarty.c:81
 #: ../../../www/radmin/templates/smarty.c:116
@@ -335,7 +336,7 @@ msgstr "Ένα όριο 0 (μηδέν), δεν σημαίνει απεριόρι
 msgid ""
 "If a limit is not set here, but is defined for the group, then the group "
 "limit will apply"
-msgstr "Αν δεν ορισθεί ένα όριο εδώ αλλά οριστεί στην ομάδα, τότε θα γίνει ενεργή το όριο της ομάδας."
+msgstr "Αν δεν ορισθεί ένα όριο εδώ αλλά οριστεί στην ομάδα, τότε θα γίνει ενεργό το όριο της ομάδας."
 
 #: ../../../www/radmin/templates/smarty.c:83
 #: ../../../www/radmin/templates/smarty.c:117
@@ -460,7 +461,7 @@ msgstr "Δώστε έναν λόγο κλειδώματος του λογαρι�
 
 #: ../../../www/radmin/templates/smarty.c:119
 msgid "Change the Data Limit"
-msgstr "Αλλάξτε στο όριο δεδομένων"
+msgstr "Αλλάξτε το όριο δεδομένων"
 
 #: ../../../www/radmin/templates/smarty.c:120
 msgid "Add Data to Limit (MiB)"
@@ -485,7 +486,7 @@ msgstr "Προσθέστε χρόνο στο όριο (Θα αγνοηθούν �
 #: ../../../www/radmin/templates/smarty.c:127
 #: ../../../www/radmin/templates/smarty.c:128
 msgid "Update User Details"
-msgstr "Ενημερώστε λεπτομέριεες χρήστη"
+msgstr "Ενημερώστε λεπτομέρειες χρήστη"
 
 #: ../../../www/radmin/templates/smarty.c:129
 msgid "Delete Computer Account"
@@ -496,7 +497,7 @@ msgid ""
 "User accounts are automatically deleted 2 months after expiry. Only accounts"
 " with zero usage should be manually deleted to prevent errors in the reports"
 " or statistics."
-msgstr "ΟΙ λογαριασμοί των χρηστών διαγράφονται αυτόματα 2 μήνες μετά την λήξη τους. Μόνο οι λογαριασμοί με μηδαμινή χρήση θα πρέπει να σβήνονται χειροκίνητα προς αποφυγή λαθών στις αναφορές των στατιστικών"
+msgstr "ΟΙ λογαριασμοί των χρηστών διαγράφονται αυτόματα 2 μήνες μετά την λήξη τους. Μόνο οι λογαριασμοί με μηδενική χρήση θα πρέπει να σβήνονται χειροκίνητα προς αποφυγή λαθών στις αναφορές των στατιστικών"
 
 #: ../../../www/radmin/templates/smarty.c:133
 msgid "Are you sure you want to delete this user?"
@@ -627,13 +628,13 @@ msgid ""
 " here isn't recommended as no validation is done. This page allows you to "
 "see and modify hidden settings. Some settings may reset back to defaults if "
 "you try to set them to an incorrect value, others will just break."
-msgstr "Όλες οι ρυθμίσεις στον πίνακα Radmin παρουσιάζεται εδώ. Τροποποίηση των ρυθμίσεων εδώ δεν συνιστάται καθώς δεν γίνεται καμιία επικύρωση. Αυτή η σελίδα σας επιτρέπει να δείτε και να τροποποιήσετε κρυφές ρυθμίσεις. Ορισμένες ρυθμίσεις μπορεί να επαναφέρει πίσω τις αρχικές ρυθμίσεις αν προσπαθήσετε να τα ρυθμίσετε σε μια εσφαλμένη τιμή."
+msgstr "Όλες οι ρυθμίσεις στον πίνακα Radmin παρουσιάζονται εδώ. Τροποποίηση των ρυθμίσεων εδώ, δεν συνιστάται καθώς δεν γίνεται καμιία επικύρωση. Αυτή η σελίδα σας επιτρέπει να δείτε και να τροποποιήσετε κρυφές ρυθμίσεις. Ορισμένες ρυθμίσεις μπορεί να επαναφέρθούν πίσω στις αρχικές ρυθμίσεις αν προσπαθήσετε να τις ρυθμίσετε σε μια εσφαλμένη τιμή."
 
 #: ../../../www/radmin/templates/smarty.c:162
 msgid ""
 "CAUTION: Some settings here are internal and modifying them will break "
 "things"
-msgstr "ΠΡΟΣΟΧΗ: Ορισμένες ρυθμίσεις εδώ είναι εσωτερικές και τροποποιώντας τες, θα τις χαλάσει"
+msgstr "ΠΡΟΣΟΧΗ: Ορισμένες ρυθμίσεις εδώ είναι εσωτερικές και η τροποποιησή τους μπορεί να προκαλέσει προβλήματα"
 
 #: ../../../www/radmin/templates/smarty.c:164
 msgid "Value"
@@ -654,7 +655,7 @@ msgstr "Αποθήκευση ρυθμίσεων"
 #: ../../../www/radmin/templates/smarty.c:168
 #: ../../../www/radmin/templates/smarty.c:339
 msgid "Please select your preferred payment method"
-msgstr "Παρακαλώ επιλέξτε τον επιθυμητό τρόπος πληρωμής"
+msgstr "Παρακαλώ επιλέξτε τον επιθυμητό τρόπο πληρωμής"
 
 #: ../../../www/radmin/templates/smarty.c:169
 msgid "Logged in as <b>%1</b>"
@@ -679,13 +680,13 @@ msgstr "Ρύθμιση κουπονιών"
 msgid ""
 "Vouchers are disabled if nether Initial Voucher, or Topup Voucher are "
 "selected."
-msgstr ""
+msgstr "Τα κουπώνια είναι απενεργοποιημένα αν δεν επιλεγεί είτε το Αρχικό κουπόνι ή Κουπόνι Ανανέωσης"
 
 #: ../../../www/radmin/templates/smarty.c:180
 msgid ""
 "Vouchers without a Time or Data limit do not inherit the default limits from"
 " the group, but any Recurring limits will apply."
-msgstr "Κουπόνια χωρίς όρια χρόνου ή δεδομένων δεν παίρνουν τα προεπιλεγμένα όρια από την ομάδα θα πάρουν επαναλαμβανόμενα όρια"
+msgstr "Κουπόνια χωρίς όρια χρόνου ή δεδομένων δεν παίρνουν τα προεπιλεγμένα όρια από την ομάδα, αλλά θα πάρουν επαναλαμβανόμενα όρια"
 
 #: ../../../www/radmin/templates/smarty.c:181
 msgid "Voucher Name"
@@ -715,7 +716,7 @@ msgstr "Αρχικό Κουπόνι"
 
 #: ../../../www/radmin/templates/smarty.c:187
 msgid "Topup Voucher"
-msgstr ""
+msgstr "Κουπόνι Ανανέωσης"
 
 #: ../../../www/radmin/templates/smarty.c:188
 #: ../../../www/radmin/templates/smarty.c:240
@@ -775,7 +776,7 @@ msgstr "%1 όριο δεδομένων"
 
 #: ../../../www/radmin/templates/smarty.c:215
 msgid "Total Data usage for the current month"
-msgstr "Συνολική χρήση δεδομένων για τον τρέχων μήνα"
+msgstr "Συνολική χρήση δεδομένων για τον τρέχοντα μήνα"
 
 #: ../../../www/radmin/templates/smarty.c:216
 msgid "Data Usage (M)"
@@ -795,7 +796,7 @@ msgstr "Χρόνος που απομένει"
 
 #: ../../../www/radmin/templates/smarty.c:220
 msgid "Time Usage (Total)"
-msgstr "Χρήση ώρας (σύνολο)"
+msgstr "Χρήση χρόνου (σύνολο)"
 
 #: ../../../www/radmin/templates/smarty.c:221
 msgid "Account Expiry"
@@ -837,7 +838,7 @@ msgstr "Για παράδειγμα, «+1 μήνα» θα θέσει τη λήξ
 msgid ""
 "Expiry is calculated to the second, so if you want it to a date for example,"
 " try \"+1 week midnight\"."
-msgstr "Η λήξη υπολογίζεται στο δευτερόλεπτο, οπότε αν το θέλετε σε μια ημερομηνία, για παράδειγμα, προσπαθήστε να \"+1 εβδομάδα μεσάνυχτα\"."
+msgstr "Η λήξη υπολογίζεται στο δευτερόλεπτο, οπότε αν το θέλετε σε μια ημερομηνία, για παράδειγμα, δοκιμάστε το \"+1 εβδομάδα μεσάνυχτα\"."
 
 #: ../../../www/radmin/templates/smarty.c:231
 msgid ""
@@ -854,7 +855,7 @@ msgid ""
 "gnu/Manuals/radius/html_node/radius_186.html</a> for more details. Only "
 "basic format checking is done, so please ensure that the correct format is "
 "used. Leaving Login Times blank will allow login at any time."
-msgstr "Η ώρα εισόδου πρέπει να είναι με τη μορφή των χρονικών διαστημάτων UUCP. Δείτε <a target = \"_blank\" href=\"http://ftp.gnu.org/pub/old-gnu/Manuals/radius/html_node/radius_186.html\">http://ftp.gnu.org/pub/old-gnu/Manuals/radius/html_node/radius_186.html</a> για περισσότερες λεπτομέρειες. Μόνο βασικός έλεγχος γίνεται, έτσι παρακαλώ να εξασφαλίσετε ότι η σωστή μορφή χρησιμοποιείται. Αφήνοντας κενή τον Αριθμό Είσόδου, θα επιτρέψει την είσοδο σε οποιαδήποτε στιγμή."
+msgstr "Η ώρα εισόδου πρέπει να είναι με τη μορφή των χρονικών διαστημάτων UUCP. Δείτε <a target = \"_blank\" href=\"http://ftp.gnu.org/pub/old-gnu/Manuals/radius/html_node/radius_186.html\">http://ftp.gnu.org/pub/old-gnu/Manuals/radius/html_node/radius_186.html</a> για περισσότερες λεπτομέρειες. Γίνεται μόνο βασικός έλεγχος, έτσι παρακαλώ να εξασφαλίσετε ότι χρησιμοποιείται η σωστή μορφή. Αφήνοντας κενό το πεδίο τον Αριθμό Είσόδων, θα επιτρέψει την είσοδο σε οποιαδήποτε στιγμή."
 
 #: ../../../www/radmin/templates/smarty.c:233
 msgid ""
@@ -868,12 +869,12 @@ msgid ""
 "creating a member. The limits are applied at user creation time, if "
 "\"Inherit from group\" is selected. If multiple limits are specified, the "
 "first limit to be reached will disconnect the user."
-msgstr "Τα όρια εδώ είναι τα προεπιλεγμένα για τα μέλη της ομάδας, εκτός αν προέχει κατά τη δημιουργία ενός μέλους. Εάν δεν έχουν καθοριστεί πολλαπλά όρια, το πρώτο όριο που πρέπει να επιτευχθεί θα αποσυνδεθεί ο χρήστης."
+msgstr "Τα όρια εδώ είναι τα προεπιλεγμένα για τα μέλη της ομάδας, εκτός αν παρακαμφθουν κατά τη δημιουργία ενός μέλους. Τα όρια τοποθετούνται κατά τη δημιουργία του χρήστη, αν το \"Κληρονομήστε από την ομάδα\" είναι επιλεγμένο. Αν έχουν οριστεί πολλαπλά όρια, το πρώτο όριο που θα ξεπεραστεί θα αποσυνδέσει τον χρήστη."
 
 #: ../../../www/radmin/templates/smarty.c:235
 msgid ""
 "Idle Timeout overrides the default timeout set in Coova Chilli Settings."
-msgstr ""
+msgstr "Η ρύθμιση \"Χρόνος Αδράνειας\" παρακάμπτει την προεπιλεγμένο χρόνο αδράνειας που έχει οριστεί στις ρυθμίσεις Coova Chilli."
 
 #: ../../../www/radmin/templates/smarty.c:236
 msgid ""
@@ -881,7 +882,7 @@ msgid ""
 "change existing users of the group and will only apply to new users. "
 "Recurring limits, Bandwidth and simultaneous logins will all apply to "
 "existing and new members."
-msgstr ""
+msgstr "Η αλλαγή της Λήξης, της λήξης μετά από πρώτη σύνδεση, των ορίων δεδομένων ή χρόνου, δεν θα αλλάξει υπάρχοντες χρήστες της ομάδας και θα ισχύει μόνο για νέους χρήστες.  Επαναλαμβανόμενα όρια, όρια εύρους ζώνης και ταυτόχρονες συνδέσεις θα ισχύουν για καινούριους και νέους χρήστες."
 
 #: ../../../www/radmin/templates/smarty.c:237
 msgid ""
@@ -889,7 +890,7 @@ msgid ""
 "to yes, otherwise users may be able to use more than the allocated limit. "
 "Data limits should only be used with larger time periods, and users may need"
 " to logout and log back in if they use past the time period."
-msgstr "\"Επαναλαμβανόμενα Δεδομένα\" και \"Προθεσμίες Χρόνου\" δεν πρέπει να χρησιμοποιούνται με τις \"Ταυτόχρονες Συνδέσεις\" ενεργοποιημένη,  διαφορετικά οι χρήστες μπορουν να είναι σε θέση να χρησιμοποιήσουν περισσότερα από το όριο που διατίθενται. Τα όρια των δεδομένων θα πρέπει να χρησιμοποιείούτναι μόνο με μεγαλύτερες χρονικές περιόδους και οι χρήστες μπορεί να χρειαστούν να αποσυνδεθούν και να συνδεθούν ξανά στο αν χρησιμοποιούν το χρονικό διάστημα."
+msgstr "\"Επαναλαμβανόμενα Δεδομένα\" και \"Προθεσμίες Χρόνου\" δεν πρέπει να χρησιμοποιούνται με τις \"Ταυτόχρονες Συνδέσεις\" ενεργοποιημένες,  διαφορετικά οι χρήστες μπορουν να είναι σε θέση να χρησιμοποιήσουν περισσότερα από το όριο που τους ορίζεται Τα όρια των δεδομένων θα πρέπει να χρησιμοποιειούνται μόνο με μεγαλύτερες χρονικές περιόδους και οι χρήστες μπορεί να χρειαστούν να αποσυνδεθούν και να συνδεθούν ξανά αν έχουν χρησιμοποιήσει πάνω από το όριο χρόνου τους."
 
 #: ../../../www/radmin/templates/smarty.c:238
 #: ../../../www/radmin/includes/page_functions.inc.php:81
@@ -979,13 +980,13 @@ msgstr "Ρυθμίσεις Coova Chilli"
 msgid ""
 "These settings are used by Coova Chilli. Coova Chilli reloads it's config "
 "roughly every 10 minutes, or when it's restarted."
-msgstr "Αυτές οι ρυθμίσεις χρησιμοποιούνται από Coova Chilli. Φορτώνει τις ρυθμίσεις περίπου κάθε 10 λεπτά, ή όταν γίνεται επανεκκίνηση."
+msgstr "Αυτές οι ρυθμίσεις χρησιμοποιούνται από το Coova Chilli.  Το Coova Chilli ξαναφορτώνει τις ρυθμίσεις του περίπου κάθε 10 λεπτά, ή όταν γίνεται επανεκκίνηση."
 
 #: ../../../www/radmin/templates/smarty.c:277
 msgid ""
 "If you change the MAC Auth Password, no computer accounts will be able to "
 "login until Coova Chilli reloads it's config, or is manually restarted."
-msgstr "Εάν αλλάξετε τον κωδικό του MAC, κανένας λογαριασμός υπολογιστή δεν θα μπορεί να συνδεθεί μέχρι Coova Chilli να ανανεωθεί ή γίνει χειροκίνητα επανεκκίνηση."
+msgstr "Εάν αλλάξετε τον κωδικό του MAC, κανένας λογαριασμός υπολογιστή δεν θα μπορεί να συνδεθεί μέχρι το Coova Chilli να ανανεωθεί ή να γίνει χειροκίνητα επανεκκίνησή του."
 
 #: ../../../www/radmin/templates/smarty.c:278
 msgid "Chilli Config last updated %1"
@@ -1072,7 +1073,7 @@ msgstr "Εμφάνιση όλων των συνδέσεων"
 
 #: ../../../www/radmin/templates/smarty.c:301
 msgid "Stop Auto Refresh Page"
-msgstr "Διακοπή αυτόματης ανανέωση σελίδας"
+msgstr "Διακοπή αυτόματης ανανέωσης σελίδας"
 
 #: ../../../www/radmin/templates/smarty.c:302
 msgid "Auto Refresh Page"
@@ -1107,7 +1108,7 @@ msgstr "Χρήση δεδομένων"
 #: ../../../www/radmin/templates/smarty.c:310
 #: ../../../www/radmin/templates/smarty.c:323
 msgid "Logout this session"
-msgstr "Αποσύνδεση αυτής την συνόδου"
+msgstr "Αποσύνδεση αυτής της συνόδου"
 
 #: ../../../www/radmin/templates/smarty.c:311
 #: ../../../www/radmin/templates/smarty.c:324
@@ -1156,7 +1157,7 @@ msgstr "Κωδικός για το διαχειριστικό τμήμα (Δια
 
 #: ../../../www/radmin/templates/smarty.c:338
 msgid "Please select your voucher type"
-msgstr "Παρακαλώ επιλέξτε τον τύπο του κουπονιού"
+msgstr "Παρακαλώ επιλέξτε τον τύπο του κουπονιού σας"
 
 #: ../../../www/radmin/templates/smarty.c:340
 msgid "Proceed to Payment"
@@ -1169,7 +1170,7 @@ msgstr "Ανεβάστε ένα λογότυπο"
 
 #: ../../../www/radmin/templates/smarty.c:342
 msgid "Logo Image"
-msgstr "Φωτογραφία λογότυπου"
+msgstr "Εικόνα λογότυπου"
 
 #: ../../../www/radmin/templates/smarty.c:343
 msgid "Select new logo file."
@@ -1244,7 +1245,7 @@ msgstr "Σφάλμα"
 #: ../../../www/radmin/templates/smarty.c:364
 #: ../../../www/uam/templates/smarty.c:41
 msgid "An Error has occured. Please report the error to the administrator"
-msgstr "Ένα σφάλμα δημιουργήθηκε. Παρακαλώ αναφέρετε το στον διαχειριστή"
+msgstr "Ένα σφάλμα δημιουργήθηκε. Παρακαλώ αναφέρετέ το στον διαχειριστή"
 
 #: ../../../www/radmin/templates/smarty.c:365
 msgid ""
@@ -1298,7 +1299,7 @@ msgstr "Υπόλοιπος χρόνος συνόδου"
 
 #: ../../../www/uam/templates/smarty.c:14
 msgid "Remaining Session Data"
-msgstr "Υπόλοιπο δεδομένα συνόδου"
+msgstr "Υπόλοιπο δεδομένων συνόδου"
 
 #: ../../../www/uam/templates/smarty.c:15
 msgid "Logout"
@@ -1306,7 +1307,7 @@ msgstr "Αποσύνδεση"
 
 #: ../../../www/uam/templates/smarty.c:16
 msgid "Open Status Window"
-msgstr "Ανοικτό Παράθυρο Κατάστασης"
+msgstr " Άνοιγμα Παράθυρου Κατάστασης"
 
 #: ../../../www/uam/templates/smarty.c:17
 msgid "Trouble logging in?"
@@ -1366,16 +1367,16 @@ msgstr "Χρόνος αδράνειας"
 
 #: ../../../www/uam/templates/smarty.c:38
 msgid "Downloaded"
-msgstr "Κατεβασμένο"
+msgstr "Κατέβηκαν"
 
 #: ../../../www/uam/templates/smarty.c:39
 msgid "Uploaded"
-msgstr "Ανεβασμένα"
+msgstr "Ανέβηκαν"
 
 #: ../../../www/radmin/advancedsettings.php:34
 #, php-format
 msgid "Updated %s setting with value %s"
-msgstr ""
+msgstr "Η ρύθμιση %s ενημερώθηκε με τιμή %s"
 
 #: ../../../www/radmin/chilliconfig.php:35
 msgid "Walled Garden allowed hosts"
@@ -1385,7 +1386,7 @@ msgstr "Επιτρεπόμενοι υπολογιστές (Walled Garden )"
 msgid ""
 "IP's and Hostnames that are accessible without logging in. DNS Lookup is only done at startup time so not\n"
 "            suitable for domains with Round Robin IP Addresses"
-msgstr ""
+msgstr "IP και ονόματα υπολογιστών που είναι προσβάσιμες χωρίς να συνδεθείτε. Η αναζήτηση DNS γίνεται μόνο κατά το χρόνο εκκίνησης, έτσι δεν είναι κατάλληλο για Round Robin διευθύνσεις IP"
 
 #: ../../../www/radmin/chilliconfig.php:43
 msgid "Walled Garden allowed domains"
@@ -1393,7 +1394,7 @@ msgstr "Επιτρεπόμενα domains (Walled Garden )"
 
 #: ../../../www/radmin/chilliconfig.php:44
 msgid "Domains (and their subdomains) that are accesible without logging in."
-msgstr "Ονόματα (και υποτομείς τους) που είναι προσβάσιμες χωρίς να συνδεθείτε."
+msgstr "Ονόματα τομέων (και υποτομείς τους) που είναι προσβάσιμα χωρίς να συνδεθείτε."
 
 #: ../../../www/radmin/chilliconfig.php:52
 msgid "MAC Auth Password"
@@ -1403,7 +1404,7 @@ msgstr "Κωδικός για πρόσβαση με MAC διευθύνσεις"
 msgid ""
 "The MAC Password used to autologin Computer Accounts. Change this to something obscure as it can be used to\n"
 "             login using a known MAC address as the username."
-msgstr ""
+msgstr "Ο κωδικός MAC που χρησιμοποιείται για την αυτόματη εισαγωγή  λογαριασμών υπολογιστή. Αλλάξτε το σε κάτι ασαφες  καθώς μπορεί να χρησιμοποιηθεί για να συνδεθείτε χρησιμοποιώντας μια γνωστή διεύθυνση MAC ως όνομα χρήστη."
 
 #: ../../../www/radmin/chilliconfig.php:60
 msgid "Default Session Idle Timeout"
@@ -1429,7 +1430,7 @@ msgstr "Αρχή DHCP"
 
 #: ../../../www/radmin/chilliconfig.php:74
 msgid "Start of DHCP Range (offset from start of network range)"
-msgstr ""
+msgstr "Έναρξη του DHCP εύρους. (Αντισταθμίζεται από την αρχή του ορίου του δικτύου)"
 
 #: ../../../www/radmin/chilliconfig.php:78
 msgid "DHCP End"
@@ -1437,7 +1438,7 @@ msgstr "Τέλος του DHCP"
 
 #: ../../../www/radmin/chilliconfig.php:79
 msgid "End of DHCP Range (offset from start of network range)"
-msgstr ""
+msgstr "Λήξη του DHCP εύρους. (Αντισταθμίζεται από την αρχή του ορίου του δικτύου)"
 
 #: ../../../www/radmin/chilliconfig.php:117
 #: ../../../www/radmin/chilliconfig.php:156
@@ -1456,11 +1457,11 @@ msgstr "Οι ρυθμίσεις ταιριάζουν με τις τρέχουσ�
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:65
 msgid "Unable to select users needing First Login Activation"
-msgstr ""
+msgstr "Αδύνατη η επιλογή των χρηστών που χρειάζονται να συνδεθούν για πρώτη φορά για να ενεργοποιηθούν"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:78
 msgid "First login users activiated"
-msgstr ""
+msgstr "Ενεργοποίηση των χρηστών που συνδεθήκαν πρώτη φορά"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:95
 msgid "Unable to select user from radcheck"
@@ -1498,11 +1499,11 @@ msgstr "Οι χρήστες που έληξαν διαγράφηκαν"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:242
 msgid "OutOfTime users deleted"
-msgstr ""
+msgstr "Διαγραγή χρηστών εκτός χρόνου"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:279
 msgid "OutOfData users deleted"
-msgstr ""
+msgstr "Διαγραφή χρηστών εκτός ορίου δεδομένων"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:332
 msgid "Unable to insert data into mtotaccttmp: "
@@ -1539,31 +1540,31 @@ msgstr "Παλιά αρχεία λογαριασμών radius αρχειοθετ
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:524
 msgid "Unable to clear old Postauth rows: "
-msgstr ""
+msgstr "Αδυναμία καθαρισμού παλιών σειρών Postauth:"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:528
 msgid "Old Postauth rows cleared"
-msgstr ""
+msgstr "Παλιές σειρές Postauth καθαρίστηκαν"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:541
 msgid "Unable to get PostAuth MAC Reject IDs: "
-msgstr ""
+msgstr "Αδυναμία παραλαβής PostAuth MAC Reject IDs: "
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:558
 msgid "Unable to delete PostAuth MAC Reject entry: "
-msgstr ""
+msgstr "Αδυναμία διαγραφής εισαγωγής PostAuth MAC Reject:"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:567
 msgid "PostAuth MAC Reject rows cleared"
-msgstr ""
+msgstr "Οι σειρές PostAuth MAC Reject καθαρίστηκαν"
 
 #: ../../../www/radmin/classes/DatabaseConnections.class.php:67
 msgid "DB Config File isn't a valid file."
-msgstr "Το αρχείο ρυθμίσεων της DB δεν είναι είναι συμβατό"
+msgstr "Το αρχείο ρυθμίσεων της DB δεν είναι σωστό."
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:95
 msgid "Retrieving Months Accounting Data Available For failed: "
-msgstr ""
+msgstr "Η Ανάκτηση δεδομένων μηνών απέτυχε :"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:140
 msgid "Retrieving Session by RadAcctID failed: "
@@ -1572,23 +1573,23 @@ msgstr "Αποτυχία ανάκτησης Δεδομένων βάση RadAcctI
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:180
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:221
 msgid "Retrieving Sessions by Username failed: "
-msgstr "Ανάκτηση συνδέσεων ανά όνομα χρήστη απέτυχε :"
+msgstr "Η Ανάκτηση συνδέσεων ανά όνομα χρήστη απέτυχε :"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:245
 msgid "Retrieving Current Session by Username failed: "
-msgstr "Ανάκτηση τωρινών συνδέσεων ανά όνομα χρήστη απέτυχε :"
+msgstr "Η Ανάκτηση τωρινών συνδέσεων ανά όνομα χρήστη απέτυχε :"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:269
 msgid "Retrieving Username by Active Session (ipadddress): "
-msgstr "Ανάκτηση όνομα χρηστών ανά ενεργές συνδέσεις (διευθύνσεις IP)"
+msgstr "Ανάκτηση ονομάτων χρηστών ανά ενεργές συνδέσεις (διευθύνσεις IP):"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:299
 msgid "Get All User radcheck details Query failed: "
-msgstr ""
+msgstr "Η Ανάκτηση όλων τα δεδομένων χρηστών από την radcheck απέτυχε :"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:317
 msgid "Get All User radreply details Query failed: "
-msgstr ""
+msgstr "Η Ανάκτηση όλων των δεδομένων χρηστών από την radreply απέτυχε :"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:336
 msgid "Get All User Group details Query failed: "
@@ -1596,15 +1597,15 @@ msgstr "Η λήψη των λεπτομεριών για την \"Ομάδα ό�
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:354
 msgid "Get All User Comment details Query failed: "
-msgstr ""
+msgstr "Ανάκτηση όλων τα σχόλειων από τους χρήστες απέτυχε :"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:379
 msgid "Get All User radacct details Query failed: "
-msgstr ""
+msgstr "Ανάκτηση όλων των λεπτομεριών των χρηστών radacct απέτυχε :"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:407
 msgid "Get All User mtotacct details Query failed: "
-msgstr ""
+msgstr "Ανάκτηση των λεπτομεριών όλων των χρηστών radacct απέτυχε :"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:457
 msgid "Get User details Query failed: "
@@ -1612,7 +1613,7 @@ msgstr "Ανάκτηση λεπτομεριών χρήστη απέτυχε :"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:478
 msgid "Get User radreply details Query failed: "
-msgstr ""
+msgstr "Η ανάκτηση του radreply του χρήστη απέτυχε :"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:613
 msgid "Get User Group Query failed: "
@@ -1628,7 +1629,7 @@ msgstr "Ανάκτηση χρηστών ανά όμάδα απέτυχε"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:691
 msgid "Get Computer Users Query Failed: "
-msgstr ""
+msgstr "Ανάκτηση χρηστών υπολογιστών απέτυχε :"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:724
 msgid "Get User Last Logout Query Failed: "
@@ -1640,7 +1641,7 @@ msgstr "Ανάκτηση συνολικού χρόνου σύνδεσης χρή
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:788
 msgid "Get User Time Usage (Total) Query failed: "
-msgstr ""
+msgstr "Ανάκτηση χρήση (συνολικού) χρόνου χρηστών απέτυχε :"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:822
 msgid "Get User Data Usage Query failed: "
@@ -1652,7 +1653,7 @@ msgstr "Ανάκτηση χρήση δεδομένων χρήστη (σύνολ�
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:878
 msgid "Get All Users Comments Query failed: "
-msgstr ""
+msgstr "Ανάκτηση σχόλιων χρηστών απέτυχε :"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:908
 msgid "Get User Comment failed: "
@@ -1726,7 +1727,7 @@ msgstr "Ρύθμιση κωδικού χρήστη απέτυχε"
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:1465
 msgid "Setting User ExpireAfter Query Failed: "
-msgstr ""
+msgstr "Ρύθμιση του \"Λήξη Μετά Από\" του χρήστη απέτυχε "
 
 #: ../../../www/radmin/classes/DatabaseFunctions.class.php:1485
 msgid "Deleting User Expire After Query Failed: "
@@ -1901,7 +1902,7 @@ msgstr "Λεπτομέρεις_%s_Ομάδας"
 
 #: ../../../www/radmin/export.php:63
 msgid "Need a group or batch"
-msgstr ""
+msgstr "Χρειάζεται μια ομάδα ή παρτίδα"
 
 #: ../../../www/radmin/export.php:74
 msgid "Need valid format"
@@ -1932,23 +1933,23 @@ msgstr "%s: Η λήξη δεν μπορεί να είναι στο παρελθ�
 #: ../../../www/radmin/groupconfig.php:94
 #, php-format
 msgid "%s: Invalid Expire After format"
-msgstr ""
+msgstr "%s: Μη έγκυρη μορφή Λήξη Μετά :"
 
 #: ../../../www/radmin/groupconfig.php:96
 #, php-format
 msgid "%s: Expire after can not be in the past"
-msgstr ""
+msgstr "%s:  Λήξη Μετά δεν μπορεί να είναι στο παρελθόν"
 
 #: ../../../www/radmin/groupconfig.php:110
 #, php-format
 msgid "Invalid value '%s' for Idle Timeout"
-msgstr ""
+msgstr "Μη έγκυρη τιμή  '%s' για χρόνο αδράνειας"
 
 #: ../../../www/radmin/groupconfig.php:113
 #: ../../../www/radmin/groupconfig.php:116
 #, php-format
 msgid "Invalid recurrence interval '%s'"
-msgstr ""
+msgstr "Μη έγκυρη περίοδος επανάληψης  '%s'"
 
 #: ../../../www/radmin/groupconfig.php:119
 msgid "Recurring time limit must be less than interval"
@@ -1993,7 +1994,7 @@ msgstr "Ληγμένο"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:203
 msgid "Out Of Quota"
-msgstr ""
+msgstr "Εξαντλημένο μερίδιο"
 
 #: ../../../www/radmin/includes/misc_functions.inc.php:206
 msgid "Low Quota"
@@ -2108,7 +2109,7 @@ msgstr "Τίτλος υποσελίδας εισόδου"
 msgid ""
 "Hide footer from login screen.\n"
 "            Please consider adding a link back to http://grasehotspot.org if you are hiding the footer"
-msgstr ""
+msgstr "Απόκρυψη υποσέλιδο από οθόνη σύνδεσης.\nΠαρακαλώ σκεφτείτε να βάλετε ένα link στο http://grasehotspot.org αν θα κρύψετε το υποσέλιδο"
 
 #: ../../../www/radmin/loginconfig.php:69
 msgid "Help Link"
@@ -2162,7 +2163,7 @@ msgstr "Κείμενο κουμπιού για δωρεάν πρόσβαση"
 msgid ""
 "Text to show on the Free Login button if enabled above. Defaults to 'Free "
 "Access'"
-msgstr ""
+msgstr "Κείμενο για το κουμπί \"Δωρεάν Είσοδος\" αν είναι ενεργό παραπάνω. Προεπιλεγμένο είναι \"Δωρέαν Είσοδος\""
 
 #: ../../../www/radmin/loginconfig.php:103
 msgid "Hide Username/Password (Voucher) login form"
@@ -2180,7 +2181,7 @@ msgstr "Όροι και προϋποθέσεις"
 
 #: ../../../www/radmin/loginconfig.php:115
 msgid "Terms and Conditions of use (HTML) - Leave empty to not display"
-msgstr ""
+msgstr "Όροι και Προϋποθέσεις χρήσης (HTML) - Αφήστε το κενό για να μην εμφανίζονται"
 
 #: ../../../www/radmin/loginconfig.php:119
 msgid "Main CSS"
@@ -2191,7 +2192,7 @@ msgid ""
 "Cascading style sheet that is applied to all portal pages (use !important to override a style if your\n"
 "            settings here don't seem to work, it may be that the builtin css has a more specific selector than your one\n"
 "            here, look at radmin.css for id's and classes)"
-msgstr ""
+msgstr "CSS που εφαρμόζονται σε όλες τις σελίδες της πύλης (χρησιμοποίηστε το !important για να παρακάμψετε ένα στυλ, εάν οι ρυθμίσεις σας εδώ δεν φαίνονται να λειτουργουν, μπορεί το ενσωματωμένο CSS έχει μια πιο συγκεκριμένη επιλογή από αυτό που χρησημοποιείτε, ελένξτε το Radmin.css για τα id και τα classes)"
 
 #: ../../../www/radmin/loginconfig.php:128
 msgid "Help and Information Page"
@@ -2201,7 +2202,7 @@ msgstr "Σελίδα Βοήθειας και Πληροφορίας"
 msgid ""
 "Help and Information page contents, leaving this blank does not remove the "
 "link, see above options for removing the link."
-msgstr ""
+msgstr "Σελίδα Βοήθειας και Πληροφοριών , αφήνοντας κενό δεν καταργεί τη σύνδεση, δείτε τις παραπάνω επιλογές για την αφαίρεση του συνδέσμου."
 
 #: ../../../www/radmin/loginconfig.php:134
 msgid "HTML Above login form"
@@ -2242,7 +2243,7 @@ msgid ""
 "IP Addresses of DNS Servers. All clients will use the gateway as the DNS server which will use the\n"
 "            addresses listed here to do DNS lookups. Dnsmasq WILL NOT get default servers from DHCP or /etc/resolv.conf\n"
 "            and will default to OpenDNS Family Shield"
-msgstr ""
+msgstr "Διευθύνσεις IP των DNS Servers. Όλοι οι πελάτες θα χρησιμοποιούν την πύλη σαν DNS .Το Dnsmasq δεν θα πάρει τους servers από  DHCP ή /etc/resolv.conf και θα έχει εξ ορισμού τους OpenDNS."
 
 #: ../../../www/radmin/netconfig.php:43
 msgid "Bogus NXDOMAIN"
@@ -2252,7 +2253,7 @@ msgstr "Bogus NXDOMAIN"
 msgid ""
 "IP Addresses of Bogus NXDOMAIN returns. All DNS replies that contain these ip address will be transformed\n"
 "            into a NXDOMAIN result"
-msgstr ""
+msgstr "Οι διευθύνσεις IP των ψεύτικων DOMAIN. Όλες οι απαντήσεις DNS που περιέχουν αυτές τις διευθύνσεις IP θα πρέπει να μετατρέπονται σε NXDOMAIN (ψεύτικο) αποτέλεσμα"
 
 #: ../../../www/radmin/netconfig.php:55
 msgid "LAN IP Address"
@@ -2263,7 +2264,7 @@ msgid ""
 "The server IP address that is used on the LAN side (Coova-Chilli) of the network. This will be the gateway\n"
 "            address for all clients, as well as the DNS server the clients access. For default Squid config this should\n"
 "            be a private ip address."
-msgstr ""
+msgstr "Η διεύθυνση IP του διακομιστή που χρησιμοποιείται στην πλευρά του LAN (Coova-Chilli) του δικτύου. Αυτή θα είναι η πύλη για όλους τους πελάτες καθώς και ο διακομιστής DNS . Για το προεπιλεγμένο αρχείο του Squid, πρέπει να είναι μια ιδιωτική διεύθυνση IP."
 
 #: ../../../www/radmin/netconfig.php:70
 msgid "LAN Network Mask"
@@ -2273,7 +2274,7 @@ msgstr "Μάσκα τοπικού Δικτύου (subnet)"
 msgid ""
 "Network mask to use for clients network. (i.e. 255.255.255.0). DHCP range and network address will be\n"
 "            calculated from this and the LAN IP Address."
-msgstr ""
+msgstr "Μάσκα δικτύου που θα χρησιμοποιηθεί για το δίκτυο των πελατών. (δηλαδή 255.255.255.0). Το εύρος του DHCP και η διεύθυνση του δικτύου θα υπολογίζεται από αυτό και την διεύθυνση IP LAN."
 
 #: ../../../www/radmin/netconfig.php:79
 msgid "Bogus NXDOMAIN (OpenDNS)"
@@ -2283,7 +2284,7 @@ msgstr "Bogus NXDOMAIN (OpenDNS)"
 msgid ""
 "Some DNS Providers return bogus NXDOMAIN to redirect you to their search engine. Block the bogus ip's and\n"
 "            return a real NXDOMAIN for OpenDNS."
-msgstr ""
+msgstr "Ορισμένοι πάροχοι DNS επιστρέφουν ψευδεί DOMAIN για να σας ανακατευθύνουν στη μηχανή αναζήτησής τους. Αποκλείστε το ψεύτικο ip και επιστρέψτε ένα πραγματικό DOMAIN για το OpenDNS."
 
 #: ../../../www/radmin/netconfig.php:94
 msgid "LAN Network Interface"
@@ -2331,7 +2332,7 @@ msgstr "Παρακαλώ επιλέξτε αρχείο προς εξαγωγή"
 
 #: ../../../www/radmin/newtickets.php:117
 msgid "Please select a batch to delete"
-msgstr ""
+msgstr "Παρακαλώ επιλέξτε μια παρτίδα προς διαγραφή"
 
 #: ../../../www/radmin/newtickets.php:239
 #, php-format
@@ -2367,7 +2368,7 @@ msgstr "Διεύθυνση MAC δεν είναι στην σωστή μορφή"
 #: ../../../www/radmin/newuser.php:58
 #, php-format
 msgid "Invalid value '%s' for 1 Data Limit"
-msgstr ""
+msgstr "Μη έγκυρη τιμή '%s'  για 1 όριο δεδομένων"
 
 #: ../../../www/radmin/newuser.php:160
 #, php-format
@@ -2456,13 +2457,13 @@ msgstr "Αποσύνδεση :"
 
 #: ../../../www/radmin/sessions.php:33
 msgid "Unable to find active session for: "
-msgstr ""
+msgstr "Αδύνατη η εύρεση ενεργής περιόδου για:"
 
 #: ../../../www/radmin/settings.php:54
 msgid ""
 "Some time options are still in use by current groups and have been added "
 "back in"
-msgstr ""
+msgstr "Ορισμένες επιλογές χρόνου είναι ακόμη σε χρήση από τις τωρινές ομάδες και έχουν προστεθεί πίσω στο"
 
 #: ../../../www/radmin/settings.php:59
 msgid ""
@@ -2576,7 +2577,7 @@ msgstr "Όνομα ασυρμάτου δικτύου (SSID)"
 msgid ""
 "Wireless Network Name that clients connect to. Currently does not modify any settings but if set will print\n"
 "            on the tickets"
-msgstr ""
+msgstr "Το όνομα του ασύρματου δικτύου που συνδέονται οι πελάτες . Αυτή τη στιγμή δεν τροποποιεί καμία ρυθμίση, αλλά αν δηλωθεί, θα τυπωθεί στα εισιτήρια"
 
 #: ../../../www/radmin/ticketprintconfig.php:43
 msgid "Print Ticket Type"
@@ -2596,35 +2597,35 @@ msgstr "Εκτύπωσε τις λήξης των εισιτηρίων"
 
 #: ../../../www/radmin/ticketprintconfig.php:59
 msgid "Pre Ticket HTML"
-msgstr ""
+msgstr "HTML πριν το εισιτήριο"
 
 #: ../../../www/radmin/ticketprintconfig.php:60
 msgid "HTML to insert before the main ticket components"
-msgstr ""
+msgstr "HTML για εισαγωγή πριν από τα κύριο μέρος του εισιτηρίου"
 
 #: ../../../www/radmin/ticketprintconfig.php:64
 msgid "Post Ticket HTML"
-msgstr ""
+msgstr "HTML μετά το εισιτήριο"
 
 #: ../../../www/radmin/ticketprintconfig.php:65
 msgid "HTML to insert after the main ticket components"
-msgstr ""
+msgstr "HTML για εισαγωγή μετά από τα κύριο μέρος του εισιτηρίου"
 
 #: ../../../www/radmin/ticketprintconfig.php:69
 msgid "Ticket Printing CSS"
-msgstr ""
+msgstr "CSS για την εκτύπωση του εισιτηρίου"
 
 #: ../../../www/radmin/ticketprintconfig.php:70
 msgid ""
 "CSS that is applied to the ticket printing page for printing batches and "
 "groups of tickets."
-msgstr ""
+msgstr "CSS που εφαρμόζεται στη σελίδα εκτύπωση εισιτηρίων για εκτύπωση παρτίδων και στις ομάδες των εισιτηρίων."
 
 #: ../../../www/radmin/ticketprintconfig.php:118
 #: ../../../www/radmin/ticketprintconfig.php:134
 #, php-format
 msgid "%s ticket print config option update"
-msgstr ""
+msgstr "%s ανανέωση επιλογών εκτύπωσης εισιτηρίου"
 
 #: ../../../www/radmin/usermin.php:41
 msgid "New Passwords must match"
