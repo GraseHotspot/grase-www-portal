@@ -1,4 +1,4 @@
-grase-www-portal (3.8.0~rc2) UNRELEASED; urgency=low
+grase-www-portal (3.8.0) purewhite; urgency=low
 
   [ Tim White ]
   * Some report updates
@@ -36,7 +36,7 @@ grase-www-portal (3.8.0~rc2) UNRELEASED; urgency=low
   * New Login page look
 
 
- -- Tim White <tim@grasehotspot.org>  Tue, 22 Jan 2013 16:13:27 +1000
+ -- Tim White <tim@grasehotspot.org>  Sun, 10 Jan 2016 19:56:55 +1000
 
 grase-www-portal (3.7.7.11) purewhite; urgency=medium
 
