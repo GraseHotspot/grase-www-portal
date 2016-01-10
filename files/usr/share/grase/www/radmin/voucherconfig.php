@@ -24,7 +24,6 @@ require_once 'includes/pageaccess.inc.php';
 
 require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
-require_once 'includes/database_functions.inc.php';
 
 
 function array_filter_num($var)
@@ -61,7 +60,7 @@ if(isset($_POST['submit']))
     foreach($vouchernames as $key => $name)
     {
         // There are attributes set but no group name
-        if(clean_text($name) == '')
+        if(\Grase\Clean::text($name) == '')
         {
             if(
                 isset($voucherprice[$key]) ||
@@ -98,22 +97,26 @@ if(isset($_POST['submit']))
 	    //$error[] = validate_datalimit($groupdatalimit[$key]);
 	
 	    // Silence warnings (@) as we don't care if they are set or not'
-	    $error[] = @ validate_timelimit($vouchermaxtime[$key]);
-	    $error[] = @ validate_datalimit($vouchermaxmb[$key]);
+        if(!\Grase\Validate::numericLimit($vouchermaxtime[$key])) {
+            $error[] = sprintf(T_("Invalid value '%s' for Time Limit"), $vouchermaxtime[$key]);
+        }
+        if(!\Grase\Validate::numericLimit($vouchermaxmb[$key])) {
+            $error[] = sprintf(T_("Invalid value '%s' for Data Limit"), $vouchermaxmb[$key]);
+        }
 	    
 	    // TODO validate groupname, it already comes in in the correct format though
 	    
 	    $error = array_filter($error);
 	
 
-        $vouchersettings[clean_groupname($name)] = array_filter(array(
-            'VoucherName' => clean_groupname($name),
-            'VoucherLabel' => clean_text($name),
+        $vouchersettings[\Grase\Clean::groupName($name)] = array_filter(array(
+            'VoucherName' => \Grase\Clean::groupName($name),
+            'VoucherLabel' => \Grase\Clean::text($name),
             'VoucherPrice' => @ clean_number($voucherprice[$key]),
             'VoucherGroup' => $vouchergroup[$key],
             'MaxMb'     => @ clean_number($vouchermaxmb[$key]),
             'MaxTime'   => @ clean_int($vouchermaxtime[$key]),
-            'Description' => @ clean_text($voucherdesc[$key]),
+            'Description' => @ \Grase\Clean::text($voucherdesc[$key]),
             'TopupVoucher' => $vouchertopup[$key] ? TRUE : FALSE,
             'InitVoucher' => $voucherinit[$key] ? TRUE : FALSE,            
             
@@ -143,14 +146,14 @@ if(isset($_POST['submit']))
     } 
     
     $error = array_unique(array_merge($error, $warning));
-    if(sizeof($error) > 0) $smarty->assign("error", $error);	
-    if(sizeof($success) > 0) $smarty->assign("success", $success);
+    if(sizeof($error) > 0) $templateEngine->assign("error", $error);
+    if(sizeof($success) > 0) $templateEngine->assign("success", $success);
 
 }    
 
 
-$smarty->assign("vouchersettings", $Settings->getVoucher());
-display_page('vouchers.tpl');
+$templateEngine->assign("vouchersettings", $Settings->getVoucher());
+$templateEngine->displayPage('vouchers.tpl');
 
 ?>
 

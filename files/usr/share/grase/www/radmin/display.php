@@ -4,7 +4,7 @@
 
 /*  This file is part of GRASE Hotspot.
 
-    http://hotspot.purewhite.id.au/
+    http://grasehotspot.org/
 
     GRASE Hotspot is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -24,20 +24,15 @@ require_once 'includes/pageaccess.inc.php';
 
 require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
-require_once 'includes/database_functions.inc.php';
 
-    DatabaseFunctions::getInstance()->loadAllUserDetails();
+DatabaseFunctions::getInstance()->loadAllUserDetails();
 
-	$users = database_get_users(database_get_user_names());
-	$users_groups = sort_users_into_groups($users); // TODO: Reports and then no longer sort user list by downloads??
-	$users_groups['All'] = $users; // TODO: Group names can't have space in name TODO: Translate all?
+$users = DatabaseFunctions::getInstance()->getMultipleUsersDetails(DatabaseFunctions::getInstance()->getAllUserNames());
+$users_groups = sort_users_into_groups($users); // TODO: Reports and then no longer sort user list by downloads??
+$users_groups['All'] = $users; // TODO: Group names can't have space in name TODO: Translate all?
 
-    $smarty->assign("groupdata", DatabaseFunctions::getInstance()->getGroupAttributes());
-	$smarty->assign("users", $users);
-	$smarty->assign("users_groups", $users_groups);
-	$smarty->register_modifier( "sortby", "smarty_modifier_sortby" );   
-	display_page('display.tpl');
+$templateEngine->assign("groupdata", DatabaseFunctions::getInstance()->getGroupAttributes());
+$templateEngine->assign("users", $users);
+$templateEngine->assign("users_groups", $users_groups);
 
-
-//var_dump(DatabaseFunctions::getInstance()->usercache);
-?>
+$templateEngine->displayPage('display.tpl');

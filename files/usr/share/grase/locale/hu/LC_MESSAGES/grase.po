@@ -1,280 +1,554 @@
 # 
 # Translators:
-#   <csatoe@hotmail.com>, 2012.
+# Csató Endre <csatoe@hotmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Grase Hotspot\n"
-"Report-Msgid-Bugs-To: http://trac.grasehotspot.org/\n"
-"POT-Creation-Date: 2012-01-29 16:57+1000\n"
-"PO-Revision-Date: 2012-11-16 20:05+0000\n"
-"Last-Translator: csatoe <csatoe@hotmail.com>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-05-29 19:12+1000\n"
+"PO-Revision-Date: 2015-05-29 09:14+0000\n"
+"Last-Translator: Timothy White <tim@purewhite.id.au>\n"
 "Language-Team: Hungarian (http://www.transifex.com/projects/p/grase/language/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.6.10\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-Country: AUSTRALIA\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;T_\n"
-"X-Poedit-Language: English\n"
 "X-Poedit-SearchPath-0: ../../../www/radmin\n"
 "X-Poedit-SearchPath-1: ../../../www/uam\n"
 
 #: ../../../www/radmin/templates/smarty.c:1
-#: ../../../www/radmin/templates/smarty.c:45
-#: ../../../www/radmin/templates/smarty.c:113
-#: ../../../www/radmin/templates/smarty.c:148
-#: ../../../www/radmin/templates/smarty.c:163
-#: ../../../www/radmin/templates/smarty.c:180
-#: ../../../www/radmin/templates/smarty.c:222
-#: ../../../www/radmin/templates/smarty.c:238
-#: ../../../www/uam/templates/smarty.c:33
+#: ../../../www/radmin/includes/page_functions.inc.php:79
+msgid "Portal Customisation"
+msgstr "Portál testre szabása"
+
+#: ../../../www/radmin/templates/smarty.c:2
+#: ../../../www/radmin/templates/smarty.c:4
+#: ../../../www/radmin/templates/smarty.c:159
+#: ../../../www/radmin/templates/smarty.c:175
+#: ../../../www/radmin/templates/smarty.c:177
+#: ../../../www/radmin/templates/smarty.c:193
+#: ../../../www/radmin/templates/smarty.c:274
+#: ../../../www/radmin/templates/smarty.c:281
+#: ../../../www/radmin/templates/smarty.c:352
+msgid "Save Settings"
+msgstr "Beállítások mentése"
+
+#: ../../../www/radmin/templates/smarty.c:3
+#: ../../../www/radmin/templates/smarty.c:176
+msgid "HTML and CSS templates"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:5
+msgid "First"
+msgstr "Első"
+
+#: ../../../www/radmin/templates/smarty.c:6
+msgid "Prev"
+msgstr "Előző"
+
+#: ../../../www/radmin/templates/smarty.c:7
+msgid "Displaying page %1 of %2"
+msgstr "%1 / %2 oldal megjelenítése"
+
+#: ../../../www/radmin/templates/smarty.c:8
+msgid "Next"
+msgstr "Következő"
+
+#: ../../../www/radmin/templates/smarty.c:9
+msgid "Last"
+msgstr "Utolsó"
+
+#: ../../../www/radmin/templates/smarty.c:10
+msgid "User Management Interface"
+msgstr "Felhasználó kezelő felület"
+
+#: ../../../www/radmin/templates/smarty.c:11
+msgid "Device Information"
+msgstr "Eszköz információ"
+
+#: ../../../www/radmin/templates/smarty.c:12
+msgid "Model Name"
+msgstr "Modell név"
+
+#: ../../../www/radmin/templates/smarty.c:13
+msgid "Host Name"
+msgstr "Gépnév"
+
+#: ../../../www/radmin/templates/smarty.c:14
+msgid "HTTP Server"
+msgstr "HTTP kiszolgáló"
+
+#: ../../../www/radmin/templates/smarty.c:15
+msgid "System Up-Time"
+msgstr "Rendszerindulástól eltelt idő"
+
+#: ../../../www/radmin/templates/smarty.c:16
+msgid "Current Server Time"
+msgstr "Aktuális szerver idő"
+
+#: ../../../www/radmin/templates/smarty.c:17
+msgid "Hardware Version"
+msgstr "Hardver verzió"
+
+#: ../../../www/radmin/templates/smarty.c:18
+msgid "Software Version"
+msgstr "Szoftver verzió"
+
+#: ../../../www/radmin/templates/smarty.c:19
+msgid "Home URL"
+msgstr "Kezdőlap"
+
+#: ../../../www/radmin/templates/smarty.c:20
+msgid "LAN"
+msgstr "LAN"
+
+#: ../../../www/radmin/templates/smarty.c:21
+#: ../../../www/radmin/templates/smarty.c:26
+#: ../../../www/radmin/templates/smarty.c:203
+msgid "IP Address"
+msgstr "IP cím"
+
+#: ../../../www/radmin/templates/smarty.c:22
+#: ../../../www/radmin/templates/smarty.c:27
+msgid "Subnet Mask"
+msgstr "Alhálózati maszk"
+
+#: ../../../www/radmin/templates/smarty.c:23
+#: ../../../www/radmin/templates/smarty.c:31
+#: ../../../www/radmin/templates/smarty.c:70
+#: ../../../www/radmin/templates/smarty.c:204
+msgid "MAC Address"
+msgstr "Fizikai (MAC) cím"
+
+#: ../../../www/radmin/templates/smarty.c:24
+#: ../../../www/radmin/templates/smarty.c:32
+msgid "Network Interface"
+msgstr "Hálózati interfész"
+
+#: ../../../www/radmin/templates/smarty.c:25
+msgid "WAN"
+msgstr "WAN"
+
+#: ../../../www/radmin/templates/smarty.c:28
+msgid "Gateway"
+msgstr "Átjáró"
+
+#: ../../../www/radmin/templates/smarty.c:29
+msgid "DNS 1"
+msgstr "DNS kiszolgáló 1"
+
+#: ../../../www/radmin/templates/smarty.c:30
+msgid "DNS 2"
+msgstr "DNS kiszolgáló 2"
+
+#: ../../../www/radmin/templates/smarty.c:33
+msgid "Access Denied"
+msgstr "Hozzáférés megtagadva"
+
+#: ../../../www/radmin/templates/smarty.c:34
+msgid ""
+"You have attempted to access a page outside of your access level. Please "
+"return to an area you have access to."
+msgstr "A jogosultsági szintjén kívül eső oldalt próbált elérni. Kérjük térjen vissza arra területre, amihez hozzáférése van."
+
+#: ../../../www/radmin/templates/smarty.c:35
+#: ../../../www/radmin/templates/smarty.c:43
+#: ../../../www/radmin/includes/page_functions.inc.php:89
+msgid "Admin Users"
+msgstr "Rendszergazda felhasználó"
+
+#: ../../../www/radmin/templates/smarty.c:36
+#: ../../../www/radmin/templates/smarty.c:41
+#: ../../../www/radmin/templates/smarty.c:42
+msgid "Change Password"
+msgstr "Jelszóváltoztatás"
+
+#: ../../../www/radmin/templates/smarty.c:37
+#: ../../../www/radmin/templates/smarty.c:44
+#: ../../../www/radmin/templates/smarty.c:53
+#: ../../../www/radmin/templates/smarty.c:72
+#: ../../../www/radmin/templates/smarty.c:103
+#: ../../../www/radmin/templates/smarty.c:171
+#: ../../../www/radmin/templates/smarty.c:198
+#: ../../../www/radmin/templates/smarty.c:212
+#: ../../../www/radmin/templates/smarty.c:307
+#: ../../../www/radmin/templates/smarty.c:320
+#: ../../../www/radmin/templates/smarty.c:329
+#: ../../../www/radmin/templates/smarty.c:334
+#: ../../../www/uam/templates/smarty.c:9 ../../../www/radmin/export.php:89
 msgid "Username"
 msgstr "Felhasználónév"
 
-#: ../../../www/radmin/templates/smarty.c:2
-msgid "Choose a username"
-msgstr "Adjon meg felhasználónevet"
+#: ../../../www/radmin/templates/smarty.c:38
+msgid "Old Password"
+msgstr "Régi jelszó"
 
-#: ../../../www/radmin/templates/smarty.c:3
+#: ../../../www/radmin/templates/smarty.c:39
+msgid "New Password"
+msgstr "Új jelszó"
+
+#: ../../../www/radmin/templates/smarty.c:40
+msgid "Confirm New Password"
+msgstr "Jelszó megerősítése"
+
+#: ../../../www/radmin/templates/smarty.c:45
+msgid "User Group"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:46
+#: ../../../www/radmin/templates/smarty.c:130
+#: ../../../www/radmin/templates/smarty.c:132
+msgid "Delete User"
+msgstr "Felhasználó törlése"
+
 #: ../../../www/radmin/templates/smarty.c:47
-#: ../../../www/radmin/templates/smarty.c:114
-#: ../../../www/radmin/templates/smarty.c:181
-#: ../../../www/uam/templates/smarty.c:34
+#: ../../../www/radmin/templates/smarty.c:65
+msgid "Deleting or modifying the support user will prevent remote assistance."
+msgstr "A támogató felhasználó törlése vagy módosítása a távsegítséget megakadályozza."
+
+#: ../../../www/radmin/templates/smarty.c:48
+#: ../../../www/radmin/templates/smarty.c:50
+#: ../../../www/radmin/templates/smarty.c:66
+#: ../../../www/radmin/templates/smarty.c:68
+msgid "Delete %1"
+msgstr "Törlés %1"
+
+#: ../../../www/radmin/templates/smarty.c:49
+#: ../../../www/radmin/templates/smarty.c:67
+msgid "Are you sure you want to delete %1?"
+msgstr "%1-et biztosan törlöd?"
+
+#: ../../../www/radmin/templates/smarty.c:51
+#: ../../../www/radmin/templates/smarty.c:69
+msgid "Cannot delete current user"
+msgstr "Nem tudom törölni az aktuális felhasználót"
+
+#: ../../../www/radmin/templates/smarty.c:52
+#: ../../../www/radmin/templates/smarty.c:63
+msgid "Create new Admin User"
+msgstr "Rendszergazda felhasználó létrehozása"
+
+#: ../../../www/radmin/templates/smarty.c:54
+#: ../../../www/radmin/templates/smarty.c:74
+#: ../../../www/radmin/templates/smarty.c:104
+#: ../../../www/radmin/templates/smarty.c:172
+#: ../../../www/radmin/templates/smarty.c:199
+#: ../../../www/radmin/templates/smarty.c:336
+#: ../../../www/uam/templates/smarty.c:10 ../../../www/radmin/export.php:90
 msgid "Password"
 msgstr "Jelszó"
 
-#: ../../../www/radmin/templates/smarty.c:4
+#: ../../../www/radmin/templates/smarty.c:55
+msgid "Admin User Access Level"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:56
+#: ../../../www/radmin/templates/smarty.c:57
+#: ../../../www/radmin/passwd.php:126
+msgid "Admin User"
+msgstr "Rendszergazda felhasználó"
+
+#: ../../../www/radmin/templates/smarty.c:58
+#: ../../../www/radmin/templates/smarty.c:59
+#: ../../../www/radmin/passwd.php:129
+msgid "Power User"
+msgstr "Kiemelt felhasználók"
+
+#: ../../../www/radmin/templates/smarty.c:60
+msgid "Normal User"
+msgstr "Normál felhasználók"
+
+#: ../../../www/radmin/templates/smarty.c:61
+#: ../../../www/radmin/passwd.php:132
+msgid "Limited User"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:62
+msgid "Sets the users access level. Once set, this can't be changed"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:64
+msgid "Delete Admin User"
+msgstr "Rendszergazda felhasználó törlése"
+
+#: ../../../www/radmin/templates/smarty.c:71
+msgid ""
+"The MAC address is the network hardware address of the computer. It needs to"
+" be of the format XX-XX-XX-XX-XX-XX where XX is a hex number, typed in all "
+"capitals"
+msgstr "A MAC (fizikai) cím a hálózati hardver címe a számítógépnek. A következő formátumúnak kell lennie: XX-XX-XX-XX-XX-XX, ahol XX hexadecimális szám, nagybetűkkel."
+
+#: ../../../www/radmin/templates/smarty.c:73
+msgid "Choose a username"
+msgstr "Adjon meg felhasználónevet"
+
+#: ../../../www/radmin/templates/smarty.c:75
 msgid "Choose a secure password for the user"
 msgstr "Adjon meg egy biztonságos jelszót a felhasználónak"
 
-#: ../../../www/radmin/templates/smarty.c:5
-#: ../../../www/radmin/templates/smarty.c:223
+#: ../../../www/radmin/templates/smarty.c:76
+#: ../../../www/radmin/templates/smarty.c:183
+#: ../../../www/radmin/templates/smarty.c:213
 msgid "Group"
 msgstr "Csoport"
 
-#: ../../../www/radmin/templates/smarty.c:6
-#: ../../../www/radmin/templates/smarty.c:116
+#: ../../../www/radmin/templates/smarty.c:77
+#: ../../../www/radmin/templates/smarty.c:106
 msgid "Choose the users group (Expiry is based on the user group)"
 msgstr "Válaszd ki a felhasználói csoportot (A lejárat a csoportokon alapszik)"
 
-#: ../../../www/radmin/templates/smarty.c:7
-#: ../../../www/radmin/templates/smarty.c:121
-#: ../../../www/radmin/templates/smarty.c:234
-#: ../../../www/radmin/templates/smarty.c:255
+#: ../../../www/radmin/templates/smarty.c:78
+#: ../../../www/radmin/templates/smarty.c:111
+#: ../../../www/radmin/templates/smarty.c:224
+#: ../../../www/radmin/templates/smarty.c:357
 msgid "Comment"
 msgstr "Megjegyzés"
 
-#: ../../../www/radmin/templates/smarty.c:8
-#: ../../../www/radmin/templates/smarty.c:122
+#: ../../../www/radmin/templates/smarty.c:79
+#: ../../../www/radmin/templates/smarty.c:112
 msgid "A comment about the user"
 msgstr "Megjegyzés a felhasználóról"
 
-#: ../../../www/radmin/templates/smarty.c:9
-#: ../../../www/radmin/templates/smarty.c:123
-#: ../../../www/radmin/templates/smarty.c:257
-#: ../../../www/radmin/templates/smarty.c:278
+#: ../../../www/radmin/templates/smarty.c:80
+#: ../../../www/radmin/templates/smarty.c:115
+#: ../../../www/radmin/templates/smarty.c:359
 msgid ""
 "When ether limit is reached, the user will be cut off. (i.e. after 1hour "
 "even if they still have data left)"
 msgstr "A határérték elérésekor kidobja a felhasználót (vagy ha még van folyamatban adatforgalom, 1 óra múlva)"
 
-#: ../../../www/radmin/templates/smarty.c:10
-#: ../../../www/radmin/templates/smarty.c:124
-#: ../../../www/radmin/templates/smarty.c:279
+#: ../../../www/radmin/templates/smarty.c:81
+#: ../../../www/radmin/templates/smarty.c:116
+#: ../../../www/radmin/templates/smarty.c:360
 msgid ""
 "A limit of 0 does not mean unlimited, it will immediately lock the user out."
 " To have an unlimited user, the user must be created without any limits."
 msgstr "A 0 érték nem határtalant jelent, hanem azonnal kizárja a felhasználót. Korlátozás nélküli felhasználóhoz beállításához korlátozás nélkül kell létrehozni."
 
-#: ../../../www/radmin/templates/smarty.c:11
-#: ../../../www/radmin/templates/smarty.c:280
+#: ../../../www/radmin/templates/smarty.c:82
+#: ../../../www/radmin/templates/smarty.c:361
 msgid ""
 "If a limit is not set here, but is defined for the group, then the group "
 "limit will apply"
 msgstr "Ha itt nincs megadva korlát, de a csoport korlátos, akkor a csoport korlát lép életbe."
 
-#: ../../../www/radmin/templates/smarty.c:12
-#: ../../../www/radmin/templates/smarty.c:125
-#: ../../../www/radmin/templates/smarty.c:260
+#: ../../../www/radmin/templates/smarty.c:83
+#: ../../../www/radmin/templates/smarty.c:117
 msgid "Data Limit (MiB)"
 msgstr "Adat korlát (MiB)"
 
-#: ../../../www/radmin/templates/smarty.c:13
-#: ../../../www/radmin/templates/smarty.c:17
-#: ../../../www/radmin/templates/smarty.c:261
-#: ../../../www/radmin/templates/smarty.c:264
+#: ../../../www/radmin/templates/smarty.c:84
+#: ../../../www/radmin/templates/smarty.c:88
 msgid "OR"
 msgstr "VAGY"
 
-#: ../../../www/radmin/templates/smarty.c:14
-#: ../../../www/radmin/templates/smarty.c:126
-#: ../../../www/radmin/templates/smarty.c:262
+#: ../../../www/radmin/templates/smarty.c:85
+#: ../../../www/radmin/templates/smarty.c:118
 msgid "Type your own Mb Limit"
 msgstr "Adj meg saját Mb korlátot"
 
-#: ../../../www/radmin/templates/smarty.c:15
+#: ../../../www/radmin/templates/smarty.c:86
 msgid "Choose a Data Limit OR Type your own value"
 msgstr "Válasszon az adatkorlátok közül VAGY adjon meg egyedi értéket."
 
-#: ../../../www/radmin/templates/smarty.c:16
-#: ../../../www/radmin/templates/smarty.c:130
-#: ../../../www/radmin/templates/smarty.c:263
+#: ../../../www/radmin/templates/smarty.c:87
+#: ../../../www/radmin/templates/smarty.c:122
 msgid "Time Limit (Minutes)"
 msgstr "Időkorlát (percben)"
 
-#: ../../../www/radmin/templates/smarty.c:18
-#: ../../../www/radmin/templates/smarty.c:131
-#: ../../../www/radmin/templates/smarty.c:265
+#: ../../../www/radmin/templates/smarty.c:89
+#: ../../../www/radmin/templates/smarty.c:123
 msgid "Type your own Time Limit"
 msgstr "Adj meg saját időkorlátot"
 
-#: ../../../www/radmin/templates/smarty.c:19
-#: ../../../www/radmin/templates/smarty.c:266
+#: ../../../www/radmin/templates/smarty.c:90
 msgid "Choose a Time Limit OR Type your own value"
 msgstr "Válasszon az időkorlátok közül VAGY adjon meg egyedi értéket."
 
-#: ../../../www/radmin/templates/smarty.c:20
-msgid "User Management Interface"
-msgstr "Felhasználó kezelő felület"
+#: ../../../www/radmin/templates/smarty.c:91
+msgid "Group Properties"
+msgstr "Csoport tulajdonságok"
 
-#: ../../../www/radmin/templates/smarty.c:21
-msgid "Device Information"
-msgstr "Eszköz információ"
+#: ../../../www/radmin/templates/smarty.c:92
+#: ../../../www/radmin/templates/smarty.c:163
+#: ../../../www/radmin/templates/smarty.c:189
+#: ../../../www/radmin/templates/smarty.c:191
+#: ../../../www/radmin/templates/smarty.c:239
+#: ../../../www/radmin/templates/smarty.c:257
+msgid "Name"
+msgstr "Név"
 
-#: ../../../www/radmin/templates/smarty.c:22
-msgid "Model Name"
-msgstr "Modell név"
+#: ../../../www/radmin/templates/smarty.c:93
+#: ../../../www/radmin/templates/smarty.c:201
+#: ../../../www/radmin/templates/smarty.c:241
+#: ../../../www/radmin/templates/smarty.c:259
+#: ../../../www/radmin/export.php:91
+msgid "Expiry"
+msgstr "Lejárat"
 
-#: ../../../www/radmin/templates/smarty.c:23
-msgid "Host Name"
-msgstr "Gépnév"
+#: ../../../www/radmin/templates/smarty.c:94
+#: ../../../www/radmin/templates/smarty.c:261
+msgid "Expire After"
+msgstr ""
 
-#: ../../../www/radmin/templates/smarty.c:24
-msgid "HTTP Server"
-msgstr "HTTP kiszolgáló"
+#: ../../../www/radmin/templates/smarty.c:95
+msgid "Max Data (Mb)"
+msgstr "Maximális adat (Mb)"
 
-#: ../../../www/radmin/templates/smarty.c:25
-msgid "System Up-Time"
-msgstr "Rendszerindulástól eltelt idő"
+#: ../../../www/radmin/templates/smarty.c:96
+msgid "Max Time (mins)"
+msgstr "maximális idő (perc)"
 
-#: ../../../www/radmin/templates/smarty.c:26
-msgid "Current Server Time"
-msgstr "Aktuális szerver idő"
+#: ../../../www/radmin/templates/smarty.c:97
+msgid "Recurring data limit"
+msgstr ""
 
-#: ../../../www/radmin/templates/smarty.c:27
-msgid "Hardware Version"
-msgstr "Hardver verzió"
+#: ../../../www/radmin/templates/smarty.c:98
+msgid "Recurring time limit"
+msgstr ""
 
-#: ../../../www/radmin/templates/smarty.c:28
-msgid "Software Version"
-msgstr "Szoftver verzió"
+#: ../../../www/radmin/templates/smarty.c:99
+msgid "BW Limit Down"
+msgstr "Letöltési sávszélesség korlát"
 
-#: ../../../www/radmin/templates/smarty.c:29
-msgid "Home URL"
-msgstr "Kezdőlap"
+#: ../../../www/radmin/templates/smarty.c:100
+msgid "BW Limit Up"
+msgstr "Feltöltési sávszélesség korlát"
 
-#: ../../../www/radmin/templates/smarty.c:30
-msgid "LAN"
-msgstr "LAN"
+#: ../../../www/radmin/templates/smarty.c:101
+msgid "Edit Computer Account"
+msgstr "Számítógépfiók szerkesztése"
 
-#: ../../../www/radmin/templates/smarty.c:31
-#: ../../../www/radmin/templates/smarty.c:36
-#: ../../../www/radmin/templates/smarty.c:147
-msgid "IP Address"
-msgstr "IP cím"
+#: ../../../www/radmin/templates/smarty.c:102
+msgid "Edit User"
+msgstr "Felhasználó szerkesztése"
 
-#: ../../../www/radmin/templates/smarty.c:32
-#: ../../../www/radmin/templates/smarty.c:37
-msgid "Subnet Mask"
-msgstr "Alhálózati maszk"
+#: ../../../www/radmin/templates/smarty.c:105
+msgid "Choose a secure password for the user. Leave blank to not change"
+msgstr "Adjon biztonságos jelszót a felhasználónak. Hagyja üresen, ha nem akarja megváltoztatni."
 
-#: ../../../www/radmin/templates/smarty.c:33
-#: ../../../www/radmin/templates/smarty.c:41
-#: ../../../www/radmin/templates/smarty.c:253
-msgid "MAC Address"
-msgstr "Fizikai (MAC) cím"
+#: ../../../www/radmin/templates/smarty.c:107
+msgid "This user account never expires"
+msgstr "A felhasználói fiók soha nem jár le"
 
-#: ../../../www/radmin/templates/smarty.c:34
-#: ../../../www/radmin/templates/smarty.c:42
-msgid "Network Interface"
-msgstr "Hálózati interfész"
+#: ../../../www/radmin/templates/smarty.c:108
+msgid "This user account has expired"
+msgstr "A felhasználói fiók lejárt"
 
-#: ../../../www/radmin/templates/smarty.c:35
-msgid "WAN"
-msgstr "WAN"
+#: ../../../www/radmin/templates/smarty.c:109
+msgid "Reset expiry"
+msgstr "Lejárat törlése"
 
-#: ../../../www/radmin/templates/smarty.c:38
-msgid "Gateway"
-msgstr "Átjáró"
+#: ../../../www/radmin/templates/smarty.c:110
+msgid "No Expire After Set"
+msgstr ""
 
-#: ../../../www/radmin/templates/smarty.c:39
-msgid "DNS 1"
-msgstr "DNS kiszolgáló 1"
+#: ../../../www/radmin/templates/smarty.c:113
+msgid "Account Lock Reason"
+msgstr "Kitiltás oka"
 
-#: ../../../www/radmin/templates/smarty.c:40
-msgid "DNS 2"
-msgstr "DNS kiszolgáló 2"
-
-#: ../../../www/radmin/templates/smarty.c:43
-#: ../../../www/radmin/templates/smarty.c:48
-msgid "Login"
-msgstr "Bejelentkezés"
-
-#: ../../../www/radmin/templates/smarty.c:44
+#: ../../../www/radmin/templates/smarty.c:114
 msgid ""
-"Login is required to access the Administration section of this website."
-msgstr "Bejelentkezés szükséges a webhely Adminisztrációs felületének eléréséhez."
+"Enter a reason in here to lock the users account. Clear the reason to unlock"
+" the account"
+msgstr "Adja meg a felhasználótiltás okát. Törölje az okot a feloldáshoz."
 
-#: ../../../www/radmin/templates/smarty.c:46
-msgid "Username for Admin interface (Different to internet access username)"
-msgstr "Felhasználónév az Adminisztrációs felülethez (különbözik az Internet eléréshez használt felhasználói névtől)"
+#: ../../../www/radmin/templates/smarty.c:119
+msgid "Change the Data Limit"
+msgstr "Adatkorlát változtatása"
 
-#: ../../../www/radmin/templates/smarty.c:49
+#: ../../../www/radmin/templates/smarty.c:120
+msgid "Add Data to Limit (MiB)"
+msgstr "Adatkorlát növelése (MiB)"
+
+#: ../../../www/radmin/templates/smarty.c:121
+msgid "Add to the Data Limit (Will ignore changes made above)"
+msgstr "Hozzáadás az adatkorláthoz (mellőzi a fenti változtatásokat)"
+
+#: ../../../www/radmin/templates/smarty.c:124
+msgid "Change the Time Limit"
+msgstr "Időkorlát változtatása"
+
+#: ../../../www/radmin/templates/smarty.c:125
+msgid "Add Time to Limit (Minutes)"
+msgstr "Időkorlát növelése (percben)"
+
+#: ../../../www/radmin/templates/smarty.c:126
+msgid "Add to the Time Limit (Will ignore changes made above)"
+msgstr "Hozzáadás az időkorláthoz (mellőzi a fenti változtatásokat)"
+
+#: ../../../www/radmin/templates/smarty.c:127
+#: ../../../www/radmin/templates/smarty.c:128
+msgid "Update User Details"
+msgstr "Felhasználó adatok frissítése"
+
+#: ../../../www/radmin/templates/smarty.c:129
+msgid "Delete Computer Account"
+msgstr "Számítógép fiók törlése"
+
+#: ../../../www/radmin/templates/smarty.c:131
+msgid ""
+"User accounts are automatically deleted 2 months after expiry. Only accounts"
+" with zero usage should be manually deleted to prevent errors in the reports"
+" or statistics."
+msgstr "A felhasználói fiókok 2 hónappal a lejárat után automatikusan törlődnek. Csak 0 használatú fiókot kell kézzel törölni, hogy megelőzzük a jelentés és statisztikai hibákat."
+
+#: ../../../www/radmin/templates/smarty.c:133
+msgid "Are you sure you want to delete this user?"
+msgstr "Biztos benne, hogy törli a felhasználót?"
+
+#: ../../../www/radmin/templates/smarty.c:134
+msgid "Delete User %1"
+msgstr "%1 felhasználó törlése"
+
+#: ../../../www/radmin/templates/smarty.c:135
 msgid "Site Settings"
 msgstr "Webhely beállítások"
 
-#: ../../../www/radmin/templates/smarty.c:50
+#: ../../../www/radmin/templates/smarty.c:136
 msgid "Location Name"
 msgstr "Hely neve"
 
-#: ../../../www/radmin/templates/smarty.c:51
+#: ../../../www/radmin/templates/smarty.c:137
 msgid "Enter a name that identifies this Hotspot Location"
 msgstr "Adja meg a nevet, ami a HotSpot helyét azonosítja"
 
-#: ../../../www/radmin/templates/smarty.c:52
+#: ../../../www/radmin/templates/smarty.c:138
 msgid "Support Contact Name"
 msgstr "Támogató személy neve"
 
-#: ../../../www/radmin/templates/smarty.c:53
+#: ../../../www/radmin/templates/smarty.c:139
 msgid "Enter the name of the Support Contact"
 msgstr "Add meg a támogató személyt"
 
-#: ../../../www/radmin/templates/smarty.c:54
+#: ../../../www/radmin/templates/smarty.c:140
 msgid "Support Link"
 msgstr "Támogatási cím"
 
-#: ../../../www/radmin/templates/smarty.c:55
+#: ../../../www/radmin/templates/smarty.c:141
 msgid ""
 "This is the link for the support contact. http:// or mailto: are allowed. If"
 " using http:// ensure this is accessabile for users who aren't logged into "
 "the hotspot"
 msgstr "A támogató személyre mutató hivatkozás. http:// vagy mailto: megengedett. Ha http://-t használunk, ellenőrizzük, hogy a HotSpot-ra be nem lépett felhasználók is elérjék."
 
-#: ../../../www/radmin/templates/smarty.c:56
+#: ../../../www/radmin/templates/smarty.c:142
 msgid "Locale"
 msgstr "nyelvi beállítás"
 
-#: ../../../www/radmin/templates/smarty.c:57
+#: ../../../www/radmin/templates/smarty.c:143
 msgid "Available languages:"
 msgstr "Elérhető nyelvek"
 
-#: ../../../www/radmin/templates/smarty.c:58
+#: ../../../www/radmin/templates/smarty.c:144
 msgid "Select the appropriate Locale for your location"
 msgstr "Válassza ki a helynek megfelelő nyelvi beállítást"
 
-#: ../../../www/radmin/templates/smarty.c:59
+#: ../../../www/radmin/templates/smarty.c:145
 msgid ""
 "A locale has 2 parts, the language and location.<br/><strong>en_AU</strong> "
 "for example has the Language set to English, and the location to "
@@ -283,339 +557,631 @@ msgid ""
 "set to Afrikaans and the location to South Africa."
 msgstr "A nyelvi beállításoknak két része van, a nyelv és a hely.<br/><strong>en_AU</strong> például angol nyelvet és Ausztrália területét állítja be."
 
-#: ../../../www/radmin/templates/smarty.c:60
+#: ../../../www/radmin/templates/smarty.c:146
 msgid ""
 "The locale defines the number formats, currency and language. If the "
 "language selected is not available, it will fallback to English."
 msgstr "A nyelvi beállítás határozza meg számformátumot, a pénznemet és a nyelvet. Ha a kiválasztott nyelv nem érhető el, visszaáll angolra."
 
-#: ../../../www/radmin/templates/smarty.c:61
+#: ../../../www/radmin/templates/smarty.c:147
 msgid ""
 "Current locale is %1, which sets the language to %2, and location to %3."
 msgstr "Az aktuális nyelvi beállítás %1, ami %2-re állítja a nyelvet és %3-ra a helyet."
 
-#: ../../../www/radmin/templates/smarty.c:62
+#: ../../../www/radmin/templates/smarty.c:148
 msgid "Currency symbol is %1"
 msgstr "Pénznem jele %1"
 
-#: ../../../www/radmin/templates/smarty.c:63
-msgid "How much to charge per Mb"
-msgstr "Mennyi a költség Mb-onként"
+#: ../../../www/radmin/templates/smarty.c:149
+msgid "Data Options"
+msgstr "Adatbeállítások"
 
-#: ../../../www/radmin/templates/smarty.c:64
-msgid "Cost per Minute"
-msgstr "Percdíj"
+#: ../../../www/radmin/templates/smarty.c:150
+msgid ""
+"Space separated list of Data Options in MB's to populate dropdown boxes"
+msgstr "Az adatbeállítások szóközzel tagolt, MB-ban megadott listájával tölti fel a legördülő menüt"
 
-#: ../../../www/radmin/templates/smarty.c:65
-msgid "How much to charge per Minute"
-msgstr "Mennyi a költség percenként"
+#: ../../../www/radmin/templates/smarty.c:151
+msgid "Time Options"
+msgstr "Időbeállítások"
 
-#: ../../../www/radmin/templates/smarty.c:66
+#: ../../../www/radmin/templates/smarty.c:152
+msgid ""
+"Space separated list of Time options in minutes to populate dropdown boxes."
+msgstr "Az időbeállítások szóközzel tagolt, MB-ban megadott listájával tölti fel a legördülő menüt"
+
+#: ../../../www/radmin/templates/smarty.c:153
+msgid "Bandwidth Options"
+msgstr "Sávszélesség-beállítások"
+
+#: ../../../www/radmin/templates/smarty.c:154
+msgid ""
+"Space separated list of Bandwidth options in kbit/s to populate dropdown "
+"boxes."
+msgstr "A sávszélesség-beállítások szóközzel tagolt, MB-ban megadott listájával tölti fel a legördülő menüt"
+
+#: ../../../www/radmin/templates/smarty.c:155
 msgid "Website Name"
 msgstr "A webhely neve"
 
-#: ../../../www/radmin/templates/smarty.c:67
+#: ../../../www/radmin/templates/smarty.c:156
 msgid "Label for Website Footer link"
 msgstr "A webhely lábjegyzet hivatkozás címkéje"
 
-#: ../../../www/radmin/templates/smarty.c:68
+#: ../../../www/radmin/templates/smarty.c:157
 msgid "Website Link"
 msgstr "Webhely hivatkozás"
 
-#: ../../../www/radmin/templates/smarty.c:69
+#: ../../../www/radmin/templates/smarty.c:158
 msgid "Link for Website Footer Link"
 msgstr "A webhely lábjegyzet hivatkozása"
 
-#: ../../../www/radmin/templates/smarty.c:70
-msgid "Sellable Graph Max"
-msgstr "\"Eladható\" grafikon maximuma"
+#: ../../../www/radmin/templates/smarty.c:160
+msgid "Advanced Settings"
+msgstr ""
 
-#: ../../../www/radmin/templates/smarty.c:71
-#, c-format
-msgid "Select what is 100% on the Sellable Data Graph"
-msgstr "Válassza ki, mi a 100% az \"eladható\" adat grafikonon"
-
-#: ../../../www/radmin/templates/smarty.c:72
-msgid "Useable Graph Max"
-msgstr "\"Használat\" grafikon maximum"
-
-#: ../../../www/radmin/templates/smarty.c:73
-#, c-format
-msgid "Select what is 100% on the Useable Data Graph"
-msgstr "Válassza ki, mi a 100% az \"Használat\" adat grafikonon"
-
-#: ../../../www/radmin/templates/smarty.c:74
-#: ../../../www/radmin/templates/smarty.c:109
-#: ../../../www/radmin/templates/smarty.c:207
-#: ../../../www/radmin/templates/smarty.c:217
-#: ../../../www/radmin/templates/smarty.c:271
-msgid "Save Settings"
-msgstr "Beállítások mentése"
-
-#: ../../../www/radmin/templates/smarty.c:75
-msgid "Access Denied"
-msgstr "Hozzáférés megtagadva"
-
-#: ../../../www/radmin/templates/smarty.c:76
+#: ../../../www/radmin/templates/smarty.c:161
 msgid ""
-"You have attempted to access a page outside of your access level. Please "
-"return to an area you have access to."
-msgstr "A jogosultsági szintjén kívül eső oldalt próbált elérni. Kérjük térjen vissza arra területre, amihez hozzáférése van."
+"All settings in the Radmin Settings table are shown here. Modifying settings"
+" here isn't recommended as no validation is done. This page allows you to "
+"see and modify hidden settings. Some settings may reset back to defaults if "
+"you try to set them to an incorrect value, others will just break."
+msgstr ""
 
-#: ../../../www/radmin/templates/smarty.c:77
+#: ../../../www/radmin/templates/smarty.c:162
+msgid ""
+"CAUTION: Some settings here are internal and modifying them will break "
+"things"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:164
+msgid "Value"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:165
+msgid "Setting name"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:166
+msgid "Setting value"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:167
+msgid "Save Setting"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:168
+#: ../../../www/radmin/templates/smarty.c:339
+msgid "Please select your preferred payment method"
+msgstr "Kérjük, válasszon preferált fizetési módszert"
+
+#: ../../../www/radmin/templates/smarty.c:169
+msgid "Logged in as <b>%1</b>"
+msgstr "Bejelentkezve <b>%1</b>"
+
+#: ../../../www/radmin/templates/smarty.c:170
+#: ../../../www/radmin/templates/smarty.c:173
+#: ../../../www/radmin/templates/smarty.c:332
+#: ../../../www/radmin/templates/smarty.c:337
+msgid "Login"
+msgstr "Bejelentkezés"
+
+#: ../../../www/radmin/templates/smarty.c:174
+msgid "Ticket Printing Settings"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:178
+msgid "Voucher Config"
+msgstr "Jegy beállítások"
+
+#: ../../../www/radmin/templates/smarty.c:179
+msgid ""
+"Vouchers are disabled if nether Initial Voucher, or Topup Voucher are "
+"selected."
+msgstr "A jegyektilva, ha sem kezdőjegy, sem feltőtő-jegy nincs kiválasztva"
+
+#: ../../../www/radmin/templates/smarty.c:180
+msgid ""
+"Vouchers without a Time or Data limit do not inherit the default limits from"
+" the group, but any Recurring limits will apply."
+msgstr "Az idő vagy adatkorlát nélküli jegyek nem öröklik a csoport alapértelmezett korlátjait, de bármely ismétlődő korlát alkalmazva lesz rá."
+
+#: ../../../www/radmin/templates/smarty.c:181
+msgid "Voucher Name"
+msgstr "Jegy neve"
+
+#: ../../../www/radmin/templates/smarty.c:182
+#: ../../../www/radmin/templates/smarty.c:190
+#: ../../../www/radmin/templates/smarty.c:192
+msgid "Price"
+msgstr "Ár"
+
+#: ../../../www/radmin/templates/smarty.c:184
+#: ../../../www/radmin/templates/smarty.c:208
+#: ../../../www/radmin/templates/smarty.c:214
+msgid "Data Limit"
+msgstr "Adat korlát"
+
+#: ../../../www/radmin/templates/smarty.c:185
+#: ../../../www/radmin/templates/smarty.c:209
+#: ../../../www/uam/templates/smarty.c:35
+msgid "Time Limit"
+msgstr "Időkorlát"
+
+#: ../../../www/radmin/templates/smarty.c:186
+msgid "Initial Voucher"
+msgstr "Kezdőjegy"
+
+#: ../../../www/radmin/templates/smarty.c:187
+msgid "Topup Voucher"
+msgstr "Feltöltő-jegy"
+
+#: ../../../www/radmin/templates/smarty.c:188
+#: ../../../www/radmin/templates/smarty.c:240
+#: ../../../www/radmin/templates/smarty.c:258
+msgid "Description"
+msgstr "Leírás"
+
+#: ../../../www/radmin/templates/smarty.c:194
+msgid "Help Page"
+msgstr "Súgó oldal"
+
+#: ../../../www/radmin/templates/smarty.c:195
+#: ../../../www/radmin/includes/usermin_page_functions.inc.php:37
+#: ../../../www/radmin/includes/usermin_page_functions.inc.php:39
+msgid "My Account"
+msgstr "Saját fiók"
+
+#: ../../../www/radmin/templates/smarty.c:196
+msgid "Admin"
+msgstr "Rendszergazda"
+
+#: ../../../www/radmin/templates/smarty.c:197
+msgid "Wireless Network"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:200
+#: ../../../www/radmin/export.php:92
+msgid "Voucher Type"
+msgstr "Jegytípus"
+
+#: ../../../www/radmin/templates/smarty.c:202
+#: ../../../www/radmin/includes/page_functions.inc.php:67
+msgid "DHCP Leases"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:205
+msgid "DHCP State"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:206
+msgid "UserName"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:207
+#: ../../../www/radmin/templates/smarty.c:309
+#: ../../../www/radmin/templates/smarty.c:322
+msgid "Account Comment"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:210
+msgid "%1 Time Limit"
+msgstr "%1 időkorlát"
+
+#: ../../../www/radmin/templates/smarty.c:211
+msgid "%1 Data Limit"
+msgstr "%1 adatkorlát"
+
+#: ../../../www/radmin/templates/smarty.c:215
+msgid "Total Data usage for the current month"
+msgstr "Az aktuális hónap teljes adathasználata"
+
+#: ../../../www/radmin/templates/smarty.c:216
+msgid "Data Usage (M)"
+msgstr "Adathasználat (havi)"
+
+#: ../../../www/radmin/templates/smarty.c:217
+msgid "Total Data usage, from previous months, excluding current month"
+msgstr "Teljes adathasználat, az előző hónapig, az aktuális hónap kivételével"
+
+#: ../../../www/radmin/templates/smarty.c:218
+msgid "Data Usage (T)"
+msgstr "Adathasználat (teljes)"
+
+#: ../../../www/radmin/templates/smarty.c:219
+msgid "Time Remaining"
+msgstr "Hátralevő idő"
+
+#: ../../../www/radmin/templates/smarty.c:220
+msgid "Time Usage (Total)"
+msgstr "Idő használat (teljes)"
+
+#: ../../../www/radmin/templates/smarty.c:221
+msgid "Account Expiry"
+msgstr "Fiók lejárat"
+
+#: ../../../www/radmin/templates/smarty.c:222
+msgid "Last Logoff timestamp from current month only"
+msgstr "Utolsó kijelentkezés az aktuális hónapban"
+
+#: ../../../www/radmin/templates/smarty.c:223
+msgid "Last Logoff"
+msgstr "Utolsó kijelentkezés"
+
+#: ../../../www/radmin/templates/smarty.c:225
+msgid "Password Hidden"
+msgstr "Rejtett jelszó"
+
+#: ../../../www/radmin/templates/smarty.c:226
+msgid "(Account Locked)"
+msgstr "(Fiók zárolva)"
+
+#: ../../../www/radmin/templates/smarty.c:227
 msgid "Group Config"
 msgstr "Csoport konfiguráció"
 
-#: ../../../www/radmin/templates/smarty.c:78
+#: ../../../www/radmin/templates/smarty.c:228
 msgid ""
-"Group expiry needs to be in a format understood by the <a target=\"_blank\" "
-"href=\"http://www.php.net/manual/en/function.strtotime.php\">strtotime</a> "
-"PHP function."
-msgstr "A csoport lejáratának megadásakor a formátumot értelmezni kell tudni a <a target=\"_blank\" href=\"http://www.php.net/manual/en/function.strtotime.php\">strtotime</a> PHP függvénynek."
+"Group expiry and expire after first login needs to be in a format understood by the\n"
+"    <a target=\"_blank\" href=\"http://www.php.net/manual/en/function.strtotime.php\">strtotime</a> PHP function."
+msgstr ""
 
-#: ../../../www/radmin/templates/smarty.c:79
+#: ../../../www/radmin/templates/smarty.c:229
 msgid ""
 "For example, \"+1 month\" will set an expiry for 1 month from when the "
 "account is created. \"+2 weeks\", \"+3 days\" etc."
 msgstr "Például \"+1 month\" beállítja a lejáratot a fiók létrehozásától számított 1 hónapra. \"+2 weeks\", \"+3 days\", stb."
 
-#: ../../../www/radmin/templates/smarty.c:80
+#: ../../../www/radmin/templates/smarty.c:230
 msgid ""
 "Expiry is calculated to the second, so if you want it to a date for example,"
 " try \"+1 week midnight\"."
 msgstr "A lejárat másodpercekben számolódik, így ha dátumra akarjuk beállítani, akkor próbáljuk így: \"+1 week midnight\"."
 
-#: ../../../www/radmin/templates/smarty.c:81
+#: ../../../www/radmin/templates/smarty.c:231
+msgid ""
+"Expire after first login also needs to conform to the <a "
+"href=\"http://search.cpan.org/~muir/Time-"
+"ParseDate-2013.1113/lib/Time/ParseDate.pm\">ParseDate perl module</a>"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:232
+msgid ""
+"Login Time must be in the format of UUCP time ranges. See <a "
+"target=\"_blank\" href=\"http://ftp.gnu.org/pub/old-"
+"gnu/Manuals/radius/html_node/radius_186.html\">http://ftp.gnu.org/pub/old-"
+"gnu/Manuals/radius/html_node/radius_186.html</a> for more details. Only "
+"basic format checking is done, so please ensure that the correct format is "
+"used. Leaving Login Times blank will allow login at any time."
+msgstr "A bejelentkezési időszaknak UUCP időszak-formátmnak kell lennie. Lásd <a target=\"_blank\" href=\"http://ftp.gnu.org/pub/old-gnu/Manuals/radius/html_node/radius_186.html\">http://ftp.gnu.org/pub/old-gnu/Manuals/radius/html_node/radius_186.html</a> a részletekért. Csak alapvető formátumellenőrzés történik, ezért ügyeljen a megfelelő formátumra. Az üresen hagyott időszak bármely időszakot jelent."
+
+#: ../../../www/radmin/templates/smarty.c:233
 msgid ""
 "Deleting a group won't delete it's users. Next time the user is edited it's "
 "group will become the default group unless a new group is selected."
 msgstr "A csoport törlése nem törli a csoport felhasználóit. Amikor a felhasználót legközelebb szerkesztik, a csoportja lesz az alapértelmezett, ha új csoport nem kerül kiválasztásra."
 
-#: ../../../www/radmin/templates/smarty.c:82
+#: ../../../www/radmin/templates/smarty.c:234
 msgid ""
 "The limits here are the default for group members, unless overridden when "
-"creating a member. If multiple limits are specified, the first limit to be "
-"reached will disconnect the user."
-msgstr "Az itt található korlátok a csoporttagok alapértelmezései addig, amíg felül nem írjuk a tag létrehozásakor. Ha több korlát is meg van adva, az először elért fogja bontani a felhasználó kapcsolatát."
+"creating a member. The limits are applied at user creation time, if "
+"\"Inherit from group\" is selected. If multiple limits are specified, the "
+"first limit to be reached will disconnect the user."
+msgstr "Az itt megadott korlátok a csoporttagok alapértelmezett korlátai, hacsak nincs felülírva a felhasználók létrehozásakor. A korlátok felhasználó létrehozáskor alkalmazódnak, ha az \"Örökölje a csoportból\" ki van választva. Ha több korlát is meg van adva, az elsőnek elért korlát fogja bontani a kapcsolatot."
 
-#: ../../../www/radmin/templates/smarty.c:83
+#: ../../../www/radmin/templates/smarty.c:235
 msgid ""
-"Changing Expiry, Data or Time limits, will not change existing users of the "
-"group and will only apply to new users. Recurring limits, Bandwidth and "
-"simultaneous logins will all apply to existing and new members."
-msgstr "A lejárat, adat- és időkorlátok változtatása nem változtatja meg a csoport létező felhasználóit és csak az új felhasználókra alkalmazódik. Ismétlődő korlátok, sávszélesség és a párhuzamos bejelentkezések a régi és az új felhasználókra is vonatkoznak."
+"Idle Timeout overrides the default timeout set in Coova Chilli Settings."
+msgstr ""
 
-#: ../../../www/radmin/templates/smarty.c:84
+#: ../../../www/radmin/templates/smarty.c:236
+msgid ""
+"Changing Expiry, expire after first login, Data or Time limits, will not "
+"change existing users of the group and will only apply to new users. "
+"Recurring limits, Bandwidth and simultaneous logins will all apply to "
+"existing and new members."
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:237
+msgid ""
+"Recurring Data and Time limits must not be used with simultaneous login set "
+"to yes, otherwise users may be able to use more than the allocated limit. "
+"Data limits should only be used with larger time periods, and users may need"
+" to logout and log back in if they use past the time period."
+msgstr "Az ismétlődő adat és időkorlátot nem szabad akkor használni, ha a felhasználónak a többszörös bejelentkezés engedélyezve van, mert több idő és/vagy adathasználat keletkezhet. Adatkorlátokat csak nagyobb időszakokra kellene használni, és a felhasználóknak ki kell jelentkezniük és vissza, ha elmúlt időszakot használnak."
+
+#: ../../../www/radmin/templates/smarty.c:238
+#: ../../../www/radmin/includes/page_functions.inc.php:81
 msgid "Groups"
 msgstr "Csoportok"
 
-#: ../../../www/radmin/templates/smarty.c:85
-#: ../../../www/radmin/templates/smarty.c:97
 #: ../../../www/radmin/templates/smarty.c:242
-msgid "Name"
-msgstr "Név"
+#: ../../../www/radmin/templates/smarty.c:260
+msgid "Never Expire"
+msgstr ""
 
-#: ../../../www/radmin/templates/smarty.c:86
-#: ../../../www/radmin/templates/smarty.c:98
 #: ../../../www/radmin/templates/smarty.c:243
-msgid "Expiry"
-msgstr "Lejárat"
+msgid "Expire After First login"
+msgstr ""
 
-#: ../../../www/radmin/templates/smarty.c:87
-#: ../../../www/radmin/templates/smarty.c:99
+#: ../../../www/radmin/templates/smarty.c:244
+#: ../../../www/radmin/templates/smarty.c:262
+msgid "Login Times"
+msgstr "Bejelentkezési idők"
+
+#: ../../../www/radmin/templates/smarty.c:245
+#: ../../../www/radmin/templates/smarty.c:263
+msgid "Idle Timeout (seconds)"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:246
+#: ../../../www/radmin/templates/smarty.c:264
 msgid "Default Data Limit (MiB)"
 msgstr "Alapértelmezett adatkorlát (MiB)"
 
-#: ../../../www/radmin/templates/smarty.c:88
-#: ../../../www/radmin/templates/smarty.c:100
+#: ../../../www/radmin/templates/smarty.c:247
+#: ../../../www/radmin/templates/smarty.c:265
 msgid "Default Time Limit (Minutes)"
 msgstr "Alapértelmezett időkorlát (perc)"
 
-#: ../../../www/radmin/templates/smarty.c:89
-#: ../../../www/radmin/templates/smarty.c:101
+#: ../../../www/radmin/templates/smarty.c:248
+#: ../../../www/radmin/templates/smarty.c:266
 msgid "Recurring Data Limit (MiB)"
 msgstr "Ismétlődő adatkorlát (MiB)"
 
-#: ../../../www/radmin/templates/smarty.c:90
-#: ../../../www/radmin/templates/smarty.c:92
-#: ../../../www/radmin/templates/smarty.c:102
-#: ../../../www/radmin/templates/smarty.c:104
+#: ../../../www/radmin/templates/smarty.c:249
+#: ../../../www/radmin/templates/smarty.c:251
+#: ../../../www/radmin/templates/smarty.c:267
+#: ../../../www/radmin/templates/smarty.c:269
 msgid "per"
 msgstr "/"
 
-#: ../../../www/radmin/templates/smarty.c:91
-#: ../../../www/radmin/templates/smarty.c:103
+#: ../../../www/radmin/templates/smarty.c:250
+#: ../../../www/radmin/templates/smarty.c:268
 msgid "Recurring Time Limit (Minutes)"
 msgstr "Ismétlődő időkorlát (perc)"
 
-#: ../../../www/radmin/templates/smarty.c:93
-#: ../../../www/radmin/templates/smarty.c:105
+#: ../../../www/radmin/templates/smarty.c:252
+#: ../../../www/radmin/templates/smarty.c:270
 msgid "Bandwidth Limit Down"
 msgstr "Letöltés sávszélesség-korlátja"
 
-#: ../../../www/radmin/templates/smarty.c:94
-#: ../../../www/radmin/templates/smarty.c:106
+#: ../../../www/radmin/templates/smarty.c:253
+#: ../../../www/radmin/templates/smarty.c:271
 msgid "Bandwidth Limit Up"
 msgstr "Feltöltés sávszélesség-korlátja"
 
-#: ../../../www/radmin/templates/smarty.c:95
-#: ../../../www/radmin/templates/smarty.c:107
-msgid "Allow simultaneous logins?"
-msgstr "Egyidejű bejelentkezés engedélyezett?"
+#: ../../../www/radmin/templates/smarty.c:254
+#: ../../../www/radmin/templates/smarty.c:272
+msgid "Number of simultaneous logins. Leave Blank for unlimited"
+msgstr ""
 
-#: ../../../www/radmin/templates/smarty.c:96
-#: ../../../www/radmin/templates/smarty.c:110
+#: ../../../www/radmin/templates/smarty.c:255
+#: ../../../www/radmin/templates/smarty.c:273
+#: ../../../www/uam/templates/smarty.c:26
+#: ../../../www/uam/templates/smarty.c:28
+#: ../../../www/uam/templates/smarty.c:34
+#: ../../../www/uam/templates/smarty.c:36
+msgid "Unlimited"
+msgstr "Korlátlan"
+
+#: ../../../www/radmin/templates/smarty.c:256
 msgid "Delete Group"
 msgstr "Csoport törlése"
 
-#: ../../../www/radmin/templates/smarty.c:108
-msgid "Add Another Group"
-msgstr "Új csoport hozzáadása"
+#: ../../../www/radmin/templates/smarty.c:275
+#: ../../../www/radmin/includes/page_functions.inc.php:78
+msgid "Coova Chilli Settings"
+msgstr "\"Coova Chilli\" beállítások"
 
-#: ../../../www/radmin/templates/smarty.c:111
-msgid "Edit Computer Account"
-msgstr "Számítógépfiók szerkesztése"
-
-#: ../../../www/radmin/templates/smarty.c:112
-msgid "Edit User"
-msgstr "Felhasználó szerkesztése"
-
-#: ../../../www/radmin/templates/smarty.c:115
-msgid "Choose a secure password for the user. Leave blank to not change"
-msgstr "Adjon biztonságos jelszót a felhasználónak. Hagyja üresen, ha nem akarja megváltoztatni."
-
-#: ../../../www/radmin/templates/smarty.c:117
-msgid "This user account never expires"
-msgstr "A felhasználói fiók soha nem jár le"
-
-#: ../../../www/radmin/templates/smarty.c:118
-msgid "This user account has expired"
-msgstr "A felhasználói fiók lejárt"
-
-#: ../../../www/radmin/templates/smarty.c:119
-msgid "Reset expiry"
-msgstr "Lejárat törlése"
-
-#: ../../../www/radmin/templates/smarty.c:120
-msgid "Computer Accounts never expire"
-msgstr "A számítógép fiók soha nem jár le"
-
-#: ../../../www/radmin/templates/smarty.c:127
-msgid "Change the Data Limit"
-msgstr "Adatkorlát változtatása"
-
-#: ../../../www/radmin/templates/smarty.c:128
-msgid "Add Data to Limit (MiB)"
-msgstr "Adatkorlát növelése (MiB)"
-
-#: ../../../www/radmin/templates/smarty.c:129
-msgid "Add to the Data Limit (Will ignore changes made above)"
-msgstr "Hozzáadás az adatkorláthoz (mellőzi a fenti változtatásokat)"
-
-#: ../../../www/radmin/templates/smarty.c:132
-msgid "Change the Time Limit"
-msgstr "Időkorlát változtatása"
-
-#: ../../../www/radmin/templates/smarty.c:133
-msgid "Add Time to Limit (Minutes)"
-msgstr "Időkorlát növelése (percben)"
-
-#: ../../../www/radmin/templates/smarty.c:134
-msgid "Add to the Time Limit (Will ignore changes made above)"
-msgstr "Hozzáadás az időkorláthoz (mellőzi a fenti változtatásokat)"
-
-#: ../../../www/radmin/templates/smarty.c:135
-#: ../../../www/radmin/templates/smarty.c:136
-msgid "Update User Details"
-msgstr "Felhasználó adatok frissítése"
-
-#: ../../../www/radmin/templates/smarty.c:137
-msgid "Delete Computer Account"
-msgstr "Számítógép fiók törlése"
-
-#: ../../../www/radmin/templates/smarty.c:138
-#: ../../../www/radmin/templates/smarty.c:140
-msgid "Delete User"
-msgstr "Felhasználó törlése"
-
-#: ../../../www/radmin/templates/smarty.c:139
+#: ../../../www/radmin/templates/smarty.c:276
 msgid ""
-"User accounts are automatically deleted 2 months after expiry. Only accounts"
-" with zero usage should be manually deleted to prevent errors in the reports"
-" or statistics."
-msgstr "A felhasználói fiókok 2 hónappal a lejárat után automatikusan törlődnek. Csak 0 használatú fiókot kell kézzel törölni, hogy megelőzzük a jelentés és statisztikai hibákat."
+"These settings are used by Coova Chilli. Coova Chilli reloads it's config "
+"roughly every 10 minutes, or when it's restarted."
+msgstr ""
 
-#: ../../../www/radmin/templates/smarty.c:141
-msgid "Are you sure you want to delete this user?"
-msgstr "Biztos benne, hogy törli a felhasználót?"
+#: ../../../www/radmin/templates/smarty.c:277
+msgid ""
+"If you change the MAC Auth Password, no computer accounts will be able to "
+"login until Coova Chilli reloads it's config, or is manually restarted."
+msgstr "Amikor megváltoztatod a MAC azonosító jelszót, egyetlen számítógépfiók sem tud bejelentkezni addig, amíg Coova Chilli újratölti a beállításait, vagy amikor kézzel újraindítják."
 
-#: ../../../www/radmin/templates/smarty.c:142
-msgid "Delete User %1"
-msgstr "%1 felhasználó törlése"
+#: ../../../www/radmin/templates/smarty.c:278
+msgid "Chilli Config last updated %1"
+msgstr "Chilli beállítások frissítve %1-kor"
 
-#: ../../../www/radmin/templates/smarty.c:143
+#: ../../../www/radmin/templates/smarty.c:279
+msgid "Portal Config last updated %1"
+msgstr "Portál beállítások frissítve %1-kor"
+
+#: ../../../www/radmin/templates/smarty.c:280
+#: ../../../www/radmin/templates/smarty.c:351
+msgid ""
+"For each of the following items, if you need multiple values you can submit "
+"the form and it will append a blank input below the last valid value"
+msgstr "Minden következő elemhez: ha több értékre van szüksége, az elküldött érvényes érték után egy üres mező jelenik, ezt használja."
+
+#: ../../../www/radmin/templates/smarty.c:282
+msgid "Session logs for %1 on %2"
+msgstr "%1 kapcsolati napló itt: %2"
+
+#: ../../../www/radmin/templates/smarty.c:283
+msgid "Computers hardware (MAC) address is"
+msgstr "A számítógép fizikai (MAC) címe"
+
+#: ../../../www/radmin/templates/smarty.c:284
+msgid "Between %1 and %2"
+msgstr "%1 és %2 között"
+
+#: ../../../www/radmin/templates/smarty.c:285
+msgid "Total HTTP (WWW) Traffic Size:"
+msgstr "Teljes HTTP (WWW) forgalom méret:"
+
+#: ../../../www/radmin/templates/smarty.c:286
+msgid "Domain"
+msgstr "Tartomány"
+
+#: ../../../www/radmin/templates/smarty.c:287
+msgid "Count"
+msgstr "Darab"
+
+#: ../../../www/radmin/templates/smarty.c:288
+#: ../../../www/radmin/templates/smarty.c:294
+msgid "Size"
+msgstr "Méret"
+
+#: ../../../www/radmin/templates/smarty.c:289
+#: ../../../www/radmin/templates/smarty.c:328
+msgid "Timestamp"
+msgstr "Időbélyeg"
+
+#: ../../../www/radmin/templates/smarty.c:290
+msgid "Address"
+msgstr "Cím"
+
+#: ../../../www/radmin/templates/smarty.c:291
+msgid "Host"
+msgstr "Gép"
+
+#: ../../../www/radmin/templates/smarty.c:292
+msgid "Cached"
+msgstr "Gyorsítótárazott"
+
+#: ../../../www/radmin/templates/smarty.c:293
+msgid "Request Type"
+msgstr "Kérelem típusa"
+
+#: ../../../www/radmin/templates/smarty.c:295
 msgid "Sessions for %1"
 msgstr "%1 kapcsolatai"
 
-#: ../../../www/radmin/templates/smarty.c:144
-#: ../../../www/uam/templates/smarty.c:10
+#: ../../../www/radmin/templates/smarty.c:296
+#: ../../../www/radmin/templates/smarty.c:299
+msgid "Active Sessions"
+msgstr "Aktív kapcsolatok"
+
+#: ../../../www/radmin/templates/smarty.c:297
+msgid "No active sessions"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:298
+#: ../../../www/radmin/templates/smarty.c:300
+msgid "Display all Sessions"
+msgstr "Minden kapcsolat megjelenítése"
+
+#: ../../../www/radmin/templates/smarty.c:301
+msgid "Stop Auto Refresh Page"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:302
+msgid "Auto Refresh Page"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:303
+#: ../../../www/radmin/templates/smarty.c:316
+#: ../../../www/uam/templates/smarty.c:31
 msgid "Start Time"
 msgstr "Kezdet"
 
-#: ../../../www/radmin/templates/smarty.c:145
+#: ../../../www/radmin/templates/smarty.c:304
+#: ../../../www/radmin/templates/smarty.c:317
 msgid "Stop Time"
 msgstr "Vég"
 
-#: ../../../www/radmin/templates/smarty.c:146
+#: ../../../www/radmin/templates/smarty.c:305
+#: ../../../www/radmin/templates/smarty.c:318
 msgid "Time"
 msgstr "Idp"
 
-#: ../../../www/radmin/templates/smarty.c:149
-msgid "Download"
-msgstr "Letöltés"
+#: ../../../www/radmin/templates/smarty.c:306
+#: ../../../www/radmin/templates/smarty.c:319
+msgid "IP/MAC Address"
+msgstr "IP/MAC (fizikai) címek"
 
-#: ../../../www/radmin/templates/smarty.c:150
-#: ../../../www/uam/templates/smarty.c:18
-msgid "Uploaded"
-msgstr "Feltöltve"
-
-#: ../../../www/radmin/templates/smarty.c:151
+#: ../../../www/radmin/templates/smarty.c:308
+#: ../../../www/radmin/templates/smarty.c:321
 msgid "Data Usage"
 msgstr "Adathasználat"
 
-#: ../../../www/radmin/templates/smarty.c:152
+#: ../../../www/radmin/templates/smarty.c:310
+#: ../../../www/radmin/templates/smarty.c:323
+msgid "Logout this session"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:311
+#: ../../../www/radmin/templates/smarty.c:324
+msgid "Are you sure you want to logout this session?"
+msgstr ""
+
+#: ../../../www/radmin/templates/smarty.c:312
+#: ../../../www/radmin/templates/smarty.c:325
 msgid "Reason: "
 msgstr "OK:"
 
-#: ../../../www/radmin/templates/smarty.c:153
-msgid "Computers hardware (MAC) address is %1"
-msgstr "A számítógép fizikai (MAC) címe: %1"
-
-#: ../../../www/radmin/templates/smarty.c:154
+#: ../../../www/radmin/templates/smarty.c:313
+#: ../../../www/radmin/templates/smarty.c:326
 msgid "Captive Portal Config Login"
 msgstr "\"Captive\" portál konfigurációs bejelentkezés"
 
-#: ../../../www/radmin/templates/smarty.c:155
-#: ../../../www/radmin/templates/smarty.c:159
+#: ../../../www/radmin/templates/smarty.c:314
+msgid "All Sessions"
+msgstr "Minden kapcsolat"
+
+#: ../../../www/radmin/templates/smarty.c:315
+msgid "Display just active Sessions"
+msgstr "Csak az aktív kapcsolatok megjelenítése"
+
+#: ../../../www/radmin/templates/smarty.c:327
+#: ../../../www/radmin/includes/page_functions.inc.php:91
+msgid "Admin Log"
+msgstr "Adminisztrációs napló"
+
+#: ../../../www/radmin/templates/smarty.c:330
+msgid "IP"
+msgstr "IP"
+
+#: ../../../www/radmin/templates/smarty.c:331
+msgid "Action"
+msgstr "Művelet"
+
+#: ../../../www/radmin/templates/smarty.c:333
+msgid ""
+"Login is required to access the Administration section of this website."
+msgstr "Bejelentkezés szükséges a webhely Adminisztrációs felületének eléréséhez."
+
+#: ../../../www/radmin/templates/smarty.c:335
+msgid "Username for Admin interface (Different to internet access username)"
+msgstr "Felhasználónév az Adminisztrációs felülethez (különbözik az Internet eléréshez használt felhasználói névtől)"
+
+#: ../../../www/radmin/templates/smarty.c:338
+msgid "Please select your voucher type"
+msgstr "Kérjük, válasszon jegytípust"
+
+#: ../../../www/radmin/templates/smarty.c:340
+msgid "Proceed to Payment"
+msgstr "Folytatás a fizetéssel"
+
+#: ../../../www/radmin/templates/smarty.c:341
+#: ../../../www/radmin/templates/smarty.c:345
 msgid "Upload Logo"
 msgstr "Logó feltöltés"
 
-#: ../../../www/radmin/templates/smarty.c:156
+#: ../../../www/radmin/templates/smarty.c:342
 msgid "Logo Image"
 msgstr "Logó kép"
 
-#: ../../../www/radmin/templates/smarty.c:157
+#: ../../../www/radmin/templates/smarty.c:343
 msgid "Select new logo file."
 msgstr "Logó fájl kiválasztása"
 
-#: ../../../www/radmin/templates/smarty.c:158
+#: ../../../www/radmin/templates/smarty.c:344
 msgid ""
 "Logo file needs to be in png format, and relatively small (remember, every "
 "page has the logo). 10 Kilobytes maximum. It's physical size shouldn't be "
 "bigger than about 220px in both directions."
 msgstr "A logó fájlnak PNG formátumúnak és elég kicsinek kell lennie (emlékezzünk, minden oldalon ott lesz!) Ezért 10KB a maximális méret. Fizikailag pedig nem lehet 220 pixelnél egyik irányban sem lehet nagyobb."
 
-#: ../../../www/radmin/templates/smarty.c:160
+#: ../../../www/radmin/templates/smarty.c:346
 msgid ""
 "For more advanced logos, (different file type, size, placement}, manually "
 "upload the file to /var/www/ or /usr/share/grase/www/images/ and use the "
@@ -623,131 +1189,12 @@ msgid ""
 " as the background."
 msgstr "Ha sokkal speciálisabb logót szeretne (más méret, típus, elhelyezés), manuálisan töltse fel a /var/www/ vagy a /usr/share/grase/www/images/ mappákba és használjon egyéni CSS-t a logó felülírásához. A logó, amelyik a háttérben van, a #page konténerben definiált."
 
-#: ../../../www/radmin/templates/smarty.c:161
-#: ../../../www/radmin/templates/smarty.c:169
-msgid "Admin Users"
-msgstr "Rendszergazda felhasználó"
-
-#: ../../../www/radmin/templates/smarty.c:162
-#: ../../../www/radmin/templates/smarty.c:167
-#: ../../../www/radmin/templates/smarty.c:168
-msgid "Change Password"
-msgstr "Jelszóváltoztatás"
-
-#: ../../../www/radmin/templates/smarty.c:164
-msgid "Old Password"
-msgstr "Régi jelszó"
-
-#: ../../../www/radmin/templates/smarty.c:165
-msgid "New Password"
-msgstr "Új jelszó"
-
-#: ../../../www/radmin/templates/smarty.c:166
-msgid "Confirm New Password"
-msgstr "Jelszó megerősítése"
-
-#: ../../../www/radmin/templates/smarty.c:170
-#: ../../../www/radmin/templates/smarty.c:184
-msgid "Deleting or modifying the support user will prevent remote assistance."
-msgstr "A támogató felhasználó törlése vagy módosítása a távsegítséget megakadályozza."
-
-#: ../../../www/radmin/templates/smarty.c:171
-#: ../../../www/radmin/templates/smarty.c:172
-msgid "Admin User"
-msgstr "Rendszergazda felhasználó"
-
-#: ../../../www/radmin/templates/smarty.c:173
-#: ../../../www/radmin/templates/smarty.c:174
-msgid "Power User"
-msgstr "Kiemelt felhasználók"
-
-#: ../../../www/radmin/templates/smarty.c:175
-#: ../../../www/radmin/templates/smarty.c:176
-msgid "Normal User"
-msgstr "Normál felhasználók"
-
-#: ../../../www/radmin/templates/smarty.c:177
-#: ../../../www/radmin/templates/smarty.c:185
-msgid "Are you sure you want to delete %1?"
-msgstr "%1-et biztosan törlöd?"
-
-#: ../../../www/radmin/templates/smarty.c:178
-#: ../../../www/radmin/templates/smarty.c:186
-msgid "Delete %1"
-msgstr "Törlés %1"
-
-#: ../../../www/radmin/templates/smarty.c:179
-#: ../../../www/radmin/templates/smarty.c:182
-msgid "Create new Admin User"
-msgstr "Rendszergazda felhasználó létrehozása"
-
-#: ../../../www/radmin/templates/smarty.c:183
-msgid "Delete Admin User"
-msgstr "Rendszergazda felhasználó törlése"
-
-#: ../../../www/radmin/templates/smarty.c:187
-msgid "Cannot delete current user"
-msgstr "Nem tudom törölni az aktuális felhasználót"
-
-#: ../../../www/radmin/templates/smarty.c:188
-msgid "Logged in as <b>%1</b>"
-msgstr "Bejelentkezve <b>%1</b>"
-
-#: ../../../www/radmin/templates/smarty.c:189
-msgid "Session logs for %1 on %2"
-msgstr "%1 kapcsolati napló itt: %2"
-
-#: ../../../www/radmin/templates/smarty.c:190
-msgid "Computers hardware (MAC) address is"
-msgstr "A számítógép fizikai (MAC) címe"
-
-#: ../../../www/radmin/templates/smarty.c:191
-msgid "Between %1 and %2"
-msgstr "%1 és %2 között"
-
-#: ../../../www/radmin/templates/smarty.c:192
-msgid "Total HTTP (WWW) Traffic Size:"
-msgstr "Teljes HTTP (WWW) forgalom méret:"
-
-#: ../../../www/radmin/templates/smarty.c:193
-msgid "Domain"
-msgstr "Tartomány"
-
-#: ../../../www/radmin/templates/smarty.c:194
-msgid "Count"
-msgstr "Darab"
-
-#: ../../../www/radmin/templates/smarty.c:195
-#: ../../../www/radmin/templates/smarty.c:201
-msgid "Size"
-msgstr "Méret"
-
-#: ../../../www/radmin/templates/smarty.c:196
-#: ../../../www/radmin/templates/smarty.c:237
-msgid "Timestamp"
-msgstr "Időbélyeg"
-
-#: ../../../www/radmin/templates/smarty.c:197
-msgid "Address"
-msgstr "Cím"
-
-#: ../../../www/radmin/templates/smarty.c:198
-msgid "Host"
-msgstr "Gép"
-
-#: ../../../www/radmin/templates/smarty.c:199
-msgid "Cached"
-msgstr "Gyorsítótárazott"
-
-#: ../../../www/radmin/templates/smarty.c:200
-msgid "Request Type"
-msgstr "Kérelem típusa"
-
-#: ../../../www/radmin/templates/smarty.c:202
+#: ../../../www/radmin/templates/smarty.c:347
+#: ../../../www/radmin/includes/page_functions.inc.php:77
 msgid "Network Settings"
 msgstr "Hálózati beállítások"
 
-#: ../../../www/radmin/templates/smarty.c:203
+#: ../../../www/radmin/templates/smarty.c:348
 msgid ""
 "These settings are used by Coova Chilli and Dnsmasq. Both Coova Chilli and "
 "Dnsmasq will need to be reloaded when these settings change. A cron job will"
@@ -755,1439 +1202,1469 @@ msgid ""
 " needed."
 msgstr "Ezeket a beállításokat a Coova Chilli és a Dnsmasq használja. Mind a Coova Chilli-nek és a Dnsmasq-nek újra kell töltenie ezeket a beállításokat a változtatás után. Egy 5 percenként időzített cron munka fogja automatikusan ellenőrizni és szükség esetén újra betölteni a szolgáltatásokat."
 
-#: ../../../www/radmin/templates/smarty.c:204
+#: ../../../www/radmin/templates/smarty.c:349
 msgid "Network Config last reloaded %1"
 msgstr "A hálózati konfiguráció utolsó frissítése: %1"
 
-#: ../../../www/radmin/templates/smarty.c:205
+#: ../../../www/radmin/templates/smarty.c:350
 msgid "Network Config last updated %1"
 msgstr "A hálózati beállítások frissítve utoljára %1-kor"
 
-#: ../../../www/radmin/templates/smarty.c:206
-#: ../../../www/radmin/templates/smarty.c:216
-#: ../../../www/radmin/templates/smarty.c:270
+#: ../../../www/radmin/templates/smarty.c:353
+msgid "Batch ID"
+msgstr "Kötegazonosító"
+
+#: ../../../www/radmin/templates/smarty.c:354
+msgid "Date Created"
+msgstr "Létrehozva"
+
+#: ../../../www/radmin/templates/smarty.c:355
+msgid "Created By"
+msgstr "Létrehozta"
+
+#: ../../../www/radmin/templates/smarty.c:356
+msgid "Number of Tickets"
+msgstr "Jegyek száma"
+
+#: ../../../www/radmin/templates/smarty.c:358
 msgid ""
-"For each of the following items, if you need multiple values you can submit "
-"the form and it will append a blank input below the last valid value"
-msgstr "Minden következő elemhez: ha több értékre van szüksége, az elküldött érvényes érték után egy üres mező jelenik, ezt használja."
+"Are you sure you want to delete the selected batches and all users in them?"
+msgstr ""
 
-#: ../../../www/radmin/templates/smarty.c:208
-msgid "Help Page"
-msgstr "Súgó oldal"
+#: ../../../www/radmin/templates/smarty.c:362
+msgid "Create Tickets"
+msgstr ""
 
-#: ../../../www/radmin/templates/smarty.c:209
-msgid "My Account"
-msgstr "Saját fiók"
-
-#: ../../../www/radmin/templates/smarty.c:210
-msgid "Admin"
-msgstr "Rendszergazda"
-
-#: ../../../www/radmin/templates/smarty.c:211
-msgid "Coova Chilli Settings"
-msgstr "\"Coova Chilli\" beállítások"
-
-#: ../../../www/radmin/templates/smarty.c:212
-msgid ""
-"These settings are used by Coova Chilli. Coova Chilli only reloads it's "
-"config roughly once an hour, or when it's restarted."
-msgstr "Ezeket a beállításokat a Coova Chilli használja. Coova Chilli nagyjából óránként tölti újra a beállításait, vagy amikor újraindul."
-
-#: ../../../www/radmin/templates/smarty.c:213
-msgid ""
-"If you change the MAC Auth Password, no computer accounts will be able to "
-"login until Coova Chilli reloads it's config, or is manually restarted."
-msgstr "Amikor megváltoztatod a MAC azonosító jelszót, egyetlen számítógépfiók sem tud bejelentkezni addig, amíg Coova Chilli újratölti a beállításait, vagy amikor kézzel újraindítják."
-
-#: ../../../www/radmin/templates/smarty.c:214
-msgid "Chilli Config last updated %1"
-msgstr "Chilli beállítások frissítve %1-kor"
-
-#: ../../../www/radmin/templates/smarty.c:215
-msgid "Portal Config last updated %1"
-msgstr "Portál beállítások frissítve %1-kor"
-
-#: ../../../www/radmin/templates/smarty.c:218
-#: ../../../www/radmin/templates/smarty.c:224
-msgid "Data Limit"
-msgstr "Adat korlát"
-
-#: ../../../www/radmin/templates/smarty.c:219
-#: ../../../www/radmin/templates/smarty.c:229
-#: ../../../www/uam/templates/smarty.c:14
-msgid "Time Limit"
-msgstr "Időkorlát"
-
-#: ../../../www/radmin/templates/smarty.c:220
-msgid "%1 Time Limit"
-msgstr "%1 időkorlát"
-
-#: ../../../www/radmin/templates/smarty.c:221
-msgid "%1 Data Limit"
-msgstr "%1 adatkorlát"
-
-#: ../../../www/radmin/templates/smarty.c:225
-msgid "Total Data usage for the current month"
-msgstr "Az aktuális hónap teljes adathasználata"
-
-#: ../../../www/radmin/templates/smarty.c:226
-msgid "Data Usage (M)"
-msgstr "Adathasználat (havi)"
-
-#: ../../../www/radmin/templates/smarty.c:227
-msgid "Total Data usage, from previous months, excluding current month"
-msgstr "Teljes adathasználat, az előző hónapig, az aktuális hónap kivételével"
-
-#: ../../../www/radmin/templates/smarty.c:228
-msgid "Data Usage (T)"
-msgstr "Adathasználat (teljes)"
-
-#: ../../../www/radmin/templates/smarty.c:230
-msgid "Time Usage (Month)"
-msgstr "Időhasználat (havi)"
-
-#: ../../../www/radmin/templates/smarty.c:231
-msgid "Account Expiry"
-msgstr "Fiók lejárat"
-
-#: ../../../www/radmin/templates/smarty.c:232
-msgid "Last Logoff timestamp from current month only"
-msgstr "Utolsó kijelentkezés az aktuális hónapban"
-
-#: ../../../www/radmin/templates/smarty.c:233
-msgid "Last Logoff"
-msgstr "Utolsó kijelentkezés"
-
-#: ../../../www/radmin/templates/smarty.c:235
-msgid "Password Hidden"
-msgstr "Rejtett jelszó"
-
-#: ../../../www/radmin/templates/smarty.c:236
-msgid "Admin Log"
-msgstr "Adminisztrációs napló"
-
-#: ../../../www/radmin/templates/smarty.c:239
-msgid "IP"
-msgstr "IP"
-
-#: ../../../www/radmin/templates/smarty.c:240
-msgid "Action"
-msgstr "Művelet"
-
-#: ../../../www/radmin/templates/smarty.c:241
-msgid "Group Properties"
-msgstr "Csoport tulajdonságok"
-
-#: ../../../www/radmin/templates/smarty.c:244
-msgid "Max Data (Mb)"
-msgstr "Maximális adat (Mb)"
-
-#: ../../../www/radmin/templates/smarty.c:245
-msgid "Max Time (mins)"
-msgstr "maximális idő (perc)"
-
-#: ../../../www/radmin/templates/smarty.c:246
-msgid "Recur time limit"
-msgstr "Ismétlődő időkorlát"
-
-#: ../../../www/radmin/templates/smarty.c:247
-msgid "BW Limit Down"
-msgstr "Letöltési sávszélesség korlát"
-
-#: ../../../www/radmin/templates/smarty.c:248
-msgid "BW Limit Up"
-msgstr "Feltöltési sávszélesség korlát"
-
-#: ../../../www/radmin/templates/smarty.c:249
-#: ../../../www/uam/templates/smarty.c:38
+#: ../../../www/radmin/templates/smarty.c:363
+#: ../../../www/uam/templates/smarty.c:40
 msgid "Error"
 msgstr "Hiba"
 
-#: ../../../www/radmin/templates/smarty.c:250
-#: ../../../www/uam/templates/smarty.c:39
+#: ../../../www/radmin/templates/smarty.c:364
+#: ../../../www/uam/templates/smarty.c:41
 msgid "An Error has occured. Please report the error to the administrator"
 msgstr "Hiba történt. Kérjük, jelezze a rendszergazdának!"
 
-#: ../../../www/radmin/templates/smarty.c:251
+#: ../../../www/radmin/templates/smarty.c:365
 msgid ""
 "There may be more information available to the administrator in the logs"
 msgstr "Lehet, hogy további információt talál a rendszergazda a naplókban."
 
-#: ../../../www/radmin/templates/smarty.c:252
-msgid "Create Computer Account"
-msgstr "Számítógépfiók létrehozása"
-
-#: ../../../www/radmin/templates/smarty.c:254
-msgid ""
-"The MAC address is the network hardware address of the computer. It needs to"
-" be of the format XX-XX-XX-XX-XX-XX where XX is a hex number, typed in all "
-"capitals"
-msgstr "A MAC (fizikai) cím a hálózati hardver címe a számítógépnek. A következő formátumúnak kell lennie: XX-XX-XX-XX-XX-XX, ahol XX hexadecimális szám, nagybetűkkel."
-
-#: ../../../www/radmin/templates/smarty.c:256
-msgid "Identify the computer. i.e. \"Bob's computer\""
-msgstr "Azonosítsa a számítógépet. Például: \"Bob számítógépe\""
-
-#: ../../../www/radmin/templates/smarty.c:258
-msgid ""
-"Computer accounts are intended to be used for computers that need internet "
-"access at all times. For example, an office computer. Computer accounts "
-"login automatically as soon as they access the network, this will normally "
-"occur at startup. If a limit is set, when the limit is reached the computer "
-"will revert to the normal login screen for internet access. Computer "
-"accounts can not be edited to add more data or time, only deleted."
-msgstr "A számítógépfiókokat az állandó Internet kapcsolatot igénylő számítógépek számára terveztük. Például irodai számítógép. A számítógépfiók automatikusan bejelentkezik, ahogy eléri a hálózatot, általában az indulásakor. Ha korlátozva van, akkor a korlát elérésekor a normál bejelentkező képernyő jelenik meg az Internet használatakor. A számítógépfiók nem szerkeszthetők (adat és időkorlát hozzáadás), csak törölhetők."
-
-#: ../../../www/radmin/templates/smarty.c:259
-msgid ""
-"It is not recommended setting a time or data limit for computer accounts."
-msgstr "Nem ajánlott idő vagy adatkorlátot beállítani a számítógépfiókoknak."
-
-#: ../../../www/radmin/templates/smarty.c:267
-#: ../../../www/radmin/templates/smarty.c:268
-msgid "Create New Computer Account"
-msgstr "Új számítógépfiók létrehozása"
-
-#: ../../../www/radmin/templates/smarty.c:269
-msgid "Portal Customisation"
-msgstr "Portál testre szabása"
-
-#: ../../../www/radmin/templates/smarty.c:272
-msgid "Sold"
-msgstr "Eladott"
-
-#: ../../../www/radmin/templates/smarty.c:273
-#: ../../../www/radmin/templates/smarty.c:275
-#: ../../../www/radmin/templates/smarty.c:277
-msgid "%1 of %2"
-msgstr "%1 / %2"
-
-#: ../../../www/radmin/templates/smarty.c:274
-msgid "This Month Used"
-msgstr "Ebben a hónapban használt"
-
-#: ../../../www/radmin/templates/smarty.c:276
-msgid "Last Month Used"
-msgstr "Előző hónapban használt"
-
 #: ../../../www/uam/templates/smarty.c:1
-msgid "You are logged in as:"
-msgstr "Bejelentkezve, mint:"
-
-#: ../../../www/uam/templates/smarty.c:2
-msgid "User"
-msgstr "Felhasználó"
-
-#: ../../../www/uam/templates/smarty.c:3
-msgid "Usage this session"
-msgstr "A kapcsolat használati adatai"
-
-#: ../../../www/uam/templates/smarty.c:4
-msgid "Remaining Quota"
-msgstr "Hátralevő kvóta"
-
-#: ../../../www/uam/templates/smarty.c:5 ../../../www/uam/templates/smarty.c:7
-#: ../../../www/uam/templates/smarty.c:13
-#: ../../../www/uam/templates/smarty.c:15
-msgid "Unlimited"
-msgstr "Korlátlan"
-
-#: ../../../www/uam/templates/smarty.c:6
-msgid "Quota allocation"
-msgstr "Meghatározott kvóta"
-
-#: ../../../www/uam/templates/smarty.c:8
-msgid "Max Session Time"
-msgstr "Maximális kapcsolati idő"
-
-#: ../../../www/uam/templates/smarty.c:9
-msgid "Max Idle Time"
-msgstr "Maximális üresjárati idő"
-
-#: ../../../www/uam/templates/smarty.c:11
-msgid "Session Time"
-msgstr "Kapcsolat ideje"
-
-#: ../../../www/uam/templates/smarty.c:12
-msgid "Remaining Time"
-msgstr "Hátralevő idő"
-
-#: ../../../www/uam/templates/smarty.c:16
-msgid "Idle Time"
-msgstr "Üresjárati idő"
-
-#: ../../../www/uam/templates/smarty.c:17
-msgid "Downloaded"
-msgstr "Letöltve"
-
-#: ../../../www/uam/templates/smarty.c:19
+#: ../../../www/uam/templates/smarty.c:21
 msgid "Help"
 msgstr "Súgó"
 
-#: ../../../www/uam/templates/smarty.c:20
-msgid "Support"
-msgstr "Támogatás"
-
-#: ../../../www/uam/templates/smarty.c:21
+#: ../../../www/uam/templates/smarty.c:2
 msgid "Successful Login"
 msgstr "Sikeres bejelentkezés"
 
-#: ../../../www/uam/templates/smarty.c:22
+#: ../../../www/uam/templates/smarty.c:3
 msgid "Continue to your site"
 msgstr "Folytatás a kért címen"
 
-#: ../../../www/uam/templates/smarty.c:23
-msgid "Free Downloads"
-msgstr "Ingyenes letöltés"
+#: ../../../www/uam/templates/smarty.c:4
+msgid "Support"
+msgstr "Támogatás"
 
-#: ../../../www/uam/templates/smarty.c:24
-msgid ""
-"Welcome to the %1 Hotspot. Please read the following before logging in."
-msgstr "Üdvözöljük a %1 HotSpot-on. Kérjük, olvassa el a következőket, mielőtt belépne."
+#: ../../../www/uam/templates/smarty.c:5
+msgid "By continuing, you agree to the below terms and conditions."
+msgstr ""
 
-#: ../../../www/uam/templates/smarty.c:25
-msgid "Information and Help"
-msgstr "Információ és súgó"
+#: ../../../www/uam/templates/smarty.c:6
+msgid "Show Terms and Conditions"
+msgstr ""
 
-#: ../../../www/uam/templates/smarty.c:26
-msgid "For a quick logout, bookmark <a href=\"%1\">LOGOUT</a>"
-msgstr "A gyors kilépéshez, jegyezze meg vagy adja a könyvjelzőkhöz <a href=\"%1\">LOGOUT</a>"
-
-#: ../../../www/uam/templates/smarty.c:27
+#: ../../../www/uam/templates/smarty.c:7
 msgid "If you are already logged in, continue to your site"
 msgstr "Ha már be van jelentkezve, folytatás a kért címen"
 
-#: ../../../www/uam/templates/smarty.c:28
-msgid "You are using the less secure login method."
-msgstr "Egy kevésbé biztonságos bejelentkezési módszert használ."
+#: ../../../www/uam/templates/smarty.c:8
+msgid "Voucher Login"
+msgstr ""
 
-#: ../../../www/uam/templates/smarty.c:29
-msgid ""
-"If you have javascript disabled, please try enabling it for the secure login"
-" method."
-msgstr "Ha Önnek a Javascript nincs engedélyezve, próbálja meg engedélyezni a biztonságos bejelentkezési módszer használatához."
+#: ../../../www/uam/templates/smarty.c:11
+msgid "Attempting Login..."
+msgstr ""
 
-#: ../../../www/uam/templates/smarty.c:30
-msgid ""
-"Use this less secure login form if the javascript version is giving you "
-"trouble"
-msgstr "Használja ezt a kevésbé biztonságos bejelentkezési űrlapot, ha a Javascript alapú problémát jelent"
+#: ../../../www/uam/templates/smarty.c:12
+msgid "Logged in as"
+msgstr ""
 
-#: ../../../www/uam/templates/smarty.c:31
-msgid "You have disabled the secure javascript login method."
-msgstr "Ön kikapcsolta a biztonságos Javascript alapú bejelentkezési módszert."
+#: ../../../www/uam/templates/smarty.c:13
+msgid "Remaining Session Time"
+msgstr ""
 
-#: ../../../www/uam/templates/smarty.c:32
-msgid "Click here to re-enable it"
-msgstr "Kattintson ide az újraengedélyezéshez."
+#: ../../../www/uam/templates/smarty.c:14
+msgid "Remaining Session Data"
+msgstr ""
 
-#: ../../../www/uam/templates/smarty.c:35
+#: ../../../www/uam/templates/smarty.c:15
+msgid "Logout"
+msgstr ""
+
+#: ../../../www/uam/templates/smarty.c:16
+msgid "Open Status Window"
+msgstr ""
+
+#: ../../../www/uam/templates/smarty.c:17
 msgid "Trouble logging in?"
 msgstr "Problémája van a belépéssel?"
 
-#: ../../../www/uam/templates/smarty.c:36
-msgid "Click here to disable the javascript login forms."
-msgstr "Kattintson ide a Javascript alapú bejelentkezési űrlap kikapcsolásához."
+#: ../../../www/uam/templates/smarty.c:18
+msgid "Click here to try a less secure login."
+msgstr ""
+
+#: ../../../www/uam/templates/smarty.c:19
+msgid "You have disabled the secure javascript login method."
+msgstr "Ön kikapcsolta a biztonságos Javascript alapú bejelentkezési módszert."
+
+#: ../../../www/uam/templates/smarty.c:20
+msgid "Click here to re-enable it"
+msgstr "Kattintson ide az újraengedélyezéshez."
+
+#: ../../../www/uam/templates/smarty.c:22
+msgid "You are logged in as:"
+msgstr "Bejelentkezve, mint:"
+
+#: ../../../www/uam/templates/smarty.c:23
+msgid "User"
+msgstr "Felhasználó"
+
+#: ../../../www/uam/templates/smarty.c:24
+msgid "Usage this session"
+msgstr "A kapcsolat használati adatai"
+
+#: ../../../www/uam/templates/smarty.c:25
+msgid "Remaining Quota"
+msgstr "Hátralevő kvóta"
+
+#: ../../../www/uam/templates/smarty.c:27
+msgid "Quota allocation"
+msgstr "Meghatározott kvóta"
+
+#: ../../../www/uam/templates/smarty.c:29
+msgid "Max Session Time"
+msgstr "Maximális kapcsolati idő"
+
+#: ../../../www/uam/templates/smarty.c:30
+msgid "Max Idle Time"
+msgstr "Maximális üresjárati idő"
+
+#: ../../../www/uam/templates/smarty.c:32
+msgid "Session Time"
+msgstr "Kapcsolat ideje"
+
+#: ../../../www/uam/templates/smarty.c:33
+msgid "Remaining Time"
+msgstr "Hátralevő idő"
 
 #: ../../../www/uam/templates/smarty.c:37
-msgid "This will use a less secure login method"
-msgstr "Egy kevésbé biztonságos bejelentkezési módszert fog használni."
+msgid "Idle Time"
+msgstr "Üresjárati idő"
 
-#: ../../../www/radmin/newmachine.php:32
-msgid "MAC Address already has an account"
-msgstr "A MAC (fizikai) cím már fiók"
+#: ../../../www/uam/templates/smarty.c:38
+msgid "Downloaded"
+msgstr "Letöltve"
 
-#: ../../../www/radmin/newmachine.php:45
-msgid "Only set one Data limit field"
-msgstr "Csak egy adatkorlát mezőt állíthat be"
+#: ../../../www/uam/templates/smarty.c:39
+msgid "Uploaded"
+msgstr "Feltöltve"
 
-#: ../../../www/radmin/newmachine.php:46
-msgid "Only set one Time limit field"
-msgstr "Csak egy időkorlát mezőt állíthat be"
+#: ../../../www/radmin/advancedsettings.php:34
+#, php-format
+msgid "Updated %s setting with value %s"
+msgstr ""
 
-#: ../../../www/radmin/newmachine.php:86
-msgid "Computer Account Successfully Created"
-msgstr "A számítógépfiók sikeresen létrejött"
-
-#: ../../../www/radmin/chilliconfig.php:36
+#: ../../../www/radmin/chilliconfig.php:35
 msgid "Walled Garden allowed hosts"
 msgstr "Belépés nélkül elérhető gépek"
 
 #: ../../../www/radmin/chilliconfig.php:37
 msgid ""
-"IP's and Hostnames that are accesible without logging in. DNS Lookup is only"
-" done at startup time so not suitable for domains with Round Robin IP "
-"Addresses"
-msgstr "IP címek és gépnevek, amelyek elérhetők belépés nélkül. DNS lekérdezés csak az induláskor történik, ezért nem használható Round Robin IP címeknél."
+"IP's and Hostnames that are accessible without logging in. DNS Lookup is only done at startup time so not\n"
+"            suitable for domains with Round Robin IP Addresses"
+msgstr ""
 
-#: ../../../www/radmin/chilliconfig.php:40
+#: ../../../www/radmin/chilliconfig.php:43
 msgid "Walled Garden allowed domains"
 msgstr "Belépés nélkül elérhető tartományok"
 
-#: ../../../www/radmin/chilliconfig.php:41
+#: ../../../www/radmin/chilliconfig.php:44
 msgid "Domains (and their subdomains) that are accesible without logging in."
 msgstr "Tartományok (és al-tartományai) elérhetők bejelentkezés nélkül is."
 
-#: ../../../www/radmin/chilliconfig.php:48
+#: ../../../www/radmin/chilliconfig.php:52
 msgid "MAC Auth Password"
 msgstr "MAC azonosító jelszó"
 
-#: ../../../www/radmin/chilliconfig.php:49
+#: ../../../www/radmin/chilliconfig.php:54
 msgid ""
-"The MAC Password used to autologin Computer Accounts. Change this to "
-"something obscure as it can be used to login using a known MAC address as "
-"the username."
-msgstr "A MAC jelszót használjuk a számítógép-fiókok automatikus bejelentkeztetéséhez. Változtassa valami ismeretlenre, mivel ismert MAC címek, mint felhasználónevek bejelentkeztetéséhez használjuk."
+"The MAC Password used to autologin Computer Accounts. Change this to something obscure as it can be used to\n"
+"             login using a known MAC address as the username."
+msgstr ""
 
-#: ../../../www/radmin/chilliconfig.php:52
+#: ../../../www/radmin/chilliconfig.php:60
 msgid "Default Session Idle Timeout"
 msgstr "Kapcsolat alapértelmezett üresjárati ideje"
 
-#: ../../../www/radmin/chilliconfig.php:53
+#: ../../../www/radmin/chilliconfig.php:62
 msgid ""
 "Default Idle Timeout for sessions. Logout after this number of seconds have "
 "passed without any traffic."
 msgstr "Kapcsolat alapértelmezett üresjárati ideje. Kijelentkezés történik, miután ennyi másodperc eltelt forgalom nélkül."
 
-#: ../../../www/radmin/chilliconfig.php:56
+#: ../../../www/radmin/chilliconfig.php:67
 msgid "DHCP Lease time"
 msgstr "DHCP bérleti idő"
 
-#: ../../../www/radmin/chilliconfig.php:57
+#: ../../../www/radmin/chilliconfig.php:68
 msgid "DHCP lease time in seconds."
 msgstr "DHCP bérleti idő másodpercben."
 
-#: ../../../www/radmin/chilliconfig.php:97
-#: ../../../www/radmin/chilliconfig.php:138
+#: ../../../www/radmin/chilliconfig.php:73
+msgid "DHCP Start"
+msgstr "DHCP kezdete"
+
+#: ../../../www/radmin/chilliconfig.php:74
+msgid "Start of DHCP Range (offset from start of network range)"
+msgstr ""
+
+#: ../../../www/radmin/chilliconfig.php:78
+msgid "DHCP End"
+msgstr "DHCP vége"
+
+#: ../../../www/radmin/chilliconfig.php:79
+msgid "End of DHCP Range (offset from start of network range)"
+msgstr ""
+
+#: ../../../www/radmin/chilliconfig.php:117
+#: ../../../www/radmin/chilliconfig.php:156
 #, php-format
 msgid "%s Coova Chilli config option update"
 msgstr "%s Coova Chilli beállítás opcionális frissítése"
 
-#: ../../../www/radmin/chilliconfig.php:183
+#: ../../../www/radmin/chilliconfig.php:193
 msgid "Changes pending Coova Chilli Reload"
 msgstr "A változtatások nem lépnek érvénybe a Coova Chilli újratöltésig"
 
-#: ../../../www/radmin/chilliconfig.php:185
-#: ../../../www/radmin/netconfig.php:250
+#: ../../../www/radmin/chilliconfig.php:195
+#: ../../../www/radmin/netconfig.php:214
 msgid "Settings match running config"
 msgstr "A beállítások egyeznek a futó konfigurációval"
 
-#: ../../../www/radmin/usermin.php:42
-msgid "New Passwords must match"
-msgstr "Az új jelszavaknak egyezniük kell"
+#: ../../../www/radmin/classes/CronFunctions.class.php:65
+msgid "Unable to select users needing First Login Activation"
+msgstr ""
 
-#: ../../../www/radmin/usermin.php:45
-msgid "Password must not be blank"
-msgstr "A jelszó nem lehet üres"
+#: ../../../www/radmin/classes/CronFunctions.class.php:78
+msgid "First login users activiated"
+msgstr ""
 
-#: ../../../www/radmin/usermin.php:50 ../../../www/radmin/edituser.php:45
-#: ../../../www/radmin/passwd.php:65 ../../../www/radmin/passwd.php:66
+#: ../../../www/radmin/classes/CronFunctions.class.php:95
+msgid "Unable to select user from radcheck"
+msgstr "Sikertelen felhasználó választás a 'radcheck'-ből"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:111
+msgid "Unable to cleanup old users from batch "
+msgstr "Nem tudom kitisztítani a régi felhasználókat a kötegből"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:119
+msgid "Unable to cleanup old batches "
+msgstr "Nem lehet kitisztítani a régi kötegeket"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:125
+msgid "Old Batches Cleaned"
+msgstr "Régi kötegek kitisztítva"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:157
+msgid "Clearing stale sessions failed: "
+msgstr "Állandó kapcsolatok kitisztítása sikertelen:"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:161
+msgid "Stale sessions cleared"
+msgstr "Állandó kapcsolatok tisztázva"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:194
+#: ../../../www/radmin/classes/CronFunctions.class.php:231
+#: ../../../www/radmin/classes/CronFunctions.class.php:268
+msgid "Fetching users to delete failed"
+msgstr "A törlendő felhasználók beolvasása sikertelen"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:205
+msgid "Expired users deleted"
+msgstr "A lejárt felhasználók törölve"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:242
+msgid "OutOfTime users deleted"
+msgstr ""
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:279
+msgid "OutOfData users deleted"
+msgstr ""
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:332
+msgid "Unable to insert data into mtotaccttmp: "
+msgstr "Sikertelen adatbeszúrás az mtotaccttmp-ba:"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:350
+msgid "Unable to delete old radacct data: "
+msgstr "Radacct régi adat törlése sikertelen: "
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:371
+msgid "Unable to update users Max-Octets: "
+msgstr "Max-Octets felhasználók frissítése sikertelen:"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:390
+msgid "Unable to update users Max-All-Session: "
+msgstr "Nem frissíthető a felhasználó 'Max-All-Session'-je:"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:425
+msgid "Unable to move mtotaccttmp data to mtotacct: "
+msgstr "Nem mozgatható a mtotaccttmp adat mtotacct-á: "
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:437
+msgid "Unable to truncate mtotaccttmp: "
+msgstr "Sikertelen mtotaccttmp levágás:"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:459
+#: ../../../www/radmin/classes/CronFunctions.class.php:478
+msgid "Unable to ensure positive values in radcheck: "
+msgstr "Nem biztosítható pozitív érték a radcheck-ben:"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:507
+msgid "Old Radius Accounting Data Archived"
+msgstr "A régi Radius Accounting adatok archiválva"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:524
+msgid "Unable to clear old Postauth rows: "
+msgstr ""
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:528
+msgid "Old Postauth rows cleared"
+msgstr ""
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:541
+msgid "Unable to get PostAuth MAC Reject IDs: "
+msgstr ""
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:558
+msgid "Unable to delete PostAuth MAC Reject entry: "
+msgstr ""
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:567
+msgid "PostAuth MAC Reject rows cleared"
+msgstr ""
+
+#: ../../../www/radmin/classes/DatabaseConnections.class.php:67
+msgid "DB Config File isn't a valid file."
+msgstr "Az adatbázis konfigurációs állomány nem érvényes fájl."
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:95
+msgid "Retrieving Months Accounting Data Available For failed: "
+msgstr ""
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:140
+msgid "Retrieving Session by RadAcctID failed: "
+msgstr "RadAcctID kapcsolatok lekérése sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:180
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:221
+msgid "Retrieving Sessions by Username failed: "
+msgstr "Felhasználónkénti kapcsolatok lekérése sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:245
+msgid "Retrieving Current Session by Username failed: "
+msgstr "Aktuális felhasználónkénti kapcsolatok lekérése sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:269
+msgid "Retrieving Username by Active Session (ipadddress): "
+msgstr "Az aktuális kapcsolat felhasználónevének lekérése (IP cím):"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:299
+msgid "Get All User radcheck details Query failed: "
+msgstr "'Get All User radcheck details' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:317
+msgid "Get All User radreply details Query failed: "
+msgstr "'Get All User radreply details' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:336
+msgid "Get All User Group details Query failed: "
+msgstr "'Get All User Group details' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:354
+msgid "Get All User Comment details Query failed: "
+msgstr "'Get All User Comment details' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:379
+msgid "Get All User radacct details Query failed: "
+msgstr "'Get All User radacct details' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:407
+msgid "Get All User mtotacct details Query failed: "
+msgstr "'Get All User mtotacct details' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:457
+msgid "Get User details Query failed: "
+msgstr "'User details' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:478
+msgid "Get User radreply details Query failed: "
+msgstr "'Get User radreply details' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:613
+msgid "Get User Group Query failed: "
+msgstr "'User Group' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:641
+msgid "Get All Usernames Query Failed: "
+msgstr "'All Usernames' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:667
+msgid "Get Users By Group Query Failed: "
+msgstr "'User By Group' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:691
+msgid "Get Computer Users Query Failed: "
+msgstr ""
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:724
+msgid "Get User Last Logout Query Failed: "
+msgstr "'User Last Logout' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:760
+msgid "Get User Total Session Time Query failed: "
+msgstr "'User Total Session Time' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:788
+msgid "Get User Time Usage (Total) Query failed: "
+msgstr "'Get User Time Usage (Total)' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:822
+msgid "Get User Data Usage Query failed: "
+msgstr "'User Data Usage' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:851
+msgid "Get User Data Usage (Total) Query failed: "
+msgstr "'User Data Usage (Tota)' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:878
+msgid "Get All Users Comments Query failed: "
+msgstr ""
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:908
+msgid "Get User Comment failed: "
+msgstr "Felhasználó megjegyzés elérése sikertelen"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:977
+msgid "Deleting radgroupcheck query failed: "
+msgstr "'Deleting radgroupcheck' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:997
+msgid "Adding Group Check Attributes query failed:  "
+msgstr "'Adding Group Check Attributes' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1035
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1050
+msgid "Deleting radgroupreply query failed: "
+msgstr "'Deleting radgroupreply' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1131
+msgid "Adding Group Attributes query failed:  "
+msgstr "'Adding Group Attributes' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1186
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1196
+msgid "Get Groups details Query failed: "
+msgstr "'Get Groups details' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1225
+msgid "Hourly"
+msgstr "Óránként"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1226
+msgid "Daily"
+msgstr "Naponta"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1227
+msgid "Weekly"
+msgstr "Hetente"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1228
+msgid "Monthly"
+msgstr "Havonta"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1289
+msgid "Setting User Comment Query Failed: "
+msgstr "'Setting User Comment' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1309
+msgid "Setting User Group Query Failed: "
+msgstr "'Setting User Group' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1335
+msgid "Setting User Datalimit Query Failed: "
+msgstr "'Setting User Datalimit' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1362
+msgid "Getting User Current Data Limit to increase failed: "
+msgstr "'User Current Data Limit' elérése a növeléshez sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1388
+msgid "Setting User Timelimit Query Failed: "
+msgstr "'Setting User Timelimit' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1414
+msgid "Getting User Current Time Limit to increase failed: "
+msgstr "'User Current Time Limit' elérése a növeléshez sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1439
+msgid "Setting User Password Query Failed: "
+msgstr "'Setting User Password' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1465
+msgid "Setting User ExpireAfter Query Failed: "
+msgstr ""
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1485
+msgid "Deleting User Expire After Query Failed: "
+msgstr ""
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1509
+msgid "Setting User Expiry Date Query Failed: "
+msgstr "'Setting User Expiry Date' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1529
+msgid "Deleting User Expiry Date Query Failed: "
+msgstr "'Deleting User Expiry Date' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1552
+msgid "Locking User Account Query Failed: "
+msgstr "'Locking User Account' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1569
+msgid "User Account Lock Reason Query Failed: "
+msgstr "'User Account Lock Reason' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1594
+msgid "Removing User Lock Query Failed: "
+msgstr "'Removing User Lock' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1611
+msgid "Removing User Lock Message Query Failed: "
+msgstr "'Removing User Lock Message' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1635
+msgid "Deleting user failed: "
+msgstr "Sikertelen felhasználótörlés:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1651
+msgid "Deleting user radreply data failed: "
+msgstr "Sikertelen felhasználó radreply adat törlés:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1667
+msgid "Deleting users group failed: "
+msgstr "Sikertelen felhasználói csoport-törlés"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1683
+msgid "Deleting users comment failed: "
+msgstr "Sikertelen felhasználói megjegyzés-törlés: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1706
+msgid "Checking Uniq Username failed: "
+msgstr "Egyedi felhasználónév ellenőrzés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1738
+msgid "Retrieving Chilli Config Single Value failed: "
+msgstr "'Chilli Config Single Value' lekérés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1771
+msgid "Deleting Chilli Config Query Failed: "
+msgstr "'Deleting Chilli Config' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1804
+msgid "Setting Chilli Config Single Query Failed: "
+msgstr "'Setting Chilli Config Single' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1829
+msgid "Setting Chilli Config Multi Query Failed: "
+msgstr "'Setting Chilli Config Multi' lekérdezés sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1853
+msgid "Retrieving Chilli Config Multi Value failed: "
+msgstr "'Chilli Config Multi Value' lekérése sikertelen:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1921
+msgid "Retrieving MAC from IP failed: "
+msgstr ""
+
+#: ../../../www/radmin/edituser.php:52 ../../../www/radmin/passwd.php:62
+#: ../../../www/radmin/passwd.php:63 ../../../www/radmin/usermin.php:49
 msgid "Password Changed"
 msgstr "A jelszó megváltozott"
 
-#: ../../../www/radmin/usermin.php:53
-msgid "Password not updated"
-msgstr "A jelszó nem frissült"
-
-#: ../../../www/radmin/netconfig.php:38
-msgid "DNS Servers"
-msgstr "DNS kiszolgálók"
-
-#: ../../../www/radmin/netconfig.php:39
-msgid ""
-"IP Addresses of DNS Servers. All clients will use the gateway as the DNS "
-"server which will use the addresses listed here to do DNS lookups. Dnsmasq "
-"WILL NOT get default servers from DHCP or /etc/resolv.conf and will default "
-"to OpenDNS Family Shield"
-msgstr "DNS kiszolgálók IP címei. A kliensek az átjárót fogják használni DNS kiszolgálónak, amelyik pedig az itt felsorolt szervereket a DNS kérések kiszolgálásához. Dnsmsq NEM FOG alapértelmezett szervereket kapni a DHCP-től vagy az /etc/resolv.conf-ból és alapértelmezetten az OpenDNS Family Shield-et használja."
-
-#: ../../../www/radmin/netconfig.php:42
-msgid "Bogus NXDOMAIN"
-msgstr "Hamis NXDOMAIN"
-
-#: ../../../www/radmin/netconfig.php:43
-msgid ""
-"IP Addresses of Bogus NXDOMAIN returns. All DNS replies that contain these "
-"ip address will be transformed into a NXDOMAIN result"
-msgstr "A hamis NXDOMAIN IP címei. Minden DNS választ, amelyik ezeket az IP címeket tartalmazza, átalakítjuk NXDOMAIN válasszá"
-
-#: ../../../www/radmin/netconfig.php:50
-msgid "LAN IP Address"
-msgstr "LAN IP cím"
-
-#: ../../../www/radmin/netconfig.php:51
-msgid ""
-"The server IP address that is used on the LAN side (Coova-Chilli) of the "
-"network. This will be the gateway address for all clients, as well as the "
-"DNS server the clients access. For default Squid config this should be a "
-"private ip address."
-msgstr "A kiszolgáló LAN oldali (Coova-Chilli) IP címe a hálózaton. Ez a cím lesz minden kliensnek az átjáró cím és a DNS szerver cím. Az alapértelmezett Squid konfigurációhoz ennek privát címnek kell lennie."
-
-#: ../../../www/radmin/netconfig.php:60
-msgid "LAN Network Mask"
-msgstr "LAN hálózati maszk"
-
-#: ../../../www/radmin/netconfig.php:61
-msgid ""
-"Network mask to use for clients network. (i.e. 255.255.255.0). DHCP range "
-"and network address will be calculated from this and the LAN IP Address."
-msgstr "A kliensek számára használható hálózati maszk. (pl.: 255.255.255.0) A DHCP tartomány és hálózati címek a LAN IP címből és a hálózati maszkból számítódnak."
-
-#: ../../../www/radmin/netconfig.php:65
-msgid "Bogus NXDOMAIN (OpenDNS)"
-msgstr "Hamis NXDOMAIN (OpenDNS)"
-
-#: ../../../www/radmin/netconfig.php:66
-msgid ""
-"Some DNS Providers return bogus NXDOMAIN to redirect you to their search "
-"engine. Block the bogus ip's and return a real NXDOMAIN for OpenDNS."
-msgstr "Néhány DNS szolgáltató hamis NXDOMAIN ad vissza, hogy átirányítson a saját keresési oldalára. Blokkolja a hamis IP címeket és valódi NXDOMAIN-t ad vissza az OpenDNS-nek."
-
-#: ../../../www/radmin/netconfig.php:70
-msgid "Wireless Network Name (SSID)"
-msgstr "Vezeték nélküli hálózat (Wifi) neve (SSID)"
-
-#: ../../../www/radmin/netconfig.php:71
-msgid ""
-"Wireless Network Name that clients connect to. Currently does not modify any"
-" settings but if set will print on the tickets"
-msgstr "Vezeték nélküli hálózat (Wifi) neve, amihez a kliensek kapcsolódnak. Jelenleg nem módosít semmilyen beállítást, de ha be van állítva, kinyomtatható a jegyeken."
-
-#: ../../../www/radmin/netconfig.php:74
-msgid "Print Ticket Type"
-msgstr "Jegy típus nyomtatása"
-
-#: ../../../www/radmin/netconfig.php:75
-msgid "Print the ticket type (Group name) on tickets"
-msgstr "Nyomtassa a típust (csoport név) a jegyen"
-
-#: ../../../www/radmin/netconfig.php:78
-msgid "Print Ticket Expiry"
-msgstr "Nyomtassa a lejárati időt"
-
-#: ../../../www/radmin/netconfig.php:79
-msgid "Print the expiry on tickets"
-msgstr "Nyomtassa a lejárati időt a jegyen"
-
-#: ../../../www/radmin/netconfig.php:90
-msgid "LAN Network Interface"
-msgstr "LAN hálózati adapter"
-
-#: ../../../www/radmin/netconfig.php:91
-msgid ""
-"The Network Interface that is connected to the LAN of the Hotspot (the side "
-"the clients connect to)"
-msgstr "Az a hálózati kártya, amelyik a helyi hálózathoz kapcsolódik, ahová a kliensek is."
-
-#: ../../../www/radmin/netconfig.php:96
-msgid "WAN Network Interface"
-msgstr "WAN hálózati adapter"
-
-#: ../../../www/radmin/netconfig.php:97
-msgid ""
-"The Network Interface that is connected to the WAN of the Hotspot (the side "
-"the internet is connected to)"
-msgstr "Az a hálózati kártya, amelyik az Internethez kapcsolódik"
-
-#: ../../../www/radmin/netconfig.php:248
-msgid "Changes pending Reload"
-msgstr "A változások az újratöltést várják"
-
-#: ../../../www/radmin/edituser.php:63
+#: ../../../www/radmin/edituser.php:68
 msgid "Group Changed"
 msgstr "A csoport megváltoztatva"
 
-#: ../../../www/radmin/edituser.php:73
+#: ../../../www/radmin/edituser.php:77
 msgid "Comment Changed"
 msgstr "Megjegyzés megváltoztatva"
 
+#: ../../../www/radmin/edituser.php:85
+msgid "User Account Unlocked"
+msgstr "A felhasználófiók feloldva"
+
 #: ../../../www/radmin/edituser.php:90
+msgid "User Account Locked"
+msgstr "A felhasználófiók zárolva"
+
+#: ../../../www/radmin/edituser.php:101 ../../../www/radmin/edituser.php:120
+#: ../../../www/radmin/groupconfig.php:107
+#: ../../../www/radmin/newtickets.php:41 ../../../www/radmin/newtickets.php:44
+#: ../../../www/radmin/newuser.php:61
+#: ../../../www/radmin/voucherconfig.php:104
+#, php-format
+msgid "Invalid value '%s' for Data Limit"
+msgstr "Érvénytelen adatkorlát érték '%s'"
+
+#: ../../../www/radmin/edituser.php:109
 msgid "Data Limit Increased"
 msgstr "Adatkorlát növelve"
 
-#: ../../../www/radmin/edituser.php:91
+#: ../../../www/radmin/edituser.php:110
 #, php-format
 msgid "Data Limit increased for %s"
 msgstr "Adatkorlát növelve: %s"
 
-#: ../../../www/radmin/edituser.php:111
+#: ../../../www/radmin/edituser.php:128
 msgid "Max Data Limit Updated"
 msgstr "Maximális adatkorlát növelve"
 
-#: ../../../www/radmin/edituser.php:112
+#: ../../../www/radmin/edituser.php:129
 #, php-format
 msgid "Max Data Limit changed for %s"
 msgstr "Maximális adatkorlát növelve: %s"
 
-#: ../../../www/radmin/edituser.php:129
+#: ../../../www/radmin/edituser.php:136 ../../../www/radmin/edituser.php:155
+#: ../../../www/radmin/groupconfig.php:101
+#: ../../../www/radmin/groupconfig.php:104
+#: ../../../www/radmin/newtickets.php:47 ../../../www/radmin/newtickets.php:50
+#: ../../../www/radmin/newuser.php:64 ../../../www/radmin/newuser.php:67
+#: ../../../www/radmin/voucherconfig.php:101
+#, php-format
+msgid "Invalid value '%s' for Time Limit"
+msgstr "Érvénytelen '%s' időkorlát érték"
+
+#: ../../../www/radmin/edituser.php:144
 msgid "Time Limit Increased"
 msgstr "Időkorlát növelve"
 
-#: ../../../www/radmin/edituser.php:130
+#: ../../../www/radmin/edituser.php:145
 #, php-format
 msgid "Time Limit increased for %s"
 msgstr "Időkorlát növelve: %s"
 
-#: ../../../www/radmin/edituser.php:149
+#: ../../../www/radmin/edituser.php:163
 msgid "Max Time Limit Updated"
 msgstr "Maximális időkorlát frissítve"
 
-#: ../../../www/radmin/edituser.php:150
+#: ../../../www/radmin/edituser.php:164
 #, php-format
 msgid "Max Time Limit changed for %s"
 msgstr "Maximális időkorlát megváltozott: %s"
 
-#: ../../../www/radmin/edituser.php:159
+#: ../../../www/radmin/edituser.php:175
 msgid "Expiry updated"
 msgstr "Lejárat frissítve"
 
-#: ../../../www/radmin/edituser.php:169
+#: ../../../www/radmin/edituser.php:181
 #, php-format
 msgid "User '%s' Deleted"
 msgstr "'%s' felhasználó törölve"
 
-#: ../../../www/radmin/passwd.php:57
-msgid "Old Password incorrect"
-msgstr "Régi jelszó érvénytelen"
+#: ../../../www/radmin/edituser.php:203
+msgid "User account is locked and will not be able to login"
+msgstr "A felhasználó fiókja zárolva és nem fog tudni bejelentkezni"
 
-#: ../../../www/radmin/passwd.php:60
-msgid "New passwords don't match"
-msgstr "Az új jelszavak nem egyeznek"
-
-#: ../../../www/radmin/passwd.php:68
-msgid "Please fill in all password fields"
-msgstr "Kérjük, minden jelszó mezőt töltsön fel"
-
-#: ../../../www/radmin/passwd.php:75
+#: ../../../www/radmin/export.php:47
 #, php-format
-msgid "User %s already exists"
-msgstr "%s felhasználó már létezik"
+msgid "Batch_%s_details"
+msgstr "Köteg_%s_részletek"
 
-#: ../../../www/radmin/passwd.php:78
-msgid "User Created"
-msgstr "Felhasználó létrehozva"
-
-#: ../../../www/radmin/passwd.php:81
-msgid "Need both username and password"
-msgstr "Felhasználónév és jelszó szükséges"
-
-#: ../../../www/radmin/passwd.php:87
+#: ../../../www/radmin/export.php:60
 #, php-format
-msgid "User %s Deleted"
-msgstr "%s felhasználó törölve"
+msgid "Group_%s_details"
+msgstr ""
 
-#: ../../../www/radmin/passwd.php:90
-msgid "Invalid Delete Request"
-msgstr "Érvénytelen törlési kérelem"
+#: ../../../www/radmin/export.php:63
+msgid "Need a group or batch"
+msgstr ""
 
-#: ../../../www/radmin/loginconfig.php:48
+#: ../../../www/radmin/export.php:74
+msgid "Need valid format"
+msgstr ""
+
+#: ../../../www/radmin/groupconfig.php:49
+msgid "A minimum of one group is required"
+msgstr "Legalább egy csoportnak lennie kell"
+
+#: ../../../www/radmin/groupconfig.php:52
+msgid "It is not recommended having groups without expiries."
+msgstr "Nem ajánlott csoportot létrehozni lejárat nélkül."
+
+#: ../../../www/radmin/groupconfig.php:73
+msgid "Invalid group name or group name missing"
+msgstr "Érvénytelen vagy hiányzó csoportnév"
+
+#: ../../../www/radmin/groupconfig.php:85
+#, php-format
+msgid "%s: Invalid expiry format"
+msgstr "%s: Érvénytelen lejárati dátum formátum"
+
+#: ../../../www/radmin/groupconfig.php:87
+#, php-format
+msgid "%s: Expiry can not be in the past"
+msgstr "%s: a lejárat nem lehet múltbeli"
+
+#: ../../../www/radmin/groupconfig.php:94
+#, php-format
+msgid "%s: Invalid Expire After format"
+msgstr ""
+
+#: ../../../www/radmin/groupconfig.php:96
+#, php-format
+msgid "%s: Expire after can not be in the past"
+msgstr ""
+
+#: ../../../www/radmin/groupconfig.php:110
+#, php-format
+msgid "Invalid value '%s' for Idle Timeout"
+msgstr ""
+
+#: ../../../www/radmin/groupconfig.php:113
+#: ../../../www/radmin/groupconfig.php:116
+#, php-format
+msgid "Invalid recurrence interval '%s'"
+msgstr ""
+
+#: ../../../www/radmin/groupconfig.php:119
+msgid "Recurring time limit must be less than interval"
+msgstr "Az ismétlődő időkorlát kevesebb kell legyen az intervallumnál"
+
+#: ../../../www/radmin/groupconfig.php:122
+#: ../../../www/radmin/groupconfig.php:125
+#, php-format
+msgid "Invalid Bandwidth Limit '%s'"
+msgstr "Érvénytelen sávszélesség korlát '%s'"
+
+#: ../../../www/radmin/groupconfig.php:134
+#, php-format
+msgid "Need both a time limit and recurrance for '%s'"
+msgstr "Időkorlát és ismétlődés szükséges: '%s'"
+
+#: ../../../www/radmin/groupconfig.php:187
+msgid "Groups updated"
+msgstr "Csoportok frissítve"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:29
+#, php-format
+msgid "Invalid number %s"
+msgstr "Érvénytelen szám %s"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:37
+#, php-format
+msgid "Invalid number '%s' (Must be whole number)"
+msgstr "'%s' érvénytelen szám (egész szám kell legyen)"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:56
+msgid "Invalid Time Range "
+msgstr "Érvénytelen időszak"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:68
+msgid "Invalid Group"
+msgstr "Érvénytelen csoport"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:200
+msgid "Expired"
+msgstr "Lejárt"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:203
+msgid "Out Of Quota"
+msgstr "Kvóta túllépés"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:206
+msgid "Low Quota"
+msgstr "Alacsony kvóta"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:56
+msgid "Status"
+msgstr "Állapot"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:57
+msgid "Users"
+msgstr "Felhasználók"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:59
+msgid "New User"
+msgstr "Új felhasználó"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:60
+msgid "Batch Users"
+msgstr "Kötegelt felhasználók"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:61
+msgid "Computer Account"
+msgstr "Számítógép fiók"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:64
+msgid "Monitor Sessions"
+msgstr "Kapcsolatok felügyelete"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:66
+msgid "Reports"
+msgstr "Jelentések"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:74
+msgid "Settings"
+msgstr "Beállítások"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:76
+msgid "Site Logo"
+msgstr "Webhely LOGO"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:80
+msgid "Ticket Print Settings"
+msgstr ""
+
+#: ../../../www/radmin/includes/page_functions.inc.php:97
+msgid "Logoff"
+msgstr "Kijelentkezés"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:131
+#: ../../../www/radmin/includes/page_functions.inc.php:170
+msgid "Inherit from group"
+msgstr "Csoportból örökölt"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:213
+msgid "Hour"
+msgstr "Óra"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:214
+msgid "Day"
+msgstr "Nap"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:215
+msgid "Week"
+msgstr "Hét"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:216
+msgid "Month"
+msgstr "Hónap"
+
+#: ../../../www/radmin/includes/session.inc.php:57
+msgid "Your session has expired. Please login again"
+msgstr "Az Ön kapcsolata lejárt. Kérjük, jelentkezzen be újra"
+
+#: ../../../www/radmin/includes/session.inc.php:61
+msgid "Incorrect Login"
+msgstr "Sikertelen bejelentkezés"
+
+#: ../../../www/radmin/includes/session.inc.php:65
+msgid "Security Issue. Please login again"
+msgstr "Biztonsági probléma. Kérjük, jelentkezzen be újra"
+
+#: ../../../www/radmin/includes/session.inc.php:69
+msgid "Authentication Issue. Please report to Admin"
+msgstr "Hitelesítési hiba. Kérjük, jelezze a rendszergazdának"
+
+#: ../../../www/radmin/includes/session.inc.php:103
+msgid "No users defined in database. Please check your install"
+msgstr ""
+
+#: ../../../www/radmin/loginconfig.php:51
 msgid "Login Screen Title"
 msgstr "Bejelentkezési képernyő cím"
 
-#: ../../../www/radmin/loginconfig.php:49
+#: ../../../www/radmin/loginconfig.php:52
 msgid "Hide Title (header) from login screen"
 msgstr "A cím (fejléc) elrejtése a bejelentkezési űrlapon"
 
-#: ../../../www/radmin/loginconfig.php:52
+#: ../../../www/radmin/loginconfig.php:56
+msgid "Login Screen Menu"
+msgstr ""
+
+#: ../../../www/radmin/loginconfig.php:57
+msgid "Hide Menubar from login screen"
+msgstr ""
+
+#: ../../../www/radmin/loginconfig.php:61
 msgid "Login Screen Footer"
 msgstr "Bejelentkezési képernyő lábrész"
 
-#: ../../../www/radmin/loginconfig.php:53
+#: ../../../www/radmin/loginconfig.php:63
 msgid ""
-"Hide footer from login screen. Please consider adding a link back to "
-"http://grasehotspot.org if you are hiding the footer"
-msgstr "A lábrész elrejtése a bejelentkezési űrlapon. Kérjük, elrejtéskor fontolja meg egy hivatkozás hozzáadását, amely a http://grasehotspot.org-ra mutat"
+"Hide footer from login screen.\n"
+"            Please consider adding a link back to http://grasehotspot.org if you are hiding the footer"
+msgstr ""
 
-#: ../../../www/radmin/loginconfig.php:56
-msgid "Logout Bookmark"
-msgstr "Kijelentkezés kedvencekhez adása"
-
-#: ../../../www/radmin/loginconfig.php:57
-msgid "Hide Bookmark logout link"
-msgstr "Kijelentkezés kedvencekhez adása hivatkozás elrejtése"
-
-#: ../../../www/radmin/loginconfig.php:60
+#: ../../../www/radmin/loginconfig.php:69
 msgid "Help Link"
 msgstr "Súgó hivatkozás"
 
-#: ../../../www/radmin/loginconfig.php:61
-msgid ""
-"Hide Help and Information link from login page (still shows in footer if "
-"footer is enabled)"
-msgstr "A Súgó és Információ hivatkozás elrejtése  a bejelentkezési űrlapon (a lábrészen még megjelenik, ha a lábrész engedélyezve van)"
+#: ../../../www/radmin/loginconfig.php:71
+msgid "Hide Help link from menu and footer"
+msgstr ""
 
-#: ../../../www/radmin/loginconfig.php:64
+#: ../../../www/radmin/loginconfig.php:76
 msgid "Disable Javascript Login"
 msgstr "Javascript bejelentkezés tiltása"
 
-#: ../../../www/radmin/loginconfig.php:65
+#: ../../../www/radmin/loginconfig.php:77
 msgid "Force all logins to be through the less secure non-javascript method"
 msgstr "Minden bejelentkezést kevésbé biztonságos (nem Javascript alapú) módszerre kényszerít"
 
-#: ../../../www/radmin/loginconfig.php:68
+#: ../../../www/radmin/loginconfig.php:81
 msgid "Disable All Default CSS"
 msgstr "Minden alapértelmezett CSS tiltása"
 
-#: ../../../www/radmin/loginconfig.php:69
+#: ../../../www/radmin/loginconfig.php:83
 msgid ""
 "All css files will be excluded from the login pages, and only the css below "
 "(Main CSS) will be used"
 msgstr "Minden CSS fájl kivétele a bejelentkezési űrlapból és csak az itt megadott (Main CSS) lesz használatban"
 
-#: ../../../www/radmin/loginconfig.php:73
+#: ../../../www/radmin/loginconfig.php:88
 msgid "Page Title"
 msgstr "Oldalcím"
 
-#: ../../../www/radmin/loginconfig.php:74
+#: ../../../www/radmin/loginconfig.php:89
 msgid "The page title that is displayed on the login page"
 msgstr "Az oldalcím, amely a bejelentkezési oldalon jelenik meg"
 
-#: ../../../www/radmin/loginconfig.php:82
+#: ../../../www/radmin/loginconfig.php:93
+msgid "Free Login Group"
+msgstr ""
+
+#: ../../../www/radmin/loginconfig.php:94
+msgid ""
+"The group to create 'Free Login' users in. Leave blank to disable free "
+"logins"
+msgstr ""
+
+#: ../../../www/radmin/loginconfig.php:98
+msgid "Free Login Button Text"
+msgstr ""
+
+#: ../../../www/radmin/loginconfig.php:99
+msgid ""
+"Text to show on the Free Login button if enabled above. Defaults to 'Free "
+"Access'"
+msgstr ""
+
+#: ../../../www/radmin/loginconfig.php:103
+msgid "Hide Username/Password (Voucher) login form"
+msgstr ""
+
+#: ../../../www/radmin/loginconfig.php:104
+msgid ""
+"Hides the login form (username/password fields). Useful if you only want a "
+"free login button"
+msgstr ""
+
+#: ../../../www/radmin/loginconfig.php:114
+msgid "Terms and Conditions"
+msgstr ""
+
+#: ../../../www/radmin/loginconfig.php:115
+msgid "Terms and Conditions of use (HTML) - Leave empty to not display"
+msgstr ""
+
+#: ../../../www/radmin/loginconfig.php:119
 msgid "Main CSS"
 msgstr "Fő CSS"
 
-#: ../../../www/radmin/loginconfig.php:83
+#: ../../../www/radmin/loginconfig.php:121
 msgid ""
-"Cascading style sheet that is applied to all portal pages (use !important to"
-" override a style if your settings here don't seem to work, it may be that "
-"the builtin css has a more specific selector than your one here, look at "
-"radmin.css for id's and classes)"
-msgstr "A portál minden oldalán alkalmazott CSS. (Használja a !important jelzőt, ha a stílusa úgy látszik, hogy nem működik, mert lehet, hogy egy beépített CSS specifikusabb jelölő, mint az öné. Az azonosítók és osztályok megnézéséhez lásd: radmin.css)"
+"Cascading style sheet that is applied to all portal pages (use !important to override a style if your\n"
+"            settings here don't seem to work, it may be that the builtin css has a more specific selector than your one\n"
+"            here, look at radmin.css for id's and classes)"
+msgstr ""
 
-#: ../../../www/radmin/loginconfig.php:86
+#: ../../../www/radmin/loginconfig.php:128
 msgid "Help and Information Page"
 msgstr "Súgó és információs oldal"
 
-#: ../../../www/radmin/loginconfig.php:87
-msgid "Help and Information page contents"
-msgstr "Súgó és információs oldal tartalom"
+#: ../../../www/radmin/loginconfig.php:129
+msgid ""
+"Help and Information page contents, leaving this blank does not remove the "
+"link, see above options for removing the link."
+msgstr ""
 
-#: ../../../www/radmin/loginconfig.php:91
-msgid "Login Help HTML"
-msgstr "Bejelentkezési súgó HTML"
+#: ../../../www/radmin/loginconfig.php:134
+msgid "HTML Above login form"
+msgstr ""
 
-#: ../../../www/radmin/loginconfig.php:92
-msgid "Help text (and HTML) displayed on login page above login form"
-msgstr "A súgó szöveg (és HTML) a bejelentkezési űrlap felett jelenik meg"
+#: ../../../www/radmin/loginconfig.php:135
+msgid "HTML to insert above login form (and free login)"
+msgstr ""
 
-#: ../../../www/radmin/loginconfig.php:97
+#: ../../../www/radmin/loginconfig.php:139
 msgid "HTML Below login form"
 msgstr "Bejelentkezési űrlap alja HTML"
 
-#: ../../../www/radmin/loginconfig.php:98
+#: ../../../www/radmin/loginconfig.php:140
 msgid "HTML to insert below login form"
 msgstr "A bejelentkezési űrlap alá beszúrt HTML"
 
-#: ../../../www/radmin/loginconfig.php:101
+#: ../../../www/radmin/loginconfig.php:144
 msgid "Logged In HTML"
 msgstr "Bejelentkezett HTML"
 
-#: ../../../www/radmin/loginconfig.php:102
+#: ../../../www/radmin/loginconfig.php:145
 msgid "HTML for successful login when not using javascript"
 msgstr "Javascript nélküli sikeres bejelentkezés HTML"
 
-#: ../../../www/radmin/loginconfig.php:140
-#: ../../../www/radmin/loginconfig.php:177
+#: ../../../www/radmin/loginconfig.php:183
+#: ../../../www/radmin/loginconfig.php:199
 #, php-format
 msgid "%s login config option update"
 msgstr "%s bejelentkezés beállítás opcionális frissítése"
 
-#: ../../../www/radmin/groupconfig.php:54
-msgid "A minimum of one group is required"
-msgstr "Legalább egy csoportnak lennie kell"
+#: ../../../www/radmin/netconfig.php:34
+msgid "DNS Servers"
+msgstr "DNS kiszolgálók"
 
-#: ../../../www/radmin/groupconfig.php:58
-msgid "It is not recommended having groups without expiries."
-msgstr "Nem ajánlott csoportot létrehozni lejárat nélkül."
+#: ../../../www/radmin/netconfig.php:36
+msgid ""
+"IP Addresses of DNS Servers. All clients will use the gateway as the DNS server which will use the\n"
+"            addresses listed here to do DNS lookups. Dnsmasq WILL NOT get default servers from DHCP or /etc/resolv.conf\n"
+"            and will default to OpenDNS Family Shield"
+msgstr ""
 
-#: ../../../www/radmin/groupconfig.php:80
-msgid "Invalid group name or group name missing"
-msgstr "Érvénytelen vagy hiányzó csoportnév"
+#: ../../../www/radmin/netconfig.php:43
+msgid "Bogus NXDOMAIN"
+msgstr "Hamis NXDOMAIN"
 
-#: ../../../www/radmin/groupconfig.php:98
+#: ../../../www/radmin/netconfig.php:45
+msgid ""
+"IP Addresses of Bogus NXDOMAIN returns. All DNS replies that contain these ip address will be transformed\n"
+"            into a NXDOMAIN result"
+msgstr ""
+
+#: ../../../www/radmin/netconfig.php:55
+msgid "LAN IP Address"
+msgstr "LAN IP cím"
+
+#: ../../../www/radmin/netconfig.php:57
+msgid ""
+"The server IP address that is used on the LAN side (Coova-Chilli) of the network. This will be the gateway\n"
+"            address for all clients, as well as the DNS server the clients access. For default Squid config this should\n"
+"            be a private ip address."
+msgstr ""
+
+#: ../../../www/radmin/netconfig.php:70
+msgid "LAN Network Mask"
+msgstr "LAN hálózati maszk"
+
+#: ../../../www/radmin/netconfig.php:72
+msgid ""
+"Network mask to use for clients network. (i.e. 255.255.255.0). DHCP range and network address will be\n"
+"            calculated from this and the LAN IP Address."
+msgstr ""
+
+#: ../../../www/radmin/netconfig.php:79
+msgid "Bogus NXDOMAIN (OpenDNS)"
+msgstr "Hamis NXDOMAIN (OpenDNS)"
+
+#: ../../../www/radmin/netconfig.php:81
+msgid ""
+"Some DNS Providers return bogus NXDOMAIN to redirect you to their search engine. Block the bogus ip's and\n"
+"            return a real NXDOMAIN for OpenDNS."
+msgstr ""
+
+#: ../../../www/radmin/netconfig.php:94
+msgid "LAN Network Interface"
+msgstr "LAN hálózati adapter"
+
+#: ../../../www/radmin/netconfig.php:96
+msgid ""
+"The Network Interface that is connected to the LAN of the Hotspot (the side "
+"the clients connect to)"
+msgstr "Az a hálózati kártya, amelyik a helyi hálózathoz kapcsolódik, ahová a kliensek is."
+
+#: ../../../www/radmin/netconfig.php:103
+msgid "WAN Network Interface"
+msgstr "WAN hálózati adapter"
+
+#: ../../../www/radmin/netconfig.php:105
+msgid ""
+"The Network Interface that is connected to the WAN of the Hotspot (the side "
+"the internet is connected to)"
+msgstr "Az a hálózati kártya, amelyik az Internethez kapcsolódik"
+
+#: ../../../www/radmin/netconfig.php:212
+msgid "Changes pending Reload"
+msgstr "A változások az újratöltést várják"
+
+#: ../../../www/radmin/newtickets.php:53 ../../../www/radmin/newuser.php:73
+msgid "Only set one Data limit field"
+msgstr "Csak egy adatkorlát mezőt állíthat be"
+
+#: ../../../www/radmin/newtickets.php:56 ../../../www/radmin/newuser.php:79
+msgid "Only set one Time limit field"
+msgstr "Csak egy időkorlát mezőt állíthat be"
+
+#: ../../../www/radmin/newtickets.php:61
+msgid "Max of 1000 tickets per batch"
+msgstr ""
+
+#: ../../../www/radmin/newtickets.php:78
+msgid "Please select a batch to print"
+msgstr "Kérem, válasszon ki egy köteget a nyomtatáshoz"
+
+#: ../../../www/radmin/newtickets.php:97
+msgid "Please select a batch to export"
+msgstr "Kérem, válasszon ki egy köteget az exportáláshoz"
+
+#: ../../../www/radmin/newtickets.php:117
+msgid "Please select a batch to delete"
+msgstr ""
+
+#: ../../../www/radmin/newtickets.php:239
 #, php-format
-msgid "%s: Invalid expiry format"
-msgstr "%s: Érvénytelen lejárati dátum formátum"
+msgid ""
+"Too many users failed to create. Batch creation stopped. %s users have been "
+"successfully created"
+msgstr ""
 
-#: ../../../www/radmin/groupconfig.php:102
-#, php-format
-msgid "%s: Expiry can not be in the past"
-msgstr "%s: a lejárat nem lehet múltbeli"
+#: ../../../www/radmin/newtickets.php:254
+msgid "Tickets Successfully Created"
+msgstr "Jegyek sikeresen létrehozva"
 
-#: ../../../www/radmin/groupconfig.php:125
-#, php-format
-msgid "Need both a time limit and recurrance for '%s'"
-msgstr "Időkorlát és ismétlődés szükséges: '%s'"
+#: ../../../www/radmin/newtickets.php:255
+msgid "Print Tickets"
+msgstr "Jegyek nyomtatása"
 
-#: ../../../www/radmin/groupconfig.php:184
-msgid "Groups updated"
-msgstr "Csoportok frissítve"
-
-#: ../../../www/radmin/newuser.php:34
+#: ../../../www/radmin/newuser.php:38
 msgid "Username already taken"
 msgstr "A felhasználónév már használt"
 
-#: ../../../www/radmin/newuser.php:35
+#: ../../../www/radmin/newuser.php:42
 msgid "Username and Password are both Required"
 msgstr "Felhasználónév és jelszó szükséges"
 
-#: ../../../www/radmin/newuser.php:112
+#: ../../../www/radmin/newuser.php:49
+msgid "MAC Address already has an account"
+msgstr "A MAC (fizikai) cím már fiók"
+
+#: ../../../www/radmin/newuser.php:53
+msgid "MAC Address not in correct format"
+msgstr "A MAC cím nem a megfelelő formátumú"
+
+#: ../../../www/radmin/newuser.php:58
+#, php-format
+msgid "Invalid value '%s' for 1 Data Limit"
+msgstr ""
+
+#: ../../../www/radmin/newuser.php:160
 #, php-format
 msgid "User %s Successfully Created"
 msgstr "%s felhasználó sikeresen létrehozva"
 
-#: ../../../www/radmin/newuser.php:113
+#: ../../../www/radmin/newuser.php:162
 #, php-format
 msgid "Print Ticket for %s"
 msgstr "Jegy nyomtatás %s részére"
 
-#: ../../../www/radmin/newuser.php:114
+#: ../../../www/radmin/newuser.php:163
 #, php-format
 msgid "Created new user %s"
 msgstr "%s felhasználó létrehozva"
 
-#: ../../../www/radmin/printnewtickets.php:48
-#: ../../../www/radmin/printnewtickets.php:54
+#: ../../../www/radmin/passwd.php:54
+msgid "Old Password incorrect"
+msgstr "Régi jelszó érvénytelen"
+
+#: ../../../www/radmin/passwd.php:56
+msgid "New passwords don't match"
+msgstr "Az új jelszavak nem egyeznek"
+
+#: ../../../www/radmin/passwd.php:66
+msgid "Please fill in all password fields"
+msgstr "Kérjük, minden jelszó mezőt töltsön fel"
+
+#: ../../../www/radmin/passwd.php:84
+msgid "Invalid Access level"
+msgstr ""
+
+#: ../../../www/radmin/passwd.php:87
+msgid "Need an access level to create admin user"
+msgstr ""
+
+#: ../../../www/radmin/passwd.php:90
 #, php-format
-msgid "Batch %s Vouchers"
-msgstr "Kötegelt %s utalványok"
+msgid "User %s already exists"
+msgstr "%s felhasználó már létezik"
 
-#: ../../../www/radmin/printnewtickets.php:103
+#: ../../../www/radmin/passwd.php:93
+msgid "Need both username and password"
+msgstr "Felhasználónév és jelszó szükséges"
+
+#: ../../../www/radmin/passwd.php:99
+msgid "User Created"
+msgstr "Felhasználó létrehozva"
+
+#: ../../../www/radmin/passwd.php:102
+msgid "Error Creating Admin User"
+msgstr ""
+
+#: ../../../www/radmin/passwd.php:110
 #, php-format
-msgid "Wireless Network: %s"
-msgstr "Vezeték nélküli hálózat: %s"
+msgid "User %s Deleted"
+msgstr "%s felhasználó törölve"
 
-#: ../../../www/radmin/printnewtickets.php:105
-#, php-format
-msgid "Username: %s"
-msgstr "Felhasználó név: %s"
+#: ../../../www/radmin/passwd.php:114
+msgid "Invalid Delete Request"
+msgstr "Érvénytelen törlési kérelem"
 
-#: ../../../www/radmin/printnewtickets.php:106
-#, php-format
-msgid "Password: %s"
-msgstr "Jelszó: %s"
+#: ../../../www/radmin/passwd.php:135
+msgid "Unknown Access Level"
+msgstr ""
 
-#: ../../../www/radmin/printnewtickets.php:110
-#, php-format
-msgid "Voucher Type: %s"
-msgstr "Utalvány típus: %s"
+#: ../../../www/radmin/purchase_wizard.php:70
+msgid "Your selected payment gateway doesn't support free vouchers"
+msgstr "A választott fizetési átjáró nem támogatja az ingyenes jegyeket"
 
-#: ../../../www/radmin/printnewtickets.php:118
-#, php-format
-msgid "Expiry: %s"
-msgstr "Lejárat: %s"
+#: ../../../www/radmin/purchase_wizard.php:78
+msgid "Your selected payment gateway doesn't support paid vouchers"
+msgstr "A választott fizetési átjáró nem támogatja az fizetős jegyeket"
 
-#: ../../../www/radmin/newtickets.php:58
-msgid "Max of 50 tickets per batch"
-msgstr "Egy kötegben maximum 50 jegyet lehet létrehozni"
+#: ../../../www/radmin/purchase_wizard.php:94
+msgid "Invalid Voucher or Payment Selection"
+msgstr "Érvénytelen jegy vagy fizetés választás"
 
-#: ../../../www/radmin/newtickets.php:139
-msgid "Tickets Successfully Created"
-msgstr "Jegyek sikeresen létrehozva"
+#: ../../../www/radmin/purchase_wizard.php:168
+msgid "Account Pending Payment and Activation"
+msgstr "Fizetésre és aktiválásra váró fiókok"
 
-#: ../../../www/radmin/newtickets.php:140
-msgid "Print Tickets"
-msgstr "Jegyek nyomtatása"
+#: ../../../www/radmin/sessions.php:30
+msgid "Logged out: "
+msgstr ""
 
-#: ../../../www/radmin/settings.php:101
+#: ../../../www/radmin/sessions.php:33
+msgid "Unable to find active session for: "
+msgstr ""
+
+#: ../../../www/radmin/settings.php:54
+msgid ""
+"Some time options are still in use by current groups and have been added "
+"back in"
+msgstr "Az aktuális csoportok még használnak bizonyos időbeállításokat, amelyek visszamenőlegesen adódnak hozzá."
+
+#: ../../../www/radmin/settings.php:59
+msgid ""
+"Some data options are still in use by current groups and have been added "
+"back in"
+msgstr "Az aktuális csoportok még használnak bizonyos adatbeállításokat, amelyek visszamenőlegesen adódnak hozzá."
+
+#: ../../../www/radmin/settings.php:64
+msgid ""
+"Some bandwidth options are still in use by current groups and have been "
+"added back in"
+msgstr "Az aktuális csoportok még használnak bizonyos sávszélesség-beállításokat, amelyek visszamenőlegesen adódnak hozzá."
+
+#: ../../../www/radmin/settings.php:69
+msgid "Time Options Updated"
+msgstr "Időbeállítások frissítve"
+
+#: ../../../www/radmin/settings.php:74
+msgid "Data Options Updated"
+msgstr "Adatbeállítások frissítve"
+
+#: ../../../www/radmin/settings.php:79
+msgid "Bandwidth Options Updated"
+msgstr "Sávszélesség beállítások frissítve"
+
+#: ../../../www/radmin/settings.php:122
 msgid "Location name not valid"
 msgstr "Hely név nem érvényes"
 
-#: ../../../www/radmin/settings.php:105
+#: ../../../www/radmin/settings.php:125
 msgid "Location name updated"
 msgstr "Hely név frissítve"
 
-#: ../../../www/radmin/settings.php:106
+#: ../../../www/radmin/settings.php:126
 msgid "Location Name changed to"
 msgstr "Az új hely neve"
 
-#: ../../../www/radmin/settings.php:111
+#: ../../../www/radmin/settings.php:132
 msgid "Error Saving Location Name"
 msgstr "Hiba a hely név mentésekor"
 
-#: ../../../www/radmin/settings.php:120
+#: ../../../www/radmin/settings.php:145
 msgid "Website name not valid"
 msgstr "A webhely neve érvénytelen"
 
-#: ../../../www/radmin/settings.php:125 ../../../www/radmin/settings.php:126
+#: ../../../www/radmin/settings.php:148 ../../../www/radmin/settings.php:149
 msgid "Website name updated"
 msgstr "A webhely neve frissítve"
 
-#: ../../../www/radmin/settings.php:130
+#: ../../../www/radmin/settings.php:151
 msgid "Error Saving Website Name"
 msgstr "Hiba a webhely nevének mentésekor"
 
-#: ../../../www/radmin/settings.php:138
+#: ../../../www/radmin/settings.php:165
 msgid "Website link not valid"
 msgstr "Webhely hivatkozás érvénytelen"
 
-#: ../../../www/radmin/settings.php:143 ../../../www/radmin/settings.php:144
+#: ../../../www/radmin/settings.php:168 ../../../www/radmin/settings.php:169
 msgid "Website link updated"
 msgstr "Webhely hivatkozás frissítve"
 
-#: ../../../www/radmin/settings.php:148
+#: ../../../www/radmin/settings.php:171
 msgid "Error Saving Website link"
 msgstr "Hiba a webhely hivatkozás mentésekor"
 
-#: ../../../www/radmin/settings.php:162 ../../../www/radmin/settings.php:163
-msgid "Price per MiB updated"
-msgstr "MiB-onkénti költség frissítve"
-
-#: ../../../www/radmin/settings.php:167
-msgid "Error saving Price per MiB"
-msgstr "Hiba a MiB-onkénti költség frissítésekor"
-
-#: ../../../www/radmin/settings.php:172
-msgid "Invalid Price per MiB"
-msgstr "Érvénytelen MiB-onkénti költség"
-
-#: ../../../www/radmin/settings.php:183 ../../../www/radmin/settings.php:184
-msgid "Price per Minute Updated"
-msgstr "Percenkénti költség frissítve"
-
-#: ../../../www/radmin/settings.php:187
-msgid "Error saving Price per Minute"
-msgstr "Hiba a percenkénti költség mentésekor"
-
-#: ../../../www/radmin/settings.php:191
-msgid "Invalid Price per Minute"
-msgstr "Érvénytelen percenkénti költség"
-
-#: ../../../www/radmin/settings.php:202
-msgid "Currency updated"
-msgstr "Pénznem frissítve"
-
-#: ../../../www/radmin/settings.php:203
-msgid "Currency updated to"
-msgstr "Az új pénznem:"
-
-#: ../../../www/radmin/settings.php:207
-msgid "Error saving Currency"
-msgstr "Hiba pénznem mentésekor"
-
-#: ../../../www/radmin/settings.php:211
-msgid "Invalid Currency"
-msgstr "Érvénytelen pénznem"
-
-#: ../../../www/radmin/settings.php:233
+#: ../../../www/radmin/settings.php:195
 msgid "Locale updated"
 msgstr "Nyelvi beállítás frissítve"
 
-#: ../../../www/radmin/settings.php:234
+#: ../../../www/radmin/settings.php:196
 msgid "Locale updated to"
 msgstr "Az új nyelvi beállítás"
 
-#: ../../../www/radmin/settings.php:238
+#: ../../../www/radmin/settings.php:198
 msgid "Error updating Locale"
 msgstr "Hiba a nyelvi beállítás frissítésekor"
 
-#: ../../../www/radmin/settings.php:242
+#: ../../../www/radmin/settings.php:201
 msgid "Invalid Locale"
 msgstr "Érvénytelen nyelvi beállítás"
 
-#: ../../../www/radmin/settings.php:258 ../../../www/radmin/settings.php:259
-msgid "Sellable Data Limit Update"
-msgstr "Az elérhető adat korlát frissítése"
-
-#: ../../../www/radmin/settings.php:263
-msgid "Error updating Sellable Data Limit"
-msgstr "Hiba az elérhető adat korlát frissítésekor"
-
-#: ../../../www/radmin/settings.php:268
-msgid "Invalid value for Sellable Data"
-msgstr "Érvénytelen értékű az elérhető adat mező"
-
-#: ../../../www/radmin/settings.php:279 ../../../www/radmin/settings.php:280
-msgid "Useable Data Limit Update"
-msgstr "Felhasználható adatkorlát frissítése"
-
-#: ../../../www/radmin/settings.php:284
-msgid "Error updating Useable Data Limit"
-msgstr "Hiba a felhasználható adatkorlát frissítésekor"
-
-#: ../../../www/radmin/settings.php:289
-msgid "Invalid value for Useable Data"
-msgstr "Érvénytelen értékű a használható adat"
-
-#: ../../../www/radmin/settings.php:297
+#: ../../../www/radmin/settings.php:214
 msgid "Support name not valid"
 msgstr "Érvénytelen támogató név"
 
-#: ../../../www/radmin/settings.php:302 ../../../www/radmin/settings.php:303
+#: ../../../www/radmin/settings.php:217 ../../../www/radmin/settings.php:218
 msgid "Support name updated"
 msgstr "Támogató név frissítve"
 
-#: ../../../www/radmin/settings.php:307
+#: ../../../www/radmin/settings.php:220
 msgid "Error Saving Support Name"
 msgstr "Hiba a támogató nevének mentésekor"
 
-#: ../../../www/radmin/settings.php:315
+#: ../../../www/radmin/settings.php:232
 msgid "Support link not valid"
 msgstr "Támogató hivatkozás nem érvényes"
 
-#: ../../../www/radmin/settings.php:320 ../../../www/radmin/settings.php:321
+#: ../../../www/radmin/settings.php:235 ../../../www/radmin/settings.php:236
 msgid "Support link updated"
 msgstr "Támogató hivatkozás frissítve"
 
-#: ../../../www/radmin/settings.php:325
+#: ../../../www/radmin/settings.php:238
 msgid "Error Saving Support link"
 msgstr "Hiba a támogató hivatkozás mentésekor"
 
-#: ../../../www/radmin/classes/CronFunctions.class.php:70
-#: ../../../www/radmin/classes/CronFunctions.class.php:105
-#: ../../../www/radmin/classes/CronFunctions.class.php:153
-#: ../../../www/radmin/classes/CronFunctions.class.php:209
-msgid "Upgrading DB failed: "
-msgstr "Adatbázis frissítés sikertelen:"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:153
-msgid "Including default_templates file failed"
-msgstr "A default_templates fájl sikertelen beolvasása"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:287
-msgid "Database upgraded"
-msgstr "Adatbázis frissítve"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:306
-msgid "Unable to select user from radcheck"
-msgstr "Sikertelen felhasználó választás a 'radcheck'-ből"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:324
-msgid "Unable to cleanup old users from batch "
-msgstr "Nem tudom kitisztítani a régi felhasználókat a kötegből"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:333
-msgid "Unable to cleanup old batches "
-msgstr "Nem lehet kitisztítani a régi kötegeket"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:338
-msgid "Old Batches Cleaned"
-msgstr "Régi kötegek kitisztítva"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:370
-msgid "Clearing stale sessions failed: "
-msgstr "Állandó kapcsolatok kitisztítása sikertelen:"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:374
-msgid "Stale sessions cleared"
-msgstr "Állandó kapcsolatok tisztázva"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:407
-msgid "Fetching users to delete failed"
-msgstr "A törlendő felhasználók beolvasása sikertelen"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:419
-msgid "Expired users deleted"
-msgstr "A lejárt felhasználók törölve"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:472
-msgid "Unable to insert data into mtotaccttmp: "
-msgstr "Sikertelen adatbeszúrás az mtotaccttmp-ba:"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:490
-msgid "Unable to delete old radacct data: "
-msgstr "Radacct régi adat törlése sikertelen: "
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:511
-msgid "Unable to update users Max-Octets: "
-msgstr "Max-Octets felhasználók frissítése sikertelen:"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:530
-msgid "Unable to update users Max-All-Session: "
-msgstr "Nem frissíthető a felhasználó 'Max-All-Session'-je:"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:566
-msgid "Unable to move mtotaccttmp data to mtotacct: "
-msgstr "Nem mozgatható a mtotaccttmp adat mtotacct-á: "
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:579
-msgid "Unable to truncate mtotaccttmp: "
-msgstr "Sikertelen mtotaccttmp levágás:"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:599
-msgid "Unable to ensure positive values in radcheck: "
-msgstr "Nem biztosítható pozitív érték a radcheck-ben:"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:617
-msgid "Unable to delete ancient radacct data: "
-msgstr "Nem lehet törölni a régi radacct adatokat:"
-
-#: ../../../www/radmin/classes/CronFunctions.class.php:626
-msgid "Old Radius Accounting Data Archived"
-msgstr "A régi Radius Accounting adatok archiválva"
-
-#: ../../../www/radmin/classes/SettingsMySQL.class.php:471
-msgid "Adding Group query failed:  "
-msgstr "'Group' lekérdezés hozzáadás sikertelen:"
-
-#: ../../../www/radmin/classes/SettingsMySQL.class.php:487
-msgid "Delete Group query failed:  "
-msgstr "'Group' lekérdezés törlése sikertelen:"
-
-#: ../../../www/radmin/classes/DatabaseConnections.class.php:70
-msgid "DB Config File isn't a valid file."
-msgstr "Az adatbázis konfigurációs állomány nem érvényes fájl."
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:129
-msgid "Retrieving Sold Usage failed: "
-msgstr "Sikertelen eladott használat lekérés:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:163
-msgid "Retrieving Month Usage failed: "
-msgstr "Havi használat lekérése sikertelen:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:180
-msgid "Retrieving Current Month Usage failed: "
-msgstr "Aktuális havi használat lekérése sikertelen:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:211
-msgid "Retrieving Session by RadAcctID failed: "
-msgstr "RadAcctID kapcsolatok lekérése sikertelen:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:243
-msgid "Retrieving Sessions by Username failed: "
-msgstr "Felhasználónkénti kapcsolatok lekérése sikertelen:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:264
-msgid "Retrieving Current Session by Username failed: "
-msgstr "Aktuális felhasználónkénti kapcsolatok lekérése sikertelen:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:285
-msgid "Retrieving Username by Active Session (ipadddress): "
-msgstr "Az aktuális kapcsolat felhasználónevének lekérése (IP cím):"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:309
-msgid "Get User details Query failed: "
-msgstr "'User details' lekérdezés sikertelen"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:402
-msgid "Get User Group Query failed: "
-msgstr "'User Group' lekérdezés sikertelen"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:429
-msgid "Get All Usernames Query Failed: "
-msgstr "'All Usernames' lekérdezés sikertelen"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:453
-msgid "Get Users By Group Query Failed: "
-msgstr "'User By Group' lekérdezés sikertelen"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:479
-msgid "Get User Last Logout Query Failed: "
-msgstr "'User Last Logout' lekérdezés sikertelen"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:508
-msgid "Get User Total Session Time Query failed: "
-msgstr "'User Total Session Time' lekérdezés sikertelen"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:529
-msgid "Get User Data Usage Query failed: "
-msgstr "'User Data Usage' lekérdezés sikertelen"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:550
-msgid "Get User Data Usage (Total) Query failed: "
-msgstr "'User Data Usage (Tota)' lekérdezés sikertelen"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:570
-msgid "Get Monthly Data Usage Query failed: "
-msgstr "'Monthly Data Usage' lekérdezés sikertelen"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:598
-msgid "Get Monthly Data Usage Totals Query failed: "
-msgstr "'Monthly Data Usage' lekérdezés sikertelen"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:624
-msgid "Get User Comment failed: "
-msgstr "Felhasználó megjegyzés elérése sikertelen"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:667
-msgid "Deleting radgroupcheck query failed: "
-msgstr "'radgroupcheck' törlő lekérdezés sikertelen:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:683
-msgid "Adding Group Check Attributes query failed:  "
-msgstr "'Group Check Attributes' lekérdezés hozzáadása sikertelen:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:717
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:730
-msgid "Deleting radgroupreply query failed: "
-msgstr "'radgroupreply' lekérdezés törlése sikertelen:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:812
-msgid "Adding Group Attributes query failed:  "
-msgstr "'Group Attributes' lekérdezés hozzáadása sikertelen:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:861
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:870
-msgid "Get Groups details Query failed: "
-msgstr "'Groups details' lekérdezés elérése sikertelen:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:894
-msgid "Hourly"
-msgstr "Óránként"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:895
-msgid "Daily"
-msgstr "Naponta"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:896
-msgid "Weekly"
-msgstr "Hetente"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:897
-msgid "Monthly"
-msgstr "Havonta"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:963
-msgid "Setting User Comment Query Failed: "
-msgstr "'User Comment' lekérdezés beállítása sikertelen:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:982
-msgid "Setting User Group Query Failed: "
-msgstr "'User Group' lekérdezés beállítása sikertelen:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1003
-msgid "Setting User Datalimit Query Failed: "
-msgstr "'User Datalimit' lekérdezés beállítása sikertelen:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1028
-msgid "Getting User Current Data Limit to increase failed: "
-msgstr "'User Current Data Limit' elérése a növeléshez sikertelen:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1050
-msgid "Setting User Timelimit Query Failed: "
-msgstr "'User Timelimit' lekérdezés beállítása sikertelen:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1074
-msgid "Getting User Current Time Limit to increase failed: "
-msgstr "'User Current Time Limit' elérése a növeléshez sikertelen:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1095
-msgid "Setting User Password Query Failed: "
-msgstr "'User Password' lekérdezés beállítása sikertelen:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1118
-msgid "Setting User Expiry Date Query Failed: "
-msgstr "'User Expiry Date' lekérdezés beállítása sikertelen:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1138
-msgid "Deleting User Expiry Date Query Failed: "
-msgstr "'User Expiry Date' lekérdezés törlése sikertelen:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1159
-msgid "Deleting user failed: "
-msgstr "Sikertelen felhasználótörlés:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1172
-msgid "Deleting users group failed: "
-msgstr "Sikertelen felhasználói csoport-törlés"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1185
-msgid "Deleting users comment failed: "
-msgstr "Sikertelen felhasználói megjegyzés-törlés: "
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1205
-msgid "Checking Uniq Username failed: "
-msgstr "Egyedi felhasználónév ellenőrzés sikertelen:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1235
-msgid "Retrieving Chilli Config Single Value failed: "
-msgstr "'Chilli Config Single Value' lekérés sikertelen:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1269
-msgid "Deleting Chilli Config Query Failed: "
-msgstr "'Chilli Config' lekérdezés törlése sikertelen:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1302
-msgid "Setting Chilli Config Single Query Failed: "
-msgstr "'Chilli Config Single' lekérdezés beállítása sikertelen:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1324
-msgid "Setting Chilli Config Multi Query Failed: "
-msgstr "'Chilli Config Multi' lekérdezés beállítása sikertelen:"
-
-#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1345
-msgid "Retrieving Chilli Config Multi Value failed: "
-msgstr "'Chilli Config Multi Value' lekérése sikertelen:"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:83
-msgid "Status"
-msgstr "Állapot"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:84
-msgid "Users"
-msgstr "Felhasználók"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:86
-msgid "New User"
-msgstr "Új felhasználó"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:87
-msgid "Batch Users"
-msgstr "Kötegelt felhasználók"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:88
-msgid "Computer Account"
-msgstr "Számítógép fiók"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:91
-msgid "Monitor Sessions"
-msgstr "Kapcsolatok felügyelete"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:93
-msgid "Reports"
-msgstr "Jelentések"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:100
-msgid "Settings"
-msgstr "Beállítások"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:102
-msgid "Site Logo"
-msgstr "Webhely LOGO"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:122
-msgid "Logoff"
-msgstr "Kijelentkezés"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:157
-msgid "System Status"
-msgstr "Rendszer állapot"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:165
-#: ../../../www/radmin/includes/page_functions.inc.php:227
-msgid "Inherit from group"
-msgstr "Csoportból örökölt"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:326
-msgid "Hour"
-msgstr "Óra"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:327
-msgid "Day"
-msgstr "Nap"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:328
-msgid "Week"
-msgstr "Hét"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:329
-msgid "Month"
-msgstr "Hónap"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:335
-msgid "Yes"
-msgstr "Igen"
-
-#: ../../../www/radmin/includes/page_functions.inc.php:335
-msgid "No"
-msgstr "Nem"
-
-#: ../../../www/radmin/includes/session.inc.php:65
-msgid "Your session has expired. Please login again"
-msgstr "Az Ön kapcsolata lejárt. Kérjük, jelentkezzen be újra"
-
-#: ../../../www/radmin/includes/session.inc.php:69
-msgid "Incorrect Login"
-msgstr "Sikertelen bejelentkezés"
-
-#: ../../../www/radmin/includes/session.inc.php:73
-msgid "Security Issue. Please login again"
-msgstr "Biztonsági probléma. Kérjük, jelentkezzen be újra"
-
-#: ../../../www/radmin/includes/session.inc.php:77
-msgid "Authentication Issue. Please report to Admin"
-msgstr "Hitelesítési hiba. Kérjük, jelezze a rendszergazdának"
-
-#: ../../../www/radmin/includes/misc_functions.inc.php:160
-msgid "Invalid Expiry Date"
-msgstr "Érvénytelen lejárati dátum"
-
-#: ../../../www/radmin/includes/misc_functions.inc.php:170
-msgid "Expiry Date in the past"
-msgstr "A lejárati dátum a múltba mutat"
-
-#: ../../../www/radmin/includes/misc_functions.inc.php:177
+#: ../../../www/radmin/ticketprintconfig.php:35
+msgid "Wireless Network Name (SSID)"
+msgstr "Vezeték nélküli hálózat (Wifi) neve (SSID)"
+
+#: ../../../www/radmin/ticketprintconfig.php:37
+msgid ""
+"Wireless Network Name that clients connect to. Currently does not modify any settings but if set will print\n"
+"            on the tickets"
+msgstr ""
+
+#: ../../../www/radmin/ticketprintconfig.php:43
+msgid "Print Ticket Type"
+msgstr "Jegy típus nyomtatása"
+
+#: ../../../www/radmin/ticketprintconfig.php:44
+msgid "Print the ticket type (Group name) on tickets"
+msgstr "Nyomtassa a típust (csoport név) a jegyen"
+
+#: ../../../www/radmin/ticketprintconfig.php:48
+msgid "Print Ticket Expiry"
+msgstr "Nyomtassa a lejárati időt"
+
+#: ../../../www/radmin/ticketprintconfig.php:49
+msgid "Print the expiry on tickets"
+msgstr "Nyomtassa a lejárati időt a jegyen"
+
+#: ../../../www/radmin/ticketprintconfig.php:59
+msgid "Pre Ticket HTML"
+msgstr ""
+
+#: ../../../www/radmin/ticketprintconfig.php:60
+msgid "HTML to insert before the main ticket components"
+msgstr ""
+
+#: ../../../www/radmin/ticketprintconfig.php:64
+msgid "Post Ticket HTML"
+msgstr ""
+
+#: ../../../www/radmin/ticketprintconfig.php:65
+msgid "HTML to insert after the main ticket components"
+msgstr ""
+
+#: ../../../www/radmin/ticketprintconfig.php:69
+msgid "Ticket Printing CSS"
+msgstr ""
+
+#: ../../../www/radmin/ticketprintconfig.php:70
+msgid ""
+"CSS that is applied to the ticket printing page for printing batches and "
+"groups of tickets."
+msgstr ""
+
+#: ../../../www/radmin/ticketprintconfig.php:118
+#: ../../../www/radmin/ticketprintconfig.php:134
 #, php-format
-msgid "Invalid value '%s' for Data Limit"
-msgstr "Érvénytelen adatkorlát érték '%s'"
+msgid "%s ticket print config option update"
+msgstr ""
 
-#: ../../../www/radmin/includes/misc_functions.inc.php:184
-#, php-format
-msgid "Invalid recurrance interval '%s'"
-msgstr "Érvénytelen ismétlési intervallum '%s'"
+#: ../../../www/radmin/usermin.php:41
+msgid "New Passwords must match"
+msgstr "Az új jelszavaknak egyezniük kell"
 
-#: ../../../www/radmin/includes/misc_functions.inc.php:190
-#, php-format
-msgid "Invalid response to YesNo Question '%s'"
-msgstr "Érvénytelen válasz az Igen/Nem kérdésre '%s'"
+#: ../../../www/radmin/usermin.php:44
+msgid "Password must not be blank"
+msgstr "A jelszó nem lehet üres"
 
-#: ../../../www/radmin/includes/misc_functions.inc.php:196
-#, php-format
-msgid "Invalid Bandwidth Limit '%s'"
-msgstr "Érvénytelen sávszélesség korlát '%s'"
+#: ../../../www/radmin/usermin.php:52
+msgid "Password not updated"
+msgstr "A jelszó nem frissült"
 
-#: ../../../www/radmin/includes/misc_functions.inc.php:208
-msgid "Recurring time limit must be less than interval"
-msgstr "Az ismétlődő időkorlát kevesebb kell legyen az intervallumnál"
+#: ../../../www/radmin/voucherconfig.php:56
+msgid ""
+"No Initial vouchers defined, users will be unable to purchase a new account"
+msgstr "Kezdeti jegy nincs definiálva, így a felhasználók nem tudnak új fiókot vásárolni"
 
-#: ../../../www/radmin/includes/misc_functions.inc.php:215
-#, php-format
-msgid "Invalid value '%s' for Time Limit"
-msgstr "Érvénytelen '%s' időkorlát érték"
+#: ../../../www/radmin/voucherconfig.php:74
+msgid "Invalid voucher name or voucher name missing"
+msgstr "Érvénytelen vagy hiányzó jegy-név"
 
-#: ../../../www/radmin/includes/misc_functions.inc.php:222
-msgid "MAC Address not in correct format"
-msgstr "A MAC cím nem a megfelelő formátumú"
+#: ../../../www/radmin/voucherconfig.php:83
+msgid "Vouchers need a price"
+msgstr "Jegyár szükséges"
 
-#: ../../../www/radmin/includes/misc_functions.inc.php:229
-#, php-format
-msgid "Invalid number '%s' (Must be whole number)"
-msgstr "'%s' érvénytelen szám (egész szám kell legyen)"
+#: ../../../www/radmin/voucherconfig.php:86
+msgid "Invalid price"
+msgstr "Érvénytelen ár"
 
-#: ../../../www/radmin/includes/misc_functions.inc.php:240
-msgid "Only Machines can be in the Machine group"
-msgstr "Csak számítógépek lehetnek a Számítógépek csoportjában"
+#: ../../../www/radmin/voucherconfig.php:92
+msgid "It is not recommended having vouchers without a data or time limit"
+msgstr "Nem ajánlott adat vagy időkorlát nélküli jegyet tartani"
 
-#: ../../../www/radmin/includes/misc_functions.inc.php:244
-msgid "Invalid Group"
-msgstr "Érvénytelen csoport"
+#: ../../../www/radmin/voucherconfig.php:145
+msgid "Vouchers updated"
+msgstr "Jegyek frissítve"
 
-#: ../../../www/radmin/includes/misc_functions.inc.php:319
-msgid "Computers"
-msgstr "Számítógépek"
-
-#: ../../../www/radmin/includes/misc_functions.inc.php:322
-msgid "Expired"
-msgstr "Lejárt"
-
-#: ../../../www/radmin/includes/misc_functions.inc.php:399
-msgid "Uploaded Image was too big"
-msgstr "A feltöltött kép túl nagy"
-
-#: ../../../www/radmin/includes/misc_functions.inc.php:402
-msgid "Error In Uploading"
-msgstr "Hiba a feltöltésben"
-
-#: ../../../www/radmin/includes/misc_functions.inc.php:405
-msgid "No file was uploaded"
-msgstr "Sikertelen feltöltés"
-
-#: ../../../www/radmin/includes/misc_functions.inc.php:408
-msgid "Missing a temporary folder"
-msgstr "Átmeneti mappa hiányzik"
-
-#: ../../../www/radmin/includes/misc_functions.inc.php:411
-msgid "Failed to write file to disk"
-msgstr "A fájl nem írható lemezre"
-
-#: ../../../www/radmin/includes/misc_functions.inc.php:414
-msgid "File upload stopped by extension"
-msgstr "A fájlfeltöltést egy kiterjesztés megállította"
-
-#: ../../../www/radmin/includes/misc_functions.inc.php:417
-msgid "Unknown upload error"
-msgstr "Ismeretlen feltöltési hiba"
+#: ../../../www/uam/includes/site.inc.php:53
+msgid "Free Access"
+msgstr ""
 
 #: ../../../www/uam/js.php:20
 msgid "Username is required"

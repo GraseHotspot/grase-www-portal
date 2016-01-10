@@ -4,7 +4,7 @@
 
 /*  This file is part of GRASE Hotspot.
 
-    http://hotspot.purewhite.id.au/
+    http://grasehotspot.org/
 
     GRASE Hotspot is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -25,192 +25,186 @@ require_once 'includes/pageaccess.inc.php';
 
 require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
-require_once 'includes/database_functions.inc.php';
 
 $error = array();
 $success = array();
 
 // Options for Chilli Config that can be more than 1
-$multichillioptions = array(
+$multiChilliOptions = array(
     'uamallowed' => array(
         "label" => T_("Walled Garden allowed hosts"),
-        "description" => T_("IP's and Hostnames that are accesible without logging in. DNS Lookup is only done at startup time so not suitable for domains with Round Robin IP Addresses"),
-        "type" => "string"),
+        "description" => T_(
+            "IP's and Hostnames that are accessible without logging in. DNS Lookup is only done at startup time so not
+            suitable for domains with Round Robin IP Addresses"
+        ),
+        "type" => "string"
+    ),
     'uamdomain' => array(
         "label" => T_("Walled Garden allowed domains"),
         "description" => T_("Domains (and their subdomains) that are accesible without logging in."),
-        "type" => "string"),           
-    );
-    
+        "type" => "string"
+    ),
+);
+
 // Options for Chilli Config that can only be one
-$singlechillioptions = array(
+$singleChilliOptions = array(
     'macpasswd' => array(
         "label" => T_("MAC Auth Password"),
-        "description" => T_("The MAC Password used to autologin Computer Accounts. Change this to something obscure as it can be used to login using a known MAC address as the username."),
-        "type" => "string"),
+        "description" => T_(
+            "The MAC Password used to autologin Computer Accounts. Change this to something obscure as it can be used to
+             login using a known MAC address as the username."
+        ),
+        "type" => "string"
+    ),
     'defidletimeout' => array(
         "label" => T_("Default Session Idle Timeout"),
-        "description" => T_("Default Idle Timeout for sessions. Logout after this number of seconds have passed without any traffic."),
-        "type" => "int"),
+        "description" => T_(
+            "Default Idle Timeout for sessions. Logout after this number of seconds have passed without any traffic."
+        ),
+        "type" => "int"
+    ),
     'lease' => array(
         "label" => T_("DHCP Lease time"),
         "description" => T_("DHCP lease time in seconds."),
-        "type" => "int"),
-        // TODO Somehow validate these values?
+        "type" => "int"
+    ),
+    // TODO Somehow validate these values?
     'dhcpstart' => array(
         "label" => T_("DHCP Start"),
         "description" => T_("Start of DHCP Range (offset from start of network range)"),
-        "type" => "int"),
+        "type" => "int"
+    ),
     'dhcpend' => array(
         "label" => T_("DHCP End"),
         "description" => T_("End of DHCP Range (offset from start of network range)"),
-        "type" => "int"),
-    );    
-    
-load_chillioptions();   
+        "type" => "int"
+    ),
+);
 
-if(isset($_POST['submit']))
-{
-    
-    foreach($singlechillioptions as $singleoption => $attributes)
-    {
-        switch ($attributes['type'])
-        {
+loadChilliOptions();
+
+if (isset($_POST['submit'])) {
+    foreach ($singleChilliOptions as $singleOption => $attributes) {
+        switch ($attributes['type']) {
+            default:
             case "string":
-                $postvalue = trim(clean_text($_POST[$singleoption]));
+                $postValue = trim(\Grase\Clean::text($_POST[$singleOption]));
                 break;
             case "int":
-                $postvalue = trim(clean_int($_POST[$singleoption]));
+                $postValue = trim(clean_int($_POST[$singleOption]));
                 break;
             case "number":
-                $postvalue = trim(clean_number($_POST[$singleoption]));
+                $postValue = trim(clean_number($_POST[$singleOption]));
                 break;
             case "ip":
-                $postvalue = long2ip(ip2long(trim($_POST[$singleoption])));
+                $postValue = long2ip(ip2long(trim($_POST[$singleOption])));
                 break;
-                
+
         }
-        
-        if($postvalue != $attributes['value'])
-        {
+
+        if ($postValue != $attributes['value']) {
             // TODO: Special case to change all machine account passwords
-            if($singleoption == 'macpasswd')
-            {
-                $machineaccounts = DatabaseFunctions::getInstance()->getUsersByGroup(MACHINE_GROUP_NAME);
-                foreach($machineaccounts as $machine)
-                {
-                    database_change_password($machine, $postvalue);
+            if ($singleOption == 'macpasswd') {
+                $machineAccounts = DatabaseFunctions::getInstance()->getComputerUsers();
+                foreach ($machineAccounts as $machine) {
+                    DatabaseFunctions::getInstance()->setUserPassword($machine, $postValue);
                 }
             }
-            
+
             // Update options in database
-            DatabaseFunctions::getInstance()->setChilliConfigSingle($singleoption, $postvalue);
+            DatabaseFunctions::getInstance()->setChilliConfigSingle($singleOption, $postValue);
             $success[] = sprintf(
                 T_("%s Coova Chilli config option update"),
-                $attributes['label']);
+                $attributes['label']
+            );
         }
-        
+
     }
-    
-    foreach($multichillioptions as $multioption => $attributes)
-    {
-        $postvalue = array();
-        foreach($_POST[$multioption] as $value)
-        {
-            switch ($attributes['type'])
-            {
+
+    foreach ($multiChilliOptions as $multiOption => $attributes) {
+        $postValue = array();
+        foreach ($_POST[$multiOption] as $value) {
+            switch ($attributes['type']) {
+                default:
                 case "string":
-                    $postvalue[] = clean_text($value);
+                    $postValue[] = \Grase\Clean::text($value);
                     break;
                 case "int":
-                    $postvalue[] = clean_int($value);
+                    $postValue[] = clean_int($value);
                     break;
                 case "number":
-                    $postvalue[] = clean_number($value);
+                    $postValue[] = clean_number($value);
                     break;
                 case "ip":
-                    if(trim($value))
-                        $postvalue[] = long2ip(ip2long(trim($value)));
-                    break; 
-                    
+                    if (trim($value)) {
+                        $postValue[] = long2ip(ip2long(trim($value)));
+                    }
+                    break;
             }
-        
-//        if($postvalue != $attributes['value'])
-//        {
-//        }
         }
-        $postvalue = array_filter($postvalue);
-        sort($postvalue);        
+
+        $postValue = array_filter($postValue);
+        sort($postValue);
         sort($attributes['value']);
-     
-        if($postvalue != $attributes['value'])
-        {
-            DatabaseFunctions::getInstance()->delChilliConfig($multioption);
-            foreach($postvalue as $value)
-            {
-                DatabaseFunctions::getInstance()->setChilliConfigMulti($multioption, $value);
+
+        if ($postValue != $attributes['value']) {
+            DatabaseFunctions::getInstance()->delChilliConfig($multiOption);
+            foreach ($postValue as $value) {
+                DatabaseFunctions::getInstance()->setChilliConfigMulti($multiOption, $value);
             }
             $success[] = sprintf(
                 T_("%s Coova Chilli config option update"),
-                $attributes['label']);
-                
-
-        
+                $attributes['label']
+            );
         }
-
-        
     }
 
     // Update last change timestamp if we actually changed something
-    if(sizeof($success) > 0)
+    if (sizeof($success) > 0) {
         $Settings->setSetting('lastchangechilliconf', time());
-        
+    }
+
     // Call validate&change functions for changed items
-    load_chillioptions(); // Reload due to changes in POST    
+    loadChilliOptions(); // Reload due to changes in POST
 }
 
-	
 
-function load_chillioptions()
+function loadChilliOptions()
 {
-    global $multichillioptions, $singlechillioptions;
-    // Load all Multi option values from database 
+    global $multiChilliOptions, $singleChilliOptions;
 
-    foreach($multichillioptions as $multioption => $attributes)
-    {
-        $multichillioptions[$multioption]['value'] = 
+    // Load all Multi option values from database
+    foreach ($multiChilliOptions as $multioption => $attributes) {
+        $multiChilliOptions[$multioption]['value'] =
             DatabaseFunctions::getInstance()->getChilliConfigMulti($multioption);
     }
 
     // Load all Single option values from database
-
-    foreach($singlechillioptions as $singleoption => $attributes)
-    {
-        $singlechillioptions[$singleoption]['value'] = 
+    foreach ($singleChilliOptions as $singleoption => $attributes) {
+        $singleChilliOptions[$singleoption]['value'] =
             DatabaseFunctions::getInstance()->getChilliConfigSingle($singleoption);
     }
 }
 
-    // Check when /etc/chilli/local.conf was last updated and compare to $Settings->gettSetting('lastchangechilliconfig');
-    $localconfts = filemtime('/etc/chilli/local.conf');
-    $lastchangets = $Settings->getSetting('lastchangechilliconf');
-    if($localconfts < $lastchangets)
-    {
-        $error[] = T_("Changes pending Coova Chilli Reload");
-    }else{
-        $success[] = T_("Settings match running config");
-    }
-    
-    $smarty->assign("chilliconfigstatus", date('r',$localconfts));
-    $smarty->assign("lastconfigstatus", date('r',$lastchangets));            
-    
-if(sizeof($error) > 0) $smarty->assign("error", $error);	
-if(sizeof($success) > 0) $smarty->assign("success", $success);
+// Check when /etc/chilli/local.conf was last updated and compare to $Settings->getSetting('lastchangechilliconfig')
+$localConfTimestamp = filemtime('/etc/chilli/local.conf');
+$lastChangedTimestamp = $Settings->getSetting('lastchangechilliconf');
+if ($localConfTimestamp < $lastChangedTimestamp) {
+    $error[] = T_("Changes pending Coova Chilli Reload");
+} else {
+    $success[] = T_("Settings match running config");
+}
 
-    $smarty->assign("singlechillioptions", $singlechillioptions);
-    $smarty->assign("multichillioptions", $multichillioptions);    
-	display_page('chilliconfig.tpl');
+$templateEngine->assign("chilliconfigstatus", date('r', $localConfTimestamp));
+$templateEngine->assign("lastconfigstatus", date('r', $lastChangedTimestamp));
 
-?>
+if (sizeof($error) > 0) {
+    $templateEngine->assign("error", $error);
+}
+if (sizeof($success) > 0) {
+    $templateEngine->assign("success", $success);
+}
 
-
+$templateEngine->assign("singlechillioptions", $singleChilliOptions);
+$templateEngine->assign("multichillioptions", $multiChilliOptions);
+$templateEngine->displayPage('chilliconfig.tpl');

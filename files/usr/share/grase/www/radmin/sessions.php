@@ -4,7 +4,7 @@
 
 /*  This file is part of GRASE Hotspot.
 
-    http://hotspot.purewhite.id.au/
+    http://grasehotspot.org/
 
     GRASE Hotspot is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -21,41 +21,55 @@
 */
 $PAGE = 'sessions';
 require_once 'includes/pageaccess.inc.php';
-
-
 require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
-require_once 'includes/database_functions.inc.php';
 
-    if(isset($_GET['username']))
-    {
-	    $smarty->assign("sessions", getDBSessionsAccounting($_GET['username']));
-	    $smarty->assign("username", $_GET['username']);
-	}
-	elseif(isset($_GET['allsessions']))
-	{
-	    $sessions = getDBSessionsAccounting();
-	    $totalrows = sizeof($sessions);
-	    $numPerPage = $_GET['items'] ? abs($_GET['items']) : 25; // TODO check this is safe
-	    $page = $_GET['page'] ? abs($_GET['page']) : 0; //TODO check this is safe
-	    
-	    $pages = floor($totalrows/$numPerPage);
-	    if($page > $pages) $page = $pages;
-	    $currentstartitem = $page * $numPerPage;
-	    
-	    $displaysessions = array_slice($sessions, $currentstartitem, $numPerPage, TRUE );
-    	$smarty->assign("sessions", $displaysessions);        
-    	
-    	$smarty->assign("pages", $pages);
-    	$smarty->assign("perpage", $numPerPage);
-    	$smarty->assign("currentpage", $page);
-    }else{
-        $smarty->assign("activesessions", DatabaseFunctions::getInstance()->getActiveRadiusSessionsDetails());
+if (isset($_POST['logout_mac'])) {
+    // Logout a specific MAC address
+    if (\Grase\Util::logoutChilliSession($_POST['logout_mac'])) {
+        $templateEngine->successMessage(T_("Logged out: ") . Grase\Clean::text($_POST['logout_mac']));
+    } else {
+        $templateEngine->errorMessage(
+            T_("Unable to find active session for: ") . Grase\Clean::text($_POST['logout_mac'])
+        );
     }
+}
 
-	display_page('sessions.tpl');
+if (isset($_GET['username'])) {
+    $templateEngine->assign(
+        "sessions",
+        DatabaseFunctions::getInstance()->getRadiusUserSessionsDetails($_GET['username'])
+    );
+    $templateEngine->assign("username", $_GET['username']);
+} elseif (isset($_GET['allsessions'])) {
+    $sessions = DatabaseFunctions::getInstance()->getRadiusUserSessionsDetails();
+    $totalRows = sizeof($sessions);
+    $numPerPage = $_GET['items'] ? abs($_GET['items']) : 25; // TODO check this is safe
+    $page = $_GET['page'] ? abs($_GET['page']) : 0; //TODO check this is safe
+
+    $pages = floor($totalRows / $numPerPage);
+    if ($page > $pages) {
+        $page = $pages;
+    }
+    $currentStartItem = $page * $numPerPage;
+
+    $displaySessions = array_slice($sessions, $currentStartItem, $numPerPage, true);
+    $templateEngine->assign("sessions", $displaySessions);
+    $templateEngine->assign("pages", $pages);
+    $templateEngine->assign("perpage", $numPerPage);
+    $templateEngine->assign("currentpage", $page);
+} else {
+    $templateEngine->assign("activesessions", DatabaseFunctions::getInstance()->getActiveRadiusSessionsDetails());
+    if ($_GET['refresh']) {
+        $refresh = clean_int($_GET['refresh']) * 60;
+        if ($refresh < 60) {
+            $refresh = 60;
+        }
+        $templateEngine->assign("autorefresh", $refresh);
+    }
+}
+
+$templateEngine->assign('usercomments', DatabaseFunctions::getInstance()->getAllUsersComments());
+$templateEngine->displayPage('sessions.tpl');
 
 // TODO: Data usage over "forever"
-	
-
-?>

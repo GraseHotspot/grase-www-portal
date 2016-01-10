@@ -7,21 +7,19 @@
 <title>{$Title} - {t}{$Name}{/t}</title>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 <meta name="generator" content="{$Application} {$application_version}" />
+{if $autorefresh}<meta http-equiv="refresh" content="{$autorefresh}">{/if}
 <!-- CSS Stylesheet -->
 <link rel="stylesheet" type="text/css" href="/grase/hotspot.css?{$hotspotcssversion}" id="hotspot_css" />
 <link rel="stylesheet" type="text/css" href="radmin.css?{$radmincssversion}" id="radmin_css" />
-{*
+    <link rel="stylesheet" href="/grase/vendor/fontawesome/css/font-awesome.min.css">
 
+    <link type="text/css" href="/grase/css/cupertino/jquery-ui-1.8.11.custom.css" rel="stylesheet" />
 
-<!--<link type="text/css" href="css/cupertino/jquery-ui-1.7.2.custom.css" rel="stylesheet" />       -->
-<!--	<link type="text/css" href="/javascript/jquery-ui/themes/base/jquery.ui.all.css" rel="stylesheet" />	--> *}
-        <link type="text/css" href="/grase/css/cupertino/jquery-ui-1.8.11.custom.css" rel="stylesheet" />	
-
-    <script type="text/javascript" src="/grase/js/jquery/jquery-1.5.2.min.js"></script>
+    <script type="text/javascript" src="/grase/vendor/jquery/dist/jquery.min.js"></script>
 
     <script type="text/javascript" src="/grase/js/jquery/jquery-ui-1.8.11.custom.min.js"></script>
     
-    <script type="text/javascript" src="/grase/js/jquery.tablesorter.min.js"></script>    
+    <script type="text/javascript" src="/grase/vendor/jquery.tablesorter/js/jquery.tablesorter.min.js"></script>    
     <script type="text/javascript" src="/grase/js/jquery.uitablefilter.js"></script>        
     
     <script type="text/javascript" src="/grase/js/grase.js?{$grasejsversion}"></script>        
@@ -57,7 +55,6 @@ $j(document).ready(function(){
 </head>
 <body>
 <div id="page">
-    {literal}<!--[if lte IE 6]><script src="/grase/ie6/warning2.js"></script><![endif]-->{/literal}
     <div id="topbar">
         <h1>{$Title} (v{$application_version})</h1>
     </div>

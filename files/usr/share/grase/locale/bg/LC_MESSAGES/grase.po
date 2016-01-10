@@ -1,0 +1,2693 @@
+# 
+# Translators:
+# Asen Ivanov, 2015
+msgid ""
+msgstr ""
+"Project-Id-Version: Grase Hotspot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-05-29 19:12+1000\n"
+"PO-Revision-Date: 2015-09-12 11:50+0000\n"
+"Last-Translator: Asen Ivanov\n"
+"Language-Team: Bulgarian (http://www.transifex.com/purewhite/grase/language/bg/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.6.10\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;T_\n"
+"X-Poedit-SearchPath-0: ../../../www/radmin\n"
+"X-Poedit-SearchPath-1: ../../../www/uam\n"
+
+#: ../../../www/radmin/templates/smarty.c:1
+#: ../../../www/radmin/includes/page_functions.inc.php:79
+msgid "Portal Customisation"
+msgstr "Промяна на портала"
+
+#: ../../../www/radmin/templates/smarty.c:2
+#: ../../../www/radmin/templates/smarty.c:4
+#: ../../../www/radmin/templates/smarty.c:159
+#: ../../../www/radmin/templates/smarty.c:175
+#: ../../../www/radmin/templates/smarty.c:177
+#: ../../../www/radmin/templates/smarty.c:193
+#: ../../../www/radmin/templates/smarty.c:274
+#: ../../../www/radmin/templates/smarty.c:281
+#: ../../../www/radmin/templates/smarty.c:352
+msgid "Save Settings"
+msgstr "Запиши настройките"
+
+#: ../../../www/radmin/templates/smarty.c:3
+#: ../../../www/radmin/templates/smarty.c:176
+msgid "HTML and CSS templates"
+msgstr "HTML и CSS шаблони"
+
+#: ../../../www/radmin/templates/smarty.c:5
+msgid "First"
+msgstr "Първа"
+
+#: ../../../www/radmin/templates/smarty.c:6
+msgid "Prev"
+msgstr "Предишна"
+
+#: ../../../www/radmin/templates/smarty.c:7
+msgid "Displaying page %1 of %2"
+msgstr "Показана страница %1 от %2"
+
+#: ../../../www/radmin/templates/smarty.c:8
+msgid "Next"
+msgstr "Следваща"
+
+#: ../../../www/radmin/templates/smarty.c:9
+msgid "Last"
+msgstr "Последна"
+
+#: ../../../www/radmin/templates/smarty.c:10
+msgid "User Management Interface"
+msgstr "Управление на потребители"
+
+#: ../../../www/radmin/templates/smarty.c:11
+msgid "Device Information"
+msgstr "Информация за устройството"
+
+#: ../../../www/radmin/templates/smarty.c:12
+msgid "Model Name"
+msgstr "Име на модел"
+
+#: ../../../www/radmin/templates/smarty.c:13
+msgid "Host Name"
+msgstr "Име на хост"
+
+#: ../../../www/radmin/templates/smarty.c:14
+msgid "HTTP Server"
+msgstr "HTTP сървър"
+
+#: ../../../www/radmin/templates/smarty.c:15
+msgid "System Up-Time"
+msgstr "Системата работи от:"
+
+#: ../../../www/radmin/templates/smarty.c:16
+msgid "Current Server Time"
+msgstr "Настоящо време на сървъра"
+
+#: ../../../www/radmin/templates/smarty.c:17
+msgid "Hardware Version"
+msgstr "Версия на хардуера"
+
+#: ../../../www/radmin/templates/smarty.c:18
+msgid "Software Version"
+msgstr "Версия на софтуера"
+
+#: ../../../www/radmin/templates/smarty.c:19
+msgid "Home URL"
+msgstr "Домашна страница"
+
+#: ../../../www/radmin/templates/smarty.c:20
+msgid "LAN"
+msgstr "Локална мрежа"
+
+#: ../../../www/radmin/templates/smarty.c:21
+#: ../../../www/radmin/templates/smarty.c:26
+#: ../../../www/radmin/templates/smarty.c:203
+msgid "IP Address"
+msgstr "IP адрес"
+
+#: ../../../www/radmin/templates/smarty.c:22
+#: ../../../www/radmin/templates/smarty.c:27
+msgid "Subnet Mask"
+msgstr "Мрежова маска"
+
+#: ../../../www/radmin/templates/smarty.c:23
+#: ../../../www/radmin/templates/smarty.c:31
+#: ../../../www/radmin/templates/smarty.c:70
+#: ../../../www/radmin/templates/smarty.c:204
+msgid "MAC Address"
+msgstr "MAC адрес"
+
+#: ../../../www/radmin/templates/smarty.c:24
+#: ../../../www/radmin/templates/smarty.c:32
+msgid "Network Interface"
+msgstr "Мрежов интерфейс"
+
+#: ../../../www/radmin/templates/smarty.c:25
+msgid "WAN"
+msgstr "WAN"
+
+#: ../../../www/radmin/templates/smarty.c:28
+msgid "Gateway"
+msgstr "Шлюз"
+
+#: ../../../www/radmin/templates/smarty.c:29
+msgid "DNS 1"
+msgstr "DNS сървър 1"
+
+#: ../../../www/radmin/templates/smarty.c:30
+msgid "DNS 2"
+msgstr "DNS сървър 2"
+
+#: ../../../www/radmin/templates/smarty.c:33
+msgid "Access Denied"
+msgstr "Достъп отказан"
+
+#: ../../../www/radmin/templates/smarty.c:34
+msgid ""
+"You have attempted to access a page outside of your access level. Please "
+"return to an area you have access to."
+msgstr "Опитахте да достъпите страница, за която нямате разрешение. Моля, върнете се в зоната, където имате достъп."
+
+#: ../../../www/radmin/templates/smarty.c:35
+#: ../../../www/radmin/templates/smarty.c:43
+#: ../../../www/radmin/includes/page_functions.inc.php:89
+msgid "Admin Users"
+msgstr "Административни потребители"
+
+#: ../../../www/radmin/templates/smarty.c:36
+#: ../../../www/radmin/templates/smarty.c:41
+#: ../../../www/radmin/templates/smarty.c:42
+msgid "Change Password"
+msgstr "Смяна на паролата"
+
+#: ../../../www/radmin/templates/smarty.c:37
+#: ../../../www/radmin/templates/smarty.c:44
+#: ../../../www/radmin/templates/smarty.c:53
+#: ../../../www/radmin/templates/smarty.c:72
+#: ../../../www/radmin/templates/smarty.c:103
+#: ../../../www/radmin/templates/smarty.c:171
+#: ../../../www/radmin/templates/smarty.c:198
+#: ../../../www/radmin/templates/smarty.c:212
+#: ../../../www/radmin/templates/smarty.c:307
+#: ../../../www/radmin/templates/smarty.c:320
+#: ../../../www/radmin/templates/smarty.c:329
+#: ../../../www/radmin/templates/smarty.c:334
+#: ../../../www/uam/templates/smarty.c:9 ../../../www/radmin/export.php:89
+msgid "Username"
+msgstr "Потребителско име"
+
+#: ../../../www/radmin/templates/smarty.c:38
+msgid "Old Password"
+msgstr "Стара парола"
+
+#: ../../../www/radmin/templates/smarty.c:39
+msgid "New Password"
+msgstr "Нова парола"
+
+#: ../../../www/radmin/templates/smarty.c:40
+msgid "Confirm New Password"
+msgstr "Нова парола (повторение)"
+
+#: ../../../www/radmin/templates/smarty.c:45
+msgid "User Group"
+msgstr "Потребителска група"
+
+#: ../../../www/radmin/templates/smarty.c:46
+#: ../../../www/radmin/templates/smarty.c:130
+#: ../../../www/radmin/templates/smarty.c:132
+msgid "Delete User"
+msgstr "Изтриване на потребител"
+
+#: ../../../www/radmin/templates/smarty.c:47
+#: ../../../www/radmin/templates/smarty.c:65
+msgid "Deleting or modifying the support user will prevent remote assistance."
+msgstr "Изтриването или промяната на потребителя за поддръжка ще попречи на помощта отдалече."
+
+#: ../../../www/radmin/templates/smarty.c:48
+#: ../../../www/radmin/templates/smarty.c:50
+#: ../../../www/radmin/templates/smarty.c:66
+#: ../../../www/radmin/templates/smarty.c:68
+msgid "Delete %1"
+msgstr "Изтриване на %1"
+
+#: ../../../www/radmin/templates/smarty.c:49
+#: ../../../www/radmin/templates/smarty.c:67
+msgid "Are you sure you want to delete %1?"
+msgstr "Наистина ли искате да изтриете %1?"
+
+#: ../../../www/radmin/templates/smarty.c:51
+#: ../../../www/radmin/templates/smarty.c:69
+msgid "Cannot delete current user"
+msgstr "Не може да се изтрива текущия потребител"
+
+#: ../../../www/radmin/templates/smarty.c:52
+#: ../../../www/radmin/templates/smarty.c:63
+msgid "Create new Admin User"
+msgstr "Създаване на нов административен потребител"
+
+#: ../../../www/radmin/templates/smarty.c:54
+#: ../../../www/radmin/templates/smarty.c:74
+#: ../../../www/radmin/templates/smarty.c:104
+#: ../../../www/radmin/templates/smarty.c:172
+#: ../../../www/radmin/templates/smarty.c:199
+#: ../../../www/radmin/templates/smarty.c:336
+#: ../../../www/uam/templates/smarty.c:10 ../../../www/radmin/export.php:90
+msgid "Password"
+msgstr "Парола"
+
+#: ../../../www/radmin/templates/smarty.c:55
+msgid "Admin User Access Level"
+msgstr "Ниво на достъп за административен потребител"
+
+#: ../../../www/radmin/templates/smarty.c:56
+#: ../../../www/radmin/templates/smarty.c:57
+#: ../../../www/radmin/passwd.php:126
+msgid "Admin User"
+msgstr "Административен потребител"
+
+#: ../../../www/radmin/templates/smarty.c:58
+#: ../../../www/radmin/templates/smarty.c:59
+#: ../../../www/radmin/passwd.php:129
+msgid "Power User"
+msgstr "Напреднал потребител"
+
+#: ../../../www/radmin/templates/smarty.c:60
+msgid "Normal User"
+msgstr "Нормален потребител"
+
+#: ../../../www/radmin/templates/smarty.c:61
+#: ../../../www/radmin/passwd.php:132
+msgid "Limited User"
+msgstr "Ограничен потребител"
+
+#: ../../../www/radmin/templates/smarty.c:62
+msgid "Sets the users access level. Once set, this can't be changed"
+msgstr "Настройва нивото на достъп на потребителите - не може да се променя след въвеждането."
+
+#: ../../../www/radmin/templates/smarty.c:64
+msgid "Delete Admin User"
+msgstr "Изтриване на административен потребител"
+
+#: ../../../www/radmin/templates/smarty.c:71
+msgid ""
+"The MAC address is the network hardware address of the computer. It needs to"
+" be of the format XX-XX-XX-XX-XX-XX where XX is a hex number, typed in all "
+"capitals"
+msgstr "MAC-адресът е хардуерния адрес на компютъра. трябва да бъде във формат  XX-XX-XX-XX-XX-XX, където XX е шестнадесетично число, само с главни букви"
+
+#: ../../../www/radmin/templates/smarty.c:73
+msgid "Choose a username"
+msgstr "Изберете потребителско име"
+
+#: ../../../www/radmin/templates/smarty.c:75
+msgid "Choose a secure password for the user"
+msgstr "Изберете сигурна парола за потребителя"
+
+#: ../../../www/radmin/templates/smarty.c:76
+#: ../../../www/radmin/templates/smarty.c:183
+#: ../../../www/radmin/templates/smarty.c:213
+msgid "Group"
+msgstr "Група"
+
+#: ../../../www/radmin/templates/smarty.c:77
+#: ../../../www/radmin/templates/smarty.c:106
+msgid "Choose the users group (Expiry is based on the user group)"
+msgstr "Изберете потребителска група (изтичането е базирано на групата)"
+
+#: ../../../www/radmin/templates/smarty.c:78
+#: ../../../www/radmin/templates/smarty.c:111
+#: ../../../www/radmin/templates/smarty.c:224
+#: ../../../www/radmin/templates/smarty.c:357
+msgid "Comment"
+msgstr "Коментар"
+
+#: ../../../www/radmin/templates/smarty.c:79
+#: ../../../www/radmin/templates/smarty.c:112
+msgid "A comment about the user"
+msgstr "Коментар за потребителя"
+
+#: ../../../www/radmin/templates/smarty.c:80
+#: ../../../www/radmin/templates/smarty.c:115
+#: ../../../www/radmin/templates/smarty.c:359
+msgid ""
+"When ether limit is reached, the user will be cut off. (i.e. after 1hour "
+"even if they still have data left)"
+msgstr "Когато се достигне ограничението, потребителят ще бъде блокиран. (т.е след 1 час дори и да има останали още данни)"
+
+#: ../../../www/radmin/templates/smarty.c:81
+#: ../../../www/radmin/templates/smarty.c:116
+#: ../../../www/radmin/templates/smarty.c:360
+msgid ""
+"A limit of 0 does not mean unlimited, it will immediately lock the user out."
+" To have an unlimited user, the user must be created without any limits."
+msgstr "Ограничение със стойност 0 не означава, че такова липсва , а незабавно блокиране на потребителя. За да няма ограничения, потребителят трябва да се създаде без тях."
+
+#: ../../../www/radmin/templates/smarty.c:82
+#: ../../../www/radmin/templates/smarty.c:361
+msgid ""
+"If a limit is not set here, but is defined for the group, then the group "
+"limit will apply"
+msgstr "Ако тук не е настроенo ограничение, но има такoвa за групата, тогава ще се приложи то"
+
+#: ../../../www/radmin/templates/smarty.c:83
+#: ../../../www/radmin/templates/smarty.c:117
+msgid "Data Limit (MiB)"
+msgstr "Ограничение на данни (MiB)"
+
+#: ../../../www/radmin/templates/smarty.c:84
+#: ../../../www/radmin/templates/smarty.c:88
+msgid "OR"
+msgstr "ИЛИ"
+
+#: ../../../www/radmin/templates/smarty.c:85
+#: ../../../www/radmin/templates/smarty.c:118
+msgid "Type your own Mb Limit"
+msgstr "Въведете свое ограничение (в Mb) "
+
+#: ../../../www/radmin/templates/smarty.c:86
+msgid "Choose a Data Limit OR Type your own value"
+msgstr "Изберете ограничение на данните ИЛИ въведете такова"
+
+#: ../../../www/radmin/templates/smarty.c:87
+#: ../../../www/radmin/templates/smarty.c:122
+msgid "Time Limit (Minutes)"
+msgstr "Времево ограничение (Минути)"
+
+#: ../../../www/radmin/templates/smarty.c:89
+#: ../../../www/radmin/templates/smarty.c:123
+msgid "Type your own Time Limit"
+msgstr "Въведете Ваше собствено времево ограничение "
+
+#: ../../../www/radmin/templates/smarty.c:90
+msgid "Choose a Time Limit OR Type your own value"
+msgstr "Изберете времево ограничение ИЛИ въведете такова"
+
+#: ../../../www/radmin/templates/smarty.c:91
+msgid "Group Properties"
+msgstr "Свойства на групата"
+
+#: ../../../www/radmin/templates/smarty.c:92
+#: ../../../www/radmin/templates/smarty.c:163
+#: ../../../www/radmin/templates/smarty.c:189
+#: ../../../www/radmin/templates/smarty.c:191
+#: ../../../www/radmin/templates/smarty.c:239
+#: ../../../www/radmin/templates/smarty.c:257
+msgid "Name"
+msgstr "Име"
+
+#: ../../../www/radmin/templates/smarty.c:93
+#: ../../../www/radmin/templates/smarty.c:201
+#: ../../../www/radmin/templates/smarty.c:241
+#: ../../../www/radmin/templates/smarty.c:259
+#: ../../../www/radmin/export.php:91
+msgid "Expiry"
+msgstr "Изтичане"
+
+#: ../../../www/radmin/templates/smarty.c:94
+#: ../../../www/radmin/templates/smarty.c:261
+msgid "Expire After"
+msgstr "Изтича след"
+
+#: ../../../www/radmin/templates/smarty.c:95
+msgid "Max Data (Mb)"
+msgstr "Max данни (Mb)"
+
+#: ../../../www/radmin/templates/smarty.c:96
+msgid "Max Time (mins)"
+msgstr "Max време (mins)"
+
+#: ../../../www/radmin/templates/smarty.c:97
+msgid "Recurring data limit"
+msgstr "Повтарящо се ограничение за данни"
+
+#: ../../../www/radmin/templates/smarty.c:98
+msgid "Recurring time limit"
+msgstr "Повтарящо се ограничение за време"
+
+#: ../../../www/radmin/templates/smarty.c:99
+msgid "BW Limit Down"
+msgstr "Огр. канал сваляне"
+
+#: ../../../www/radmin/templates/smarty.c:100
+msgid "BW Limit Up"
+msgstr "Огр. канал качване"
+
+#: ../../../www/radmin/templates/smarty.c:101
+msgid "Edit Computer Account"
+msgstr "Редактиране на потребител тип \"компютър\""
+
+#: ../../../www/radmin/templates/smarty.c:102
+msgid "Edit User"
+msgstr "Редактиране на потребител"
+
+#: ../../../www/radmin/templates/smarty.c:105
+msgid "Choose a secure password for the user. Leave blank to not change"
+msgstr "Въведете сигурна парола за потребителя. Оставете полето празно, ако не искате да я променяте."
+
+#: ../../../www/radmin/templates/smarty.c:107
+msgid "This user account never expires"
+msgstr "Този потребител никога не изтича"
+
+#: ../../../www/radmin/templates/smarty.c:108
+msgid "This user account has expired"
+msgstr "Този потребител е изтекъл"
+
+#: ../../../www/radmin/templates/smarty.c:109
+msgid "Reset expiry"
+msgstr "Отчитай времето за изтичане от този момент"
+
+#: ../../../www/radmin/templates/smarty.c:110
+msgid "No Expire After Set"
+msgstr "Без изтичане след задаване"
+
+#: ../../../www/radmin/templates/smarty.c:113
+msgid "Account Lock Reason"
+msgstr "Причина за блокиране на достъпа"
+
+#: ../../../www/radmin/templates/smarty.c:114
+msgid ""
+"Enter a reason in here to lock the users account. Clear the reason to unlock"
+" the account"
+msgstr "Въведете тук причината за блокиране на достъпа. Изчистете причината за отблокиране"
+
+#: ../../../www/radmin/templates/smarty.c:119
+msgid "Change the Data Limit"
+msgstr "Промяна на ограничението за данни"
+
+#: ../../../www/radmin/templates/smarty.c:120
+msgid "Add Data to Limit (MiB)"
+msgstr "Добави данни към ограничението (MiB)"
+
+#: ../../../www/radmin/templates/smarty.c:121
+msgid "Add to the Data Limit (Will ignore changes made above)"
+msgstr "Добави към ограничението за данни (ще игнорира промените, направени по-горе)"
+
+#: ../../../www/radmin/templates/smarty.c:124
+msgid "Change the Time Limit"
+msgstr "Промени времевото ограничение"
+
+#: ../../../www/radmin/templates/smarty.c:125
+msgid "Add Time to Limit (Minutes)"
+msgstr "Добави време към ограничението (минути)"
+
+#: ../../../www/radmin/templates/smarty.c:126
+msgid "Add to the Time Limit (Will ignore changes made above)"
+msgstr "Добави към времевото ограничение ( ще игнорира промените, направени по-горе)"
+
+#: ../../../www/radmin/templates/smarty.c:127
+#: ../../../www/radmin/templates/smarty.c:128
+msgid "Update User Details"
+msgstr "Опресни детайлите за потребителя"
+
+#: ../../../www/radmin/templates/smarty.c:129
+msgid "Delete Computer Account"
+msgstr "Изтриване на потребител тип \"компютър\""
+
+#: ../../../www/radmin/templates/smarty.c:131
+msgid ""
+"User accounts are automatically deleted 2 months after expiry. Only accounts"
+" with zero usage should be manually deleted to prevent errors in the reports"
+" or statistics."
+msgstr "Потребителите се изтриват автоматично два месеца след като изтекат. Ръчно трябва да се изтриват само такива с нулево потребление, за да няма грешки в статистиката и отчетите."
+
+#: ../../../www/radmin/templates/smarty.c:133
+msgid "Are you sure you want to delete this user?"
+msgstr "Наистина ли искате да изтриете този потребител?"
+
+#: ../../../www/radmin/templates/smarty.c:134
+msgid "Delete User %1"
+msgstr "Изтриване на потребител %1"
+
+#: ../../../www/radmin/templates/smarty.c:135
+msgid "Site Settings"
+msgstr "Настройки на сайта"
+
+#: ../../../www/radmin/templates/smarty.c:136
+msgid "Location Name"
+msgstr "Местоположение"
+
+#: ../../../www/radmin/templates/smarty.c:137
+msgid "Enter a name that identifies this Hotspot Location"
+msgstr "Въведете име, което да идентифицира местоположението на този Hotspot"
+
+#: ../../../www/radmin/templates/smarty.c:138
+msgid "Support Contact Name"
+msgstr "Име на контакта за поддръжка"
+
+#: ../../../www/radmin/templates/smarty.c:139
+msgid "Enter the name of the Support Contact"
+msgstr "Въведете името на контакта за поддръжка"
+
+#: ../../../www/radmin/templates/smarty.c:140
+msgid "Support Link"
+msgstr "Връзка към поддръжка"
+
+#: ../../../www/radmin/templates/smarty.c:141
+msgid ""
+"This is the link for the support contact. http:// or mailto: are allowed. If"
+" using http:// ensure this is accessabile for users who aren't logged into "
+"the hotspot"
+msgstr "Това е връзката към контакта за поддръжка. Допускат се http:// или mailto:.Ако използвате http://, уверете се, че връзката е достъпна за потревидели, които не са се удостоверили пред системата."
+
+#: ../../../www/radmin/templates/smarty.c:142
+msgid "Locale"
+msgstr "Локализация"
+
+#: ../../../www/radmin/templates/smarty.c:143
+msgid "Available languages:"
+msgstr "Налични езици:"
+
+#: ../../../www/radmin/templates/smarty.c:144
+msgid "Select the appropriate Locale for your location"
+msgstr "Изберете подходящата локализация за Вашето местоположение"
+
+#: ../../../www/radmin/templates/smarty.c:145
+msgid ""
+"A locale has 2 parts, the language and location.<br/><strong>en_AU</strong> "
+"for example has the Language set to English, and the location to "
+"Australia.<br/><strong>en_ZA</strong> has the language set to English, and "
+"the location to South Africa, while <strong>af_ZA</strong> has the language "
+"set to Afrikaans and the location to South Africa."
+msgstr "Локализацията има две части - език и местоположение.<br/><strong>en_AU</strong> например има настройка за език - английски, а местоположението е Австралия.<br/><strong>en_ZA</strong>има настройка за език - английски, а местоположението е Южна Африка, докато <strong>af_ZA</strong> има настройка за език - африкаанс, а местоположението е Южна Африка."
+
+#: ../../../www/radmin/templates/smarty.c:146
+msgid ""
+"The locale defines the number formats, currency and language. If the "
+"language selected is not available, it will fallback to English."
+msgstr "Локализацията дефинира числови формати, валута и език. Ако езикът не е наличен, ще се използва английски."
+
+#: ../../../www/radmin/templates/smarty.c:147
+msgid ""
+"Current locale is %1, which sets the language to %2, and location to %3."
+msgstr "Настоящата локализация е %1, която задава език - %2 и местоположение %3."
+
+#: ../../../www/radmin/templates/smarty.c:148
+msgid "Currency symbol is %1"
+msgstr "Символът за валута е %1."
+
+#: ../../../www/radmin/templates/smarty.c:149
+msgid "Data Options"
+msgstr "Стойности за данни"
+
+#: ../../../www/radmin/templates/smarty.c:150
+msgid ""
+"Space separated list of Data Options in MB's to populate dropdown boxes"
+msgstr "Разделен с интервали списък от стойности за данни, предназначени за избор."
+
+#: ../../../www/radmin/templates/smarty.c:151
+msgid "Time Options"
+msgstr "Стойности за време"
+
+#: ../../../www/radmin/templates/smarty.c:152
+msgid ""
+"Space separated list of Time options in minutes to populate dropdown boxes."
+msgstr "Разделен с интервали списък от стойности за време, предназначени за избор."
+
+#: ../../../www/radmin/templates/smarty.c:153
+msgid "Bandwidth Options"
+msgstr "Стойности за ширина на канала"
+
+#: ../../../www/radmin/templates/smarty.c:154
+msgid ""
+"Space separated list of Bandwidth options in kbit/s to populate dropdown "
+"boxes."
+msgstr "Разделен с интервали списък от стойности за ширина на канала, предназначени за избор."
+
+#: ../../../www/radmin/templates/smarty.c:155
+msgid "Website Name"
+msgstr "Име на уебсайт"
+
+#: ../../../www/radmin/templates/smarty.c:156
+msgid "Label for Website Footer link"
+msgstr "Етикет за връзката към уебсайта в долната част на всяка страница"
+
+#: ../../../www/radmin/templates/smarty.c:157
+msgid "Website Link"
+msgstr "Връзка към уебсайт"
+
+#: ../../../www/radmin/templates/smarty.c:158
+msgid "Link for Website Footer Link"
+msgstr "Връзка към уебсайта в долната част на всяка страница"
+
+#: ../../../www/radmin/templates/smarty.c:160
+msgid "Advanced Settings"
+msgstr "Настройки за напреднали"
+
+#: ../../../www/radmin/templates/smarty.c:161
+msgid ""
+"All settings in the Radmin Settings table are shown here. Modifying settings"
+" here isn't recommended as no validation is done. This page allows you to "
+"see and modify hidden settings. Some settings may reset back to defaults if "
+"you try to set them to an incorrect value, others will just break."
+msgstr "Тук са показани всички настройки за Radmin. Не се препоръчва да се променят оттук, понеже не се прави никаква проверка. Тази страница позволява да се видят и променят скрити параметри. Някои настройки могат да се върнат към стойностите си по подразбиране, ако се опитате да въведете нещо некоректно, а други просто няма да работят."
+
+#: ../../../www/radmin/templates/smarty.c:162
+msgid ""
+"CAUTION: Some settings here are internal and modifying them will break "
+"things"
+msgstr "ВНИМАНИЕ: Някои от тези параметри са вътрешни и промяната им може да доведе до проблеми!"
+
+#: ../../../www/radmin/templates/smarty.c:164
+msgid "Value"
+msgstr "Стойност"
+
+#: ../../../www/radmin/templates/smarty.c:165
+msgid "Setting name"
+msgstr "Име на параметъра"
+
+#: ../../../www/radmin/templates/smarty.c:166
+msgid "Setting value"
+msgstr "Стойност на параметъра"
+
+#: ../../../www/radmin/templates/smarty.c:167
+msgid "Save Setting"
+msgstr "Запис на параметъра"
+
+#: ../../../www/radmin/templates/smarty.c:168
+#: ../../../www/radmin/templates/smarty.c:339
+msgid "Please select your preferred payment method"
+msgstr "Моля, изберете предпочитания от Вас начин на плащане"
+
+#: ../../../www/radmin/templates/smarty.c:169
+msgid "Logged in as <b>%1</b>"
+msgstr "Влязъл като <b>%1</b>"
+
+#: ../../../www/radmin/templates/smarty.c:170
+#: ../../../www/radmin/templates/smarty.c:173
+#: ../../../www/radmin/templates/smarty.c:332
+#: ../../../www/radmin/templates/smarty.c:337
+msgid "Login"
+msgstr "Вход в системата"
+
+#: ../../../www/radmin/templates/smarty.c:174
+msgid "Ticket Printing Settings"
+msgstr "Настройки за печат на билети"
+
+#: ../../../www/radmin/templates/smarty.c:178
+msgid "Voucher Config"
+msgstr "Конфигурация на ваучър"
+
+#: ../../../www/radmin/templates/smarty.c:179
+msgid ""
+"Vouchers are disabled if nether Initial Voucher, or Topup Voucher are "
+"selected."
+msgstr "Ваучърите са изключени, ако нито един от двата типа (първоначален и за доплащане) не е избран."
+
+#: ../../../www/radmin/templates/smarty.c:180
+msgid ""
+"Vouchers without a Time or Data limit do not inherit the default limits from"
+" the group, but any Recurring limits will apply."
+msgstr "Ваучъри без ограничения за данни или време не наследяват тези по подразбиране от групата, но всички повтарящи се ограничения ще се приложат."
+
+#: ../../../www/radmin/templates/smarty.c:181
+msgid "Voucher Name"
+msgstr "Име на ваучър"
+
+#: ../../../www/radmin/templates/smarty.c:182
+#: ../../../www/radmin/templates/smarty.c:190
+#: ../../../www/radmin/templates/smarty.c:192
+msgid "Price"
+msgstr "Цена"
+
+#: ../../../www/radmin/templates/smarty.c:184
+#: ../../../www/radmin/templates/smarty.c:208
+#: ../../../www/radmin/templates/smarty.c:214
+msgid "Data Limit"
+msgstr "Ограничение за данни"
+
+#: ../../../www/radmin/templates/smarty.c:185
+#: ../../../www/radmin/templates/smarty.c:209
+#: ../../../www/uam/templates/smarty.c:35
+msgid "Time Limit"
+msgstr "Времево ограничение"
+
+#: ../../../www/radmin/templates/smarty.c:186
+msgid "Initial Voucher"
+msgstr "Стартов ваучър"
+
+#: ../../../www/radmin/templates/smarty.c:187
+msgid "Topup Voucher"
+msgstr "Ваучър за доплащане"
+
+#: ../../../www/radmin/templates/smarty.c:188
+#: ../../../www/radmin/templates/smarty.c:240
+#: ../../../www/radmin/templates/smarty.c:258
+msgid "Description"
+msgstr "Описание"
+
+#: ../../../www/radmin/templates/smarty.c:194
+msgid "Help Page"
+msgstr "Помощ"
+
+#: ../../../www/radmin/templates/smarty.c:195
+#: ../../../www/radmin/includes/usermin_page_functions.inc.php:37
+#: ../../../www/radmin/includes/usermin_page_functions.inc.php:39
+msgid "My Account"
+msgstr "Моят профил"
+
+#: ../../../www/radmin/templates/smarty.c:196
+msgid "Admin"
+msgstr "Администрация"
+
+#: ../../../www/radmin/templates/smarty.c:197
+msgid "Wireless Network"
+msgstr "Безжична мрежа"
+
+#: ../../../www/radmin/templates/smarty.c:200
+#: ../../../www/radmin/export.php:92
+msgid "Voucher Type"
+msgstr "Тип ваучър"
+
+#: ../../../www/radmin/templates/smarty.c:202
+#: ../../../www/radmin/includes/page_functions.inc.php:67
+msgid "DHCP Leases"
+msgstr "DHCP - раздадени адреси"
+
+#: ../../../www/radmin/templates/smarty.c:205
+msgid "DHCP State"
+msgstr "DHCP състояние"
+
+#: ../../../www/radmin/templates/smarty.c:206
+msgid "UserName"
+msgstr "Потребителско име"
+
+#: ../../../www/radmin/templates/smarty.c:207
+#: ../../../www/radmin/templates/smarty.c:309
+#: ../../../www/radmin/templates/smarty.c:322
+msgid "Account Comment"
+msgstr "Потребител - бележки"
+
+#: ../../../www/radmin/templates/smarty.c:210
+msgid "%1 Time Limit"
+msgstr "%1 Времево ограничение"
+
+#: ../../../www/radmin/templates/smarty.c:211
+msgid "%1 Data Limit"
+msgstr "%1 ограничение за данни"
+
+#: ../../../www/radmin/templates/smarty.c:215
+msgid "Total Data usage for the current month"
+msgstr "Общо използвани данни за текущия месец"
+
+#: ../../../www/radmin/templates/smarty.c:216
+msgid "Data Usage (M)"
+msgstr "Използвани данни (M)"
+
+#: ../../../www/radmin/templates/smarty.c:217
+msgid "Total Data usage, from previous months, excluding current month"
+msgstr "Общо използвани данни досега, без текущия месец"
+
+#: ../../../www/radmin/templates/smarty.c:218
+msgid "Data Usage (T)"
+msgstr "Използвани данни (T)"
+
+#: ../../../www/radmin/templates/smarty.c:219
+msgid "Time Remaining"
+msgstr "Оставащо време"
+
+#: ../../../www/radmin/templates/smarty.c:220
+msgid "Time Usage (Total)"
+msgstr "Използвано време (общо)"
+
+#: ../../../www/radmin/templates/smarty.c:221
+msgid "Account Expiry"
+msgstr "Достъпът изтича"
+
+#: ../../../www/radmin/templates/smarty.c:222
+msgid "Last Logoff timestamp from current month only"
+msgstr "Време на последно излизане само за текущия месец"
+
+#: ../../../www/radmin/templates/smarty.c:223
+msgid "Last Logoff"
+msgstr "Последно излизане"
+
+#: ../../../www/radmin/templates/smarty.c:225
+msgid "Password Hidden"
+msgstr "Паролата е скрита"
+
+#: ../../../www/radmin/templates/smarty.c:226
+msgid "(Account Locked)"
+msgstr "(Блокиран потребител)"
+
+#: ../../../www/radmin/templates/smarty.c:227
+msgid "Group Config"
+msgstr "Конфигуриране на групи"
+
+#: ../../../www/radmin/templates/smarty.c:228
+msgid ""
+"Group expiry and expire after first login needs to be in a format understood by the\n"
+"    <a target=\"_blank\" href=\"http://www.php.net/manual/en/function.strtotime.php\">strtotime</a> PHP function."
+msgstr "Параметрите \"Изтичане\" и \"Изтича след първо влизане\" на групата трябва да бъдат във формат, разбираем за\n<a target=\"_blank\" href=\"http://www.php.net/manual/en/function.strtotime.php\">strtotime</a> PHP-функцията."
+
+#: ../../../www/radmin/templates/smarty.c:229
+msgid ""
+"For example, \"+1 month\" will set an expiry for 1 month from when the "
+"account is created. \"+2 weeks\", \"+3 days\" etc."
+msgstr "Например, \"+1 month\" ще нагласи изтичането на един месец от създаването на потребителя. \"+2 weeks\", \"+3 days\" и т.н."
+
+#: ../../../www/radmin/templates/smarty.c:230
+msgid ""
+"Expiry is calculated to the second, so if you want it to a date for example,"
+" try \"+1 week midnight\"."
+msgstr "Изтичането се пресмята до секунда, така че ако искате да е примерно до дата, опитайте \"+1 week midnight\"."
+
+#: ../../../www/radmin/templates/smarty.c:231
+msgid ""
+"Expire after first login also needs to conform to the <a "
+"href=\"http://search.cpan.org/~muir/Time-"
+"ParseDate-2013.1113/lib/Time/ParseDate.pm\">ParseDate perl module</a>"
+msgstr "Изтичането след първо влизане трябва да бъде съобразено и с <a href=\"http://search.cpan.org/~muir/Time-ParseDate-2013.1113/lib/Time/ParseDate.pm\">ParseDate perl-модула</a>"
+
+#: ../../../www/radmin/templates/smarty.c:232
+msgid ""
+"Login Time must be in the format of UUCP time ranges. See <a "
+"target=\"_blank\" href=\"http://ftp.gnu.org/pub/old-"
+"gnu/Manuals/radius/html_node/radius_186.html\">http://ftp.gnu.org/pub/old-"
+"gnu/Manuals/radius/html_node/radius_186.html</a> for more details. Only "
+"basic format checking is done, so please ensure that the correct format is "
+"used. Leaving Login Times blank will allow login at any time."
+msgstr "Времето за вход трябва да е във формат на UUCP интервали. Вижте <a target=\"_blank\" href=\"http://ftp.gnu.org/pub/old-gnu/Manuals/radius/html_node/radius_186.html\">http://ftp.gnu.org/pub/old-gnu/Manuals/radius/html_node/radius_186.html</a> за повече подробности. Прилагат се само най-прости проверки, така че трябва да сте сигурни, че ползвате правилния формат. Ако оставите полето Време за вход празно, ще позволите влизането по всяко време."
+
+#: ../../../www/radmin/templates/smarty.c:233
+msgid ""
+"Deleting a group won't delete it's users. Next time the user is edited it's "
+"group will become the default group unless a new group is selected."
+msgstr "Изтриването на групата няма да премахне потребителите, членуващи в нея. Следващия път,когато редактирате потребителя, той ще стане член на групата по подразбиране, освен ако не е посочена друга."
+
+#: ../../../www/radmin/templates/smarty.c:234
+msgid ""
+"The limits here are the default for group members, unless overridden when "
+"creating a member. The limits are applied at user creation time, if "
+"\"Inherit from group\" is selected. If multiple limits are specified, the "
+"first limit to be reached will disconnect the user."
+msgstr "Зададените тук ограничения са по подразбиране за членовете на групата, освен ако не се посочи нещо друго изрично при създаването на потребителя. Те се прилагат при създаването на потребителя, ако е избрано \"Наследи от групата\". Ако са настроени множество ограничения, първото достигнато ще доведе до прекъсване на връзката на потребителя."
+
+#: ../../../www/radmin/templates/smarty.c:235
+msgid ""
+"Idle Timeout overrides the default timeout set in Coova Chilli Settings."
+msgstr "Интервалът на бездействие, въведен тук, е с приоритет нат стойността по подразбиране от параметрите на Coova Chilli"
+
+#: ../../../www/radmin/templates/smarty.c:236
+msgid ""
+"Changing Expiry, expire after first login, Data or Time limits, will not "
+"change existing users of the group and will only apply to new users. "
+"Recurring limits, Bandwidth and simultaneous logins will all apply to "
+"existing and new members."
+msgstr "Промяната на \"Изтичане\", \"Изтича след първо влизане\", времевите и данновите ограничения няма да се отрази на съществуващите потребители, а само на новите.Повтарящите се ограничения, ширината на канала и едновременният вход ще се приложат на съществуващите и на новите членове"
+
+#: ../../../www/radmin/templates/smarty.c:237
+msgid ""
+"Recurring Data and Time limits must not be used with simultaneous login set "
+"to yes, otherwise users may be able to use more than the allocated limit. "
+"Data limits should only be used with larger time periods, and users may need"
+" to logout and log back in if they use past the time period."
+msgstr "Повтарящите се ограничения за данни и време не трябва да се използват при разрешен едновременен вход, иначе потребителите ще могат да използват повече отколкото им е позволено. Ограниченията за данни трябва да се използват само в комбинация с дълги периоди от време иначе потребителите ще трябва да излизат и да влизат отново, ако е изтекъл интервала."
+
+#: ../../../www/radmin/templates/smarty.c:238
+#: ../../../www/radmin/includes/page_functions.inc.php:81
+msgid "Groups"
+msgstr "Групи"
+
+#: ../../../www/radmin/templates/smarty.c:242
+#: ../../../www/radmin/templates/smarty.c:260
+msgid "Never Expire"
+msgstr "Никога не изтича"
+
+#: ../../../www/radmin/templates/smarty.c:243
+msgid "Expire After First login"
+msgstr "Изтича след първо влизане"
+
+#: ../../../www/radmin/templates/smarty.c:244
+#: ../../../www/radmin/templates/smarty.c:262
+msgid "Login Times"
+msgstr "Време за вход"
+
+#: ../../../www/radmin/templates/smarty.c:245
+#: ../../../www/radmin/templates/smarty.c:263
+msgid "Idle Timeout (seconds)"
+msgstr "Интервал на покой (секунди)"
+
+#: ../../../www/radmin/templates/smarty.c:246
+#: ../../../www/radmin/templates/smarty.c:264
+msgid "Default Data Limit (MiB)"
+msgstr "Ограничение на данни (MiB) по подразбиране"
+
+#: ../../../www/radmin/templates/smarty.c:247
+#: ../../../www/radmin/templates/smarty.c:265
+msgid "Default Time Limit (Minutes)"
+msgstr "Времево ограничение (минути) по подразбиране"
+
+#: ../../../www/radmin/templates/smarty.c:248
+#: ../../../www/radmin/templates/smarty.c:266
+msgid "Recurring Data Limit (MiB)"
+msgstr "Повтарящо се ограничение на данни (MiB)"
+
+#: ../../../www/radmin/templates/smarty.c:249
+#: ../../../www/radmin/templates/smarty.c:251
+#: ../../../www/radmin/templates/smarty.c:267
+#: ../../../www/radmin/templates/smarty.c:269
+msgid "per"
+msgstr "за"
+
+#: ../../../www/radmin/templates/smarty.c:250
+#: ../../../www/radmin/templates/smarty.c:268
+msgid "Recurring Time Limit (Minutes)"
+msgstr "Повтарящо се времево ограничение (минути)"
+
+#: ../../../www/radmin/templates/smarty.c:252
+#: ../../../www/radmin/templates/smarty.c:270
+msgid "Bandwidth Limit Down"
+msgstr "Ширина на канала за сваляне"
+
+#: ../../../www/radmin/templates/smarty.c:253
+#: ../../../www/radmin/templates/smarty.c:271
+msgid "Bandwidth Limit Up"
+msgstr "Ширина на канала за качване"
+
+#: ../../../www/radmin/templates/smarty.c:254
+#: ../../../www/radmin/templates/smarty.c:272
+msgid "Number of simultaneous logins. Leave Blank for unlimited"
+msgstr "Брой едновременни влизания. Ако се остави празно - без ограничения."
+
+#: ../../../www/radmin/templates/smarty.c:255
+#: ../../../www/radmin/templates/smarty.c:273
+#: ../../../www/uam/templates/smarty.c:26
+#: ../../../www/uam/templates/smarty.c:28
+#: ../../../www/uam/templates/smarty.c:34
+#: ../../../www/uam/templates/smarty.c:36
+msgid "Unlimited"
+msgstr "Без ограничения"
+
+#: ../../../www/radmin/templates/smarty.c:256
+msgid "Delete Group"
+msgstr "Изтриване на група"
+
+#: ../../../www/radmin/templates/smarty.c:275
+#: ../../../www/radmin/includes/page_functions.inc.php:78
+msgid "Coova Chilli Settings"
+msgstr "Настройки на Coova Chilli"
+
+#: ../../../www/radmin/templates/smarty.c:276
+msgid ""
+"These settings are used by Coova Chilli. Coova Chilli reloads it's config "
+"roughly every 10 minutes, or when it's restarted."
+msgstr "Тези параметри се използват от Coova Chilli. Coova Chilli си презарежда конфигурацията на всеки 10 минути или когато се рестартира."
+
+#: ../../../www/radmin/templates/smarty.c:277
+msgid ""
+"If you change the MAC Auth Password, no computer accounts will be able to "
+"login until Coova Chilli reloads it's config, or is manually restarted."
+msgstr "Ако смените паролата за удостоверяване по MAC, потребителите от тип \"компютър\" няма да могат да влязат докато Coova Chilli не си презареди конфигурацията или не се рестартира ръчно"
+
+#: ../../../www/radmin/templates/smarty.c:278
+msgid "Chilli Config last updated %1"
+msgstr "Последно променена конфигурация на Chilli %1"
+
+#: ../../../www/radmin/templates/smarty.c:279
+msgid "Portal Config last updated %1"
+msgstr "Последно променена конфигурация на портала %1"
+
+#: ../../../www/radmin/templates/smarty.c:280
+#: ../../../www/radmin/templates/smarty.c:351
+msgid ""
+"For each of the following items, if you need multiple values you can submit "
+"the form and it will append a blank input below the last valid value"
+msgstr "За всяко от следващите неща, ако се нуждаете от повече стойности може да потвърдите формата и ще се добави правно поле за въвеждане след последната валидна стойност"
+
+#: ../../../www/radmin/templates/smarty.c:282
+msgid "Session logs for %1 on %2"
+msgstr "Дневници на сесиите за %1 на %2"
+
+#: ../../../www/radmin/templates/smarty.c:283
+msgid "Computers hardware (MAC) address is"
+msgstr "Хардуерният (MAC) адрес на компютъра е"
+
+#: ../../../www/radmin/templates/smarty.c:284
+msgid "Between %1 and %2"
+msgstr "Между %1 и %2"
+
+#: ../../../www/radmin/templates/smarty.c:285
+msgid "Total HTTP (WWW) Traffic Size:"
+msgstr "Пълен размер на HTTP (WWW) трафика:"
+
+#: ../../../www/radmin/templates/smarty.c:286
+msgid "Domain"
+msgstr "Домейн"
+
+#: ../../../www/radmin/templates/smarty.c:287
+msgid "Count"
+msgstr "Брой"
+
+#: ../../../www/radmin/templates/smarty.c:288
+#: ../../../www/radmin/templates/smarty.c:294
+msgid "Size"
+msgstr "Размер"
+
+#: ../../../www/radmin/templates/smarty.c:289
+#: ../../../www/radmin/templates/smarty.c:328
+msgid "Timestamp"
+msgstr "Време"
+
+#: ../../../www/radmin/templates/smarty.c:290
+msgid "Address"
+msgstr "Адрес"
+
+#: ../../../www/radmin/templates/smarty.c:291
+msgid "Host"
+msgstr "Хост"
+
+#: ../../../www/radmin/templates/smarty.c:292
+msgid "Cached"
+msgstr "Кеширано"
+
+#: ../../../www/radmin/templates/smarty.c:293
+msgid "Request Type"
+msgstr "Тип на заявката"
+
+#: ../../../www/radmin/templates/smarty.c:295
+msgid "Sessions for %1"
+msgstr "Сесии за %1"
+
+#: ../../../www/radmin/templates/smarty.c:296
+#: ../../../www/radmin/templates/smarty.c:299
+msgid "Active Sessions"
+msgstr "Активни сесии"
+
+#: ../../../www/radmin/templates/smarty.c:297
+msgid "No active sessions"
+msgstr "Няма активни сесии"
+
+#: ../../../www/radmin/templates/smarty.c:298
+#: ../../../www/radmin/templates/smarty.c:300
+msgid "Display all Sessions"
+msgstr "Покажи всички сесии"
+
+#: ../../../www/radmin/templates/smarty.c:301
+msgid "Stop Auto Refresh Page"
+msgstr "Спри автоматичното опресняване на страницата"
+
+#: ../../../www/radmin/templates/smarty.c:302
+msgid "Auto Refresh Page"
+msgstr "Автоматично опресняване на страницата"
+
+#: ../../../www/radmin/templates/smarty.c:303
+#: ../../../www/radmin/templates/smarty.c:316
+#: ../../../www/uam/templates/smarty.c:31
+msgid "Start Time"
+msgstr "Начало"
+
+#: ../../../www/radmin/templates/smarty.c:304
+#: ../../../www/radmin/templates/smarty.c:317
+msgid "Stop Time"
+msgstr "Край"
+
+#: ../../../www/radmin/templates/smarty.c:305
+#: ../../../www/radmin/templates/smarty.c:318
+msgid "Time"
+msgstr "Време"
+
+#: ../../../www/radmin/templates/smarty.c:306
+#: ../../../www/radmin/templates/smarty.c:319
+msgid "IP/MAC Address"
+msgstr "IP/MAC адрес"
+
+#: ../../../www/radmin/templates/smarty.c:308
+#: ../../../www/radmin/templates/smarty.c:321
+msgid "Data Usage"
+msgstr "Използвани данни"
+
+#: ../../../www/radmin/templates/smarty.c:310
+#: ../../../www/radmin/templates/smarty.c:323
+msgid "Logout this session"
+msgstr "Изход от сесията "
+
+#: ../../../www/radmin/templates/smarty.c:311
+#: ../../../www/radmin/templates/smarty.c:324
+msgid "Are you sure you want to logout this session?"
+msgstr "Наистина ли искате да излезете от сесията?"
+
+#: ../../../www/radmin/templates/smarty.c:312
+#: ../../../www/radmin/templates/smarty.c:325
+msgid "Reason: "
+msgstr "Причина:"
+
+#: ../../../www/radmin/templates/smarty.c:313
+#: ../../../www/radmin/templates/smarty.c:326
+msgid "Captive Portal Config Login"
+msgstr "Вход в конфигурацията на Captive Portal"
+
+#: ../../../www/radmin/templates/smarty.c:314
+msgid "All Sessions"
+msgstr "Всички сесии"
+
+#: ../../../www/radmin/templates/smarty.c:315
+msgid "Display just active Sessions"
+msgstr "Покажи само активните сесии"
+
+#: ../../../www/radmin/templates/smarty.c:327
+#: ../../../www/radmin/includes/page_functions.inc.php:91
+msgid "Admin Log"
+msgstr "Администраторски дневник"
+
+#: ../../../www/radmin/templates/smarty.c:330
+msgid "IP"
+msgstr "IP"
+
+#: ../../../www/radmin/templates/smarty.c:331
+msgid "Action"
+msgstr "Действие"
+
+#: ../../../www/radmin/templates/smarty.c:333
+msgid ""
+"Login is required to access the Administration section of this website."
+msgstr "Необходимо е удостоверяване за достъп до административната секция на този сайт."
+
+#: ../../../www/radmin/templates/smarty.c:335
+msgid "Username for Admin interface (Different to internet access username)"
+msgstr "Потребителско име за администраторската секция (Различно от това за достъп до интернет)"
+
+#: ../../../www/radmin/templates/smarty.c:338
+msgid "Please select your voucher type"
+msgstr "Моля, изберете тип ваучер"
+
+#: ../../../www/radmin/templates/smarty.c:340
+msgid "Proceed to Payment"
+msgstr "Продължи към плащане"
+
+#: ../../../www/radmin/templates/smarty.c:341
+#: ../../../www/radmin/templates/smarty.c:345
+msgid "Upload Logo"
+msgstr "Качи лого"
+
+#: ../../../www/radmin/templates/smarty.c:342
+msgid "Logo Image"
+msgstr "Лого (картинка)"
+
+#: ../../../www/radmin/templates/smarty.c:343
+msgid "Select new logo file."
+msgstr "Избери нов файл за лого"
+
+#: ../../../www/radmin/templates/smarty.c:344
+msgid ""
+"Logo file needs to be in png format, and relatively small (remember, every "
+"page has the logo). 10 Kilobytes maximum. It's physical size shouldn't be "
+"bigger than about 220px in both directions."
+msgstr "Логото трябва да бъде в png-формат и относително малко (помнете, че на всяка страница го има). - 10 килобайта най-много. Размерът не трябва да надминава 220 пиксела в дължина и ширина."
+
+#: ../../../www/radmin/templates/smarty.c:346
+msgid ""
+"For more advanced logos, (different file type, size, placement}, manually "
+"upload the file to /var/www/ or /usr/share/grase/www/images/ and use the "
+"custom CSS to override this logo. The logo is defined in the #page container"
+" as the background."
+msgstr "За по-нестандартни картинки (различни типове на файла, размер, местоположение) ръчно качете файла на /var/www/ или /usr/share/grase/www/images/ и използвайте ваш CSS, за да смените логото. То е дефинирано в контейнера #page като фон."
+
+#: ../../../www/radmin/templates/smarty.c:347
+#: ../../../www/radmin/includes/page_functions.inc.php:77
+msgid "Network Settings"
+msgstr "Мрежови настройки"
+
+#: ../../../www/radmin/templates/smarty.c:348
+msgid ""
+"These settings are used by Coova Chilli and Dnsmasq. Both Coova Chilli and "
+"Dnsmasq will need to be reloaded when these settings change. A cron job will"
+" automatically check for changes every 5 minutes and reload these daemons if"
+" needed."
+msgstr "Тези настройки се използват от  Coova Chilli и Dnsmasq. И Coova Chilli, и Dnsmasq трябва да бъдат презаредени при промяна. Чрез задача за cron автоматично се проверява за промени на всеки 5 минути и ако има нужда, тези демони се презареждат."
+
+#: ../../../www/radmin/templates/smarty.c:349
+msgid "Network Config last reloaded %1"
+msgstr "Последно заредена мрежова конфигурация %1"
+
+#: ../../../www/radmin/templates/smarty.c:350
+msgid "Network Config last updated %1"
+msgstr "Последно променена мрежова конфигурация %1"
+
+#: ../../../www/radmin/templates/smarty.c:353
+msgid "Batch ID"
+msgstr "Номер поредица"
+
+#: ../../../www/radmin/templates/smarty.c:354
+msgid "Date Created"
+msgstr "Дата на създаване"
+
+#: ../../../www/radmin/templates/smarty.c:355
+msgid "Created By"
+msgstr "Създаден от"
+
+#: ../../../www/radmin/templates/smarty.c:356
+msgid "Number of Tickets"
+msgstr "Брой билети"
+
+#: ../../../www/radmin/templates/smarty.c:358
+msgid ""
+"Are you sure you want to delete the selected batches and all users in them?"
+msgstr "Наистина ли искате да изтриете избраните поредици и всички потребители в тях?"
+
+#: ../../../www/radmin/templates/smarty.c:362
+msgid "Create Tickets"
+msgstr "Създай билети"
+
+#: ../../../www/radmin/templates/smarty.c:363
+#: ../../../www/uam/templates/smarty.c:40
+msgid "Error"
+msgstr "Грешка"
+
+#: ../../../www/radmin/templates/smarty.c:364
+#: ../../../www/uam/templates/smarty.c:41
+msgid "An Error has occured. Please report the error to the administrator"
+msgstr "Грешка! Уведомете администратора!"
+
+#: ../../../www/radmin/templates/smarty.c:365
+msgid ""
+"There may be more information available to the administrator in the logs"
+msgstr "Може да има по-подробна информация в административните дневници"
+
+#: ../../../www/uam/templates/smarty.c:1
+#: ../../../www/uam/templates/smarty.c:21
+msgid "Help"
+msgstr "Помощ"
+
+#: ../../../www/uam/templates/smarty.c:2
+msgid "Successful Login"
+msgstr "Успешен вход"
+
+#: ../../../www/uam/templates/smarty.c:3
+msgid "Continue to your site"
+msgstr "Продължете към сайта"
+
+#: ../../../www/uam/templates/smarty.c:4
+msgid "Support"
+msgstr "Поддръжка"
+
+#: ../../../www/uam/templates/smarty.c:5
+msgid "By continuing, you agree to the below terms and conditions."
+msgstr "Продължавайки, декларирате съгласие с долуизложените условия"
+
+#: ../../../www/uam/templates/smarty.c:6
+msgid "Show Terms and Conditions"
+msgstr "Покажи условията"
+
+#: ../../../www/uam/templates/smarty.c:7
+msgid "If you are already logged in, continue to your site"
+msgstr "Ако вече сте влезли, продължете към сайта."
+
+#: ../../../www/uam/templates/smarty.c:8
+msgid "Voucher Login"
+msgstr "Вход с ваучър"
+
+#: ../../../www/uam/templates/smarty.c:11
+msgid "Attempting Login..."
+msgstr "Опит за вход..."
+
+#: ../../../www/uam/templates/smarty.c:12
+msgid "Logged in as"
+msgstr "Влязъл като"
+
+#: ../../../www/uam/templates/smarty.c:13
+msgid "Remaining Session Time"
+msgstr "Оставащо време на сесията"
+
+#: ../../../www/uam/templates/smarty.c:14
+msgid "Remaining Session Data"
+msgstr "Оставащи данни на сесията"
+
+#: ../../../www/uam/templates/smarty.c:15
+msgid "Logout"
+msgstr "Изход"
+
+#: ../../../www/uam/templates/smarty.c:16
+msgid "Open Status Window"
+msgstr "Отвори прозорец със статуса"
+
+#: ../../../www/uam/templates/smarty.c:17
+msgid "Trouble logging in?"
+msgstr "Проблеми с входа?"
+
+#: ../../../www/uam/templates/smarty.c:18
+msgid "Click here to try a less secure login."
+msgstr "Щракнете тук, за да опитате по-несигурен вход"
+
+#: ../../../www/uam/templates/smarty.c:19
+msgid "You have disabled the secure javascript login method."
+msgstr "Изключили сте по-сигурния javascript метод за удостоверяване."
+
+#: ../../../www/uam/templates/smarty.c:20
+msgid "Click here to re-enable it"
+msgstr "Щракнете тук, за да го включите отново."
+
+#: ../../../www/uam/templates/smarty.c:22
+msgid "You are logged in as:"
+msgstr "Влезли сте като:"
+
+#: ../../../www/uam/templates/smarty.c:23
+msgid "User"
+msgstr "Потребител"
+
+#: ../../../www/uam/templates/smarty.c:24
+msgid "Usage this session"
+msgstr "Използване през тази сесия"
+
+#: ../../../www/uam/templates/smarty.c:25
+msgid "Remaining Quota"
+msgstr "Оставаща квота"
+
+#: ../../../www/uam/templates/smarty.c:27
+msgid "Quota allocation"
+msgstr "Разпределение на квота"
+
+#: ../../../www/uam/templates/smarty.c:29
+msgid "Max Session Time"
+msgstr "Макс. време на сесия"
+
+#: ../../../www/uam/templates/smarty.c:30
+msgid "Max Idle Time"
+msgstr "Макс. време на покой"
+
+#: ../../../www/uam/templates/smarty.c:32
+msgid "Session Time"
+msgstr "Време на сесия"
+
+#: ../../../www/uam/templates/smarty.c:33
+msgid "Remaining Time"
+msgstr "Оставащо време"
+
+#: ../../../www/uam/templates/smarty.c:37
+msgid "Idle Time"
+msgstr "Време на покой"
+
+#: ../../../www/uam/templates/smarty.c:38
+msgid "Downloaded"
+msgstr "Свалени"
+
+#: ../../../www/uam/templates/smarty.c:39
+msgid "Uploaded"
+msgstr "Качени"
+
+#: ../../../www/radmin/advancedsettings.php:34
+#, php-format
+msgid "Updated %s setting with value %s"
+msgstr "Опреснен %s параметър със стойност %s"
+
+#: ../../../www/radmin/chilliconfig.php:35
+msgid "Walled Garden allowed hosts"
+msgstr "Хостове във \"вътрешен двор\""
+
+#: ../../../www/radmin/chilliconfig.php:37
+msgid ""
+"IP's and Hostnames that are accessible without logging in. DNS Lookup is only done at startup time so not\n"
+"            suitable for domains with Round Robin IP Addresses"
+msgstr "IP-та и имена, които са достъпни без вход. DNS-проверките се правят само при стратиране, затова не са\nподходящи за имена с Round Robin IP-адреси"
+
+#: ../../../www/radmin/chilliconfig.php:43
+msgid "Walled Garden allowed domains"
+msgstr "Домейни във \"вътрешен двор\""
+
+#: ../../../www/radmin/chilliconfig.php:44
+msgid "Domains (and their subdomains) that are accesible without logging in."
+msgstr "Домейни (и технни поддомейни), достъпни без удостоверяване на потребителя."
+
+#: ../../../www/radmin/chilliconfig.php:52
+msgid "MAC Auth Password"
+msgstr "Парола за удостоверяване по MAC"
+
+#: ../../../www/radmin/chilliconfig.php:54
+msgid ""
+"The MAC Password used to autologin Computer Accounts. Change this to something obscure as it can be used to\n"
+"             login using a known MAC address as the username."
+msgstr "MAC-паролата служи за автоматичен вход на потребителите от тип \"компютър\". Сменете това с нещо сложно,\nзащото може да се използва за вход с известен MAC-адрес\nкато потребителско име."
+
+#: ../../../www/radmin/chilliconfig.php:60
+msgid "Default Session Idle Timeout"
+msgstr "Интервал на бездействие (по подразбиране)"
+
+#: ../../../www/radmin/chilliconfig.php:62
+msgid ""
+"Default Idle Timeout for sessions. Logout after this number of seconds have "
+"passed without any traffic."
+msgstr "Интервал на бездействие (по подразбиране) - ако няма никакъв трафик за такъв брой секунди, връзката се прекъсва."
+
+#: ../../../www/radmin/chilliconfig.php:67
+msgid "DHCP Lease time"
+msgstr "DHCP време на заемане"
+
+#: ../../../www/radmin/chilliconfig.php:68
+msgid "DHCP lease time in seconds."
+msgstr "DHCP време на заемане ( в секунди)."
+
+#: ../../../www/radmin/chilliconfig.php:73
+msgid "DHCP Start"
+msgstr "Начало DHCP"
+
+#: ../../../www/radmin/chilliconfig.php:74
+msgid "Start of DHCP Range (offset from start of network range)"
+msgstr "Начало на диапазона за DHCP (като отместване от началото на мрежовия диапазон)"
+
+#: ../../../www/radmin/chilliconfig.php:78
+msgid "DHCP End"
+msgstr "Край DHCP"
+
+#: ../../../www/radmin/chilliconfig.php:79
+msgid "End of DHCP Range (offset from start of network range)"
+msgstr "Край на диапазона за DHCP (като отместване от началото на мрежовия диапазон)"
+
+#: ../../../www/radmin/chilliconfig.php:117
+#: ../../../www/radmin/chilliconfig.php:156
+#, php-format
+msgid "%s Coova Chilli config option update"
+msgstr "%s конфигурационен параметър на Coova Chilli е променен"
+
+#: ../../../www/radmin/chilliconfig.php:193
+msgid "Changes pending Coova Chilli Reload"
+msgstr "Има промени, които чакат презареждане на Coova Chilli."
+
+#: ../../../www/radmin/chilliconfig.php:195
+#: ../../../www/radmin/netconfig.php:214
+msgid "Settings match running config"
+msgstr "Настройките и работещата конфигурация са еднакви"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:65
+msgid "Unable to select users needing First Login Activation"
+msgstr "Не може да се изберат потребителите, нуждаещи се от активация при първоначален вход."
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:78
+msgid "First login users activiated"
+msgstr "Активирани са потребители при пръвоначален вход"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:95
+msgid "Unable to select user from radcheck"
+msgstr "Невъзможно избиране на потребител от radcheck"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:111
+msgid "Unable to cleanup old users from batch "
+msgstr "Невъзможно изчистване на стари потребители от поредица"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:119
+msgid "Unable to cleanup old batches "
+msgstr "Невъзможно изчистване на старите поредици"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:125
+msgid "Old Batches Cleaned"
+msgstr "Старите поредици са изчистени"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:157
+msgid "Clearing stale sessions failed: "
+msgstr "Грешка при изчистване на стари сесии: "
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:161
+msgid "Stale sessions cleared"
+msgstr "Старите сесии са изчистени"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:194
+#: ../../../www/radmin/classes/CronFunctions.class.php:231
+#: ../../../www/radmin/classes/CronFunctions.class.php:268
+msgid "Fetching users to delete failed"
+msgstr "Неуспешно извличане на потребители за изтриване"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:205
+msgid "Expired users deleted"
+msgstr "\"Изтеклите\" потребители са изтрити"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:242
+msgid "OutOfTime users deleted"
+msgstr "Потребителите с изчерпано време са изтрити"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:279
+msgid "OutOfData users deleted"
+msgstr "Потребителите с изчерпани данни са изтрити"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:332
+msgid "Unable to insert data into mtotaccttmp: "
+msgstr "Невъзможно вмъкване на данни в mtotaccttmp: "
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:350
+msgid "Unable to delete old radacct data: "
+msgstr "Невъзможно изтриване на стари radacct данни: "
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:371
+msgid "Unable to update users Max-Octets: "
+msgstr "Невъзможна актуализация на Max-Octets на потребителите: "
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:390
+msgid "Unable to update users Max-All-Session: "
+msgstr "Невъзможна актуализация на Max-All-Session на потребителите: "
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:425
+msgid "Unable to move mtotaccttmp data to mtotacct: "
+msgstr "Невъзможно преместване на данни от mtotaccttmp към mtotacct: "
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:437
+msgid "Unable to truncate mtotaccttmp: "
+msgstr "Невъзможно съкращаване на mtotaccttmp: "
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:459
+#: ../../../www/radmin/classes/CronFunctions.class.php:478
+msgid "Unable to ensure positive values in radcheck: "
+msgstr "Невъзможно потвърждение на положителни стойности в radcheck: "
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:507
+msgid "Old Radius Accounting Data Archived"
+msgstr "Старите RADIUS отчетни данни са архивирани"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:524
+msgid "Unable to clear old Postauth rows: "
+msgstr "Невъзможно изтриване на старите Postauth редове:"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:528
+msgid "Old Postauth rows cleared"
+msgstr "Старите Postauth редове са изтрити"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:541
+msgid "Unable to get PostAuth MAC Reject IDs: "
+msgstr "Невъзможно вземането на PostAuth MAC Reject ID-та:"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:558
+msgid "Unable to delete PostAuth MAC Reject entry: "
+msgstr "Невъзможно изтриването на PostAuth MAC Reject данни:"
+
+#: ../../../www/radmin/classes/CronFunctions.class.php:567
+msgid "PostAuth MAC Reject rows cleared"
+msgstr "Редовете с PostAuth MAC Reject са изчистени"
+
+#: ../../../www/radmin/classes/DatabaseConnections.class.php:67
+msgid "DB Config File isn't a valid file."
+msgstr "Конфигурационният файл на базата данни е невалиден."
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:95
+msgid "Retrieving Months Accounting Data Available For failed: "
+msgstr "Неуспешно извличане на месечни отчетни данни за:"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:140
+msgid "Retrieving Session by RadAcctID failed: "
+msgstr "Неуспешно изтегляне на сесия чрез RadAcctID: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:180
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:221
+msgid "Retrieving Sessions by Username failed: "
+msgstr "Неуспешно изтегляне на сесии чрез потребителско име: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:245
+msgid "Retrieving Current Session by Username failed: "
+msgstr "Неуспешно изтегляне на текуща сесия чрез потребителско име: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:269
+msgid "Retrieving Username by Active Session (ipadddress): "
+msgstr "Изтегляне на потребителско име чрез Активна сесия ( IP-адрес): "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:299
+msgid "Get All User radcheck details Query failed: "
+msgstr "Неуспешна заявка \"Покажи всички потребителски radcheck в детайли\": "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:317
+msgid "Get All User radreply details Query failed: "
+msgstr "Неуспешна заявка \"Покажи всички потребителски radreply в детайли\": "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:336
+msgid "Get All User Group details Query failed: "
+msgstr "Неуспешна заявка \"Покажи всички потребителски групи в детайли\": "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:354
+msgid "Get All User Comment details Query failed: "
+msgstr "Неуспешна заявка \"Покажи всички потребителски коментари в детайли\": "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:379
+msgid "Get All User radacct details Query failed: "
+msgstr "Неуспешна заявка \"Покажи всички потребителски radacct в детайли\": "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:407
+msgid "Get All User mtotacct details Query failed: "
+msgstr "Неуспешна заявка \"Покажи всички потребителски mtotacct в детайли\": "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:457
+msgid "Get User details Query failed: "
+msgstr "Неуспешна заявка \"Покажи потребителски детайли\": "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:478
+msgid "Get User radreply details Query failed: "
+msgstr "Неуспешна заявка \"Покажи потребителски radreply детайли\": "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:613
+msgid "Get User Group Query failed: "
+msgstr "Неуспешна заявка \"Покажи потребителска група\": "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:641
+msgid "Get All Usernames Query Failed: "
+msgstr "Неуспешна заявка \"Покажи всички потребителски имена\": "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:667
+msgid "Get Users By Group Query Failed: "
+msgstr "Неуспешна заявка \"Покажи потребители по група\": "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:691
+msgid "Get Computer Users Query Failed: "
+msgstr "Неуспешна заявка \"Покажи компютри\": "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:724
+msgid "Get User Last Logout Query Failed: "
+msgstr "Неуспешна заявка \"Покажи последен потребителски изход\": "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:760
+msgid "Get User Total Session Time Query failed: "
+msgstr "Неуспешна заявка \"Покажи общо сесийно време на потребителя\": "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:788
+msgid "Get User Time Usage (Total) Query failed: "
+msgstr "Неуспешна заявка \"Покажи използвано време (общо) на потребителя\": "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:822
+msgid "Get User Data Usage Query failed: "
+msgstr "Неуспешна заявка \"Покажи използвани данни на потребителя\": "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:851
+msgid "Get User Data Usage (Total) Query failed: "
+msgstr "Неуспешна заявка \"Покажи използвани данни (общо) на потребителя\": "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:878
+msgid "Get All Users Comments Query failed: "
+msgstr "Неуспешна заявка \"Покажи всички бележки за потребители\": "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:908
+msgid "Get User Comment failed: "
+msgstr "Неуспешна заявка \"Покажи потребителски коментар\": "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:977
+msgid "Deleting radgroupcheck query failed: "
+msgstr "Неуспешно изтриване на radgroupcheck  заявка: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:997
+msgid "Adding Group Check Attributes query failed:  "
+msgstr "Неуспешна  заявка \"Добавяне на атрибути за проверка на група\": "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1035
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1050
+msgid "Deleting radgroupreply query failed: "
+msgstr "Неуспешно изтриване на radgroupreply  заявка: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1131
+msgid "Adding Group Attributes query failed:  "
+msgstr "Неуспешна  заявка \"Добавяне на атрибути на група\": "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1186
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1196
+msgid "Get Groups details Query failed: "
+msgstr "Неуспешна  заявка \"Покажи детайли на група\": "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1225
+msgid "Hourly"
+msgstr "На час"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1226
+msgid "Daily"
+msgstr "На ден"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1227
+msgid "Weekly"
+msgstr "На седмица"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1228
+msgid "Monthly"
+msgstr "На месец"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1289
+msgid "Setting User Comment Query Failed: "
+msgstr "Неуспешна  заявка \"Задаване на коментар за потребител\": "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1309
+msgid "Setting User Group Query Failed: "
+msgstr "Неуспешна  заявка \"Задаване на група\": "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1335
+msgid "Setting User Datalimit Query Failed: "
+msgstr "Неуспешна  заявка \"Задаване на лимит за данни за потребител\": "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1362
+msgid "Getting User Current Data Limit to increase failed: "
+msgstr "Неуспешна  заявка \"Увеличаване на текущ лимит за данни за потребител\": "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1388
+msgid "Setting User Timelimit Query Failed: "
+msgstr "Неуспешна  заявка \"Задаване на лимит за време за потребител\":"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1414
+msgid "Getting User Current Time Limit to increase failed: "
+msgstr "Неуспешна  заявка \"Увеличаване на текущ лимит за време за потребител\":"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1439
+msgid "Setting User Password Query Failed: "
+msgstr "Неуспешна  заявка \"Задаване на парола за потребител\":"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1465
+msgid "Setting User ExpireAfter Query Failed: "
+msgstr "Неуспешна  заявка \"Задаване на \"Изтича след\"\":"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1485
+msgid "Deleting User Expire After Query Failed: "
+msgstr "Неуспешна  заявка \"Изтриване на \"Изтича след\"\":"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1509
+msgid "Setting User Expiry Date Query Failed: "
+msgstr "Неуспешна  заявка \"Задаване на дата на изтичане за потребител\":"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1529
+msgid "Deleting User Expiry Date Query Failed: "
+msgstr "Неуспешна  заявка \"Изтриване на дата на изтичане за потребител\":"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1552
+msgid "Locking User Account Query Failed: "
+msgstr "Неуспешна  заявка \"Заключване на потребител\":"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1569
+msgid "User Account Lock Reason Query Failed: "
+msgstr "Неуспешна  заявка \"Причина за заключване на потребител\":"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1594
+msgid "Removing User Lock Query Failed: "
+msgstr "Неуспешна  заявка \"Отключване на потребител\":"
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1611
+msgid "Removing User Lock Message Query Failed: "
+msgstr "Неуспешна  заявка \"Съобщение при отключване на потребител\": "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1635
+msgid "Deleting user failed: "
+msgstr "Неуспешно изтриване на потребител: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1651
+msgid "Deleting user radreply data failed: "
+msgstr "Неуспешно изтриване на потребителските radreply данни: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1667
+msgid "Deleting users group failed: "
+msgstr "Неуспешно изтриване на група: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1683
+msgid "Deleting users comment failed: "
+msgstr "Неуспешно изтриване на коментар: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1706
+msgid "Checking Uniq Username failed: "
+msgstr "Неуспешна проверка за уникално потребителско име: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1738
+msgid "Retrieving Chilli Config Single Value failed: "
+msgstr "Неуспешно извличане на единична стойност от конфигурацията на Chilli: "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1771
+msgid "Deleting Chilli Config Query Failed: "
+msgstr "Неуспешна  заявка \"Изтриване на конфигурацията на Chilli\": "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1804
+msgid "Setting Chilli Config Single Query Failed: "
+msgstr "Неуспешна  заявка \"Задаване на единична стойност в конфигурацията на Chilli\": "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1829
+msgid "Setting Chilli Config Multi Query Failed: "
+msgstr "Неуспешна  заявка \"Задаване на много стойности в конфигурацията на Chilli\": "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1853
+msgid "Retrieving Chilli Config Multi Value failed: "
+msgstr "Неуспешна  заявка \"Извличане на много стойности в конфигурацията на Chilli\": "
+
+#: ../../../www/radmin/classes/DatabaseFunctions.class.php:1921
+msgid "Retrieving MAC from IP failed: "
+msgstr "Неуспешно извличане на MAC от IP:"
+
+#: ../../../www/radmin/edituser.php:52 ../../../www/radmin/passwd.php:62
+#: ../../../www/radmin/passwd.php:63 ../../../www/radmin/usermin.php:49
+msgid "Password Changed"
+msgstr "Паролата е сменена"
+
+#: ../../../www/radmin/edituser.php:68
+msgid "Group Changed"
+msgstr "Групата е променена"
+
+#: ../../../www/radmin/edituser.php:77
+msgid "Comment Changed"
+msgstr "Коментарът е променен"
+
+#: ../../../www/radmin/edituser.php:85
+msgid "User Account Unlocked"
+msgstr "потребителят е отблокиран"
+
+#: ../../../www/radmin/edituser.php:90
+msgid "User Account Locked"
+msgstr "Потребителят е блокиран"
+
+#: ../../../www/radmin/edituser.php:101 ../../../www/radmin/edituser.php:120
+#: ../../../www/radmin/groupconfig.php:107
+#: ../../../www/radmin/newtickets.php:41 ../../../www/radmin/newtickets.php:44
+#: ../../../www/radmin/newuser.php:61
+#: ../../../www/radmin/voucherconfig.php:104
+#, php-format
+msgid "Invalid value '%s' for Data Limit"
+msgstr "Невалидна стойност '%s' на ограничението за данни"
+
+#: ../../../www/radmin/edituser.php:109
+msgid "Data Limit Increased"
+msgstr "Ограничението за данни е увеличено"
+
+#: ../../../www/radmin/edituser.php:110
+#, php-format
+msgid "Data Limit increased for %s"
+msgstr "Ограничението за данни е увеличено за %s"
+
+#: ../../../www/radmin/edituser.php:128
+msgid "Max Data Limit Updated"
+msgstr "Max ограничение за данни е променено"
+
+#: ../../../www/radmin/edituser.php:129
+#, php-format
+msgid "Max Data Limit changed for %s"
+msgstr "Max ограничение за данни е променено за %s"
+
+#: ../../../www/radmin/edituser.php:136 ../../../www/radmin/edituser.php:155
+#: ../../../www/radmin/groupconfig.php:101
+#: ../../../www/radmin/groupconfig.php:104
+#: ../../../www/radmin/newtickets.php:47 ../../../www/radmin/newtickets.php:50
+#: ../../../www/radmin/newuser.php:64 ../../../www/radmin/newuser.php:67
+#: ../../../www/radmin/voucherconfig.php:101
+#, php-format
+msgid "Invalid value '%s' for Time Limit"
+msgstr "Невалидна стойност '%s' за времево ограничение"
+
+#: ../../../www/radmin/edituser.php:144
+msgid "Time Limit Increased"
+msgstr "Ограничението за време е увеличено"
+
+#: ../../../www/radmin/edituser.php:145
+#, php-format
+msgid "Time Limit increased for %s"
+msgstr "Ограничението за време е увеличено за %s"
+
+#: ../../../www/radmin/edituser.php:163
+msgid "Max Time Limit Updated"
+msgstr "Max ограничение за време е променено"
+
+#: ../../../www/radmin/edituser.php:164
+#, php-format
+msgid "Max Time Limit changed for %s"
+msgstr "Max ограничение за време е променено за %s"
+
+#: ../../../www/radmin/edituser.php:175
+msgid "Expiry updated"
+msgstr "Валидността е променена"
+
+#: ../../../www/radmin/edituser.php:181
+#, php-format
+msgid "User '%s' Deleted"
+msgstr "Потребителят '%s' е изтрит"
+
+#: ../../../www/radmin/edituser.php:203
+msgid "User account is locked and will not be able to login"
+msgstr "Потребителят е блокиран и няма да може да влезе"
+
+#: ../../../www/radmin/export.php:47
+#, php-format
+msgid "Batch_%s_details"
+msgstr "Поредица_%s-детайли"
+
+#: ../../../www/radmin/export.php:60
+#, php-format
+msgid "Group_%s_details"
+msgstr "Група_%s_детайли"
+
+#: ../../../www/radmin/export.php:63
+msgid "Need a group or batch"
+msgstr "Необходима е група или поредица"
+
+#: ../../../www/radmin/export.php:74
+msgid "Need valid format"
+msgstr "Небходим е валиден формат"
+
+#: ../../../www/radmin/groupconfig.php:49
+msgid "A minimum of one group is required"
+msgstr "Необходима е поне една група"
+
+#: ../../../www/radmin/groupconfig.php:52
+msgid "It is not recommended having groups without expiries."
+msgstr "Не се препоръчва да има групи без срок на валидност"
+
+#: ../../../www/radmin/groupconfig.php:73
+msgid "Invalid group name or group name missing"
+msgstr "Невалидно или липсващо име на група"
+
+#: ../../../www/radmin/groupconfig.php:85
+#, php-format
+msgid "%s: Invalid expiry format"
+msgstr "%s: Грешен формат на срока за валидност"
+
+#: ../../../www/radmin/groupconfig.php:87
+#, php-format
+msgid "%s: Expiry can not be in the past"
+msgstr "%s: Срокът за валидност не може да е в миналото"
+
+#: ../../../www/radmin/groupconfig.php:94
+#, php-format
+msgid "%s: Invalid Expire After format"
+msgstr "%s: Невалиден формат на \"Изтича след\""
+
+#: ../../../www/radmin/groupconfig.php:96
+#, php-format
+msgid "%s: Expire after can not be in the past"
+msgstr "%s: \"Изтича след\" не може да е в миналото"
+
+#: ../../../www/radmin/groupconfig.php:110
+#, php-format
+msgid "Invalid value '%s' for Idle Timeout"
+msgstr "Невалидна стойност '%s' за интервала на покой"
+
+#: ../../../www/radmin/groupconfig.php:113
+#: ../../../www/radmin/groupconfig.php:116
+#, php-format
+msgid "Invalid recurrence interval '%s'"
+msgstr "Невалиден интервал на повторение '%s'"
+
+#: ../../../www/radmin/groupconfig.php:119
+msgid "Recurring time limit must be less than interval"
+msgstr "Повтарящоъо се времево ограничение трябва да е по-малко от интервала"
+
+#: ../../../www/radmin/groupconfig.php:122
+#: ../../../www/radmin/groupconfig.php:125
+#, php-format
+msgid "Invalid Bandwidth Limit '%s'"
+msgstr "Невалидно ограничение на канал '%s'"
+
+#: ../../../www/radmin/groupconfig.php:134
+#, php-format
+msgid "Need both a time limit and recurrance for '%s'"
+msgstr "Трябва да се въведат и времево ограничение, и повторение за '%s'"
+
+#: ../../../www/radmin/groupconfig.php:187
+msgid "Groups updated"
+msgstr "Групите са променени"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:29
+#, php-format
+msgid "Invalid number %s"
+msgstr "Невалидно число %s"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:37
+#, php-format
+msgid "Invalid number '%s' (Must be whole number)"
+msgstr "Невалидно число '%s' (трябва да е цяло число)"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:56
+msgid "Invalid Time Range "
+msgstr "Невалиден времеви интервал"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:68
+msgid "Invalid Group"
+msgstr "Невалидна група"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:200
+msgid "Expired"
+msgstr "Изтекли"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:203
+msgid "Out Of Quota"
+msgstr "С изчерпана квота"
+
+#: ../../../www/radmin/includes/misc_functions.inc.php:206
+msgid "Low Quota"
+msgstr "С привършваща квота"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:56
+msgid "Status"
+msgstr "Статус"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:57
+msgid "Users"
+msgstr "Потребители"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:59
+msgid "New User"
+msgstr "Нов потребител"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:60
+msgid "Batch Users"
+msgstr "Поредица потребители"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:61
+msgid "Computer Account"
+msgstr "Потребител тип \"компютър\""
+
+#: ../../../www/radmin/includes/page_functions.inc.php:64
+msgid "Monitor Sessions"
+msgstr "Наблюдение на сесии"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:66
+msgid "Reports"
+msgstr "Отчети"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:74
+msgid "Settings"
+msgstr "Настройки"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:76
+msgid "Site Logo"
+msgstr "Лого на сайта"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:80
+msgid "Ticket Print Settings"
+msgstr "Настройки за печата на билети"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:97
+msgid "Logoff"
+msgstr "Изход"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:131
+#: ../../../www/radmin/includes/page_functions.inc.php:170
+msgid "Inherit from group"
+msgstr "Наследи от групата"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:213
+msgid "Hour"
+msgstr "Час"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:214
+msgid "Day"
+msgstr "Ден"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:215
+msgid "Week"
+msgstr "Седмица"
+
+#: ../../../www/radmin/includes/page_functions.inc.php:216
+msgid "Month"
+msgstr "Месец"
+
+#: ../../../www/radmin/includes/session.inc.php:57
+msgid "Your session has expired. Please login again"
+msgstr "Вашата сесия е изтекла. Моля, влезте отново"
+
+#: ../../../www/radmin/includes/session.inc.php:61
+msgid "Incorrect Login"
+msgstr "Грешен вход"
+
+#: ../../../www/radmin/includes/session.inc.php:65
+msgid "Security Issue. Please login again"
+msgstr "Проблем със сигурността. Моля, влезте отново"
+
+#: ../../../www/radmin/includes/session.inc.php:69
+msgid "Authentication Issue. Please report to Admin"
+msgstr "Проблем с удостоверяването. Моля, обадете се на администратора"
+
+#: ../../../www/radmin/includes/session.inc.php:103
+msgid "No users defined in database. Please check your install"
+msgstr "Няма потребители, дефинирани в базата данни. Проверете инсталацията"
+
+#: ../../../www/radmin/loginconfig.php:51
+msgid "Login Screen Title"
+msgstr "Заглавие на екрана за вход"
+
+#: ../../../www/radmin/loginconfig.php:52
+msgid "Hide Title (header) from login screen"
+msgstr "Скрива заглавието (горен колонтитул) на екрана за вход"
+
+#: ../../../www/radmin/loginconfig.php:56
+msgid "Login Screen Menu"
+msgstr "Меню на екрана за вход"
+
+#: ../../../www/radmin/loginconfig.php:57
+msgid "Hide Menubar from login screen"
+msgstr "Скрива менюто от екрана за вход"
+
+#: ../../../www/radmin/loginconfig.php:61
+msgid "Login Screen Footer"
+msgstr "Долен колонтитул на екрана за вход"
+
+#: ../../../www/radmin/loginconfig.php:63
+msgid ""
+"Hide footer from login screen.\n"
+"            Please consider adding a link back to http://grasehotspot.org if you are hiding the footer"
+msgstr "Скрива долния колонтитул на екрана за вход.\nМоля, преценете дали да добавите някъде връзка към http://grasehotspot.org, ако ще скривате долния колонтитул."
+
+#: ../../../www/radmin/loginconfig.php:69
+msgid "Help Link"
+msgstr "Връзка Помощ"
+
+#: ../../../www/radmin/loginconfig.php:71
+msgid "Hide Help link from menu and footer"
+msgstr "Скрива връзката за помощ от менюто и долната част на страниците"
+
+#: ../../../www/radmin/loginconfig.php:76
+msgid "Disable Javascript Login"
+msgstr "Изключване на Javascript вход"
+
+#: ../../../www/radmin/loginconfig.php:77
+msgid "Force all logins to be through the less secure non-javascript method"
+msgstr "Всяко удостоверяване ще бъде направено чрез по-несигурния не-Javascript метод"
+
+#: ../../../www/radmin/loginconfig.php:81
+msgid "Disable All Default CSS"
+msgstr "Изключи всички CSS по подразбиране"
+
+#: ../../../www/radmin/loginconfig.php:83
+msgid ""
+"All css files will be excluded from the login pages, and only the css below "
+"(Main CSS) will be used"
+msgstr "Всички CSS-файлове ще бъдат изключени от страниците за вход, освен посочения по-долу главен CSS"
+
+#: ../../../www/radmin/loginconfig.php:88
+msgid "Page Title"
+msgstr "Заглавие на страницата"
+
+#: ../../../www/radmin/loginconfig.php:89
+msgid "The page title that is displayed on the login page"
+msgstr "Заглавието, което се показва на страницата за вход"
+
+#: ../../../www/radmin/loginconfig.php:93
+msgid "Free Login Group"
+msgstr "Група със свободен вход"
+
+#: ../../../www/radmin/loginconfig.php:94
+msgid ""
+"The group to create 'Free Login' users in. Leave blank to disable free "
+"logins"
+msgstr "Потребителите в тази група са със свободен вход. Оставете я празна, за да забраните свободния вход"
+
+#: ../../../www/radmin/loginconfig.php:98
+msgid "Free Login Button Text"
+msgstr "Текст на бутона за свободен вход"
+
+#: ../../../www/radmin/loginconfig.php:99
+msgid ""
+"Text to show on the Free Login button if enabled above. Defaults to 'Free "
+"Access'"
+msgstr "Текст, които се показва на бутона за свободен вход, ако е включен по-горе. По подразбиране е \"Свободен достъп\""
+
+#: ../../../www/radmin/loginconfig.php:103
+msgid "Hide Username/Password (Voucher) login form"
+msgstr "Скрий Потр.име/Парола (Ваучър) форма за вход"
+
+#: ../../../www/radmin/loginconfig.php:104
+msgid ""
+"Hides the login form (username/password fields). Useful if you only want a "
+"free login button"
+msgstr "Скрива формата за вход(полетата потр.име/парола). Удобно е само ако искате бутон за свободен вход"
+
+#: ../../../www/radmin/loginconfig.php:114
+msgid "Terms and Conditions"
+msgstr "Условия"
+
+#: ../../../www/radmin/loginconfig.php:115
+msgid "Terms and Conditions of use (HTML) - Leave empty to not display"
+msgstr "Условия за използване (HTML) - оставете празно, за да не се показват"
+
+#: ../../../www/radmin/loginconfig.php:119
+msgid "Main CSS"
+msgstr "Главен CSS"
+
+#: ../../../www/radmin/loginconfig.php:121
+msgid ""
+"Cascading style sheet that is applied to all portal pages (use !important to override a style if your\n"
+"            settings here don't seem to work, it may be that the builtin css has a more specific selector than your one\n"
+"            here, look at radmin.css for id's and classes)"
+msgstr "CSS, който се прилага на вскички портални страници ( използвайте !important за да презапишете стила. Ако вашите\nнастройки не работят, това може да е защото вградения CSS има по-специфичен селектор от вашия,\nвижте в radmin.css за id-та и класове)"
+
+#: ../../../www/radmin/loginconfig.php:128
+msgid "Help and Information Page"
+msgstr "Страница \"Помощ и информация\""
+
+#: ../../../www/radmin/loginconfig.php:129
+msgid ""
+"Help and Information page contents, leaving this blank does not remove the "
+"link, see above options for removing the link."
+msgstr "Съдържание на страницата за помощ и информация - ако го оставите празно, връзката няма да се премахне. Вижте по-долу как ства това."
+
+#: ../../../www/radmin/loginconfig.php:134
+msgid "HTML Above login form"
+msgstr "HTML над формата за вход"
+
+#: ../../../www/radmin/loginconfig.php:135
+msgid "HTML to insert above login form (and free login)"
+msgstr "NTML за вмъкване над формата за вход (и свободен вход)"
+
+#: ../../../www/radmin/loginconfig.php:139
+msgid "HTML Below login form"
+msgstr "HTML под формата за вход"
+
+#: ../../../www/radmin/loginconfig.php:140
+msgid "HTML to insert below login form"
+msgstr "HTML за вмъкване под формата за вход"
+
+#: ../../../www/radmin/loginconfig.php:144
+msgid "Logged In HTML"
+msgstr "HTML след вход"
+
+#: ../../../www/radmin/loginconfig.php:145
+msgid "HTML for successful login when not using javascript"
+msgstr "HTML за успешен вход, когато не се използва javascript"
+
+#: ../../../www/radmin/loginconfig.php:183
+#: ../../../www/radmin/loginconfig.php:199
+#, php-format
+msgid "%s login config option update"
+msgstr "Конфигурационният параметър за вход %s е променен"
+
+#: ../../../www/radmin/netconfig.php:34
+msgid "DNS Servers"
+msgstr "DNS сървъри"
+
+#: ../../../www/radmin/netconfig.php:36
+msgid ""
+"IP Addresses of DNS Servers. All clients will use the gateway as the DNS server which will use the\n"
+"            addresses listed here to do DNS lookups. Dnsmasq WILL NOT get default servers from DHCP or /etc/resolv.conf\n"
+"            and will default to OpenDNS Family Shield"
+msgstr "IP-адреси на DNS-сървърите. Всички клиенти ще използват шлюза като DNS-сървър, а той ще използва адресите,\nпоказани тук, за да прави DNS търсене. Dnsmasq НЯМА да вземе сървърите по подразбиране от DHCP или /etc/resolv.conf,\nа ще ползва по подразбиране OpenDNS Family Shield"
+
+#: ../../../www/radmin/netconfig.php:43
+msgid "Bogus NXDOMAIN"
+msgstr "Фалшив NXDOMAIN"
+
+#: ../../../www/radmin/netconfig.php:45
+msgid ""
+"IP Addresses of Bogus NXDOMAIN returns. All DNS replies that contain these ip address will be transformed\n"
+"            into a NXDOMAIN result"
+msgstr "IP-адреси на фалшиви NXDOMAIN отговори. Всички DNS отговори, които съдържат тези адресище бъдат превърнати\nв NXDOMAIN резултат"
+
+#: ../../../www/radmin/netconfig.php:55
+msgid "LAN IP Address"
+msgstr "LAN IP-адрес"
+
+#: ../../../www/radmin/netconfig.php:57
+msgid ""
+"The server IP address that is used on the LAN side (Coova-Chilli) of the network. This will be the gateway\n"
+"            address for all clients, as well as the DNS server the clients access. For default Squid config this should\n"
+"            be a private ip address."
+msgstr "IP-адресът на сървъра, използван от страната на вътрешната (Coova-Chilli) мрежа. Тои ще бъде адрес на шлюза\nи DNS-сървър за клиентите. За конфигурацията по подразбиране на Squid това трябва\nда бъде частен IP адрес."
+
+#: ../../../www/radmin/netconfig.php:70
+msgid "LAN Network Mask"
+msgstr "LAN мрежова маска"
+
+#: ../../../www/radmin/netconfig.php:72
+msgid ""
+"Network mask to use for clients network. (i.e. 255.255.255.0). DHCP range and network address will be\n"
+"            calculated from this and the LAN IP Address."
+msgstr "Мрежова маска на клиентската мрежа (например 255.255.255.0). DHCP-множеството и мрежовият адрес ще бъдат\nпресметнати чрез нея и LAN IP-адреса."
+
+#: ../../../www/radmin/netconfig.php:79
+msgid "Bogus NXDOMAIN (OpenDNS)"
+msgstr "Фалшив NXDOMAIN (OpenDNS)"
+
+#: ../../../www/radmin/netconfig.php:81
+msgid ""
+"Some DNS Providers return bogus NXDOMAIN to redirect you to their search engine. Block the bogus ip's and\n"
+"            return a real NXDOMAIN for OpenDNS."
+msgstr "Някои DNS-доставчици връщат фалшив NXDOMAIN, за да ви пренасочат към тяхна търсачка. Блокирайте фалшивите адреси\nи върнете истински NXDOMAIN за OpenDNS."
+
+#: ../../../www/radmin/netconfig.php:94
+msgid "LAN Network Interface"
+msgstr "LAN мрежови интерфейс"
+
+#: ../../../www/radmin/netconfig.php:96
+msgid ""
+"The Network Interface that is connected to the LAN of the Hotspot (the side "
+"the clients connect to)"
+msgstr "Мрежовият интерфейс, свързан към вътрешната мрежа (LAN) на този Hotspot (тази, към която се свързват клиентите)"
+
+#: ../../../www/radmin/netconfig.php:103
+msgid "WAN Network Interface"
+msgstr "WAN мрежови интерфейс"
+
+#: ../../../www/radmin/netconfig.php:105
+msgid ""
+"The Network Interface that is connected to the WAN of the Hotspot (the side "
+"the internet is connected to)"
+msgstr "Мрежовият интерфейс, свързан към външната мрежа (WAN) на този Hotspot (тази, която е свързана към Интернет)"
+
+#: ../../../www/radmin/netconfig.php:212
+msgid "Changes pending Reload"
+msgstr "Има промени, чакащи презареждане"
+
+#: ../../../www/radmin/newtickets.php:53 ../../../www/radmin/newuser.php:73
+msgid "Only set one Data limit field"
+msgstr "Само едно поле за ограничение за данни"
+
+#: ../../../www/radmin/newtickets.php:56 ../../../www/radmin/newuser.php:79
+msgid "Only set one Time limit field"
+msgstr "Само едно поле за времево ограничение"
+
+#: ../../../www/radmin/newtickets.php:61
+msgid "Max of 1000 tickets per batch"
+msgstr "Максимум 1000 билета на поредица"
+
+#: ../../../www/radmin/newtickets.php:78
+msgid "Please select a batch to print"
+msgstr "Моля, изберете поредица за печат"
+
+#: ../../../www/radmin/newtickets.php:97
+msgid "Please select a batch to export"
+msgstr "Моля, изберете поредица за експорт"
+
+#: ../../../www/radmin/newtickets.php:117
+msgid "Please select a batch to delete"
+msgstr "Моля, изберете поредица за изтриване!"
+
+#: ../../../www/radmin/newtickets.php:239
+#, php-format
+msgid ""
+"Too many users failed to create. Batch creation stopped. %s users have been "
+"successfully created"
+msgstr "Твърде много са неуспешно създадените потребители. Създаването чрез поредица е спряно. %s потребителя са създадени успешно."
+
+#: ../../../www/radmin/newtickets.php:254
+msgid "Tickets Successfully Created"
+msgstr "Билетите са успешно създадени"
+
+#: ../../../www/radmin/newtickets.php:255
+msgid "Print Tickets"
+msgstr "Печат на билети"
+
+#: ../../../www/radmin/newuser.php:38
+msgid "Username already taken"
+msgstr "Потребителското име вече е заето"
+
+#: ../../../www/radmin/newuser.php:42
+msgid "Username and Password are both Required"
+msgstr "Необходими са и потребителско име, и парола."
+
+#: ../../../www/radmin/newuser.php:49
+msgid "MAC Address already has an account"
+msgstr "MAC-адресът вече има потребител"
+
+#: ../../../www/radmin/newuser.php:53
+msgid "MAC Address not in correct format"
+msgstr "MAC - адресът не е в правилния формат"
+
+#: ../../../www/radmin/newuser.php:58
+#, php-format
+msgid "Invalid value '%s' for 1 Data Limit"
+msgstr "Невалидна стойност '%s' за 1 ограничение за данни"
+
+#: ../../../www/radmin/newuser.php:160
+#, php-format
+msgid "User %s Successfully Created"
+msgstr "Потребителят %s е създаден успешно"
+
+#: ../../../www/radmin/newuser.php:162
+#, php-format
+msgid "Print Ticket for %s"
+msgstr "Печат на билет за %s"
+
+#: ../../../www/radmin/newuser.php:163
+#, php-format
+msgid "Created new user %s"
+msgstr "Създаден е нов потребител %s"
+
+#: ../../../www/radmin/passwd.php:54
+msgid "Old Password incorrect"
+msgstr "Грешна стара парола"
+
+#: ../../../www/radmin/passwd.php:56
+msgid "New passwords don't match"
+msgstr "Новите пароли не съвпадат"
+
+#: ../../../www/radmin/passwd.php:66
+msgid "Please fill in all password fields"
+msgstr "Моля, попълнете вскички полета за пароли!"
+
+#: ../../../www/radmin/passwd.php:84
+msgid "Invalid Access level"
+msgstr "Невалидно ниво на достъп"
+
+#: ../../../www/radmin/passwd.php:87
+msgid "Need an access level to create admin user"
+msgstr "Трябва за се зададе ниво на достъп, за да се създаде административен потребител"
+
+#: ../../../www/radmin/passwd.php:90
+#, php-format
+msgid "User %s already exists"
+msgstr "Вече съществува потребител %s"
+
+#: ../../../www/radmin/passwd.php:93
+msgid "Need both username and password"
+msgstr "Необходими са потребителско име и парола"
+
+#: ../../../www/radmin/passwd.php:99
+msgid "User Created"
+msgstr "Потребителят е създаден"
+
+#: ../../../www/radmin/passwd.php:102
+msgid "Error Creating Admin User"
+msgstr "Грешка при създаването на административен потребител"
+
+#: ../../../www/radmin/passwd.php:110
+#, php-format
+msgid "User %s Deleted"
+msgstr "Потребителят %s е изтрит"
+
+#: ../../../www/radmin/passwd.php:114
+msgid "Invalid Delete Request"
+msgstr "Невалидна заявка за изтриване"
+
+#: ../../../www/radmin/passwd.php:135
+msgid "Unknown Access Level"
+msgstr "Неизвестно ниво на достъп"
+
+#: ../../../www/radmin/purchase_wizard.php:70
+msgid "Your selected payment gateway doesn't support free vouchers"
+msgstr "Избраната връзка към платежна система не поддържа безплатни ваучъри"
+
+#: ../../../www/radmin/purchase_wizard.php:78
+msgid "Your selected payment gateway doesn't support paid vouchers"
+msgstr "Избраната връзка към платежна система не поддържа платени ваучъри"
+
+#: ../../../www/radmin/purchase_wizard.php:94
+msgid "Invalid Voucher or Payment Selection"
+msgstr "Невалиден ваучър или тип плащане"
+
+#: ../../../www/radmin/purchase_wizard.php:168
+msgid "Account Pending Payment and Activation"
+msgstr "Сметка, чакаща плащане и активиране"
+
+#: ../../../www/radmin/sessions.php:30
+msgid "Logged out: "
+msgstr "Излязъл:"
+
+#: ../../../www/radmin/sessions.php:33
+msgid "Unable to find active session for: "
+msgstr "Не може да се намери активна сесия за:"
+
+#: ../../../www/radmin/settings.php:54
+msgid ""
+"Some time options are still in use by current groups and have been added "
+"back in"
+msgstr "Някои времеви настройки все още се използват от групите и затова са върнати"
+
+#: ../../../www/radmin/settings.php:59
+msgid ""
+"Some data options are still in use by current groups and have been added "
+"back in"
+msgstr "Някои настройки за данни все още се използват от групите и затова са върнати"
+
+#: ../../../www/radmin/settings.php:64
+msgid ""
+"Some bandwidth options are still in use by current groups and have been "
+"added back in"
+msgstr "Някои настройки на канала все още се използват от групите и затова са върнати"
+
+#: ../../../www/radmin/settings.php:69
+msgid "Time Options Updated"
+msgstr "Настройките за време са променени"
+
+#: ../../../www/radmin/settings.php:74
+msgid "Data Options Updated"
+msgstr "Настройките за данни са променени"
+
+#: ../../../www/radmin/settings.php:79
+msgid "Bandwidth Options Updated"
+msgstr "Настройките за канала са променени"
+
+#: ../../../www/radmin/settings.php:122
+msgid "Location name not valid"
+msgstr "Невалидно име на местоположение"
+
+#: ../../../www/radmin/settings.php:125
+msgid "Location name updated"
+msgstr "Името на местоположението е променено"
+
+#: ../../../www/radmin/settings.php:126
+msgid "Location Name changed to"
+msgstr "Името на местоположението е променено на"
+
+#: ../../../www/radmin/settings.php:132
+msgid "Error Saving Location Name"
+msgstr "Грешка при записа на местоположението"
+
+#: ../../../www/radmin/settings.php:145
+msgid "Website name not valid"
+msgstr "Невалидно име на уебсайт"
+
+#: ../../../www/radmin/settings.php:148 ../../../www/radmin/settings.php:149
+msgid "Website name updated"
+msgstr "Името на уебсайта е променено"
+
+#: ../../../www/radmin/settings.php:151
+msgid "Error Saving Website Name"
+msgstr "Грешка при записа на уебсайта"
+
+#: ../../../www/radmin/settings.php:165
+msgid "Website link not valid"
+msgstr "Невалидна връзка към уебсайт"
+
+#: ../../../www/radmin/settings.php:168 ../../../www/radmin/settings.php:169
+msgid "Website link updated"
+msgstr "Връзката към уебсайта е променена"
+
+#: ../../../www/radmin/settings.php:171
+msgid "Error Saving Website link"
+msgstr "Грешка при записа на връзката"
+
+#: ../../../www/radmin/settings.php:195
+msgid "Locale updated"
+msgstr "Локализацията е актуализирана"
+
+#: ../../../www/radmin/settings.php:196
+msgid "Locale updated to"
+msgstr "Локализацията е актуализирана към "
+
+#: ../../../www/radmin/settings.php:198
+msgid "Error updating Locale"
+msgstr "Грешка при актуалиране на локализацията"
+
+#: ../../../www/radmin/settings.php:201
+msgid "Invalid Locale"
+msgstr "Невалидна локализация"
+
+#: ../../../www/radmin/settings.php:214
+msgid "Support name not valid"
+msgstr "Невалидно име за поддръжка"
+
+#: ../../../www/radmin/settings.php:217 ../../../www/radmin/settings.php:218
+msgid "Support name updated"
+msgstr "Името за поддръжка е актуализирано"
+
+#: ../../../www/radmin/settings.php:220
+msgid "Error Saving Support Name"
+msgstr "Грешка при записа на името за поддръжка"
+
+#: ../../../www/radmin/settings.php:232
+msgid "Support link not valid"
+msgstr "Невалидна връзка към поддръжка"
+
+#: ../../../www/radmin/settings.php:235 ../../../www/radmin/settings.php:236
+msgid "Support link updated"
+msgstr "Връзката към поддръжка е актуализирана"
+
+#: ../../../www/radmin/settings.php:238
+msgid "Error Saving Support link"
+msgstr "Грешка при записа на връзката за поддръжка"
+
+#: ../../../www/radmin/ticketprintconfig.php:35
+msgid "Wireless Network Name (SSID)"
+msgstr "Име на безжичната мрежа (SSID)"
+
+#: ../../../www/radmin/ticketprintconfig.php:37
+msgid ""
+"Wireless Network Name that clients connect to. Currently does not modify any settings but if set will print\n"
+"            on the tickets"
+msgstr "Име на безжичната мрежа, към която се свързват клиентите. В момента не променя никакви настойки,\nно ако е въведена, ще се отпечати на билетите"
+
+#: ../../../www/radmin/ticketprintconfig.php:43
+msgid "Print Ticket Type"
+msgstr "Печат \"тип на билета\""
+
+#: ../../../www/radmin/ticketprintconfig.php:44
+msgid "Print the ticket type (Group name) on tickets"
+msgstr "Печат на типа (име на групата) върху билетите"
+
+#: ../../../www/radmin/ticketprintconfig.php:48
+msgid "Print Ticket Expiry"
+msgstr "Печат \"валидност на билета\""
+
+#: ../../../www/radmin/ticketprintconfig.php:49
+msgid "Print the expiry on tickets"
+msgstr "Отпечатва периода на валидност върху билетите"
+
+#: ../../../www/radmin/ticketprintconfig.php:59
+msgid "Pre Ticket HTML"
+msgstr "HTML преди билета"
+
+#: ../../../www/radmin/ticketprintconfig.php:60
+msgid "HTML to insert before the main ticket components"
+msgstr "HTML за вмъкване преди основните компоненти на билета"
+
+#: ../../../www/radmin/ticketprintconfig.php:64
+msgid "Post Ticket HTML"
+msgstr "HTML след билета"
+
+#: ../../../www/radmin/ticketprintconfig.php:65
+msgid "HTML to insert after the main ticket components"
+msgstr "HTML за вмъкване след основните компоненти на билета"
+
+#: ../../../www/radmin/ticketprintconfig.php:69
+msgid "Ticket Printing CSS"
+msgstr "CSS за печат на билети"
+
+#: ../../../www/radmin/ticketprintconfig.php:70
+msgid ""
+"CSS that is applied to the ticket printing page for printing batches and "
+"groups of tickets."
+msgstr "CSS, който се прилага на страницата за печат на поредици и групи от билети."
+
+#: ../../../www/radmin/ticketprintconfig.php:118
+#: ../../../www/radmin/ticketprintconfig.php:134
+#, php-format
+msgid "%s ticket print config option update"
+msgstr "Конфигурационният параметър %s за печат на билети е осъвременен."
+
+#: ../../../www/radmin/usermin.php:41
+msgid "New Passwords must match"
+msgstr "Новите пароли трябва да съвпадат"
+
+#: ../../../www/radmin/usermin.php:44
+msgid "Password must not be blank"
+msgstr "Паролата не може да е празна"
+
+#: ../../../www/radmin/usermin.php:52
+msgid "Password not updated"
+msgstr "Паролата не е променена"
+
+#: ../../../www/radmin/voucherconfig.php:56
+msgid ""
+"No Initial vouchers defined, users will be unable to purchase a new account"
+msgstr "Не са дефинирани първоначални ваучъри, потребителите няма да могат да закупят нова сметка"
+
+#: ../../../www/radmin/voucherconfig.php:74
+msgid "Invalid voucher name or voucher name missing"
+msgstr "Невалидно или липсващо име на ваучър"
+
+#: ../../../www/radmin/voucherconfig.php:83
+msgid "Vouchers need a price"
+msgstr "Ваучърите трябва да имат цена"
+
+#: ../../../www/radmin/voucherconfig.php:86
+msgid "Invalid price"
+msgstr "Невалидна цена"
+
+#: ../../../www/radmin/voucherconfig.php:92
+msgid "It is not recommended having vouchers without a data or time limit"
+msgstr "Не се препоръчва да има ваучъри без ограничения по данни или време"
+
+#: ../../../www/radmin/voucherconfig.php:145
+msgid "Vouchers updated"
+msgstr "Ваучърите са променени"
+
+#: ../../../www/uam/includes/site.inc.php:53
+msgid "Free Access"
+msgstr "Свободен достъп"
+
+#: ../../../www/uam/js.php:20
+msgid "Username is required"
+msgstr "Необходимо е потребителско име"
+
+#: ../../../www/uam/js.php:21
+msgid "Are you sure you want to disconnect now?"
+msgstr "Наистина ли искате да прекъснете връзката?"
+
+#: ../../../www/uam/js.php:22
+msgid "Error loading generic login form"
+msgstr "Грешка при зареждането на стандартната форма за вход"
+
+#: ../../../www/uam/js.php:23
+msgid ""
+"Popup Blocked. Click link below to continue to your website and open the "
+"status window"
+msgstr "Изскачащият прозорец е блокиран.Щракнете на връзката по-долу, за да продължте към уебсайта и да отворите прозорец със статуса"
+
+#: ../../../www/uam/js.php:24
+msgid "Logged In"
+msgstr "Влязъл"
+
+#: ../../../www/uam/js.php:25
+msgid "Click to open the status window and continue to your site"
+msgstr "Щракнете за да отворите прозорец със статуса и да продължите към уебсайта"

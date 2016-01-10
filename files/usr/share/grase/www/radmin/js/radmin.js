@@ -115,7 +115,7 @@ $(document).ready(function(){
     
         // Make close buttons on tabs work
         //TODO migrate live to .on event
-        $( "#groupslist span.ui-icon-close" ).live( "click", function() {
+        $( document ).on( "click", "#groupslist span.ui-icon-close", function() {
 			var index = $( "li", $grouptabs ).index( $( this ).parent() );
 			$grouptabs.tabs( "remove", index );
 		});
@@ -258,39 +258,7 @@ $(document).ready(function(){
         expand($(".ui-state-active").parent('.submenu').attr('id'));    
     
     
-    // Create sidebar hider/shower
-    $('#sidebartoggle').remove(); // Make sure it doesn't exist (odd bug somwhere)
-    $('#menucontainer').before('\
-<div id="sidebartoggle" class="ui-state-default">\
-<span id="sidebartogglebutton" class="ui-icon ui-icon-arrowthick-2-e-w">&nbsp;</span><span id="sidebartoggletext"></span>\
-<span id="sidebartogglebutton2" class="ui-icon ui-icon-arrowthick-2-e-w">&nbsp;</span>\
-</div>\
-');
-    //$('#sidebartoggletext').easyRotate({ degrees: -90 });
 
-    $('#sidebar').css('width','13em');
-    $('#pagecontent').css('marginLeft','14em');
-
-
-     $('#sidebartoggle').toggle(
-           function()
-           {
-                $('#menucontainer').animate({width: 'toggle'});
-                $('#sidebar').animate({width:20});
-                $('#pagecontent').animate({marginLeft:20});
-                // Using background image instead of text as transform not supported well enough
-                $('#sidebartoggletext').css("background-image", "url(/grase/radmin/images/show.png");
-
-           },
-           function()
-           {
-                $('#menucontainer').animate({width: 'toggle'});
-                $('#sidebar').animate({width:'13em'});
-                $('#pagecontent').animate({marginLeft:'14em'});
-//                $('#sidebartoggletext').text("Hide&nbsp;Menu");
-                $('#sidebartoggletext').css("background-image", "url(/grase/radmin/images/hide.png");
-                
-           });
     
     // Setup dialog box for help messages
     $('.dialog').dialog({

@@ -4,7 +4,7 @@
 
 /*  This file is part of GRASE Hotspot.
 
-    http://hotspot.purewhite.id.au/
+    http://grasehotspot.org/
 
     GRASE Hotspot is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -24,25 +24,22 @@ require_once 'includes/page_functions.inc.php';
 
 function usermin_createmenuitems()
 {
-	//	$menubar['id'] = array("href" => , "label" => );
-	$menubar['user'] = array("href" => "?user", "label" => "My Details");
-	$menubar['history'] = array("href" => "?history", "label" => "My History");
-	$menubar['logout'] = array("href" => "?logoff", "label" => "Logoff" );
-	return $menubar;
+    //	$menubar['id'] = array("href" => , "label" => );
+    $menubar['user'] = array("href" => "?user", "label" => "My Details");
+    $menubar['history'] = array("href" => "?history", "label" => "My History");
+    $menubar['logout'] = array("href" => "?logoff", "label" => "Logoff");
+    return $menubar;
 }
 
 function usermin_assign_vars()
 {
-	global $smarty, $location;
-	$smarty->assign("Application", USERMIN_APPLICATION_NAME);
+    global $templateEngine, $Settings;
+    $templateEngine->assign("Application", T_("My Account"));
 
-	$smarty->assign("Title", $location . " - " . USERMIN_APPLICATION_NAME);
+    $templateEngine->assign("Title", $Settings->getSetting('locationName') . " - " . T_("My Account"));
 
-	// Setup Menus
-	$smarty->assign("MenuItems", usermin_createmenuitems());
-	isset($_SESSION['username']) && $smarty->assign("LoggedInUsername", $_SESSION['username']);
+    // Setup Menus
+    $templateEngine->assign("MenuItems", usermin_createmenuitems());
+    isset($_SESSION['username']) && $templateEngine->assign("LoggedInUsername", $_SESSION['username']);
 
 }
-
-
-?>

@@ -4,7 +4,7 @@
 
 /*  This file is part of GRASE Hotspot.
 
-    http://hotspot.purewhite.id.au/
+    http://grasehotspot.org/
 
     GRASE Hotspot is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -24,47 +24,39 @@
 require_once "Auth.php";
 require_once "MDB2.php";
 
-
-
 /**
  * Include Auth_Container base class
  */
 require_once 'Auth/Container.php';
 require_once 'Auth/Container/MDB2.php';
 
-function __autoload($class_name) {
-    require_once __DIR__. '/../classes/' . $class_name . '.class.php';
-}
-
-require_once('php-gettext/gettext.inc');
+require_once __DIR__ . '/../../../vendor/autoload.php';
 
 require_once('accesscheck.inc.php');
-require_once 'load_settings.inc.php';
+require_once('site_settings.inc.php');
 require_once 'page_functions.inc.php';
 
 
-   $mtime = microtime();
-   $mtime = explode(" ",$mtime);
-   $mtime = $mtime[1] + $mtime[0];
-   $pagestarttime = $mtime; 
-
+$mtime = microtime();
+$mtime = explode(" ", $mtime);
+$mtime = $mtime[1] + $mtime[0];
+$pagestarttime = $mtime;
 
 function loginForm($username = null, $status = null, &$auth = null)
 {
-    global $smarty;
-	$smarty->clear_assign('MenuItems');
-	$smarty->clear_assign("LoggedInUsername");
-    $smarty->assign('username', $username);
-    
-    switch($status)
-    {
+    global $templateEngine;
+    $templateEngine->clearAssign('MenuItems');
+    $templateEngine->clearAssign("LoggedInUsername");
+    $templateEngine->assign('username', $username);
+
+    switch ($status) {
         case 0:
             break;
         case -1:
         case -2:
             $error = T_("Your session has expired. Please login again");
             AdminLog::getInstance()->log("Expired Session");
-            break; 
+            break;
         case -3:
             $error = T_("Incorrect Login");
             AdminLog::getInstance()->log("Invalid Login");
@@ -77,53 +69,52 @@ function loginForm($username = null, $status = null, &$auth = null)
             $error = T_("Authentication Issue. Please report to Admin");
             AdminLog::getInstance()->log("Auth Issues: $status");
     }
-    if(isset($error)) $smarty->assign("error", $error);
-   	display_page('loginform.tpl');
-   	exit();
+    if (isset($error)) {
+        $templateEngine->assign("error", $error);
+    }
+    $templateEngine->displayPage('loginform.tpl');
+    exit();
 }
 
+$DatabaseConnections = new DatabaseConnections();
+
 $options = array(
-    'dsn' => $DBs->getRadminDSN(),
+    'dsn' => $DatabaseConnections->getRadminDSN(),
     'cryptType' => 'sha1salt',
     'sessionName' => 'GRASE Radius Admin For Internet',
     // accesslevel contains the users access levels as a bitmask
     'db_fields' => array('accesslevel')
-    );
-    
+);
+
 $Auth = new Auth("MDB2_Salt", $options, "loginForm");
 
-$Auth->setAdvancedSecurity(array(
-    AUTH_ADV_USERAGENT => true,
-    AUTH_ADV_IPCHECK   => true,
-    AUTH_ADV_CHALLENGE => false
-));
+$Auth->setAdvancedSecurity(
+    array(
+        AUTH_ADV_USERAGENT => true,
+        AUTH_ADV_IPCHECK => true,
+        AUTH_ADV_CHALLENGE => false
+    )
+);
 $Auth->setIdle(600);
 
-$AdminLog =& AdminLog::getInstance($DBs->getRadminDB(), $Auth);
+$AdminLog =& AdminLog::getInstance($DatabaseConnections->getRadminDB(), $Auth);
 
-if($Auth->listUsers() == array())
-{
-    $Upgrade = new Upgrade();
-    $Upgrade->upgradeAdminUsers($CONFIG['admin_users_passwd_file'], $DBs->getRadminDB()); //TODO: If admin_user_file doesn't exist?
+if ($Auth->listUsers() == array()) {
+    $templateEngine->assign("error", array(T_("No users defined in database. Please check your install")));
+    $templateEngine->displayPage('loginform.tpl');
+    exit();
 }
 $Auth->start();
-    
-if (!$Auth->checkAuth())
-{
+
+if (!$Auth->checkAuth()) {
     echo "Should never get here"; // THIS CODE SHOULD NEVER RUN
     exit();
-}elseif(isset($_GET['logoff']))
-{
+} elseif (isset($_GET['logoff'])) {
     AdminLog::getInstance()->log("Log out");
     $Auth->logout();
     $Auth->start();
-}else
-{
-    $smarty->assign("LoggedInUsername", $Auth->getUsername());
+} else {
+    $templateEngine->assign("LoggedInUsername", $Auth->getUsername());
 }
 
-
 check_page_access();
-//print_r($Auth->getAuthData());
-
-?>

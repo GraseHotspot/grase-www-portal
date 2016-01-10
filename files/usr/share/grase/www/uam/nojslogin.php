@@ -16,14 +16,14 @@ $ident = '00';
 
 if (! ( $username && $password && $challenge) )
 {
-    header("Location: http://$lanip:3990/prelogin");
+    header("Location: http://$lanIP:3990/prelogin");
 }
 $hexchal = pack ("H32", $challenge);
 $response = md5("\0" . $password . $hexchal);
 //print md5($ident . String2Hex($password) . $hexchal);
 
 $challenge = urlencode($challenge);
-header("Location: http://$lanip:3990/login?username=$username&response=$response&userurl=$userurl");
+header("Location: http://$lanIP:3990/login?username=$username&response=$response&userurl=$userurl");
 
 
 /*function String2Hex($string){

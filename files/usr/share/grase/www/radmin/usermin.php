@@ -4,7 +4,7 @@
 
 /*  This file is part of GRASE Hotspot.
 
-    http://hotspot.purewhite.id.au/
+    http://grasehotspot.org/
 
     GRASE Hotspot is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -21,13 +21,12 @@
 */
 
 require_once 'includes/usermin_session.inc.php';
-require_once 'includes/database_functions.inc.php';
 
 
 if(isset($_GET['history']))
 {
-    $smarty->assign("sessions", getDBSessionsAccounting($Auth->getUsername()));
-    display_page('usermin_history.tpl');
+    $templateEngine->assign("sessions", DatabaseFunctions::getInstance()->getRadiusUserSessionsDetails($Auth->getUsername()));
+    $templateEngine->displayPage('usermin_history.tpl');
 }
 else
 {
@@ -45,7 +44,7 @@ else
             $error[] = T_("Password must not be blank");
         }else
         {
-            if(database_change_password($Auth->getUsername(), $newpass1))
+            if(DatabaseFunctions::getInstance()->setUserPassword($Auth->getUsername(), $newpass1))
             {
                 $success[] = T_("Password Changed");
             }else
@@ -56,10 +55,10 @@ else
 
     }
     
-    $smarty->assign("error", array_filter($error));
-    $smarty->assign("success", $success);
-    $smarty->assign("user", getDBUserDetails($Auth->getUsername()));
-    display_page('usermin_userdetails.tpl');
+    $templateEngine->assign("error", array_filter($error));
+    $templateEngine->assign("success", $success);
+    $templateEngine->assign("user", DatabaseFunctions::getInstance()->getUserDetails($Auth->getUsername()));
+    $templateEngine->displayPage('usermin_userdetails.tpl');
 
 }
 ?>

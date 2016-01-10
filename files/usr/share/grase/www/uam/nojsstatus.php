@@ -47,8 +47,8 @@ if($username != '')
     $smarty->assign("error", $error);
 }
 
-    $smarty->register_modifier('bytes', array("Formatting", "formatBytes"));
-    $smarty->register_modifier('seconds', array("Formatting", "formatSec"));
+    $smarty->register_modifier('bytes', array("\Grase\Util", "formatBytes"));
+    $smarty->register_modifier('seconds', array("\Grase\Util", "formatSec"));
 
     $smarty->display('nojsstatus.tpl');
 

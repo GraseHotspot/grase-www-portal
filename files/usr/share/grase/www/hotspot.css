@@ -265,6 +265,13 @@ input, select, button {
 
 /* STANDARD */
 
+button, .buttons a {
+    background-color:#dff4ff;
+    border:1px solid #c2e1ef;
+    color:#336699;
+    padding: 5px 10px;
+}
+
 button:hover, .buttons a:hover, #helpbox:hover{
     background-color:#dff4ff;
     border:1px solid #c2e1ef;
@@ -317,5 +324,7 @@ button.positive, .buttons a.positive{
 
 /***** END BUTTONS ******/
 
-
+.computeraccount {
+    font-family: Courier New, monospaced;
+}
 

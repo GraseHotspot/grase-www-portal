@@ -4,7 +4,7 @@
 
 /*  This file is part of GRASE Hotspot.
 
-    http://hotspot.purewhite.id.au/
+    http://grasehotspot.org/
 
     GRASE Hotspot is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -19,17 +19,11 @@
     You should have received a copy of the GNU General Public License
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
+
 $PAGE = 'main';
 require_once 'includes/pageaccess.inc.php';
-
 require_once 'includes/session.inc.php';
-require_once 'includes/database_functions.inc.php';
 
-$Sysinfo = new SystemInformation();
-
-$smarty->assign('Sysinfo', $Sysinfo);
-
-display_page('main.tpl');
-
-?>
-
+$Sysinfo = new Grase\SystemInformation();
+$templateEngine->assign('Sysinfo', $Sysinfo);
+$templateEngine->displayPage('main.tpl');

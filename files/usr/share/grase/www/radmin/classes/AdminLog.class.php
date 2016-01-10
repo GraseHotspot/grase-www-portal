@@ -4,7 +4,7 @@
 
 /*  This file is part of GRASE Hotspot.
 
-    http://hotspot.purewhite.id.au/
+    http://grasehotspot.org/
 
     GRASE Hotspot is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -19,14 +19,6 @@
     You should have received a copy of the GNU General Public License
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
-
-class AnonAuth
-{
-    public function getUsername()
-    {
-        return "Anon";
-    }
-}
 
 class AdminLog
 {
@@ -77,7 +69,7 @@ class AdminLog
         //var_dump($this->db);
         //var_dump($this->log_sql);	
     	if(PEAR::isError($this->log_sql))
-    	    ErrorHandling::fatal_nodb_error("Preparing logging statement failed: ". $this->log_sql->getMessage());
+    	    \Grase\ErrorHandling::fatalNoDatabaseError("Preparing logging statement failed: ". $this->log_sql->getMessage());
      }
     
     
@@ -98,7 +90,7 @@ class AdminLog
             }
             if($Auth == false)
             {
-                $Auth = new AnonAuth();
+                $Auth = new \Grase\AnonAuth();
             }
             $instance = new AdminLog($db, $Auth);
         }
@@ -118,7 +110,7 @@ class AdminLog
         //print_r($res);
         // Always check that result is not an error
         if (PEAR::isError($res)) {
-            ErrorHandling::fatal_error("Getting Admin Log Failed: ". $res->getMessage());
+            \Grase\ErrorHandling::fatalError("Getting Admin Log Failed: ". $res->getMessage());
         }
         
         $results = $res->fetchAll(MDB2_FETCHMODE_ASSOC, false, false);
@@ -135,7 +127,7 @@ class AdminLog
         //print_r($res);
         // Always check that result is not an error
         if (PEAR::isError($res)) {
-            ErrorHandling::fatal_error("Getting Admin Log Failed: ". $res->getMessage());
+            \Grase\ErrorHandling::fatalError("Getting Admin Log Failed: ". $res->getMessage());
         }
         
         $result = $res->fetchOne();
@@ -153,7 +145,7 @@ class AdminLog
 
         // Always check that result is not an error
         if (PEAR::isError($affected)) {
-            ErrorHandling::fatal_error('Creating Log Entry failed: '. $affected->getMessage());
+            \Grase\ErrorHandling::fatalError('Creating Log Entry failed: '. $affected->getMessage());
         }
         
         return $affected;
@@ -162,14 +154,14 @@ class AdminLog
     
     public function log_cron($action)
     {
-        $affected =& $this->log_sql->execute(array(date('*Y-m-d H:i:s'),
+        $affected =& $this->log_sql->execute(array(date('Y-m-d H:i:s'),
                 'CRON',
                 $this->ip,
                 $action));
 
         // Always check that result is not an error
         if (PEAR::isError($affected)) {
-            ErrorHandling::fatal_error('Creating CRON Log Entry failed: '. $affected->getMessage());
+            \Grase\ErrorHandling::fatalError('Creating CRON Log Entry failed: '. $affected->getMessage());
         }
         
         return $affected;
@@ -237,5 +229,3 @@ class AdminLog
         $this->db->query($this->dbSchemeAdminLog);
     }
 }
-
-?>

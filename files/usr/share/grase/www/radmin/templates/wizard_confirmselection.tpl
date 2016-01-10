@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="/grase/hotspot.css?{$hotspotcssversion}" id="hotspot_css" />
 <link rel="stylesheet" type="text/css" href="radmin.css?{$radmincssversion}" id="radmin_css" />
 <link rel='stylesheet' type="text/css" href='wizard.css'/>
-    <script type="text/javascript" src="/grase/js/jquery/jquery-1.5.2.min.js"></script>
+    <script type="text/javascript" src="/grase/vendor/jquery/dists/jquery.min.js"></script>
 
 	<script type="text/javascript">
 	{literal}

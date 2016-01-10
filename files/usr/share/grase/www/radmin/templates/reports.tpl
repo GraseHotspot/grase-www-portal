@@ -1,229 +1,144 @@
 {include file="header.tpl" Name="Reports" activepage="reports"}
-<p>Reports are current a work in progress. All feedback about the kind of data you wish to see and how it is represented should be directed to <a href="http://grasehotspot.org">Tim</a></p>
 <div id='reportspage'>
-{* <script type="text/javascript" src="js/json/json2.js"></script>
-<script type="text/javascript" src="js/swfobject.js"></script>
-<script type="text/javascript"> *}
-{* literal}
-swfobject.embedSWF("open-flash-chart.swf", "current_month_users_usage", "500", "200", "9.0.0", "expressInstall.swf", {"data-file":"reports?chart=current_month_users_usage", "id":"current_month_users_usage"});
 
-swfobject.embedSWF("open-flash-chart.swf", "current_month_usage", "500", "200", "9.0.0", "expressInstall.swf", {"data-file":"reports?chart=current_month_usage", "id":"current_month_usage"});
-
-swfobject.embedSWF("open-flash-chart.swf", "previous_months_usage", "500", "200", "9.0.0", "expressInstall.swf", {"data-file":"reports?chart=previous_months_usage", "id":"previous_months_usage"});
-
-swfobject.embedSWF("open-flash-chart.swf", "months_usage", "500", "200", "9.0.0", "expressInstall.swf", {"data-file":"reports?chart=months_usage", "id":"months_usage"});
-
-swfobject.embedSWF("open-flash-chart.swf", "daily_users", "500", "200", "9.0.0", "expressInstall.swf", {"data-file":"reports?chart=daily_users", "id":"daily_users"});
-
-swfobject.embedSWF("open-flash-chart.swf", "daily_sessions", "500", "200", "9.0.0", "expressInstall.swf", {"data-file":"reports?chart=daily_sessions", "id":"daily_sessions"});
-
-{/literal }
-</script> *}
-<!--[if lt IE 9]><script language="javascript" type="text/javascript" src="/grase/js/jqplot/dist/excanvas.js"></script><![endif]-->
-<script language="javascript" type="text/javascript" src="/grase/js/jqplot/dist/jquery.jqplot.min.js"></script>
-<script type="text/javascript" src="/grase/js/jqplot/dist/plugins/jqplot.dateAxisRenderer.min.js"></script>
-<script type="text/javascript" src="/grase/js/jqplot/dist/plugins/jqplot.categoryAxisRenderer.min.js"></script>
-<script type="text/javascript" src="/grase/js/jqplot/dist/plugins/jqplot.canvasTextRenderer.min.js"></script>
-<script type="text/javascript" src="/grase/js/jqplot/dist/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
-
-<script type="text/javascript" src="/grase/js/jqplot/dist/plugins/jqplot.pointLabels.min.js"></script>
-<script type="text/javascript" src="/grase/js/jqplot/dist/plugins/jqplot.highlighter.min.js"></script>
-<script type="text/javascript" src="/grase/js/jqplot/dist/plugins/jqplot.cursor.min.js"></script>
-
-<script type="text/javascript" src="/grase/js/jqplot/dist/plugins/jqplot.pieRenderer.min.js"></script>
-<script type="text/javascript" src="/grase/js/jqplot/dist/plugins/jqplot.barRenderer.min.js"></script>
-
-<link rel="stylesheet" type="text/css" href="/grase/js/jqplot/dist/jquery.jqplot.css" />
-
-
-<div id="thismonthdata" style="height:400px; width:100%">&nbsp;</div>
-
-<script>
-var ticks = {$thismonthticks};
-$.jqplot('thismonthdata',  [{$thismonthdowndata},{$thismonthupdata}], 
 {literal}
-{
-      title:'Daily Usage',
-      stackSeries: true,
-      seriesDefaults:{
-        renderer:$.jqplot.BarRenderer,
-        pointLabels: {
-            hideZeros: true,
-            show: true,
-            formatString: '%.0f Mb'
-	    } 
-      },
-      gridPadding:{right:35},
-      series:[
-       {pointLabels:{location:'s'}},
-       {pointLabels:{location:'s'}}
-      ],
-      axesDefaults: {
-
-      },    
-      axes:{
-        xaxis:{
-            renderer:$.jqplot.CategoryAxisRenderer,
-            ticks: ticks,
-            tickRenderer: $.jqplot.CanvasAxisTickRenderer,
-            tickOptions: {
-              angle: -30
-            }                    
-        },
-        yaxis: {
-            min: 0,
-            label: "Mb's used"
-        }
-      },
-      legend: {
-          labels: ['Downloads', 'Uploads'],
-          show: true,
-          placement: 'outsideGrid'
-      }     
-
-  });
-{/literal}  
-</script>
-
-<div id="thismonthusersdata" style="height:400px; width:100%">&nbsp;</div>
-
-<script>
-var ticks = {$thismonthuserslabels};
-$.jqplot('thismonthusersdata',  [{$thismonthusersdata},{$thismonthusersquota}], 
-{literal}
-{
-      title:'Users Usage',
-      stackSeries: false,
-      seriesDefaults:{
-        renderer:$.jqplot.BarRenderer,
-        pointLabels: {
-            hideZeros: true,
-            show: true,
-            formatString: '%.0f'
-	    } 
-      },
-      gridPadding:{right:35},
-      series:[
-       {pointLabels:{location:'s'}},
-       {pointLabels:{location:'s'}}       
-      ],
-      axesDefaults: {
-
-      },    
-      axes:{
-        xaxis:{
-            renderer:$.jqplot.CategoryAxisRenderer,
-            ticks: ticks,
-            tickRenderer: $.jqplot.CanvasAxisTickRenderer,
-            tickOptions: {
-              angle: -30
-            }                    
-        },
-        yaxis: {
-            min: 0,
-            label: "Mb's used"
-        }
-      },
-      legend: {
-          labels: ['Used', 'Total Quota'],
-          show: true,
-          placement: 'outsideGrid'
-      }     
-
-  });
-{/literal}  
-</script>
-
-<div id="previousmonthsdata" style="height:400px; width:100%">&nbsp;</div>
-
-<script>
-var ticks = {$previousmonthsticks};
-$.jqplot('previousmonthsdata',  [{$previousmonthsdata}], 
-{literal}
-{
-      title:'Months Usage',
-      stackSeries: true,
-      seriesDefaults:{
-        renderer:$.jqplot.BarRenderer
-      },
-      gridPadding:{right:35},
-      axesDefaults: {
-
-      },    
-      axes:{
-        xaxis:{
-            renderer:$.jqplot.CategoryAxisRenderer,
-            ticks: ticks,
-            tickRenderer: $.jqplot.CanvasAxisTickRenderer,
-            tickOptions: {
-              angle: -30
-            }                    
-        },
-        yaxis: {
-            min: 0,
-            label: "Mb's used"
-        }
-      },
-      legend: {
-          labels: ['Usage'],
-          show: true,
-          placement: 'outsideGrid'
-      },
-      highlighter: {
-        show: true,
-        sizeAdjust: 7.5
-      },
-      cursor: {
-        show: false
-      }       
-    
-
-  });
-{/literal}  
+<script type="text/javascript"
+  src='https://www.google.com/jsapi?autoload={"modules":[{"name":"visualization","version":"1","packages":["controls"]}]}'>
 </script>
 
 
-<div id="thismonthgrouppie" style="height:400px; width:100%"></div>
+    <script type="text/javascript">
 
-<script>
-var thismonthgrouppie = {$thismonthgroupdata};
-{literal}
-$.jqplot('thismonthgrouppie',  [thismonthgrouppie], {
-     title:'Group Usage',
-        grid: {
-            drawBorder: false, 
-            drawGridlines: false,
-            background: '#ffffff',
-            shadow:false
-        },
-        axesDefaults: {
+
+      google.setOnLoadCallback(drawCharts);
+      function drawCharts()
+      {
+        drawCurrentMonthChart();
+        drawAllMonthsChart();
+      }
+      
+      
+      function drawCurrentMonthChart() {
+      {/literal}
+        var data = google.visualization.arrayToDataTable({$thismonthupdownarray});
+        {literal}
+        
+        var dashboard = new google.visualization.Dashboard(
+            document.getElementById('thismonthuserdatadashboard'));
             
-        },
-        seriesDefaults:{
-            renderer:$.jqplot.PieRenderer,
-            rendererOptions: {
-                showDataLabels: true
+        var dateSlider = new google.visualization.ControlWrapper({
+            'controlType': 'NumberRangeFilter',
+            'containerId': 'thismonthuserdataslider',
+            'options': {
+                'filterColumnLabel': 'Downloads'
             }
-        },
-        legend: {
-            show: true,
-            rendererOptions: {
-                numberRows: 1
-            },
-            location: 's'
-        }
-    }); 
-{/literal}
-</script>
+        });
 
-{*
-<div id="current_month_users_usage"></div>
-<div id="current_month_usage"></div>
-<div id="previous_months_usage"></div>
-<div id="months_usage"></div>
-<div id="daily_users"></div>
-<div id="daily_sessions"></div>
-*}
+        var chart = new google.visualization.ChartWrapper({
+            'chartType': 'ColumnChart',
+            'containerId': 'thismonthuserdatachart',
+            'options':{
+                  title: 'Daily Usage',
+                  isStacked: true,
+                  animation: {duration: 500},
+                  hAxis: {title: 'Day', titleTextStyle: {color: 'red'}}
+                }
+            });
+            
+        dashboard.bind(dateSlider, chart);
+        dashboard.draw(data);
+      }
+      
+
+      function drawAllMonthsChart() {
+      {/literal}
+        var data = google.visualization.arrayToDataTable({$userusagebymontharray});
+        {literal}
+        
+        var dashboard = new google.visualization.Dashboard(
+            document.getElementById('allmonthsdatadashboard'));
+            
+        var dataSlider = new google.visualization.ControlWrapper({
+            'controlType': 'NumberRangeFilter',
+            'containerId': 'allmonthsdataslider',
+            'options': {
+                'filterColumnLabel': 'Total Data'
+            }
+        });
+        
+        var timeSlider = new google.visualization.ControlWrapper({
+            'controlType': 'NumberRangeFilter',
+            'containerId': 'allmonthsdatatimeslider',
+            'options': {
+                'filterColumnLabel': 'Total Time'
+            }
+        });
+        
+        
+        var monthFilter = new google.visualization.ControlWrapper({
+            'controlType': 'CategoryFilter',
+            'containerId': 'allmonthsdatamonthfilter',
+            'options': {
+                'filterColumnLabel': 'Month'
+            }
+        });
+                
+        
+        var table = new google.visualization.ChartWrapper({
+            'chartType': 'Table',
+            'containerId': 'allmonthsdatatable',
+            'options': {
+              page: 'enable'
+            }
+          });        
+
+        var chart = new google.visualization.ChartWrapper({
+            'chartType': 'ColumnChart',
+            'containerId': 'allmonthsdatachart',
+            'view': {'columns': [0, 2, 3]},
+            
+            'options':{
+                vAxes:[
+                    {title:'Data (Mb\'s)', minValue: 0, viewWindowMode: "explicit", viewWindow:{ min: 0 }}, // Nothing specified for axis 0
+                    {title:'Time (Minutes)', minValue: 0, viewWindowMode: "explicit", viewWindow:{ min: 0 }} // Axis 1
+                    ],
+                  title: 'Monthly Usage',
+                  animation: {duration: 500},
+                  series:{
+                    0:{targetAxisIndex:0},
+                    1:{targetAxisIndex:1}
+                    
+                  },
+                  hAxis: {title: 'User'}
+                }
+            });
+        dashboard.bind(monthFilter, [dataSlider, timeSlider])
+        dashboard.bind([dataSlider, timeSlider, monthFilter], [chart, table]);
+        dashboard.draw(data);
+      }
+      {/literal}      
+    </script>
+
+
+
+
+<div id="thismonthuserdatadashboard">
+    <div id="thismonthuserdatachart" style="height:400px; width:100%">&nbsp;</div>
+    <div id="thismonthuserdatatable">&nbsp;</div>
+    <div id="thismonthuserdataslider">&nbsp;</div>
+</div>
+
+<div id="allmonthsdatadashboard">
+
+    <div id="allmonthsdatachart" style="height:400px; width:100%">&nbsp;</div>
+    <div id="allmonthsdatamonthfilter">&nbsp;</div>
+    <div id="allmonthsdataslider" style="width:100%">&nbsp;</div>
+    <div id="allmonthsdatatimeslider">&nbsp;</div>    
+    <div id="allmonthsdatatable">&nbsp;</div>    
+</div>
+
+
+
 
 </div>
 <p>&nbsp;</p>

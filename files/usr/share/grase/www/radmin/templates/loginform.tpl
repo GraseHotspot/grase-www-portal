@@ -8,7 +8,7 @@
 
 <div>
     <label for='username' class='width1'>{t}Username{/t}</label>
-    <input type="text" name="username" value='{$username}' id="username" autofocus="autofocus" required="required"/>
+    <input type="text" name="username" value='{$username|escape}' id="username" autofocus="autofocus" required="required"/>
     <span>{t}Username for Admin interface (Different to internet access username){/t}</span>
 </div>
 

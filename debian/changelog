@@ -1,9 +1,48 @@
+grase-www-portal (3.8.0) purewhite; urgency=low
+
+  [ Tim White ]
+  * Some report updates
+  * "Free Access" user auto create and login (TOS style login)
+  * Auto refresh of sessions page (Fixes #23)
+  * Change how batches are created to prevent errors and also check for
+    uniqueness of usernames
+  * Fix up some database logging
+  * Added 'Cron' function to delete all users who have no remaining time limit
+    (append ?deleteoutoftimeusers=1 to the end of the cron url)
+  * Added 'Cron' function to delete all users who have no remaining data limit
+    (append ?deleteoutofdatausers=1 to the end of the cron url)
+  * Fix bug in CRON logging timestamp
+  * Migrating report charts to Google Chart API
+  * Fix CRON job that deletes expired users, it was missing users who expired
+    at the start of the month 
+  * Install and use Composer and Bower to manage external dependencies
+  * Decrease Admin interval to 10 minutes to allow settings to take effect
+    sooner
+  * Added batch deletion
+  * Removed TCPDF (and print to PDF) due to it being a very specific use case
+    without customisations. It'll be easier to do pixel perfect layout with CSV
+    export and mailmerge software.
+  * Added printing of group users (Fixes #41)
+  * Ability to customise CSS for printing of tickets
+  * Added DHCP leases page to see current output of chilli_query
+  * Hidden Advanced Settings Page
+  * Make username/password length customisable
+  * Cleanup old settings
+  * Use Smarty3 from Composer instead of Debian/Ubuntu packages
+  * Bring Account comments into sessions page (Fixes #98)
+  * Fix LAN/WAN display issues (Closes #126)
+  * Use referrer meta tag to only send Origin, and not the full URL when clicking links to prevent things like MAC addresses from leaking. (Closes #100)
+  * Simultaneous Use can now be a number instead of a boolean (Closes #3)
+  * New Login page look
+
+
+ -- Tim White <tim@grasehotspot.org>  Sun, 10 Jan 2016 19:56:55 +1000
+
 grase-www-portal (3.7.7.11) purewhite; urgency=medium
 
   * Backport Freelogin code (TOS Accept code)
 
  -- Tim White <tim@grasehotspot.org>  Sun, 17 Aug 2014 19:29:55 +1000
-
 grase-www-portal (3.7.7.10) purewhite; urgency=medium
 
   * Actually bump version number

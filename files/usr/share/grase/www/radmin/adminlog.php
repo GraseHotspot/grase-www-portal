@@ -4,7 +4,7 @@
 
 /*  This file is part of GRASE Hotspot.
 
-    http://hotspot.purewhite.id.au/
+    http://grasehotspot.org/
 
     GRASE Hotspot is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -24,12 +24,8 @@ require_once 'includes/pageaccess.inc.php';
 
 require_once 'includes/session.inc.php';
 require_once 'includes/misc_functions.inc.php';
-require_once 'includes/database_functions.inc.php';
 
-    // TODO: Add "reset" option that archives old stuff? (Or deletes old stuff)
-	$smarty->assign("loglines", AdminLog::getInstance()->getLog());
-	$smarty->assign("lastcron", AdminLog::getInstance()->lastCron());
-	display_page('adminlog.tpl');
-
-?>
-
+// TODO: Add "reset" option that archives old stuff? (Or deletes old stuff)
+$templateEngine->assign("loglines", AdminLog::getInstance()->getLog());
+$templateEngine->assign("lastcron", AdminLog::getInstance()->lastCron());
+$templateEngine->displayPage('adminlog.tpl');

@@ -1,39 +1,5 @@
 {include file="header.tpl" Name="Create Tickets" activepage="createtickets"}
 
-{if $last_batch}<!--<a href="printnewtickets?batch={$last_batch}" class="printlink" target="tickets">Print Last Batch of Tickets</a>-->{/if}
-{if $createdusers}
-<div id='createdtickets' class="" >
-    <h2>Last Created Tickets</h2>
-		<table border="0" id='userslistTable'>
-			<thead>
-			<tr id='userattributesRow'>
-				<td>Username</td>
-				<td>Password</td>
-				<td>Data Limit</td>
-				<td>Time Limit</td>
-				<td>Account Expiry</td>
-				<td>Comment</td>
-			</tr>
-			</thead>
-			<tbody id='{$id}_body'>	
-
-			{foreach from=$createdusers item=ticket key=id name=usersloop}
-			<tr id="user_{$ticket.Username}_Row" class="userrow {if $smarty.foreach.usersloop.iteration is even}even{else}odd{/if} {$ticket.account_status}" >
-				<td class='info_username'><a href="edituser?username={$ticket.Username}">{$ticket.Username}</a></td>
-				<td class='info_password'>{$ticket.Password}</td>
-
-				<td class='info_datalimit'>{$ticket.MaxOctets|bytes}</td>
-				<td class='info_timelimit'>{if $ticket.MaxAllSession>0}{$ticket.MaxAllSession|seconds}{/if}</td>			
-				<td class='info_expiry'>{$ticket.FormatExpiration}</td>
-				<td class='info_comment'>{$ticket.Comment}</td>			
-			</tr>
-			{/foreach}
-			</tbody>
-
-		</table>
-	</div>
-{/if}
-
 {if $listbatches}
 <form id='batchactions' method='POST'>
 <table>
@@ -50,17 +16,17 @@
         <td>{$batch.createTime}</td>
         <td>{$batch.createdBy}</td>
         <td>{$batch.numTickets}</td>
-        <td>{$batch.comment}</td>      
-</tr>        
+        <td>{$batch.comment}</td>
+</tr>
 {/foreach}
 </table>
 <button name='batchesprint'>Print selected Batches</button>
 <button name='batchesexport'>Export selected Batches (CSV)</button>
-<!--<button name='batchesdelete'>Delete selected Batches</button>-->
+<button class="negative" type="submit" name="batchesdelete" onClick="return confirm('{t}Are you sure you want to delete the selected batches and all users in them?{/t}')"><img src="/grase/images/icons/cross.png" alt=""/>Delete selected Batches</button>
 </form>
 {/if}
 
-{if $last_batch}<a href="printnewtickets?batch={$last_batch}" class="printlink" target="tickets">Print Last Batch of Tickets</a>{/if}
+{if $last_batch}<a href="export.php?format=html&batch={$last_batch}" class="printlink" target="tickets">Print Last Batch of Tickets</a>{/if}
 
 
 <div id="createticketsForm">
@@ -71,18 +37,18 @@
 
 <div>
     <label for='numberoftickets'>Number of Tickets</label>
-    <input type="text" name="numberoftickets" id="numberoftickets"  value='{$user.numberoftickets}' autofocus="autofocus" required="required"/>
-    <span id="numberofticketsInfo">Maximum of 50 tickets per batch</span>
+    <input type="number" min="1" max="1000" name="numberoftickets" id="numberoftickets"  value='{$user.numberoftickets}' {if !$createdusers}autofocus="autofocus"{/if} required="required"/>
+    <span id="numberofticketsInfo">Maximum of 1000 tickets per batch</span>
 </div>
 <div>
     <label for='Group'>Group</label>
-    {html_options name="Group" id="Group" options=$groups selected=$user.Group}    
+    {html_options name="Group" id="Group" options=$groups selected=$user.Group}
     <span id='GroupInfo'>Choose the users group (Expiry is based on the user group)</span>
     <br/>{include file="grouppropertiesinfo.tpl"}
 </div>
 <div>
     <label for='Comment'>Comment</label>
-    <input type="text" name="Comment" id="Comment" value='{$user.Comment}'/>
+    <input type="text" name="Comment" id="Comment" value='{$user.Comment|escape}'/>
     <span id='CommentInfo'>A comment that is applied to all tickets</span>
 </div>
 
@@ -104,7 +70,7 @@
     <span id='Max_TimeInfo'>Choose a Time Limit OR Type your own value</span>
 </div>
 
-       <p><button type="submit" name="createticketssubmit" value="Create Tickets"><img src="/grase/images/icons/tick.png" alt=""/>Create Tickets</button></p>
+       <p><button type="submit" name="createticketssubmit" value="Create Tickets"><img src="/grase/images/icons/tick.png" alt=""/>{t}Create Tickets{/t}</button></p>
 
 </form>
 </div>

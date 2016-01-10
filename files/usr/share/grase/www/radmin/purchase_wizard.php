@@ -1,5 +1,5 @@
 <?php
-exit 0; // DISABLED FOR RELEASE AS NOT YET READY FOR PRODUCTION
+exit(0); // Not ready for production
 /* Copyright 2012 Timothy White */
 /*  This file is part of GRASE Hotspot.
 
@@ -20,82 +20,22 @@ exit 0; // DISABLED FOR RELEASE AS NOT YET READY FOR PRODUCTION
 */
 
 
-function __autoload($class_name) {
-    require_once './classes/'.$class_name.'.class.php';
-}
+require_once __DIR__.'/../../vendor/autoload.php';
 
-require_once('php-gettext/gettext.inc');
-
-
-require_once 'includes/load_settings.inc.php';
+require_once('includes/site_settings.inc.php');
 require_once 'includes/page_functions.inc.php';
 
 require_once 'includes/misc_functions.inc.php';
-require_once 'includes/database_functions.inc.php';;
 
 // Need a session variable that we hold current place in wizard? Don't rely on posts to choose what we do in the wizard, always go to correct place in wizard and from there it can process post and redirect to wizard
 
 session_name('GrasePurchaseWizard');
 session_start();
 
-// Make sure we have initial page, or set one
+$voucherWizard = new \Grase\VoucherWizard($Settings, $templateEngine, DatabaseFunctions::getInstance(), new \Grase\VoucherWizard\State());
 
-if(!isset($_SESSION['wizardpage']))
-{
-    $_SESSION['wizardpage'] = 'initialpage';
-}
-
-if(isset($_SESSION['ExpireSession']) && $_SESSION['ExpireSession'] < time())
-{
-    // Session has expired. destroy
-    restart_wizard();
-}
-
-// Allow us to at any time restart the wizard
-if(isset($_POST['restartwizard']))
-{
-    restart_wizard();
-}
-
-// Groups and vouchers stuff
-
-$groups           = array();
-$vouchers         = $Settings->getVoucher();
-$grouped_vouchers = array();
-
-foreach($vouchers as $voucher)
-{
-    if($voucher['InitVoucher'])
-    {
-        $groups[$voucher['VoucherGroup']]             = true;
-        $grouped_vouchers[$voucher['VoucherGroup']][] = $voucher;
-        $valid_vouchers[]                             = $voucher['VoucherName'];
-    }
-}
-
-$groups_with_vouchers = array_intersect_key($Settings->getGroup(), $groups);
-
-// Payment gateway stuff
-
-$paymentgateways = array(
-    'PayPal' => array(
-        'Label'       => 'PayPal',
-        'Description' => 'Use your paypal account or credit card to pay',
-        'paid'        => true,
-    ),
-    'Dummy' => array(
-        'Label'       => 'Dummy Gateway',
-        'Description' => 'Dummy Gateway that always says you have paid',
-        'free'        => true,
-        'paid'        => true,
-        'pluginfile'  => 'dummy.inc.php',
-    ),
-    'SMS' => array(
-        'Label'       => 'SMS Token',
-        'Description' => 'Free account with limitations, details SMSed to your mobile',
-        'free'        => true,
-    ),
-);
+echo serialize($voucherWizard->getState());
+exit;
 
 // Do the wizard page logic
 
@@ -111,7 +51,7 @@ switch($_SESSION['wizardpage'])
 
 
             // Check voucher is valid
-            if(!in_array($_POST['voucherselected'], $valid_vouchers))
+            if(!in_array($_POST['voucherselected'], $validVouchers))
             {
                 $valid = false;
             }
@@ -152,13 +92,13 @@ switch($_SESSION['wizardpage'])
             } else
             {
                 $error = $error ? $error : T_('Invalid Voucher or Payment Selection');
-                $smarty->assign('error', $error);
+                $templateEngine->assign('error', $error);
             }
         }
-        $smarty->assign("groupsettings", $groups_with_vouchers);
-        $smarty->assign("vouchers", $grouped_vouchers);
-        $smarty->assign('paymentgateways', $paymentgateways);
-        $smarty->display('wizard_initial.tpl');
+        $templateEngine->assign("groupsettings", array_intersect_key($Settings->getGroup(), $voucherGroups));
+        $templateEngine->assign("vouchers", $groupedVouchers);
+        $templateEngine->assign('paymentgateways', $paymentgateways);
+        $templateEngine->display('wizard_initial.tpl');
         break;
 
     
@@ -186,9 +126,9 @@ switch($_SESSION['wizardpage'])
 
             }
         }
-        $smarty->assign('selectedgateway', $_SESSION['selectedpaymentgateway']);
-        $smarty->assign('selectedvoucher', $_SESSION['selectedvoucher']);
-        $smarty->display('wizard_confirmselection.tpl');
+        $templateEngine->assign('selectedgateway', $_SESSION['selectedpaymentgateway']);
+        $templateEngine->assign('selectedvoucher', $_SESSION['selectedvoucher']);
+        $templateEngine->display('wizard_confirmselection.tpl');
         
         break;
 
@@ -208,17 +148,18 @@ switch($_SESSION['wizardpage'])
             $MaxTime  = $vouchers[$_SESSION['selectedvoucher']]['MaxTime'];
             $Expiry   = expiry_for_group($vouchers[$_SESSION['selectedvoucher']]['VoucherGroup']);
             $Comment  = $_SESSION['selectedvoucher']." Voucher purchased ".date();
-            $Username = rand_username(5);
-            $Password = rand_password(6);
+            $Username = \Grase\Util::randomUsername(5);
+            $Password = \Grase\Util::randomPassword(6);
 
             // TODO Maybe set expiry to a few days so if payment isn't valid then we expire soon, and after sucessful payment we update expiry?
 
-            database_create_new_user(// TODO: Check if valid
+            DatabaseFunctions::getInstance()->createUser(// TODO: Check if valid
                 $Username, 
                 $Password, 
                 $MaxMb, 
                 $MaxTime, 
-                $Expiry, 
+                $Expiry,
+                false, // Don't currently have ExpireAfter for vouchers
                 $vouchers[$_SESSION['selectedvoucher']]['VoucherGroup'], 
                 $Comment
             );

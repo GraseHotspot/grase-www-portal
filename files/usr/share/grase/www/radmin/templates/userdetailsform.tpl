@@ -1,11 +1,18 @@
 <div id="{$useraction}Form">
 <h2>{t}{$useractionTitle}{/t}</h2>
 
-<form method='post' id='newuserform' action='?' class='generalForm'>
+<form method='post' id='{$useraction}form' action='' class='generalForm'>
 
+{if $useraction == 'newmachine'}
+<div>
+    <label for='mac'>{t}MAC Address{/t}</label>
+    <input type="text" name="mac" id="mac" value="{$machine.mac|escape}" required="required"/>
+    <span id="macInfo">Computer Hardware Address <a class="helpbutton  ui-icon ui-icon-info" title="{t}The MAC address is the network hardware address of the computer. It needs to be of the format XX-XX-XX-XX-XX-XX where XX is a hex number, typed in all capitals{/t}"><img src="/grase/images/icons/help.png" alt=""/></a></span>
+</div>
+{else}
 <div>
     <label for='Username'>{t}Username{/t}</label>
-    <input {if $usernamelock}disabled='disabled'{/if} type="text" id="Username" name="Username" value='{$user.Username}' required="required"/>
+    <input type="text" id="Username" name="Username" value='{$user.Username}' required="required"/>
     <span id="UsernameInfo">{t}Choose a username{/t}</span>
 </div>
 <div>
@@ -16,6 +23,7 @@
                                 <span id="newpassword_bar" style="font-size: 1px; height: 2px; width: 0px; border: 1px solid white;"></span> 
     
 </div>
+{/if}
 <div>
     <label for='Group'>{t}Group{/t}</label>
     {html_options name="Group" id="Group" options=$groups selected=$user.Group}    
@@ -24,7 +32,7 @@
 </div>
 <div>
     <label for='Comment'>{t}Comment{/t}</label>
-    <input type="text" name="Comment" id="Comment" value='{$user.Comment}'/>
+    <input type="text" name="Comment" id="Comment" value='{$user.Comment|escape}'/>
     <span id='CommentInfo'>{t}A comment about the user{/t}</span>
 </div>
 
@@ -35,14 +43,14 @@
     <label for='MaxMb'>{t}Data Limit (MiB){/t}</label>
     {html_options name="Max_Mb" options=$Datacosts selected=$user.Max_Mb}
     <span class="form_or">{t}OR{/t}</span>
-    <input type="text" class="default_swap" id="MaxMb" name="MaxMb" value='{$user.MaxMb}' title="{t}Type your own Mb Limit{/t}"/>
+    <input type="text" class="default_swap" id="MaxMb" name="MaxMb" value='{$user.MaxMb|displayLocales}' placeholder="{t}Type your own Mb Limit{/t}"/>
     <span id='Max_MbInfo'>{t}Choose a Data Limit OR Type your own value{/t}</span>
 </div>
 <div>
     <label for='MaxTime'>{t}Time Limit (Minutes){/t}</label>
     {html_options name="Max_Time" id="Max_Time" options=$Timecosts selected=$user.Max_Time}
     <span class="form_or">{t}OR{/t}</span>
-    <input type="text" class="default_swap" id="MaxTime" name="MaxTime" value='{$user.MaxTime}' title="{t}Type your own Time Limit{/t}"/>
+    <input type="text" class="default_swap" id="MaxTime" name="MaxTime" value='{$user.MaxTime|displayLocales}' placeholder="{t}Type your own Time Limit{/t}"/>
     <span id='Max_TimeInfo'>{t}Choose a Time Limit OR Type your own value{/t}</span>
 </div>
 

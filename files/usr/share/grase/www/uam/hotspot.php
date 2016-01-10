@@ -2,7 +2,7 @@
 
 require_once('includes/site.inc.php');
 
-load_templates(array('loginhelptext', 'belowloginhtml'));
+load_templates(array('loginhelptext', 'belowloginhtml', 'termsandconditions', 'aboveloginhtml'));
 
 /*$loginurl = parse_url($_GET['loginurl']);
 $query = $loginurl['query'];
@@ -13,7 +13,7 @@ if(isset($_GET['disablejs']))
     // Set cookie
     setcookie('grasenojs','javascriptdisabled', time()+60*60*24*30);
     // Redirect via header to reload page?
-    header("Location: http://$lanip:3990/prelogin");
+    header("Location: http://$lanIP:3990/prelogin");
 }
 
 if(isset($_GET['enablejs']))
@@ -21,7 +21,7 @@ if(isset($_GET['enablejs']))
     // Set cookie
     setcookie('grasenojs','', time()-60*60*24*30);
     // Redirect via header to reload page?
-    header("Location: http://$lanip:3990/prelogin");
+    header("Location: http://$lanIP:3990/prelogin");
 }
 
 $res = @$_GET['res'];
@@ -35,28 +35,28 @@ if($Settings->getSetting('disablejavascript') == 'TRUE')
 {
     $nojs = true;
     $smarty->assign("nojs" , true);
-    $smarty->assign("js" , false);    
-    $smarty->assign("jsdisabled" , true);        
+    $smarty->assign("js" , false);
+    $smarty->assign("jsdisabled" , true);
 }elseif( isset($_COOKIE['grasenojs']) && $_COOKIE['grasenojs'] == 'javascriptdisabled')
 {
     $nojs = true;
     $smarty->assign("nojs" , true);
-    $smarty->assign("js" , false);    
+    $smarty->assign("js" , false);
 }else
 {
     $nojs = false;
     $smarty->assign("nojs" , false);
-    $smarty->assign("js" , true);        
+    $smarty->assign("js" , true);
 }
 
 $smarty->assign("user_url", $userurl);
 $smarty->assign("challenge", $challenge);
 $smarty->assign("RealHostname", trim(file_get_contents('/etc/hostname')));
-
 if($Settings->getSetting('autocreategroup'))
 {
     $smarty->assign('automac', true);
 }
+
 /* Important parts of uamopts
     * challenge
     * userurl
@@ -67,11 +67,11 @@ if($Settings->getSetting('autocreategroup'))
 if(!isset($_GET['res']))
 {
     // Redirect to prelogin
-        header("Location: http://$lanip:3990/prelogin");
+        header("Location: http://$lanIP:3990/prelogin");
 }
 
 // Already been through prelogin
-/*$jsloginlink = "http://$lanip/grase/uam/mini?$query";
+/*$jsloginlink = "http://$lanIP/grase/uam/mini?$query";
 $nojsloginlink = $_GET['loginurl'];*/
     require_once '../radmin/automacusers.php';
 if(@$_GET['automac'])
@@ -136,7 +136,3 @@ function setup_login_form()
 }
 
 $smarty->display('portal.tpl');
-
-
-?>
-

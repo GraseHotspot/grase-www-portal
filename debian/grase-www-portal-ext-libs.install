@@ -1,0 +1,2 @@
+ext-libs/composer/vendor/* /usr/share/grase/vendor/
+ext-libs/bower/bower_components/* /usr/share/grase/www/vendor/

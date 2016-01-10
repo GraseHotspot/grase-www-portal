@@ -2,7 +2,7 @@
 
 <h2>{t}Coova Chilli Settings{/t}</h2>
 
-<p>{t}These settings are used by Coova Chilli. Coova Chilli only reloads it's config roughly once an hour, or when it's restarted.{/t} {t}If you change the MAC Auth Password, no computer accounts will be able to login until Coova Chilli reloads it's config, or is manually restarted.{/t}</p>
+<p>{t}These settings are used by Coova Chilli. Coova Chilli reloads it's config roughly every 10 minutes, or when it's restarted.{/t} {t}If you change the MAC Auth Password, no computer accounts will be able to login until Coova Chilli reloads it's config, or is manually restarted.{/t}</p>
 
 <p>{t one=$chilliconfigstatus}Chilli Config last updated %1{/t}<br/>
 {t one=$lastconfigstatus}Portal Config last updated %1{/t}</p>

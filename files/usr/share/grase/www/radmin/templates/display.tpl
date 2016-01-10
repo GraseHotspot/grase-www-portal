@@ -16,8 +16,14 @@ Click on ether the Data Usage or Time Usage to see the users sessions"}
     {if $groupdata.$groupname.TimeRecurLimit}{t 1=$groupdata.$groupname.TimeRecurTimeFormatted}%1 Time Limit{/t} {$groupdata.$groupname.TimeRecurLimitS|seconds}<br/>{/if}
     {if $groupdata.$groupname.DataRecurLimit}{t 1=$groupdata.$groupname.DataRecurTimeFormatted}%1 Data Limit{/t} {$groupdata.$groupname.DataRecurLimitB|bytes}<br/>{/if}
     *}
-    
-	<table id="{$groupname|underscorespaces}userslistTable" class="userslistTable stripeMe">
+        {* TODO This below if statement is faulty due to it trying to match a translated string. Find a better way to do this? *}
+        {if $groupname != 'All' && $groupname != 'Out Of Quota' && $groupname != 'Low Quota' && $groupname != 'Expired'}
+            <small><a href="export.php?format=html&group={$groupname|underscorespaces}" target="print_html">Print
+                    Group</a> | <a href="export.php?format=csv&group={$groupname|underscorespaces}" target="print_html">Export
+                    Group (CSV)</a></small>
+        {/if}
+
+        <table id="{$groupname|underscorespaces}userslistTable" class="userslistTable stripeMe">
 	    <col style="width: 6em"/>
 	    {if $groupname == 'All'}<col style="width: 5em"/>{/if}
 	    <col span="4" style="width: 6em"/>	    	    
@@ -41,7 +47,7 @@ Click on ether the Data Usage or Time Usage to see the users sessions"}
 		{foreach from=$group item=user name=usersloop}
 
 		<tr id="user_{$user.Username}_{$groupname|underscorespaces}_Row" class="userrow {$user.account_status}">
-			<td class='info_username'><span class='info_password'>{if $user.Group eq 'Machine'}<span title="{t}Password Hidden{/t}">*</span>{else}<span title="{$user.Password}"><a href='javascript:alert("Password for {$user.Username} is {$user.Password}")'>*</a></span>{/if}</span><a href="edituser?username={$user.Username|escape:'url'}">{$user.Username}</a> {if $user.AccountLock}{t}(Account Locked){/t}{/if}</td>
+			<td class='info_username'>{if $user.isComputer}# {/if}<span class='info_password'>{if $user.isComputer}<span title="{t}Password Hidden{/t}">*</span>{else}<span title="{$user.Password}"><a href='javascript:alert("Password for {$user.Username} is {$user.Password}")'>*</a></span>{/if}</span><a href="edituser?username={$user.Username|escape:'url'}">{$user.Username}</a> {if $user.AccountLock}{t}(Account Locked){/t}{/if}</td>
 
 			{if $groupname == 'All'}<td class='info_group'>{$user.Group}</td>{/if}
 			<td class='info_datalimit' title='{$user.MaxOctets}'>{$user.MaxOctets|bytes}</td>

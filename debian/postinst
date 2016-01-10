@@ -27,14 +27,29 @@ if [ "$action" != configure ]
   exit 0
 fi
 
+install_composer_deps(){ # Install composer and install/upgrade dependencies
+    cd /usr/share/grase/
+    if [ ! -e 'composer.phar' ]; then
+        php -r "readfile('https://getcomposer.org/installer');" | php
+    fi
+    php composer.phar self-update
+    php composer.phar install
+}
+
+install_bower_deps(){ # Install Bower and install/upgrade depenencies
+    cd /usr/share/grase/
+    npm install -g bower
+    bower update
+}
+
 call_cron(){ # Call cron so certain upgrades can occur
     wget -q http://127.0.0.1/grase/radmin/cron.php -O - || true
 }
 
 fix_dir_perms(){
-	chgrp www-data -R /usr/share/grase/www/ || true
-	chmod ag+rw -R /usr/share/grase/www/images/logo.png /usr/share/grase/www/radmin/templates_c /usr/share/grase/www/uam/templates_c || true
-	chmod a+rw -R /usr/share/grase/www/public/* || true
+    chgrp www-data -R /usr/share/grase/www/ || true
+    chmod ag+rw -R /usr/share/grase/www/radmin/templates_c /usr/share/grase/www/uam/templates_c >/dev/null 2>&1 || true
+    chmod ag+rw /usr/share/grase/www/images || true
 
 }
 
@@ -46,13 +61,11 @@ copy_favicon(){
     cp -n /usr/share/grase/www/favicon.ico /var/www/favicon.ico || true
 }
 
-link_logo(){
-    #if [[ ! -a /usr/share/grase/www/images/logo.png ]]
-    #then
-    
-    # Don't worry about tests, will fail silently
-    ln -s graselogo.png /usr/share/grase/www/images/logo.png > /dev/null || true
-    #fi
+unlink_logo(){
+    if [ -h /usr/share/grase/www/images/logo.png ]
+    then
+        rm /usr/share/grase/www/images/logo.png > /dev/null || true
+    fi
 
 }
 
@@ -66,9 +79,15 @@ if dpkg-maintscript-helper supports rm_conffile 2>/dev/null; then
     dpkg-maintscript-helper rm_conffile /etc/apache2/conf.d/grase.conf -- "$@"
 fi
 
-link_logo
+# Shouldn't need to link the logo thanks to new rewrites
+unlink_logo
 
 clear_template_cache
+
+#install_composer_deps
+
+# Debian 7 doesn't have npm easily installable
+#install_bower_deps
 
 fix_dir_perms
 

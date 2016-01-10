@@ -1,0 +1,11 @@
+{
+  "name": "Grase Hotspot",
+  "dependencies": {
+    "bootstrap": "*",
+    "fontawesome": "*",
+    "jquery": "<2.*",
+    "jquery.tablesorter": "*",
+    "codemirror": "v3.*",
+    "codemirror-ui": "https://github.com/jagthedrummer/codemirror-ui.git#~0.0.14"
+  }
+}

@@ -1,0 +1,24 @@
+{
+    "repositories": [
+    {
+        "type": "vcs",
+        "url": "https://github.com/GraseHotspot/smarty-gettext"
+    }
+    ],
+    "require": {
+        "smarty-gettext/smarty-gettext": "@dev",
+        "smarty/smarty": "3.1.*"
+    },
+    "autoload":
+    {
+        "psr-4":
+        {
+            "Grase\\": "src/Grase/"
+        },
+        "files": [
+          "src/includes/constants.php",
+          "src/includes/grase-bootstrap.php"
+        ],
+        "classmap" : ["www/radmin/classes/"]
+    }
+}
