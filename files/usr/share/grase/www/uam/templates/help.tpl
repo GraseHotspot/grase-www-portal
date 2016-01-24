@@ -9,15 +9,5 @@
     {$tpl_helptext}
 </div>
 {/if}
-{*
-<div style="width: 45%; float: left">
-	{include file="laptop_req.tpl"}
-</div>
-<div style="width: 45%; float: right">
-	{include file="freedownloads.tpl"}
-</div>
-<div style="clear: left; clear: right">&nbsp;</div>
-*}
-
 
 {include file="footer.tpl"}
