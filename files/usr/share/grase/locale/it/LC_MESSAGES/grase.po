@@ -6,16 +6,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Grase Hotspot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-29 19:12+1000\n"
-"PO-Revision-Date: 2015-06-06 09:55+0000\n"
-"Last-Translator: Antonino Murabito <antoninomurabito@gmail.com>\n"
+"POT-Creation-Date: 2016-01-25 11:29+1000\n"
+"PO-Revision-Date: 2016-01-25 01:31+0000\n"
+"Last-Translator: Timothy White <tim@purewhite.id.au>\n"
 "Language-Team: Italian (http://www.transifex.com/purewhite/grase/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 1.8.6\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;T_\n"
 "X-Poedit-SearchPath-0: ../../../www/radmin\n"
@@ -705,7 +705,7 @@ msgstr "Limite Dati"
 
 #: ../../../www/radmin/templates/smarty.c:185
 #: ../../../www/radmin/templates/smarty.c:209
-#: ../../../www/uam/templates/smarty.c:35
+#: ../../../www/uam/templates/smarty.c:36
 msgid "Time Limit"
 msgstr "Limite di tempo"
 
@@ -959,10 +959,10 @@ msgstr "Numero di logins simultanei. Lasciare vuoto per illimitato"
 
 #: ../../../www/radmin/templates/smarty.c:255
 #: ../../../www/radmin/templates/smarty.c:273
-#: ../../../www/uam/templates/smarty.c:26
-#: ../../../www/uam/templates/smarty.c:28
-#: ../../../www/uam/templates/smarty.c:34
-#: ../../../www/uam/templates/smarty.c:36
+#: ../../../www/uam/templates/smarty.c:27
+#: ../../../www/uam/templates/smarty.c:29
+#: ../../../www/uam/templates/smarty.c:35
+#: ../../../www/uam/templates/smarty.c:37
 msgid "Unlimited"
 msgstr "Illimitato"
 
@@ -1080,7 +1080,7 @@ msgstr "Autoaggiornamento pagina"
 
 #: ../../../www/radmin/templates/smarty.c:303
 #: ../../../www/radmin/templates/smarty.c:316
-#: ../../../www/uam/templates/smarty.c:31
+#: ../../../www/uam/templates/smarty.c:32
 msgid "Start Time"
 msgstr "Ora inizio"
 
@@ -1237,12 +1237,12 @@ msgid "Create Tickets"
 msgstr "Crea Tickets"
 
 #: ../../../www/radmin/templates/smarty.c:363
-#: ../../../www/uam/templates/smarty.c:40
+#: ../../../www/uam/templates/smarty.c:41
 msgid "Error"
 msgstr "Errore"
 
 #: ../../../www/radmin/templates/smarty.c:364
-#: ../../../www/uam/templates/smarty.c:41
+#: ../../../www/uam/templates/smarty.c:42
 msgid "An Error has occured. Please report the error to the administrator"
 msgstr "Si è verificato un errore. Si prega di segnalarlo all'amministratore"
 
@@ -1260,7 +1260,7 @@ msgstr "Aiuto"
 msgid "Successful Login"
 msgstr "Login effettuato"
 
-#: ../../../www/uam/templates/smarty.c:3
+#: ../../../www/uam/templates/smarty.c:3 ../../../www/uam/js.php:48
 msgid "Continue to your site"
 msgstr "Vai al tuo sito"
 
@@ -1325,50 +1325,54 @@ msgid "Click here to re-enable it"
 msgstr "Clicca qui per riattivarlo"
 
 #: ../../../www/uam/templates/smarty.c:22
+msgid "Return to Welcome Page"
+msgstr ""
+
+#: ../../../www/uam/templates/smarty.c:23
 msgid "You are logged in as:"
 msgstr "Sei connesso come:"
 
-#: ../../../www/uam/templates/smarty.c:23
+#: ../../../www/uam/templates/smarty.c:24
 msgid "User"
 msgstr "Utente"
 
-#: ../../../www/uam/templates/smarty.c:24
+#: ../../../www/uam/templates/smarty.c:25
 msgid "Usage this session"
 msgstr "Uso questa sessione"
 
-#: ../../../www/uam/templates/smarty.c:25
+#: ../../../www/uam/templates/smarty.c:26
 msgid "Remaining Quota"
 msgstr "Quota residua"
 
-#: ../../../www/uam/templates/smarty.c:27
+#: ../../../www/uam/templates/smarty.c:28
 msgid "Quota allocation"
 msgstr "Ripartizione delle quote"
 
-#: ../../../www/uam/templates/smarty.c:29
+#: ../../../www/uam/templates/smarty.c:30
 msgid "Max Session Time"
 msgstr "Max Ora sessione"
 
-#: ../../../www/uam/templates/smarty.c:30
+#: ../../../www/uam/templates/smarty.c:31
 msgid "Max Idle Time"
 msgstr "Max tempo di inattività"
 
-#: ../../../www/uam/templates/smarty.c:32
+#: ../../../www/uam/templates/smarty.c:33
 msgid "Session Time"
 msgstr "Ora sessione"
 
-#: ../../../www/uam/templates/smarty.c:33
+#: ../../../www/uam/templates/smarty.c:34
 msgid "Remaining Time"
 msgstr "Tempo residuo"
 
-#: ../../../www/uam/templates/smarty.c:37
+#: ../../../www/uam/templates/smarty.c:38
 msgid "Idle Time"
 msgstr "Tempo di inattività"
 
-#: ../../../www/uam/templates/smarty.c:38
+#: ../../../www/uam/templates/smarty.c:39
 msgid "Downloaded"
 msgstr "Scaricato"
 
-#: ../../../www/uam/templates/smarty.c:39
+#: ../../../www/uam/templates/smarty.c:40
 msgid "Uploaded"
 msgstr "Caricato"
 
@@ -1456,7 +1460,7 @@ msgstr "Impostazioni configurazioni in esecuzione"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:65
 msgid "Unable to select users needing First Login Activation"
-msgstr ""
+msgstr "Impossibile selezionare gli utenti che necessitano Attivazione al Primo Login"
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:78
 msgid "First login users activiated"
@@ -2263,7 +2267,7 @@ msgid ""
 "The server IP address that is used on the LAN side (Coova-Chilli) of the network. This will be the gateway\n"
 "            address for all clients, as well as the DNS server the clients access. For default Squid config this should\n"
 "            be a private ip address."
-msgstr ""
+msgstr "L'indirizzo IP del server usato lato LAN (Coova-Chilli) della rete. Sarà l'indirizzo gateway per\ntutti i clients ed il server DNS al quale essi avranno accesso. Per la Squid config di default\ndovrebbe essere un indirizzo ip privato."
 
 #: ../../../www/radmin/netconfig.php:70
 msgid "LAN Network Mask"
@@ -2596,7 +2600,7 @@ msgstr "Stampa la scadenza sul ticket"
 
 #: ../../../www/radmin/ticketprintconfig.php:59
 msgid "Pre Ticket HTML"
-msgstr ""
+msgstr "Pre Ticket HTML"
 
 #: ../../../www/radmin/ticketprintconfig.php:60
 msgid "HTML to insert before the main ticket components"
@@ -2604,7 +2608,7 @@ msgstr "HTML da inserire prima dei componenti principali del ticket"
 
 #: ../../../www/radmin/ticketprintconfig.php:64
 msgid "Post Ticket HTML"
-msgstr ""
+msgstr "Post Ticket HTML"
 
 #: ../../../www/radmin/ticketprintconfig.php:65
 msgid "HTML to insert after the main ticket components"
@@ -2667,28 +2671,72 @@ msgstr "Vouchers aggiornati"
 msgid "Free Access"
 msgstr "Free Access"
 
-#: ../../../www/uam/js.php:20
+#: ../../../www/uam/js.php:33
 msgid "Username is required"
 msgstr "Il nome utente è necessario"
 
-#: ../../../www/uam/js.php:21
+#: ../../../www/uam/js.php:34
 msgid "Are you sure you want to disconnect now?"
 msgstr "Sei sicuro che di volerti disconnettere ora?"
 
-#: ../../../www/uam/js.php:22
+#: ../../../www/uam/js.php:35
 msgid "Error loading generic login form"
 msgstr "Errore durante il caricamento generico form di login"
 
-#: ../../../www/uam/js.php:23
+#: ../../../www/uam/js.php:36
 msgid ""
 "Popup Blocked. Click link below to continue to your website and open the "
 "status window"
 msgstr "Popup bloccati. Clicca sul link qui sotto per continuare al tuo sito web e aprire la finestra di stato"
 
-#: ../../../www/uam/js.php:24
+#: ../../../www/uam/js.php:37
 msgid "Logged In"
 msgstr "Collegati"
 
-#: ../../../www/uam/js.php:25
+#: ../../../www/uam/js.php:38
 msgid "Click to open the status window and continue to your site"
 msgstr "Clicca per aprire la finestra di stato e continua sul tuo sito"
+
+#: ../../../www/uam/js.php:39
+msgid "No response from TOS server"
+msgstr ""
+
+#: ../../../www/uam/js.php:40
+msgid "Unable to get secure challenge"
+msgstr ""
+
+#: ../../../www/uam/js.php:41
+msgid "Already logged in. Aborting login attempt"
+msgstr ""
+
+#: ../../../www/uam/js.php:42
+msgid "Server Timed Out. Please try again"
+msgstr ""
+
+#: ../../../www/uam/js.php:43
+msgid "Both username and password are needed"
+msgstr ""
+
+#: ../../../www/uam/js.php:44
+msgid "Login Failed due to server error. Please try again"
+msgstr ""
+
+#: ../../../www/uam/js.php:45
+msgid "Incorrect response from TOS server. Please notify system admin"
+msgstr ""
+
+#: ../../../www/uam/js.php:46
+msgid "TOS login failed due to server error. Please try again"
+msgstr ""
+
+#: ../../../www/uam/js.php:47
+msgid "Login successful"
+msgstr ""
+
+#: ../../../www/uam/js.php:49
+msgid "Unknown clientState found in JSON reply"
+msgstr ""
+
+#: ../../../www/uam/js.php:50
+msgid "Failed to logoff. Please try again"
+msgstr ""

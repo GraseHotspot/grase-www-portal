@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Grase Hotspot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-29 19:12+1000\n"
-"PO-Revision-Date: 2015-05-29 09:14+0000\n"
+"POT-Creation-Date: 2016-01-25 11:29+1000\n"
+"PO-Revision-Date: 2016-01-25 01:31+0000\n"
 "Last-Translator: Timothy White <tim@purewhite.id.au>\n"
-"Language-Team: Tagalog (http://www.transifex.com/projects/p/grase/language/tl/)\n"
+"Language-Team: Tagalog (http://www.transifex.com/purewhite/grase/language/tl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: tl\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 1.8.6\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;T_\n"
 "X-Poedit-SearchPath-0: ../../../www/radmin\n"
@@ -706,7 +706,7 @@ msgstr "Hangganan ng impormasyon"
 
 #: ../../../www/radmin/templates/smarty.c:185
 #: ../../../www/radmin/templates/smarty.c:209
-#: ../../../www/uam/templates/smarty.c:35
+#: ../../../www/uam/templates/smarty.c:36
 msgid "Time Limit"
 msgstr "Hangganan ng Oras"
 
@@ -960,10 +960,10 @@ msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:255
 #: ../../../www/radmin/templates/smarty.c:273
-#: ../../../www/uam/templates/smarty.c:26
-#: ../../../www/uam/templates/smarty.c:28
-#: ../../../www/uam/templates/smarty.c:34
-#: ../../../www/uam/templates/smarty.c:36
+#: ../../../www/uam/templates/smarty.c:27
+#: ../../../www/uam/templates/smarty.c:29
+#: ../../../www/uam/templates/smarty.c:35
+#: ../../../www/uam/templates/smarty.c:37
 msgid "Unlimited"
 msgstr ""
 
@@ -1081,7 +1081,7 @@ msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:303
 #: ../../../www/radmin/templates/smarty.c:316
-#: ../../../www/uam/templates/smarty.c:31
+#: ../../../www/uam/templates/smarty.c:32
 msgid "Start Time"
 msgstr "Simula nang oras"
 
@@ -1238,12 +1238,12 @@ msgid "Create Tickets"
 msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:363
-#: ../../../www/uam/templates/smarty.c:40
+#: ../../../www/uam/templates/smarty.c:41
 msgid "Error"
 msgstr "Mali"
 
 #: ../../../www/radmin/templates/smarty.c:364
-#: ../../../www/uam/templates/smarty.c:41
+#: ../../../www/uam/templates/smarty.c:42
 msgid "An Error has occured. Please report the error to the administrator"
 msgstr "May maling naganap. Paki sabi sa mali sa administrator"
 
@@ -1261,7 +1261,7 @@ msgstr "Tulong"
 msgid "Successful Login"
 msgstr "Matagumpay na pagpasok"
 
-#: ../../../www/uam/templates/smarty.c:3
+#: ../../../www/uam/templates/smarty.c:3 ../../../www/uam/js.php:48
 msgid "Continue to your site"
 msgstr "Patuloy sa inyong site"
 
@@ -1326,50 +1326,54 @@ msgid "Click here to re-enable it"
 msgstr "Mag-click dito ma-enable muli ang ito"
 
 #: ../../../www/uam/templates/smarty.c:22
+msgid "Return to Welcome Page"
+msgstr ""
+
+#: ../../../www/uam/templates/smarty.c:23
 msgid "You are logged in as:"
 msgstr "Ang gumagamit ay si:"
 
-#: ../../../www/uam/templates/smarty.c:23
+#: ../../../www/uam/templates/smarty.c:24
 msgid "User"
 msgstr "Gumagamit"
 
-#: ../../../www/uam/templates/smarty.c:24
+#: ../../../www/uam/templates/smarty.c:25
 msgid "Usage this session"
 msgstr "Gamit sa kasalukuyan"
 
-#: ../../../www/uam/templates/smarty.c:25
+#: ../../../www/uam/templates/smarty.c:26
 msgid "Remaining Quota"
 msgstr "Natitirang kota"
 
-#: ../../../www/uam/templates/smarty.c:27
+#: ../../../www/uam/templates/smarty.c:28
 msgid "Quota allocation"
 msgstr "Alokasyon nang kota"
 
-#: ../../../www/uam/templates/smarty.c:29
+#: ../../../www/uam/templates/smarty.c:30
 msgid "Max Session Time"
 msgstr "Sukdulan ng kasalukuyang ginagamit na oras"
 
-#: ../../../www/uam/templates/smarty.c:30
+#: ../../../www/uam/templates/smarty.c:31
 msgid "Max Idle Time"
 msgstr "Sukdulan ng oras na walang ginagawa"
 
-#: ../../../www/uam/templates/smarty.c:32
+#: ../../../www/uam/templates/smarty.c:33
 msgid "Session Time"
 msgstr "Session Time"
 
-#: ../../../www/uam/templates/smarty.c:33
+#: ../../../www/uam/templates/smarty.c:34
 msgid "Remaining Time"
 msgstr "Natitirang oras"
 
-#: ../../../www/uam/templates/smarty.c:37
+#: ../../../www/uam/templates/smarty.c:38
 msgid "Idle Time"
 msgstr "Oras na walang ginagawa"
 
-#: ../../../www/uam/templates/smarty.c:38
+#: ../../../www/uam/templates/smarty.c:39
 msgid "Downloaded"
 msgstr "Downloaded"
 
-#: ../../../www/uam/templates/smarty.c:39
+#: ../../../www/uam/templates/smarty.c:40
 msgid "Uploaded"
 msgstr "Uploaded"
 
@@ -2668,28 +2672,72 @@ msgstr ""
 msgid "Free Access"
 msgstr ""
 
-#: ../../../www/uam/js.php:20
+#: ../../../www/uam/js.php:33
 msgid "Username is required"
 msgstr "Dapat may username"
 
-#: ../../../www/uam/js.php:21
+#: ../../../www/uam/js.php:34
 msgid "Are you sure you want to disconnect now?"
 msgstr "Sigurado ka bang mag diskonek ngayun?"
 
-#: ../../../www/uam/js.php:22
+#: ../../../www/uam/js.php:35
 msgid "Error loading generic login form"
 msgstr "May mali sa pagload ng generic login form"
 
-#: ../../../www/uam/js.php:23
+#: ../../../www/uam/js.php:36
 msgid ""
 "Popup Blocked. Click link below to continue to your website and open the "
 "status window"
 msgstr "Popup ay na block. I-click ang link sa ibaba upang magpatuloy sa iyong website at buksan ang window ng katayuan"
 
-#: ../../../www/uam/js.php:24
+#: ../../../www/uam/js.php:37
 msgid "Logged In"
 msgstr "Naka log in"
 
-#: ../../../www/uam/js.php:25
+#: ../../../www/uam/js.php:38
 msgid "Click to open the status window and continue to your site"
+msgstr ""
+
+#: ../../../www/uam/js.php:39
+msgid "No response from TOS server"
+msgstr ""
+
+#: ../../../www/uam/js.php:40
+msgid "Unable to get secure challenge"
+msgstr ""
+
+#: ../../../www/uam/js.php:41
+msgid "Already logged in. Aborting login attempt"
+msgstr ""
+
+#: ../../../www/uam/js.php:42
+msgid "Server Timed Out. Please try again"
+msgstr ""
+
+#: ../../../www/uam/js.php:43
+msgid "Both username and password are needed"
+msgstr ""
+
+#: ../../../www/uam/js.php:44
+msgid "Login Failed due to server error. Please try again"
+msgstr ""
+
+#: ../../../www/uam/js.php:45
+msgid "Incorrect response from TOS server. Please notify system admin"
+msgstr ""
+
+#: ../../../www/uam/js.php:46
+msgid "TOS login failed due to server error. Please try again"
+msgstr ""
+
+#: ../../../www/uam/js.php:47
+msgid "Login successful"
+msgstr ""
+
+#: ../../../www/uam/js.php:49
+msgid "Unknown clientState found in JSON reply"
+msgstr ""
+
+#: ../../../www/uam/js.php:50
+msgid "Failed to logoff. Please try again"
 msgstr ""
