@@ -19,6 +19,7 @@ gettext("Click here to try a less secure login.");
 gettext("You have disabled the secure javascript login method.");
 gettext("Click here to re-enable it");
 gettext("Help");
+gettext("Return to Welcome Page");
 gettext("You are logged in as:");
 gettext("User");
 gettext("Usage this session");

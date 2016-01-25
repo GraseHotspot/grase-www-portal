@@ -14,6 +14,19 @@ $search = array(
     'Popup Blocked. Click link below to continue to your website and open the status window',
     'Logged In',
     'Click to open the status window and continue to your site',
+    'No response from TOS server',
+    'Unable to get secure challenge',
+    'Already logged in. Aborting login attempt',
+    'Server Timed Out. Please try again',
+    'Both username and password are needed',
+    'Login Failed due to server error. Please try again',
+    'Incorrect response from TOS server. Please notify system admin',
+    'TOS login failed due to server error. Please try again',
+    'Login successful',
+    'Continue to your site',
+    'Unknown clientState found in JSON reply',
+    'Failed to logoff. Please try again',
+
     );
 $replace = array(
     $lanIP,
@@ -23,6 +36,19 @@ $replace = array(
     T_('Popup Blocked. Click link below to continue to your website and open the status window'),
     T_('Logged In'),
     T_('Click to open the status window and continue to your site'),
+    T_('No response from TOS server'),
+    T_('Unable to get secure challenge'),
+    T_('Already logged in. Aborting login attempt'),
+    T_('Server Timed Out. Please try again'),
+    T_('Both username and password are needed'),
+    T_('Login Failed due to server error. Please try again'),
+    T_('Incorrect response from TOS server. Please notify system admin'),
+    T_('TOS login failed due to server error. Please try again'),
+    T_('Login successful'),
+    T_('Continue to your site'),
+    T_('Unknown clientState found in JSON reply'),
+    T_('Failed to logoff. Please try again'),
+
     );
 $jsfilecontents = str_replace($search, $replace, $jsfilecontents);
 
