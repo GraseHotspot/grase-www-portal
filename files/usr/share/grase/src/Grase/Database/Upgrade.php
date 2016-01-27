@@ -42,7 +42,7 @@ class Upgrade
     public function upgradeDatabase()
     {
         $oldDBVersion = $this->Settings->getSetting("DBVersion");
-
+        var_dump($oldDBVersion < 3);
         try {
             // Somethings we can run anytime
             $this->defaultTemplates();
@@ -142,6 +142,12 @@ class Upgrade
             if ($oldDBVersion < 2.9) {
                 $this->defaultUsernamePasswordComplexity();
                 $this->Settings->setSetting("DBVersion", 2.9);
+            }
+
+            // Change to int for DBVersion
+            if ($oldDBVersion < 3) {
+                $this->fixUTF8Columns();
+                $this->Settings->setSetting("DBVersion", 3);
             }
 
         } catch (\PDOException $Exception) {
@@ -565,5 +571,186 @@ EOT
             $this->Settings->setSetting('simpleUsername', false);
             $this->rowsUpdated ++;
         }
+    }
+
+    // < 2.10
+    private function fixUTF8Columns()
+    {
+
+        //mtotacct
+        $this->rowsUpdated += $this->radius->exec("ALTER TABLE mtotacct CONVERT TO CHARACTER SET latin1;
+ALTER TABLE mtotacct
+  MODIFY `UserName` VARBINARY(128) NOT NULL,
+  MODIFY `NASIPAddress` VARBINARY(30) DEFAULT NULL;
+ALTER TABLE mtotacct
+  MODIFY `UserName` varchar(64) CHARACTER SET utf8 NOT NULL,
+  MODIFY `NASIPAddress` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  DEFAULT CHARACTER SET utf8;");
+
+        //mtotaccttmp - Just drop and create
+        $this->rowsUpdated += $this->radius->exec("DROP TABLE IF EXISTS `mtotaccttmp`;
+CREATE TABLE `mtotaccttmp` (
+  `MTotAcctId` bigint(21) NOT NULL AUTO_INCREMENT,
+  `UserName` varchar(64) NOT NULL,
+  `AcctDate` date NOT NULL DEFAULT '0000-00-00',
+  `ConnNum` bigint(12) DEFAULT NULL,
+  `ConnTotDuration` bigint(12) DEFAULT NULL,
+  `ConnMaxDuration` bigint(12) DEFAULT NULL,
+  `ConnMinDuration` bigint(12) DEFAULT NULL,
+  `InputOctets` bigint(12) DEFAULT NULL,
+  `OutputOctets` bigint(12) DEFAULT NULL,
+  `NASIPAddress` varchar(15) DEFAULT NULL,
+  PRIMARY KEY (`MTotAcctId`),
+  KEY `UserName` (`UserName`),
+  KEY `AcctDate` (`AcctDate`),
+  KEY `UserOnDate` (`UserName`,`AcctDate`),
+  KEY `NASIPAddress` (`NASIPAddress`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;");
+
+        //nas
+        $this->rowsUpdated += $this->radius->exec("DROP TABLE IF EXISTS `nas`;
+CREATE TABLE IF NOT EXISTS `nas` (
+  `id` int(10) NOT NULL auto_increment,
+  `nasname` varchar(128) NOT NULL,
+  `shortname` varchar(32) default NULL,
+  `type` varchar(30) default 'other',
+  `ports` int(5) default NULL,
+  `secret` varchar(60) NOT NULL default 'secret',
+  `community` varchar(50) default NULL,
+  `description` varchar(200) default 'RADIUS Client',
+  PRIMARY KEY  (`id`),
+  KEY `nasname` (`nasname`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;");
+
+        //radacct
+        $this->rowsUpdated += $this->radius->exec("ALTER TABLE `radacct` CONVERT TO CHARACTER SET latin1;
+ALTER TABLE `radacct`
+  MODIFY `AcctSessionId` varbinary(32) NOT NULL default '',
+  MODIFY `AcctUniqueId` varbinary(32) default NULL,
+  MODIFY `UserName` varbinary(128) NOT NULL default '',
+  MODIFY `Groupname` varbinary(128) NOT NULL default '',
+  MODIFY `Realm` varbinary(128) default '',
+  MODIFY `NASIPAddress` varbinary(15) NOT NULL default '',
+  MODIFY `NASPortId` varbinary(15) default NULL,
+  MODIFY `NASPortType` varbinary(32) default NULL,
+  MODIFY `AcctAuthentic` varbinary(32) default NULL,
+  MODIFY `ConnectInfo_start` varbinary(100) default NULL,
+  MODIFY `ConnectInfo_stop` varbinary(100) default NULL,
+  MODIFY `CalledStationId` varbinary(100) NOT NULL default '',
+  MODIFY `CallingStationId` varbinary(100) NOT NULL default '',
+  MODIFY `AcctTerminateCause` varbinary(32) NOT NULL default '',
+  MODIFY `ServiceType` varbinary(32) default NULL,
+  MODIFY `FramedProtocol` varbinary(32) default NULL,
+  MODIFY `FramedIPAddress` varbinary(15) NOT NULL default '',
+  MODIFY `xascendsessionsvrkey` varbinary(20) default NULL;
+ALTER TABLE `radacct`
+  MODIFY `AcctSessionId` varchar(32) CHARACTER SET utf8 NOT NULL default '',
+  MODIFY `AcctUniqueId` varchar(32) CHARACTER SET utf8 default NULL,
+  MODIFY `UserName` varchar(64) CHARACTER SET utf8 NOT NULL default '',
+  MODIFY `Groupname` varchar(64) CHARACTER SET utf8 NOT NULL default '',
+  MODIFY `Realm` varchar(64) CHARACTER SET utf8 default '',
+  MODIFY `NASIPAddress` varchar(15) CHARACTER SET utf8 NOT NULL default '',
+  MODIFY `NASPortId` varchar(15) CHARACTER SET utf8 default NULL,
+  MODIFY `NASPortType` varchar(32) CHARACTER SET utf8 default NULL,
+  MODIFY `AcctAuthentic` varchar(32) CHARACTER SET utf8 default NULL,
+  MODIFY `ConnectInfo_start` varchar(50) CHARACTER SET utf8 default NULL,
+  MODIFY `ConnectInfo_stop` varchar(50) CHARACTER SET utf8 default NULL,
+  MODIFY `CalledStationId` varchar(50) CHARACTER SET utf8 NOT NULL default '',
+  MODIFY `CallingStationId` varchar(50) CHARACTER SET utf8 NOT NULL default '',
+  MODIFY `AcctTerminateCause` varchar(32) CHARACTER SET utf8 NOT NULL default '',
+  MODIFY `ServiceType` varchar(32) CHARACTER SET utf8 default NULL,
+  MODIFY `FramedProtocol` varchar(32) CHARACTER SET utf8 default NULL,
+  MODIFY `FramedIPAddress` varchar(15) CHARACTER SET utf8 NOT NULL default '',
+  MODIFY `xascendsessionsvrkey` varchar(10) CHARACTER SET utf8 default NULL,
+  DEFAULT CHARACTER SET utf8;");
+
+        //radcheck
+        $this->rowsUpdated += $this->radius->exec("ALTER TABLE radcheck CONVERT TO CHARACTER SET latin1;
+ALTER TABLE radcheck
+  MODIFY `UserName` VARBINARY(128) NOT NULL,
+  MODIFY `Attribute` VARBINARY(128) NOT NULL,
+  MODIFY `op` BINARY(4) NOT NULL DEFAULT '==',
+  MODIFY `Value` VARBINARY(512) NOT NULL;
+ALTER TABLE radcheck
+  MODIFY `UserName` VARCHAR(64) CHARACTER SET utf8 NOT NULL ,
+  MODIFY `Attribute` VARCHAR(64) CHARACTER SET utf8 NOT NULL,
+  MODIFY `op` CHAR(2) CHARACTER SET utf8 NOT NULL DEFAULT '==',
+  MODIFY `Value` VARCHAR(253) CHARACTER SET utf8 NOT NULL,
+   DEFAULT CHARACTER SET utf8;");
+
+        //radgroupcheck
+        $this->rowsUpdated += $this->radius->exec("ALTER TABLE radgroupcheck CONVERT TO CHARACTER SET latin1;
+ALTER TABLE radgroupcheck
+  MODIFY `GroupName` VARBINARY(128) NOT NULL,
+  MODIFY `Attribute` VARBINARY(128) NOT NULL,
+  MODIFY `op` BINARY(4) NOT NULL DEFAULT '==',
+  MODIFY `Value` VARBINARY(512) NOT NULL;
+ALTER TABLE radgroupcheck
+  MODIFY `GroupName` VARCHAR(64) CHARACTER SET utf8 NOT NULL ,
+  MODIFY `Attribute` VARCHAR(64) CHARACTER SET utf8 NOT NULL,
+  MODIFY `op` CHAR(2) CHARACTER SET utf8 NOT NULL DEFAULT '==',
+  MODIFY `Value` VARCHAR(253) CHARACTER SET utf8 NOT NULL,
+   DEFAULT CHARACTER SET utf8;");
+
+        //radgroupreply
+        $this->rowsUpdated += $this->radius->exec("ALTER TABLE radgroupreply CONVERT TO CHARACTER SET latin1;
+ALTER TABLE radgroupreply
+  MODIFY `GroupName` VARBINARY(128) NOT NULL,
+  MODIFY `Attribute` VARBINARY(128) NOT NULL,
+  MODIFY `op` BINARY(4) NOT NULL DEFAULT '==',
+  MODIFY `Value` VARBINARY(512) NOT NULL;
+ALTER TABLE radgroupreply
+  MODIFY `GroupName` VARCHAR(64) CHARACTER SET utf8 NOT NULL ,
+  MODIFY `Attribute` VARCHAR(64) CHARACTER SET utf8 NOT NULL,
+  MODIFY `op` CHAR(2) CHARACTER SET utf8 NOT NULL DEFAULT '==',
+  MODIFY `Value` VARCHAR(253) CHARACTER SET utf8 NOT NULL,
+   DEFAULT CHARACTER SET utf8;");
+
+        //radpostauth
+        $this->rowsUpdated += $this->radius->exec("ALTER TABLE radpostauth CONVERT TO CHARACTER SET latin1;
+ALTER TABLE `radpostauth`
+  MODIFY `username` varbinary(128) NOT NULL default '',
+  MODIFY `pass` varbinary(128) NOT NULL default '',
+  MODIFY `reply` varbinary(129) NOT NULL default '';
+ALTER TABLE `radpostauth`
+  MODIFY `username` varchar(64) CHARACTER SET utf8 NOT NULL default '',
+  MODIFY `pass` varchar(64) CHARACTER SET utf8 NOT NULL default '',
+  MODIFY `reply` varchar(32) CHARACTER SET utf8 NOT NULL default '',
+  DEFAULT CHARACTER SET utf8;");
+
+        //radreply
+        $this->rowsUpdated += $this->radius->exec("ALTER TABLE radreply CONVERT TO CHARACTER SET latin1;
+ALTER TABLE radreply
+  MODIFY `UserName` VARBINARY(128) NOT NULL,
+  MODIFY `Attribute` VARBINARY(128) NOT NULL,
+  MODIFY `op` BINARY(4) NOT NULL DEFAULT '==',
+  MODIFY `Value` VARBINARY(512) NOT NULL;
+ALTER TABLE radreply
+  MODIFY `UserName` VARCHAR(64) CHARACTER SET utf8 NOT NULL ,
+  MODIFY `Attribute` VARCHAR(64) CHARACTER SET utf8 NOT NULL,
+  MODIFY `op` CHAR(2) CHARACTER SET utf8 NOT NULL DEFAULT '==',
+  MODIFY `Value` VARCHAR(253) CHARACTER SET utf8 NOT NULL,
+   DEFAULT CHARACTER SET utf8;");
+
+        //radusercomment
+        $this->rowsUpdated += $this->radius->exec("ALTER TABLE radusercomment CONVERT TO CHARACTER SET latin1;
+ALTER TABLE radusercomment
+  MODIFY `UserName` VARBINARY(128) NOT NULL default '',
+  MODIFY `Comment` VARBINARY(512) NOT NULL default '';
+ALTER TABLE radusercomment
+  MODIFY `UserName` varchar(64) CHARACTER SET utf8 NOT NULL default '',
+  MODIFY `Comment` varchar(256) CHARACTER SET utf8 NOT NULL default '',
+  DEFAULT CHARACTER SET utf8;");
+
+        //radusergroup
+        $this->rowsUpdated += $this->radius->exec("ALTER TABLE radusergroup CONVERT TO CHARACTER SET latin1;
+ALTER TABLE radusergroup
+  MODIFY `UserName` VARBINARY(128) NOT NULL default '',
+  MODIFY `GroupName` VARBINARY(128) NOT NULL default '';
+ALTER TABLE radusergroup
+  MODIFY `UserName` varchar(64) CHARACTER SET utf8 NOT NULL default '',
+  MODIFY `GroupName` varchar(64) CHARACTER SET utf8 NOT NULL default '',
+  DEFAULT CHARACTER SET utf8;");
+
     }
 }
