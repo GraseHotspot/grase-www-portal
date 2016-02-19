@@ -1,9 +1,8 @@
-grase-www-portal (3.7.7.12) UNRELEASED; urgency=low
+grase-www-portal (3.8.0) purewhite; urgency=low
 
   [ Tim White ]
-  * Set Freesans as default font for PDF vouchers due to printing issues
   * Some report updates
-  * "Free Access" user auto create and login 
+  * "Free Access" user auto create and login (TOS style login)
   * Auto refresh of sessions page (Fixes #23)
   * Change how batches are created to prevent errors and also check for
     uniqueness of usernames
@@ -16,8 +15,6 @@ grase-www-portal (3.7.7.12) UNRELEASED; urgency=low
   * Migrating report charts to Google Chart API
   * Fix CRON job that deletes expired users, it was missing users who expired
     at the start of the month 
-  * Allow "TOS" only login (via auto creation of MAC account)
-  * Update to Smarty3
   * Install and use Composer and Bower to manage external dependencies
   * Decrease Admin interval to 10 minutes to allow settings to take effect
     sooner
@@ -32,8 +29,14 @@ grase-www-portal (3.7.7.12) UNRELEASED; urgency=low
   * Make username/password length customisable
   * Cleanup old settings
   * Use Smarty3 from Composer instead of Debian/Ubuntu packages
+  * Bring Account comments into sessions page (Fixes #98)
+  * Fix LAN/WAN display issues (Closes #126)
+  * Use referrer meta tag to only send Origin, and not the full URL when clicking links to prevent things like MAC addresses from leaking. (Closes #100)
+  * Simultaneous Use can now be a number instead of a boolean (Closes #3)
+  * New Login page look
 
- -- Tim White <tim@grasehotspot.org>  Tue, 22 Jan 2013 16:13:27 +1000
+
+ -- Tim White <tim@grasehotspot.org>  Sun, 10 Jan 2016 19:56:55 +1000
 
 grase-www-portal (3.7.7.11) purewhite; urgency=medium
 

@@ -123,7 +123,7 @@ class DatabaseFunctions
                         AcctTerminateCause,
                         ServiceType,
                         FramedIPAddress,
-                        Username,
+                        LOWER(Username) as Username,
                         AcctInputOctets,
                         AcctOutputOctets,
                         (AcctInputOctets + AcctOutputOctets) AS AcctTotalOctets,
@@ -163,7 +163,7 @@ class DatabaseFunctions
                         AcctTerminateCause,
                         ServiceType,
                         FramedIPAddress,
-                        Username,
+                        LOWER(Username) as Username,
                         AcctInputOctets,
                         AcctOutputOctets,
                         AcctInputOctets + AcctOutputOctets AS AcctTotalOctets,
@@ -203,7 +203,7 @@ class DatabaseFunctions
                         AcctTerminateCause,
                         ServiceType,
                         FramedIPAddress,
-                        Username,
+                        LOWER(Username) as Username,
                         AcctInputOctets,
                         AcctOutputOctets,
                         AcctInputOctets + AcctOutputOctets AS AcctTotalOctets,
@@ -255,7 +255,7 @@ class DatabaseFunctions
     {
         // Gets the username for an active session based on ip address
         $sql = sprintf(
-            "SELECT UserName
+            "SELECT LOWER(UserName) as UserName
                             FROM radacct
                             WHERE FramedIPAddress= %s
                             AND AcctStopTime IS NULL
@@ -285,9 +285,13 @@ class DatabaseFunctions
         // Load all the user details we are going to lookup and cache them!
 
         /* Lowercase the initial key (username) to make lookups case insensitive!! */
+        $users = $this->getAllUserNames();
+        foreach ($users as $username) {
+            $this->usercache[$username]['Username'] = $username;
+        }
 
         // Radcheck
-        $sql = "SELECT Attribute, Value, UserName FROM radcheck";
+        $sql = "SELECT Attribute, Value, LOWER(UserName) as UserName FROM radcheck";
 
         $results = $this->db->queryAll($sql);
 
@@ -305,7 +309,7 @@ class DatabaseFunctions
         }
 
         // Radreply
-        $sql = "SELECT Attribute, Value, UserName FROM radreply";
+        $sql = "SELECT Attribute, Value, LOWER(UserName) as UserName FROM radreply";
 
         $results = $this->db->queryAll($sql);
 
@@ -324,7 +328,7 @@ class DatabaseFunctions
 
 
         // Usergroup
-        $sql = "SELECT GroupName, UserName FROM radusergroup";
+        $sql = "SELECT GroupName, LOWER(UserName) as UserName FROM radusergroup";
 
         $results = $this->db->queryAll($sql);
 
@@ -342,7 +346,7 @@ class DatabaseFunctions
         }
 
         // Comment
-        $sql = "SELECT Comment, UserName FROM radusercomment";
+        $sql = "SELECT Comment, LOWER(UserName) as UserName FROM radusercomment";
 
         $results = $this->db->queryAll($sql);
 
@@ -361,7 +365,7 @@ class DatabaseFunctions
         // AcctTotalOctets from radacct
         // AcctSessionTime from radacct
         // Last logout from radacct
-        $sql = "SELECT UserName,
+        $sql = "SELECT LOWER(UserName) as UserName,
             SUM(radacct.AcctInputOctets)+SUM(radacct.AcctOutputOctets)
             AS AcctTotalOctets,
             SUM(AcctSessionTime) AS AcctSessionTime,
@@ -392,7 +396,7 @@ class DatabaseFunctions
 
         // TotalTime from mtotacct
         // TotalOctets from mtotacct
-        $sql = "SELECT UserName,
+        $sql = "SELECT LOWER(UserName) as UserName,
             SUM(mtotacct.ConnTotDuration) AS TotalTime,
             SUM(mtotacct.InputOctets) + SUM(mtotacct.OutputOctets) AS TotalOctets
             FROM mtotacct GROUP BY UserName";
@@ -430,12 +434,11 @@ class DatabaseFunctions
 
     public function getUserDetails($username)
     {
+        $username = mb_strtolower($username);
         if ($this->usercacheloaded) {
-            $Userdata = $this->usercache[mb_strtolower($username)]['radcheck'];
-            $Userreplydata = $this->usercache[mb_strtolower(
-                $username
-            )]['radreply'];
-            $Userdata['Username'] = $username;
+            $Userdata = $this->usercache[$username]['radcheck'];
+            $Userreplydata = $this->usercache[$username]['radreply'];
+            $Userdata['Username'] = $this->usercache[$username]['Username'];
         } else {
             $Userdata['Username'] = $username;
 
@@ -618,7 +621,7 @@ class DatabaseFunctions
     public function getAllUserNames()
     {
         // Gets an array of all usernames in radcheck table
-        $sql = "SELECT UserName
+        $sql = "SELECT LOWER(UserName) as UserName
 	            FROM radcheck
 	            WHERE Attribute='Cleartext-Password'
 	            AND UserName NOT IN (
@@ -651,7 +654,7 @@ class DatabaseFunctions
     {
         // Gets an array of all usernames in radcheck table
         $sql = sprintf(
-            "SELECT UserName
+            "SELECT LOWER(UserName) as UserName
                             FROM radusergroup
                             WHERE GroupName = %s",
             $this->db->quote($groupname)
@@ -866,7 +869,7 @@ class DatabaseFunctions
             return $comments;
         }
 
-        $sql = "SELECT UserName, Comment FROM radusercomment";
+        $sql = "SELECT LOWER(UserName) as UserName, Comment FROM radusercomment";
 
         $results = $this->db->queryAll($sql);
 
@@ -920,6 +923,7 @@ class DatabaseFunctions
         $group,
         $comment
     ) {
+        $username = mb_strtolower($username);
         // Check unique user
         if (!$this->checkUniqueUsername(
             $username
@@ -1927,7 +1931,7 @@ class DatabaseFunctions
     {
         /* select * from radacct WHERE FramedIPAddress != '' AND AcctStopTime = '' OR AcctStopTime IS NULL ORDER BY RadAcctId DESC LIMIT 4; */
         $sql = sprintf(
-            "SELECT UserName from radacct
+            "SELECT LOWER(UserName) as UserName from radacct
                         WHERE FramedIPAddress=%s
                         AND (AcctStopTime = '' OR AcctStopTime IS NULL)
                         ORDER BY RadAcctId DESC",
