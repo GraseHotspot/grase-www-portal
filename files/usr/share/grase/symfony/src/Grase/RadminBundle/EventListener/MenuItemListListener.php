@@ -43,12 +43,12 @@ class MenuItemListListener
                         ],
 
                         'users_computers' => [
-                            'route' => 'grase_users_group',
+                            'route' => 'grase_users',
                             'label' => 'Computer Accounts',
                             'route_args' => ['group' => 'computers']
                         ],
                         'users_staff' => [
-                            'route' => 'grase_users_group',
+                            'route' => 'grase_users',
                             'label' => 'Staff Accounts',
                             'route_args' => ['group' => 'staff']
                         ]

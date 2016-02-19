@@ -3,6 +3,7 @@
 namespace Grase\RadminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class DefaultController extends Controller
 {
@@ -17,7 +18,12 @@ class DefaultController extends Controller
         return $this->render('GraseRadminBundle:Default:index.html.twig', array('name' => $name));
     }
 
-    public function displayUsersAction($group = null) {
+    /**
+     * @Route("/users/{group}", name="grase_users")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function displayUsersAction($group = null)
+    {
         $users_repo = $this->getDoctrine()->getManager()->getRepository('Grase\RadminBundle\Entity\Radius\User');
         //dump($users_repo->findAll()[3]->getPasswordCheck());
 

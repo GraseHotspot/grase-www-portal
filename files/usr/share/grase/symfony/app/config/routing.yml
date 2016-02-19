@@ -2,6 +2,9 @@ grase_radmin:
     resource: "@GraseRadminBundle/Resources/config/routing.yml"
     prefix:   /
 
+grase_radmin_app:
+    resource: "@GraseRadminBundle/Controller/"
+    type: annotation
 #app:
 #    resource: @AppBundle/Controller/
 #     type:     annotation
