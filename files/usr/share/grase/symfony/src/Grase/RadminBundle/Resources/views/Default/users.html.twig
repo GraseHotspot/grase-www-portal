@@ -2,24 +2,52 @@
 
 {% block content %}
 
-    <table>
-        <thead>
-            <tr>
-                <th>Username</th>
-                <th>Data Limit</th>
-                <th>Time Limit</th>
-                <th>Comment</th>
-            </tr>
-        </thead>
-    {% for user in users %}
-        <tr>
-            <td>{{ user.username }} <span>{{ user.password }}</span></td>
-            <td>{{ user.datalimit|format_bytes }}</td>
-            <td>{{ user.timelimit }}</td>
-            <td>{{ user.expiry|localizeddate('medium', 'short') }}</td>
-            <td>{{ user.comment }}</td>
-        </tr>
-    {% endfor %}
-    </table>
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Hover Data Table</h3>
+            </div>
+            <div class="box-body">
+                <table id="users_table" class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Data Limit</th>
+                        <th>Time Limit</th>
+                        <th>Expiry</th>
+                        <th>Comment</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <td>{{ user.username }} <a href="#" class="" data-toggle="popover" tabindex="0" data-trigger="focus" title="Password" data-content="{{ user.password }}"><i class="fa fa-key"></i></a></td>
+                            <td>{{ user.datalimit|format_bytes }}</td>
+                            <td>{{ user.timelimit }}</td>
+                            <td>{{ user.expiry|localizeddate('medium', 'short') }}</td>
+                            <td>{{ user.comment }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
 
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts_inline %}
+    <script>
+        $(function () {
+            $('[data-toggle="popover"]').popover();
+            $('#users_table').DataTable({
+                "paging": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": true
+            });
+        });
+    </script>
 {% endblock %}
