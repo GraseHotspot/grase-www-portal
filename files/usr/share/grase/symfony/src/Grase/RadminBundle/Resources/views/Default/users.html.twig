@@ -11,20 +11,22 @@
                 <table id="users_table" class="table table-bordered table-hover">
                     <thead>
                     <tr>
-                        <th>Username</th>
-                        <th>Data Limit</th>
-                        <th>Time Limit</th>
-                        <th>Expiry</th>
-                        <th>Comment</th>
+                        <th>{% trans %}Username{% endtrans %}</th>
+                        <th>{% trans %}Data Limit{% endtrans %}</th>
+                        <th>{% trans %}Time Limit{% endtrans %}</th>
+                        <th>{% trans %}Expiry{% endtrans %}</th>
+                        <th>{% trans %}Group{% endtrans %}</th>
+                        <th>{% trans %}Comment{% endtrans %}</th>
                     </tr>
                     </thead>
                     <tbody>
                     {% for user in users %}
                         <tr>
-                            <td>{{ user.username }} <a href="#" class="" data-toggle="popover" tabindex="0" data-trigger="focus" title="Password" data-content="{{ user.password }}"><i class="fa fa-key"></i></a></td>
+                            <td>{{ user.username }} <a href="#" class="" data-toggle="popover" tabindex="0" data-trigger="focus" title="{% trans %}Password{% endtrans %}" data-content="{{ user.password }}"><i class="fa fa-key"></i></a></td>
                             <td>{{ user.datalimit|format_bytes }}</td>
                             <td>{{ user.timelimit }}</td>
                             <td>{{ user.expiry|localizeddate('medium', 'short') }}</td>
+                            <td></td>
                             <td>{{ user.comment }}</td>
                         </tr>
                     {% endfor %}
