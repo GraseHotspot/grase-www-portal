@@ -12,4 +12,23 @@ use Doctrine\ORM\EntityRepository;
  */
 class UserRepository extends EntityRepository
 {
+    public function findByGroup($group = null)
+    {
+
+        $query = $this->getEntityManager()->createQueryBuilder()
+            ->select('u', 'rc')
+            ->from('GraseRadminBundle:Radius\User', 'u')
+            ->join('u.radiuscheck', 'rc');
+        /* TODO add group filtering
+        if ($group)
+        {
+            $query->where('1=1')
+            ->setParameter('group',$groupid)
+            ->setParameter('string', '%'.$string.'%')
+        }*/
+        return $query->getQuery()->getResult();
+
+
+    }
+
 }
