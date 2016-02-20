@@ -61,10 +61,10 @@ class User
     /**
      * @return Check
      */
-    private function getPasswordCheck()
+    public function getPasswordCheck()
     {
         $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'Cleartext-Password'));
-        return $this->getRadiuscheck()->matching($criteria)[0];
+        return $this->getRadiuscheck()->matching($criteria)->first();
     }
 
     public function getTimeLimit()
@@ -82,7 +82,7 @@ class User
     private function getTimeLimitCheck()
     {
         $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'Max-All-Session'));
-        return $this->getRadiuscheck()->matching($criteria)[0];
+        return $this->getRadiuscheck()->matching($criteria)->first();
     }
 
     public function getDataLimit()
@@ -99,7 +99,7 @@ class User
     private function getDataLimitCheck()
     {
         $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'Max-Octets'));
-        return $this->getRadiuscheck()->matching($criteria)[0];
+        return $this->getRadiuscheck()->matching($criteria)->first();
     }
 
     public function getExpiry()
@@ -116,7 +116,7 @@ class User
     private function getExpiryCheck()
     {
         $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'Expiration'));
-        return $this->getRadiuscheck()->matching($criteria)[0];
+        return $this->getRadiuscheck()->matching($criteria)->first();
     }
 
 
