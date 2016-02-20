@@ -25,7 +25,7 @@
                             <td>{{ user.username }} <a href="#" class="" data-toggle="popover" tabindex="0" data-trigger="focus" title="{% trans %}Password{% endtrans %}" data-content="{{ user.password }}"><i class="fa fa-key"></i></a></td>
                             <td>{{ user.datalimit|format_bytes }}</td>
                             <td>{{ user.timelimit }}</td>
-                            <td>{{ user.expiry|localizeddate('medium', 'short') }}</td>
+                            <td>{% if user.expiry %}{{ user.expiry|localizeddate('medium', 'short') }}{% endif %}</td>
                             <td></td>
                             <td>{{ user.comment }}</td>
                         </tr>
