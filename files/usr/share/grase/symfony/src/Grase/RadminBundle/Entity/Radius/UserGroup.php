@@ -24,7 +24,7 @@ class UserGroup
      * @var string
      * @ORM\Id
      * @ORM\ManyToOne(targetEntity="Group", inversedBy="usergroups")
-     * @ORM\JoinColumn(name="GroupName", referencedColumnName="name")
+     * @ORM\JoinColumn(name="GroupName", referencedColumnName="id")
      */
     private $group;
 

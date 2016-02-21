@@ -54,6 +54,15 @@ class Version20160221201937 extends AbstractMigration
         );
 
         $this->addSql(
+            "ALTER TABLE groups
+          DROP KEY GroupName,
+          DROP COLUMN GroupName,
+          CHANGE GroupLabel name VARCHAR(64) COLLATE utf8_unicode_ci NOT NULL,
+          ADD UNIQUE name (name)
+            "
+        );
+
+        $this->addSql(
             'ALTER TABLE radusercomment
   RENAME users,
   MODIFY `UserName` VARCHAR(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'\'
