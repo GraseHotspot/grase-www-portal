@@ -3,6 +3,7 @@ namespace Grase\RadminBundle\EventListener;
 
 use Avanzu\AdminThemeBundle\Model\MenuItemModel;
 use Avanzu\AdminThemeBundle\Event\SidebarMenuEvent;
+use Doctrine\Bundle\DoctrineBundle\Registry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
 
@@ -10,10 +11,12 @@ class MenuItemListListener
 {
 
     private $securityChecker;
+    private $doctrine;
 
-    public function __construct(AuthorizationChecker $securityChecker)
+    public function __construct(AuthorizationChecker $securityChecker, Registry $doctrine)
     {
         $this->securityChecker = $securityChecker;
+        $this->doctrine = $doctrine;
     }
 
     public function onSetupMenu(SidebarMenuEvent $event)

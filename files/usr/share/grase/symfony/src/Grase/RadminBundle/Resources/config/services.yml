@@ -9,7 +9,7 @@ services:
         class: %grase_default.menu_listener.class%
         tags:
             - { name: kernel.event_listener, event: theme.sidebar_setup_menu, method: onSetupMenu }
-        arguments: [@security.authorization_checker]
+        arguments: [@security.authorization_checker, @doctrine]
 
     grase.show_user_listener:
         class: Grase\RadminBundle\EventListener\ShowUserListener

@@ -26,7 +26,7 @@ class DefaultController extends Controller
     {
         $users_repo = $this->getDoctrine()->getManager()->getRepository('Grase\RadminBundle\Entity\Radius\User');
 
-        $users = $users_repo->findByGroup();
+        $users = $users_repo->findByGroup($group);
 
         return $this->render(
             'GraseRadminBundle:Default:users.html.twig',

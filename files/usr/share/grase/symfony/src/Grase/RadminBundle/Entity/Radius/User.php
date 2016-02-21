@@ -12,7 +12,7 @@ use Grase\RadminBundle\Entity\Radius\UserGroup;
 /**
  * User
  *
- * @ORM\Table(name="radius.users")
+ * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="Grase\RadminBundle\Entity\Radius\UserRepository")
  */
 class User

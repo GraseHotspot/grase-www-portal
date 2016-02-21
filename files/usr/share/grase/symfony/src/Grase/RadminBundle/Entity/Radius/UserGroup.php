@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * UserGroup
  *
- * @ORM\Table(name="radius.radusergroup")
+ * @ORM\Table(name="radusergroup")
  * @ORM\Entity(repositoryClass="Grase\RadminBundle\Entity\Radius\UserGroupRepository")
  */
 class UserGroup

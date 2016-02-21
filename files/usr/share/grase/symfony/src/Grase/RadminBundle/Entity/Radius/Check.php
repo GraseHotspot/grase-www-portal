@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Check
  *
- * @ORM\Table(name="radius.radcheck")
+ * @ORM\Table(name="radcheck")
  * @ORM\Entity(repositoryClass="Grase\RadminBundle\Entity\Radius\CheckRepository")
  */
 class Check
