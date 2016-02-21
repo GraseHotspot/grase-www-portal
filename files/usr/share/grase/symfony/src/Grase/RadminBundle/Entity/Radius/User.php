@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
 use Grase\RadminBundle\Entity\Radius\Check;
 use Grase\Util\DateIntervalEnhanced;
+use Grase\RadminBundle\Entity\Radius\UserGroup;
 
 /**
  * User
@@ -33,9 +34,15 @@ class User
      */
     private $radiuscheck;
 
+    /**
+     * @ORM\OneToMany(targetEntity="UserGroup", mappedBy="user", fetch="EAGER")
+     */
+    private $usergroups;
+
     public function __construct()
     {
         $this->radiuscheck = new ArrayCollection();
+        $this->usergroups = new ArrayCollection();
     }
 
     public function getRadiuscheck()
@@ -173,4 +180,48 @@ class User
     }
 
 
+
+    /**
+     * Add usergroups
+     *
+     * @param \Grase\RadminBundle\Entity\Radius\UserGroup $usergroups
+     * @return User
+     */
+    public function addUsergroup(\Grase\RadminBundle\Entity\Radius\UserGroup $usergroups)
+    {
+        $this->usergroups[] = $usergroups;
+
+        return $this;
+    }
+
+    /**
+     * Remove usergroups
+     *
+     * @param \Grase\RadminBundle\Entity\Radius\UserGroup $usergroups
+     */
+    public function removeUsergroup(\Grase\RadminBundle\Entity\Radius\UserGroup $usergroups)
+    {
+        $this->usergroups->removeElement($usergroups);
+    }
+
+    /**
+     * Get usergroups
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUsergroups()
+    {
+        return $this->usergroups;
+    }
+
+    public function getAllUserGroupsNames()
+    {
+        $groupnames = [];
+        /** @var UserGroup $usergroup */
+        foreach ($this->getUsergroups() as $usergroup) {
+            $groupnames[] = $usergroup->getGroup()->getName();
+        }
+
+        return implode(',', $groupnames);
+    }
 }

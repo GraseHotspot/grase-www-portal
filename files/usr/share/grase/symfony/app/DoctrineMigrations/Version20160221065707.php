@@ -20,8 +20,12 @@ class Version20160221065707 extends AbstractMigration
   MODIFY `Attribute` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
   MODIFY `op` char(2) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'==\',
   MODIFY `Value` varchar(253) COLLATE utf8_unicode_ci NOT NULL,
+  ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci');
 
- ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci');
+        $this->addSql('ALTER TABLE radius.radusergroup
+  MODIFY `UserName` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'\',
+  MODIFY `GroupName` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'\',
+  ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci');
 
     }
 
@@ -35,8 +39,12 @@ class Version20160221065707 extends AbstractMigration
   MODIFY `Attribute` varchar(64) CHARACTER SET utf8 NOT NULL,
   MODIFY `op` char(2) CHARACTER SET utf8 NOT NULL DEFAULT \'==\',
   MODIFY `Value` varchar(253) CHARACTER SET utf8 NOT NULL,
-ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci');
+  ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci');
 
+        $this->addSql('ALTER TABLE radius.radusergroup
+  MODIFY `UserName` varchar(64) NOT NULL DEFAULT \'\',
+  MODIFY `GroupName` varchar(64) NOT NULL DEFAULT \'\',
+  ENGINE=MyISAM DEFAULT CHARSET=utf8');
 
     }
 }

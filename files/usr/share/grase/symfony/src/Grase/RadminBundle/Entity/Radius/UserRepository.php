@@ -16,9 +16,10 @@ class UserRepository extends EntityRepository
     {
 
         $query = $this->getEntityManager()->createQueryBuilder()
-            ->select('u', 'rc')
+            ->select('u', 'rc', 'ug')
             ->from('GraseRadminBundle:Radius\User', 'u')
-            ->join('u.radiuscheck', 'rc');
+            ->leftJoin('u.radiuscheck', 'rc')
+            ->leftJoin('u.usergroups', 'ug');
         /* TODO add group filtering
         if ($group)
         {
