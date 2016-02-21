@@ -19,10 +19,11 @@ class UserRepository extends EntityRepository
             ->select('u', 'rc', 'ug')
             ->from('GraseRadminBundle:Radius\User', 'u')
             ->leftJoin('u.radiuscheck', 'rc')
-            ->leftJoin('u.usergroups', 'ug');
+            ->leftJoin('u.usergroups', 'ug')
+            ->leftJoin('ug.group', 'groups');
 
         if ($group) {
-            $query->where('ug.group = :groupname')
+            $query->where('groups.name = :groupname')
             ->setParameter('groupname', $group);
         }
         return $query->getQuery()->getResult();
