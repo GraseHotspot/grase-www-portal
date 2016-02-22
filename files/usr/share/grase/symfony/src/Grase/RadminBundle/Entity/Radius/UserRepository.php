@@ -24,11 +24,9 @@ class UserRepository extends EntityRepository
 
         if ($group) {
             $query->where('groups.name = :groupname')
-            ->setParameter('groupname', $group);
+                ->setParameter('groupname', $group);
         }
         return $query->getQuery()->getResult();
-
-
     }
 
 }

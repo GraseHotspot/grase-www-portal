@@ -1,11 +1,19 @@
 {% extends "GraseRadminBundle:Default:layout.html.twig" %}
 
+{% block page_title %}
+    {% trans %}User Accounts{% endtrans %}
+{% endblock page_title %}
+
+{% block page_subtitle %}
+
+{% endblock page_subtitle %}
+
 {% block content %}
 
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Hover Data Table</h3>
+                <h3 class="box-title">{% trans %}User Accounts{% endtrans %}</h3>
             </div>
             <div class="box-body">
                 <table id="users_table" class="table table-bordered table-hover">
