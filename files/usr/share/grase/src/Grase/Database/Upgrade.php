@@ -42,7 +42,7 @@ class Upgrade
     public function upgradeDatabase()
     {
         $oldDBVersion = $this->Settings->getSetting("DBVersion");
-        var_dump($oldDBVersion < 3);
+
         try {
             // Somethings we can run anytime
             $this->defaultTemplates();
