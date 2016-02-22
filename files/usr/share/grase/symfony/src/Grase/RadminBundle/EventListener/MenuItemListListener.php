@@ -6,6 +6,7 @@ use Avanzu\AdminThemeBundle\Event\SidebarMenuEvent;
 use Doctrine\Bundle\DoctrineBundle\Registry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
+use Grase\RadminBundle\Entity\Radius\Group;
 
 class MenuItemListListener
 {
@@ -35,27 +36,26 @@ class MenuItemListListener
         $items = [];
         if ($this->securityChecker->isGranted('IS_AUTHENTICATED_FULLY')) {
 
+            // build user accounts / groups lists
+            $user_groups=['grase_users' => [
+                'label' => 'All',
+            ]];
+            $groups = $this->doctrine->getRepository('GraseRadminBundle:Radius\Group')->findAll();
+            /** @var Group $group */
+            foreach ($groups as $group) {
+                $user_groups['users_' . $group->getName()] = [
+                    'route' => 'grase_users',
+                    'label' => $group->getName(),
+                    'route_args' => ['group' => $group->getName()]
+                ];
+            }
+
+
             $items = [
                 'grase_radmin_homepage' => 'Status',
                 'grase_users' => [
                     "label" => "User Accounts",
-                    // TODO Make this dynamically generated based on available groups
-                    'children' => [
-                        'grase_users' => [
-                            'label' => 'All',
-                        ],
-
-                        'users_computers' => [
-                            'route' => 'grase_users',
-                            'label' => 'Computer Accounts',
-                            'route_args' => ['group' => 'computers']
-                        ],
-                        'users_staff' => [
-                            'route' => 'grase_users',
-                            'label' => 'Staff Accounts',
-                            'route_args' => ['group' => 'staff']
-                        ]
-                    ],
+                    'children' => $user_groups, // Dynamically generated based on available groups
                 ],
             ];
         }
