@@ -57,6 +57,9 @@ class MenuItemListListener
                     "label" => "User Accounts",
                     'children' => $user_groups, // Dynamically generated based on available groups
                 ],
+                'grase_groups' => [
+                    "label" => "Groups"
+                ]
             ];
         }
         $menuItems = array();

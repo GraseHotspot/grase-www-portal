@@ -1,0 +1,63 @@
+{% extends "GraseRadminBundle:Default:layout.html.twig" %}
+
+{% block page_title %}
+    {% trans %}Groups{% endtrans %}
+{% endblock page_title %}
+
+{% block page_subtitle %}
+
+{% endblock page_subtitle %}
+
+{% block content %}
+
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">{% trans %}Groups{% endtrans %}</h3>
+            </div>
+            <div class="box-body">
+                <table id="groups_table" class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>{% trans %}Name{% endtrans %}</th>
+                        <th>{% trans %}Data Limit{% endtrans %}</th>
+                        <th>{% trans %}Time Limit{% endtrans %}</th>
+                        <th>{% trans %}Expiry{% endtrans %}</th>
+                        <th>{% trans %}Expire After{% endtrans %}</th>
+                        <th>{% trans %}Comment{% endtrans %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for group in groups %}
+                        <tr>
+                            <td>{{ group.name }}</td>
+                            <td>{{ group.maxOctets|format_bytes }}</td>
+                            <td>{{ group.maxSeconds }}</td>
+                            <td>{{ group.expiry }}</td>
+                            <td>{{ group.expireAfter }}</td>
+                            <td>{{ group.comment }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts_inline %}
+    <script>
+        $(function () {
+            $('[data-toggle="popover"]').popover();
+            $('#groups_table').DataTable({
+                "paging": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": true
+            });
+        });
+    </script>
+{% endblock %}

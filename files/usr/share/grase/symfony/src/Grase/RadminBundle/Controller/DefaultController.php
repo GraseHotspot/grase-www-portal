@@ -35,4 +35,21 @@ class DefaultController extends Controller
             ]
         );
     }
+
+    /**
+     * @Route("/groups/", name="grase_groups")
+     */
+    public function displayGroups()
+    {
+        $groups_repo = $this->getDoctrine()->getManager()->getRepository('GraseRadminBundle:Radius\Group');
+
+        $groups = $groups_repo->findAll();
+
+        return $this->render(
+            'GraseRadminBundle:Default:groups.html.twig',
+            [
+                'groups' => $groups
+            ]
+        );
+    }
 }
