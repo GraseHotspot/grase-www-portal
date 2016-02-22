@@ -43,7 +43,7 @@ install_bower_deps(){ # Install Bower and install/upgrade depenencies
 }
 
 call_cron(){ # Call cron so certain upgrades can occur
-    wget -q http://127.0.0.1/grase/radmin/cron.php -O - || true
+    REMOTE_ADDR='' php /usr/share/grase/www/radmin/cron.php || true
 }
 
 fix_dir_perms(){
