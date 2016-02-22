@@ -42,7 +42,7 @@ class DatabaseFunctions
         // Static reference of this class's instance.
         static $instance;
         if (!isset($instance)) {
-            $instance = new DatabaseFunctions();
+            $instance = new DatabaseFunctions(new DatabaseConnections());
         }
         return $instance;
     }
