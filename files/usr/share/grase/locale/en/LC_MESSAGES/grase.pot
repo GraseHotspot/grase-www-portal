@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GRASE 3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-25 11:29+1000\n"
+"POT-Creation-Date: 2016-02-22 21:52+1000\n"
 "PO-Revision-Date: 2015-05-29 19:13+1000\n"
 "Last-Translator: Timothy White <tim@purewhite.id.au>\n"
 "Language-Team: tim@purewhite.id.au\n"
@@ -1460,7 +1460,7 @@ msgid "Unable to select users needing First Login Activation"
 msgstr ""
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:78
-msgid "First login users activiated"
+msgid "First login users activated"
 msgstr ""
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:95
