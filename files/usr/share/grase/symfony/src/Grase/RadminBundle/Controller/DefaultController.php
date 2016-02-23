@@ -12,8 +12,8 @@ class DefaultController extends Controller
         //$check_repo = $this->getDoctrine()->getManager()->getRepository('Grase\RadminBundle\Entity\Radius\Check');
         //dump($check_repo->findAll()[0]);
 
-        //$users_repo = $this->getDoctrine()->getManager()->getRepository('Grase\RadminBundle\Entity\Radius\User');
-        //dump($users_repo->findAll()[3]->getPasswordCheck());
+        $users_repo = $this->getDoctrine()->getManager()->getRepository('Grase\RadminBundle\Entity\Radius\User');
+        dump($users_repo->findAll()[3]->getRadiusAccounting()[1]);
 
         return $this->render('GraseRadminBundle:Default:index.html.twig', array('name' => $name));
     }

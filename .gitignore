@@ -34,3 +34,6 @@ files/usr/share/grase/www/vendor/
 
 # Composer PHAR
 /files/usr/share/grase/symfony/composer.phar
+
+# Backup files
+*~

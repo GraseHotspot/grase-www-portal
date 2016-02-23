@@ -39,10 +39,16 @@ class User
      */
     private $usergroups;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Radacct", mappedBy="user", fetch="LAZY")
+     */
+    private $radiusAccounting;
+
     public function __construct()
     {
         $this->radiuscheck = new ArrayCollection();
         $this->usergroups = new ArrayCollection();
+        $this->radiusAccounting = new ArrayCollection();
     }
 
     public function getRadiuscheck()
@@ -223,5 +229,38 @@ class User
         }
 
         return implode(',', $groupnames);
+    }
+
+    /**
+     * Add radiusAccounting
+     *
+     * @param \Grase\RadminBundle\Entity\Radius\Radacct $radiusAccounting
+     * @return User
+     */
+    public function addRadiusAccounting(\Grase\RadminBundle\Entity\Radius\Radacct $radiusAccounting)
+    {
+        $this->radiusAccounting[] = $radiusAccounting;
+
+        return $this;
+    }
+
+    /**
+     * Remove radiusAccounting
+     *
+     * @param \Grase\RadminBundle\Entity\Radius\Radacct $radiusAccounting
+     */
+    public function removeRadiusAccounting(\Grase\RadminBundle\Entity\Radius\Radacct $radiusAccounting)
+    {
+        $this->radiusAccounting->removeElement($radiusAccounting);
+    }
+
+    /**
+     * Get radiusAccounting
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getRadiusAccounting()
+    {
+        return $this->radiusAccounting;
     }
 }
