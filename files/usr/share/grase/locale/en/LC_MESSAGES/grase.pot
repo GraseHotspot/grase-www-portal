@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GRASE 3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-25 11:29+1000\n"
+"POT-Creation-Date: 2016-02-24 07:22+1000\n"
 "PO-Revision-Date: 2015-05-29 19:13+1000\n"
 "Last-Translator: Timothy White <tim@purewhite.id.au>\n"
 "Language-Team: tim@purewhite.id.au\n"
@@ -176,7 +176,7 @@ msgstr ""
 #: ../../../www/radmin/templates/smarty.c:320
 #: ../../../www/radmin/templates/smarty.c:329
 #: ../../../www/radmin/templates/smarty.c:334
-#: ../../../www/uam/templates/smarty.c:9 ../../../www/radmin/export.php:89
+#: ../../../www/uam/templates/smarty.c:13 ../../../www/radmin/export.php:89
 msgid "Username"
 msgstr ""
 
@@ -235,7 +235,7 @@ msgstr ""
 #: ../../../www/radmin/templates/smarty.c:172
 #: ../../../www/radmin/templates/smarty.c:199
 #: ../../../www/radmin/templates/smarty.c:336
-#: ../../../www/uam/templates/smarty.c:10 ../../../www/radmin/export.php:90
+#: ../../../www/uam/templates/smarty.c:14 ../../../www/radmin/export.php:90
 msgid "Password"
 msgstr ""
 
@@ -658,6 +658,7 @@ msgstr ""
 #: ../../../www/radmin/templates/smarty.c:173
 #: ../../../www/radmin/templates/smarty.c:332
 #: ../../../www/radmin/templates/smarty.c:337
+#: ../../../www/uam/templates/smarty.c:1
 msgid "Login"
 msgstr ""
 
@@ -699,7 +700,7 @@ msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:185
 #: ../../../www/radmin/templates/smarty.c:209
-#: ../../../www/uam/templates/smarty.c:36
+#: ../../../www/uam/templates/smarty.c:43
 msgid "Time Limit"
 msgstr ""
 
@@ -722,12 +723,14 @@ msgid "Help Page"
 msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:195
+#: ../../../www/uam/templates/smarty.c:6
 #: ../../../www/radmin/includes/usermin_page_functions.inc.php:37
 #: ../../../www/radmin/includes/usermin_page_functions.inc.php:39
 msgid "My Account"
 msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:196
+#: ../../../www/uam/templates/smarty.c:8
 msgid "Admin"
 msgstr ""
 
@@ -955,10 +958,10 @@ msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:255
 #: ../../../www/radmin/templates/smarty.c:273
-#: ../../../www/uam/templates/smarty.c:27
-#: ../../../www/uam/templates/smarty.c:29
-#: ../../../www/uam/templates/smarty.c:35
-#: ../../../www/uam/templates/smarty.c:37
+#: ../../../www/uam/templates/smarty.c:32
+#: ../../../www/uam/templates/smarty.c:34
+#: ../../../www/uam/templates/smarty.c:42
+#: ../../../www/uam/templates/smarty.c:44
 msgid "Unlimited"
 msgstr ""
 
@@ -1076,7 +1079,7 @@ msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:303
 #: ../../../www/radmin/templates/smarty.c:316
-#: ../../../www/uam/templates/smarty.c:32
+#: ../../../www/uam/templates/smarty.c:39
 msgid "Start Time"
 msgstr ""
 
@@ -1232,12 +1235,12 @@ msgid "Create Tickets"
 msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:363
-#: ../../../www/uam/templates/smarty.c:41
+#: ../../../www/uam/templates/smarty.c:49
 msgid "Error"
 msgstr ""
 
 #: ../../../www/radmin/templates/smarty.c:364
-#: ../../../www/uam/templates/smarty.c:42
+#: ../../../www/uam/templates/smarty.c:50
 msgid "An Error has occured. Please report the error to the administrator"
 msgstr ""
 
@@ -1246,128 +1249,144 @@ msgid ""
 "There may be more information available to the administrator in the logs"
 msgstr ""
 
-#: ../../../www/uam/templates/smarty.c:1
-#: ../../../www/uam/templates/smarty.c:21
+#: ../../../www/uam/templates/smarty.c:2
+#: ../../../www/uam/templates/smarty.c:25
 msgid "Help"
 msgstr ""
 
-#: ../../../www/uam/templates/smarty.c:2
-msgid "Successful Login"
-msgstr ""
-
-#: ../../../www/uam/templates/smarty.c:3 ../../../www/uam/js.php:48
-msgid "Continue to your site"
+#: ../../../www/uam/templates/smarty.c:3
+msgid ""
+"Please enable Javascript to use this hotspot, or use a device that supports "
+"javascript"
 msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:4
-msgid "Support"
+msgid "Successful Login"
 msgstr ""
 
-#: ../../../www/uam/templates/smarty.c:5
-msgid "By continuing, you agree to the below terms and conditions."
-msgstr ""
-
-#: ../../../www/uam/templates/smarty.c:6
-msgid "Show Terms and Conditions"
+#: ../../../www/uam/templates/smarty.c:5 ../../../www/uam/js.php:48
+msgid "Continue to your site"
 msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:7
-msgid "If you are already logged in, continue to your site"
+msgid "Support"
 msgstr ""
 
-#: ../../../www/uam/templates/smarty.c:8
-msgid "Voucher Login"
+#: ../../../www/uam/templates/smarty.c:9
+msgid "By continuing, you agree to the below terms and conditions."
+msgstr ""
+
+#: ../../../www/uam/templates/smarty.c:10
+msgid "Show Terms and Conditions"
 msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:11
-msgid "Attempting Login..."
+msgid "If you are already logged in, continue to your site"
 msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:12
-msgid "Logged in as"
-msgstr ""
-
-#: ../../../www/uam/templates/smarty.c:13
-msgid "Remaining Session Time"
-msgstr ""
-
-#: ../../../www/uam/templates/smarty.c:14
-msgid "Remaining Session Data"
+msgid "Voucher Login"
 msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:15
-msgid "Logout"
+msgid "Attempting Login..."
 msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:16
-msgid "Open Status Window"
+msgid "Logged in as"
 msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:17
-msgid "Trouble logging in?"
+msgid "Remaining Session Time"
 msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:18
-msgid "Click here to try a less secure login."
+msgid "Remaining Session Data"
 msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:19
-msgid "You have disabled the secure javascript login method."
+msgid "Logout"
 msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:20
-msgid "Click here to re-enable it"
+msgid "Open Status Window"
+msgstr ""
+
+#: ../../../www/uam/templates/smarty.c:21
+msgid "Trouble logging in?"
 msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:22
-msgid "Return to Welcome Page"
+msgid "Click here to try a less secure login."
 msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:23
-msgid "You are logged in as:"
+msgid "You have disabled the secure javascript login method."
 msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:24
-msgid "User"
-msgstr ""
-
-#: ../../../www/uam/templates/smarty.c:25
-msgid "Usage this session"
+msgid "Click here to re-enable it"
 msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:26
-msgid "Remaining Quota"
+msgid "Return to Welcome Page"
+msgstr ""
+
+#: ../../../www/uam/templates/smarty.c:27
+msgid "You are logged in as:"
 msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:28
-msgid "Quota allocation"
+msgid "Access My Account"
+msgstr ""
+
+#: ../../../www/uam/templates/smarty.c:29
+msgid "User"
 msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:30
-msgid "Max Session Time"
+msgid "Usage this session"
 msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:31
-msgid "Max Idle Time"
+msgid "Remaining Quota"
 msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:33
-msgid "Session Time"
+msgid "Quota allocation"
 msgstr ""
 
-#: ../../../www/uam/templates/smarty.c:34
-msgid "Remaining Time"
+#: ../../../www/uam/templates/smarty.c:35
+msgid "Max Session Time"
 msgstr ""
 
+#: ../../../www/uam/templates/smarty.c:36
 #: ../../../www/uam/templates/smarty.c:38
-msgid "Idle Time"
+#: ../../../www/uam/templates/smarty.c:46
+msgid "Not available"
 msgstr ""
 
-#: ../../../www/uam/templates/smarty.c:39
-msgid "Downloaded"
+#: ../../../www/uam/templates/smarty.c:37
+msgid "Max Idle Time"
 msgstr ""
 
 #: ../../../www/uam/templates/smarty.c:40
+msgid "Session Time"
+msgstr ""
+
+#: ../../../www/uam/templates/smarty.c:41
+msgid "Remaining Time"
+msgstr ""
+
+#: ../../../www/uam/templates/smarty.c:45
+msgid "Idle Time"
+msgstr ""
+
+#: ../../../www/uam/templates/smarty.c:47
+msgid "Downloaded"
+msgstr ""
+
+#: ../../../www/uam/templates/smarty.c:48
 msgid "Uploaded"
 msgstr ""
 
@@ -1460,7 +1479,7 @@ msgid "Unable to select users needing First Login Activation"
 msgstr ""
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:78
-msgid "First login users activiated"
+msgid "First login users activated"
 msgstr ""
 
 #: ../../../www/radmin/classes/CronFunctions.class.php:95

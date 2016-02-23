@@ -90,6 +90,7 @@ class DatabaseConnections
             "password" => $db_settings['sql_password'],
             "hostspec" => $db_settings['sql_server'],
             "database" => $db_settings['sql_database'],
+            "charset"  => 'utf8',
             "new_link" => true
         );
 
@@ -105,6 +106,7 @@ class DatabaseConnections
             "password" => $db_settings['sql_password'],
             "hostspec" => $db_settings['sql_server'],
             "database" => $db_settings['sql_radmindatabase'],
+            "charset"  => 'utf8',
             'portability' => MDB2_PORTABILITY_ALL ^ MDB2_PORTABILITY_FIX_CASE,
             "new_link" => true
         );

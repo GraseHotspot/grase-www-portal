@@ -46,7 +46,7 @@
 
             <div class="collapse navbar-collapse" id="navbar-collapse-1">
               <ul class="nav navbar-nav">
-                <li {if $activepage == 'portal'}class="active"{/if}><a href="#">Login</a></li>
+                <li {if $activepage == 'portal'}class="active"{/if}><a href="/grase/uam/hotspot">{t}Login{/t}</a></li>
 <!--                <li><a href="#">Features</a></li>
                 <li><a href="#">Contact</a></li>-->
                 {if !$hidehelplink}<li {if $activepage == 'help'}class='active'{/if}><a href="help">{t}Help{/t}</a></li>{/if}

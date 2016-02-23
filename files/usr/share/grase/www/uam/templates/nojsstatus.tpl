@@ -13,7 +13,7 @@
 <div id="statusPage">
 
 <p id="loggedinusername">{t}You are logged in as:{/t} <span id="UserNameLink">{$user.Username}</span></p>
-<p id="myaccountlink"><a href="/grase/radmin/usermin" onclick="window.open(this.href,'_blank');return false;">Access My Account</a></p>
+<p id="myaccountlink"><a href="/grase/radmin/usermin" onclick="window.open(this.href,'_blank');return false;">{t}Access My Account{/t}</a></p>
 
 <table border="0" id="statusTable" style="padding-top:4px;font-size:70%">
 <tr id="UserNameRow" class="chilliLabelhide">
@@ -37,11 +37,11 @@
 </tr>
 <tr id="sessionTimeoutRow" class="chilliLabelhide">
 <td id="sessionTimeoutLabel" class="chilliLabel"><b>{t}Max Session Time{/t}</b></td>
-<td id="sessionTimeout" class="chilliValue">Not available</td>
+<td id="sessionTimeout" class="chilliValue">{t}Not available{/t}</td>
 </tr>
 <tr id="idleTimeoutRow" class="chilliLabelhide">
 <td id="idleTimeoutLabel" class="chilliLabel"><b>{t}Max Idle Time{/t}</b></td>
-<td id="idleTimeout" class="chilliValue">Not available</td>
+<td id="idleTimeout" class="chilliValue">{t}Not available{/t}</td>
 </tr>
 <tr id="startTimeRow" class="chilliLabel">
 <td id="startTimeLabel" class="chilliLabel"><b>{t}Start Time{/t}</b></td>
@@ -61,7 +61,7 @@
 </tr>
 <tr id="idleTimeRow" class="chilliLabelhide">
 <td id="idleTimeLabel" class="chilliLabel"><b>{t}Idle Time{/t}</b></td>
-<td id="idleTime" class="chilliValue">Not available</td>
+<td id="idleTime" class="chilliValue">{t}Not available{/t}</td>
 </tr>
 <tr id="inputOctetsRow" class="chilliLabel">
 <td id="inputOctetsLabel" class="chilliLabel"><b>{t}Downloaded{/t}</b></td>

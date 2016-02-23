@@ -75,7 +75,7 @@ class CronFunctions extends DatabaseFunctions
         }
 
         if ($rowsaffected) {
-            return "($rowsaffected) " . T_('First login users activiated') . "\n";
+            return "($rowsaffected) " . T_('First login users activated') . "\n";
         }
 
         return false;

@@ -1,10 +1,11 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
     "hash": "6a8f1619b6dd9e349ee3c6a7911a0f1f",
+    "content-hash": "7744cb25344b64cf9dafe3fd29bef021",
     "packages": [
         {
             "name": "smarty-gettext/smarty-gettext",
@@ -57,16 +58,16 @@
         },
         {
             "name": "smarty/smarty",
-            "version": "v3.1.23",
+            "version": "v3.1.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/smarty-php/smarty.git",
-                "reference": "04f0090c40b1a0e1fb55dbe0297f08386b36de21"
+                "reference": "35480f10e7ce9b0fdaf23d3799d7b79463919b1e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/smarty-php/smarty/zipball/04f0090c40b1a0e1fb55dbe0297f08386b36de21",
-                "reference": "04f0090c40b1a0e1fb55dbe0297f08386b36de21",
+                "url": "https://api.github.com/repos/smarty-php/smarty/zipball/35480f10e7ce9b0fdaf23d3799d7b79463919b1e",
+                "reference": "35480f10e7ce9b0fdaf23d3799d7b79463919b1e",
                 "shasum": ""
             },
             "require": {
@@ -108,7 +109,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2015-05-12 02:08:22"
+            "time": "2015-12-21 01:57:06"
         }
     ],
     "packages-dev": [],
@@ -118,6 +119,7 @@
         "smarty-gettext/smarty-gettext": 20
     },
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": [],
     "platform-dev": []
 }
