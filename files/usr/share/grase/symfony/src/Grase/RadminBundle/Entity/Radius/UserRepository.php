@@ -16,16 +16,34 @@ class UserRepository extends EntityRepository
     {
 
         $query = $this->getEntityManager()->createQueryBuilder()
-            ->select('u', 'rc', 'ug')
+            ->select('u', 'rc', 'ug', 'ra')
             ->from('GraseRadminBundle:Radius\User', 'u')
             ->leftJoin('u.radiuscheck', 'rc')
             ->leftJoin('u.usergroups', 'ug')
-            ->leftJoin('ug.group', 'groups');
+            ->leftJoin('ug.group', 'groups')
+            ->leftJoin('u.radiusAccounting', 'ra');
 
         if ($group) {
             $query->where('groups.name = :groupname')
                 ->setParameter('groupname', $group);
         }
+        return $query->getQuery()->getResult();
+    }
+
+    public function findByUsername($username)
+    {
+
+        $query = $this->getEntityManager()->createQueryBuilder()
+            ->select('u', 'rc', 'ug', 'ra')
+            ->from('GraseRadminBundle:Radius\User', 'u')
+            ->leftJoin('u.radiuscheck', 'rc')
+            ->leftJoin('u.usergroups', 'ug')
+            ->leftJoin('ug.group', 'groups')
+            ->leftJoin('u.radiusAccounting', 'ra');
+
+        $query->where('u.username = :username')
+            ->setParameter('username', $username);
+
         return $query->getQuery()->getResult();
     }
 

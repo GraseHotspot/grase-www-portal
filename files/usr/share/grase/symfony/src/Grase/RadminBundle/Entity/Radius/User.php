@@ -86,7 +86,7 @@ class User
             $timeLimit = new DateIntervalEnhanced('PT'. $this->getTimeLimitCheck()->getValue() . 'S');
             return $timeLimit->recalculate()->format('%H:%I:%S');
         }
-        return null;
+        return '∞';
     }
 
     /**
@@ -262,5 +262,17 @@ class User
     public function getRadiusAccounting()
     {
         return $this->radiusAccounting;
+    }
+
+    public function getTotalSessionTime()
+    {
+        $sum = 0;
+        /** @var Radacct $radactt */
+        foreach ($this->getRadiusAccounting() as $radactt) {
+            $sum += $radactt->getAcctsessiontime();
+        }
+
+        $totalSessionTime = new DateIntervalEnhanced('PT'. $sum . 'S');
+        return $totalSessionTime->recalculate()->format('%H:%I:%S');
     }
 }
