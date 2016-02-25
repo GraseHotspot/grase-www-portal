@@ -20,8 +20,8 @@
                     <thead>
                     <tr>
                         <th>{% trans %}Username{% endtrans %}</th>
-                        <th>{% trans %}Data Limit{% endtrans %}</th>
-                        <th>{% trans %}Time Limit{% endtrans %}</th>
+                        <th>{% trans %}Data Usage{% endtrans %}</th>
+                        <th>{% trans %}Time Usage{% endtrans %}</th>
                         <th>{% trans %}Expiry{% endtrans %}</th>
                         <th>{% trans %}Group{% endtrans %}</th>
                         <th>{% trans %}Comment{% endtrans %}</th>
@@ -31,7 +31,7 @@
                     {% for user in users %}
                         <tr>
                             <td>{{ user.username }} <a href="#" class="" data-toggle="popover" tabindex="0" data-trigger="focus" title="{% trans %}Password{% endtrans %}" data-content="{{ user.password }}"><i class="fa fa-key"></i></a></td>
-                            <td>{{ user.datalimit|format_bytes }}</td>
+                            <td>{{ user.datausage|format_bytes }}/{{ user.datalimit|format_bytes }}</td>
                             <td>{{ user.totalSessionTime }}/{{ user.timelimit }}</td>
                             <td>{% if user.expiry %}{{ user.expiry|localizeddate('medium', 'short') }}{% endif %}</td>
                             <td>{{ user.allUserGroupsNames }}</td>

@@ -44,6 +44,12 @@ class User
      */
     private $radiusAccounting;
 
+    /**
+     * Private variables for internal use
+     */
+    private $totalSessionTime = null;
+    private $totalDataUsage = null;
+
     public function __construct()
     {
         $this->radiuscheck = new ArrayCollection();
@@ -266,13 +272,30 @@ class User
 
     public function getTotalSessionTime()
     {
-        $sum = 0;
-        /** @var Radacct $radactt */
-        foreach ($this->getRadiusAccounting() as $radactt) {
-            $sum += $radactt->getAcctsessiontime();
-        }
+        if($this->totalSessionTime === null) {
+            $sum = 0;
+            /** @var Radacct $radactt */
+            foreach ($this->getRadiusAccounting() as $radactt) {
+                $sum += $radactt->getAcctsessiontime();
+            }
 
-        $totalSessionTime = new DateIntervalEnhanced('PT'. $sum . 'S');
-        return $totalSessionTime->recalculate()->format('%H:%I:%S');
+            $this->totalSessionTime = new DateIntervalEnhanced('PT' . $sum . 'S');
+        }
+        // TODO Is the formatting of this best left to a view?
+        return $this->totalSessionTime->recalculate()->format('%H:%I:%S');
+    }
+
+    public function getDataUsage()
+    {
+        if($this->totalDataUsage === null) {
+            $sum = 0;
+            /** @var Radacct $radactt */
+            foreach ($this->getRadiusAccounting() as $radactt) {
+                $sum += $radactt->getAcctTotalOctets();
+            }
+
+            $this->totalDataUsage = $sum;
+        }
+        return $this->totalDataUsage;
     }
 }

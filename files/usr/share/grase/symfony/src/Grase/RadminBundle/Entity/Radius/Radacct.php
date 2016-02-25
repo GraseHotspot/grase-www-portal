@@ -554,6 +554,15 @@ class Radacct
     }
 
     /**
+     * Get AcctTotalOctets
+     * @return int
+     */
+    public function getAcctTotalOctets()
+    {
+        return $this->getAcctinputoctets() + $this->getAcctoutputoctets();
+    }
+
+    /**
      * Set calledstationid
      *
      * @param string $calledstationid
