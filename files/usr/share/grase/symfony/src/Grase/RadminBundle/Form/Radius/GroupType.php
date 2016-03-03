@@ -19,7 +19,7 @@ class GroupType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('expiry')
+            ->add('expiry', null, ['attr' => ['placeholder' => 'grase.form.NoExpiry']])
             ->add('expireAfter')
             ->add('maxOctets', null, ['label' => 'grase.form.defaultDataLimit'])
             ->add('maxSeconds', null, ['label' => 'grase.form.defaultTimeLimit'])

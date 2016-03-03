@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-03-03T21:16:33Z" source-language="en" target-language="en_AU" datatype="plaintext" original="not.available">
+  <file date="2016-03-03T21:21:53Z" source-language="en" target-language="en_AU" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -80,14 +80,19 @@
         <target>__Username</target>
         <jms:reference-file line="22">views/Default/users.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="b865c172997c7054be9b824e2be0b09a4d90f8ee" resname="grase.form.NoExpiry">
+        <source>grase.form.NoExpiry</source>
+        <target>No Expiry</target>
+        <jms:reference-file line="22">Form/Radius/GroupType.php</jms:reference-file>
+      </trans-unit>
       <trans-unit id="ea432bd73c997a1f921b1c4bec1b13d859e5c309" resname="grase.form.defaultDataLimit">
         <source>grase.form.defaultDataLimit</source>
-        <target state="new">Default Data Limit (MiB)</target>
+        <target>Default Data Limit (MiB)</target>
         <jms:reference-file line="24">Form/Radius/GroupType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="2885e8356b47f9c9114c4e08f39902563e9b3e2b" resname="grase.form.defaultTimeLimit">
         <source>grase.form.defaultTimeLimit</source>
-        <target state="new">Default Time Limit (Minutes)</target>
+        <target>Default Time Limit (Minutes)</target>
         <jms:reference-file line="25">Form/Radius/GroupType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="2b094b3c4767c1847dd8ca29ded1d115b1b5ea7e" resname="grase.group.save_success">
