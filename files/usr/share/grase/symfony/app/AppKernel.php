@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             //new AppBundle\AppBundle(),
             new Grase\RadminBundle\GraseRadminBundle(),
             new Avanzu\AdminThemeBundle\AvanzuAdminThemeBundle(),
+            new JMS\TranslationBundle\JMSTranslationBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

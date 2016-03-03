@@ -1,57 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file source-language="en" target-language="en-AU" datatype="plaintext" original="file.ext">
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2016-03-03T20:09:19Z" source-language="en" target-language="en_AU" datatype="plaintext" original="not.available">
     <header>
-      <tool tool-id="symfony" tool-name="Symfony"/>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
     </header>
     <body>
-      <trans-unit id="379d5e7e8c9f09972e0915714abad8d3" resname="Edit Group">
-        <source>Edit Group</source>
-        <target>__Edit Group</target>
+      <trans-unit id="6a72085653e4c5be8c7640c868ef787cbcf063d1" resname="All">
+        <source>All</source>
+        <target state="new">All</target>
+        <jms:reference-file line="41">RadminBundle/EventListener/MenuItemListListener.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="e55adecd2f6d6a34c281c35189b654ed" resname="User Accounts">
-        <source>User Accounts</source>
-        <target>__User Accounts</target>
-      </trans-unit>
-      <trans-unit id="f6039d44b29456b20f8f373155ae4973" resname="Username">
-        <source>Username</source>
-        <target>__Username</target>
-      </trans-unit>
-      <trans-unit id="37f58aba31dc8b20566b70d3b839e063" resname="Data Limit">
-        <source>Data Limit</source>
-        <target>__Data Limit</target>
-      </trans-unit>
-      <trans-unit id="396f7598723b7ecdd2994308902ad0b0" resname="Time Limit">
-        <source>Time Limit</source>
-        <target>__Time Limit</target>
-      </trans-unit>
-      <trans-unit id="ad7a5dccbb87e6c4be1cfd32954711fc" resname="Expiry">
-        <source>Expiry</source>
-        <target>__Expiry</target>
-      </trans-unit>
-      <trans-unit id="03937134cedab9078be39a77ee3a48a0" resname="Group">
-        <source>Group</source>
-        <target>__Group</target>
-      </trans-unit>
-      <trans-unit id="0be8406951cdfda82f00f79328cf4efc" resname="Comment">
+      <trans-unit id="153d7a58b3a3e898fcbdd04c462af308414bd09d" resname="Comment">
         <source>Comment</source>
         <target>__Comment</target>
+        <jms:reference-file line="27">views/Default/users.html.twig</jms:reference-file>
+        <jms:reference-file line="27">views/Default/groups.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="dc647eb65e6711e155375218212b3964" resname="Password">
-        <source>Password</source>
-        <target>__Password</target>
+      <trans-unit id="376b92df52b7c5624405ee2f83233a73a2bca782" resname="Data Limit">
+        <source>Data Limit</source>
+        <target>__Data Limit</target>
+        <jms:reference-file line="23">views/Default/users.html.twig</jms:reference-file>
+        <jms:reference-file line="23">views/Default/groups.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="a37ede293936e29279ed543129451ec3" resname="Groups">
-        <source>Groups</source>
-        <target>__Groups</target>
+      <trans-unit id="3bdff6de5a9199b53f624ed19c56cde5e2b455ec" resname="Edit Group">
+        <source>Edit Group</source>
+        <target>__Edit Group</target>
+        <jms:reference-file line="4">views/Default/group_edit.html.twig</jms:reference-file>
+        <jms:reference-file line="16">views/Default/group_edit.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="49ee3087348e8d44e1feda1917443987" resname="Name">
-        <source>Name</source>
-        <target>__Name</target>
-      </trans-unit>
-      <trans-unit id="c048742423aa179a515572c0ec531f4e" resname="Expire After">
+      <trans-unit id="b5edd211d68d574bf14a295ae961fb77f0a3bc9f" resname="Expire After">
         <source>Expire After</source>
         <target>__Expire After</target>
+        <jms:reference-file line="26">views/Default/groups.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ba8f571e0f93e1c1532af206aa8ee39bb19f1cb9" resname="Expiry">
+        <source>Expiry</source>
+        <target>__Expiry</target>
+        <jms:reference-file line="25">views/Default/users.html.twig</jms:reference-file>
+        <jms:reference-file line="25">views/Default/groups.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="171a0606f7c74580fd3982cf57c49d604104120a" resname="Group">
+        <source>Group</source>
+        <target>__Group</target>
+        <jms:reference-file line="26">views/Default/users.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ae9629f4ebb82c6331c0809fa9a0e54b00e578e6" resname="Groups">
+        <source>Groups</source>
+        <target>__Groups</target>
+        <jms:reference-file line="61">RadminBundle/EventListener/MenuItemListListener.php</jms:reference-file>
+        <jms:reference-file line="4">views/Default/groups.html.twig</jms:reference-file>
+        <jms:reference-file line="16">views/Default/groups.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="709a23220f2c3d64d1e1d6d18c4d5280f8d82fca" resname="Name">
+        <source>Name</source>
+        <target>__Name</target>
+        <jms:reference-file line="22">views/Default/groups.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="8be3c943b1609fffbfc51aad666d0a04adf83c9d" resname="Password">
+        <source>Password</source>
+        <target>__Password</target>
+        <jms:reference-file line="33">views/Default/users.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9275792fd86a17e30cce060f1ddb78edced183b4" resname="Time Limit">
+        <source>Time Limit</source>
+        <target>__Time Limit</target>
+        <jms:reference-file line="24">views/Default/users.html.twig</jms:reference-file>
+        <jms:reference-file line="24">views/Default/groups.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="92d0e65449810eaad3e056745b3a6112e850811c" resname="User Accounts">
+        <source>User Accounts</source>
+        <target>__User Accounts</target>
+        <jms:reference-file line="57">RadminBundle/EventListener/MenuItemListListener.php</jms:reference-file>
+        <jms:reference-file line="4">views/Default/users.html.twig</jms:reference-file>
+        <jms:reference-file line="16">views/Default/users.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="84c29015de33e5d22422382a372caba5c58f8c01" resname="Username">
+        <source>Username</source>
+        <target>__Username</target>
+        <jms:reference-file line="22">views/Default/users.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e326fdc5ccc4fce6a6b5926c7dd282402713333c" resname="grase.form.maxData">
+        <source>grase.form.maxData</source>
+        <target state="new">Max MiB</target>
+        <jms:reference-file line="24">Form/Radius/GroupType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="2b094b3c4767c1847dd8ca29ded1d115b1b5ea7e" resname="grase.group.save_success">
+        <source>grase.group.save_success</source>
+        <target state="new">Group Saved</target>
+        <jms:reference-file line="74">RadminBundle/Controller/DefaultController.php</jms:reference-file>
       </trans-unit>
     </body>
   </file>
