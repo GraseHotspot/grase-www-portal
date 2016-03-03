@@ -10,5 +10,5 @@ parameters:
     mailer_host: 127.0.0.1
     mailer_user: null
     mailer_password: null
-    locale: en
+    locale: en_AU
     secret: ee7be65d421626b0ac5b8e67e8443285

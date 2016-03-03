@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en-AU" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="379d5e7e8c9f09972e0915714abad8d3" resname="Edit Group">
+        <source>Edit Group</source>
+        <target>__Edit Group</target>
+      </trans-unit>
+      <trans-unit id="e55adecd2f6d6a34c281c35189b654ed" resname="User Accounts">
+        <source>User Accounts</source>
+        <target>__User Accounts</target>
+      </trans-unit>
+      <trans-unit id="f6039d44b29456b20f8f373155ae4973" resname="Username">
+        <source>Username</source>
+        <target>__Username</target>
+      </trans-unit>
+      <trans-unit id="37f58aba31dc8b20566b70d3b839e063" resname="Data Limit">
+        <source>Data Limit</source>
+        <target>__Data Limit</target>
+      </trans-unit>
+      <trans-unit id="396f7598723b7ecdd2994308902ad0b0" resname="Time Limit">
+        <source>Time Limit</source>
+        <target>__Time Limit</target>
+      </trans-unit>
+      <trans-unit id="ad7a5dccbb87e6c4be1cfd32954711fc" resname="Expiry">
+        <source>Expiry</source>
+        <target>__Expiry</target>
+      </trans-unit>
+      <trans-unit id="03937134cedab9078be39a77ee3a48a0" resname="Group">
+        <source>Group</source>
+        <target>__Group</target>
+      </trans-unit>
+      <trans-unit id="0be8406951cdfda82f00f79328cf4efc" resname="Comment">
+        <source>Comment</source>
+        <target>__Comment</target>
+      </trans-unit>
+      <trans-unit id="dc647eb65e6711e155375218212b3964" resname="Password">
+        <source>Password</source>
+        <target>__Password</target>
+      </trans-unit>
+      <trans-unit id="a37ede293936e29279ed543129451ec3" resname="Groups">
+        <source>Groups</source>
+        <target>__Groups</target>
+      </trans-unit>
+      <trans-unit id="49ee3087348e8d44e1feda1917443987" resname="Name">
+        <source>Name</source>
+        <target>__Name</target>
+      </trans-unit>
+      <trans-unit id="c048742423aa179a515572c0ec531f4e" resname="Expire After">
+        <source>Expire After</source>
+        <target>__Expire After</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
