@@ -7,9 +7,11 @@
         "psr-0": { "": "src/", "SymfonyStandard": "app/" },
         "psr-4":
         {
-          "GraseOld\\": "../src/Grase/"
+          "GraseOld\\": "../src/Grase/",
+           "": "src/"
         },
-        "filesexcllude": [
+        "classmap": [ "app/AppKernel.php", "app/AppCache.php" ],
+        "filesexclude": [
           "../src/includes/constants.php",
           "../src/includes/bootstrap.php"
         ]
@@ -17,24 +19,24 @@
 
     },
     "require": {
-        "php": ">=5.3.3",
+        "php": ">=5.3.9",
         "symfony/symfony": "2.8.*",
-        "doctrine/orm": "~2.2,>=2.2.3,<2.5",
-        "doctrine/dbal": "<2.5",
-        "doctrine/doctrine-bundle": "~1.2",
-        "twig/extensions": "^1.3",
-        "symfony/assetic-bundle": "~2.7",
+        "doctrine/orm": "^2.4.8",
+        "doctrine/doctrine-bundle": "~1.4",
         "symfony/swiftmailer-bundle": "~2.3",
         "symfony/monolog-bundle": "~2.4",
-        "sensio/distribution-bundle": "~3.0,>=3.0.12",
-        "sensio/framework-extra-bundle": "~3.0,>=3.0.2",
+        "sensio/distribution-bundle": "~5.0",
+        "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",
+        "doctrine/dbal": "<2.5",
+        "twig/extensions": "^1.3",
+        "symfony/assetic-bundle": "~2.7",
         "avanzu/admin-theme-bundle": "~1.3.0",
         "pnz/twig-extension-number": "^1.0",
         "doctrine/doctrine-migrations-bundle": "^1.0"
     },
     "require-dev": {
-        "sensio/generator-bundle": "~2.3"
+        "sensio/generator-bundle": "~3.0"
     },
     "scripts": {
         "post-root-package-install": [
@@ -68,7 +70,7 @@
             "file": "app/config/parameters.yml"
         },
         "branch-alias": {
-            "dev-master": "2.6-dev"
+            "dev-master": "2.8-dev"
         }
     }
 }
