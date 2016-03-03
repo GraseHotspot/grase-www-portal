@@ -21,8 +21,8 @@ class GroupType extends AbstractType
             ->add('name')
             ->add('expiry')
             ->add('expireAfter')
-            ->add('maxOctets', null, ['label' => 'grase.form.maxData'])
-            ->add('maxSeconds')
+            ->add('maxOctets', null, ['label' => 'grase.form.defaultDataLimit'])
+            ->add('maxSeconds', null, ['label' => 'grase.form.defaultTimeLimit'])
             ->add('comment')
             ->add('save', SubmitType::class)
         ;
@@ -35,6 +35,17 @@ class GroupType extends AbstractType
                 },
                 function ($megabytes) {
                     return $megabytes*1024*1024;
+                }
+            ));
+
+        $builder->get('maxSeconds')
+            ->addModelTransformer(new CallbackTransformer(
+                // Transform Seconds to Minutes
+                function ($seconds) {
+                    return $seconds/60;
+                },
+                function ($minutes) {
+                    return $minutes * 60;
                 }
             ));
     }
