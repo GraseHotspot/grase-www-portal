@@ -17,3 +17,11 @@ services:
             - { name: kernel.event_listener, event: theme.navbar_user, method: onShowUser }
         arguments: [@session, @doctrine, @service_container]
 
+
+
+    grase.manager.group:
+        class: Grase\RadminBundle\Entity\Radius\GroupManager
+        arguments:
+            dispatcher: @event_dispatcher
+            em: @doctrine.orm.entity_manager
+            class: Grase\RadminBundle\Entity\Radius\Group

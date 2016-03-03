@@ -2,8 +2,11 @@
 
 namespace Grase\RadminBundle\Controller;
 
+use Grase\RadminBundle\Entity\Radius\Group;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Grase\RadminBundle\Form\Radius\GroupType;
+use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
@@ -13,7 +16,7 @@ class DefaultController extends Controller
         //dump($check_repo->findAll()[0]);
 
         $users_repo = $this->getDoctrine()->getManager()->getRepository('Grase\RadminBundle\Entity\Radius\User');
-        dump($users_repo->findAll()[3]->getRadiusAccounting()[1]);
+        dump($users_repo->findByUsername('f2ed1e351b48')[0]->getRadiusAccounting());
 
         return $this->render('GraseRadminBundle:Default:index.html.twig', array('name' => $name));
     }
@@ -49,6 +52,35 @@ class DefaultController extends Controller
             'GraseRadminBundle:Default:groups.html.twig',
             [
                 'groups' => $groups
+            ]
+        );
+    }
+
+    /**
+     * @Route("/group/{id}/edit", name="grase_group_edit")
+     */
+    public function editGroup(Request $request, Group $group)
+    {
+
+        // Insert permissions check here for editing
+
+        $form = $this->createForm(GroupType::class, $group);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->container->get('grase.manager.group')->saveGroup($group);
+
+            $this->addFlash('success', $this->get('translator')->trans('grase.group.save_success'));
+
+            return $this->redirectToRoute('grase_group_edit', ['id' => $group->getId()]);
+        }
+
+        return $this->render(
+            'GraseRadminBundle:Default:group_edit.html.twig',
+            [
+                'group' => $group,
+                'group_form' => $form->createView()
             ]
         );
     }

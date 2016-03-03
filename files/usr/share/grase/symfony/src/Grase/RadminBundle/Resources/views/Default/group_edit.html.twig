@@ -1,0 +1,31 @@
+{% extends "GraseRadminBundle:Default:layout.html.twig" %}
+
+{% block page_title %}
+    {% trans %}Edit Group{% endtrans %}
+{% endblock page_title %}
+
+{% block page_subtitle %}
+{{ group.name }}
+{% endblock page_subtitle %}
+
+{% block content %}
+
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">{% trans %}Edit Group{% endtrans %}</h3>
+            </div>
+            <div class="box-body">
+                {{ form_start(group_form) }}
+                {{ form_widget(group_form) }}
+                {{ form_end(group_form) }}
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts_inline %}
+
+{% endblock %}

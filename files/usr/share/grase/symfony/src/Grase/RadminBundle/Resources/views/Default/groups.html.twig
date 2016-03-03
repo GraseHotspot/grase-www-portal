@@ -30,7 +30,7 @@
                     <tbody>
                     {% for group in groups %}
                         <tr>
-                            <td>{{ group.name }}</td>
+                            <td><a href="{{ path('grase_group_edit', {'groupid': group.id} ) }}">{{ group.name }}</a></td>
                             <td>{{ group.maxOctets|format_bytes }}</td>
                             <td>{{ group.maxSeconds }}</td>
                             <td>{{ group.expiry }}</td>

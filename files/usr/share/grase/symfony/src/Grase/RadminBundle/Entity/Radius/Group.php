@@ -29,31 +29,31 @@ class Group
 
     /**
      * @var string
-     * @ORM\Column(name="Expiry", type="string", length=100)
+     * @ORM\Column(name="Expiry", type="string", length=100, nullable=true)
      */
     private $expiry;
 
     /**
      * @var string
-     * @ORM\Column(name="ExpireAfter", type="string", length=100)
+     * @ORM\Column(name="ExpireAfter", type="string", length=100, nullable=true)
      */
     private $expireAfter;
 
     /**
      * @var integer
-     * @ORM\Column(name="MaxOctets", type="integer")
+     * @ORM\Column(name="MaxOctets", type="integer", nullable=true)
      */
     private $maxOctets;
 
     /**
      * @var integer
-     * @ORM\Column(name="MaxSeconds", type="integer")
+     * @ORM\Column(name="MaxSeconds", type="integer", nullable=true)
      */
     private $maxSeconds;
 
     /**
      * @var string
-     * @ORM\Column(name="Comment", type="string", length=300)
+     * @ORM\Column(name="Comment", type="string", length=300, nullable=true)
      */
     private $comment;
 
