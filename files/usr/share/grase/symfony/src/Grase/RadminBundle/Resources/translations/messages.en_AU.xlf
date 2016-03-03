@@ -82,12 +82,12 @@
       </trans-unit>
       <trans-unit id="ea432bd73c997a1f921b1c4bec1b13d859e5c309" resname="grase.form.defaultDataLimit">
         <source>grase.form.defaultDataLimit</source>
-        <target state="new">grase.form.defaultDataLimit</target>
+        <target state="new">Default Data Limit (MiB)</target>
         <jms:reference-file line="24">Form/Radius/GroupType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="2885e8356b47f9c9114c4e08f39902563e9b3e2b" resname="grase.form.defaultTimeLimit">
         <source>grase.form.defaultTimeLimit</source>
-        <target state="new">grase.form.defaultTimeLimit</target>
+        <target state="new">Default Time Limit (Minutes)</target>
         <jms:reference-file line="25">Form/Radius/GroupType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="2b094b3c4767c1847dd8ca29ded1d115b1b5ea7e" resname="grase.group.save_success">
