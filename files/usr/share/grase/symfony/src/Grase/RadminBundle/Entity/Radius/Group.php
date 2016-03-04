@@ -3,6 +3,7 @@
 namespace Grase\RadminBundle\Entity\Radius;
 
 use Doctrine\ORM\Mapping as ORM;
+use Grase\RadminBundle\Validator\Constraints as GraseAssert;
 
 /**
  * Group
@@ -30,6 +31,7 @@ class Group
     /**
      * @var string
      * @ORM\Column(name="Expiry", type="string", length=100, nullable=true)
+     * @GraseAssert\StrToTime
      */
     private $expiry;
 
