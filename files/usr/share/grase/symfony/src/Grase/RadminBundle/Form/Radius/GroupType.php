@@ -54,7 +54,7 @@ class GroupType extends AbstractType
                         return $seconds === null ? null : $seconds / 60;
                     },
                     function ($minutes) {
-                        return $minutes === null? null $minutes * 60;
+                        return $minutes === null ? null : $minutes * 60;
                     }
                 )
             );
