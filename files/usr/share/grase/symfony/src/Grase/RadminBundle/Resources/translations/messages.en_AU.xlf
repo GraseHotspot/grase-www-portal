@@ -95,9 +95,9 @@
         <target>Default Time Limit (Minutes)</target>
         <jms:reference-file line="25">Form/Radius/GroupType.php</jms:reference-file>
       </trans-unit>
-      <trans-unit id="2b094b3c4767c1847dd8ca29ded1d115b1b5ea7e" resname="grase.group.save_success">
-        <source>grase.group.save_success</source>
-        <target>Group Saved</target>
+      <trans-unit id="2b094b3c4767c1847dd8ca29ded1d115b1b5ea7e" resname="grase.group.save_success.%groupname%">
+        <source>grase.group.save_success.%groupname%</source>
+        <target>Group '%groupname%' saved</target>
         <jms:reference-file line="74">RadminBundle/Controller/DefaultController.php</jms:reference-file>
       </trans-unit>
     </body>

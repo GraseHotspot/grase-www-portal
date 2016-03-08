@@ -71,9 +71,9 @@ class DefaultController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->container->get('grase.manager.group')->saveGroup($group);
 
-            $this->addFlash('success', $this->get('translator')->trans('grase.group.save_success'));
+            $this->addFlash('success', $this->get('translator')->trans('grase.group.save_success.%groupname%', ['%groupname%' => $group->getName()]));
 
-            return $this->redirectToRoute('grase_group_edit', ['id' => $group->getId()]);
+            return $this->redirectToRoute('grase_groups');
         }
 
         return $this->render(
