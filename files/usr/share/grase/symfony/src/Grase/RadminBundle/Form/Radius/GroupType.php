@@ -38,10 +38,10 @@ class GroupType extends AbstractType
                 new CallbackTransformer(
                     // Transform Octets to Megabytes
                     function ($octets) {
-                        return $octets / 1024 / 1024;
+                        return $octets === null ? null : $octets / 1024 / 1024;
                     },
                     function ($megabytes) {
-                        return $megabytes * 1024 * 1024;
+                        return $megabytes === null ? null : $megabytes * 1024 * 1024;
                     }
                 )
             );
@@ -51,10 +51,10 @@ class GroupType extends AbstractType
                 new CallbackTransformer(
                     // Transform Seconds to Minutes
                     function ($seconds) {
-                        return $seconds / 60;
+                        return $seconds === null ? null : $seconds / 60;
                     },
                     function ($minutes) {
-                        return $minutes * 60;
+                        return $minutes === null? null $minutes * 60;
                     }
                 )
             );
