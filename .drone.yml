@@ -1,4 +1,6 @@
 build:
+  clone:
+    tags: true
   image: 'grasewwwbuild'
   commands:
     - dch -b -v $(git describe |tr '-' '.') "Nightly"
