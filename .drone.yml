@@ -1,0 +1,7 @@
+build:
+  image: 'grasewwwbuild'
+  commands:
+    - dch -b -v $(git describe |tr '-' '.') "Nightly"
+    - git commit -a -m "Nightly Build Commit"
+    - git-buildpackage --git-debian-branch='hotfix/3.8.1'
+
