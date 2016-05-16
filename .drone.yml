@@ -12,10 +12,10 @@ publish:
     host: localhost
     username: artifacts
     password: $$SFTP_PASSWORD
-    destination_path: /home/artifacts/grase-www-portal/
     files:
       - *.deb
       - *.build
       - *.changes
       - *.dsc
       - *.tar.xz
+    destination_path: /home/artifacts/grase-www-portal/
