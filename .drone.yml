@@ -13,9 +13,9 @@ publish:
     username: artifacts
     password: $$SFTP_PASSWORD
     files:
-      - *.deb
-      - *.build
-      - *.changes
-      - *.dsc
-      - *.tar.xz
+      - '*.deb'
+      - '*.build'
+      - '*.changes'
+      - '*.dsc'
+      - '*.tar.xz'
     destination_path: /home/artifacts/grase-www-portal/
