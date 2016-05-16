@@ -7,3 +7,15 @@ build:
     - git commit -a -m "Nightly Build Commit"
     - git-buildpackage -us -uc
 
+publish:
+  sftp:
+    host: localhost
+    username: artifacts
+    password: $$SFTP_PASSWORD
+    destination_path: /home/artifacts/grase-www-portal/
+    files:
+      - *.deb
+      - *.build
+      - *.changes
+      - *.dsc
+      - *.tar.xz
