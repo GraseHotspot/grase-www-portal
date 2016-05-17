@@ -9,7 +9,7 @@ build:
 
 publish:
   sftp:
-    host: localhost
+    host: $$SFTP_HOST
     username: artifacts
     password: $$SFTP_PASSWORD
     files:
