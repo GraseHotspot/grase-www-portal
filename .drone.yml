@@ -21,7 +21,7 @@ publish:
     username: artifacts
     password: $$SFTP_PASSWORD
     files:
-        - './build-area/*.deb'
+      - './build-area/*.deb'
       - './build-area/*.build'
       - './build-area/*.changes'
       - './build-area/*.dsc'
