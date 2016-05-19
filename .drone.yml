@@ -5,7 +5,7 @@ build:
   commands:
     - dch -b -v $(git describe |tr '-' '.') "Nightly"
     - git commit -a -m "Nightly Build Commit"
-    - git-buildpackage -us -uc
+    - git-buildpackage -us -uc --git-export-dir=./build-area
 
 publish:
   sftp:
