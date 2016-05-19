@@ -4,7 +4,7 @@ build:
   image: 'grasewwwbuild'
   commands:
     - mkdir /root/.cache
-    - cp -a /drone/bower /root/.cache/
+    - cp -a /drone/bower /root/.cache/ || true
     - rm -rf /drone/bower
     - dch -b -v $(git describe |tr '-' '.') "Nightly"
     - git commit -a -m "Nightly Build Commit"
@@ -21,9 +21,9 @@ publish:
     username: artifacts
     password: $$SFTP_PASSWORD
     files:
-      - '*.deb'
-      - '*.build'
-      - '*.changes'
-      - '*.dsc'
-      - '*.tar.xz'
+        - './build-area/*.deb'
+      - './build-area/*.build'
+      - './build-area/*.changes'
+      - './build-area/*.dsc'
+      - './build-area/*.tar.xz'
     destination_path: /home/artifacts/grase-www-portal/
