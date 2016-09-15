@@ -285,6 +285,9 @@ function process_reply(resp) {
                 if (typeof (userurl) == 'string') {
                     userurl = decodeURIComponent(userurl);
                     error_message("Continue to your site <a target='_blank' href='" + userurl + "'>" + userurl + "</a>", 'alert-success');
+                    if (userurl.match(/(generate_204)/)) {
+                        window.location.href = userurl;
+                    }
                 }
 
             }
