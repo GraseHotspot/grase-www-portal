@@ -11,7 +11,7 @@
         <div id="generated">
             {php}global $pagestarttime;$mtime = microtime();$mtime = explode(" ",$mtime);$mtime = $mtime[1] + $mtime[0];$endtime = $mtime;$totaltime = round(($endtime - $pagestarttime), 2);echo "Page generated in ".$totaltime." seconds on ";{/php}{$RealHostname}
             using
-            {php}function convert($size){$unit=array('b','kb','mb','gb','tb','pb');return @round($size/pow(1024,($i=floor(log($size,1024)))),2).' '.$unit[$i];} echo convert(memory_get_peak_usage(true)) ; // 36640{/php}
+            {php}function convert($size){$unit=array('b','kb','mb','gb','tb','pb');return @round($size/pow(1024,($i=floor(log($size,1024)))),2).' '.$unit[$i];} echo convert(memory_get_peak_usage(true)) ;{/php}
             mem
 
             <!-- close 'generated' div -->
