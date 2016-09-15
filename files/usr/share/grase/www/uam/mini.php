@@ -35,4 +35,3 @@ $smarty->assign("loginlink2", $loginlink2);
 
 $smarty->display('mini.tpl');
 
-?>

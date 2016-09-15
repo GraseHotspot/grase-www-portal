@@ -34,5 +34,3 @@ header("Location: http://$lanIP:3990/login?username=$username&response=$response
     return $hex;
 }*/
 
-?>
-

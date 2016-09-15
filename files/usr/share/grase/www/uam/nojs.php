@@ -24,5 +24,3 @@ $smarty->assign("loginlink", $loginlink);
 $smarty->assign("loginlink2", $loginlink2);
 
 $smarty->display('nojs.tpl');
-
-?>

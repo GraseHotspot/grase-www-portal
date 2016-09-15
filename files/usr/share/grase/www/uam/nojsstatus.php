@@ -53,5 +53,3 @@ if($username != '')
     $smarty->display('nojsstatus.tpl');
 
 //print_r($user);
-
-?>
