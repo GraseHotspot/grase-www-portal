@@ -3,11 +3,15 @@ header("Content-Type: text/javascript; charset=utf-8");
 
 require_once('includes/site.inc.php');
 
+$uamIP = (empty($_GET['uamip'])) ? $lanIP : $_GET['uamip'];
+$uamPort = (empty($_GET['uamport'])) ? 3990 : $_GET['uamport'];
+
 $jsfile = basename($_GET['js'], '.js');
 $jsfilecontents = file_get_contents("js/$jsfile.js");
 
 $search = array(
-    "###SERVERIPADDRESS###",
+    "###UAMIPADDRESS###",
+    "###UAMPORT###",
     'Username is required',
     'Are you sure you want to disconnect now?',
     'Error loading generic login form',
@@ -29,7 +33,8 @@ $search = array(
 
     );
 $replace = array(
-    $lanIP,
+    $uamIP,
+    $uamPort,
     T_('Username is required'),
     T_('Are you sure you want to disconnect now?'),
     T_('Error loading generic login form'),

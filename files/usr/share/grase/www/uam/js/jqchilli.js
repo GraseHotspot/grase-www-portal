@@ -19,8 +19,8 @@ var logintype = "";
 
 var chilliController = {
     interval: 30,
-    host: "###SERVERIPADDRESS###",
-    port: 3990,
+    host: "###UAMIPADDRESS###",
+    port: ###UAMPORT###,
     ident: '00',
     ssl: false,
     uamService: ''

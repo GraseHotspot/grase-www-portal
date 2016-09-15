@@ -57,13 +57,25 @@ if($Settings->getSetting('autocreategroup'))
     $smarty->assign('automac', true);
 }
 
+/*
+ * We need uamip and uamport to pass to jqchilli.js
+ */
+$uamIP = (empty($_GET['uamip'])) ? $lanIP : $_GET['uamip'];
+$uamPort = (empty($_GET['uamport'])) ? 3990 : $_GET['uamport'];
+$smarty->assign('uamquery', [
+    'uamip' => $uamIP,
+    'uamport' => $uamPort,
+]);
+
 /* Important parts of uamopts
     * challenge
     * userurl
     * res
     
-*/    
+*/
 
+
+// NB: This won't work when the local server isn't the coova-chilli device
 if(!isset($_GET['res']))
 {
     // Redirect to prelogin

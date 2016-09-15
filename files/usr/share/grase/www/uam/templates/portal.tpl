@@ -66,7 +66,7 @@
         <span id="loggedinuserName" style="display: none">{t}Logged in as{/t} <strong id="loggedinuserNameVal"></strong></span>
         <span id="sessionTimeout" style="display: none"><br/>{t}Remaining Session Time{/t} <strong id="sessionTimeoutVal"></strong></span>
         <span id="sessionMaxTotalOctets" style="display: none"><br/>{t}Remaining Session Data{/t} <strong id="sessionMaxTotalOctetsVal"></strong></span>
-        <br/><a class="btn btn-danger" href="http://1.0.0.0" id="logofflink">{t}Logout{/t}</a> {if $activepage != 'mini'}<a href="/grase/uam/mini" class="btn btn-success" target="grase_uam" id='statuslink'>{t}Open Status Window{/t} <i class="fa fa-external-link"></i></a>{/if}
+        <br/><a class="btn btn-danger" href="http://1.0.0.0" id="logofflink">{t}Logout{/t}</a> {if $activepage != 'mini'}<a href="/grase/uam/mini?{$uamquery}" class="btn btn-success" target="grase_uam" id='statuslink'>{t}Open Status Window{/t} <i class="fa fa-external-link"></i></a>{/if}
     </div>
 
     <!-- Below Login HTML Template -->{$tpl_belowloginhtml}<!-- End Below Login HTML Template -->
@@ -75,7 +75,7 @@
 
     {if $js}
         <script type="text/javascript" src="/grase/uam/js/chilliMD5.js"></script>
-        <script type="text/javascript" id='chillijs' src='/grase/uam/js.php?js=jqchilli.js'></script>
+        <script type="text/javascript" id='chillijs' src='/grase/uam/js.php?js=jqchilli.js&{$uamquery}'></script>
         <p class="javascriptdisabletoggle">{t}Trouble logging in?{/t} <a href="?disablejs">{t}Click here to try a less secure login.{/t}</a></p>
     {/if}
     {if $nojs}
