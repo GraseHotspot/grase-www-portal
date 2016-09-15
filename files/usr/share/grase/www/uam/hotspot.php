@@ -58,10 +58,10 @@ $uamIP = (empty($_GET['uamip'])) ? $lanIP : $_GET['uamip'];
 $uamPort = (empty($_GET['uamport'])) ? 3990 : $_GET['uamport'];
 $smarty->assign(
     'uamquery',
-    [
+    http_build_query([
         'uamip' => $uamIP,
         'uamport' => $uamPort,
-    ]
+    ])
 );
 
 /* Important parts of uamopts

@@ -11,11 +11,11 @@ $query = $loginurl['query'];
 parse_str($query, $uamopts);
 
 if(isset($_GET['loginurl'])){
-	$loginlink = "http://$lanIP/uam/mini?$query";
-	$loginlink2 = $_GET['loginurl'];
+    $loginlink = "http://$lanIP/uam/mini?$query";
+    $loginlink2 = $_GET['loginurl'];
 }else{
-	$loginlink = "http://$lanIP/uam/mini";
-	$loginlink2 = "http://$lanIP:3990/prelogin";
+    $loginlink = "http://$lanIP/uam/mini";
+    $loginlink2 = "http://$lanIP:3990/prelogin";
 }
 
 /*
@@ -23,11 +23,13 @@ if(isset($_GET['loginurl'])){
  */
 $uamIP = (empty($_GET['uamip'])) ? $lanIP : $_GET['uamip'];
 $uamPort = (empty($_GET['uamport'])) ? 3990 : $_GET['uamport'];
-$smarty->assign('uamquery', [
-		'uamip' => $uamIP,
-		'uamport' => $uamPort,
-]);
-
+$smarty->assign(
+    'uamquery',
+    http_build_query([
+            'uamip' => $uamIP,
+            'uamport' => $uamPort,
+    ])
+);
 $smarty->assign("user_url", $uamopts['userurl']);
 
 $smarty->assign("loginlink", $loginlink);
