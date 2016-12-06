@@ -1,10 +1,10 @@
 {if !$hide && !$hidefooter}
     <div id="return">
-        {if !$hidehelplink}<a href="/grase/uam/help">Help</a>&nbsp;|&nbsp;{/if}
+        {if !$hidehelplink}<a href="/grase/uam/help">{t}Help Page{/t}</a>&nbsp;|&nbsp;{/if}
         <a href="{$website_link}">{$website_name}</a>&nbsp;|&nbsp;
-        <a href="/grase/radmin/usermin">My Account</a>&nbsp;|&nbsp;
+        <a href="/grase/radmin/usermin">{t}My Account{/t}</a>&nbsp;|&nbsp;
         <a href="{$Support.link}">{t}Support{/t}: {$Support.name}</a>&nbsp;|&nbsp;
-        <a href="/grase/radmin/">Admin</a>
+        <a href="/grase/radmin/">{t}Admin{/t}</a>
 
         <div id="copyright">&copy;&nbsp;{$smarty.now|date_format:'%Y'}&nbsp;<a href="http://grasehotspot.org/">Timothy
                 White</a></div>
