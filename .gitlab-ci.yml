@@ -1,8 +1,9 @@
 
 jessie-all:
+  stage: build
   image: grase/build-images:jessie
   script:
-    - ./build.sh  
+    - ./build.sh
     - mkdir artifacts
     - mv -v ../grase-www-portal_* artifacts/
   artifacts:
@@ -11,9 +12,10 @@ jessie-all:
     expire_in: 1 week
 
 trusty-all:
+  stage: build
   image: grase/build-images:trusty
   script:
-    - ./build.sh  
+    - ./build.sh
     - mkdir artifacts
     - mv -v ../grase-www-portal_* artifacts/
   artifacts:
@@ -22,16 +24,13 @@ trusty-all:
     expire_in: 1 week
 
 xenial-all:
-    image: grase/build-images:xenial
+  stage: build
+  image: grase/build-images:xenial
   script:
-    - ./build.sh  
+    - ./build.sh
     - mkdir artifacts
     - mv -v ../grase-www-portal_* artifacts/
   artifacts:
     paths:
       - artifacts/
     expire_in: 1 week
-
-
-
-
