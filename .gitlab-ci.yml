@@ -2,7 +2,7 @@
 jessie-amd64:
   image: grase/build-images:jessie
   script:
-    - build.sh 
+    - ./build.sh  
     - mkdir artifacts
     - mv -v ../grase-www-portal_* artifacts/
   artifacts:
@@ -13,7 +13,7 @@ jessie-amd64:
 trusty-amd64:
   image: grase/build-images:trusty
   script:
-    - build.sh 
+    - ./build.sh  
     - mkdir artifacts
     - mv -v ../grase-www-portal_* artifacts/
   artifacts:
@@ -25,7 +25,7 @@ trusty-amd64:
 jessie-i386:
   image: grase/build-images:jessie
   script:
-    - build.sh  -ai386 -d
+    - ./build.sh   -ai386 -d
     - mkdir artifacts
     - mv -v ../grase-www-portal_* artifacts/
   artifacts:
@@ -36,7 +36,7 @@ jessie-i386:
 jessie-armhf:
   image: grase/build-images:jessie
   script:
-    - build.sh  -aarmhf -d
+    - ./build.sh   -aarmhf -d
     - mkdir artifacts
     - mv -v ../grase-www-portal_* artifacts/
   artifacts:
@@ -47,7 +47,7 @@ jessie-armhf:
 jessie-armel:
   image: grase/build-images:jessie
   script:
-    - build.sh  -aarmel -d
+    - ./build.sh   -aarmel -d
     - mkdir artifacts
     - mv -v ../grase-www-portal_* artifacts/
   artifacts:
