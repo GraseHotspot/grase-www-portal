@@ -2,8 +2,5 @@
 
 # Script for building grase-www-portal in CI
 
-version=$(git describe |tr '-' '.')
-[[ ! -z $DISTRO ]] && version="$version~$DISTRO"
-echo Building $version
-dch -b -v $version "CI Build"
+dch -v $(git describe |tr '-' '.')~$(lsb_release -cs) -b ""
 dpkg-buildpackage -us -uc "$@"

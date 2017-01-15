@@ -2,8 +2,6 @@
 jessie-all:
   stage: build
   image: grase/build-images:jessie
-  variables:
-    DISTRO: "jessie"
   script:
     - ./build.sh
     - mkdir artifacts
@@ -16,8 +14,6 @@ jessie-all:
 trusty-all:
   stage: build
   image: grase/build-images:trusty
-  variables:
-    DISTRO: "trusty"
   script:
     - ./build.sh
     - mkdir artifacts
@@ -30,8 +26,6 @@ trusty-all:
 xenial-all:
   stage: build
   image: grase/build-images:xenial
-  variables:
-    DISTRO: "xenial"
   script:
     - ./build.sh
     - mkdir artifacts
