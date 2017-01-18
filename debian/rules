@@ -22,10 +22,25 @@ DEB_FIXPERMS_EXCLUDE := /etc/sudoers.d/grase-www-portal
 include /usr/share/cdbs/1/rules/debhelper.mk
 include /usr/share/cdbs/1/rules/config-package.mk
 
+ifeq ($(shell lsb_release -cs),precise)
+	DEB_DH_GENCONTROL_ARGS_ALL = -- -Vdist:Depends="squid3 (>= 3.1), squid3 (<< 3.2)"
+	export SQUID_VERSION=3.1
+else ifeq ($(shell lsb_release -cs),trusty)
+	DEB_DH_GENCONTROL_ARGS_ALL = -- -Vdist:Depends="squid3 (>= 3.3), squid3 (<< 3.4)"
+	export SQUID_VERSION=3.3
+else ifeq ($(shell lsb_release -cs),xenial)
+	DEB_DH_GENCONTROL_ARGS_ALL = -- -Vdist:Depends="squid (>= 3.5), squid (<< 3.6)"
+	export SQUID_VERSION=3.5
+else ifeq ($(shell lsb_release -cs),jessie)
+	DEB_DH_GENCONTROL_ARGS_ALL = -- -Vdist:Depends="squid3 (>= 3.4), squid3 (<< 3.5)"
+	export SQUID_VERSION=3.4
+else
+	$(error Unsupported distribution)
+endif
+
 build: build-stamp
 
 build-stamp:
 	dh_testdir
 	$(MAKE)
 	touch $@
-

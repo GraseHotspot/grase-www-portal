@@ -6,6 +6,7 @@ jessie-all:
     - ./build.sh
     - mkdir artifacts
     - mv -v ../grase-www-portal_* artifacts/
+    - mv -v ../grase-www-portal-ext-libs_* artifacts/
   artifacts:
     paths:
       - artifacts/
