@@ -1,9 +1,8 @@
-
-jessie-all:
+.build_template: &build_definition
   stage: build
-  image: grase/build-images:jessie
   script:
-    - ./build.sh
+    - dch -v $(git describe |tr '-' '.')~$(lsb_release -cs) -b ""
+    - dpkg-buildpackage
     - mkdir artifacts
     - mv -v ../grase-www-portal_* artifacts/
     - mv -v ../grase-www-portal-ext-libs_* artifacts/
@@ -12,26 +11,14 @@ jessie-all:
       - artifacts/
     expire_in: 1 week
 
+jessie-all:
+  <<: *build_definition
+  image: grase/build-images:jessie
+
 trusty-all:
-  stage: build
+  <<: *build_definition
   image: grase/build-images:trusty
-  script:
-    - ./build.sh
-    - mkdir artifacts
-    - mv -v ../grase-www-portal_* artifacts/
-  artifacts:
-    paths:
-      - artifacts/
-    expire_in: 1 week
 
 xenial-all:
-  stage: build
+  <<: *build_definition
   image: grase/build-images:xenial
-  script:
-    - ./build.sh
-    - mkdir artifacts
-    - mv -v ../grase-www-portal_* artifacts/
-  artifacts:
-    paths:
-      - artifacts/
-    expire_in: 1 week
