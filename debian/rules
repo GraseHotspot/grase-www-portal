@@ -23,16 +23,16 @@ include /usr/share/cdbs/1/rules/debhelper.mk
 include /usr/share/cdbs/1/rules/config-package.mk
 
 ifeq ($(shell lsb_release -cs),precise)
-	DEB_DH_GENCONTROL_ARGS_ALL = -- -Vdist:Depends="squid3 (>= 3.1), squid3 (<< 3.2)"
+	DEB_DH_GENCONTROL_ARGS_ALL = -- -Vdist:Depends="php5-cli, php5, php-mdb2-driver-mysql, php-mdb2, php-auth, php5-intl, php-gettext"
 	export SQUID_VERSION=3.1
 else ifeq ($(shell lsb_release -cs),trusty)
-	DEB_DH_GENCONTROL_ARGS_ALL = -- -Vdist:Depends="squid3 (>= 3.3), squid3 (<< 3.4)"
+	DEB_DH_GENCONTROL_ARGS_ALL = -- -Vdist:Depends="php5-cli, php5, php-mdb2-driver-mysql, php-mdb2, php-auth, php5-intl, php-gettext"
 	export SQUID_VERSION=3.3
 else ifeq ($(shell lsb_release -cs),xenial)
-	DEB_DH_GENCONTROL_ARGS_ALL = -- -Vdist:Depends="squid (>= 3.5), squid (<< 3.6)"
+	DEB_DH_GENCONTROL_ARGS_ALL = -- -Vdist:Depends="php-cli, php, php-mdb2-driver-mysql, php-mdb2, php-auth, php-intl, php-gettext"
 	export SQUID_VERSION=3.5
 else ifeq ($(shell lsb_release -cs),jessie)
-	DEB_DH_GENCONTROL_ARGS_ALL = -- -Vdist:Depends="squid3 (>= 3.4), squid3 (<< 3.5)"
+	DEB_DH_GENCONTROL_ARGS_ALL = -- -Vdist:Depends="php5-cli, php5, php-mdb2-driver-mysql, php-mdb2, php-auth, php5-intl, php-gettext"
 	export SQUID_VERSION=3.4
 else
 	$(error Unsupported distribution)
