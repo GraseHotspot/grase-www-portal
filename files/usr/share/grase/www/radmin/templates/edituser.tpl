@@ -12,6 +12,7 @@
     <label for='Username'>{t}Username{/t}</label>
     <input disabled='disabled' type="text" name="Username" value='{$user.Username|escape}'/>
     <span id="UsernameInfo">&nbsp;</span>
+    <a target='_blank' href='export.php?format=html&user={$user.Username|escape}'>Print Ticket</a>
 </div>
 
 {if ! $user.isComputer}
