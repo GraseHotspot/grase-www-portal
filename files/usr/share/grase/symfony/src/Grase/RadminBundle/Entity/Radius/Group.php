@@ -5,6 +5,7 @@ namespace Grase\RadminBundle\Entity\Radius;
 use Doctrine\ORM\Mapping as ORM;
 use Grase\RadminBundle\Validator\Constraints as GraseAssert;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Group
@@ -27,6 +28,7 @@ class Group
     /**
      * @var string
      * @ORM\Column(name="name", type="string", length=255)
+     * @Groups({"user_get"})
      */
     private $name;
 
@@ -34,30 +36,35 @@ class Group
      * @var string
      * @ORM\Column(name="Expiry", type="string", length=100, nullable=true)
      * @GraseAssert\StrToTime
+     * @Groups({"user_get"})
      */
     private $expiry;
 
     /**
      * @var string
      * @ORM\Column(name="ExpireAfter", type="string", length=100, nullable=true)
+     * @Groups({"user_get"})
      */
     private $expireAfter;
 
     /**
      * @var integer
      * @ORM\Column(name="MaxOctets", type="integer", nullable=true)
+     * @Groups({"user_get"})
      */
     private $maxOctets;
 
     /**
      * @var integer
      * @ORM\Column(name="MaxSeconds", type="integer", nullable=true)
+     * @Groups({"user_get"})
      */
     private $maxSeconds;
 
     /**
      * @var string
      * @ORM\Column(name="Comment", type="string", length=300, nullable=true)
+     * @Groups({"user_get"})
      */
     private $comment;
 

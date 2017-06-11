@@ -4,6 +4,7 @@ namespace Grase\RadminBundle\Entity\Radius;
 
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * UserGroup
@@ -26,11 +27,13 @@ class UserGroup
      * @ORM\Id
      * @ORM\ManyToOne(targetEntity="Group", inversedBy="userGroups")
      * @ORM\JoinColumn(name="GroupName", referencedColumnName="id")
+     * @Groups({"user_get"})
      */
     private $group;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"user_get"})
      */
     private $priority;
 
