@@ -34,6 +34,11 @@ security:
             pattern:  ^/login$
             security: false
 
+        api:
+            pattern: ^/api
+            security: false
+
+
         # secures part of the application
         demo_secured_area:
             pattern:    ^/
@@ -49,6 +54,7 @@ security:
             #anonymous: ~
             #http_basic:
             #    realm: "Secured Demo Area"
+
 
     # with these settings you can restrict or allow access for different parts
     # of your application based on roles, ip, host or methods

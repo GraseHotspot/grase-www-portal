@@ -3,10 +3,11 @@
 namespace Grase\RadminBundle\Entity\Radius;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * UserGroup
- *
+ * @ApiResource
  * @ORM\Table(name="radusergroup")
  * @ORM\Entity(repositoryClass="Grase\RadminBundle\Entity\Radius\UserGroupRepository")
  */
@@ -15,7 +16,7 @@ class UserGroup
 
     /**
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="usergroups")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="userGroups")
      * @ORM\JoinColumn(name="UserName", referencedColumnName="username")
      */
     private $user;
@@ -23,7 +24,7 @@ class UserGroup
     /**
      * @var string
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="Group", inversedBy="usergroups")
+     * @ORM\ManyToOne(targetEntity="Group", inversedBy="userGroups")
      * @ORM\JoinColumn(name="GroupName", referencedColumnName="id")
      */
     private $group;

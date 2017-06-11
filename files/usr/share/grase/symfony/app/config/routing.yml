@@ -8,3 +8,8 @@ grase_radmin_app:
 #app:
 #    resource: @AppBundle/Controller/
 #     type:     annotation
+
+api:
+    resource: '.'
+    type:     'api_platform'
+    prefix:   '/api' # Optional

@@ -4,10 +4,12 @@ namespace Grase\RadminBundle\Entity\Radius;
 
 use Doctrine\ORM\Mapping as ORM;
 use Grase\RadminBundle\Validator\Constraints as GraseAssert;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * Group
  *
+ * @ApiResource
  * @ORM\Table(name="groups")
  * @ORM\Entity
  */
@@ -70,7 +72,7 @@ class Group
     /**
      * @ORM\OneToMany(targetEntity="UserGroup", mappedBy="group", fetch="EAGER")
      */
-    private $usergroups;
+    private $userGroups;
 
     /**
      * Get id
@@ -110,40 +112,40 @@ class Group
      */
     public function __construct()
     {
-        $this->usergroups = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->userGroups = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Add usergroups
+     * Add userGroups
      *
-     * @param \Grase\RadminBundle\Entity\Radius\UserGroup $usergroups
+     * @param \Grase\RadminBundle\Entity\Radius\UserGroup $userGroups
      * @return Group
      */
-    public function addUsergroup(\Grase\RadminBundle\Entity\Radius\UserGroup $usergroups)
+    public function addUsergroup(\Grase\RadminBundle\Entity\Radius\UserGroup $userGroups)
     {
-        $this->usergroups[] = $usergroups;
+        $this->userGroups[] = $userGroups;
 
         return $this;
     }
 
     /**
-     * Remove usergroups
+     * Remove userGroups
      *
-     * @param \Grase\RadminBundle\Entity\Radius\UserGroup $usergroups
+     * @param \Grase\RadminBundle\Entity\Radius\UserGroup $userGroups
      */
-    public function removeUsergroup(\Grase\RadminBundle\Entity\Radius\UserGroup $usergroups)
+    public function removeUsergroup(\Grase\RadminBundle\Entity\Radius\UserGroup $userGroups)
     {
-        $this->usergroups->removeElement($usergroups);
+        $this->userGroups->removeElement($userGroups);
     }
 
     /**
-     * Get usergroups
+     * Get userGroups
      *
      * @return \Doctrine\Common\Collections\Collection
      */
     public function getUsergroups()
     {
-        return $this->usergroups;
+        return $this->userGroups;
     }
 
     /**

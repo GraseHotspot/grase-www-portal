@@ -4,14 +4,12 @@ namespace Grase\RadminBundle\Entity\Radius;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
-use Doctrine\ORM\Mapping as ORM;
-use Grase\RadminBundle\Entity\Radius\Check;
 use Grase\Util\DateIntervalEnhanced;
-use Grase\RadminBundle\Entity\Radius\UserGroup;
 
 /**
  * User
  *
+ * @ApiResource(attributes={"normalization_context"={"groups"={"user_get"}}})
  * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="Grase\RadminBundle\Entity\Radius\UserRepository")
  */
@@ -20,11 +18,13 @@ class User
     /**
      * @ORM\Column(type="string")
      * @ORM\Id
+     * @Groups({"user_get"})
      */
     private $username;
 
     /**
      * @ORM\Column(type="string")
+     * @Groups({"user_get"})
      */
     private $comment;
 
@@ -32,12 +32,13 @@ class User
     /**
      * @ORM\OneToMany(targetEntity="Check", mappedBy="user", fetch="EAGER")
      */
-    private $radiuscheck;
+    private $radiusCheck;
 
     /**
      * @ORM\OneToMany(targetEntity="UserGroup", mappedBy="user", fetch="EAGER")
+     * @Groups({"user_get"})
      */
-    private $usergroups;
+    private $userGroups;
 
     /**
      * @ORM\OneToMany(targetEntity="Radacct", mappedBy="user", fetch="LAZY")
@@ -52,89 +53,14 @@ class User
 
     public function __construct()
     {
-        $this->radiuscheck = new ArrayCollection();
-        $this->usergroups = new ArrayCollection();
+        $this->radiusCheck      = new ArrayCollection();
+        $this->userGroups       = new ArrayCollection();
         $this->radiusAccounting = new ArrayCollection();
-    }
-
-    public function getRadiuscheck()
-    {
-        return $this->radiuscheck;
     }
 
     public function getUsername()
     {
         return $this->username;
-    }
-
-    public function getPassword()
-    {
-        if ($this->getPasswordCheck()) {
-            return $this->getPasswordCheck()->getValue();
-        }
-
-        return null;
-    }
-
-    /**
-     * @return Check
-     */
-    public function getPasswordCheck()
-    {
-        $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'Cleartext-Password'));
-        return $this->getRadiuscheck()->matching($criteria)->first();
-    }
-
-    public function getTimeLimit()
-    {
-        if ($this->getTimeLimitCheck()) {
-            $timeLimit = new DateIntervalEnhanced('PT' . $this->getTimeLimitCheck()->getValue() . 'S');
-            return $timeLimit->recalculate()->format('%H:%I:%S');
-        }
-        return '∞';
-    }
-
-    /**
-     * @return Check
-     */
-    private function getTimeLimitCheck()
-    {
-        $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'Max-All-Session'));
-        return $this->getRadiuscheck()->matching($criteria)->first();
-    }
-
-    public function getDataLimit()
-    {
-        if ($this->getDataLimitCheck()) {
-            return $this->getDataLimitCheck()->getValue();
-        }
-        return null;
-    }
-
-    /**
-     * @return Check
-     */
-    private function getDataLimitCheck()
-    {
-        $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'Max-Octets'));
-        return $this->getRadiuscheck()->matching($criteria)->first();
-    }
-
-    public function getExpiry()
-    {
-        if ($this->getExpiryCheck()) {
-            return new \DateTime($this->getExpiryCheck()->getValue());
-        }
-        return null;
-    }
-
-    /**
-     * @return Check
-     */
-    private function getExpiryCheck()
-    {
-        $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'Expiration'));
-        return $this->getRadiuscheck()->matching($criteria)->first();
     }
 
     /**
@@ -151,14 +77,83 @@ class User
     }
 
     /**
+     * @Groups({"user_get"})
+     * @return null|string
+     */
+    public function getPassword()
+    {
+        if ($this->getPasswordCheck()) {
+            return $this->getPasswordCheck()->getValue();
+        }
+
+        return null;
+    }
+
+    /**
+     * @return Check
+     */
+    public function getPasswordCheck()
+    {
+        $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'Cleartext-Password'));
+
+        return $this->getRadiuscheck()->matching($criteria)->first();
+    }
+
+    public function getRadiuscheck()
+    {
+        return $this->radiusCheck;
+    }
+
+    /**
+     * @Groups({"user_get"})
+     * @return string
+     */
+    public function getTimeLimit()
+    {
+        if ($this->getTimeLimitCheck()) {
+            $timeLimit = new DateIntervalEnhanced('PT' . $this->getTimeLimitCheck()->getValue() . 'S');
+
+            return $timeLimit->recalculate()->format('%H:%I:%S');
+        }
+
+        return '∞';
+    }
+
+    /**
+     * @Groups({"user_get"})
+     * @return string | null
+     */
+    public function getDataLimit()
+    {
+        if ($this->getDataLimitCheck()) {
+            return $this->getDataLimitCheck()->getValue();
+        }
+
+        return null;
+    }
+
+    /**
+     * @Groups({"user_get"})
+     * @return string
+     */
+    public function getExpiry()
+    {
+        if ($this->getExpiryCheck()) {
+            return new \DateTime($this->getExpiryCheck()->getValue());
+        }
+
+        return null;
+    }
+
+    /**
      * Add radiuscheck
      *
-     * @param \Grase\RadminBundle\Entity\Radius\Check $radiuscheck
+     * @param Check $radiuscheck
      * @return User
      */
-    public function addRadiuscheck(\Grase\RadminBundle\Entity\Radius\Check $radiuscheck)
+    public function addRadiuscheck(Check $radiuscheck)
     {
-        $this->radiuscheck[] = $radiuscheck;
+        $this->radiusCheck[] = $radiuscheck;
 
         return $this;
     }
@@ -166,11 +161,11 @@ class User
     /**
      * Remove radiuscheck
      *
-     * @param \Grase\RadminBundle\Entity\Radius\Check $radiuscheck
+     * @param Check $radiuscheck
      */
-    public function removeRadiuscheck(\Grase\RadminBundle\Entity\Radius\Check $radiuscheck)
+    public function removeRadiuscheck(Check $radiuscheck)
     {
-        $this->radiuscheck->removeElement($radiuscheck);
+        $this->radiusCheck->removeElement($radiuscheck);
     }
 
     /**
@@ -190,43 +185,36 @@ class User
     }
 
     /**
-     * Add usergroups
+     * Add userGroups
      *
-     * @param \Grase\RadminBundle\Entity\Radius\UserGroup $usergroups
+     * @param UserGroup $userGroups
      * @return User
      */
-    public function addUsergroup(\Grase\RadminBundle\Entity\Radius\UserGroup $usergroups)
+    public function addUserGroup(UserGroup $userGroups)
     {
-        $this->usergroups[] = $usergroups;
+        $this->userGroups[] = $userGroups;
 
         return $this;
     }
 
     /**
-     * Remove usergroups
+     * Remove userGroups
      *
-     * @param \Grase\RadminBundle\Entity\Radius\UserGroup $usergroups
+     * @param UserGroup $userGroups
      */
-    public function removeUsergroup(\Grase\RadminBundle\Entity\Radius\UserGroup $usergroups)
+    public function removeUserGroup(UserGroup $userGroups)
     {
-        $this->usergroups->removeElement($usergroups);
+        $this->userGroups->removeElement($userGroups);
     }
 
     /**
-     * Get usergroups
-     *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return string of all user group names
      */
-    public function getUsergroups()
-    {
-        return $this->usergroups;
-    }
-
     public function getAllUserGroupsNames()
     {
         $groupnames = [];
         /** @var UserGroup $usergroup */
-        foreach ($this->getUsergroups() as $usergroup) {
+        foreach ($this->getUserGroups() as $usergroup) {
             $groupnames[] = $usergroup->getGroup()->getName();
         }
 
@@ -234,12 +222,22 @@ class User
     }
 
     /**
+     * Get userGroups
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUserGroups()
+    {
+        return $this->userGroups;
+    }
+
+    /**
      * Add radiusAccounting
      *
-     * @param \Grase\RadminBundle\Entity\Radius\Radacct $radiusAccounting
+     * @param Radacct $radiusAccounting
      * @return User
      */
-    public function addRadiusAccounting(\Grase\RadminBundle\Entity\Radius\Radacct $radiusAccounting)
+    public function addRadiusAccounting(Radacct $radiusAccounting)
     {
         $this->radiusAccounting[] = $radiusAccounting;
 
@@ -249,23 +247,17 @@ class User
     /**
      * Remove radiusAccounting
      *
-     * @param \Grase\RadminBundle\Entity\Radius\Radacct $radiusAccounting
+     * @param Radacct $radiusAccounting
      */
-    public function removeRadiusAccounting(\Grase\RadminBundle\Entity\Radius\Radacct $radiusAccounting)
+    public function removeRadiusAccounting(Radacct $radiusAccounting)
     {
         $this->radiusAccounting->removeElement($radiusAccounting);
     }
 
     /**
-     * Get radiusAccounting
-     *
-     * @return \Doctrine\Common\Collections\Collection
+     * @Groups({"user_get"})
+     * @return string
      */
-    public function getRadiusAccounting()
-    {
-        return $this->radiusAccounting;
-    }
-
     public function getTotalSessionTime()
     {
         if ($this->totalSessionTime === null) {
@@ -281,6 +273,20 @@ class User
         return $this->totalSessionTime->recalculate()->format('%H:%I:%S');
     }
 
+    /**
+     * Get radiusAccounting
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRadiusAccounting()
+    {
+        return $this->radiusAccounting;
+    }
+
+    /**
+     * @Groups({"user_get"})
+     * @return integer
+     */
     public function getDataUsage()
     {
         if ($this->totalDataUsage === null) {
@@ -292,6 +298,37 @@ class User
 
             $this->totalDataUsage = $sum;
         }
+
         return $this->totalDataUsage;
+    }
+
+    /**
+     * @return Check
+     */
+    private function getTimeLimitCheck()
+    {
+        $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'Max-All-Session'));
+
+        return $this->getRadiuscheck()->matching($criteria)->first();
+    }
+
+    /**
+     * @return Check
+     */
+    private function getDataLimitCheck()
+    {
+        $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'Max-Octets'));
+
+        return $this->getRadiuscheck()->matching($criteria)->first();
+    }
+
+    /**
+     * @return Check
+     */
+    private function getExpiryCheck()
+    {
+        $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'Expiration'));
+
+        return $this->getRadiuscheck()->matching($criteria)->first();
     }
 }

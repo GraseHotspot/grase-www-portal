@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new Grase\RadminBundle\GraseRadminBundle(),
             new Avanzu\AdminThemeBundle\AvanzuAdminThemeBundle(),
             new JMS\TranslationBundle\JMSTranslationBundle(),
+            new ApiPlatform\Core\Bridge\Symfony\Bundle\ApiPlatformBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
