@@ -3,11 +3,13 @@ files/usr/share/grase/www/*/templates_c/
 files/usr/share/grase/vendor/
 files/usr/share/grase/www/vendor/
 
-# Cache and logs (Symfony2)
-/files/usr/share/grase/symfony/app/cache/*
-/files/usr/share/grase/symfony/app/logs/*
-!app/cache/.gitkeep
-!app/logs/.gitkeep
+# Cache and logs (Symfony3)
+/files/usr/share/grase/symfony/var/cache/*
+/files/usr/share/grase/symfony/var/logs/*
+/files/usr/share/grase/symfony/var/sessions/*
+!var/cache/.gitkeep
+!var/logs/.gitkeep
+!var/sessions/.gitkeep
 
 # Parameters
 /files/usr/share/grase/symfony/app/config/parameters.yml
