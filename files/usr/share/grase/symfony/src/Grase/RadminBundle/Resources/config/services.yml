@@ -9,19 +9,16 @@ services:
         class: %grase_default.menu_listener.class%
         tags:
             - { name: kernel.event_listener, event: theme.sidebar_setup_menu, method: onSetupMenu }
-        arguments: [@security.authorization_checker, @doctrine]
+        arguments: ['@security.authorization_checker', '@doctrine']
 
     grase.show_user_listener:
         class: Grase\RadminBundle\EventListener\ShowUserListener
         tags:
             - { name: kernel.event_listener, event: theme.navbar_user, method: onShowUser }
-        arguments: [@session, @doctrine, @service_container]
+        arguments: ['@session', '@doctrine', '@service_container']
 
 
 
     grase.manager.group:
         class: Grase\RadminBundle\Entity\Radius\GroupManager
-        arguments:
-            dispatcher: @event_dispatcher
-            em: @doctrine.orm.entity_manager
-            class: Grase\RadminBundle\Entity\Radius\Group
+        arguments: ['@event_dispatcher', '@doctrine.orm.entity_manager', Grase\RadminBundle\Entity\Radius\Group]
