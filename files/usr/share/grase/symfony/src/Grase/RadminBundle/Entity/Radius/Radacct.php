@@ -196,12 +196,10 @@ class Radacct
      */
     private $xascendsessionsvrkey;
 
-
-
     /**
      * Get radacctid
      *
-     * @return integer 
+     * @return integer
      */
     public function getRadacctid()
     {
@@ -224,7 +222,7 @@ class Radacct
     /**
      * Get acctsessionid
      *
-     * @return string 
+     * @return string
      */
     public function getAcctsessionid()
     {
@@ -247,7 +245,7 @@ class Radacct
     /**
      * Get acctuniqueid
      *
-     * @return string 
+     * @return string
      */
     public function getAcctuniqueid()
     {
@@ -270,7 +268,7 @@ class Radacct
     /**
      * Get groupname
      *
-     * @return string 
+     * @return string
      */
     public function getGroupname()
     {
@@ -293,7 +291,7 @@ class Radacct
     /**
      * Get realm
      *
-     * @return string 
+     * @return string
      */
     public function getRealm()
     {
@@ -316,7 +314,7 @@ class Radacct
     /**
      * Get nasipaddress
      *
-     * @return string 
+     * @return string
      */
     public function getNasipaddress()
     {
@@ -339,7 +337,7 @@ class Radacct
     /**
      * Get nasportid
      *
-     * @return string 
+     * @return string
      */
     public function getNasportid()
     {
@@ -362,7 +360,7 @@ class Radacct
     /**
      * Get nasporttype
      *
-     * @return string 
+     * @return string
      */
     public function getNasporttype()
     {
@@ -385,7 +383,7 @@ class Radacct
     /**
      * Get acctstarttime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getAcctstarttime()
     {
@@ -408,7 +406,7 @@ class Radacct
     /**
      * Get acctstoptime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getAcctstoptime()
     {
@@ -431,7 +429,7 @@ class Radacct
     /**
      * Get acctsessiontime
      *
-     * @return integer 
+     * @return integer
      */
     public function getAcctsessiontime()
     {
@@ -454,7 +452,7 @@ class Radacct
     /**
      * Get acctauthentic
      *
-     * @return string 
+     * @return string
      */
     public function getAcctauthentic()
     {
@@ -477,7 +475,7 @@ class Radacct
     /**
      * Get connectinfoStart
      *
-     * @return string 
+     * @return string
      */
     public function getConnectinfoStart()
     {
@@ -500,7 +498,7 @@ class Radacct
     /**
      * Get connectinfoStop
      *
-     * @return string 
+     * @return string
      */
     public function getConnectinfoStop()
     {
@@ -523,7 +521,7 @@ class Radacct
     /**
      * Get acctinputoctets
      *
-     * @return integer 
+     * @return integer
      */
     public function getAcctinputoctets()
     {
@@ -546,7 +544,7 @@ class Radacct
     /**
      * Get acctoutputoctets
      *
-     * @return integer 
+     * @return integer
      */
     public function getAcctoutputoctets()
     {
@@ -578,7 +576,7 @@ class Radacct
     /**
      * Get calledstationid
      *
-     * @return string 
+     * @return string
      */
     public function getCalledstationid()
     {
@@ -601,7 +599,7 @@ class Radacct
     /**
      * Get callingstationid
      *
-     * @return string 
+     * @return string
      */
     public function getCallingstationid()
     {
@@ -624,7 +622,7 @@ class Radacct
     /**
      * Get acctterminatecause
      *
-     * @return string 
+     * @return string
      */
     public function getAcctterminatecause()
     {
@@ -647,7 +645,7 @@ class Radacct
     /**
      * Get servicetype
      *
-     * @return string 
+     * @return string
      */
     public function getServicetype()
     {
@@ -670,7 +668,7 @@ class Radacct
     /**
      * Get framedprotocol
      *
-     * @return string 
+     * @return string
      */
     public function getFramedprotocol()
     {
@@ -693,7 +691,7 @@ class Radacct
     /**
      * Get framedipaddress
      *
-     * @return string 
+     * @return string
      */
     public function getFramedipaddress()
     {
@@ -716,7 +714,7 @@ class Radacct
     /**
      * Get acctstartdelay
      *
-     * @return integer 
+     * @return integer
      */
     public function getAcctstartdelay()
     {
@@ -739,7 +737,7 @@ class Radacct
     /**
      * Get acctstopdelay
      *
-     * @return integer 
+     * @return integer
      */
     public function getAcctstopdelay()
     {
@@ -762,7 +760,7 @@ class Radacct
     /**
      * Get xascendsessionsvrkey
      *
-     * @return string 
+     * @return string
      */
     public function getXascendsessionsvrkey()
     {
@@ -785,7 +783,7 @@ class Radacct
     /**
      * Get user
      *
-     * @return \Grase\RadminBundle\Entity\Radius\User 
+     * @return \Grase\RadminBundle\Entity\Radius\User
      */
     public function getUser()
     {

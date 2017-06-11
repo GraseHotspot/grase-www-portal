@@ -113,7 +113,6 @@ class Group
         $this->usergroups = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-
     /**
      * Add usergroups
      *
@@ -261,7 +260,6 @@ class Group
     {
         return $this->comment;
     }
-
 
     /**
      * Set lastUpdated

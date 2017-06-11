@@ -76,7 +76,6 @@ class User
         return null;
     }
 
-
     /**
      * @return Check
      */
@@ -89,7 +88,7 @@ class User
     public function getTimeLimit()
     {
         if ($this->getTimeLimitCheck()) {
-            $timeLimit = new DateIntervalEnhanced('PT'. $this->getTimeLimitCheck()->getValue() . 'S');
+            $timeLimit = new DateIntervalEnhanced('PT' . $this->getTimeLimitCheck()->getValue() . 'S');
             return $timeLimit->recalculate()->format('%H:%I:%S');
         }
         return '∞';
@@ -137,7 +136,6 @@ class User
         $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'Expiration'));
         return $this->getRadiuscheck()->matching($criteria)->first();
     }
-
 
     /**
      * Set username
@@ -191,8 +189,6 @@ class User
         $this->comment = $comment;
     }
 
-
-
     /**
      * Add usergroups
      *
@@ -219,7 +215,7 @@ class User
     /**
      * Get usergroups
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getUsergroups()
     {
@@ -263,7 +259,7 @@ class User
     /**
      * Get radiusAccounting
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getRadiusAccounting()
     {
@@ -272,7 +268,7 @@ class User
 
     public function getTotalSessionTime()
     {
-        if($this->totalSessionTime === null) {
+        if ($this->totalSessionTime === null) {
             $sum = 0;
             /** @var Radacct $radactt */
             foreach ($this->getRadiusAccounting() as $radactt) {
@@ -287,7 +283,7 @@ class User
 
     public function getDataUsage()
     {
-        if($this->totalDataUsage === null) {
+        if ($this->totalDataUsage === null) {
             $sum = 0;
             /** @var Radacct $radactt */
             foreach ($this->getRadiusAccounting() as $radactt) {

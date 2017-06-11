@@ -27,7 +27,6 @@ class MenuItemListListener
         foreach ($this->getMenu($request) as $item) {
             $event->addItem($item);
         }
-
     }
 
     protected function getMenu(Request $request)
@@ -35,7 +34,6 @@ class MenuItemListListener
         // retrieve your menuItem models/entities here
         $items = [];
         if ($this->securityChecker->isGranted('IS_AUTHENTICATED_FULLY')) {
-
             // build user accounts / groups lists
             $user_groups=['grase_users' => [
                 'label' => 'All',
@@ -49,7 +47,6 @@ class MenuItemListListener
                     'route_args' => ['group' => $group->getName()]
                 ];
             }
-
 
             $items = [
                 'grase_radmin_homepage' => 'Status',
@@ -105,5 +102,4 @@ class MenuItemListListener
 
         return $items;
     }
-
 }

@@ -71,5 +71,4 @@ class GroupType extends AbstractType
             )
         );
     }
-
 }

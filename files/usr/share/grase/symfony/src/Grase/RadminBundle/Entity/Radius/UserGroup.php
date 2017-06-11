@@ -33,7 +33,6 @@ class UserGroup
      */
     private $priority;
 
-
     /**
      * Set priority
      *
@@ -50,7 +49,7 @@ class UserGroup
     /**
      * Get priority
      *
-     * @return integer 
+     * @return integer
      */
     public function getPriority()
     {
@@ -73,7 +72,7 @@ class UserGroup
     /**
      * Get user
      *
-     * @return \Grase\RadminBundle\Entity\Radius\User 
+     * @return \Grase\RadminBundle\Entity\Radius\User
      */
     public function getUser()
     {
@@ -96,7 +95,7 @@ class UserGroup
     /**
      * Get group
      *
-     * @return \Grase\RadminBundle\Entity\Radius\Group 
+     * @return \Grase\RadminBundle\Entity\Radius\Group
      */
     public function getGroup()
     {

@@ -4,7 +4,6 @@ namespace Grase\RadminBundle\Entity\Radius;
 
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
  * Check
  *
@@ -51,11 +50,10 @@ class Check
      */
     private $value;
 
-
-    /**
+     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -78,7 +76,7 @@ class Check
     /**
      * Get attribute
      *
-     * @return string 
+     * @return string
      */
     public function getAttribute()
     {
@@ -101,7 +99,7 @@ class Check
     /**
      * Get op
      *
-     * @return string 
+     * @return string
      */
     public function getOp()
     {
@@ -124,7 +122,7 @@ class Check
     /**
      * Get value
      *
-     * @return string 
+     * @return string
      */
     public function getValue()
     {

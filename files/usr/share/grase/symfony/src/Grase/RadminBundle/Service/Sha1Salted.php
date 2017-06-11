@@ -24,5 +24,4 @@ class Sha1Salted implements PasswordEncoderInterface
         //exit(1);
         return $encoded === $this->encodePassword($raw, $encoded);
     }
-
 }
