@@ -37,7 +37,8 @@ AdminLog::getInstance()->log_cron("CRON");
 $DBs = new DatabaseConnections();
 $radiusDB = new \Grase\Database\Database();
 $radminDB = new \Grase\Database\Database('/etc/grase/radmin.conf');
-$upgradeDB = new \Grase\Database\Upgrade($radiusDB, $radminDB, new \Grase\Database\Radmin($radminDB), CronFunctions::getInstance());
+$radmin = new \Grase\Database\Radmin($radminDB);
+$upgradeDB = new \Grase\Database\Upgrade($radiusDB, $radminDB, $radmin, CronFunctions::getInstance());
 $upgradeDatabaseResults = $upgradeDB->upgradeDatabase();
 if ($upgradeDatabaseResults) {
     echo "$upgradeDatabaseResults\n";
@@ -79,6 +80,13 @@ if (isset($_GET['deleteoutofdatausers']) && $_GET['deleteoutofdatausers']) {
     $deleteOutOfDataUsersResults = CronFunctions::getInstance()->deleteOutOfDataUsers();
     if ($deleteOutOfDataUsersResults) {
         echo "$deleteOutOfDataUsersResults\n";
+    }
+}
+
+if (isset($_GET['deleteoldfreeusers']) && $_GET['deleteoldfreeusers']) {
+    $deleteOldFreeUsersResults = CronFunctions::getInstance()->deleteOldFreeUsers($radmin->getSetting('autocreategroup'));
+    if ($deleteOldFreeUsersResults) {
+        echo "$deleteOldFreeUsersResults\n";
     }
 }
 

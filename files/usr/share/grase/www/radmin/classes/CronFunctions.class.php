@@ -165,6 +165,45 @@ class CronFunctions extends DatabaseFunctions
 
     }
 
+    public function deleteOldFreeUsers($freeGroupName)
+    {
+        /* Deletes users from the FreeUsers group that haven't logged in in 2 months
+         * All users that have free logged in should be in mtotacct
+         * Get list of usernames, run deleteUser on each user
+         *
+         */
+        $sql = sprintf("SELECT UserName
+            FROM mtotacct
+            WHERE Username NOT IN (
+              SELECT Username FROM radacct
+            )
+            AND Username IN (
+              SELECT Username FROM radusergroup WHERE GroupName='%s'
+            )
+            GROUP BY username
+            HAVING MAX(AcctDate) < CURRENT_DATE  - INTERVAL 60 DAY",
+            $freeGroupName);
+
+        $results = $this->db->queryAll($sql);
+
+        if (PEAR::isError($results)) {
+            return T_('Fetching free users to delete failed') . $results->toString();
+        }
+
+        foreach ($results as $user) {
+            AdminLog::getInstance()->log_cron("Cron Deleting Free User Last Login > 2 months ${user['UserName']}");
+            $this->deleteUser($user['UserName']);
+        }
+        $deleted_results = sizeof($results);
+
+
+        if ($deleted_results) {
+            return "($deleted_results) " . T_('Old Free users deleted');
+        }
+
+        return false;
+    }
+
     public function deleteExpiredUsers()
     {
         /* Do select to get list of usernames
