@@ -1,4 +1,7 @@
-# Donors
+## Donors
+Please let me know if you don't want your name to appear in the Donor's list.
+
+### Once Off Donors
 * Glyn Pollington
 * Muhammad Zubair
 * Rocco Fusella
@@ -16,6 +19,9 @@
 * Nikolaos Papapanagiotou
 * Thomas Stefanidis
 
-# Hardware Donations
+### Recurring Donors
+* Daniel Crusoe
+
+### Hardware Donations
 * Josef Himmelbauer
 * Michael Raynor
