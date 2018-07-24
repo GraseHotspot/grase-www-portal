@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f97afcb284c5ae8e274857a07f31c21e",
+    "content-hash": "842a50ebc8edbde1af3790bf89c0eac9",
     "packages": [
         {
             "name": "api-platform/api-pack",
@@ -1706,6 +1706,53 @@
                 }
             ],
             "time": "2017-07-14T14:27:02+00:00"
+        },
+        {
+            "name": "pnz/twig-extension-number",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thePanz/Twig-Extension-Number.git",
+                "reference": "5f446c57085010fe40f0af0401f72daaa392692e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thePanz/Twig-Extension-Number/zipball/5f446c57085010fe40f0af0401f72daaa392692e",
+                "reference": "5f446c57085010fe40f0af0401f72daaa392692e",
+                "shasum": ""
+            },
+            "require": {
+                "twig/extensions": "~1.2",
+                "twig/twig": "~1.12 || ~2.0"
+            },
+            "require-dev": {
+                "symfony/translation": "~2.3"
+            },
+            "suggest": {
+                "symfony/translation": "Allow the output to be translated"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Twig_Extensions_": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "thePanz",
+                    "email": "thepanz@gmail.com"
+                }
+            ],
+            "homepage": "https://github.com/thePanz/Twig-Extension-Number",
+            "keywords": [
+                "i18n",
+                "number"
+            ],
+            "time": "2017-02-19T00:07:35+00:00"
         },
         {
             "name": "psr/cache",
@@ -4046,6 +4093,62 @@
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
             "time": "2018-05-30T07:26:09+00:00"
+        },
+        {
+            "name": "twig/extensions",
+            "version": "v1.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twigphp/Twig-extensions.git",
+                "reference": "d188c76168b853481cc75879ea045bf93d718e9c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twigphp/Twig-extensions/zipball/d188c76168b853481cc75879ea045bf93d718e9c",
+                "reference": "d188c76168b853481cc75879ea045bf93d718e9c",
+                "shasum": ""
+            },
+            "require": {
+                "twig/twig": "~1.27|~2.0"
+            },
+            "require-dev": {
+                "symfony/phpunit-bridge": "~3.3@dev",
+                "symfony/translation": "~2.3|~3.0"
+            },
+            "suggest": {
+                "symfony/translation": "Allow the time_diff output to be translated"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Twig_Extensions_": "lib/"
+                },
+                "psr-4": {
+                    "Twig\\Extensions\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Common additional features for Twig that do not directly belong in core",
+            "homepage": "http://twig.sensiolabs.org/doc/extensions/index.html",
+            "keywords": [
+                "i18n",
+                "text"
+            ],
+            "time": "2017-06-08T18:19:53+00:00"
         },
         {
             "name": "twig/twig",
