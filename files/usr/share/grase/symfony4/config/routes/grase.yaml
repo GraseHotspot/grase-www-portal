@@ -1,0 +1,8 @@
+grase_radmin_homepage:
+    #path:     /hello/{name}
+    path:     /
+    defaults: { _controller: App\Controller\DefaultController::indexAction }
+
+#grase_security:
+#    resource: "@App/Controller/SecurityController.php"
+#    type:     annotation

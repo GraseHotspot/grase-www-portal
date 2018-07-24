@@ -1,0 +1,18 @@
+version: "2.0"
+services:
+
+    webserver:
+      build: .
+      volumes:
+        - .:/usr/share/grase/symfony4
+
+
+    mysql:
+      image: mariadb
+      volumes:
+        - ./db_initial:/docker-entrypoint-initdb.d/
+      environment:
+        - MYSQL_ROOT_PASSWORD=dbrootpw
+        - MYSQL_DATABASE=radius
+        - MYSQL_USER=grase
+        - MYSQL_PASSWORD=grase
