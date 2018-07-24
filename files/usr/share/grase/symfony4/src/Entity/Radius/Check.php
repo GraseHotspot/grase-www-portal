@@ -23,7 +23,7 @@ class Check
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="radiuscheck")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="radiusCheck")
      * @ORM\JoinColumn(name="UserName", referencedColumnName="username", nullable=false)
      */
     private $user;

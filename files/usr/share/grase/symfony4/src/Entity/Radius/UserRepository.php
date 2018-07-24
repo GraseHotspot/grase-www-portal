@@ -14,12 +14,13 @@ class UserRepository extends EntityRepository
 {
     public function findByGroup($group = null)
     {
+        @ini_set("memory_limit",-1);
 
         $query = $this->getEntityManager()->createQueryBuilder()
             ->select('u', 'rc', 'ug', 'ra')
             ->from(User::class, 'u')
-            ->leftJoin('u.radiuscheck', 'rc')
-            ->leftJoin('u.usergroups', 'ug')
+            ->leftJoin('u.radiusCheck', 'rc')
+            ->leftJoin('u.userGroups', 'ug')
             ->leftJoin('ug.group', 'groups')
             ->leftJoin('u.radiusAccounting', 'ra');
 

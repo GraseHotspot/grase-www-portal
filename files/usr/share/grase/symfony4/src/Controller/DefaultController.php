@@ -30,12 +30,12 @@ class DefaultController extends Controller
      */
     public function displayUsersAction($group = null)
     {
-        $users_repo = $this->getDoctrine()->getManager()->getRepository('App\Entity\Radius\User');
+        $users_repo = $this->getDoctrine()->getManager()->getRepository(User::class);
 
         $users = $users_repo->findByGroup($group);
 
         return $this->render(
-            'GraseRadminBundle:Default:users.html.twig',
+            'users.html.twig',
             [
                 'users' => $users
             ]
@@ -47,12 +47,12 @@ class DefaultController extends Controller
      */
     public function displayGroups()
     {
-        $groups_repo = $this->getDoctrine()->getManager()->getRepository('GraseRadminBundle:Radius\Group');
+        $groups_repo = $this->getDoctrine()->getManager()->getRepository(Group::class);
 
         $groups = $groups_repo->findAll();
 
         return $this->render(
-            'GraseRadminBundle:Default:groups.html.twig',
+            'groups.html.twig',
             [
                 'groups' => $groups
             ]
