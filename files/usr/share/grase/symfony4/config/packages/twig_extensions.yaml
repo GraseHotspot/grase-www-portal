@@ -1,0 +1,15 @@
+services:
+    _defaults:
+        public: false
+        autowire: true
+        autoconfigure: true
+
+    #Twig\Extensions\ArrayExtension: ~
+    Twig\Extensions\DateExtension: ~
+    Twig\Extensions\IntlExtension: ~
+    #Twig\Extensions\TextExtension: ~
+    twig_extension_numbers:
+        class: Twig_Extensions_Extension_Number
+        public: false
+        tags:
+            - { name: twig.extension }
