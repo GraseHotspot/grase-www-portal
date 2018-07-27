@@ -18,6 +18,7 @@ Please let me know if you don't want your name to appear in the Donor's list.
 * XDIT Namibia
 * Nikolaos Papapanagiotou
 * Thomas Stefanidis
+* Emre Erdogan
 
 ### Recurring Donors
 * Daniel Crusoe
