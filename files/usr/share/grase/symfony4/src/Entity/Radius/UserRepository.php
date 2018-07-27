@@ -3,6 +3,7 @@
 namespace App\Entity\Radius;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Query\Expr\Join;
 
 /**
  * UserRepository
@@ -16,13 +17,15 @@ class UserRepository extends EntityRepository
     {
         @ini_set("memory_limit",-1);
 
+        $this->getAllAccountingSums();
+
         $query = $this->getEntityManager()->createQueryBuilder()
-            ->select('u', 'rc', 'ug', 'ra')
+            ->select('u', 'rc', 'ug'/*, 'ra'*/)
             ->from(User::class, 'u')
             ->leftJoin('u.radiusCheck', 'rc')
             ->leftJoin('u.userGroups', 'ug')
-            ->leftJoin('ug.group', 'groups')
-            ->leftJoin('u.radiusAccounting', 'ra');
+            ->leftJoin('ug.group', 'groups');
+            //->leftJoin('u.radiusAccounting', 'ra');
 
         if ($group) {
             $query->where('groups.name = :groupname')
@@ -46,5 +49,15 @@ class UserRepository extends EntityRepository
             ->setParameter('username', $username);
 
         return $query->getQuery()->getResult();
+    }
+
+    private function getAllAccountingSums() {
+        $query = $this->getEntityManager()->createQueryBuilder()
+            ->select('u.username',  'SUM(ra.acctinputoctets) + SUM(ra.acctoutputoctets) AS AcctTotalOctets')
+            ->from(User::class, 'u')
+            ->join('u.radiusAccounting', 'ra')
+            ->indexBy('u', 'u.username')
+            ->groupBy('u.username');
+        dump($query->getQuery()->getArrayResult());
     }
 }

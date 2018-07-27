@@ -258,7 +258,7 @@ class User
     }
 
     /**
-     * @Groups({"user_get"})
+     * @Groups({"user_get_2"})
      * @return string
      */
     public function getTotalSessionTime()
@@ -287,7 +287,7 @@ class User
     }
 
     /**
-     * @Groups({"user_get"})
+     * @Groups({"user_get_2"})
      * @return integer
      */
     public function getDataUsage()

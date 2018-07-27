@@ -30,6 +30,8 @@ class DefaultController extends Controller
      */
     public function displayUsersAction($group = null)
     {
+
+        /** @var UserRepository $users_repo */
         $users_repo = $this->getDoctrine()->getManager()->getRepository(User::class);
 
         $users = $users_repo->findByGroup($group);
