@@ -3,6 +3,7 @@
 namespace App\Entity\Radius;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
 use App\Util\DateIntervalEnhanced;
@@ -51,10 +52,13 @@ class User
     /**
      * Private variables for internal use
      */
+    /** @var DateIntervalEnhanced */
     private $currentSessionTime = null;
     private $currentDataUsage = null;
     private $currentDataUsageIn = null;
     private $currentDataUsageOut = null;
+    /** @var DateTime */
+    private $lastLogout = null;
 
     public function __construct()
     {
@@ -315,7 +319,15 @@ class User
         $this->currentDataUsageOut = $data['currentAcctOutputOctets'];
         $this->currentSessionTime = new DateIntervalEnhanced('PT' . $data['currentAcctSessionTime'] . 'S');
         $this->currentDataUsage = $this->currentDataUsageIn + $this->currentDataUsageOut;
+        $this->lastLogout = $data['lastLogout'] ? new DateTime($data['lastLogout']) : null;
 
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getLastLogout() {
+        return $this->lastLogout;
     }
 
     /**

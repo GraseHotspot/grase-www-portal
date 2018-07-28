@@ -23,6 +23,7 @@
                         <th>{% trans %}Data Usage{% endtrans %}</th>
                         <th>{% trans %}Time Usage{% endtrans %}</th>
                         <th>{% trans %}Expiry{% endtrans %}</th>
+                        <th>{% trans %}Last Logout{% endtrans %}</th>
                         <th>{% trans %}Group{% endtrans %}</th>
                         <th>{% trans %}Comment{% endtrans %}</th>
                     </tr>
@@ -34,6 +35,7 @@
                             <td>{{ user.datausagetotal|format_bytes }}/{{ user.datalimit|format_bytes }}</td>
                             <td>{{ user.totalSessionTime }}/{{ user.timelimit }}</td>
                             <td>{% if user.expiry %}{{ user.expiry|localizeddate('medium', 'short') }}{% endif %}</td>
+                            <td>{% if user.lastLogout %}{{ user.lastLogout |localizeddate('medium', 'short') }}{% endif %}</td>
                             <td>{{ user.allUserGroupsNames }}</td>
                             <td>{{ user.comment }}</td>
                         </tr>

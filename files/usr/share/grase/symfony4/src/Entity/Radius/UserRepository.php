@@ -42,6 +42,7 @@ class UserRepository extends EntityRepository
                     'currentAcctInputOctets' => 0,
                     'currentAcctOutputOctets' => 0,
                     'currentAcctSessionTime' => 0,
+                    'lastLogout' => null,
                 ]);
             }
         }
@@ -70,6 +71,7 @@ class UserRepository extends EntityRepository
         $query = $this->getEntityManager()->createQueryBuilder()
             ->select('u.username',  'SUM(ra.acctinputoctets) AS currentAcctInputOctets, SUM(ra.acctoutputoctets) AS currentAcctOutputOctets')
             ->addSelect('SUM(ra.acctsessiontime) AS currentAcctSessionTime')
+            ->addSelect('MAX(ra.acctstoptime) AS lastLogout')
             ->from(User::class, 'u')
             ->join('u.radiusAccounting', 'ra')
             ->indexBy('u', 'u.username')
