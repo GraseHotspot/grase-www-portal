@@ -17,8 +17,6 @@ class UserRepository extends EntityRepository
     {
         @ini_set("memory_limit",-1);
 
-        $this->getAllAccountingSums();
-
         $query = $this->getEntityManager()->createQueryBuilder()
             ->select('u', 'rc', 'ug'/*, 'ra'*/)
             ->from(User::class, 'u')
@@ -31,7 +29,24 @@ class UserRepository extends EntityRepository
             $query->where('groups.name = :groupname')
                 ->setParameter('groupname', $group);
         }
-        return $query->getQuery()->getResult();
+        $users = $query->getQuery()->getResult();
+
+        $radiusAccountingData = $this->getAllAccountingSums();
+
+        /** @var User $user */
+        foreach ($users as $user) {
+            if (isset($radiusAccountingData[$user->getUsername()])) {
+                $user->hydrateRadiusAccountingData($radiusAccountingData[$user->getUsername()]);
+            } else {
+                $user->hydrateRadiusAccountingData([
+                    'currentAcctInputOctets' => 0,
+                    'currentAcctOutputOctets' => 0,
+                    'currentAcctSessionTime' => 0,
+                ]);
+            }
+        }
+
+        return $users;
     }
 
     public function findByUsername($username)
@@ -53,11 +68,12 @@ class UserRepository extends EntityRepository
 
     private function getAllAccountingSums() {
         $query = $this->getEntityManager()->createQueryBuilder()
-            ->select('u.username',  'SUM(ra.acctinputoctets) + SUM(ra.acctoutputoctets) AS AcctTotalOctets')
+            ->select('u.username',  'SUM(ra.acctinputoctets) AS currentAcctInputOctets, SUM(ra.acctoutputoctets) AS currentAcctOutputOctets')
+            ->addSelect('SUM(ra.acctsessiontime) AS currentAcctSessionTime')
             ->from(User::class, 'u')
             ->join('u.radiusAccounting', 'ra')
             ->indexBy('u', 'u.username')
             ->groupBy('u.username');
-        dump($query->getQuery()->getArrayResult());
+        return $query->getQuery()->getArrayResult();
     }
 }
