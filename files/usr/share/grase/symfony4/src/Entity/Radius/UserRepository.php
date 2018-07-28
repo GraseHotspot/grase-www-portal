@@ -33,6 +33,8 @@ class UserRepository extends EntityRepository
 
         $radiusAccountingData = $this->getAllAccountingSums();
 
+        dump($radiusAccountingData);
+
         /** @var User $user */
         foreach ($users as $user) {
             if (isset($radiusAccountingData[$user->getUsername()])) {
@@ -69,13 +71,18 @@ class UserRepository extends EntityRepository
 
     private function getAllAccountingSums() {
         $query = $this->getEntityManager()->createQueryBuilder()
-            ->select('u.username',  'SUM(ra.acctinputoctets) AS currentAcctInputOctets, SUM(ra.acctoutputoctets) AS currentAcctOutputOctets')
+            ->select('u.username')
+            ->addSelect('SUM(ra.acctinputoctets) AS currentAcctInputOctets')
+            ->addSelect('SUM(ra.acctoutputoctets) AS currentAcctOutputOctets')
             ->addSelect('SUM(ra.acctsessiontime) AS currentAcctSessionTime')
             ->addSelect('MAX(ra.acctstoptime) AS lastLogout')
+            ->addSelect('SUM(rm.totalDuration) AS totalMonthlyDuration')
             ->from(User::class, 'u')
             ->join('u.radiusAccounting', 'ra')
+            ->join(AccountingMonthly::class, 'rm', Join::WITH, 'u.username = rm.user')
             ->indexBy('u', 'u.username')
             ->groupBy('u.username');
+
         return $query->getQuery()->getArrayResult();
     }
 }
