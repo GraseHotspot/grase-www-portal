@@ -3,6 +3,23 @@ grase_radmin_homepage:
     path:     /
     defaults: { _controller: App\Controller\DefaultController::indexAction }
 
+
+grase_users:
+    path: /users/{group}
+    defaults:
+        _controller: App\Controller\DefaultController::displayUsersAction
+        group: null
+
+grase_groups:
+    path: /groups/
+    defaults:
+        _controller: App\Controller\DefaultController::displayGroupsAction
+
+grase_group_edit:
+    path: /group/{id}/edit
+    defaults:
+        _controller: App\Controller\DefaultController::editGroupAction
+
 #grase_security:
 #    resource: "@App/Controller/SecurityController.php"
 #    type:     annotation

@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use App\Form\Radius\GroupType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -25,56 +26,57 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/users/{group}", name="grase_users")
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function displayUsersAction($group = null)
     {
 
-        /** @var UserRepository $users_repo */
-        $users_repo = $this->getDoctrine()->getManager()->getRepository(User::class);
+        /** @var UserRepository $userRepository */
+        $userRepository = $this->getDoctrine()->getManager()->getRepository(User::class);
 
-        $users = $users_repo->findByGroup($group);
+        $users = $userRepository->findByGroup($group);
 
         return $this->render(
             'users.html.twig',
             [
-                'users' => $users
+                'users' => $users,
             ]
         );
     }
 
-    /**
-     * @Route("/groups/", name="grase_groups")
-     */
-    public function displayGroups()
+    public function displayGroupsAction()
     {
-        $groups_repo = $this->getDoctrine()->getManager()->getRepository(Group::class);
+        $groupsRepository = $this->getDoctrine()->getManager()->getRepository(Group::class);
 
-        $groups = $groups_repo->findAll();
+        $groups = $groupsRepository->findAll();
 
         return $this->render(
             'groups.html.twig',
             [
-                'groups' => $groups
+                'groups' => $groups,
             ]
         );
     }
 
-    /**
-     * @Route("/group/{id}/edit", name="grase_group_edit")
-     */
-    public function editGroup(Request $request, Group $group)
+    public function editGroupAction(Request $request, $id)
     {
+        /** @var Group $group */
+        $group = $this->getDoctrine()
+                     ->getRepository(Group::class)
+                     ->find($id);
 
-        // Insert permissions check here for editing
+        if (!$group) {
+            throw $this->createNotFoundException();
+        }
+
+        // @TODO Insert permissions check here for editing
 
         $form = $this->createForm(GroupType::class, $group);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->container->get('grase.manager.group')->saveGroup($group);
+            $this->get('grase.manager.group')->saveGroup($group);
 
             $this->addFlash('success', $this->get('translator')->trans('grase.group.save_success.%groupname%', ['%groupname%' => $group->getName()]));
 
@@ -85,7 +87,7 @@ class DefaultController extends Controller
             'GraseRadminBundle:Default:group_edit.html.twig',
             [
                 'group' => $group,
-                'group_form' => $form->createView()
+                'group_form' => $form->createView(),
             ]
         );
     }
