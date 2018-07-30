@@ -15,6 +15,7 @@ class Version20160221060000 extends AbstractMigration
      */
     public function up(Schema $schema) : void
     {
+        // @TODO check we are upgrading from a supported DB version
         $this->addSql('ALTER TABLE radmin.adminlog RENAME radius.adminlog');
         $this->addSql('ALTER TABLE radmin.auth RENAME radius.auth');
         $this->addSql('ALTER TABLE radmin.batch RENAME radius.batch');

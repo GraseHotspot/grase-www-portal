@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Radius\Group;
 use App\Entity\Radius\User;
 use App\Entity\Radius\UserRepository;
+use App\Entity\Setting;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use App\Form\Radius\GroupType;
@@ -88,6 +89,20 @@ class DefaultController extends Controller
             [
                 'group' => $group,
                 'group_form' => $form->createView(),
+            ]
+        );
+    }
+
+    public function advancedSettingsAction()
+    {
+        $settings = $this->getDoctrine()
+            ->getRepository(Setting::class)
+            ->findAll();
+
+        return $this->render(
+            'advancedSettings.html.twig',
+            [
+                'settings' => $settings
             ]
         );
     }

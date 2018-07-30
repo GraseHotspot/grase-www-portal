@@ -89,7 +89,9 @@
             </div>
         </div>
         {% block javascripts %}
-            <script src="{{ asset('build/app.js') }}"></script>
+            <script src="{{ asset('build/app.js') }}" type="application/javascript"></script>
+        {% endblock %}
+        {% block javascripts_inline %}
         {% endblock %}
     </body>
 </html>

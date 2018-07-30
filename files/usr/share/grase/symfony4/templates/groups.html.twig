@@ -16,7 +16,9 @@
                 <h3 class="box-title">{% trans %}Groups{% endtrans %}</h3>
             </div>
             <div class="box-body">
-                <table id="groups_table" class="table table-bordered table-hover">
+                <table id="groupsTable" class="dataTable table table-bordered table-hover"
+                       data-paging="true" data-page-length="25" data-searching="true"
+                       data-ordering="true" data-info="true" data-autowidth="true">
                     <thead>
                     <tr>
                         <th>{% trans %}Name{% endtrans %}</th>
@@ -45,19 +47,4 @@
         </div>
     </div>
 
-{% endblock %}
-
-{% block javascripts_inline %}
-    <script>
-        $(function () {
-            $('[data-toggle="popover"]').popover();
-            $('#groups_table').DataTable({
-                "paging": true,
-                "searching": true,
-                "ordering": true,
-                "info": true,
-                "autoWidth": true
-            });
-        });
-    </script>
 {% endblock %}

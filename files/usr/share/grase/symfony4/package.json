@@ -9,6 +9,8 @@
     "webpack-notifier": "^1.6.0"
   },
   "dependencies": {
-    "adminator": "^1.0.0"
+    "adminator": "^1.0.0",
+    "datatables.net": "^1.10.19",
+    "datatables.net-bs4": "^1.10.19"
   }
 }

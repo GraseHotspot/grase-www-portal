@@ -16,7 +16,9 @@
                 <h3 class="box-title">{% trans %}User Accounts{% endtrans %}</h3>
             </div>
             <div class="box-body">
-                <table id="users_table" class="table table-bordered table-hover">
+                <table id="usersTable" class="table table-bordered table-hover dataTable"
+                       data-paging="true" data-page-length="25" data-searching="true"
+                       data-ordering="true" data-info="true" data-autowidth="true">
                     <thead>
                     <tr>
                         <th>{% trans %}Username{% endtrans %}</th>
@@ -47,19 +49,4 @@
         </div>
     </div>
 
-{% endblock %}
-
-{% block javascripts_inline %}
-    <script>
-        $(function () {
-            $('[data-toggle="popover"]').popover();
-            $('#users_table').DataTable({
-                "paging": true,
-                "searching": true,
-                "ordering": true,
-                "info": true,
-                "autoWidth": true
-            });
-        });
-    </script>
 {% endblock %}
