@@ -11,6 +11,7 @@
   "dependencies": {
     "adminator": "^1.0.0",
     "datatables.net": "^1.10.19",
-    "datatables.net-bs4": "^1.10.19"
+    "datatables.net-bs4": "^1.10.19",
+    "material-design-icons": "^3.0.1"
   }
 }
