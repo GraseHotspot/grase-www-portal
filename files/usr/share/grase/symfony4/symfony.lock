@@ -107,6 +107,9 @@
     "nikic/php-parser": {
         "version": "v4.0.3"
     },
+    "nikolaposa/version": {
+        "version": "2.2.2"
+    },
     "ocramius/package-versions": {
         "version": "1.3.0"
     },
@@ -148,6 +151,9 @@
             "version": "4.0",
             "ref": "421933bf8f0e75546ac8e00cb3eb12904fa2ac1a"
         }
+    },
+    "shivas/versioning-bundle": {
+        "version": "3.1.3"
     },
     "symfony/asset": {
         "version": "v4.0.9"
