@@ -3,6 +3,7 @@
 namespace App\Entity\Radmin;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\Encoder\EncoderAwareInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 //use Avanzu\AdminThemeBundle\Model\UserInterface as ThemeUser;
 
@@ -10,7 +11,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Table(name="auth")
  * @ORM\Entity(repositoryClass="App\Entity\Radmin\UserRepository")
  */
-class User implements UserInterface, \Serializable//, ThemeUser
+class User implements UserInterface, EncoderAwareInterface, \Serializable//, ThemeUser
 {
     /**
      * Column(type="integer")
@@ -47,6 +48,15 @@ class User implements UserInterface, \Serializable//, ThemeUser
     public function getUsername()
     {
         return $this->username;
+    }
+
+    public function getEncoderName()
+    {
+        if (strlen($this->password) == 49) {
+            return 'sha1salted';
+        }
+
+        return null; // use the default encoder
     }
 
     public function getSalt()

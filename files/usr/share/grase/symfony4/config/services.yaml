@@ -28,3 +28,7 @@ services:
     # please note that last definitions always *replace* previous ones
     App\Menu\MainMenu:
         public: true
+
+
+    sha1salted_encoder:
+        class: App\Service\Sha1Salted

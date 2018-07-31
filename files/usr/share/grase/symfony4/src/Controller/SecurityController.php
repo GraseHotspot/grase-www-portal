@@ -6,7 +6,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 /**
  * @Route("/")
@@ -15,7 +14,6 @@ class SecurityController extends Controller
 {
     /**
      * @Route("/login", name="_grase_login")
-     * @Template()
      */
     public function loginAction(Request $request)
     {
@@ -25,9 +23,12 @@ class SecurityController extends Controller
             $error = $request->getSession()->get(Security::AUTHENTICATION_ERROR);
         }
 
-        return array(
-            'last_username' => $request->getSession()->get(Security::LAST_USERNAME),
-            'error'         => $error,
+        return $this->render(
+            'login.html.twig',
+            [
+                'last_username' => $request->getSession()->get(Security::LAST_USERNAME),
+                'error'         => $error,
+            ]
         );
     }
 
