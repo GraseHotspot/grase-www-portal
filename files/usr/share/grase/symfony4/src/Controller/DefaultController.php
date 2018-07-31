@@ -6,6 +6,7 @@ use App\Entity\Radius\Group;
 use App\Entity\Radius\User;
 use App\Entity\Radius\UserRepository;
 use App\Entity\Setting;
+use Grase\SystemInformation;
 use Grase\Util;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -18,14 +19,18 @@ class DefaultController extends Controller
 {
     public function indexAction($name = "random")
     {
-        //$check_repo = $this->getDoctrine()->getManager()->getRepository('App\Entity\Radius\Check');
-        //dump($check_repo->findAll()[0]);
+        $systemInformation = new SystemInformation();
 
         /** @var UserRepository $users_repo */
         $users_repo = $this->getDoctrine()->getManager()->getRepository(User::class);
         dump($users_repo->findByUsername('de5f1e4aa447')[0]->getRadiusAccounting());
 
-        return $this->render('index.html.twig', array('name' => $name));
+        return $this->render(
+            'index.html.twig',
+            [
+                'systemInfo' => $systemInformation
+            ]
+        );
     }
 
     /**

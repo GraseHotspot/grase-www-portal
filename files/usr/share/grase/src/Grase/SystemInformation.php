@@ -73,30 +73,32 @@ class SystemInformation
     {
         // Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
         $details = preg_split("/\s+/", `/sbin/route -n |grep -v 10.64.6|grep tun`);
-        $this->lan->netmask = $details[2];
-        $this->lan->iface = $details[7];
+        $this->lan->netmask = $details[2] ?? null;
+        $this->lan->iface = $details[7] ?? null;
 
         if ($this->lan->iface) {
             $this->lan->mac = $this->discoverMAC($this->lan->iface);
-            $this->lan->ipaddress = $this->discoverIPAddress($this->lan->iface);
-            $this->lan->netmask = $this->discoverNetmask($this->lan->iface);
+            list($this->lan->ipaddress, $this->lan->netmask) = $this->discoverIPAddressAndNetmask($this->lan->iface);
         }
 
+    }
+
+    private function CIDRtoMask($int) {
+        return long2ip(-1 << (32 - (int)$int));
     }
 
     private function discoverWANInterface()
     {
         // Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
-        $lines = preg_split("/\n/", trim(`/sbin/route -n |grep eth | sort -r`));
+        $lines = preg_split("/\n/", trim(`/sbin/route -n | sort -r |grep -v Kernel|grep -v Destination`));
 
         $details = preg_split("/\s+/", $lines[0]);
-        $this->wan->netmask = $details[2];
-        $this->wan->iface = $details[7];
+        $this->wan->iface = $details[7] ?? null;
         $details = preg_split("/\s+/", end($lines));
-        $this->wan->gateway = $details[1];
+        $this->wan->gateway = $details[1] ?? null;
 
         $this->wan->mac = $this->discoverMAC($this->wan->iface);
-        $this->wan->ipaddress = $this->discoverIPAddress($this->wan->iface);
+        list($this->wan->ipaddress, $this->wan->netmask) = $this->discoverIPAddressAndNetmask($this->wan->iface);
         $this->discoverDNS($this->wan);
 
     }
@@ -104,38 +106,36 @@ class SystemInformation
     private function discoverDNS($ifaceobj)
     {
         $nameservers = preg_split("/\n/", trim(shell_exec("grep nameserver /etc/resolv.conf")));
-        $ifaceobj->dns_primary = end(preg_split("/\s+/", $nameservers[0], 2));
+        $ifaceobj->dns_primary = array_values(array_slice(preg_split("/\s+/", $nameservers[0], 2), -1))[0];
         if (isset($nameservers[1])) {
             $ifaceobj->dns_secondary = end(preg_split("/\s+/", $nameservers[1], 2));
         }
 
     }
 
-    private function discoverIPAddress($iface)
+    private function discoverIPAddressAndNetmask($iface)
     {
-        return shell_exec(
-            "/sbin/ifconfig $iface | egrep -i -o 'inet addr:[0-9.]+' |
-             egrep -o \"[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\" |
-             head -n 1"
+        if (!$iface) {
+            return "";
+        }
+        $ipAndNetmask = shell_exec(
+            //"ip -f inet addr show $iface | sed -En -e 's/.*inet ([0-9.]+).*/\\1/p'"
+        "ip -f inet addr show $iface | awk '/inet / {print $2}'"
         );
+        list($ip, $cidr) = explode("/", $ipAndNetmask);
+        $netmask = $this->CIDRtoMask($cidr);
+        return [$ip, $netmask];
 
-    }
-
-    private function discoverNetmask($iface)
-    {
-        return shell_exec(
-            "/sbin/ifconfig $iface | egrep -i -o  mask\:[0-9.]+ |
-            egrep -o \"[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\" |
-            head -n 1"
-        );
     }
 
     private function discoverMAC($iface)
     {
+        if (!$iface) {
+            return "";
+        }
         return shell_exec(
-            "/sbin/ifconfig $iface | grep -i Hwaddr|
-             egrep -o \"[0-9a-g]{2}:[0-9a-g]{2}:[0-9a-g]{2}:[0-9a-g]{2}:[0-9a-g]{2}:[0-9a-g]{2}\"
-              | head -n 1"
+            "ip link show $iface |grep link/ether |
+            egrep -o \"[0-9a-g]{2}:[0-9a-g]{2}:[0-9a-g]{2}:[0-9a-g]{2}:[0-9a-g]{2}:[0-9a-g]{2}\" | head -n 1"
         );
     }
 
@@ -197,7 +197,7 @@ class SystemInformation
                                 break;
                             case 'l2 cache':
                             case 'cache size':
-                                $dev->cache = preg_replace("/[a-zA-Z]/", "", $arrBuff[1]) * 1024;
+                                $dev->cache = preg_replace("/[a-zA-Z ]/", "", $arrBuff[1]) * 1024;
                                 break;
                             case 'bogomips':
                             case 'cpu0bogo':
