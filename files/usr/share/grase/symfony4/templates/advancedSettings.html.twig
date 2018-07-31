@@ -13,11 +13,14 @@
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">{% trans %}Groups{% endtrans %}</h3>
+                <h3 class="box-title">{% trans %}Advanced Settings{% endtrans %}</h3>
             </div>
             <div class="box-body">
+                {% trans %}All settings in the Radmin Settings table are shown here. Modifying settings here isn't recommended as no validation is done. This page allows you to see and modify hidden settings. Some settings may reset back to defaults if you try to set them to an incorrect value, others will just break.{% endtrans %}<br/>
+                <strong>{% trans %}CAUTION: Some settings here are internal and modifying them will break things{% endtrans %}</strong>
+
                 <table id="advancedSettings" class="table table-bordered table-hover dataTable"
-                       data-paging="true" data-page-length="25" data-searching="true"
+                       data-paging="true" data-page-length="10" data-searching="true"
                        data-ordering="true" data-info="true" data-autowidth="true">
                     <thead>
                     <tr>

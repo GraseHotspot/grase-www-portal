@@ -1,0 +1,48 @@
+{% extends "layout.html.twig" %}
+
+{% block page_title %}
+    {% trans %}DHCP Leases{% endtrans %}
+{% endblock page_title %}
+
+{% block page_subtitle %}
+
+{% endblock page_subtitle %}
+
+{% block content %}
+
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">{% trans %}DHCP Leases{% endtrans %}</h3>
+            </div>
+            <div class="box-body">
+                <table id="groupsTable" class="dataTable table table-bordered table-hover"
+                       data-paging="true" data-page-length="25" data-searching="true"
+                       data-ordering="true" data-info="true" data-autowidth="true">
+                    <thead>
+                    <tr>
+                        <th>{% trans %}IP Address{% endtrans %}</th>
+                        <th>{% trans %}MAC Address{% endtrans %}</th>
+                        <th>{% trans %}DHCP State{% endtrans %}</th>
+                        <th>{% trans %}Username{% endtrans %}</th>
+                        <th>{% trans %}Account Comment{% endtrans %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for session in sessions %}
+                        <tr>
+                            <td>{{ session.ipAddress }}</td>
+                            <td>{{ session.macAddress }}</td>
+                            <td>{{ session.dhcpState }}</td>
+                            <td>{{ session.session.userName | default("") }}</td>
+                            <td>{{ session.session.comment | default("") }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

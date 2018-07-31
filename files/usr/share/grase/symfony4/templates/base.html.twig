@@ -87,6 +87,16 @@
                 </nav>
 
                 <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+                    {% for label, messages in app.flashes %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
                     {% block page_content %}{% endblock %}
                 </main>
             </div>

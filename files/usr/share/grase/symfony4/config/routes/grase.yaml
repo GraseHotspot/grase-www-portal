@@ -25,6 +25,11 @@ grase_advanced_settings:
     defaults:
         _controller: App\Controller\DefaultController::advancedSettingsAction
 
+grase_dhcp_leases:
+    path: /leases
+    defaults:
+        _controller: App\Controller\DefaultController::dhcpLeasesAction
+
 #grase_security:
 #    resource: "@App/Controller/SecurityController.php"
 #    type:     annotation

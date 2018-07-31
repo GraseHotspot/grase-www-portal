@@ -4,7 +4,7 @@ services:
     webserver:
       build: .
       volumes:
-        - .:/usr/share/grase/symfony4
+        - ../:/usr/share/grase
 
 
     mysql:
