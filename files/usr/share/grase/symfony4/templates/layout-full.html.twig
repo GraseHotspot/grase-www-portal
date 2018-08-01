@@ -1,0 +1,32 @@
+{% extends 'layout.html.twig' %}
+
+{% block sidebar %}{% endblock %}
+
+{% block page_content %}
+    <main class="col-sm-12 col-md-12 pt-3">
+
+        {% block content_header %}
+        {% endblock %}
+
+        {% block flash_messages %}
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endblock %}
+
+
+
+        <div class="block">
+            {% block content %}{% endblock %}
+        </div>
+
+    </main>
+
+{% endblock %}

@@ -7,32 +7,80 @@
 
 {% block title 'Grase' %}
 
+{% block sidebar %}
+    <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+
+        {{ pd_menu_render('App\\Menu\\MainMenu', {}) }}
+
+        <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Overview <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Reports</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Analytics</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Export</a>
+            </li>
+        </ul>
+
+        <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Nav item</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Nav item again</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">One more nav</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Another nav item</a>
+            </li>
+        </ul>
+
+        <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Nav item again</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">One more nav</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Another nav item</a>
+            </li>
+        </ul>
+    </nav>
+{% endblock %}
+
 {% block page_content %}
-    {% block flash_messages %}
-        {% if app.request.hasPreviousSession %}
-            <div class="row">
-                {% for type, messages in app.session.flashbag.all() %}
-                    {% for message in messages %}
-                        <div class="alert alert-{{ type }} fade in col-xs-offset-1 col-xs-10" role="alert">
-                            <button class="close" data-dismiss="alert"><i class="glyphicon glyphicon-remove-circle"></i>
-                            </button>
-                            {% if type == 'success' %}<i class="fa fa-check"></i>
-                            {% else %}
-                            <i class="fa fa-exclamation-triangle"></i>
-                            {% endif %}
-                            {{ message }}
-                        </div>
-                    {% endfor %}
-                {% endfor %}
-            </div>
-        {% endif %}
-    {% endblock %}
+    <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
 
     {% block content_header %}
     {% endblock %}
 
+    {% block flash_messages %}
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    {% endblock %}
+
+
+
     <div class="block">
         {% block content %}{% endblock %}
     </div>
+
+    </main>
 
 {% endblock %}

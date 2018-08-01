@@ -1,7 +1,7 @@
-{% extends 'layout.html.twig' %}
+{% extends 'layout-full.html.twig' %}
 
-{% block page_content %}
-    <div class="login-box">
+{% block content %}
+    <div class="login-box d-flex align-items-center flex-column justify-content-center h-100">
         <div class="login-logo">
             <a href=""><b>Grase</b>Hotspot</a>
         </div><!-- /.login-logo -->
@@ -19,19 +19,10 @@
                     <input type="password" class="form-control" placeholder="Password"  id="password" name="_password"/>
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
-                <div class="row">
-                    <div class="col-xs-8">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> Remember Me
-                            </label>
-                        </div>
-                    </div><!-- /.col -->
-                    <div class="col-xs-4">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
-                    </div><!-- /.col -->
-                </div>
+                <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                    
             </form>
+            {#
 
             <div class="social-auth-links text-center">
                 <p>- OR -</p>
@@ -41,6 +32,7 @@
 
             <a href="#">I forgot my password</a><br>
             <a href="register.html" class="text-center">Register a new membership</a>
+            #}
 
         </div><!-- /.login-box-body -->
     </div>
