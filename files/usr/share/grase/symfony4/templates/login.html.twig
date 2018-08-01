@@ -8,7 +8,10 @@
         <div class="login-box-body">
             <p class="login-box-msg">Sign in to access the Admin area</p>
             {% if error %}
-                <div class="error">{{ error.message }}</div>
+                <div class="alert alert-danger show" role="alert">
+                    {{ error.message }}
+
+                </div>
             {% endif %}
             <form action="{{ path("_grase_security_check") }}" method="post">
                 <div class="form-group has-feedback">
@@ -20,7 +23,7 @@
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
-                    
+
             </form>
             {#
 
