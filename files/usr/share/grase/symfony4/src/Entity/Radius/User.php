@@ -76,6 +76,7 @@ class User
      * Set username
      *
      * @param string $username
+     *
      * @return User
      */
     public function setUsername($username)
@@ -158,6 +159,7 @@ class User
      * Add radiuscheck
      *
      * @param Check $radiuscheck
+     *
      * @return User
      */
     public function addRadiuscheck(Check $radiuscheck)
@@ -197,6 +199,7 @@ class User
      * Add userGroups
      *
      * @param UserGroup $userGroups
+     *
      * @return User
      */
     public function addUserGroup(UserGroup $userGroups)
@@ -244,6 +247,7 @@ class User
      * Add radiusAccounting
      *
      * @param Radacct $radiusAccounting
+     *
      * @return User
      */
     public function addRadiusAccounting(Radacct $radiusAccounting)
@@ -269,15 +273,16 @@ class User
      */
     public function getTotalSessionTime()
     {
-        if ( $this->currentSessionTime === null) {
+        if ($this->currentSessionTime === null) {
             $sum = 0;
             /** @var Radacct $radactt */
             foreach ($this->getRadiusAccounting() as $radactt) {
                 $sum += $radactt->getAcctsessiontime();
             }
 
-            $this->currentSessionTime = new DateIntervalEnhanced( 'PT' . $sum . 'S');
+            $this->currentSessionTime = new DateIntervalEnhanced('PT' . $sum . 'S');
         }
+
         // TODO Is the formatting of this best left to a view?
         return $this->currentSessionTime->recalculate()->format('%H:%I:%S');
     }
@@ -298,7 +303,7 @@ class User
      */
     public function getDataUsageTotal()
     {
-        if ( $this->currentDataUsage === null) {
+        if ($this->currentDataUsage === null) {
             /** @var Radacct $radactt */
             foreach ($this->getRadiusAccounting() as $radactt) {
                 $this->currentDataUsageOut += $radactt->getAcctoutputoctets();
@@ -314,19 +319,21 @@ class User
     /**
      * @param $data array
      */
-    public function hydrateRadiusAccountingData($data) {
-        $this->currentDataUsageIn = $data['currentAcctInputOctets'];
+    public function hydrateRadiusAccountingData($data)
+    {
+        $this->currentDataUsageIn  = $data['currentAcctInputOctets'];
         $this->currentDataUsageOut = $data['currentAcctOutputOctets'];
-        $this->currentSessionTime = new DateIntervalEnhanced('PT' . $data['currentAcctSessionTime'] . 'S');
-        $this->currentDataUsage = $this->currentDataUsageIn + $this->currentDataUsageOut;
-        $this->lastLogout = $data['lastLogout'] ? new DateTime($data['lastLogout']) : null;
+        $this->currentSessionTime  = new DateIntervalEnhanced('PT' . $data['currentAcctSessionTime'] . 'S');
+        $this->currentDataUsage    = $this->currentDataUsageIn + $this->currentDataUsageOut;
+        $this->lastLogout          = $data['lastLogout'] ? new DateTime($data['lastLogout']) : null;
 
     }
 
     /**
      * @return DateTime
      */
-    public function getLastLogout() {
+    public function getLastLogout()
+    {
         return $this->lastLogout;
     }
 
