@@ -17,7 +17,7 @@ security:
     role_hierarchy:
         ROLE_USER: [ROLE_CREATE, ROLE_REPORTS]
         ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+        ROLE_SUPERADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
 
 
@@ -55,7 +55,7 @@ security:
         - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY}
         - { path: ^/groups, roles: ROLE_ADMIN }
         - { path: ^/$, roles: ROLE_USER }
-        - { path: ^/, roles: ROLE_SUPER_ADMIN }
+        - { path: ^/, roles: ROLE_SUPERADMIN }
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
 
