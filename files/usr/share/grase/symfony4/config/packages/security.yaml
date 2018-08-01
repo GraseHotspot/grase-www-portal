@@ -15,8 +15,10 @@ security:
             id: sha1salted_encoder
 
     role_hierarchy:
+        ROLE_USER: [ROLE_CREATE, ROLE_REPORTS]
         ROLE_ADMIN:       ROLE_USER
         ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
 
 
     firewalls:
@@ -25,12 +27,12 @@ security:
             security: false
 
         # the login page has to be accessible for everybody
-        login:
-            pattern:  ^/login$
-            security: false
+        #login:
+        #    pattern:  ^/login$
+        #    security: false
 
         main:
-            #anonymous: true
+            anonymous: true
 
             # activate different ways to authenticate
 
@@ -50,6 +52,32 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        - { path: ^/groups, roles: ROLE_ADMIN}
+        - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY}
+        - { path: ^/groups, roles: ROLE_ADMIN }
+        - { path: ^/$, roles: ROLE_USER }
+        - { path: ^/, roles: ROLE_SUPER_ADMIN }
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+
+
+    #'users' => NORMALLEVEL,
+    #'edituser' => POWERLEVEL | CREATEUSERLEVEL,
+    #'createuser' => POWERLEVEL | CREATEUSERLEVEL,
+    #'createtickets' => POWERLEVEL | CREATEUSERLEVEL,
+    #'createmachine' => POWERLEVEL | CREATEUSERLEVEL,
+    #'sessions' => NORMALLEVEL,
+    #'reports' => NORMALLEVEL | REPORTLEVEL,
+    #'dhcpleases' => POWERLEVEL | CREATEUSERLEVEL,
+    #'settings' => ADMINLEVEL,
+    #'uploadlogo' => ADMINLEVEL,
+    #'netconfig' => ADMINLEVEL,
+    #'chilliconfig' => ADMINLEVEL,
+    #'loginconfig' => ADMINLEVEL,
+    #'ticketprintconfig' => ADMINLEVEL,
+    #'groups' => POWERLEVEL | ADMINLEVEL,
+    #'vouchers' => POWERLEVEL | ADMINLEVEL,
+    #'passwd' => ADMINLEVEL,
+    #'adminlog' => ADMINLEVEL,
+    #'logout' => ALLLEVEL,
+    #'login' => ALLLEVEL,
+    #'purchase_wizard' => ALLLEVEL,

@@ -32,9 +32,10 @@ class User implements UserInterface, EncoderAwareInterface, \Serializable//, The
     private $password;
 
     /**
-     * @ORM\Column(name="accesslevel", type="integer")
+     * @var string
+     * @ORM\Column(type="string", length=25)
      */
-    private $accessLevel;
+    private $role;
 
     private $isActive;
 
@@ -73,7 +74,12 @@ class User implements UserInterface, EncoderAwareInterface, \Serializable//, The
 
     public function getRoles()
     {
-        return array('ROLE_ADMIN');
+        return [$this->role];
+    }
+
+    public function setRole($role)
+    {
+        $this->role = $role;
     }
 
     public function eraseCredentials()
@@ -151,16 +157,6 @@ class User implements UserInterface, EncoderAwareInterface, \Serializable//, The
         $this->accessLevel = $accessLevel;
 
         return $this;
-    }
-
-    /**
-     * Get accessLevel
-     *
-     * @return integer
-     */
-    public function getAccessLevel()
-    {
-        return $this->accessLevel;
     }
 
     public function getAvatar()
