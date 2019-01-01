@@ -8,3 +8,4 @@ api_platform:
             items_per_page: 15
             enabled: true
             page_parameter_name: _page
+            enabled_parameter_name: pagination

@@ -1,23 +1,34 @@
 App\Entity\Setting:
   attributes:
+    pagination_client_enabled: true
     access_control: 'is_granted("ROLE_ADMIN")'
-    #collectionOperations:
-    #  post:
-    #    method: 'POST'
-    #    access_control: 'is_granted("ROLE_ADMIN")'
-    #    access_control_message: 'Only admins can add books.'
-    #itemOperations:
+    collectionOperations:
+      post:
+        method: 'POST'
+        access_control: 'is_granted("ROLE_SUPERADMIN")'
+        access_control_message: 'Only super admins can modify settings.'
+    itemOperations:
+      post:
+        method: 'POST'
+        access_control: 'is_granted("ROLE_SUPERADMIN")'
+        access_control_message: 'Only super admins can modify settings.'
+
     #  get:
     #    method: 'GET'
     #    access_control: 'is_granted("ROLE_USER") and object.owner == user'
     #    access_control_message: 'Sorry, but you are not the book owner.'
 
 App\Entity\Radius\Group:
+  attributes:
+    access_control: 'is_granted("ROLE_ADMIN")'
 
 App\Entity\Radius\UserGroup:
+  attributes:
+    access_control: 'is_granted("ROLE_ADMIN")'
 
 App\Entity\Radius\User:
   attributes:
+    access_control: 'is_granted("ROLE_ADMIN")'
     normalization_context:
       groups:
         - user_get

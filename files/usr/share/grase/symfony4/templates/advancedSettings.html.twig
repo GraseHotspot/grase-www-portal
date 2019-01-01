@@ -21,7 +21,10 @@
 
                 <table id="advancedSettings" class="table table-bordered table-hover dataTable"
                        data-paging="true" data-page-length="10" data-searching="true"
-                       data-ordering="true" data-info="true" data-autowidth="true">
+                       data-ordering="true" data-info="true" data-autowidth="true"
+                       data-ajax='{"url": "{{ path('api_settings_get_collection', {'pagination': false}) }}", "dataSrc": ""}'
+                       data-columns='[ {"data": "name"}, {"data": "value"} ]'
+                >
                     <thead>
                     <tr>
                         <th>{% trans %}Name{% endtrans %}</th>
@@ -29,12 +32,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for setting in settings %}
-                        <tr>
-                            <td>{{ setting.name }}</td>
-                            <td>{{ setting.value }}</td>
-                        </tr>
-                    {% endfor %}
+
                     </tbody>
                 </table>
             </div>
