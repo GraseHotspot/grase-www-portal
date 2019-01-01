@@ -4,13 +4,11 @@ namespace App\Entity\Radius;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Validator\Constraints as GraseAssert;
-use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Group
  *
- * @ApiResource
  * @ORM\Table(name="groups")
  * @ORM\Entity
  */

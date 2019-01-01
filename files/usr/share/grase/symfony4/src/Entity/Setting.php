@@ -5,7 +5,6 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Mtotacct
  *
  * @ORM\Table(name="settings")
  * @ORM\Entity

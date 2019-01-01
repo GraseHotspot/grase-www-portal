@@ -2,7 +2,6 @@
 
 namespace App\Entity\Radius;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
@@ -13,7 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * User
  *
- * @ApiResource(attributes={"normalization_context"={"groups"={"user_get"}}})
  * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="App\Entity\Radius\UserRepository")
  */

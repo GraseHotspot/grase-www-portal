@@ -1,6 +1,8 @@
 api_platform:
     mapping:
-        paths: ['%kernel.project_dir%/src/Entity']
+        paths:
+          - '%kernel.project_dir%/src/Entity'
+          - '%kernel.project_dir%/config/api_platform/resources.yaml'
     collection:
         pagination:
             items_per_page: 15

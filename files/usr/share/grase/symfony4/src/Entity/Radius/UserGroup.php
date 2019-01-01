@@ -3,12 +3,10 @@
 namespace App\Entity\Radius;
 
 use Doctrine\ORM\Mapping as ORM;
-use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * UserGroup
- * @ApiResource
  * @ORM\Table(name="radusergroup")
  * @ORM\Entity(repositoryClass="App\Entity\Radius\UserGroupRepository")
  */
