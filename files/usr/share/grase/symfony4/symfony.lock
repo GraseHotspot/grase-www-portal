@@ -11,6 +11,9 @@
             "ref": "b50f8aa321cc40c380dda7605aa5cef66f476802"
         }
     },
+    "appaydin/pd-menu": {
+        "version": "dev-master"
+    },
     "composer/ca-bundle": {
         "version": "1.1.1"
     },
@@ -139,9 +142,6 @@
     },
     "psr/simple-cache": {
         "version": "1.0.1"
-    },
-    "rmznpydn/pd-menu": {
-        "version": "1.0.04"
     },
     "sensiolabs/security-checker": {
         "version": "4.0",
