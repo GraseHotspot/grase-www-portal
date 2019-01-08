@@ -28,6 +28,9 @@ Encore
 
     // allow sass/scss files to be processed
     .enableSassLoader()
+
+    // Enable React processing
+    .enableReactPreset()
 ;
 
 // export the final configuration
