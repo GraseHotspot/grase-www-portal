@@ -1,3 +1,3 @@
 sudo docker-compose up -d
 ./run_migrations.sh
-yarn encore dev --watch
+sudo docker-compose run node yarn encore dev --watch

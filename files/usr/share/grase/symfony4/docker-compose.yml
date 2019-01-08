@@ -16,3 +16,9 @@ services:
         - MYSQL_DATABASE=radius
         - MYSQL_USER=grase
         - MYSQL_PASSWORD=grase
+
+    node:
+      image: node:8
+      volumes:
+        - ../:/usr/share/grase
+      working_dir: /usr/share/grase/symfony4
