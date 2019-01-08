@@ -31,34 +31,35 @@ class MainMenu extends Menu
     {
         // Create Root Item
         $menu = $this
-            ->createRoot('settings_menu', true) // Create event is "settings_menu.event"
-                ->setListAttr([])
-
+            ->createRoot('settings_menu', true)// Create event is "settings_menu.event"
+            ->setListAttr([])
             ->setChildAttr(['data-parent' => 'grase_radmin_homepage', 'class' => 'nav nav-pills flex-column']); // Add Parent Menu to Html Tag
 
         // Create Menu Items
-        $menu->addChild('nav_config_general', 1)
+
+
+        $menu->addChild('nav_config_advanced_settings', 1)
             ->setLabel('Advanced Settings')
             ->setRoute('grase_advanced_settings')
             ->setListAttr(['class' => 'nav-item'])
             ->setLinkAttr(['class' => 'nav-link'])
             ->setExtra('label_icon', 'settings_application');
-            //->setRoles(['ADMIN_SETTINGS_GENERAL'])
-            // Contact
-        $menu->addChild('nav_config_contact', 5)
+        //->setRoles(['ADMIN_SETTINGS_GENERAL'])
+
+        $menu->addChild('nav_config_groups', 5)
             ->setLabel('Groups')
             ->setRoute('grase_groups')
             ->setListAttr(['class' => 'nav-item'])
             ->setLinkAttr(['class' => 'nav-link']);
-            //->setRoles(['ADMIN_SETTINGS_CONTACT'])
-            // Email
+        //->setRoles(['ADMIN_SETTINGS_CONTACT'])
+
+
         $usersMenu = $menu->addChild('nav_config_users', 10)
             ->setLabel('Users')
             ->setRoute('grase_users')
             ->setListAttr(['class' => 'nav-item'])
-            ->setLinkAttr(['class' => 'nav-link'])
-            //->setRoles(['ADMIN_SETTINGS_EMAIL'])
-            ;
+            ->setLinkAttr(['class' => 'nav-link'])//->setRoles(['ADMIN_SETTINGS_EMAIL'])
+        ;
         $this->buildUserGroupsItems($usersMenu);
 
         return $menu;
@@ -71,16 +72,15 @@ class MainMenu extends Menu
         /** @var Group $group */
         foreach ($groups as $group) {
 
-            $usersMenu->addChild('nav_config_users_' . $group->getId())
-                ->setLabel($group->getName())
-                ->setRoute('grase_users', ['group' => $group->getName()])
-                ->setListAttr(['class' => 'nav-item'])
-                ->setLinkAttr(['class' => 'nav-link'])
-            ;
+            if (!$group->getUsergroups()->isEmpty()) {
+                $usersMenu->addChild('nav_config_users_' . $group->getId())
+                    ->setLabel($group->getName())
+                    ->setRoute('grase_users', ['group' => $group->getName()])
+                    ->setListAttr(['class' => 'nav-item'])
+                    ->setLinkAttr(['class' => 'nav-link']);
+            }
         }
 
-
         return $usersMenu;
-
     }
 }
