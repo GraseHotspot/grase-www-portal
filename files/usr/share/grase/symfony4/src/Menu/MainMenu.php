@@ -38,13 +38,6 @@ class MainMenu extends Menu
         // Create Menu Items
 
 
-        $menu->addChild('nav_config_advanced_settings', 1)
-            ->setLabel('Advanced Settings')
-            ->setRoute('grase_advanced_settings')
-            ->setListAttr(['class' => 'nav-item'])
-            ->setLinkAttr(['class' => 'nav-link'])
-            ->setExtra('label_icon', 'settings_application');
-        //->setRoles(['ADMIN_SETTINGS_GENERAL'])
 
         $menu->addChild('nav_config_groups', 5)
             ->setLabel('Groups')
@@ -61,6 +54,34 @@ class MainMenu extends Menu
             ->setLinkAttr(['class' => 'nav-link'])//->setRoles(['ADMIN_SETTINGS_EMAIL'])
         ;
         $this->buildUserGroupsItems($usersMenu);
+
+
+        $menu->addChild('nav_report_dhcp_leases', 15)
+            ->setLabel('DHCP Leases')
+            ->setRoute('grase_dhcp_leases')
+            ->setListAttr(['class' => 'nav-item'])
+            ->setLinkAttr(['class' => 'nav-link']);
+        //->setRoles(['ADMIN_SETTINGS_CONTACT'])
+
+
+
+        $settingsMenu = $menu->addChild('nav_config_settings', 30)
+            ->setLabel('Settings')
+            //->setRoute('grase_settings')
+            ->setListAttr(['class' => 'nav-item'])
+            ->setLinkAttr(['class' => 'nav-link'])
+            ->setExtra('label_icon', 'settings_application');
+        //->setRoles(['ADMIN_SETTINGS_GENERAL'])
+
+
+        $settingsMenu->addChild('nav_config_advanced_settings', 1)
+            ->setLabel('Advanced Settings')
+            ->setRoute('grase_advanced_settings')
+            ->setListAttr(['class' => 'nav-item'])
+            ->setLinkAttr(['class' => 'nav-link'])
+            ->setExtra('label_icon', 'settings_application');
+        //->setRoles(['ADMIN_SETTINGS_GENERAL'])
+
 
         return $menu;
     }
