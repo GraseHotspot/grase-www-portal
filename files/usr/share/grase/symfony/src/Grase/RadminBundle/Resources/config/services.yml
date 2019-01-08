@@ -1,16 +1,9 @@
 parameters:
-    grase_default.menu_listener.class: Grase\RadminBundle\EventListener\MenuItemListListener
 
 services:
 #    grase_radmin.example:
 #        class: Grase\RadminBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
-    grase_default.menu_listener:
-        class: %grase_default.menu_listener.class%
-        tags:
-            - { name: kernel.event_listener, event: theme.sidebar_setup_menu, method: onSetupMenu }
-        arguments: ['@security.authorization_checker', '@doctrine']
-
     grase.show_user_listener:
         class: Grase\RadminBundle\EventListener\ShowUserListener
         tags:

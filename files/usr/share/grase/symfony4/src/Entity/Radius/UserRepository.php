@@ -33,8 +33,6 @@ class UserRepository extends EntityRepository
 
         $radiusAccountingData = $this->getAllAccountingSums();
 
-        dump($radiusAccountingData);
-
         /** @var User $user */
         foreach ($users as $user) {
             if (isset($radiusAccountingData[$user->getUsername()])) {
