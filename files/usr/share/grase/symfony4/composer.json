@@ -23,7 +23,7 @@
         "symfony/yaml": "^4.0"
     },
     "require-dev": {
-        "sensiolabs/security-checker": "^4.1",
+        "sensiolabs/security-checker": "^5.0",
         "symfony/debug-pack": "^1.0",
         "symfony/dotenv": "^4.0",
         "symfony/maker-bundle": "^1.5",
