@@ -21,10 +21,6 @@ class DefaultController extends Controller
     {
         $systemInformation = new SystemInformation();
 
-        /** @var UserRepository $users_repo */
-        $users_repo = $this->getDoctrine()->getManager()->getRepository(User::class);
-        dump($users_repo->findByUsername('de5f1e4aa447')[0]->getRadiusAccounting());
-
         return $this->render(
             'index.html.twig',
             [
