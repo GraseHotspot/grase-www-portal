@@ -232,6 +232,18 @@ class User
     }
 
     /**
+     * Get primary group
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPrimaryGroup()
+    {
+        /** @var UserGroup $primaryGroup */
+        $primaryGroup = $this->getUserGroups()->first();
+        return $primaryGroup->getGroup()->getName();
+    }
+
+    /**
      * Get userGroups
      *
      * @return \Doctrine\Common\Collections\Collection

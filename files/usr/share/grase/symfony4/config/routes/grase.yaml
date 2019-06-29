@@ -10,6 +10,11 @@ grase_users:
         _controller: App\Controller\DefaultController::displayUsersAction
         group: null
 
+grase_user_edit:
+    path: /user/{id}/edit
+    defaults:
+        _controller: App\Controller\DefaultController::editUserAction
+
 grase_groups:
     path: /groups/
     defaults:

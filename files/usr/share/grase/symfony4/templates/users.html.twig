@@ -33,7 +33,7 @@
                     <tbody>
                     {% for user in users %}
                         <tr>
-                            <td>{{ user.username }} <a style="float: right" class="" data-toggle="popover" tabindex="0" data-trigger="focus" title="{% trans %}Password{% endtrans %}" data-content="{{ user.password }}"><i class="material-icons md-18 md-dark">lock</i></a></td>
+                            <td><a href="{{ path('grase_user_edit', {id: user.username}) }}">{{ user.username }}</a> <a style="float: right" class="" data-toggle="popover" tabindex="0" data-trigger="focus" title="{% trans %}Password{% endtrans %}" data-content="{{ user.password }}"><i class="material-icons md-18 md-dark">lock</i></a></td>
                             <td>{{ user.datausagetotal|format_bytes }}/{{ user.datalimit|format_bytes }}</td>
                             <td>{{ user.totalSessionTime }}/{{ user.timelimit }}</td>
                             <td>{% if user.expiry %}{{ user.expiry|localizeddate('medium', 'short') }}{% endif %}</td>

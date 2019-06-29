@@ -6,6 +6,7 @@ use App\Entity\Radius\Group;
 use App\Entity\Radius\User;
 use App\Entity\Radius\UserRepository;
 use App\Entity\Setting;
+use App\Form\Radius\UserType;
 use Grase\SystemInformation;
 use Grase\Util;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -88,10 +89,46 @@ class DefaultController extends Controller
         }
 
         return $this->render(
-            'GraseRadminBundle:Default:group_edit.html.twig',
+            'group_edit.html.twig',
             [
                 'group' => $group,
                 'group_form' => $form->createView(),
+            ]
+        );
+    }
+
+    public function editUserAction(Request $request, $id)
+    {
+        /** @var User $user */
+        $user = $this->getDoctrine()
+            ->getRepository(User::class)
+            ->find($id);
+
+        if (!$user) {
+            throw $this->createNotFoundException();
+        }
+
+        // @TODO Insert permissions check here for editing
+
+        dump($user);
+
+        $form = $this->createForm(UserType::class, $user);
+
+        $form->handleRequest($request);
+
+        /*if ($form->isSubmitted() && $form->isValid()) {
+            $this->get('grase.manager.group')->saveGroup($user);
+
+            $this->addFlash('success', $this->get('translator')->trans('grase.group.save_success.%groupname%', ['%groupname%' => $user->getName()]));
+
+            return $this->redirectToRoute('grase_groups');
+        }*/
+
+        return $this->render(
+            'user_edit.html.twig',
+            [
+                'user' => $user,
+                'user_form' => $form->createView(),
             ]
         );
     }
