@@ -6,6 +6,7 @@ use App\Entity\Radius\Group;
 use App\Entity\Radius\User;
 use App\Entity\Radius\UserRepository;
 use App\Entity\Setting;
+use App\Entity\UpdateUserData;
 use App\Form\Radius\UserType;
 use Grase\SystemInformation;
 use Grase\Util;
@@ -110,19 +111,17 @@ class DefaultController extends Controller
 
         // @TODO Insert permissions check here for editing
 
-        dump($user);
+        $updateUserData = UpdateUserData::fromUser($user);
 
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(UserType::class, $updateUserData);
 
         $form->handleRequest($request);
 
-        /*if ($form->isSubmitted() && $form->isValid()) {
-            $this->get('grase.manager.group')->saveGroup($user);
-
-            $this->addFlash('success', $this->get('translator')->trans('grase.group.save_success.%groupname%', ['%groupname%' => $user->getName()]));
-
-            return $this->redirectToRoute('grase_groups');
-        }*/
+        if ($form->isSubmitted() && $form->isValid()) {
+            $updateUserData->updateUser($user, $this->getDoctrine()->getManager());
+            $this->addFlash('success', $this->get('translator')->trans('grase.user.save_success.%username%', ['%username%' => $user->getUsername()]));
+            return $this->redirectToRoute('grase_user_edit', ['id' => $user->getUsername()]);
+        }
 
         return $this->render(
             'user_edit.html.twig',

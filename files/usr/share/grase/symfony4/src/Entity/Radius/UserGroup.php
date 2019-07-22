@@ -33,7 +33,7 @@ class UserGroup
      * @ORM\Column(type="integer")
      * @Groups({"user_get"})
      */
-    private $priority;
+    private $priority = 1;
 
     /**
      * Set priority

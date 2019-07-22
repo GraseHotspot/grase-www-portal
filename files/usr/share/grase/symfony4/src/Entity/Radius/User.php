@@ -37,7 +37,7 @@ class User
     private $radiusCheck;
 
     /**
-     * @ORM\OneToMany(targetEntity="UserGroup", mappedBy="user", fetch="EAGER")
+     * @ORM\OneToMany(targetEntity="UserGroup", mappedBy="user", fetch="EAGER", cascade={"persist", "remove"})
      * @Groups({"user_get"})
      */
     private $userGroups;
@@ -142,7 +142,7 @@ class User
 
     /**
      * @Groups({"user_get"})
-     * @return string
+     * @return DateTime|null
      */
     public function getExpiry()
     {
@@ -232,15 +232,31 @@ class User
     }
 
     /**
-     * Get primary group
+     * Get primary group name
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return string
      */
-    public function getPrimaryGroup()
+    public function getPrimaryGroupName()
     {
         /** @var UserGroup $primaryGroup */
         $primaryGroup = $this->getUserGroups()->first();
         return $primaryGroup->getGroup()->getName();
+    }
+
+    public function getPrimaryGroup()
+    {
+        return $this->getUserGroups()->first()->getGroup();
+    }
+
+    /**
+     * Sets primary group by first removing all other groups!!
+     * @param Group $group
+     */
+    public function setPrimaryGroup(Group $group)
+    {
+        /** @var UserGroup $primaryUserGroup */
+        $primaryUserGroup = $this->getUserGroups()->first();
+        $primaryUserGroup->setGroup($group);
     }
 
     /**

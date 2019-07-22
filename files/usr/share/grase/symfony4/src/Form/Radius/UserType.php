@@ -2,7 +2,12 @@
 
 namespace App\Form\Radius;
 
+use App\Entity\Radius\Group;
 use App\Entity\Radius\User;
+use App\Entity\Radius\UserGroup;
+use App\Entity\UpdateUserData;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\DomCrawler\Field\InputFormField;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -18,19 +23,29 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username')
+            ->add('username', null, [
+                'disabled' => true
+            ])
             ->add('comment')
-            ->add('password')
-            ->add('primaryGroup')
-            ->add(
+            ->add('password', null, [
+                'attr' => ['placeholder' => "Change the password"],
+                'data' => ''
+            ])
+            ->add('primaryGroup', EntityType::class, [
+                'class' => Group::class,
+                'choice_label' => 'name',
+                'choice_value' => 'name'
+
+            ])
+            /*->add(
                 'expiry',
                 null,
                 [
                     'attr' => ['placeholder' => 'grase.form.NoExpiry'],
                     'label' => 'grase.form.expiry'
                 ]
-            )
-            ->add('save', SubmitType::class);
+            )*/
+            ->add('save', SubmitType::class, ['label' => "Update Details"]);
 
     }
 
@@ -41,7 +56,7 @@ class UserType extends AbstractType
     {
         $resolver->setDefaults(
             array(
-                'data_class' => User::class
+                'data_class' => UpdateUserData::class
             )
         );
     }
