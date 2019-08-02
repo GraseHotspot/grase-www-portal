@@ -13,4 +13,4 @@
 
 bionic-all:
   <<: *build_definition
-  image: grase/build-images:bionic
+  image: grase/build-images:bionic-php56
