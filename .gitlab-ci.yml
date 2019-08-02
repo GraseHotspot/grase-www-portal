@@ -11,14 +11,6 @@
       - artifacts/
     expire_in: 1 week
 
-jessie-all:
+bionic-all:
   <<: *build_definition
-  image: grase/build-images:jessie
-
-trusty-all:
-  <<: *build_definition
-  image: grase/build-images:trusty
-
-xenial-all:
-  <<: *build_definition
-  image: grase/build-images:xenial
+  image: grase/build-images:bionic
