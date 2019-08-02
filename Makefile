@@ -10,7 +10,7 @@ all: bower composer
 bower:
 	mkdir -p ext-libs/bower
 	cp $(BOWER_FILES) ext-libs/bower
-	cd ext-libs/bower; /usr/local/bin/bower --allow-root install
+	cd ext-libs/bower; bower --allow-root install
 
 composer:
 	cd files/usr/share/grase/; composer install
