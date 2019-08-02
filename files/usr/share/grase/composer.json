@@ -3,11 +3,17 @@
     {
         "type": "vcs",
         "url": "https://github.com/GraseHotspot/smarty-gettext"
+    },
+    {
+        "type": "pear",
+        "url": "https://pear.php.net"
     }
     ],
     "require": {
         "smarty-gettext/smarty-gettext": "@dev",
-        "smarty/smarty": "3.1.*"
+        "smarty/smarty": "3.1.*",
+        "pear-pear.php.net/auth": "^1.6",
+        "pear-pear.php.net/mdb2_driver_mysql": "^1.4"
     },
     "autoload":
     {

@@ -32,7 +32,7 @@ else ifeq ($(shell lsb_release -cs),xenial)
 	DEB_DH_GENCONTROL_ARGS_ALL = -- -Vdist:Depends="php-cli, php, php-mdb2-driver-mysql, php-mdb2, php-auth, php-intl, php-gettext"
 	export SQUID_VERSION=3.5
 else ifeq ($(shell lsb_release -cs),bionic)
-	DEB_DH_GENCONTROL_ARGS_ALL = -- -Vdist:Depends="php5.6-cli | php-cli (< 7.0) , php5.6 | php (<7.0), php-mdb2-driver-mysql, php-mdb2, php-auth, php-intl, php-gettext"
+	DEB_DH_GENCONTROL_ARGS_ALL = -- -Vdist:Depends="php5.6-cli | php-cli (< 7.0) , php5.6 | php (<7.0), php5.6-intl, php-gettext"
 	export SQUID_VERSION=3.5
 else ifeq ($(shell lsb_release -cs),jessie)
 	DEB_DH_GENCONTROL_ARGS_ALL = -- -Vdist:Depends="php5-cli, php5, php-mdb2-driver-mysql, php-mdb2, php-auth, php5-intl, php-gettext"
