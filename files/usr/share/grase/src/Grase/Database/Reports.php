@@ -40,7 +40,7 @@ class Reports
 
         //print_r($res);
         // Always check that result is not an error
-        if (PEAR::isError($res)) {
+        if (MDB2::isError($res)) {
             die($res->getMessage());
         }
 
@@ -60,7 +60,7 @@ class Reports
 
         //print_r($res);
         // Always check that result is not an error
-        if (PEAR::isError($res)) {
+        if (MDB2::isError($res)) {
             die($res->getMessage());
         }
 
@@ -78,7 +78,7 @@ class Reports
 
         //print_r($res);
         // Always check that result is not an error
-        if (PEAR::isError($res)) {
+        if (MDB2::isError($res)) {
             die($res->getMessage());
         }
 
@@ -347,7 +347,7 @@ SQL;
 
         //print_r($res);
         // Always check that result is not an error
-        if (PEAR::isError($res)) {
+        if (MDB2::isError($res)) {
             die($res->getMessage());
         }
 
@@ -409,7 +409,7 @@ SQL;
 
         //print_r($res);
         // Always check that result is not an error
-        if (PEAR::isError($res)) {
+        if (MDB2::isError($res)) {
             die($res->getMessage());
         }
 
@@ -477,7 +477,7 @@ SQL;
 
         //print_r($res);
         // Always check that result is not an error
-        if (PEAR::isError($res)) {
+        if (MDB2::isError($res)) {
             die($res->getMessage());
         }
 

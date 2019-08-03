@@ -119,7 +119,7 @@ class DatabaseConnections
 
         // Connect
         $this->radiusDB =& MDB2::connect($this->radiusDSN, $this->radiusOptions);
-        if (PEAR::isError($this->radiusDB)) {
+        if (MDB2::isError($this->radiusDB)) {
             //TODO Send more of error handler to error handling (i.e. userinfo in database errors, for debugging (stderr?))
             \Grase\ErrorHandling::fatalNoDatabaseError(
                 $this->radiusDB->getMessage() . " RADIUS<br/>The RADIUS database does not exist"
@@ -131,13 +131,13 @@ class DatabaseConnections
 
 
         $this->radminDB =& MDB2::connect($this->radminDSN, $this->radminOptions);
-        if (PEAR::isError($this->radminDB)) {
+        if (MDB2::isError($this->radminDB)) {
             // Attempt to create the radminDB? TODO: Make nicer?
             $this->radiusDB->loadModule('Manager');
             $this->radiusDB->createDatabase($db_settings['sql_radmindatabase']);
 
             $this->radminDB =& MDB2::connect($this->radminDSN, $this->radminOptions);
-            if (PEAR::isError($this->radminDB)) {
+            if (MDB2::isError($this->radminDB)) {
                 \Grase\ErrorHandling::fatalNoDatabaseError($this->radminDB->getMessage() . " RADMIN");
             }
         }
@@ -331,7 +331,7 @@ class Explain_Queries
         // update the debug array with the
         // new data from
         // EXPLAIN and SHOW WARNINGS
-        if (!PEAR::isError($explain)) {
+        if (!MDB2::isError($explain)) {
           $this->explains[$sql]['explain'] = $explain;
           $this->explains[$sql]['warnings'] =
                $this->db->getAll('SHOW WARNINGS');

@@ -193,7 +193,7 @@ class Upgrade
             'Administrative-User'
         );
 
-        if (\PEAR::isError($result)) {
+        if (\MDB2::isError($result)) {
             return T_('Upgrading DB failed: ') . $result->toString();
         }
 

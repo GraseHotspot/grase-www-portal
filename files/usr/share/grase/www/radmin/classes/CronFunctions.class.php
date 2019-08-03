@@ -61,7 +61,7 @@ class CronFunctions extends DatabaseFunctions
           ORDER BY authdate";
 
         $results = $this->db->queryAll($query);
-        if (PEAR::isError($results)) {
+        if (MDB2::isError($results)) {
             return T_('Unable to select users needing First Login Activation') . $results->toString();
         }
 
@@ -91,7 +91,7 @@ class CronFunctions extends DatabaseFunctions
 
         $result = $this->db->queryAll($sql);
 
-        if (PEAR::isError($result)) {
+        if (MDB2::isError($result)) {
             return T_('Unable to select user from radcheck') . $result->toString();
         }
 
@@ -107,7 +107,7 @@ class CronFunctions extends DatabaseFunctions
 
         $result = $this->radminDB->exec($sql);
 
-        if (PEAR::isError($result)) {
+        if (MDB2::isError($result)) {
             return T_('Unable to cleanup old users from batch ') . $result->toString();
         }
 
@@ -115,7 +115,7 @@ class CronFunctions extends DatabaseFunctions
 
         $result = $this->radminDB->exec($sql2);
 
-        if (PEAR::isError($result)) {
+        if (MDB2::isError($result)) {
             return T_('Unable to cleanup old batches ') . $result->toString();
         }
 
@@ -153,7 +153,7 @@ class CronFunctions extends DatabaseFunctions
 
         $result = $this->db->exec($sql);
 
-        if (PEAR::isError($result)) {
+        if (MDB2::isError($result)) {
             return T_('Clearing stale sessions failed: ') . $result->toString();
         }
 
@@ -186,7 +186,7 @@ class CronFunctions extends DatabaseFunctions
 
         $results = $this->db->queryAll($sql);
 
-        if (PEAR::isError($results)) {
+        if (MDB2::isError($results)) {
             return T_('Fetching free users to delete failed') . $results->toString();
         }
 
@@ -229,7 +229,7 @@ class CronFunctions extends DatabaseFunctions
 
             $results = $this->db->queryAll($sql);
 
-            if (PEAR::isError($results)) {
+            if (MDB2::isError($results)) {
                 return T_('Fetching users to delete failed') . $results->toString();
             }
 
@@ -266,7 +266,7 @@ class CronFunctions extends DatabaseFunctions
 
         $results = $this->db->queryAll($sql);
 
-        if (PEAR::isError($results)) {
+        if (MDB2::isError($results)) {
             return T_('Fetching users to delete failed') . $results->toString();
         }
 
@@ -303,7 +303,7 @@ class CronFunctions extends DatabaseFunctions
 
         $results = $this->db->queryAll($sql);
 
-        if (PEAR::isError($results)) {
+        if (MDB2::isError($results)) {
             return T_('Fetching users to delete failed') . $results->toString();
         }
 
@@ -367,7 +367,7 @@ class CronFunctions extends DatabaseFunctions
 
             $result = $this->db->exec($sql);
 
-            if (PEAR::isError($result)) {
+            if (MDB2::isError($result)) {
                 return T_('Unable to insert data into mtotaccttmp: ') . $result->toString();
             }
 
@@ -385,7 +385,7 @@ class CronFunctions extends DatabaseFunctions
 
             $result = $this->db->exec($sql);
 
-            if (PEAR::isError($result)) {
+            if (MDB2::isError($result)) {
                 return T_('Unable to delete old radacct data: ') . $result->toString();
             }
 
@@ -406,7 +406,7 @@ class CronFunctions extends DatabaseFunctions
 
             $result = $this->db->exec($sql);
 
-            if (PEAR::isError($result)) {
+            if (MDB2::isError($result)) {
                 return T_('Unable to update users Max-Octets: ') . $result->toString();
             }
 
@@ -425,7 +425,7 @@ class CronFunctions extends DatabaseFunctions
 
             $result = $this->db->exec($sql);
 
-            if (PEAR::isError($result)) {
+            if (MDB2::isError($result)) {
                 return T_('Unable to update users Max-All-Session: ') . $result->toString();
             }
 
@@ -460,7 +460,7 @@ class CronFunctions extends DatabaseFunctions
 
             $result = $this->db->exec($sql);
 
-            if (PEAR::isError($result)) {
+            if (MDB2::isError($result)) {
                 return T_('Unable to move mtotaccttmp data to mtotacct: ') . $result->toString();
             }
 
@@ -472,7 +472,7 @@ class CronFunctions extends DatabaseFunctions
 
             $result = $this->db->exec($sql);
 
-            if (PEAR::isError($result)) {
+            if (MDB2::isError($result)) {
                 return T_('Unable to truncate mtotaccttmp: ') . $result->toString();
             }
 
@@ -494,7 +494,7 @@ class CronFunctions extends DatabaseFunctions
 
             $result = $this->db->exec($sql);
 
-            if (PEAR::isError($result)) {
+            if (MDB2::isError($result)) {
                 return T_('Unable to ensure positive values in radcheck: ') . $result->toString();
             }
 
@@ -513,7 +513,7 @@ class CronFunctions extends DatabaseFunctions
 
             $result = $this->db->exec($sql);
 
-            if (PEAR::isError($result)) {
+            if (MDB2::isError($result)) {
                 return T_('Unable to ensure positive values in radcheck: ') . $result->toString();
             }
 
@@ -532,7 +532,7 @@ class CronFunctions extends DatabaseFunctions
                                 
                 $result = $this->db->exec($sql);
                 
-                if (PEAR::isError($result))
+                if (MDB2::isError($result))
                 {
                     return T_('Unable to delete ancient radacct data: ') . $result->toString();
                 }    
@@ -559,7 +559,7 @@ class CronFunctions extends DatabaseFunctions
 
         $result = $this->db->exec($sql);
 
-        if (PEAR::isError($result)) {
+        if (MDB2::isError($result)) {
             return T_('Unable to clear old Postauth rows: ') . $result->toString();
         }
 
@@ -576,7 +576,7 @@ class CronFunctions extends DatabaseFunctions
 
         $result =& $this->db->query($sql);
 
-        if (PEAR::isError($result)) {
+        if (MDB2::isError($result)) {
             return T_('Unable to get PostAuth MAC Reject IDs: ') . $result->toString();
         }
 
@@ -593,7 +593,7 @@ class CronFunctions extends DatabaseFunctions
             $rowresult = $this->db->exec($sql);
 
 
-            if (PEAR::isError($rowresult)) {
+            if (MDB2::isError($rowresult)) {
                 return T_('Unable to delete PostAuth MAC Reject entry: ' . $rowresult->toString());
             }
 

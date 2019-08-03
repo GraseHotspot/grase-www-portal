@@ -68,7 +68,7 @@ class AdminLog
         
         //var_dump($this->db);
         //var_dump($this->log_sql);	
-    	if(PEAR::isError($this->log_sql))
+    	if(MDB2::isError($this->log_sql))
     	    \Grase\ErrorHandling::fatalNoDatabaseError("Preparing logging statement failed: ". $this->log_sql->getMessage());
      }
     
@@ -109,7 +109,7 @@ class AdminLog
         
         //print_r($res);
         // Always check that result is not an error
-        if (PEAR::isError($res)) {
+        if (MDB2::isError($res)) {
             \Grase\ErrorHandling::fatalError("Getting Admin Log Failed: ". $res->getMessage());
         }
         
@@ -126,7 +126,7 @@ class AdminLog
         
         //print_r($res);
         // Always check that result is not an error
-        if (PEAR::isError($res)) {
+        if (MDB2::isError($res)) {
             \Grase\ErrorHandling::fatalError("Getting Admin Log Failed: ". $res->getMessage());
         }
         
@@ -144,7 +144,7 @@ class AdminLog
                 $action));
 
         // Always check that result is not an error
-        if (PEAR::isError($affected)) {
+        if (MDB2::isError($affected)) {
             \Grase\ErrorHandling::fatalError('Creating Log Entry failed: '. $affected->getMessage());
         }
         
@@ -160,7 +160,7 @@ class AdminLog
                 $action));
 
         // Always check that result is not an error
-        if (PEAR::isError($affected)) {
+        if (MDB2::isError($affected)) {
             \Grase\ErrorHandling::fatalError('Creating CRON Log Entry failed: '. $affected->getMessage());
         }
         
@@ -176,7 +176,7 @@ class AdminLog
                 "FATAL: ".$action));
 
         // Always check that result is not an error
-        /*if (PEAR::isError($affected)) {
+        /*if (MDB2::isError($affected)) {
             die('Creating Log Entry failed: '. $affected->getMessage());
         }*/ // Don't check for error here as this is for error handling
         

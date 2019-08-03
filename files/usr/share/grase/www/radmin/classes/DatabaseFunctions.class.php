@@ -90,7 +90,7 @@ class DatabaseFunctions
 
         $res =& $this->db->query($sql);
 
-        if (PEAR::isError($res)) {
+        if (MDB2::isError($res)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Retrieving Months Accounting Data Available For failed: '),
                 $res
@@ -135,7 +135,7 @@ class DatabaseFunctions
 
         $session = $this->db->queryRow($sql);
 
-        if (PEAR::isError($session)) {
+        if (MDB2::isError($session)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Retrieving Session by RadAcctID failed: '),
                 $session
@@ -175,7 +175,7 @@ class DatabaseFunctions
 
         $sessions = $this->db->queryAll($sql);
 
-        if (PEAR::isError($sessions)) {
+        if (MDB2::isError($sessions)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Retrieving Sessions by Username failed: '),
                 $sessions
@@ -216,7 +216,7 @@ class DatabaseFunctions
 
         $sessions = $this->db->queryAll($sql);
 
-        if (PEAR::isError($sessions)) {
+        if (MDB2::isError($sessions)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Retrieving Sessions by Username failed: '),
                 $sessions
@@ -240,7 +240,7 @@ class DatabaseFunctions
 
         $radacctid = $this->db->queryOne($sql);
 
-        if (PEAR::isError($radacctid)) {
+        if (MDB2::isError($radacctid)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Retrieving Current Session by Username failed: '),
                 $radacctid
@@ -264,7 +264,7 @@ class DatabaseFunctions
 
         $username = $this->db->queryOne($sql);
 
-        if (PEAR::isError($username)) {
+        if (MDB2::isError($username)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Retrieving Username by Active Session (ipadddress): '),
                 $username
@@ -294,7 +294,7 @@ class DatabaseFunctions
 
         $results = $this->db->queryAll($sql);
 
-        if (PEAR::isError($results)) {
+        if (MDB2::isError($results)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Get All User radcheck details Query failed: '),
                 $results
@@ -312,7 +312,7 @@ class DatabaseFunctions
 
         $results = $this->db->queryAll($sql);
 
-        if (PEAR::isError($results)) {
+        if (MDB2::isError($results)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Get All User radreply details Query failed: '),
                 $results
@@ -331,7 +331,7 @@ class DatabaseFunctions
 
         $results = $this->db->queryAll($sql);
 
-        if (PEAR::isError($results)) {
+        if (MDB2::isError($results)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Get All User Group details Query failed: '),
                 $results
@@ -349,7 +349,7 @@ class DatabaseFunctions
 
         $results = $this->db->queryAll($sql);
 
-        if (PEAR::isError($results)) {
+        if (MDB2::isError($results)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Get All User Comment details Query failed: '),
                 $results
@@ -374,7 +374,7 @@ class DatabaseFunctions
 
         $results = $this->db->queryAll($sql);
 
-        if (PEAR::isError($results)) {
+        if (MDB2::isError($results)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Get All User radacct details Query failed: '),
                 $results
@@ -402,7 +402,7 @@ class DatabaseFunctions
 
         $results = $this->db->queryAll($sql);
 
-        if (PEAR::isError($results)) {
+        if (MDB2::isError($results)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Get All User mtotacct details Query failed: '),
                 $results
@@ -452,7 +452,7 @@ class DatabaseFunctions
 
             $results = $this->db->queryAll($sql);
 
-            if (PEAR::isError($results)) {
+            if (MDB2::isError($results)) {
                 \Grase\ErrorHandling::fatalDatabaseError(
                     T_('Get User details Query failed: '),
                     $results
@@ -473,7 +473,7 @@ class DatabaseFunctions
 
             $results = $this->db->queryAll($sql);
 
-            if (PEAR::isError($results)) {
+            if (MDB2::isError($results)) {
                 \Grase\ErrorHandling::fatalDatabaseError(
                     T_('Get User radreply details Query failed: '),
                     $results
@@ -608,7 +608,7 @@ class DatabaseFunctions
         );
         $results = $this->db->queryOne($sql);
 
-        if (PEAR::isError($results)) {
+        if (MDB2::isError($results)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Get User Group Query failed: '),
                 $results
@@ -636,7 +636,7 @@ class DatabaseFunctions
 
         $results = $this->db->queryAll($sql);
 
-        if (PEAR::isError($results)) {
+        if (MDB2::isError($results)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Get All Usernames Query Failed: '),
                 $results
@@ -662,7 +662,7 @@ class DatabaseFunctions
 
         $results = $this->db->queryAll($sql);
 
-        if (PEAR::isError($results)) {
+        if (MDB2::isError($results)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Get Users By Group Query Failed: '),
                 $results
@@ -686,7 +686,7 @@ class DatabaseFunctions
 
         $results = $this->db->queryAll($sql);
 
-        if (PEAR::isError($results)) {
+        if (MDB2::isError($results)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Get Computer Users Query Failed: '),
                 $results
@@ -719,7 +719,7 @@ class DatabaseFunctions
 
             $results = $this->db->queryOne($sql);
 
-            if (PEAR::isError($results)) {
+            if (MDB2::isError($results)) {
                 \Grase\ErrorHandling::fatalDatabaseError(
                     T_('Get User Last Logout Query Failed: '),
                     $results
@@ -755,7 +755,7 @@ class DatabaseFunctions
         );
 
         $results = $this->db->queryOne($sql);
-        if (PEAR::isError($results)) {
+        if (MDB2::isError($results)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Get User Total Session Time Query failed: '),
                 $results
@@ -783,7 +783,7 @@ class DatabaseFunctions
             );
 
             $results = $this->db->queryOne($sql);
-            if (PEAR::isError($results)) {
+            if (MDB2::isError($results)) {
                 \Grase\ErrorHandling::fatalDatabaseError(
                     T_('Get User Time Usage (Total) Query failed: '),
                     $results
@@ -817,7 +817,7 @@ class DatabaseFunctions
         );
 
         $results = $this->db->queryOne($sql);
-        if (PEAR::isError($results)) {
+        if (MDB2::isError($results)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Get User Data Usage Query failed: '),
                 $results
@@ -846,7 +846,7 @@ class DatabaseFunctions
             );
 
             $results = $this->db->queryOne($sql);
-            if (PEAR::isError($results)) {
+            if (MDB2::isError($results)) {
                 \Grase\ErrorHandling::fatalDatabaseError(
                     T_('Get User Data Usage (Total) Query failed: '),
                     $results
@@ -873,7 +873,7 @@ class DatabaseFunctions
 
         $results = $this->db->queryAll($sql);
 
-        if (PEAR::isError($results)) {
+        if (MDB2::isError($results)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Get All Users Comments Query failed: '),
                 $results
@@ -903,7 +903,7 @@ class DatabaseFunctions
 
         $results = $this->db->queryOne($sql);
 
-        if (PEAR::isError($results)) {
+        if (MDB2::isError($results)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Get User Comment failed: '),
                 $results
@@ -972,7 +972,7 @@ class DatabaseFunctions
 
         $result = $this->db->exec($sql);
 
-        if (PEAR::isError($result)) {
+        if (MDB2::isError($result)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Deleting radgroupcheck query failed: '),
                 $result
@@ -992,7 +992,7 @@ class DatabaseFunctions
             );
 
             $result = $this->db->replace('radgroupcheck', $fields);
-            if (PEAR::isError($result)) {
+            if (MDB2::isError($result)) {
                 \Grase\ErrorHandling::fatalDatabaseError(
                     T_('Adding Group Check Attributes query failed:  '),
                     $result
@@ -1030,7 +1030,7 @@ class DatabaseFunctions
 
         $result = $this->db->exec($sql);
 
-        if (PEAR::isError($result)) {
+        if (MDB2::isError($result)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Deleting radgroupreply query failed: '),
                 $result
@@ -1045,7 +1045,7 @@ class DatabaseFunctions
 
         $result = $this->db->exec($sql);
 
-        if (PEAR::isError($result)) {
+        if (MDB2::isError($result)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Deleting radgroupreply query failed: '),
                 $result
@@ -1126,7 +1126,7 @@ class DatabaseFunctions
                 );
 
                 $result = $this->db->replace($table, $fields);
-                if (PEAR::isError($result)) {
+                if (MDB2::isError($result)) {
                     \Grase\ErrorHandling::fatalDatabaseError(
                         T_('Adding Group Attributes query failed:  '),
                         $result
@@ -1181,7 +1181,7 @@ class DatabaseFunctions
         // Get radgroupreply items    
         $results = $this->db->queryAll($sql);
 
-        if (PEAR::isError($results)) {
+        if (MDB2::isError($results)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Get Groups details Query failed: '),
                 $results
@@ -1191,7 +1191,7 @@ class DatabaseFunctions
         // Get radgroupcheck items
         $results2 = $this->db->queryAll($sql2);
 
-        if (PEAR::isError($results)) {
+        if (MDB2::isError($results)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Get Groups details Query failed: '),
                 $results
@@ -1284,7 +1284,7 @@ class DatabaseFunctions
 
         $result = $this->db->replace('radusercomment', $fields);
 
-        if (PEAR::isError($result)) {
+        if (MDB2::isError($result)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Setting User Comment Query Failed: '),
                 $result
@@ -1304,7 +1304,7 @@ class DatabaseFunctions
 
         $result = $this->db->replace('radusergroup', $fields);
 
-        if (PEAR::isError($result)) {
+        if (MDB2::isError($result)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Setting User Group Query Failed: '),
                 $result
@@ -1330,7 +1330,7 @@ class DatabaseFunctions
 
         $result = $this->db->replace('radcheck', $fields);
 
-        if (PEAR::isError($result)) {
+        if (MDB2::isError($result)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Setting User Datalimit Query Failed: '),
                 $result
@@ -1357,7 +1357,7 @@ class DatabaseFunctions
 
         $result = $this->db->queryOne($sql);
 
-        if (PEAR::isError($result)) {
+        if (MDB2::isError($result)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Getting User Current Data Limit to increase failed: '),
                 $result
@@ -1383,7 +1383,7 @@ class DatabaseFunctions
 
         $result = $this->db->replace('radcheck', $fields);
 
-        if (PEAR::isError($result)) {
+        if (MDB2::isError($result)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Setting User Timelimit Query Failed: '),
                 $result
@@ -1409,7 +1409,7 @@ class DatabaseFunctions
 
         $result = $this->db->queryOne($sql);
 
-        if (PEAR::isError($result)) {
+        if (MDB2::isError($result)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Getting User Current Time Limit to increase failed: '),
                 $result
@@ -1434,7 +1434,7 @@ class DatabaseFunctions
 
         $result = $this->db->replace('radcheck', $fields);
 
-        if (PEAR::isError($result)) {
+        if (MDB2::isError($result)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Setting User Password Query Failed: '),
                 $result
@@ -1460,7 +1460,7 @@ class DatabaseFunctions
 
             $result = $this->db->replace('radcheck', $fields);
 
-            if (PEAR::isError($result)) {
+            if (MDB2::isError($result)) {
                 \Grase\ErrorHandling::fatalDatabaseError(
                     T_('Setting User ExpireAfter Query Failed: '),
                     $result
@@ -1480,7 +1480,7 @@ class DatabaseFunctions
 
             $result = $this->db->queryOne($sql);
 
-            if (PEAR::isError($result)) {
+            if (MDB2::isError($result)) {
                 \Grase\ErrorHandling::fatalDatabaseError(
                     T_('Deleting User Expire After Query Failed: '),
                     $result
@@ -1504,7 +1504,7 @@ class DatabaseFunctions
 
             $result = $this->db->replace('radcheck', $fields);
 
-            if (PEAR::isError($result)) {
+            if (MDB2::isError($result)) {
                 \Grase\ErrorHandling::fatalDatabaseError(
                     T_('Setting User Expiry Date Query Failed: '),
                     $result
@@ -1524,7 +1524,7 @@ class DatabaseFunctions
 
             $result = $this->db->queryOne($sql);
 
-            if (PEAR::isError($result)) {
+            if (MDB2::isError($result)) {
                 \Grase\ErrorHandling::fatalDatabaseError(
                     T_('Deleting User Expiry Date Query Failed: '),
                     $result
@@ -1547,7 +1547,7 @@ class DatabaseFunctions
 
         $result = $this->db->replace('radcheck', $fields);
 
-        if (PEAR::isError($result)) {
+        if (MDB2::isError($result)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Locking User Account Query Failed: '),
                 $result
@@ -1564,7 +1564,7 @@ class DatabaseFunctions
 
         $result = $this->db->replace('radreply', $fields);
 
-        if (PEAR::isError($result)) {
+        if (MDB2::isError($result)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('User Account Lock Reason Query Failed: '),
                 $result
@@ -1589,7 +1589,7 @@ class DatabaseFunctions
 
         $result = $this->db->queryOne($sql);
 
-        if (PEAR::isError($result)) {
+        if (MDB2::isError($result)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Removing User Lock Query Failed: '),
                 $result
@@ -1606,7 +1606,7 @@ class DatabaseFunctions
 
         $result = $this->db->queryOne($sql);
 
-        if (PEAR::isError($result)) {
+        if (MDB2::isError($result)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Removing User Lock Message Query Failed: '),
                 $result
@@ -1630,7 +1630,7 @@ class DatabaseFunctions
 
         $result = $this->db->query($sql);
 
-        if (PEAR::isError($result)) {
+        if (MDB2::isError($result)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Deleting user failed: ') . "($username) ",
                 $result
@@ -1646,7 +1646,7 @@ class DatabaseFunctions
 
         $result = $this->db->query($sql);
 
-        if (PEAR::isError($result)) {
+        if (MDB2::isError($result)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Deleting user radreply data failed: ') . "($username) ",
                 $result
@@ -1662,7 +1662,7 @@ class DatabaseFunctions
 
         $result = $this->db->query($sql);
 
-        if (PEAR::isError($result)) {
+        if (MDB2::isError($result)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Deleting users group failed: ') . "($username) ",
                 $result
@@ -1678,7 +1678,7 @@ class DatabaseFunctions
 
         $result = $this->db->query($sql);
 
-        if (PEAR::isError($result)) {
+        if (MDB2::isError($result)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Deleting users comment failed: ') . "($username) ",
                 $result
@@ -1701,7 +1701,7 @@ class DatabaseFunctions
 
         $results = $this->db->query($sql);
 
-        if (PEAR::isError($results)) {
+        if (MDB2::isError($results)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Checking Uniq Username failed: '),
                 $results
@@ -1733,7 +1733,7 @@ class DatabaseFunctions
 
         $value = $this->db->queryOne($sql);
 
-        if (PEAR::isError($value)) {
+        if (MDB2::isError($value)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Retrieving Chilli Config Single Value failed: '),
                 $value
@@ -1766,7 +1766,7 @@ class DatabaseFunctions
 
         $result = $this->db->exec($sql);
 
-        if (PEAR::isError($result)) {
+        if (MDB2::isError($result)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Deleting Chilli Config Query Failed: '),
                 $result
@@ -1799,7 +1799,7 @@ class DatabaseFunctions
             )
         );
 
-        if (PEAR::isError($affected)) {
+        if (MDB2::isError($affected)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Setting Chilli Config Single Query Failed: '),
                 $affected
@@ -1824,7 +1824,7 @@ class DatabaseFunctions
             )
         );
 
-        if (PEAR::isError($affected)) {
+        if (MDB2::isError($affected)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Setting Chilli Config Multi Query Failed: '),
                 $affected
@@ -1848,7 +1848,7 @@ class DatabaseFunctions
 
         $values = $this->db->queryAll($sql);
 
-        if (PEAR::isError($values)) {
+        if (MDB2::isError($values)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Retrieving Chilli Config Multi Value failed: '),
                 $values
@@ -1916,7 +1916,7 @@ class DatabaseFunctions
 
         $mac = $this->db->queryOne($sql);
 
-        if (PEAR::isError($mac)) {
+        if (MDB2::isError($mac)) {
             \Grase\ErrorHandling::fatalDatabaseError(
                 T_('Retrieving MAC from IP failed: '),
                 $mac
@@ -1942,7 +1942,7 @@ class DatabaseFunctions
 
         $user = $this->db->queryOne($sql);
 
-        if (PEAR::isError($user)) {
+        if (MDB2::isError($user)) {
             // TODO: This needs to be logged in admin log? Won't see error as it's squid calling it
             return "ERR";
             //\Grase\ErrorHandling::fatalDatabaseError(

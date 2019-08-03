@@ -39,7 +39,7 @@ class DatabaseUsermin
         $res =& $this->db->query($sql);
         
         // Always check that result is not an error
-        if (PEAR::isError($res)) {
+        if (MDB2::isError($res)) {
             die($res->getMessage());
         }
         
