@@ -3,6 +3,11 @@ grase-www-portal (3.8.1) UNRELEASED; urgency=medium
   * Upgrade database to UTF8 as we store UTF8 in it
   * Update translations
   * Call CRON via PHP instead of Apache (Fixes #142)
+  * Use composer to pull in php-auth and php-mdb2
+  * Add deleteoldfreeusers cron param to cleanup free user accounts
+    older than 2 months
+  * Minor fixes to uam code (cleanup mostly)
+  * Remove old freedownloads page from uam
 
  -- Tim White <tim@grasehotspot.org>  Wed, 27 Jan 2016 21:25:49 +1000
 
