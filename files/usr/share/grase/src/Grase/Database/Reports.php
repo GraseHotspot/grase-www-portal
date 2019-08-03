@@ -22,7 +22,7 @@
 
 namespace Grase\Database;
 
-use PEAR;
+use MDB2;
 
 class Reports
 {
