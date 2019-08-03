@@ -592,7 +592,7 @@ ALTER TABLE mtotacct
 CREATE TABLE `mtotaccttmp` (
   `MTotAcctId` bigint(21) NOT NULL AUTO_INCREMENT,
   `UserName` varchar(64) NOT NULL,
-  `AcctDate` date NOT NULL DEFAULT '0000-00-00',
+  `AcctDate` date NOT NULL DEFAULT '1970-01-01',
   `ConnNum` bigint(12) DEFAULT NULL,
   `ConnTotDuration` bigint(12) DEFAULT NULL,
   `ConnMaxDuration` bigint(12) DEFAULT NULL,
