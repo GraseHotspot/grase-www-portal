@@ -22,6 +22,7 @@ Please let me know if you don't want your name to appear in the Donor's list.
 
 ### Recurring Donors
 * Daniel Crusoe
+* Michael Raynor
 
 ### Hardware Donations
 * Josef Himmelbauer
