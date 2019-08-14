@@ -192,16 +192,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GraseHotspot/pd-menu.git",
-                "reference": "7aa0f43ab4ff8cb7370540da5971348a9493515b"
+                "reference": "b22261cc11ef1aecc4a6dbfcc6ccc1e491cddace"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GraseHotspot/pd-menu/zipball/7aa0f43ab4ff8cb7370540da5971348a9493515b",
-                "reference": "7aa0f43ab4ff8cb7370540da5971348a9493515b",
+                "url": "https://api.github.com/repos/GraseHotspot/pd-menu/zipball/b22261cc11ef1aecc4a6dbfcc6ccc1e491cddace",
+                "reference": "b22261cc11ef1aecc4a6dbfcc6ccc1e491cddace",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1.3",
+                "php": "^7.2.1",
                 "twig/twig": "~2"
             },
             "type": "symfony-bundle",
@@ -230,7 +230,7 @@
             "support": {
                 "source": "https://github.com/GraseHotspot/pd-menu/tree/master"
             },
-            "time": "2019-01-02T06:02:27+00:00"
+            "time": "2019-08-14T10:09:12+00:00"
         },
         {
             "name": "doctrine/annotations",
