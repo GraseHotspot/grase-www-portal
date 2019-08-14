@@ -149,6 +149,18 @@
     "psr/simple-cache": {
         "version": "1.0.1"
     },
+    "sensio/framework-extra-bundle": {
+        "version": "5.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "5.2",
+            "ref": "fb7e19da7f013d0d422fa9bce16f5c510e27609b"
+        },
+        "files": [
+            "config/packages/sensio_framework_extra.yaml"
+        ]
+    },
     "sensiolabs/security-checker": {
         "version": "4.0",
         "recipe": {
@@ -284,6 +296,9 @@
     "symfony/polyfill-mbstring": {
         "version": "v1.8.0"
     },
+    "symfony/polyfill-php72": {
+        "version": "v1.11.0"
+    },
     "symfony/process": {
         "version": "v4.0.9"
     },
@@ -355,6 +370,9 @@
     },
     "symfony/validator": {
         "version": "v4.0.9"
+    },
+    "symfony/var-dumper": {
+        "version": "v4.2.10"
     },
     "symfony/var-exporter": {
         "version": "v4.2.1"

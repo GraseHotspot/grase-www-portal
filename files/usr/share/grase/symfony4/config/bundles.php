@@ -16,4 +16,5 @@ return [
     Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
     Shivas\VersioningBundle\ShivasVersioningBundle::class => ['all' => true],
     Pd\MenuBundle\PdMenuBundle::class => ['all' => true],
+    Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle::class => ['all' => true],
 ];
