@@ -4,7 +4,8 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+            {# 'app' must match the first argument to addEntry() in webpack.config.js #}
+            {{ encore_entry_link_tags('app') }}
         {% endblock %}
     </head>
     <body>
@@ -48,7 +49,7 @@
             {% endblock %}
         </div>
         {% block javascripts %}
-            <script src="{{ asset('build/app.js') }}" type="application/javascript"></script>
+            {{ encore_entry_script_tags('app') }}
         {% endblock %}
         {% block javascripts_inline %}
         {% endblock %}

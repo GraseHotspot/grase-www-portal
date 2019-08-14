@@ -11,6 +11,10 @@ Encore
     // will create public/build/app.js and public/build/app.css
     .addEntry('app', './assets/js/app.js')
 
+    // will require an extra script tag for runtime.js
+    // but, you probably want this, unless you're building a single-page app
+    .enableSingleRuntimeChunk()
+
     // allow legacy applications to use $/jQuery as a global variable
     .autoProvidejQuery()
 
@@ -25,6 +29,7 @@ Encore
 
 // create hashed filenames (e.g. app.abc123.css)
 // .enableVersioning()
+    .enableVersioning(Encore.isProduction())
 
     // allow sass/scss files to be processed
     .enableSassLoader()
