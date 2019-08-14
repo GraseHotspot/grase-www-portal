@@ -2,6 +2,7 @@
 
 namespace App\Menu;
 
+
 use App\Entity\Radius\Group;
 use Doctrine\ORM\EntityManagerInterface;
 use Pd\MenuBundle\Builder\ItemInterface;
@@ -29,58 +30,63 @@ class MainMenu extends Menu
      */
     public function createMenu(array $options = []): ItemInterface
     {
+
         // Create Root Item
         $menu = $this
             ->createRoot('settings_menu', true)// Create event is "settings_menu.event"
             ->setListAttr([])
-            ->setChildAttr(['data-parent' => 'grase_radmin_homepage', 'class' => 'nav nav-pills flex-column']); // Add Parent Menu to Html Tag
+            ->setChildAttr(['data-parent' => 'grase_radmin_homepage', 'class' => 'nav nav-pills nav-sidebar flex-column nav-child-indent']); // Add Parent Menu to Html Tag
 
         // Create Menu Items
 
-
-
-
-
-        $usersMenu = $menu->addChild('nav_config_users', 10)
-            ->setLabel('Users')
-            ->setRoute('grase_users')
-            ->setListAttr(['class' => 'nav-item'])
-            ->setLinkAttr(['class' => 'nav-link'])//->setRoles(['ADMIN_SETTINGS_EMAIL'])
-        ;
-        $this->buildUserGroupsItems($usersMenu);
-
-        $menu->addChild('nav_config_groups', 5)
+        $menu->addChild(new DefaultItem('nav_config_groups', $menu->isEvent()), 5)
              ->setLabel('Groups')
              ->setRoute('grase_groups')
-             ->setListAttr(['class' => 'nav-item'])
-             ->setLinkAttr(['class' => 'nav-link']);
+             ->setChildAttr(['class' => 'nav-treeview'])
+        ;
         //->setRoles(['ADMIN_SETTINGS_CONTACT'])
 
+        $usersMenu = $menu->addChild(new DefaultItem('nav_config_users', $menu->isEvent()), 10)
+            ->setLabel('Users <i class="right fas fa-angle-left"></i>')
+            ->setLink('#')
+            ->setListAttr(['class' => 'nav-item has-treeview'])
+            ->setChildAttr(['class' => 'nav nav-treeview'])
+            ->setExtra('label_icon', 'people')
+            //->setRoles(['ADMIN_SETTINGS_EMAIL'])
+        ;
+        $usersMenu->addChild(new DefaultItem('nav_config_users-all', $usersMenu->isEvent()))
+            ->setLabel('All Users')
+            ->setRoute('grase_users')
+            ->setExtra('label_icon', 'people')
+            ;
+        $this->buildUserGroupsItems($usersMenu);
 
-        $menu->addChild('nav_report_dhcp_leases', 15)
+
+        $menu->addChild(new DefaultItem('nav_report_dhcp_leases', $menu->isEvent()), 15)
             ->setLabel('DHCP Leases')
             ->setRoute('grase_dhcp_leases')
-            ->setListAttr(['class' => 'nav-item'])
-            ->setLinkAttr(['class' => 'nav-link']);
+            ->setChildAttr(['class' => 'nav-treeview'])
+        ;
         //->setRoles(['ADMIN_SETTINGS_CONTACT'])
 
 
-
-        $settingsMenu = $menu->addChild('nav_config_settings', 30)
-            ->setLabel('Settings')
+        $settingsMenu = $menu->addChild(new DefaultItem('nav_config_settings', $menu->isEvent()), 30)
+            ->setLabel('Settings <i class="right fas fa-angle-left"></i>')
             //->setRoute('grase_settings')
-            ->setListAttr(['class' => 'nav-item'])
-            ->setLinkAttr(['class' => 'nav-link'])
-            ->setExtra('label_icon', 'settings_application');
+            ->setLink('#')
+            ->setListAttr(['class' => 'nav-item has-treeview'])
+            ->setChildAttr(['class' => 'nav nav-treeview'])
+            ->setExtra('label_icon', 'settings_application')
+        ;
         //->setRoles(['ADMIN_SETTINGS_GENERAL'])
 
 
-        $settingsMenu->addChild('nav_config_advanced_settings', 1)
+        $settingsMenu->addChild(new DefaultItem('nav_config_advanced_settings', $settingsMenu->isEvent()), 1)
             ->setLabel('Advanced Settings')
             ->setRoute('grase_advanced_settings')
-            ->setListAttr(['class' => 'nav-item'])
-            ->setLinkAttr(['class' => 'nav-link'])
-            ->setExtra('label_icon', 'settings_application');
+            ->setExtra('label_icon', 'settings_application')
+            ->setChildAttr(['class' => 'nav nav-treeview'])
+        ;
         //->setRoles(['ADMIN_SETTINGS_GENERAL'])
 
 
@@ -91,15 +97,17 @@ class MainMenu extends Menu
     {
         $groupRepo = $this->entityManager->getRepository(Group::class);
         $groups = $groupRepo->findAll();
+        $groups = $groupRepo->findBy([], ['name' => 'ASC']);
         /** @var Group $group */
         foreach ($groups as $group) {
 
             if (!$group->getUsergroups()->isEmpty()) {
-                $usersMenu->addChild('nav_config_users_' . $group->getId())
+                $usersMenu->addChild(new DefaultItem('nav_config_users_' . $group->getId(), $usersMenu->isEvent()))
                     ->setLabel($group->getName())
                     ->setRoute('grase_users', ['group' => $group->getName()])
-                    ->setListAttr(['class' => 'nav-item'])
-                    ->setLinkAttr(['class' => 'nav-link']);
+                    ->setExtra('label_icon', 'people_outline')
+
+                ;
             }
         }
 

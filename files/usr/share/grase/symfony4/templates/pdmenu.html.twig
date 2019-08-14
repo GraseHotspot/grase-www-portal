@@ -1,0 +1,49 @@
+{% extends '@PdMenu/Default/menuBase.html.twig' %}
+
+{# Begin Menu #}
+{% block menu_begin %}
+    <ul id="{{ menu.id }}" {{ arrayToAttr(menu.childAttr, {'class': 'nav'}, options) }} data-widget="treeview" role="menu" data-accordion="false">
+        {% for depth in menu.child %}
+            {% set menu = depth %}
+            {{ block('menu_item') }}
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+{# Create Menu Item #}
+{% block menu_item %}
+    <li {{ arrayToAttr(menu.listAttr, [], options) }}>
+        {# Create Link #}
+        {% if menu.link %}
+            <a href="{{ menu.link }}" {{ arrayToAttr(menu.linkAttr, [], options) }}>
+                {% if menu.extra('label_icon') %}
+                    {{ options.iconTemplate|replace({ 'itext': menu.extra('label_icon') })|raw }}
+                {% endif %}
+                <p {{ arrayToAttr(menu.labelAttr, [], options) }}>
+                    {{ menu.extra('label_translate', true) ? menu.label|trans([], options.trans_domain)|raw : menu.label|raw }}
+                </p>
+                {{ menu.labelAfterHtml|raw }}
+            </a>
+            {{ menu.linkAfterHtml|raw }}
+        {% else %}
+            {% if menu.extra('label_icon') %}
+                {{ options.iconTemplate|replace({ 'itext': menu.extra('label_icon') })|raw }}
+            {% endif %}
+            <p {{ arrayToAttr(menu.labelAttr, [], options) }}>
+                    {{ menu.extra('label_translate', true) ? menu.label|trans([], options.trans_domain)|raw : menu.label|raw }}
+            </p>
+            {{ menu.labelAfterHtml|raw }}
+            {{ menu.linkAfterHtml|raw }}
+        {% endif %}
+
+        {# Create Dropdown #}
+        {% if menu.child|length %}
+            <ul {{ arrayToAttr(menu.childAttr, [], options) }}>
+                {% for depth in menu.child %}
+                    {% set menu = depth %}
+                    {{ block('menu_item') }}
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </li>
+{% endblock %}

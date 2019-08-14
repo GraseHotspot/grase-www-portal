@@ -4,30 +4,33 @@ $primary: darken(#428bca, 20%);
 // the ~ allows you to reference things in node_modules
 @import "~bootstrap/scss/bootstrap";
 @import "~material-design-icons/iconfont/material-icons.css";
+@import "~admin-lte/build/scss/AdminLTE.scss";
+@import "~admin-lte/plugins/fontawesome-free/css/all.css";
 
 /*
  * Base structure
  */
 
 /* Move down content because we have a fixed navbar that is 50px tall */
-body {
+/*body {
   padding-top: 50px;
-}
+}*/
 
 /*
  * Typography
  */
 
-h1 {
+/*h1 {
   margin-bottom: 20px;
   padding-bottom: 9px;
   border-bottom: 1px solid #eee;
-}
+}*/
 
 /*
  * Sidebar
  */
 
+/*
 .sidebar {
   position: fixed;
   top: 51px;
@@ -37,10 +40,11 @@ h1 {
   padding: 20px;
   overflow-x: hidden;
   overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-  border-right: 1px solid #eee;
-}
+  /*border-right: 1px solid #eee;
+}*/
 
 /* Sidebar navigation */
+/*
 .sidebar {
   padding-left: 0;
   padding-right: 0;
@@ -61,6 +65,8 @@ h1 {
 .sidebar .nav-link {
   border-radius: 0;
 }
+
+ */
 
 /*
  * Dashboard
