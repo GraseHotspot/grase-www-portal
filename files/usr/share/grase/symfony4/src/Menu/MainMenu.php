@@ -39,12 +39,6 @@ class MainMenu extends Menu
 
 
 
-        $menu->addChild('nav_config_groups', 5)
-            ->setLabel('Groups')
-            ->setRoute('grase_groups')
-            ->setListAttr(['class' => 'nav-item'])
-            ->setLinkAttr(['class' => 'nav-link']);
-        //->setRoles(['ADMIN_SETTINGS_CONTACT'])
 
 
         $usersMenu = $menu->addChild('nav_config_users', 10)
@@ -54,6 +48,13 @@ class MainMenu extends Menu
             ->setLinkAttr(['class' => 'nav-link'])//->setRoles(['ADMIN_SETTINGS_EMAIL'])
         ;
         $this->buildUserGroupsItems($usersMenu);
+
+        $menu->addChild('nav_config_groups', 5)
+             ->setLabel('Groups')
+             ->setRoute('grase_groups')
+             ->setListAttr(['class' => 'nav-item'])
+             ->setLinkAttr(['class' => 'nav-link']);
+        //->setRoles(['ADMIN_SETTINGS_CONTACT'])
 
 
         $menu->addChild('nav_report_dhcp_leases', 15)
