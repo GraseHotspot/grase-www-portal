@@ -9,7 +9,9 @@
     <arg name="extensions" value="php"/>
 
     <rule ref="PSR2"/>
-    <rule ref="Symfony"/>
+    <rule ref="Symfony">
+        <exclude name="Symfony.Commenting.License.Warning"/>
+    </rule>
 
     <file>bin/</file>
     <file>config/</file>

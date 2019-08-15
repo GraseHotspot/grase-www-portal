@@ -1,0 +1,25 @@
+
+phpcs:
+  image: grase/build-images:bionic
+  stage: test
+  script:
+    - cd files/usr/share/grase/symfony4/
+    - composer install
+    - ./vendor/bin/phpcs -s
+
+.build_template: &build_definition
+  stage: build
+  script:
+    - dch -v $(git describe |tr '-' '.')~$(lsb_release -cs) -b ""
+    - dpkg-buildpackage
+    - mkdir artifacts
+    - mv -v ../grase-www-portal_* artifacts/
+    - mv -v ../grase-www-portal-ext-libs_* artifacts/
+  artifacts:
+    paths:
+      - artifacts/
+    expire_in: 1 week
+
+bionic-all:
+  <<: *build_definition
+  image: grase/build-images:bionic-php56
