@@ -89,6 +89,11 @@ class MainMenu extends Menu
         ;
         //->setRoles(['ADMIN_SETTINGS_GENERAL'])
 
+        $menu->addChild(new DefaultItem('nav_logout', $menu->isEvent()), 100)
+            ->setLabel('Logout')
+            ->setRoute('_grase_logout')
+        ;
+
 
         return $menu;
     }

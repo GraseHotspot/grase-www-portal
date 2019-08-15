@@ -27,15 +27,27 @@ Encore
     // show OS notifications when builds finish/fail
     .enableBuildNotifications()
 
-// create hashed filenames (e.g. app.abc123.css)
-// .enableVersioning()
+    // create hashed filenames (e.g. app.abc123.css)
+    // .enableVersioning()
     .enableVersioning(Encore.isProduction())
 
     // allow sass/scss files to be processed
     .enableSassLoader()
 
     // Enable React processing
-    .enableReactPreset()
+    //.enableReactPreset()
+
+    .copyFiles({
+        from: './assets/images',
+        // optional target path, relative to the output dir
+        //to: 'images/[path][name].[ext]',
+
+        // if versioning is enabled, add the file hash too
+        to: 'images/[path][name].[hash:8].[ext]',
+
+        // only copy files matching this pattern
+        pattern: /\.(png|jpg|jpeg|ico)$/
+    })
 ;
 
 // export the final configuration

@@ -1,11 +1,17 @@
 {% extends 'layout-full.html.twig' %}
 
-{% block content %}
+
+{% block navbar %}{% endblock %}
+
+{% block bodyclass %}hold-transition login-page{% endblock %}
+
+{% block body %}
     <div class="login-box d-flex align-items-center flex-column justify-content-center h-100">
         <div class="login-logo">
             <a href=""><b>Grase</b>Hotspot</a>
         </div><!-- /.login-logo -->
-        <div class="login-box-body">
+        <div class="card">
+            <div class="login-box-body card-body">
             <p class="login-box-msg">Sign in to access the Admin area</p>
             {% if error %}
                 <div class="alert alert-danger show" role="alert">
@@ -38,5 +44,6 @@
             #}
 
         </div><!-- /.login-box-body -->
+        </div>
     </div>
 {% endblock %}
