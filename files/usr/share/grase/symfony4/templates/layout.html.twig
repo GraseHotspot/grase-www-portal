@@ -9,7 +9,7 @@
         <a href="index3.html" class="brand-link">
             <img src="{{ asset('build/images/grase.png') }}" alt="Grase Logo" class="brand-image img-circle elevation-3"
                  style="opacity: .8">
-            <span class="brand-text font-weight-light">GRASE</span>
+            <span class="brand-text font-weight-light">GRASE <span class="text-muted small">v{{ shivas_app_version }}</span></span>
         </a>
 
         <!-- Sidebar -->
@@ -23,7 +23,7 @@
                     <img src="https://ui-avatars.com/api/?background=0D8ABC&color=fff&size=160&name={{ app.user.username | first }}" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block"> {{ app.user.username }}</a>
+                    <a class="d-block"> {{ app.user.username }}</a>
                 </div>
             </div>
             {% endif %}
