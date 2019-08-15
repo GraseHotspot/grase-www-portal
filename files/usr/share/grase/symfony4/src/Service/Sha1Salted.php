@@ -15,7 +15,7 @@ class Sha1Salted implements PasswordEncoderInterface
             $salt = substr($salt, 0, $SALT_LENGTH);
         }
 
-        return $salt . sha1($salt . $raw);
+        return $salt.sha1($salt.$raw);
     }
 
     public function isPasswordValid($encoded, $raw, $salt)

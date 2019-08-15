@@ -11,7 +11,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 
-
 class UserController extends Controller
 {
     /**
@@ -41,7 +40,7 @@ class UserController extends Controller
                      ->getRepository(User::class)
                      ->find($id);
 
-        if ( ! $user) {
+        if (! $user) {
             throw $this->createNotFoundException();
         }
 

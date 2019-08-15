@@ -33,7 +33,7 @@ class GroupController extends Controller
                       ->getRepository(Group::class)
                       ->find($id);
 
-        if ( ! $group) {
+        if (! $group) {
             throw $this->createNotFoundException();
         }
 
@@ -65,5 +65,4 @@ class GroupController extends Controller
             ]
         );
     }
-
 }

@@ -17,7 +17,7 @@ class SecurityController extends Controller
      */
     public function loginAction(Request $request)
     {
-        if ($request->attributes->has( Security::AUTHENTICATION_ERROR)) {
+        if ($request->attributes->has(Security::AUTHENTICATION_ERROR)) {
             $error = $request->attributes->get(Security::AUTHENTICATION_ERROR);
         } else {
             $error = $request->getSession()->get(Security::AUTHENTICATION_ERROR);

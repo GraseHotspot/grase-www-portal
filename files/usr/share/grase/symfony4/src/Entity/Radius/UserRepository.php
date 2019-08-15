@@ -15,7 +15,7 @@ class UserRepository extends EntityRepository
 {
     public function findByGroup($group = null)
     {
-        @ini_set("memory_limit",-1);
+        @ini_set("memory_limit", -1);
 
         $query = $this->getEntityManager()->createQueryBuilder()
             ->select('u', 'rc', 'ug'/*, 'ra'*/)
@@ -67,7 +67,8 @@ class UserRepository extends EntityRepository
         return $query->getQuery()->getResult();
     }
 
-    private function getAllAccountingSums() {
+    private function getAllAccountingSums()
+    {
         $query = $this->getEntityManager()->createQueryBuilder()
             ->select('u.username')
             ->addSelect('SUM(ra.acctinputoctets) AS currentAcctInputOctets')

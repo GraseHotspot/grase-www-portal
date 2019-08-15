@@ -2,7 +2,6 @@
 
 namespace App\Menu;
 
-
 use App\Entity\Radius\Group;
 use Doctrine\ORM\EntityManagerInterface;
 use Pd\MenuBundle\Builder\ItemInterface;
@@ -117,9 +116,8 @@ class MainMenu extends Menu
         $groups = $groupRepo->findBy([], ['name' => 'ASC']);
         /** @var Group $group */
         foreach ($groups as $group) {
-
             if (!$group->getUsergroups()->isEmpty()) {
-                $usersMenu->addChild(new DefaultItem('nav_config_users_' . $group->getId(), $usersMenu->isEvent()))
+                $usersMenu->addChild(new DefaultItem('nav_config_users_'.$group->getId(), $usersMenu->isEvent()))
                     ->setLabel($group->getName())
                     ->setRoute('grase_users', ['group' => $group->getName()])
                     ->setExtra('label_icon', 'people_outline')

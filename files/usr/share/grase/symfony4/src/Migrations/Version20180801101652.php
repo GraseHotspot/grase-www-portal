@@ -28,7 +28,6 @@ final class Version20180801101652 extends AbstractMigration
 
         $this->addSql('DROP INDEX password ON auth');
         $this->addSql('ALTER TABLE auth DROP accesslevel');
-
     }
 
     public function down(Schema $schema)

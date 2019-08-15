@@ -9,7 +9,6 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
 class UpdateUserData
 {
     /**
@@ -68,8 +67,5 @@ class UpdateUserData
         // @TODO update the rest
         $em->persist($user);
         $em->flush();
-
-
-
     }
 }

@@ -5,6 +5,7 @@ namespace App\Entity\Radmin;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\Encoder\EncoderAwareInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+
 //use Avanzu\AdminThemeBundle\Model\UserInterface as ThemeUser;
 
 /**

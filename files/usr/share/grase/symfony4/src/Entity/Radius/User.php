@@ -119,7 +119,7 @@ class User
     public function getTimeLimit()
     {
         if ($this->getTimeLimitCheck()) {
-            $timeLimit = new DateIntervalEnhanced('PT' . $this->getTimeLimitCheck()->getValue() . 'S');
+            $timeLimit = new DateIntervalEnhanced('PT'.$this->getTimeLimitCheck()->getValue().'S');
 
             return $timeLimit->recalculate()->format('%H:%I:%S');
         }
@@ -306,7 +306,7 @@ class User
                 $sum += $radactt->getAcctsessiontime();
             }
 
-            $this->currentSessionTime = new DateIntervalEnhanced('PT' . $sum . 'S');
+            $this->currentSessionTime = new DateIntervalEnhanced('PT'.$sum.'S');
         }
 
         // TODO Is the formatting of this best left to a view?
@@ -349,10 +349,9 @@ class User
     {
         $this->currentDataUsageIn  = $data['currentAcctInputOctets'];
         $this->currentDataUsageOut = $data['currentAcctOutputOctets'];
-        $this->currentSessionTime  = new DateIntervalEnhanced('PT' . $data['currentAcctSessionTime'] . 'S');
+        $this->currentSessionTime  = new DateIntervalEnhanced('PT'.$data['currentAcctSessionTime'].'S');
         $this->currentDataUsage    = $this->currentDataUsageIn + $this->currentDataUsageOut;
         $this->lastLogout          = $data['lastLogout'] ? new DateTime($data['lastLogout']) : null;
-
     }
 
     /**

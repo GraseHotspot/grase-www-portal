@@ -46,7 +46,6 @@ class UserType extends AbstractType
                 ]
             )*/
             ->add('save', SubmitType::class, ['label' => "Update Details"]);
-
     }
 
     /**

@@ -23,8 +23,6 @@ class Version20160221060000 extends AbstractMigration
         $this->addSql('ALTER TABLE radmin.groups RENAME radius.groups');
         $this->addSql('ALTER TABLE radmin.settings RENAME radius.settings');
         $this->addSql('ALTER TABLE radmin.templates RENAME radius.templates');
-
-
     }
 
     /**
@@ -39,6 +37,5 @@ class Version20160221060000 extends AbstractMigration
         $this->addSql('ALTER TABLE radius.groups RENAME radmin.groups');
         $this->addSql('ALTER TABLE radius.settings RENAME radmin.settings');
         $this->addSql('ALTER TABLE radius.templates RENAME radmin.templates');
-
     }
 }

@@ -73,7 +73,6 @@ class Version20160221201937 extends AbstractMigration
 SELECT DISTINCT username FROM radcheck
 ON DUPLICATE KEY UPDATE UserName=users.UserName'
         );
-
     }
 
     /**
@@ -88,7 +87,5 @@ ON DUPLICATE KEY UPDATE UserName=users.UserName'
   MODIFY `UserName` VARCHAR(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'\'
 '
         );
-
-
     }
 }

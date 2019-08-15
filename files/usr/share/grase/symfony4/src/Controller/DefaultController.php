@@ -79,6 +79,5 @@ class DefaultController extends Controller
                 'sessions' => $sessions,
             ]
         );
-
     }
 }

@@ -40,7 +40,6 @@ class Version20160221065707 extends AbstractMigration
   MODIFY `UserName` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'\',
   MODIFY `Comment` varchar(256) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'\',
   ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci');
-
     }
 
     /**
@@ -72,6 +71,5 @@ class Version20160221065707 extends AbstractMigration
   MODIFY `UserName` varchar(64) NOT NULL DEFAULT \'\',
   MODIFY `Comment` varchar(256) NOT NULL DEFAULT \'\',
   ENGINE=MyISAM DEFAULT CHARSET=utf8');
-
     }
 }
