@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Controller;
-
 
 use App\Entity\Radius\Group;
 use App\Form\Radius\GroupType;
@@ -10,7 +8,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
-
 
 class GroupController extends Controller
 {
@@ -29,7 +26,6 @@ class GroupController extends Controller
     }
 
 
-
     public function editGroupAction(Request $request, $id)
     {
         /** @var Group $group */
@@ -37,7 +33,7 @@ class GroupController extends Controller
                       ->getRepository(Group::class)
                       ->find($id);
 
-        if (!$group) {
+        if ( ! $group) {
             throw $this->createNotFoundException();
         }
 
@@ -50,7 +46,13 @@ class GroupController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->get('grase.manager.group')->saveGroup($group);
 
-            $this->addFlash('success', $this->get('translator')->trans('grase.group.save_success.%groupname%', ['%groupname%' => $group->getName()]));
+            $this->addFlash(
+                'success',
+                $this->get('translator')->trans(
+                    'grase.group.save_success.%groupname%',
+                    ['%groupname%' => $group->getName()]
+                )
+            );
 
             return $this->redirectToRoute('grase_groups');
         }

@@ -26,23 +26,22 @@ class DefaultController extends Controller
         return $this->render(
             'index.html.twig',
             [
-                'systemInfo' => $systemInformation
+                'systemInfo' => $systemInformation,
             ]
         );
     }
 
 
-
     public function advancedSettingsAction()
     {
         $settings = $this->getDoctrine()
-            ->getRepository(Setting::class)
-            ->findAll();
+                         ->getRepository(Setting::class)
+                         ->findAll();
 
         return $this->render(
             'advancedSettings.html.twig',
             [
-                'settings' => $settings
+                'settings' => $settings,
             ]
         );
     }
@@ -62,7 +61,7 @@ class DefaultController extends Controller
 
         // Prewarm all users with a single query so we can get the comments as required
         $users = $this->getDoctrine()->getRepository(User::class)->findAll();
-        foreach($sessions as $id => $session) {
+        foreach ($sessions as $id => $session) {
             if (isset($session['session']) && isset($session['session']['userName'])) {
                 /** @var User $user */
                 $user = $this->getDoctrine()->getRepository(User::class)->find($session['session']['userName']);
@@ -77,7 +76,7 @@ class DefaultController extends Controller
         return $this->render(
             'dhcpLeases.html.twig',
             [
-                'sessions' => $sessions
+                'sessions' => $sessions,
             ]
         );
 

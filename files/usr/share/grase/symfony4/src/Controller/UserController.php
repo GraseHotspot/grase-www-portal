@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Controller;
-
 
 use App\Entity\Radius\User;
 use App\Entity\Radius\UserRepository;
@@ -36,7 +34,6 @@ class UserController extends Controller
     }
 
 
-
     public function editUserAction(Request $request, $id)
     {
         /** @var User $user */
@@ -44,7 +41,7 @@ class UserController extends Controller
                      ->getRepository(User::class)
                      ->find($id);
 
-        if (!$user) {
+        if ( ! $user) {
             throw $this->createNotFoundException();
         }
 
@@ -58,7 +55,14 @@ class UserController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $updateUserData->updateUser($user, $this->getDoctrine()->getManager());
-            $this->addFlash('success', $this->get('translator')->trans('grase.user.save_success.%username%', ['%username%' => $user->getUsername()]));
+            $this->addFlash(
+                'success',
+                $this->get('translator')->trans(
+                    'grase.user.save_success.%username%',
+                    ['%username%' => $user->getUsername()]
+                )
+            );
+
             return $this->redirectToRoute('grase_user_edit', ['id' => $user->getUsername()]);
         }
 
