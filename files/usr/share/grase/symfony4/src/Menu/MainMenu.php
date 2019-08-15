@@ -61,6 +61,12 @@ class MainMenu extends Menu
             ;
         $this->buildUserGroupsItems($usersMenu);
 
+        $menu->addChild(new DefaultItem('nav_create_user', $menu->isEvent()), 11)
+            ->setLabel('New user')
+            ->setLink('#')
+            ->setExtra('label_icon', 'person_add')
+            ;
+
 
         $menu->addChild(new DefaultItem('nav_report_dhcp_leases', $menu->isEvent()), 15)
             ->setLabel('DHCP Leases')
@@ -68,6 +74,12 @@ class MainMenu extends Menu
             ->setChildAttr(['class' => 'nav-treeview'])
         ;
         //->setRoles(['ADMIN_SETTINGS_CONTACT'])
+
+        $menu->addChild(new DefaultItem('nav_header_settings', $menu->isEvent()), 30)
+             ->setLabel('SETTINGS')
+             ->setListAttr(['class' => 'nav-header'])
+
+        ;
 
 
         $settingsMenu = $menu->addChild(new DefaultItem('nav_config_settings', $menu->isEvent()), 30)
