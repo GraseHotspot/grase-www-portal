@@ -23,7 +23,7 @@ class UserRepository extends EntityRepository
             ->leftJoin('u.radiusCheck', 'rc')
             ->leftJoin('u.userGroups', 'ug')
             ->leftJoin('ug.group', 'groups');
-            //->leftJoin('u.radiusAccounting', 'ra');
+        //->leftJoin('u.radiusAccounting', 'ra');
 
         if ($group) {
             $query->where('groups.name = :groupname')
@@ -52,7 +52,6 @@ class UserRepository extends EntityRepository
 
     public function findByUsername($username)
     {
-
         $query = $this->getEntityManager()->createQueryBuilder()
             ->select('u', 'rc', 'ug', 'ra')
             ->from(User::class, 'u')

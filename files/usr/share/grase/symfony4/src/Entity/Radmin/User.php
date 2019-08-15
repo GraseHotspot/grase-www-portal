@@ -12,7 +12,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Table(name="auth")
  * @ORM\Entity(repositoryClass="App\Entity\Radmin\UserRepository")
  */
-class User implements UserInterface, EncoderAwareInterface, \Serializable//, ThemeUser
+class User implements UserInterface, EncoderAwareInterface, \Serializable //, ThemeUser
 {
     /**
      * Column(type="integer")
@@ -44,7 +44,7 @@ class User implements UserInterface, EncoderAwareInterface, \Serializable//, The
     public function __construct()
     {
         $this->isActive = true;
-// may not be needed, see section on salt below
+        // may not be needed, see section on salt below
 // $this->salt = md5(uniqid(null, true));
     }
 
@@ -64,8 +64,8 @@ class User implements UserInterface, EncoderAwareInterface, \Serializable//, The
 
     public function getSalt()
     {
-// you *may* need a real salt depending on your encoder
-// see section on salt below
+        // you *may* need a real salt depending on your encoder
+        // see section on salt below
         return substr($this->password, 0, 9);
     }
 
@@ -103,7 +103,7 @@ class User implements UserInterface, EncoderAwareInterface, \Serializable//, The
     /** @see \Serializable::unserialize() */
     public function unserialize($serialized)
     {
-        list (
+        list(
             //$this->id,
             $this->username,
             $this->password,

@@ -5,7 +5,6 @@ use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
 
 class Sha1Salted implements PasswordEncoderInterface
 {
-
     public function encodePassword($raw, $salt = null)
     {
         $SALT_LENGTH = 9;

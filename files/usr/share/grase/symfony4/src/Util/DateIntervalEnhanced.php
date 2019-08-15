@@ -7,7 +7,6 @@ use DateTime;
 
 class DateIntervalEnhanced extends DateInterval
 {
-
     public function recalculate()
     {
         $from = new DateTime;

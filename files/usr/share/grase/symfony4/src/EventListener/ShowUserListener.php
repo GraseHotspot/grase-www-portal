@@ -6,8 +6,9 @@ use App\Entity\Radmin\User;
 
 class ShowUserListener
 {
-
-    protected $session, $doctrine, $container;
+    protected $session;
+    protected $doctrine;
+    protected $container;
 
     public function __construct($session, $doctrine, $service_container)
     {
@@ -18,7 +19,6 @@ class ShowUserListener
 
     public function onShowUser(ShowUserEvent $event)
     {
-
         $user = $this->getUser();
         $event->setUser($user);
     }

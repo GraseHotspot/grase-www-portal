@@ -16,7 +16,6 @@ class Version20160221201937 extends AbstractMigration
      */
     public function up(Schema $schema) : void
     {
-
         $this->addSql(
             "ALTER TABLE groups
               DROP PRIMARY KEY,
@@ -80,7 +79,6 @@ ON DUPLICATE KEY UPDATE UserName=users.UserName'
      */
     public function down(Schema $schema) : void
     {
-
         $this->addSql(
             'ALTER TABLE users
   RENAME radusercomment,
