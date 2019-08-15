@@ -7,23 +7,23 @@ grase_radmin_homepage:
 grase_users:
     path: /users/{group}
     defaults:
-        _controller: App\Controller\DefaultController::displayUsersAction
+        _controller: App\Controller\UserController::displayUsersAction
         group: null
 
 grase_user_edit:
     path: /user/{id}/edit
     defaults:
-        _controller: App\Controller\DefaultController::editUserAction
+        _controller: App\Controller\UserController::editUserAction
 
 grase_groups:
     path: /groups/
     defaults:
-        _controller: App\Controller\DefaultController::displayGroupsAction
+        _controller: App\Controller\GroupController::displayGroupsAction
 
 grase_group_edit:
     path: /group/{id}/edit
     defaults:
-        _controller: App\Controller\DefaultController::editGroupAction
+        _controller: App\Controller\GroupController::editGroupAction
 
 grase_advanced_settings:
     path: /settings/advanced
