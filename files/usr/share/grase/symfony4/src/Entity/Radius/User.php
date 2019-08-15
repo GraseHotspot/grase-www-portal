@@ -20,12 +20,14 @@ class User
     /**
      * @ORM\Column(type="string")
      * @ORM\Id
+     *
      * @Groups({"user_get"})
      */
     private $username;
 
     /**
      * @ORM\Column(type="string")
+     *
      * @Groups({"user_get"})
      */
     private $comment;
@@ -38,6 +40,7 @@ class User
 
     /**
      * @ORM\OneToMany(targetEntity="UserGroup", mappedBy="user", fetch="EAGER", cascade={"persist", "remove"})
+     *
      * @Groups({"user_get"})
      */
     private $userGroups;
@@ -86,6 +89,7 @@ class User
 
     /**
      * @Groups({"user_get"})
+     *
      * @return null|string
      */
     public function getPassword()
@@ -114,6 +118,7 @@ class User
 
     /**
      * @Groups({"user_get"})
+     *
      * @return string
      */
     public function getTimeLimit()
@@ -129,6 +134,7 @@ class User
 
     /**
      * @Groups({"user_get"})
+     *
      * @return string | null
      */
     public function getDataLimit()
@@ -142,6 +148,7 @@ class User
 
     /**
      * @Groups({"user_get"})
+     *
      * @return DateTime|null
      */
     public function getExpiry()
@@ -240,6 +247,7 @@ class User
     {
         /** @var UserGroup $primaryGroup */
         $primaryGroup = $this->getUserGroups()->first();
+
         return $primaryGroup->getGroup()->getName();
     }
 
@@ -295,6 +303,7 @@ class User
 
     /**
      * @Groups({"user_get_2"})
+     *
      * @return string
      */
     public function getTotalSessionTime()
@@ -325,6 +334,7 @@ class User
 
     /**
      * @Groups({"user_get_2"})
+     *
      * @return integer
      */
     public function getDataUsageTotal()

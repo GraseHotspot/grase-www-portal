@@ -13,6 +13,7 @@ class UpdateUserData
 {
     /**
      * @var string
+     *
      * @Assert\NotBlank()
      */
     public $username;
@@ -41,6 +42,7 @@ class UpdateUserData
     /**
      * Create a UpdateUserData from an existing User entity
      * @param User $user
+     *
      * @return UpdateUserData
      */
     public static function fromUser(User $user): self
@@ -57,7 +59,7 @@ class UpdateUserData
 
     /**
      * Write data back to a User entity with the updated data
-     * @param User $user
+     * @param User          $user
      * @param ObjectManager $em
      */
     public function updateUser(User $user, ObjectManager $em)

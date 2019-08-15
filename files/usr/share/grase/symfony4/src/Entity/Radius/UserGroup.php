@@ -22,15 +22,18 @@ class UserGroup
 
     /**
      * @var string
+     *
      * @ORM\Id
      * @ORM\ManyToOne(targetEntity="Group", inversedBy="userGroups")
      * @ORM\JoinColumn(name="GroupName", referencedColumnName="id")
+     *
      * @Groups({"user_get"})
      */
     private $group;
 
     /**
      * @ORM\Column(type="integer")
+     *
      * @Groups({"user_get"})
      */
     private $priority = 1;
@@ -39,6 +42,7 @@ class UserGroup
      * Set priority
      *
      * @param integer $priority
+     *
      * @return UserGroup
      */
     public function setPriority($priority)
@@ -62,6 +66,7 @@ class UserGroup
      * Set user
      *
      * @param \App\Entity\Radius\User $user
+     *
      * @return UserGroup
      */
     public function setUser(\App\Entity\Radius\User $user)
@@ -85,6 +90,7 @@ class UserGroup
      * Set group
      *
      * @param \App\Entity\Radius\Group $group
+     *
      * @return UserGroup
      */
     public function setGroup(\App\Entity\Radius\Group $group)

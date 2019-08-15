@@ -24,7 +24,7 @@ class GroupType extends AbstractType
                 null,
                 [
                     'attr' => ['placeholder' => 'grase.form.NoExpiry'],
-                    'label' => 'grase.form.expiry'
+                    'label' => 'grase.form.expiry',
                 ]
             )
             ->add('expireAfter')
@@ -67,7 +67,7 @@ class GroupType extends AbstractType
     {
         $resolver->setDefaults(
             array(
-                'data_class' => 'App\Entity\Radius\Group'
+                'data_class' => 'App\Entity\Radius\Group',
             )
         );
     }

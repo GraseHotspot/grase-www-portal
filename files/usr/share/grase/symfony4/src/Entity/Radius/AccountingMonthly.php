@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 class AccountingMonthly
 {
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="MTotAcctId", type="bigint")
      * @ORM\Id
@@ -36,35 +36,35 @@ class AccountingMonthly
     private $nasIpAddress;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="ConnTotDuration", type="integer", nullable=false)
      */
     private $totalDuration;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="ConnMaxDuration", type="integer", nullable=false)
      */
     private $maxDuration;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="ConnMinDuration", type="integer", nullable=false)
      */
     private $minDuration;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="InputOctets", type="bigint", nullable=false)
      */
     private $inputOctets;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="OutputOctets", type="bigint", nullable=false)
      */
@@ -78,7 +78,7 @@ class AccountingMonthly
     private $month;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="ConnNum", type="integer", nullable=false)
      */

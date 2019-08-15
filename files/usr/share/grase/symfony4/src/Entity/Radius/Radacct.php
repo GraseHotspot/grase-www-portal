@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Radacct
 {
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="RadAcctId", type="bigint")
      * @ORM\Id
@@ -92,7 +92,7 @@ class Radacct
     private $acctstoptime;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="AcctSessionTime", type="integer", nullable=true)
      */
@@ -120,14 +120,14 @@ class Radacct
     private $connectinfoStop;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="AcctInputOctets", type="bigint", nullable=true)
      */
     private $acctinputoctets;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="AcctOutputOctets", type="bigint", nullable=true)
      */
@@ -176,14 +176,14 @@ class Radacct
     private $framedipaddress;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="AcctStartDelay", type="integer", nullable=true)
      */
     private $acctstartdelay;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="AcctStopDelay", type="integer", nullable=true)
      */
@@ -210,6 +210,7 @@ class Radacct
      * Set acctsessionid
      *
      * @param string $acctsessionid
+     *
      * @return Radacct
      */
     public function setAcctsessionid($acctsessionid)
@@ -233,6 +234,7 @@ class Radacct
      * Set acctuniqueid
      *
      * @param string $acctuniqueid
+     *
      * @return Radacct
      */
     public function setAcctuniqueid($acctuniqueid)
@@ -256,6 +258,7 @@ class Radacct
      * Set groupname
      *
      * @param string $groupname
+     *
      * @return Radacct
      */
     public function setGroupname($groupname)
@@ -279,6 +282,7 @@ class Radacct
      * Set realm
      *
      * @param string $realm
+     *
      * @return Radacct
      */
     public function setRealm($realm)
@@ -302,6 +306,7 @@ class Radacct
      * Set nasipaddress
      *
      * @param string $nasipaddress
+     *
      * @return Radacct
      */
     public function setNasipaddress($nasipaddress)
@@ -325,6 +330,7 @@ class Radacct
      * Set nasportid
      *
      * @param string $nasportid
+     *
      * @return Radacct
      */
     public function setNasportid($nasportid)
@@ -348,6 +354,7 @@ class Radacct
      * Set nasporttype
      *
      * @param string $nasporttype
+     *
      * @return Radacct
      */
     public function setNasporttype($nasporttype)
@@ -371,6 +378,7 @@ class Radacct
      * Set acctstarttime
      *
      * @param \DateTime $acctstarttime
+     *
      * @return Radacct
      */
     public function setAcctstarttime($acctstarttime)
@@ -394,6 +402,7 @@ class Radacct
      * Set acctstoptime
      *
      * @param \DateTime $acctstoptime
+     *
      * @return Radacct
      */
     public function setAcctstoptime($acctstoptime)
@@ -417,6 +426,7 @@ class Radacct
      * Set acctsessiontime
      *
      * @param integer $acctsessiontime
+     *
      * @return Radacct
      */
     public function setAcctsessiontime($acctsessiontime)
@@ -440,6 +450,7 @@ class Radacct
      * Set acctauthentic
      *
      * @param string $acctauthentic
+     *
      * @return Radacct
      */
     public function setAcctauthentic($acctauthentic)
@@ -463,6 +474,7 @@ class Radacct
      * Set connectinfoStart
      *
      * @param string $connectinfoStart
+     *
      * @return Radacct
      */
     public function setConnectinfoStart($connectinfoStart)
@@ -486,6 +498,7 @@ class Radacct
      * Set connectinfoStop
      *
      * @param string $connectinfoStop
+     *
      * @return Radacct
      */
     public function setConnectinfoStop($connectinfoStop)
@@ -509,6 +522,7 @@ class Radacct
      * Set acctinputoctets
      *
      * @param integer $acctinputoctets
+     *
      * @return Radacct
      */
     public function setAcctinputoctets($acctinputoctets)
@@ -532,6 +546,7 @@ class Radacct
      * Set acctoutputoctets
      *
      * @param integer $acctoutputoctets
+     *
      * @return Radacct
      */
     public function setAcctoutputoctets($acctoutputoctets)
@@ -564,6 +579,7 @@ class Radacct
      * Set calledstationid
      *
      * @param string $calledstationid
+     *
      * @return Radacct
      */
     public function setCalledstationid($calledstationid)
@@ -587,6 +603,7 @@ class Radacct
      * Set callingstationid
      *
      * @param string $callingstationid
+     *
      * @return Radacct
      */
     public function setCallingstationid($callingstationid)
@@ -610,6 +627,7 @@ class Radacct
      * Set acctterminatecause
      *
      * @param string $acctterminatecause
+     *
      * @return Radacct
      */
     public function setAcctterminatecause($acctterminatecause)
@@ -633,6 +651,7 @@ class Radacct
      * Set servicetype
      *
      * @param string $servicetype
+     *
      * @return Radacct
      */
     public function setServicetype($servicetype)
@@ -656,6 +675,7 @@ class Radacct
      * Set framedprotocol
      *
      * @param string $framedprotocol
+     *
      * @return Radacct
      */
     public function setFramedprotocol($framedprotocol)
@@ -679,6 +699,7 @@ class Radacct
      * Set framedipaddress
      *
      * @param string $framedipaddress
+     *
      * @return Radacct
      */
     public function setFramedipaddress($framedipaddress)
@@ -702,6 +723,7 @@ class Radacct
      * Set acctstartdelay
      *
      * @param integer $acctstartdelay
+     *
      * @return Radacct
      */
     public function setAcctstartdelay($acctstartdelay)
@@ -725,6 +747,7 @@ class Radacct
      * Set acctstopdelay
      *
      * @param integer $acctstopdelay
+     *
      * @return Radacct
      */
     public function setAcctstopdelay($acctstopdelay)
@@ -748,6 +771,7 @@ class Radacct
      * Set xascendsessionsvrkey
      *
      * @param string $xascendsessionsvrkey
+     *
      * @return Radacct
      */
     public function setXascendsessionsvrkey($xascendsessionsvrkey)
@@ -771,6 +795,7 @@ class Radacct
      * Set user
      *
      * @param \App\Entity\Radius\User $user
+     *
      * @return Radacct
      */
     public function setUser(\App\Entity\Radius\User $user = null)

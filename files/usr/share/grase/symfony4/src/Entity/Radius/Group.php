@@ -15,7 +15,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 class Group
 {
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -25,49 +25,63 @@ class Group
 
     /**
      * @var string
+     *
      * @ORM\Column(name="name", type="string", length=255)
+     *
      * @Groups({"user_get"})
      */
     private $name;
 
     /**
      * @var string
+     *
      * @ORM\Column(name="Expiry", type="string", length=100, nullable=true)
+     *
      * @GraseAssert\StrToTime
+     *
      * @Groups({"user_get"})
      */
     private $expiry;
 
     /**
      * @var string
+     *
      * @ORM\Column(name="ExpireAfter", type="string", length=100, nullable=true)
+     *
      * @Groups({"user_get"})
      */
     private $expireAfter;
 
     /**
-     * @var integer
+     * @var int
+     *
      * @ORM\Column(name="MaxOctets", type="integer", nullable=true)
+     *
      * @Groups({"user_get"})
      */
     private $maxOctets;
 
     /**
-     * @var integer
+     * @var int
+     *
      * @ORM\Column(name="MaxSeconds", type="integer", nullable=true)
+     *
      * @Groups({"user_get"})
      */
     private $maxSeconds;
 
     /**
      * @var string
+     *
      * @ORM\Column(name="Comment", type="string", length=300, nullable=true)
+     *
      * @Groups({"user_get"})
      */
     private $comment;
 
     /**
      * @var string
+     *
      * @ORM\Column(name="lastUpdated", type="datetime")
      * @ORM\Version
      */
@@ -93,6 +107,7 @@ class Group
      * Set name
      *
      * @param string $name
+     *
      * @return Group
      */
     public function setName($name)
@@ -124,6 +139,7 @@ class Group
      * Add userGroups
      *
      * @param \App\Entity\Radius\UserGroup $userGroups
+     *
      * @return Group
      */
     public function addUsergroup(\App\Entity\Radius\UserGroup $userGroups)
@@ -157,6 +173,7 @@ class Group
      * Set expiry
      *
      * @param string $expiry
+     *
      * @return Group
      */
     public function setExpiry($expiry)
@@ -180,6 +197,7 @@ class Group
      * Set expireAfter
      *
      * @param string $expireAfter
+     *
      * @return Group
      */
     public function setExpireAfter($expireAfter)
@@ -203,6 +221,7 @@ class Group
      * Set maxOctets
      *
      * @param integer $maxOctets
+     *
      * @return Group
      */
     public function setMaxOctets($maxOctets)
@@ -226,6 +245,7 @@ class Group
      * Set maxSeconds
      *
      * @param integer $maxSeconds
+     *
      * @return Group
      */
     public function setMaxSeconds($maxSeconds)
@@ -249,6 +269,7 @@ class Group
      * Set comment
      *
      * @param string $comment
+     *
      * @return Group
      */
     public function setComment($comment)
@@ -272,6 +293,7 @@ class Group
      * Set lastUpdated
      *
      * @param \DateTime $lastUpdated
+     *
      * @return Group
      */
     public function setLastUpdated($lastUpdated)

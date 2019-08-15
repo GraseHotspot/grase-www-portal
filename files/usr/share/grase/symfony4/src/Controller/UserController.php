@@ -40,7 +40,7 @@ class UserController extends Controller
                      ->getRepository(User::class)
                      ->find($id);
 
-        if (! $user) {
+        if (!$user) {
             throw $this->createNotFoundException();
         }
 

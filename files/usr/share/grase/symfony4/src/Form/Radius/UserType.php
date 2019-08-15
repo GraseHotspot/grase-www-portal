@@ -24,17 +24,17 @@ class UserType extends AbstractType
     {
         $builder
             ->add('username', null, [
-                'disabled' => true
+                'disabled' => true,
             ])
             ->add('comment')
             ->add('password', null, [
                 'attr' => ['placeholder' => "Change the password"],
-                'data' => ''
+                'data' => '',
             ])
             ->add('primaryGroup', EntityType::class, [
                 'class' => Group::class,
                 'choice_label' => 'name',
-                'choice_value' => 'name'
+                'choice_value' => 'name',
 
             ])
             /*->add(
@@ -55,7 +55,7 @@ class UserType extends AbstractType
     {
         $resolver->setDefaults(
             array(
-                'data_class' => UpdateUserData::class
+                'data_class' => UpdateUserData::class,
             )
         );
     }

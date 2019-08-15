@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Check
 {
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -64,6 +64,7 @@ class Check
      * Set attribute
      *
      * @param string $attribute
+     *
      * @return Check
      */
     public function setAttribute($attribute)
@@ -87,6 +88,7 @@ class Check
      * Set op
      *
      * @param string $op
+     *
      * @return Check
      */
     public function setOp($op)
@@ -110,6 +112,7 @@ class Check
      * Set value
      *
      * @param string $value
+     *
      * @return Check
      */
     public function setValue($value)
@@ -133,6 +136,7 @@ class Check
      * Set user
      *
      * @param \App\Entity\Radius\User $user
+     *
      * @return Check
      */
     public function setUser(\App\Entity\Radius\User $user = null)

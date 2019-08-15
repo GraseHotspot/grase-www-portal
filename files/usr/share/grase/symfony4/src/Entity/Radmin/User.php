@@ -34,6 +34,7 @@ class User implements UserInterface, EncoderAwareInterface, \Serializable//, The
 
     /**
      * @var string
+     *
      * @ORM\Column(type="string", length=25)
      */
     private $role;
@@ -125,6 +126,7 @@ class User implements UserInterface, EncoderAwareInterface, \Serializable//, The
      * Set username
      *
      * @param string $username
+     *
      * @return User
      */
     public function setUsername($username)
@@ -138,6 +140,7 @@ class User implements UserInterface, EncoderAwareInterface, \Serializable//, The
      * Set password
      *
      * @param string $password
+     *
      * @return User
      */
     public function setPassword($password)
@@ -151,6 +154,7 @@ class User implements UserInterface, EncoderAwareInterface, \Serializable//, The
      * Set accessLevel
      *
      * @param integer $accessLevel
+     *
      * @return User
      */
     public function setAccessLevel($accessLevel)

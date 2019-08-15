@@ -17,6 +17,7 @@ class DateIntervalEnhanced extends DateInterval
         foreach ($diff as $k => $v) {
             $this->$k = $v;
         }
+
         return $this;
     }
 }
