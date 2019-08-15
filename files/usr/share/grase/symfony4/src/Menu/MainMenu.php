@@ -62,7 +62,7 @@ class MainMenu extends Menu
 
         $menu->addChild(new DefaultItem('nav_create_user', $menu->isEvent()), 11)
             ->setLabel('New user')
-            ->setLink('#')
+            ->setRoute('grase_user_new')
             ->setExtra('label_icon', 'person_add')
             ;
 

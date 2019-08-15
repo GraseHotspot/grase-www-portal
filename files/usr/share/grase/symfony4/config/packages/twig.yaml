@@ -5,3 +5,5 @@ twig:
 
     globals:
         applicationName: '%env(APPLICATION_NAME)%'
+
+    form_themes: ['bootstrap_4_layout.html.twig']

@@ -73,4 +73,40 @@ class UserController extends Controller
             ]
         );
     }
+    public function createUserAction(Request $request)
+    {
+        // @TODO Insert permissions check here for creating
+        /** @var User $user */
+        $user = new User();
+
+        $newUserData = new UpdateUserData();
+
+        $form = $this->createForm(UserType::class, $newUserData, ['create' => true]);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            /*$newUserData->updateUser($user, $this->getDoctrine()->getManager());
+            $this->addFlash(
+                'success',
+                $this->get('translator')->trans(
+                    'grase.user.save_success.%username%',
+                    ['%username%' => $user->getUsername()]
+                )
+            );
+
+
+            return $this->redirectToRoute('grase_user_edit', ['id' => $user->getUsername()]);
+            */
+        }
+
+        return $this->render(
+            'user_edit.html.twig',
+            [
+                'user' => $user,
+                'user_form' => $form->createView(),
+            ]
+        );
+    }
+
 }

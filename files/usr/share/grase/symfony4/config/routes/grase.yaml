@@ -15,6 +15,11 @@ grase_user_edit:
     defaults:
         _controller: App\Controller\UserController::editUserAction
 
+grase_user_new:
+    path: /user/new
+    defaults:
+        _controller: App\Controller\UserController::createUserAction
+
 grase_groups:
     path: /groups/
     defaults:

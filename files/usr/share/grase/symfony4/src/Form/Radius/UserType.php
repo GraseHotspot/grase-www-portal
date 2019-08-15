@@ -22,9 +22,13 @@ class UserType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $disableEditUsername = true;
+        if ($options['create']) {
+            $disableEditUsername = false;
+        }
         $builder
             ->add('username', null, [
-                'disabled' => true,
+                'disabled' => $disableEditUsername,
             ])
             ->add('comment')
             ->add('password', null, [
@@ -54,9 +58,13 @@ class UserType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(
-            array(
+            [
                 'data_class' => UpdateUserData::class,
-            )
+                'create' => false,
+            ]
         );
+
+        $resolver->setRequired('create');
+        $resolver->setAllowedTypes('create', 'boolean');
     }
 }
