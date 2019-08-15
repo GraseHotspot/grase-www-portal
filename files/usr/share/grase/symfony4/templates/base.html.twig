@@ -21,7 +21,7 @@
             <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="index3.html" class="nav-link">Home</a>
+            <a href="{{ path('grase_radmin_homepage') }}" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link">Contact</a>
@@ -83,20 +83,8 @@
     {% block sidebar %}{% endblock %}
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <div class="content-header">
-            <div class="container-fluid">
-                {% block page_container %}
-                    <div class="row mb-2">
-
-
-                        {% block page_content %}{% endblock %}
-
-                    </div>
-                {% endblock %}
-            </div>
-        </div>
+    <div class="content-wrapper px-4 py-2">
+        {% block page_content_wrapper %}{% endblock %}
     </div>
 
 

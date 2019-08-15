@@ -8,60 +8,134 @@
 
 {% endblock page_subtitle %}
 
+{% block content_header %}
+    <h1>{% trans %}User Management Interface{% endtrans %}</h1>
+{% endblock %}
+
 {% block content %}
-
-    <div class="col-xs-12">
-        <div class="box">
-            <div class="box-header">
-                <h3 class="box-title">{% trans %}User Management Interface{% endtrans %}</h3>
-            </div>
-
-            <div class="box-body">
-                <table id="groupsTable" class="dataTable table table-bordered table-hover"
-                       data-paging="true" data-page-length="25" data-searching="true"
-                       data-ordering="true" data-info="true" data-autowidth="true">
-                    <tbody>
-                        <tr><th colspan="3" class="header">Status</th></tr>
-
-
-                        <tr><th class="header" colspan="3">{% trans %}Device Information{% endtrans %}</th></tr>
-                        <tr><td class="title">{% trans %}Model Name{% endtrans %}</td><td colspan="2">{{ applicationName }}</td></tr>
-
-                        <tr><td class="title">{% trans %}Host Name{% endtrans %}</td><td colspan="2">{{ systemInfo.hostname }}</td></tr>
-
-                        <tr><td class="title">{% trans %}HTTP Server{% endtrans %}</td><td colspan="2">{{ systemInfo.httpd.software }} via {{ systemInfo.httpd.gateway }}</td></tr>
-
-
-                        <tr><td class="title">{% trans %}System Up-Time{% endtrans %}</td><td colspan="2">{{ systemInfo.uptime }}</td></tr>
-
-                        <tr><td class="title">{% trans %}Current Server Time{% endtrans %}</td><td>{{ "now"|date('r') }}</td><td></td></tr>
-
-                        <tr><td class="title">{% trans %}Hardware Version{% endtrans %}</td><td colspan="2">{{ systemInfo.cpu.model }} @{{ systemInfo.cpu.speed }}MHz</td></tr>
-
-                        <tr><td class="title">{% trans %}Software Version{% endtrans %}</td><td colspan="2">{{ shivas_app_version }}</td></tr>
-
-                        <tr><td class="title">{% trans %}Software URL{% endtrans %}</td><td colspan="2"><a href="httsp://grasehotspot.org">GRASE Hotspot</a></td></tr>
-
-
-                        <tr><th class="header" colspan="3">{% trans %}LAN{% endtrans %}</th></tr>
-                        <tr><td class="title">{% trans %}IP Address{% endtrans %}</td><td colspan="2">{{ systemInfo.lan.ipaddress }}</td></tr>
-                        <tr><td class="title">{% trans %}Subnet Mask{% endtrans %}</td><td colspan="2">{{ systemInfo.lan.netmask }}</td></tr>
-                        <tr><td class="title">{% trans %}MAC Address{% endtrans %}</td><td colspan="2">{{ systemInfo.lan.mac | upper }}</td></tr>
-                        <tr><td class="title">{% trans %}Network Interface{% endtrans %}</td><td colspan="2">{{ systemInfo.lan.iface }}</td></tr>
-
-                        <tr><th class="header" colspan="3">{% trans %}WAN{% endtrans %}</th></tr>
-                        <tr><td class="title">{% trans %}IP Address{% endtrans %}</td><td colspan="2">{{ systemInfo.wan.ipaddress }}</td></tr>
-                        <tr><td class="title">{% trans %}Subnet Mask{% endtrans %}</td><td colspan="2">{{ systemInfo.wan.netmask }}</td></tr>
-                        <tr><td class="title">{% trans %}Gateway{% endtrans %}</td><td colspan="2">{{ systemInfo.wan.gateway }}</td></tr>
-                        <tr><td class="title">{% trans %}DNS 1{% endtrans %}</td><td colspan="2">{{ systemInfo.wan.dns_primary }}</td></tr>
-                        <tr><td class="title">{% trans %}DNS 2{% endtrans %}</td><td colspan="2">{{ systemInfo.wan.dns_secondary }}</td></tr>
-                        <tr><td class="title">{% trans %}MAC Address{% endtrans %}</td><td colspan="2">{{ systemInfo.wan.mac|upper }}</td></tr>
-                        <tr><td class="title">{% trans %}Network Interface{% endtrans %}</td><td colspan="2">{{ systemInfo.wan.iface }}</td></tr>
-                    </tbody>
-                </table>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card">
+                    {{ block('status_table') }}
+                </div>
             </div>
         </div>
     </div>
-        <p>Running services status page can be found at <a href="/grase/radmin/sysstatus">System Status</a></p>
+
+{% endblock %}
+
+{% block status_table %}
+    <div class="card-header">
+        <h3 class="card-title">Status</h3>
+    </div>
+    <div class="card-body p-0">
+    <table id="groupsTable" class="dataTable table table-bordered table-hover"
+           data-paging="true" data-page-length="25" data-searching="true"
+           data-ordering="true" data-info="true" data-autowidth="true">
+        <tbody>
+        <tr>
+            <th class="header" colspan="3">{% trans %}Device Information{% endtrans %}</th>
+        </tr>
+        <tr>
+            <td class="title">{% trans %}Model Name{% endtrans %}</td>
+            <td colspan="2">{{ applicationName }}</td>
+        </tr>
+
+        <tr>
+            <td class="title">{% trans %}Host Name{% endtrans %}</td>
+            <td colspan="2">{{ systemInfo.hostname }}</td>
+        </tr>
+
+        <tr>
+            <td class="title">{% trans %}HTTP Server{% endtrans %}</td>
+            <td colspan="2">{{ systemInfo.httpd.software }} via {{ systemInfo.httpd.gateway }}</td>
+        </tr>
+
+
+        <tr>
+            <td class="title">{% trans %}System Up-Time{% endtrans %}</td>
+            <td colspan="2">{{ systemInfo.uptime }}</td>
+        </tr>
+
+        <tr>
+            <td class="title">{% trans %}Current Server Time{% endtrans %}</td>
+            <td>{{ "now"|date('r') }}</td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td class="title">{% trans %}Hardware Version{% endtrans %}</td>
+            <td colspan="2">{{ systemInfo.cpu.model }} @{{ systemInfo.cpu.speed }}MHz</td>
+        </tr>
+
+        <tr>
+            <td class="title">{% trans %}Software Version{% endtrans %}</td>
+            <td colspan="2">{{ shivas_app_version }}</td>
+        </tr>
+
+        <tr>
+            <td class="title">{% trans %}Software URL{% endtrans %}</td>
+            <td colspan="2"><a href="httsp://grasehotspot.org">GRASE Hotspot</a></td>
+        </tr>
+
+
+        <tr>
+            <th class="header" colspan="3">{% trans %}LAN{% endtrans %}</th>
+        </tr>
+        <tr>
+            <td class="title">{% trans %}IP Address{% endtrans %}</td>
+            <td colspan="2">{{ systemInfo.lan.ipaddress }}</td>
+        </tr>
+        <tr>
+            <td class="title">{% trans %}Subnet Mask{% endtrans %}</td>
+            <td colspan="2">{{ systemInfo.lan.netmask }}</td>
+        </tr>
+        <tr>
+            <td class="title">{% trans %}MAC Address{% endtrans %}</td>
+            <td colspan="2">{{ systemInfo.lan.mac | upper }}</td>
+        </tr>
+        <tr>
+            <td class="title">{% trans %}Network Interface{% endtrans %}</td>
+            <td colspan="2">{{ systemInfo.lan.iface }}</td>
+        </tr>
+
+        <tr>
+            <th class="header" colspan="3">{% trans %}WAN{% endtrans %}</th>
+        </tr>
+        <tr>
+            <td class="title">{% trans %}IP Address{% endtrans %}</td>
+            <td colspan="2">{{ systemInfo.wan.ipaddress }}</td>
+        </tr>
+        <tr>
+            <td class="title">{% trans %}Subnet Mask{% endtrans %}</td>
+            <td colspan="2">{{ systemInfo.wan.netmask }}</td>
+        </tr>
+        <tr>
+            <td class="title">{% trans %}Gateway{% endtrans %}</td>
+            <td colspan="2">{{ systemInfo.wan.gateway }}</td>
+        </tr>
+        <tr>
+            <td class="title">{% trans %}DNS 1{% endtrans %}</td>
+            <td colspan="2">{{ systemInfo.wan.dns_primary }}</td>
+        </tr>
+        <tr>
+            <td class="title">{% trans %}DNS 2{% endtrans %}</td>
+            <td colspan="2">{{ systemInfo.wan.dns_secondary }}</td>
+        </tr>
+        <tr>
+            <td class="title">{% trans %}MAC Address{% endtrans %}</td>
+            <td colspan="2">{{ systemInfo.wan.mac|upper }}</td>
+        </tr>
+        <tr>
+            <td class="title">{% trans %}Network Interface{% endtrans %}</td>
+            <td colspan="2">{{ systemInfo.wan.iface }}</td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+
+    {# TODO fixup this href to use a route #}
+    <p>Running services status page can be found at <a href="/grase/radmin/sysstatus">System Status</a></p>
 
 {% endblock %}
