@@ -46,7 +46,7 @@
         {# entry \App\Entity\AuditLog #}
         {% for entry in logEntries %}
             <tr>
-                <td>{{ entry.createdAt |localizeddate('short', 'short') }}</td>
+                <td data-order="{{ entry.createdAt | date('U') }}">{{ entry.createdAt |localizeddate('short', 'short') }}</td>
                 <td>{{ entry.levelName }}</td>
                 <td>{{ entry.username }}</td>
                 <td>{{ entry.extra.ip | default('') }}</td>
