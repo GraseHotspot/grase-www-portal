@@ -11,14 +11,14 @@ use App\Entity\UpdateUserData;
 use App\Form\Radius\UserType;
 use Grase\SystemInformation;
 use Grase\Util;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use App\Form\Radius\GroupType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 
-class DefaultController extends Controller
+class DefaultController extends AbstractController
 {
     public function indexAction($name = "random")
     {

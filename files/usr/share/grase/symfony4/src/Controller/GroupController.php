@@ -3,14 +3,25 @@
 namespace App\Controller;
 
 use App\Entity\Radius\Group;
+use App\Entity\Radius\GroupManager;
 use App\Form\Radius\GroupType;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
-class GroupController extends Controller
+class GroupController extends AbstractController
 {
+    /** @var TranslatorInterface */
+    protected $translator;
+
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
+
     public function displayGroupsAction()
     {
         $groupsRepository = $this->getDoctrine()->getManager()->getRepository(Group::class);
@@ -26,7 +37,7 @@ class GroupController extends Controller
     }
 
 
-    public function editGroupAction(Request $request, $id)
+    public function editGroupAction(Request $request, GroupManager $groupManager, $id)
     {
         /** @var Group $group */
         $group = $this->getDoctrine()
@@ -44,11 +55,11 @@ class GroupController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->get('grase.manager.group')->saveGroup($group);
+            $groupManager->saveGroup($group);
 
             $this->addFlash(
                 'success',
-                $this->get('translator')->trans(
+                $this->translator->trans(
                     'grase.group.save_success.%groupname%',
                     ['%groupname%' => $group->getName()]
                 )

@@ -3,6 +3,7 @@
 namespace App\Entity\Radius;
 
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use App\Entity\Radius\Group;
@@ -31,18 +32,11 @@ class GroupManager
      */
     protected $repo;
 
-    /**
-     * The Fully-Qualified Class Name for our entity
-     * @var string
-     */
-    protected $class;
-
-    public function __construct(EventDispatcherInterface $dispatcher, EntityManager $em, $class)
+    public function __construct(EventDispatcherInterface $dispatcher, EntityManagerInterface $em)
     {
         $this->dispatcher = $dispatcher;
         $this->em = $em;
-        $this->class = $class;
-        $this->repo = $em->getRepository($class);
+        $this->repo = $em->getRepository(Group::class);
     }
 
     /**
@@ -50,10 +44,7 @@ class GroupManager
      */
     public function createGroup()
     {
-        $class = $this->class;
-        $group = new $class();
-
-        return $group;
+        return new Group();
     }
 
     public function saveGroup(Group $group)

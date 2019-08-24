@@ -37,12 +37,16 @@ services:
         class: App\Util\AuditLogHandler
         arguments: ['@doctrine.orm.entity_manager']
 
+    # Pull in the processors for our Audit log monolog channel
     Symfony\Bridge\Monolog\Processor\TokenProcessor:
         tags:
             - { name: monolog.processor, channel: audit }
     Symfony\Bridge\Monolog\Processor\WebProcessor:
         tags:
             - { name: monolog.processor, channel: audit }
+
+    # Autowire the Group manager (TODO move it to somewhere outside of the Entity folder)
+    App\Entity\Radius\GroupManager: ~
 
 
     sha1salted_encoder:

@@ -6,13 +6,22 @@ use App\Entity\Radius\User;
 use App\Entity\Radius\UserRepository;
 use App\Entity\UpdateUserData;
 use App\Form\Radius\UserType;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
-class UserController extends Controller
+class UserController extends AbstractController
 {
+    /** @var TranslatorInterface */
+    protected $translator;
+
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
+
     /**
      * @return Response
      */
@@ -56,7 +65,7 @@ class UserController extends Controller
             $updateUserData->updateUser($user, $this->getDoctrine()->getManager());
             $this->addFlash(
                 'success',
-                $this->get('translator')->trans(
+                $this->translator->trans(
                     'grase.user.save_success.%username%',
                     ['%username%' => $user->getUsername()]
                 )
@@ -73,6 +82,7 @@ class UserController extends Controller
             ]
         );
     }
+
     public function createUserAction(Request $request)
     {
         // @TODO Insert permissions check here for creating
