@@ -39,14 +39,15 @@ class MainMenu extends Menu
         // Create Menu Items
 
         $menu->addChild(new DefaultItem('nav_config_groups', $menu->isEvent()), 5)
-             ->setLabel('Groups')
+             ->setLabel('grase.menu.groups')
              ->setRoute('grase_groups')
              ->setChildAttr(['class' => 'nav-treeview'])
         ;
         //->setRoles(['ADMIN_SETTINGS_CONTACT'])
 
         $usersMenu = $menu->addChild(new DefaultItem('nav_config_users', $menu->isEvent()), 10)
-            ->setLabel('Users <i class="right fas fa-angle-left"></i>')
+            ->setLabel('grase.menu.users')
+            ->setLabelAfterHtml(' <i class="right fas fa-angle-left"></i>')
             ->setLink('#')
             ->setListAttr(['class' => 'nav-item has-treeview'])
             ->setChildAttr(['class' => 'nav nav-treeview'])
@@ -54,35 +55,36 @@ class MainMenu extends Menu
             //->setRoles(['ADMIN_SETTINGS_EMAIL'])
         ;
         $usersMenu->addChild(new DefaultItem('nav_config_users-all', $usersMenu->isEvent()))
-            ->setLabel('All Users')
+            ->setLabel('grase.menu.users.allusers')
             ->setRoute('grase_users')
             ->setExtra('label_icon', 'people')
             ;
         $this->buildUserGroupsItems($usersMenu);
 
         $menu->addChild(new DefaultItem('nav_create_user', $menu->isEvent()), 11)
-            ->setLabel('New user')
+            ->setLabel('grase.menu.users.new')
             ->setRoute('grase_user_new')
             ->setExtra('label_icon', 'person_add')
             ;
 
 
         $menu->addChild(new DefaultItem('nav_report_dhcp_leases', $menu->isEvent()), 15)
-            ->setLabel('DHCP Leases')
+            ->setLabel('grase.menu.dhcp_leases')
             ->setRoute('grase_dhcp_leases')
             ->setChildAttr(['class' => 'nav-treeview'])
         ;
         //->setRoles(['ADMIN_SETTINGS_CONTACT'])
 
         $menu->addChild(new DefaultItem('nav_header_settings', $menu->isEvent()), 30)
-             ->setLabel('SETTINGS')
+             ->setLabel('grase.menu.settings.header')
              ->setListAttr(['class' => 'nav-header'])
 
         ;
 
 
         $settingsMenu = $menu->addChild(new DefaultItem('nav_config_settings', $menu->isEvent()), 30)
-            ->setLabel('Settings <i class="right fas fa-angle-left"></i>')
+            ->setLabel('Settings')
+            ->setLabelAfterHtml(' <i class="right fas fa-angle-left"></i>')
             //->setRoute('grase_settings')
             ->setLink('#')
             ->setListAttr(['class' => 'nav-item has-treeview'])
@@ -121,6 +123,7 @@ class MainMenu extends Menu
                     ->setLabel($group->getName())
                     ->setRoute('grase_users', ['group' => $group->getName()])
                     ->setExtra('label_icon', 'people_outline')
+                    ->setExtra('label_translate', false) // Don't try and translate the group names in the menu
 
                 ;
             }

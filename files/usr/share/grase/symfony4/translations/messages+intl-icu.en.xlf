@@ -9,6 +9,30 @@
         <source>grase.migrate.db.adminlogs</source>
         <target>Starting to migrate {number} admin log entries to the Audit Log</target>
       </trans-unit>
+      <trans-unit id="7rmXkz0" resname="grase.menu.settings.header">
+        <source>grase.menu.settings.header</source>
+        <target>SETTINGS</target>
+      </trans-unit>
+      <trans-unit id="42CzBpW" resname="grase.menu.groups">
+        <source>grase.menu.groups</source>
+        <target>Groups</target>
+      </trans-unit>
+      <trans-unit id="253JSq_" resname="grase.menu.users">
+        <source>grase.menu.users</source>
+        <target>Users</target>
+      </trans-unit>
+      <trans-unit id="R27FyiT" resname="grase.menu.users.new">
+        <source>grase.menu.users.new</source>
+        <target>New User</target>
+      </trans-unit>
+      <trans-unit id="27FyiT" resname="grase.menu.users.allusers">
+        <source>grase.menu.users.allusers</source>
+        <target>All Users</target>
+      </trans-unit>
+      <trans-unit id="HYsb.o_" resname="grase.menu.dhcp_leases">
+        <source>grase.menu.dhcp_leases</source>
+        <target>DHCP Leases</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
