@@ -36,7 +36,7 @@
       <trans-unit id="svwZ3O_" resname="page.auditlog.information">
         <source>page.auditlog.information</source>
         <target><![CDATA[
-        Displaying of audit Logs is limited to the last 500 entries.<br/>Audit logs include all actions performed by users on the administration side of the GRASE Hotspot.
+        Displaying of audit logs is limited to the last 500 entries.<br/>Audit logs include all actions performed by users on the administration side of the GRASE Hotspot.
         ]]></target>
       </trans-unit>
       <trans-unit id="ghHDN4d" resname="page.auditlog.header">
@@ -54,6 +54,30 @@
       <trans-unit id="UPCAiq0" resname="grase.menu.admin.header">
         <source>grase.menu.admin.header</source>
         <target>ADMIN</target>
+      </trans-unit>
+      <trans-unit id="g3No7rv" resname="grase.timestamp">
+        <source>grase.timestamp</source>
+        <target>Timestamp</target>
+      </trans-unit>
+      <trans-unit id="0pBNokB" resname="grase.user">
+        <source>grase.user</source>
+        <target>User</target>
+      </trans-unit>
+      <trans-unit id="0GFULzr" resname="grase.ip">
+        <source>grase.ip</source>
+        <target>IP</target>
+      </trans-unit>
+      <trans-unit id="jiip63n" resname="grase.audit.action">
+        <source>grase.audit.action</source>
+        <target>Action</target>
+      </trans-unit>
+      <trans-unit id="rzgv1MY" resname="grase.audit.context">
+        <source>grase.audit.context</source>
+        <target>Context</target>
+      </trans-unit>
+      <trans-unit id="PlgPBjD" resname="grase.audit.level">
+        <source>grase.audit.level</source>
+        <target>Level</target>
       </trans-unit>
     </body>
   </file>
