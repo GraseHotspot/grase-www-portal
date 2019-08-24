@@ -55,7 +55,13 @@ final class Version20190823234949 extends AbstractMigration implements Container
         // TODO Limit the number of logs we migrate?
         // Migrate adminlog to audit_log
         $oldAdminLogs = $this->connection->query('
-            SELECT * FROM (SELECT id, timestamp, username, ipaddress, action FROM adminlog WHERE action != "CRON" ORDER BY id DESC LIMIT 5000) AS ttable ORDER BY id')->fetchAll(FetchMode::ASSOCIATIVE);
+            SELECT * FROM (
+                SELECT id,timestamp, username, ipaddress, action
+                FROM adminlog
+                WHERE action != "CRON"
+                ORDER BY id
+                DESC LIMIT 5000) AS ttable
+            ORDER BY id')->fetchAll(FetchMode::ASSOCIATIVE);
 
         $this->write($translator->trans('grase.migrate.db.adminlogs', ['number' => count($oldAdminLogs)]));
 
