@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\AuditLog;
 use App\Entity\Radius\Group;
 use App\Entity\Radius\User;
 use App\Entity\Radius\UserRepository;
@@ -77,6 +78,24 @@ class DefaultController extends Controller
             'dhcpLeases.html.twig',
             [
                 'sessions' => $sessions,
+            ]
+        );
+    }
+
+    /**
+     * Display a table of audit logs
+     * @return Response
+     */
+    public function auditLogDisplayAction()
+    {
+        $auditLogRepo = $this->getDoctrine()->getManager()->getRepository(AuditLog::class);
+
+        $logEntries = $auditLogRepo->findBy([], ['createdAt' => 'DESC'], 500);
+
+        return $this->render(
+            'auditlog.html.twig',
+            [
+                'logEntries' => $logEntries,
             ]
         );
     }

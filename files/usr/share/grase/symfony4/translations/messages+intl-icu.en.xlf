@@ -17,7 +17,7 @@
         <source>grase.menu.groups</source>
         <target>Groups</target>
       </trans-unit>
-      <trans-unit id="253JSq_" resname="grase.menu.users">
+      <trans-unit id="iELNm3M" resname="grase.menu.users">
         <source>grase.menu.users</source>
         <target>Users</target>
       </trans-unit>
@@ -25,13 +25,27 @@
         <source>grase.menu.users.new</source>
         <target>New User</target>
       </trans-unit>
-      <trans-unit id="27FyiT" resname="grase.menu.users.allusers">
+      <trans-unit id="2bvhWq7" resname="grase.menu.users.allusers">
         <source>grase.menu.users.allusers</source>
         <target>All Users</target>
       </trans-unit>
       <trans-unit id="HYsb.o_" resname="grase.menu.dhcp_leases">
         <source>grase.menu.dhcp_leases</source>
         <target>DHCP Leases</target>
+      </trans-unit>
+      <trans-unit id="svwZ3O_" resname="page.auditlog.information">
+        <source>page.auditlog.information</source>
+        <target><![CDATA[
+        Displaying of audit Logs is limited to the last 500 entries.<br/>Audit logs include all actions performed by users on the administration side of the GRASE Hotspot.
+        ]]></target>
+      </trans-unit>
+      <trans-unit id="ghHDN4d" resname="page.auditlog.header">
+        <source>page.auditlog.header</source>
+        <target>Audit Log</target>
+      </trans-unit>
+      <trans-unit id="FRpJ6.y" resname="audit.login.interactive">
+        <source>audit.login.interactive</source>
+        <target>Interactive Login</target>
       </trans-unit>
     </body>
   </file>

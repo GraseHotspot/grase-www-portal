@@ -3,6 +3,7 @@ const $ = require('jquery');
 // no need to set this to a variable, just require it
 require('bootstrap');
 require('admin-lte');
+require('jquery.json-viewer/json-viewer/jquery.json-viewer.js');
 var dt = require( 'datatables.net-bs4' );
 
 
@@ -21,4 +22,13 @@ $(document).ready(function() {
     if (typeof pageJs === 'function') {
         pageJs($);
     }
+
+    // Load any JSON-viewer views
+    $('.json-renderer').each(function() {
+        var jsondata = $(this).data("json")
+        if (jsondata.length !== 0) {
+            $(this).jsonViewer(jsondata, {collapsed: true});
+        }
+    })
+
 });

@@ -6,6 +6,12 @@ $primary: darken(#428bca, 20%);
 @import "~material-design-icons/iconfont/material-icons.css";
 @import "~admin-lte/build/scss/AdminLTE.scss";
 @import "~admin-lte/plugins/fontawesome-free/css/all.css";
+@import "~jquery.json-viewer/json-viewer/jquery.json-viewer.css";
+
+// Specific override to get the padding to look ok for a json-document in a data table cell
+.table td.json-document {
+  padding: 1em 2em;
+}
 
 /*
  * Base structure

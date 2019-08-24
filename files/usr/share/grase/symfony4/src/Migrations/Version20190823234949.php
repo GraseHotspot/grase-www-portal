@@ -76,7 +76,6 @@ final class Version20190823234949 extends AbstractMigration implements Container
             $newAdminLog->setExtra(['ip' => $oldAdminLog['ipaddress']]);
             $newAdminLog->setLevel(Logger::INFO);
             $newAdminLog->setLevelName(Logger::getLevelName(Logger::INFO));
-            $newAdminLog->setContext([]);
             $em->persist($newAdminLog);
             if (($i % $batchSize) === 0) {
                 $em->flush();

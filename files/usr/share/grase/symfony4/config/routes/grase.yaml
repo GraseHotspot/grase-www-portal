@@ -40,6 +40,11 @@ grase_dhcp_leases:
     defaults:
         _controller: App\Controller\DefaultController::dhcpLeasesAction
 
+grase_auditlog:
+    path: /audit
+    defaults:
+        _controller: App\Controller\DefaultController::auditLogDisplayAction
+
 #grase_security:
 #    resource: "@App/Controller/SecurityController.php"
 #    type:     annotation

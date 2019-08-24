@@ -33,7 +33,7 @@ class AuditLog
     /**
      * @ORM\Column(name="context", type="array")
      */
-    private $context;
+    private $context = [];
 
     /**
      * @ORM\Column(name="level", type="smallint")

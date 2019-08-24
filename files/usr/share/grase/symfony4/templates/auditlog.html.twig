@@ -1,7 +1,7 @@
 {% extends "layout.html.twig" %}
 
 {% block page_title %}
-    {% trans %}User Accounts{% endtrans %}
+    {% trans %}page.auditlog.header{% endtrans %}
 {% endblock page_title %}
 
 {% block page_subtitle %}
@@ -9,44 +9,55 @@
 {% endblock page_subtitle %}
 
 {% block content %}
-
-    <div class="col-xs-12">
-        <div class="box">
-            <div class="box-header">
-                <h3 class="box-title">{% trans %}User Accounts{% endtrans %}</h3>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    {{ block('audit_table') }}
+                </div>
             </div>
-            <div class="box-body">
-                <table id="usersTable" class="table table-bordered table-hover dataTable"
-                       data-paging="true" data-page-length="10" data-searching="true"
-                       data-ordering="true" data-info="true" data-autowidth="true">
-                    <thead>
-                    <tr>
-                        <th>{% trans %}Username{% endtrans %}</th>
-                        <th>{% trans %}Data Usage{% endtrans %}</th>
-                        <th>{% trans %}Time Usage{% endtrans %}</th>
-                        <th>{% trans %}Expiry{% endtrans %}</th>
-                        <th>{% trans %}Last Logout{% endtrans %}</th>
-                        <th>{% trans %}Group{% endtrans %}</th>
-                        <th>{% trans %}Comment{% endtrans %}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for user in users %}
-                        <tr>
-                            <td><a href="{{ path('grase_user_edit', {id: user.username}) }}">{{ user.username }}</a> <a style="float: right" class="" data-toggle="popover" tabindex="0" data-trigger="focus" title="{% trans %}Password{% endtrans %}" data-content="{{ user.password }}"><i class="material-icons md-18 md-dark">lock</i></a></td>
-                            <td>{{ user.datausagetotal|format_bytes }}/{{ user.datalimit|format_bytes }}</td>
-                            <td>{{ user.totalSessionTime }}/{{ user.timelimit }}</td>
-                            <td>{% if user.expiry %}{{ user.expiry|localizeddate('medium', 'short') }}{% endif %}</td>
-                            <td>{% if user.lastLogout %}{{ user.lastLogout |localizeddate('medium', 'short') }}{% endif %}</td>
-                            <td>{{ user.allUserGroupsNames }}</td>
-                            <td>{{ user.comment }}</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-
         </div>
     </div>
+
+{% endblock %}
+
+{% block audit_table %}
+<div class="card-header">
+    <h3 class="card-title">{% trans %}page.auditlog.header{% endtrans %}</h3>
+</div>
+<div class="card-body p-10">
+    <p>{% trans %}page.auditlog.information{% endtrans %}</p>
+
+    <table id="auditLogTable" class="table table-bordered table-hover dataTable"
+           data-paging="true" data-page-length="10" data-searching="true"
+           data-ordering="true" data-info="true" data-autowidth="true"
+           data-order="[[ 1, &quot;desc&quot; ]]" >
+        <thead>
+        <tr>
+            <th>{% trans %}Timestamp{% endtrans %}</th>
+            <th>{% trans %}Level{% endtrans %}</th>
+            <th>{% trans %}User{% endtrans %}</th>
+            <th>{% trans %}IP{% endtrans %}</th>
+            <th>{% trans %}Action{% endtrans %}</th>
+            <th>{% trans %}Context{% endtrans %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {# entry \App\Entity\AuditLog #}
+        {% for entry in logEntries %}
+            <tr>
+                <td>{{ entry.createdAt |localizeddate('short', 'short') }}</td>
+                <td>{{ entry.levelName }}</td>
+                <td>{{ entry.username }}</td>
+                <td>{{ entry.extra.ip | default('') }}</td>
+                <td>{{ entry.message | trans()}}</td>
+                <td class="json-renderer" data-json='{{ entry.context |json_encode }}'></td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
 
 {% endblock %}
