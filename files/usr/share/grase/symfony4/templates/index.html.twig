@@ -5,8 +5,20 @@
 {% endblock page_title %}
 
 {% block page_subtitle %}
-
 {% endblock page_subtitle %}
+
+{% block stylesheets %}
+    {% if netdataEnabled %}
+    <script>var netdataNoBootstrap = true;</script>
+    {# TODO make this pull from the current Grase server, through an Apache proxy #}
+    <script type="text/javascript" src="http://localhost:19999/dashboard.js"></script>
+    {# dashboard.js loads CSS that breaks ours, so we need to let CSS do it's thing and load dashboard.css first,
+       followed by our styles so our styles win
+    #}
+    {% endif %}
+    {{ parent() }}
+{% endblock stylesheets %}
+
 
 {% block content_header %}
     <h1>{% trans %}User Management Interface{% endtrans %}</h1>
@@ -20,6 +32,13 @@
                     {{ block('status_table') }}
                 </div>
             </div>
+            {% if netdataEnabled %}
+            <div class="col-lg-6">
+                <div class="card">
+                    {{ block('netdata') }}
+                </div>
+            </div>
+            {% endif %}
         </div>
     </div>
 
@@ -137,3 +156,42 @@
     <p>Running services status page can be found at <a href="/grase/radmin/sysstatus">System Status</a></p>
 
 {% endblock %}
+
+{% block netdata %}
+    <div class="card-header">
+        <h3 class="card-title">Netdata</h3>
+    </div>
+    <div class="card-body">
+        <div class="tab-content">
+
+        <div data-netdata="system.cpu"
+             data-chart-library="gauge"
+             data-width="25%"
+             data-after="-300"
+             data-points="150"
+             data-units="%"
+        >
+        </div>
+        <div data-netdata="system.ram"
+             data-dimensions="used|buffers|active|wired"
+             data-gauge-max-value="100"
+             data-append-options="percentage"
+             data-chart-library="gauge"
+             data-units="%"
+             data-width="25%"
+             data-after="-300"
+             data-points="150"
+        >
+        </div>
+        <div data-netdata="system.net"
+             data-after="-300"
+             data-before="0"
+        ></div>
+            <div data-netdata="system.ip"
+                 data-after="-300"
+                 data-before="0"
+            ></div>
+
+        </div>
+    </div>
+{% endblock netdata %}

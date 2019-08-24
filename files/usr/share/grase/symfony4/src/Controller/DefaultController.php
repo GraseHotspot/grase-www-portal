@@ -28,6 +28,7 @@ class DefaultController extends AbstractController
             'index.html.twig',
             [
                 'systemInfo' => $systemInformation,
+                'netdataEnabled' => false, // TODO make this pull from the database settings
             ]
         );
     }
