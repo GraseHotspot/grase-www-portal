@@ -78,7 +78,6 @@ class MainMenu extends Menu
         $menu->addChild(new DefaultItem('nav_header_settings', $menu->isEvent()), 30)
              ->setLabel('grase.menu.settings.header')
              ->setListAttr(['class' => 'nav-header'])
-
         ;
 
 
@@ -101,6 +100,17 @@ class MainMenu extends Menu
             ->setChildAttr(['class' => 'nav nav-treeview'])
         ;
         //->setRoles(['ADMIN_SETTINGS_GENERAL'])
+
+        $menu->addChild(new DefaultItem('nav_header_admin', $menu->isEvent()), 40)
+             ->setLabel('grase.menu.admin.header')
+             ->setListAttr(['class' => 'nav-header'])
+        ;
+
+        $settingsMenu = $menu->addChild(new DefaultItem('nav_admin_auditlog', $menu->isEvent()), 40)
+                             ->setLabel('grase.menu.admin.auditlog')
+                             ->setRoute('grase_auditlog')
+                             ->setExtra('label_icon', 'security')
+        ;
 
         $menu->addChild(new DefaultItem('nav_logout', $menu->isEvent()), 100)
             ->setLabel('Logout')

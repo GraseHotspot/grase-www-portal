@@ -47,6 +47,14 @@
         <source>audit.login.interactive</source>
         <target>Interactive Login</target>
       </trans-unit>
+      <trans-unit id="PmeB152" resname="grase.menu.admin.auditlog">
+        <source>grase.menu.admin.auditlog</source>
+        <target>Audit Log</target>
+      </trans-unit>
+      <trans-unit id="UPCAiq0" resname="grase.menu.admin.header">
+        <source>grase.menu.admin.header</source>
+        <target>ADMIN</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
