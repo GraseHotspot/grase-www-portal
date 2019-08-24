@@ -29,6 +29,18 @@ services:
     App\Menu\MainMenu:
         public: true
 
+    # Audit log handler (replaces old admin log)
+    monolog.audit_handler:
+        class: App\Util\AuditLogHandler
+        arguments: ['@doctrine.orm.entity_manager']
+
+    Symfony\Bridge\Monolog\Processor\TokenProcessor:
+        tags:
+            - { name: monolog.processor, channel: audit }
+    Symfony\Bridge\Monolog\Processor\WebProcessor:
+        tags:
+            - { name: monolog.processor, channel: audit }
+
 
     sha1salted_encoder:
         class: App\Service\Sha1Salted

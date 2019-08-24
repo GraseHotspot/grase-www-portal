@@ -1,0 +1,7 @@
+monolog:
+  channels: ['audit']
+  handlers:
+    audit:
+      channels: ['audit']
+      type: service
+      id: monolog.audit_handler
