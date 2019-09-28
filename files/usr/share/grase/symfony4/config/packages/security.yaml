@@ -9,7 +9,7 @@ security:
 
     encoders:
         App\Entity\Radmin\User:
-            algorithm: bcrypt
+            algorithm: auto
 
         sha1salted:
             id: sha1salted_encoder
