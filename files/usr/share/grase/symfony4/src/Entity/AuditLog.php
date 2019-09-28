@@ -63,16 +63,27 @@ class AuditLog
         $this->createdAt = $this->createdAt ?? new \DateTime();
     }
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return string|null
+     */
     public function getMessage(): ?string
     {
         return $this->message;
     }
 
+    /**
+     * @param string $message
+     *
+     * @return $this
+     */
     public function setMessage(string $message): self
     {
         $this->message = $message;
@@ -80,11 +91,19 @@ class AuditLog
         return $this;
     }
 
+    /**
+     * @return array|null
+     */
     public function getContext(): ?array
     {
         return $this->context;
     }
 
+    /**
+     * @param array $context
+     *
+     * @return $this
+     */
     public function setContext(array $context): self
     {
         $this->context = $context;
@@ -92,11 +111,19 @@ class AuditLog
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getLevel(): ?int
     {
         return $this->level;
     }
 
+    /**
+     * @param int $level
+     *
+     * @return $this
+     */
     public function setLevel(int $level): self
     {
         $this->level = $level;
@@ -104,11 +131,19 @@ class AuditLog
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getLevelName(): ?string
     {
         return $this->levelName;
     }
 
+    /**
+     * @param string $levelName
+     *
+     * @return $this
+     */
     public function setLevelName(string $levelName): self
     {
         $this->levelName = $levelName;
@@ -116,11 +151,19 @@ class AuditLog
         return $this;
     }
 
+    /**
+     * @return array|null
+     */
     public function getExtra(): ?array
     {
         return $this->extra;
     }
 
+    /**
+     * @param array $extra
+     *
+     * @return $this
+     */
     public function setExtra(array $extra): self
     {
         $this->extra = $extra;
@@ -128,11 +171,19 @@ class AuditLog
         return $this;
     }
 
+    /**
+     * @return \DateTimeInterface|null
+     */
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
     }
 
+    /**
+     * @param \DateTimeInterface $createdAt
+     *
+     * @return $this
+     */
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
@@ -140,11 +191,20 @@ class AuditLog
         return $this;
     }
 
+
+    /**
+     * @return string|null
+     */
     public function getUsername(): ?string
     {
         return $this->username;
     }
 
+    /**
+     * @param string $username
+     *
+     * @return $this
+     */
     public function setUsername(string $username): self
     {
         $this->username = $username;

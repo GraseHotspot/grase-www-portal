@@ -13,6 +13,12 @@ use Doctrine\ORM\Query\Expr\Join;
  */
 class UserRepository extends EntityRepository
 {
+    /**
+     * Find all users that belong to a group
+     * @param null $group
+     *
+     * @return mixed
+     */
     public function findByGroup($group = null)
     {
         @ini_set("memory_limit", -1);
@@ -50,6 +56,14 @@ class UserRepository extends EntityRepository
         return $users;
     }
 
+    /**
+     * Find a Radius user by username
+     * @param string $username
+     *
+     * @return mixed
+     *
+     * @deprecated
+     */
     public function findByUsername($username)
     {
         $query = $this->getEntityManager()->createQueryBuilder()
@@ -66,6 +80,14 @@ class UserRepository extends EntityRepository
         return $query->getQuery()->getResult();
     }
 
+    /**
+     * Gets all the SUMs of the different accounting data to give us used octets in and out, session times, and last
+     * logout
+     *
+     * @return array
+     *
+     * @throws \Doctrine\ORM\Query\QueryException
+     */
     private function getAllAccountingSums()
     {
         $query = $this->getEntityManager()->createQueryBuilder()

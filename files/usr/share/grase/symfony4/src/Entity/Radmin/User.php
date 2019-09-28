@@ -1,12 +1,10 @@
 <?php
-// src/AppBundle/Entity/User.php
+
 namespace App\Entity\Radmin;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\Encoder\EncoderAwareInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-
-//use Avanzu\AdminThemeBundle\Model\UserInterface as ThemeUser;
 
 /**
  * @ORM\Table(name="auth")
@@ -14,13 +12,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface, EncoderAwareInterface, \Serializable //, ThemeUser
 {
-    /**
-     * Column(type="integer")
-
-     * GeneratedValue(strategy="AUTO")
-     */
-
-
     /**
      * @ORM\Column(type="string", length=50, unique=true)
      * @ORM\Id
@@ -41,18 +32,27 @@ class User implements UserInterface, EncoderAwareInterface, \Serializable //, Th
 
     private $isActive;
 
+    /**
+     * User constructor.
+     */
     public function __construct()
     {
         $this->isActive = true;
-        // may not be needed, see section on salt below
-// $this->salt = md5(uniqid(null, true));
     }
 
+    /**
+     * Get the Radmin Users username
+     * @return string
+     */
     public function getUsername()
     {
         return $this->username;
     }
 
+    /**
+     * Get password encoder (lets us use existing sha1salted hashes until we upgrade them)
+     * @return string|null
+     */
     public function getEncoderName()
     {
         if (strlen($this->password) == 49) {
@@ -62,6 +62,9 @@ class User implements UserInterface, EncoderAwareInterface, \Serializable //, Th
         return null; // use the default encoder
     }
 
+    /**
+     * @return false|string|null
+     */
     public function getSalt()
     {
         // you *may* need a real salt depending on your encoder
@@ -69,26 +72,42 @@ class User implements UserInterface, EncoderAwareInterface, \Serializable //, Th
         return substr($this->password, 0, 9);
     }
 
+    /**
+     * @return string
+     */
     public function getPassword()
     {
         return $this->password;
     }
 
+    /**
+     * @return array
+     */
     public function getRoles()
     {
         return [$this->role];
     }
 
+    /**
+     * @param string $role
+     */
     public function setRole($role)
     {
         $this->role = $role;
     }
 
+    /**
+     *
+     */
     public function eraseCredentials()
     {
     }
 
-    /** @see \Serializable::serialize() */
+    /**
+     * @see \Serializable::serialize()
+     *
+     * @return string
+     */
     public function serialize()
     {
         return serialize(array(
@@ -100,7 +119,11 @@ class User implements UserInterface, EncoderAwareInterface, \Serializable //, Th
         ));
     }
 
-    /** @see \Serializable::unserialize() */
+    /**
+     * @see \Serializable::unserialize()
+     *
+     * @param string $serialized
+     */
     public function unserialize($serialized)
     {
         list(
@@ -164,27 +187,10 @@ class User implements UserInterface, EncoderAwareInterface, \Serializable //, Th
         return $this;
     }
 
-    public function getAvatar()
-    {
-        return null;
-    }
+    /**
+     * @return mixed
+     */
     public function getName()
-    {
-        return $this->username;
-    }
-    public function getMemberSince()
-    {
-        return null;
-    }
-    public function isOnline()
-    {
-        return true;
-    }
-    public function getIdentifier()
-    {
-        return null;
-    }
-    public function getTitle()
     {
         return $this->username;
     }

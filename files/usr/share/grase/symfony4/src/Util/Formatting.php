@@ -7,11 +7,20 @@ use Symfony\Component\Form\Extension\Core\DataTransformer\NumberToLocalizedStrin
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
+/**
+ * Class Formatting
+ * Utilities for formatting numbers/curency etc in a locale proper way
+ */
 class Formatting
 {
     /** @var RequestStack */
     private $requestStack;
 
+    /**
+     * Formatting constructor.
+     *
+     * @param RequestStack $requestStack
+     */
     public function __construct(RequestStack $requestStack)
     {
         $this->requestStack = $requestStack;
@@ -41,9 +50,10 @@ class Formatting
         $bytes /= pow(1024, $pow);
         // $bytes /= (1 << (10 * $pow));
 
-        $locale = $this->requestStack->getCurrentRequest()->getLocale();
+        $locale          = $this->requestStack->getCurrentRequest()->getLocale();
         $numberFormatter = new \NumberFormatter($locale, \NumberFormatter::DECIMAL);
+        // TODO we may be able to use the new international formatter to do this instead of all this work to get the locale
 
-        return $numberFormatter->format(round($bytes, $precision)).' '.$units[$pow];
+        return $numberFormatter->format(round($bytes, $precision)) . ' ' . $units[$pow];
     }
 }

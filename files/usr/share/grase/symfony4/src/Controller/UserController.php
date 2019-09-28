@@ -9,20 +9,32 @@ use App\Form\Radius\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
+/**
+ * Class UserController
+ * All User related routes
+ */
 class UserController extends AbstractController
 {
     /** @var TranslatorInterface */
     protected $translator;
 
+    /**
+     * UserController constructor.
+     *
+     * @param TranslatorInterface $translator
+     */
     public function __construct(TranslatorInterface $translator)
     {
         $this->translator = $translator;
     }
 
     /**
+     * Display all users, filtered by group if a group is passed in
+     *
+     * @param null $group
+     *
      * @return Response
      */
     public function displayUsersAction($group = null)
@@ -41,7 +53,14 @@ class UserController extends AbstractController
         );
     }
 
-
+    /**
+     * Edit an existing user
+     *
+     * @param Request $request
+     * @param string  $id      Username of the user to edit
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     */
     public function editUserAction(Request $request, $id)
     {
         /** @var User $user */
@@ -77,12 +96,19 @@ class UserController extends AbstractController
         return $this->render(
             'user_edit.html.twig',
             [
-                'user' => $user,
+                'user'      => $user,
                 'user_form' => $form->createView(),
             ]
         );
     }
 
+    /**
+     * Create a new user
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     */
     public function createUserAction(Request $request)
     {
         // @TODO Insert permissions check here for creating
@@ -114,7 +140,7 @@ class UserController extends AbstractController
         return $this->render(
             'user_edit.html.twig',
             [
-                'user' => $user,
+                'user'      => $user,
                 'user_form' => $form->createView(),
             ]
         );

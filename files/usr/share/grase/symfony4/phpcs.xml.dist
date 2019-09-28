@@ -8,10 +8,17 @@
     <arg name="colors"/>
     <arg name="extensions" value="php"/>
 
-    <rule ref="PSR2"/>
+    <config name="ignore_warnings_on_exit" value="1"/>
+
+
     <rule ref="Symfony">
         <exclude name="Symfony.Commenting.License.Warning"/>
     </rule>
+    <rule ref="PSR12"/>
+
+    <exclude-pattern>src/Kernel.php</exclude-pattern>
+    <exclude-pattern>config/bundles.php</exclude-pattern>
+    <exclude-pattern>public/index.php</exclude-pattern>
 
     <file>bin/</file>
     <file>config/</file>
@@ -20,8 +27,10 @@
     <!--<file>tests/</file>-->
     <rule ref="Squiz.Strings.ConcatenationSpacing">
         <properties>
-            <property name="spacing" value="0" />
+            <property name="spacing" value="1" />
         </properties>
     </rule>
+
+
 
 </ruleset>

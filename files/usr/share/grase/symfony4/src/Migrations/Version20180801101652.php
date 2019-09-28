@@ -10,10 +10,19 @@ use Doctrine\Migrations\AbstractMigration;
  */
 final class Version20180801101652 extends AbstractMigration
 {
+    /**
+     * @param Schema $schema
+     *
+     * @throws \Doctrine\DBAL\DBALException
+     * @throws \Doctrine\DBAL\Migrations\AbortMigrationException
+     */
     public function up(Schema $schema)
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
+        $this->abortIf(
+            $this->connection->getDatabasePlatform()->getName() !== 'mysql',
+            'Migration can only be executed safely on \'mysql\'.'
+        );
 
         $this->addSql('ALTER TABLE auth
           ADD role VARCHAR(25) NOT NULL,
@@ -30,14 +39,25 @@ final class Version20180801101652 extends AbstractMigration
         $this->addSql('ALTER TABLE auth DROP accesslevel');
     }
 
+    /**
+     * @param Schema $schema
+     *
+     * @throws \Doctrine\DBAL\DBALException
+     * @throws \Doctrine\DBAL\Migrations\AbortMigrationException
+     */
     public function down(Schema $schema)
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
+        $this->abortIf(
+            $this->connection->getDatabasePlatform()->getName() !== 'mysql',
+            'Migration can only be executed safely on \'mysql\'.'
+        );
 
         // When downgrading, everyone will become a superadmin
         $this->addSql('ALTER TABLE auth ADD accesslevel INT DEFAULT 1 NOT NULL');
-        $this->addSql('ALTER TABLE auth DROP role, CHANGE username username VARCHAR(50) DEFAULT \'\'\'\' NOT NULL COLLATE latin1_swedish_ci');
+        $this->addSql('ALTER TABLE auth
+                             DROP role,
+                             CHANGE username username VARCHAR(50) DEFAULT \'\'\'\' NOT NULL COLLATE latin1_swedish_ci');
         $this->addSql('CREATE INDEX password ON auth (password)');
     }
 }

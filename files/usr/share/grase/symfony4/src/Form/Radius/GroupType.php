@@ -9,6 +9,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
+/**
+ * Class GroupType
+ * Form for editing/creating Radius Groups
+ */
 class GroupType extends AbstractType
 {
     /**

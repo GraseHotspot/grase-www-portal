@@ -8,6 +8,10 @@ use Pd\MenuBundle\Builder\ItemInterface;
 use Pd\MenuBundle\Builder\Menu;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
+/**
+ * Class MainMenu
+ * Create the main menu for navigating the Grase Hotspot (Sidebar style)
+ */
 class MainMenu extends Menu
 {
     /**
@@ -18,6 +22,12 @@ class MainMenu extends Menu
     /** @var EntityManagerInterface */
     private $entityManager;
 
+    /**
+     * MainMenu constructor.
+     *
+     * @param ContainerInterface     $container
+     * @param EntityManagerInterface $entityManager
+     */
     public function __construct(ContainerInterface $container, EntityManagerInterface $entityManager)
     {
         $this->container = $container;
@@ -25,7 +35,9 @@ class MainMenu extends Menu
     }
 
     /**
-     * Override
+     * @param array $options
+     *
+     * @return ItemInterface
      */
     public function createMenu(array $options = []): ItemInterface
     {
@@ -121,15 +133,22 @@ class MainMenu extends Menu
         return $menu;
     }
 
+    /**
+     * @param ItemInterface $usersMenu
+     *
+     * @return ItemInterface
+     *
+     * Get all the groups and create a menu item for each group so we can easily just see users in that group
+     */
     private function buildUserGroupsItems(ItemInterface $usersMenu)
     {
         $groupRepo = $this->entityManager->getRepository(Group::class);
-        $groups = $groupRepo->findAll();
+        //$groups = $groupRepo->findAll();
         $groups = $groupRepo->findBy([], ['name' => 'ASC']);
         /** @var Group $group */
         foreach ($groups as $group) {
             if (!$group->getUsergroups()->isEmpty()) {
-                $usersMenu->addChild(new DefaultItem('nav_config_users_'.$group->getId(), $usersMenu->isEvent()))
+                $usersMenu->addChild(new DefaultItem('nav_config_users_' . $group->getId(), $usersMenu->isEvent()))
                     ->setLabel($group->getName())
                     ->setRoute('grase_users', ['group' => $group->getName()])
                     ->setExtra('label_icon', 'people_outline')

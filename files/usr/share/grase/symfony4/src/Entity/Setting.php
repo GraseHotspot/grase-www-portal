@@ -29,6 +29,11 @@ class Setting
     const MB_OPTIONS = 'mbOptions';
     const TIME_OPTIONS = 'timeOptions';
 
+    /**
+     * Setting constructor.
+     *
+     * @param string $name
+     */
     public function __construct($name)
     {
         $this->setName($name);

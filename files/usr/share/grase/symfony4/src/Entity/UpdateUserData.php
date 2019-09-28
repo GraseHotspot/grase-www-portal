@@ -11,6 +11,10 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
+/**
+ * This class is used for updating Radius users. There is lots of complicated connections which can't be handled at the
+ * entity level, so this class does all the hard yards
+ */
 class UpdateUserData
 {
     /**
@@ -35,7 +39,14 @@ class UpdateUserData
     /** @var Group */
     public $primaryGroup;
 
+    /**
+     * @var array
+     */
     public $dataLimit = ['dataLimitDropdown' => 'inherit', 'dataLimitCustom' => null];
+
+    /**
+     * @var array
+     */
     public $timeLimit = ['timeLimitDropdown' => 'inherit', 'timeLimitCustom' => null];
 
     /**
@@ -72,6 +83,8 @@ class UpdateUserData
 
     /**
      * @Assert\Callback
+     *
+     * @param ExecutionContextInterface $context
      */
     public function validateFields(ExecutionContextInterface $context)
     {
@@ -102,7 +115,9 @@ class UpdateUserData
     }
 
 
-
+    /**
+     * @return float|int|mixed|null
+     */
     private function dataLimitToBytes()
     {
         if ($this->dataLimit['dataLimitDropdown'] === 'inherit') {
@@ -120,6 +135,11 @@ class UpdateUserData
         return null;
     }
 
+    /**
+     * @param User          $user
+     * @param ObjectManager $em
+     * @param null|int      $bytes
+     */
     private function setDataLimit(User $user, ObjectManager $em, $bytes)
     {
         $dataLimitCheck = $user->getDataLimitCheck();
@@ -145,6 +165,9 @@ class UpdateUserData
         $em->persist($dataLimitCheck);
     }
 
+    /**
+     * @return float|int|mixed|null
+     */
     private function timeLimitToSeconds()
     {
         if ($this->timeLimit['timeLimitDropdown'] === 'inherit') {
@@ -162,6 +185,11 @@ class UpdateUserData
         return null;
     }
 
+    /**
+     * @param User          $user
+     * @param ObjectManager $em
+     * @param null|int      $seconds
+     */
     private function setTimeLimit(User $user, ObjectManager $em, $seconds)
     {
         $timeLimitCheck = $user->getTimeLimitCheck();
@@ -187,7 +215,12 @@ class UpdateUserData
         $em->persist($timeLimitCheck);
     }
 
-    private function setPrimaryGroup(User $user, ObjectManager $em, $group)
+    /**
+     * @param User          $user
+     * @param ObjectManager $em
+     * @param Group         $group
+     */
+    private function setPrimaryGroup(User $user, ObjectManager $em, Group $group)
     {
         $primaryUserGroup = $user->getPrimaryGroup();
         if (!$primaryUserGroup) {

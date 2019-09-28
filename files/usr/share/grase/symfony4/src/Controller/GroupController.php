@@ -12,16 +12,29 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
+/**
+ * Class GroupController
+ * Routes for all Group related actions
+ */
 class GroupController extends AbstractController
 {
     /** @var TranslatorInterface */
     protected $translator;
 
+    /**
+     * GroupController constructor.
+     *
+     * @param TranslatorInterface $translator
+     */
     public function __construct(TranslatorInterface $translator)
     {
         $this->translator = $translator;
     }
 
+    /**
+     * Display all groups
+     * @return Response
+     */
     public function displayGroupsAction()
     {
         $groupsRepository = $this->getDoctrine()->getManager()->getRepository(Group::class);
@@ -37,6 +50,14 @@ class GroupController extends AbstractController
     }
 
 
+    /**
+     * Edit Group settings
+     * @param Request      $request
+     * @param GroupManager $groupManager
+     * @param string       $id
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     */
     public function editGroupAction(Request $request, GroupManager $groupManager, $id)
     {
         /** @var Group $group */

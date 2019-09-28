@@ -16,6 +16,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
+/**
+ * Class UserType
+ * Form for creating/editing Radius users
+ */
 class UserType extends AbstractType
 {
     /**

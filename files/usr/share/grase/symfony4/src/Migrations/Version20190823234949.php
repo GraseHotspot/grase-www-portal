@@ -21,6 +21,12 @@ final class Version20190823234949 extends AbstractMigration implements Container
 {
     use ContainerAwareTrait;
 
+    /**
+     * @param Schema $schema
+     *
+     * @throws \Doctrine\DBAL\DBALException
+     * @throws \Doctrine\DBAL\Migrations\AbortMigrationException
+     */
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
@@ -43,6 +49,11 @@ final class Version20190823234949 extends AbstractMigration implements Container
         );
     }
 
+    /**
+     * @param Schema $schema
+     *
+     * After we've created the new tables, migrate the data in (with a limit)
+     */
     public function postUp(Schema $schema)
     {
         parent::postUp($schema);
@@ -95,6 +106,12 @@ final class Version20190823234949 extends AbstractMigration implements Container
         // TODO remove adminlog table?
     }
 
+    /**
+     * @param Schema $schema
+     *
+     * @throws \Doctrine\DBAL\DBALException
+     * @throws \Doctrine\DBAL\Migrations\AbortMigrationException
+     */
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs

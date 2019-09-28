@@ -13,7 +13,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class SecurityController extends AbstractController
 {
     /**
+     * This route displays the login form. We don't need to process it as the symfony security layer does that
+     *
      * @Route("/login", name="_grase_login")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function loginAction(Request $request)
     {

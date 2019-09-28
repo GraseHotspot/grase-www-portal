@@ -61,6 +61,9 @@ class User
     /** @var DateTime */
     private $lastLogout = null;
 
+    /**
+     * User constructor.
+     */
     public function __construct()
     {
         $this->radiusCheck      = new ArrayCollection();
@@ -68,6 +71,9 @@ class User
         $this->radiusAccounting = new ArrayCollection();
     }
 
+    /**
+     * @return string
+     */
     public function getUsername()
     {
         return $this->username;
@@ -111,12 +117,10 @@ class User
         return $this->getRadiuscheck()->matching($criteria)->first();
     }
 
-    public function getRadiuscheck()
-    {
-        return $this->radiusCheck;
-    }
 
     /**
+     * Get the users time limit in a somewhat formatted way (good for displaying)
+     *
      * @Groups({"user_get"})
      *
      * @return string
@@ -124,7 +128,7 @@ class User
     public function getTimeLimit()
     {
         if ($this->getTimeLimitCheck()) {
-            $timeLimit = new DateIntervalEnhanced('PT'.$this->getTimeLimitCheck()->getValue().'S');
+            $timeLimit = new DateIntervalEnhanced('PT' . $this->getTimeLimitCheck()->getValue() . 'S');
 
             return $timeLimit->recalculate()->format('%H:%I:%S');
         }
@@ -132,6 +136,29 @@ class User
         return '∞';
     }
 
+    /**
+     * @return Check
+     */
+    public function getTimeLimitCheck()
+    {
+        $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'Max-All-Session'));
+
+        return $this->getRadiuscheck()->matching($criteria)->first();
+    }
+
+    /**
+     * Get the users time limit in Minutes, needed for editing users
+     * @return float|int
+     */
+    public function getTimeLimitMinutes()
+    {
+        return $this->getTimeLimitSeconds() / 60;
+    }
+
+    /**
+     * Get the users Time limit as seconds or null if there is no limit
+     * @return string|null
+     */
     public function getTimeLimitSeconds()
     {
         if ($this->getTimeLimitCheck()) {
@@ -141,12 +168,17 @@ class User
         return null;
     }
 
-    public function getTimeLimitMinutes()
+    /**
+     * Get the users data limit as a mebibyte value, needed when editing users
+     * @return float|int|null
+     */
+    public function getDataLimitMebibyte()
     {
-        return $this->getTimeLimitSeconds() / 60;
+        return null !== $this->getDataLimit() ? $this->getDataLimit() / 1024 / 1024 : null;
     }
 
     /**
+     * Get the users Data limit as it's raw bytes value
      * @Groups({"user_get"})
      *
      * @return string | null
@@ -160,12 +192,15 @@ class User
         return null;
     }
 
-    public function getDataLimitMebibyte()
+    /**
+     * @return Check
+     */
+    public function getDataLimitCheck()
     {
-        return null !== $this->getDataLimit() ? $this->getDataLimit() / 1024 / 1024 : null;
+        $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'Max-Octets'));
+
+        return $this->getRadiuscheck()->matching($criteria)->first();
     }
-
-
 
     /**
      * @Groups({"user_get"})
@@ -179,6 +214,16 @@ class User
         }
 
         return null;
+    }
+
+    /**
+     * @return Check
+     */
+    public function getExpiryCheck()
+    {
+        $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'Expiration'));
+
+        return $this->getRadiuscheck()->matching($criteria)->first();
     }
 
     /**
@@ -246,6 +291,18 @@ class User
     }
 
     /**
+     * This shouldn't be needed as it's another object we can handle outside of here
+     *
+     * @param Group $group
+     */
+    /*public function setPrimaryGroup(Group $group)
+    {
+        /** @var UserGroup $primaryUserGroup *//*
+        $primaryUserGroup = $this->getUserGroups()->first();
+        $primaryUserGroup->setGroup($group);
+    }*/
+
+    /**
      * @return string of all user group names
      */
     public function getAllUserGroupsNames()
@@ -257,6 +314,16 @@ class User
         }
 
         return implode(',', $groupnames);
+    }
+
+    /**
+     * Get userGroups
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUserGroups()
+    {
+        return $this->userGroups;
     }
 
     /**
@@ -277,28 +344,7 @@ class User
      */
     public function getPrimaryGroup()
     {
-        return $this->getUserGroups()->first() ? $this->getUserGroups()->first()->getGroup() : null ;
-    }
-
-    /**
-     * This shouldn't be needed as it's another object we can handle outside of here
-     * @param Group $group
-     */
-    /*public function setPrimaryGroup(Group $group)
-    {
-        /** @var UserGroup $primaryUserGroup *//*
-        $primaryUserGroup = $this->getUserGroups()->first();
-        $primaryUserGroup->setGroup($group);
-    }*/
-
-    /**
-     * Get userGroups
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getUserGroups()
-    {
-        return $this->userGroups;
+        return $this->getUserGroups()->first() ? $this->getUserGroups()->first()->getGroup() : null;
     }
 
     /**
@@ -339,7 +385,7 @@ class User
                 $sum += $radactt->getAcctsessiontime();
             }
 
-            $this->currentSessionTime = new DateIntervalEnhanced('PT'.$sum.'S');
+            $this->currentSessionTime = new DateIntervalEnhanced('PT' . $sum . 'S');
         }
 
         // TODO Is the formatting of this best left to a view?
@@ -377,13 +423,13 @@ class User
     }
 
     /**
-     * @param $data array
+     * @param array $data
      */
     public function hydrateRadiusAccountingData($data)
     {
         $this->currentDataUsageIn  = $data['currentAcctInputOctets'];
         $this->currentDataUsageOut = $data['currentAcctOutputOctets'];
-        $this->currentSessionTime  = new DateIntervalEnhanced('PT'.$data['currentAcctSessionTime'].'S');
+        $this->currentSessionTime  = new DateIntervalEnhanced('PT' . $data['currentAcctSessionTime'] . 'S');
         $this->currentDataUsage    = $this->currentDataUsageIn + $this->currentDataUsageOut;
         $this->lastLogout          = $data['lastLogout'] ? new DateTime($data['lastLogout']) : null;
     }
@@ -397,32 +443,11 @@ class User
     }
 
     /**
-     * @return Check
+     * Get all the Radius Check Entries
+     * @return ArrayCollection
      */
-    public function getTimeLimitCheck()
+    protected function getRadiuscheck()
     {
-        $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'Max-All-Session'));
-
-        return $this->getRadiuscheck()->matching($criteria)->first();
-    }
-
-    /**
-     * @return Check
-     */
-    public function getDataLimitCheck()
-    {
-        $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'Max-Octets'));
-
-        return $this->getRadiuscheck()->matching($criteria)->first();
-    }
-
-    /**
-     * @return Check
-     */
-    public function getExpiryCheck()
-    {
-        $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'Expiration'));
-
-        return $this->getRadiuscheck()->matching($criteria)->first();
+        return $this->radiusCheck;
     }
 }

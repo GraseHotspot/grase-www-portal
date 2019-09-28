@@ -8,16 +8,29 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 use Symfony\Component\Security\Http\SecurityEvents;
 
+/**
+ * Class LoginEventSubscriber
+ *
+ * Event subscriber for login events, creates an audit log entry when a login occurs
+ */
 class LoginEventSubscriber implements EventSubscriberInterface
 {
-    /** @var Logger $logger */
+    /** @var Logger $logger Audit Logger instance of Monolog */
     protected $auditLogger;
 
+    /**
+     * LoginEventSubscriber constructor.
+     *
+     * @param Logger $auditLogger
+     */
     public function __construct(Logger $auditLogger)
     {
         $this->auditLogger = $auditLogger;
     }
 
+    /**
+     * @return array
+     */
     public static function getSubscribedEvents()
     {
         return [
@@ -27,6 +40,13 @@ class LoginEventSubscriber implements EventSubscriberInterface
         ];
     }
 
+    /**
+     * @param InteractiveLoginEvent $interactiveLoginEvent
+     *
+     * @return InteractiveLoginEvent
+     *
+     * Fired when an interactive login event occurs, audit logs the event
+     */
     public function interactiveLoginAudit(InteractiveLoginEvent $interactiveLoginEvent)
     {
         $this->auditLogger->info('audit.login.interactive', [

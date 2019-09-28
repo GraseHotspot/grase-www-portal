@@ -18,9 +18,18 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 
+/**
+ * Class DefaultController
+ * Default controller. Should be basically empty as most things will have their own controller to keep things contained
+ */
 class DefaultController extends AbstractController
 {
-    public function indexAction($name = "random")
+    /**
+     * Our "System Information" dashboard. This is the landing page after logging in.
+     *
+     * @return Response
+     */
+    public function indexAction()
     {
         $systemInformation = new SystemInformation();
 
@@ -34,6 +43,11 @@ class DefaultController extends AbstractController
     }
 
 
+    /**
+     * Show all the settings in a table so we can see the "hidden" settings.
+     * TODO this will allow editing of any setting
+     * @return Response
+     */
     public function advancedSettingsAction()
     {
         $settings = $this->getDoctrine()
@@ -48,6 +62,13 @@ class DefaultController extends AbstractController
         );
     }
 
+    /**
+     * Display all the DHCP leases from Coova Chilli. This function can only work on a local Coova Chilli node due to
+     * the exec used in Util::getChilliLeases()
+     * @param Session $session
+     *
+     * @return Response
+     */
     public function dhcpLeasesAction(Session $session)
     {
         $chilliLeases = Util::getChilliLeases();

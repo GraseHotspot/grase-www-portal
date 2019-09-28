@@ -10,7 +10,6 @@ use App\Entity\Radius\Group;
 
 /**
  * Class GroupManager
- * @package App\Entity\Radius
  */
 class GroupManager
 {
@@ -32,6 +31,12 @@ class GroupManager
      */
     protected $repo;
 
+    /**
+     * GroupManager constructor.
+     *
+     * @param EventDispatcherInterface $dispatcher
+     * @param EntityManagerInterface   $em
+     */
     public function __construct(EventDispatcherInterface $dispatcher, EntityManagerInterface $em)
     {
         $this->dispatcher = $dispatcher;
@@ -47,6 +52,12 @@ class GroupManager
         return new Group();
     }
 
+    /**
+     * @param \App\Entity\Radius\Group $group
+     *
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
     public function saveGroup(Group $group)
     {
         $this->em->persist($group);

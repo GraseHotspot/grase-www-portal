@@ -27,16 +27,24 @@ class SettingsSanity
     /** @var Logger */
     private $auditLogger;
 
-    public function __construct(
-        SettingRepository $settingsRepository,
-        EntityManagerInterface $em,
-        Logger $auditLogger
-    ) {
+    /**
+     * SettingsSanity constructor.
+     *
+     * @param SettingRepository      $settingsRepository
+     * @param EntityManagerInterface $em
+     * @param Logger                 $auditLogger
+     */
+    public function __construct(SettingRepository $settingsRepository, EntityManagerInterface $em, Logger $auditLogger)
+    {
         $this->settingsRepository = $settingsRepository;
         $this->em                 = $em;
         $this->auditLogger        = $auditLogger;
     }
 
+    /**
+     * Run a sanity check on all settings, remove old settings, fixup invalid settings
+     * @return int
+     */
     public function sanityCheckSettings()
     {
         // Fetch all settings so they are preloaded
@@ -90,7 +98,10 @@ class SettingsSanity
     /**
      * Gets a setting, and if it doesn't exist, create it
      *
-     * @param string $name Name of setting to find or create
+     * @param string $name         Name of setting to find or create
+     * @param string $defaultValue Default value so we can create the setting if it's missing
+     *
+     * @return Setting
      */
     private function getSetting($name, $defaultValue)
     {
@@ -106,12 +117,21 @@ class SettingsSanity
         return $setting;
     }
 
+    /**
+     * @param Setting $setting
+     * @param string  $value
+     *
+     * Actually do the updating of a setting
+     */
     private function updateSetting(Setting $setting, $value)
     {
         $setting->setValue($value);
         $this->em->persist($setting);
         $this->changedSettings++;
-        $this->auditLogger->info('settings.sanity.updated_setting', ['setting' => $setting->getName(), 'value' => $value]);
+        $this->auditLogger->info(
+            'settings.sanity.updated_setting',
+            ['setting' => $setting->getName(), 'value' => $value]
+        );
     }
 
     /**
