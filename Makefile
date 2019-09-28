@@ -14,7 +14,7 @@ all: composer
 	#cd ext-libs/bower; /usr/local/bin/bower install
 
 composer:
-	cd files/usr/share/grase/; /usr/local/bin/composer install
+	cd files/usr/share/grase/; composer install
 	mkdir -p ext-libs/composer
 	cp -r $(COMPOSER_FILES) ext-libs/composer/
 	rm -fr files/usr/share/grase/vendor
