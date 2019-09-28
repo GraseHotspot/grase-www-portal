@@ -37,10 +37,10 @@ class SettingsSanity
 
     public function sanityCheckSettings()
     {
-        // Fetch all settings so the are preloaded
+        // Fetch all settings so they are preloaded
         $allSettings = $this->settingsRepository->findAll();
 
-        $this->removeOldSettings();
+        $this->removeOldSettings($allSettings);
         $this->defaultInvalidSettings();
 
         if ($this->changedSettings) {
@@ -55,7 +55,7 @@ class SettingsSanity
      *
      * @return int Number of removed settings
      */
-    private function removeOldSettings()
+    private function removeOldSettings($allSettings)
     {
         $oldSettings = [
             'priceMB',
@@ -66,9 +66,11 @@ class SettingsSanity
             'groups',
             ];
 
+        $existingSettings = array_map(function($setting) { return $setting->getName(); }, $allSettings);
+
         foreach ($oldSettings as $setting) {
-            $oldSetting = $this->settingsRepository->find($setting);
-            if ($oldSetting) {
+            if (in_array($setting, $existingSettings)) {
+                $oldSetting = $this->settingsRepository->find($setting);
                 $this->em->remove($oldSetting);
                 $this->changedSettings++;
                 $this->logger->info("Removing setting $setting");
