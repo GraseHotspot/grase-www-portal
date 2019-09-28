@@ -41,8 +41,11 @@ class AuditLogHandler extends AbstractProcessingHandler
         $logEntry->setExtra($record['extra']);
         $logEntry->setContext($record['context']);
 
+        // TODO detect difference between CLI and CRON
         if (!empty($record['extra']['token']['username'])) {
             $logEntry->setUsername($record['extra']['token']['username']);
+        } elseif (!empty($record['extra']['command'])) {
+            $logEntry->setUsername('CLI');
         }
 
         $this->em->persist($logEntry);
