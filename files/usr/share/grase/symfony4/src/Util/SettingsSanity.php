@@ -5,9 +5,8 @@ namespace App\Util;
 
 use App\Entity\Setting;
 use App\Repository\SettingRepository;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
-use Psr\Log\LoggerInterface;
+use Monolog\Logger;
 
 /**
  * Class SettingsSanity
@@ -25,14 +24,17 @@ class SettingsSanity
     /** @var int */
     private $changedSettings = 0;
 
-    /** @var LoggerInterface */
-    private $logger;
+    /** @var Logger */
+    private $auditLogger;
 
-    public function __construct(SettingRepository $settingsRepository, EntityManagerInterface $em, LoggerInterface $logger)
-    {
+    public function __construct(
+        SettingRepository $settingsRepository,
+        EntityManagerInterface $em,
+        Logger $auditLogger
+    ) {
         $this->settingsRepository = $settingsRepository;
-        $this->em = $em;
-        $this->logger = $logger;
+        $this->em                 = $em;
+        $this->auditLogger        = $auditLogger;
     }
 
     public function sanityCheckSettings()
@@ -53,6 +55,8 @@ class SettingsSanity
     /**
      * Remove all settings that are no longer used by Grase Hotspot
      *
+     * @param array $allSettings Array of all the settings objects
+     *
      * @return int Number of removed settings
      */
     private function removeOldSettings($allSettings)
@@ -64,22 +68,28 @@ class SettingsSanity
             'sellableData',
             'userableData',
             'groups',
-            ];
+        ];
 
-        $existingSettings = array_map(function($setting) { return $setting->getName(); }, $allSettings);
+        $existingSettings = array_map(
+            function (Setting $setting) {
+                return $setting->getName();
+            },
+            $allSettings
+        );
 
         foreach ($oldSettings as $setting) {
             if (in_array($setting, $existingSettings)) {
                 $oldSetting = $this->settingsRepository->find($setting);
                 $this->em->remove($oldSetting);
                 $this->changedSettings++;
-                $this->logger->info("Removing setting $setting");
+                $this->auditLogger->info('settings.sanity.removed_setting', ['setting' => $setting]);
             };
         }
     }
 
     /**
      * Gets a setting, and if it doesn't exist, create it
+     *
      * @param string $name Name of setting to find or create
      */
     private function getSetting($name, $defaultValue)
@@ -90,7 +100,7 @@ class SettingsSanity
             $setting->setValue($defaultValue);
             $this->em->persist($setting);
             $this->changedSettings++;
-            $this->logger->info("Creating missing setting $name");
+            $this->auditLogger->info('settings.sanity.created_missing_setting', ['setting' => $name]);
         }
 
         return $setting;
@@ -101,7 +111,7 @@ class SettingsSanity
         $setting->setValue($value);
         $this->em->persist($setting);
         $this->changedSettings++;
-        $this->logger->info("Updated setting ". $setting->getName(), ['setting' => $setting, 'value' => $value]);
+        $this->auditLogger->info('settings.sanity.updated_setting', ['setting' => $setting->getName(), 'value' => $value]);
     }
 
     /**
@@ -117,23 +127,51 @@ class SettingsSanity
         ];
 
         $stringDefaults = [
-            'locationName' => 'Default',
+            'locationName'       => 'Default',
             'supportContactName' => 'Tim White',
             'supportContactLink' => 'https://grasehotspot.com/',
-            'websiteLink' => 'https://grasehotspot.org/',
-            'websiteName' => 'GRASE Hotspot Project',
-            'locale' => 'en_AU',
+            'websiteLink'        => 'https://grasehotspot.org/',
+            'websiteName'        => 'GRASE Hotspot Project',
+            'locale'             => 'en_AU',
         ];
 
         $arrayDefaults = [
-            'mbOptions' => [
-                10, 50, 100, 250, 500, 1024, 2048, 4096, 10240, 102400,
+            'mbOptions'   => [
+                10,
+                50,
+                100,
+                250,
+                500,
+                1024,
+                2048,
+                4096,
+                10240,
+                102400,
             ],
             'timeOptions' => [
-                5, 10, 20, 30, 45, 60, 90, 120, 180, 240, 600, 6000,
+                5,
+                10,
+                20,
+                30,
+                45,
+                60,
+                90,
+                120,
+                180,
+                240,
+                600,
+                6000,
             ],
             'kBitOptions' => [
-                64, 128, 256, 512, 1024, 1536, 2048, 4096, 8192,
+                64,
+                128,
+                256,
+                512,
+                1024,
+                1536,
+                2048,
+                4096,
+                8192,
             ],
         ];
 

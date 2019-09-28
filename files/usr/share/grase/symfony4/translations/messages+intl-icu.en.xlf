@@ -107,7 +107,18 @@
         <source>grase.command.settingsSanity.updatedSettings</source>
         <target>Updated {updatedSettings} settings</target>
       </trans-unit>
-
+      <trans-unit id="VVbH1mL" resname="settings.sanity.removed_setting">
+        <source>settings.sanity.removed_setting</source>
+        <target>Removed old setting</target>
+      </trans-unit>
+      <trans-unit id="7P2xMh6" resname="settings.sanity.created_missing_setting">
+        <source>settings.sanity.created_missing_setting</source>
+        <target>Created missing setting during Sanity Check</target>
+      </trans-unit>
+      <trans-unit id="LHKhbOB" resname="settings.sanity.updated_setting">
+        <source>settings.sanity.updated_setting</source>
+        <target>Updated Setting during Sanity Check</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
