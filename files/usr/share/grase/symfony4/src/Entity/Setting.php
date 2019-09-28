@@ -26,6 +26,11 @@ class Setting
      */
     private $value;
 
+    public function __construct($name)
+    {
+        $this->setName($name);
+    }
+
     /**
      * @return string
      */

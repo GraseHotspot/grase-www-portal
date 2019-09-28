@@ -79,6 +79,35 @@
         <source>grase.audit.level</source>
         <target>Level</target>
       </trans-unit>
+      <trans-unit id="I_xUoqe" resname="grase.form.user.password_placeholder">
+        <source>grase.form.user.password_placeholder</source>
+        <target>Password</target>
+      </trans-unit>
+      <trans-unit id="zlWLWYV" resname="grase.form.user.change_password_placeholder">
+        <source>grase.form.user.change_password_placeholder</source>
+        <target>Change Password</target>
+      </trans-unit>
+      <trans-unit id="65cFLWo" resname="grase.form.user.group.label">
+        <source>grase.form.user.group.label</source>
+        <target>Group</target>
+      </trans-unit>
+      <trans-unit id="B.W.B2V" resname="grase.form.user.group.help">
+        <source>grase.form.user.group.help</source>
+        <target>Choose the user group (Expiry is based on the user group)</target>
+      </trans-unit>
+      <trans-unit id="J6M5R_n" resname="grase.form.user.submit.update">
+        <source>grase.form.user.submit.update</source>
+        <target>Update User</target>
+      </trans-unit>
+      <trans-unit id="xzse_DF" resname="grase.form.user.submit.create">
+        <source>grase.form.user.submit.create</source>
+        <target>Create User</target>
+      </trans-unit>
+      <trans-unit id="jEacwad" resname="grase.command.settingsSanity.updatedSettings">
+        <source>grase.command.settingsSanity.updatedSettings</source>
+        <target>Updated {updatedSettings} settings</target>
+      </trans-unit>
+
     </body>
   </file>
 </xliff>
