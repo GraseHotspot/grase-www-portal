@@ -38,7 +38,7 @@ class Version20160221065707 extends AbstractMigration
         $this->addSql('ALTER TABLE radusercomment
   DROP KEY `usercomment`,
   MODIFY `UserName` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'\',
-  MODIFY `Comment` varchar(256) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'\',
+  MODIFY `Comment` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL,
   ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci');
     }
 

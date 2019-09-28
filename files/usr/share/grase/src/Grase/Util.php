@@ -275,6 +275,13 @@ class Util
     }
 
     // Functions from old Formatting class
+
+    /**
+     * @param int $bytes
+     *
+     * @return string
+     * @deprecated Replaced by src/Util/Formatting->formatBytes
+     */
     public static function formatBytes($bytes = 0)
     {
         $kb = 1024;

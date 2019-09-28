@@ -119,6 +119,19 @@
         <source>settings.sanity.updated_setting</source>
         <target>Updated Setting during Sanity Check</target>
       </trans-unit>
+      <trans-unit id="yb.Gs7N" resname="grase.form.user.datalimit.both_selected_error">
+        <source>grase.form.user.datalimit.both_selected_error</source>
+        <target>You can't select both a data limit and write your own custom limit</target>
+      </trans-unit>
+      <trans-unit id="DIbGzgG" resname="time.hours">
+        <source>time.hours</source>
+        <target>{hours, plural, one {# hour} other {# hours}}</target>
+      </trans-unit>
+      <trans-unit id="PNJ2NL." resname="time.minutes">
+        <source>time.minutes</source>
+        <target>{minutes, plural, one {# min} other {# mins}}</target>
+      </trans-unit>
+
     </body>
   </file>
 </xliff>

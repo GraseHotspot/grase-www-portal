@@ -27,5 +27,19 @@
 {% endblock %}
 
 {% block javascripts_inline %}
-
+    <script>
+        function pageJs($) {
+            // Ensure that when a user types customs values we clear the dropdowns
+            $('#user_dataLimit_dataLimitCustom').change(function () {
+                if ($('#user_dataLimit_dataLimitCustom').val() != '') {
+                    $('#user_dataLimit_dataLimitDropdown').val('');
+                }
+            });
+            $('#user_timeLimit_timeLimitCustom').change(function () {
+                if ($('#user_timeLimit_timeLimitCustom').val() != '') {
+                    $('#user_timeLimit_timeLimitDropdown').val('');
+                }
+            });
+        };
+    </script>
 {% endblock %}

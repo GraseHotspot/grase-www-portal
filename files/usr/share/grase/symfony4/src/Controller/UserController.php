@@ -95,19 +95,21 @@ class UserController extends AbstractController
 
         $form->handleRequest($request);
 
+        dump($newUserData);
         if ($form->isSubmitted() && $form->isValid()) {
-            /*$newUserData->updateUser($user, $this->getDoctrine()->getManager());
+            // It's a new user, we need to set the username, we don't do this for editing though.
+            $user->setUsername($newUserData->username);
+            $newUserData->updateUser($user, $this->getDoctrine()->getManager());
             $this->addFlash(
                 'success',
-                $this->get('translator')->trans(
+                $this->translator->trans(
                     'grase.user.save_success.%username%',
                     ['%username%' => $user->getUsername()]
                 )
             );
 
-
             return $this->redirectToRoute('grase_user_edit', ['id' => $user->getUsername()]);
-            */
+
         }
 
         return $this->render(

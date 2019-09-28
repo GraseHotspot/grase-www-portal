@@ -9,6 +9,8 @@ use App\Entity\UpdateUserData;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\DomCrawler\Field\InputFormField;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -23,24 +25,34 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $disableEditUsername = true;
+        $passwordPlaceholder = "grase.form.user.change_password_placeholder";
+        $submitButtonLabel = "grase.form.user.submit.update";
+        $passwordRequired = false;
         if ($options['create']) {
             $disableEditUsername = false;
+            $passwordPlaceholder = "grase.form.user.password_placeholder";
+            $submitButtonLabel = "grase.form.user.submit.create";
+            $passwordRequired = true;
         }
         $builder
-            ->add('username', null, [
+            ->add('username', TextType::class, [
                 'disabled' => $disableEditUsername,
             ])
-            ->add('comment')
-            ->add('password', null, [
-                'attr' => ['placeholder' => "Change the password"],
+
+            ->add('password', TextType::class, [
+                'attr' => ['placeholder' => $passwordPlaceholder],
                 'data' => '',
+                'required' => $passwordRequired,
             ])
+            ->add('comment')
             ->add('primaryGroup', EntityType::class, [
                 'class' => Group::class,
                 'choice_label' => 'name',
                 'choice_value' => 'name',
+                'label' => 'grase.form.user.group.label',
+                'help' => 'grase.form.user.group.help'
 
-            ])
+            ]);
             /*->add(
                 'expiry',
                 null,
@@ -49,7 +61,19 @@ class UserType extends AbstractType
                     'label' => 'grase.form.expiry'
                 ]
             )*/
-            ->add('save', SubmitType::class, ['label' => "Update Details"]);
+        $builder->add('dataLimit', DataLimitType::class, [
+            'label' => 'grase.form.user.datalimit.title',
+            'create' => $options['create'],
+        ]);
+        $builder->add('timeLimit', TimeLimitType::class, [
+            'label' => 'grase.form.user.timelimit.title',
+            'create' => $options['create'],
+        ]);
+
+
+
+        $builder
+            ->add('save', SubmitType::class, ['label' => $submitButtonLabel]);
     }
 
     /**

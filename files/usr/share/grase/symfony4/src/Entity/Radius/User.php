@@ -26,7 +26,7 @@ class User
     private $username;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      * @Groups({"user_get"})
      */
@@ -132,6 +132,20 @@ class User
         return '∞';
     }
 
+    public function getTimeLimitSeconds()
+    {
+        if ($this->getTimeLimitCheck()) {
+            return $this->getTimeLimitCheck()->getValue();
+        }
+
+        return null;
+    }
+
+    public function getTimeLimitMinutes()
+    {
+        return $this->getTimeLimitSeconds() / 60;
+    }
+
     /**
      * @Groups({"user_get"})
      *
@@ -145,6 +159,13 @@ class User
 
         return null;
     }
+
+    public function getDataLimitMebibyte()
+    {
+        return null !== $this->getDataLimit() ? $this->getDataLimit() / 1024 / 1024 : null;
+    }
+
+
 
     /**
      * @Groups({"user_get"})
@@ -251,21 +272,24 @@ class User
         return $primaryGroup->getGroup()->getName();
     }
 
+    /**
+     * @return UserGroup|null
+     */
     public function getPrimaryGroup()
     {
-        return $this->getUserGroups()->first()->getGroup();
+        return $this->getUserGroups()->first() ? $this->getUserGroups()->first()->getGroup() : null ;
     }
 
     /**
-     * Sets primary group by first removing all other groups!!
+     * This shouldn't be needed as it's another object we can handle outside of here
      * @param Group $group
      */
-    public function setPrimaryGroup(Group $group)
+    /*public function setPrimaryGroup(Group $group)
     {
-        /** @var UserGroup $primaryUserGroup */
+        /** @var UserGroup $primaryUserGroup *//*
         $primaryUserGroup = $this->getUserGroups()->first();
         $primaryUserGroup->setGroup($group);
-    }
+    }*/
 
     /**
      * Get userGroups
@@ -375,7 +399,7 @@ class User
     /**
      * @return Check
      */
-    private function getTimeLimitCheck()
+    public function getTimeLimitCheck()
     {
         $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'Max-All-Session'));
 
@@ -385,7 +409,7 @@ class User
     /**
      * @return Check
      */
-    private function getDataLimitCheck()
+    public function getDataLimitCheck()
     {
         $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'Max-Octets'));
 
@@ -395,7 +419,7 @@ class User
     /**
      * @return Check
      */
-    private function getExpiryCheck()
+    public function getExpiryCheck()
     {
         $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'Expiration'));
 

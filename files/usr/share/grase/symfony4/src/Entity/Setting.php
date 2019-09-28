@@ -26,6 +26,9 @@ class Setting
      */
     private $value;
 
+    const MB_OPTIONS = 'mbOptions';
+    const TIME_OPTIONS = 'timeOptions';
+
     public function __construct($name)
     {
         $this->setName($name);

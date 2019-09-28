@@ -41,7 +41,7 @@ class Check
      *
      * @ORM\Column(name="op", type="string", length=2)
      */
-    private $op;
+    private $op = ':=';
 
     /**
      * @var string
