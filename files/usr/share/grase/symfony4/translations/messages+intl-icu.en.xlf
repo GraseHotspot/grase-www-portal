@@ -131,7 +131,6 @@
         <source>time.minutes</source>
         <target>{minutes, plural, one {# min} other {# mins}}</target>
       </trans-unit>
-
     </body>
   </file>
 </xliff>
