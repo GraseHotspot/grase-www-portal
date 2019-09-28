@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a6fa4f5b305cc0f57b6aa88daac90d41",
+    "content-hash": "ababa0cf84947339959e9371a72ee20e",
     "packages": [
         {
             "name": "api-platform/api-pack",
@@ -2222,28 +2222,29 @@
         },
         {
             "name": "shivas/versioning-bundle",
-            "version": "3.1.3",
+            "version": "3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shivas/versioning-bundle.git",
-                "reference": "ff92fb096646a1330f1e72cdd8ed83a581079450"
+                "reference": "757022a2adf5798af13dcc945394ad2400a20ca9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shivas/versioning-bundle/zipball/ff92fb096646a1330f1e72cdd8ed83a581079450",
-                "reference": "ff92fb096646a1330f1e72cdd8ed83a581079450",
+                "url": "https://api.github.com/repos/shivas/versioning-bundle/zipball/757022a2adf5798af13dcc945394ad2400a20ca9",
+                "reference": "757022a2adf5798af13dcc945394ad2400a20ca9",
                 "shasum": ""
             },
             "require": {
-                "nikolaposa/version": "^2.2",
+                "nikolaposa/version": "^2.2 || ^3.0",
                 "php": "^7.0",
-                "symfony/console": "^3.4|^4.0",
-                "symfony/framework-bundle": "^3.4|^4.0",
-                "symfony/process": "^3.4|^4.0"
+                "symfony/console": "^3.4 || ^4.0",
+                "symfony/framework-bundle": "^3.4 || ^4.0",
+                "symfony/process": "^3.4 || ^4.0"
             },
             "require-dev": {
-                "composer/composer": "^1.0",
-                "phpunit/phpunit": "^5.5"
+                "mikey179/vfsstream": "^1.6",
+                "phpunit/phpunit": "^6.5 || ^7",
+                "symfony/phpunit-bridge": "^4.3"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -2270,7 +2271,7 @@
                 "version",
                 "versioning"
             ],
-            "time": "2018-04-30T06:42:35+00:00"
+            "time": "2019-08-09T17:22:14+00:00"
         },
         {
             "name": "symfony/asset",
@@ -6807,7 +6808,8 @@
     "prefer-lowest": false,
     "platform": {
         "php": "^7.1.3",
-        "ext-iconv": "*"
+        "ext-iconv": "*",
+        "ext-json": "*"
     },
     "platform-dev": []
 }
