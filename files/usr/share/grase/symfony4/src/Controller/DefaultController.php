@@ -3,18 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\AuditLog;
-use App\Entity\Radius\Group;
 use App\Entity\Radius\User;
-use App\Entity\Radius\UserRepository;
 use App\Entity\Setting;
-use App\Entity\UpdateUserData;
-use App\Form\Radius\UserType;
 use Grase\SystemInformation;
 use Grase\Util;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use App\Form\Radius\GroupType;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 
