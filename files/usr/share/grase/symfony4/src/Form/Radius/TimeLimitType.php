@@ -3,7 +3,6 @@
 
 namespace App\Form\Radius;
 
-
 use App\Entity\Setting;
 use App\Entity\UpdateUserData;
 use App\Repository\SettingRepository;
@@ -41,7 +40,6 @@ class TimeLimitType extends AbstractType
                         $this->settingsUtils->timeOptionsArray()
                     ),
                 ]
-
             );
         }
         $builder->add('timeLimitCustom', NumberType::class, [

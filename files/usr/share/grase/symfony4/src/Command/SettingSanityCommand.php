@@ -30,5 +30,4 @@ class SettingSanityCommand extends Command
         $changedSettings = $this->settingsSanity->sanityCheckSettings();
         $output->writeln($this->translator->trans("grase.command.settingsSanity.updatedSettings", ['updatedSettings' => $changedSettings]));
     }
-
 }

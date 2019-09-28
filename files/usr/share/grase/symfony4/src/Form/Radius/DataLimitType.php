@@ -3,7 +3,6 @@
 
 namespace App\Form\Radius;
 
-
 use App\Entity\Setting;
 use App\Entity\UpdateUserData;
 use App\Repository\SettingRepository;
@@ -42,7 +41,6 @@ class DataLimitType extends AbstractType
                         $this->settingsUtils->mbOptionsArray()
                     ),
                 ]
-
             );
         }
         $builder->add('dataLimitCustom', NumberType::class, [

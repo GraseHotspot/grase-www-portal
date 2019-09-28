@@ -187,7 +187,8 @@ class UpdateUserData
         $em->persist($timeLimitCheck);
     }
 
-    private function setPrimaryGroup(User $user, ObjectManager $em, $group) {
+    private function setPrimaryGroup(User $user, ObjectManager $em, $group)
+    {
         $primaryUserGroup = $user->getPrimaryGroup();
         if (!$primaryUserGroup) {
             $primaryUserGroup = new UserGroup();
@@ -196,6 +197,4 @@ class UpdateUserData
         $primaryUserGroup->setGroup($group);
         $em->persist($primaryUserGroup);
     }
-
-
 }

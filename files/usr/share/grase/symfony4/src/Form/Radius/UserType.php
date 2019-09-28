@@ -50,7 +50,7 @@ class UserType extends AbstractType
                 'choice_label' => 'name',
                 'choice_value' => 'name',
                 'label' => 'grase.form.user.group.label',
-                'help' => 'grase.form.user.group.help'
+                'help' => 'grase.form.user.group.help',
 
             ]);
             /*->add(

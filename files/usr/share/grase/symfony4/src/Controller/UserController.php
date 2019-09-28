@@ -109,7 +109,6 @@ class UserController extends AbstractController
             );
 
             return $this->redirectToRoute('grase_user_edit', ['id' => $user->getUsername()]);
-
         }
 
         return $this->render(
@@ -120,5 +119,4 @@ class UserController extends AbstractController
             ]
         );
     }
-
 }

@@ -3,7 +3,6 @@
 
 namespace App\Util;
 
-
 use App\Entity\Setting;
 use App\Repository\SettingRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -60,6 +59,4 @@ class SettingsUtils
 
         return $options;
     }
-
-
 }

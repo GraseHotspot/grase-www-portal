@@ -2,7 +2,6 @@
 
 namespace App\Util;
 
-
 use App\Repository\SettingRepository;
 use Symfony\Component\Form\Extension\Core\DataTransformer\NumberToLocalizedStringTransformer;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,7 +15,6 @@ class Formatting
     public function __construct(RequestStack $requestStack)
     {
         $this->requestStack = $requestStack;
-
     }
 
     /**
@@ -48,5 +46,4 @@ class Formatting
 
         return $numberFormatter->format(round($bytes, $precision)).' '.$units[$pow];
     }
-
 }

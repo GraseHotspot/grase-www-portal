@@ -22,8 +22,8 @@ class LoginEventSubscriber implements EventSubscriberInterface
     {
         return [
             SecurityEvents::INTERACTIVE_LOGIN => [
-                ['interactiveLoginAudit', 0]
-            ]
+                ['interactiveLoginAudit', 0],
+            ],
         ];
     }
 
