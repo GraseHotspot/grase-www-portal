@@ -92,6 +92,8 @@
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
+            <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+            <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
         {% endblock %}
         {% block javascripts_inline %}
         {% endblock %}

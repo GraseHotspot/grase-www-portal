@@ -14,6 +14,7 @@
         "api-platform/api-pack": "^1.1",
         "appaydin/pd-menu": "dev-master",
         "doctrine/doctrine-migrations-bundle": "^1.3",
+        "friendsofsymfony/jsrouting-bundle": "^2.4",
         "pnz/twig-extension-number": "^1.1",
         "sensio/framework-extra-bundle": "^5.2",
         "shivas/versioning-bundle": "^3.2",

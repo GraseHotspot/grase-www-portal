@@ -6,6 +6,15 @@ require('admin-lte');
 require('jquery.json-viewer/json-viewer/jquery.json-viewer.js');
 var dt = require( 'datatables.net-bs4' );
 
+/* Currently we load this on each page, so we don't have to worry about generating the routes file with the correct
+   hostname etc
+// Get our routing into JS world (if we want it in Webpack apps)
+const routes = require('../../public/js/fos_js_routes.json');
+import Routing from '../../vendor/friendsofsymfony/jsrouting-bundle/Resources/public/js/router.min.js';
+Routing.setRoutingData(routes);
+// Make it available outside of webpack
+global.Routing = Routing;
+*/
 
 //import 'datatables.net-bs4/css/jquery.datatables.css';
 require('../css/global.scss');
