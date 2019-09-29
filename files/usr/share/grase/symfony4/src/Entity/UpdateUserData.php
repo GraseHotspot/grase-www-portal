@@ -110,6 +110,7 @@ class UpdateUserData
         $this->setDataLimit($user, $em, $this->dataLimitToBytes());
         $this->setTimeLimit($user, $em, $this->timeLimitToSeconds());
         // @TODO update the rest
+        // TODO reset the expiry??
         $em->persist($user);
         $em->flush();
     }

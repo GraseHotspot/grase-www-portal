@@ -130,7 +130,8 @@ class UserController extends AbstractController
 
         $form->handleRequest($request);
 
-        dump($newUserData);
+        // TODO ensure we don't try and create an existing user. See newuser.php for our existing checks
+
         if ($form->isSubmitted() && $form->isValid()) {
             // It's a new user, we need to set the username, we don't do this for editing though.
             $user->setUsername($newUserData->username);
