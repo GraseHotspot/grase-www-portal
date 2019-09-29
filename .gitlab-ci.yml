@@ -1,13 +1,25 @@
 stages:
+  - dependencies
   - test
   - build
+
+composer:
+  image: grase/build-images:bionic
+  stage: dependencies
+  script:
+    - cd files/usr/share/grase/symfony4/
+    - composer install
+  artifacts:
+    paths:
+      - files/usr/share/grase/symfony4/vendor/
+    expire_in: 1 day
 
 phpcs:
   image: grase/build-images:bionic
   stage: test
+  dependencies:
+    - composer
   script:
-    - cd files/usr/share/grase/symfony4/
-    - composer install
     - ./vendor/bin/phpcs -s
 
 .build_template: &build_definition
@@ -18,6 +30,8 @@ phpcs:
     - mkdir artifacts
     - mv -v ../grase-www-portal_* artifacts/
     - mv -v ../grase-www-portal-ext-libs_* artifacts/
+  dependencies:
+    - composer
   artifacts:
     paths:
       - artifacts/
