@@ -20,6 +20,7 @@ phpcs:
   dependencies:
     - composer
   script:
+    - cd files/usr/share/grase/symfony4/
     - ./vendor/bin/phpcs -s
 
 .build_template: &build_definition
