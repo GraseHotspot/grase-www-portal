@@ -38,6 +38,23 @@ class SettingsUtils
     }
 
     /**
+     * Fetch the settings value, replaces the Radmin->getSetting() function
+     * @param string $settingName
+     *
+     * @return string|null
+     */
+    public function getSettingValue($settingName)
+    {
+        /** @var Setting $setting */
+        $setting = $this->settingRepository->find($settingName);
+        if ($setting) {
+            return $setting->getValue();
+        }
+
+        return null;
+    }
+
+    /**
      * Returns an array for use as a dropdown of Bytes options nicely formatted
      * @return array
      */

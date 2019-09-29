@@ -28,6 +28,7 @@ class Setting
 
     const MB_OPTIONS = 'mbOptions';
     const TIME_OPTIONS = 'timeOptions';
+    const PASSWORD_LENGTH = 'passwordLength';
 
     /**
      * Setting constructor.

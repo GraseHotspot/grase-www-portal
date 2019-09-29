@@ -45,7 +45,6 @@ class UserType extends AbstractType
 
             ->add('password', TextType::class, [
                 'attr' => ['placeholder' => $passwordPlaceholder],
-                'data' => '',
                 'required' => $passwordRequired,
             ])
             ->add('comment')

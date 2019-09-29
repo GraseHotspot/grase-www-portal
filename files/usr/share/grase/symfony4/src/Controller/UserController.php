@@ -4,8 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Radius\User;
 use App\Entity\Radius\UserRepository;
+use App\Entity\Setting;
 use App\Entity\UpdateUserData;
 use App\Form\Radius\UserType;
+use App\Util\SettingsUtils;
+use Grase\Util;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,14 +23,19 @@ class UserController extends AbstractController
     /** @var TranslatorInterface */
     protected $translator;
 
+    /** @var SettingsUtils */
+    protected $settingsUtils;
+
     /**
      * UserController constructor.
      *
      * @param TranslatorInterface $translator
+     * @param SettingsUtils       $settingsUtils
      */
-    public function __construct(TranslatorInterface $translator)
+    public function __construct(TranslatorInterface $translator, SettingsUtils $settingsUtils)
     {
         $this->translator = $translator;
+        $this->settingsUtils = $settingsUtils;
     }
 
     /**
@@ -116,6 +124,7 @@ class UserController extends AbstractController
         $user = new User();
 
         $newUserData = new UpdateUserData();
+        $newUserData->password = Util::randomPassword($this->settingsUtils->getSettingValue(Setting::PASSWORD_LENGTH));
 
         $form = $this->createForm(UserType::class, $newUserData, ['create' => true]);
 

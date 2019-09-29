@@ -193,6 +193,9 @@ class Radmin
         return true;
     }
 
+    /**
+     * @deprecated Replaced by SettingsUtils->getSettingValue()
+     */
     public function getSetting($setting)
     {
         if ($this->settingsCacheLoaded) {
