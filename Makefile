@@ -5,6 +5,7 @@ VERSION = $(shell sed -n '/grase-www-portal/s/[^ ]* (//;s/).*//p;q' debian/chang
 all: js composer
 #files/usr/share/grase/src/includes/constants.php: debian/changelog
 	sed -i 's/APPLICATION_VERSION", "[^"]*"/APPLICATION_VERSION", "$(VERSION)"/' files/usr/share/grase/src/includes/constants.php
+	echo 'APP_ENV=prod' > files/usr/share/grase/symfony4/.env.local
 	chmod 0440 sudo/grase-www-portal
 
 # JS doesn't end up in ext-libs due to webpack compiling it all into our own thing
