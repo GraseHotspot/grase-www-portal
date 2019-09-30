@@ -19,11 +19,9 @@ composer: prod_env
 	rm -fr files/usr/share/grase/symfony4/vendor
 
 prod_env:
-	cp files/usr/share/grase/symfony4/.env.dist files/usr/share/grase/symfony4/.env
 	echo 'APP_ENV=prod' > files/usr/share/grase/symfony4/.env.local
 
 clean:
 	rm -fr ext-libs
 	rm -fr files/usr/share/grase/symfony4/.env.local
-	rm -fr files/usr/share/grase/symfony4/.env
 

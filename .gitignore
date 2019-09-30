@@ -4,11 +4,6 @@ files/usr/share/grase/vendor/
 files/usr/share/grase/www/vendor/
 
 # Symfony 4
-/files/usr/share/grase/symfony4/.env
-/files/usr/share/grase/symfony4/public/bundles/
-/files/usr/share/grase/symfony4/var/
-/files/usr/share/grase/symfony4/vendor/
-/files/usr/share/grase/symfony4/.web-server-pid
 /files/usr/share/grase/symfony4/db_initial/
 
 # Cache and logs (Symfony3)

@@ -8,7 +8,7 @@ composer:
   stage: dependencies
   script:
     - cd files/usr/share/grase/symfony4/
-    - composer install --no-scripts
+    - composer install
   artifacts:
     paths:
       - files/usr/share/grase/symfony4/vendor/
