@@ -18,6 +18,7 @@
 
     <exclude-pattern>src/Kernel.php</exclude-pattern>
     <exclude-pattern>config/bundles.php</exclude-pattern>
+    <exclude-pattern>config/bootstrap.php</exclude-pattern>
     <exclude-pattern>public/index.php</exclude-pattern>
 
     <file>bin/</file>
