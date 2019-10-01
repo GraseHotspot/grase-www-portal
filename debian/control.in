@@ -8,8 +8,8 @@ Homepage: http://grasehotspot.org/
 
 Package: grase-www-portal
 Architecture: all
-Depends: ${misc:Depends}, php-cli (>= 7.1), php (>= 7.1), php-mysql (>= 7.1), grase-conf-apache2 | grase-conf-nginx, mysql-client, gzip, grase-www-portal-ext-libs (= ${binary:Version}), wget, iproute2, dbconfig-common, dbconfig-mysql | dbconfig-no-thanks
-#grase-conf-freeradius (>= 1.9.4), php5-intl, php-gettext
+Depends: ${misc:Depends}, php-cli (>= 7.1), php (>= 7.1), php-mysql (>= 7.1), php-intl (>= 7.1), grase-conf-apache2 | grase-conf-nginx, mysql-client, gzip, grase-www-portal-ext-libs (= ${binary:Version}), wget, iproute2, dbconfig-common, dbconfig-mysql | dbconfig-no-thanks
+#grase-conf-freeradius (>= 1.9.4), php-gettext
 Recommends: mysql-server
 Provides: ${diverted-files}
 Conflicts: ${diverted-files}
