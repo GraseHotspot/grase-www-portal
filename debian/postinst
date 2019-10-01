@@ -27,73 +27,52 @@ if [ "$action" != configure ]
   exit 0
 fi
 
-install_composer_deps(){ # Install composer and install/upgrade dependencies
-    cd /usr/share/grase/
-    if [ ! -e 'composer.phar' ]; then
-        php -r "readfile('https://getcomposer.org/installer');" | php
-    fi
-    php composer.phar self-update
-    php composer.phar install
-}
-
-install_bower_deps(){ # Install Bower and install/upgrade depenencies
-    cd /usr/share/grase/
-    npm install -g bower
-    bower update
-}
 
 call_cron(){ # Call cron so certain upgrades can occur
     REMOTE_ADDR='' php /usr/share/grase/www/radmin/cron.php || true
 }
 
 fix_dir_perms(){
-    chgrp www-data -R /usr/share/grase/www/ || true
-    chmod ag+rw -R /usr/share/grase/www/radmin/templates_c /usr/share/grase/www/uam/templates_c >/dev/null 2>&1 || true
+    chgrp www-data -R /usr/share/grase/symfony4/var/ || true
+    chmod ag+rw -R /usr/share/grase/symfony4/var/ >/dev/null 2>&1 || true
     chmod ag+rw /usr/share/grase/www/images || true
 
-}
-
-clear_template_cache(){
-    rm -f /usr/share/grase/www/radmin/templates_c/* /usr/share/grase/www/uam/templates_c/*
 }
 
 copy_favicon(){
     cp -n /usr/share/grase/www/favicon.ico /var/www/favicon.ico || true
 }
 
-unlink_logo(){
-    if [ -h /usr/share/grase/www/images/logo.png ]
-    then
-        rm /usr/share/grase/www/images/logo.png > /dev/null || true
-    fi
-
-}
-
 www_proxy_group(){
     # www-data needs to be in proxy for log processing
     adduser www-data proxy > /dev/null || true
 }
+
+run_migrations(){
+    /usr/share/grase/symfony4/bin/console doctrine:migrations:migrate --no-interaction || true
+}
+
+fix_settings(){
+    # TODO This is going to end up as part of the migrations, so probably not needed here
+    /usr/share/grase/symfony4/bin/console grase:settings-validate
+}
+
 #DEBHELPER#
 
 if dpkg-maintscript-helper supports rm_conffile 2>/dev/null; then
     dpkg-maintscript-helper rm_conffile /etc/apache2/conf.d/grase.conf -- "$@"
 fi
 
-# Shouldn't need to link the logo thanks to new rewrites
-unlink_logo
-
-clear_template_cache
-
-#install_composer_deps
-
-# Debian 7 doesn't have npm easily installable
-#install_bower_deps
 
 fix_dir_perms
 
 copy_favicon
 
-call_cron
+run_migrations
+
+fix_settings
+
+# call_cron
 
 www_proxy_group
 
