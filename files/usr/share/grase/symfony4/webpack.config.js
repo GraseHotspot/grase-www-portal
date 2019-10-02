@@ -6,7 +6,7 @@ Encore
     .setOutputPath('public/build/')
 
     // the public path used by the web server to access the previous directory
-    .setPublicPath('/build')
+    .setPublicPath(Encore.isProduction() ? '/grase/build' : '/build')
 
     // will create public/build/app.js and public/build/app.css
     .addEntry('app', './assets/js/app.js')
