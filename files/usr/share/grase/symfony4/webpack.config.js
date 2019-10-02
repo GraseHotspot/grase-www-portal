@@ -7,7 +7,7 @@ Encore
 
     // the public path used by the web server to access the previous directory
     .setPublicPath(Encore.isProduction() ? '/grase/build' : '/build')
-    .setManifestKeyPrefix(Encore.isProduction() ? '/grase/build' :'/build')
+    .setManifestKeyPrefix('/build')
 
     // will create public/build/app.js and public/build/app.css
     .addEntry('app', './assets/js/app.js')
