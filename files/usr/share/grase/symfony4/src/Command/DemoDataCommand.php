@@ -14,6 +14,10 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
+/**
+ * Command to take a normal database, and destroy it to create a database for demo purposes
+ * Class DemoDataCommand
+ */
 class DemoDataCommand extends Command
 {
     protected static $defaultName = 'grase:demodata';
@@ -34,9 +38,9 @@ class DemoDataCommand extends Command
     /**
      * DemoData Command Constructor
      *
-     * @param TranslatorInterface $translator
+     * @param TranslatorInterface    $translator
      * @param EntityManagerInterface $entityManager
-     * @param SettingsUtils $settingsUtils
+     * @param SettingsUtils          $settingsUtils
      */
     public function __construct(TranslatorInterface $translator, EntityManagerInterface $entityManager, SettingsUtils $settingsUtils)
     {
@@ -48,7 +52,7 @@ class DemoDataCommand extends Command
     }
 
     /**
-     * @param InputInterface $input
+     * @param InputInterface  $input
      * @param OutputInterface $output
      *
      * @return void
@@ -77,7 +81,10 @@ class DemoDataCommand extends Command
 
         $output->writeln('Change comments: ' . $query->execute());
 
-        // For all MAC addresses, modify them (lots of places). This needs to be SQL as Username is a primary key that should never change
+        /**
+         * For all MAC addresses, modify them (lots of places). This needs to be SQL as Username is a primary key that
+         * should never change
+         */
         $this->entityManager->createQueryBuilder();
         $macUsers = $this->entityManager->getRepository(User::class)->createQueryBuilder('u')
             ->where('u.username LIKE \'__-__-__-__-__-__\'')
@@ -92,12 +99,24 @@ class DemoDataCommand extends Command
 
         /** @var Connection $db */
         $db = $this->entityManager->getConnection();
-        $this->renameUserQueries['updateUserQuery'] = $db->prepare('UPDATE radius.users SET UserName = :newName WHERE UserName = :oldName');
-        $this->renameUserQueries['updateCheckQuery'] = $db->prepare('UPDATE radius.radcheck SET UserName = :newName WHERE UserName = :oldName');
-        $this->renameUserQueries['updateGroupQuery'] = $db->prepare('UPDATE radius.radusergroup SET UserName = :newName WHERE UserName = :oldName');
-        $this->renameUserQueries['updateRadacctQuery'] = $db->prepare('UPDATE radius.radacct SET UserName = :newName WHERE UserName = :oldName');
-        $this->renameUserQueries['updateMtotacctQuery'] = $db->prepare('UPDATE radius.mtotacct SET UserName = :newName WHERE UserName = :oldName');
-        $this->renameUserQueries['updateBatchQuery'] = $db->prepare('UPDATE radius.batch SET UserName = :newName WHERE UserName = :oldName');
+        $this->renameUserQueries['updateUserQuery'] = $db->prepare(
+            'UPDATE radius.users SET UserName = :newName WHERE UserName = :oldName'
+        );
+        $this->renameUserQueries['updateCheckQuery'] = $db->prepare(
+            'UPDATE radius.radcheck SET UserName = :newName WHERE UserName = :oldName'
+        );
+        $this->renameUserQueries['updateGroupQuery'] = $db->prepare(
+            'UPDATE radius.radusergroup SET UserName = :newName WHERE UserName = :oldName'
+        );
+        $this->renameUserQueries['updateRadacctQuery'] = $db->prepare(
+            'UPDATE radius.radacct SET UserName = :newName WHERE UserName = :oldName'
+        );
+        $this->renameUserQueries['updateMtotacctQuery'] = $db->prepare(
+            'UPDATE radius.mtotacct SET UserName = :newName WHERE UserName = :oldName'
+        );
+        $this->renameUserQueries['updateBatchQuery'] = $db->prepare(
+            'UPDATE radius.batch SET UserName = :newName WHERE UserName = :oldName'
+        );
 
         $db->beginTransaction();
         $db->query('SET FOREIGN_KEY_CHECKS=0');
@@ -105,7 +124,7 @@ class DemoDataCommand extends Command
         /** @var User $macUser */
         foreach ($macUsers as $macUser) {
             $oldUsername = $macUser->getUsername();
-            if (substr($oldUsername, 0, 2) == 'XX') {
+            if (substr($oldUsername, 0, 2) === 'XX') {
                 continue;
             }
             $newUsername = preg_replace('/(..)-(..)-(..)-(..)-(..)-(..)/', 'XX-$1-XX-$6-XX-$3', $oldUsername);
@@ -114,7 +133,9 @@ class DemoDataCommand extends Command
 
 
         /** @var Group $autoCreateGroup */
-        $autoCreateGroup = $this->entityManager->getRepository(Group::class)->findOneBy(['name' => $this->settingsUtils->getSettingValue(Setting::AUTO_CREATE_GROUP)]);
+        $autoCreateGroup = $this->entityManager->getRepository(Group::class)->findOneBy(
+            ['name' => $this->settingsUtils->getSettingValue(Setting::AUTO_CREATE_GROUP)]
+        );
         foreach ($autoCreateGroup->getUsergroups() as $userGroupMapping) {
             $oldUsername = $userGroupMapping->getUser()->getUsername();
             // Just need to make it unique
@@ -129,15 +150,15 @@ class DemoDataCommand extends Command
 
 
         // TODO Clear audit log
-
     }
 
     /**
      * Executes the prepared statements to rename a user. Must happen in a dodgy transaction due to FKs as we're
      * updating primary keys which we shouldn't be doing
+     *
      * @param OutputInterface $output
-     * @param string $oldUsername
-     * @param string $newUsername
+     * @param string          $oldUsername
+     * @param string          $newUsername
      */
     private function renameUser($output, $oldUsername, $newUsername)
     {
