@@ -13,7 +13,7 @@ class Version20160221065707 extends AbstractMigration
     /**
      * @param Schema $schema
      */
-    public function up(Schema $schema) : void
+    public function up(Schema $schema): void
     {
         $this->addSql('ALTER TABLE radcheck
   MODIFY `UserName` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
@@ -37,7 +37,7 @@ class Version20160221065707 extends AbstractMigration
 
         $this->addSql('ALTER TABLE radusercomment
   DROP KEY `usercomment`,
-  MODIFY `UserName` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'\',
+  MODIFY `UserName` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
   MODIFY `Comment` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL,
   ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci');
     }
@@ -45,7 +45,7 @@ class Version20160221065707 extends AbstractMigration
     /**
      * @param Schema $schema
      */
-    public function down(Schema $schema) : void
+    public function down(Schema $schema): void
     {
         $this->addSql('ALTER TABLE radcheck
   MODIFY `UserName` varchar(64) CHARACTER SET utf8 NOT NULL,

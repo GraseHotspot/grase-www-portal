@@ -3,6 +3,7 @@ grase-www-portal (4.0.0) UNRELEASED; urgency=medium
   [ Tim White ]
   * Upgrade database to UTF8 as we store UTF8 in it
   * Symfony4 Migration
+  * Command for making real data into demo data
 
  -- Tim White <tim@grasehotspot.org>  Fri, 04 Oct 2019 07:05:22 +1000
 

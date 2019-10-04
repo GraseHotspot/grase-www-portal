@@ -64,14 +64,18 @@ class Version20160221201937 extends AbstractMigration
         $this->addSql(
             'ALTER TABLE radusercomment
   RENAME users,
-  MODIFY `UserName` VARCHAR(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'\'
+  MODIFY `UserName` VARCHAR(255) COLLATE utf8_unicode_ci NOT NULL
 '
         );
-        $this->addSql(
-            'INSERT INTO users (UserName)
-SELECT DISTINCT username FROM radcheck
-ON DUPLICATE KEY UPDATE UserName=users.UserName'
-        );
+
+        // Set empty comments to NULL
+        $this->addSql('UPDATE users SET `Comment` = NULL WHERE `Comment` = \'\'');
+
+        $this->addSql('
+            INSERT INTO users (UserName)
+            SELECT DISTINCT username FROM radcheck
+            ON DUPLICATE KEY UPDATE UserName=users.UserName
+        ');
     }
 
     /**

@@ -162,7 +162,7 @@ class Group
     /**
      * Get userGroups
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return UserGroup[]|\Doctrine\Common\Collections\Collection
      */
     public function getUsergroups()
     {

@@ -35,8 +35,12 @@ class User
 
     /**
      * @ORM\OneToMany(targetEntity="Check", mappedBy="user", fetch="EAGER")
+     *
+     * @var Check[]
      */
     private $radiusCheck;
+
+    // TODO add $radiusReply
 
     /**
      * @ORM\OneToMany(targetEntity="UserGroup", mappedBy="user", fetch="EAGER", cascade={"persist", "remove"})
