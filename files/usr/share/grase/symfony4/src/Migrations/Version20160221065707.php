@@ -16,10 +16,11 @@ class Version20160221065707 extends AbstractMigration
     public function up(Schema $schema): void
     {
         $this->addSql('ALTER TABLE radcheck
-  MODIFY `UserName` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  MODIFY `id` INT AUTO_INCREMENT NOT NULL,
+  MODIFY `UserName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   MODIFY `Attribute` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  MODIFY `op` char(2) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'==\',
-  MODIFY `Value` varchar(253) COLLATE utf8_unicode_ci NOT NULL,
+  MODIFY `op` VARCHAR(2) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'==\',
+  MODIFY `Value` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci');
 
         $this->addSql('ALTER TABLE radusergroup
@@ -38,7 +39,7 @@ class Version20160221065707 extends AbstractMigration
         $this->addSql('ALTER TABLE radusercomment
   DROP KEY `usercomment`,
   MODIFY `UserName` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  MODIFY `Comment` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL,
+  MODIFY `Comment` `comment` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci');
     }
 

@@ -128,13 +128,14 @@ class DemoDataCommand extends Command
             ->getQuery()
             ->execute();
 
-        $mtotacctMacUsers = $db->query('SELECT DISTINCT UserName from mtotacct WHERE UserName LIKE \'__-__-__-__-__-__\'')
-            ->fetchAll();
+        $mtotacctMacUsers = $db->query(
+            'SELECT DISTINCT UserName from mtotacct WHERE UserName LIKE \'__-__-__-__-__-__\''
+        )->fetchAll();
 
         $db->beginTransaction();
         $db->query('SET FOREIGN_KEY_CHECKS=0');
 
-        foreach (array_column($mtotacctMacUsers, 'UserName') as $mac){
+        foreach (array_column($mtotacctMacUsers, 'UserName') as $mac) {
             if (substr($mac, 0, 2) === 'XX') {
                 continue;
             }

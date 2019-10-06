@@ -3,11 +3,12 @@
 namespace App\Entity\Radius;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Index;
 
 /**
  * Check
  *
- * @ORM\Table(name="radcheck")
+ * @ORM\Table(name="radcheck", indexes={@Index(name="userattribute", columns={"UserName", "Attribute", "op"})})
  * @ORM\Entity(repositoryClass="App\Entity\Radius\CheckRepository")
  */
 class Check

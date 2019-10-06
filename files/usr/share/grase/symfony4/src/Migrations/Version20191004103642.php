@@ -6,7 +6,7 @@ use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
 
 /**
- * Auto-generated Migration: Please modify to your needs!
+ * Bring in Foreign Key Constraints
  */
 final class Version20191004103642 extends AbstractMigration
 {
@@ -25,7 +25,16 @@ final class Version20191004103642 extends AbstractMigration
         );
 
         $this->addSql(
-            'ALTER TABLE radcheck ADD CONSTRAINT FK_CF5F1897A11ACB1F FOREIGN KEY (UserName) REFERENCES users (username)'
+            'ALTER TABLE radcheck
+            ADD CONSTRAINT FK_CF5F1897A11ACB1F FOREIGN KEY (UserName) REFERENCES users (username)'
+        );
+        $this->addSql(
+            'ALTER TABLE radusergroup
+            ADD CONSTRAINT FK_569F584FA11ACB1F FOREIGN KEY (UserName) REFERENCES users (username);'
+        );
+        $this->addSql(
+            '     ALTER TABLE radusergroup 
+            ADD CONSTRAINT FK_569F584FB219A218 FOREIGN KEY (GroupName) REFERENCES groups (id);'
         );
     }
 
@@ -44,5 +53,7 @@ final class Version20191004103642 extends AbstractMigration
         );
 
         $this->addSql('ALTER TABLE radcheck DROP FOREIGN KEY FK_CF5F1897A11ACB1F');
+        $this->addSql('ALTER TABLE radusergroup DROP FOREIGN KEY FK_569F584FA11ACB1F');
+        $this->addSql('ALTER TABLE radusergroup DROP FOREIGN KEY FK_569F584FB219A218');
     }
 }
