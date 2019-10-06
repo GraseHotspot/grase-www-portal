@@ -30,11 +30,14 @@ final class Version20191004103642 extends AbstractMigration
         );
         $this->addSql(
             'ALTER TABLE radusergroup
-            ADD CONSTRAINT FK_569F584FA11ACB1F FOREIGN KEY (UserName) REFERENCES users (username);'
+            ADD CONSTRAINT FK_569F584FA11ACB1F FOREIGN KEY (UserName) REFERENCES users (username)'
         );
         $this->addSql(
-            '     ALTER TABLE radusergroup 
-            ADD CONSTRAINT FK_569F584FB219A218 FOREIGN KEY (GroupName) REFERENCES groups (id);'
+            'ALTER TABLE radusergroup 
+            ADD CONSTRAINT FK_569F584FB219A218 FOREIGN KEY (GroupName) REFERENCES `groups` (id)'
+        );
+        $this->addSql(
+            'CREATE INDEX IDX_569F584FB219A218 ON radusergroup (GroupName)'
         );
     }
 
@@ -52,8 +55,10 @@ final class Version20191004103642 extends AbstractMigration
             'Migration can only be executed safely on \'mysql\'.'
         );
 
-        $this->addSql('ALTER TABLE radcheck DROP FOREIGN KEY FK_CF5F1897A11ACB1F');
-        $this->addSql('ALTER TABLE radusergroup DROP FOREIGN KEY FK_569F584FA11ACB1F');
+        $this->addSql('ALTER TABLE radusergroup DROP INDEX IDX_569F584FB219A218');
         $this->addSql('ALTER TABLE radusergroup DROP FOREIGN KEY FK_569F584FB219A218');
+        $this->addSql('ALTER TABLE radusergroup DROP FOREIGN KEY FK_569F584FA11ACB1F');
+        $this->addSql('ALTER TABLE radcheck DROP FOREIGN KEY FK_CF5F1897A11ACB1F');
+
     }
 }

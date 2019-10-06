@@ -53,6 +53,18 @@ class Version20160221201937 extends AbstractMigration
         );
 
         $this->addSql(
+            "ALTER TABLE radusergroup
+        DROP INDEX UserName,
+        ADD INDEX IDX_569F584FA11ACB1F (UserName)"
+        );
+
+        $this->addSql(
+            "ALTER TABLE radusergroup
+        CHANGE GroupName GroupName INT NOT NULL,
+        CHANGE priority priority INT NOT NULL"
+        );
+
+        $this->addSql(
             "ALTER TABLE groups
           DROP KEY GroupName,
           DROP COLUMN GroupName,

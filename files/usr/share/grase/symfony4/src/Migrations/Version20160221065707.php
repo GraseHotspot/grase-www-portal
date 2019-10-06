@@ -24,8 +24,8 @@ class Version20160221065707 extends AbstractMigration
   ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci');
 
         $this->addSql('ALTER TABLE radusergroup
-  MODIFY `UserName` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'\',
-  MODIFY `GroupName` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'\',
+  MODIFY `UserName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  MODIFY `GroupName` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
   ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci');
 
         $this->addSql('ALTER TABLE groups
@@ -39,7 +39,7 @@ class Version20160221065707 extends AbstractMigration
         $this->addSql('ALTER TABLE radusercomment
   DROP KEY `usercomment`,
   MODIFY `UserName` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  MODIFY `Comment` `comment` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  CHANGE `Comment` `comment` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci');
     }
 
@@ -65,7 +65,7 @@ class Version20160221065707 extends AbstractMigration
   MODIFY `GroupLabel` varchar(64) NOT NULL,
   MODIFY `Expiry` varchar(100) DEFAULT NULL,
   MODIFY `ExpireAfter` varchar(100) DEFAULT NULL,
-  MODIFY `Comment` varchar(300) DEFAULT NULL,
+  CHANGE `comment` `Comment` varchar(300) DEFAULT NULL,
   ENGINE=MyISAM DEFAULT CHARSET=latin1');
 
         $this->addSql('ALTER TABLE radusercomment
