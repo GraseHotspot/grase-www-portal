@@ -86,10 +86,6 @@ class DemoDataCommand extends Command
          * should never change
          */
         $this->entityManager->createQueryBuilder();
-        $macUsers = $this->entityManager->getRepository(User::class)->createQueryBuilder('u')
-            ->where('u.username LIKE \'__-__-__-__-__-__\'')
-            ->getQuery()
-            ->execute();
 
         /**
          * Some more tables we could update, or just truncate are:
@@ -105,8 +101,17 @@ class DemoDataCommand extends Command
         $this->renameUserQueries['updateCheckQuery'] = $db->prepare(
             'UPDATE radius.radcheck SET UserName = :newName WHERE UserName = :oldName'
         );
+        $this->renameUserQueries['updateRadReplyQuery'] = $db->prepare(
+            'UPDATE radius.radreply SET UserName = :newName WHERE UserName = :oldName'
+        );
+        $this->renameUserQueries['updateRadUserGroupQuery'] = $db->prepare(
+            'UPDATE radius.radusergroup SET UserName = :newName WHERE UserName = :oldName'
+        );
         $this->renameUserQueries['updateGroupQuery'] = $db->prepare(
             'UPDATE radius.radusergroup SET UserName = :newName WHERE UserName = :oldName'
+        );
+        $this->renameUserQueries['updateRadpostauthQuery'] = $db->prepare(
+            'UPDATE radius.radpostauth SET UserName = :newName WHERE UserName = :oldName'
         );
         $this->renameUserQueries['updateRadacctQuery'] = $db->prepare(
             'UPDATE radius.radacct SET UserName = :newName WHERE UserName = :oldName'
@@ -118,8 +123,24 @@ class DemoDataCommand extends Command
             'UPDATE radius.batch SET UserName = :newName WHERE UserName = :oldName'
         );
 
+        $macUsers = $this->entityManager->getRepository(User::class)->createQueryBuilder('u')
+            ->where('u.username LIKE \'__-__-__-__-__-__\'')
+            ->getQuery()
+            ->execute();
+
+        $mtotacctMacUsers = $db->query('SELECT DISTINCT UserName from mtotacct WHERE UserName LIKE \'__-__-__-__-__-__\'')
+            ->fetchAll();
+
         $db->beginTransaction();
         $db->query('SET FOREIGN_KEY_CHECKS=0');
+
+        foreach (array_column($mtotacctMacUsers, 'UserName') as $mac){
+            if (substr($mac, 0, 2) === 'XX') {
+                continue;
+            }
+            $newUsername = preg_replace('/(..)-(..)-(..)-(..)-(..)-(..)/', 'XX-$1-XX-$6-XX-$3', $mac);
+            $this->renameUser($output, $mac, $newUsername);
+        }
 
         /** @var User $macUser */
         foreach ($macUsers as $macUser) {
