@@ -59,6 +59,5 @@ final class Version20191004103642 extends AbstractMigration
         $this->addSql('ALTER TABLE radusergroup DROP FOREIGN KEY FK_569F584FB219A218');
         $this->addSql('ALTER TABLE radusergroup DROP FOREIGN KEY FK_569F584FA11ACB1F');
         $this->addSql('ALTER TABLE radcheck DROP FOREIGN KEY FK_CF5F1897A11ACB1F');
-
     }
 }
