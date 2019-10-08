@@ -160,6 +160,9 @@ class DemoDataCommand extends Command
         );
         foreach ($autoCreateGroup->getUsergroups() as $userGroupMapping) {
             $oldUsername = $userGroupMapping->getUser()->getUsername();
+            if (len($oldUsername) === 10) {
+                    continue;
+            }
             // Just need to make it unique
             $newUsername = substr(hash('adler32', $oldUsername), 2, 6)
                 . substr(hash('crc32', $oldUsername), 4, 4);
