@@ -21,7 +21,8 @@ prod_env:
 	echo 'APP_ENV=prod' > files/usr/share/grase/symfony4/.env.local
 
 version: composer
-	cd files/usr/share/grase/symfony4; git describe --long --tags| sed -r 's/[^-]/$(VERSION)/' > VERSION
+	cd files/usr/share/grase/symfony4; git describe --long --tags| sed -r 's/[^-]+/$(VERSION)/' > VERSION
+	cat files/usr/share/grase/symfony4/VERSION
 
 clean:
 	rm -fr ext-libs
