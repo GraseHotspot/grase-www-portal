@@ -20,8 +20,8 @@ composer: prod_env
 prod_env:
 	echo 'APP_ENV=prod' > files/usr/share/grase/symfony4/.env.local
 
-version: composer
-	cd files/usr/share/grase/symfony4; git describe --long --tags| sed -r 's/[^-]+/$(VERSION)/' > VERSION
+version:
+	echo $(VERSION) > files/usr/share/grase/symfony4/VERSION
 	cat files/usr/share/grase/symfony4/VERSION
 
 clean:
