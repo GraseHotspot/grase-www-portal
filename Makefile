@@ -21,7 +21,7 @@ prod_env:
 	echo 'APP_ENV=prod' > files/usr/share/grase/symfony4/.env.local
 
 version:
-	echo $(VERSION) > files/usr/share/grase/symfony4/VERSION
+	echo $(VERSION) | sed 's/~/./g' > files/usr/share/grase/symfony4/VERSION
 	cat files/usr/share/grase/symfony4/VERSION
 
 clean:
