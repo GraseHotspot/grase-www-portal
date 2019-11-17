@@ -87,6 +87,15 @@
         {% block page_content_wrapper %}{% endblock %}
     </div>
 
+    {% block footer %}
+    <footer class="main-footer">
+        <strong>{% trans %}Copyright{% endtrans %} © 2008-{{ 'now'|date('Y') }} <a href="https://grasehotspot.org">Timothy White - GraseHotspot.org</a>.</strong>
+        <div class="float-right d-none d-sm-inline-block">
+            <b>{% trans %}Version{% endtrans %}</b> {{ shivas_app_version }}
+        </div>
+    </footer>
+    {% endblock %}
+
 
 
 
@@ -99,5 +108,6 @@
         {% endblock %}
     </div>
     {% endblock %}
+
     </body>
 </html>

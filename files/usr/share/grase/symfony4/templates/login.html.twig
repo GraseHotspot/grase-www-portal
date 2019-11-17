@@ -6,44 +6,63 @@
 {% block bodyclass %}hold-transition login-page{% endblock %}
 
 {% block body %}
-    <div class="login-box d-flex align-items-center flex-column justify-content-center h-100">
-        <div class="login-logo">
-            <img src="{{ asset('build/images/grase.png') }}" height="100px"/><br/><a href=""><b>Grase</b>Hotspot</a>
-        </div><!-- /.login-logo -->
-        <div class="card">
-            <div class="login-box-body card-body">
-            <p class="login-box-msg">Sign in to access the Admin area</p>
-            {% if error %}
-                <div class="alert alert-danger show" role="alert">
-                    {{ error.message }}
+    <div class="d-flex flex-column h-100  justify-content-center">
+        <div class="login-box d-flex align-items-center flex-column">
+            <div class="login-logo">
+                <img src="{{ asset('build/images/grase.png') }}" height="100px"/><br/><a href=""><b>Grase</b>Hotspot</a>
+            </div><!-- /.login-logo -->
+            <div class="card">
+                <div class="login-box-body card-body">
+                <p class="login-box-msg">Sign in to access the Admin area</p>
+                {% if error %}
+                    <div class="alert alert-danger show" role="alert">
+                        {{ error.message }}
 
-                </div>
-            {% endif %}
-            <form action="{{ path("_grase_security_check") }}" method="post">
-                <div class="form-group has-feedback">
-                    <input type="text" class="form-control" placeholder="Username" id="username" name="_username" value="{{ last_username }}" />
-                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                </div>
-                <div class="form-group has-feedback">
-                    <input type="password" class="form-control" placeholder="Password"  id="password" name="_password"/>
-                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                </div>
-                <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                    </div>
+                {% endif %}
+                <form action="{{ path("_grase_security_check") }}" method="post">
+                    <div class="form-group has-feedback">
+                        <input type="text" class="form-control" placeholder="Username" id="username" name="_username" value="{{ last_username }}" />
+                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input type="password" class="form-control" placeholder="Password"  id="password" name="_password"/>
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
 
-            </form>
-            {#
+                </form>
+                {#
 
-            <div class="social-auth-links text-center">
-                <p>- OR -</p>
-                <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using Facebook</a>
-                <a href="#" class="btn btn-block btn-social btn-google-plus btn-flat"><i class="fa fa-google-plus"></i> Sign in using Google+</a>
-            </div><!-- /.social-auth-links -->
+                <div class="social-auth-links text-center">
+                    <p>- OR -</p>
+                    <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using Facebook</a>
+                    <a href="#" class="btn btn-block btn-social btn-google-plus btn-flat"><i class="fa fa-google-plus"></i> Sign in using Google+</a>
+                </div><!-- /.social-auth-links -->
 
-            <a href="#">I forgot my password</a><br>
-            <a href="register.html" class="text-center">Register a new membership</a>
-            #}
+                <a href="#">I forgot my password</a><br>
+                <a href="register.html" class="text-center">Register a new membership</a>
+                #}
 
-        </div><!-- /.login-box-body -->
+            </div><!-- /.login-box-body -->
+            </div>
         </div>
+        {% block footer %}{{ parent() }}{% endblock %}
     </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .main-footer {
+            margin-left: 0;
+            flex-shrink: 0;
+        }
+        .login-box {
+            flex: 1 0 auto;
+        }
+        html, body {
+            height: 100%;
+        }
+    </style>
 {% endblock %}
