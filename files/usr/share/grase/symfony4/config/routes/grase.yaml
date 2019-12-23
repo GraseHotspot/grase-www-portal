@@ -45,6 +45,12 @@ grase_auditlog:
     defaults:
         _controller: App\Controller\DefaultController::auditLogDisplayAction
 
+
+grase_uam_login:
+    path: /uam
+    defaults:
+        _controller: App\Controller\UamController::uamAction
+
 #grase_security:
 #    resource: "@App/Controller/SecurityController.php"
 #    type:     annotation

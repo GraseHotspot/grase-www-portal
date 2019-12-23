@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+
+{% block navbar %}{% endblock %}
+
+{% block bodyclass %}hold-transition login-page{% endblock %}
+
+{% block body %}
+    <div class="d-flex flex-column h-100  justify-content-center">
+        <div class="login-box d-flex align-items-center flex-column">
+            <div class="login-logo">
+                <img src="{{ asset('build/images/grase.png') }}" height="100px"/><br/><a href=""><b>Grase</b>Hotspot</a>
+            </div><!-- /.login-logo -->
+            <div class="card">
+                <div class="login-box-body card-body">
+                    <p class="login-box-msg">{% trans %}Free Login{% endtrans %}</p>
+
+                    <form action="{{ path("_grase_security_check") }}" method="post">
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">{% trans %}Free Login{% endtrans %}</button>
+                    </form>
+
+
+                    {#
+
+                    <div class="social-auth-links text-center">
+                        <p>- OR -</p>
+                        <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using Facebook</a>
+                        <a href="#" class="btn btn-block btn-social btn-google-plus btn-flat"><i class="fa fa-google-plus"></i> Sign in using Google+</a>
+                    </div><!-- /.social-auth-links -->
+
+                    <a href="#">I forgot my password</a><br>
+                    <a href="register.html" class="text-center">Register a new membership</a>
+                    #}
+
+                </div><!-- /.login-box-body -->
+            </div>
+            <div class="card">
+                <div class="login-box-body card-body">
+                    <p class="login-box-msg">{% trans %}Voucher Login{% endtrans %}</p>
+
+
+                    <form action="{{ path("_grase_security_check") }}" method="post">
+                        <div class="form-group has-feedback">
+                            <input type="text" class="form-control" placeholder="{% trans %}Username{% endtrans %}" id="username" name="username" required autofocus />
+                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <input type="password" class="form-control" placeholder="{% trans %}Password{% endtrans %}"  id="password" name="password" required/>
+                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">{% trans %}Login{% endtrans %}</button>
+
+                    </form>
+                    {#
+
+                    <div class="social-auth-links text-center">
+                        <p>- OR -</p>
+                        <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using Facebook</a>
+                        <a href="#" class="btn btn-block btn-social btn-google-plus btn-flat"><i class="fa fa-google-plus"></i> Sign in using Google+</a>
+                    </div><!-- /.social-auth-links -->
+
+                    <a href="#">I forgot my password</a><br>
+                    <a href="register.html" class="text-center">Register a new membership</a>
+                    #}
+
+                </div><!-- /.login-box-body -->
+            </div>
+        </div>
+        {% block footer %}{{ parent() }}{% endblock %}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script type="text/javascript" src="/grase/uam/js/chilliMD5.js"></script>
+<script type="text/javascript" id='chillijs' src='/grase/uam/js.php?js=jqchilli.js'></script>
+{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+    <style>
+        .main-footer {
+            margin-left: 0;
+            flex-shrink: 0;
+        }
+        .login-box {
+            flex: 1 0 auto;
+        }
+        html, body {
+            height: 100%;
+        }
+    </style>
+{% endblock %}
