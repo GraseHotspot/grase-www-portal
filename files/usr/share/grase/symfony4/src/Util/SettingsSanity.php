@@ -27,6 +27,81 @@ class SettingsSanity
     private $auditLogger;
 
     /**
+     * Defaults for numeric settings
+     * @var array
+     */
+    private $numericDefaults = [
+        'passwordLength' => 6,
+        'usernameLength' => 5,
+    ];
+
+    /**
+     * Defaults for string settings
+     * @var array
+     */
+    private $stringDefaults = [
+        'locationName'       => 'Default',
+        'supportContactName' => 'Tim White',
+        'supportContactLink' => 'https://grasehotspot.com/',
+        'websiteLink'        => 'https://grasehotspot.org/',
+        'websiteName'        => 'GRASE Hotspot Project',
+        'locale'             => 'en_AU',
+    ];
+
+    /**
+     * Array of old default setting values so we can upgrade existing installs
+     * @var array
+     */
+    private $oldStringDefaults = [
+        'supportContactLink' => ['http://grasehotspot.com/', 'http://grasehotspot.org/', 'http://grasehotspot.org', 'http://grasehotspot.com'],
+        'websiteLink'        => ['http://grasehotspot.org/', 'http://grasehotspot.org'],
+    ];
+
+    /**
+     * Defaults for arrays of settings
+     * @var array
+     */
+    private $arrayDefaults = [
+        'mbOptions'   => [
+            10,
+            50,
+            100,
+            250,
+            500,
+            1024,
+            2048,
+            4096,
+            10240,
+            102400,
+        ],
+        'timeOptions' => [
+            5,
+            10,
+            20,
+            30,
+            45,
+            60,
+            90,
+            120,
+            180,
+            240,
+            600,
+            6000,
+        ],
+        'kBitOptions' => [
+            64,
+            128,
+            256,
+            512,
+            1024,
+            1536,
+            2048,
+            4096,
+            8192,
+        ],
+    ];
+
+    /**
      * SettingsSanity constructor.
      *
      * @param SettingRepository      $settingsRepository
@@ -51,6 +126,7 @@ class SettingsSanity
 
         $this->removeOldSettings($allSettings);
         $this->defaultInvalidSettings();
+        $this->upgradeDefaultSettings();
 
         if ($this->changedSettings) {
             $this->em->flush();
@@ -134,81 +210,40 @@ class SettingsSanity
     }
 
     /**
+     * Upgrade an old default setting to a new default setting
+     */
+    private function upgradeDefaultSettings()
+    {
+        foreach ($this->oldStringDefaults as $settingName => $oldDefaults) {
+            $setting = $this->getSetting($settingName, $this->stringDefaults[$settingName]);
+            if (in_array($setting->getValue(), $oldDefaults)) {
+                $this->updateSetting($setting, $this->stringDefaults[$settingName]);
+            }
+        }
+    }
+
+    /**
      * Resets settings to defaults if they aren't valid
      *
      * @return int
      */
     private function defaultInvalidSettings()
     {
-        $numericDefaults = [
-            'passwordLength' => 6,
-            'usernameLength' => 5,
-        ];
-
-        $stringDefaults = [
-            'locationName'       => 'Default',
-            'supportContactName' => 'Tim White',
-            'supportContactLink' => 'https://grasehotspot.com/',
-            'websiteLink'        => 'https://grasehotspot.org/',
-            'websiteName'        => 'GRASE Hotspot Project',
-            'locale'             => 'en_AU',
-        ];
-
-        $arrayDefaults = [
-            'mbOptions'   => [
-                10,
-                50,
-                100,
-                250,
-                500,
-                1024,
-                2048,
-                4096,
-                10240,
-                102400,
-            ],
-            'timeOptions' => [
-                5,
-                10,
-                20,
-                30,
-                45,
-                60,
-                90,
-                120,
-                180,
-                240,
-                600,
-                6000,
-            ],
-            'kBitOptions' => [
-                64,
-                128,
-                256,
-                512,
-                1024,
-                1536,
-                2048,
-                4096,
-                8192,
-            ],
-        ];
-
-        foreach ($numericDefaults as $settingName => $default) {
+        foreach ($this->numericDefaults as $settingName => $default) {
             $setting = $this->getSetting($settingName, $default);
             if (!is_numeric($setting->getValue()) || $setting->getValue() < 1) {
                 $this->updateSetting($setting, $default);
             }
         }
 
-        foreach ($stringDefaults as $settingName => $default) {
+        foreach ($this->stringDefaults as $settingName => $default) {
             $setting = $this->getSetting($settingName, $default);
             if (empty($setting->getValue())) {
                 $this->updateSetting($setting, $default);
             }
         }
 
-        foreach ($arrayDefaults as $settingName => $default) {
+        foreach ($this->arrayDefaults as $settingName => $default) {
             $setting = $this->getSetting($settingName, json_encode($default));
             // Check if null
             if (empty($setting->getValue())) {
