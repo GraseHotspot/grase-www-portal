@@ -2,3 +2,10 @@ For build
 # yarn encore production
 Bump VERSION file numbers
 Make data-tables default paging configurable per user
+
+new user creation, Expiry & ExpireAfter needs to be copied from the group
+
+alter table batch
+	add constraint batch_pk
+		primary key (batchID, UserName);
+

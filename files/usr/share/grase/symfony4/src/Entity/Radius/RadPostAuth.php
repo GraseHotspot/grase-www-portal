@@ -130,6 +130,4 @@ class RadPostAuth
     {
         return $this->callingStationId;
     }
-
-
 }

@@ -31,8 +31,9 @@ class UamController extends AbstractController
     /**
      * UserController constructor.
      *
-     * @param TranslatorInterface $translator
-     * @param SettingsUtils       $settingsUtils
+     * @param TranslatorInterface    $translator
+     * @param SettingsUtils          $settingsUtils
+     * @param EntityManagerInterface $entityManager
      */
     public function __construct(TranslatorInterface $translator, SettingsUtils $settingsUtils, EntityManagerInterface $entityManager)
     {
@@ -71,7 +72,10 @@ class UamController extends AbstractController
     /**
      * Process "automatic" free login (auto mac login, also known as "Accept TOS login")
      * This needs to be a JSON response with a JSONP callback
+     *
      * @param Request $request
+     *
+     * @return JsonResponse
      */
     public function tosLoginAction(Request $request)
     {
@@ -83,7 +87,6 @@ class UamController extends AbstractController
         $jsonResponse->setCallback($callback);
 
         return $jsonResponse;
-
     }
 
     /**

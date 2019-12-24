@@ -9,25 +9,25 @@
 
 /* Basic structure
  *
- * From login screen (so someone not logged in), give them an Automatic login 
+ * From login screen (so someone not logged in), give them an Automatic login
  * url that is basically an I Agree to TOS button[1]
- * At automatic login. Get their MAC address. Turn it into our funky automatic 
- * login username, and check if it already exists. If it doesn't exist, create 
- * it in the special group for automatic created accounts[2]. We can actually 
+ * At automatic login. Get their MAC address. Turn it into our funky automatic
+ * login username, and check if it already exists. If it doesn't exist, create
+ * it in the special group for automatic created accounts[2]. We can actually
  * skip the check and just try and create it
- * Then create the login URL that includes the chap challenge response (so 
- * users never need to see the password) and redirect them to it (the login URL 
- * that uses chilli). We can modify this system so if it's an AJAX request, we 
- * can pass it directly back and let the javascript side do it, but for now 
+ * Then create the login URL that includes the chap challenge response (so
+ * users never need to see the password) and redirect them to it (the login URL
+ * that uses chilli). We can modify this system so if it's an AJAX request, we
+ * can pass it directly back and let the javascript side do it, but for now
  * it'll be a HTTP redirect and then non-javascript login system is used?
  *
- * This way, if they have used up all their time, at login they'll get the 
+ * This way, if they have used up all their time, at login they'll get the
  * message
  *
  *
- * [1] This can be a more advanced form that collects data, but that's probably 
+ * [1] This can be a more advanced form that collects data, but that's probably
  * better for the already written voucher registration system?
- * [2] Need a method for expiry that doesn't lock them out, but allows them to 
+ * [2] Need a method for expiry that doesn't lock them out, but allows them to
  * be deleted after being inactive for a period so they don't "spam" the system
  *
  * */
@@ -42,8 +42,21 @@ use App\Entity\UpdateUserData;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * This class contains the logic to automatically create a user account for a device (based on the MAC address)
+ * This is used for the "free login", also known as the TOS login (just accept the Terms of Service to use the connection)
+ */
 class AutoCreateUser
 {
+    /**
+     * Create the auto login user, calculate the response to the CHAP challenge to avoid exposing the password
+     *
+     * @param SettingsUtils          $settings
+     * @param Request                $request
+     * @param EntityManagerInterface $em
+     *
+     * @return array
+     */
     public function autoMacUser(SettingsUtils $settings, Request $request, EntityManagerInterface $em)
     {
         // TODO MAC is passed in via uam, but it may still be best to get the IP from here
@@ -86,7 +99,26 @@ class AutoCreateUser
 
             return ['success' => true, 'username' => $autoUsername, 'challenge' => $challenge, 'response' => $response];
         }
+
         return ['success' => false];
+    }
+
+
+    /**
+     * This is a simple function that will to a MAC address, strip out the - and : chars, ensure
+     * it's all lower case, then reverse it. That gives us something that isn't obviously the
+     * users MAC address at first glace, but is easily reversed to turn it back into the MAC address
+     *
+     * @param $mac
+     *
+     * @return string
+     */
+    public function macToAutoUsername($mac)
+    {
+        // @TODO Check it's a MAC
+
+        // Strip : and - from address, lowercase it, reverse it
+        return strrev(strtolower(str_replace([":", "-"], "", $mac)));
     }
 
     /**
@@ -122,6 +154,13 @@ class AutoCreateUser
         return $lastPostAuth->getUsername();
     }
 
+    /**
+     * Calculate the CHAP challenge/response response
+     * @param $challenge
+     * @param $password
+     *
+     * @return string
+     */
     private function chapChallengeResponse($challenge, $password)
     {
         // Generates a response for a challenge response CHAP Auth
@@ -129,22 +168,5 @@ class AutoCreateUser
         $response = md5("\0" . $password . $hexChallenge);
 
         return $response;
-    }
-
-    /**
-     * This is a simple function that will to a MAC address, strip out the - and : chars, ensure
-     * it's all lower case, then reverse it. That gives us something that isn't obviously the
-     * users MAC address at first glace, but is easily reversed to turn it back into the MAC address
-     *
-     * @param $mac
-     *
-     * @return string
-     */
-    public function macToAutoUsername($mac)
-    {
-        // @TODO Check it's a MAC
-
-        // Strip : and - from address, lowercase it, reverse it
-        return strrev(strtolower(str_replace([":", "-"], "", $mac)));
     }
 }
