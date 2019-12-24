@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity\Radius\Radpostauth;
+namespace App\Entity\Radius;
 
 use Doctrine\ORM\Mapping as ORM;
 

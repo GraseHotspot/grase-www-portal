@@ -35,7 +35,7 @@
 namespace App\Util;
 
 use App\Entity\Radius\Group;
-use App\Entity\Radius\Radpostauth\RadPostAuth;
+use App\Entity\Radius\RadPostAuth;
 use App\Entity\Radius\User;
 use App\Entity\Setting;
 use App\Entity\UpdateUserData;
@@ -60,7 +60,7 @@ class AutoCreateUser
     public function autoMacUser(SettingsUtils $settings, Request $request, EntityManagerInterface $em)
     {
         // TODO MAC is passed in via uam, but it may still be best to get the IP from here
-        $mac = $this->latestMacFromIP($request->getClientIp());
+        $mac = $this->latestMacFromIP($request->getClientIp(), $em);
         $autoUsername = $this->macToAutoUsername($mac);
 
         // Attempt to create user
@@ -126,10 +126,11 @@ class AutoCreateUser
      * We can move this to a helper function in the future so it can be shared.
      *
      * @param $ipAddress string IP Address of the client we want to find the MAC address for
+     * @param $em EntityManagerInterface
      *
      * @return bool|RadPostAuth
      */
-    private function latestMacFromIP($ipAddress)
+    private function latestMacFromIP($ipAddress, EntityManagerInterface $em)
     {
         // We limit the selection to a machine that has connected in the last
         // hour, (this may need to be updated in the future with
@@ -141,10 +142,11 @@ class AutoCreateUser
             ->andWhere('r.framedIpAddress = :framedIpAddress')
             ->setParameter('framedIpAddress', $ipAddress)
             ->andWhere('r.username LIKE \'__-__-__-__-__-__\'')
-            ->andWhere('r.authdate > TIMESTAMP(DATE_SUB(NOW(), INTERVAL 1 HOUR))')
+            ->andWhere('r.authDate > :oneHourAgo')
+            ->setParameter('oneHourAgo', new \DateTime('now -1 hour'))
             ->orderBy('r.id', 'DESC')
             ->setMaxResults(1)
-            ->getQuery()->getSingleResult();
+            ->getQuery()->getOneOrNullResult();
 
         if (!$lastPostAuth) {
             return false;
