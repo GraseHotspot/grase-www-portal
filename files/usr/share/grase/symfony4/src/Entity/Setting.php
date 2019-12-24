@@ -26,10 +26,10 @@ class Setting
      */
     private $value;
 
-    const MB_OPTIONS = 'mbOptions';
-    const TIME_OPTIONS = 'timeOptions';
-    const PASSWORD_LENGTH = 'passwordLength';
-    const AUTO_CREATE_GROUP = 'autocreategroup';
+    public const MB_OPTIONS = 'mbOptions';
+    public const TIME_OPTIONS = 'timeOptions';
+    public const PASSWORD_LENGTH = 'passwordLength';
+    public const AUTO_CREATE_GROUP = 'autocreategroup';
 
     /**
      * Setting constructor.

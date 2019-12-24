@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace DoctrineMigrations;
 
@@ -13,7 +15,7 @@ class Version20160221060000 extends AbstractMigration
     /**
      * @param Schema $schema
      */
-    public function up(Schema $schema) : void
+    public function up(Schema $schema): void
     {
         // @TODO check we are upgrading from a supported DB version
         $this->addSql('ALTER TABLE radmin.adminlog RENAME radius.adminlog');
@@ -28,7 +30,7 @@ class Version20160221060000 extends AbstractMigration
     /**
      * @param Schema $schema
      */
-    public function down(Schema $schema) : void
+    public function down(Schema $schema): void
     {
         $this->addSql('ALTER TABLE radius.adminlog RENAME radmin.adminlog');
         $this->addSql('ALTER TABLE radius.auth RENAME radmin.auth');

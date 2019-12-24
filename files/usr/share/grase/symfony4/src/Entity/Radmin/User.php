@@ -55,7 +55,7 @@ class User implements UserInterface, EncoderAwareInterface, \Serializable //, Th
      */
     public function getEncoderName()
     {
-        if (strlen($this->password) == 49) {
+        if (strlen($this->password) === 49) {
             return 'sha1salted';
         }
 

@@ -21,7 +21,7 @@ class StrToTimeValidator extends ConstraintValidator
         if (null === $value) {
             return true;
         }
-        if (strtotime($value) == false) {
+        if (strtotime($value) === false) {
             $this->context->buildViolation($constraint->message)
                 ->setParameter('%string%', $value)
                 ->addViolation();

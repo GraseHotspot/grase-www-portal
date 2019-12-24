@@ -8,6 +8,9 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
+/**
+ * This controller is for all the UAM related functions (login for the client side of the hotspot)
+ */
 class UamController extends AbstractController
 {
     /** @var TranslatorInterface */
@@ -28,6 +31,13 @@ class UamController extends AbstractController
         $this->settingsUtils = $settingsUtils;
     }
 
+    /**
+     * The basic uam login page, just displays the login forms etc (customised based on settings)
+     *
+     * @param Request $request
+     *
+     * @return RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function uamAction(Request $request)
     {
         $result = $request->query->get('res');
@@ -43,10 +53,6 @@ class UamController extends AbstractController
             'uamLogin.html.twig',
             []
         );
-
-
-
-
     }
 
     /**
@@ -58,9 +64,10 @@ class UamController extends AbstractController
      */
     private function cleanUserUrl($userUrl)
     {
-        if ($userUrl === 'http://logout/' || $userUrl === 'http://1.0.0.0/') {
+        if ('http://logout/' === $userUrl || 'http://1.0.0.0/' === $userUrl) {
             return '';
         }
+
         return $userUrl;
     }
 }

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Util;
 
 use App\Entity\AuditLog;
