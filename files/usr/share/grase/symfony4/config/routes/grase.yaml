@@ -51,6 +51,11 @@ grase_uam_login:
     defaults:
         _controller: App\Controller\UamController::uamAction
 
+grase_uam_toslogin:
+    path: /uam/toslogin
+    defaults:
+        _controller: App\Controller\UamController::tosLoginAction
+
 #grase_security:
 #    resource: "@App/Controller/SecurityController.php"
 #    type:     annotation

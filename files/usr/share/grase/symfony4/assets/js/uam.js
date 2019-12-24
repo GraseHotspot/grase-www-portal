@@ -174,7 +174,7 @@ chilliController.tosGetResponse = function () {
     // Send Challenge to automac script which will give us the response to send
     // and the username (so we never know the password client side)
 
-    // TODO get this from the router
+    // TODO get this from the router (grase_uam_toslogin)
     /* Build automac URL */
     const tosUrl = 'http://' + window.location.hostname + '/grase/uam/automac?challenge=' + encodeURIComponent(chilliController.challenge);
 
@@ -186,7 +186,7 @@ chilliController.tosGetResponse = function () {
             url: tosUrl,
             dataType: "jsonp",
             timeout: 5000,
-            jsonpCallback: "tos_get_login",
+            jsonpCallback: "chilliController.tosGetLogin",
             error: function () {
                 clearErrorMessages();
                 display_error("No response from TOS server");
@@ -195,9 +195,20 @@ chilliController.tosGetResponse = function () {
 }
 
 chilliController.tosGetLogin = function (resp) {
-    if (typeof (resp) == 'undefined' || typeof (resp.username) !== 'string' || typeof (resp.response) !== 'string') {
+    // Check for an invalid response
+    if (typeof (resp) == 'undefined' || typeof (resp.success !== 'boolean')) {
         display_error("Incorrect response from TOS server. Please notify system admin");
         return false;
+    }
+
+    /*
+     * Check if the response was success or failure. The check of username and response are a bit redundant, they'll
+     * be missing if success is false, and they should be valid strings if success is true. It's still a good idea to
+     * check them though
+     */
+    if (!resp.success || typeof (resp.username) !== 'string' || typeof (resp.response) !== 'string') {
+        display_error("An error occurred trying to login. Please notify the system admin")
+        return false
     }
 
     /* Build /logon command URL */

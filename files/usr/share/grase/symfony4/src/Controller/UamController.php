@@ -3,8 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Setting;
+use App\Util\AutoCreateUser;
 use App\Util\SettingsUtils;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -21,15 +24,21 @@ class UamController extends AbstractController
     protected $settingsUtils;
 
     /**
+     * @var EntityManagerInterface
+     */
+    private $em;
+
+    /**
      * UserController constructor.
      *
      * @param TranslatorInterface $translator
      * @param SettingsUtils       $settingsUtils
      */
-    public function __construct(TranslatorInterface $translator, SettingsUtils $settingsUtils)
+    public function __construct(TranslatorInterface $translator, SettingsUtils $settingsUtils, EntityManagerInterface $entityManager)
     {
         $this->translator = $translator;
         $this->settingsUtils = $settingsUtils;
+        $this->em = $entityManager;
     }
 
     /**
@@ -57,6 +66,24 @@ class UamController extends AbstractController
                 'supportContactName' => $this->settingsUtils->getSettingValue(Setting::SUPPORT_CONTACT_NAME),
             ]
         );
+    }
+
+    /**
+     * Process "automatic" free login (auto mac login, also known as "Accept TOS login")
+     * This needs to be a JSON response with a JSONP callback
+     * @param Request $request
+     */
+    public function tosLoginAction(Request $request)
+    {
+        $callback = $request->query->get('callback');
+
+        $response = (new AutoCreateUser())->autoMacUser($this->settingsUtils, $request, $this->em);
+
+        $jsonResponse = new JsonResponse($response);
+        $jsonResponse->setCallback($callback);
+
+        return $jsonResponse;
+
     }
 
     /**

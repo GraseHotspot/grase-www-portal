@@ -110,6 +110,7 @@ class UpdateUserData
         $this->setTimeLimit($user, $em, $this->timeLimitToSeconds());
         // @TODO update the rest
         // TODO reset the expiry??
+        // TODO update the expireAfter if present and expiry isn't set
         $em->persist($user);
         $em->flush();
     }

@@ -30,6 +30,7 @@ class Setting
     public const TIME_OPTIONS = 'timeOptions';
     public const PASSWORD_LENGTH = 'passwordLength';
     public const AUTO_CREATE_GROUP = 'autocreategroup';
+    public const AUTO_CREATE_PASSWORD = 'autocreatepassword';
     public const SUPPORT_CONTACT_LINK = 'supportContactLink';
     public const SUPPORT_CONTACT_NAME = 'supportContactName';
 
