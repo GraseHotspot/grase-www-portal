@@ -3,15 +3,20 @@
 
 {% block navbar %}{% endblock %}
 
-{% block bodyclass %}hold-transition login-page{% endblock %}
+{% block bodyclass %}hold-transition login-page layout-footer-fixed{% endblock %}
 
 {% block body %}
+<div class="wrapper">
     <div class="d-flex flex-column h-100  justify-content-center">
         <div class="login-box d-flex align-items-center flex-column">
             <div class="login-logo">
-                <img src="{{ asset('build/images/grase.png') }}" height="100px"/><br/><a href=""><b>Grase</b>Hotspot</a>
+                <img src="{{ asset('build/images/grase.png') }}" height="100px"/><br/><a><b>Grase</b>Hotspot</a>
             </div><!-- /.login-logo -->
-            <div class="card">
+
+            <!-- Voucher Error messages (not found, expired, etc) will be displayed using this variable - do not remove -->
+            <div class="" id="errormessages" style="margin-top: 1em; max-width: 300px; text-align: center;"></div>
+
+            <div class="card" id="tosaccept">
                 <div class="login-box-body card-body">
                     <p class="login-box-msg">{% trans %}Free Login{% endtrans %}</p>
 
@@ -34,7 +39,7 @@
 
                 </div><!-- /.login-box-body -->
             </div>
-            <div class="card">
+            <div class="card" id="loginform">
                 <div class="login-box-body card-body">
                     <p class="login-box-msg">{% trans %}Voucher Login{% endtrans %}</p>
 
@@ -65,16 +70,24 @@
 
                 </div><!-- /.login-box-body -->
             </div>
+            <div id="loading" style="display: none">
+                <div class="d-flex align-items-center flex-column">
+
+                <progress class="pure-material-progress-circular"></progress><br/> {% trans %}Attempting Login...{% endtrans %}
+                </div>
+            </div>
+            <div class="card" id="loggedin" style="display: none;">Logged In</div>
         </div>
         {% block footer %}{{ parent() }}{% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('uam') }}
+        {% endblock %}
     </div>
+</div>
 {% endblock %}
 
-{% block javascripts %}
-{{ parent() }}
-<script type="text/javascript" src="/grase/uam/js/chilliMD5.js"></script>
-<script type="text/javascript" id='chillijs' src='/grase/uam/js.php?js=jqchilli.js'></script>
-{% endblock %}
+
 
 {% block stylesheets %}
 {{ parent() }}

@@ -12,6 +12,9 @@ Encore
     // will create public/build/app.js and public/build/app.css
     .addEntry('app', './assets/js/app.js')
 
+    // will create public/build/uam.js and public/build/uam.css
+    .addEntry('uam', './assets/js/uam.js')
+
     // will require an extra script tag for runtime.js
     // but, you probably want this, unless you're building a single-page app
     .enableSingleRuntimeChunk()

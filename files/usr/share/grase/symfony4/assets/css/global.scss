@@ -9,6 +9,8 @@ $primary: darken(#428bca, 20%);
 @import "~jquery.json-viewer/json-viewer/jquery.json-viewer.css";
 @import "~datatables.net-bs4/css/dataTables.bootstrap4.css";
 
+@import "material-spinner.css";
+
 // Specific override to get the padding to look ok for a json-document in a data table cell
 .table td.json-document {
   padding: 1em 2em;
