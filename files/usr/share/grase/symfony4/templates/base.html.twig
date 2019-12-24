@@ -89,9 +89,10 @@
         </div>
 
         {% block footer %}
-            <footer class="main-footer">
-                <strong>{% trans %}Copyright{% endtrans %} © 2008-{{ 'now'|date('Y') }} <a
-                            href="https://grasehotspot.org">Timothy White - GraseHotspot.org</a>.</strong>
+            <footer class="main-footer text-center">
+                <div class="float-left d-none d-sm-inline-block"><strong>{% trans %}Copyright{% endtrans %} © 2008-{{ 'now'|date('Y') }} <a
+                            href="https://grasehotspot.org">Timothy White - GraseHotspot.org</a>.</strong></div>
+                <span>{% block footer_extra %}{% endblock %}</span>
                 <div class="float-right d-none d-sm-inline-block">
                     <b>{% trans %}Version{% endtrans %}</b> {{ shivas_app_version }}
                 </div>

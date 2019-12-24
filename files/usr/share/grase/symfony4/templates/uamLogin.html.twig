@@ -77,7 +77,13 @@
                 </div>
             </div>
             <div class="card" id="loggedin" style="display: none;">Logged In</div>
+
+            <!-- Support links box -->
+            <div>
+                <a href="{{ supportContactLink }}">{{ supportContactName }}</a> | <a href="{{ path('grase_radmin_homepage') }}">{% trans %}Admin Login{% endtrans %}</a>
+            </div>
         </div>
+
         {% block footer %}{{ parent() }}{% endblock %}
 
         {% block javascripts %}
@@ -86,7 +92,6 @@
     </div>
 </div>
 {% endblock %}
-
 
 
 {% block stylesheets %}

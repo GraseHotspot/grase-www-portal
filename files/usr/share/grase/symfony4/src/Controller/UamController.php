@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Setting;
 use App\Util\SettingsUtils;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -51,7 +52,10 @@ class UamController extends AbstractController
 
         return $this->render(
             'uamLogin.html.twig',
-            []
+            [
+                'supportContactLink' => $this->settingsUtils->getSettingValue(Setting::SUPPORT_CONTACT_LINK),
+                'supportContactName' => $this->settingsUtils->getSettingValue(Setting::SUPPORT_CONTACT_NAME),
+            ]
         );
     }
 
