@@ -126,7 +126,7 @@ class AutoCreateUser
      * We can move this to a helper function in the future so it can be shared.
      *
      * @param $ipAddress string IP Address of the client we want to find the MAC address for
-     * @param $em EntityManagerInterface
+     * @param $em        EntityManagerInterface
      *
      * @return bool|RadPostAuth
      */
