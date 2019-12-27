@@ -49,7 +49,7 @@ www_proxy_group(){
 }
 
 run_migrations(){
-    /usr/share/grase/symfony4/bin/console doctrine:migrations:migrate --no-interaction || true
+    runuser -u www-data /usr/share/grase/symfony4/bin/console doctrine:migrations:migrate --no-interaction || true
 }
 
 fix_settings(){
