@@ -57,7 +57,6 @@ final class Version20191227101133 extends AbstractMigration implements Container
         $this->setAndCreateSetting(Setting::NETWORK_LAN_IP, $oldNetworkOptions['lanipaddress']);
         $this->setAndCreateSetting(Setting::NETWORK_LAN_MASK, $oldNetworkOptions['networkmask']);
         $this->setAndCreateSetting(Setting::NETWORK_WAN_INTERFACE, $oldNetworkOptions['wanif']);
-        $this->setAndCreateSetting(Setting::NETWORK_OPENDNS_BOGUS_NX, (bool) $oldNetworkOptions['opendnsbogusnxdomain']);
         $this->setAndCreateSetting(Setting::NETWORK_DNS_SERVERS, (array) $oldNetworkOptions['dnsservers']);
         $this->setAndCreateSetting(Setting::NETWORK_BOGUS_NX, (array) $oldNetworkOptions['bogusnx']);
 

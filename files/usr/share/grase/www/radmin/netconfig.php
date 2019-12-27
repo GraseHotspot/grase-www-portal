@@ -75,14 +75,6 @@ $singleNetworkOptions = array(
         "type" => "ip",
         "required" => "true"
     ),
-    'opendnsbogusnxdomain' => array(
-        "label" => T_("Bogus NXDOMAIN (OpenDNS)"),
-        "description" => T_(
-            "Some DNS Providers return bogus NXDOMAIN to redirect you to their search engine. Block the bogus ip's and
-            return a real NXDOMAIN for OpenDNS."
-        ),
-        "type" => "bool"
-    ),
 );
 
 $wanif = array(\Grase\Util::getNetworkWANIF());

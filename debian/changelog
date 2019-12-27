@@ -4,6 +4,8 @@ grase-www-portal (4.0.0) UNRELEASED; urgency=medium
   * Upgrade database to UTF8 as we store UTF8 in it
   * Symfony4 Migration
   * Command for making real data into demo data
+  * Removed OpenDNS Bogus NX option as it's no longer relevant
+    (https://umbrella.cisco.com/blog/2014/05/29/no-more-ads/)
 
  -- Tim White <tim@grasehotspot.org>  Fri, 04 Oct 2019 07:05:22 +1000
 

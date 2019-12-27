@@ -44,12 +44,11 @@ class Setting
     public const NETWORK_LAN_IP = 'networkLanIP';
     public const NETWORK_LAN_MASK = 'networkLanMask';
     public const NETWORK_WAN_INTERFACE = 'networkWanInterface';
-    public const NETWORK_OPENDNS_BOGUS_NX = 'networkOpenDNSBogusNX'; // Boolean to add the OpenDNS Bogus NX records
     public const NETWORK_DNS_SERVERS = 'networkDNSServers';
     public const NETWORK_BOGUS_NX = 'networkBogusNX'; // IP addresses that are bogus NX records, so should be converted to a NX record
 
     public const BOOLEAN_SETTINGS = [
-        self::NETWORK_OPENDNS_BOGUS_NX,
+
     ];
 
     public const STRING_SETTINGS = [
