@@ -107,6 +107,7 @@ class SettingsSanity
      * @param SettingRepository      $settingsRepository
      * @param EntityManagerInterface $em
      * @param Logger                 $auditLogger
+     * @param SettingsUtils          $settingsUtils
      */
     public function __construct(SettingRepository $settingsRepository, EntityManagerInterface $em, Logger $auditLogger, SettingsUtils $settingsUtils)
     {

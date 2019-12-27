@@ -1,0 +1,38 @@
+#### This file is auto generated                              ####
+#### Please do not edit it.                                   ####
+#### Changes can be made in the Grase Hotspot Admin interface ####
+
+#chilli_lanip {{ lanIP }}
+#chilli_wanif {{ wanInterface }}
+#chilli_lanif {{ lanInterface }}
+#chilli_network {{ lanNetwork }}
+#chilli_netmask {{ lanNetmask }}
+
+address=/grasehotspot.lan/{{ lanIP }}
+address=/logout/1.0.0.0
+address=/logoff/1.0.0.0
+
+no-resolv
+strict-order
+
+expand-hosts
+domain=hotspot.lan
+
+{% if dnsServers|length == 0 %}
+{# No dns servers set so default to OpenDNS Family Shield #}
+#default dns servers and OpenDNS Family Shield
+server=208.67.222.123
+server=208.67.220.123
+{% endif %}
+{% for dnsServer in dnsServers  %}
+server={{ dnsServer }}
+{% endfor %}
+
+{%  if bogusNX|length > 0 %}
+# Sometimes we get a DNS server that gives us bogus NX records, we can block them here
+{% for bogusNXIP in bogusNX %}
+bogus-nxdomain={{ bogusNXIP }}
+{% endfor %}
+{% endif %}
+
+# last updated {{ lastChangedTimestamp }}

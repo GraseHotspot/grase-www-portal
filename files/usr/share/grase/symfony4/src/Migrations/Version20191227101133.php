@@ -68,19 +68,6 @@ final class Version20191227101133 extends AbstractMigration implements Container
         $this->em->flush();
     }
 
-    private function setAndCreateSetting($name, $value)
-    {
-        $setting = $this->settingsRepository->find($name);
-        if (!$setting) {
-            $setting = new Setting($name);
-        }
-        $setting->setValue($value);
-
-        $this->em->persist($setting);
-
-        return $setting;
-    }
-
     /**
      * @param Schema $schema
      *
@@ -95,5 +82,26 @@ final class Version20191227101133 extends AbstractMigration implements Container
         );
 
         $this->addSql('ALTER TABLE settings CHANGE setting setting VARCHAR(20) NOT NULL');
+    }
+
+    /**
+     * Sets a setting value, creates it if missing
+     *
+     * @param $name
+     * @param $value
+     *
+     * @return Setting|object|null
+     */
+    private function setAndCreateSetting($name, $value)
+    {
+        $setting = $this->settingsRepository->find($name);
+        if (!$setting) {
+            $setting = new Setting($name);
+        }
+        $setting->setValue($value);
+
+        $this->em->persist($setting);
+
+        return $setting;
     }
 }

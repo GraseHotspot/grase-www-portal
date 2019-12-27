@@ -125,6 +125,9 @@ class SettingsUtils
         return $pendingFlushCount;
     }
 
+    /**
+     * Convert existing settings to new JSON formatted values
+     */
     public function convertSettingsJson()
     {
         // Fetch all settings so they are preloaded
@@ -135,56 +138,6 @@ class SettingsUtils
         $this->convertSettingsJsonArray();
 
         $this->em->flush();
-    }
-
-    private function convertSettingsJsonArray()
-    {
-        foreach (Setting::ARRAY_SETTINGS as $arraySetting) {
-            /** @var Setting $setting */
-            $setting = $this->settingsRepository->find($arraySetting);
-            if (mb_substr($setting->getRawValue(), 0, 1) !== '[') {
-                // We don't already have a json array
-
-                // Try space delimited string (this will always give us an array, but we only care if it's bigger than 1 element)
-                $settingArray = explode(" ", $setting->getRawValue());
-                if (sizeof($settingArray) > 1) {
-                    // We have an array, so lets write it back which will save as JSON
-                    $settingArray = array_map('intval', $settingArray);
-                    $this->updateSetting($setting, $settingArray);
-                    continue;
-                }
-
-                // Assuming it's invalid, lets give it an empty array (null) so it's valid, but the defaulting sanity check will fill it in at some point
-                $this->updateSetting($setting, []);
-            }
-        }
-    }
-
-    private function convertSettingsJsonString()
-    {
-        foreach (Setting::STRING_SETTINGS as $stringSetting) {
-            /** @var Setting $setting */
-            $setting = $this->settingsRepository->find($stringSetting);
-            if (mb_substr($setting->getRawValue(), 0, 1) !== '"') {
-                // We don't already have a json string
-                $this->updateSetting($setting, $setting->getRawValue());
-            }
-        }
-    }
-
-    private function convertSettingsJsonBoolean()
-    {
-        foreach (Setting::BOOLEAN_SETTINGS as $boolSetting) {
-            /** @var Setting $setting */
-            $setting = $this->settingsRepository->find($boolSetting);
-            if (in_array($setting->getRawValue(), ['TRUE', 'FALSE'])) {
-                if ($setting->getRawValue() === 'TRUE') {
-                    $this->updateSetting($setting, true);
-                } else {
-                    $this->updateSetting($setting, false);
-                }
-            }
-        }
     }
 
     /**
@@ -213,5 +166,64 @@ class SettingsUtils
     public function getChangedSettingsCount()
     {
         return count($this->changedSettings);
+    }
+
+    /**
+     * Convert existing Array settings to new JSON formatted values
+     */
+    private function convertSettingsJsonArray()
+    {
+        foreach (Setting::ARRAY_SETTINGS as $arraySetting) {
+            /** @var Setting $setting */
+            $setting = $this->settingsRepository->find($arraySetting);
+            if (mb_substr($setting->getRawValue(), 0, 1) !== '[') {
+                // We don't already have a json array
+
+                // Try space delimited string (this will always give us an array, but we only care if it's bigger than 1 element)
+                $settingArray = explode(" ", $setting->getRawValue());
+                if (sizeof($settingArray) > 1) {
+                    // We have an array, so lets write it back which will save as JSON
+                    $settingArray = array_map('intval', $settingArray);
+                    $this->updateSetting($setting, $settingArray);
+                    continue;
+                }
+
+                // Assuming it's invalid, lets give it an empty array (null) so it's valid, but the defaulting sanity check will fill it in at some point
+                $this->updateSetting($setting, []);
+            }
+        }
+    }
+
+    /**
+     * Convert existing String settings to new JSON formatted values
+     */
+    private function convertSettingsJsonString()
+    {
+        foreach (Setting::STRING_SETTINGS as $stringSetting) {
+            /** @var Setting $setting */
+            $setting = $this->settingsRepository->find($stringSetting);
+            if (mb_substr($setting->getRawValue(), 0, 1) !== '"') {
+                // We don't already have a json string
+                $this->updateSetting($setting, $setting->getRawValue());
+            }
+        }
+    }
+
+    /**
+     * Convert existing Boolean settings to new JSON formatted values
+     */
+    private function convertSettingsJsonBoolean()
+    {
+        foreach (Setting::BOOLEAN_SETTINGS as $boolSetting) {
+            /** @var Setting $setting */
+            $setting = $this->settingsRepository->find($boolSetting);
+            if (in_array($setting->getRawValue(), ['TRUE', 'FALSE'])) {
+                if ($setting->getRawValue() === 'TRUE') {
+                    $this->updateSetting($setting, true);
+                } else {
+                    $this->updateSetting($setting, false);
+                }
+            }
+        }
     }
 }
