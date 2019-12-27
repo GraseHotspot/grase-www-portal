@@ -49,7 +49,10 @@ class SettingSanityCommand extends Command
         $output->writeln(
             $this->translator->trans(
                 "grase.command.settingsSanity.updatedSettings",
-                ['updatedSettings' => $changedSettings]
+                [
+                    'updatedSettings' => $changedSettings['changedSettings'],
+                    'removedSettings' => $changedSettings['removedSettings'],
+                ]
             )
         );
     }

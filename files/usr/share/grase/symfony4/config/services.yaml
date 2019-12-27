@@ -52,6 +52,10 @@ services:
     # Autowire the Group manager (TODO move it to somewhere outside of the Entity folder)
     App\Entity\Radius\GroupManager: ~
 
+    # Make it easier to get this util in more places (Doctrine Migrations)
+    App\Util\SettingsUtils:
+        public: true
+
 
     sha1salted_encoder:
         class: App\Service\Sha1Salted

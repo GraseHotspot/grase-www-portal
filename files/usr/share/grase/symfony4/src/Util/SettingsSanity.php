@@ -20,19 +20,19 @@ class SettingsSanity
     /** @var EntityManagerInterface */
     private $em;
 
-    /** @var int */
-    private $changedSettings = 0;
-
     /** @var Logger */
     private $auditLogger;
+
+    /** @var SettingsUtils */
+    private $settingsUtils;
 
     /**
      * Defaults for numeric settings
      * @var array
      */
     private $numericDefaults = [
-        'passwordLength' => 6,
-        'usernameLength' => 5,
+        Setting::PASSWORD_LENGTH => 6,
+        Setting::USERNAME_LENGTH => 5,
     ];
 
     /**
@@ -41,10 +41,10 @@ class SettingsSanity
      */
     private $stringDefaults = [
         'locationName'       => 'Default',
-        'supportContactName' => 'Tim White',
-        'supportContactLink' => 'https://grasehotspot.com/',
-        'websiteLink'        => 'https://grasehotspot.org/',
-        'websiteName'        => 'GRASE Hotspot Project',
+        Setting::SUPPORT_CONTACT_NAME => 'Tim White',
+        Setting::SUPPORT_CONTACT_LINK => 'https://grasehotspot.com/',
+        Setting::WEBSITE_LINK        => 'https://grasehotspot.org/',
+        Setting::WEBSITE_NAME        => 'GRASE Hotspot Project',
         'locale'             => 'en_AU',
     ];
 
@@ -53,7 +53,7 @@ class SettingsSanity
      * @var array
      */
     private $oldStringDefaults = [
-        'supportContactLink' => ['http://grasehotspot.com/', 'http://grasehotspot.org/', 'http://grasehotspot.org', 'http://grasehotspot.com'],
+        Setting::SUPPORT_CONTACT_LINK => ['http://grasehotspot.com/', 'http://grasehotspot.org/', 'http://grasehotspot.org', 'http://grasehotspot.com'],
         'websiteLink'        => ['http://grasehotspot.org/', 'http://grasehotspot.org'],
     ];
 
@@ -108,31 +108,33 @@ class SettingsSanity
      * @param EntityManagerInterface $em
      * @param Logger                 $auditLogger
      */
-    public function __construct(SettingRepository $settingsRepository, EntityManagerInterface $em, Logger $auditLogger)
+    public function __construct(SettingRepository $settingsRepository, EntityManagerInterface $em, Logger $auditLogger, SettingsUtils $settingsUtils)
     {
         $this->settingsRepository = $settingsRepository;
         $this->em                 = $em;
         $this->auditLogger        = $auditLogger;
+        $this->settingsUtils = $settingsUtils;
     }
 
     /**
      * Run a sanity check on all settings, remove old settings, fixup invalid settings
-     * @return int
+     * @return array
      */
     public function sanityCheckSettings()
     {
         // Fetch all settings so they are preloaded
         $allSettings = $this->settingsRepository->findAll();
+        $removedSettingsCount = $this->removeOldSettings($allSettings);
 
-        $this->removeOldSettings($allSettings);
+        $this->settingsUtils->convertSettingsJson();
+
         $this->defaultInvalidSettings();
         $this->upgradeDefaultSettings();
 
-        if ($this->changedSettings) {
-            $this->em->flush();
-        }
-
-        return $this->changedSettings;
+        return [
+            'changedSettings' => $this->settingsUtils->flushChangedSettings(),
+            'removedSettings' => $removedSettingsCount,
+        ];
     }
 
     /**
@@ -144,6 +146,8 @@ class SettingsSanity
      */
     private function removeOldSettings($allSettings)
     {
+        $removedSettingsCount = 0;
+
         $oldSettings = [
             'priceMB',
             'priceMinute',
@@ -164,10 +168,16 @@ class SettingsSanity
             if (in_array($setting, $existingSettings)) {
                 $oldSetting = $this->settingsRepository->find($setting);
                 $this->em->remove($oldSetting);
-                $this->changedSettings++;
+                $removedSettingsCount++;
                 $this->auditLogger->info('settings.sanity.removed_setting', ['setting' => $setting]);
             };
         }
+
+        if ($removedSettingsCount) {
+            $this->em->flush();
+        }
+
+        return $removedSettingsCount;
     }
 
     /**
@@ -183,30 +193,11 @@ class SettingsSanity
         $setting = $this->settingsRepository->find($name);
         if (!$setting) {
             $setting = new Setting($name);
-            $setting->setValue($defaultValue);
-            $this->em->persist($setting);
-            $this->changedSettings++;
+            $this->settingsUtils->updateSetting($setting, $defaultValue);
             $this->auditLogger->info('settings.sanity.created_missing_setting', ['setting' => $name]);
         }
 
         return $setting;
-    }
-
-    /**
-     * @param Setting $setting
-     * @param string  $value
-     *
-     * Actually do the updating of a setting
-     */
-    private function updateSetting(Setting $setting, $value)
-    {
-        $setting->setValue($value);
-        $this->em->persist($setting);
-        $this->changedSettings++;
-        $this->auditLogger->info(
-            'settings.sanity.updated_setting',
-            ['setting' => $setting->getName(), 'value' => $value]
-        );
     }
 
     /**
@@ -217,7 +208,7 @@ class SettingsSanity
         foreach ($this->oldStringDefaults as $settingName => $oldDefaults) {
             $setting = $this->getSetting($settingName, $this->stringDefaults[$settingName]);
             if (in_array($setting->getValue(), $oldDefaults)) {
-                $this->updateSetting($setting, $this->stringDefaults[$settingName]);
+                $this->settingsUtils->updateSetting($setting, $this->stringDefaults[$settingName]);
             }
         }
     }
@@ -232,46 +223,23 @@ class SettingsSanity
         foreach ($this->numericDefaults as $settingName => $default) {
             $setting = $this->getSetting($settingName, $default);
             if (!is_numeric($setting->getValue()) || $setting->getValue() < 1) {
-                $this->updateSetting($setting, $default);
+                $this->settingsUtils->updateSetting($setting, $default);
             }
         }
 
         foreach ($this->stringDefaults as $settingName => $default) {
             $setting = $this->getSetting($settingName, $default);
             if (empty($setting->getValue())) {
-                $this->updateSetting($setting, $default);
+                $this->settingsUtils->updateSetting($setting, $default);
             }
         }
 
         foreach ($this->arrayDefaults as $settingName => $default) {
-            $setting = $this->getSetting($settingName, json_encode($default));
+            $setting = $this->getSetting($settingName, $default);
             // Check if null
             if (empty($setting->getValue())) {
-                $this->updateSetting($setting, json_encode($default));
-                continue;
+                $this->settingsUtils->updateSetting($setting, $default);
             }
-
-            // Try JSON
-            $settingArray = json_decode($setting->getValue());
-            if (json_last_error() === JSON_ERROR_NONE) {
-                // We have a valid json object, check it's an array
-                if (!is_array($settingArray) || empty($settingArray)) {
-                    $this->updateSetting($setting, json_encode($default));
-                }
-                continue;
-            }
-
-            // Try space delimited string
-            $settingArray = explode(" ", $setting->getValue());
-            if (is_array($settingArray) && !empty($settingArray)) {
-                // We have an array, so lets convert it to json
-                $settingArray = array_map('intval', $settingArray);
-                $this->updateSetting($setting, json_encode($settingArray));
-                continue;
-            }
-
-            // Just set to default, it's certainly not valid!
-            $this->updateSetting($setting, json_encode($default));
         }
     }
 }

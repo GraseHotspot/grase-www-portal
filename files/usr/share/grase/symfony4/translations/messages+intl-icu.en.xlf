@@ -105,7 +105,7 @@
       </trans-unit>
       <trans-unit id="jEacwad" resname="grase.command.settingsSanity.updatedSettings">
         <source>grase.command.settingsSanity.updatedSettings</source>
-        <target>Updated {updatedSettings} settings</target>
+        <target>Updated {updatedSettings} settings. Removed {removedSettings} settings.</target>
       </trans-unit>
       <trans-unit id="VVbH1mL" resname="settings.sanity.removed_setting">
         <source>settings.sanity.removed_setting</source>
