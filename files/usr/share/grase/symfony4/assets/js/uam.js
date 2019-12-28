@@ -1,5 +1,6 @@
 const $ = require('jquery');
 import ChilliMD5 from './chilliMD5';
+import { getQueryVariable } from './utils';
 require('bootstrap');
 require('admin-lte');
 

@@ -39,7 +39,6 @@ function css_file_version()
     $resourcefiles = array(
         '/usr/share/grase/www/hotspot.css',
         '/usr/share/grase/www/radmin/radmin.css',
-        '/usr/share/grase/www/js/grase.js',
         '/usr/share/grase/www/radmin/js/radmin.js'
         );
     foreach ($resourcefiles as $file) {
@@ -221,7 +220,6 @@ function assign_vars($templateEngine)
     list($fileversions, $application_version)=css_file_version();
     $templateEngine->assign("radmincssversion", $fileversions['radmin.css']);
     $templateEngine->assign("hotspotcssversion", $fileversions['hotspot.css']);
-    $templateEngine->assign("grasejsversion", $fileversions['grase.js']);
     $templateEngine->assign("radminjsversion", $fileversions['radmin.js']);
     $templateEngine->assign("application_version", $application_version);
     $templateEngine->assign("Application", APPLICATION_NAME);
