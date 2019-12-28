@@ -1,24 +1,6 @@
 const $ = require('jquery');
-import { TranslatorSettings } from '@symfony-javascript/translator/dist/translator/TranslatorSettings';
-import { Translator } from '@symfony-javascript/translator/dist/translator/Translator';
-import messages from './symfony/messages.json';
-import routes from './symfony/routes.json';
-// const RouterConfig: RouterSettings = {
-//     data: routes,
-//     forceCurrentScheme: true,
-//     fallbackScheme: 'https',
-//     debug,
-// };
 
-const TranslatorConfig = {
-    data: messages,
-    locale: 'en',
-    strategy: 'strict',
-    debug: false,
-};
-
-export const translator = new Translator(TranslatorConfig);
-//export const router = new Router(RouterConfig);
+require('./translations');
 
 import ChilliMD5 from './chilliMD5';
 import { getQueryVariable } from './utils';
@@ -120,13 +102,13 @@ chilliController.getChallenge = function () {
 
                     if (typeof (resp.challenge) != 'string') {
                         clearErrorMessages();
-                        display_error(translator.trans('Unable to get secure challenge'));
+                        display_error(Translator.trans('Unable to get secure challenge'));
                         return false;
                     }
                     if (resp.clientState === chilliController.stateCodes.AUTH) {
                         pageStates.loggedInFormState();
                         clearErrorMessages();
-                        error_message(translator.trans('Already logged in. Aborting login attempt'));
+                        error_message(Translator.trans('Already logged in. Aborting login attempt'));
 
                         return false;
                     }
@@ -142,7 +124,7 @@ chilliController.getChallenge = function () {
                 })
             .fail(function () {
                     clearErrorMessages();
-                    display_error(translator.trans("uam.js.server_timed_out"));
+                    display_error(Translator.trans("uam.js.server_timed_out"));
                 }
             )
     } else {
@@ -163,7 +145,7 @@ chilliController.getLogin = function () {
     const username = $("#username").val();
 
     if (typeof (password) !== 'string' || typeof (username) !== 'string' || password.length === 0 || username.length === 0) {
-        display_error(translator.trans('uam.js.both_username_password_needed'));
+        display_error(Translator.trans('uam.js.both_username_password_needed'));
         return false;
     }
 
@@ -178,7 +160,7 @@ chilliController.getLogin = function () {
         .done(chilliController.processReply)
         .fail(function () {
                 clearErrorMessages();
-                display_error(translator.trans("uam.js.login_failed_server_error"));
+                display_error(Translator.trans("uam.js.login_failed_server_error"));
             }
         );
 }
@@ -202,14 +184,14 @@ chilliController.tosGetResponse = function () {
         .done(chilliController.tosGetLogin)
         .fail(function () {
             clearErrorMessages();
-            display_error(translator.trans('uam.js.no_response_tos_server'));
+            display_error(Translator.trans('uam.js.no_response_tos_server'));
         });
 }
 
 chilliController.tosGetLogin = function (resp) {
     // Check for an invalid response
     if (typeof (resp) == 'undefined' || typeof (resp.success) !== 'boolean') {
-        display_error(translator.trans("uam.js.tos_incorrect_response"));
+        display_error(Translator.trans("uam.js.tos_incorrect_response"));
         return false;
     }
 
@@ -219,7 +201,7 @@ chilliController.tosGetLogin = function (resp) {
      * check them though
      */
     if (!resp.success || typeof (resp.username) !== 'string' || typeof (resp.response) !== 'string') {
-        display_error(translator.trans("uam.js.login_error"))
+        display_error(Translator.trans("uam.js.login_error"))
         return false
     }
 
@@ -232,7 +214,7 @@ chilliController.tosGetLogin = function (resp) {
         .done(chilliController.processReply)
         .fail(function () {
                 clearErrorMessages();
-                display_error(translator.trans("uam.js.tos_login_error"));
+                display_error(Translator.trans("uam.js.tos_login_error"));
             }
         );
 }
@@ -267,11 +249,11 @@ chilliController.processReply = function (resp) {
         if (resp.clientState === chilliController.stateCodes.AUTH) {
             if (chilliController.clientState === chilliController.stateCodes.AUTH_PENDING) {
                 // We have successfully logged in or changed states to logged in
-                error_message(translator.trans("uam.js.login_success"), 'alert-success');
+                error_message(Translator.trans("uam.js.login_success"), 'alert-success');
                 let userUrl = filterUserUrl(getQueryVariable('userurl'));
                 if (typeof (userUrl) == 'string') {
                     userUrl = decodeURIComponent(userUrl);
-                    error_message(translator.trans('uam.js.login_continue_to_site', {'{userUrl}': userUrl}), 'alert-success');
+                    error_message(Translator.trans('uam.js.login_continue_to_site', {userUrl: userUrl}), 'alert-success');
                 }
 
             }
@@ -279,7 +261,7 @@ chilliController.processReply = function (resp) {
 
             pageStates.loggedInFormState();
             //$('#loggedinusername').text('Logged in as ' + resp.session.userName);
-            //$('#sessionstarttime').text(translator.trans('uam.js.status.sessionStart', {startTime: chilliController.formatTime(resp.session.startTime)}));
+            //$('#sessionstarttime').text(Translator.trans('uam.js.status.sessionStart', {startTime: chilliController.formatTime(resp.session.startTime)}));
             //$('#sessionTimeout').text('Session will end at ' + chilliController.formatTime(resp.session.sessionTimeout - resp.accounting.sessionTime));
 
             $.each(resp.session, function (index, value) {
@@ -287,18 +269,18 @@ chilliController.processReply = function (resp) {
                     case 'maxTotalOctets':
                         let remainingBytes = chilliController.formatBytes(value - resp.accounting.inputOctets - resp.accounting.outputOctets)
                         $('#sessionMaxTotalOctets').show();
-                        $('#sessionMaxTotalOctets').html(translator.trans('uam.js.status.remainingSessionData', { '{remainingSessionData}': remainingBytes}))
+                        $('#sessionMaxTotalOctets').html(Translator.trans('uam.js.status.remainingSessionData', { remainingSessionData: remainingBytes}))
                         // TODO Gigawords in resp.accounting
                         break;
 
                     case 'sessionTimeout':
                         let remainingTime = chilliController.formatTime(value - resp.accounting.sessionTime);
                         $('#sessionTimeout').show();
-                        $('#sessionTimeout').html(translator.trans('uam.js.status.remainingSessionTime', { '{remainingSessionTime}': remainingTime}))
+                        $('#sessionTimeout').html(Translator.trans('uam.js.status.remainingSessionTime', { remainingSessionTime: remainingTime}))
                         break;
                     case 'userName':
                         $('#loggedinuserName').show();
-                        $('#loggedinuserName').html(translator.trans('uam.js.status.loggedUsername', {'{username}': value}))
+                        $('#loggedinuserName').html(Translator.trans('uam.js.status.loggedUsername', {username: value}))
                         break
                 }
             });

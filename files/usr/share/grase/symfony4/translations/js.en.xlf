@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+        <header>
+            <tool tool-id="symfony" tool-name="Symfony"/>
+        </header>
+        <body>
+            <trans-unit id="uam.js.server_timed_out" resname="uam.js.server_timed_out">
+                <source>uam.js.server_timed_out</source>
+                <target><![CDATA[Server Timed Out.<br/>Please try again]]></target>
+            </trans-unit>
+            <trans-unit id="uam.js.both_username_password_needed" resname="uam.js.both_username_password_needed">
+                <source>uam.js.both_username_password_needed</source>
+                <target>Both username and password are required</target>
+            </trans-unit>
+            <trans-unit id="uam.js.login_failed_server_error" resname="uam.js.login_failed_server_error">
+                <source>uam.js.login_failed_server_error</source>
+                <target>Login failed due to server error. Please try again</target>
+            </trans-unit>
+            <trans-unit id="uam.js.no_response_tos_server" resname="uam.js.no_response_tos_server">
+                <source>uam.js.no_response_tos_server</source>
+                <target>No response from TOS login server</target>
+            </trans-unit>
+            <trans-unit id="uam.js.tos_incorrect_response" resname="uam.js.tos_incorrect_response">
+                <source>uam.js.tos_incorrect_response</source>
+                <target>Incorrect response from TOS server. Please notify system admin</target>
+            </trans-unit>
+            <trans-unit id="uam.js.tos_login_error" resname="uam.js.tos_login_error">
+                <source>uam.js.tos_login_error</source>
+                <target>TOS login failed due to server error. Please try again</target>
+            </trans-unit>
+            <trans-unit id="uam.js.login_error" resname="uam.js.login_error">
+                <source>uam.js.login_error</source>
+                <target>An error occurred trying to login. Please notify the system admin</target>
+            </trans-unit>
+            <trans-unit id="uam.js.login_success" resname="uam.js.login_success">
+                <source>uam.js.login_success</source>
+                <target>Login successful</target>
+            </trans-unit>
+            <trans-unit id="uam.js.login_continue_to_site" resname="uam.js.login_continue_to_site">
+                <source>uam.js.login_continue_to_site</source>
+                <target><![CDATA[Continue to your site <a target='_blank' href='%userUrl%'>%userUrl%</a>]]></target>
+            </trans-unit>
+            <trans-unit id="uam.js.status.sessionStart" resname="uam.js.status.sessionStart">
+                <source>uam.js.status.sessionStart</source>
+                <target>Since %startTime%</target>
+            </trans-unit>
+            <trans-unit id="uam.js.status.remainingSessionTime" resname="uam.js.status.remainingSessionTime">
+                <source>uam.js.status.remainingSessionTime</source>
+                <target><![CDATA[Remaining Session Time <strong>%remainingSessionTime%</strong>]]></target>
+            </trans-unit>
+            <trans-unit id="uam.js.status.remainingSessionData" resname="uam.js.status.remainingSessionData">
+                <source>uam.js.status.remainingSessionData</source>
+                <target><![CDATA[Remaining Session Data <strong>%remainingSessionData%</strong>]]></target>
+            </trans-unit>
+            <trans-unit id="uam.js.status.loggedUsername" resname="uam.js.status.loggedUsername">
+                <source>uam.js.status.loggedUsername</source>
+                <target><![CDATA[Logged in as <strong>%username%</strong>]]></target>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

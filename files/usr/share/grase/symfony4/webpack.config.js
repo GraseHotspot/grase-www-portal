@@ -1,6 +1,10 @@
 // webpack.config.js
 var Encore = require('@symfony/webpack-encore');
 
+Encore.autoProvideVariables({
+    'bazinga-translator': 'Translator'
+})
+
 Encore
 // the project directory where all compiled assets will be stored
     .setOutputPath('public/build/')
