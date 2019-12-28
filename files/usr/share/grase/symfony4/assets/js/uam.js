@@ -1,5 +1,5 @@
 const $ = require('jquery');
-require('./chilliMD5');
+import ChilliMD5 from './chilliMD5';
 require('bootstrap');
 require('admin-lte');
 
