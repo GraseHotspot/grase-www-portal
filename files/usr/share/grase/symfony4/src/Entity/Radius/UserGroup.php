@@ -12,9 +12,16 @@ use Symfony\Component\Serializer\Annotation\Groups;
  */
 class UserGroup
 {
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer",  options={"unsigned":true})
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
 
     /**
-     * @ORM\Id
      * @ORM\ManyToOne(targetEntity="User", inversedBy="userGroups")
      * @ORM\JoinColumn(name="UserName", referencedColumnName="username")
      */
@@ -23,7 +30,6 @@ class UserGroup
     /**
      * @var string
      *
-     * @ORM\Id
      * @ORM\ManyToOne(targetEntity="Group", inversedBy="userGroups")
      * @ORM\JoinColumn(name="GroupName", referencedColumnName="id")
      *

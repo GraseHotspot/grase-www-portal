@@ -7,7 +7,18 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Radacct
  *
- * @ORM\Table(name="radacct", uniqueConstraints={@ORM\UniqueConstraint(name="AcctUniqueId_2", columns={"AcctUniqueId"})}, indexes={@ORM\Index(name="UserName", columns={"UserName"}), @ORM\Index(name="FramedIPAddress", columns={"FramedIPAddress"}), @ORM\Index(name="AcctSessionId", columns={"AcctSessionId"}), @ORM\Index(name="AcctStartTime", columns={"AcctStartTime"}), @ORM\Index(name="AcctStopTime", columns={"AcctStopTime"}), @ORM\Index(name="NASIPAddress", columns={"NASIPAddress"})})
+ * @ORM\Table(name="radacct",
+ *     uniqueConstraints={
+ *          @ORM\UniqueConstraint(name="acctuniqueid", columns={"acctuniqueid"})
+ *      },
+ *     indexes={
+ *          @ORM\Index(name="UserName", columns={"UserName"}),
+ *          @ORM\Index(name="FramedIPAddress", columns={"FramedIPAddress"}),
+ *          @ORM\Index(name="AcctSessionId", columns={"AcctSessionId"}),
+ *          @ORM\Index(name="AcctStartTime", columns={"AcctStartTime"}),
+ *          @ORM\Index(name="AcctStopTime", columns={"AcctStopTime"}),
+ *          @ORM\Index(name="NASIPAddress", columns={"NASIPAddress"})
+ *      })
  * @ORM\Entity
  */
 class Radacct
@@ -66,7 +77,7 @@ class Radacct
     /**
      * @var string
      *
-     * @ORM\Column(name="NASPortId", type="string", length=15, nullable=true)
+     * @ORM\Column(name="NASPortId", type="string", length=32, nullable=true)
      */
     private $nasportid;
 
@@ -87,9 +98,23 @@ class Radacct
     /**
      * @var \DateTime
      *
+     * @ORM\Column(name="acctupdatetime", type="datetime", nullable=true)
+     */
+    private $acctUpdateTime;
+
+    /**
+     * @var \DateTime
+     *
      * @ORM\Column(name="AcctStopTime", type="datetime", nullable=true)
      */
     private $acctstoptime;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="acctinterval", type="integer", length=12, nullable=true)
+     */
+    private $acctInterval;
 
     /**
      * @var int
@@ -174,27 +199,6 @@ class Radacct
      * @ORM\Column(name="FramedIPAddress", type="string", length=15, nullable=false)
      */
     private $framedipaddress;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="AcctStartDelay", type="integer", nullable=true)
-     */
-    private $acctstartdelay;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="AcctStopDelay", type="integer", nullable=true)
-     */
-    private $acctstopdelay;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="xascendsessionsvrkey", type="string", length=10, nullable=true)
-     */
-    private $xascendsessionsvrkey;
 
     /**
      * Get radacctid
@@ -717,78 +721,6 @@ class Radacct
     public function getFramedipaddress()
     {
         return $this->framedipaddress;
-    }
-
-    /**
-     * Set acctstartdelay
-     *
-     * @param integer $acctstartdelay
-     *
-     * @return Radacct
-     */
-    public function setAcctstartdelay($acctstartdelay)
-    {
-        $this->acctstartdelay = $acctstartdelay;
-
-        return $this;
-    }
-
-    /**
-     * Get acctstartdelay
-     *
-     * @return integer
-     */
-    public function getAcctstartdelay()
-    {
-        return $this->acctstartdelay;
-    }
-
-    /**
-     * Set acctstopdelay
-     *
-     * @param integer $acctstopdelay
-     *
-     * @return Radacct
-     */
-    public function setAcctstopdelay($acctstopdelay)
-    {
-        $this->acctstopdelay = $acctstopdelay;
-
-        return $this;
-    }
-
-    /**
-     * Get acctstopdelay
-     *
-     * @return integer
-     */
-    public function getAcctstopdelay()
-    {
-        return $this->acctstopdelay;
-    }
-
-    /**
-     * Set xascendsessionsvrkey
-     *
-     * @param string $xascendsessionsvrkey
-     *
-     * @return Radacct
-     */
-    public function setXascendsessionsvrkey($xascendsessionsvrkey)
-    {
-        $this->xascendsessionsvrkey = $xascendsessionsvrkey;
-
-        return $this;
-    }
-
-    /**
-     * Get xascendsessionsvrkey
-     *
-     * @return string
-     */
-    public function getXascendsessionsvrkey()
-    {
-        return $this->xascendsessionsvrkey;
     }
 
     /**
