@@ -387,9 +387,9 @@ function clearErrorMessages() {
 
 // Setup our forms and action links
 
-$('#loginform').submit((event) => chilliController.startLogin(event, "USER"));
+$('#loginform_form').submit((event) => chilliController.startLogin(event, "USER"));
 
-$('#tosaccept').submit((event) => chilliController.startLogin(event,"TOS"));
+$('#tosaccept_form').submit((event) => chilliController.startLogin(event,"TOS"));
 
 
 $('#logofflink').click(function () {

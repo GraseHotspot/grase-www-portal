@@ -20,7 +20,7 @@
                 <div class="login-box-body card-body">
                     <p class="login-box-msg">{% trans %}Free Login{% endtrans %}</p>
 
-                    <form action="{{ path("_grase_security_check") }}" method="post">
+                    <form id="tosaccept_form">
                         <button type="submit" class="btn btn-primary btn-block btn-flat">{% trans %}Free Login{% endtrans %}</button>
                     </form>
 
@@ -44,7 +44,7 @@
                     <p class="login-box-msg">{% trans %}Voucher Login{% endtrans %}</p>
 
 
-                    <form action="{{ path("_grase_security_check") }}" method="post">
+                    <form id="loginform_form">
                         <div class="form-group has-feedback">
                             <input type="text" class="form-control" placeholder="{% trans %}Username{% endtrans %}" id="username" name="username" required autofocus />
                             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
