@@ -108,6 +108,15 @@ class UpdateUserData
 
         $this->setDataLimit($user, $em, $this->dataLimitToBytes());
         $this->setTimeLimit($user, $em, $this->timeLimitToSeconds());
+
+        /* Only update the password if we have a value. We don't load a value by default, so it
+         * should only be present if we are changing it
+         *
+         * We also then don't let you easily delete a password once set, probably a good thing
+         */
+        if ($this->password !== null) {
+            $this->setPassword($user, $em, $this->password);
+        }
         // @TODO update the rest
         // TODO reset the expiry??
         // TODO update the expireAfter if present and expiry isn't set
@@ -230,5 +239,21 @@ class UpdateUserData
         }
         $primaryUserGroup->setGroup($group);
         $em->persist($primaryUserGroup);
+    }
+
+    private function setPassword(User $user, ObjectManager $em, $password)
+    {
+        $passwordCheck = $user->getPasswordCheck();
+        if (!$passwordCheck) {
+            // We need to create a check
+            $passwordCheck = new Check();
+            $passwordCheck->setAttribute('Cleartext-Password');
+            $passwordCheck->setUser($user);
+            $passwordCheck->setOp(':=');
+        }
+
+        // Just set the check we have
+        $passwordCheck->setValue($password);
+        $em->persist($passwordCheck);
     }
 }
