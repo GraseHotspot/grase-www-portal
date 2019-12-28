@@ -75,7 +75,7 @@ class SettingsUtils
      */
     public function mbOptionsArray()
     {
-        $mbOptions = json_decode($this->settingsRepository->find(Setting::MB_OPTIONS)->getValue());
+        $mbOptions = $this->settingsRepository->find(Setting::MB_OPTIONS)->getValue();
         //array_map(function ($option) { return })
         $options = [];
         foreach ($mbOptions as $mb) {
@@ -92,7 +92,7 @@ class SettingsUtils
      */
     public function timeOptionsArray()
     {
-        $timeOptions = json_decode($this->settingsRepository->find(Setting::TIME_OPTIONS)->getValue());
+        $timeOptions = $this->settingsRepository->find(Setting::TIME_OPTIONS)->getValue();
         $options     = [];
         foreach ($timeOptions as $time) {
             if ($time >= 60) {
