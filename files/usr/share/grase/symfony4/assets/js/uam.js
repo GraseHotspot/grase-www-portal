@@ -92,12 +92,8 @@ chilliController.formatBytes = function (b, zeroReturn) {
 
 chilliController.getChallenge = function () {
     if (typeof (self.challenge) != 'string') {
-        $.ajax(
-            {
-                url: chilliController.urlRoot + 'status?callback=?',
-                dataType: "jsonp",
-                timeout: 5000,
-                success: function (resp) {
+        ajaxChilliController('status')
+            .done(function (resp) {
                     // Check for valid challenge
 
                     if (typeof (resp.challenge) != 'string') {
@@ -121,13 +117,12 @@ chilliController.getChallenge = function () {
 
                     chilliController.getLogin();
 
-                },
-                error: function () {
+                })
+            .fail(function () {
                     clearErrorMessages();
                     display_error("Server Timed Out.<br/>Please try again");
                 }
-
-            });
+            )
     } else {
         chilliController.getLogin();
     }
@@ -153,21 +148,17 @@ chilliController.getLogin = function () {
     const chappassword = myMD5.chap(chilliController.ident, password, chilliController.challenge);
 
     /* Build /logon command URL */
-    const logonUrl = chilliController.urlRoot + 'logon?username=' + encodeURIComponent(username) + '&response=' + encodeURIComponent(chappassword);
+    const logonPath = 'logon?username=' + encodeURIComponent(username) + '&response=' + encodeURIComponent(chappassword);
 
     chilliController.clientState = chilliController.stateCodes.AUTH_PENDING;
 
-    $.ajax(
-        {
-            url: logonUrl,
-            dataType: "jsonp",
-            timeout: 5000,
-            jsonpCallback: chilliController.processReply.name,
-            error: function () {
+    ajaxChilliController(logonPath)
+        .done(chilliController.processReply)
+        .fail(function () {
                 clearErrorMessages();
                 display_error("Login Failed due to server error. Please try again");
             }
-        });
+        );
 }
 
 chilliController.tosGetResponse = function () {
@@ -212,21 +203,17 @@ chilliController.tosGetLogin = function (resp) {
     }
 
     /* Build /logon command URL */
-    const logonUrl = chilliController.urlRoot + 'logon?username=' + encodeURIComponent(resp.username) + '&response=' + encodeURIComponent(resp.response);
+    const logonPath = 'logon?username=' + encodeURIComponent(resp.username) + '&response=' + encodeURIComponent(resp.response);
 
     chilliController.clientState = chilliController.stateCodes.AUTH_PENDING;
 
-    $.ajax(
-        {
-            url: logonUrl,
-            dataType: "jsonp",
-            timeout: 5000,
-            jsonpCallback: chilliController.processReply.name,
-            error: function () {
+    ajaxChilliController(logonPath)
+        .done(chilliController.processReply)
+        .fail(function () {
                 clearErrorMessages();
                 display_error("TOS login failed due to server error. Please try again");
             }
-        });
+        );
 }
 
 chilliController.processReply = function (resp) {
@@ -316,26 +303,25 @@ chilliController.processReply = function (resp) {
 chilliController.updateStatus = function () {
     // Clear any previous timeout we have running
     clearTimeout(chilliController.timeoutvar);
+    ajaxChilliController('status')
+        .done(chilliController.processReply);
+}
 
-    $.ajax(
+function ajaxChilliController(path) {
+    return $.ajax(
         {
-            url: chilliController.urlRoot + 'status',
+            url: chilliController.urlRoot + path,
             dataType: "jsonp",
-            timeout: 5000,
-            jsonpCallback: chilliController.processReply.name
+            timeout: 5000
         });
 }
 
+
 chilliController.logoff = function () {
-    $.ajax(
-        {
-            url: chilliController.urlRoot + 'logoff',
-            dataType: "jsonp",
-            timeout: 5000,
-            jsonpCallback: chilliController.processReply.name,
-            error: function () {
-                display_error("Failed to logoff. Please try again");
-            }
+    ajaxChilliController('logoff')
+        .done(chilliController.processReply)
+        .fail(function() {
+            display_error("Failed to logoff. Please try again");
         });
 }
 
@@ -425,4 +411,4 @@ $('#statuslink').click(function () {
 // Fire off our status updater
 chilliController.updateStatus();
 
-global.chilliController = chilliController;
+global.chilliController = chilliController; // TODO we can remove this now?
