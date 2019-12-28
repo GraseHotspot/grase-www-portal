@@ -172,16 +172,15 @@ chilliController.tosGetResponse = function () {
 
     chilliController.clientState = chilliController.stateCodes.AUTH_PENDING;
 
-    $.ajax(
-        {
+    $.ajax({
             url: tosUrl,
             dataType: "jsonp",
             timeout: 5000,
-            jsonpCallback: chilliController.tosGetLogin.name,
-            error: function () {
-                clearErrorMessages();
-                display_error("No response from TOS server");
-            }
+        })
+        .done(chilliController.tosGetLogin)
+        .fail(function () {
+            clearErrorMessages();
+            display_error("No response from TOS server");
         });
 }
 
