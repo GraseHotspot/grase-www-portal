@@ -247,7 +247,7 @@ chilliController.processReply = function (resp) {
             if (chilliController.clientState === chilliController.stateCodes.AUTH_PENDING) {
                 // We have successfully logged in or changed states to logged in
                 error_message("Login successful", 'alert-success');
-                let userUrl = getQueryVariable('userurl');
+                let userUrl = filterUserUrl(getQueryVariable('userurl'));
                 if (typeof (userUrl) == 'string') {
                     userUrl = decodeURIComponent(userUrl);
                     error_message("Continue to your site <a target='_blank' href='" + userUrl + "'>" + userUrl + "</a>", 'alert-success');
@@ -407,6 +407,14 @@ $('#statuslink').click(function () {
         loginwindow.focus();
     }
 });
+
+function filterUserUrl(userUrl)
+{
+    if (userUrl === 'http://logout/' || userUrl === 'http://1.0.0.0/') {
+        return null;
+    }
+    return userUrl;
+}
 
 // Fire off our status updater
 chilliController.updateStatus();
