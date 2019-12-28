@@ -326,7 +326,7 @@ chilliController.logoff = function () {
 }
 
 chilliController.startLogin = function (event, type) {
-    chilliController.logintype = type;
+    chilliController.loginType = type;
     pageStates.loadingFormState();
     clearErrorMessages();
     chilliController.challenge = null;
@@ -342,7 +342,7 @@ const pageStates = {
         $('#loading').hide();
         $('#loggedin').hide();
         $('#loggedin>span').hide();
-        chilliController.logintype = "";
+        chilliController.loginType = "";
         console.log("Loading login form state");
     },
     loadingFormState: function () {
