@@ -54,6 +54,7 @@ security:
     access_control:
         - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY}
         - { path: ^/uam$, roles: IS_AUTHENTICATED_ANONYMOUSLY}
+        - { path: ^/uam/toslogin$, roles: IS_AUTHENTICATED_ANONYMOUSLY}
         - { path: ^/groups, roles: ROLE_ADMIN }
         - { path: ^/$, roles: ROLE_USER }
         - { path: ^/, roles: ROLE_SUPERADMIN }

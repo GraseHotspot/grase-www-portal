@@ -186,7 +186,7 @@ chilliController.tosGetResponse = function () {
 
 chilliController.tosGetLogin = function (resp) {
     // Check for an invalid response
-    if (typeof (resp) == 'undefined' || typeof (resp.success !== 'boolean')) {
+    if (typeof (resp) == 'undefined' || typeof (resp.success) !== 'boolean') {
         display_error("Incorrect response from TOS server. Please notify system admin");
         return false;
     }
