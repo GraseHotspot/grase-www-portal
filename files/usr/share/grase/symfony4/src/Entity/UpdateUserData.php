@@ -241,6 +241,13 @@ class UpdateUserData
         $em->persist($primaryUserGroup);
     }
 
+    /**
+     * Updates a user Cleartext-Password check attribute to set their CHAP password
+     *
+     * @param User          $user
+     * @param ObjectManager $em
+     * @param               $password
+     */
     private function setPassword(User $user, ObjectManager $em, $password)
     {
         $passwordCheck = $user->getPasswordCheck();
