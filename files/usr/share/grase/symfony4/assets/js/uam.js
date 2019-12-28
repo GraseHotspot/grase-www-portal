@@ -162,7 +162,7 @@ chilliController.getLogin = function () {
             url: logonUrl,
             dataType: "jsonp",
             timeout: 5000,
-            jsonpCallback: "chilliController.processReply",
+            jsonpCallback: chilliController.processReply.name,
             error: function () {
                 clearErrorMessages();
                 display_error("Login Failed due to server error. Please try again");
@@ -186,7 +186,7 @@ chilliController.tosGetResponse = function () {
             url: tosUrl,
             dataType: "jsonp",
             timeout: 5000,
-            jsonpCallback: "chilliController.tosGetLogin",
+            jsonpCallback: chilliController.tosGetLogin.name,
             error: function () {
                 clearErrorMessages();
                 display_error("No response from TOS server");
@@ -221,7 +221,7 @@ chilliController.tosGetLogin = function (resp) {
             url: logonUrl,
             dataType: "jsonp",
             timeout: 5000,
-            jsonpCallback: "chilliController.processReply",
+            jsonpCallback: chilliController.processReply.name,
             error: function () {
                 clearErrorMessages();
                 display_error("TOS login failed due to server error. Please try again");
@@ -322,7 +322,7 @@ chilliController.updateStatus = function () {
             url: chilliController.urlRoot + 'status',
             dataType: "jsonp",
             timeout: 5000,
-            jsonpCallback: "chilliController.processReply"
+            jsonpCallback: chilliController.processReply.name
         });
 }
 
@@ -332,7 +332,7 @@ chilliController.logoff = function () {
             url: chilliController.urlRoot + 'logoff',
             dataType: "jsonp",
             timeout: 5000,
-            jsonpCallback: "chilliController.processReply",
+            jsonpCallback: chilliController.processReply.name,
             error: function () {
                 display_error("Failed to logoff. Please try again");
             }
@@ -424,3 +424,5 @@ $('#statuslink').click(function () {
 
 // Fire off our status updater
 chilliController.updateStatus();
+
+global.chilliController = chilliController;
