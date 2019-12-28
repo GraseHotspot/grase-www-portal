@@ -9,3 +9,4 @@ alter table batch
 	add constraint batch_pk
 		primary key (batchID, UserName);
 
+Find a real JS translation engine that does ICU message format (https://formatjs.io/github/)
