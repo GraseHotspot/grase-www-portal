@@ -167,17 +167,23 @@
             </trans-unit>
             <trans-unit id="uam.js.login_continue_to_site" resname="uam.js.login_continue_to_site">
                 <source>uam.js.login_continue_to_site</source>
-                <target><![CDATA[
-        Continue to your site <a target='_blank' href='{userUrl}'>{userUrl}</a>
-        ]]></target>
+                <target><![CDATA[Continue to your site <a target='_blank' href='{userUrl}'>{userUrl}</a>]]></target>
             </trans-unit>
             <trans-unit id="uam.js.status.sessionStart" resname="uam.js.status.sessionStart">
                 <source>uam.js.status.sessionStart</source>
                 <target>Since {startTime}</target>
             </trans-unit>
+            <trans-unit id="uam.js.status.remainingSessionTime" resname="uam.js.status.remainingSessionTime">
+                <source>uam.js.status.remainingSessionTime</source>
+                <target><![CDATA[Remaining Session Time <strong>{remainingSessionTime}</strong>]]></target>
+            </trans-unit>
+            <trans-unit id="uam.js.status.remainingSessionData" resname="uam.js.status.remainingSessionData">
+                <source>uam.js.status.remainingSessionData</source>
+                <target><![CDATA[Remaining Session Data <strong>{remainingSessionData}</strong>]]></target>
+            </trans-unit>
             <trans-unit id="uam.js.status.loggedUsername" resname="uam.js.status.loggedUsername">
                 <source>uam.js.status.loggedUsername</source>
-                <target>Logged in as {username}</target>
+                <target><![CDATA[Logged in as <strong>{username}</strong>]]></target>
             </trans-unit>
 
         </body>

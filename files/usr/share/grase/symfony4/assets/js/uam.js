@@ -271,7 +271,7 @@ chilliController.processReply = function (resp) {
                 let userUrl = filterUserUrl(getQueryVariable('userurl'));
                 if (typeof (userUrl) == 'string') {
                     userUrl = decodeURIComponent(userUrl);
-                    error_message(translator.trans('uam.js.login_continue_to_site', {userUrl: userUrl}), 'alert-success');
+                    error_message(translator.trans('uam.js.login_continue_to_site', {'{userUrl}': userUrl}), 'alert-success');
                 }
 
             }
@@ -287,18 +287,18 @@ chilliController.processReply = function (resp) {
                     case 'maxTotalOctets':
                         let remainingBytes = chilliController.formatBytes(value - resp.accounting.inputOctets - resp.accounting.outputOctets)
                         $('#sessionMaxTotalOctets').show();
-                        $('#sessionMaxTotalOctets').html(translator.trans('Remaining session data $remaining', { $remaining: remainingBytes}))
+                        $('#sessionMaxTotalOctets').html(translator.trans('uam.js.status.remainingSessionData', { '{remainingSessionData}': remainingBytes}))
                         // TODO Gigawords in resp.accounting
                         break;
 
                     case 'sessionTimeout':
+                        let remainingTime = chilliController.formatTime(value - resp.accounting.sessionTime);
                         $('#sessionTimeout').show();
-                        $('#sessionTimeoutVal').text(chilliController.formatTime(value - resp.accounting.sessionTime));
+                        $('#sessionTimeout').html(translator.trans('uam.js.status.remainingSessionTime', { '{remainingSessionTime}': remainingTime}))
                         break;
                     case 'userName':
                         $('#loggedinuserName').show();
-                        $('#loggedinuserName').html(translator.trans('uam.js.status.loggedUsername', {username: value}))
-                        //$('#loggedinuserNameVal').text(value);
+                        $('#loggedinuserName').html(translator.trans('uam.js.status.loggedUsername', {'{username}': value}))
                         break
                 }
             });
@@ -433,8 +433,11 @@ $('#statuslink').click(function () {
 
 function filterUserUrl(userUrl)
 {
-    if (userUrl === 'http://logout/' || userUrl === 'http://1.0.0.0/') {
-        return null;
+    if (typeof (userUrl) == 'string') {
+        let decodedUserUrl = decodeURIComponent(userUrl);
+        if (decodedUserUrl === 'http://logout/' || decodedUserUrl === 'http://1.0.0.0/') {
+            return null;
+        }
     }
     return userUrl;
 }
