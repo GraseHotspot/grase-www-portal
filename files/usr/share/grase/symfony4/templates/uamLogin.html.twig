@@ -76,7 +76,13 @@
                 <progress class="pure-material-progress-circular"></progress><br/> {% trans %}Attempting Login...{% endtrans %}
                 </div>
             </div>
-            <div class="card" id="loggedin" style="display: none;">Logged In</div>
+            <div class="card" id="loggedin" style="display: none;">
+                <span id="loggedinuserName" style="display: none">{t}Logged in as{/t} <strong id="loggedinuserNameVal"></strong></span>
+                <span id="sessionTimeout" style="display: none"><br/>{t}Remaining Session Time{/t} <strong id="sessionTimeoutVal"></strong></span>
+                <span id="sessionMaxTotalOctets" style="display: none"><br/>{t}Remaining Session Data{/t} <strong id="sessionMaxTotalOctetsVal"></strong></span>
+                <br/><a class="btn btn-danger" href="http://1.0.0.0" id="logofflink">{t}Logout{/t}</a> {if $activepage != 'mini'}<a href="/grase/uam/mini" class="btn btn-success" target="grase_uam" id='statuslink'>{t}Open Status Window{/t} <i class="fa fa-external-link"></i></a>{/if}
+
+            </div>
 
             <!-- Support links box -->
             <div>

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "74cca5ab5359337aa95fbf1a99426d8b",
+    "content-hash": "0cac06ae7cc260e48e73870fd9eb3b07",
     "packages": [
         {
             "name": "api-platform/api-pack",
@@ -2486,6 +2486,54 @@
                 "versioning"
             ],
             "time": "2019-08-09T17:22:14+00:00"
+        },
+        {
+            "name": "symfony-javascript/javascript-bundle",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony-javascript/javascript-bundle.git",
+                "reference": "15aaf332203394900f5414e65e0d10716028fed6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony-javascript/javascript-bundle/zipball/15aaf332203394900f5414e65e0d10716028fed6",
+                "reference": "15aaf332203394900f5414e65e0d10716028fed6",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0",
+                "symfony/framework-bundle": "^4.3"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "symfony": {
+                    "allow-contrib": "true"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SymfonyJavascript\\JavascriptBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Enzo Innocenzi",
+                    "email": "enzo@innocenzi.dev"
+                }
+            ],
+            "description": "Useful Symfony functionnalities in your front-end.",
+            "keywords": [
+                "javascript",
+                "routing",
+                "symfony",
+                "translation"
+            ],
+            "time": "2019-10-24T20:49:20+00:00"
         },
         {
             "name": "symfony/asset",
@@ -7109,9 +7157,9 @@
     "prefer-lowest": false,
     "platform": {
         "php": "^7.1.3",
+        "ext-dom": "*",
         "ext-iconv": "*",
-        "ext-json": "*",
-        "ext-dom": "*"
+        "ext-json": "*"
     },
     "platform-dev": []
 }

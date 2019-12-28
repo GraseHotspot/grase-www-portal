@@ -8,6 +8,7 @@ all: js composer prod_env version
 
 # JS doesn't end up in ext-libs due to webpack compiling it all into our own thing
 js:
+	cd files/usr/share/grase/symfony4; bin/console javascript:extract:all
 	cd files/usr/share/grase/symfony4; yarn; yarn encore prod
 	rm -fr files/usr/share/grase/symfony4/node_modules
 

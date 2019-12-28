@@ -1,0 +1,22 @@
+javascript:
+  translation:
+
+    # The extract path of the message file.
+    extract_path: assets/js/symfony/messages
+
+    # The locales to be exported
+    locales: []
+
+    # The domains to be exported
+    domains: []
+  routing:
+
+    # The extract path of the message file.
+    extract_path: assets/js/symfony/routes
+
+    # Defines a list of routes to be exposed or hidden, depending on the whitelist argument. Supports RegEx.
+    routes:
+      - grase_uam_toslogin
+
+    # Defines whether or not the routes parameter will be used as a whitelist.
+    whitelist: true
