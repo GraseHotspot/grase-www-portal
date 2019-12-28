@@ -167,7 +167,7 @@ chilliController.tosGetResponse = function () {
 
     // TODO get this from the router (grase_uam_toslogin)
     /* Build automac URL */
-    const tosUrl = 'http://' + window.location.hostname + '/grase/uam/automac?challenge=' + encodeURIComponent(chilliController.challenge);
+    const tosUrl = 'http://' + window.location.hostname + '/grase/uam/toslogin?challenge=' + encodeURIComponent(chilliController.challenge);
 
 
     chilliController.clientState = chilliController.stateCodes.AUTH_PENDING;
