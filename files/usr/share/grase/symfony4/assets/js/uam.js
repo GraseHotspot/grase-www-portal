@@ -222,7 +222,7 @@ chilliController.processReply = function (resp) {
     //alert(resp);
     // Check for message (error)
     if (typeof (resp.message) == 'string') {
-        error_message(resp.message);
+        error_message(resp.message, 'alert-info');
     }
 
     if (typeof (resp.challenge) == 'string') {
