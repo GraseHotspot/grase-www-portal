@@ -82,7 +82,7 @@
                 <div id="sessionMaxTotalOctets" style="display: none"></div>
                 {# This is a default logout link, it should be replaced by JS from the JSON responses we get after login #}
                 <br/><a class="btn btn-danger" href="http://1.0.0.0" id="logofflink">{% trans %}Logout{% endtrans %}</a>
-                {if $activepage != 'mini'}<a href="/grase/uam/mini" class="btn btn-success" target="grase_uam" id='statuslink'>{t}Open Status Window{/t} <i class="fa fa-external-link"></i></a>{/if}
+                <a href="{{ path('grase_uam_login') }}" class="btn btn-success" target="grase_uam" id='statuslink' style="display: none;">{% trans %}Open Status Window{% endtrans %} <i class="fa fa-external-link"></i></a>
 
             </div>
 

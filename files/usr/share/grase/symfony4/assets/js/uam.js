@@ -414,14 +414,20 @@ $('#logofflink').click(function () {
 
 // Setup status window link
 
-// TODO we've not yet written the new mini window
+// TODO use the correct JS router for this
 $('#statuslink').click(function () {
-    const loginwindow = window.open('/grase/uam/mini', 'grase_uam', 'width=300,height=400,status=yes,resizable=yes');
+    const loginwindow = window.open('/grase/uam', 'grase_uam', 'width=300,height=400,status=yes,resizable=yes');
     if (loginwindow) {
         loginwindow.moveTo(100, 100);
         loginwindow.focus();
     }
 });
+
+if (window.name === 'grase_uam') {
+    $('#statuslink').hide()
+} else {
+    $('#statuslink').show()
+}
 
 function filterUserUrl(userUrl)
 {
