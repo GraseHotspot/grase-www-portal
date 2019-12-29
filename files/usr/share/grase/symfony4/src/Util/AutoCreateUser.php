@@ -59,16 +59,15 @@ class AutoCreateUser
      */
     public function autoMacUser(SettingsUtils $settings, Request $request, EntityManagerInterface $em)
     {
-        // TODO MAC is passed in via uam, but it may still be best to get the IP from here
+        // MAC is passed in via uam, but it may still be best to get the IP from here (prevents spoofing requests)
         $mac = $this->latestMacFromIP($request->getClientIp(), $em);
         $autoUsername = $this->macToAutoUsername($mac);
 
         // Attempt to create user
         //
         $autoCreateGroupName = $settings->getSettingValue(Setting::AUTO_CREATE_GROUP);
-        $autoCreateGroup = $em->getRepository(Group::class)->find($autoCreateGroupName);
+        $autoCreateGroup = $em->getRepository(Group::class)->findBy(['name' => $autoCreateGroupName]);
         $autoCreatePassword = $settings->getSettingValue(Setting::AUTO_CREATE_PASSWORD);
-
 
         if ($autoCreateGroup && strlen($autoUsername) > 0) {
             // Try and find the user so we can update or create them
