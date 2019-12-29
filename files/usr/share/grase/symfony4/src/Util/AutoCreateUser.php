@@ -66,7 +66,7 @@ class AutoCreateUser
         // Attempt to create user
         //
         $autoCreateGroupName = $settings->getSettingValue(Setting::AUTO_CREATE_GROUP);
-        $autoCreateGroup = $em->getRepository(Group::class)->findBy(['name' => $autoCreateGroupName]);
+        $autoCreateGroup = $em->getRepository(Group::class)->findOneBy(['name' => $autoCreateGroupName]);
         $autoCreatePassword = $settings->getSettingValue(Setting::AUTO_CREATE_PASSWORD);
 
         if ($autoCreateGroup && strlen($autoUsername) > 0) {
