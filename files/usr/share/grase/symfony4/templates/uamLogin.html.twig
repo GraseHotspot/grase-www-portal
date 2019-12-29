@@ -17,9 +17,10 @@
             <div class="" id="errormessages" style="margin-top: 1em; max-width: 300px; text-align: center;"></div>
 
             <div class="card" id="tosaccept">
+                <div class="card-header">
+                    <h3 class="card-title text-center">{% trans %}Free Login{% endtrans %}</h3>
+                </div>
                 <div class="login-box-body card-body">
-                    <p class="login-box-msg">{% trans %}Free Login{% endtrans %}</p>
-
                     <form id="tosaccept_form">
                         <button type="submit" class="btn btn-primary btn-block btn-flat">{% trans %}Free Login{% endtrans %}</button>
                     </form>
@@ -40,10 +41,10 @@
                 </div><!-- /.login-box-body -->
             </div>
             <div class="card" id="loginform">
+                <div class="card-header">
+                    <h3 class="card-title text-center">{% trans %}Voucher Login{% endtrans %}</h3>
+                </div>
                 <div class="login-box-body card-body">
-                    <p class="login-box-msg">{% trans %}Voucher Login{% endtrans %}</p>
-
-
                     <form id="loginform_form">
                         <div class="form-group has-feedback">
                             <input type="text" class="form-control" placeholder="{% trans %}Username{% endtrans %}" id="username" name="username" required autofocus />
@@ -77,12 +78,14 @@
                 </div>
             </div>
             <div class="card" id="loggedin" style="display: none;">
-                <div id="loggedinuserName" style="display: none"></div>
-                <div id="sessionTimeout" style="display: none"></div>
-                <div id="sessionMaxTotalOctets" style="display: none"></div>
-                {# This is a default logout link, it should be replaced by JS from the JSON responses we get after login #}
-                <br/><a class="btn btn-danger" href="http://1.0.0.0" id="logofflink">{% trans %}Logout{% endtrans %}</a>
-                <a href="{{ path('grase_uam_login') }}" class="btn btn-success" target="grase_uam" id='statuslink' style="display: none;">{% trans %}Open Status Window{% endtrans %} <i class="fa fa-external-link"></i></a>
+                <div class="card-body">
+                    <div id="loggedinuserName" style="display: none"></div>
+                    <div id="sessionTimeout" style="display: none"></div>
+                    <div id="sessionMaxTotalOctets" style="display: none"></div>
+                    {# This is a default logout link, it should be replaced by JS from the JSON responses we get after login #}
+                    <br/><a class="btn btn-danger" href="http://1.0.0.0" id="logofflink">{% trans %}Logout{% endtrans %}</a>
+                    <a href="{{ path('grase_uam_login') }}" class="btn btn-success" target="grase_uam" id='statuslink' style="display: none;">{% trans %}Open Status Window{% endtrans %} <i class="fa fa-external-link"></i></a>
+                </div>
 
             </div>
 
