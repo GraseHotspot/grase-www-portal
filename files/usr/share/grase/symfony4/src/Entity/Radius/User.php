@@ -344,11 +344,20 @@ class User
     }
 
     /**
-     * @return UserGroup|null
+     * @return Group|null
      */
     public function getPrimaryGroup()
     {
-        return $this->getUserGroups()->first() ? $this->getUserGroups()->first()->getGroup() : null;
+        $primaryUserGroup = $this->getPrimaryUserGroup();
+        return $primaryUserGroup ? $primaryUserGroup->getGroup() : null;
+    }
+
+    /**
+     * @return UserGroup|null
+     */
+    public function getPrimaryUserGroup()
+    {
+        return $this->getUserGroups()->first() ?? null;
     }
 
     /**

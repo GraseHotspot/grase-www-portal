@@ -232,7 +232,8 @@ class UpdateUserData
      */
     private function setPrimaryGroup(User $user, ObjectManager $em, Group $group)
     {
-        $primaryUserGroup = $user->getPrimaryGroup();
+        /** @var UserGroup $primaryUserGroup */
+        $primaryUserGroup = $user->getPrimaryUserGroup();
         if (!$primaryUserGroup) {
             $primaryUserGroup = new UserGroup();
             $primaryUserGroup->setUser($user);
