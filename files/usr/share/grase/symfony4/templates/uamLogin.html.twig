@@ -80,7 +80,9 @@
                 <div id="loggedinuserName" style="display: none"></div>
                 <div id="sessionTimeout" style="display: none"></div>
                 <div id="sessionMaxTotalOctets" style="display: none"></div>
-                <br/><a class="btn btn-danger" href="http://1.0.0.0" id="logofflink">{% trans %}Logout{% endtrans %}</a> {if $activepage != 'mini'}<a href="/grase/uam/mini" class="btn btn-success" target="grase_uam" id='statuslink'>{t}Open Status Window{/t} <i class="fa fa-external-link"></i></a>{/if}
+                {# This is a default logout link, it should be replaced by JS from the JSON responses we get after login #}
+                <br/><a class="btn btn-danger" href="http://1.0.0.0" id="logofflink">{% trans %}Logout{% endtrans %}</a>
+                {if $activepage != 'mini'}<a href="/grase/uam/mini" class="btn btn-success" target="grase_uam" id='statuslink'>{t}Open Status Window{/t} <i class="fa fa-external-link"></i></a>{/if}
 
             </div>
 

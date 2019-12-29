@@ -267,6 +267,7 @@ chilliController.processReply = function (resp) {
             $.each(resp.session, function (index, value) {
                 switch (index) {
                     case 'maxTotalOctets':
+                        if(value === 0) { break; }
                         let remainingBytes = chilliController.formatBytes(value - resp.accounting.inputOctets - resp.accounting.outputOctets)
                         $('#sessionMaxTotalOctets').show();
                         $('#sessionMaxTotalOctets').html(Translator.trans('uam.js.status.remainingSessionData', { remainingSessionData: remainingBytes}))
@@ -274,6 +275,7 @@ chilliController.processReply = function (resp) {
                         break;
 
                     case 'sessionTimeout':
+                        if(value === 0) { break; }
                         let remainingTime = chilliController.formatTime(value - resp.accounting.sessionTime);
                         $('#sessionTimeout').show();
                         $('#sessionTimeout').html(Translator.trans('uam.js.status.remainingSessionTime', { remainingSessionTime: remainingTime}))
@@ -282,6 +284,14 @@ chilliController.processReply = function (resp) {
                         $('#loggedinuserName').show();
                         $('#loggedinuserName').html(Translator.trans('uam.js.status.loggedUsername', {username: value}))
                         break
+                }
+            });
+
+            $.each(resp.redir, function (index, value) {
+                switch (index) {
+                    case 'logoutURL':
+                        $('#logofflink').href = value;
+                        break;
                 }
             });
 
