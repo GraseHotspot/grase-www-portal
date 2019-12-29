@@ -52,6 +52,11 @@ run_migrations(){
     runuser -u www-data -- /usr/share/grase/symfony4/bin/console doctrine:migrations:migrate --no-interaction || true
 }
 
+prod_cache(){
+    runuser -u www-data -- /usr/share/grase/symfony4/bin/console cache:clear || true
+    runuser -u www-data -- /usr/share/grase/symfony4/bin/console cache:warmup || true
+}
+
 fix_settings(){
     # TODO This is going to end up as part of the migrations, so probably not needed here
     /usr/share/grase/symfony4/bin/console grase:settings-validate || true
@@ -69,6 +74,8 @@ fix_dir_perms
 copy_favicon
 
 run_migrations
+
+prod_cache
 
 fix_settings
 
