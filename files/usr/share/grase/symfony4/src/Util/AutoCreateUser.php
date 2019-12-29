@@ -72,18 +72,15 @@ class AutoCreateUser
         if ($autoCreateGroup && strlen($autoUsername) > 0) {
             // Try and find the user so we can update or create them
             $user = $em->getRepository(User::class)->find($autoUsername);
-            $newUser = false;
             if (!$user) {
                 $user = new User();
-                $newUser = true;
+                // These are the only params we can set on the $user object, the rest must be done
+                // via the UpdateUserData class. Good thing we only need to change these are creation
+                $user->setComment("Auto created account for $mac at " . date('Ymd H:i:s'));
+                $user->setUsername($autoUsername);
             }
 
             $newUserData = UpdateUserData::fromUser($user);
-
-            if ($newUser) {
-                $newUserData->comment = "Auto created account for $mac at " . date('Ymd H:i:s');
-                $newUserData->username = $autoUsername;
-            }
 
             // Always ensure we have the correct password and group for autologin users
             $newUserData->password = $autoCreatePassword;
