@@ -349,6 +349,7 @@ class User
     public function getPrimaryGroup()
     {
         $primaryUserGroup = $this->getPrimaryUserGroup();
+
         return $primaryUserGroup ? $primaryUserGroup->getGroup() : null;
     }
 
