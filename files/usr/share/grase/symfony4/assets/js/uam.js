@@ -290,7 +290,7 @@ chilliController.processReply = function (resp) {
             $.each(resp.redir, function (index, value) {
                 switch (index) {
                     case 'logoutURL':
-                        $('#logofflink').href = value;
+                        $('#logofflink').prop("href", value);
                         break;
                 }
             });
