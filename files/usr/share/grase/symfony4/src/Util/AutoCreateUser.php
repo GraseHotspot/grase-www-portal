@@ -69,6 +69,7 @@ class AutoCreateUser
         $autoCreateGroup = $em->getRepository(Group::class)->findOneBy(['name' => $autoCreateGroupName]);
         $autoCreatePassword = $settings->getSettingValue(Setting::AUTO_CREATE_PASSWORD);
 
+        // $autoCreateGroup won't be set if free logins are disable
         if ($autoCreateGroup && strlen($autoUsername) > 0) {
             // Try and find the user so we can update or create them
             $user = $em->getRepository(User::class)->find($autoUsername);

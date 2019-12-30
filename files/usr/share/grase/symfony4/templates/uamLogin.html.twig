@@ -16,6 +16,7 @@
             <!-- Voucher Error messages (not found, expired, etc) will be displayed using this variable - do not remove -->
             <div class="" id="errormessages" style="margin-top: 1em; max-width: 300px; text-align: center;"></div>
 
+            {% if freeLoginEnabled %}
             <div class="card" id="tosaccept">
                 <div class="card-header">
                     <h3 class="card-title text-center">{% trans %}Free Login{% endtrans %}</h3>
@@ -40,6 +41,7 @@
 
                 </div><!-- /.login-box-body -->
             </div>
+            {% endif %}
             <div class="card" id="loginform">
                 <div class="card-header">
                     <h3 class="card-title text-center">{% trans %}Voucher Login{% endtrans %}</h3>

@@ -60,11 +60,14 @@ class UamController extends AbstractController
             return new RedirectResponse('http://' . $request->server->get('HTTP_HOST') . ':3990/prelogin');
         }
 
+        $freeLoginEnabled = strlen($this->settingsUtils->getSettingValue(Setting::AUTO_CREATE_GROUP)) > 0;
+
         return $this->render(
             'uamLogin.html.twig',
             [
                 'supportContactLink' => $this->settingsUtils->getSettingValue(Setting::SUPPORT_CONTACT_LINK),
                 'supportContactName' => $this->settingsUtils->getSettingValue(Setting::SUPPORT_CONTACT_NAME),
+                'freeLoginEnabled' => $freeLoginEnabled,
             ]
         );
     }
