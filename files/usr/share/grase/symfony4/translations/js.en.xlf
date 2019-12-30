@@ -57,7 +57,90 @@
                 <source>uam.js.status.loggedUsername</source>
                 <target><![CDATA[Logged in as <strong>%username%</strong>]]></target>
             </trans-unit>
+            <trans-unit id="uam.js.error.unknown_clientstate_reply" resname="uam.js.error.unknown_clientstate_reply">
+                <source>uam.js.error.unknown_clientstate_reply</source>
+                <target>Unknown clientState found in JSON reply</target>
+            </trans-unit>
+            <trans-unit id="uam.js.error.secure_challenge_failure" resname="uam.js.error.secure_challenge_failure">
+                <source>uam.js.error.secure_challenge_failure</source>
+                <target>Unable to get secure challenge</target>
+            </trans-unit>
+            <trans-unit id="uam.js.error.failed_logoff" resname="uam.js.error.failed_logoff">
+                <source>uam.js.error.failed_logoff</source>
+                <target>Failed to logoff. Please try again</target>
+            </trans-unit>
+            <trans-unit id="uam.js.error.already_logged_in" resname="uam.js.error.already_logged_in">
+                <source>uam.js.error.already_logged_in</source>
+                <target>Already logged in. Aborting login attempt</target>
+            </trans-unit>
+            <trans-unit id="uam.js.prompt.confirm_logoff" resname="uam.js.prompt.confirm_logoff">
+                <source>uam.js.prompt.confirm_logoff</source>
+                <target>Are you sure you want to disconnect now?</target>
+            </trans-unit>
 
+
+
+            <!-- These messages are from Freeradius, we keep them as english strings so if they are displayed outside
+                 of the UAM, they are still meaningful -->
+            <trans-unit id="uam.js.radreply.outside_login_hours" resname="uam.js.radreply.outside_login_hours">
+                <source>Your are not allowed to login at this time</source>
+                <target>Your are not allowed to login at this time</target>
+            </trans-unit>
+            <trans-unit id="uam.js.radreply.account_expired" resname="uam.js.radreply.account_expired">
+                <source>Your account has expired</source>
+                <target>Your account has expired</target>
+            </trans-unit>
+            <trans-unit id="uam.js.radreply.already_logged_in" resname="uam.js.radreply.already_logged_in">
+                <source>
+                    <![CDATA[You are already logged in at another location.<br/>Please try again in 5 minutes]]></source>
+                <target>
+                    <![CDATA[You are already logged in at another location.<br/>Please try again in 5 minutes]]></target>
+            </trans-unit>
+            <trans-unit id="uam.js.radreply.login_failed_check_creds"
+                        resname="uam.js.radreply.login_failed_check_creds">
+                <source>Login Failed. Please check your username and password</source>
+                <target>Login Failed. Please check your username and password</target>
+            </trans-unit>
+            <trans-unit id="uam.js.radreply.bandwidth_limit" resname="uam.js.radreply.bandwidth_limit">
+                <source>You have reached your bandwidth limit</source>
+                <target>You have reached your bandwidth limit</target>
+            </trans-unit>
+            <trans-unit id="uam.js.radreply.bandwidth_limit_hourly" resname="uam.js.radreply.bandwidth_limit_hourly">
+                <source>You have reached your hourly bandwidth limit</source>
+                <target>You have reached your hourly bandwidth limit</target>
+            </trans-unit>
+            <trans-unit id="uam.js.radreply.bandwidth_limit_daily" resname="uam.js.radreply.bandwidth_limit_daily">
+                <source>You have reached your daily bandwidth limit</source>
+                <target>You have reached your daily bandwidth limit</target>
+            </trans-unit>
+            <trans-unit id="uam.js.radreply.bandwidth_limit_weekly" resname="uam.js.radreply.bandwidth_limit_weekly">
+                <source>You have reached your weekly bandwidth limit</source>
+                <target>You have reached your weekly bandwidth limit</target>
+            </trans-unit>
+            <trans-unit id="uam.js.radreply.bandwidth_limit_monthly" resname="uam.js.radreply.bandwidth_limit_monthly">
+                <source>You have reached your monthly bandwidth limit</source>
+                <target>You have reached your monthly bandwidth limit</target>
+            </trans-unit>
+            <trans-unit id="uam.js.radreply.time_limit" resname="uam.js.radreply.time_limit">
+                <source>You have reached your time limit</source>
+                <target>You have reached your time limit</target>
+            </trans-unit>
+            <trans-unit id="uam.js.radreply.time_limit_hourly" resname="uam.js.radreply.time_limit_hourly">
+                <source>You have reached your hourly time limit</source>
+                <target>You have reached your hourly time limit</target>
+            </trans-unit>
+            <trans-unit id="uam.js.radreply.time_limit_daily" resname="uam.js.radreply.time_limit_daily">
+                <source>You have reached your daily time limit</source>
+                <target>You have reached your daily time limit</target>
+            </trans-unit>
+            <trans-unit id="uam.js.radreply.time_limit_weekly" resname="uam.js.radreply.time_limit_weekly">
+                <source>You have reached your weekly time limit</source>
+                <target>You have reached your weekly time limit</target>
+            </trans-unit>
+            <trans-unit id="uam.js.radreply.time_limit_monthly" resname="uam.js.radreply.time_limit_monthly">
+                <source>You have reached your monthly time limit</source>
+                <target>You have reached your monthly time limit</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

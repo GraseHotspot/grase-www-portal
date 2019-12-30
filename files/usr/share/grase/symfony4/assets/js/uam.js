@@ -102,13 +102,13 @@ chilliController.getChallenge = function () {
 
                     if (typeof (resp.challenge) != 'string') {
                         clearErrorMessages();
-                        display_error(Translator.trans('Unable to get secure challenge'));
+                        display_error(Translator.trans('uam.js.error.secure_challenge_failure'));
                         return false;
                     }
                     if (resp.clientState === chilliController.stateCodes.AUTH) {
                         pageStates.loggedInFormState();
                         clearErrorMessages();
-                        error_message(Translator.trans('Already logged in. Aborting login attempt'));
+                        error_message(Translator.trans('uam.js.error.already_logged_in'));
 
                         return false;
                     }
@@ -226,7 +226,7 @@ chilliController.processReply = function (resp) {
     //alert(resp);
     // Check for message (error)
     if (typeof (resp.message) == 'string') {
-        error_message(resp.message, 'alert-info');
+        error_message(Translator.trans(resp.message), 'alert-info');
     }
 
     if (typeof (resp.challenge) == 'string') {
@@ -308,7 +308,7 @@ chilliController.processReply = function (resp) {
         }
 
     } else {
-        display_error("Unknown clientState found in JSON reply");
+        display_error(Translator.trans("uam.js.error.unknown_clientstate_reply"));
     }
 
     // Clear any previous timeout we have running
@@ -336,7 +336,7 @@ chilliController.logoff = function () {
     ajaxChilliController('logoff')
         .done(chilliController.processReply)
         .fail(function() {
-            display_error("Failed to logoff. Please try again");
+            display_error(Translator.trans("uam.js.error.failed_logoff"));
         });
 }
 
@@ -408,7 +408,7 @@ $('#tosaccept_form').submit((event) => chilliController.startLogin(event,"TOS"))
 
 
 $('#logofflink').click(function () {
-    confirm("Are you sure you want to disconnect now?") && chilliController.logoff();
+    confirm(Translator.trans("uam.js.prompt.confirm_logoff")) && chilliController.logoff();
     return false;
 });
 
