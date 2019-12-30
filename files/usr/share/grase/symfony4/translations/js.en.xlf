@@ -1,146 +1,204 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
-        <header>
-            <tool tool-id="symfony" tool-name="Symfony"/>
-        </header>
-        <body>
-            <trans-unit id="uam.js.server_timed_out" resname="uam.js.server_timed_out">
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" xmlns:xmrk="urn:xmarker"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="xliff_core_2.0.xsd" version="2.0" srcLang="en"
+       trgLang="es" xml:lang="en">
+    <file id="jsEN">
+        <unit id="uam.js.server_timed_out">
+            <segment>
                 <source>uam.js.server_timed_out</source>
-                <target><![CDATA[Server Timed Out.<br/>Please try again]]></target>
-            </trans-unit>
-            <trans-unit id="uam.js.both_username_password_needed" resname="uam.js.both_username_password_needed">
+                <target>Server Timed Out. Please try again</target>
+            </segment>
+        </unit>
+        <unit id="uam.js.both_username_password_needed">
+            <segment>
                 <source>uam.js.both_username_password_needed</source>
                 <target>Both username and password are required</target>
-            </trans-unit>
-            <trans-unit id="uam.js.login_failed_server_error" resname="uam.js.login_failed_server_error">
+            </segment>
+        </unit>
+        <unit id="uam.js.login_failed_server_error">
+            <segment>
                 <source>uam.js.login_failed_server_error</source>
                 <target>Login failed due to server error. Please try again</target>
-            </trans-unit>
-            <trans-unit id="uam.js.no_response_tos_server" resname="uam.js.no_response_tos_server">
+            </segment>
+        </unit>
+        <unit id="uam.js.no_response_tos_server">
+            <segment>
                 <source>uam.js.no_response_tos_server</source>
                 <target>No response from TOS login server</target>
-            </trans-unit>
-            <trans-unit id="uam.js.tos_incorrect_response" resname="uam.js.tos_incorrect_response">
+            </segment>
+        </unit>
+        <unit id="uam.js.tos_incorrect_response">
+            <segment>
                 <source>uam.js.tos_incorrect_response</source>
                 <target>Incorrect response from TOS server. Please notify system admin</target>
-            </trans-unit>
-            <trans-unit id="uam.js.tos_login_error" resname="uam.js.tos_login_error">
+            </segment>
+        </unit>
+        <unit id="uam.js.tos_login_error">
+            <segment>
                 <source>uam.js.tos_login_error</source>
                 <target>TOS login failed due to server error. Please try again</target>
-            </trans-unit>
-            <trans-unit id="uam.js.login_error" resname="uam.js.login_error">
+            </segment>
+        </unit>
+        <unit id="uam.js.login_error">
+            <segment>
                 <source>uam.js.login_error</source>
                 <target>An error occurred trying to login. Please notify the system admin</target>
-            </trans-unit>
-            <trans-unit id="uam.js.login_success" resname="uam.js.login_success">
+            </segment>
+        </unit>
+        <unit id="uam.js.login_success">
+            <segment>
                 <source>uam.js.login_success</source>
                 <target>Login successful</target>
-            </trans-unit>
-            <trans-unit id="uam.js.login_continue_to_site" resname="uam.js.login_continue_to_site">
+            </segment>
+        </unit>
+        <unit id="uam.js.login_continue_to_site">
+            <segment>
                 <source>uam.js.login_continue_to_site</source>
                 <target><![CDATA[Continue to your site <a target='_blank' href='%userUrl%'>%userUrl%</a>]]></target>
-            </trans-unit>
-            <trans-unit id="uam.js.status.sessionStart" resname="uam.js.status.sessionStart">
+            </segment>
+        </unit>
+        <unit id="uam.js.status.sessionStart">
+            <segment>
                 <source>uam.js.status.sessionStart</source>
                 <target>Since %startTime%</target>
-            </trans-unit>
-            <trans-unit id="uam.js.status.remainingSessionTime" resname="uam.js.status.remainingSessionTime">
+            </segment>
+        </unit>
+        <unit id="uam.js.status.remainingSessionTime">
+            <segment>
                 <source>uam.js.status.remainingSessionTime</source>
                 <target><![CDATA[Remaining Session Time <strong>%remainingSessionTime%</strong>]]></target>
-            </trans-unit>
-            <trans-unit id="uam.js.status.remainingSessionData" resname="uam.js.status.remainingSessionData">
+            </segment>
+        </unit>
+        <unit id="uam.js.status.remainingSessionData">
+            <segment>
                 <source>uam.js.status.remainingSessionData</source>
                 <target><![CDATA[Remaining Session Data <strong>%remainingSessionData%</strong>]]></target>
-            </trans-unit>
-            <trans-unit id="uam.js.status.loggedUsername" resname="uam.js.status.loggedUsername">
+            </segment>
+        </unit>
+        <unit id="uam.js.status.loggedUsername">
+            <segment>
                 <source>uam.js.status.loggedUsername</source>
                 <target><![CDATA[Logged in as <strong>%username%</strong>]]></target>
-            </trans-unit>
-            <trans-unit id="uam.js.error.unknown_clientstate_reply" resname="uam.js.error.unknown_clientstate_reply">
+            </segment>
+        </unit>
+        <unit id="uam.js.error.unknown_clientstate_reply">
+            <segment>
                 <source>uam.js.error.unknown_clientstate_reply</source>
                 <target>Unknown clientState found in JSON reply</target>
-            </trans-unit>
-            <trans-unit id="uam.js.error.secure_challenge_failure" resname="uam.js.error.secure_challenge_failure">
+            </segment>
+        </unit>
+        <unit id="uam.js.error.secure_challenge_failure">
+            <segment>
                 <source>uam.js.error.secure_challenge_failure</source>
                 <target>Unable to get secure challenge</target>
-            </trans-unit>
-            <trans-unit id="uam.js.error.failed_logoff" resname="uam.js.error.failed_logoff">
+            </segment>
+        </unit>
+        <unit id="uam.js.error.failed_logoff">
+            <segment>
                 <source>uam.js.error.failed_logoff</source>
                 <target>Failed to logoff. Please try again</target>
-            </trans-unit>
-            <trans-unit id="uam.js.error.already_logged_in" resname="uam.js.error.already_logged_in">
+            </segment>
+        </unit>
+        <unit id="uam.js.error.already_logged_in">
+            <segment>
                 <source>uam.js.error.already_logged_in</source>
                 <target>Already logged in. Aborting login attempt</target>
-            </trans-unit>
-            <trans-unit id="uam.js.prompt.confirm_logoff" resname="uam.js.prompt.confirm_logoff">
+            </segment>
+        </unit>
+        <unit id="uam.js.prompt.confirm_logoff">
+            <segment>
                 <source>uam.js.prompt.confirm_logoff</source>
                 <target>Are you sure you want to disconnect now?</target>
-            </trans-unit>
+            </segment>
+        </unit>
 
 
-
-            <!-- These messages are from Freeradius, we keep them as english strings so if they are displayed outside
-                 of the UAM, they are still meaningful -->
-            <trans-unit id="uam.js.radreply.outside_login_hours" resname="uam.js.radreply.outside_login_hours">
+        <!-- These messages are from Freeradius, we keep them as english strings so if they are displayed outside
+             of the UAM, they are still meaningful -->
+        <unit id="uam.js.radreply.outside_login_hours">
+            <segment>
                 <source>Your are not allowed to login at this time</source>
                 <target>Your are not allowed to login at this time</target>
-            </trans-unit>
-            <trans-unit id="uam.js.radreply.account_expired" resname="uam.js.radreply.account_expired">
+            </segment>
+        </unit>
+        <unit id="uam.js.radreply.account_expired">
+            <segment>
                 <source>Your account has expired</source>
                 <target>Your account has expired</target>
-            </trans-unit>
-            <trans-unit id="uam.js.radreply.already_logged_in" resname="uam.js.radreply.already_logged_in">
-                <source>
-                    <![CDATA[You are already logged in at another location.<br/>Please try again in 5 minutes]]></source>
-                <target>
-                    <![CDATA[You are already logged in at another location.<br/>Please try again in 5 minutes]]></target>
-            </trans-unit>
-            <trans-unit id="uam.js.radreply.login_failed_check_creds"
-                        resname="uam.js.radreply.login_failed_check_creds">
+            </segment>
+        </unit>
+        <unit id="uam.js.radreply.already_logged_in">
+            <segment>
+                <source>You are already logged in at another location. Please try again in 5 minutes</source>
+                <target>You are already logged in at another location. Please try again in 5 minutes</target>
+            </segment>
+        </unit>
+        <unit id="uam.js.radreply.login_failed_check_creds">
+            <segment>
                 <source>Login Failed. Please check your username and password</source>
                 <target>Login Failed. Please check your username and password</target>
-            </trans-unit>
-            <trans-unit id="uam.js.radreply.bandwidth_limit" resname="uam.js.radreply.bandwidth_limit">
+            </segment>
+        </unit>
+        <unit id="uam.js.radreply.bandwidth_limit">
+            <segment>
                 <source>You have reached your bandwidth limit</source>
                 <target>You have reached your bandwidth limit</target>
-            </trans-unit>
-            <trans-unit id="uam.js.radreply.bandwidth_limit_hourly" resname="uam.js.radreply.bandwidth_limit_hourly">
+            </segment>
+        </unit>
+        <unit id="uam.js.radreply.bandwidth_limit_hourly">
+            <segment>
                 <source>You have reached your hourly bandwidth limit</source>
                 <target>You have reached your hourly bandwidth limit</target>
-            </trans-unit>
-            <trans-unit id="uam.js.radreply.bandwidth_limit_daily" resname="uam.js.radreply.bandwidth_limit_daily">
+            </segment>
+        </unit>
+        <unit id="uam.js.radreply.bandwidth_limit_daily">
+            <segment>
                 <source>You have reached your daily bandwidth limit</source>
                 <target>You have reached your daily bandwidth limit</target>
-            </trans-unit>
-            <trans-unit id="uam.js.radreply.bandwidth_limit_weekly" resname="uam.js.radreply.bandwidth_limit_weekly">
+            </segment>
+        </unit>
+        <unit id="uam.js.radreply.bandwidth_limit_weekly">
+            <segment>
                 <source>You have reached your weekly bandwidth limit</source>
                 <target>You have reached your weekly bandwidth limit</target>
-            </trans-unit>
-            <trans-unit id="uam.js.radreply.bandwidth_limit_monthly" resname="uam.js.radreply.bandwidth_limit_monthly">
+            </segment>
+        </unit>
+        <unit id="uam.js.radreply.bandwidth_limit_monthly">
+            <segment>
                 <source>You have reached your monthly bandwidth limit</source>
                 <target>You have reached your monthly bandwidth limit</target>
-            </trans-unit>
-            <trans-unit id="uam.js.radreply.time_limit" resname="uam.js.radreply.time_limit">
+            </segment>
+        </unit>
+        <unit id="uam.js.radreply.time_limit">
+            <segment>
                 <source>You have reached your time limit</source>
                 <target>You have reached your time limit</target>
-            </trans-unit>
-            <trans-unit id="uam.js.radreply.time_limit_hourly" resname="uam.js.radreply.time_limit_hourly">
+            </segment>
+        </unit>
+        <unit id="uam.js.radreply.time_limit_hourly">
+            <segment>
                 <source>You have reached your hourly time limit</source>
                 <target>You have reached your hourly time limit</target>
-            </trans-unit>
-            <trans-unit id="uam.js.radreply.time_limit_daily" resname="uam.js.radreply.time_limit_daily">
+            </segment>
+        </unit>
+        <unit id="uam.js.radreply.time_limit_daily">
+            <segment>
                 <source>You have reached your daily time limit</source>
                 <target>You have reached your daily time limit</target>
-            </trans-unit>
-            <trans-unit id="uam.js.radreply.time_limit_weekly" resname="uam.js.radreply.time_limit_weekly">
+            </segment>
+        </unit>
+        <unit id="uam.js.radreply.time_limit_weekly">
+            <segment>
                 <source>You have reached your weekly time limit</source>
                 <target>You have reached your weekly time limit</target>
-            </trans-unit>
-            <trans-unit id="uam.js.radreply.time_limit_monthly" resname="uam.js.radreply.time_limit_monthly">
+            </segment>
+        </unit>
+        <unit id="uam.js.radreply.time_limit_monthly">
+            <segment>
                 <source>You have reached your monthly time limit</source>
                 <target>You have reached your monthly time limit</target>
-            </trans-unit>
-        </body>
+            </segment>
+        </unit>
     </file>
 </xliff>
