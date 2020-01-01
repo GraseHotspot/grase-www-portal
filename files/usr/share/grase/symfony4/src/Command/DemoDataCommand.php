@@ -160,7 +160,7 @@ class DemoDataCommand extends Command
         );
         foreach ($autoCreateGroup->getUsergroups() as $userGroupMapping) {
             $oldUsername = $userGroupMapping->getUser()->getUsername();
-            if (len($oldUsername) === 10) {
+            if (strlen($oldUsername) === 10) {
                     continue;
             }
             // Just need to make it unique

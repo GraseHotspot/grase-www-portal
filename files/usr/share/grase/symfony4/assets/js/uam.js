@@ -5,7 +5,7 @@ require('./translations');
 import ChilliMD5 from './chilliMD5';
 import { getQueryVariable } from './utils';
 require('bootstrap');
-require('admin-lte');
+//require('admin-lte');
 
 
 let chilliController = {
