@@ -35,9 +35,7 @@
             </trans-unit>
             <trans-unit id="svwZ3O_" resname="page.auditlog.information">
                 <source>page.auditlog.information</source>
-                <target><![CDATA[
-        Displaying of audit logs is limited to the last 500 entries.<br/>Audit logs include all actions performed by users on the administration side of the GRASE Hotspot.
-        ]]></target>
+                <target>Displaying of audit logs is limited to the last 500 entries. Audit logs include all actions performed by users on the administration side of the GRASE Hotspot.</target>
             </trans-unit>
             <trans-unit id="ghHDN4d" resname="page.auditlog.header">
                 <source>page.auditlog.header</source>
