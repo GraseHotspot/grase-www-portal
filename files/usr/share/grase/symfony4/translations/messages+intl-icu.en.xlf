@@ -1,134 +1,191 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
-        <header>
-            <tool tool-id="symfony" tool-name="Symfony"/>
-        </header>
-        <body>
-            <trans-unit id="oUeBhnx" resname="grase.migrate.db.adminlogs">
-                <source>grase.migrate.db.adminlogs</source>
-                <target>Starting to migrate {number} admin log entries to the Audit Log</target>
-            </trans-unit>
-            <trans-unit id="7rmXkz0" resname="grase.menu.settings.header">
-                <source>grase.menu.settings.header</source>
-                <target>SETTINGS</target>
-            </trans-unit>
-            <trans-unit id="42CzBpW" resname="grase.menu.groups">
-                <source>grase.menu.groups</source>
-                <target>Groups</target>
-            </trans-unit>
-            <trans-unit id="iELNm3M" resname="grase.menu.users">
-                <source>grase.menu.users</source>
-                <target>Users</target>
-            </trans-unit>
-            <trans-unit id="R27FyiT" resname="grase.menu.users.new">
-                <source>grase.menu.users.new</source>
-                <target>New User</target>
-            </trans-unit>
-            <trans-unit id="2bvhWq7" resname="grase.menu.users.allusers">
-                <source>grase.menu.users.allusers</source>
-                <target>All Users</target>
-            </trans-unit>
-            <trans-unit id="HYsb.o_" resname="grase.menu.dhcp_leases">
-                <source>grase.menu.dhcp_leases</source>
-                <target>DHCP Leases</target>
-            </trans-unit>
-            <trans-unit id="svwZ3O_" resname="page.auditlog.information">
-                <source>page.auditlog.information</source>
-                <target>Displaying of audit logs is limited to the last 500 entries. Audit logs include all actions performed by users on the administration side of the GRASE Hotspot.</target>
-            </trans-unit>
-            <trans-unit id="ghHDN4d" resname="page.auditlog.header">
-                <source>page.auditlog.header</source>
-                <target>Audit Log</target>
-            </trans-unit>
-            <trans-unit id="FRpJ6.y" resname="audit.login.interactive">
-                <source>audit.login.interactive</source>
-                <target>Interactive Login</target>
-            </trans-unit>
-            <trans-unit id="PmeB152" resname="grase.menu.admin.auditlog">
-                <source>grase.menu.admin.auditlog</source>
-                <target>Audit Log</target>
-            </trans-unit>
-            <trans-unit id="UPCAiq0" resname="grase.menu.admin.header">
-                <source>grase.menu.admin.header</source>
-                <target>ADMIN</target>
-            </trans-unit>
-            <trans-unit id="g3No7rv" resname="grase.timestamp">
-                <source>grase.timestamp</source>
-                <target>Timestamp</target>
-            </trans-unit>
-            <trans-unit id="0pBNokB" resname="grase.user">
-                <source>grase.user</source>
-                <target>User</target>
-            </trans-unit>
-            <trans-unit id="0GFULzr" resname="grase.ip">
-                <source>grase.ip</source>
-                <target>IP</target>
-            </trans-unit>
-            <trans-unit id="jiip63n" resname="grase.audit.action">
-                <source>grase.audit.action</source>
-                <target>Action</target>
-            </trans-unit>
-            <trans-unit id="rzgv1MY" resname="grase.audit.context">
-                <source>grase.audit.context</source>
-                <target>Context</target>
-            </trans-unit>
-            <trans-unit id="PlgPBjD" resname="grase.audit.level">
-                <source>grase.audit.level</source>
-                <target>Level</target>
-            </trans-unit>
-            <trans-unit id="I_xUoqe" resname="grase.form.user.password_placeholder">
-                <source>grase.form.user.password_placeholder</source>
-                <target>Password</target>
-            </trans-unit>
-            <trans-unit id="zlWLWYV" resname="grase.form.user.change_password_placeholder">
-                <source>grase.form.user.change_password_placeholder</source>
-                <target>Change Password</target>
-            </trans-unit>
-            <trans-unit id="65cFLWo" resname="grase.form.user.group.label">
-                <source>grase.form.user.group.label</source>
-                <target>Group</target>
-            </trans-unit>
-            <trans-unit id="B.W.B2V" resname="grase.form.user.group.help">
-                <source>grase.form.user.group.help</source>
-                <target>Choose the user group (Expiry is based on the user group)</target>
-            </trans-unit>
-            <trans-unit id="J6M5R_n" resname="grase.form.user.submit.update">
-                <source>grase.form.user.submit.update</source>
-                <target>Update User</target>
-            </trans-unit>
-            <trans-unit id="xzse_DF" resname="grase.form.user.submit.create">
-                <source>grase.form.user.submit.create</source>
-                <target>Create User</target>
-            </trans-unit>
-            <trans-unit id="jEacwad" resname="grase.command.settingsSanity.updatedSettings">
-                <source>grase.command.settingsSanity.updatedSettings</source>
-                <target>Updated {updatedSettings} settings. Removed {removedSettings} settings.</target>
-            </trans-unit>
-            <trans-unit id="VVbH1mL" resname="settings.sanity.removed_setting">
-                <source>settings.sanity.removed_setting</source>
-                <target>Removed old setting</target>
-            </trans-unit>
-            <trans-unit id="7P2xMh6" resname="settings.sanity.created_missing_setting">
-                <source>settings.sanity.created_missing_setting</source>
-                <target>Created missing setting during Sanity Check</target>
-            </trans-unit>
-            <trans-unit id="LHKhbOB" resname="settings.sanity.updated_setting">
-                <source>settings.sanity.updated_setting</source>
-                <target>Updated Setting during Sanity Check</target>
-            </trans-unit>
-            <trans-unit id="yb.Gs7N" resname="grase.form.user.datalimit.both_selected_error">
-                <source>grase.form.user.datalimit.both_selected_error</source>
-                <target>You can't select both a data limit and write your own custom limit</target>
-            </trans-unit>
-            <trans-unit id="DIbGzgG" resname="time.hours">
-                <source>time.hours</source>
-                <target>{hours, plural, one {# hour} other {# hours}}</target>
-            </trans-unit>
-            <trans-unit id="PNJ2NL." resname="time.minutes">
-                <source>time.minutes</source>
-                <target>{minutes, plural, one {# min} other {# mins}}</target>
-            </trans-unit>
-        </body>
-    </file>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="en">
+  <file id="messages.en">
+    <unit id="oUeBhnx" name="grase.migrate.db.adminlogs">
+      <segment>
+        <source>grase.migrate.db.adminlogs</source>
+        <target>Starting to migrate {number} admin log entries to the Audit Log</target>
+      </segment>
+    </unit>
+    <unit id="7rmXkz0" name="grase.menu.settings.header">
+      <segment>
+        <source>grase.menu.settings.header</source>
+        <target>SETTINGS</target>
+      </segment>
+    </unit>
+    <unit id="42CzBpW" name="grase.menu.groups">
+      <segment>
+        <source>grase.menu.groups</source>
+        <target>Groups</target>
+      </segment>
+    </unit>
+    <unit id="iELNm3M" name="grase.menu.users">
+      <segment>
+        <source>grase.menu.users</source>
+        <target>Users</target>
+      </segment>
+    </unit>
+    <unit id="R27FyiT" name="grase.menu.users.new">
+      <segment>
+        <source>grase.menu.users.new</source>
+        <target>New User</target>
+      </segment>
+    </unit>
+    <unit id="2bvhWq7" name="grase.menu.users.allusers">
+      <segment>
+        <source>grase.menu.users.allusers</source>
+        <target>All Users</target>
+      </segment>
+    </unit>
+    <unit id="HYsb.o_" name="grase.menu.dhcp_leases">
+      <segment>
+        <source>grase.menu.dhcp_leases</source>
+        <target>DHCP Leases</target>
+      </segment>
+    </unit>
+    <unit id="svwZ3O_" name="page.auditlog.information">
+      <segment>
+        <source>page.auditlog.information</source>
+        <target>Displaying of audit logs is limited to the last 500 entries. Audit logs include all actions performed by users on the administration side of the GRASE Hotspot.</target>
+      </segment>
+    </unit>
+    <unit id="ghHDN4d" name="page.auditlog.header">
+      <segment>
+        <source>page.auditlog.header</source>
+        <target>Audit Log</target>
+      </segment>
+    </unit>
+    <unit id="FRpJ6.y" name="audit.login.interactive">
+      <segment>
+        <source>audit.login.interactive</source>
+        <target>Interactive Login</target>
+      </segment>
+    </unit>
+    <unit id="PmeB152" name="grase.menu.admin.auditlog">
+      <segment>
+        <source>grase.menu.admin.auditlog</source>
+        <target>Audit Log</target>
+      </segment>
+    </unit>
+    <unit id="UPCAiq0" name="grase.menu.admin.header">
+      <segment>
+        <source>grase.menu.admin.header</source>
+        <target>ADMIN</target>
+      </segment>
+    </unit>
+    <unit id="g3No7rv" name="grase.timestamp">
+      <segment>
+        <source>grase.timestamp</source>
+        <target>Timestamp</target>
+      </segment>
+    </unit>
+    <unit id="0pBNokB" name="grase.user">
+      <segment>
+        <source>grase.user</source>
+        <target>User</target>
+      </segment>
+    </unit>
+    <unit id="0GFULzr" name="grase.ip">
+      <segment>
+        <source>grase.ip</source>
+        <target>IP</target>
+      </segment>
+    </unit>
+    <unit id="jiip63n" name="grase.audit.action">
+      <segment>
+        <source>grase.audit.action</source>
+        <target>Action</target>
+      </segment>
+    </unit>
+    <unit id="rzgv1MY" name="grase.audit.context">
+      <segment>
+        <source>grase.audit.context</source>
+        <target>Context</target>
+      </segment>
+    </unit>
+    <unit id="PlgPBjD" name="grase.audit.level">
+      <segment>
+        <source>grase.audit.level</source>
+        <target>Level</target>
+      </segment>
+    </unit>
+    <unit id="I_xUoqe" name="grase.form.user.password_placeholder">
+      <segment>
+        <source>grase.form.user.password_placeholder</source>
+        <target>Password</target>
+      </segment>
+    </unit>
+    <unit id="zlWLWYV" name="grase.form.user.change_password_placeholder">
+      <segment>
+        <source>grase.form.user.change_password_placeholder</source>
+        <target>Change Password</target>
+      </segment>
+    </unit>
+    <unit id="65cFLWo" name="grase.form.user.group.label">
+      <segment>
+        <source>grase.form.user.group.label</source>
+        <target>Group</target>
+      </segment>
+    </unit>
+    <unit id="B.W.B2V" name="grase.form.user.group.help">
+      <segment>
+        <source>grase.form.user.group.help</source>
+        <target>Choose the user group (Expiry is based on the user group)</target>
+      </segment>
+    </unit>
+    <unit id="J6M5R_n" name="grase.form.user.submit.update">
+      <segment>
+        <source>grase.form.user.submit.update</source>
+        <target>Update User</target>
+      </segment>
+    </unit>
+    <unit id="xzse_DF" name="grase.form.user.submit.create">
+      <segment>
+        <source>grase.form.user.submit.create</source>
+        <target>Create User</target>
+      </segment>
+    </unit>
+    <unit id="jEacwad" name="grase.command.settingsSanity.updatedSettings">
+      <segment>
+        <source>grase.command.settingsSanity.updatedSettings</source>
+        <target>Updated {updatedSettings} settings. Removed {removedSettings} settings.</target>
+      </segment>
+    </unit>
+    <unit id="VVbH1mL" name="settings.sanity.removed_setting">
+      <segment>
+        <source>settings.sanity.removed_setting</source>
+        <target>Removed old setting</target>
+      </segment>
+    </unit>
+    <unit id="7P2xMh6" name="settings.sanity.created_missing_setting">
+      <segment>
+        <source>settings.sanity.created_missing_setting</source>
+        <target>Created missing setting during Sanity Check</target>
+      </segment>
+    </unit>
+    <unit id="LHKhbOB" name="settings.sanity.updated_setting">
+      <segment>
+        <source>settings.sanity.updated_setting</source>
+        <target>Updated Setting during Sanity Check</target>
+      </segment>
+    </unit>
+    <unit id="yb.Gs7N" name="grase.form.user.datalimit.both_selected_error">
+      <segment>
+        <source>grase.form.user.datalimit.both_selected_error</source>
+        <target>You can't select both a data limit and write your own custom limit</target>
+      </segment>
+    </unit>
+    <unit id="DIbGzgG" name="time.hours">
+      <segment>
+        <source>time.hours</source>
+        <target>{hours, plural, one {# hour} other {# hours}}</target>
+      </segment>
+    </unit>
+    <unit id="PNJ2NL." name="time.minutes">
+      <segment>
+        <source>time.minutes</source>
+        <target>{minutes, plural, one {# min} other {# mins}}</target>
+      </segment>
+    </unit>
+  </file>
 </xliff>
