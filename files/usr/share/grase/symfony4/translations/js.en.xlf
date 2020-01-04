@@ -1,204 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" xmlns:xmrk="urn:xmarker"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="xliff_core_2.0.xsd" version="2.0" srcLang="en"
-       trgLang="es" xml:lang="en">
-    <file id="jsEN">
-        <unit id="uam.js.server_timed_out">
-            <segment>
-                <source>uam.js.server_timed_out</source>
-                <target>Server Timed Out. Please try again</target>
-            </segment>
-        </unit>
-        <unit id="uam.js.both_username_password_needed">
-            <segment>
-                <source>uam.js.both_username_password_needed</source>
-                <target>Both username and password are required</target>
-            </segment>
-        </unit>
-        <unit id="uam.js.login_failed_server_error">
-            <segment>
-                <source>uam.js.login_failed_server_error</source>
-                <target>Login failed due to server error. Please try again</target>
-            </segment>
-        </unit>
-        <unit id="uam.js.no_response_tos_server">
-            <segment>
-                <source>uam.js.no_response_tos_server</source>
-                <target>No response from TOS login server</target>
-            </segment>
-        </unit>
-        <unit id="uam.js.tos_incorrect_response">
-            <segment>
-                <source>uam.js.tos_incorrect_response</source>
-                <target>Incorrect response from TOS server. Please notify system admin</target>
-            </segment>
-        </unit>
-        <unit id="uam.js.tos_login_error">
-            <segment>
-                <source>uam.js.tos_login_error</source>
-                <target>TOS login failed due to server error. Please try again</target>
-            </segment>
-        </unit>
-        <unit id="uam.js.login_error">
-            <segment>
-                <source>uam.js.login_error</source>
-                <target>An error occurred trying to login. Please notify the system admin</target>
-            </segment>
-        </unit>
-        <unit id="uam.js.login_success">
-            <segment>
-                <source>uam.js.login_success</source>
-                <target>Login successful</target>
-            </segment>
-        </unit>
-        <unit id="uam.js.login_continue_to_site">
-            <segment>
-                <source>uam.js.login_continue_to_site</source>
-                <target><![CDATA[Continue to your site <a target='_blank' href='%userUrl%'>%userUrl%</a>]]></target>
-            </segment>
-        </unit>
-        <unit id="uam.js.status.sessionStart">
-            <segment>
-                <source>uam.js.status.sessionStart</source>
-                <target>Since %startTime%</target>
-            </segment>
-        </unit>
-        <unit id="uam.js.status.remainingSessionTime">
-            <segment>
-                <source>uam.js.status.remainingSessionTime</source>
-                <target><![CDATA[Remaining Session Time <strong>%remainingSessionTime%</strong>]]></target>
-            </segment>
-        </unit>
-        <unit id="uam.js.status.remainingSessionData">
-            <segment>
-                <source>uam.js.status.remainingSessionData</source>
-                <target><![CDATA[Remaining Session Data <strong>%remainingSessionData%</strong>]]></target>
-            </segment>
-        </unit>
-        <unit id="uam.js.status.loggedUsername">
-            <segment>
-                <source>uam.js.status.loggedUsername</source>
-                <target><![CDATA[Logged in as <strong>%username%</strong>]]></target>
-            </segment>
-        </unit>
-        <unit id="uam.js.error.unknown_clientstate_reply">
-            <segment>
-                <source>uam.js.error.unknown_clientstate_reply</source>
-                <target>Unknown clientState found in JSON reply</target>
-            </segment>
-        </unit>
-        <unit id="uam.js.error.secure_challenge_failure">
-            <segment>
-                <source>uam.js.error.secure_challenge_failure</source>
-                <target>Unable to get secure challenge</target>
-            </segment>
-        </unit>
-        <unit id="uam.js.error.failed_logoff">
-            <segment>
-                <source>uam.js.error.failed_logoff</source>
-                <target>Failed to logoff. Please try again</target>
-            </segment>
-        </unit>
-        <unit id="uam.js.error.already_logged_in">
-            <segment>
-                <source>uam.js.error.already_logged_in</source>
-                <target>Already logged in. Aborting login attempt</target>
-            </segment>
-        </unit>
-        <unit id="uam.js.prompt.confirm_logoff">
-            <segment>
-                <source>uam.js.prompt.confirm_logoff</source>
-                <target>Are you sure you want to disconnect now?</target>
-            </segment>
-        </unit>
-
-
-        <!-- These messages are from Freeradius, we keep them as english strings so if they are displayed outside
-             of the UAM, they are still meaningful -->
-        <unit id="uam.js.radreply.outside_login_hours">
-            <segment>
-                <source>Your are not allowed to login at this time</source>
-                <target>Your are not allowed to login at this time</target>
-            </segment>
-        </unit>
-        <unit id="uam.js.radreply.account_expired">
-            <segment>
-                <source>Your account has expired</source>
-                <target>Your account has expired</target>
-            </segment>
-        </unit>
-        <unit id="uam.js.radreply.already_logged_in">
-            <segment>
-                <source>You are already logged in at another location. Please try again in 5 minutes</source>
-                <target>You are already logged in at another location. Please try again in 5 minutes</target>
-            </segment>
-        </unit>
-        <unit id="uam.js.radreply.login_failed_check_creds">
-            <segment>
-                <source>Login Failed. Please check your username and password</source>
-                <target>Login Failed. Please check your username and password</target>
-            </segment>
-        </unit>
-        <unit id="uam.js.radreply.bandwidth_limit">
-            <segment>
-                <source>You have reached your bandwidth limit</source>
-                <target>You have reached your bandwidth limit</target>
-            </segment>
-        </unit>
-        <unit id="uam.js.radreply.bandwidth_limit_hourly">
-            <segment>
-                <source>You have reached your hourly bandwidth limit</source>
-                <target>You have reached your hourly bandwidth limit</target>
-            </segment>
-        </unit>
-        <unit id="uam.js.radreply.bandwidth_limit_daily">
-            <segment>
-                <source>You have reached your daily bandwidth limit</source>
-                <target>You have reached your daily bandwidth limit</target>
-            </segment>
-        </unit>
-        <unit id="uam.js.radreply.bandwidth_limit_weekly">
-            <segment>
-                <source>You have reached your weekly bandwidth limit</source>
-                <target>You have reached your weekly bandwidth limit</target>
-            </segment>
-        </unit>
-        <unit id="uam.js.radreply.bandwidth_limit_monthly">
-            <segment>
-                <source>You have reached your monthly bandwidth limit</source>
-                <target>You have reached your monthly bandwidth limit</target>
-            </segment>
-        </unit>
-        <unit id="uam.js.radreply.time_limit">
-            <segment>
-                <source>You have reached your time limit</source>
-                <target>You have reached your time limit</target>
-            </segment>
-        </unit>
-        <unit id="uam.js.radreply.time_limit_hourly">
-            <segment>
-                <source>You have reached your hourly time limit</source>
-                <target>You have reached your hourly time limit</target>
-            </segment>
-        </unit>
-        <unit id="uam.js.radreply.time_limit_daily">
-            <segment>
-                <source>You have reached your daily time limit</source>
-                <target>You have reached your daily time limit</target>
-            </segment>
-        </unit>
-        <unit id="uam.js.radreply.time_limit_weekly">
-            <segment>
-                <source>You have reached your weekly time limit</source>
-                <target>You have reached your weekly time limit</target>
-            </segment>
-        </unit>
-        <unit id="uam.js.radreply.time_limit_monthly">
-            <segment>
-                <source>You have reached your monthly time limit</source>
-                <target>You have reached your monthly time limit</target>
-            </segment>
-        </unit>
-    </file>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="en">
+  <file id="js.en">
+    <unit id="OPY9MVs" name="uam.js.server_timed_out">
+      <segment>
+        <source>uam.js.server_timed_out</source>
+        <target>Server Timed Out. Please try again</target>
+      </segment>
+    </unit>
+    <unit id="MFU1oTb" name="uam.js.both_username_password_needed">
+      <segment>
+        <source>uam.js.both_username_password_needed</source>
+        <target>Both username and password are required</target>
+      </segment>
+    </unit>
+    <unit id="SRGKa5T" name="uam.js.login_failed_server_error">
+      <segment>
+        <source>uam.js.login_failed_server_error</source>
+        <target>Login failed due to server error. Please try again</target>
+      </segment>
+    </unit>
+    <unit id="j9vVJkF" name="uam.js.no_response_tos_server">
+      <segment>
+        <source>uam.js.no_response_tos_server</source>
+        <target>No response from TOS login server</target>
+      </segment>
+    </unit>
+    <unit id="tr1NlfT" name="uam.js.tos_incorrect_response">
+      <segment>
+        <source>uam.js.tos_incorrect_response</source>
+        <target>Incorrect response from TOS server. Please notify system admin</target>
+      </segment>
+    </unit>
+    <unit id="oq3UTOE" name="uam.js.tos_login_error">
+      <segment>
+        <source>uam.js.tos_login_error</source>
+        <target>TOS login failed due to server error. Please try again</target>
+      </segment>
+    </unit>
+    <unit id="n4ZIXT1" name="uam.js.login_error">
+      <segment>
+        <source>uam.js.login_error</source>
+        <target>An error occurred trying to login. Please notify the system admin</target>
+      </segment>
+    </unit>
+    <unit id="_WHrgU4" name="uam.js.login_success">
+      <segment>
+        <source>uam.js.login_success</source>
+        <target>Login successful</target>
+      </segment>
+    </unit>
+    <unit id="4INTIcj" name="uam.js.login_continue_to_site">
+      <segment>
+        <source>uam.js.login_continue_to_site</source>
+        <target><![CDATA[Continue to your site <a target='_blank' href='%userUrl%'>%userUrl%</a>]]></target>
+      </segment>
+    </unit>
+    <unit id="29pOpFi" name="uam.js.status.sessionStart">
+      <segment>
+        <source>uam.js.status.sessionStart</source>
+        <target>Since %startTime%</target>
+      </segment>
+    </unit>
+    <unit id="5pkhj4H" name="uam.js.status.remainingSessionTime">
+      <segment>
+        <source>uam.js.status.remainingSessionTime</source>
+        <target><![CDATA[Remaining Session Time <strong>%remainingSessionTime%</strong>]]></target>
+      </segment>
+    </unit>
+    <unit id="jicNJa6" name="uam.js.status.remainingSessionData">
+      <segment>
+        <source>uam.js.status.remainingSessionData</source>
+        <target><![CDATA[Remaining Session Data <strong>%remainingSessionData%</strong>]]></target>
+      </segment>
+    </unit>
+    <unit id="IWGoG2U" name="uam.js.status.loggedUsername">
+      <segment>
+        <source>uam.js.status.loggedUsername</source>
+        <target><![CDATA[Logged in as <strong>%username%</strong>]]></target>
+      </segment>
+    </unit>
+    <unit id="9FcBr_B" name="uam.js.error.unknown_clientstate_reply">
+      <segment>
+        <source>uam.js.error.unknown_clientstate_reply</source>
+        <target>Unknown clientState found in JSON reply</target>
+      </segment>
+    </unit>
+    <unit id="taSVlL9" name="uam.js.error.secure_challenge_failure">
+      <segment>
+        <source>uam.js.error.secure_challenge_failure</source>
+        <target>Unable to get secure challenge</target>
+      </segment>
+    </unit>
+    <unit id="ax4pLM7" name="uam.js.error.failed_logoff">
+      <segment>
+        <source>uam.js.error.failed_logoff</source>
+        <target>Failed to logoff. Please try again</target>
+      </segment>
+    </unit>
+    <unit id="mFaZ1ZL" name="uam.js.error.already_logged_in">
+      <segment>
+        <source>uam.js.error.already_logged_in</source>
+        <target>Already logged in. Aborting login attempt</target>
+      </segment>
+    </unit>
+    <unit id="xkMWjQD" name="uam.js.prompt.confirm_logoff">
+      <segment>
+        <source>uam.js.prompt.confirm_logoff</source>
+        <target>Are you sure you want to disconnect now?</target>
+      </segment>
+    </unit>
+    <unit id="y07MHrL" name="Your are not allowed to login at this time">
+      <segment>
+        <source>Your are not allowed to login at this time</source>
+        <target>Your are not allowed to login at this time</target>
+      </segment>
+    </unit>
+    <unit id="ULLnOPO" name="Your account has expired">
+      <segment>
+        <source>Your account has expired</source>
+        <target>Your account has expired</target>
+      </segment>
+    </unit>
+    <unit id="nyEIE9X" name="You are already logged in at another location. Please try again in 5 minutes">
+      <segment>
+        <source>You are already logged in at another location. Please try again in 5 minutes</source>
+        <target>You are already logged in at another location. Please try again in 5 minutes</target>
+      </segment>
+    </unit>
+    <unit id="aaB0kId" name="Login Failed. Please check your username and password">
+      <segment>
+        <source>Login Failed. Please check your username and password</source>
+        <target>Login Failed. Please check your username and password</target>
+      </segment>
+    </unit>
+    <unit id="ccjWMDK" name="You have reached your bandwidth limit">
+      <segment>
+        <source>You have reached your bandwidth limit</source>
+        <target>You have reached your bandwidth limit</target>
+      </segment>
+    </unit>
+    <unit id="_bftBqj" name="You have reached your hourly bandwidth limit">
+      <segment>
+        <source>You have reached your hourly bandwidth limit</source>
+        <target>You have reached your hourly bandwidth limit</target>
+      </segment>
+    </unit>
+    <unit id="szvYoL8" name="You have reached your daily bandwidth limit">
+      <segment>
+        <source>You have reached your daily bandwidth limit</source>
+        <target>You have reached your daily bandwidth limit</target>
+      </segment>
+    </unit>
+    <unit id="auURKzX" name="You have reached your weekly bandwidth limit">
+      <segment>
+        <source>You have reached your weekly bandwidth limit</source>
+        <target>You have reached your weekly bandwidth limit</target>
+      </segment>
+    </unit>
+    <unit id="Bo2RTqL" name="You have reached your monthly bandwidth limit">
+      <segment>
+        <source>You have reached your monthly bandwidth limit</source>
+        <target>You have reached your monthly bandwidth limit</target>
+      </segment>
+    </unit>
+    <unit id="O4u.n4I" name="You have reached your time limit">
+      <segment>
+        <source>You have reached your time limit</source>
+        <target>You have reached your time limit</target>
+      </segment>
+    </unit>
+    <unit id="C6ODL2p" name="You have reached your hourly time limit">
+      <segment>
+        <source>You have reached your hourly time limit</source>
+        <target>You have reached your hourly time limit</target>
+      </segment>
+    </unit>
+    <unit id="BWtzoo9" name="You have reached your daily time limit">
+      <segment>
+        <source>You have reached your daily time limit</source>
+        <target>You have reached your daily time limit</target>
+      </segment>
+    </unit>
+    <unit id="0_N5eyH" name="You have reached your weekly time limit">
+      <segment>
+        <source>You have reached your weekly time limit</source>
+        <target>You have reached your weekly time limit</target>
+      </segment>
+    </unit>
+    <unit id="V73rYej" name="You have reached your monthly time limit">
+      <segment>
+        <source>You have reached your monthly time limit</source>
+        <target>You have reached your monthly time limit</target>
+      </segment>
+    </unit>
+  </file>
 </xliff>
