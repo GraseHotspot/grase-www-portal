@@ -24,6 +24,7 @@ require('../css/global.scss');
 
 $(document).ready(function() {
     $('[data-toggle="popover"]').popover();
+    $('[data-toggle="tooltip"]').tooltip();
 
     // Load datatables
     $('.dataTable').DataTable();
