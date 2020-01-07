@@ -80,7 +80,17 @@ class MainMenu extends Menu
             ;
 
 
-        $menu->addChild(new DefaultItem('nav_report_dhcp_leases', $menu->isEvent()), 15)
+        $menu->addChild(new DefaultItem('nav_header_sessions', $menu->isEvent()), 15)
+            ->setLabel('grase.menu.sessions.header')
+            ->setListAttr(['class' => 'nav-header'])        ;
+
+        $menu->addChild(new DefaultItem('nav_session_active_sessions', $menu->isEvent()), 16)
+            ->setLabel('grase.menu.sessions.active')
+            ->setRoute('grase_session')
+            ->setChildAttr(['class' => 'nav-treeview'])
+        ;
+
+        $menu->addChild(new DefaultItem('nav_report_dhcp_leases', $menu->isEvent()), 16)
             ->setLabel('grase.menu.dhcp_leases')
             ->setRoute('grase_dhcp_leases')
             ->setChildAttr(['class' => 'nav-treeview'])

@@ -187,5 +187,47 @@
         <target>{minutes, plural, one {# min} other {# mins}}</target>
       </segment>
     </unit>
+    <unit id="3GXQzwu" name="grase.error.invalid-csrf">
+      <segment>
+        <source>grase.error.invalid-csrf</source>
+        <target>Form submitted without correct security token. Please try again</target>
+      </segment>
+    </unit>
+    <unit id="Nzpm1Q." name="grase.session.logout.mac.success">
+      <segment>
+        <source>grase.session.logout.mac.success</source>
+        <target>Logged out device {mac}</target>
+      </segment>
+    </unit>
+    <unit id="qvoUOCm" name="grase.session.logout.mac.failed">
+      <segment>
+        <source>grase.session.logout.mac.failed</source>
+        <target>failed to logout device {mac}</target>
+      </segment>
+    </unit>
+    <unit id="gLyDqnM" name="grase.session.tooltip.terminatecause">
+      <segment>
+        <source>grase.session.tooltip.terminatecause</source>
+        <target>Stop Reason: {terminatecause}</target>
+      </segment>
+    </unit>
+    <unit id="IBPta6Z" name="grase.menu.sessions.header">
+      <segment>
+        <source>grase.menu.sessions.header</source>
+        <target>SESSIONS</target>
+      </segment>
+    </unit>
+    <unit id="6JD_HmT" name="grase.menu.sessions.active">
+      <segment>
+        <source>grase.menu.sessions.active</source>
+        <target>Active Sessions</target>
+      </segment>
+    </unit>
+    <unit id="ms897CI" name="grase.session.tooltip.captive.portal.config.login">
+      <segment>
+        <source>grase.session.tooltip.captive.portal.config.login</source>
+        <target>Captive Portal Config Login</target>
+      </segment>
+    </unit>
   </file>
 </xliff>

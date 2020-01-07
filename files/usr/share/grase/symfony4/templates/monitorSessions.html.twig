@@ -1,0 +1,71 @@
+{% extends "layout.html.twig" %}
+
+{% block page_title %}
+    {% trans %}Sessions{% endtrans %}
+{% endblock page_title %}
+
+{% block page_subtitle %}
+
+{% endblock page_subtitle %}
+
+{% block content %}
+
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">{% trans %}Active Sessions{% endtrans %}</h3>
+            </div>
+            <div class="box-body">
+                <table id="groupsTable" class="dataTable table table-bordered table-hover"
+                       data-paging="true" data-page-length="10" data-searching="true"
+                       data-ordering="true" data-info="true" data-autowidth="true">
+                    <thead>
+                    <tr>
+                        <th>{% trans %}Start Time{% endtrans %}</th>
+                        <th>{% trans %}Stop Time{% endtrans %}</th>
+                        <th>{% trans %}Session Time{% endtrans %}</th>
+                        <th>{% trans %}IP Address{% endtrans %}</th>
+                        <th>{% trans %}MAC Address{% endtrans %}</th>
+                        <th>{% trans %}Username{% endtrans %}</th>
+                        <th>{% trans %}Data Usage{% endtrans %}</th>
+                        <th>{% trans %}Account Comment{% endtrans %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {# @var activeSessions \App\Entity\Radius\Radacct[] #}
+                    {% for session in activeSessions %}
+                        <tr>
+                            <td>{{ session.acctstarttime|localizeddate('medium', 'short') }}</td>
+                            <td><a data-toggle="tooltip" title='{% trans with {'terminatecause': session.acctterminatecause} %}grase.session.tooltip.terminatecause{% endtrans %}'>{{ session.acctstoptime|localizeddate('medium', 'short') }}</a></td>
+                            <td data-order="{{ session.acctsessiontime }}">{{ session.displayAccountSessionTime }}</td>
+                            <td>{{ session.framedipaddress }}</td>
+                            <td>{{ session.callingstationid }}</td>
+                            <td>
+
+                                {% if not session.framedipaddress and session.servicetype %}
+                                <a title="{% trans %}grase.session.tooltip.captive.portal.config.login{% endtrans %}">
+                                    {{ session.servicetype }}
+                                </a>
+                                {% else %}
+                                    <a href="{# TODO session filtering username #}">{{ session.user.username ?? '' }}</a>
+                                    {# TODO add edit button for username#}
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+                                <a data-toggle="tooltip" data-html="true" title="&#x2193;{{ session.acctinputoctets|format_bytes }}<br/> &#x2191;{{ session.acctoutputoctets|format_bytes }}">{{ session.acctTotalOctets | format_bytes}}</a>
+
+
+                            </td>
+                            <td>{{ session.user.comment | truncate(50) }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

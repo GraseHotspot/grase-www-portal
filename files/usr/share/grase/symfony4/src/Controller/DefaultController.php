@@ -3,14 +3,18 @@
 namespace App\Controller;
 
 use App\Entity\AuditLog;
+use App\Entity\Radius\Radacct;
 use App\Entity\Radius\User;
 use App\Entity\Setting;
 use App\Util\SettingsUtils;
 use Grase\SystemInformation;
 use Grase\Util;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Class DefaultController
@@ -18,6 +22,19 @@ use Symfony\Component\HttpFoundation\Session\Session;
  */
 class DefaultController extends AbstractController
 {
+    /** @var TranslatorInterface  */
+    private $translator;
+    /**
+     * DefaultController constructor.
+     *
+     * @param TranslatorInterface $translator
+     */
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
+
+
     /**
      * Our "System Information" dashboard. This is the landing page after logging in.
      *
@@ -54,6 +71,61 @@ class DefaultController extends AbstractController
                 'settings' => $settings,
             ]
         );
+    }
+
+    public function monitorSessionAction()
+    {
+        $activeSessions = $this->getDoctrine()->getRepository(Radacct::class)->findAllActiveSessions();
+        //$activeSessions = $this->getDoctrine()->getRepository(Radacct::class)->findBy([], null, 20);
+
+        return $this->render(
+            'monitorSessions.html.twig',
+            [
+                'activeSessions' => $activeSessions,
+            ]
+        );
+
+    }
+
+
+    /**
+     * Logs out a Chilli session
+     * This function can only work on a local Coova Chilli node due to the exec used in
+     * Util::getChilliLeases()
+     *
+     * @param Request $request
+     * @param Session $session
+     *
+     * @return RedirectResponse
+     */
+    public function logoutChilliSessionAction(Request $request, Session $session)
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
+        $mac = $request->request->get('mac');
+        $submittedToken = $request->request->get('token');
+        if (!$this->isCsrfTokenValid('logout-chilli-session', $submittedToken)) {
+            $session->getFlashBag()->add(
+                'danger',
+                $this->translator->trans('grase.error.invalid-csrf')
+            );
+            return $this->redirectToRoute('grase_sessions');
+        }
+
+        if (Util::logoutChilliSession($mac)) {
+            $session->getFlashBag()->add('success', $this->translator->trans(
+                'grase.session.logout.mac.success',
+                ['mac' => $mac]
+            ));
+        } else {
+            $session->getFlashBag()->add(
+                'danger',
+                $this->translator->trans('grase.session.logout.mac.failed',
+                ['mac' => $mac]
+            ));
+        }
+        return $this->redirectToRoute('grase_sessions');
+
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Entity\Radius;
 
+use App\Util\DateIntervalEnhanced;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -19,7 +20,7 @@ use Doctrine\ORM\Mapping as ORM;
  *          @ORM\Index(name="AcctStopTime", columns={"AcctStopTime"}),
  *          @ORM\Index(name="NASIPAddress", columns={"NASIPAddress"})
  *      })
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Entity\Radius\RadacctRepository")
  */
 class Radacct
 {
@@ -448,6 +449,13 @@ class Radacct
     public function getAcctsessiontime()
     {
         return $this->acctsessiontime;
+    }
+
+    public function getDisplayAccountSessionTime()
+    {
+        $seconds = $this->getAcctsessiontime() ?? 0;
+        $acctSessionTime = new DateIntervalEnhanced('PT' . $seconds . 'S');
+        return $acctSessionTime->recalculate()->format('%H:%I:%S');
     }
 
     /**

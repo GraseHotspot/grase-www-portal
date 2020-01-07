@@ -45,6 +45,16 @@ grase_auditlog:
     defaults:
         _controller: App\Controller\DefaultController::auditLogDisplayAction
 
+grase_session:
+    path: /session
+    defaults:
+        _controller: App\Controller\DefaultController::monitorSessionAction
+
+grase_session_logoutmac:
+    path: /session/logoutmac
+    defaults:
+        _controller: App\Controller\DefaultControeller::logoutChilliSessionAction
+
 
 grase_uam_login:
     path: /uam
