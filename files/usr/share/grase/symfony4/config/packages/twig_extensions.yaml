@@ -7,7 +7,7 @@ services:
     #Twig\Extensions\ArrayExtension: ~
     Twig\Extensions\DateExtension: ~
     Twig\Extensions\IntlExtension: ~
-    #Twig\Extensions\TextExtension: ~
+    Twig\Extensions\TextExtension: ~
     twig_extension_numbers:
         class: Twig_Extensions_Extension_Number
         public: false
