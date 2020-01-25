@@ -99,7 +99,7 @@ class UpdateUserData
      * Write data back to a User entity with the updated data
      * @param User          $user
      * @param ObjectManager $em
-     * @param bool          $newUser if this is the first time a user is being created
+     * @param bool          $newUser     if this is the first time a user is being created
      * @param bool          $resetExpiry if we should force reset the expiry of the user
      */
     public function updateUser(User $user, ObjectManager $em, $newUser = false, $resetExpiry = false)
@@ -155,6 +155,11 @@ class UpdateUserData
         return null;
     }
 
+    /**
+     * Reset the users Expiry based on the group Expiry
+     * @param User          $user
+     * @param ObjectManager $em
+     */
     private function resetExpiry(User $user, ObjectManager $em)
     {
         $expiry = $this->primaryGroup->getExpiry();
@@ -184,6 +189,11 @@ class UpdateUserData
         $em->persist($expiryCheck);
     }
 
+    /**
+     * Set the users Expire After based on the group Expire After setting
+     * @param User          $user
+     * @param ObjectManager $em
+     */
     private function setExpireAfter(User $user, ObjectManager $em)
     {
         $expireAfter = $this->primaryGroup->getExpireAfter();

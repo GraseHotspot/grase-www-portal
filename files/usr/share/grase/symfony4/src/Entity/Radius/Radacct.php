@@ -451,10 +451,17 @@ class Radacct
         return $this->acctsessiontime;
     }
 
+    /**
+     * Displayable Account Session Time
+     * @return string
+     *
+     * @throws \Exception
+     */
     public function getDisplayAccountSessionTime()
     {
         $seconds = $this->getAcctsessiontime() ?? 0;
         $acctSessionTime = new DateIntervalEnhanced('PT' . $seconds . 'S');
+
         return $acctSessionTime->recalculate()->format('%H:%I:%S');
     }
 

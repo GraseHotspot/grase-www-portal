@@ -73,6 +73,10 @@ class DefaultController extends AbstractController
         );
     }
 
+    /**
+     * Display currently active Radius sessions
+     * @return Response
+     */
     public function monitorSessionAction()
     {
         $activeSessions = $this->getDoctrine()->getRepository(Radacct::class)->findAllActiveSessions();
@@ -84,7 +88,6 @@ class DefaultController extends AbstractController
                 'activeSessions' => $activeSessions,
             ]
         );
-
     }
 
 
@@ -109,6 +112,7 @@ class DefaultController extends AbstractController
                 'danger',
                 $this->translator->trans('grase.error.invalid-csrf')
             );
+
             return $this->redirectToRoute('grase_sessions');
         }
 
@@ -120,12 +124,14 @@ class DefaultController extends AbstractController
         } else {
             $session->getFlashBag()->add(
                 'danger',
-                $this->translator->trans('grase.session.logout.mac.failed',
-                ['mac' => $mac]
-            ));
+                $this->translator->trans(
+                    'grase.session.logout.mac.failed',
+                    ['mac' => $mac]
+                )
+            );
         }
-        return $this->redirectToRoute('grase_sessions');
 
+        return $this->redirectToRoute('grase_sessions');
     }
 
     /**
