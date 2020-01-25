@@ -247,16 +247,28 @@
         <target>Captive Portal Config Login</target>
       </segment>
     </unit>
-    <unit id="m.7nD2b" name="cron.audit.activate.expireAfterLogin">
+    <unit id="3zQMQti" name="grase.cron.audit.activate.expireAfterLogin">
       <segment>
-        <source>cron.audit.activate.expireAfterLogin</source>
+        <source>grase.cron.audit.activate.expireAfterLogin</source>
         <target>Activating user expiry after first login</target>
       </segment>
     </unit>
-    <unit id="Lx4Ll4O" name="cron.output.activate.expireAfterLogin">
+    <unit id="dpWxw_F" name="grase.cron.output.activate.expireAfterLogin">
       <segment>
-        <source>cron.output.activate.expireAfterLogin</source>
+        <source>grase.cron.output.activate.expireAfterLogin</source>
         <target><![CDATA[Activating user expiry after first login: {user} -> {expiry}]]></target>
+      </segment>
+    </unit>
+    <unit id="Uc9ixdH" name="grase.cron.runner.error.job">
+      <segment>
+        <source>grase.cron.runner.error.job</source>
+        <target>Cron runner job {name} failed</target>
+      </segment>
+    </unit>
+    <unit id="sgrn5tF" name="grase.cron.runner.starting.job">
+      <segment>
+        <source>grase.cron.runner.starting.job</source>
+        <target>Starting Cron Job</target>
       </segment>
     </unit>
   </file>

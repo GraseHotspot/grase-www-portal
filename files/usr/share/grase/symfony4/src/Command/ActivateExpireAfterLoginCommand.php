@@ -12,6 +12,7 @@ use Monolog\Logger;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
@@ -64,6 +65,8 @@ class ActivateExpireAfterLoginCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $io = new SymfonyStyle($input, $output);
+
         $query = $this->em->createQueryBuilder()
             ->select('c', 'MIN(p.id)', 'MIN(p.authDate)')
             ->from(Check::class, 'c')
@@ -84,12 +87,12 @@ class ActivateExpireAfterLoginCommand extends Command
             $userUpdateData->expiry = new \DateTime("@" . strtotime($user->getExpireAfter(), $firstLogin));
 
             $this->auditLogger->info(
-                'cron.audit.activate.expireAfterLogin',
+                'grase.cron.audit.activate.expireAfterLogin',
                 ['user' => $user, 'expiry' => $userUpdateData->expiry]
             );
-            $output->writeln(
+            $io->success(
                 $this->translator->trans(
-                    'cron.output.activate.expireAfterLogin',
+                    'grase.cron.output.activate.expireAfterLogin',
                     ['user' => $user->getUsername(), 'expiry' => $userUpdateData->expiry->format(
                         'c'
                     ), ]
