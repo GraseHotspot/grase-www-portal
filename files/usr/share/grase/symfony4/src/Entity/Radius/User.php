@@ -231,6 +231,30 @@ class User
     }
 
     /**
+     * @return Check
+     */
+    public function getExpireAfterCheck()
+    {
+        $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'GRASE-ExpireAfter'));
+
+        return $this->getRadiuscheck()->matching($criteria)->first();
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getExpireAfter()
+    {
+        if ($this->getExpireAfterCheck()) {
+            return $this->getExpireAfterCheck()->getValue();
+        }
+
+        return null;
+    }
+
+
+
+    /**
      * Add radiuscheck
      *
      * @param Check $radiuscheck

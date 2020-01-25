@@ -135,7 +135,7 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             // It's a new user, we need to set the username, we don't do this for editing though.
             $user->setUsername($newUserData->username);
-            $newUserData->updateUser($user, $this->getDoctrine()->getManager());
+            $newUserData->updateUser($user, $this->getDoctrine()->getManager(), true);
             $this->addFlash(
                 'success',
                 $this->translator->trans(

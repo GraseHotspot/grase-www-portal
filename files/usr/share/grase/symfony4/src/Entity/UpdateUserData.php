@@ -51,7 +51,7 @@ class UpdateUserData
     /**
      * @var \DateTime|null
      */
-    //public $expiry;
+    public $expiry;
 
     /**
      * Create a UpdateUserData from an existing User entity
@@ -66,7 +66,7 @@ class UpdateUserData
         //$updateUserData->password = $user->getPassword();
         $updateUserData->comment = $user->getComment();
         $updateUserData->primaryGroup = $user->getPrimaryGroup();
-        //$updateUserData->expiry = $user->getExpiry();
+        $updateUserData->expiry = $user->getExpiry();
         // Existing users don't use the dropdowns
         $updateUserData->dataLimit['dataLimitDropdown'] = null;
         $updateUserData->timeLimit['timeLimitDropdown'] = null;
@@ -99,8 +99,10 @@ class UpdateUserData
      * Write data back to a User entity with the updated data
      * @param User          $user
      * @param ObjectManager $em
+     * @param bool          $newUser if this is the first time a user is being created
+     * @param bool          $resetExpiry if we should force reset the expiry of the user
      */
-    public function updateUser(User $user, ObjectManager $em)
+    public function updateUser(User $user, ObjectManager $em, $newUser = false, $resetExpiry = false)
     {
 
         $user->setComment($this->comment);
@@ -119,7 +121,15 @@ class UpdateUserData
         }
         // @TODO update the rest
         // TODO reset the expiry??
+        if ($newUser || $resetExpiry) {
+            // @TODO reset the expiry with a group change?
+            $this->resetExpiry($user, $em);
+        }
         // TODO update the expireAfter if present and expiry isn't set
+        if (!$this->expiry) {
+            $this->setExpireAfter($user, $em);
+        }
+        // TODO Account lock
         $em->persist($user);
         $em->flush();
     }
@@ -143,6 +153,64 @@ class UpdateUserData
         }
 
         return null;
+    }
+
+    private function resetExpiry(User $user, ObjectManager $em)
+    {
+        $expiry = $this->primaryGroup->getExpiry();
+        $expiryCheck = $user->getExpiryCheck();
+        if (empty($expiry) && $expiryCheck) {
+            // We just need to remove the check
+            $em->remove($expiryCheck);
+
+            return;
+        }
+
+        if (empty($expiry)) {
+            // We don't have a check already, so nothing to do;
+            return;
+        }
+
+        if (!$expiryCheck) {
+            // We need to create a check
+            $expiryCheck = new Check();
+            $expiryCheck->setAttribute('Expiration');
+            $expiryCheck->setUser($user);
+            $expiryCheck->setOp(':=');
+        }
+
+        // Just set the check we have
+        $expiryCheck->setValue(date("F d Y H:i:s", strtotime($expiry)));
+        $em->persist($expiryCheck);
+    }
+
+    private function setExpireAfter(User $user, ObjectManager $em)
+    {
+        $expireAfter = $this->primaryGroup->getExpireAfter();
+        $expireAfterCheck = $user->getExpireAfterCheck();
+        if (empty($expireAfter) && $expireAfterCheck) {
+            // We just need to remove the check
+            $em->remove($expireAfterCheck);
+
+            return;
+        }
+
+        if (empty($expireAfter)) {
+            // We don't have a check already, so nothing to do;
+            return;
+        }
+
+        if (!$expireAfterCheck) {
+            // We need to create a check
+            $expireAfterCheck = new Check();
+            $expireAfterCheck->setAttribute('GRASE-ExpireAfter');
+            $expireAfterCheck->setUser($user);
+            $expireAfterCheck->setOp(':=');
+        }
+
+        // Just set the check we have
+        $expireAfterCheck->setValue($expireAfter);
+        $em->persist($expireAfterCheck);
     }
 
     /**
@@ -239,6 +307,7 @@ class UpdateUserData
             $primaryUserGroup->setUser($user);
         }
         $primaryUserGroup->setGroup($group);
+
         $em->persist($primaryUserGroup);
     }
 

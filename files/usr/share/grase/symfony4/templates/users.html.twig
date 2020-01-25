@@ -36,7 +36,7 @@
                             <td><a href="{{ path('grase_user_edit', {id: user.username}) }}">{{ user.username }}</a> <a style="float: right" class="" data-toggle="popover" tabindex="0" data-trigger="focus" title="{% trans %}Password{% endtrans %}" data-content="{{ user.password }}"><i class="material-icons md-18 md-dark">lock</i></a></td>
                             <td data-order="{{ user.datausagetotal }}">{{ user.datausagetotal|format_bytes }}/{{ user.datalimit|format_bytes }}</td>
                             <td data-order="{{ user.totalSessionTime }}">{{ user.totalSessionTime }}/{{ user.timelimit }}</td>
-                            <td data-order="{{ user.expiry ? user.expiry | date('U') }}">{% if user.expiry %}{{ user.expiry|localizeddate('medium', 'short') }}{% endif %}</td>
+                            <td data-order="{{ user.expiry ? user.expiry | date('U') }}">{% if user.expiry %}{{ user.expiry|localizeddate('medium', 'short') }}{% endif %}{{ user.expireAfter ? "(#{user.expireAfter})" }}</td>
                             <td data-order="{{ user.lastLogout ? user.lastLogout | date('U') }}">{% if user.lastLogout %}{{ user.lastLogout |localizeddate('medium', 'short') }}{% endif %}</td>
                             <td>{{ user.allUserGroupsNames }}</td>
                             <td>{{ user.comment }}</td>
