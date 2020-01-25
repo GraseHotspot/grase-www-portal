@@ -44,20 +44,26 @@ class MainMenu extends Menu
 
         // Create Root Item
         $menu = $this
-            ->createRoot('settings_menu', true)// Create event is "settings_menu.event"
+            ->createRoot('sidebar_menu', true)// Create event is "sidebar_menu.event"
             ->setListAttr([])
             ->setChildAttr(['data-parent' => 'grase_radmin_homepage', 'class' => 'nav nav-pills nav-sidebar flex-column nav-child-indent']); // Add Parent Menu to Html Tag
 
         // Create Menu Items
 
-        $menu->addChild(new DefaultItem('nav_config_groups', $menu->isEvent()), 5)
-             ->setLabel('grase.menu.groups')
-             ->setRoute('grase_groups')
-             ->setChildAttr(['class' => 'nav-treeview'])
+        $menu->addChild(new DefaultItem('nav_config_dashboard', $menu->isEvent()), 1)
+            ->setLabel('grase.menu.dashboard')
+            ->setRoute('grase_radmin_homepage')
+            ->setExtra('label_icon', 'dashboard')
+            //->setRoles(['ADMIN_SETTINGS_EMAIL'])
         ;
-        //->setRoles(['ADMIN_SETTINGS_CONTACT'])
 
-        $usersMenu = $menu->addChild(new DefaultItem('nav_config_users', $menu->isEvent()), 10)
+        $menu->addChild(new DefaultItem('nav_header_accounts', $menu->isEvent()), 5)
+            ->setLabel('grase.menu.accounts.header')
+            ->setListAttr(['class' => 'nav-header'])        ;
+
+
+
+        $usersMenu = $menu->addChild(new DefaultItem('nav_config_users', $menu->isEvent()), 5)
             ->setLabel('grase.menu.users')
             ->setLabelAfterHtml(' <i class="right fas fa-angle-left"></i>')
             ->setLink('#')
@@ -73,11 +79,19 @@ class MainMenu extends Menu
             ;
         $this->buildUserGroupsItems($usersMenu);
 
-        $menu->addChild(new DefaultItem('nav_create_user', $menu->isEvent()), 11)
+        $menu->addChild(new DefaultItem('nav_create_user', $menu->isEvent()), 6)
             ->setLabel('grase.menu.users.new')
             ->setRoute('grase_user_new')
             ->setExtra('label_icon', 'person_add')
             ;
+
+        $menu->addChild(new DefaultItem('nav_config_groups', $menu->isEvent()), 10)
+            ->setLabel('grase.menu.groups')
+            ->setRoute('grase_groups')
+            ->setExtra('label_icon', 'people_outline')
+            //->setChildAttr(['class' => 'nav-treeview'])
+        ;
+        //->setRoles(['ADMIN_SETTINGS_CONTACT'])
 
 
         $menu->addChild(new DefaultItem('nav_header_sessions', $menu->isEvent()), 15)
@@ -88,22 +102,24 @@ class MainMenu extends Menu
             ->setLabel('grase.menu.sessions.active')
             ->setRoute('grase_session')
             ->setChildAttr(['class' => 'nav-treeview'])
+            ->setExtra('label_icon', 'compare_arrows')
         ;
 
         $menu->addChild(new DefaultItem('nav_report_dhcp_leases', $menu->isEvent()), 16)
             ->setLabel('grase.menu.dhcp_leases')
             ->setRoute('grase_dhcp_leases')
             ->setChildAttr(['class' => 'nav-treeview'])
+            ->setExtra('label_icon', 'dns')
         ;
         //->setRoles(['ADMIN_SETTINGS_CONTACT'])
 
-        $menu->addChild(new DefaultItem('nav_header_settings', $menu->isEvent()), 30)
+        $settingsMenu = $menu->addChild(new DefaultItem('nav_header_settings', $menu->isEvent()), 30)
              ->setLabel('grase.menu.settings.header')
              ->setListAttr(['class' => 'nav-header'])
         ;
 
 
-        $settingsMenu = $menu->addChild(new DefaultItem('nav_config_settings', $menu->isEvent()), 30)
+         $settingsMenuCollapsable = $menu->addChild(new DefaultItem('nav_config_settings', $menu->isEvent()), 30)
             ->setLabel('Settings')
             ->setLabelAfterHtml(' <i class="right fas fa-angle-left"></i>')
             //->setRoute('grase_settings')
@@ -115,7 +131,7 @@ class MainMenu extends Menu
         //->setRoles(['ADMIN_SETTINGS_GENERAL'])
 
 
-        $settingsMenu->addChild(new DefaultItem('nav_config_advanced_settings', $settingsMenu->isEvent()), 1)
+        $settingsMenuCollapsable->addChild(new DefaultItem('nav_config_advanced_settings', $settingsMenu->isEvent()), 1)
             ->setLabel('Advanced Settings')
             ->setRoute('grase_advanced_settings')
             ->setExtra('label_icon', 'settings_application')
@@ -128,15 +144,16 @@ class MainMenu extends Menu
              ->setListAttr(['class' => 'nav-header'])
         ;
 
-        $settingsMenu = $menu->addChild(new DefaultItem('nav_admin_auditlog', $menu->isEvent()), 40)
+        $menu->addChild(new DefaultItem('nav_admin_auditlog', $menu->isEvent()), 40)
                              ->setLabel('grase.menu.admin.auditlog')
                              ->setRoute('grase_auditlog')
                              ->setExtra('label_icon', 'security')
         ;
 
         $menu->addChild(new DefaultItem('nav_logout', $menu->isEvent()), 100)
-            ->setLabel('Logout')
+            ->setLabel('grase.menu.logout')
             ->setRoute('_grase_logout')
+            ->setExtra('label_icon', 'exit_to_app')
         ;
 
 
@@ -161,7 +178,7 @@ class MainMenu extends Menu
                 $usersMenu->addChild(new DefaultItem('nav_config_users_' . $group->getId(), $usersMenu->isEvent()))
                     ->setLabel($group->getName())
                     ->setRoute('grase_users', ['group' => $group->getName()])
-                    ->setExtra('label_icon', 'people_outline')
+                    ->setExtra('label_icon', 'people')
                     ->setExtra('label_translate', false) // Don't try and translate the group names in the menu
 
                 ;

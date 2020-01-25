@@ -73,6 +73,24 @@
         <target>ADMIN</target>
       </segment>
     </unit>
+    <unit id="UPCAiq0" name="grase.menu.accounts.header">
+      <segment>
+        <source>grase.menu.accounts.header</source>
+        <target>ACCOUNTS</target>
+      </segment>
+    </unit>
+    <unit id="UPCAiq0" name="grase.menu.dashboard">
+      <segment>
+        <source>grase.menu.dashboard</source>
+        <target>Status</target>
+      </segment>
+    </unit>
+    <unit id="UPCAiq0" name="grase.menu.logout">
+      <segment>
+        <source>grase.menu.logout</source>
+        <target>Logout</target>
+      </segment>
+    </unit>
     <unit id="g3No7rv" name="grase.timestamp">
       <segment>
         <source>grase.timestamp</source>
