@@ -73,19 +73,19 @@
         <target>ADMIN</target>
       </segment>
     </unit>
-    <unit id="UPCAiq0" name="grase.menu.accounts.header">
+    <unit id="KzCqs5Q" name="grase.menu.accounts.header">
       <segment>
         <source>grase.menu.accounts.header</source>
         <target>ACCOUNTS</target>
       </segment>
     </unit>
-    <unit id="UPCAiq0" name="grase.menu.dashboard">
+    <unit id="RTdpdaL" name="grase.menu.dashboard">
       <segment>
         <source>grase.menu.dashboard</source>
         <target>Status</target>
       </segment>
     </unit>
-    <unit id="UPCAiq0" name="grase.menu.logout">
+    <unit id="I._YGGC" name="grase.menu.logout">
       <segment>
         <source>grase.menu.logout</source>
         <target>Logout</target>
@@ -245,6 +245,18 @@
       <segment>
         <source>grase.session.tooltip.captive.portal.config.login</source>
         <target>Captive Portal Config Login</target>
+      </segment>
+    </unit>
+    <unit id="m.7nD2b" name="cron.audit.activate.expireAfterLogin">
+      <segment>
+        <source>cron.audit.activate.expireAfterLogin</source>
+        <target>Activating user expiry after first login</target>
+      </segment>
+    </unit>
+    <unit id="Lx4Ll4O" name="cron.output.activate.expireAfterLogin">
+      <segment>
+        <source>cron.output.activate.expireAfterLogin</source>
+        <target><![CDATA[Activating user expiry after first login: {user} -> {expiry}]]></target>
       </segment>
     </unit>
   </file>

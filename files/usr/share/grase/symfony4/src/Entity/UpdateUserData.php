@@ -213,7 +213,7 @@ class UpdateUserData
         if (!$expireAfterCheck) {
             // We need to create a check
             $expireAfterCheck = new Check();
-            $expireAfterCheck->setAttribute('GRASE-ExpireAfter');
+            $expireAfterCheck->setAttribute(Check::GRASE_EXPIRE_AFTER);
             $expireAfterCheck->setUser($user);
             $expireAfterCheck->setOp(':=');
         }
