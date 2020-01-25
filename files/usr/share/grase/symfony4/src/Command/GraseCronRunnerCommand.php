@@ -12,6 +12,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
+/**
+ * Cron runner command to run the rest of the cron components
+ */
 class GraseCronRunnerCommand extends Command
 {
     protected static $defaultName = 'grase:cron:runner';
@@ -45,6 +48,9 @@ class GraseCronRunnerCommand extends Command
         $this->logger = $logger;
     }
 
+    /**
+     * @inheritDoc
+     */
     protected function configure()
     {
         $this
@@ -52,17 +58,22 @@ class GraseCronRunnerCommand extends Command
         ;
     }
 
+    /**
+     * @param InputInterface  $input
+     * @param OutputInterface $output
+     *
+     * @return int
+     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
         $returnCode = 0;
 
         $commands = [
-            'Activate Expiry After First Login' => 'grase:cron:activateExpireAfterLogin'
+            'Activate Expiry After First Login' => 'grase:cron:activateExpireAfterLogin',
         ];
 
-        foreach($commands as $name => $command) {
-
+        foreach ($commands as $name => $command) {
             $cmd = $this->getApplication()->find($command);
 
             $arguments = [
