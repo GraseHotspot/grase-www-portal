@@ -88,14 +88,15 @@ class ActivateExpireAfterLoginCommand extends Command
 
             $this->auditLogger->info(
                 'grase.cron.audit.activate.expireAfterLogin',
-                ['user' => $user, 'expiry' => $userUpdateData->expiry]
+                ['user' => $user->getUsername(), 'expiry' => $userUpdateData->expiry->format('c')]
             );
             $io->success(
                 $this->translator->trans(
                     'grase.cron.output.activate.expireAfterLogin',
-                    ['user' => $user->getUsername(), 'expiry' => $userUpdateData->expiry->format(
-                        'c'
-                    ), ]
+                    [
+                        'user' => $user->getUsername(),
+                        'expiry' => $userUpdateData->expiry->format('c'),
+                    ]
                 )
             );
 

@@ -92,43 +92,6 @@ class CronFunctions extends DatabaseFunctions
         return false;
     }
 
-    public function clearStaleSessions()
-    {
-        /* Finds all Sessions that appear to have timed out
-         * Timed out is when the StartTime + SessionTime is more than 300 seconds older than now
-         * So essentially any sessions that haven't updated the session date in the last 5 minutes
-         * */
-        $sql = "UPDATE radacct
-                SET
-                AcctTerminateCause='Admin-Reset',
-                AcctStopTime = FROM_UNIXTIME(UNIX_TIMESTAMP(AcctStartTime) + AcctSessionTime)
-                WHERE
-                (AcctStopTime IS NULL OR AcctStopTime = 0)
-                AND
-                TIME_TO_SEC(
-                            TIMEDIFF(
-                                     NOW(),
-                                     ADDTIME(
-                                             AcctStartTime,
-                                             SEC_TO_TIME(AcctSessionTime)
-                                            )
-                                     )
-                            ) > 300";
-
-        $result = $this->db->exec($sql);
-
-        if (PEAR::isError($result)) {
-            return T_('Clearing stale sessions failed: ') . $result->toString();
-        }
-
-        if ($result > 0) {
-            return T_('Stale sessions cleared') . $result;
-        }
-
-        return false;
-
-    }
-
     public function deleteExpiredUsers()
     {
         /* Do select to get list of usernames

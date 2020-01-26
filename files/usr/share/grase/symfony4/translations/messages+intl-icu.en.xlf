@@ -271,5 +271,17 @@
         <target>Starting Cron Job</target>
       </segment>
     </unit>
+    <unit id="QGsypVw" name="grase.cron.audit.clearStaleSessions">
+      <segment>
+        <source>grase.cron.audit.clearStaleSessions</source>
+        <target>Clearing Stale Radius Accounting Sessions</target>
+      </segment>
+    </unit>
+    <unit id="lh30NKb" name="grase.cron.output.clearStaleSessions">
+      <segment>
+        <source>grase.cron.output.clearStaleSessions</source>
+        <target>Cleared {updatedSessions} stale radius accounting sessions</target>
+      </segment>
+    </unit>
   </file>
 </xliff>

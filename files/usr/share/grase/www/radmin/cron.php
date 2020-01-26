@@ -43,11 +43,6 @@ if ($upgradeDatabaseResults) {
     echo "$upgradeDatabaseResults\n";
 }
 
-$staleSessionsResult = CronFunctions::getInstance()->clearStaleSessions();
-if ($staleSessionsResult) {
-    echo "$staleSessionsResult\n";
-}
-
 $expiredUsersResults = CronFunctions::getInstance()->deleteExpiredUsers();
 if ($expiredUsersResults) {
     echo "$expiredUsersResults\n";
