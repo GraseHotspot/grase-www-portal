@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping\Index;
  */
 class Check
 {
-    const GRASE_EXPIRE_AFTER = 'GRASE-ExpireAfter';
+    public const GRASE_EXPIRE_AFTER = 'GRASE-ExpireAfter';
     /**
      * @var int
      *
