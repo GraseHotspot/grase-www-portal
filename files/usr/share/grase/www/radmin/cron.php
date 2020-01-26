@@ -86,5 +86,3 @@ $clearOldBatchesResults = CronFunctions::getInstance()->clearOldBatches();
 if ($clearOldBatchesResults) {
     echo "$clearOldBatchesResults\n";
 }
-
-echo CronFunctions::getInstance()->activateExpireAfterLogin();

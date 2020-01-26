@@ -42,45 +42,6 @@ class CronFunctions extends DatabaseFunctions
         return $instance;
     }
 
-
-    public function activateExpireAfterLogin()
-    {
-        $rowsaffected = 0;
-
-        $query = "
-          SELECT
-            LOWER(radcheck.UserName) AS username,
-            radcheck.value AS expireafter,
-            UNIX_TIMESTAMP(radpostauth.authdate) AS firstlogin
-          FROM radius.radcheck, radius.radpostauth
-          WHERE
-            radcheck.UserName = radpostauth.username
-            AND Attribute = 'GRASE-ExpireAfter'
-            AND reply = 'Access-Accept'
-          GROUP BY radcheck.Username
-          ORDER BY authdate";
-
-        $results = $this->db->queryAll($query);
-        if (PEAR::isError($results)) {
-            return T_('Unable to select users needing First Login Activation') . $results->toString();
-        }
-
-        foreach ($results as $user) {
-            $this->setUserExpiry(
-                $user['username'],
-                date('Y-m-d H:i:s', strtotime($user['expireafter'], $user['firstlogin']))
-            );
-            $this->setUserExpireAfter($user['username'], '');
-            $rowsaffected++;
-        }
-
-        if ($rowsaffected) {
-            return "($rowsaffected) " . T_('First login users activated') . "\n";
-        }
-
-        return false;
-    }
-
     public function clearOldBatches()
     {
         $rowsaffected = 0;
