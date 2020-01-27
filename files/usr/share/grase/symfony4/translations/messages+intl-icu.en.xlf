@@ -319,5 +319,29 @@
         <target>Cron task clearOldPostAuth DELETE query failed with an error</target>
       </segment>
     </unit>
+    <unit id="pkZ471D" name="grase.cron.audit.condensePreviousMonths">
+      <segment>
+        <source>grase.cron.audit.condensePreviousMonths</source>
+        <target>Condensed old radius accounting data</target>
+      </segment>
+    </unit>
+    <unit id="KvNhfoq" name="grase.cron.output.condensePreviousMonths">
+      <segment>
+        <source>grase.cron.output.condensePreviousMonths</source>
+        <target>Condensed old radius accounting data for {condensedUsers} in {month}</target>
+      </segment>
+    </unit>
+    <unit id="dzSjDL5" name="grase.cron.audit.condensePreviousMonths.cleanup">
+      <segment>
+        <source>grase.cron.audit.condensePreviousMonths.cleanup</source>
+        <target>Deleted old accounting data rows that have been condensed into monthly table</target>
+      </segment>
+    </unit>
+    <unit id="OKjz4Va" name="grase.cron.output.condensePreviousMonths.cleanup">
+      <segment>
+        <source>grase.cron.output.condensePreviousMonths.cleanup</source>
+        <target>Deleted {deletedRows} old sessions from {month} that have been condensed</target>
+      </segment>
+    </unit>
   </file>
 </xliff>

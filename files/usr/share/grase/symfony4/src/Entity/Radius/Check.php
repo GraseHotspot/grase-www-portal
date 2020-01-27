@@ -15,6 +15,9 @@ class Check
 {
     public const GRASE_EXPIRE_AFTER = 'GRASE-ExpireAfter';
     public const EXPIRATION = 'Expiration';
+    public const MAX_OCTETS = 'Max-Octets';
+    public const MAX_ALL_SESSION = 'Max-All-Session';
+
     /**
      * @var int
      *

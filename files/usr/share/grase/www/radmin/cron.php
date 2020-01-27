@@ -43,11 +43,6 @@ if ($upgradeDatabaseResults) {
     echo "$upgradeDatabaseResults\n";
 }
 
-$condensePreviousMonthsResults = CronFunctions::getInstance()->condensePreviousMonthsAccounting();
-if ($condensePreviousMonthsResults) {
-    echo "$condensePreviousMonthsResults\n";
-}
-
 $clearPostAuthMACRejectResults = CronFunctions::getInstance()->clearPostAuthMacRejects();
 if ($clearPostAuthMACRejectResults) {
     echo "$clearPostAuthMACRejectResults\n";

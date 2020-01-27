@@ -2,6 +2,7 @@
 
 namespace App\Command;
 
+use App\Util\GraseConsoleStyle;
 use Doctrine\ORM\EntityManagerInterface;
 use Monolog\Logger;
 use Psr\Log\LoggerInterface;
@@ -9,7 +10,6 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
@@ -66,7 +66,7 @@ class GraseCronRunnerCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $io = new SymfonyStyle($input, $output);
+        $io = new GraseConsoleStyle($input, $output);
         $returnCode = 0;
 
         $commands = [
@@ -74,6 +74,7 @@ class GraseCronRunnerCommand extends Command
             'Clear Stale Sessions' => 'grase:cron:clearStaleSessions',
             'Delete Expired Users' => 'grase:cron:deleteExpiredUsers',
             'Clear old postAuth rows' => 'grase:cron:clearOldPostAuth',
+            'Condense previous months radAcct' => 'grase:cron:condensePreviousMonthsAccounting',
         ];
 
         foreach ($commands as $name => $command) {
