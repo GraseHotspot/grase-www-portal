@@ -283,5 +283,18 @@
         <target>Cleared {updatedSessions} stale radius accounting sessions</target>
       </segment>
     </unit>
+    <unit id="QGsypVw" name="grase.cron.audit.deleteExpiredUser">
+      <segment>
+        <source>grase.cron.audit.deleteExpiredUser</source>
+        <target>Deleting expired user</target>
+      </segment>
+    </unit>
+    <unit id="lh30NKb" name="grase.cron.output.deleteExpiredUser">
+      <segment>
+        <source>grase.cron.output.deleteExpiredUser</source>
+        <target>Deleting expired user {user} who expired on {expiry}</target>
+      </segment>
+    </unit>
+
   </file>
 </xliff>

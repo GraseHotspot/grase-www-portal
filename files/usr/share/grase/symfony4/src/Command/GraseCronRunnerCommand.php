@@ -72,6 +72,7 @@ class GraseCronRunnerCommand extends Command
         $commands = [
             'Activate Expiry After First Login' => 'grase:cron:activateExpireAfterLogin',
             'Clear Stale Sessions' => 'grase:cron:clearStaleSessions',
+            'Delete Expired Users' => 'grase:cron:deleteExpiredUsers',
         ];
 
         foreach ($commands as $name => $command) {

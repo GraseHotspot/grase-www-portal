@@ -484,7 +484,7 @@ class User
      * Get all the Radius Check Entries
      * @return ArrayCollection
      */
-    protected function getRadiuscheck()
+    public function getRadiuscheck()
     {
         return $this->radiusCheck;
     }

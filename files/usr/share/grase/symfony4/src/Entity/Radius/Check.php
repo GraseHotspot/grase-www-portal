@@ -14,6 +14,7 @@ use Doctrine\ORM\Mapping\Index;
 class Check
 {
     public const GRASE_EXPIRE_AFTER = 'GRASE-ExpireAfter';
+    public const EXPIRATION = 'Expiration';
     /**
      * @var int
      *

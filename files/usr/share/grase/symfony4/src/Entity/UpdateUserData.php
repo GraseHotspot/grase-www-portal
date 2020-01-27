@@ -7,6 +7,7 @@ use App\Entity\Radius\Group;
 use App\Entity\Radius\User;
 use App\Entity\Radius\UserGroup;
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
@@ -78,6 +79,40 @@ class UpdateUserData
         }
 
         return $updateUserData;
+    }
+
+    /**
+     * Helper function for deleting a user account
+     *
+     * Removes user groups and radius checks. Doesn't touch accounting data
+     *
+     * @param User                   $user
+     * @param EntityManagerInterface $entityManager
+     *
+     * @return bool
+     */
+    public static function deleteUser(User $user, EntityManagerInterface $entityManager)
+    {
+        // Remove radius checks
+        foreach ($user->getRadiuscheck() as $check) {
+            $entityManager->remove($check);
+        }
+
+        // Remove user groups
+        foreach ($user->getUserGroups() as $group) {
+            $entityManager->remove($group);
+        }
+
+        // @todo Remove from radreply
+
+        // @TODO remove from batches
+
+        $entityManager->flush();
+
+        $entityManager->remove($user);
+        $entityManager->flush();
+
+        return true;
     }
 
     /**

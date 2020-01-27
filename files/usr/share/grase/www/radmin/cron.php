@@ -43,11 +43,6 @@ if ($upgradeDatabaseResults) {
     echo "$upgradeDatabaseResults\n";
 }
 
-$expiredUsersResults = CronFunctions::getInstance()->deleteExpiredUsers();
-if ($expiredUsersResults) {
-    echo "$expiredUsersResults\n";
-}
-
 $condensePreviousMonthsResults = CronFunctions::getInstance()->condensePreviousMonthsAccounting();
 if ($condensePreviousMonthsResults) {
     echo "$condensePreviousMonthsResults\n";

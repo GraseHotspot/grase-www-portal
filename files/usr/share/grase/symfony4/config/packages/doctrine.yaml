@@ -27,3 +27,8 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Entity'
                 prefix: 'App\Entity'
                 alias: App
+
+        # Functions from the DoctrineExtensions https://github.com/beberlei/DoctrineExtensions/blob/master/config/mysql.yml
+        dql:
+            datetime_functions:
+                strtodate: DoctrineExtensions\Query\Mysql\StrToDate

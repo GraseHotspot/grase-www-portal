@@ -92,50 +92,6 @@ class CronFunctions extends DatabaseFunctions
         return false;
     }
 
-    public function deleteExpiredUsers()
-    {
-        /* Do select to get list of usernames
-         * Run deleteUser over each username (this clears all junk easily
-         * can be condensed into less queries but this removes complexity
-         * */
-
-        //  SELECT UserName FROM radcheck WHERE Attribute = 'Expiration' AND Value LIKE 'January __ 2011 00:00:00'
-
-        // Loop through previous months encase they have been missed. Bit of overkill but works. Time is cheap
-        $months = array(-2, -3, -4, -5, -6, -7, -8, -9, -10, -11, -12);
-        $deleted_results = 0;
-        foreach ($months as $month) {
-            $timepattern = strftime("%B %% %Y __:__:__", strtotime("$month months"));
-            $sql = sprintf(
-                "SELECT UserName
-                            FROM radcheck
-                            WHERE Attribute = %s AND
-                            Value LIKE %s",
-                $this->db->quote('Expiration'),
-                $this->db->quote($timepattern)
-            );
-
-            $results = $this->db->queryAll($sql);
-
-            if (PEAR::isError($results)) {
-                return T_('Fetching users to delete failed') . $results->toString();
-            }
-
-            foreach ($results as $user) {
-                AdminLog::getInstance()->log_cron("Cron Deleting Expired ${user['UserName']}");
-                $this->deleteUser($user['UserName']);
-            }
-            $deleted_results += sizeof($results);
-        }
-
-        if ($deleted_results) {
-            return "($deleted_results) " . T_('Expired users deleted');
-        }
-
-        return false;
-
-    }
-
     public function deleteOutOfTimeUsers()
     {
         /* Do select to get list of usernames
