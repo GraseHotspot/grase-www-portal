@@ -2,14 +2,13 @@
 
 namespace App\Command;
 
+use App\Util\GraseConsoleStyle;
 use Doctrine\ORM\EntityManagerInterface;
 use Monolog\Logger;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
@@ -63,7 +62,7 @@ class ClearStaleSessionsCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $io = new SymfonyStyle($input, $output);
+        $io = new GraseConsoleStyle($input, $output);
 
         $sql = "UPDATE radacct
                 SET

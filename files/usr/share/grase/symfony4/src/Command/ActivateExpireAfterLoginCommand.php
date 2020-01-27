@@ -5,6 +5,7 @@ namespace App\Command;
 use App\Entity\Radius\Check;
 use App\Entity\Radius\RadPostAuth;
 use App\Entity\UpdateUserData;
+use App\Util\GraseConsoleStyle;
 use App\Util\SettingsUtils;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Query\Expr\Join;
@@ -12,7 +13,6 @@ use Monolog\Logger;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
@@ -65,7 +65,7 @@ class ActivateExpireAfterLoginCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $io = new SymfonyStyle($input, $output);
+        $io = new GraseConsoleStyle($input, $output);
 
         $query = $this->em->createQueryBuilder()
             ->select('c', 'MIN(p.id)', 'MIN(p.authDate)')
