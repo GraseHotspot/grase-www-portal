@@ -80,7 +80,7 @@ class CondensePreviousMonthsAccountingCommand extends Command
 
             // summarise radacct rows into mtotaccttmp for this accounting month
             $tempAccountingRows = $this->populateTempAccountingTable($startAccountingMonth, $endAccountingMonth);
-            if ($tempAccountingRows === 0) {
+            if (0 === $tempAccountingRows) {
                 // If there wasn't anything for that month, continue (but we should never get here, we only process months with data)
                 // @ TODO log this? Throw an exception
                 continue;
@@ -129,6 +129,7 @@ class CondensePreviousMonthsAccountingCommand extends Command
      * @param \DateTime $startAccountingMonth
      *
      * @return int
+     *
      * @throws \Doctrine\DBAL\DBALException
      */
     private function updateCheckMaxOctets(\DateTime $startAccountingMonth)
@@ -165,6 +166,7 @@ class CondensePreviousMonthsAccountingCommand extends Command
      * @param \DateTime $startAccountingMonth
      *
      * @return int
+     *
      * @throws \Doctrine\DBAL\DBALException
      */
     private function updateCheckMaxAllSession(\DateTime $startAccountingMonth)
@@ -201,6 +203,7 @@ class CondensePreviousMonthsAccountingCommand extends Command
      * @param \DateTime $startAccountingMonth
      *
      * @return int
+     *
      * @throws \Doctrine\DBAL\DBALException
      */
     private function moveTempAccountingToArchive(\DateTime $startAccountingMonth)
@@ -252,6 +255,7 @@ class CondensePreviousMonthsAccountingCommand extends Command
      * @param \DateTime $endAccountingMonth
      *
      * @return int
+     *
      * @throws \Doctrine\DBAL\DBALException
      */
     private function removeAccountingData(\DateTime $startAccountingMonth, \DateTime $endAccountingMonth)
@@ -284,6 +288,7 @@ class CondensePreviousMonthsAccountingCommand extends Command
      * @param \DateTime $endAccountingMonth
      *
      * @return int
+     *
      * @throws \Doctrine\DBAL\DBALException
      */
     private function populateTempAccountingTable(\DateTime $startAccountingMonth, \DateTime $endAccountingMonth)
@@ -352,6 +357,7 @@ class CondensePreviousMonthsAccountingCommand extends Command
      * rolling data limits (x Mb/month) to work correctly.
      *
      * @return array
+     *
      * @throws \Doctrine\DBAL\DBALException
      */
     private function getAccountingMonths()
