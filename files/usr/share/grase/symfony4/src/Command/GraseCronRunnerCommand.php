@@ -73,6 +73,7 @@ class GraseCronRunnerCommand extends Command
             'Activate Expiry After First Login' => 'grase:cron:activateExpireAfterLogin',
             'Clear Stale Sessions' => 'grase:cron:clearStaleSessions',
             'Delete Expired Users' => 'grase:cron:deleteExpiredUsers',
+            'Clear old postAuth rows' => 'grase:cron:clearOldPostAuth',
         ];
 
         foreach ($commands as $name => $command) {

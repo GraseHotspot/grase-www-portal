@@ -398,27 +398,6 @@ class CronFunctions extends DatabaseFunctions
         return false;
     }
 
-    public function clearOldPostAuth()
-    {
-        $twomonthsago = strftime("%Y-%m-%d", strtotime("first day of -1 months"));
-        $sql = sprintf(
-            "DELETE FROM radpostauth WHERE AuthDate < %s",
-            $this->db->quote($twomonthsago)
-        );
-
-        $result = $this->db->exec($sql);
-
-        if (PEAR::isError($result)) {
-            return T_('Unable to clear old Postauth rows: ') . $result->toString();
-        }
-
-        if ($result) {
-            return "($result) " . T_('Old Postauth rows cleared');
-        }
-
-        return false;
-    }
-
     public function clearPostAuthMacRejects()
     {
         $sql = "

@@ -47,10 +47,6 @@ $condensePreviousMonthsResults = CronFunctions::getInstance()->condensePreviousM
 if ($condensePreviousMonthsResults) {
     echo "$condensePreviousMonthsResults\n";
 }
-$clearOldPostDataResults = CronFunctions::getInstance()->clearOldPostAuth();
-if ($clearOldPostDataResults) {
-    echo "$clearOldPostDataResults\n";
-}
 
 $clearPostAuthMACRejectResults = CronFunctions::getInstance()->clearPostAuthMacRejects();
 if ($clearPostAuthMACRejectResults) {
