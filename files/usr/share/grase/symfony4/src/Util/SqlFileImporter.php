@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Util;
-
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DBALException;
@@ -28,7 +26,7 @@ class SqlFileImporter
     {
         $handle = gzopen($filename, "r");
 
-        while(!gzeof($handle)) {
+        while (!gzeof($handle)) {
             yield trim(gzgets($handle));
         }
 
@@ -41,6 +39,7 @@ class SqlFileImporter
      * @param string $filename
      *
      * @return bool
+     *
      * @throws \Doctrine\DBAL\ConnectionException
      */
     public function importSqlFile($filename)
@@ -49,8 +48,7 @@ class SqlFileImporter
 
         $this->connection->beginTransaction();
 
-        foreach ($this->readFile($filename) as $line)
-        {
+        foreach ($this->readFile($filename) as $line) {
             // Skip line if it's a mysqldump comment or empty
             if (substr($line, 0, 2) === '--' || trim($line) == '') {
                 continue;
@@ -77,6 +75,7 @@ class SqlFileImporter
                         ['message' => $e->getMessage(), 'code' => $e->getCode()]
                     );
                     $this->connection->rollBack();
+
                     return false;
                 }
 
@@ -114,8 +113,7 @@ class SqlFileImporter
 
         $query = "";
 
-        foreach ($this->readFile($filename) as $line)
-        {
+        foreach ($this->readFile($filename) as $line) {
             // Skip line if it's a mysqldump comment or empty
             if (substr($line, 0, 2) === '--' || trim($line) == '') {
                 continue;
@@ -123,7 +121,7 @@ class SqlFileImporter
 
             // Add line to current query
             $query .= $line;
-            $lineCount ++;
+            $lineCount++;
 
             // Check if we're at the end of a query
             if (substr(trim($line), -1, 1) == ';') {
@@ -139,6 +137,7 @@ class SqlFileImporter
                 return false;
             }
         }
+
         return false;
     }
 
@@ -155,8 +154,7 @@ class SqlFileImporter
 
         $this->connection->exec('SET FOREIGN_KEY_CHECKS=0;');
 
-        foreach ($tables as $table)
-        {
+        foreach ($tables as $table) {
             // TODO? Show which tables we've deleted?
             $this->connection->exec("DROP TABLE ${table}");
         }
@@ -165,6 +163,4 @@ class SqlFileImporter
 
         $this->connection->commit();
     }
-
-
 }
