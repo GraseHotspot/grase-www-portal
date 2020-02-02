@@ -11,3 +11,13 @@ alter table batch
 		primary key (batchID, UserName);
 
 Find a real JS translation engine that does ICU message format (https://formatjs.io/github/)
+
+Filter CoovaChilli service user out from users display
+autocreatepassword needs to be present and randomised if not already present (Setting Sanity)
+DB upgrade to cleanup radgroupreply/check: select * from radgroupreply WHERE GroupName NOT IN (SELECT id from groups);
+Verify group limits (groups vs radgroupcheck)
+Settings Sanity radreply coovachilli values
+
+Redo templates
+
+Work out default network interfaces to set CoovaChilli on (first run wizard?)

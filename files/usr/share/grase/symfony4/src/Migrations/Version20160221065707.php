@@ -43,6 +43,20 @@ class Version20160221065707 extends AbstractMigration
   MODIFY `UserName` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
   CHANGE `Comment` `comment` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci');
+
+        $this->addSql('ALTER TABLE auth ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci');
+        $this->addSql('ALTER TABLE batch ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci');
+        $this->addSql('ALTER TABLE batches ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci');
+        $this->addSql('ALTER TABLE mtotacct ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci');
+        $this->addSql('ALTER TABLE nas ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci');
+        $this->addSql('ALTER TABLE radacct ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci');
+        $this->addSql('ALTER TABLE radgroupcheck ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci');
+        $this->addSql('ALTER TABLE radgroupreply ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci');
+        $this->addSql('ALTER TABLE radpostauth ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci');
+        $this->addSql('ALTER TABLE radreply ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci');
+        $this->addSql('ALTER TABLE settings ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci');
+        $this->addSql('ALTER TABLE templates ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci');
+        $this->addSql('ALTER TABLE vouchers ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci');
     }
 
     /**

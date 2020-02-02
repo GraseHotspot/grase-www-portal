@@ -101,6 +101,8 @@ class SettingsSanity
         ],
     ];
 
+    // TODO autocreatepassword needs to be present and randomised if not already present
+
     /**
      * SettingsSanity constructor.
      *
@@ -156,6 +158,9 @@ class SettingsSanity
             'sellableData',
             'userableData',
             'groups',
+            'DBVersion',
+            'DBSchemaVersion',
+            'disablejavascript',
         ];
 
         $existingSettings = array_map(
