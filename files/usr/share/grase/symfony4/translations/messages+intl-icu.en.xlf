@@ -325,7 +325,7 @@
         <target>Condensed old radius accounting data</target>
       </segment>
     </unit>
-    <unit id="KvNhfoq" name="grase.cron.output.condensePreviousMonths">
+    <unit id="lriSRwn" name="grase.cron.output.condensePreviousMonths">
       <segment>
         <source>grase.cron.output.condensePreviousMonths</source>
         <target>Condensed old radius accounting data for {condensedUsers} in {month}</target>
@@ -341,6 +341,90 @@
       <segment>
         <source>grase.cron.output.condensePreviousMonths.cleanup</source>
         <target>Deleted {deletedRows} old sessions from {month} that have been condensed</target>
+      </segment>
+    </unit>
+    <unit id="3b5VHQF" name="grase.command.migrate-v3.error.radiusFileMissing">
+      <segment>
+        <source>grase.command.migrate-v3.error.radiusFileMissing</source>
+        <target>Can't find radius backup file at {filename}. Please check the file exists.</target>
+      </segment>
+    </unit>
+    <unit id="PI8Xxkt" name="grase.command.migrate-v3.error.radminFileMissing">
+      <segment>
+        <source>grase.command.migrate-v3.error.radminFileMissing</source>
+        <target>Can't find radmin backup file at {filename}. Please check the file exists.</target>
+      </segment>
+    </unit>
+    <unit id="cVqW_Rp" name="grase.command.migrate-v3.warning-override-database">
+      <segment>
+        <source>grase.command.migrate-v3.warning-override-database</source>
+        <target>This command will overwrite the database. All data will be replaced with the data in the provided backup files. All tables will be removed, even extra tables not part of the Grase Hotspot if they have been installed in this database. This is not reversible. DATA LOSS WILL OCCUR</target>
+      </segment>
+    </unit>
+    <unit id="qTBFzCR" name="grase.command.migrate-v3.confirm-import">
+      <segment>
+        <source>grase.command.migrate-v3.confirm-import</source>
+        <target>Are you sure you want to import the radius/radmin V3 backups and overwrite the current database?</target>
+      </segment>
+    </unit>
+    <unit id="GJNDPAG" name="grase.command.migrate-v3.error.backupFileInvalid">
+      <segment>
+        <source>grase.command.migrate-v3.error.backupFileInvalid</source>
+        <target>Backup file {filename} appears invalid. Only backup files generated from V3 backups can be loaded with this tool</target>
+      </segment>
+    </unit>
+    <unit id="ySChq83" name="grase.command.migrate-v3.noChangesMade">
+      <segment>
+        <source>grase.command.migrate-v3.noChangesMade</source>
+        <target>No changes have been made to your database</target>
+      </segment>
+    </unit>
+    <unit id="zBXtaCC" name="grase.command.migrate-v3.startImportBackupFile">
+      <segment>
+        <source>grase.command.migrate-v3.startImportBackupFile</source>
+        <target>Importing backup file {filename}</target>
+      </segment>
+    </unit>
+    <unit id="IcksrdZ" name="grase.command.migrate-v3.startClearDatabase">
+      <segment>
+        <source>grase.command.migrate-v3.startClearDatabase</source>
+        <target>Clearing all data in database in preparation for import</target>
+      </segment>
+    </unit>
+    <unit id="oOe.HfA" name="grase.command.migrate-v3.error.importFailed">
+      <segment>
+        <source>grase.command.migrate-v3.error.importFailed</source>
+        <target>The database import failed. Please check the logs for the error. Your database has been modified</target>
+      </segment>
+    </unit>
+    <unit id="yyK8.pQ" name="grase.command.migrate-v3.success.completed">
+      <segment>
+        <source>grase.command.migrate-v3.success.completed</source>
+        <target>Database import from V3 files has completed successfully</target>
+      </segment>
+    </unit>
+    <unit id="7h5gttc" name="grase.command.migrate-v3.startMigrations">
+      <segment>
+        <source>grase.command.migrate-v3.startMigrations</source>
+        <target>Starting Database migrations to upgrade V3 database to latest schema</target>
+      </segment>
+    </unit>
+    <unit id="GqJCsI5" name="grase.command.migrate-v3.error.doctrineMigrations">
+      <segment>
+        <source>grase.command.migrate-v3.error.doctrineMigrations</source>
+        <target>Database migrations have failed. Perhaps this wasn't a backup from the latest V3 Grase? Please check the migrations errors and manually run 'doctrine:migrations:migrate' again.</target>
+      </segment>
+    </unit>
+    <unit id="mbUSyvJ" name="grase.command.migrate-v3.startSettingsValidate">
+      <segment>
+        <source>grase.command.migrate-v3.startSettingsValidate</source>
+        <target>Checking settings are valid after upgrade</target>
+      </segment>
+    </unit>
+    <unit id=".eNBk8X" name="grase.command.migrate-v3.error.settingsValidation">
+      <segment>
+        <source>grase.command.migrate-v3.error.settingsValidation</source>
+        <target>Validation of settings has failed. Please check errors and manually run 'grase:settings-validate' again.</target>
       </segment>
     </unit>
   </file>
