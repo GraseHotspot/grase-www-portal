@@ -32,6 +32,8 @@ class MigrateLegacyV3DatabaseCommand extends Command
 
     /**
      * @param TranslatorInterface $translator
+     * @param SqlFileImporter     $sqlFileImporter
+     * @param LoggerInterface     $logger
      */
     public function __construct(TranslatorInterface $translator, SqlFileImporter $sqlFileImporter, LoggerInterface $logger)
     {
@@ -48,8 +50,16 @@ class MigrateLegacyV3DatabaseCommand extends Command
     {
         $this
             ->setDescription('Imports V3 backup files overriding the current database')
-            ->addArgument('radius_file', InputArgument::REQUIRED, 'Location of Radius database Backup File')
-            ->addArgument('radmin_file', InputArgument::REQUIRED, 'Location of Radmin database Backup File')
+            ->addArgument(
+                'radius_file',
+                InputArgument::REQUIRED,
+                'Location of Radius database Backup File'
+            )
+            ->addArgument(
+                'radmin_file',
+                InputArgument::REQUIRED,
+                'Location of Radmin database Backup File'
+            )
         ;
     }
 
@@ -57,6 +67,10 @@ class MigrateLegacyV3DatabaseCommand extends Command
      * @param InputInterface  $input
      * @param OutputInterface $output
      *
+     * @return int
+     *
+     * @throws \Doctrine\DBAL\ConnectionException
+     * @throws \Doctrine\DBAL\DBALException
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
@@ -67,21 +81,37 @@ class MigrateLegacyV3DatabaseCommand extends Command
         // TODO add logger steps
 
         if (!file_exists($radiusFilename)) {
-            $io->error($this->translator->trans('grase.command.migrate-v3.error.radiusFileMissing', ['filename' => $radiusFilename]));
+            $io->error($this->translator->trans(
+                'grase.command.migrate-v3.error.radiusFileMissing',
+                ['filename' => $radiusFilename]
+            ));
+
             return -1;
         }
         if (!file_exists($radminFilename)) {
-            $io->error($this->translator->trans('grase.command.migrate-v3.error.radminFileMissing', ['filename' => $radminFilename]));
+            $io->error($this->translator->trans(
+                'grase.command.migrate-v3.error.radminFileMissing',
+                ['filename' => $radminFilename]
+            ));
+
             return -1;
         }
 
         if (!$this->sqlFileImporter->confirmBackupFile($radminFilename)) {
-            $io->error($this->translator->trans('grase.command.migrate-v3.error.backupFileInvalid', ['filename' => $radminFilename]));
+            $io->error($this->translator->trans(
+                'grase.command.migrate-v3.error.backupFileInvalid',
+                ['filename' => $radminFilename]
+            ));
+
             return -1;
         }
 
         if (!$this->sqlFileImporter->confirmBackupFile($radiusFilename)) {
-            $io->error($this->translator->trans('grase.command.migrate-v3.error.backupFileInvalid', ['filename' => $radiusFilename]));
+            $io->error($this->translator->trans(
+                'grase.command.migrate-v3.error.backupFileInvalid',
+                ['filename' => $radiusFilename]
+            ));
+
             return -1;
         }
 
@@ -91,23 +121,32 @@ class MigrateLegacyV3DatabaseCommand extends Command
 
         if (!$answer) {
             $io->success($this->translator->trans('grase.command.migrate-v3.noChangesMade'));
+
             return 0;
         }
 
         $io->note($this->translator->trans('grase.command.migrate-v3.startClearDatabase'));
         $this->sqlFileImporter->eraseDatabase();
 
-        $io->note($this->translator->trans('grase.command.migrate-v3.startImportBackupFile', ['filename' => $radminFilename]));
+        $io->note($this->translator->trans(
+            'grase.command.migrate-v3.startImportBackupFile',
+            ['filename' => $radminFilename]
+        ));
         $result = $this->sqlFileImporter->importSqlFile($radminFilename);
         if (!$result) {
             $io->error($this->translator->trans('grase.command.migrate-v3.error.importFailed'));
+
             return -1;
         }
 
-        $io->note($this->translator->trans('grase.command.migrate-v3.startImportBackupFile', ['filename' => $radiusFilename]));
+        $io->note($this->translator->trans(
+            'grase.command.migrate-v3.startImportBackupFile',
+            ['filename' => $radiusFilename]
+        ));
         $result = $this->sqlFileImporter->importSqlFile($radiusFilename);
         if (!$result) {
             $io->error($this->translator->trans('grase.command.migrate-v3.error.importFailed'));
+
             return -1;
         }
 
@@ -126,14 +165,14 @@ class MigrateLegacyV3DatabaseCommand extends Command
         try {
             $cmd->run($cmdInput, $output);
         } catch (\Exception $e) {
-            $io->error($this->translator->trans(
-                'grase.command.migrate-v3.error.doctrineMigrations'
-            ));
-            $this->logger->error($this->translator->trans(
-                'grase.command.migrate-v3.error.doctrineMigrations'
-            ), [
-                'exception' => $e->getMessage(),
-            ]);
+            $io->error($this->translator->trans('grase.command.migrate-v3.error.doctrineMigrations'));
+            $this->logger->error(
+                $this->translator->trans('grase.command.migrate-v3.error.doctrineMigrations'),
+                [
+                    'exception' => $e->getMessage(),
+                ]
+            );
+
             return -1;
         }
 
@@ -152,15 +191,16 @@ class MigrateLegacyV3DatabaseCommand extends Command
             $io->error($this->translator->trans(
                 'grase.command.migrate-v3.error.settingsValidation'
             ));
-            $this->logger->error($this->translator->trans(
-                'grase.command.migrate-v3.error.settingsValidation'
-            ), [
-                                     'exception' => $e,
-                                 ]);
+            $this->logger->error(
+                $this->translator->trans('grase.command.migrate-v3.error.settingsValidation'),
+                [
+                    'exception' => $e,
+                ]
+            );
+
             return -1;
         }
 
         return 0;
-
     }
 }

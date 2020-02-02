@@ -8,6 +8,9 @@ use Doctrine\DBAL\FetchMode;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 
+/**
+ * Special class for importing V3 backups (SQL dumps) into the Grase database
+ */
 class SqlFileImporter
 {
     /** @var Connection */
@@ -16,21 +19,14 @@ class SqlFileImporter
     /** @var LoggerInterface */
     protected $logger;
 
+    /**
+     * @param EntityManagerInterface $entityManager
+     * @param LoggerInterface        $logger
+     */
     public function __construct(EntityManagerInterface $entityManager, LoggerInterface $logger)
     {
         $this->connection = $entityManager->getConnection();
         $this->logger = $logger;
-    }
-
-    private function readFile($filename)
-    {
-        $handle = gzopen($filename, "r");
-
-        while (!gzeof($handle)) {
-            yield trim(gzgets($handle));
-        }
-
-        gzclose($handle);
     }
 
     /**
@@ -50,14 +46,14 @@ class SqlFileImporter
 
         foreach ($this->readFile($filename) as $line) {
             // Skip line if it's a mysqldump comment or empty
-            if (substr($line, 0, 2) === '--' || trim($line) == '') {
+            if (substr($line, 0, 2) === '--' || trim($line) === '') {
                 continue;
             }
 
             // Check for CREATE DATABASE and USE lines and skip them
             // e.g. CREATE DATABASE IF NOT EXISTS `radius`;
             // e.g. USE `radius`;
-            if (substr($line, 0, 15) === 'CREATE DATABASE' || substr($line, 0, 5) == 'USE `') {
+            if (substr($line, 0, 15) === 'CREATE DATABASE' || substr($line, 0, 5) === 'USE `') {
                 continue;
             }
 
@@ -65,7 +61,7 @@ class SqlFileImporter
             $query .= $line;
 
             // Check if we're at the end of a query
-            if (substr(trim($line), -1, 1) == ';') {
+            if (substr(trim($line), -1, 1) === ';') {
                 try {
                     // Perform the Query
                     $this->connection->exec($query);
@@ -115,7 +111,7 @@ class SqlFileImporter
 
         foreach ($this->readFile($filename) as $line) {
             // Skip line if it's a mysqldump comment or empty
-            if (substr($line, 0, 2) === '--' || trim($line) == '') {
+            if (substr($line, 0, 2) === '--' || trim($line) === '') {
                 continue;
             }
 
@@ -124,7 +120,7 @@ class SqlFileImporter
             $lineCount++;
 
             // Check if we're at the end of a query
-            if (substr(trim($line), -1, 1) == ';') {
+            if (substr(trim($line), -1, 1) === ';') {
                 // Check the command is one of the ones we're looking for, then we can exit
                 if (in_array($query, $searchQueries)) {
                     return true;
@@ -162,5 +158,22 @@ class SqlFileImporter
         $this->connection->exec('SET FOREIGN_KEY_CHECKS=1;');
 
         $this->connection->commit();
+    }
+
+    /**
+     * Read a SQL file (optionally gzipped) line by line in an efficient way
+     * @param $filename
+     *
+     * @return \Generator
+     */
+    private function readFile($filename)
+    {
+        $handle = gzopen($filename, "r");
+
+        while (!gzeof($handle)) {
+            yield trim(gzgets($handle));
+        }
+
+        gzclose($handle);
     }
 }
