@@ -56,7 +56,6 @@ prod_cache(){
 }
 
 fix_settings(){
-    # TODO This is going to end up as part of the migrations, so probably not needed here
     /usr/share/grase/symfony4/bin/console grase:settings-validate || true
 }
 
