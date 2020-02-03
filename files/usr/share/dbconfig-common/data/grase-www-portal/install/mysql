@@ -1,62 +1,642 @@
-# MySQL Navigator Xport
-# Database: radmin
-# root@localhost
+-- MariaDB dump 10.17  Distrib 10.4.6-MariaDB, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: radius
+-- ------------------------------------------------------
+-- Server version	10.4.6-MariaDB-1:10.4.6+maria~bionic
 
-# CREATE DATABASE radmin;
-# USE radmin;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-#
-# Table structure for table 'auth'
-#
+--
+-- Table structure for table `adminlog`
+--
 
-# DROP TABLE IF EXISTS auth;
-CREATE TABLE IF NOT EXISTS `auth` (
-  `username` varchar(50) NOT NULL DEFAULT '',
-  `password` varchar(60) NOT NULL,
-  PRIMARY KEY (`username`),
-  KEY `password` (`password`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `adminlog`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `adminlog` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `timestamp` datetime NOT NULL,
+  `username` varchar(100) DEFAULT NULL,
+  `ipaddress` varchar(16) DEFAULT NULL,
+  `action` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Log of Admin/Usermin Actions';
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Dumping data for table `adminlog`
+--
 
-# Add admin with default password hotspotadmin if not already set
-INSERT IGNORE INTO `auth` VALUES ('admin','5c0aaa28ef1b32d86101b59835766187befb98c2a88c6286c');
-# Restore/add auth user to default password 
-REPLACE INTO `auth` VALUE('support','205e599a4bc20218232707bb1fbb4caf11c5bb634e84aeaa1');
+LOCK TABLES `adminlog` WRITE;
+/*!40000 ALTER TABLE `adminlog` DISABLE KEYS */;
+/*!40000 ALTER TABLE `adminlog` ENABLE KEYS */;
+UNLOCK TABLES;
 
+--
+-- Table structure for table `audit_log`
+--
 
-#
-# Table structure for table 'settings'
-#
+DROP TABLE IF EXISTS `audit_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `audit_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `message` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `context` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
+  `level` smallint(6) NOT NULL,
+  `level_name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `extra` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-# DROP TABLE IF EXISTS settings;
-CREATE TABLE IF NOT EXISTS  `settings` (
-  `setting` varchar(20) NOT NULL,
-  `value` varchar(2000) NOT NULL,
+--
+-- Table structure for table `auth`
+--
+
+DROP TABLE IF EXISTS `auth`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth` (
+  `username` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `password` varchar(60) CHARACTER SET latin1 NOT NULL,
+  `role` varchar(25) CHARACTER SET latin1 NOT NULL,
+  PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth`
+--
+
+LOCK TABLES `auth` WRITE;
+/*!40000 ALTER TABLE `auth` DISABLE KEYS */;
+INSERT INTO `auth` (`username`, `password`, `role`) VALUES ('admin','5c0aaa28ef1b32d86101b59835766187befb98c2a88c6286c','ROLE_SUPERADMIN');
+INSERT INTO `auth` (`username`, `password`, `role`) VALUES ('support','205e599a4bc20218232707bb1fbb4caf11c5bb634e84aeaa1','ROLE_SUPERADMIN');
+/*!40000 ALTER TABLE `auth` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `batch`
+--
+
+DROP TABLE IF EXISTS `batch`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `batch` (
+  `batchID` int(10) unsigned NOT NULL,
+  `UserName` varchar(64) CHARACTER SET latin1 NOT NULL,
+  KEY `username` (`UserName`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores users batch when auto created';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `batch`
+--
+
+LOCK TABLES `batch` WRITE;
+/*!40000 ALTER TABLE `batch` DISABLE KEYS */;
+/*!40000 ALTER TABLE `batch` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `batches`
+--
+
+DROP TABLE IF EXISTS `batches`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `batches` (
+  `batchID` int(11) NOT NULL,
+  `createTime` timestamp NOT NULL DEFAULT current_timestamp(),
+  `createdBy` varchar(64) CHARACTER SET latin1 NOT NULL,
+  `Comment` varchar(300) CHARACTER SET latin1 DEFAULT NULL,
+  PRIMARY KEY (`batchID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Batches';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `batches`
+--
+
+LOCK TABLES `batches` WRITE;
+/*!40000 ALTER TABLE `batches` DISABLE KEYS */;
+/*!40000 ALTER TABLE `batches` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `groups`
+--
+
+DROP TABLE IF EXISTS `groups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `groups` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `Expiry` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ExpireAfter` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `MaxOctets` bigint(32) unsigned DEFAULT NULL,
+  `MaxSeconds` bigint(32) unsigned DEFAULT NULL,
+  `Comment` varchar(300) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lastupdated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Groups';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `groups`
+--
+
+LOCK TABLES `groups` WRITE;
+/*!40000 ALTER TABLE `groups` DISABLE KEYS */;
+INSERT INTO `groups` (`id`, `name`, `Expiry`, `ExpireAfter`, `MaxOctets`, `MaxSeconds`, `Comment`, `lastupdated`) VALUES (5,'autocreated',NULL,NULL,NULL,NULL,'Group for automatically created users (Terms Of Service login)','2020-02-02 13:27:37');
+INSERT INTO `groups` (`id`, `name`, `Expiry`, `ExpireAfter`, `MaxOctets`, `MaxSeconds`, `Comment`, `lastupdated`) VALUES (6,'Computer',NULL,NULL,NULL,NULL,'Autocreated Computers group','2020-02-02 13:20:50');
+INSERT INTO `groups` (`id`, `name`, `Expiry`, `ExpireAfter`, `MaxOctets`, `MaxSeconds`, `Comment`, `lastupdated`) VALUES (8,'Students','+3 Months',NULL,NULL,NULL,NULL,'2020-02-02 13:17:05');
+INSERT INTO `groups` (`id`, `name`, `Expiry`, `ExpireAfter`, `MaxOctets`, `MaxSeconds`, `Comment`, `lastupdated`) VALUES (9,'Ministry','+6 months',NULL,NULL,NULL,NULL,'2015-10-02 05:48:50');
+INSERT INTO `groups` (`id`, `name`, `Expiry`, `ExpireAfter`, `MaxOctets`, `MaxSeconds`, `Comment`, `lastupdated`) VALUES (10,'Staff','+6 Months',NULL,NULL,NULL,NULL,'2020-02-02 13:16:46');
+INSERT INTO `groups` (`id`, `name`, `Expiry`, `ExpireAfter`, `MaxOctets`, `MaxSeconds`, `Comment`, `lastupdated`) VALUES (11,'Visitors','+1 Months',NULL,52428800,NULL,NULL,'2020-02-02 13:17:48');
+/*!40000 ALTER TABLE `groups` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `migration_versions`
+--
+
+DROP TABLE IF EXISTS `migration_versions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `migration_versions` (
+  `version` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`version`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `migration_versions`
+--
+
+LOCK TABLES `migration_versions` WRITE;
+/*!40000 ALTER TABLE `migration_versions` DISABLE KEYS */;
+INSERT INTO `migration_versions` (`version`) VALUES ('20160221065707');
+INSERT INTO `migration_versions` (`version`) VALUES ('20160221201937');
+INSERT INTO `migration_versions` (`version`) VALUES ('20180801101652');
+INSERT INTO `migration_versions` (`version`) VALUES ('20190823234949');
+INSERT INTO `migration_versions` (`version`) VALUES ('20191004103642');
+INSERT INTO `migration_versions` (`version`) VALUES ('20191227101133');
+INSERT INTO `migration_versions` (`version`) VALUES ('20191228075920');
+/*!40000 ALTER TABLE `migration_versions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mtotacct`
+--
+
+DROP TABLE IF EXISTS `mtotacct`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `mtotacct` (
+  `MTotAcctId` bigint(21) NOT NULL AUTO_INCREMENT,
+  `UserName` varchar(64) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `AcctDate` date NOT NULL DEFAULT '0000-00-00',
+  `ConnNum` bigint(12) DEFAULT NULL,
+  `ConnTotDuration` bigint(12) DEFAULT NULL,
+  `ConnMaxDuration` bigint(12) DEFAULT NULL,
+  `ConnMinDuration` bigint(12) DEFAULT NULL,
+  `InputOctets` bigint(12) DEFAULT NULL,
+  `OutputOctets` bigint(12) DEFAULT NULL,
+  `NASIPAddress` varchar(15) CHARACTER SET latin1 DEFAULT NULL,
+  PRIMARY KEY (`MTotAcctId`),
+  KEY `UserName` (`UserName`),
+  KEY `AcctDate` (`AcctDate`),
+  KEY `UserOnDate` (`UserName`,`AcctDate`),
+  KEY `NASIPAddress` (`NASIPAddress`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mtotacct`
+--
+
+LOCK TABLES `mtotacct` WRITE;
+/*!40000 ALTER TABLE `mtotacct` DISABLE KEYS */;
+/*!40000 ALTER TABLE `mtotacct` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `nas`
+--
+
+DROP TABLE IF EXISTS `nas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `nas` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `nasname` varchar(128) CHARACTER SET latin1 NOT NULL,
+  `shortname` varchar(32) CHARACTER SET latin1 DEFAULT NULL,
+  `type` varchar(30) CHARACTER SET latin1 DEFAULT 'other',
+  `ports` int(5) DEFAULT NULL,
+  `secret` varchar(60) CHARACTER SET latin1 NOT NULL DEFAULT 'secret',
+  `community` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `description` varchar(200) CHARACTER SET latin1 DEFAULT 'RADIUS Client',
+  PRIMARY KEY (`id`),
+  KEY `nasname` (`nasname`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `nas`
+--
+
+LOCK TABLES `nas` WRITE;
+/*!40000 ALTER TABLE `nas` DISABLE KEYS */;
+/*!40000 ALTER TABLE `nas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `radacct`
+--
+
+DROP TABLE IF EXISTS `radacct`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `radacct` (
+  `RadAcctId` bigint(21) NOT NULL AUTO_INCREMENT,
+  `AcctSessionId` varchar(32) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `AcctUniqueId` varchar(32) CHARACTER SET latin1 DEFAULT NULL,
+  `UserName` varchar(64) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `Groupname` varchar(64) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `Realm` varchar(64) CHARACTER SET latin1 DEFAULT '',
+  `NASIPAddress` varchar(15) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `NASPortId` varchar(32) CHARACTER SET latin1 DEFAULT NULL,
+  `NASPortType` varchar(32) CHARACTER SET latin1 DEFAULT NULL,
+  `AcctStartTime` datetime DEFAULT NULL,
+  `acctupdatetime` datetime DEFAULT NULL,
+  `AcctStopTime` datetime DEFAULT NULL,
+  `acctinterval` int(11) DEFAULT NULL,
+  `AcctSessionTime` int(12) DEFAULT NULL,
+  `AcctAuthentic` varchar(32) CHARACTER SET latin1 DEFAULT NULL,
+  `ConnectInfo_start` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `ConnectInfo_stop` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `AcctInputOctets` bigint(20) DEFAULT NULL,
+  `AcctOutputOctets` bigint(20) DEFAULT NULL,
+  `CalledStationId` varchar(50) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `CallingStationId` varchar(50) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `AcctTerminateCause` varchar(32) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `ServiceType` varchar(32) CHARACTER SET latin1 DEFAULT NULL,
+  `FramedProtocol` varchar(32) CHARACTER SET latin1 DEFAULT NULL,
+  `FramedIPAddress` varchar(15) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  PRIMARY KEY (`RadAcctId`),
+  UNIQUE KEY `acctuniqueid` (`AcctUniqueId`),
+  KEY `UserName` (`UserName`),
+  KEY `FramedIPAddress` (`FramedIPAddress`),
+  KEY `AcctSessionId` (`AcctSessionId`),
+  KEY `AcctStartTime` (`AcctStartTime`),
+  KEY `AcctStopTime` (`AcctStopTime`),
+  KEY `NASIPAddress` (`NASIPAddress`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `radacct`
+--
+
+LOCK TABLES `radacct` WRITE;
+/*!40000 ALTER TABLE `radacct` DISABLE KEYS */;
+/*!40000 ALTER TABLE `radacct` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `radcheck`
+--
+
+DROP TABLE IF EXISTS `radcheck`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `radcheck` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `UserName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `Attribute` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `op` varchar(2) COLLATE utf8_unicode_ci NOT NULL DEFAULT '==',
+  `Value` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `userattribute` (`UserName`,`Attribute`,`op`),
+  KEY `UserName` (`UserName`(32)),
+  CONSTRAINT `FK_CF5F1897A11ACB1F` FOREIGN KEY (`UserName`) REFERENCES `users` (`UserName`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `radcheck`
+--
+
+LOCK TABLES `radcheck` WRITE;
+/*!40000 ALTER TABLE `radcheck` DISABLE KEYS */;
+INSERT INTO `radcheck` (`UserName`, `Attribute`, `op`, `Value`) VALUES ('CoovaChilli','Cleartext-Password',':=','radmin');
+INSERT INTO `radcheck` (`UserName`, `Attribute`, `op`, `Value`) VALUES ('CoovaChilli','Service-Type','==','Administrative-User');
+/*!40000 ALTER TABLE `radcheck` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `radgroupcheck`
+--
+
+DROP TABLE IF EXISTS `radgroupcheck`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `radgroupcheck` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `GroupName` varchar(64) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `Attribute` varchar(64) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `op` char(2) CHARACTER SET latin1 NOT NULL DEFAULT '==',
+  `Value` varchar(253) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `GroupName` (`GroupName`(32))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `radgroupcheck`
+--
+
+LOCK TABLES `radgroupcheck` WRITE;
+/*!40000 ALTER TABLE `radgroupcheck` DISABLE KEYS */;
+/*!40000 ALTER TABLE `radgroupcheck` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `radgroupreply`
+--
+
+DROP TABLE IF EXISTS `radgroupreply`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `radgroupreply` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `GroupName` varchar(64) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `Attribute` varchar(64) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `op` char(2) CHARACTER SET latin1 NOT NULL DEFAULT '=',
+  `Value` varchar(253) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `GroupName` (`GroupName`(32))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `radgroupreply`
+--
+
+LOCK TABLES `radgroupreply` WRITE;
+/*!40000 ALTER TABLE `radgroupreply` DISABLE KEYS */;
+INSERT INTO `radgroupreply` (`GroupName`, `Attribute`, `op`, `Value`) VALUES ('11','ChilliSpot-Bandwidth-Max-Down','=','256');
+INSERT INTO `radgroupreply` (`GroupName`, `Attribute`, `op`, `Value`) VALUES ('11','ChilliSpot-Bandwidth-Max-Up','=','256');
+/*!40000 ALTER TABLE `radgroupreply` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `radpostauth`
+--
+
+DROP TABLE IF EXISTS `radpostauth`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `radpostauth` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(64) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `pass` varchar(64) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `reply` varchar(32) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `authdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `ServiceType` varchar(32) CHARACTER SET latin1 DEFAULT NULL,
+  `FramedIPAddress` varchar(15) CHARACTER SET latin1 DEFAULT NULL,
+  `CallingStationId` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `radpostauth`
+--
+
+LOCK TABLES `radpostauth` WRITE;
+/*!40000 ALTER TABLE `radpostauth` DISABLE KEYS */;
+/*!40000 ALTER TABLE `radpostauth` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `radreply`
+--
+
+DROP TABLE IF EXISTS `radreply`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `radreply` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `UserName` varchar(64) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `Attribute` varchar(64) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `op` char(2) CHARACTER SET latin1 NOT NULL DEFAULT '=',
+  `Value` varchar(253) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `UserName` (`UserName`(32))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `radreply`
+--
+
+LOCK TABLES `radreply` WRITE;
+/*!40000 ALTER TABLE `radreply` DISABLE KEYS */;
+INSERT INTO `radreply` (`UserName`, `Attribute`, `op`, `Value`) VALUES ('CoovaChilli','ChilliSpot-Config','+=','nousergardendata');
+INSERT INTO `radreply` (`UserName`, `Attribute`, `op`, `Value`) VALUES ('CoovaChilli','ChilliSpot-Config','+=','macpasswd=password');
+INSERT INTO `radreply` (`UserName`, `Attribute`, `op`, `Value`) VALUES ('CoovaChilli','ChilliSpot-Config','+=','defidletimeout=1800');
+INSERT INTO `radreply` (`UserName`, `Attribute`, `op`, `Value`) VALUES ('CoovaChilli','ChilliSpot-Config','+=','interval=600');
+INSERT INTO `radreply` (`UserName`, `Attribute`, `op`, `Value`) VALUES ('CoovaChilli','ChilliSpot-Config','+=','dhcpstart=10');
+INSERT INTO `radreply` (`UserName`, `Attribute`, `op`, `Value`) VALUES ('CoovaChilli','ChilliSpot-Config','+=','dhcpend=200');
+INSERT INTO `radreply` (`UserName`, `Attribute`, `op`, `Value`) VALUES ('CoovaChilli','ChilliSpot-Config','+=','lease=28800');
+/*!40000 ALTER TABLE `radreply` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `radusergroup`
+--
+
+DROP TABLE IF EXISTS `radusergroup`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `radusergroup` (
+  `UserName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `GroupName` int(11) NOT NULL,
+  `priority` int(11) NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`),
+  KEY `IDX_569F584FA11ACB1F` (`UserName`),
+  KEY `IDX_569F584FB219A218` (`GroupName`),
+  CONSTRAINT `FK_569F584FA11ACB1F` FOREIGN KEY (`UserName`) REFERENCES `users` (`UserName`),
+  CONSTRAINT `FK_569F584FB219A218` FOREIGN KEY (`GroupName`) REFERENCES `groups` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `radusergroup`
+--
+
+LOCK TABLES `radusergroup` WRITE;
+/*!40000 ALTER TABLE `radusergroup` DISABLE KEYS */;
+/*!40000 ALTER TABLE `radusergroup` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `settings`
+--
+
+DROP TABLE IF EXISTS `settings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `settings` (
+  `setting` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `value` varchar(2000) CHARACTER SET latin1 NOT NULL,
   PRIMARY KEY (`setting`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Settings for GRASE interface';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Settings for GRASE interface';
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-REPLACE INTO `settings` VALUES 
-('DBVersion','1.0');
+--
+-- Dumping data for table `settings`
+--
 
-INSERT IGNORE INTO `settings` VALUES 
-('locationName','Default'),
-('priceMb','0.06'),
-('priceMinute','0.1'),
-('currency','$'),
-('sellableData','2147483648'),
-('userableData','3221225472'),
-('supportContactName','Tim White'),
-('supportContactLink','http://grasehotspot.com/'),
-('websiteLink','http://grasehotspot.org/'),('websiteName','GRASE Hotspot Project');
+LOCK TABLES `settings` WRITE;
+/*!40000 ALTER TABLE `settings` DISABLE KEYS */;
+INSERT INTO `settings` (`setting`, `value`) VALUES ('autocreategroup','\"autocreated\"');
+INSERT INTO `settings` (`setting`, `value`) VALUES ('autocreatepassword','\"autocreated\"');
+INSERT INTO `settings` (`setting`, `value`) VALUES ('disableallcss','FALSE');
+INSERT INTO `settings` (`setting`, `value`) VALUES ('hidefooter','FALSE');
+INSERT INTO `settings` (`setting`, `value`) VALUES ('hideheader','FALSE');
+INSERT INTO `settings` (`setting`, `value`) VALUES ('hidehelplink','TRUE');
+INSERT INTO `settings` (`setting`, `value`) VALUES ('hidelogoutbookmark','FALSE');
+INSERT INTO `settings` (`setting`, `value`) VALUES ('kBitOptions','[64,128,256,512,1024,1536,2048,4096,8192]');
+INSERT INTO `settings` (`setting`, `value`) VALUES ('lastbatch','1');
+INSERT INTO `settings` (`setting`, `value`) VALUES ('lastchangechilliconf','1491022945');
+INSERT INTO `settings` (`setting`, `value`) VALUES ('lastnetworkconf','1580649359');
+INSERT INTO `settings` (`setting`, `value`) VALUES ('locale','\"en_AU\"');
+INSERT INTO `settings` (`setting`, `value`) VALUES ('locationName','\"Default\"');
+INSERT INTO `settings` (`setting`, `value`) VALUES ('mbOptions','[10,50,100,250,500,1024,2048,3072,4096,5120,7168,10240,15360,102400]');
+INSERT INTO `settings` (`setting`, `value`) VALUES ('networkBogusNX','[]');
+INSERT INTO `settings` (`setting`, `value`) VALUES ('networkDNSServers','[\"208.67.220.123\",\"208.67.222.123\"]');
+INSERT INTO `settings` (`setting`, `value`) VALUES ('networkLanInterface','\"br0\"');
+INSERT INTO `settings` (`setting`, `value`) VALUES ('networkLanIP','\"10.1.0.1\"');
+INSERT INTO `settings` (`setting`, `value`) VALUES ('networkLanMask','\"255.255.255.0\"');
+INSERT INTO `settings` (`setting`, `value`) VALUES ('networkWanInterface','\"ppp0\"');
+INSERT INTO `settings` (`setting`, `value`) VALUES ('numericPassword','');
+INSERT INTO `settings` (`setting`, `value`) VALUES ('passwordLength','6');
+INSERT INTO `settings` (`setting`, `value`) VALUES ('printExpiry','');
+INSERT INTO `settings` (`setting`, `value`) VALUES ('printGroup','');
+INSERT INTO `settings` (`setting`, `value`) VALUES ('printSSID','');
+INSERT INTO `settings` (`setting`, `value`) VALUES ('simpleUsername','');
+INSERT INTO `settings` (`setting`, `value`) VALUES ('supportContactLink','\"https:\\/\\/grasehotspot.com\\/\"');
+INSERT INTO `settings` (`setting`, `value`) VALUES ('supportContactName','\"Tim White\"');
+INSERT INTO `settings` (`setting`, `value`) VALUES ('timeOptions','[5,10,20,30,45,60,90,120,180,240,420,600,6000]');
+INSERT INTO `settings` (`setting`, `value`) VALUES ('usernameLength','5');
+INSERT INTO `settings` (`setting`, `value`) VALUES ('websiteLink','\"https:\\/\\/grasehotspot.org\\/\"');
+INSERT INTO `settings` (`setting`, `value`) VALUES ('websiteName','\"GRASE Hotspot Project\"');
+/*!40000 ALTER TABLE `settings` ENABLE KEYS */;
+UNLOCK TABLES;
 
-#
-# Table structure for table 'adminlog'
+--
+-- Table structure for table `templates`
+--
 
-CREATE TABLE IF NOT EXISTS  `adminlog` (
-    `id` INT(11) NOT NULL AUTO_INCREMENT,
-    `timestamp` DATETIME NOT NULL,
-    `username` VARCHAR(100) NULL,
-    `ipaddress` VARCHAR(16) NULL,
-    `action` TEXT NOT NULL,
-    PRIMARY KEY `id` (`id`)
-) ENGINE=innoDB COMMENT ='Log of Admin/Usermin Actions';
+DROP TABLE IF EXISTS `templates`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `templates` (
+  `id` tinyint(4) NOT NULL,
+  `tpl` text CHARACTER SET latin1 NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='HTML/CSS Storage';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `templates`
+--
+
+LOCK TABLES `templates` WRITE;
+/*!40000 ALTER TABLE `templates` DISABLE KEYS */;
+/*!40000 ALTER TABLE `templates` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `UserName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `comment` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`UserName`),
+  KEY `UserName` (`UserName`(32))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` (`UserName`, `comment`) VALUES ('CoovaChilli',NULL);
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `vouchers`
+--
+
+DROP TABLE IF EXISTS `vouchers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vouchers` (
+  `VoucherName` varchar(64) CHARACTER SET latin1 NOT NULL,
+  `VoucherLabel` varchar(64) CHARACTER SET latin1 NOT NULL,
+  `VoucherPrice` varchar(64) CHARACTER SET latin1 NOT NULL,
+  `VoucherGroup` varchar(64) CHARACTER SET latin1 NOT NULL,
+  `MaxOctets` bigint(32) unsigned DEFAULT NULL,
+  `MaxSeconds` bigint(32) unsigned DEFAULT NULL,
+  `Description` varchar(300) CHARACTER SET latin1 DEFAULT NULL,
+  `VoucherType` int(32) unsigned NOT NULL,
+  `lastupdated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`VoucherName`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Vouchers';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `vouchers`
+--
+
+LOCK TABLES `vouchers` WRITE;
+/*!40000 ALTER TABLE `vouchers` DISABLE KEYS */;
+/*!40000 ALTER TABLE `vouchers` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2020-02-02 13:58:40

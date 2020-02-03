@@ -10,21 +10,21 @@ if [ -f /usr/share/debconf/confmodule ]; then
 fi
 if [ -f /usr/share/dbconfig-common/dpkg/postrm.mysql ]; then
     . /usr/share/dbconfig-common/dpkg/postrm.mysql
-    dbc_go grase-www-portal $@
+    dbc_go grase-db $@
 fi
 
 
 if [ "$1" = "purge" ]; then
 
-	# Remove smarty template_c folders
-	rm -rf /usr/share/grase/www/radmin/templates_c 
-	rm -rf /usr/share/grase/www/uam/templates_c 
+	# Remove symfony var folder
+	rm -rf /usr/share/grase/symfony4/var
 
-        rm -f /etc/grase/radmin.conf
-        if which ucf >/dev/null 2>&1; then
-                ucf --purge /etc/grase/radmin.conf
-                ucfr --purge grase-www-portal /etc/grase/radmin.conf
-        fi
+  # Remove our config files
+  rm -f /usr/share/grase/symfony4/.env.local
+  if which ucf >/dev/null 2>&1; then
+          ucf --purge /usr/share/grase/symfony4/.env.local
+          ucfr --purge grase-www-portal /usr/share/grase/symfony4/.env.local
+  fi
 fi
 
 #DEBHELPER#

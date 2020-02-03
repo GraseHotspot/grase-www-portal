@@ -13,14 +13,12 @@ umask 022
 mkdir -p /etc/grase/
 
 dbc_first_version=3.0
-dbc_generate_include="template:/etc/grase/radmin.conf"
+dbc_generate_include="template:/usr/share/grase/symfony4/.env.local"
 dbc_generate_include_perms="660"
 dbc_generate_include_owner="root:www-data"
-dbc_generate_include_args="-o template_infile=/usr/share/grase/templates/radmin.conf -U"
+dbc_generate_include_args="-o template_infile=/usr/share/grase/templates/env.local -U"
 
-dbc_go grase-www-portal $@
-
-
+dbc_go grase-db $@
 
 if [ "$action" != configure ]
   then
