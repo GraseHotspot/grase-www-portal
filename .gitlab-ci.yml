@@ -23,6 +23,16 @@ phpcs:
     - cd files/usr/share/grase/symfony4/
     - ./vendor/bin/phpcs -s
 
+php-cs-fixer:
+  image: grase/build-images:bionic
+  stage: test
+  dependencies:
+    - composer
+  script:
+    - cd files/usr/share/grase/symfony4/
+    #- vendor/bin/php-cs-fixer fix --config=.php_cs.dist -v --dry-run --diff --using-cache=no
+    - vendor/bin/php-cs-fixer fix --config=.php_cs.dist -v --dry-run --using-cache=no
+
 .build_template: &build_definition
   stage: build
   script:
