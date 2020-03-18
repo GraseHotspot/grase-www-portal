@@ -52,6 +52,7 @@
                 {{ form_end(user_form) }}
             </div>
 
+            {% if user_reset_expiry_form is defined %}
             <div class="card-body">
                 {{ form_start(user_reset_expiry_form) }}
                 <div class="my-custom-class-for-errors">
@@ -65,14 +66,20 @@
                             <input class="form-control" disabled="disabled"
                                    value="{% if user.expireAfter %}{{ user.expireAfter }}{% else %}{% trans %}grase.form.user.expireAfter.none{% endtrans %}{% endif %}">
                         </div>
-                    {{ form_row(user_reset_expiry_form.expiry) }}
+                        {{ form_row(user_reset_expiry_form.expiry) }}
+                        {{ form_rest(user_reset_expiry_form) }}
+                        {{ form_end(user_reset_expiry_form) }}
+                    </div>
+
+                    <div class="col-xs-12 col-lg-6">
+                        <h2 >{% trans %}grase.form.user.delete.label{% endtrans %}</h2>
+                        <p>{% trans %}grase.form.user.delete.warning{% endtrans %}</p>
+                        {{ form(user_delete_form) }}
                     </div>
                 </div>
 
-
-                {{ form_rest(user_reset_expiry_form) }}
-                {{ form_end(user_reset_expiry_form) }}
             </div>
+            {% endif %}
 
         </div>
     </div>
@@ -102,6 +109,11 @@
                     });
 
             });
+
+            // Ensure we confirm before deleting the user
+            $('#user_delete_delete').click(function () {
+                return confirm('{% trans with {'%username%': user.username} %}grase.form.user.submit.delete.confirm.%username%{% endtrans %}');
+            })
         };
     </script>
 {% endblock %}

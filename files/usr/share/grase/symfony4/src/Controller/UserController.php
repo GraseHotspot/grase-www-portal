@@ -6,6 +6,7 @@ use App\Entity\Radius\User;
 use App\Entity\Radius\UserRepository;
 use App\Entity\Setting;
 use App\Entity\UpdateUserData;
+use App\Form\Radius\UserDeleteType;
 use App\Form\Radius\UserResetExpiryType;
 use App\Form\Radius\UserType;
 use App\Util\SettingsUtils;
@@ -117,14 +118,54 @@ class UserController extends AbstractController
             return $this->redirectToRoute('grase_user_edit', ['id' => $user->getUsername()]);
         }
 
+        $deleteUserForm = $this->createForm(UserDeleteType::class, $updateUserData, [
+            'action' => $this->generateUrl('grase_user_delete', ['user' => $user->getUsername()])
+        ]);
+
+
         return $this->render(
             'user_edit.html.twig',
             [
                 'user'                   => $user,
                 'user_form'              => $form->createView(),
                 'user_reset_expiry_form' => $resetExpiryForm->createView(),
+                'user_delete_form' => $deleteUserForm->createView(),
             ]
         );
+    }
+
+    public function deleteUserAction(Request $request, User $user)
+    {
+        dump($user);
+        // @TODO Insert permissions check here for deleting
+
+        $updateUserData = new UpdateUserData();
+
+        $deleteUserForm = $this->createForm(UserDeleteType::class, $updateUserData);
+        $deleteUserForm->handleRequest($request);
+
+        if($deleteUserForm->isSubmitted() && $deleteUserForm->isValid() && $updateUserData->username === $user->getUsername())
+        {
+            if (UpdateUserData::deleteUser($user, $this->getDoctrine()->getManager())) {
+                $this->addFlash(
+                    'success',
+                    $this->translator->trans(
+                        'grase.form.user.delete.success.%username%',
+                        ['%username%' => $updateUserData->username]
+                    )
+                );
+                return $this->redirectToRoute('grase_user_new');
+            }
+        }
+
+        $this->addFlash(
+            'error',
+            $this->translator->trans(
+                'grase.form.user.delete.fail.%username%',
+                ['%username%' => $user->getUsername()]
+            )
+        );
+        return $this->redirectToRoute('grase_user_edit', ['id' => $user->getUsername()]);
     }
 
     /**

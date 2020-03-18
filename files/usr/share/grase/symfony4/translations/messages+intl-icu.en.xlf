@@ -457,5 +457,41 @@
         <target>No 'Expire After First Login' is set</target>
       </segment>
     </unit>
+    <unit id="ppQjWNn" name="grase.form.user.submit.delete">
+      <segment>
+        <source>grase.form.user.submit.delete</source>
+        <target>Delete User</target>
+      </segment>
+    </unit>
+    <unit id="Dtsu3Sj" name="grase.form.user.delete.label">
+      <segment>
+        <source>grase.form.user.delete.label</source>
+        <target>Delete User</target>
+      </segment>
+    </unit>
+    <unit id="aDfYYxr" name="grase.form.user.submit.delete.confirm.%username%">
+      <segment>
+        <source>grase.form.user.submit.delete.confirm.%username%</source>
+        <target>Do you really want to delete {username}?</target>
+      </segment>
+    </unit>
+    <unit id="Vt4RLtg" name="grase.form.user.delete.success.%username%">
+      <segment>
+        <source>grase.form.user.delete.success.%username%</source>
+        <target>User {username} has been deleted</target>
+      </segment>
+    </unit>
+    <unit id="5ebc6gA" name="grase.form.user.delete.fail.%username%">
+      <segment>
+        <source>grase.form.user.delete.fail.%username%</source>
+        <target>Deleting user {username} failed</target>
+      </segment>
+    </unit>
+    <unit id="0_1mi.1" name="grase.form.user.delete.warning">
+      <segment>
+        <source>grase.form.user.delete.warning</source>
+        <target>User accounts are automatically deleted 2 months after expiry. Only accounts with zero usage should be manually deleted to prevent errors in the reports or statistics.</target>
+      </segment>
+    </unit>
   </file>
 </xliff>
