@@ -445,5 +445,17 @@
         <target>User {username} has been updated</target>
       </segment>
     </unit>
+    <unit id="CQI_zHk" name="grase.form.user.expireAfter.label">
+      <segment>
+        <source>grase.form.user.expireAfter.label</source>
+        <target>Expire After First Login</target>
+      </segment>
+    </unit>
+    <unit id="bE5w.cu" name="grase.form.user.expireAfter.none">
+      <segment>
+        <source>grase.form.user.expireAfter.none</source>
+        <target>No 'Expire After First Login' is set</target>
+      </segment>
+    </unit>
   </file>
 </xliff>

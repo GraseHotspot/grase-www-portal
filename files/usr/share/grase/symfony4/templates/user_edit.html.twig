@@ -60,6 +60,11 @@
 
                 <div class="form-row">
                     <div class="col-xs-12 col-lg-6">
+                        <div class="form-group">
+                            <label >{% trans %}grase.form.user.expireAfter.label{% endtrans %}</label>
+                            <input class="form-control" disabled="disabled"
+                                   value="{% if user.expireAfter %}{{ user.expireAfter }}{% else %}{% trans %}grase.form.user.expireAfter.none{% endtrans %}{% endif %}">
+                        </div>
                     {{ form_row(user_reset_expiry_form.expiry) }}
                     </div>
                 </div>
