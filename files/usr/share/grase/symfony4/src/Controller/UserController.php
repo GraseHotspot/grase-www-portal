@@ -119,9 +119,8 @@ class UserController extends AbstractController
         }
 
         $deleteUserForm = $this->createForm(UserDeleteType::class, $updateUserData, [
-            'action' => $this->generateUrl('grase_user_delete', ['user' => $user->getUsername()])
+            'action' => $this->generateUrl('grase_user_delete', ['user' => $user->getUsername()]),
         ]);
-
 
         return $this->render(
             'user_edit.html.twig',
@@ -129,7 +128,7 @@ class UserController extends AbstractController
                 'user'                   => $user,
                 'user_form'              => $form->createView(),
                 'user_reset_expiry_form' => $resetExpiryForm->createView(),
-                'user_delete_form' => $deleteUserForm->createView(),
+                'user_delete_form'       => $deleteUserForm->createView(),
             ]
         );
     }
@@ -144,8 +143,7 @@ class UserController extends AbstractController
         $deleteUserForm = $this->createForm(UserDeleteType::class, $updateUserData);
         $deleteUserForm->handleRequest($request);
 
-        if($deleteUserForm->isSubmitted() && $deleteUserForm->isValid() && $updateUserData->username === $user->getUsername())
-        {
+        if ($deleteUserForm->isSubmitted() && $deleteUserForm->isValid() && $updateUserData->username === $user->getUsername()) {
             if (UpdateUserData::deleteUser($user, $this->getDoctrine()->getManager())) {
                 $this->addFlash(
                     'success',
@@ -154,6 +152,7 @@ class UserController extends AbstractController
                         ['%username%' => $updateUserData->username]
                     )
                 );
+
                 return $this->redirectToRoute('grase_user_new');
             }
         }
@@ -165,6 +164,7 @@ class UserController extends AbstractController
                 ['%username%' => $user->getUsername()]
             )
         );
+
         return $this->redirectToRoute('grase_user_edit', ['id' => $user->getUsername()]);
     }
 
