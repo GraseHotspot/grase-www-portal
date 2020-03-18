@@ -6,6 +6,7 @@ use App\Entity\Radius\User;
 use App\Entity\Radius\UserRepository;
 use App\Entity\Setting;
 use App\Entity\UpdateUserData;
+use App\Form\Radius\UserResetExpiryType;
 use App\Form\Radius\UserType;
 use App\Util\SettingsUtils;
 use Grase\Util;
@@ -101,11 +102,28 @@ class UserController extends AbstractController
             return $this->redirectToRoute('grase_user_edit', ['id' => $user->getUsername()]);
         }
 
+        $resetExpiryForm = $this->createForm(UserResetExpiryType::class, $updateUserData);
+        $resetExpiryForm->handleRequest($request);
+
+        if ($resetExpiryForm->isSubmitted() && $resetExpiryForm->isValid()) {
+            $updateUserData->updateUser($user, $this->getDoctrine()->getManager(), false, true);
+            $this->addFlash(
+                'success',
+                $this->translator->trans(
+                    'grase.user.save_success.%username%',
+                    ['%username%' => $user->getUsername()]
+                )
+            );
+
+            return $this->redirectToRoute('grase_user_edit', ['id' => $user->getUsername()]);
+        }
+
         return $this->render(
             'user_edit.html.twig',
             [
                 'user'      => $user,
                 'user_form' => $form->createView(),
+                'user_reset_expiry_form' => $resetExpiryForm->createView(),
             ]
         );
     }

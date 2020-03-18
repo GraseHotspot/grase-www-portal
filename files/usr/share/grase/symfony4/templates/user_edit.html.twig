@@ -52,6 +52,23 @@
                 {{ form_end(user_form) }}
             </div>
 
+            <div class="card-body">
+                {{ form_start(user_reset_expiry_form) }}
+                <div class="my-custom-class-for-errors">
+                    {{ form_errors(user_reset_expiry_form) }}
+                </div>
+
+                <div class="form-row">
+                    <div class="col-xs-12 col-lg-6">
+                    {{ form_row(user_reset_expiry_form.expiry) }}
+                    </div>
+                </div>
+
+
+                {{ form_rest(user_reset_expiry_form) }}
+                {{ form_end(user_reset_expiry_form) }}
+            </div>
+
         </div>
     </div>
 

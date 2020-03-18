@@ -427,5 +427,23 @@
         <target>Validation of settings has failed. Please check errors and manually run 'grase:settings-validate' again.</target>
       </segment>
     </unit>
+    <unit id="i2xqEpM" name="grase.form.user.reset_expiry">
+      <segment>
+        <source>grase.form.user.reset_expiry</source>
+        <target>Expiry (based on Group)</target>
+      </segment>
+    </unit>
+    <unit id="3ojhD5I" name="grase.form.user.submit.reset_expiry">
+      <segment>
+        <source>grase.form.user.submit.reset_expiry</source>
+        <target>Reset Expiry</target>
+      </segment>
+    </unit>
+    <unit id="0p06T.J" name="grase.user.save_success.%username%">
+      <segment>
+        <source>grase.user.save_success.%username%</source>
+        <target>User {username} has been updated</target>
+      </segment>
+    </unit>
   </file>
 </xliff>
