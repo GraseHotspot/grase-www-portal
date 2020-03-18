@@ -141,7 +141,7 @@ class UpdateUserData
     {
 
         $user->setComment($this->comment);
-        $this->setPrimaryGroup($user, $em, $this->primaryGroup);
+        $groupChanged = $this->setPrimaryGroup($user, $em, $this->primaryGroup);
 
         $this->setDataLimit($user, $em, $this->dataLimitToBytes());
         $this->setTimeLimit($user, $em, $this->timeLimitToSeconds());
@@ -155,16 +155,19 @@ class UpdateUserData
             $this->setPassword($user, $em, $this->password);
         }
         // @TODO update the rest
-        // TODO reset the expiry??
-        if ($newUser || $resetExpiry) {
-            // @TODO reset the expiry with a group change?
+
+        // Reset the expiry for new users, if we're forcing a reset, or if the group has changed
+        if ($newUser || $resetExpiry || $groupChanged) {
             $this->resetExpiry($user, $em);
         }
-        // TODO update the expireAfter if present and expiry isn't set
+
+        // Update the expireAfter if present and expiry isn't set
         if (!$this->expiry) {
             $this->setExpireAfter($user, $em);
         }
+
         // TODO Account lock
+
         $em->persist($user);
         $em->flush();
     }
@@ -342,6 +345,8 @@ class UpdateUserData
      * @param User          $user
      * @param ObjectManager $em
      * @param Group         $group
+     *
+     * @return bool
      */
     private function setPrimaryGroup(User $user, ObjectManager $em, Group $group)
     {
@@ -351,9 +356,12 @@ class UpdateUserData
             $primaryUserGroup = new UserGroup();
             $primaryUserGroup->setUser($user);
         }
+        $oldGroup = $primaryUserGroup->getGroup();
         $primaryUserGroup->setGroup($group);
 
         $em->persist($primaryUserGroup);
+
+        return $oldGroup !== $group;
     }
 
     /**
