@@ -41,7 +41,6 @@ class MainMenu extends Menu
      */
     public function createMenu(array $options = []): ItemInterface
     {
-
         // Create Root Item
         $menu = $this
             ->createRoot('sidebar_menu', true)// Create event is "sidebar_menu.event"
@@ -59,9 +58,7 @@ class MainMenu extends Menu
 
         $menu->addChild(new DefaultItem('nav_header_accounts', $menu->isEvent()), 5)
             ->setLabel('grase.menu.accounts.header')
-            ->setListAttr(['class' => 'nav-header'])        ;
-
-
+            ->setListAttr(['class' => 'nav-header']);
 
         $usersMenu = $menu->addChild(new DefaultItem('nav_config_users', $menu->isEvent()), 5)
             ->setLabel('grase.menu.users')
@@ -93,10 +90,9 @@ class MainMenu extends Menu
         ;
         //->setRoles(['ADMIN_SETTINGS_CONTACT'])
 
-
         $menu->addChild(new DefaultItem('nav_header_sessions', $menu->isEvent()), 15)
             ->setLabel('grase.menu.sessions.header')
-            ->setListAttr(['class' => 'nav-header'])        ;
+            ->setListAttr(['class' => 'nav-header']);
 
         $menu->addChild(new DefaultItem('nav_session_active_sessions', $menu->isEvent()), 16)
             ->setLabel('grase.menu.sessions.active')
@@ -118,8 +114,7 @@ class MainMenu extends Menu
              ->setListAttr(['class' => 'nav-header'])
         ;
 
-
-         $settingsMenuCollapsable = $menu->addChild(new DefaultItem('nav_config_settings', $menu->isEvent()), 30)
+        $settingsMenuCollapsable = $menu->addChild(new DefaultItem('nav_config_settings', $menu->isEvent()), 30)
             ->setLabel('Settings')
             ->setLabelAfterHtml(' <i class="right fas fa-angle-left"></i>')
             //->setRoute('grase_settings')
@@ -129,7 +124,6 @@ class MainMenu extends Menu
             ->setExtra('label_icon', 'settings_application')
         ;
         //->setRoles(['ADMIN_SETTINGS_GENERAL'])
-
 
         $settingsMenuCollapsable->addChild(new DefaultItem('nav_config_advanced_settings', $settingsMenu->isEvent()), 1)
             ->setLabel('Advanced Settings')
@@ -155,7 +149,6 @@ class MainMenu extends Menu
             ->setRoute('_grase_logout')
             ->setExtra('label_icon', 'exit_to_app')
         ;
-
 
         return $menu;
     }

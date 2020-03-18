@@ -40,7 +40,7 @@ class SqlFileImporter
      */
     public function importSqlFile($filename)
     {
-        $query = "";
+        $query = '';
 
         $this->connection->beginTransaction();
 
@@ -76,7 +76,7 @@ class SqlFileImporter
                 }
 
                 // Query was successful, clear $query for next round
-                $query = "";
+                $query = '';
             }
         }
         $this->connection->commit();
@@ -107,7 +107,7 @@ class SqlFileImporter
 
         $lineCount = 0;
 
-        $query = "";
+        $query = '';
 
         foreach ($this->readFile($filename) as $line) {
             // Skip line if it's a mysqldump comment or empty
@@ -125,7 +125,7 @@ class SqlFileImporter
                 if (in_array($query, $searchQueries)) {
                     return true;
                 }
-                $query = "";
+                $query = '';
             }
 
             // Don't allow us to read the entire file looking for something that should be at the top
@@ -145,7 +145,7 @@ class SqlFileImporter
      */
     public function eraseDatabase()
     {
-        $tables = $this->connection->query("SHOW TABLES")->fetchAll(FetchMode::COLUMN);
+        $tables = $this->connection->query('SHOW TABLES')->fetchAll(FetchMode::COLUMN);
         $this->connection->beginTransaction();
 
         $this->connection->exec('SET FOREIGN_KEY_CHECKS=0;');
@@ -162,13 +162,14 @@ class SqlFileImporter
 
     /**
      * Read a SQL file (optionally gzipped) line by line in an efficient way
+     *
      * @param $filename
      *
      * @return \Generator
      */
     private function readFile($filename)
     {
-        $handle = gzopen($filename, "r");
+        $handle = gzopen($filename, 'r');
 
         while (!gzeof($handle)) {
             yield trim(gzgets($handle));

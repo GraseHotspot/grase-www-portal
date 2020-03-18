@@ -12,7 +12,7 @@ use Doctrine\Common\Persistence\ManagerRegistry;
 class SettingRepository extends ServiceEntityRepository
 {
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function __construct(ManagerRegistry $registry)
     {

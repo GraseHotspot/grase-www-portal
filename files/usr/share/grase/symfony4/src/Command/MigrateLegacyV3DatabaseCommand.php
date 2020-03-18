@@ -27,7 +27,7 @@ class MigrateLegacyV3DatabaseCommand extends Command
     /** @var SqlFileImporter */
     private $sqlFileImporter;
 
-    /** @var LoggerInterface  */
+    /** @var LoggerInterface */
     private $logger;
 
     /**
@@ -38,13 +38,13 @@ class MigrateLegacyV3DatabaseCommand extends Command
     public function __construct(TranslatorInterface $translator, SqlFileImporter $sqlFileImporter, LoggerInterface $logger)
     {
         parent::__construct();
-        $this->translator     = $translator;
+        $this->translator = $translator;
         $this->sqlFileImporter = $sqlFileImporter;
         $this->logger = $logger;
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     protected function configure()
     {

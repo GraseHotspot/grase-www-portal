@@ -37,7 +37,6 @@ class ActivateExpireAfterLoginCommand extends Command
     /** @var TranslatorInterface */
     private $translator;
 
-
     /**
      * ActivateExpireAfterLoginCommand constructor.
      *
@@ -84,7 +83,7 @@ class ActivateExpireAfterLoginCommand extends Command
             $user = $checkItem->getUser();
 
             $userUpdateData = UpdateUserData::fromUser($user);
-            $userUpdateData->expiry = new \DateTime("@" . strtotime($user->getExpireAfter(), $firstLogin));
+            $userUpdateData->expiry = new \DateTime('@' . strtotime($user->getExpireAfter(), $firstLogin));
 
             $this->auditLogger->info(
                 'grase.cron.audit.activate.expireAfterLogin',
@@ -94,7 +93,7 @@ class ActivateExpireAfterLoginCommand extends Command
                 $this->translator->trans(
                     'grase.cron.output.activate.expireAfterLogin',
                     [
-                        'user' => $user->getUsername(),
+                        'user'   => $user->getUsername(),
                         'expiry' => $userUpdateData->expiry->format('c'),
                     ]
                 )

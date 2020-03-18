@@ -44,7 +44,7 @@ class DataLimitType extends AbstractType
                 ChoiceType::class,
                 [
                     'placeholder' => '',
-                    'label' => 'grase.form.user.datalimit.dropdown.label',
+                    'label'       => 'grase.form.user.datalimit.dropdown.label',
                     'required'    => false,
                     'choices'     => array_merge(
                         ['Inherit from Group' => 'inherit'],
@@ -54,7 +54,7 @@ class DataLimitType extends AbstractType
             );
         }
         $builder->add('dataLimitCustom', NumberType::class, [
-            'label' => 'grase.form.user.datalimit.custom.label',
+            'label'    => 'grase.form.user.datalimit.custom.label',
             'required' => false,
         ]);
     }

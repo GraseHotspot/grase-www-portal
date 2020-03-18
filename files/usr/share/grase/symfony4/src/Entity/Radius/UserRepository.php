@@ -15,13 +15,14 @@ class UserRepository extends EntityRepository
 {
     /**
      * Find all users that belong to a group
+     *
      * @param null $group
      *
      * @return mixed
      */
     public function findByGroup($group = null)
     {
-        @ini_set("memory_limit", -1);
+        @ini_set('memory_limit', -1);
 
         $query = $this->getEntityManager()->createQueryBuilder()
             ->select('u', 'rc', 'ug'/*, 'ra'*/)
@@ -45,10 +46,10 @@ class UserRepository extends EntityRepository
                 $user->hydrateRadiusAccountingData($radiusAccountingData[$user->getUsername()]);
             } else {
                 $user->hydrateRadiusAccountingData([
-                    'currentAcctInputOctets' => 0,
+                    'currentAcctInputOctets'  => 0,
                     'currentAcctOutputOctets' => 0,
-                    'currentAcctSessionTime' => 0,
-                    'lastLogout' => null,
+                    'currentAcctSessionTime'  => 0,
+                    'lastLogout'              => null,
                 ]);
             }
         }
@@ -58,6 +59,7 @@ class UserRepository extends EntityRepository
 
     /**
      * Find a Radius user by username
+     *
      * @param string $username
      *
      * @return mixed

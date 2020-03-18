@@ -47,7 +47,7 @@ class ClearOldPostAuthCommand extends Command
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     protected function configure()
     {
@@ -66,8 +66,8 @@ class ClearOldPostAuthCommand extends Command
     {
         $io = new GraseConsoleStyle($input, $output);
 
-        $twoMonthsAgo = strftime("%Y-%m-%d", strtotime("first day of -1 months"));
-        $sql = "DELETE FROM radpostauth WHERE AuthDate <  :twoMonthsAgo";
+        $twoMonthsAgo = strftime('%Y-%m-%d', strtotime('first day of -1 months'));
+        $sql = 'DELETE FROM radpostauth WHERE AuthDate <  :twoMonthsAgo';
         $query = $this->em->getConnection()->prepare($sql);
         $result = $query->execute(['twoMonthsAgo' => $twoMonthsAgo]);
 

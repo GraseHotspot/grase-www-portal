@@ -48,7 +48,6 @@ class UserController extends AbstractController
      */
     public function displayUsersAction($group = null)
     {
-
         /** @var UserRepository $userRepository */
         $userRepository = $this->getDoctrine()->getManager()->getRepository(User::class);
 
@@ -121,8 +120,8 @@ class UserController extends AbstractController
         return $this->render(
             'user_edit.html.twig',
             [
-                'user'      => $user,
-                'user_form' => $form->createView(),
+                'user'                   => $user,
+                'user_form'              => $form->createView(),
                 'user_reset_expiry_form' => $resetExpiryForm->createView(),
             ]
         );

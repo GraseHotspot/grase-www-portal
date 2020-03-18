@@ -100,7 +100,6 @@ class AutoCreateUser
         return ['success' => false];
     }
 
-
     /**
      * This is a simple function that will to a MAC address, strip out the - and : chars, ensure
      * it's all lower case, then reverse it. That gives us something that isn't obviously the
@@ -115,7 +114,7 @@ class AutoCreateUser
         // @TODO Check it's a MAC
 
         // Strip : and - from address, lowercase it, reverse it
-        return strrev(strtolower(str_replace([":", "-"], "", $mac)));
+        return strrev(strtolower(str_replace([':', '-'], '', $mac)));
     }
 
     /**
@@ -155,6 +154,7 @@ class AutoCreateUser
 
     /**
      * Calculate the CHAP challenge/response response
+     *
      * @param $challenge
      * @param $password
      *
@@ -163,7 +163,7 @@ class AutoCreateUser
     private function chapChallengeResponse($challenge, $password)
     {
         // Generates a response for a challenge response CHAP Auth
-        $hexChallenge = pack("H32", $challenge);
+        $hexChallenge = pack('H32', $challenge);
         $response = md5("\0" . $password . $hexChallenge);
 
         return $response;

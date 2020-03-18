@@ -19,6 +19,7 @@ class AuditLogHandler extends AbstractProcessingHandler
 
     /**
      * MonologDBHandler constructor.
+     *
      * @param EntityManagerInterface $em
      */
     public function __construct(EntityManagerInterface $em)
@@ -29,6 +30,7 @@ class AuditLogHandler extends AbstractProcessingHandler
 
     /**
      * Called when writing to our database
+     *
      * @param array $record
      */
     protected function write(array $record)

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace DoctrineMigrations;
 
 use App\Entity\Setting;
-use App\Util\SettingsUtils;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
 use Doctrine\ORM\EntityManagerInterface;
@@ -28,7 +27,6 @@ final class Version20191227101133 extends AbstractMigration implements Container
 
     /**
      * @param Schema $schema
-     *
      */
     public function up(Schema $schema): void
     {
@@ -37,7 +35,6 @@ final class Version20191227101133 extends AbstractMigration implements Container
 
     /**
      * @param Schema $schema
-     *
      */
     public function postUp(Schema $schema): void
     {

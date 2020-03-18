@@ -53,7 +53,6 @@ class Radacct
      */
     private $user;
 
-
     /**
      * @var string
      *
@@ -204,7 +203,7 @@ class Radacct
     /**
      * Get radacctid
      *
-     * @return integer
+     * @return int
      */
     public function getRadacctid()
     {
@@ -430,7 +429,7 @@ class Radacct
     /**
      * Set acctsessiontime
      *
-     * @param integer $acctsessiontime
+     * @param int $acctsessiontime
      *
      * @return Radacct
      */
@@ -444,7 +443,7 @@ class Radacct
     /**
      * Get acctsessiontime
      *
-     * @return integer
+     * @return int
      */
     public function getAcctsessiontime()
     {
@@ -453,6 +452,7 @@ class Radacct
 
     /**
      * Displayable Account Session Time
+     *
      * @return string
      *
      * @throws \Exception
@@ -540,7 +540,7 @@ class Radacct
     /**
      * Set acctinputoctets
      *
-     * @param integer $acctinputoctets
+     * @param int $acctinputoctets
      *
      * @return Radacct
      */
@@ -554,7 +554,7 @@ class Radacct
     /**
      * Get acctinputoctets
      *
-     * @return integer
+     * @return int
      */
     public function getAcctinputoctets()
     {
@@ -564,7 +564,7 @@ class Radacct
     /**
      * Set acctoutputoctets
      *
-     * @param integer $acctoutputoctets
+     * @param int $acctoutputoctets
      *
      * @return Radacct
      */
@@ -578,7 +578,7 @@ class Radacct
     /**
      * Get acctoutputoctets
      *
-     * @return integer
+     * @return int
      */
     public function getAcctoutputoctets()
     {
@@ -587,6 +587,7 @@ class Radacct
 
     /**
      * Get AcctTotalOctets
+     *
      * @return int
      */
     public function getAcctTotalOctets()

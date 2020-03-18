@@ -6,7 +6,6 @@ use App\Entity\Setting;
 use App\Repository\SettingRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Monolog\Logger;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
@@ -33,7 +32,6 @@ class SettingsUtils
     /** @var array Array of settings that have been changed */
     private $changedSettings = [];
 
-
     /**
      * SettingsUtils constructor.
      *
@@ -46,14 +44,15 @@ class SettingsUtils
     public function __construct(SettingRepository $settingRepository, Formatting $formatting, TranslatorInterface $translator, EntityManagerInterface $entityManager, Logger $auditLogger)
     {
         $this->settingsRepository = $settingRepository;
-        $this->formatting        = $formatting;
-        $this->translator        = $translator;
+        $this->formatting = $formatting;
+        $this->translator = $translator;
         $this->em = $entityManager;
         $this->auditLogger = $auditLogger;
     }
 
     /**
      * Fetch the settings value, replaces the Radmin->getSetting() function
+     *
      * @param string $settingName
      *
      * @return string|null
@@ -71,6 +70,7 @@ class SettingsUtils
 
     /**
      * Returns an array for use as a dropdown of Bytes options nicely formatted
+     *
      * @return array
      */
     public function mbOptionsArray()
@@ -79,7 +79,7 @@ class SettingsUtils
         //array_map(function ($option) { return })
         $options = [];
         foreach ($mbOptions as $mb) {
-            $bytes                                           = $mb * 1024 * 1024;
+            $bytes = $mb * 1024 * 1024;
             $options[$this->formatting->formatBytes($bytes)] = $bytes;
         }
 
@@ -88,12 +88,13 @@ class SettingsUtils
 
     /**
      * Returns an array for use as a dropdown of Time options nicely formatted
+     *
      * @return array
      */
     public function timeOptionsArray()
     {
         $timeOptions = $this->settingsRepository->find(Setting::TIME_OPTIONS)->getValue();
-        $options     = [];
+        $options = [];
         foreach ($timeOptions as $time) {
             if ($time >= 60) {
                 $label = $this->translator->trans('time.hours', ['hours' => $time / 60]);
@@ -148,7 +149,6 @@ class SettingsUtils
      */
     public function updateSetting(Setting $setting, $value)
     {
-
         $oldValue = $setting->getRawValue();
         $setting->setValue($value);
         $this->em->persist($setting);
@@ -161,6 +161,7 @@ class SettingsUtils
 
     /**
      * Return how many changed settings are waiting for a flush
+     *
      * @return int
      */
     public function getChangedSettingsCount()
@@ -180,7 +181,7 @@ class SettingsUtils
                 // We don't already have a json array
 
                 // Try space delimited string (this will always give us an array, but we only care if it's bigger than 1 element)
-                $settingArray = explode(" ", $setting->getRawValue());
+                $settingArray = explode(' ', $setting->getRawValue());
                 if (sizeof($settingArray) > 1) {
                     // We have an array, so lets write it back which will save as JSON
                     $settingArray = array_map('intval', $settingArray);

@@ -47,7 +47,7 @@ class ClearStaleSessionsCommand extends Command
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     protected function configure()
     {

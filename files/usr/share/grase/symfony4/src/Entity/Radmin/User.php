@@ -42,6 +42,7 @@ class User implements UserInterface, EncoderAwareInterface, \Serializable //, Th
 
     /**
      * Get the Radmin Users username
+     *
      * @return string
      */
     public function getUsername()
@@ -51,6 +52,7 @@ class User implements UserInterface, EncoderAwareInterface, \Serializable //, Th
 
     /**
      * Get password encoder (lets us use existing sha1salted hashes until we upgrade them)
+     *
      * @return string|null
      */
     public function getEncoderName()
@@ -96,9 +98,6 @@ class User implements UserInterface, EncoderAwareInterface, \Serializable //, Th
         $this->role = $role;
     }
 
-    /**
-     *
-     */
     public function eraseCredentials()
     {
     }
@@ -110,13 +109,13 @@ class User implements UserInterface, EncoderAwareInterface, \Serializable //, Th
      */
     public function serialize()
     {
-        return serialize(array(
+        return serialize([
             //$this->id,
             $this->username,
             $this->password,
             // see section on salt below
             //$this->salt,
-        ));
+        ]);
     }
 
     /**
@@ -138,7 +137,7 @@ class User implements UserInterface, EncoderAwareInterface, \Serializable //, Th
     /**
      * Get id
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -176,7 +175,7 @@ class User implements UserInterface, EncoderAwareInterface, \Serializable //, Th
     /**
      * Set accessLevel
      *
-     * @param integer $accessLevel
+     * @param int $accessLevel
      *
      * @return User
      */

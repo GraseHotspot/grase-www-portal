@@ -85,7 +85,7 @@ final class Version20190823234949 extends AbstractMigration implements Container
             $i++;
             $newAdminLog = new AuditLog();
 
-            if ($oldAdminLog['timestamp'] && $oldAdminLog['timestamp'] !== "0000-00-00 00:00:00") {
+            if ($oldAdminLog['timestamp'] && $oldAdminLog['timestamp'] !== '0000-00-00 00:00:00') {
                 $newAdminLog->setCreatedAt(new \DateTime($oldAdminLog['timestamp']));
             }
             if ($oldAdminLog['username'] && $oldAdminLog['username'] !== 'Anon') {

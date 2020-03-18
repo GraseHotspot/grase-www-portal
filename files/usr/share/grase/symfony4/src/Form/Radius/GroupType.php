@@ -4,10 +4,9 @@ namespace App\Form\Radius;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 /**
  * Class GroupType
@@ -27,7 +26,7 @@ class GroupType extends AbstractType
                 'expiry',
                 null,
                 [
-                    'attr' => ['placeholder' => 'grase.form.NoExpiry'],
+                    'attr'  => ['placeholder' => 'grase.form.NoExpiry'],
                     'label' => 'grase.form.expiry',
                 ]
             )
@@ -70,9 +69,9 @@ class GroupType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(
-            array(
+            [
                 'data_class' => 'App\Entity\Radius\Group',
-            )
+            ]
         );
     }
 }

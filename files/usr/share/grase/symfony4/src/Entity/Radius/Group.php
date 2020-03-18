@@ -2,8 +2,8 @@
 
 namespace App\Entity\Radius;
 
-use Doctrine\ORM\Mapping as ORM;
 use App\Validator\Constraints as GraseAssert;
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
@@ -87,7 +87,6 @@ class Group
      */
     private $lastUpdated;
 
-
     /**
      * @ORM\OneToMany(targetEntity="UserGroup", mappedBy="group", fetch="EAGER")
      */
@@ -96,7 +95,7 @@ class Group
     /**
      * Get id
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -220,7 +219,7 @@ class Group
     /**
      * Set maxOctets
      *
-     * @param integer $maxOctets
+     * @param int $maxOctets
      *
      * @return Group
      */
@@ -234,7 +233,7 @@ class Group
     /**
      * Get maxOctets
      *
-     * @return integer
+     * @return int
      */
     public function getMaxOctets()
     {
@@ -244,7 +243,7 @@ class Group
     /**
      * Set maxSeconds
      *
-     * @param integer $maxSeconds
+     * @param int $maxSeconds
      *
      * @return Group
      */
@@ -258,7 +257,7 @@ class Group
     /**
      * Get maxSeconds
      *
-     * @return integer
+     * @return int
      */
     public function getMaxSeconds()
     {

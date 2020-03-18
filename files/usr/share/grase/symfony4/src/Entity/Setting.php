@@ -5,7 +5,6 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- *
  * @ORM\Table(name="settings")
  * @ORM\Entity
  */
@@ -48,7 +47,6 @@ class Setting
     public const NETWORK_BOGUS_NX = 'networkBogusNX'; // IP addresses that are bogus NX records, so should be converted to a NX record
 
     public const BOOLEAN_SETTINGS = [
-
     ];
 
     public const STRING_SETTINGS = [
@@ -75,7 +73,6 @@ class Setting
         self::MB_OPTIONS,
         self::TIME_OPTIONS,
     ];
-
 
     /**
      * Setting constructor.

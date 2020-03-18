@@ -2,9 +2,6 @@
 
 namespace App\Util;
 
-use App\Repository\SettingRepository;
-use Symfony\Component\Form\Extension\Core\DataTransformer\NumberToLocalizedStringTransformer;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
@@ -36,21 +33,21 @@ class Formatting
      */
     public function formatBytes($bytes, $precision = 2)
     {
-        $units = array('B', 'KiB', 'MiB', 'GiB', 'TiB');
+        $units = ['B', 'KiB', 'MiB', 'GiB', 'TiB'];
 
         if (!isset($bytes)) {
-            return "";
+            return '';
         } // Unlimited needs to display as blank
 
         $bytes = max($bytes, 0);
-        $pow   = floor(($bytes ? log($bytes) : 0) / log(1024));
-        $pow   = min($pow, count($units) - 1);
+        $pow = floor(($bytes ? log($bytes) : 0) / log(1024));
+        $pow = min($pow, count($units) - 1);
 
         // Uncomment one of the following alternatives
         $bytes /= pow(1024, $pow);
         // $bytes /= (1 << (10 * $pow));
 
-        $locale          = $this->requestStack->getCurrentRequest()->getLocale();
+        $locale = $this->requestStack->getCurrentRequest()->getLocale();
         $numberFormatter = new \NumberFormatter($locale, \NumberFormatter::DECIMAL);
         // TODO we may be able to use the new international formatter to do this instead of all this work to get the locale
 

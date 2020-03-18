@@ -34,7 +34,7 @@ class SettingSanityCommand extends Command
     {
         parent::__construct();
         $this->settingsSanity = $settingsSanity;
-        $this->translator     = $translator;
+        $this->translator = $translator;
     }
 
     /**
@@ -48,7 +48,7 @@ class SettingSanityCommand extends Command
         $changedSettings = $this->settingsSanity->sanityCheckSettings();
         $output->writeln(
             $this->translator->trans(
-                "grase.command.settingsSanity.updatedSettings",
+                'grase.command.settingsSanity.updatedSettings',
                 [
                     'updatedSettings' => $changedSettings['changedSettings'],
                     'removedSettings' => $changedSettings['removedSettings'],

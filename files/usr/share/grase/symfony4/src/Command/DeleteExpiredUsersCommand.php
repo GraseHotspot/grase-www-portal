@@ -48,7 +48,7 @@ class DeleteExpiredUsersCommand extends Command
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     protected function configure()
     {

@@ -8,7 +8,6 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Twig\Environment;
-use Twig\Template;
 
 /**
  * This command renders out the dnsmasq network settings file, which is used by dnsmasq and
@@ -56,13 +55,13 @@ class DnsmasqNetworkSettingsCommand extends Command
         $output->write($this->twig->render(
             'dnsmasqNetworkSettings.txt.twig',
             [
-                'lanIP' => $lanIP,
-                'lanInterface' => $settingsUtils->getSettingValue(Setting::NETWORK_LAN_INTERFACE),
-                'wanInterface' => $settingsUtils->getSettingValue(Setting::NETWORK_WAN_INTERFACE),
-                'lanNetwork' => $lanNetworkIP,
-                'lanNetmask' => $lanNetmask,
-                'dnsServers' => $settingsUtils->getSettingValue(Setting::NETWORK_DNS_SERVERS),
-                'bogusNX' => $settingsUtils->getSettingValue(Setting::NETWORK_BOGUS_NX),
+                'lanIP'                => $lanIP,
+                'lanInterface'         => $settingsUtils->getSettingValue(Setting::NETWORK_LAN_INTERFACE),
+                'wanInterface'         => $settingsUtils->getSettingValue(Setting::NETWORK_WAN_INTERFACE),
+                'lanNetwork'           => $lanNetworkIP,
+                'lanNetmask'           => $lanNetmask,
+                'dnsServers'           => $settingsUtils->getSettingValue(Setting::NETWORK_DNS_SERVERS),
+                'bogusNX'              => $settingsUtils->getSettingValue(Setting::NETWORK_BOGUS_NX),
                 'lastChangedTimestamp' => $settingsUtils->getSettingValue(Setting::NETWORK_LAST_CHANGED),
             ]
         ));

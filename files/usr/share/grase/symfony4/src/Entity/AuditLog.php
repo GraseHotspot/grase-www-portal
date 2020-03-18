@@ -191,7 +191,6 @@ class AuditLog
         return $this;
     }
 
-
     /**
      * @return string|null
      */

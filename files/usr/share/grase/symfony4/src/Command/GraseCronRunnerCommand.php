@@ -49,7 +49,7 @@ class GraseCronRunnerCommand extends Command
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     protected function configure()
     {
@@ -71,10 +71,10 @@ class GraseCronRunnerCommand extends Command
 
         $commands = [
             'Activate Expiry After First Login' => 'grase:cron:activateExpireAfterLogin',
-            'Clear Stale Sessions' => 'grase:cron:clearStaleSessions',
-            'Delete Expired Users' => 'grase:cron:deleteExpiredUsers',
-            'Clear old postAuth rows' => 'grase:cron:clearOldPostAuth',
-            'Condense previous months radAcct' => 'grase:cron:condensePreviousMonthsAccounting',
+            'Clear Stale Sessions'              => 'grase:cron:clearStaleSessions',
+            'Delete Expired Users'              => 'grase:cron:deleteExpiredUsers',
+            'Clear old postAuth rows'           => 'grase:cron:clearOldPostAuth',
+            'Condense previous months radAcct'  => 'grase:cron:condensePreviousMonthsAccounting',
         ];
 
         foreach ($commands as $name => $command) {
@@ -94,13 +94,12 @@ class GraseCronRunnerCommand extends Command
                     ['name' => $name]
                 ));
                 $this->logger->error('Cron runner job failed', [
-                    'name' => $name,
+                    'name'      => $name,
                     'exception' => $e,
                 ]);
                 $returnCode = 1;
             }
         }
-
 
         return $returnCode;
     }

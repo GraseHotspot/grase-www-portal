@@ -19,11 +19,11 @@ class Version20160221201937 extends AbstractMigration
     public function up(Schema $schema): void
     {
         $this->addSql(
-            "ALTER TABLE groups
+            'ALTER TABLE groups
               DROP PRIMARY KEY,
               ADD id INT NOT NULL AUTO_INCREMENT FIRST,
               ADD PRIMARY KEY (`id`),
-              ADD UNIQUE KEY (`GroupName`)"
+              ADD UNIQUE KEY (`GroupName`)'
         );
         $this->addSql(
             "INSERT INTO groups
@@ -34,45 +34,45 @@ class Version20160221201937 extends AbstractMigration
         );
 
         $this->addSql(
-            "UPDATE radgroupcheck AS t
+            'UPDATE radgroupcheck AS t
         INNER JOIN groups AS g ON t.GroupName = g.GroupName
         SET t.GroupName = CAST(g.id AS CHAR)
-        WHERE t.GroupName != CAST(g.id AS CHAR)"
+        WHERE t.GroupName != CAST(g.id AS CHAR)'
         );
 
         $this->addSql(
-            "UPDATE radgroupreply AS t
+            'UPDATE radgroupreply AS t
         INNER JOIN groups AS g ON t.GroupName = g.GroupName
         SET t.GroupName = CAST(g.id AS CHAR)
-        WHERE t.GroupName != CAST(g.id AS CHAR)"
+        WHERE t.GroupName != CAST(g.id AS CHAR)'
         );
 
         $this->addSql(
-            "UPDATE radusergroup AS t
+            'UPDATE radusergroup AS t
         INNER JOIN groups AS g ON t.GroupName = g.GroupName
         SET t.GroupName = CAST(g.id AS CHAR)
-        WHERE t.GroupName != CAST(g.id AS CHAR)"
+        WHERE t.GroupName != CAST(g.id AS CHAR)'
         );
 
         $this->addSql(
-            "ALTER TABLE radusergroup
+            'ALTER TABLE radusergroup
         DROP INDEX UserName,
-        ADD INDEX IDX_569F584FA11ACB1F (UserName)"
+        ADD INDEX IDX_569F584FA11ACB1F (UserName)'
         );
 
         $this->addSql(
-            "ALTER TABLE radusergroup
+            'ALTER TABLE radusergroup
         CHANGE GroupName GroupName INT NOT NULL,
-        CHANGE priority priority INT NOT NULL"
+        CHANGE priority priority INT NOT NULL'
         );
 
         $this->addSql(
-            "ALTER TABLE groups
+            'ALTER TABLE groups
           DROP KEY GroupName,
           DROP COLUMN GroupName,
           CHANGE GroupLabel name VARCHAR(64) COLLATE utf8_unicode_ci NOT NULL,
           ADD UNIQUE name (name)
-            "
+            '
         );
 
         $this->addSql(

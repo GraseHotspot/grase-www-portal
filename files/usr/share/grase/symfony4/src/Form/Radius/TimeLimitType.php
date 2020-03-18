@@ -43,7 +43,7 @@ class TimeLimitType extends AbstractType
                 ChoiceType::class,
                 [
                     'placeholder' => '',
-                    'label' => 'grase.form.user.timelimit.dropdown.label',
+                    'label'       => 'grase.form.user.timelimit.dropdown.label',
                     'required'    => false,
                     'choices'     => array_merge(
                         ['Inherit from Group' => 'inherit'],
@@ -53,7 +53,7 @@ class TimeLimitType extends AbstractType
             );
         }
         $builder->add('timeLimitCustom', NumberType::class, [
-            'label' => 'grase.form.user.timelimit.custom.label',
+            'label'    => 'grase.form.user.timelimit.custom.label',
             'required' => false,
         ]);
     }

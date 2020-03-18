@@ -22,7 +22,6 @@ class DemoDataCommand extends Command
 {
     protected static $defaultName = 'grase:demodata';
 
-
     /** @var TranslatorInterface */
     private $translator;
 
@@ -48,7 +47,7 @@ class DemoDataCommand extends Command
         $this->translator = $translator;
         $this->entityManager = $entityManager;
         $this->settingsUtils = $settingsUtils;
-        $this->setDescription("Cleans up the data for use in demos");
+        $this->setDescription('Cleans up the data for use in demos');
     }
 
     /**
@@ -65,7 +64,7 @@ class DemoDataCommand extends Command
         $query = $queryBuilder->update(Check::class, 'c')
             ->set('c.value', ':value')
             ->where('c.attribute = :attribute')
-            ->setParameter('value', "DEMOPASSWORD")
+            ->setParameter('value', 'DEMOPASSWORD')
             ->setParameter('attribute', 'Cleartext-Password')
             ->getQuery();
 
@@ -76,7 +75,7 @@ class DemoDataCommand extends Command
         $query = $queryBuilder->update(User::class, 'u')
             ->set('u.comment', ':comment')
             ->where('u.comment IS NOT NULL')
-            ->setParameter('comment', "Demo Comment")
+            ->setParameter('comment', 'Demo Comment')
             ->getQuery();
 
         $output->writeln('Change comments: ' . $query->execute());
@@ -153,7 +152,6 @@ class DemoDataCommand extends Command
             $this->renameUser($output, $oldUsername, $newUsername);
         }
 
-
         /** @var Group $autoCreateGroup */
         $autoCreateGroup = $this->entityManager->getRepository(Group::class)->findOneBy(
             ['name' => $this->settingsUtils->getSettingValue(Setting::AUTO_CREATE_GROUP)]
@@ -161,7 +159,7 @@ class DemoDataCommand extends Command
         foreach ($autoCreateGroup->getUsergroups() as $userGroupMapping) {
             $oldUsername = $userGroupMapping->getUser()->getUsername();
             if (strlen($oldUsername) === 10) {
-                    continue;
+                continue;
             }
             // Just need to make it unique
             $newUsername = substr(hash('adler32', $oldUsername), 2, 6)
@@ -169,10 +167,8 @@ class DemoDataCommand extends Command
             $this->renameUser($output, $oldUsername, $newUsername);
         }
 
-
         $db->query('SET FOREIGN_KEY_CHECKS=1');
         $db->commit();
-
 
         // TODO Clear audit log
     }

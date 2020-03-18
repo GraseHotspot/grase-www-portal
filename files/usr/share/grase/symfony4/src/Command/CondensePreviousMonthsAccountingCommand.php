@@ -48,7 +48,7 @@ class CondensePreviousMonthsAccountingCommand extends Command
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     protected function configure()
     {
@@ -65,7 +65,6 @@ class CondensePreviousMonthsAccountingCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $io = new GraseConsoleStyle($input, $output);
-
 
         // Find the months present in radacct
         /** @var \DateTime[] $accountingMonths */
@@ -135,7 +134,7 @@ class CondensePreviousMonthsAccountingCommand extends Command
     private function updateCheckMaxOctets(\DateTime $startAccountingMonth)
     {
         // Query to update radcheck rows to reflect the now summarised accounting rows
-        $updateCheckMaxOctetsSql = "
+        $updateCheckMaxOctetsSql = '
         UPDATE radcheck, mtotaccttmp
         SET
             radcheck.value = GREATEST(
@@ -143,7 +142,7 @@ class CondensePreviousMonthsAccountingCommand extends Command
                 0)
         WHERE radcheck.Attribute = :maxOctets
         AND radcheck.UserName = mtotaccttmp.UserName
-        AND mtotaccttmp.AcctDate = :acctDate";
+        AND mtotaccttmp.AcctDate = :acctDate';
 
         $updateCheckMaxOctetsQuery = $this->em->getConnection()->prepare($updateCheckMaxOctetsSql);
 
@@ -151,7 +150,7 @@ class CondensePreviousMonthsAccountingCommand extends Command
         $updateCheckMaxOctetsQuery->execute(
             [
                 'maxOctets' => Check::MAX_OCTETS,
-                'acctDate' => $startAccountingMonth->format('Y-m-d'),
+                'acctDate'  => $startAccountingMonth->format('Y-m-d'),
             ]
         );
 
@@ -172,7 +171,7 @@ class CondensePreviousMonthsAccountingCommand extends Command
     private function updateCheckMaxAllSession(\DateTime $startAccountingMonth)
     {
         // Query to update radcheck rows to reflect the now summarised accounting rows
-        $updateCheckMaxAllSessionSql = "
+        $updateCheckMaxAllSessionSql = '
         UPDATE radcheck, mtotaccttmp
         SET
             radcheck.value = GREATEST(
@@ -180,7 +179,7 @@ class CondensePreviousMonthsAccountingCommand extends Command
                 0)
         WHERE radcheck.Attribute = :maxAllSession
         AND radcheck.UserName = mtotaccttmp.UserName
-        AND mtotaccttmp.AcctDate = :acctDate";
+        AND mtotaccttmp.AcctDate = :acctDate';
 
         $updateCheckMaxAllSessionQuery = $this->em->getConnection()->prepare($updateCheckMaxAllSessionSql);
 
@@ -188,7 +187,7 @@ class CondensePreviousMonthsAccountingCommand extends Command
         $updateCheckMaxAllSessionQuery->execute(
             [
                 'maxAllSession' => Check::MAX_ALL_SESSION,
-                'acctDate' => $startAccountingMonth->format('Y-m-d'),
+                'acctDate'      => $startAccountingMonth->format('Y-m-d'),
             ]
         );
 
@@ -210,7 +209,7 @@ class CondensePreviousMonthsAccountingCommand extends Command
     {
         // Move the mtotaccttmp details into mtotacct
         // @TODO should we be do an insert/update instead so we ensure only 1 line per user per month?
-        $moveTempAccountingSql = "INSERT INTO mtotacct (
+        $moveTempAccountingSql = 'INSERT INTO mtotacct (
                     UserName,
                     AcctDate,
                     ConnNum,
@@ -233,7 +232,7 @@ class CondensePreviousMonthsAccountingCommand extends Command
                     NASIPAddress
                     FROM 
                     mtotaccttmp
-                    WHERE AcctDate = :acctDate";
+                    WHERE AcctDate = :acctDate';
 
         $moveTempAccountingQuery = $this->em->getConnection()->prepare($moveTempAccountingSql);
 
@@ -261,9 +260,9 @@ class CondensePreviousMonthsAccountingCommand extends Command
     private function removeAccountingData(\DateTime $startAccountingMonth, \DateTime $endAccountingMonth)
     {
         // Query to remove the accounting data from the radacct table that we've now summarised
-        $deleteFromRadacctSql = "DELETE FROM radacct
+        $deleteFromRadacctSql = 'DELETE FROM radacct
             WHERE AcctStopTime >= :startAccountingMonth
-              AND AcctStopTime < :endAccountingMonth";
+              AND AcctStopTime < :endAccountingMonth';
 
         $deleteFromRadacctQuery = $this->em->getConnection()->prepare($deleteFromRadacctSql);
 
@@ -271,7 +270,7 @@ class CondensePreviousMonthsAccountingCommand extends Command
         $deleteFromRadacctQuery->execute(
             [
                 'startAccountingMonth' => $startAccountingMonth->format('Y-m-d H:i:s'),
-                'endAccountingMonth' => $endAccountingMonth->format('Y-m-d H:i:s'),
+                'endAccountingMonth'   => $endAccountingMonth->format('Y-m-d H:i:s'),
             ]
         );
 
@@ -294,7 +293,7 @@ class CondensePreviousMonthsAccountingCommand extends Command
     private function populateTempAccountingTable(\DateTime $startAccountingMonth, \DateTime $endAccountingMonth)
     {
         // Query to Select and total all radacct data for month into mtotaccttmp
-        $intoMtotaccttmpSql = "INSERT INTO mtotaccttmp
+        $intoMtotaccttmpSql = 'INSERT INTO mtotaccttmp
                              (UserName,
                              AcctDate,
                              ConnNum,
@@ -316,15 +315,15 @@ class CondensePreviousMonthsAccountingCommand extends Command
                              FROM radacct
                              WHERE AcctStopTime >= :startAccountingMonth
                              AND AcctStopTime < :endAccountingMonth
-                             GROUP BY UserName,NASIPAddress";
+                             GROUP BY UserName,NASIPAddress';
         $intoMtotaccttmpQuery = $this->em->getConnection()->prepare($intoMtotaccttmpSql);
 
         // Select and total all radacct data for month into mtotaccttmp
         $intoMtotaccttmpQuery->execute(
             [
-                'acctDate' => $startAccountingMonth->format('Y-m-d'),
+                'acctDate'             => $startAccountingMonth->format('Y-m-d'),
                 'startAccountingMonth' => $startAccountingMonth->format('Y-m-d H:i:s'),
-                'endAccountingMonth' => $endAccountingMonth->format('Y-m-d H:i:s'),
+                'endAccountingMonth'   => $endAccountingMonth->format('Y-m-d H:i:s'),
             ]
         );
 
@@ -369,8 +368,8 @@ class CondensePreviousMonthsAccountingCommand extends Command
             ->query('SELECT DISTINCT DATE_FORMAT(AcctStopTime, \'%Y-%m\') AS AccountingMonths FROM radacct');
         $results = $query->fetchAll(FetchMode::COLUMN);
 
-        $results[] = "2020-01";
-        $results[] = "2019-11";
+        $results[] = '2020-01';
+        $results[] = '2019-11';
 
         // Turn the months into DateTime objects (1st of the month)
         $months = array_map(

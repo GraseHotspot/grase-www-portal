@@ -29,12 +29,10 @@ class UpdateUserData
      */
     public $comment;
 
-
     /**
      * @var string
      */
     public $password;
-
 
     /** @var Group */
     public $primaryGroup;
@@ -56,6 +54,7 @@ class UpdateUserData
 
     /**
      * Create a UpdateUserData from an existing User entity
+     *
      * @param User $user
      *
      * @return UpdateUserData
@@ -123,15 +122,16 @@ class UpdateUserData
     public function validateFields(ExecutionContextInterface $context)
     {
         if (null !== $this->dataLimit['dataLimitDropdown'] && null !== $this->dataLimit['dataLimitCustom']) {
-            $context->addViolation("grase.form.user.datalimit.both_selected_error");
+            $context->addViolation('grase.form.user.datalimit.both_selected_error');
         }
         if (null !== $this->timeLimit['timeLimitDropdown'] && null !== $this->timeLimit['timeLimitCustom']) {
-            $context->addViolation("grase.form.user.timelimit.both_selected_error");
+            $context->addViolation('grase.form.user.timelimit.both_selected_error');
         }
     }
 
     /**
      * Write data back to a User entity with the updated data
+     *
      * @param User          $user
      * @param ObjectManager $em
      * @param bool          $newUser     if this is the first time a user is being created
@@ -139,7 +139,6 @@ class UpdateUserData
      */
     public function updateUser(User $user, ObjectManager $em, $newUser = false, $resetExpiry = false)
     {
-
         $user->setComment($this->comment);
         $groupChanged = $this->setPrimaryGroup($user, $em, $this->primaryGroup);
 
@@ -172,7 +171,6 @@ class UpdateUserData
         $em->flush();
     }
 
-
     /**
      * @return float|int|mixed|null
      */
@@ -195,6 +193,7 @@ class UpdateUserData
 
     /**
      * Reset the users Expiry based on the group Expiry
+     *
      * @param User          $user
      * @param ObjectManager $em
      */
@@ -223,12 +222,13 @@ class UpdateUserData
         }
 
         // Just set the check we have
-        $expiryCheck->setValue(date("F d Y H:i:s", strtotime($expiry)));
+        $expiryCheck->setValue(date('F d Y H:i:s', strtotime($expiry)));
         $em->persist($expiryCheck);
     }
 
     /**
      * Set the users Expire After based on the group Expire After setting
+     *
      * @param User          $user
      * @param ObjectManager $em
      */
@@ -264,7 +264,7 @@ class UpdateUserData
     /**
      * @param User          $user
      * @param ObjectManager $em
-     * @param null|int      $bytes
+     * @param int|null      $bytes
      */
     private function setDataLimit(User $user, ObjectManager $em, $bytes)
     {
@@ -314,7 +314,7 @@ class UpdateUserData
     /**
      * @param User          $user
      * @param ObjectManager $em
-     * @param null|int      $seconds
+     * @param int|null      $seconds
      */
     private function setTimeLimit(User $user, ObjectManager $em, $seconds)
     {

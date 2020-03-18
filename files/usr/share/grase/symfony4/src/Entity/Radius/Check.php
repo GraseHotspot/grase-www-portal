@@ -27,13 +27,11 @@ class Check
      */
     private $id;
 
-
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="radiusCheck")
      * @ORM\JoinColumn(name="UserName", referencedColumnName="username", nullable=false)
      */
     private $user;
-
 
     /**
      * @var string
@@ -57,10 +55,10 @@ class Check
     private $value;
 
     /**
-    * Get id
-    *
-    * @return integer
-    */
+     * Get id
+     *
+     * @return int
+     */
     public function getId()
     {
         return $this->id;

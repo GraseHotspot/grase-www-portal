@@ -2,12 +2,12 @@
 
 namespace App\Entity\Radius;
 
+use App\Util\DateIntervalEnhanced;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
-use App\Util\DateIntervalEnhanced;
-use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * User
@@ -31,7 +31,6 @@ class User
      * @Groups({"user_get"})
      */
     private $comment;
-
 
     /**
      * @ORM\OneToMany(targetEntity="Check", mappedBy="user", fetch="EAGER")
@@ -70,8 +69,8 @@ class User
      */
     public function __construct()
     {
-        $this->radiusCheck      = new ArrayCollection();
-        $this->userGroups       = new ArrayCollection();
+        $this->radiusCheck = new ArrayCollection();
+        $this->userGroups = new ArrayCollection();
         $this->radiusAccounting = new ArrayCollection();
     }
 
@@ -100,7 +99,7 @@ class User
     /**
      * @Groups({"user_get"})
      *
-     * @return null|string
+     * @return string|null
      */
     public function getPassword()
     {
@@ -116,11 +115,10 @@ class User
      */
     public function getPasswordCheck()
     {
-        $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'Cleartext-Password'));
+        $criteria = Criteria::create()->where(Criteria::expr()->eq('attribute', 'Cleartext-Password'));
 
         return $this->getRadiuscheck()->matching($criteria)->first();
     }
-
 
     /**
      * Get the users time limit in a somewhat formatted way (good for displaying)
@@ -145,13 +143,14 @@ class User
      */
     public function getTimeLimitCheck()
     {
-        $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'Max-All-Session'));
+        $criteria = Criteria::create()->where(Criteria::expr()->eq('attribute', 'Max-All-Session'));
 
         return $this->getRadiuscheck()->matching($criteria)->first();
     }
 
     /**
      * Get the users time limit in Minutes, needed for editing users
+     *
      * @return float|int
      */
     public function getTimeLimitMinutes()
@@ -161,6 +160,7 @@ class User
 
     /**
      * Get the users Time limit as seconds or null if there is no limit
+     *
      * @return string|null
      */
     public function getTimeLimitSeconds()
@@ -174,6 +174,7 @@ class User
 
     /**
      * Get the users data limit as a mebibyte value, needed when editing users
+     *
      * @return float|int|null
      */
     public function getDataLimitMebibyte()
@@ -183,6 +184,7 @@ class User
 
     /**
      * Get the users Data limit as it's raw bytes value
+     *
      * @Groups({"user_get"})
      *
      * @return string | null
@@ -201,7 +203,7 @@ class User
      */
     public function getDataLimitCheck()
     {
-        $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'Max-Octets'));
+        $criteria = Criteria::create()->where(Criteria::expr()->eq('attribute', 'Max-Octets'));
 
         return $this->getRadiuscheck()->matching($criteria)->first();
     }
@@ -225,7 +227,7 @@ class User
      */
     public function getExpiryCheck()
     {
-        $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", 'Expiration'));
+        $criteria = Criteria::create()->where(Criteria::expr()->eq('attribute', 'Expiration'));
 
         return $this->getRadiuscheck()->matching($criteria)->first();
     }
@@ -235,7 +237,7 @@ class User
      */
     public function getExpireAfterCheck()
     {
-        $criteria = Criteria::create()->where(Criteria::expr()->eq("attribute", Check::GRASE_EXPIRE_AFTER));
+        $criteria = Criteria::create()->where(Criteria::expr()->eq('attribute', Check::GRASE_EXPIRE_AFTER));
 
         return $this->getRadiuscheck()->matching($criteria)->first();
     }
@@ -251,8 +253,6 @@ class User
 
         return null;
     }
-
-
 
     /**
      * Add radiuscheck
@@ -443,7 +443,7 @@ class User
     /**
      * @Groups({"user_get_2"})
      *
-     * @return integer
+     * @return int
      */
     public function getDataUsageTotal()
     {
@@ -451,7 +451,7 @@ class User
             /** @var Radacct $radactt */
             foreach ($this->getRadiusAccounting() as $radactt) {
                 $this->currentDataUsageOut += $radactt->getAcctoutputoctets();
-                $this->currentDataUsageIn  += $radactt->getAcctinputoctets();
+                $this->currentDataUsageIn += $radactt->getAcctinputoctets();
             }
 
             $this->currentDataUsage = $this->currentDataUsageIn + $this->currentDataUsageOut;
@@ -465,11 +465,11 @@ class User
      */
     public function hydrateRadiusAccountingData($data)
     {
-        $this->currentDataUsageIn  = $data['currentAcctInputOctets'];
+        $this->currentDataUsageIn = $data['currentAcctInputOctets'];
         $this->currentDataUsageOut = $data['currentAcctOutputOctets'];
-        $this->currentSessionTime  = new DateIntervalEnhanced('PT' . $data['currentAcctSessionTime'] . 'S');
-        $this->currentDataUsage    = $this->currentDataUsageIn + $this->currentDataUsageOut;
-        $this->lastLogout          = $data['lastLogout'] ? new DateTime($data['lastLogout']) : null;
+        $this->currentSessionTime = new DateIntervalEnhanced('PT' . $data['currentAcctSessionTime'] . 'S');
+        $this->currentDataUsage = $this->currentDataUsageIn + $this->currentDataUsageOut;
+        $this->lastLogout = $data['lastLogout'] ? new DateTime($data['lastLogout']) : null;
     }
 
     /**
@@ -482,6 +482,7 @@ class User
 
     /**
      * Get all the Radius Check Entries
+     *
      * @return ArrayCollection
      */
     public function getRadiuscheck()

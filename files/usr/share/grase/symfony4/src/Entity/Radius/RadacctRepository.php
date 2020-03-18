@@ -10,7 +10,6 @@ use Doctrine\ORM\EntityRepository;
  */
 class RadacctRepository extends EntityRepository
 {
-
     /**
      * @return mixed
      */

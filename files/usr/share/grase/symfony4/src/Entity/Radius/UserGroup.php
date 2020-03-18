@@ -7,6 +7,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * UserGroup
+ *
  * @ORM\Table(name="radusergroup")
  * @ORM\Entity(repositoryClass="App\Entity\Radius\UserGroupRepository")
  */
@@ -47,7 +48,7 @@ class UserGroup
     /**
      * Set priority
      *
-     * @param integer $priority
+     * @param int $priority
      *
      * @return UserGroup
      */
@@ -61,7 +62,7 @@ class UserGroup
     /**
      * Get priority
      *
-     * @return integer
+     * @return int
      */
     public function getPriority()
     {

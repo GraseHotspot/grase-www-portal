@@ -67,7 +67,7 @@ class UamController extends AbstractController
             [
                 'supportContactLink' => $this->settingsUtils->getSettingValue(Setting::SUPPORT_CONTACT_LINK),
                 'supportContactName' => $this->settingsUtils->getSettingValue(Setting::SUPPORT_CONTACT_NAME),
-                'freeLoginEnabled' => $freeLoginEnabled,
+                'freeLoginEnabled'   => $freeLoginEnabled,
             ]
         );
     }

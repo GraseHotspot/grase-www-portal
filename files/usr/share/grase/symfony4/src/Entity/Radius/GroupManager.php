@@ -6,7 +6,6 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use App\Entity\Radius\Group;
 
 /**
  * Class GroupManager
@@ -15,18 +14,21 @@ class GroupManager
 {
     /**
      * Holds the Doctrine entity manager for database interaction
+     *
      * @var EntityManager
      */
     protected $em;
 
     /**
      * Holds the Symfony2 event dispatcher service
+     *
      * @var EventDispatcherInterface
      */
     protected $dispatcher;
 
     /**
      * Entity-specific repo, useful for finding entities, for example
+     *
      * @var EntityRepository
      */
     protected $repo;

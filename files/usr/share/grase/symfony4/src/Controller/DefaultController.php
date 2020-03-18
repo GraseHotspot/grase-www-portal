@@ -6,7 +6,6 @@ use App\Entity\AuditLog;
 use App\Entity\Radius\Radacct;
 use App\Entity\Radius\User;
 use App\Entity\Setting;
-use App\Util\SettingsUtils;
 use Grase\SystemInformation;
 use Grase\Util;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,8 +21,9 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 class DefaultController extends AbstractController
 {
-    /** @var TranslatorInterface  */
+    /** @var TranslatorInterface */
     private $translator;
+
     /**
      * DefaultController constructor.
      *
@@ -33,7 +33,6 @@ class DefaultController extends AbstractController
     {
         $this->translator = $translator;
     }
-
 
     /**
      * Our "System Information" dashboard. This is the landing page after logging in.
@@ -47,16 +46,16 @@ class DefaultController extends AbstractController
         return $this->render(
             'index.html.twig',
             [
-                'systemInfo' => $systemInformation,
+                'systemInfo'     => $systemInformation,
                 'netdataEnabled' => false, // TODO make this pull from the database settings
             ]
         );
     }
 
-
     /**
      * Show all the settings in a table so we can see the "hidden" settings.
      * TODO this will allow editing of any setting
+     *
      * @return Response
      */
     public function advancedSettingsAction()
@@ -75,6 +74,7 @@ class DefaultController extends AbstractController
 
     /**
      * Display currently active Radius sessions
+     *
      * @return Response
      */
     public function monitorSessionAction()
@@ -89,7 +89,6 @@ class DefaultController extends AbstractController
             ]
         );
     }
-
 
     /**
      * Logs out a Chilli session
@@ -137,6 +136,7 @@ class DefaultController extends AbstractController
     /**
      * Display all the DHCP leases from Coova Chilli. This function can only work on a local Coova Chilli node due to
      * the exec used in Util::getChilliLeases()
+     *
      * @param Session $session
      *
      * @return Response
@@ -178,6 +178,7 @@ class DefaultController extends AbstractController
 
     /**
      * Display a table of audit logs
+     *
      * @return Response
      */
     public function auditLogDisplayAction()

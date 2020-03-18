@@ -31,6 +31,7 @@ class GroupController extends AbstractController
 
     /**
      * Display all groups
+     *
      * @return Response
      */
     public function displayGroupsAction()
@@ -47,9 +48,9 @@ class GroupController extends AbstractController
         );
     }
 
-
     /**
      * Edit Group settings
+     *
      * @param Request      $request
      * @param GroupManager $groupManager
      * @param string       $id
@@ -90,7 +91,7 @@ class GroupController extends AbstractController
         return $this->render(
             'group_edit.html.twig',
             [
-                'group' => $group,
+                'group'      => $group,
                 'group_form' => $form->createView(),
             ]
         );

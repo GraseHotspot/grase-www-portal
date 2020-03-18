@@ -28,6 +28,7 @@ class SettingsSanity
 
     /**
      * Defaults for numeric settings
+     *
      * @var array
      */
     private $numericDefaults = [
@@ -37,28 +38,31 @@ class SettingsSanity
 
     /**
      * Defaults for string settings
+     *
      * @var array
      */
     private $stringDefaults = [
-        'locationName'       => 'Default',
+        'locationName'                => 'Default',
         Setting::SUPPORT_CONTACT_NAME => 'Tim White',
         Setting::SUPPORT_CONTACT_LINK => 'https://grasehotspot.com/',
-        Setting::WEBSITE_LINK        => 'https://grasehotspot.org/',
-        Setting::WEBSITE_NAME        => 'GRASE Hotspot Project',
-        'locale'             => 'en_AU',
+        Setting::WEBSITE_LINK         => 'https://grasehotspot.org/',
+        Setting::WEBSITE_NAME         => 'GRASE Hotspot Project',
+        'locale'                      => 'en_AU',
     ];
 
     /**
      * Array of old default setting values so we can upgrade existing installs
+     *
      * @var array
      */
     private $oldStringDefaults = [
         Setting::SUPPORT_CONTACT_LINK => ['http://grasehotspot.com/', 'http://grasehotspot.org/', 'http://grasehotspot.org', 'http://grasehotspot.com'],
-        'websiteLink'        => ['http://grasehotspot.org/', 'http://grasehotspot.org'],
+        'websiteLink'                 => ['http://grasehotspot.org/', 'http://grasehotspot.org'],
     ];
 
     /**
      * Defaults for arrays of settings
+     *
      * @var array
      */
     private $arrayDefaults = [
@@ -114,13 +118,14 @@ class SettingsSanity
     public function __construct(SettingRepository $settingsRepository, EntityManagerInterface $em, Logger $auditLogger, SettingsUtils $settingsUtils)
     {
         $this->settingsRepository = $settingsRepository;
-        $this->em                 = $em;
-        $this->auditLogger        = $auditLogger;
+        $this->em = $em;
+        $this->auditLogger = $auditLogger;
         $this->settingsUtils = $settingsUtils;
     }
 
     /**
      * Run a sanity check on all settings, remove old settings, fixup invalid settings
+     *
      * @return array
      */
     public function sanityCheckSettings()
@@ -176,7 +181,7 @@ class SettingsSanity
                 $this->em->remove($oldSetting);
                 $removedSettingsCount++;
                 $this->auditLogger->info('settings.sanity.removed_setting', ['setting' => $setting]);
-            };
+            }
         }
 
         if ($removedSettingsCount) {

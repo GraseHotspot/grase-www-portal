@@ -22,7 +22,6 @@ class RadPostAuth
     private $id;
 
     /**
-     *
      * Reference to the user, however we can't FK this due to it containing data that may not have
      * a valid user
      *
@@ -34,6 +33,7 @@ class RadPostAuth
 
     /**
      * The password used for logging in
+     *
      * @TODO get this removed from the logs?
      *
      * @var string
@@ -44,6 +44,7 @@ class RadPostAuth
 
     /**
      * This is the reply message sent back, e.g. Access-Accept, Access-Reject
+     *
      * @var string
      *
      * @ORM\Column(name="reply", type="string", length=32, nullable=false)

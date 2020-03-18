@@ -12,7 +12,7 @@ class GraseConsoleStyle extends SymfonyStyle
     /**
      * Prepends a timestamp to all messages and then sends it to the parent to output the blocks
      *
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function block($messages, $type = null, $style = null, $prefix = ' ', $padding = false, $escape = true)
     {
