@@ -1,0 +1,27 @@
+<?php
+
+$finder = PhpCsFixer\Finder::create()
+    ->exclude('vendor')
+    ->exclude('var')
+    ->in('src')
+;
+
+return PhpCsFixer\Config::create()
+    ->setRules([
+        '@PSR2'                       => true,
+        '@PSR1'                       => true,
+        '@Symfony'                    => true,
+        'array_syntax' => ['syntax' => 'short'],
+        //'braces'                      => false, // Due to our old templates
+        'concat_space'                => ['spacing' => 'one'],
+        'increment_style'             => ['style' => 'post'],
+        'no_superfluous_phpdoc_tags'  => false, //['allow_mixed' => true, 'allow_unused_params' => true],
+        'phpdoc_summary'              => false,
+        'phpdoc_to_comment'           => false, // Incorrectly detects some single line @var docblocks
+        'yoda_style'                  => false,
+        'binary_operator_spaces'      => ['operators' => ['=>' => 'align']],
+        'semicolon_after_instruction' => false, // Due to short open echo tags
+    ])
+    ->setFinder($finder)
+;
+
