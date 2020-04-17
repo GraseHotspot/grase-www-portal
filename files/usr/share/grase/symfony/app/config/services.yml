@@ -9,7 +9,7 @@ services:
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
 
     sha1salted_encoder:
-        class: Grase\RadminBundle\Service\Sha1Salted
+        class: App\Service\Sha1Salted
 
     twig_extension_numbers:
             class: Twig_Extensions_Extension_Number

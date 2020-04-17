@@ -3,6 +3,7 @@
 namespace App\EventSubscriber;
 
 use Monolog\Logger;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 use Symfony\Component\Security\Http\SecurityEvents;
@@ -14,7 +15,7 @@ use Symfony\Component\Security\Http\SecurityEvents;
  */
 class LoginEventSubscriber implements EventSubscriberInterface
 {
-    /** @var Logger Audit Logger instance of Monolog */
+    /** @var LoggerInterface Audit Logger instance of Monolog */
     protected $auditLogger;
 
     /**
@@ -22,7 +23,7 @@ class LoginEventSubscriber implements EventSubscriberInterface
      *
      * @param Logger $auditLogger
      */
-    public function __construct(Logger $auditLogger)
+    public function __construct(LoggerInterface $auditLogger)
     {
         $this->auditLogger = $auditLogger;
     }

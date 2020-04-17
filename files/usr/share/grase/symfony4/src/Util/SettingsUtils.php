@@ -5,7 +5,7 @@ namespace App\Util;
 use App\Entity\Setting;
 use App\Repository\SettingRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Monolog\Logger;
+use Psr\Log\LoggerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
@@ -26,7 +26,7 @@ class SettingsUtils
     /** @var EntityManagerInterface */
     private $em;
 
-    /** @var Logger */
+    /** @var LoggerInterface */
     private $auditLogger;
 
     /** @var array Array of settings that have been changed */
@@ -39,9 +39,9 @@ class SettingsUtils
      * @param Formatting             $formatting
      * @param TranslatorInterface    $translator
      * @param EntityManagerInterface $entityManager
-     * @param Logger                 $auditLogger
+     * @param LoggerInterface        $auditLogger
      */
-    public function __construct(SettingRepository $settingRepository, Formatting $formatting, TranslatorInterface $translator, EntityManagerInterface $entityManager, Logger $auditLogger)
+    public function __construct(SettingRepository $settingRepository, Formatting $formatting, TranslatorInterface $translator, EntityManagerInterface $entityManager, LoggerInterface $auditLogger)
     {
         $this->settingsRepository = $settingRepository;
         $this->formatting = $formatting;

@@ -23,7 +23,7 @@ class DeleteExpiredUsersCommand extends Command
     /** @var EntityManagerInterface */
     private $em;
 
-    /** @var Logger */
+    /** @var LoggerInterface */
     private $auditLogger;
 
     /** @var LoggerInterface */
@@ -38,7 +38,7 @@ class DeleteExpiredUsersCommand extends Command
      * @param LoggerInterface        $logger
      * @param TranslatorInterface    $translator
      */
-    public function __construct(EntityManagerInterface $entityManager, Logger $auditLogger, LoggerInterface $logger, TranslatorInterface $translator)
+    public function __construct(EntityManagerInterface $entityManager, LoggerInterface $auditLogger, LoggerInterface $logger, TranslatorInterface $translator)
     {
         parent::__construct();
         $this->em = $entityManager;

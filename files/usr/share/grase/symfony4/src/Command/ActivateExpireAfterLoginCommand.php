@@ -10,6 +10,7 @@ use App\Util\SettingsUtils;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Query\Expr\Join;
 use Monolog\Logger;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -31,7 +32,7 @@ class ActivateExpireAfterLoginCommand extends Command
     /** @var EntityManagerInterface */
     private $em;
 
-    /** @var Logger */
+    /** @var LoggerInterface */
     private $auditLogger;
 
     /** @var TranslatorInterface */
@@ -45,7 +46,7 @@ class ActivateExpireAfterLoginCommand extends Command
      * @param Logger                 $auditLogger
      * @param TranslatorInterface    $translator
      */
-    public function __construct(SettingsUtils $settingsUtils, EntityManagerInterface $entityManager, Logger $auditLogger, TranslatorInterface $translator)
+    public function __construct(SettingsUtils $settingsUtils, EntityManagerInterface $entityManager, LoggerInterface $auditLogger, TranslatorInterface $translator)
     {
         parent::__construct();
         $this->settingsUtils = $settingsUtils;

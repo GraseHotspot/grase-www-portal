@@ -6,6 +6,7 @@ use App\Entity\Setting;
 use App\Repository\SettingRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Monolog\Logger;
+use Psr\Log\LoggerInterface;
 
 /**
  * Class SettingsSanity
@@ -20,7 +21,7 @@ class SettingsSanity
     /** @var EntityManagerInterface */
     private $em;
 
-    /** @var Logger */
+    /** @var LoggerInterface */
     private $auditLogger;
 
     /** @var SettingsUtils */
@@ -115,7 +116,7 @@ class SettingsSanity
      * @param Logger                 $auditLogger
      * @param SettingsUtils          $settingsUtils
      */
-    public function __construct(SettingRepository $settingsRepository, EntityManagerInterface $em, Logger $auditLogger, SettingsUtils $settingsUtils)
+    public function __construct(SettingRepository $settingsRepository, EntityManagerInterface $em, LoggerInterface $auditLogger, SettingsUtils $settingsUtils)
     {
         $this->settingsRepository = $settingsRepository;
         $this->em = $em;

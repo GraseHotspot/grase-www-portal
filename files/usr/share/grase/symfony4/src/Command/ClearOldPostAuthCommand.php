@@ -4,7 +4,6 @@ namespace App\Command;
 
 use App\Util\GraseConsoleStyle;
 use Doctrine\ORM\EntityManagerInterface;
-use Monolog\Logger;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -22,7 +21,7 @@ class ClearOldPostAuthCommand extends Command
     /** @var EntityManagerInterface */
     private $em;
 
-    /** @var Logger */
+    /** @var LoggerInterface */
     private $auditLogger;
 
     /** @var LoggerInterface */
@@ -33,11 +32,11 @@ class ClearOldPostAuthCommand extends Command
 
     /**
      * @param EntityManagerInterface $entityManager
-     * @param Logger                 $auditLogger
+     * @param LoggerInterface        $auditLogger
      * @param LoggerInterface        $logger
      * @param TranslatorInterface    $translator
      */
-    public function __construct(EntityManagerInterface $entityManager, Logger $auditLogger, LoggerInterface $logger, TranslatorInterface $translator)
+    public function __construct(EntityManagerInterface $entityManager, LoggerInterface $auditLogger, LoggerInterface $logger, TranslatorInterface $translator)
     {
         parent::__construct();
         $this->em = $entityManager;
