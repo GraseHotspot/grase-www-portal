@@ -4,17 +4,12 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: 'en'
 
 services:
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
-
-        bind:
-            # When we have a LoggerInterface called $auditLogger, then we get the audit channel
-            $auditLogger: '@monolog.logger.audit'
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
@@ -30,33 +25,3 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
-    App\Menu\MainMenu:
-        public: true
-
-    # Audit log handler (replaces old admin log)
-    monolog.audit_handler:
-        class: App\Util\AuditLogHandler
-        arguments: ['@doctrine.orm.entity_manager']
-
-    # Pull in the processors for our Audit log monolog channel
-    Symfony\Bridge\Monolog\Processor\TokenProcessor:
-        tags:
-            - { name: monolog.processor, channel: audit }
-    Symfony\Bridge\Monolog\Processor\WebProcessor:
-        tags:
-            - { name: monolog.processor, channel: audit }
-
-    Symfony\Bridge\Monolog\Processor\ConsoleCommandProcessor:
-      tags:
-        - { name: monolog.processor, channel: audit }
-
-    # Autowire the Group manager (TODO move it to somewhere outside of the Entity folder)
-    App\Entity\Radius\GroupManager: ~
-
-    # Make it easier to get this util in more places (Doctrine Migrations)
-    App\Util\SettingsUtils:
-        public: true
-
-
-    sha1salted_encoder:
-        class: App\Service\Sha1Salted
