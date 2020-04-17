@@ -39,7 +39,12 @@ class User
      */
     private $radiusCheck;
 
-    // TODO add $radiusReply
+    /**
+     * @ORM\OneToMany(targetEntity="Reply", mappedBy="user", fetch="EAGER")
+     *
+     * @var Reply[]
+     */
+    private $radiusReply;
 
     /**
      * @ORM\OneToMany(targetEntity="UserGroup", mappedBy="user", fetch="EAGER", cascade={"persist", "remove"})
@@ -70,6 +75,7 @@ class User
     public function __construct()
     {
         $this->radiusCheck = new ArrayCollection();
+        $this->radiusReply = new ArrayCollection();
         $this->userGroups = new ArrayCollection();
         $this->radiusAccounting = new ArrayCollection();
     }
@@ -279,6 +285,50 @@ class User
     }
 
     /**
+     * Get all the Radius Check Entries
+     *
+     * @return Check[]
+     */
+    public function getRadiuscheck()
+    {
+        return $this->radiusCheck;
+    }
+
+    /**
+     * Add radius reply
+     *
+     * @param Reply $radiusReply
+     *
+     * @return User
+     */
+    public function addRadiusReply(Reply $radiusReply)
+    {
+        $this->radiusReply[] = $radiusReply;
+
+        return $this;
+    }
+
+    /**
+     * Remove radius reply
+     *
+     * @param Reply $radiusReply
+     */
+    public function removeRadiusReply(Reply $radiusReply)
+    {
+        $this->radiusReply->removeElement($radiusReply);
+    }
+
+    /**
+     * Get all the Radius Reply Entries
+     *
+     * @return Reply[]
+     */
+    public function getRadiusReply()
+    {
+        return $this->radiusReply;
+    }
+
+    /**
      * @return string
      */
     public function getComment()
@@ -481,12 +531,51 @@ class User
     }
 
     /**
-     * Get all the Radius Check Entries
+     * Get Lock RadCheck
      *
-     * @return ArrayCollection
+     * @return Check
      */
-    public function getRadiuscheck()
+    public function getLockCheck()
     {
-        return $this->radiusCheck;
+        $criteria = Criteria::create()->where(Criteria::expr()->eq('attribute', Check::AUTH_TYPE));
+
+        return $this->getRadiuscheck()->matching($criteria)->first();
     }
+
+    /**
+     * Check if user is locked (prevented from logging in)
+     *
+     * @return bool
+     */
+    public function isLocked()
+    {
+        return $this->getLockCheck() && $this->getLockCheck()->getValue() === Check::AUTH_TYPE_VALUE_REJECT;
+    }
+
+    /**
+     * Get Reply-Message Reply (Used as Lock Message)
+     *
+     * @return Reply
+     */
+    public function getReplyMessageReply()
+    {
+        $criteria = Criteria::create()->where(Criteria::expr()->eq('attribute', Reply::REPLY_MESSAGE));
+
+        return $this->getRadiusReply()->matching($criteria)->first();
+    }
+
+    /**
+     * Get the actual Reply Message from the Reply-Message Reply item
+     *
+     * @return string|null
+     */
+    public function getReplyMessage()
+    {
+        if ($this->getReplyMessageReply()) {
+            return $this->getReplyMessageReply()->getValue();
+        }
+
+        return null;
+    }
+
 }

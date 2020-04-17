@@ -49,7 +49,13 @@ class UserType extends AbstractType
                 'choice_value' => 'name',
                 'label'        => 'grase.form.user.group.label',
                 'help'         => 'grase.form.user.group.help',
-            ]);
+            ])
+            ->add('lockMessage', TextType::class, [
+                'label' => 'grase.form.user.lockReason.label',
+                'help' => 'grase.form.user.lockReason.help',
+                'required' => false,
+            ])
+        ;
         /*->add(
             'expiry',
             null,

@@ -151,6 +151,18 @@
         <target>Choose the user group (Expiry is based on the user group)</target>
       </segment>
     </unit>
+    <unit id=".aoahL4" name="grase.form.user.lockReason.label">
+      <segment>
+        <source>grase.form.user.lockReason.label</source>
+        <target>Account Lock Message</target>
+      </segment>
+    </unit>
+    <unit id="4ISwcBb" name="grase.form.user.lockReason.help">
+      <segment>
+        <source>grase.form.user.lockReason.help</source>
+        <target>Enter a reason here to lock the account. Clear the reason to unlock the account</target>
+      </segment>
+    </unit>
     <unit id="J6M5R_n" name="grase.form.user.submit.update">
       <segment>
         <source>grase.form.user.submit.update</source>

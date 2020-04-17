@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Entity\Radius\Check;
 use App\Entity\Radius\Group;
+use App\Entity\Radius\Reply;
 use App\Entity\Radius\User;
 use App\Entity\Radius\UserGroup;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -53,6 +54,11 @@ class UpdateUserData
     public $expiry;
 
     /**
+     * @var string|null
+     */
+    public $lockMessage;
+
+    /**
      * Create a UpdateUserData from an existing User entity
      *
      * @param User $user
@@ -67,6 +73,7 @@ class UpdateUserData
         $updateUserData->comment = $user->getComment();
         $updateUserData->primaryGroup = $user->getPrimaryGroup();
         $updateUserData->expiry = $user->getExpiry();
+        $updateUserData->lockMessage = $user->getReplyMessage();
         // Existing users don't use the dropdowns
         $updateUserData->dataLimit['dataLimitDropdown'] = null;
         $updateUserData->timeLimit['timeLimitDropdown'] = null;
@@ -102,7 +109,10 @@ class UpdateUserData
             $entityManager->remove($group);
         }
 
-        // @todo Remove from radreply
+        // Remove radius reply
+        foreach ($user->getRadiusReply() as $reply) {
+            $entityManager->remove($reply);
+        }
 
         // @TODO remove from batches
 
@@ -165,7 +175,8 @@ class UpdateUserData
             $this->setExpireAfter($user, $em);
         }
 
-        // TODO Account lock
+        // Update Account Lock status
+        $this->setLock($user, $em, $this->lockMessage);
 
         $em->persist($user);
         $em->flush();
@@ -385,5 +396,58 @@ class UpdateUserData
         // Just set the check we have
         $passwordCheck->setValue($password);
         $em->persist($passwordCheck);
+    }
+
+    /**
+     * @param User          $user
+     * @param ObjectManager $em
+     * @param string|null   $message
+     */
+    private function setLock(User $user, ObjectManager $em, $message = null)
+    {
+        $replyMessageReply = $user->getReplyMessageReply();
+        $lockCheck = $user->getLockCheck();
+
+        if (trim($message) === '') {
+            $message = null;
+        }
+
+        /* Handle removal of checks/replies if message is null (clearing the lock) */
+        if (null === $message && $lockCheck) {
+            // We just need to remove the check
+            $em->remove($lockCheck);
+        }
+        if (null === $message && $replyMessageReply) {
+            // We just need to remove the reply
+            $em->remove($replyMessageReply);
+        }
+        if (null === $message) {
+            // We have removed any $lockCheck or $replyMessageReply already, so we can now return
+            return;
+        }
+
+        /* Handle the creation of the checks/replies, we need to lock the user and/or update the reply */
+        if (!$lockCheck) {
+            // We need to create a check
+            $lockCheck = new Check();
+            $lockCheck->setAttribute(Check::AUTH_TYPE);
+            $lockCheck->setUser($user);
+            $lockCheck->setOp(':=');
+        }
+        // Now set the check we have
+        $lockCheck->setValue('reject');
+
+        if (!$replyMessageReply) {
+            // We need to create a reply
+            $replyMessageReply = new Reply();
+            $replyMessageReply->setAttribute(Reply::REPLY_MESSAGE);
+            $replyMessageReply->setUser($user);
+            $replyMessageReply->setOp(':=');
+        }
+        // Now set the reply we have
+        $replyMessageReply->setValue($message);
+
+        $em->persist($lockCheck);
+        $em->persist($replyMessageReply);
     }
 }

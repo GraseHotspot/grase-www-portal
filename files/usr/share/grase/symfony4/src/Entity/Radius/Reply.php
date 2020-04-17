@@ -6,19 +6,14 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\Index;
 
 /**
- * Check
+ * Radius reply attributes
  *
- * @ORM\Table(name="radcheck", indexes={@Index(name="userattribute", columns={"UserName", "Attribute", "op"})})
- * @ORM\Entity(repositoryClass="App\Entity\Radius\CheckRepository")
+ * @ORM\Table(name="radreply", indexes={@Index(name="userattribute", columns={"UserName", "Attribute", "op"})})
+ * @ORM\Entity()
  */
-class Check
+class Reply
 {
-    public const GRASE_EXPIRE_AFTER = 'GRASE-ExpireAfter';
-    public const EXPIRATION = 'Expiration';
-    public const MAX_OCTETS = 'Max-Octets';
-    public const MAX_ALL_SESSION = 'Max-All-Session';
-    public const AUTH_TYPE = 'Auth-Type';
-    public const AUTH_TYPE_VALUE_REJECT = 'Reject';
+    public const REPLY_MESSAGE = 'Reply-Message';
 
     /**
      * @var int
@@ -30,7 +25,7 @@ class Check
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="radiusCheck")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="radiusReply")
      * @ORM\JoinColumn(name="UserName", referencedColumnName="username", nullable=false)
      */
     private $user;
@@ -71,7 +66,7 @@ class Check
      *
      * @param string $attribute
      *
-     * @return Check
+     * @return Reply
      */
     public function setAttribute($attribute)
     {
@@ -95,7 +90,7 @@ class Check
      *
      * @param string $op
      *
-     * @return Check
+     * @return Reply
      */
     public function setOp($op)
     {
@@ -119,7 +114,7 @@ class Check
      *
      * @param string $value
      *
-     * @return Check
+     * @return Reply
      */
     public function setValue($value)
     {
@@ -141,11 +136,11 @@ class Check
     /**
      * Set user
      *
-     * @param \App\Entity\Radius\User $user
+     * @param User $user
      *
-     * @return Check
+     * @return Reply
      */
-    public function setUser(\App\Entity\Radius\User $user = null)
+    public function setUser(User $user = null)
     {
         $this->user = $user;
 
@@ -155,7 +150,7 @@ class Check
     /**
      * Get user
      *
-     * @return \App\Entity\Radius\User
+     * @return User
      */
     public function getUser()
     {
