@@ -41,8 +41,7 @@
         "symfony/debug-pack": "^1.0",
         "symfony/maker-bundle": "^1.5",
         "symfony/profiler-pack": "^1.0",
-        "symfony/var-dumper": "^4.0",
-        "symfony/web-server-bundle": "^4.0"
+        "symfony/var-dumper": "^4.0"
     },
     "config": {
         "preferred-install": {
