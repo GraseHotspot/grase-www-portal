@@ -1,11 +1,13 @@
 {
   "devDependencies": {
-    "@symfony/webpack-encore": "^0.28.0",
+    "@symfony/webpack-encore": "^0.28.2",
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.1",
     "node-sass": "^4.12.0",
     "sass-loader": "^7.3.1",
-    "webpack-notifier": "^1.8.0"
+    "webpack-notifier": "^1.8.0",
+    "core-js": "^3.0.0",
+    "regenerator-runtime": "^0.13.2"
   },
   "dependencies": {
     "admin-lte": "3.0.0-beta.2",
@@ -16,5 +18,12 @@
     "popper.js": "^1.15.0",
     "prop-types": "^15.7.2"
   },
+  "scripts": {
+      "dev-server": "encore dev-server",
+      "dev": "encore dev",
+      "watch": "encore dev --watch",
+      "build": "encore production --progress"
+  },
+  "private": true,
   "version": "0.0.0"
 }
