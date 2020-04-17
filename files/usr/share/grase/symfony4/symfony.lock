@@ -228,12 +228,12 @@
         "version": "v4.0.9"
     },
     "symfony/console": {
-        "version": "4.2",
+        "version": "4.4",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "master",
-            "version": "4.2",
-            "ref": "5a91936749730b3df50d98f8f1d4a47ebd52f70c"
+            "version": "4.4",
+            "ref": "ea8c0eda34fda57e7d5cd8cbd889e2a387e3472c"
         },
         "files": [
             "bin/console",
