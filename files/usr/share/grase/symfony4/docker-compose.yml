@@ -17,6 +17,12 @@ services:
         - MYSQL_USER=grase
         - MYSQL_PASSWORD=grase
 
+    adminer:
+      image: adminer
+      environment:
+        - ADMINER_DESIGN=nette
+        - ADMINER_DEFAULT_SERVER=mysql
+
     node:
       image: node:8
       volumes:
