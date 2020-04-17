@@ -51,8 +51,8 @@ class UserType extends AbstractType
                 'help'         => 'grase.form.user.group.help',
             ])
             ->add('lockMessage', TextType::class, [
-                'label' => 'grase.form.user.lockReason.label',
-                'help' => 'grase.form.user.lockReason.help',
+                'label'    => 'grase.form.user.lockReason.label',
+                'help'     => 'grase.form.user.lockReason.help',
                 'required' => false,
             ])
         ;
