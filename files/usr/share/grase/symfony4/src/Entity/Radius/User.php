@@ -577,5 +577,4 @@ class User
 
         return null;
     }
-
 }

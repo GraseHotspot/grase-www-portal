@@ -12,6 +12,7 @@ use App\Form\Radius\UserType;
 use App\Util\SettingsUtils;
 use Grase\Util;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -68,7 +69,7 @@ class UserController extends AbstractController
      * @param Request $request
      * @param string  $id      Username of the user to edit
      *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     * @return RedirectResponse|Response
      */
     public function editUserAction(Request $request, $id)
     {
@@ -133,9 +134,16 @@ class UserController extends AbstractController
         );
     }
 
+    /**
+     * Delete a user
+     *
+     * @param Request $request
+     * @param User    $user
+     *
+     * @return RedirectResponse
+     */
     public function deleteUserAction(Request $request, User $user)
     {
-        dump($user);
         // @TODO Insert permissions check here for deleting
 
         $updateUserData = new UpdateUserData();
@@ -173,7 +181,7 @@ class UserController extends AbstractController
      *
      * @param Request $request
      *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     * @return RedirectResponse|Response
      */
     public function createUserAction(Request $request)
     {
