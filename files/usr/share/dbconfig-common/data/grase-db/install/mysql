@@ -37,7 +37,7 @@ CREATE TABLE `audit_log` (
   `extra` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,11 +48,11 @@ DROP TABLE IF EXISTS `auth`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `auth` (
-  `username` varchar(50) CHARACTER SET utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(60) CHARACTER SET utf8mb4_unicode_ci NOT NULL,
-  `role` varchar(25) CHARACTER SET utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(50) CHARACTER SET utf8mb4 NOT NULL,
+  `password` varchar(60) CHARACTER SET utf8mb4 NOT NULL,
+  `role` varchar(25) CHARACTER SET utf8mb4 NOT NULL,
   PRIMARY KEY (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,9 +75,9 @@ DROP TABLE IF EXISTS `batch`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `batch` (
   `batchID` int(10) unsigned NOT NULL,
-  `UserName` varchar(64) CHARACTER SET utf8mb4_unicode_ci NOT NULL,
+  `UserName` varchar(64) CHARACTER SET utf8mb4 NOT NULL,
   KEY `username` (`UserName`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8mb4_unicode_ci COMMENT='Stores users batch when auto created';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Stores users batch when auto created';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,10 +99,10 @@ DROP TABLE IF EXISTS `batches`;
 CREATE TABLE `batches` (
   `batchID` int(11) NOT NULL,
   `createTime` timestamp NOT NULL DEFAULT current_timestamp(),
-  `createdBy` varchar(64) CHARACTER SET utf8mb4_unicode_ci NOT NULL,
-  `Comment` varchar(300) CHARACTER SET utf8mb4_unicode_ci DEFAULT NULL,
+  `createdBy` varchar(64) CHARACTER SET utf8mb4 NOT NULL,
+  `Comment` varchar(300) CHARACTER SET utf8mb4 DEFAULT NULL,
   PRIMARY KEY (`batchID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8mb4_unicode_ci COMMENT='Batches';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Batches';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -132,7 +132,7 @@ CREATE TABLE `groups` (
   `lastupdated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8mb4_unicode_ci COMMENT='Groups';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Groups';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -160,7 +160,7 @@ DROP TABLE IF EXISTS `migration_versions`;
 CREATE TABLE `migration_versions` (
   `version` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`version`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -188,7 +188,7 @@ DROP TABLE IF EXISTS `mtotacct`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `mtotacct` (
   `MTotAcctId` bigint(21) NOT NULL AUTO_INCREMENT,
-  `UserName` varchar(64) CHARACTER SET utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `UserName` varchar(64) CHARACTER SET utf8mb4 NOT NULL DEFAULT '',
   `AcctDate` date NOT NULL DEFAULT '0000-00-00',
   `ConnNum` bigint(12) DEFAULT NULL,
   `ConnTotDuration` bigint(12) DEFAULT NULL,
@@ -196,13 +196,13 @@ CREATE TABLE `mtotacct` (
   `ConnMinDuration` bigint(12) DEFAULT NULL,
   `InputOctets` bigint(12) DEFAULT NULL,
   `OutputOctets` bigint(12) DEFAULT NULL,
-  `NASIPAddress` varchar(15) CHARACTER SET utf8mb4_unicode_ci DEFAULT NULL,
+  `NASIPAddress` varchar(15) CHARACTER SET utf8mb4 DEFAULT NULL,
   PRIMARY KEY (`MTotAcctId`),
   KEY `UserName` (`UserName`),
   KEY `AcctDate` (`AcctDate`),
   KEY `UserOnDate` (`UserName`,`AcctDate`),
   KEY `NASIPAddress` (`NASIPAddress`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -223,16 +223,16 @@ DROP TABLE IF EXISTS `nas`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `nas` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `nasname` varchar(128) CHARACTER SET utf8mb4_unicode_ci NOT NULL,
-  `shortname` varchar(32) CHARACTER SET utf8mb4_unicode_ci DEFAULT NULL,
-  `type` varchar(30) CHARACTER SET utf8mb4_unicode_ci DEFAULT 'other',
+  `nasname` varchar(128) CHARACTER SET utf8mb4 NOT NULL,
+  `shortname` varchar(32) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `type` varchar(30) CHARACTER SET utf8mb4 DEFAULT 'other',
   `ports` int(5) DEFAULT NULL,
-  `secret` varchar(60) CHARACTER SET utf8mb4_unicode_ci NOT NULL DEFAULT 'secret',
-  `community` varchar(50) CHARACTER SET utf8mb4_unicode_ci DEFAULT NULL,
-  `description` varchar(200) CHARACTER SET utf8mb4_unicode_ci DEFAULT 'RADIUS Client',
+  `secret` varchar(60) CHARACTER SET utf8mb4 NOT NULL DEFAULT 'secret',
+  `community` varchar(50) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `description` varchar(200) CHARACTER SET utf8mb4 DEFAULT 'RADIUS Client',
   PRIMARY KEY (`id`),
   KEY `nasname` (`nasname`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -253,30 +253,30 @@ DROP TABLE IF EXISTS `radacct`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `radacct` (
   `RadAcctId` bigint(21) NOT NULL AUTO_INCREMENT,
-  `AcctSessionId` varchar(32) CHARACTER SET utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `AcctUniqueId` varchar(32) CHARACTER SET utf8mb4_unicode_ci DEFAULT NULL,
-  `UserName` varchar(64) CHARACTER SET utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `Groupname` varchar(64) CHARACTER SET utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `Realm` varchar(64) CHARACTER SET utf8mb4_unicode_ci DEFAULT '',
-  `NASIPAddress` varchar(15) CHARACTER SET utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `NASPortId` varchar(32) CHARACTER SET utf8mb4_unicode_ci DEFAULT NULL,
-  `NASPortType` varchar(32) CHARACTER SET utf8mb4_unicode_ci DEFAULT NULL,
+  `AcctSessionId` varchar(32) CHARACTER SET utf8mb4 NOT NULL DEFAULT '',
+  `AcctUniqueId` varchar(32) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `UserName` varchar(64) CHARACTER SET utf8mb4 NOT NULL DEFAULT '',
+  `Groupname` varchar(64) CHARACTER SET utf8mb4 NOT NULL DEFAULT '',
+  `Realm` varchar(64) CHARACTER SET utf8mb4 DEFAULT '',
+  `NASIPAddress` varchar(15) CHARACTER SET utf8mb4 NOT NULL DEFAULT '',
+  `NASPortId` varchar(32) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `NASPortType` varchar(32) CHARACTER SET utf8mb4 DEFAULT NULL,
   `AcctStartTime` datetime DEFAULT NULL,
   `acctupdatetime` datetime DEFAULT NULL,
   `AcctStopTime` datetime DEFAULT NULL,
   `acctinterval` int(11) DEFAULT NULL,
   `AcctSessionTime` int(12) DEFAULT NULL,
-  `AcctAuthentic` varchar(32) CHARACTER SET utf8mb4_unicode_ci DEFAULT NULL,
-  `ConnectInfo_start` varchar(50) CHARACTER SET utf8mb4_unicode_ci DEFAULT NULL,
-  `ConnectInfo_stop` varchar(50) CHARACTER SET utf8mb4_unicode_ci DEFAULT NULL,
+  `AcctAuthentic` varchar(32) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `ConnectInfo_start` varchar(50) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `ConnectInfo_stop` varchar(50) CHARACTER SET utf8mb4 DEFAULT NULL,
   `AcctInputOctets` bigint(20) DEFAULT NULL,
   `AcctOutputOctets` bigint(20) DEFAULT NULL,
-  `CalledStationId` varchar(50) CHARACTER SET utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `CallingStationId` varchar(50) CHARACTER SET utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `AcctTerminateCause` varchar(32) CHARACTER SET utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `ServiceType` varchar(32) CHARACTER SET utf8mb4_unicode_ci DEFAULT NULL,
-  `FramedProtocol` varchar(32) CHARACTER SET utf8mb4_unicode_ci DEFAULT NULL,
-  `FramedIPAddress` varchar(15) CHARACTER SET utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `CalledStationId` varchar(50) CHARACTER SET utf8mb4 NOT NULL DEFAULT '',
+  `CallingStationId` varchar(50) CHARACTER SET utf8mb4 NOT NULL DEFAULT '',
+  `AcctTerminateCause` varchar(32) CHARACTER SET utf8mb4 NOT NULL DEFAULT '',
+  `ServiceType` varchar(32) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `FramedProtocol` varchar(32) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `FramedIPAddress` varchar(15) CHARACTER SET utf8mb4 NOT NULL DEFAULT '',
   PRIMARY KEY (`RadAcctId`),
   UNIQUE KEY `acctuniqueid` (`AcctUniqueId`),
   KEY `UserName` (`UserName`),
@@ -285,7 +285,7 @@ CREATE TABLE `radacct` (
   KEY `AcctStartTime` (`AcctStartTime`),
   KEY `AcctStopTime` (`AcctStopTime`),
   KEY `NASIPAddress` (`NASIPAddress`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -314,7 +314,7 @@ CREATE TABLE `radcheck` (
   UNIQUE KEY `userattribute` (`UserName`,`Attribute`,`op`),
   KEY `UserName` (`UserName`(32)),
   CONSTRAINT `FK_CF5F1897A11ACB1F` FOREIGN KEY (`UserName`) REFERENCES `users` (`UserName`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -337,13 +337,13 @@ DROP TABLE IF EXISTS `radgroupcheck`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `radgroupcheck` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `GroupName` varchar(64) CHARACTER SET utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `Attribute` varchar(64) CHARACTER SET utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `op` char(2) CHARACTER SET utf8mb4_unicode_ci NOT NULL DEFAULT '==',
-  `Value` varchar(253) CHARACTER SET utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `GroupName` varchar(64) CHARACTER SET utf8mb4 NOT NULL DEFAULT '',
+  `Attribute` varchar(64) CHARACTER SET utf8mb4 NOT NULL DEFAULT '',
+  `op` char(2) CHARACTER SET utf8mb4 NOT NULL DEFAULT '==',
+  `Value` varchar(253) CHARACTER SET utf8mb4 NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `GroupName` (`GroupName`(32))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -364,13 +364,13 @@ DROP TABLE IF EXISTS `radgroupreply`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `radgroupreply` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `GroupName` varchar(64) CHARACTER SET utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `Attribute` varchar(64) CHARACTER SET utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `op` char(2) CHARACTER SET utf8mb4_unicode_ci NOT NULL DEFAULT '=',
-  `Value` varchar(253) CHARACTER SET utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `GroupName` varchar(64) CHARACTER SET utf8mb4 NOT NULL DEFAULT '',
+  `Attribute` varchar(64) CHARACTER SET utf8mb4 NOT NULL DEFAULT '',
+  `op` char(2) CHARACTER SET utf8mb4 NOT NULL DEFAULT '=',
+  `Value` varchar(253) CHARACTER SET utf8mb4 NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `GroupName` (`GroupName`(32))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -393,15 +393,15 @@ DROP TABLE IF EXISTS `radpostauth`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `radpostauth` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(64) CHARACTER SET utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `pass` varchar(64) CHARACTER SET utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `reply` varchar(32) CHARACTER SET utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `username` varchar(64) CHARACTER SET utf8mb4 NOT NULL DEFAULT '',
+  `pass` varchar(64) CHARACTER SET utf8mb4 NOT NULL DEFAULT '',
+  `reply` varchar(32) CHARACTER SET utf8mb4 NOT NULL DEFAULT '',
   `authdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `ServiceType` varchar(32) CHARACTER SET utf8mb4_unicode_ci DEFAULT NULL,
-  `FramedIPAddress` varchar(15) CHARACTER SET utf8mb4_unicode_ci DEFAULT NULL,
-  `CallingStationId` varchar(50) CHARACTER SET utf8mb4_unicode_ci DEFAULT NULL,
+  `ServiceType` varchar(32) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `FramedIPAddress` varchar(15) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `CallingStationId` varchar(50) CHARACTER SET utf8mb4 DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -422,13 +422,13 @@ DROP TABLE IF EXISTS `radreply`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `radreply` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `UserName` varchar(64) CHARACTER SET utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `Attribute` varchar(64) CHARACTER SET utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `op` char(2) CHARACTER SET utf8mb4_unicode_ci NOT NULL DEFAULT '=',
-  `Value` varchar(253) CHARACTER SET utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `UserName` varchar(64) CHARACTER SET utf8mb4 NOT NULL DEFAULT '',
+  `Attribute` varchar(64) CHARACTER SET utf8mb4 NOT NULL DEFAULT '',
+  `op` char(2) CHARACTER SET utf8mb4 NOT NULL DEFAULT '=',
+  `Value` varchar(253) CHARACTER SET utf8mb4 NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `UserName` (`UserName`(32))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -464,7 +464,7 @@ CREATE TABLE `radusergroup` (
   KEY `IDX_569F584FB219A218` (`GroupName`),
   CONSTRAINT `FK_569F584FA11ACB1F` FOREIGN KEY (`UserName`) REFERENCES `users` (`UserName`),
   CONSTRAINT `FK_569F584FB219A218` FOREIGN KEY (`GroupName`) REFERENCES `groups` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -484,10 +484,10 @@ DROP TABLE IF EXISTS `settings`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `settings` (
-  `setting` varchar(30) CHARACTER SET utf8mb4_unicode_ci NOT NULL,
-  `value` varchar(2000) CHARACTER SET utf8mb4_unicode_ci NOT NULL,
+  `setting` varchar(30) CHARACTER SET utf8mb4 NOT NULL,
+  `value` varchar(2000) CHARACTER SET utf8mb4 NOT NULL,
   PRIMARY KEY (`setting`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8mb4_unicode_ci COMMENT='Settings for GRASE interface';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Settings for GRASE interface';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -540,9 +540,9 @@ DROP TABLE IF EXISTS `templates`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `templates` (
   `id` tinyint(4) NOT NULL,
-  `tpl` text CHARACTER SET utf8mb4_unicode_ci NOT NULL,
+  `tpl` text CHARACTER SET utf8mb4 NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8mb4_unicode_ci COMMENT='HTML/CSS Storage';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='HTML/CSS Storage';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -566,7 +566,7 @@ CREATE TABLE `users` (
   `comment` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`UserName`),
   KEY `UserName` (`UserName`(32))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -587,17 +587,17 @@ DROP TABLE IF EXISTS `vouchers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `vouchers` (
-  `VoucherName` varchar(64) CHARACTER SET utf8mb4_unicode_ci NOT NULL,
-  `VoucherLabel` varchar(64) CHARACTER SET utf8mb4_unicode_ci NOT NULL,
-  `VoucherPrice` varchar(64) CHARACTER SET utf8mb4_unicode_ci NOT NULL,
-  `VoucherGroup` varchar(64) CHARACTER SET utf8mb4_unicode_ci NOT NULL,
+  `VoucherName` varchar(64) CHARACTER SET utf8mb4 NOT NULL,
+  `VoucherLabel` varchar(64) CHARACTER SET utf8mb4 NOT NULL,
+  `VoucherPrice` varchar(64) CHARACTER SET utf8mb4 NOT NULL,
+  `VoucherGroup` varchar(64) CHARACTER SET utf8mb4 NOT NULL,
   `MaxOctets` bigint(32) unsigned DEFAULT NULL,
   `MaxSeconds` bigint(32) unsigned DEFAULT NULL,
-  `Description` varchar(300) CHARACTER SET utf8mb4_unicode_ci DEFAULT NULL,
+  `Description` varchar(300) CHARACTER SET utf8mb4 DEFAULT NULL,
   `VoucherType` int(32) unsigned NOT NULL,
   `lastupdated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`VoucherName`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8mb4_unicode_ci COMMENT='Vouchers';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Vouchers';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

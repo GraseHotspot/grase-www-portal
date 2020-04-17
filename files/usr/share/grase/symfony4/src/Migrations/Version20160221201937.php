@@ -37,21 +37,27 @@ class Version20160221201937 extends AbstractMigration
             'UPDATE radgroupcheck AS t
         INNER JOIN groups AS g ON t.GroupName = g.GroupName
         SET t.GroupName = CAST(g.id AS CHAR)
-        WHERE t.GroupName != CAST(g.id AS CHAR)'
+        WHERE t.GroupName != CAST(g.id AS CHAR)
+        COLLATE utf8mb4_unicode_ci
+        '
         );
 
         $this->addSql(
             'UPDATE radgroupreply AS t
         INNER JOIN groups AS g ON t.GroupName = g.GroupName
         SET t.GroupName = CAST(g.id AS CHAR)
-        WHERE t.GroupName != CAST(g.id AS CHAR)'
+        WHERE t.GroupName != CAST(g.id AS CHAR)
+        COLLATE utf8mb4_unicode_ci
+        '
         );
 
         $this->addSql(
             'UPDATE radusergroup AS t
         INNER JOIN groups AS g ON t.GroupName = g.GroupName
         SET t.GroupName = CAST(g.id AS CHAR)
-        WHERE t.GroupName != CAST(g.id AS CHAR)'
+        WHERE t.GroupName != CAST(g.id AS CHAR)
+        COLLATE utf8mb4_unicode_ci
+        '
         );
 
         $this->addSql(
@@ -70,7 +76,7 @@ class Version20160221201937 extends AbstractMigration
             'ALTER TABLE groups
           DROP KEY GroupName,
           DROP COLUMN GroupName,
-          CHANGE GroupLabel name VARCHAR(64) COLLATE utf8_unicode_ci NOT NULL,
+          CHANGE GroupLabel name VARCHAR(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
           ADD UNIQUE name (name)
             '
         );
@@ -78,7 +84,7 @@ class Version20160221201937 extends AbstractMigration
         $this->addSql(
             'ALTER TABLE radusercomment
   RENAME users,
-  MODIFY `UserName` VARCHAR(255) COLLATE utf8_unicode_ci NOT NULL
+  MODIFY `UserName` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 '
         );
 
