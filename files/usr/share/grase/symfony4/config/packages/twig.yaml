@@ -3,6 +3,8 @@ twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
 
+    exception_controller: null
+
     globals:
         applicationName: '%env(APPLICATION_NAME)%'
 
