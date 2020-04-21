@@ -15,7 +15,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class UserRepository extends EntityRepository implements PasswordUpgraderInterface
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @param UserInterface $user
      * @param string        $newEncodedPassword
