@@ -10,7 +10,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Table(name="auth")
  * @ORM\Entity(repositoryClass="App\Entity\Radmin\UserRepository")
  */
-class User implements UserInterface, EncoderAwareInterface, \Serializable //, ThemeUser
+class User implements UserInterface, \Serializable //, ThemeUser
 {
     /**
      * @ORM\Column(type="string", length=50, unique=true)
@@ -19,7 +19,7 @@ class User implements UserInterface, EncoderAwareInterface, \Serializable //, Th
     private $username;
 
     /**
-     * @ORM\Column(type="string", length=60)
+     * @ORM\Column(type="string", length=255)
      */
     private $password;
 
@@ -48,20 +48,6 @@ class User implements UserInterface, EncoderAwareInterface, \Serializable //, Th
     public function getUsername()
     {
         return $this->username;
-    }
-
-    /**
-     * Get password encoder (lets us use existing sha1salted hashes until we upgrade them)
-     *
-     * @return string|null
-     */
-    public function getEncoderName()
-    {
-        if (strlen($this->password) === 49) {
-            return 'sha1salted';
-        }
-
-        return null; // use the default encoder
     }
 
     /**

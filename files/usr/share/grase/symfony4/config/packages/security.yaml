@@ -8,11 +8,14 @@ security:
                 property: username
 
     encoders:
-        App\Entity\Radmin\User:
-            algorithm: auto
-
         sha1salted:
             id: sha1salted_encoder
+
+        App\Entity\Radmin\User:
+            algorithm: auto
+            migrate_from:
+                - sha1salted
+
 
     role_hierarchy:
         ROLE_USER: [ROLE_CREATE, ROLE_REPORTS]

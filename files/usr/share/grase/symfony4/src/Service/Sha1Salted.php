@@ -41,4 +41,16 @@ class Sha1Salted implements PasswordEncoderInterface
     {
         return $encoded === $this->encodePassword($raw, $encoded);
     }
+
+    /**
+     * Anytime we have a sha1salted password, it needs to be rehashed with something better
+     *
+     * @param string $encoded
+     *
+     * @return bool
+     */
+    public function needsRehash(string $encoded)
+    {
+        return true;
+    }
 }
