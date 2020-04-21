@@ -14,6 +14,15 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class UserRepository extends EntityRepository implements PasswordUpgraderInterface
 {
+    /**
+     * {@inheritDoc}
+     *
+     * @param UserInterface $user
+     * @param string        $newEncodedPassword
+     *
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
     public function upgradePassword(UserInterface $user, string $newEncodedPassword): void
     {
         $user->setPassword($newEncodedPassword);

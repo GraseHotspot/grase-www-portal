@@ -14,6 +14,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class SettingType extends AbstractType
 {
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array                $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         /** @var Setting $setting */
@@ -23,6 +27,9 @@ class SettingType extends AbstractType
         $builder->add('save', SubmitType::class);
     }
 
+    /**
+     * @param OptionsResolver $resolver
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(
