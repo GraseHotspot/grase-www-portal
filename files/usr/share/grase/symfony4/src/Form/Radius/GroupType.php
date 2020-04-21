@@ -2,6 +2,7 @@
 
 namespace App\Form\Radius;
 
+use App\Entity\Radius\Group;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -70,7 +71,7 @@ class GroupType extends AbstractType
     {
         $resolver->setDefaults(
             [
-                'data_class' => 'App\Entity\Radius\Group',
+                'data_class' => Group::class,
             ]
         );
     }

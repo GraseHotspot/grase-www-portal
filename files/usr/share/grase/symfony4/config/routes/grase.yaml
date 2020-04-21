@@ -42,6 +42,14 @@ grase_advanced_settings:
     defaults:
         _controller: App\Controller\DefaultController::advancedSettingsAction
 
+grase_advanced_settings_edit:
+    path: /settings/advanced/{setting}/edit
+    options:
+        expose: true
+    defaults:
+        _controller: App\Controller\DefaultController::editAdvancedSettingAction
+
+
 grase_dhcp_leases:
     path: /leases
     defaults:

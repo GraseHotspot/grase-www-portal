@@ -505,5 +505,35 @@
         <target>User accounts are automatically deleted 2 months after expiry. Only accounts with zero usage should be manually deleted to prevent errors in the reports or statistics.</target>
       </segment>
     </unit>
+    <unit id="UUJttpK" name="grase.advancedSettings.warning">
+      <segment>
+        <source>grase.advancedSettings.warning</source>
+        <target>Modifying settings here isn't recommended as no validation is done (the result must be able to be json_encoded safely)</target>
+      </segment>
+    </unit>
+    <unit id="9Wx_hhi" name="grase.advancedSettings.warning.long">
+      <segment>
+        <source>grase.advancedSettings.warning.long</source>
+        <target>All settings in the Radmin Settings table are shown here. Modifying settings here isn't recommended as no validation is done (the result must be able to be json_encoded safely). This page allows you to see and modify hidden settings. Some settings may reset back to defaults if you try to set them to an incorrect value, others will just break.</target>
+      </segment>
+    </unit>
+    <unit id="VOA57dz" name="grase.advancedSettings.warning.caution">
+      <segment>
+        <source>grase.advancedSettings.warning.caution</source>
+        <target>CAUTION: Some settings here are internal and modifying them will break things</target>
+      </segment>
+    </unit>
+    <unit id="H00SOGx" name="grase.advancedSettings.edit.save_success.%setting%">
+      <segment>
+        <source>grase.advancedSettings.edit.save_success.%setting%</source>
+        <target>Updated setting: {setting}</target>
+      </segment>
+    </unit>
+    <unit id="dXhuk7T" name="grase.advancedSettings.edit.title">
+      <segment>
+        <source>grase.advancedSettings.edit.title</source>
+        <target>Edit Advanced Settings</target>
+      </segment>
+    </unit>
   </file>
 </xliff>

@@ -6,6 +6,7 @@ use App\Entity\AuditLog;
 use App\Entity\Radius\Radacct;
 use App\Entity\Radius\User;
 use App\Entity\Setting;
+use App\Form\SettingType;
 use Grase\SystemInformation;
 use Grase\Util;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -54,20 +55,54 @@ class DefaultController extends AbstractController
 
     /**
      * Show all the settings in a table so we can see the "hidden" settings.
-     * TODO this will allow editing of any setting
      *
      * @return Response
      */
     public function advancedSettingsAction()
     {
-        $settings = $this->getDoctrine()
-                         ->getRepository(Setting::class)
-                         ->findAll();
+        $this->denyAccessUnlessGranted('ROLE_SUPERADMIN');
+
+        return $this->render('advancedSettings.html.twig');
+    }
+
+    /**
+     * "Advanced" edit any setting
+     *
+     * @param Setting $setting
+     * @param Request $request
+     *
+     * @return RedirectResponse|Response
+     */
+    public function editAdvancedSettingAction(Setting $setting, Request $request)
+    {
+        $this->denyAccessUnlessGranted('ROLE_SUPERADMIN');
+
+        $form = $this->createForm(SettingType::class, $setting);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $setting = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($setting);
+            $em->flush();
+
+            $this->addFlash(
+                'success',
+                $this->translator->trans(
+                    'grase.advancedSettings.edit.save_success.%setting%',
+                    ['%setting%' => $setting->getName()]
+                )
+            );
+
+            return $this->redirectToRoute('grase_advanced_settings');
+        }
 
         return $this->render(
-            'advancedSettings.html.twig',
+            'editAdvancedSetting.html.twig',
             [
-                'settings' => $settings,
+                'settingForm' => $form->createView(),
             ]
         );
     }

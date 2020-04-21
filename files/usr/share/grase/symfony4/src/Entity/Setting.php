@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Json;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 /**
  * @ORM\Table(name="settings")
@@ -130,5 +132,15 @@ class Setting
     public function setRawValue($value)
     {
         $this->value = $value;
+    }
+
+    /**
+     * Define a validator for value's so they'll always be proper JSON going forward
+     *
+     * @param ClassMetadata $metadata
+     */
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata->addPropertyConstraint('value', new Json());
     }
 }

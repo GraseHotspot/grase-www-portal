@@ -8,22 +8,48 @@
 
 {% endblock page_subtitle %}
 
+{% block javascripts_inline %}
+<script>
+    function render_link(data, type, row, meta) {
+        console.log(data);
+        return '<a href="'+ Routing.generate("grase_advanced_settings_edit", {setting: data }) +'">'+data+'</a>';
+    }
+
+    function pageJs($) {
+
+        $('#advancedSettings').DataTable(
+            {
+                //retrieve: true,
+                destroy: true,
+                "columnDefs": [{
+                    "render": render_link,
+                    "targets": 0
+                }]
+            }
+        );
+    }
+</script>
+{% endblock %}
+
 {% block content %}
 
     <div class="col-xs-12">
-        <div class="box">
-            <div class="box-header">
-                <h3 class="box-title">{% trans %}Advanced Settings{% endtrans %}</h3>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">{% trans %}Advanced Settings{% endtrans %}</h3>
             </div>
-            <div class="box-body">
-                {% trans %}All settings in the Radmin Settings table are shown here. Modifying settings here isn't recommended as no validation is done. This page allows you to see and modify hidden settings. Some settings may reset back to defaults if you try to set them to an incorrect value, others will just break.{% endtrans %}<br/>
-                <strong>{% trans %}CAUTION: Some settings here are internal and modifying them will break things{% endtrans %}</strong>
+            <div class="card-body">
+                {% trans %}grase.advancedSettings.warning.long{% endtrans %}
+                <div class="alert-danger alert">
+                    <strong>{% trans %}grase.advancedSettings.warning.caution{% endtrans %}</strong><br/>
+                </div>
 
                 <table id="advancedSettings" class="table table-bordered table-hover dataTable"
                        data-paging="true" data-page-length="10" data-searching="true"
                        data-ordering="true" data-info="true" data-autowidth="true"
                        data-ajax='{"url": "{{ path('api_settings_get_collection', {'pagination': false}) }}", "dataSrc": ""}'
                        data-columns='[ {"data": "name"}, {"data": "value"} ]'
+
                 >
                     <thead>
                     <tr>
