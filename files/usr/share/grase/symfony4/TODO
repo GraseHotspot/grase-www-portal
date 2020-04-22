@@ -10,7 +10,7 @@ alter table batch
 Find a real JS translation engine that does ICU message format (https://formatjs.io/github/)
 
 autocreatepassword needs to be present and randomised if not already present (Setting Sanity)
-DB upgrade to cleanup radgroupreply/check: select * from radgroupreply WHERE GroupName NOT IN (SELECT id from groups);
+
 Verify group limits (groups vs radgroupcheck)
 Settings Sanity radreply coovachilli values
 
