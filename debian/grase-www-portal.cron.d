@@ -8,6 +8,6 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ## NEEDS USERNAME
 @daily		    root    /usr/share/grase/scripts/mysql_backup
 
-# Most cron scripts have moved to PHP classes actived by cron.php
-@hourly         nobody  REMOTE_ADDR='' php /usr/share/grase/www/radmin/cron.php
-@reboot         nobody  REMOTE_ADDR='' php /usr/share/grase/www/radmin/cron.php
+# Cron scripts are handled by Symfony4 console command and our runner
+@hourly         www-data /usr/share/grase/symfony4/bin/console grase:cron:runner
+@reboot         www-data /usr/share/grase/symfony4/bin/console grase:cron:runner
