@@ -25,7 +25,7 @@ class StrToTimeValidator extends ConstraintValidator
             $this->context->buildViolation('grase.constraint.strtotime.invalid.%string%')
                 ->setParameter('%string%', $value)
                 ->addViolation();
-        } else if (strtotime($value) < time()) {
+        } elseif (strtotime($value) < time()) {
             $this->context->buildViolation('grase.constraint.strtotime.expiryInPast')
                 ->addViolation();
         }
