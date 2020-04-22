@@ -22,12 +22,13 @@ class UserRepository extends EntityRepository
      */
     public function findByGroup($group = null)
     {
-        @ini_set('memory_limit', -1);
+        //@ini_set('memory_limit', -1);
 
         $query = $this->getEntityManager()->createQueryBuilder()
-            ->select('u', 'rc', 'ug'/*, 'ra'*/)
+            ->select('u', 'rc', 'rp', 'ug')
             ->from(User::class, 'u')
             ->leftJoin('u.radiusCheck', 'rc')
+            ->leftJoin('u.radiusReply', 'rp')
             ->leftJoin('u.userGroups', 'ug')
             ->leftJoin('ug.group', 'groups');
         //->leftJoin('u.radiusAccounting', 'ra');
@@ -36,6 +37,11 @@ class UserRepository extends EntityRepository
             $query->where('groups.name = :groupname')
                 ->setParameter('groupname', $group);
         }
+
+        // Filter out the CoovaChilli special config user
+        $query->andWhere('u.username != :radius_config_user')
+            ->setParameter('radius_config_user', User::RADIUS_CONFIG_USER);
+
         $users = $query->getQuery()->getResult();
 
         $radiusAccountingData = $this->getAllAccountingSums();

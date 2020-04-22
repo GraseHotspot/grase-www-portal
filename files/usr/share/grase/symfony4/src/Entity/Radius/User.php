@@ -17,6 +17,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  */
 class User
 {
+    public const RADIUS_CONFIG_USER = 'CoovaChilli';
     /**
      * @ORM\Column(type="string")
      * @ORM\Id
