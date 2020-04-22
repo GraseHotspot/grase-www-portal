@@ -3,9 +3,6 @@ For build
 Bump VERSION file numbers
 Make data-tables default paging configurable per user
 
-new user creation, Expiry & ExpireAfter needs to be copied from the group
-Group Expire/ExpireAfter validation
-
 alter table batch
 	add constraint batch_pk
 		primary key (batchID, UserName);

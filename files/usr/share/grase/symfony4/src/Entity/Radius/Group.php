@@ -48,6 +48,8 @@ class Group
      *
      * @ORM\Column(name="ExpireAfter", type="string", length=100, nullable=true)
      *
+     * @GraseAssert\StrToTime
+     *
      * @Groups({"user_get"})
      */
     private $expireAfter;

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="en">
+  <file id="validators.en">
+    <unit id="z1_mtv2" name="grase.constraint.strtotime.invalid.%string%">
+      <segment>
+        <source>grase.constraint.strtotime.invalid.%string%</source>
+        <target>{string} does not contain a valid StrToTime format</target>
+      </segment>
+    </unit>
+    <unit id="VT3rY77" name="grase.constraint.strtotime.expiryInPast">
+      <segment>
+        <source>grase.constraint.strtotime.expiryInPast</source>
+        <target>Expiry can not be in the past</target>
+      </segment>
+    </unit>
+  </file>
+</xliff>

@@ -22,12 +22,11 @@ class StrToTimeValidator extends ConstraintValidator
             return true;
         }
         if (strtotime($value) === false) {
-            $this->context->buildViolation($constraint->message)
+            $this->context->buildViolation('grase.constraint.strtotime.invalid.%string%')
                 ->setParameter('%string%', $value)
                 ->addViolation();
-        }
-        if (strtotime($value) < time()) {
-            $this->context->buildViolation($constraint->expiryInPastMessage)
+        } else if (strtotime($value) < time()) {
+            $this->context->buildViolation('grase.constraint.strtotime.expiryInPast')
                 ->addViolation();
         }
     }

@@ -9,10 +9,6 @@ use Symfony\Component\Validator\Constraint;
  */
 class StrToTime extends Constraint
 {
-    // TODO Ensure this can be translated
-    public $message = '"%string%" does not contain a valid StrToTime format';
-    public $expiryInPastMessage = 'Expiry can not be in the past';
-
     /**
      * @return string
      */
