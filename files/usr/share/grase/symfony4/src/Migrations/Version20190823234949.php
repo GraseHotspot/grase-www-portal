@@ -41,7 +41,7 @@ final class Version20190823234949 extends AbstractMigration implements Container
             'CREATE TABLE audit_log (
                     id INT AUTO_INCREMENT NOT NULL,
                     message LONGTEXT NOT NULL,
-                    username VARCHAR(255),
+                    username VARCHAR(64),
                     context LONGTEXT NOT NULL COMMENT \'(DC2Type:array)\',
                     level SMALLINT NOT NULL,
                     level_name VARCHAR(50) NOT NULL,

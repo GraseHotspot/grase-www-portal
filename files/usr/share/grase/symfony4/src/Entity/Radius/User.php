@@ -19,7 +19,7 @@ class User
 {
     public const RADIUS_CONFIG_USER = 'CoovaChilli';
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=64)
      * @ORM\Id
      *
      * @Groups({"user_get"})

@@ -30,7 +30,7 @@ DROP TABLE IF EXISTS `audit_log`;
 CREATE TABLE `audit_log` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `message` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `username` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `username` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `context` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
   `level` smallint(6) NOT NULL,
   `level_name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -306,7 +306,7 @@ DROP TABLE IF EXISTS `radcheck`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `radcheck` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `UserName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `UserName` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Attribute` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `op` varchar(2) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '==',
   `Value` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -455,7 +455,7 @@ DROP TABLE IF EXISTS `radusergroup`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `radusergroup` (
-  `UserName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `UserName` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `GroupName` int(11) NOT NULL,
   `priority` int(11) NOT NULL,
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -562,7 +562,7 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
-  `UserName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `UserName` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `comment` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`UserName`),
   KEY `UserName` (`UserName`(32))

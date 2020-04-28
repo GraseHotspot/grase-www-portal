@@ -84,7 +84,7 @@ class Version20160221201937 extends AbstractMigration
         $this->addSql(
             'ALTER TABLE radusercomment
   RENAME users,
-  MODIFY `UserName` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+  MODIFY `UserName` VARCHAR(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 '
         );
 
