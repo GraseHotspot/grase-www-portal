@@ -1,4 +1,5 @@
 files/usr/share/dbconfig-common/* /usr/share/dbconfig-common/
 files/usr/share/grase/templates/* /usr/share/grase/templates/
 files/usr/share/grase/symfony4/* /usr/share/grase/symfony4/
+files/usr/share/grase/symfony4/.env /usr/share/grase/symfony4/
 sudo/grase-www-portal /etc/sudoers.d/
