@@ -27,7 +27,7 @@ fi
 
 
 call_cron(){ # Call cron so certain upgrades can occur
-    /bin/su -c "/usr/share/grase/symfony4/bin/console grase:cron:runner" - www-data
+    runuser -u www-data -- /usr/share/grase/symfony4/bin/console grase:cron:runner
 }
 
 fix_dir_perms(){
