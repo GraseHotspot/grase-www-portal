@@ -8,7 +8,7 @@ services:
 
 
     mysql:
-      image: mariadb
+      image: mariadb:10.1
       volumes:
         - ./db_initial:/docker-entrypoint-initdb.d/
       environment:

@@ -3,6 +3,11 @@ For build
 Bump VERSION file numbers
 Make data-tables default paging configurable per user
 
+chmod: cannot access '/usr/share/grase/www/images': No such file or directory
+cp: cannot stat '/usr/share/grase/www/favicon.ico': No such file or directory
+.env APP_SECRET
+
+
 alter table batch
 	add constraint batch_pk
 		primary key (batchID, UserName);
