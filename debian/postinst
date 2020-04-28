@@ -27,7 +27,7 @@ fi
 
 
 call_cron(){ # Call cron so certain upgrades can occur
-    REMOTE_ADDR='' php /usr/share/grase/www/radmin/cron.php || true
+    /bin/su -c "/usr/share/grase/symfony4/bin/console grase:cron:runner" - www-data
 }
 
 fix_dir_perms(){
