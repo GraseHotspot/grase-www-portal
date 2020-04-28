@@ -19,6 +19,7 @@ composer: prod_env
 	rm -fr files/usr/share/grase/symfony4/vendor
 
 prod_env:
+	sed -i '/APP_ENV=/d' files/usr/share/grase/symfony4/.env
 	echo 'APP_ENV=prod' >> files/usr/share/grase/symfony4/.env
 
 version:
