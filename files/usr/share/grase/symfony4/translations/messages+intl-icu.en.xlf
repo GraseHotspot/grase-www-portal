@@ -649,5 +649,11 @@
         <target>DNS 2</target>
       </segment>
     </unit>
+    <unit id="7IV8fJt" name="grase.status.card.systeminfo.title">
+      <segment>
+        <source>grase.status.card.systeminfo.title</source>
+        <target>System Information</target>
+      </segment>
+    </unit>
   </file>
 </xliff>
