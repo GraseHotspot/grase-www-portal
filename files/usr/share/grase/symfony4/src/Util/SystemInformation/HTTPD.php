@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Util\SystemInformation;
 
     /* Copyright 2008 Timothy White */
@@ -21,6 +22,9 @@ namespace App\Util\SystemInformation;
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/**
+ * Object to hold information about the HTTPD server
+ */
 class HTTPD
 {
     public $software;

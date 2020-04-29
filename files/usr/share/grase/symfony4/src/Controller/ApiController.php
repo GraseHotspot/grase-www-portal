@@ -3,8 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Setting;
-use App\Util\SettingsUtils;
 use App\Util\GraseUtil;
+use App\Util\SettingsUtils;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;

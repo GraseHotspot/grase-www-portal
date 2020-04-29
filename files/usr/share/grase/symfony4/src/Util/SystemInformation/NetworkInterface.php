@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Util\SystemInformation;
 
     /* Copyright 2008 Timothy White */
@@ -21,6 +22,9 @@ namespace App\Util\SystemInformation;
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/**
+ * NetworkInterface object to hold information about a network interface
+ */
 class NetworkInterface
 {
     public $ipaddress;
@@ -28,11 +32,6 @@ class NetworkInterface
     public $gateway;
     public $mac;
     public $netmask;
-    public $dns_primary;
-    public $dns_secondary;
-
-    /*    public __construct()
-        {
-
-        }*/
+    public $dnsPrimary;
+    public $dnsSecondary;
 }

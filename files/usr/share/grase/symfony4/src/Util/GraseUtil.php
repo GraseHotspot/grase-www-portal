@@ -22,24 +22,43 @@ namespace App\Util;
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/**
+ * GraseUtil class from V3. Handy util functions
+ */
 class GraseUtil
 {
+    /**
+     * Generate a random password that is numeric (pin) of the set length
+     *
+     * @param $len int length of the resulting pin/password
+     *
+     * @return string
+     */
     public static function randomNumericPassword($len)
     {
         $password = '';
         while (strlen($password) < $len) {
             $password .= rand(0, 9);
         }
+
         return $password;
     }
 
+    /**
+     * Generate random "pronounceable" password at least as long as the given length with all
+     * lowercase letters
+     *
+     * @param $len int Password length minimum
+     *
+     * @return string
+     */
     public static function randomLowercase($len)
     {
-        $c = "bcdfghjklmnprstvwz";
-        $v = "aeiou";
+        $c = 'bcdfghjklmnprstvwz';
+        $v = 'aeiou';
         $r = $c . $v;
 
-        $password = "";
+        $password = '';
         while (strlen($password) < $len) {
             if (!rand(0, 1)) {
                 $password .= $c[rand(0, strlen($c) - 1)];
@@ -54,15 +73,26 @@ class GraseUtil
         return $password;
     }
 
-    // NOTE: This function is based on http://snipplr.com/view/5444/random-pronounceable-passwords-generator/
+    /**
+     * Generate random "pronounceable" password at least as long as the given length with all
+     * lowercase letters and some extra numbers thrown in
+     *
+     * NOTE: This function is based on http://snipplr.com/view/5444/random-pronounceable-passwords-generator/
+     *
+     * @see http://snipplr.com/view/5444/random-pronounceable-passwords-generator/
+     *
+     * @param $len int Password length minimum
+     *
+     * @return string
+     */
     public static function randomPassword($len)
     {
         //$C = "BCDFGHJKLMNPRSTVWZ";
-        $c = "bcdfghjklmnprstvwz";
-        $v = "aeiou";
+        $c = 'bcdfghjklmnprstvwz';
+        $v = 'aeiou';
         //$V = "AEIOU";
 
-        $password = "";
+        $password = '';
         $syllables = 3;
 
         for ($i = 0; $i < ($len / $syllables); $i++) {
@@ -98,12 +128,18 @@ class GraseUtil
         return $password;
     }
 
-    /* This function is a modified version of randomPassword function */
+    /**
+     * Modified version of randomPassword that gives us a nice username
+     *
+     * @param $len int
+     *
+     * @return string
+     */
     public static function randomUsername($len)
     {
-        $c = "bcdfghjklmnprstvwz";
-        $v = "aeiou";
-        $username = "";
+        $c = 'bcdfghjklmnprstvwz';
+        $v = 'aeiou';
+        $username = '';
         $syllables = 2; // Short due to username
 
         for ($i = 0; $i < ($len / $syllables); $i++) {
@@ -121,30 +157,23 @@ class GraseUtil
                 }
             }
         }
+
         return $username;
     }
 
-    /* NOTE: This function is from Smarty Docs http://www.smarty.net/docs/en/tips.dates.tpl */
-    public static function makeTimeStamp($year = '', $month = '', $day = '')
-    {
-        if (empty($year)) {
-            $year = strftime('%Y');
-        }
-        if (empty($month)) {
-            $month = strftime('%m');
-        }
-        if (empty($day)) {
-            $day = strftime('%d');
-        }
+    /**
+     * NETWORK Functions
+     */
 
-        return mktime(0, 0, 0, $month, $day, $year);
-    }
-
-    // Network Functions
+    /**
+     * Based on default route try and work out the WAN network interface
+     *
+     * @return string
+     */
     public static function getNetworkWANIF()
     {
         // Based on default route, get network interface that is the "gateway" (WAN) interface
-        $default_wanif = 'eth0';
+        $defaultWanIf = 'eth0';
 
         $routes = file('/proc/net/route');
         foreach ($routes as $route) {
@@ -172,30 +201,38 @@ class GraseUtil
             }
 
             // If destination and mask are 0.0.0.0 then this is a default route
-            if ($parms[1] == "00000000" && $parms[7] == "00000000") {
+            if ($parms[1] == '00000000' && $parms[7] == '00000000') {
                 //$default_gateway = $parms[2]; // Future use?
-                $default_wanif = trim($parms[0]);
+                $defaultWanIf = trim($parms[0]);
             }
         }
-        return $default_wanif;
+
+        return $defaultWanIf;
     }
 
+    /**
+     * Return a list of available LAN nework interfaces
+     *
+     * @param string $wanif
+     *
+     * @return array
+     */
     public static function getAvailableLANIFS($wanif = '')
     {
         // Show all available network interfaces that we can be using for the LAN interface
 
-        if ($wanif == '') {
+        if ('' == $wanif) {
             $wanif = self::getNetworkWANIF();
         }
         $devs = file('/proc/net/dev');
-        $lanifs = array();
+        $lanifs = [];
 
         // Get rid of junk at start
         array_shift($devs);
         array_shift($devs);
 
         foreach ($devs as $dev) {
-            $parms = explode(":", $dev, 2);
+            $parms = explode(':', $dev, 2);
             if (stripos($parms[0], 'tun') !== false) {
                 continue;
             }
@@ -210,212 +247,94 @@ class GraseUtil
         return $lanifs;
     }
 
+    /**
+     * Based on available LAN network interfaces, try and guess the default
+     *
+     * @TODO this function is in need of major updates to be useful in modern distros
+     *
+     * @return array
+     */
     public static function getDefaultNetworkIFS()
     {
-        $default_wanif = self::getNetworkWANIF();
-        $lanifs = self::getAvailableLANIFS($default_wanif);
-        $lanifs_order_pref = array('br0', 'wlan0', 'eth0', 'eth1');
-        $lanifs = array_intersect($lanifs_order_pref, $lanifs);
+        $defaultWanIf = self::getNetworkWANIF();
+        $lanifs = self::getAvailableLANIFS($defaultWanIf);
+        $lanifsOrderPref = ['br0', 'wlan0', 'eth0', 'eth1'];
+        $lanifs = array_intersect($lanifsOrderPref, $lanifs);
         if (count($lanifs) == 0) {
             // No valid lan interfaces in array, select next best
-            if ($default_wanif != 'eth0') {
-                $default_lanif = 'eth0';
+            if ('eth0' !== $defaultWanIf) {
+                $defaultLanIf = 'eth0';
             } else {
-                $default_lanif = 'eth1';
+                $defaultLanIf = 'eth1';
             }
         } else {
             // Valid options in lanifs, select top option
-            $default_lanif = array_shift($lanifs);
+            $defaultLanIf = array_shift($lanifs);
         }
 
-        return array('lanif' => $default_lanif, 'wanif' => $default_wanif);
+        return ['lanif' => $defaultLanIf, 'wanif' => $defaultWanIf];
     }
 
-    /* TODO: check where this code came from */
-    public static function fileUploadErrorCodeToMessage($error_code)
-    {
-        switch ($error_code) {
-            case UPLOAD_ERR_INI_SIZE:
-            case UPLOAD_ERR_FORM_SIZE:
-            case 2:
-                return T_('Uploaded Image was too big');
-
-            case UPLOAD_ERR_PARTIAL:
-                return T_('Error In Uploading');
-
-            case UPLOAD_ERR_NO_FILE:
-                return T_('No file was uploaded');
-
-            case UPLOAD_ERR_NO_TMP_DIR:
-                return T_('Missing a temporary folder');
-
-            case UPLOAD_ERR_CANT_WRITE:
-                return T_('Failed to write file to disk');
-
-            case UPLOAD_ERR_EXTENSION:
-                return T_('File upload stopped by extension');
-
-            default:
-                return T_('Unknown upload error');
-        }
-    }
-
-    // bigintval taken from http://stackoverflow.com/questions/990406/php-intval-equivalent-for-numbers-2147483647
+    /**
+     * A version of intval to take a string number and convert it to an int, for integers bigger than the signed int limit
+     *
+     * @see http://stackoverflow.com/questions/990406/php-intval-equivalent-for-numbers-2147483647
+     *
+     * @param $value
+     *
+     * @return int|string|string[]|null
+     */
     public static function bigIntVal($value)
     {
         $value = trim($value);
         if (ctype_digit($value)) {
             return $value;
         }
-        $value = preg_replace("/[^0-9](.*)$/", '', $value);
+        $value = preg_replace('/[^0-9](.*)$/', '', $value);
         if (ctype_digit($value)) {
             return $value;
         }
+
         return 0;
     }
 
-    // Functions from old Formatting class
-
     /**
-     * @param int $bytes
+     * Run chilli_query to get a list of current DHCP leases
      *
-     * @return string
-     * @deprecated Replaced by src/Util/Formatting->formatBytes
+     * @return bool|mixed
      */
-    public static function formatBytes($bytes = 0)
-    {
-        $kb = 1024;
-        $mb = $kb * 1024;
-        $gb = $mb * 1024;
-
-        if (!isset($bytes)) {
-            return "";
-        } // Unlimited needs to display as blank
-
-        $bytes = $bytes + 0; // Should never be needed now as unlimited ^^
-
-        if ($bytes >= $gb) {
-            $output = Locale::localeNumberFormat(
-                sprintf("%01.2f", $bytes / $gb)
-            ) . " GiB";
-        } elseif ($bytes >= $mb) {
-            $output = Locale::localeNumberFormat(
-                sprintf("%01.2f", $bytes / $mb)
-            ) . " MiB";
-        } elseif ($bytes >= $kb) {
-            $output = Locale::localeNumberFormat(
-                sprintf("%01.0f", $bytes / 1024)
-            ) . " KiB";
-        } elseif ($bytes == 1) {
-            $output = Locale::localeNumberFormat($bytes) . " B";
-        } else {
-            $output = Locale::localeNumberFormat($bytes) . " B";
-        }
-
-        return $output;
-    }
-
-    public static function formatBits($bits = 0)
-    {
-        $kb = 1024;
-        $mb = $kb * 1024;
-        $gb = $mb * 1024;
-
-        if (!isset($bits)) {
-            return "";
-        } // Unlimited needs to display as blank
-
-        $bits = $bits + 0; // Should never be needed now as unlimited ^^
-
-        if ($bits >= $gb) {
-            $output = Locale::localeNumberFormat(
-                sprintf("%01.2f", $bits / $gb)
-            ) . " Gibit/s";
-        } elseif ($bits >= $mb) {
-            $output = Locale::localeNumberFormat(
-                sprintf("%01.2f", $bits / $mb)
-            ) . " Mibit/s";
-        } elseif ($bits >= $kb) {
-            $output = Locale::localeNumberFormat(
-                sprintf("%01.0f", $bits / 1024)
-            ) . " Kibit/s";
-        } elseif ($bits == 1) {
-            $output = Locale::localeNumberFormat($bits) . " bit/s";
-        } else {
-            $output = Locale::localeNumberFormat($bits) . " bit/s";
-        }
-
-        return $output;
-    }
-
-    public static function formatSec($seconds = 0)
-    {
-        $minutes = intval($seconds / 60 % 60);
-        $hours = intval($seconds / 3600 % 24);
-        $days = intval($seconds / 86400);
-        $seconds = intval($seconds % 60);
-        if ($days < 1) {
-            return sprintf(
-                "%02d:%02d:%02d",
-                $hours,
-                $minutes,
-                $seconds
-            );
-        }
-        if ($days == 1) {
-            return sprintf(
-                "%dd %02d:%02d:%02d",
-                $days,
-                $hours,
-                $minutes,
-                $seconds
-            );
-        }
-        return sprintf("%dd %02d:%02d:%02d", $days, $hours, $minutes, $seconds);
-    }
-
-    // TODO: Not sure where this came from, find out where
-    public static function remoteIP()
-    {
-        if (getenv('HTTP_CLIENT_IP')) {
-            $ip = getenv('HTTP_CLIENT_IP');
-        } elseif (getenv('HTTP_X_FORWARDED_FOR')) {
-            $ip = getenv('HTTP_X_FORWARDED_FOR');
-        } elseif (getenv('HTTP_X_FORWARDED')) {
-            $ip = getenv('HTTP_X_FORWARDED');
-        } elseif (getenv('HTTP_FORWARDED_FOR')) {
-            $ip = getenv('HTTP_FORWARDED_FOR');
-        } elseif (getenv('HTTP_FORWARDED')) {
-            $ip = getenv('HTTP_FORWARDED');
-        } else {
-            $ip = $_SERVER['REMOTE_ADDR'];
-        }
-        return $ip;
-    }
-
     public static function getChilliLeases()
     {
         exec('sudo /usr/sbin/chilli_query -json list', $output, $return);
 
-        if ($return === 0) {
+        if (0 === $return) {
             // Command worked
             return json_decode($output[0], true);
         }
+
         return false;
     }
 
+    /**
+     * Use chilli_query to force logout a session
+     *
+     * @param $mac
+     *
+     * @return bool
+     */
     public static function logoutChilliSession($mac)
     {
         // Logout a specific MAC address
         $leases = GraseUtil::getChilliLeases();
         foreach ($leases['sessions'] as $session) {
             if ($session['macAddress'] == $mac && strlen($session['macAddress']) == 17) {
-                exec('sudo /usr/sbin/chilli_query logout '.$session['macAddress'], $output, $return);
-                if ($return === 0) {
+                exec('sudo /usr/sbin/chilli_query logout ' . $session['macAddress'], $output, $return);
+                if (0 === $return) {
                     return true;
                 }
             }
         }
+
         return false;
     }
 }
