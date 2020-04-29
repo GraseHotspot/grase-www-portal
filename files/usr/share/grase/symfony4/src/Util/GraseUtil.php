@@ -1,6 +1,6 @@
 <?php
 
-namespace Grase;
+namespace App\Util;
 
     /* Copyright 2008-2014 Timothy White */
 
@@ -22,7 +22,7 @@ namespace Grase;
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-class Util
+class GraseUtil
 {
     public static function randomNumericPassword($len)
     {
@@ -407,7 +407,7 @@ class Util
     public static function logoutChilliSession($mac)
     {
         // Logout a specific MAC address
-        $leases = Util::getChilliLeases();
+        $leases = GraseUtil::getChilliLeases();
         foreach ($leases['sessions'] as $session) {
             if ($session['macAddress'] == $mac && strlen($session['macAddress']) == 17) {
                 exec('sudo /usr/sbin/chilli_query logout '.$session['macAddress'], $output, $return);

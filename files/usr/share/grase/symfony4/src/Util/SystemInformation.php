@@ -1,5 +1,5 @@
 <?php
-namespace Grase;
+namespace App\Util;
 
 /* Copyright 2008 Timothy White */
 
@@ -25,9 +25,9 @@ namespace Grase;
 
 
 
-use Grase\SystemInformation\CpuDevice;
-use Grase\SystemInformation\HTTPD;
-use Grase\SystemInformation\NetworkInterface;
+use App\Util\SystemInformation\CpuDevice;
+use App\Util\SystemInformation\HTTPD;
+use App\Util\SystemInformation\NetworkInterface;
 
 class SystemInformation
 {
@@ -172,7 +172,7 @@ class SystemInformation
         if ($bufr = implode(file('/proc/cpuinfo'))) {
             $processors = preg_split('/\s?\n\s?\n/', trim($bufr));
             foreach ($processors as $processor) {
-                $dev = new \Grase\SystemInformation\CpuDevice();
+                $dev = new CpuDevice();
                 $details = preg_split("/\n/", $processor, -1, PREG_SPLIT_NO_EMPTY);
                 foreach ($details as $detail) {
                     $arrBuff = preg_split('/\s+:\s+/', trim($detail));

@@ -7,8 +7,8 @@ use App\Entity\Radius\Radacct;
 use App\Entity\Radius\User;
 use App\Entity\Setting;
 use App\Form\SettingType;
-use Grase\SystemInformation;
-use Grase\Util;
+use App\Util\SystemInformation;
+use App\Util\GraseUtil;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -150,7 +150,7 @@ class DefaultController extends AbstractController
             return $this->redirectToRoute('grase_sessions');
         }
 
-        if (Util::logoutChilliSession($mac)) {
+        if (GraseUtil::logoutChilliSession($mac)) {
             $session->getFlashBag()->add('success', $this->translator->trans(
                 'grase.session.logout.mac.success',
                 ['mac' => $mac]
@@ -178,7 +178,7 @@ class DefaultController extends AbstractController
      */
     public function dhcpLeasesAction(Session $session)
     {
-        $chilliLeases = Util::getChilliLeases();
+        $chilliLeases = GraseUtil::getChilliLeases();
         if ($chilliLeases && isset($chilliLeases['sessions'])) {
             $sessions = $chilliLeases['sessions'];
         } else {

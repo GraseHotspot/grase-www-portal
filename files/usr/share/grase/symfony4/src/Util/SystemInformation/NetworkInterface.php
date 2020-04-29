@@ -1,5 +1,5 @@
 <?php
-namespace Grase\SystemInformation;
+namespace App\Util\SystemInformation;
 
     /* Copyright 2008 Timothy White */
 
@@ -21,11 +21,18 @@ namespace Grase\SystemInformation;
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-class CpuDevice
+class NetworkInterface
 {
-    public $load;
-    public $speed;
-    public $model;
-    public $cache;
-    public $bogomips;
+    public $ipaddress;
+    public $iface;
+    public $gateway;
+    public $mac;
+    public $netmask;
+    public $dns_primary;
+    public $dns_secondary;
+
+    /*    public __construct()
+        {
+
+        }*/
 }

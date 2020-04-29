@@ -10,7 +10,7 @@ use App\Form\Radius\UserDeleteType;
 use App\Form\Radius\UserResetExpiryType;
 use App\Form\Radius\UserType;
 use App\Util\SettingsUtils;
-use Grase\Util;
+use App\Util\GraseUtil;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -190,7 +190,7 @@ class UserController extends AbstractController
         $user = new User();
 
         $newUserData = new UpdateUserData();
-        $newUserData->password = Util::randomPassword($this->settingsUtils->getSettingValue(Setting::PASSWORD_LENGTH));
+        $newUserData->password = GraseUtil::randomPassword($this->settingsUtils->getSettingValue(Setting::PASSWORD_LENGTH));
 
         $form = $this->createForm(UserType::class, $newUserData, ['create' => true]);
 

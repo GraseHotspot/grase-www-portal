@@ -51,8 +51,7 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/",
-            "Grase\\": "../src/Grase/"
+            "App\\": "src/"
         }
     },
     "autoload-dev": {

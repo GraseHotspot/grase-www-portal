@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Setting;
 use App\Util\SettingsUtils;
-use Grase\Util;
+use App\Util\GraseUtil;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,6 +23,6 @@ class ApiController extends AbstractController
      */
     public function apiGeneratePassword(SettingsUtils $settingsUtils)
     {
-        return new JsonResponse(Util::randomPassword($settingsUtils->getSettingValue(Setting::PASSWORD_LENGTH)));
+        return new JsonResponse(GraseUtil::randomPassword($settingsUtils->getSettingValue(Setting::PASSWORD_LENGTH)));
     }
 }
