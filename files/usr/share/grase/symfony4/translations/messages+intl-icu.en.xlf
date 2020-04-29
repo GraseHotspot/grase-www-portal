@@ -535,5 +535,119 @@
         <target>Edit Advanced Settings</target>
       </segment>
     </unit>
+    <unit id="50vuuD8" name="grase.status.title">
+      <segment>
+        <source>grase.status.title</source>
+        <target>Status Dashboard</target>
+      </segment>
+    </unit>
+    <unit id="IDG7X2A" name="grase.status.card.header.device_information">
+      <segment>
+        <source>grase.status.card.header.device_information</source>
+        <target>Device Information</target>
+      </segment>
+    </unit>
+    <unit id="pGeqmGL" name="grase.status.card.model_name">
+      <segment>
+        <source>grase.status.card.model_name</source>
+        <target>Model</target>
+      </segment>
+    </unit>
+    <unit id="BX6lYmy" name="grase.status.card.hostname">
+      <segment>
+        <source>grase.status.card.hostname</source>
+        <target>Hostname</target>
+      </segment>
+    </unit>
+    <unit id="QDp4SAt" name="grase.status.card.httpserver">
+      <segment>
+        <source>grase.status.card.httpserver</source>
+        <target>HTTP Server</target>
+      </segment>
+    </unit>
+    <unit id="elhAUST" name="grase.status.card.uptime">
+      <segment>
+        <source>grase.status.card.uptime</source>
+        <target>System Uptime</target>
+      </segment>
+    </unit>
+    <unit id="VmhalLo" name="grase.status.card.current_time">
+      <segment>
+        <source>grase.status.card.current_time</source>
+        <target>Current Server Time</target>
+      </segment>
+    </unit>
+    <unit id="3FIN47v" name="grase.status.card.hardware_version">
+      <segment>
+        <source>grase.status.card.hardware_version</source>
+        <target>Hardware Version</target>
+      </segment>
+    </unit>
+    <unit id="_XS6AB9" name="grase.status.card.app_version">
+      <segment>
+        <source>grase.status.card.app_version</source>
+        <target>Software Version</target>
+      </segment>
+    </unit>
+    <unit id="WRT1BNT" name="grase.status.card.app_url">
+      <segment>
+        <source>grase.status.card.app_url</source>
+        <target>Software URL</target>
+      </segment>
+    </unit>
+    <unit id="Uiw41GZ" name="grase.status.card.header.lan">
+      <segment>
+        <source>grase.status.card.header.lan</source>
+        <target>LAN Interface</target>
+      </segment>
+    </unit>
+    <unit id="J1gEE0D" name="grase.status.card.ipaddress">
+      <segment>
+        <source>grase.status.card.ipaddress</source>
+        <target>IP Address</target>
+      </segment>
+    </unit>
+    <unit id="vFLg1no" name="grase.status.card.netmask">
+      <segment>
+        <source>grase.status.card.netmask</source>
+        <target>Netmask</target>
+      </segment>
+    </unit>
+    <unit id="Io2qpiH" name="grase.status.card.mac">
+      <segment>
+        <source>grase.status.card.mac</source>
+        <target>MAC Address</target>
+      </segment>
+    </unit>
+    <unit id="oyXv5tA" name="grase.status.card.net_interface">
+      <segment>
+        <source>grase.status.card.net_interface</source>
+        <target>Network Interface</target>
+      </segment>
+    </unit>
+    <unit id="boFvcSb" name="grase.status.card.header.wan">
+      <segment>
+        <source>grase.status.card.header.wan</source>
+        <target>WAN Interface</target>
+      </segment>
+    </unit>
+    <unit id="Tox5SjQ" name="grase.status.card.gateway">
+      <segment>
+        <source>grase.status.card.gateway</source>
+        <target>Gateway</target>
+      </segment>
+    </unit>
+    <unit id="HFyyQgQ" name="grase.status.card.dns_primary">
+      <segment>
+        <source>grase.status.card.dns_primary</source>
+        <target>DNS 1</target>
+      </segment>
+    </unit>
+    <unit id=".207r31" name="grase.status.card.dns_secondary">
+      <segment>
+        <source>grase.status.card.dns_secondary</source>
+        <target>DNS 2</target>
+      </segment>
+    </unit>
   </file>
 </xliff>

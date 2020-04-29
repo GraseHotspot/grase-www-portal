@@ -1,7 +1,7 @@
 {% extends "layout.html.twig" %}
 
 {% block page_title %}
-    {% trans %}User Management Interface{% endtrans %}
+    {% trans %}grase.status.title{% endtrans %}
 {% endblock page_title %}
 
 {% block page_subtitle %}
@@ -21,7 +21,7 @@
 
 
 {% block content_header %}
-    <h1>{% trans %}User Management Interface{% endtrans %}</h1>
+    <h1>{% trans %}grase.status.title{% endtrans %}</h1>
 {% endblock %}
 
 {% block content %}
@@ -46,115 +46,111 @@
 
 {% block status_table %}
     <div class="card-header">
-        <h3 class="card-title">Status</h3>
+        <h3 class="card-title">grase.status.card.status.title</h3>
     </div>
     <div class="card-body p-0">
     <table id="groupsTable" class="table table-bordered table-hover">
         <tbody>
         <tr>
-            <th class="header" colspan="3">{% trans %}Device Information{% endtrans %}</th>
+            <th class="header" colspan="3">{% trans %}grase.status.card.header.device_information{% endtrans %}</th>
         </tr>
         <tr>
-            <td class="title">{% trans %}Model Name{% endtrans %}</td>
+            <td class="title">{% trans %}grase.status.card.model_name{% endtrans %}</td>
             <td colspan="2">{{ applicationName }}</td>
         </tr>
 
         <tr>
-            <td class="title">{% trans %}Host Name{% endtrans %}</td>
+            <td class="title">{% trans %}grase.status.card.hostname{% endtrans %}</td>
             <td colspan="2">{{ systemInfo.hostname }}</td>
         </tr>
 
         <tr>
-            <td class="title">{% trans %}HTTP Server{% endtrans %}</td>
+            <td class="title">{% trans %}grase.status.card.httpserver{% endtrans %}</td>
             <td colspan="2">{{ systemInfo.httpd.software }} via {{ systemInfo.httpd.gateway }}</td>
         </tr>
 
 
         <tr>
-            <td class="title">{% trans %}System Up-Time{% endtrans %}</td>
+            <td class="title">{% trans %}grase.status.card.uptime{% endtrans %}</td>
             <td colspan="2">{{ systemInfo.uptime }}</td>
         </tr>
 
         <tr>
-            <td class="title">{% trans %}Current Server Time{% endtrans %}</td>
+            <td class="title">{% trans %}grase.status.card.current_time{% endtrans %}</td>
             <td>{{ "now"|date('r') }}</td>
             <td></td>
         </tr>
 
         <tr>
-            <td class="title">{% trans %}Hardware Version{% endtrans %}</td>
+            <td class="title">{% trans %}grase.status.card.hardware_version{% endtrans %}</td>
             <td colspan="2">{{ systemInfo.cpu.model }} @{{ systemInfo.cpu.speed }}MHz</td>
         </tr>
 
         <tr>
-            <td class="title">{% trans %}Software Version{% endtrans %}</td>
+            <td class="title">{% trans %}grase.status.card.app_version{% endtrans %}</td>
             <td colspan="2">{{ shivas_app_version }}</td>
         </tr>
 
         <tr>
-            <td class="title">{% trans %}Software URL{% endtrans %}</td>
-            <td colspan="2"><a href="httsp://grasehotspot.org">GRASE Hotspot</a></td>
+            <td class="title">{% trans %}grase.status.card.app_url{% endtrans %}</td>
+            <td colspan="2"><a href="https://grasehotspot.org">GRASE Hotspot</a></td>
         </tr>
 
 
         <tr>
-            <th class="header" colspan="3">{% trans %}LAN{% endtrans %}</th>
+            <th class="header" colspan="3">{% trans %}grase.status.card.header.lan{% endtrans %}</th>
         </tr>
         <tr>
-            <td class="title">{% trans %}IP Address{% endtrans %}</td>
+            <td class="title">{% trans %}grase.status.card.ipaddress{% endtrans %}</td>
             <td colspan="2">{{ systemInfo.lan.ipaddress }}</td>
         </tr>
         <tr>
-            <td class="title">{% trans %}Subnet Mask{% endtrans %}</td>
+            <td class="title">{% trans %}grase.status.card.netmask{% endtrans %}</td>
             <td colspan="2">{{ systemInfo.lan.netmask }}</td>
         </tr>
         <tr>
-            <td class="title">{% trans %}MAC Address{% endtrans %}</td>
+            <td class="title">{% trans %}grase.status.card.mac{% endtrans %}</td>
             <td colspan="2">{{ systemInfo.lan.mac | upper }}</td>
         </tr>
         <tr>
-            <td class="title">{% trans %}Network Interface{% endtrans %}</td>
+            <td class="title">{% trans %}grase.status.card.net_interface{% endtrans %}</td>
             <td colspan="2">{{ systemInfo.lan.iface }}</td>
         </tr>
 
         <tr>
-            <th class="header" colspan="3">{% trans %}WAN{% endtrans %}</th>
+            <th class="header" colspan="3">{% trans %}grase.status.card.header.wan{% endtrans %}</th>
         </tr>
         <tr>
-            <td class="title">{% trans %}IP Address{% endtrans %}</td>
+            <td class="title">{% trans %}grase.status.card.ipaddress{% endtrans %}</td>
             <td colspan="2">{{ systemInfo.wan.ipaddress }}</td>
         </tr>
         <tr>
-            <td class="title">{% trans %}Subnet Mask{% endtrans %}</td>
+            <td class="title">{% trans %}grase.status.card.netmask{% endtrans %}</td>
             <td colspan="2">{{ systemInfo.wan.netmask }}</td>
         </tr>
         <tr>
-            <td class="title">{% trans %}Gateway{% endtrans %}</td>
+            <td class="title">{% trans %}grase.status.card.gateway{% endtrans %}</td>
             <td colspan="2">{{ systemInfo.wan.gateway }}</td>
         </tr>
         <tr>
-            <td class="title">{% trans %}DNS 1{% endtrans %}</td>
+            <td class="title">{% trans %}grase.status.card.dns_primary{% endtrans %}</td>
             <td colspan="2">{{ systemInfo.wan.dns_primary }}</td>
         </tr>
         <tr>
-            <td class="title">{% trans %}DNS 2{% endtrans %}</td>
+            <td class="title">{% trans %}grase.status.card.dns_secondary{% endtrans %}</td>
             <td colspan="2">{{ systemInfo.wan.dns_secondary }}</td>
         </tr>
         <tr>
-            <td class="title">{% trans %}MAC Address{% endtrans %}</td>
+            <td class="title">{% trans %}grase.status.card.mac{% endtrans %}</td>
             <td colspan="2">{{ systemInfo.wan.mac|upper }}</td>
         </tr>
         <tr>
-            <td class="title">{% trans %}Network Interface{% endtrans %}</td>
+            <td class="title">{% trans %}grase.status.card.net_interface{% endtrans %}</td>
             <td colspan="2">{{ systemInfo.wan.iface }}</td>
         </tr>
         </tbody>
     </table>
     </div>
-
-    {# TODO fixup this href to use a route #}
-    <p>Running services status page can be found at <a href="/grase/radmin/sysstatus">System Status</a></p>
-
 {% endblock %}
 
 {% block netdata %}
