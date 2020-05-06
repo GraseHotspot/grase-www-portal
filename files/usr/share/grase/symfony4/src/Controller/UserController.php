@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Radius\Group;
 use App\Entity\Radius\User;
 use App\Entity\Radius\UserRepository;
 use App\Entity\Setting;
@@ -44,7 +45,7 @@ class UserController extends AbstractController
     /**
      * Display all users, filtered by group if a group is passed in
      *
-     * @param null $group
+     * @param string|null $group
      *
      * @return Response
      */
@@ -52,6 +53,14 @@ class UserController extends AbstractController
     {
         /** @var UserRepository $userRepository */
         $userRepository = $this->getDoctrine()->getManager()->getRepository(User::class);
+        $groupRepository = $this->getDoctrine()->getRepository(Group::class);
+
+        if ($group) {
+            $groupObject = $groupRepository->findByName($group);
+            if (!$groupObject) {
+                throw $this->createNotFoundException('Invalid Group');
+            }
+        }
 
         $users = $userRepository->findByGroup($group);
 

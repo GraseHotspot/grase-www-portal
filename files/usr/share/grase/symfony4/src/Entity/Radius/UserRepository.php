@@ -16,7 +16,7 @@ class UserRepository extends EntityRepository
     /**
      * Find all users that belong to a group
      *
-     * @param null $group
+     * @param string|null $group
      *
      * @return mixed
      */
@@ -84,6 +84,27 @@ class UserRepository extends EntityRepository
 
         $query->where('u.username = :username')
             ->setParameter('username', $username);
+
+        return $query->getQuery()->getResult();
+    }
+
+    /**
+     * Search for users that have the search term in the username
+     *
+     * @param $search
+     *
+     * @return User[]
+     */
+    public function searchByUsername($search)
+    {
+        if (empty($search)) {
+            return [];
+        }
+        $query = $this->getEntityManager()->createQueryBuilder()
+            ->select('u')
+            ->from(UseR::class, 'u')
+            ->where('u.username LIKE :search')
+            ->setParameter('search', '%' . $search . '%');
 
         return $query->getQuery()->getResult();
     }

@@ -6,6 +6,7 @@ grase-www-portal (4.0.0) UNRELEASED; urgency=medium
   * Command for making real data into demo data
   * Removed OpenDNS Bogus NX option as it's no longer relevant
     (https://umbrella.cisco.com/blog/2014/05/29/no-more-ads/)
+  * Add Global search (Fixes #116)
 
  -- Tim White <tim@grasehotspot.org>  Fri, 04 Oct 2019 07:05:22 +1000
 

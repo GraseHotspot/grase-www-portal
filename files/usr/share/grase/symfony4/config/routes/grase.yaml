@@ -68,8 +68,12 @@ grase_session:
 grase_session_logoutmac:
     path: /session/logoutmac
     defaults:
-        _controller: App\Controller\DefaultControeller::logoutChilliSessionAction
+        _controller: App\Controller\DefaultController::logoutChilliSessionAction
 
+grase_global_search:
+    path: /search
+    defaults:
+        _controller: App\Controller\DefaultController::searchAction
 
 grase_uam_login:
     path: /uam
@@ -84,3 +88,4 @@ grase_uam_toslogin:
 #grase_security:
 #    resource: "@App/Controller/SecurityController.php"
 #    type:     annotation
+

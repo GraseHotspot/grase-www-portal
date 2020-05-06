@@ -21,7 +21,7 @@
                        data-ordering="true" data-info="true" data-autowidth="true">
                     <thead>
                     <tr>
-                        <th>{% trans %}Username{% endtrans %}</th>
+                        <th>{% trans %}grase.table.header.username{% endtrans %}</th>
                         <th>{% trans %}Data Usage{% endtrans %}</th>
                         <th>{% trans %}Time Usage{% endtrans %}</th>
                         <th>{% trans %}Expiry{% endtrans %}</th>
@@ -33,7 +33,7 @@
                     <tbody>
                     {% for user in users %}
                         <tr>
-                            <td><a href="{{ path('grase_user_edit', {id: user.username}) }}">{{ user.username }}</a> <a style="float: right" class="" data-toggle="popover" tabindex="0" data-trigger="focus" title="{% trans %}Password{% endtrans %}" data-content="{{ user.password }}"><i class="material-icons md-18 md-dark">lock</i></a></td>
+                            <td>{{ user.username }}<span class="float-right"><a href="{{ path('grase_user_edit', {id: user.username}) }}"><i class="fas fa-user-edit"></i></a> <a data-toggle="popover" tabindex="0" data-trigger="focus" title="{% trans %}Password{% endtrans %}" data-content="{{ user.password }}"><i class="material-icons md-18 md-dark">lock</i></a></span></td>
                             <td data-order="{{ user.datausagetotal }}">{{ user.datausagetotal|format_bytes }}/{{ user.datalimit|format_bytes }}</td>
                             <td data-order="{{ user.totalSessionTime }}">{{ user.totalSessionTime }}/{{ user.timelimit }}</td>
                             <td data-order="{{ user.expiry ? user.expiry | date('U') }}">{% if user.expiry %}{{ user.expiry|localizeddate('medium', 'short') }}{% endif %}{{ user.expireAfter ? "(#{user.expireAfter})" }}</td>

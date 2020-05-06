@@ -1,0 +1,78 @@
+{% extends "layout.html.twig" %}
+
+{% block page_title %}
+    {% trans %}grase.searchResults.title{% endtrans %}
+{% endblock page_title %}
+
+{% block page_subtitle %}
+
+{% endblock page_subtitle %}
+
+{% block content %}
+    <h2>{% trans %}grase.searchResults.title{% endtrans %}</h2>
+    <div class="row">
+
+        <div class="col-xs-12 col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">{% trans %}grase.searchResults.title.users{% endtrans %}</h3>
+                </div>
+                <div class="card-body">
+                    <table id="usersTable" class="table table-bordered table-hover dataTable"
+                           data-paging="true" data-page-length="10" data-searching="true"
+                           data-ordering="true" data-info="true" data-autowidth="true">
+                        <thead>
+                        <tr>
+                            <th>{% trans %}grase.table.header.username{% endtrans %}</th>
+                            <th>{% trans %}Last Logout{% endtrans %}</th>
+                            <th>{% trans %}Group{% endtrans %}</th>
+                            <th>{% trans %}Comment{% endtrans %}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for user in users %}
+                            <tr>
+                                <td>{{ user.username }}<span class="float-right"><a href="{{ path('grase_user_edit', {id: user.username}) }}"><i class="fas fa-user-edit"></i></a> <a data-toggle="popover" tabindex="0" data-trigger="focus" title="{% trans %}Password{% endtrans %}" data-content="{{ user.password }}"><i class="material-icons md-18 md-dark">lock</i></a></span></td>
+                                <td data-order="{{ user.lastLogout ? user.lastLogout | date('U') }}">{% if user.lastLogout %}{{ user.lastLogout |localizeddate('medium', 'short') }}{% endif %}</td>
+                                <td>{{ user.allUserGroupsNames }}</td>
+                                <td>{{ user.comment }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">{% trans %}grase.searchResults.title.groups{% endtrans %}</h3>
+                </div>
+                <div class="card-body">
+                    <table id="groupsTable" class="dataTable table table-bordered table-hover"
+                           data-paging="true" data-page-length="10" data-searching="true"
+                           data-ordering="true" data-info="true" data-autowidth="true">
+                        <thead>
+                        <tr>
+                            <th>{% trans %}Name{% endtrans %}</th>
+                            <th>{% trans %}Comment{% endtrans %}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for group in groups %}
+                            <tr>
+                                <td><a href="{{ path('grase_users', {'group': group.name}) }}">{{ group.name }}</a> <a href="{{ path('grase_group_edit', {'id': group.id} ) }}"><i class="fas fa-edit float-right"></i></a></td>
+                                <td>{{ group.comment }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

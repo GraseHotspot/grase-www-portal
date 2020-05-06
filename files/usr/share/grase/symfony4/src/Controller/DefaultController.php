@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\AuditLog;
+use App\Entity\Radius\Group;
 use App\Entity\Radius\Radacct;
 use App\Entity\Radius\User;
 use App\Entity\Setting;
@@ -226,6 +227,34 @@ class DefaultController extends AbstractController
             'auditlog.html.twig',
             [
                 'logEntries' => $logEntries,
+            ]
+        );
+    }
+
+    /**
+     * Global search of users/groups (and eventually more?)
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function searchAction(Request $request)
+    {
+        // @TODO ensure we can only search for things we already have access to
+        $search = $request->request->get('search');
+        if (empty($search)) {
+            throw $this->createNotFoundException('Empty search');
+        }
+
+        $matchingUsers = $this->getDoctrine()->getRepository(User::class)->searchByUsername($search);
+        $matchingGroups = $this->getDoctrine()->getRepository(Group::class)->searchByGroupname($search);
+
+        return $this->render(
+            'searchResults.html.twig',
+            [
+                'users'      => $matchingUsers,
+                'groups'     => $matchingGroups,
+                'searchTerm' => $search,
             ]
         );
     }

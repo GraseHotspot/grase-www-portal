@@ -32,7 +32,7 @@
                     <tbody>
                     {% for group in groups %}
                         <tr>
-                            <td><a href="{{ path('grase_group_edit', {'id': group.id} ) }}">{{ group.name }}</a></td>
+                            <td><a href="{{ path('grase_users', {'group': group.name}) }}">{{ group.name }}</a> <a href="{{ path('grase_group_edit', {'id': group.id} ) }}"><i class="fas fa-edit float-right"></i></a></td>
                             <td>{{ group.maxOctets|format_bytes }}</td>
                             <td>{{ group.maxSeconds }}</td>
                             <td>{{ group.expiry }}</td>
