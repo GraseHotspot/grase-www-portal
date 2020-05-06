@@ -649,10 +649,70 @@
         <target>DNS 2</target>
       </segment>
     </unit>
-    <unit id="7IV8fJt" name="grase.status.card.systeminfo.title">
+    <unit id="Irj_.ez" name="grase.status.card.systeminfo.title">
       <segment>
         <source>grase.status.card.systeminfo.title</source>
         <target>System Information</target>
+      </segment>
+    </unit>
+    <unit id="oBI4kxy" name="grase.command.finished_users.no_option">
+      <segment>
+        <source>grase.command.finished_users.no_option</source>
+        <target>At least 1 of --delete-out-of-data-users or --delete-out-of-time-users must be specified</target>
+      </segment>
+    </unit>
+    <unit id="YGN6WpF" name="grase.command.output.deleteOutOfTimeUser">
+      <segment>
+        <source>grase.command.output.deleteOutOfTimeUser</source>
+        <target>Deleting out-of-time user {user}</target>
+      </segment>
+    </unit>
+    <unit id="MH4S_pJ" name="grase.command.output.deleteOutOfDataUser">
+      <segment>
+        <source>grase.command.output.deleteOutOfDataUser</source>
+        <target>Deleting out-of-data user {user}</target>
+      </segment>
+    </unit>
+    <unit id="q3xIFv1" name="grase.command.audit.deleteOutOfDataUser">
+      <segment>
+        <source>grase.command.audit.deleteOutOfDataUser</source>
+        <target>Deleting out-of-data user</target>
+      </segment>
+    </unit>
+    <unit id="oYrEdHM" name="grase.command.audit.deleteOutOfTimeUser">
+      <segment>
+        <source>grase.command.audit.deleteOutOfTimeUser</source>
+        <target>Deleting out-of-time user</target>
+      </segment>
+    </unit>
+    <unit id="3XZ54Yw" name="grase.command.output.dry-run-warning">
+      <segment>
+        <source>grase.command.output.dry-run-warning</source>
+        <target>Running in Dry Run mode. No users will be deleted</target>
+      </segment>
+    </unit>
+    <unit id="xMxllMW" name="grase.searchResults.title">
+      <segment>
+        <source>grase.searchResults.title</source>
+        <target>__grase.searchResults.title</target>
+      </segment>
+    </unit>
+    <unit id="4LUCYvy" name="grase.searchResults.title.users">
+      <segment>
+        <source>grase.searchResults.title.users</source>
+        <target>__grase.searchResults.title.users</target>
+      </segment>
+    </unit>
+    <unit id="kq8jGYd" name="grase.table.header.username">
+      <segment>
+        <source>grase.table.header.username</source>
+        <target>__grase.table.header.username</target>
+      </segment>
+    </unit>
+    <unit id="7jcGESV" name="grase.searchResults.title.groups">
+      <segment>
+        <source>grase.searchResults.title.groups</source>
+        <target>__grase.searchResults.title.groups</target>
       </segment>
     </unit>
   </file>

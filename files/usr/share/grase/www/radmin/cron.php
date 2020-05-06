@@ -48,21 +48,6 @@ if ($clearPostAuthMACRejectResults) {
     echo "$clearPostAuthMACRejectResults\n";
 }
 
-
-if (isset($_GET['deleteoutoftimeusers']) && $_GET['deleteoutoftimeusers']) {
-    $deleteOutOfTimeUsersResults = CronFunctions::getInstance()->deleteOutOfTimeUsers();
-    if ($deleteOutOfTimeUsersResults) {
-        echo "$deleteOutOfTimeUsersResults\n";
-    }
-}
-
-if (isset($_GET['deleteoutofdatausers']) && $_GET['deleteoutofdatausers']) {
-    $deleteOutOfDataUsersResults = CronFunctions::getInstance()->deleteOutOfDataUsers();
-    if ($deleteOutOfDataUsersResults) {
-        echo "$deleteOutOfDataUsersResults\n";
-    }
-}
-
 $clearOldBatchesResults = CronFunctions::getInstance()->clearOldBatches();
 if ($clearOldBatchesResults) {
     echo "$clearOldBatchesResults\n";

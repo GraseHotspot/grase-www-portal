@@ -102,9 +102,45 @@ class UserRepository extends EntityRepository
         }
         $query = $this->getEntityManager()->createQueryBuilder()
             ->select('u')
-            ->from(UseR::class, 'u')
+            ->from(User::class, 'u')
             ->where('u.username LIKE :search')
             ->setParameter('search', '%' . $search . '%');
+
+        return $query->getQuery()->getResult();
+    }
+
+    /**
+     * Find all users who have a time limit and have reached 0
+     *
+     * @return User[]
+     */
+    public function findOutOfTimeUsers()
+    {
+        $query = $this->getEntityManager()->createQueryBuilder()
+            ->select('u')
+            ->from(User::class, 'u')
+            ->join('u.radiusCheck', 'c')
+            ->where('c.attribute = :maxallsession')
+            ->andWhere('c.value <= 0')
+            ->setParameter('maxallsession', Check::MAX_ALL_SESSION);
+
+        return $query->getQuery()->getResult();
+    }
+
+    /**
+     * Find all users who have a data limit and have reached 0
+     *
+     * @return User[]
+     */
+    public function findOutOfDataUsers()
+    {
+        $query = $this->getEntityManager()->createQueryBuilder()
+            ->select('u')
+            ->from(User::class, 'u')
+            ->join('u.radiusCheck', 'c')
+            ->where('c.attribute = :maxoctets')
+            ->andWhere('c.value <= 0')
+            ->setParameter('maxoctets', Check::MAX_OCTETS);
 
         return $query->getQuery()->getResult();
     }

@@ -22,4 +22,18 @@ class GraseConsoleStyle extends SymfonyStyle
         }, $messages);
         parent::block($messages, $type, $style, $prefix, $padding, $escape);
     }
+
+    /**
+     * Prepends a timestamp and then forwards to parent text
+     *
+     * {@inheritdoc}
+     */
+    public function text($message)
+    {
+        $messages = \is_array($message) ? array_values($message) : [$message];
+        $messages = array_map(function ($message) {
+            return date('[Y-m-d H:i:s] ') . $message;
+        }, $messages);
+        parent::text($messages);
+    }
 }
