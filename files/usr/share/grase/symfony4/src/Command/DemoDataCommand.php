@@ -95,31 +95,31 @@ class DemoDataCommand extends Command
         /** @var Connection $db */
         $db = $this->entityManager->getConnection();
         $this->renameUserQueries['updateUserQuery'] = $db->prepare(
-            'UPDATE radius.users SET UserName = :newName WHERE UserName = :oldName'
+            'UPDATE users SET UserName = :newName WHERE UserName = :oldName'
         );
         $this->renameUserQueries['updateCheckQuery'] = $db->prepare(
-            'UPDATE radius.radcheck SET UserName = :newName WHERE UserName = :oldName'
+            'UPDATE radcheck SET UserName = :newName WHERE UserName = :oldName'
         );
         $this->renameUserQueries['updateRadReplyQuery'] = $db->prepare(
-            'UPDATE radius.radreply SET UserName = :newName WHERE UserName = :oldName'
+            'UPDATE radreply SET UserName = :newName WHERE UserName = :oldName'
         );
         $this->renameUserQueries['updateRadUserGroupQuery'] = $db->prepare(
-            'UPDATE radius.radusergroup SET UserName = :newName WHERE UserName = :oldName'
+            'UPDATE radusergroup SET UserName = :newName WHERE UserName = :oldName'
         );
         $this->renameUserQueries['updateGroupQuery'] = $db->prepare(
-            'UPDATE radius.radusergroup SET UserName = :newName WHERE UserName = :oldName'
+            'UPDATE radusergroup SET UserName = :newName WHERE UserName = :oldName'
         );
         $this->renameUserQueries['updateRadpostauthQuery'] = $db->prepare(
-            'UPDATE radius.radpostauth SET UserName = :newName WHERE UserName = :oldName'
+            'UPDATE radpostauth SET UserName = :newName WHERE UserName = :oldName'
         );
         $this->renameUserQueries['updateRadacctQuery'] = $db->prepare(
-            'UPDATE radius.radacct SET UserName = :newName WHERE UserName = :oldName'
+            'UPDATE radacct SET UserName = :newName WHERE UserName = :oldName'
         );
         $this->renameUserQueries['updateMtotacctQuery'] = $db->prepare(
-            'UPDATE radius.mtotacct SET UserName = :newName WHERE UserName = :oldName'
+            'UPDATE mtotacct SET UserName = :newName WHERE UserName = :oldName'
         );
         $this->renameUserQueries['updateBatchQuery'] = $db->prepare(
-            'UPDATE radius.batch SET UserName = :newName WHERE UserName = :oldName'
+            'UPDATE batch SET UserName = :newName WHERE UserName = :oldName'
         );
 
         $macUsers = $this->entityManager->getRepository(User::class)->createQueryBuilder('u')
