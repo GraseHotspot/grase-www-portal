@@ -5,6 +5,7 @@ namespace App\Command;
 use App\Entity\Radius\Check;
 use App\Entity\Radius\Group;
 use App\Entity\Radius\User;
+use App\Entity\Radmin\User as RadminUser;
 use App\Entity\Setting;
 use App\Util\SettingsUtils;
 use Doctrine\DBAL\Connection;
@@ -179,7 +180,7 @@ class DemoDataCommand extends Command
         $db->query('TRUNCATE adminlog');
 
         // Create a new guest user for the demo
-        $guestUser = new App\Entity\Radmin\User();
+        $guestUser = new RadminUser();
         $guestUser->setUsername('guest');
         $guestUser->setPassword($this->encoder->encodePassword($user, 'guest'));
         $this->entityManager->persist($guestUser);
