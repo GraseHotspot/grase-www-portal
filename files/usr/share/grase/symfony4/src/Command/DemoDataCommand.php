@@ -13,6 +13,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * Command to take a normal database, and destroy it to create a database for demo purposes
@@ -31,6 +32,9 @@ class DemoDataCommand extends Command
     /** @var SettingsUtils */
     private $settingsUtils;
 
+    /** @var UserPasswordEncoderInterface */
+    private $encoder;
+
     /** @var array Array of prepared userQueries for us to execute */
     private $renameUserQueries = [];
 
@@ -41,13 +45,14 @@ class DemoDataCommand extends Command
      * @param EntityManagerInterface $entityManager
      * @param SettingsUtils          $settingsUtils
      */
-    public function __construct(TranslatorInterface $translator, EntityManagerInterface $entityManager, SettingsUtils $settingsUtils)
+    public function __construct(TranslatorInterface $translator, EntityManagerInterface $entityManager, SettingsUtils $settingsUtils, UserPasswordEncoderInterface $encoder)
     {
         parent::__construct();
         $this->translator = $translator;
         $this->entityManager = $entityManager;
         $this->settingsUtils = $settingsUtils;
         $this->setDescription('Cleans up the data for use in demos');
+        $this->encoder = $encoder;
     }
 
     /**
@@ -169,6 +174,18 @@ class DemoDataCommand extends Command
 
         $db->query('SET FOREIGN_KEY_CHECKS=1');
         $db->commit();
+
+        // Truncate the adminlog to protect the innocent
+        $db->query('TRUNCATE adminlog');
+
+        // Create a new guest user for the demo
+        $guestUser = new App\Entity\Radmin\User();
+        $guestUser->setUsername('guest');
+        $guestUser->setPassword($this->encoder->encodePassword($user, 'guest'));
+        $this->entityManager->persist($guestUser);
+        $this->entityManager->flush();
+
+        // TODO set setting 'demosite' to true
 
         // TODO Clear audit log
     }
