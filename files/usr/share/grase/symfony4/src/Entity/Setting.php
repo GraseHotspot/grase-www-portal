@@ -48,6 +48,8 @@ class Setting
     public const NETWORK_DNS_SERVERS = 'networkDNSServers';
     public const NETWORK_BOGUS_NX = 'networkBogusNX'; // IP addresses that are bogus NX records, so should be converted to a NX record
 
+    public const FIRST_RUN_WIZARD_VERSION = 'firstRunWizard';
+
     public const BOOLEAN_SETTINGS = [
     ];
 

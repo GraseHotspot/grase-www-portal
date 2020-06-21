@@ -715,5 +715,59 @@
         <target>__grase.searchResults.title.groups</target>
       </segment>
     </unit>
+    <unit id="1reAlIu" name="grase.command.first-run.skipping">
+      <segment>
+        <source>grase.command.first-run.skipping</source>
+        <target>First run wizard has already run. Please use --force to force run it if you wish to rerun it.</target>
+      </segment>
+    </unit>
+    <unit id="8iRUP_H" name="grase.command.first-run.admin-reset.confirm">
+      <segment>
+        <source>grase.command.first-run.admin-reset.confirm</source>
+        <target>An admin user already exists, are you sure you want to reset the admin user's password?</target>
+      </segment>
+    </unit>
+    <unit id="Q_kzJqo" name="grase.command.first-run.admin-reset.title">
+      <segment>
+        <source>grase.command.first-run.admin-reset.title</source>
+        <target>Reset Admin User Password (username admin)</target>
+      </segment>
+    </unit>
+    <unit id="W5iLtjj" name="grase.command.first-run.admin-reset.password1">
+      <segment>
+        <source>grase.command.first-run.admin-reset.password1</source>
+        <target>Please enter a new password for the admin user</target>
+      </segment>
+    </unit>
+    <unit id="UFyKB5z" name="grase.command.first-run.admin-reset.password2">
+      <segment>
+        <source>grase.command.first-run.admin-reset.password2</source>
+        <target>Confirm the password</target>
+      </segment>
+    </unit>
+    <unit id="9cz_dyg" name="grase.command.first-run.admin-reset.passwords_must_match">
+      <segment>
+        <source>grase.command.first-run.admin-reset.passwords_must_match</source>
+        <target>The password's didn't match.</target>
+      </segment>
+    </unit>
+    <unit id="SXJalzQ" name="grase.command.first-run.admin-reset.success">
+      <segment>
+        <source>grase.command.first-run.admin-reset.success</source>
+        <target>The password has been successfully set!</target>
+      </segment>
+    </unit>
+    <unit id="wH7n3To" name="grase.command.first-run.admin-reset.validationLimit">
+      <segment>
+        <source>grase.command.first-run.admin-reset.validationLimit</source>
+        <target>Too many password validation errors have occurred. First Run Wizard has failed.</target>
+      </segment>
+    </unit>
+    <unit id="R3BtPMe" name="grase.command.first-run.admin-reset.random">
+      <segment>
+        <source>grase.command.first-run.admin-reset.random</source>
+        <target>Admin user password has been set to: {password}</target>
+      </segment>
+    </unit>
   </file>
 </xliff>
