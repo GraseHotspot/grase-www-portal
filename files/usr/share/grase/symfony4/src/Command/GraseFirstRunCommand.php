@@ -2,25 +2,20 @@
 
 namespace App\Command;
 
-use ApiPlatform\Core\DataProvider\Pagination;
 use App\Entity\Radmin\User;
 use App\Entity\Setting;
 use App\Util\GraseConsoleStyle;
 use App\Util\GraseUtil;
 use App\Util\SettingsUtils;
 use Doctrine\ORM\EntityManagerInterface;
-use http\Exception\RuntimeException;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\MakerBundle\Exception\RuntimeCommandException;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\OutputStyle;
-use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Validator\Constraints\EqualTo;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\NotCompromisedPassword;
@@ -53,7 +48,6 @@ class GraseFirstRunCommand extends Command
     /** @var UserPasswordEncoderInterface */
     private $passwordEncoder;
 
-
     private $firstRunWizardVersion;
 
     public function __construct(SettingsUtils $settingsUtils, EntityManagerInterface $entityManager, LoggerInterface $auditLogger, LoggerInterface $logger, TranslatorInterface $translator, UserPasswordEncoderInterface $passwordEncoder)
@@ -65,8 +59,7 @@ class GraseFirstRunCommand extends Command
         $this->logger = $logger;
         $this->passwordEncoder = $passwordEncoder;
         parent::__construct();
-}
-
+    }
 
     protected function configure()
     {
@@ -85,15 +78,15 @@ class GraseFirstRunCommand extends Command
         $io = new GraseConsoleStyle($input, $output);
         $this->firstRunWizardVersion = $this->settingsUtils->getSettingValue(Setting::FIRST_RUN_WIZARD_VERSION);
 
-
         // TODO detect if we're interactive ($input->isInteractive())
 
         if ($this->firstRunWizardVersion < self::$wizardVersion || $input->getOption('force')) {
             $this->runWizard($io, $input);
-            // TODO Set setting version at success
+        // TODO Set setting version at success
         } else {
             $io->warning($this->translator->trans('grase.command.first-run.skipping'));
         }
+
         return 0;
     }
 
@@ -101,17 +94,26 @@ class GraseFirstRunCommand extends Command
     {
         // Questions
         // Set language
+        $this->setLocale($io);
+
         // WAN interface
         // LAN interface
         // IP Address for LAN
         // Set admin password
         $this->setAdminPassword($io, $input);
+    }
 
+    private function setLocale(OutputStyle $io)
+    {
+        $currentLocale = $this->translator->getLocale();
+        $newLocale = $io->ask($this->translator->trans('grase.command.first-run.locale.current', ['current' => $currentLocale]), $currentLocale);
+        if ($newLocale !== $currentLocale) {
+            $this->translator->setLocale($newLocale);
+        }
     }
 
     protected function setupWAN(OutputStyle $io)
     {
-
     }
 
     protected function setupLAN(OutputStyle $io)
@@ -145,7 +147,6 @@ class GraseFirstRunCommand extends Command
         if (!$adminUser) {
             $adminUser = new User();
             $adminUser->setUsername('admin');
-
         }
 
         // Ensure the admin user's role us a superadmin
@@ -154,9 +155,7 @@ class GraseFirstRunCommand extends Command
         if ($randomAdminPassword) {
             $password1 = GraseUtil::randomPassword(10);
             $io->note($this->translator->trans('grase.command.first-run.admin-reset.random', ['password' => $password1]));
-
         } else {
-
             $failedValidations = 0;
 
             do {
@@ -169,10 +168,7 @@ class GraseFirstRunCommand extends Command
                     }
                     $failedValidations++;
                     if ($failedValidations > 5) {
-                        throw new RuntimeCommandException(
-                            $this->translator->trans('grase.command.first-run.admin-reset.validationLimit')
-                        );
-
+                        throw new RuntimeCommandException($this->translator->trans('grase.command.first-run.admin-reset.validationLimit'));
                     }
                 }
             } while (sizeof($validationResults) !== 0);
@@ -183,6 +179,7 @@ class GraseFirstRunCommand extends Command
         $this->em->persist($adminUser);
         $this->em->flush();
         $io->success($this->translator->trans('grase.command.first-run.admin-reset.success'));
+
         return 1;
     }
 
@@ -206,6 +203,6 @@ class GraseFirstRunCommand extends Command
             $errors[] = $this->translator->trans('grase.command.first-run.admin-reset.passwords_must_match');
         }
 
-        return ($errors);
+        return $errors;
     }
 }

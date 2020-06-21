@@ -769,5 +769,11 @@
         <target>Admin user password has been set to: {password}</target>
       </segment>
     </unit>
+    <unit id="r3fLJ._" name="grase.command.first-run.locale.current">
+      <segment>
+        <source>grase.command.first-run.locale.current</source>
+        <target>The current locale is set to '{current}'. Please enter the locale you wish to run this wizard in</target>
+      </segment>
+    </unit>
   </file>
 </xliff>
