@@ -1,4 +1,4 @@
-# 
+#
 # Translators:
 # Nikolaos Papapanagiotou <nikolaosp@gmail.com>, 2015
 # tomas213 <tomas213@gmail.com>, 2013-2015

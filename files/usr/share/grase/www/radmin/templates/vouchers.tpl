@@ -21,11 +21,11 @@ $(document).ready(function(){
                 .attr('type', 'hidden')
                 .attr('name', $(this).attr('name')));
                 // .val('off'));
-        });  
+        });
         });
 
-});    
-{/literal}    
+});
+{/literal}
 </script>
 <table id='vouchersTable' style='display:block;'>
 <thead>
@@ -57,7 +57,7 @@ $(document).ready(function(){
                 <span class="jsremovetablebutton"></span>
                 <span class="jsaddtableremovetext" id="tableaddtext"></span>
             </span> </td>
-</tr>    
+</tr>
 {/foreach}
 
 <tr>
@@ -73,11 +73,11 @@ $(document).ready(function(){
                 <span class="jsaddtablebutton"></span>
                 <span class="jsaddtableremovetext" id="tableaddtext"></span>
             </span> </td>
-</tr>        
+</tr>
 </tbody>
 
 </table>
     <button type="submit" name="submit">{t}Save Settings{/t}</button>
-        
+
 </form>
 {include file="footer.tpl"}

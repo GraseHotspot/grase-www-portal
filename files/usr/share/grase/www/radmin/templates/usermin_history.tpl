@@ -14,19 +14,19 @@
 			<td>Download</td>
 			<td>Uploaded</td>
 			<td>Data Usage</td>
-		</tr>	
+		</tr>
 		</thead>
 		<tbody>
 		{foreach from=$sessions item=session name=sessionsloop}
 		<tr id='session_{$session.RadAcctId}_Row' class="sessionrow {if $smarty.foreach.sessionsloop.iteration is even}even{else}odd{/if}">
 			<td><span>{$session.RadAcctId}</span></td>
 			<td>{$session.AcctStartTime}</td>
-			<td>{$session.AcctStopTime}</td>			
-			<td>{$session.AcctSessionTime|seconds}</td>			
+			<td>{$session.AcctStopTime}</td>
+			<td>{$session.AcctSessionTime|seconds}</td>
 			<td><a class="helpbutton" title='Computers hardware (MAC) address is<br/>{$session.CallingStationId}'>{$session.FramedIPAddress}</a></td>
 			<td>{$session.AcctInputOctets|bytes}</td>
-			<td>{$session.AcctOutputOctets|bytes}</td>			
-			<td>{$session.AcctTotalOctets|bytes}</td>			
+			<td>{$session.AcctOutputOctets|bytes}</td>
+			<td>{$session.AcctTotalOctets|bytes}</td>
 		</tr>
 		{/foreach}
 		</tbody>

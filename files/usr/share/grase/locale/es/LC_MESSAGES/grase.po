@@ -1,4 +1,4 @@
-# 
+#
 # Translators:
 # com <comxmc@gmail.com>, 2013
 # Domingo Gómez <domingoyellas@gmail.com>, 2015

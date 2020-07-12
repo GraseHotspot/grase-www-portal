@@ -28,4 +28,3 @@ build-stamp:
 	dh_testdir
 	$(MAKE)
 	touch $@
-

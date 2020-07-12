@@ -5,7 +5,7 @@ body table {
 }
 
 #logo {
-	background: url('../images/grase.png') bottom left no-repeat;	
+	background: url('../images/grase.png') bottom left no-repeat;
 	position: fixed;
 	bottom: 0;
 	left: 30px;
@@ -42,7 +42,7 @@ z-index: -1;
 
     margin-top: 50px;
     background: url('/grase/radmin/images/hide.png') center no-repeat;
-    
+
     width: 12px;
     height: 100px;
 
@@ -92,7 +92,7 @@ z-index: -1;
 
 #menubar li {
     cursor: pointer;
-    padding: 0; 
+    padding: 0;
     display: block;
 }
 
@@ -118,7 +118,7 @@ z-index: -1;
 }
 
 #menubar a {
-	font-family: "Lucida Sans", Arial, Helvetica, Geneva, sans-serif;  
+	font-family: "Lucida Sans", Arial, Helvetica, Geneva, sans-serif;
     display: block;
 	width: 10em;
 	margin: 0;
@@ -190,35 +190,35 @@ table th {
 .	text-align: center;
 	padding: 0.1em 0.5em;
 	font-size: 120%;
-	font-weight: bolder;	
-	background: #deedf7;	
-}	
+	font-weight: bolder;
+	background: #deedf7;
+}
 
 table td.title {
 	padding-left: 2em;
 	padding-right: 1em;
-}	
+}
 
-th.header { 
-    background-image: url(/grase/images/bg.gif); 
+th.header {
+    background-image: url(/grase/images/bg.gif);
     background-repeat: no-repeat;
     background-position: center right;
     cursor: pointer;
-    font-weight: bold; 
-    padding-right: 20px; 
-    border-right: 1px solid #dad9c7; 
-    margin-left: -1px; 
-} 
+    font-weight: bold;
+    padding-right: 20px;
+    border-right: 1px solid #dad9c7;
+    margin-left: -1px;
+}
 
-th.headerSortDown { 
-    background-image: url(/grase/images/desc.gif); 
-    background-color: #3399FF; 
-} 
+th.headerSortDown {
+    background-image: url(/grase/images/desc.gif);
+    background-color: #3399FF;
+}
 
-th.headerSortUp { 
-    background-image: url(/grase/images/asc.gif); 
-    background-color: #3399FF; 
-} 
+th.headerSortUp {
+    background-image: url(/grase/images/asc.gif);
+    background-color: #3399FF;
+}
 
 #userslist table, #vouchersTable {
     font-size: 70%;
@@ -455,7 +455,7 @@ ul#statusmon li {
 	padding: 0 10px 10px;
 	margin: 0px auto;
 	text-align: left;
-	line-height: 1.4em;	
+	line-height: 1.4em;
 }
 .generalForm label{
 	display: block;
@@ -475,11 +475,11 @@ ul#statusmon li {
 }
 
 .generalForm .mediuminput{
-	width: 110px; 
+	width: 110px;
 }
 
 .generalForm .smallinput{
-	width: 6em; 
+	width: 6em;
 }
 
 
@@ -590,13 +590,13 @@ ul#statusmon li {
 .codemirror-ui-clearfix:after {
      clear: none !important;
  }
- 
+
 /* End CodeMirrorUI Overrides */
 
 dl {
     margin-bottom:50px;
 }
- 
+
 dl dt {
     background:#5f9be3;
     color:#fff;
@@ -606,7 +606,7 @@ dl dt {
     padding:5px;
     width:50px;
 }
- 
+
 dl dd {
     margin:2px 0;
     padding:5px 0;

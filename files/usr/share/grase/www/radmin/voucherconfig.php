@@ -70,9 +70,9 @@ if (isset($_POST['submit'])) {
             }
             // Just loop as trying to process a group without a name is hard so they will just have to reenter those details
             continue;
-            
+
         }
-        
+
         if (!isset($voucherprice[$key])) {
             $error[] = T_("Vouchers need a price");
 
@@ -80,16 +80,16 @@ if (isset($_POST['submit'])) {
 // Don't want to show both errors
                 $error[] = @ validate_num($voucherprice[$key], T_('Invalid price'));
         }
-        
-        
+
+
         if (!(isset($vouchermaxmb[$key]) || isset($vouchermaxtime[$key]))) {
             $warning[] = T_("It is not recommended having vouchers without a data or time limit");
         }
-        
-        
+
+
         // validate limits
         //$error[] = validate_datalimit($groupdatalimit[$key]);
-    
+
         // Silence warnings (@) as we don't care if they are set or not'
         if (!\Grase\Validate::numericLimit($vouchermaxtime[$key])) {
             $error[] = sprintf(T_("Invalid value '%s' for Time Limit"), $vouchermaxtime[$key]);
@@ -97,11 +97,11 @@ if (isset($_POST['submit'])) {
         if (!\Grase\Validate::numericLimit($vouchermaxmb[$key])) {
             $error[] = sprintf(T_("Invalid value '%s' for Data Limit"), $vouchermaxmb[$key]);
         }
-        
+
         // TODO validate groupname, it already comes in in the correct format though
-        
+
         $error = array_filter($error);
-    
+
 
         $vouchersettings[\Grase\Clean::groupName($name)] = array_filter(array(
             'VoucherName' => \Grase\Clean::groupName($name),
@@ -113,11 +113,11 @@ if (isset($_POST['submit'])) {
             'Description' => @ \Grase\Clean::text($voucherdesc[$key]),
             'TopupVoucher' => $vouchertopup[$key] ? true : false,
             'InitVoucher' => $voucherinit[$key] ? true : false,
-            
+
         ));
 
     }
-    
+
     if (sizeof($error) == 0) {
     // No errors. Save groups
         //$Settings->setSetting("groups", serialize($groupexpiries));
@@ -125,17 +125,17 @@ if (isset($_POST['submit'])) {
         //$Settings->setGroup($attributes);
             $Settings->setVoucher($attributes);
         }
-        
+
         // Delete vouchers no longer referenced
         foreach ($Settings->getVoucher() as $oldvoucher => $oldvouchersettings) {
             if (!isset($vouchersettings[$oldvoucher])) {
                 $Settings->deleteVoucher($oldvoucher);
             }
         }
-        
+
         $success[] = T_("Vouchers updated");
     }
-    
+
     $error = array_unique(array_merge($error, $warning));
     if (sizeof($error) > 0) {
         $templateEngine->assign("error", $error);

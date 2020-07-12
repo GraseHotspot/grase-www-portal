@@ -7,12 +7,12 @@
 
 /*
 	Password Strength Algorithm:
-	
+
 	Password Length:
 		5 Points: Less than 4 characters
 		10 Points: 5 to 7 characters
 		25 Points: 8 or more
-		
+
 	Letters:
 		0 Points: No letters
 		10 Points: Letters are all lower case
@@ -22,7 +22,7 @@
 		0 Points: No numbers
 		10 Points: 1 number
 		20 Points: 3 or more numbers
-		
+
 	Characters:
 		0 Points: No characters
 		10 Points: 1 character
@@ -32,9 +32,9 @@
 		2 Points: Letters and numbers
 		3 Points: Letters, numbers, and characters
 		5 Points: Mixed case letters, numbers, and characters
-		
+
 	Password Text Range:
-	
+
 		>= 90: Very Secure
 		>= 80: Secure
 		>= 70: Very Strong
@@ -42,7 +42,7 @@
 		>= 50: Average
 		>= 25: Weak
 		>= 0: Very Weak
-		
+
 */
 
 
@@ -58,7 +58,7 @@ function checkPassword(strPassword)
 {
 	// Reset combination count
 	var nScore = 0;
-	
+
 	// Password length
 	// -- Less than 4 characters
 	if (strPassword.length != 0 && strPassword.length < 5)
@@ -81,16 +81,16 @@ function checkPassword(strPassword)
 	var nLowerCount = countContain(strPassword, m_strLowerCase);
 	var nLowerUpperCount = nUpperCount + nLowerCount;
 	// -- Letters are all lower case
-	if (nUpperCount == 0 && nLowerCount != 0) 
-	{ 
-		nScore += 10; 
+	if (nUpperCount == 0 && nLowerCount != 0)
+	{
+		nScore += 10;
 	}
 	// -- Letters are upper case and lower case
-	else if (nUpperCount != 0 && nLowerCount != 0) 
-	{ 
-		nScore += 20; 
+	else if (nUpperCount != 0 && nLowerCount != 0)
+	{
+		nScore += 20;
 	}
-	
+
 	// Numbers
 	var nNumberCount = countContain(strPassword, m_strNumber);
 	// -- 1 number
@@ -103,20 +103,20 @@ function checkPassword(strPassword)
 	{
 		nScore += 20;
 	}
-	
+
 	// Characters
 	var nCharacterCount = countContain(strPassword, m_strCharacters);
 	// -- 1 character
 	if (nCharacterCount == 1)
 	{
 		nScore += 10;
-	}	
+	}
 	// -- More than 1 character
 	if (nCharacterCount > 1)
 	{
 		nScore += 25;
 	}
-	
+
 	// Bonus
 	// -- Letters and numbers
 	if (nNumberCount != 0 && nLowerUpperCount != 0)
@@ -133,23 +133,23 @@ function checkPassword(strPassword)
 	{
 		nScore += 5;
 	}
-	
-	
+
+
 	return nScore;
 }
- 
-// Runs password through check and then updates GUI 
-function runPassword(strPassword, strFieldID) 
+
+// Runs password through check and then updates GUI
+function runPassword(strPassword, strFieldID)
 {
 	// Check password
 	var nScore = checkPassword(strPassword);
-	
+
 	 // Get controls
-    	var ctlBar = document.getElementById(strFieldID + "_bar"); 
+    	var ctlBar = document.getElementById(strFieldID + "_bar");
     	var ctlText = document.getElementById(strFieldID + "_text");
     	if (!ctlBar || !ctlText)
     		return;
-    	
+
     	// Set new width
     	ctlBar.style.width = nScore + "%";
 
@@ -199,27 +199,25 @@ function runPassword(strPassword, strFieldID)
 	ctlBar.style.backgroundColor = strColor;
 	ctlText.innerHTML = "<span style='color: " + strColor + ";'>" + strText + " - " + nScore + "</span>";
 }
- 
+
 // Checks a string for a list of characters
 function countContain(strPassword, strCheck)
-{ 
+{
 	// Declare variables
 	var nCount = 0;
-	
-	for (i = 0; i < strPassword.length; i++) 
+
+	for (i = 0; i < strPassword.length; i++)
 	{
-		if (strCheck.indexOf(strPassword.charAt(i)) > -1) 
-		{ 
+		if (strCheck.indexOf(strPassword.charAt(i)) > -1)
+		{
 	        	nCount++;
-		} 
-	} 
- 
-	return nCount; 
-} 
- 
- 
- 
- 
- 
+		}
+	}
+
+	return nCount;
+}
+
+
+
 
 

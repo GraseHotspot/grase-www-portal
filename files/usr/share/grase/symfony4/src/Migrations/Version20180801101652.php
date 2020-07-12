@@ -29,12 +29,12 @@ final class Version20180801101652 extends AbstractMigration
         $this->addSql('ALTER TABLE auth
           ADD role VARCHAR(25) NOT NULL,
           CHANGE username username VARCHAR(50) NOT NULL');
-        $this->addSql('UPDATE auth SET role =  
+        $this->addSql('UPDATE auth SET role =
             CASE
               WHEN accesslevel = 1 THEN \'ROLE_SUPERADMIN\'
               WHEN accesslevel = 2 THEN \'ROLE_ADMIN\'
               WHEN accesslevel = 4 THEN \'ROLE_USER\'
-              ELSE \'ROLE_USER\' 
+              ELSE \'ROLE_USER\'
             END');
 
         $this->addSql('DROP INDEX password ON auth');

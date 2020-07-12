@@ -52,9 +52,9 @@ function validate_uucptimerange($timeranges)
     // We can have multiple time ranges, so split on comma (and |)
     if (trim($timeranges)) {
         $timerange = str_replace('|', ',', $timeranges);
-        
+
         $timerange = explode(',', $timerange);
-        
+
         // For each range, check we start with valid start, followed by range
         foreach ($timerange as $range) {
             $result = preg_match('/^(Su|Mo|Tu|We|Th|Fr|Sa|Sun|Mon|Tue|Wed|Thur|Fri|Sat|Wk|Any|Al|Never)(\d{4}-\d{4})?$/', $range);
@@ -169,30 +169,30 @@ function sort_users_into_groups($users)
     $expiredusers = array();
     $lockedusers = array();
     $lowusers = array();
-    
+
     foreach ($users as $user) {
         if (isset($user['Group']) && $user['Group'] != '') {
             $users_group[$user['Group']][] = $user;
         } else {
             $users_group['Nogroup'][] = $user;
         }
-        
-        
+
+
         if ($user['account_status'] == EXPIRED_ACCOUNT) {
             $expiredusers[] = $user;
         }
-        
+
         if ($user['account_status'] == LOCKED_ACCOUNT) {
             $lockedusers[] = $user;
         }
-        
+
 
         if ($user['account_status'] == LOWDATA_ACCOUNT || $user['account_status'] == LOWTIME_ACCOUNT) {
             $lowusers[] = $user;
         }
-        
+
     }
-    
+
     // Sort array alphabetically
     ksort($users_group);
 
@@ -200,15 +200,15 @@ function sort_users_into_groups($users)
     if (sizeof($expiredusers) > 0) {
         $users_group[T_("Expired")] = $expiredusers;
     }
-        
+
     if (sizeof($lockedusers) > 0) {
         $users_group[T_("Out Of Quota")] = $lockedusers;
     }
-        
+
     if (sizeof($lowusers) > 0) {
         $users_group[T_("Low Quota")] = $lowusers;
     }
-        
+
     return $users_group;
 }
 
@@ -233,7 +233,7 @@ function clean_numberarray($numberarray)
     foreach ($numarray as $num) {
         $numericarray[] = clean_number($num);
     }
-        
+
         return implode(" ", $numericarray);
 }
 

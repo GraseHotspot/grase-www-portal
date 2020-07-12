@@ -72,11 +72,11 @@ function do_file($file)
         $content,
         $matches
     );
-    
+
     for ($i=0; $i < count($matches[0]); $i++) {
         // TODO: add line number
         echo "/* $file */\n"; // credit: Mike van Lammeren 2005-02-14
-        
+
         if (preg_match('/plural\s*=\s*["\']?\s*(.[^\"\']*)\s*["\']?/', $matches[2][$i], $match)) {
             echo 'ngettext("'.fs($matches[3][$i]).'","'.fs($match[1]).'",x);'."\n";
         } else {
@@ -105,7 +105,7 @@ function do_dir($dir)
         } else {
 // if file, parse only if extension is matched
             $pi = pathinfo($entry);
-            
+
             if (isset($pi['extension']) && in_array($pi['extension'], $GLOBALS['extensions'])) {
                 do_file($entry);
             }

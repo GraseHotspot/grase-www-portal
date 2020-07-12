@@ -19,18 +19,18 @@
 function array_sort_by_fields(&$data, $sortby)
 {
     static $sort_funcs = array();
-    
+
     if (empty($sort_funcs[$sortby])) {
         $code = "\$c=0;";
-        
+
         foreach (explode(',', $sortby) as $key) {
             $d = '1';
-            
+
             if (substr($key, 0, 1) == '-') {
                 $d = '-1';
                 $key = substr($key, 1);
             }
-            
+
             if (substr($key, 0, 1) == '#') {
                 $key = substr($key, 1);
                 $code.= "if ( \$a['$key'] > \$b['$key']) return $d * 1;\n";
@@ -55,13 +55,13 @@ function array_sort_by_fields(&$data, $sortby)
 function smarty_modifier_sortby($arrData, $sortfields)
 {
     array_sort_by_fields($arrData, $sortfields);
-    
+
     return $arrData;
 }
 
 function smarty_outputfilter_strip($output, &$smarty)
 {
-    
+
     return trim(preg_replace(array(
         "`>\s+`",
         "`\s+<`"

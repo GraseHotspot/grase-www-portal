@@ -8,10 +8,10 @@ header("Content-Type: text/javascript;");
 
 if ($_GET['username']) {
     $user = DatabaseFunctions::getInstance()->getUserDetails(mysql_real_escape_string($_GET['username'])); // TODO: sanitize INPUT
-    
+
     $maxoctets = "";
     $timelimit = "";
-    
+
     // TODO Show remaining time for hour/day limits
     // TODO Group limits
     if (isset($user['Max-Octets'])) {
@@ -20,7 +20,7 @@ if ($_GET['username']) {
     if (isset($user['Max-All-Session'])) {
         $timelimit = $user['Max-All-Session'];
     }
-    
+
     if (isset($user['GroupSettings']['MaxOctets']) && ! $maxoctets) {
         $maxoctets = $user['GroupSettings']['MaxOctets'];
     }
@@ -28,7 +28,7 @@ if ($_GET['username']) {
         $timelimit = $user['GroupSettings']['MaxSeconds'];
     }
 
-    
+
 ?>
 chilliJSON.reply({"version":"1.0","clientState":1,"user_details":{"monthlyusagelimit":"<?php echo $maxoctets;?>","monthlytimelimit":"<?php echo $timelimit;?>"}})
 <?php

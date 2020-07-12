@@ -53,7 +53,7 @@ $singleTicketPrintOptions = array(
 );
 
 
-// Templates    
+// Templates
 $templateTicketPrintOptions = array(
     'preTicketHTML' => array(
         "label" => T_("Pre Ticket HTML"),

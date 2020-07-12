@@ -31,7 +31,7 @@
     {/foreach}
 
 <p class="nojshelp">{t}For each of the following items, if you need multiple values you can submit the form and it will append a blank input below the last valid value{/t}<p>
-    
+
     {foreach from=$multinetworkoptions item=attributes key=option name=multiloop}
     <div>
         <label for='{$option}'>{$attributes.label}</label>
@@ -41,7 +41,7 @@
             <span class="jsremove">
                 <span class="jsremovebutton"></span>
                 <span class="jsaddremovetext" id="addtext"></span>
-            </span>                 
+            </span>
         </div>
         {/foreach}
         <div class="jsmultioption">
@@ -49,14 +49,14 @@
             <span class="jsadd">
                 <span class="jsaddbutton"></span>
                 <span class="jsaddremovetext" id="addtext"></span>
-            </span>            
+            </span>
         </div>
         <span id="{$option}Info">{$attributes.description}</span>
 
     </div>
-    {/foreach}    
+    {/foreach}
 
-    <button type="submit" name="submit">{t}Save Settings{/t}</button> 
+    <button type="submit" name="submit">{t}Save Settings{/t}</button>
 
 </form>
 

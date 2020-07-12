@@ -59,7 +59,7 @@ if ($Settings->getSetting('autocreategroup')) {
     * challenge
     * userurl
     * res
-    
+
 */
 
 if (!isset($_GET['res'])) {
@@ -92,7 +92,7 @@ switch($res)
             exit;
         }
         break;
-    
+
     case 'failed':
         // Login failed? Show error and display login again
         $reply = array("Login Failed");
@@ -101,13 +101,13 @@ switch($res)
         }
         $smarty->assign("error", $reply);
         //break; // Fall through?
-        
+
     case 'notyet':
     case 'logoff':
         // Display login
         setup_login_form();
         break;
-        
+
     case 'success':
         //Logged in. Try popup and redirect to userurl
         // If this is an automac login (check UID vs MAC) then we skip the
@@ -121,7 +121,7 @@ switch($res)
         $smarty->display('loggedin.tpl');
         exit;
         break;
-        
+
 }
 
 

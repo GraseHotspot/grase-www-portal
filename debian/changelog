@@ -26,7 +26,7 @@ grase-www-portal (3.8.0) purewhite; urgency=low
   * Fix bug in CRON logging timestamp
   * Migrating report charts to Google Chart API
   * Fix CRON job that deletes expired users, it was missing users who expired
-    at the start of the month 
+    at the start of the month
   * Install and use Composer and Bower to manage external dependencies
   * Decrease Admin interval to 10 minutes to allow settings to take effect
     sooner
@@ -69,7 +69,7 @@ grase-www-portal (3.7.7.9) purewhite; urgency=medium
 
 grase-www-portal (3.7.7.8) purewhite; urgency=medium
 
-  * Actually bump version number 
+  * Actually bump version number
 
  -- Tim White <tim@grasehotspot.org>  Wed, 30 Jul 2014 06:09:54 +1000
 
@@ -87,7 +87,7 @@ grase-www-portal (3.7.7.6) purewhite; urgency=low
 
 grase-www-portal (3.7.7.5) purewhite; urgency=low
 
-  * Fix case insensitive usernames to still show correct usage 
+  * Fix case insensitive usernames to still show correct usage
 
  -- Tim White <tim@grasehotspot.org>  Sat, 12 Jan 2013 07:33:52 +1000
 
@@ -142,7 +142,7 @@ grase-www-portal (3.7.5) purewhite; urgency=low
 grase-www-portal (3.7.4-dev5) purewhite; urgency=low
 
   * Cron archive scripts allowed negative time value which allowed usage after using all allowed time
-  * Fix Reports some more 
+  * Fix Reports some more
 
  -- Tim White <tim@grasehotspot.org>  Sat, 30 Jun 2012 07:59:03 +1000
 
@@ -203,7 +203,7 @@ grase-www-portal (3.7.0) purewhite; urgency=low
   * Fix for Group Attributes being in radreply instead of radcheck
   * Allow ether Apache or Nginx as the webserver (new conf packages split out)
   * Multiple Admin levels
-  * SQL Fix 
+  * SQL Fix
   * Small fix for translated sections
   * PDF Printing instead of HTML printing for tickets
   * Include TCPDF Library for PDF creation

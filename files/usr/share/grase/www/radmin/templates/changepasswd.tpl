@@ -4,7 +4,7 @@
 <div id="passwdChangeForm">
 
 
-<form method='post' id='passwdChange' action='?' class='generalForm'> 
+<form method='post' id='passwdChange' action='?' class='generalForm'>
 <h3>{t}Change Password{/t}</h3>
 <div>
     <label for='Username'>{t}Username{/t}</label>
@@ -33,7 +33,7 @@
     <button type="submit" name="changepasswordsubmit" value="{t}Change Password{/t}"><img src="/grase/images/icons/textfield_key.png" alt=""/>{t}Change Password{/t}</button>
     <span>&nbsp;</span>
 </div>
-</form> 
+</form>
 </div>
 
 <div id="AdminUsers">
@@ -55,12 +55,12 @@
     <td>{if $LoggedInUsername != $user.username}<form method='post' id='DeleteUser{$user.username}' action='?' class='generalForm'>
         <input type="hidden" value="{$user.username}" name="deleteusername"/>
         <span><button class="negative" type="submit" name="deleteadminusersubmit" value="{t user=$user.username}Delete %1{/t}" onclick="return confirm('{t user=$user.username}Are you sure you want to delete %1?{/t}');"><img src="/grase/images/icons/cross.png" alt=""/>{t user=$user.username}Delete %1{/t}</button></span>
-    </form>        
+    </form>
     {else}
         <span>{t}Cannot delete current user{/t}</span>
     {/if}
     </td>
-</tr>    
+</tr>
 {/foreach}
 </tbody>
 </table>
@@ -115,7 +115,7 @@
     {else}
         <span>{t}Cannot delete current user{/t}</span>
     {/if}
-    
+
 
 </div>
     </form>

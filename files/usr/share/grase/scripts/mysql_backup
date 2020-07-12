@@ -30,7 +30,7 @@ mysqldump --force -h $radius_sql_server -u $radius_sql_username $radius_sql_pass
 mysqldump --force -h $radmin_sql_server -u $radmin_sql_username $radmin_sql_password $radmin_sql_database -r $radmin_backup_file
 
 tar -zcvf $backup_file $radius_backup_file $radmin_backup_file && rm $radius_backup_file $radmin_backup_file
-#gzip -f -9 $backup_dir$backup_file 
+#gzip -f -9 $backup_dir$backup_file
 #compressed_backup_file="$backup_file.gz"
 
 #location=$(cat /var/www/radmin/configs/site_settings/location)
@@ -55,4 +55,3 @@ hostname=$(hostname)
 # TODO Offsite backups to s3cmd
 # As we are in the backup_dir, we can use the sync command to make sure the files are correctly uploaded, only new files will be uploaded
 # s3cmd sync ./ $s3bucket
-

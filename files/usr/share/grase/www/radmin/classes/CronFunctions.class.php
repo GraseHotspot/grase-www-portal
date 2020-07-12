@@ -20,15 +20,15 @@
     along with GRASE Hotspot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-/* CronFunctions is mostly an upgrade and maintenace class, makes it easy to 
- * upgrade database features and do regular cleaning. Cron is called after a 
+/* CronFunctions is mostly an upgrade and maintenace class, makes it easy to
+ * upgrade database features and do regular cleaning. Cron is called after a
  * package update as well allowing for upgrades at each install
  */
 
 class CronFunctions extends DatabaseFunctions
 {
     /* Inherited from DatabaseFunctions
-     * 
+     *
      * $db is Radius DB handle
      */
 

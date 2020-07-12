@@ -1,7 +1,7 @@
-// JS function for correct sorting of table numbers 
-var TableTextExtraction = function(node)  
-{  
-    // extract data from markup and return it  
+// JS function for correct sorting of table numbers
+var TableTextExtraction = function(node)
+{
+    // extract data from markup and return it
     if(node.title != "")
     {
         return node.title;
@@ -11,8 +11,8 @@ var TableTextExtraction = function(node)
     {
         return '-1';
     }
-    return node.textContent; 
-}  
+    return node.textContent;
+}
 
 $(document).ready(function(){
 
@@ -21,7 +21,7 @@ $(document).ready(function(){
         return false;
     });*/
 
-    // Simple jQuery to create help dialogs out of all elements with class helpbutton and a title attribute		
+    // Simple jQuery to create help dialogs out of all elements with class helpbutton and a title attribute
 	$('.helpbutton[title]').each(function(index, element){
 	    content = $(element).attr('title');
 	    //$(element).attr('title', '');
@@ -31,7 +31,7 @@ $(document).ready(function(){
 	        $('#helpdialog'+index).dialog('open');
 	    })
 	});
-	
+
 	$('.helptext').each(function(index, element){
 	    content = $(element).html();
 	    createLargeHelpDialog('helpdialog_' + index, 'Help', content);
@@ -42,11 +42,11 @@ $(document).ready(function(){
         $(element).html('');
         $(element).addClass("ui-icon ui-icon-info");
 	});
-	
+
 	// Remove help text that is for those not using JS
-	
+
     $(".nojshelp").remove();
-    
+
     // Make multi remove elements remoable
     jsremove();
 
@@ -63,13 +63,13 @@ $(document).ready(function(){
         $(this).removeClass("jsadd").addClass("jsremove").unbind('click');
         //.val('');
         jsremove();
-    
-    });	
-    
+
+    });
+
     $(".jsadd").show();
     $(".jsremove").show();
-    
-    
+
+
     // Multi element add/remove for tables
     // Make multi remove elements remoable
     tablejsremove();
@@ -86,20 +86,20 @@ $(document).ready(function(){
         $(this).removeClass("jsaddtable").addClass("jsremovetable").unbind('click');
         //.val('');
         tablejsremove();
-    
-    });	
-    
+
+    });
+
     $(".jsaddtable").show();
-    $(".jsremovetable").show();    
-    
-    
+    $(".jsremovetable").show();
+
+
     // Make tables of users into tabbed display
     $("#userslist").tabs();
-    
+
     // Make group list tabbed
     $("#groupSettingsNewGroup").hide();
     var tab_counter = 1;
-    
+
     var $grouptabs = $("#groupslist").tabs({
         tabTemplate: "<li><a href='#{href}'>#{label}</a> <span class='ui-icon ui-icon-close'>Remove Tab</span></li>"/*,
 	add: function( event, ui ) {
@@ -107,24 +107,24 @@ $(document).ready(function(){
 	        //$( ui.panel ).append( $("#groupSettings_NewGroup").html() );
 	}*/
     });
-        
-        // Add each tab        
+
+        // Add each tab
     $("div[id*=groupSettings_]").each(function(index) {
             $("#groupslist").tabs("add", "#" + $(this).attr('id'), $(this).children('.groupnameinput').val() );
     });
-    
+
         // Make close buttons on tabs work
         //TODO migrate live to .on event
         $( document ).on( "click", "#groupslist span.ui-icon-close", function() {
 			var index = $( "li", $grouptabs ).index( $( this ).parent() );
 			$grouptabs.tabs( "remove", index );
 		});
-	
-	
+
+
 	function addTab() {
 	        $("#groupSettingsNewGroup").clone().attr('id','groupSettingsDyn_' + tab_counter).show().appendTo("#groupslist");
 	        //$("#tabs-2").html($("#groupSettings_NewGroup").html());
-                $grouptabs.tabs( "add", "#groupSettingsDyn_" + tab_counter, "New Group" );		
+                $grouptabs.tabs( "add", "#groupSettingsDyn_" + tab_counter, "New Group" );
 
 		tab_counter++;
 	        $(".groupnameinput").change( function() {
@@ -143,7 +143,7 @@ $(document).ready(function(){
         $(".groupnameinput").change( function() {
                 $('a[href=#' + $(this).parent().attr("id") + ']').text($(this).val());
         });
-        
+
         /*TODO update to 1.7 and replace above with below
                 $("#groupslist").on("change", ".groupnameinput", function() {
                 $('a[href=#' + $(this).parent().attr("id") + ']').text($(this).val());
@@ -153,7 +153,7 @@ $(document).ready(function(){
 
 
 
-    
+
     // Group properties in edit user collapsed
 	$('.collapseheader').click(function() {
 		$(this).next().toggle('slide' , { direction: "up" });
@@ -162,29 +162,29 @@ $(document).ready(function(){
             icons: {
                 secondary: "ui-icon-triangle-1-s"
             }
-        }).next().hide();    
-    
-    
+        }).next().hide();
+
+
     // Stuff for displaying text in empty field until there is content
     $(".datacost_item").click(function() {
         $("#MaxMb").val($(this).attr("title"));
     });
-    
+
     $(".timecost_item").click(function() {
         $("#MaxTime").val($(this).attr("title"));
-    });    
-    
+    });
+
     /*
         1.) Form Field Value Swap
     */
 
-    swapValues = [];    
+    swapValues = [];
     $(".default_swap").each(function(i){
         swapValues[i] = $(this).attr("title");
         if ($.trim($(this).val()) == "") {
             $(this).val(swapValues[i]);
         }
-        
+
         $(this).focus(function(){
             if ($(this).val() == swapValues[i]) {
                 $(this).val("");
@@ -194,78 +194,78 @@ $(document).ready(function(){
                 $(this).val(swapValues[i]);
             }
         });
-    });    
-    
-    // Sort and stripe tables 
-    $.tablesorter.defaults.widgets = ['zebra']; 
-    
+    });
+
+    // Sort and stripe tables
+    $.tablesorter.defaults.widgets = ['zebra'];
+
     $(".stripeMe tbody tr").mouseover(function() {$(this).addClass("ui-state-highlight");}).mouseout(function() {$(this).removeClass("ui-state-highlight");});
     //$(".stripeMe tr:even").addClass("alt");
-            
+
     $(".stripeMe").tablesorter({
         textExtraction: TableTextExtraction
     }); // {sortList: [[0,0], [1,0]]});
 
     // Sidebar menu collapse/expander for submenu items
-    
-        
+
+
         function collapse(submenuid, fast)
         {
             if(fast)
             {
-                $('#'+submenuid).hide();            
+                $('#'+submenuid).hide();
             }
             else
             {
             $('#'+submenuid).hide('slideUp');
             }
             $('#'+submenuid).prevAll('.expand').show();
-            $('#'+submenuid).prevAll('.collapse').hide();           
-            $.cookie(submenuid, 'collapsed');            
+            $('#'+submenuid).prevAll('.collapse').hide();
+            $.cookie(submenuid, 'collapsed');
         }
-        
+
         function expand(submenuid)
         {
             $('#'+submenuid).show('slideDown');
             $('#'+submenuid).prevAll('.expand').hide();
             $('#'+submenuid).prevAll('.collapse').show();
-            $.cookie(submenuid, 'expanded');           
-        }        
-        
+            $.cookie(submenuid, 'expanded');
+        }
+
         $(".collapse").click(function() {
             collapse($(this).nextAll('.submenu').attr('id'));
         });
-        
+
         $(".expand").click(function() {
             expand($(this).nextAll('.submenu').attr('id'));
         });
-        
+
         $(".submenu").each(function(){
             thisid = $(this).attr('id');
             cookievalue = $.cookie(thisid);
             if(cookievalue == 'collapsed'){
                 collapse(thisid, 1);
-             
+
             }else{
-                expand(thisid);            
+                expand(thisid);
             }
         });
-        
+
         $(".topmenu").click(function(){
             expand('submenu'+$(this).attr('id'));
         });
-        
-        expand($(".ui-state-active").parent('.submenu').attr('id'));    
-    
-    
 
-    
+        expand($(".ui-state-active").parent('.submenu').attr('id'));
+
+
+
+
     // Setup dialog box for help messages
     $('.dialog').dialog({
 	        autoOpen: false,
 	        modal: true
-        });  
-        
+        });
+
     // Table filter for admin table
 
     var theTable = $('#AdminlogTable')
@@ -290,7 +290,7 @@ function createHelpDialog(id, title, content)
     }).dialog({
         autoOpen: false,
         title: title,
-        resizable: false,        
+        resizable: false,
     })
 }
 
@@ -303,7 +303,7 @@ function createLargeHelpDialog(id, title, content)
     }).dialog({
         autoOpen: false,
         title: title,
-        resizable: true,  
+        resizable: true,
         width: 450,
         show: 'fade',
         hide: 'fade',
@@ -315,12 +315,12 @@ function createLargeHelpDialog(id, title, content)
 function jsremove(){
     $(".jsremove").click(function(){
         //$(this).prev().remove();
-        //$(this).next().remove();            
+        //$(this).next().remove();
         //$(this).remove();
         confirm("Delete item?") &&            // TODO: Translation
         $(this).parent().remove();
-    
-    });            
+
+    });
     $(".jsremovebutton").addClass("ui-icon ui-icon-minus").removeClass("ui-icon-plus");
     //console.log($(".jsremove"));
 }
@@ -328,14 +328,12 @@ function jsremove(){
 function tablejsremove(){
     $(".jsremovetable").click(function(){
         //$(this).prev().remove();
-        //$(this).next().remove();            
+        //$(this).next().remove();
         //$(this).remove();
         confirm("Delete item?") &&            // TODO: Translation
         $(this).parent().parent().remove();
-    
-    });            
+
+    });
     $(".jsremovetablebutton").addClass("ui-icon ui-icon-minus").removeClass("ui-icon-plus");
     //console.log($(".jsremove"));
 }
-
-

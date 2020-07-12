@@ -1,4 +1,4 @@
-# 
+#
 # Translators:
 # djonrw <hostmaster@djonrw.de>, 2014
 # jonnyboy <inactive+jonnyboy@transifex.com>, 2014

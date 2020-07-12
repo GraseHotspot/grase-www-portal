@@ -19,7 +19,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA *
  * ------------------------------------------------------------------------- *
  *
- * This command line script rips gettext strings from smarty file, and prints them to stdout in C format, 
+ * This command line script rips gettext strings from smarty file, and prints them to stdout in C format,
  * that can later be used with the standard gettext tools.
  *
  * Usage:
@@ -67,7 +67,7 @@ function do_file($file)
 	global $ldq, $rdq, $cmd;
 
 	preg_match_all("/{$ldq}\s*({$cmd})\s*([^{$rdq}]*){$rdq}([^{$ldq}]*){$ldq}\/\\1{$rdq}/", $content, $matches);
-	
+
 	for ($i=0; $i < count($matches[0]); $i++) {
 		if (preg_match('/plural\s*=\s*["\']?\s*(.[^\"\']*)\s*["\']?/', $matches[2][$i], $match)) {
 			print 'ngettext("'.fs($matches[3][$i]).'","'.fs($match[1]).'",x);'."\n";
@@ -93,7 +93,7 @@ function do_dir($dir)
 			do_dir($entry);
 		} else { // if file, parse only if extension is matched
 			$pi = pathinfo($entry);
-			
+
 			if (isset($pi['extension']) && in_array($pi['extension'], $GLOBALS['extensions'])) {
 				do_file($entry);
 			}

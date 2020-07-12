@@ -25,7 +25,7 @@ if (queryObj['uamip'] != null && queryObj['uamport'] != null)
         script.src = 'js.php?js=chilliLib.js';
 
         var head = document.getElementsByTagName("head")[0];
-        if (head == null) head = document.body; 
+        if (head == null) head = document.body;
 	    head.appendChild(script);
     }
     script.src = 'js.php?js=chilliLib.js';

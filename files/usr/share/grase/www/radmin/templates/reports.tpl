@@ -16,16 +16,16 @@
         drawCurrentMonthChart();
         drawAllMonthsChart();
       }
-      
-      
+
+
       function drawCurrentMonthChart() {
       {/literal}
         var data = google.visualization.arrayToDataTable({$thismonthupdownarray});
         {literal}
-        
+
         var dashboard = new google.visualization.Dashboard(
             document.getElementById('thismonthuserdatadashboard'));
-            
+
         var dateSlider = new google.visualization.ControlWrapper({
             'controlType': 'NumberRangeFilter',
             'containerId': 'thismonthuserdataslider',
@@ -44,20 +44,20 @@
                   hAxis: {title: 'Day', titleTextStyle: {color: 'red'}}
                 }
             });
-            
+
         dashboard.bind(dateSlider, chart);
         dashboard.draw(data);
       }
-      
+
 
       function drawAllMonthsChart() {
       {/literal}
         var data = google.visualization.arrayToDataTable({$userusagebymontharray});
         {literal}
-        
+
         var dashboard = new google.visualization.Dashboard(
             document.getElementById('allmonthsdatadashboard'));
-            
+
         var dataSlider = new google.visualization.ControlWrapper({
             'controlType': 'NumberRangeFilter',
             'containerId': 'allmonthsdataslider',
@@ -65,7 +65,7 @@
                 'filterColumnLabel': 'Total Data'
             }
         });
-        
+
         var timeSlider = new google.visualization.ControlWrapper({
             'controlType': 'NumberRangeFilter',
             'containerId': 'allmonthsdatatimeslider',
@@ -73,8 +73,8 @@
                 'filterColumnLabel': 'Total Time'
             }
         });
-        
-        
+
+
         var monthFilter = new google.visualization.ControlWrapper({
             'controlType': 'CategoryFilter',
             'containerId': 'allmonthsdatamonthfilter',
@@ -82,21 +82,21 @@
                 'filterColumnLabel': 'Month'
             }
         });
-                
-        
+
+
         var table = new google.visualization.ChartWrapper({
             'chartType': 'Table',
             'containerId': 'allmonthsdatatable',
             'options': {
               page: 'enable'
             }
-          });        
+          });
 
         var chart = new google.visualization.ChartWrapper({
             'chartType': 'ColumnChart',
             'containerId': 'allmonthsdatachart',
             'view': {'columns': [0, 2, 3]},
-            
+
             'options':{
                 vAxes:[
                     {title:'Data (Mb\'s)', minValue: 0, viewWindowMode: "explicit", viewWindow:{ min: 0 }}, // Nothing specified for axis 0
@@ -107,7 +107,7 @@
                   series:{
                     0:{targetAxisIndex:0},
                     1:{targetAxisIndex:1}
-                    
+
                   },
                   hAxis: {title: 'User'}
                 }
@@ -116,7 +116,7 @@
         dashboard.bind([dataSlider, timeSlider, monthFilter], [chart, table]);
         dashboard.draw(data);
       }
-      {/literal}      
+      {/literal}
     </script>
 
 
@@ -133,8 +133,8 @@
     <div id="allmonthsdatachart" style="height:400px; width:100%">&nbsp;</div>
     <div id="allmonthsdatamonthfilter">&nbsp;</div>
     <div id="allmonthsdataslider" style="width:100%">&nbsp;</div>
-    <div id="allmonthsdatatimeslider">&nbsp;</div>    
-    <div id="allmonthsdatatable">&nbsp;</div>    
+    <div id="allmonthsdatatimeslider">&nbsp;</div>
+    <div id="allmonthsdatatable">&nbsp;</div>
 </div>
 
 

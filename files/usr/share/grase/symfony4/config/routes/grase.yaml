@@ -89,4 +89,3 @@ grase_uam_toslogin:
 #grase_security:
 #    resource: "@App/Controller/SecurityController.php"
 #    type:     annotation
-

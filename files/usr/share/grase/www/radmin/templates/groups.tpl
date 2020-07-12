@@ -27,12 +27,12 @@
 
     <div>
       <h3>{t}Groups{/t}</h3>
-      
+
       <button id="addgroup">New Group</button>
-        
+
       <div id='groupslist' style="overflow:hidden;">
         <ul id="tabselector">
-                 
+
         </ul>
 
     {foreach from=$groupsettings item=settings key=groupname name=groupsettingsloop}
@@ -91,21 +91,21 @@
 
             <label>{t}Recurring Data Limit (MiB){/t}</label>
             {html_options name="Recur_Data_Limit[]" options=$Datavals}{t}per{/t}
-            {html_options name="Recur_Data[]" options=$Recurtimes}            
-            
+            {html_options name="Recur_Data[]" options=$Recurtimes}
+
             <label>{t}Recurring Time Limit (Minutes){/t}</label>
             {html_options name="Recur_Time_Limit[]" options=$Timevals }{t}per{/t}
             {html_options name="Recur_Time[]" options=$Recurtimes}
-            
+
             <label>{t}Bandwidth Limit Down{/t}</label>
-            {html_options name="Bandwidth_Down_Limit[]" options=$Bandwidthvals}           
-            
+            {html_options name="Bandwidth_Down_Limit[]" options=$Bandwidthvals}
+
             <label>{t}Bandwidth Limit Up{/t}</label>
             {html_options name="Bandwidth_Up_Limit[]" options=$Bandwidthvals}
-            
+
             <label>{t}Number of simultaneous logins. Leave Blank for unlimited{/t}</label>
             <input type="number" min="1"  placeholder="{t}Unlimited{/t}" name="SimultaneousUse[]" value=""/>
-            
+
         </div>
         <span id="groupsInfo"></span>
 

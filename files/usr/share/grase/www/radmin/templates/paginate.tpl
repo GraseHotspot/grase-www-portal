@@ -1,15 +1,15 @@
 {if $pages > 0}
 <div class='paginate'>
 
- 
+
 
 {if $currentpage > 0}
  <a href="?allsessions&page=0">{t}First{/t}</a>
- <a href="?allsessions&page={$currentpage-1}">{t}Prev{/t}</a> 
+ <a href="?allsessions&page={$currentpage-1}">{t}Prev{/t}</a>
 {/if}
 {*{t 1=$currentpage 2=$pages}Displaying page %1 of %2{/t} *}
 {if $currentpage < $pages}
- <a href="?allsessions&page={$currentpage+1}">{t}Next{/t}</a> 
+ <a href="?allsessions&page={$currentpage+1}">{t}Next{/t}</a>
  <a href="?allsessions&page={$pages}">{t}Last{/t}</a>
 {/if}
 <br/>

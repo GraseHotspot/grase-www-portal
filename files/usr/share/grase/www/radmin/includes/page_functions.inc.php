@@ -64,11 +64,11 @@ function createmenuitems()
             'reports' => array("href" => "reports", "label" => T_("Reports")),
             'dhcpleases' => array("href" => "dhcpleases", "label" =>T_("DHCP Leases")),
             //'monthly_accounts' => array("href" => "datausage", "label" => "Monthly Reports"); // Not working atm TODO:
-            
+
         )
-        
+
         );
-    
+
     $menubar['settings'] = array("href" => "settings", "label" => T_("Settings"),
         "submenu" => array(
             'uploadlogo' => array("href" => "uploadlogo", "label" => T_("Site Logo") ),
@@ -80,27 +80,27 @@ function createmenuitems()
             //'vouchers' => array("href" => "voucherconfig", "label" => T_("Vouchers") ), // DISABLED FOR RELEASE AS NOT YET READY FOR PRODUCTION
 
         )
-            
-                    
+
+
      );
 
     $menubar['passwd'] = array("href" => "passwd", "label" => T_("Admin Users"),
         "submenu" => array(
             'adminlog' => array("href" => "adminlog", "label" => T_("Admin Log") ),
         )
-    
+
      );
 
-    
+
     $menubar['logout'] = array("href" => "./?logoff", "label" => T_("Logoff") );
-    
+
     // Filter out menu items user doesn't have access to
     $newmenubar = array();
     foreach ($menubar as $label => $toplevel) {
     // If they don't have access to top level of a menu section, they also don't have access to the levels below it via the menu (still up to the PAGESACCESS to prevent access
         if (check_level($PAGESACCESS[$label])) {
             $submenu = array();
-          
+
             if (isset($toplevel['submenu']) && is_array($toplevel['submenu'])) {
                 foreach ($toplevel['submenu'] as $secondlabel => $secondlevel) {
                     if (check_level($PAGESACCESS[$secondlabel])) {
@@ -160,7 +160,7 @@ function timecosts()
     global $timecosts;
     $timecosts['inherit'] = T_('Inherit from group');
     $timecosts = $timecosts + timevals();
-        
+
     return $timecosts;
 }
 
@@ -177,7 +177,7 @@ function bandwidth_options()
         $label = \Grase\Util::formatBits($bits) ." ($kbytes kbytes/sec, $mbmin MiB/min)";
         $options["$kbits"] = $label;
     }
-    
+
     return $options;
 
 }
@@ -216,7 +216,7 @@ $templateEngine = new \Grase\Page();
 function assign_vars($templateEngine)
 {
     global $Settings;
-    
+
     list($fileversions, $application_version)=css_file_version();
     $templateEngine->assign("radmincssversion", $fileversions['radmin.css']);
     $templateEngine->assign("hotspotcssversion", $fileversions['hotspot.css']);
@@ -247,12 +247,12 @@ function assign_vars($templateEngine)
     $templateEngine->assign("Title", $Settings->getSetting('locationName') . " - " . APPLICATION_NAME);
     $templateEngine->assign("website_name", $Settings->getSetting('websiteName'));
     $templateEngine->assign("website_link", $Settings->getSetting('websiteLink'));
-    
+
     // Group data for displaying group properties
     $templateEngine->assign("groupdata", DatabaseFunctions::getInstance()->getGroupAttributes());
     $templateEngine->assign("groupsettings", $Settings->getGroup());
     $templateEngine->assign("groups", grouplist());
-    
+
     // DEMO SITE flag
     // Allow extra things on Demo site (piwik tracking of admin interface)
     $templateEngine->assign("DEMOSITE", $Settings->getSetting('demosite'));

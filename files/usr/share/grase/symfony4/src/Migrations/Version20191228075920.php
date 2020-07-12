@@ -40,8 +40,8 @@ final class Version20191228075920 extends AbstractMigration
         $this->addSql('DROP INDEX usergrouppri ON radusergroup');
         $this->addSql('
             ALTER TABLE radusergroup
-                ADD id int(11) unsigned AUTO_INCREMENT NOT NULL,                
-                DROP PRIMARY KEY, 
+                ADD id int(11) unsigned AUTO_INCREMENT NOT NULL,
+                DROP PRIMARY KEY,
                 ADD PRIMARY KEY (id)
                 ');
     }

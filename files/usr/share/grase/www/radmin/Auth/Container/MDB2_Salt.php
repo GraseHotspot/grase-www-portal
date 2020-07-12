@@ -9,7 +9,7 @@ class Auth_Container_MDB2_Salt extends Auth_Container_MDB2
     {
         parent::__construct($dsn);
     }
-    
+
     /**
      * Crypt and verfiy the entered password
      *
@@ -49,7 +49,7 @@ class Auth_Container_MDB2_Salt extends Auth_Container_MDB2
                 break;
         }
     }
-    
+
     function sha1salt($plainText, $salt = null)
     {
         $SALT_LENGTH = 9;
@@ -58,7 +58,7 @@ class Auth_Container_MDB2_Salt extends Auth_Container_MDB2
         } else {
             $salt = substr($salt, 0, $SALT_LENGTH);
         }
-        
+
         return $salt . sha1($salt . $plainText);
     }
 }

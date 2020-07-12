@@ -20,13 +20,13 @@
     <input type="text" name="Password" id="Password" value='{$user.Password}' onkeyup="runPassword(this.value, 'newpassword');" required="required"/>
     <span id='PasswordInfo'>{t}Choose a secure password for the user{/t}</span>
                                 <span id="newpassword_text" ></span>
-                                <span id="newpassword_bar" style="font-size: 1px; height: 2px; width: 0px; border: 1px solid white;"></span> 
-    
+                                <span id="newpassword_bar" style="font-size: 1px; height: 2px; width: 0px; border: 1px solid white;"></span>
+
 </div>
 {/if}
 <div>
     <label for='Group'>{t}Group{/t}</label>
-    {html_options name="Group" id="Group" options=$groups selected=$user.Group}    
+    {html_options name="Group" id="Group" options=$groups selected=$user.Group}
     <span id='GroupInfo'>{t}Choose the users group (Expiry is based on the user group){/t}</span>
     <br/>{include file="grouppropertiesinfo.tpl"}
 </div>

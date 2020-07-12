@@ -21,4 +21,3 @@ echo $template;
 ?>'
 }
 setTimeout('chilliController.refresh()', 0);
-

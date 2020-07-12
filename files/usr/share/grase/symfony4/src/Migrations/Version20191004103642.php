@@ -35,7 +35,7 @@ final class Version20191004103642 extends AbstractMigration
             ADD CONSTRAINT FK_569F584FA11ACB1F FOREIGN KEY (UserName) REFERENCES users (username)'
         );
         $this->addSql(
-            'ALTER TABLE radusergroup 
+            'ALTER TABLE radusergroup
             ADD CONSTRAINT FK_569F584FB219A218 FOREIGN KEY (GroupName) REFERENCES `groups` (id)'
         );
         $this->addSql(

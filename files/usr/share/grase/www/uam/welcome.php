@@ -28,7 +28,7 @@ Success
         header("HTTP/1.0 400 Bad Request");
         exit ();
     }
-  
+
 }
 /* */
 
@@ -62,5 +62,3 @@ if (isset($_GET['help'])) {
 } else {
     $smarty->display('welcome.tpl');
 }
-
-

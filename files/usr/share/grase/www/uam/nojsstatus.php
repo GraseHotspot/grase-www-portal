@@ -21,14 +21,14 @@ if ($username != '') {
     /* Shared code with get_user_limits */
     $maxoctets = "";
     $timelimit = "";
-    
+
     if (isset($user['Max-Octets'])) {
         $maxoctets = $user['Max-Octets'];
     }
     if (isset($user['Max-All-Session'])) {
         $timelimit = $user['Max-All-Session'];
     }
-    
+
     if (isset($user['GroupSettings']['MaxOctets']) && ! $maxoctets) {
         $maxoctets = $user['GroupSettings']['MaxOctets'];
     }
@@ -36,18 +36,18 @@ if ($username != '') {
         $timelimit = $user['GroupSettings']['MaxSeconds'];
     }
     /* */
-    
+
     $user['MaxOctets'] = $maxoctets;
     $user['MaxAllSession'] = $maxtime;
 
     if ($maxoctets != "") {
         $user['RemainingQuota'] = $maxoctets - $user['AcctTotalOctets'];
     }
-        
+
     if ($timelimit != "") {
         $user['RemainingTime'] = $timelimit - $user['TotalTimeMonth'];
     }
-        
+
     $smarty->assign('user', $user);
     $smarty->assign('session', $session);
 } else {

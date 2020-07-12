@@ -10,7 +10,5 @@ dbc_dbuser="grase"
 dbc_dbname="grase"
 dbc_dbpassword=""
 # source dbconfig-common stuff
-. /usr/share/dbconfig-common/dpkg/config 
+. /usr/share/dbconfig-common/dpkg/config
 dbc_go grase-db $@
-
-

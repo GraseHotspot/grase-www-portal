@@ -36,4 +36,3 @@
  * Chilli-Coova no longer counts traffic to local (web) server! (Locally hosted files are now free even when logged in)
 
  * Needs more testing in other browsers. Chrome known to have issues.
-

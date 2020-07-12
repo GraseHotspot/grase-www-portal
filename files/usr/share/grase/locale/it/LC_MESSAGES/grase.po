@@ -1,4 +1,4 @@
-# 
+#
 # Translators:
 # Antonino Murabito <antoninomurabito@gmail.com>, 2012-2015
 # Ifeoluwa Opeyemi A <info@htreasure.com>, 2011

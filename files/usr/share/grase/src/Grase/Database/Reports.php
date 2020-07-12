@@ -96,7 +96,7 @@ class Reports
                     SUM(AcctInputOctets + AcctOutputOctets)/1024/1024 AS Data,
                     radusergroup.GroupName AS Label
                 FROM
-                    radacct, 
+                    radacct,
                     radusergroup
                 WHERE
                     radacct.UserName = radusergroup.UserName
@@ -291,7 +291,7 @@ SQL;
             FROM radacct
             WHERE ServiceType != 'Administrative-User'
             GROUP BY MONTH(AcctStartTime)
-            ORDER BY Date 
+            ORDER BY Date
             ) AS AggregatedTableUsage
             GROUP BY Date";
         return $this->processDataResults($sql);
@@ -306,7 +306,7 @@ SQL;
                 FROM radacct, radcheck
                 WHERE radcheck.UserName = radacct.UserName
                 GROUP BY UserName";
-            
+
         $sql = "SELECT
                     SUM(radacct.AcctInputOctets) + SUM(radacct.AcctOutputOctets) AS TotalOctets,
                     radcheck.Value  AS TotalQuota,
@@ -325,7 +325,7 @@ SQL;
                 FROM
                     (SELECT
                         0 AS TotalOctets,
-                        radcheck.Value AS TotalQuota, 
+                        radcheck.Value AS TotalQuota,
                         LOWER(radcheck.UserName) AS Label
                     FROM
                         radcheck
@@ -333,8 +333,8 @@ SQL;
                         radcheck.attribute = 'Max-Octets'
                     UNION ALL
                     SELECT
-                        SUM(radacct.AcctInputOctets) + SUM(radacct.AcctOutputOctets) AS TotalOctets, 
-                        0 AS TotalQuota, 
+                        SUM(radacct.AcctInputOctets) + SUM(radacct.AcctOutputOctets) AS TotalOctets,
+                        0 AS TotalQuota,
                         SELECT(radacct.UserName) AS Label
                     FROM
                         radacct
@@ -375,11 +375,11 @@ SQL;
                     Label,
                     Month
                 FROM (
-        
-        
+
+
                 SELECT
                     SUM(radacct.AcctInputOctets) + SUM(radacct.AcctOutputOctets) AS TotalOctets,
-                    SUM(radacct.AcctSessionTime) AS TotalTime,  
+                    SUM(radacct.AcctSessionTime) AS TotalTime,
                     LOWER(radacct.UserName) AS Label,
                     DATE_FORMAT(radacct.AcctStartTime, '%b %Y') AS Month
                 FROM
@@ -387,12 +387,12 @@ SQL;
                 WHERE UserName != " . $this->db->quote(RADIUS_CONFIG_USER) . "
                 AND DATE_FORMAT(radacct.AcctStartTime, '%b %Y') = " . $this->db->quote($monthformat) . "
                 GROUP BY Label, Month
-                
+
                 UNION ALL
-                
+
                 SELECT
                     SUM(mtotacct.InputOctets) + SUM(mtotacct.OutputOctets) AS TotalOctets,
-                    SUM(mtotacct.ConnTotDuration) AS TotalTime,  
+                    SUM(mtotacct.ConnTotDuration) AS TotalTime,
                     LOWER(mtotacct.UserName) AS Label,
                     DATE_FORMAT(mtotacct.AcctDate, '%b %Y') AS Month
                 FROM
@@ -400,7 +400,7 @@ SQL;
                 WHERE UserName != " . $this->db->quote(RADIUS_CONFIG_USER) . "
                 AND DATE_FORMAT(mtotacct.AcctDate, '%b %Y') = " . $this->db->quote($monthformat) . "
                 GROUP BY Label, Month
-                
+
                 ) AS T
                 GROUP BY Label, Month";
 
@@ -445,30 +445,30 @@ SQL;
                     Label,
                     Month
                 FROM (
-        
-        
+
+
                 SELECT
                     SUM(radacct.AcctInputOctets) + SUM(radacct.AcctOutputOctets) AS TotalOctets,
-                    SUM(radacct.AcctSessionTime) AS TotalTime,  
+                    SUM(radacct.AcctSessionTime) AS TotalTime,
                     LOWER(radacct.UserName) AS Label,
                     DATE_FORMAT(radacct.AcctStartTime, '%b %Y') AS Month
                 FROM
                     radacct
                 WHERE UserName != " . $this->db->quote(RADIUS_CONFIG_USER) . "
                 GROUP BY Label, Month
-                
+
                 UNION ALL
-                
+
                 SELECT
                     SUM(mtotacct.InputOctets) + SUM(mtotacct.OutputOctets) AS TotalOctets,
-                    SUM(mtotacct.ConnTotDuration) AS TotalTime,  
+                    SUM(mtotacct.ConnTotDuration) AS TotalTime,
                     LOWER(mtotacct.UserName) AS Label,
                     DATE_FORMAT(mtotacct.AcctDate, '%b %Y') AS Month
                 FROM
                     mtotacct
                 WHERE UserName != " . $this->db->quote(RADIUS_CONFIG_USER) . "
                 GROUP BY Label, Month
-                
+
                 ) AS T
                 GROUP BY Label, Month";
 

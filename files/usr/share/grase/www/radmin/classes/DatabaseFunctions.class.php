@@ -625,11 +625,11 @@ class DatabaseFunctions
 	            FROM radcheck
 	            WHERE Attribute='Cleartext-Password'
 	            AND UserName NOT IN (
-	                SELECT UserName 
-	                FROM radcheck 
-	                WHERE Attribute='Service-Type' 
+	                SELECT UserName
+	                FROM radcheck
+	                WHERE Attribute='Service-Type'
 	                AND Value='Administrative-User'
-	            )	                
+	            )
 	            ORDER BY id";
         // Filters out Coova Chilli Config user.
         // Maybe just filter out groupless users?

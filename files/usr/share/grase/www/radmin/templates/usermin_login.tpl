@@ -15,7 +15,7 @@ Login is required to access the {$Application} section of this website.
 <div>
     <label for='password'>{t}Password{/t}</label>
     <input type="password" name="password" required="required" />
-    <span></span>    
+    <span></span>
 </div>
 <button type="submit" class="positive" name="login" value="Login">{t}Login{/t}</button>
 

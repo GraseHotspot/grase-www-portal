@@ -1,4 +1,4 @@
-# 
+#
 # Translators:
 # Csató Endre <csatoe@hotmail.com>, 2012
 msgid ""

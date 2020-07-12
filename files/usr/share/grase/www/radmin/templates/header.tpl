@@ -18,13 +18,13 @@
     <script type="text/javascript" src="/grase/vendor/jquery/dist/jquery.min.js"></script>
 
     <script type="text/javascript" src="/grase/js/jquery/jquery-ui-1.8.11.custom.min.js"></script>
-    
-    <script type="text/javascript" src="/grase/vendor/jquery.tablesorter/js/jquery.tablesorter.min.js"></script>    
-    <script type="text/javascript" src="/grase/js/jquery.uitablefilter.js"></script>        
 
-    <script type="text/javascript" src="/grase/radmin/js/radmin.js?{$radminjsversion}"></script>    
+    <script type="text/javascript" src="/grase/vendor/jquery.tablesorter/js/jquery.tablesorter.min.js"></script>
+    <script type="text/javascript" src="/grase/js/jquery.uitablefilter.js"></script>
 
-    
+    <script type="text/javascript" src="/grase/radmin/js/radmin.js?{$radminjsversion}"></script>
+
+
 
 <link rel="shortcut icon" href="/grase/favicon.ico" />
 
@@ -41,11 +41,11 @@ var $j = jQuery;
 
 $j(document).ready(function(){
     jQuery(function($){
-    
+
         $(".printlink").attr({ target: "_print"});
 
-                
-    });        
+
+    });
 
 }) ;
 
@@ -64,8 +64,7 @@ $j(document).ready(function(){
         &nbsp;
     </div>
 
-    
+
     <!-- Main content -->
     <div id="pagecontent">
         {include file="errors.tpl"}
-

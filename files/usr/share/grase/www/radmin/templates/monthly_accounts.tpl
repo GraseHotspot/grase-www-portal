@@ -13,15 +13,15 @@
 				<td>Downloaded</td>
 				<td>Uploaded</td>
 				<td>Total Data Usage</td>
-			</tr>	
+			</tr>
 			</thead>
 			<tbody id='{$date}_body'>
 			{foreach from=$month item=user_data name=usersloop}
 			<tr id='session_{$session.id}_Row' class="month_user_row {if $smarty.foreach.usersloop.iteration is even}even{else}odd{/if}">
 				<td>{$user_data.UserName}</td>
 				<td class="numbers">{$user_data.InputOctets|bytes}</td>
-				<td class="numbers">{$user_data.OutputOctets|bytes}</td>			
-				<td class="numbers">{$user_data.TotalOctets|bytes}</td>			
+				<td class="numbers">{$user_data.OutputOctets|bytes}</td>
+				<td class="numbers">{$user_data.TotalOctets|bytes}</td>
 			</tr>
 			{/foreach}
 			</tbody>
@@ -29,8 +29,8 @@
 			<tr id='session_{$session.id}_Row' class="totalrow">
 				<td>Total</td>
 				<td class="numbers">{$monthly_accounts_totals.$date.TotalInputOctets|bytes}</td>
-				<td class="numbers">{$monthly_accounts_totals.$date.TotalOutputOctets|bytes}</td>			
-				<td class="numbers">{$monthly_accounts_totals.$date.TotalOctets|bytes}</td>			
+				<td class="numbers">{$monthly_accounts_totals.$date.TotalOutputOctets|bytes}</td>
+				<td class="numbers">{$monthly_accounts_totals.$date.TotalOctets|bytes}</td>
 			</tr>
 			</tbody>
 		</table>

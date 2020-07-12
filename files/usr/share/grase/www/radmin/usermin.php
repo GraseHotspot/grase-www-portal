@@ -45,7 +45,7 @@ if (isset($_GET['history'])) {
         }
 
     }
-    
+
     $templateEngine->assign("error", array_filter($error));
     $templateEngine->assign("success", $success);
     $templateEngine->assign("user", DatabaseFunctions::getInstance()->getUserDetails($Auth->getUsername()));

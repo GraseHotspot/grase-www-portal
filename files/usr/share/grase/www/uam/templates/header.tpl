@@ -21,7 +21,7 @@
     <script type="text/javascript" src="/grase/vendor/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/grase/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 
-{if $activepage == "nojsstatus"}	
+{if $activepage == "nojsstatus"}
     <meta http-equiv="refresh" content="60">
 {/if}
 </head>

@@ -5,7 +5,7 @@
 
 <ul>
 {foreach from=$MenuItems key=menuitemid item=menuitem name=toploop}
-    <li class="{if $menuitemid == "logout"}negative{/if}"><span class="collapse"><span class="ui-icon ui-icon-circle-triangle-s">-</span></span><span class="expand"><span class="ui-icon ui-icon-circle-triangle-w">+</span></span><a id="{$menuitemid}" 
+    <li class="{if $menuitemid == "logout"}negative{/if}"><span class="collapse"><span class="ui-icon ui-icon-circle-triangle-s">-</span></span><span class="expand"><span class="ui-icon ui-icon-circle-triangle-w">+</span></span><a id="{$menuitemid}"
                 href="{$menuitem.href}" class="ui-state-default ui-corner-top {if $activepage == $menuitemid}ui-state-active ui-state-highlight{/if} topmenu" >{$menuitem.label}</a>
         {if $menuitem.submenu}
             <ul id="submenu{$menuitemid}" class="submenu">

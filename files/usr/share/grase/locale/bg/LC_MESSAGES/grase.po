@@ -1,4 +1,4 @@
-# 
+#
 # Translators:
 # Asen Ivanov, 2015
 msgid ""

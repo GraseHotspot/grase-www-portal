@@ -20,16 +20,16 @@
     <input type="text" name="Password" value='' onkeyup="runPassword(this.value, 'newpassword');" />
     <span id='PasswordInfo'>{t}Choose a secure password for the user. Leave blank to not change{/t}</span>
                                 <span id="newpassword_text" ></span>
-                                <span id="newpassword_bar" style="font-size: 1px; height: 2px; width: 0px; border: 1px solid white;"></span> 
+                                <span id="newpassword_bar" style="font-size: 1px; height: 2px; width: 0px; border: 1px solid white;"></span>
 </div>
 {/if}
 
 <div>
     <label for='Group'>Group</label>
     {*{html_options name="Group" options=$Usergroups selected=$user.Group}   *}
-    {html_options name="Group" id="Group" options=$groups selected=$user.Group}      
+    {html_options name="Group" id="Group" options=$groups selected=$user.Group}
     <span id='GroupInfo'>{t}Choose the users group (Expiry is based on the user group){/t}</span>
-    
+
 <br/>{include file="grouppropertiesinfo.tpl"}
 
 </div>
@@ -79,7 +79,7 @@
 <div>
     <label for='Add_Mb'>{t}Add Data to Limit (MiB){/t}</label>
     {html_options name="Add_Mb" options=$GroupDatacosts selected=$user.Add_Mb}
-    <span class="Add_MbInfo">{t}Add to the Data Limit (Will ignore changes made above){/t}</span>    
+    <span class="Add_MbInfo">{t}Add to the Data Limit (Will ignore changes made above){/t}</span>
 </div>
 <div>
     <label for='MaxTime'>{t}Time Limit (Minutes){/t}</label>
@@ -89,7 +89,7 @@
 <div>
     <label for='Add_Time'>{t}Add Time to Limit (Minutes){/t}</label>
      {html_options name="Add_Time" options=$GroupTimecosts selected=$user.Add_Time}
-    <span class="Add_TimeInfo">{t}Add to the Time Limit (Will ignore changes made above){/t}</span>    
+    <span class="Add_TimeInfo">{t}Add to the Time Limit (Will ignore changes made above){/t}</span>
 </div>
 
 <button type="submit" name="updateusersubmit" value="{t}Update User Details{/t}"><img src="/grase/images/icons/tick.png" alt=""/>{t}Update User Details{/t}</button>

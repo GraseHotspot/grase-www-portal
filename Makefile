@@ -29,4 +29,3 @@ version:
 clean:
 	rm -fr ext-libs
 	rm -fr files/usr/share/grase/symfony4/.env.local
-

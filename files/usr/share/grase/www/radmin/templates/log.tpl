@@ -11,7 +11,7 @@
 			<th>{t}Domain{/t}</th>
 			<th>{t}Count{/t}</th>
 			<th>{t}Size{/t}</th>
-		</tr>	
+		</tr>
 
 		{counter assign=idx print=0 name=domaintally}
 		{foreach from=$domain_tally item=domain key=domainname}
@@ -34,7 +34,7 @@
 			<th>Domain</th>
 			<th>Count</th>
 			<th>Size</th>
-		</tr>	
+		</tr>
 
 		{counter assign=idy print=0 name=domainsizes}
 		{foreach from=$domain_size item=domain key=domainname}
@@ -60,7 +60,7 @@
 			<td>{t}Cached{/t}</td>
 			<td>{t}Request Type{/t}</td>
 			<td>{t}Size{/t}</td>
-		</tr>	
+		</tr>
 		{foreach from=$loglines item=logline}
 		<tr>
 			<td>{$logline.timestamp}</td>
@@ -68,7 +68,7 @@
 <!--			<td>{$logline.host}</td>-->
 			<td>{$logline.cached}</td>
 			<td>{$logline.request}</td>
-			<td>{$logline.size}</td>															
+			<td>{$logline.size}</td>
 		</tr>
 		{/foreach}
 	</table>

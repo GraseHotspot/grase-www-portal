@@ -108,7 +108,7 @@ $singleLoginOptions = array(
 );
 
 
-// Templates    
+// Templates
 $templateOptions = array(
     'termsandconditions' => array(
         "label" => T_("Terms and Conditions"),

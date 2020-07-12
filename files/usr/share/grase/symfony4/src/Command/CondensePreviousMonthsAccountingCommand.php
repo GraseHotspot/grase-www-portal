@@ -213,24 +213,24 @@ class CondensePreviousMonthsAccountingCommand extends Command
                     UserName,
                     AcctDate,
                     ConnNum,
-                    ConnTotDuration, 
-                    ConnMaxDuration, 
-                    ConnMinDuration, 
-                    InputOctets, 
-                    OutputOctets, 
+                    ConnTotDuration,
+                    ConnMaxDuration,
+                    ConnMinDuration,
+                    InputOctets,
+                    OutputOctets,
                     NASIPAddress
                     )
-                    SELECT 
+                    SELECT
                     LOWER(UserName) AS UserName,
-                    AcctDate, 
-                    ConnNum, 
-                    ConnTotDuration, 
-                    ConnMaxDuration, 
-                    ConnMinDuration, 
-                    InputOctets, 
-                    OutputOctets, 
+                    AcctDate,
+                    ConnNum,
+                    ConnTotDuration,
+                    ConnMaxDuration,
+                    ConnMinDuration,
+                    InputOctets,
+                    OutputOctets,
                     NASIPAddress
-                    FROM 
+                    FROM
                     mtotaccttmp
                     WHERE AcctDate = :acctDate';
 

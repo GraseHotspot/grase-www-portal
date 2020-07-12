@@ -18,15 +18,15 @@
 <table>
 	<tr><td>Username</td><td>{$user.Username}</td></tr>
 	<tr><td>New Password</td><td> <input id="newpassword" type="password" name="NewPassword" value='' onkeyup="runPassword(this.value, 'newpassword');"/>
-	                        <div style="width: 200px;float: right;"> 
+	                        <div style="width: 200px;float: right;">
                                 <div id="newpassword_text" ></div>
-                                <div id="newpassword_bar" style="font-size: 1px; height: 2px; width: 0px; border: 1px solid white;"></div> 
+                                <div id="newpassword_bar" style="font-size: 1px; height: 2px; width: 0px; border: 1px solid white;"></div>
                         </div>
 
 	</td></tr>
 	<tr><td>Confirm Password</td><td> <input type="password" name="PasswordVerify" value=''/><button type="submit" name="changepasswordsubmit" value="Change Password"><img src="/grase/images/icons/textfield_key.png" alt=""/>Change Password</button></form></td></tr>
 	<tr><td>Group</td><td>{$user.Group}</td></tr>
-	
+
 	<tr><td>Data Limit (MiB)</td><td>{$user.MaxMb}</td></tr>
 	<tr><td>Time Limit (Mins)</td><td>{$user.MaxTime}</td></tr>
 
