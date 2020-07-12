@@ -171,7 +171,7 @@ class SettingsUtils
 
     /**
      * @param $settingName string Setting name to update
-     * @param $value mixed New setting value
+     * @param $value       mixed New setting value
      *
      * @throws \Exception
      */
@@ -182,7 +182,7 @@ class SettingsUtils
             throw new \Exception("Setting not found $settingName");
         }
 
-        return $this->updateSetting($setting, $value);
+        $this->updateSetting($setting, $value);
     }
 
     /**

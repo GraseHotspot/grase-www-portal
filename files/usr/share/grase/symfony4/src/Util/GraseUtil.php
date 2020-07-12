@@ -360,7 +360,7 @@ class GraseUtil
      *
      * https://www.php.net/manual/en/function.ip2long.php
      *
-     * @param string
+     * @param $mask string
      *
      * @return int|float If this returns a float, you didn't give us a proper mask
      */

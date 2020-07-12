@@ -60,24 +60,52 @@ class SystemInformation
     }
 
     /**
-     * Populate details about the HTTPD server
+     * Find the IP address and netmask of a given network interface
+     *
+     * @param $iface
+     *
+     * @return array|string
      */
-    private function httpd()
+    public static function discoverIPAddressAndNetmask($iface)
     {
-        $this->httpd->software = $_SERVER['SERVER_SOFTWARE'];
-        $this->httpd->gateway = PHP_SAPI;
+        if (!$iface) {
+            return null;
+        }
+        exec("ip -br address show $iface 2>/dev/null", $ipAndNetmask, $exitCode);
+        if (0 !== $exitCode || sizeof($ipAndNetmask) === 0) {
+            return null;
+        }
+        $ipAndNetmask = preg_split('/\s+/', $ipAndNetmask[0])[2];
+
+        if ('' === $ipAndNetmask) {
+            return null;
+        }
+        list($ip, $cidr) = explode('/', $ipAndNetmask);
+        $netmask = GraseUtil::CIDRtoMask($cidr);
+
+        return [$ip, $netmask];
     }
 
     /**
-     * Populate the hostname
+     * Work out a network interfaces gateway address
+     *
+     * @param $iface
+     *
+     * @return mixed|string|null
      */
-    private function discoverHostname()
+    public static function getInterfaceGateway($iface)
     {
-        if (function_exists('gethostname')) {
-            $this->hostname = gethostname();
-        } else {
-            $this->hostname = php_uname('n');
+        exec("ip route show to default dev $iface 2>/dev/null", $result, $exitCode);
+        if (0 !== $exitCode || sizeof($result) === 0) {
+            return null;
         }
+        $result = preg_split('/\s+/', $result[0])[2];
+
+        if ('' === $result) {
+            return null;
+        }
+
+        return $result;
     }
 
     /**
@@ -94,6 +122,25 @@ class SystemInformation
             $this->lan->mac = $this->discoverMAC($this->lan->iface);
             list($this->lan->ipaddress, $this->lan->netmask) = self::discoverIPAddressAndNetmask($this->lan->iface);
         }
+    }
+
+    /**
+     * Find the MAC address of the given network interface
+     *
+     * @param $iface
+     *
+     * @return string|null
+     */
+    private function discoverMAC($iface)
+    {
+        if (!$iface) {
+            return '';
+        }
+
+        return shell_exec(
+            "ip link show $iface |grep link/ether |
+            egrep -o \"[0-9a-g]{2}:[0-9a-g]{2}:[0-9a-g]{2}:[0-9a-g]{2}:[0-9a-g]{2}:[0-9a-g]{2}\" | head -n 1"
+        );
     }
 
     /**
@@ -130,64 +177,15 @@ class SystemInformation
     }
 
     /**
-     * Find the IP address and netmask of a given network interface
-     *
-     * @param $iface
-     *
-     * @return array|string
+     * Populate the hostname
      */
-    public static function discoverIPAddressAndNetmask($iface)
+    private function discoverHostname()
     {
-        if (!$iface) {
-            return null;
+        if (function_exists('gethostname')) {
+            $this->hostname = gethostname();
+        } else {
+            $this->hostname = php_uname('n');
         }
-        exec("ip -br address show $iface 2>/dev/null", $ipAndNetmask, $exitCode);
-        if ($exitCode !== 0 || sizeof($ipAndNetmask) === 0) {
-            return null;
-        }
-        $ipAndNetmask = preg_split('/\s+/', $ipAndNetmask[0])[2];
-
-        if ($ipAndNetmask === '') {
-            return null;
-        }
-        list($ip, $cidr) = explode('/', $ipAndNetmask);
-        $netmask = GraseUtil::CIDRtoMask($cidr);
-
-        return [$ip, $netmask];
-    }
-
-    public static function getInterfaceGateway($iface)
-    {
-        exec("ip route show to default dev $iface 2>/dev/null", $result, $exitCode);
-        if ($exitCode !== 0 || sizeof($result) === 0) {
-            return null;
-        }
-        $result = preg_split('/\s+/', $result[0])[2];
-
-        if ($result === '') {
-            return null;
-        }
-
-        return $result;
-    }
-
-    /**
-     * Find the MAC address of the given network interface
-     *
-     * @param $iface
-     *
-     * @return string|null
-     */
-    private function discoverMAC($iface)
-    {
-        if (!$iface) {
-            return '';
-        }
-
-        return shell_exec(
-            "ip link show $iface |grep link/ether |
-            egrep -o \"[0-9a-g]{2}:[0-9a-g]{2}:[0-9a-g]{2}:[0-9a-g]{2}:[0-9a-g]{2}:[0-9a-g]{2}\" | head -n 1"
-        );
     }
 
     /**
@@ -266,6 +264,15 @@ class SystemInformation
             }
             $this->cpu = $dev;
         }
+    }
+
+    /**
+     * Populate details about the HTTPD server
+     */
+    private function httpd()
+    {
+        $this->httpd->software = $_SERVER['SERVER_SOFTWARE'];
+        $this->httpd->gateway = PHP_SAPI;
     }
 
     /**

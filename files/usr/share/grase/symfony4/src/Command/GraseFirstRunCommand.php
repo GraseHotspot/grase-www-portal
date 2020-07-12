@@ -25,9 +25,12 @@ use Symfony\Component\Validator\Constraints\NotCompromisedPassword;
 use Symfony\Component\Validator\Validation;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
+/**
+ * First Run Wizard Command
+ */
 class GraseFirstRunCommand extends Command
 {
-    const WIZARD_VERSION = 4.0;
+    public const WIZARD_VERSION = 4.0;
     protected static $defaultName = 'grase:first-run';
 
     /** @var SettingsUtils */
@@ -56,6 +59,16 @@ class GraseFirstRunCommand extends Command
 
     private $firstRunWizardVersion;
 
+    /**
+     * GraseFirstRunCommand constructor.
+     *
+     * @param SettingsUtils                $settingsUtils
+     * @param EntityManagerInterface       $entityManager
+     * @param LoggerInterface              $auditLogger
+     * @param LoggerInterface              $logger
+     * @param TranslatorInterface          $translator
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     */
     public function __construct(SettingsUtils $settingsUtils, EntityManagerInterface $entityManager, LoggerInterface $auditLogger, LoggerInterface $logger, TranslatorInterface $translator, UserPasswordEncoderInterface $passwordEncoder)
     {
         $this->settingsUtils = $settingsUtils;
@@ -68,6 +81,9 @@ class GraseFirstRunCommand extends Command
         parent::__construct();
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function configure()
     {
         $this
@@ -81,6 +97,9 @@ class GraseFirstRunCommand extends Command
         // TODO add options for LAN/WAN interfaces?
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new GraseConsoleStyle($input, $output);
@@ -98,6 +117,12 @@ class GraseFirstRunCommand extends Command
         return 0;
     }
 
+    /**
+     * Run the first-run-wizard
+     *
+     * @param OutputStyle    $io
+     * @param InputInterface $input
+     */
     protected function runWizard(OutputStyle $io, InputInterface $input)
     {
         // Questions
@@ -122,7 +147,12 @@ class GraseFirstRunCommand extends Command
         $this->settingsUtils->updateSetting($firstRunWizardSetting, self::WIZARD_VERSION);
     }
 
-    private function setLocale(OutputStyle $io)
+    /**
+     * Choose a default locale
+     *
+     * @param OutputStyle $io
+     */
+    protected function setLocale(OutputStyle $io)
     {
         $currentLocale = $this->translator->getLocale();
         $newLocale = $io->ask($this->translator->trans('grase.command.first-run.locale.%current%', ['current' => $currentLocale]), $currentLocale);
@@ -131,6 +161,11 @@ class GraseFirstRunCommand extends Command
         }
     }
 
+    /**
+     * Setup WAN NIC
+     *
+     * @param OutputStyle $io
+     */
     protected function setupWAN(OutputStyle $io)
     {
         $io->title($this->translator->trans('grase.command.first-run.setup-wan.title'));
@@ -165,12 +200,22 @@ class GraseFirstRunCommand extends Command
         $this->settingsUtils->updateSetting($wanInterfaceSetting, $selectedWanInterface);
     }
 
+    /**
+     * Call functions to setup LAN IP/NIC
+     *
+     * @param OutputStyle $io
+     */
     protected function setupLAN(OutputStyle $io)
     {
         $this->setupLanInterface($io);
         $this->setupLanIpAddress($io);
     }
 
+    /**
+     * Setup LAN Network Interface
+     *
+     * @param OutputStyle $io
+     */
     protected function setupLanInterface(OutputStyle $io)
     {
         // LAN Interface
@@ -213,6 +258,11 @@ class GraseFirstRunCommand extends Command
         $this->settingsUtils->updateSetting($lanInterfaceSetting, $selectedLanInterface);
     }
 
+    /**
+     * Setup LAN Network IP Address
+     *
+     * @param OutputStyle $io
+     */
     protected function setupLanIpAddress(OutputStyle $io)
     {
         $io->title($this->translator->trans('grase.command.first-run.setup-lan-ip.title'));
@@ -266,8 +316,10 @@ class GraseFirstRunCommand extends Command
             }
         } while (sizeof($violations) !== 0);
 
-        $io->success($this->translator->trans('grase.command.first-run.setup-lan-ip.setting-%ip%-%mask%',
-                    ['ip' => $newLanIp, 'mask' => $newLanMask]));
+        $io->success($this->translator->trans(
+            'grase.command.first-run.setup-lan-ip.setting-%ip%-%mask%',
+            ['ip' => $newLanIp, 'mask' => $newLanMask]
+        ));
 
         $this->settingsUtils->updateSetting($lanIpSetting, $newLanIp);
         $this->settingsUtils->updateSetting($lanNetmaskSetting, $newLanMask);
@@ -278,7 +330,8 @@ class GraseFirstRunCommand extends Command
      *
      * TODO Maybe allow us to continue on failure by setting a random password?
      *
-     * @param OutputStyle $io
+     * @param OutputStyle    $io
+     * @param InputInterface $input
      *
      * @return int
      */
@@ -289,9 +342,7 @@ class GraseFirstRunCommand extends Command
         // Find out if we already have an admin user
         $adminUser = $this->em->getRepository(User::class)->find('admin');
         // If we already have an admin user, check first (unless it's from an upgrade pre 4.0)
-        if ($adminUser && $this->firstRunWizardVersion >= 4.0 && !$randomAdminPassword
-            && !$io->confirm($this->translator->trans('grase.command.first-run.admin-reset.confirm'), false)
-        ) {
+        if ($adminUser && $this->firstRunWizardVersion >= 4.0 && !$randomAdminPassword && !$io->confirm($this->translator->trans('grase.command.first-run.admin-reset.confirm'), false)) {
             return 0;
         }
 

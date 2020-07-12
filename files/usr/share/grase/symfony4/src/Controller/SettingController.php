@@ -9,6 +9,7 @@ use App\Util\SystemUtils;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -26,6 +27,9 @@ class SettingController extends AbstractController
     /** @var SystemUtils */
     private $systemUtils;
 
+    /**
+     * @param SettingsUtils $settingsUtils
+     */
     public function __construct(SettingsUtils $settingsUtils)
     {
         $this->settingsUtils = $settingsUtils;
@@ -34,9 +38,12 @@ class SettingController extends AbstractController
 
     /**
      * @Route("/network", name="network")
+     *
      * @IsGranted("ROLE_SUPERADMIN")
      *
      * @param Request $request
+     *
+     * @return Response
      */
     public function networkSettingsAction(Request $request)
     {

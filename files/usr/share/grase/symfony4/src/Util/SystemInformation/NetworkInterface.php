@@ -35,6 +35,9 @@ class NetworkInterface
     public $dnsPrimary;
     public $dnsSecondary;
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->iface . ' - ' . $this->ipaddress;

@@ -42,9 +42,10 @@ class DemoDataCommand extends Command
     /**
      * DemoData Command Constructor
      *
-     * @param TranslatorInterface    $translator
-     * @param EntityManagerInterface $entityManager
-     * @param SettingsUtils          $settingsUtils
+     * @param TranslatorInterface          $translator
+     * @param EntityManagerInterface       $entityManager
+     * @param SettingsUtils                $settingsUtils
+     * @param UserPasswordEncoderInterface $encoder
      */
     public function __construct(TranslatorInterface $translator, EntityManagerInterface $entityManager, SettingsUtils $settingsUtils, UserPasswordEncoderInterface $encoder)
     {
