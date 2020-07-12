@@ -27,6 +27,7 @@ namespace App\Util;
 use App\Util\SystemInformation\CpuDevice;
 use App\Util\SystemInformation\HTTPD;
 use App\Util\SystemInformation\NetworkInterface;
+use Symfony\Component\Config\Definition\Exception\Exception;
 
 /**
  * SystemInformation attempts to get information about the running system
@@ -92,20 +93,8 @@ class SystemInformation
 
         if ($this->lan->iface) {
             $this->lan->mac = $this->discoverMAC($this->lan->iface);
-            list($this->lan->ipaddress, $this->lan->netmask) = $this->discoverIPAddressAndNetmask($this->lan->iface);
+            list($this->lan->ipaddress, $this->lan->netmask) = self::discoverIPAddressAndNetmask($this->lan->iface);
         }
-    }
-
-    /**
-     * Take a network CIDR and convert to a string netmask
-     *
-     * @param $int
-     *
-     * @return string
-     */
-    private function CIDRtoMask($int)
-    {
-        return long2ip(-1 << (32 - (int) $int));
     }
 
     /**
@@ -122,7 +111,7 @@ class SystemInformation
         $this->wan->gateway = $details[1] ?? null;
 
         $this->wan->mac = $this->discoverMAC($this->wan->iface);
-        list($this->wan->ipaddress, $this->wan->netmask) = $this->discoverIPAddressAndNetmask($this->wan->iface);
+        list($this->wan->ipaddress, $this->wan->netmask) = self::discoverIPAddressAndNetmask($this->wan->iface);
         $this->discoverDNS($this->wan);
     }
 
@@ -148,19 +137,39 @@ class SystemInformation
      *
      * @return array|string
      */
-    private function discoverIPAddressAndNetmask($iface)
+    public static function discoverIPAddressAndNetmask($iface)
     {
         if (!$iface) {
-            return '';
+            return null;
         }
-        $ipAndNetmask = shell_exec(
-            //"ip -f inet addr show $iface | sed -En -e 's/.*inet ([0-9.]+).*/\\1/p'"
-            "ip -f inet addr show $iface | awk '/inet / {print $2}'"
-        );
+        exec("ip -br address show $iface 2>/dev/null", $ipAndNetmask, $exitCode);
+        if($exitCode !== 0 || sizeof($ipAndNetmask) === 0) {
+            return null;
+        }
+        $ipAndNetmask = preg_split('/\s+/', $ipAndNetmask[0])[2];
+
+        if ($ipAndNetmask === '')
+        {
+            return null;
+        }
         list($ip, $cidr) = explode('/', $ipAndNetmask);
-        $netmask = $this->CIDRtoMask($cidr);
+        $netmask = GraseUtil::CIDRtoMask($cidr);
 
         return [$ip, $netmask];
+    }
+
+    public static function getInterfaceGateway($iface)
+    {
+        exec("ip route show to default dev $iface 2>/dev/null", $result, $exitCode);
+        if($exitCode !== 0 || sizeof($result) === 0) {
+            return null;
+        }
+        $result = preg_split('/\s+/', $result[0])[2];
+
+        if ($result === '') {
+            return null;
+        }
+        return $result;
     }
 
     /**

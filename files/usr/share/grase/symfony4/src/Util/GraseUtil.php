@@ -337,4 +337,41 @@ class GraseUtil
 
         return false;
     }
+
+    /**
+     * Take a network CIDR and convert to a string netmask
+     *
+     * This function probably came out of PHP Docs or Stackoverflow
+     *
+     * @param $int
+     *
+     * @return string
+     */
+    public static function CIDRtoMask($int)
+    {
+        assert($int <= 32, "CIDR Must be between 0 and 32");
+        assert($int > 0, "CIDR Must be between 0 and 32");
+        return long2ip(-1 << (32 - (int) $int));
+    }
+
+    /**
+     * Take a string mask and turn it into a CIDR
+     *
+     * https://www.php.net/manual/en/function.ip2long.php
+     *
+     * @param string
+     *
+     * @return int|float If this returns a float, you didn't give us a proper mask
+     */
+    public static function maskToCIDR($mask){
+        $long = ip2long($mask);
+        $base = ip2long('255.255.255.255');
+
+        return 32-log(($long ^ $base)+1,2);
+
+        /* xor-ing will give you the inverse mask,
+            log base 2 of that +1 will return the number
+            of bits that are off in the mask and subtracting
+            from 32 gets you the cidr notation */
+    }
 }

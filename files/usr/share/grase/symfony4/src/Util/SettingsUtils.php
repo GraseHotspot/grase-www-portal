@@ -160,6 +160,31 @@ class SettingsUtils
     }
 
     /**
+     * @param $settingName string Setting name to fetch
+     *
+     * @return Setting|null
+     */
+    public function getSetting($settingName)
+    {
+        return $this->settingsRepository->find($settingName);
+    }
+
+    /**
+     * @param $settingName string Setting name to update
+     * @param $value mixed New setting value
+     *
+     * @throws \Exception
+     */
+    public function updateSettingByName($settingName, $value)
+    {
+        $setting = $this->getSetting($settingName);
+        if (!$setting) {
+            throw new \Exception("Setting not found $settingName");
+        }
+        return $this->updateSetting($setting, $value);
+    }
+
+    /**
      * Return how many changed settings are waiting for a flush
      *
      * @return int

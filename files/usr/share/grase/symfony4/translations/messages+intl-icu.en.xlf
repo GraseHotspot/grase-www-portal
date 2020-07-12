@@ -769,10 +769,82 @@
         <target>Admin user password has been set to: {password}</target>
       </segment>
     </unit>
-    <unit id="r3fLJ._" name="grase.command.first-run.locale.current">
+    <unit id="vx4a5nw" name="grase.command.first-run.locale.%current%">
       <segment>
-        <source>grase.command.first-run.locale.current</source>
-        <target>The current locale is set to '{current}'. Please enter the locale you wish to run this wizard in</target>
+        <source>grase.command.first-run.locale.%current%</source>
+        <target>The current locale is set to {current}. Please enter the locale you wish to run this wizard in</target>
+      </segment>
+    </unit>
+    <unit id="sy.jY7C" name="grase.command.first-run.setup-wan.title">
+      <segment>
+        <source>grase.command.first-run.setup-wan.title</source>
+        <target>WAN Network Interface Setup</target>
+      </segment>
+    </unit>
+    <unit id="kXEHiCh" name="grase.command.first-run.setup-wan.current-%wan%">
+      <segment>
+        <source>grase.command.first-run.setup-wan.current-%wan%</source>
+        <target>The WAN network interface is currently "{wan}"</target>
+      </segment>
+    </unit>
+    <unit id="TuEU0y5" name="grase.command.first-run.setup-wan.no-available-wan-interfaces.error">
+      <segment>
+        <source>grase.command.first-run.setup-wan.no-available-wan-interfaces.error</source>
+        <target>No available WAN interfaces detected. (Interfaces must be active and have a gateway set)</target>
+      </segment>
+    </unit>
+    <unit id="bn42WsM" name="grase.command.first-run.setup-wan.no-available-wan-interfaces.manual-input">
+      <segment>
+        <source>grase.command.first-run.setup-wan.no-available-wan-interfaces.manual-input</source>
+        <target>Please enter a manual WAN interface if detection has failed, or leave it blank to skip</target>
+      </segment>
+    </unit>
+    <unit id="WrcvRAJ" name="grase.command.first-run.setup-wan.select-nic">
+      <segment>
+        <source>grase.command.first-run.setup-wan.select-nic</source>
+        <target>Please select the network interface to use as the WAN</target>
+      </segment>
+    </unit>
+    <unit id="r7fWod3" name="grase.command.first-run.setup-wan.no-available-wan-interfaces.no-change">
+      <segment>
+        <source>grase.command.first-run.setup-wan.no-available-wan-interfaces.no-change</source>
+        <target>The WAN inteface has not been changed</target>
+      </segment>
+    </unit>
+    <unit id="xI8eGU2" name="grase.command.first-run.setup-lan.title">
+      <segment>
+        <source>grase.command.first-run.setup-lan.title</source>
+        <target>LAN Network Interface Setup</target>
+      </segment>
+    </unit>
+    <unit id="F9H7E2U" name="grase.command.first-run.setup-lan.current-%lan%">
+      <segment>
+        <source>grase.command.first-run.setup-lan.current-%lan%</source>
+        <target>The LAN network interface is currently "{lan}"</target>
+      </segment>
+    </unit>
+    <unit id="KjJ7d_u" name="grase.command.first-run.setup-lan.no-available-lan-interfaces.error">
+      <segment>
+        <source>grase.command.first-run.setup-lan.no-available-lan-interfaces.error</source>
+        <target>No available LAN interfaces detected. Interfaces must not be managed by network manager. Run (replace enp1s0 with your LAN interface) `nmcli device set enp1s0 managed no` to prevent network manager from managing the LAN device that the hotspot will run on.</target>
+      </segment>
+    </unit>
+    <unit id="n5rO5fH" name="grase.command.first-run.setup-lan.no-available-lan-interfaces.manual-input">
+      <segment>
+        <source>grase.command.first-run.setup-lan.no-available-lan-interfaces.manual-input</source>
+        <target>__grase.command.first-run.setup-lan.no-available-lan-interfaces.manual-input</target>
+      </segment>
+    </unit>
+    <unit id="5jVCjmi" name="grase.command.first-run.setup-lan.no-available-lan-interfaces.no-change">
+      <segment>
+        <source>grase.command.first-run.setup-lan.no-available-lan-interfaces.no-change</source>
+        <target>__grase.command.first-run.setup-lan.no-available-lan-interfaces.no-change</target>
+      </segment>
+    </unit>
+    <unit id="HdW0xUY" name="grase.command.first-run.setup-lan.select-nic">
+      <segment>
+        <source>grase.command.first-run.setup-lan.select-nic</source>
+        <target>__grase.command.first-run.setup-lan.select-nic</target>
       </segment>
     </unit>
   </file>
