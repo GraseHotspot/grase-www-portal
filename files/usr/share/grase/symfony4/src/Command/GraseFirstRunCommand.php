@@ -9,6 +9,7 @@ use App\Util\GraseUtil;
 use App\Util\SettingsUtils;
 use App\Util\SystemInformation;
 use App\Util\SystemInformation\NetworkInterface;
+use App\Validator\Constraints\SubnetMask;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\MakerBundle\Exception\RuntimeCommandException;
@@ -22,7 +23,6 @@ use Symfony\Component\Validator\Constraints\Ip;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\NotCompromisedPassword;
-use Symfony\Component\Validator\ConstraintViolation;
 use Symfony\Component\Validator\Validation;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -263,10 +263,7 @@ class GraseFirstRunCommand extends Command
             $violations = $validator->validate($newLanIp, [new NotBlank(), new Ip(['groups' => Ip::V4_NO_RES])], [Ip::V4_NO_RES]);
 
             // Netmask validations
-            $newLanMaskAsCidr = GraseUtil::maskToCIDR($newLanMask);
-            if (intval($newLanMaskAsCidr) != $newLanMaskAsCidr || $newLanMaskAsCidr > 30 || $newLanMaskAsCidr < 8) {
-                $violations->add(new ConstraintViolation($this->translator->trans('grase.command.first-run.setup-lan-ip.invalid-mask'), null, [], $newLanMaskAsCidr, null, $newLanMaskAsCidr));
-            }
+            $violations->addAll($validator->validate($newLanMask, [new NotBlank(), new SubnetMask()]));
 
             // TODO ensure IP is in netmask?
 
