@@ -832,19 +832,61 @@
     <unit id="n5rO5fH" name="grase.command.first-run.setup-lan.no-available-lan-interfaces.manual-input">
       <segment>
         <source>grase.command.first-run.setup-lan.no-available-lan-interfaces.manual-input</source>
-        <target>__grase.command.first-run.setup-lan.no-available-lan-interfaces.manual-input</target>
+        <target>Manually enter a LAN interface or leave blank to skip. The Hotspot will not work without a LAN interface</target>
       </segment>
     </unit>
     <unit id="5jVCjmi" name="grase.command.first-run.setup-lan.no-available-lan-interfaces.no-change">
       <segment>
         <source>grase.command.first-run.setup-lan.no-available-lan-interfaces.no-change</source>
-        <target>__grase.command.first-run.setup-lan.no-available-lan-interfaces.no-change</target>
+        <target>No changes have been made to the LAN interface setting.</target>
       </segment>
     </unit>
     <unit id="HdW0xUY" name="grase.command.first-run.setup-lan.select-nic">
       <segment>
         <source>grase.command.first-run.setup-lan.select-nic</source>
-        <target>__grase.command.first-run.setup-lan.select-nic</target>
+        <target>Select the Network Interface to use an the LAN</target>
+      </segment>
+    </unit>
+    <unit id="NdBvydb" name="grase.command.first-run.setup-lan-ip.title">
+      <segment>
+        <source>grase.command.first-run.setup-lan-ip.title</source>
+        <target>LAN IP Setup</target>
+      </segment>
+    </unit>
+    <unit id="s067R5E" name="grase.command.first-run.setup-lan-ip.current-%ip%-%mask%">
+      <segment>
+        <source>grase.command.first-run.setup-lan-ip.current-%ip%-%mask%</source>
+        <target>The current LAN IP/netmask is {ip}/{mask}</target>
+      </segment>
+    </unit>
+    <unit id="DkVuwHY" name="grase.command.first-run.setup-lan-ip.ip-question">
+      <segment>
+        <source>grase.command.first-run.setup-lan-ip.ip-question</source>
+        <target>Enter the LAN IP address (this is the address the server will run on)</target>
+      </segment>
+    </unit>
+    <unit id="MaHCGtu" name="grase.command.first-run.setup-lan-ip.mask-question">
+      <segment>
+        <source>grase.command.first-run.setup-lan-ip.mask-question</source>
+        <target>Enter the LAN network mask (e.g. 255.255.255.0 or 24 for CIDR notation). This will set the size of the network and determine how many client computers you can have</target>
+      </segment>
+    </unit>
+    <unit id="vBZULT." name="grase.command.first-run.setup-lan-ip.invalid-mask">
+      <segment>
+        <source>grase.command.first-run.setup-lan-ip.invalid-mask</source>
+        <target>An invalid network mask has been specified for the LAN</target>
+      </segment>
+    </unit>
+    <unit id="XTvVD3o" name="grase.command.first-run.setup-lan-ip.validationLimit">
+      <segment>
+        <source>grase.command.first-run.setup-lan-ip.validationLimit</source>
+        <target>Too many LAN IP validation errors have occurred. First Run Wizard has failed.</target>
+      </segment>
+    </unit>
+    <unit id="iuHs5S0" name="grase.command.first-run.setup-lan-ip.setting-%ip%-%mask%">
+      <segment>
+        <source>grase.command.first-run.setup-lan-ip.setting-%ip%-%mask%</source>
+        <target>Setting LAN IP to {ip}/{mask}</target>
       </segment>
     </unit>
   </file>

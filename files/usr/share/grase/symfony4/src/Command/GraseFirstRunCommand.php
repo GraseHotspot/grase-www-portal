@@ -28,7 +28,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 class GraseFirstRunCommand extends Command
 {
-    protected static $wizardVersion = 4.0;
+    const WIZARD_VERSION = 4.0;
     protected static $defaultName = 'grase:first-run';
 
     /** @var SettingsUtils */
@@ -82,6 +82,7 @@ class GraseFirstRunCommand extends Command
             ->addOption('random-admin-password', null, InputOption::VALUE_NONE, 'Generate a random password for the admin user instead of prompting for a password')
 
         ;
+        // TODO add options for LAN/WAN interfaces?
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -93,9 +94,8 @@ class GraseFirstRunCommand extends Command
 
         // TODO detect if we're interactive ($input->isInteractive())
 
-        if ($this->firstRunWizardVersion < self::$wizardVersion || $input->getOption('force')) {
+        if ($this->firstRunWizardVersion < self::WIZARD_VERSION || $input->getOption('force')) {
             $this->runWizard($io, $input);
-        // TODO Set setting version at success
         } else {
             $io->warning($this->translator->trans('grase.command.first-run.skipping'));
         }
@@ -107,15 +107,24 @@ class GraseFirstRunCommand extends Command
     {
         // Questions
         // Set language
-        //$this->setLocale($io);
+        $this->setLocale($io);
 
         // WAN interface
-        //$this->setupWAN($io);
+        $this->setupWAN($io);
         // LAN interface
         $this->setupLAN($io);
         // IP Address for LAN
         // Set admin password
-        //$this->setAdminPassword($io, $input);
+        $this->setAdminPassword($io, $input);
+
+        // TODO set DHCP range?
+
+        // TODO Set setting version at success
+        $firstRunWizardSetting = $this->settingsUtils->getSetting(Setting::FIRST_RUN_WIZARD_VERSION);
+        if (!$firstRunWizardSetting) {
+            $firstRunWizardSetting = new Setting(Setting::FIRST_RUN_WIZARD_VERSION);
+        }
+        $this->settingsUtils->updateSetting($firstRunWizardSetting, self::WIZARD_VERSION);
     }
 
     private function setLocale(OutputStyle $io)
@@ -167,7 +176,7 @@ class GraseFirstRunCommand extends Command
 
     protected function setupLAN(OutputStyle $io)
     {
-        //$this->setupLanInterface($io);
+        $this->setupLanInterface($io);
         $this->setupLanIpAddress($io);
     }
 
