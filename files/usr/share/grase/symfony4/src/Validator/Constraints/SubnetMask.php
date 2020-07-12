@@ -4,6 +4,9 @@ namespace App\Validator\Constraints;
 
 use Symfony\Component\Validator\Constraint;
 
+/**
+ * @Annotation
+ */
 class SubnetMask extends Constraint
 {
     public $message = 'The netmask {{ netmask }} is invalid.';

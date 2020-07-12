@@ -7,8 +7,7 @@ use App\Entity\Setting;
 use App\Util\GraseConsoleStyle;
 use App\Util\GraseUtil;
 use App\Util\SettingsUtils;
-use App\Util\SystemInformation;
-use App\Util\SystemInformation\NetworkInterface;
+use App\Util\SystemUtils;
 use App\Validator\Constraints\SubnetMask;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
@@ -34,6 +33,9 @@ class GraseFirstRunCommand extends Command
     /** @var SettingsUtils */
     private $settingsUtils;
 
+    /** @var SystemUtils */
+    private $systemUtils;
+
     /** @var EntityManagerInterface */
     private $em;
 
@@ -52,13 +54,6 @@ class GraseFirstRunCommand extends Command
     /** @var UserPasswordEncoderInterface */
     private $passwordEncoder;
 
-    /**
-     * Array of network interfaces present on the system
-     *
-     * @var NetworkInterface[]
-     */
-    private $networkInterfaces = [];
-
     private $firstRunWizardVersion;
 
     public function __construct(SettingsUtils $settingsUtils, EntityManagerInterface $entityManager, LoggerInterface $auditLogger, LoggerInterface $logger, TranslatorInterface $translator, UserPasswordEncoderInterface $passwordEncoder)
@@ -69,6 +64,7 @@ class GraseFirstRunCommand extends Command
         $this->translator = $translator;
         $this->logger = $logger;
         $this->passwordEncoder = $passwordEncoder;
+        $this->systemUtils = new SystemUtils();
         parent::__construct();
     }
 
@@ -88,7 +84,6 @@ class GraseFirstRunCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new GraseConsoleStyle($input, $output);
-        $this->populateNetworkInterfaces();
 
         $this->firstRunWizardVersion = $this->settingsUtils->getSettingValue(Setting::FIRST_RUN_WIZARD_VERSION);
 
@@ -140,12 +135,8 @@ class GraseFirstRunCommand extends Command
     {
         $io->title($this->translator->trans('grase.command.first-run.setup-wan.title'));
         // Find the networkInterfaces that are suitable for this
-        $potentialWanInterfaces = [];
-        foreach ($this->networkInterfaces as $networkInterface) {
-            if ($networkInterface->gateway) {
-                $potentialWanInterfaces[$networkInterface->iface] = $networkInterface;
-            }
-        }
+        $potentialWanInterfaces = $this->systemUtils->getPotentialWanNetworkInterfaces();
+
         $wanInterfaceSetting = $this->settingsUtils->getSetting(Setting::NETWORK_WAN_INTERFACE);
         if ($wanInterfaceSetting->getValue()) {
             $io->note(
@@ -184,14 +175,11 @@ class GraseFirstRunCommand extends Command
     {
         // LAN Interface
         $io->title($this->translator->trans('grase.command.first-run.setup-lan.title'));
+
         // Find the networkInterfaces that are suitable for this (no current IP, no gateway)
         // TODO ensure we filter out the current WAN, and if the current LAN and WAN are the same, throw an error or null one out?
-        $potentialLanInterfaces = [];
-        foreach ($this->networkInterfaces as $networkInterface) {
-            if ($networkInterface->ipaddress === null) {
-                $potentialLanInterfaces[$networkInterface->iface] = $networkInterface;
-            }
-        }
+        $potentialLanInterfaces = $this->systemUtils->getPotentialLanNetworkInterfaces();
+
         $lanInterfaceSetting = $this->settingsUtils->getSetting(Setting::NETWORK_LAN_INTERFACE);
         if ($lanInterfaceSetting->getValue()) {
             $io->note(
@@ -260,7 +248,7 @@ class GraseFirstRunCommand extends Command
             // IP Validations
             $validator = Validation::createValidator();
             // We can't validate only private, it's not part of PHP's filter_vars, so at least filter out reserved ranges
-            $violations = $validator->validate($newLanIp, [new NotBlank(), new Ip(['groups' => Ip::V4_NO_RES])], [Ip::V4_NO_RES]);
+            $violations = $validator->validate($newLanIp, [new NotBlank(), new Ip(['version' => Ip::V4_NO_RES])], [Ip::V4_NO_RES]);
 
             // Netmask validations
             $violations->addAll($validator->validate($newLanMask, [new NotBlank(), new SubnetMask()]));
@@ -367,59 +355,5 @@ class GraseFirstRunCommand extends Command
         }
 
         return $errors;
-    }
-
-    /**
-     * Populate $this->networkInterfaces so we don't have to run getNetworkInterfaces multiple times
-     */
-    private function populateNetworkInterfaces()
-    {
-        // TODO check for command such as "IP"
-        $this->networkInterfaces = $this->getNetworkInterfaces();
-    }
-
-    private function getNetworkInterfaces()
-    {
-        // /sys/class/net/enp2s0/
-        $networkInterfaces = [];
-        // The network names we care about the most are en*, wl*, br*. We don't care about veth. We should filter out tun* unless looking for our own LAN
-        foreach (glob('/sys/class/net/*') as $sysNetworkInterfaceName) {
-            if (strstr($sysNetworkInterfaceName, '/veth')) {
-                continue;
-            }
-            if (strstr($sysNetworkInterfaceName, '/tun')) {
-                continue;
-            }
-            if (strstr($sysNetworkInterfaceName, '/lo')) {
-                continue;
-            }
-            if (strstr($sysNetworkInterfaceName, '/virbr')) {
-                continue;
-            }
-            if (strstr($sysNetworkInterfaceName, '/ztc')) {
-                continue;
-            }
-            if (strstr($sysNetworkInterfaceName, '/docker')) {
-                continue;
-            }
-            echo "$sysNetworkInterfaceName\n";
-            $networkInterface = $this->getInterfaceDetails($sysNetworkInterfaceName);
-            dump($networkInterface);
-            $networkInterfaces[] = $networkInterface;
-        }
-
-        return $networkInterfaces;
-    }
-
-    private function getInterfaceDetails($sysNetworkInterfacename)
-    {
-        $interface = new NetworkInterface();
-        $parts = preg_split('/\//', $sysNetworkInterfacename);
-        $interface->iface = end($parts);
-        $interface->mac = trim(file_get_contents($sysNetworkInterfacename . '/address'));
-        [$interface->ipaddress, $interface->netmask] = SystemInformation::discoverIPAddressAndNetmask($interface->iface);
-        $interface->gateway = SystemInformation::getInterfaceGateway($interface->iface);
-
-        return $interface;
     }
 }
