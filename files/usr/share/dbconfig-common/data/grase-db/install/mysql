@@ -61,8 +61,6 @@ CREATE TABLE `auth` (
 
 LOCK TABLES `auth` WRITE;
 /*!40000 ALTER TABLE `auth` DISABLE KEYS */;
-INSERT INTO `auth` (`username`, `password`, `role`) VALUES ('admin','5c0aaa28ef1b32d86101b59835766187befb98c2a88c6286c','ROLE_SUPERADMIN');
-INSERT INTO `auth` (`username`, `password`, `role`) VALUES ('support','205e599a4bc20218232707bb1fbb4caf11c5bb634e84aeaa1','ROLE_SUPERADMIN');
 /*!40000 ALTER TABLE `auth` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -511,7 +509,7 @@ INSERT INTO `settings` (`setting`, `value`) VALUES ('locale','\"en_AU\"');
 INSERT INTO `settings` (`setting`, `value`) VALUES ('locationName','\"Default\"');
 INSERT INTO `settings` (`setting`, `value`) VALUES ('mbOptions','[10,50,100,250,500,1024,2048,3072,4096,5120,7168,10240,15360,102400]');
 INSERT INTO `settings` (`setting`, `value`) VALUES ('networkBogusNX','[]');
-INSERT INTO `settings` (`setting`, `value`) VALUES ('networkDNSServers','[\"208.67.220.123\",\"208.67.222.123\"]');
+INSERT INTO `settings` (`setting`, `value`) VALUES ('networkDNSServers','[\"1.1.1.3\",\"1.0.0.3\"]');
 INSERT INTO `settings` (`setting`, `value`) VALUES ('networkLanInterface','\"br0\"');
 INSERT INTO `settings` (`setting`, `value`) VALUES ('networkLanIP','\"10.1.0.1\"');
 INSERT INTO `settings` (`setting`, `value`) VALUES ('networkLanMask','\"255.255.255.0\"');

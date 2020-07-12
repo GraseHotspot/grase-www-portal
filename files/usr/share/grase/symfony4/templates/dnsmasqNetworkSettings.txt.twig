@@ -19,10 +19,10 @@ expand-hosts
 domain=hotspot.lan
 
 {% if dnsServers|length == 0 %}
-{# No dns servers set so default to OpenDNS Family Shield #}
-#default dns servers and OpenDNS Family Shield
-server=208.67.222.123
-server=208.67.220.123
+{# No dns servers set so default to Cloudflare Family https://blog.cloudflare.com/introducing-1-1-1-1-for-families/ #}
+#default dns servers and Cloudflare Family filter
+server=1.1.1.3
+server=1.0.0.3
 {% endif %}
 {% for dnsServer in dnsServers  %}
 server={{ dnsServer }}
