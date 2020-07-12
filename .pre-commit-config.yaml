@@ -1,0 +1,22 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+    -   id: check-yaml
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace
+    -   id: check-merge-conflict
+    -   id: check-symlinks
+    -   id: mixed-line-ending
+
+-   repo: https://github.com/digitalpulp/pre-commit-php.git
+    rev: 1.4.0
+    hooks:
+    -   id: php-lint-all
+    -   id: php-cbf
+        exclude: files/usr/share/grase/www/|vendor/|files/usr/share/grase/locale/
+        #   -   id: php-cs-fixer
+        #       exclude: files/usr/share/grase/www/|vendor/
+    -   id: php-cs
+        exclude: files/usr/share/grase/www/|vendor/|files/usr/share/grase/src/Grase/|files/usr/share/grase/locale/
+        args: [-s -n]
