@@ -181,6 +181,7 @@ class SettingsUtils
         if (!$setting) {
             throw new \Exception("Setting not found $settingName");
         }
+
         return $this->updateSetting($setting, $value);
     }
 

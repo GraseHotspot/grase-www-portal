@@ -349,8 +349,9 @@ class GraseUtil
      */
     public static function CIDRtoMask($int)
     {
-        assert($int <= 32, "CIDR Must be between 0 and 32");
-        assert($int > 0, "CIDR Must be between 0 and 32");
+        assert($int <= 32, 'CIDR Must be between 0 and 32');
+        assert($int > 0, 'CIDR Must be between 0 and 32');
+
         return long2ip(-1 << (32 - (int) $int));
     }
 
@@ -363,11 +364,12 @@ class GraseUtil
      *
      * @return int|float If this returns a float, you didn't give us a proper mask
      */
-    public static function maskToCIDR($mask){
+    public static function maskToCIDR($mask)
+    {
         $long = ip2long($mask);
         $base = ip2long('255.255.255.255');
 
-        return 32-log(($long ^ $base)+1,2);
+        return 32 - log(($long ^ $base) + 1, 2);
 
         /* xor-ing will give you the inverse mask,
             log base 2 of that +1 will return the number

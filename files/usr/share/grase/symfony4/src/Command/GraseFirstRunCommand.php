@@ -152,6 +152,7 @@ class GraseFirstRunCommand extends Command
             $selectedWanInterface = $io->ask($this->translator->trans('grase.command.first-run.setup-wan.no-available-wan-interfaces.manual-input'), $wanInterfaceSetting->getValue());
             if (empty($selectedWanInterface) || $selectedWanInterface === $wanInterfaceSetting->getValue()) {
                 $io->error($this->translator->trans('grase.command.first-run.setup-wan.no-available-wan-interfaces.no-change'));
+
                 return;
             }
         } else {
@@ -162,7 +163,6 @@ class GraseFirstRunCommand extends Command
             );
         }
         $this->settingsUtils->updateSetting($wanInterfaceSetting, $selectedWanInterface);
-
     }
 
     protected function setupLAN(OutputStyle $io)
@@ -203,6 +203,7 @@ class GraseFirstRunCommand extends Command
                 $io->error(
                     $this->translator->trans('grase.command.first-run.setup-lan.no-available-lan-interfaces.no-change')
                 );
+
                 return;
             }
         } else {
@@ -233,12 +234,11 @@ class GraseFirstRunCommand extends Command
         // Do validations
         $failedValidations = 0;
         do {
-
             $newLanIp = $io->ask(
                 $this->translator->trans('grase.command.first-run.setup-lan-ip.ip-question'),
                 $lanIpSetting->getValue()
             );
-            $newLanMask =$io->ask(
+            $newLanMask = $io->ask(
                 $this->translator->trans('grase.command.first-run.setup-lan-ip.mask-question'),
                 $lanNetmaskSetting->getValue()
             );
@@ -255,8 +255,7 @@ class GraseFirstRunCommand extends Command
 
             // Netmask validations
             $newLanMaskAsCidr = GraseUtil::maskToCIDR($newLanMask);
-            if (intval($newLanMaskAsCidr) != $newLanMaskAsCidr || $newLanMaskAsCidr > 30 || $newLanMaskAsCidr < 8)
-            {
+            if (intval($newLanMaskAsCidr) != $newLanMaskAsCidr || $newLanMaskAsCidr > 30 || $newLanMaskAsCidr < 8) {
                 $violations->add(new ConstraintViolation($this->translator->trans('grase.command.first-run.setup-lan-ip.invalid-mask'), null, [], $newLanMaskAsCidr, null, $newLanMaskAsCidr));
             }
 
@@ -271,7 +270,6 @@ class GraseFirstRunCommand extends Command
                     throw new RuntimeCommandException($this->translator->trans('grase.command.first-run.setup-lan-ip.validationLimit'));
                 }
             }
-
         } while (sizeof($violations) !== 0);
 
         $io->success($this->translator->trans('grase.command.first-run.setup-lan-ip.setting-%ip%-%mask%',
@@ -297,7 +295,7 @@ class GraseFirstRunCommand extends Command
         // Find out if we already have an admin user
         $adminUser = $this->em->getRepository(User::class)->find('admin');
         // If we already have an admin user, check first (unless it's from an upgrade pre 4.0)
-        if (        $adminUser && $this->firstRunWizardVersion >= 4.0 && !$randomAdminPassword
+        if ($adminUser && $this->firstRunWizardVersion >= 4.0 && !$randomAdminPassword
             && !$io->confirm($this->translator->trans('grase.command.first-run.admin-reset.confirm'), false)
         ) {
             return 0;
@@ -379,8 +377,7 @@ class GraseFirstRunCommand extends Command
         // /sys/class/net/enp2s0/
         $networkInterfaces = [];
         // The network names we care about the most are en*, wl*, br*. We don't care about veth. We should filter out tun* unless looking for our own LAN
-        foreach (glob('/sys/class/net/*') as $sysNetworkInterfaceName)
-        {
+        foreach (glob('/sys/class/net/*') as $sysNetworkInterfaceName) {
             if (strstr($sysNetworkInterfaceName, '/veth')) {
                 continue;
             }
@@ -404,12 +401,12 @@ class GraseFirstRunCommand extends Command
             dump($networkInterface);
             $networkInterfaces[] = $networkInterface;
         }
+
         return $networkInterfaces;
     }
 
     private function getInterfaceDetails($sysNetworkInterfacename)
     {
-
         $interface = new NetworkInterface();
         $parts = preg_split('/\//', $sysNetworkInterfacename);
         $interface->iface = end($parts);
@@ -418,6 +415,5 @@ class GraseFirstRunCommand extends Command
         $interface->gateway = SystemInformation::getInterfaceGateway($interface->iface);
 
         return $interface;
-
     }
 }

@@ -27,7 +27,6 @@ namespace App\Util;
 use App\Util\SystemInformation\CpuDevice;
 use App\Util\SystemInformation\HTTPD;
 use App\Util\SystemInformation\NetworkInterface;
-use Symfony\Component\Config\Definition\Exception\Exception;
 
 /**
  * SystemInformation attempts to get information about the running system
@@ -143,13 +142,12 @@ class SystemInformation
             return null;
         }
         exec("ip -br address show $iface 2>/dev/null", $ipAndNetmask, $exitCode);
-        if($exitCode !== 0 || sizeof($ipAndNetmask) === 0) {
+        if ($exitCode !== 0 || sizeof($ipAndNetmask) === 0) {
             return null;
         }
         $ipAndNetmask = preg_split('/\s+/', $ipAndNetmask[0])[2];
 
-        if ($ipAndNetmask === '')
-        {
+        if ($ipAndNetmask === '') {
             return null;
         }
         list($ip, $cidr) = explode('/', $ipAndNetmask);
@@ -161,7 +159,7 @@ class SystemInformation
     public static function getInterfaceGateway($iface)
     {
         exec("ip route show to default dev $iface 2>/dev/null", $result, $exitCode);
-        if($exitCode !== 0 || sizeof($result) === 0) {
+        if ($exitCode !== 0 || sizeof($result) === 0) {
             return null;
         }
         $result = preg_split('/\s+/', $result[0])[2];
@@ -169,6 +167,7 @@ class SystemInformation
         if ($result === '') {
             return null;
         }
+
         return $result;
     }
 
