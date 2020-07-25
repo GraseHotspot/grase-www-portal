@@ -3,11 +3,14 @@
 namespace App\Controller;
 
 use App\Data\NetworkSettingsData;
+use App\Entity\Setting;
 use App\Form\NetworkSettings;
+use App\Form\SettingType;
 use App\Util\SettingsUtils;
 use App\Util\SystemUtils;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -80,6 +83,68 @@ class SettingController extends AbstractController
             'network_settings.html.twig',
             [
                 'networkSettingsForm' => $form->createView(),
+            ]
+        );
+    }
+
+    /**
+     * Show all the settings in a table so we can see the "hidden" settings.
+     *
+     * @Route("/advanced", name="advanced")
+     *
+     * @IsGranted("ROLE_SUPERADMIN")
+     *
+     * @return Response
+     */
+    public function advancedSettingsAction()
+    {
+        $this->denyAccessUnlessGranted('ROLE_SUPERADMIN');
+
+        return $this->render('advancedSettings.html.twig');
+    }
+
+    /**
+     * "Advanced" edit any setting
+     *
+     * @Route("/advanced/{setting}/edit", name="advanced_edit", options={"expose"= true})
+     *
+     * @IsGranted("ROLE_SUPERADMIN")
+     *
+     * @param Setting $setting
+     * @param Request $request
+     *
+     * @return RedirectResponse|Response
+     */
+    public function editAdvancedSettingAction(Setting $setting, Request $request)
+    {
+        $this->denyAccessUnlessGranted('ROLE_SUPERADMIN');
+
+        $form = $this->createForm(SettingType::class, $setting);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $setting = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($setting);
+            $em->flush();
+
+            $this->addFlash(
+                'success',
+                $this->translator->trans(
+                    'grase.advancedSettings.edit.save_success.%setting%',
+                    ['%setting%' => $setting->getName()]
+                )
+            );
+
+            return $this->redirectToRoute('grase_settings_advanced');
+        }
+
+        return $this->render(
+            'editAdvancedSetting.html.twig',
+            [
+                'settingForm' => $form->createView(),
             ]
         );
     }

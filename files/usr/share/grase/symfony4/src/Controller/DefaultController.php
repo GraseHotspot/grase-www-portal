@@ -54,59 +54,7 @@ class DefaultController extends AbstractController
         );
     }
 
-    /**
-     * Show all the settings in a table so we can see the "hidden" settings.
-     *
-     * @return Response
-     */
-    public function advancedSettingsAction()
-    {
-        $this->denyAccessUnlessGranted('ROLE_SUPERADMIN');
 
-        return $this->render('advancedSettings.html.twig');
-    }
-
-    /**
-     * "Advanced" edit any setting
-     *
-     * @param Setting $setting
-     * @param Request $request
-     *
-     * @return RedirectResponse|Response
-     */
-    public function editAdvancedSettingAction(Setting $setting, Request $request)
-    {
-        $this->denyAccessUnlessGranted('ROLE_SUPERADMIN');
-
-        $form = $this->createForm(SettingType::class, $setting);
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $setting = $form->getData();
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($setting);
-            $em->flush();
-
-            $this->addFlash(
-                'success',
-                $this->translator->trans(
-                    'grase.advancedSettings.edit.save_success.%setting%',
-                    ['%setting%' => $setting->getName()]
-                )
-            );
-
-            return $this->redirectToRoute('grase_advanced_settings');
-        }
-
-        return $this->render(
-            'editAdvancedSetting.html.twig',
-            [
-                'settingForm' => $form->createView(),
-            ]
-        );
-    }
 
     /**
      * Display currently active Radius sessions

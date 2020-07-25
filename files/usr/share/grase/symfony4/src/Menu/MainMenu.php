@@ -135,7 +135,7 @@ class MainMenu extends Menu
 
         $settingsMenuCollapsable->addChild(new DefaultItem('nav_config_advanced_settings', $settingsMenu->isEvent()), 1)
             ->setLabel('grase.menu.settings.advanced')
-            ->setRoute('grase_advanced_settings')
+            ->setRoute('grase_settings_advanced')
             ->setExtra('label_icon', 'settings_application')
             ->setChildAttr(['class' => 'nav nav-treeview'])
         ;

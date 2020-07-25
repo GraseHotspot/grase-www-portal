@@ -11,8 +11,7 @@
 {% block javascripts_inline %}
 <script>
     function render_link(data, type, row, meta) {
-        console.log(data);
-        return '<a href="'+ Routing.generate("grase_advanced_settings_edit", {setting: data }) +'">'+data+'</a>';
+        return '<a href="'+ Routing.generate("grase_settings_advanced_edit", {setting: data }) +'">'+data+'</a>';
     }
 
     function pageJs($) {

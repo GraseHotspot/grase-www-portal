@@ -38,19 +38,6 @@ grase_group_edit:
     defaults:
         _controller: App\Controller\GroupController::editGroupAction
 
-grase_advanced_settings:
-    path: /settings/advanced
-    defaults:
-        _controller: App\Controller\DefaultController::advancedSettingsAction
-
-grase_advanced_settings_edit:
-    path: /settings/advanced/{setting}/edit
-    options:
-        expose: true
-    defaults:
-        _controller: App\Controller\DefaultController::editAdvancedSettingAction
-
-
 grase_dhcp_leases:
     path: /leases
     defaults:
