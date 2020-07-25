@@ -13,6 +13,18 @@
         <target>SETTINGS</target>
       </segment>
     </unit>
+    <unit id="tGabzac" name="grase.menu.settings.network">
+      <segment>
+        <source>grase.menu.settings.network</source>
+        <target>Network</target>
+      </segment>
+    </unit>
+    <unit id="_bNB9Pe" name="grase.menu.settings.advanced">
+      <segment>
+        <source>grase.menu.settings.advanced</source>
+        <target>Advanced</target>
+      </segment>
+    </unit>
     <unit id="42CzBpW" name="grase.menu.groups">
       <segment>
         <source>grase.menu.groups</source>
@@ -887,6 +899,24 @@
       <segment>
         <source>grase.command.first-run.setup-lan-ip.setting-%ip%-%mask%</source>
         <target>Setting LAN IP to {ip}/{mask}</target>
+      </segment>
+    </unit>
+    <unit id="AORbJDa" name="grase.network-settings.save_success">
+      <segment>
+        <source>grase.network-settings.save_success</source>
+        <target>Network settings saved</target>
+      </segment>
+    </unit>
+    <unit id="5rXnwOV" name="grase.network-settings.title">
+      <segment>
+        <source>grase.network-settings.title</source>
+        <target>Network Settings</target>
+      </segment>
+    </unit>
+    <unit id="4QwoyoL" name="grase.network-settings.information">
+      <segment>
+        <source>grase.network-settings.information</source>
+        <target>These settings are used by Coova Chilli and Dnsmasq. Both Coova Chilli and Dnsmasq will need to be reloaded when these settings change. A cron job will automatically check for changes every 5 minutes and reload these daemons if needed.</target>
       </segment>
     </unit>
   </file>

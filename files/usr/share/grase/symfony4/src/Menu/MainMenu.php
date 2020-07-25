@@ -115,7 +115,7 @@ class MainMenu extends Menu
         ;
 
         $settingsMenuCollapsable = $menu->addChild(new DefaultItem('nav_config_settings', $menu->isEvent()), 30)
-            ->setLabel('Settings')
+            ->setLabel('grase.menu.settings.header')
             ->setLabelAfterHtml(' <i class="right fas fa-angle-left"></i>')
             //->setRoute('grase_settings')
             ->setLink('#')
@@ -126,7 +126,7 @@ class MainMenu extends Menu
         //->setRoles(['ADMIN_SETTINGS_GENERAL'])
 
         $settingsMenuCollapsable->addChild(new DefaultItem('nav_config_network_settings', $settingsMenu->isEvent()), 1)
-            ->setLabel('Network Settings')
+            ->setLabel('grase.menu.settings.network')
             ->setRoute('grase_settings_network')
             ->setExtra('label_icon', 'settings_ethernet')
             ->setChildAttr(['class' => 'nav nav-treeview'])
@@ -134,7 +134,7 @@ class MainMenu extends Menu
         //->setRoles(['ADMIN_SETTINGS_GENERAL'])
 
         $settingsMenuCollapsable->addChild(new DefaultItem('nav_config_advanced_settings', $settingsMenu->isEvent()), 1)
-            ->setLabel('Advanced Settings')
+            ->setLabel('grase.menu.settings.advanced')
             ->setRoute('grase_advanced_settings')
             ->setExtra('label_icon', 'settings_application')
             ->setChildAttr(['class' => 'nav nav-treeview'])
