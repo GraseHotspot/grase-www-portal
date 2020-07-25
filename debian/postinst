@@ -41,11 +41,6 @@ copy_favicon(){
     cp -n /usr/share/grase/www/favicon.ico /var/www/favicon.ico || true
 }
 
-www_proxy_group(){
-    # www-data needs to be in proxy for log processing
-    adduser www-data proxy > /dev/null || true
-}
-
 run_migrations(){
     runuser -u www-data -- /usr/share/grase/symfony4/bin/console doctrine:migrations:migrate --no-interaction || true
 }
@@ -76,10 +71,6 @@ prod_cache
 
 fix_settings
 
-# call_cron
-
-www_proxy_group
-
 #a2enmod rewrite || true
 #a2enmod headers || true
 
@@ -89,5 +80,13 @@ www_proxy_group
 #       /etc/init.d/apache2 restart 3>&- || true
 #fi
 
+# Display message about first-run wizard
+printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '='
+cat <<"EOF"
+If this is the first time running the Grase Hotspot Install
+please run the first-run wizard to get started:
+  sudo -u www-data /usr/share/grase/symfony4/bin/console grase:first-run
+EOF
+printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '='
 
 exit 0

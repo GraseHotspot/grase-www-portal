@@ -94,7 +94,6 @@ class GraseFirstRunCommand extends Command
             ->addOption('random-admin-password', null, InputOption::VALUE_NONE, 'Generate a random password for the admin user instead of prompting for a password')
 
         ;
-        // TODO add options for LAN/WAN interfaces?
     }
 
     /**
@@ -105,8 +104,6 @@ class GraseFirstRunCommand extends Command
         $io = new GraseConsoleStyle($input, $output);
 
         $this->firstRunWizardVersion = $this->settingsUtils->getSettingValue(Setting::FIRST_RUN_WIZARD_VERSION);
-
-        // TODO detect if we're interactive ($input->isInteractive())
 
         if ($this->firstRunWizardVersion < self::WIZARD_VERSION || $input->getOption('force')) {
             $this->runWizard($io, $input);
