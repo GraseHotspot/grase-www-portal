@@ -7,10 +7,23 @@
 
 {% block body %}
     <div class="d-flex flex-column h-100  justify-content-center">
-        <div class="login-box d-flex align-items-center flex-column">
+        <div class="login-box">
             <div class="login-logo">
                 <img src="{{ asset('build/images/grase.png') }}" height="100px"/><br/><a href=""><b>Grase</b>Hotspot</a>
             </div><!-- /.login-logo -->
+
+            {% if firstRunWizardNeeded  %}
+            <!-- First run wizard warning -->
+            <div class="card card-danger width">
+                <div class="card-header">
+                        <h5><i class="material-icons">warning</i>{% trans %}login.first-run-wizard.warning.title{% endtrans %}</h5>
+                </div>
+                <div class="card-body">
+                    {% trans %}login.first-run-wizard.warning.body{% endtrans %}
+                </div>
+            </div>
+            {% endif %}
+
             <div class="card">
                 <div class="login-box-body card-body">
                 <p class="login-box-msg">Sign in to access the Admin area</p>

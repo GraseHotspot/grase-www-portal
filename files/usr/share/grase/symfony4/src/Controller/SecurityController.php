@@ -2,8 +2,12 @@
 
 namespace App\Controller;
 
+use App\Command\GraseFirstRunCommand;
+use App\Entity\Setting;
+use App\Util\SettingsUtils;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 
@@ -17,11 +21,12 @@ class SecurityController extends AbstractController
      *
      * @Route("/login", name="_grase_login")
      *
-     * @param Request $request
+     * @param Request       $request
+     * @param SettingsUtils $settingsUtils
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
-    public function loginAction(Request $request)
+    public function loginAction(Request $request, SettingsUtils $settingsUtils)
     {
         if ($request->attributes->has(Security::AUTHENTICATION_ERROR)) {
             $error = $request->attributes->get(Security::AUTHENTICATION_ERROR);
@@ -29,11 +34,14 @@ class SecurityController extends AbstractController
             $error = $request->getSession()->get(Security::AUTHENTICATION_ERROR);
         }
 
+        $firstRunWizardVersion = $settingsUtils->getSettingValue(Setting::FIRST_RUN_WIZARD_VERSION);
+
         return $this->render(
             'login.html.twig',
             [
                 'last_username' => $request->getSession()->get(Security::LAST_USERNAME),
                 'error'         => $error,
+                'firstRunWizardNeeded' => $firstRunWizardVersion < GraseFirstRunCommand::WIZARD_VERSION,
             ]
         );
     }

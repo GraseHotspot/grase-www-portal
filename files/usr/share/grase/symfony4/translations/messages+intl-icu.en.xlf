@@ -919,5 +919,21 @@
         <target>These settings are used by Coova Chilli and Dnsmasq. Both Coova Chilli and Dnsmasq will need to be reloaded when these settings change. A cron job will automatically check for changes every 5 minutes and reload these daemons if needed.</target>
       </segment>
     </unit>
+    <unit id="hkCXgiw" name="login.first-run-wizard.warning.title">
+      <segment>
+        <source>login.first-run-wizard.warning.title</source>
+        <target>First Run Wizard has not been Run!</target>
+      </segment>
+    </unit>
+    <unit id="1ISqFWh" name="login.first-run-wizard.warning.body">
+      <segment>
+        <source>login.first-run-wizard.warning.body</source>
+        <target><![CDATA[
+          The first run wizard has not been run, or a newer wizard is available.<br/>Please run the wizard with the command
+          <code>sudo -u www-data /usr/share/grase/symfony4/bin/console grase:first-run</code>
+          Login may not be possible until this has been run.
+           ]]></target>
+      </segment>
+    </unit>
   </file>
 </xliff>
