@@ -748,7 +748,7 @@
     <unit id="W5iLtjj" name="grase.command.first-run.admin-reset.password1">
       <segment>
         <source>grase.command.first-run.admin-reset.password1</source>
-        <target>Please enter a new password for the admin user</target>
+        <target>Please enter a new password for the admin user (weak passwords and passwords in the haveibeenpwned.com database aren't allowed)</target>
       </segment>
     </unit>
     <unit id="UFyKB5z" name="grase.command.first-run.admin-reset.password2">

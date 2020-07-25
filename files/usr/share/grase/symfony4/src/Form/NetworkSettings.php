@@ -24,6 +24,9 @@ class NetworkSettings extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $lanNicChoices = array_combine(array_keys($options['lan_nics']), array_keys($options['lan_nics']));
+        $wanNicChoices = array_combine(array_keys($options['wan_nics']), array_keys($options['wan_nics']));
+
         $builder
             ->add('lanIpAddress', TextType::class, [
                 'label' => 'grase.form.network-settings.lan-ip-address',
@@ -33,11 +36,11 @@ class NetworkSettings extends AbstractType
             ])
             ->add('lanNetworkInterface', ChoiceType::class, [
                 'label'   => 'grase.form.network-settings.lan-nic',
-                'choices' => $options['lan_nics'],
+                'choices' => $lanNicChoices,
             ])
             ->add('wanNetworkInterface', ChoiceType::class, [
                 'label'   => 'grase.form.network-settings.wan-nic',
-                'choices' => $options['wan_nics'],
+                'choices' => $wanNicChoices,
             ])
             ->add('dnsServers', CollectionType::class, [
                 'entry_type'     => TextType::class,
