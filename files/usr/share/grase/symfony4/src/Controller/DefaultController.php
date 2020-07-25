@@ -6,8 +6,6 @@ use App\Entity\AuditLog;
 use App\Entity\Radius\Group;
 use App\Entity\Radius\Radacct;
 use App\Entity\Radius\User;
-use App\Entity\Setting;
-use App\Form\SettingType;
 use App\Util\GraseUtil;
 use App\Util\SystemInformation;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -53,8 +51,6 @@ class DefaultController extends AbstractController
             ]
         );
     }
-
-
 
     /**
      * Display currently active Radius sessions

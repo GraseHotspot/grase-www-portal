@@ -39,8 +39,8 @@ class SecurityController extends AbstractController
         return $this->render(
             'login.html.twig',
             [
-                'last_username' => $request->getSession()->get(Security::LAST_USERNAME),
-                'error'         => $error,
+                'last_username'        => $request->getSession()->get(Security::LAST_USERNAME),
+                'error'                => $error,
                 'firstRunWizardNeeded' => $firstRunWizardVersion < GraseFirstRunCommand::WIZARD_VERSION,
             ]
         );
