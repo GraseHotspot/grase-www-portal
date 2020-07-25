@@ -62,7 +62,7 @@ Encore
         to: 'images/[path][name].[hash:8].[ext]',
 
         // only copy files matching this pattern
-        pattern: /\.(png|jpg|jpeg|ico)$/
+        pattern: /\.(png|jpg|jpeg|ico|svg)$/
     })
 ;
 

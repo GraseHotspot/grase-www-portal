@@ -6,26 +6,25 @@
 {% block bodyclass %}hold-transition login-page{% endblock %}
 
 {% block body %}
-    <div class="d-flex flex-column h-100  justify-content-center">
-        <div class="login-box">
-            <div class="login-logo">
-                <img src="{{ asset('build/images/grase.png') }}" height="100px"/><br/><a href=""><b>Grase</b>Hotspot</a>
-            </div><!-- /.login-logo -->
+    <div class="login-box">
+        <div class="login-logo">
+            <img src="{{ asset('build/images/grase_512.png') }}" height="100px"/><br/><a href=""><b>Grase</b>Hotspot</a>
+        </div><!-- /.login-logo -->
 
-            {% if firstRunWizardNeeded  %}
+        {% if firstRunWizardNeeded  %}
             <!-- First run wizard warning -->
             <div class="card card-danger width">
                 <div class="card-header">
-                        <h5><i class="material-icons">warning</i>{% trans %}login.first-run-wizard.warning.title{% endtrans %}</h5>
+                    <h5><i class="material-icons">warning</i>{% trans %}login.first-run-wizard.warning.title{% endtrans %}</h5>
                 </div>
                 <div class="card-body">
                     {% trans %}login.first-run-wizard.warning.body{% endtrans %}
                 </div>
             </div>
-            {% endif %}
+        {% endif %}
 
-            <div class="card">
-                <div class="login-box-body card-body">
+        <div class="card">
+            <div class="login-box-body card-body">
                 <p class="login-box-msg">Sign in to access the Admin area</p>
                 {% if error %}
                     <div class="alert alert-danger show" role="alert">
@@ -58,9 +57,11 @@
                 #}
 
             </div><!-- /.login-box-body -->
-            </div>
         </div>
-        {% block footer %}{{ parent() }}{% endblock %}
+    </div>
+
+    <div style="width: 100%">
+    {% block footer %}{{ parent() }}{% endblock %}
     </div>
 {% endblock %}
 
@@ -68,8 +69,10 @@
     {{ parent() }}
     <style>
         .main-footer {
-            margin-left: 0;
-            flex-shrink: 0;
+            margin-left: 0 !important;
+            flex-shrink: 0 !important;
+            padding-bottom: 24px !important;
+
         }
         .login-box {
             flex: 1 0 auto;

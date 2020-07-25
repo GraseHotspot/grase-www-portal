@@ -7,7 +7,13 @@
         {# 'app' must match the first argument to addEntry() in webpack.config.js #}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
-    <link rel="icon" sizes="16x16" href="{{ asset('build/images/grase_globe_combined.ico') }}"/>
+    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" href="{{ asset('build/images/grase.svg') }}">
+    <link rel="mask-icon" href="{{ asset('build/images/safari-pinned-tab.svg') }}" color="#5bbad5">
+    <link rel="apple-touch-icon" href="{{ asset('build/images/apple-touch-icon.png') }}">
+
+
+
 </head>
 <body class="{% block bodyclass %}hold-transition sidebar-mini layout-fixed{% endblock %}">
 {% block body %}
