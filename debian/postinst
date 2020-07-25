@@ -37,10 +37,6 @@ fix_dir_perms(){
 
 }
 
-copy_favicon(){
-    cp -n /usr/share/grase/www/favicon.ico /var/www/favicon.ico || true
-}
-
 run_migrations(){
     runuser -u www-data -- /usr/share/grase/symfony4/bin/console doctrine:migrations:migrate --no-interaction || true
 }
@@ -62,8 +58,6 @@ fi
 
 
 fix_dir_perms
-
-copy_favicon
 
 run_migrations
 
