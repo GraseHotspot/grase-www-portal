@@ -339,6 +339,23 @@ class GraseUtil
     }
 
     /**
+     * Take a subnet mask (CIDR or as Mask) and ensure we return a mask if it's valid
+     *
+     * @param $mask
+     *
+     * @return int|string
+     */
+    public static function transformSubnetMask($mask)
+    {
+        if (strlen($mask) < 8 && is_numeric($mask) && $mask < 30 && $mask > 8) {
+            // We have an int CIDR hopefully
+            $mask = GraseUtil::CIDRtoMask($mask);
+        }
+
+        return $mask;
+    }
+
+    /**
      * Take a network CIDR and convert to a string netmask
      *
      * This function probably came out of PHP Docs or Stackoverflow

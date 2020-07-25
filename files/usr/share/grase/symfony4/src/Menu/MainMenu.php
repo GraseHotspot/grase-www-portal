@@ -125,6 +125,14 @@ class MainMenu extends Menu
         ;
         //->setRoles(['ADMIN_SETTINGS_GENERAL'])
 
+        $settingsMenuCollapsable->addChild(new DefaultItem('nav_config_network_settings', $settingsMenu->isEvent()), 1)
+            ->setLabel('Network Settings')
+            ->setRoute('grase_settings_network')
+            ->setExtra('label_icon', 'settings_ethernet')
+            ->setChildAttr(['class' => 'nav nav-treeview'])
+        ;
+        //->setRoles(['ADMIN_SETTINGS_GENERAL'])
+
         $settingsMenuCollapsable->addChild(new DefaultItem('nav_config_advanced_settings', $settingsMenu->isEvent()), 1)
             ->setLabel('Advanced Settings')
             ->setRoute('grase_advanced_settings')

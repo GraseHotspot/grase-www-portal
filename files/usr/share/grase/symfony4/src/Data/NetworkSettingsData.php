@@ -43,19 +43,21 @@ class NetworkSettingsData
     public $wanNetworkInterface;
 
     /**
-     * @Assert\NotBlank()
-     *
      * @var array
      *
-     * @Assert\Ip(version="4")
-     * @Assert\Collection()
+     * @Assert\NotBlank()
+     * @Assert\All({
+     *      @Assert\Ip(version="4")
+     * })
      */
     public $dnsServers;
 
     /**
      * @var array
      *
-     * @Assert\Collection()
+     * @Assert\All({
+     *      @Assert\Ip(version="4")
+     * })
      */
     public $bogusNxDomains;
 
@@ -86,5 +88,18 @@ class NetworkSettingsData
         $this->wanNetworkInterface = $this->settingsUtils->getSettingValue(Setting::NETWORK_WAN_INTERFACE);
         $this->dnsServers = $this->settingsUtils->getSettingValue(Setting::NETWORK_DNS_SERVERS);
         $this->bogusNxDomains = $this->settingsUtils->getSettingValue(Setting::NETWORK_BOGUS_NX);
+    }
+
+    /**
+     * Save the network settings back. This should never be called it the object validation has failed
+     */
+    public function save()
+    {
+        $this->settingsUtils->updateSettingByName(Setting::NETWORK_LAN_IP, $this->lanIpAddress);
+        $this->settingsUtils->updateSettingByName(Setting::NETWORK_LAN_MASK, $this->lanNetworkMask);
+        $this->settingsUtils->updateSettingByName(Setting::NETWORK_LAN_INTERFACE, $this->lanNetworkInterface);
+        $this->settingsUtils->updateSettingByName(Setting::NETWORK_WAN_INTERFACE, $this->wanNetworkInterface);
+        $this->settingsUtils->updateSettingByName(Setting::NETWORK_DNS_SERVERS, $this->dnsServers);
+        $this->settingsUtils->updateSettingByName(Setting::NETWORK_BOGUS_NX, $this->bogusNxDomains);
     }
 }

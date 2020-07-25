@@ -14,13 +14,106 @@
             </div>
             <div class="card-body">
                 {% trans %}grase.network-settings.information{% endtrans %}
-
                 {{ form_start(networkSettingsForm) }}
 
+                <div class="my-custom-class-for-errors">
+                    {{ form_errors(networkSettingsForm) }}
+                </div>
+
+                <div class="form-row">
+                    <div class="col-xs-12 col-lg-6">
+                        {{ form_row(networkSettingsForm.lanIpAddress) }}
+                        {{ form_row(networkSettingsForm.lanNetworkMask) }}
+                        {{ form_row(networkSettingsForm.lanNetworkInterface) }}
+                        {{ form_row(networkSettingsForm.wanNetworkInterface) }}
+                    </div>
+                    <div class="col-xs-12 col-lg-6">
+                        {{ form_row(networkSettingsForm.dnsServers) }}
+                        {{ form_row(networkSettingsForm.bogusNxDomains) }}
+                    </div>
+                </div>
+
+                {{ form_rest(networkSettingsForm) }}
                 {{ form_end(networkSettingsForm) }}
             </div>
 
         </div>
     </div>
 
+{% endblock %}
+{% block javascripts_inline %}
+    <script>
+
+        function pageJs($) {
+
+            function setup_add_dns_servers() {
+                // Setup add for the DNS Servers
+                var $collectionHolder;
+
+                // setup an "add a tag" link
+                var $addNewButton = $('<a class="add_dnsServers_button"><i class="material-icons">add_circle</i></a>');
+                var $newLinkDiv = $('<div></div>').append($addNewButton);
+
+                // Get the div that holds the collection and add the add buttont
+                $collectionHolder = $('#network_settings_dnsServers').append($newLinkDiv);
+
+                // count the current form inputs we have (e.g. 2), use that as the new
+                // index when inserting a new item (e.g. 2)
+                $collectionHolder.data('index', $collectionHolder.find('input').length);
+
+                $addNewButton.on('click', function (e) {
+                    // add a new tag form (see next code block)
+                    addInputPrototype($collectionHolder, $newLinkDiv);
+                });
+            }
+
+            function setup_add_bogus_nx_servers() {
+                // Setup add for the Bogus NX Domains Servers
+                var $collectionHolder;
+
+                // setup an "add a tag" link
+                var $addNewButton = $('<a class="add_bogusNxDomains_button"><i class="material-icons">add_circle</i></a>');
+                var $newLinkDiv = $('<div></div>').append($addNewButton);
+
+                // Get the div that holds the collection and add the add buttont
+                $collectionHolder = $('#network_settings_bogusNxDomains').append($newLinkDiv);
+
+                // count the current form inputs we have (e.g. 2), use that as the new
+                // index when inserting a new item (e.g. 2)
+                $collectionHolder.data('index', $collectionHolder.find('input').length);
+
+                $addNewButton.on('click', function (e) {
+                    // add a new tag form (see next code block)
+                    addInputPrototype($collectionHolder, $newLinkDiv);
+                });
+            }
+
+            function addInputPrototype($collectionHolder, $newButtonElement) {
+                // Get the data-prototype explained earlier
+                var prototype = $collectionHolder.data('prototype');
+
+                // get the new index
+                var index = $collectionHolder.data('index');
+
+                var newForm = prototype;
+                // You need this only if you didn't set 'label' => false in your tags field in TaskType
+                // Replace '__name__label__' in the prototype's HTML to
+                // instead be a number based on how many items we have
+                // newForm = newForm.replace(/__name__label__/g, index);
+
+                // Replace '__name__' in the prototype's HTML to
+                // instead be a number based on how many items we have
+                newForm = newForm.replace(/__name__/g, index);
+
+                // increase the index with one for the next item
+                $collectionHolder.data('index', index + 1);
+
+                // Add the input before the add button
+                $newButtonElement.before(newForm);
+            }
+
+            setup_add_dns_servers();
+            setup_add_bogus_nx_servers();
+        }
+    </script>
 {% endblock %}

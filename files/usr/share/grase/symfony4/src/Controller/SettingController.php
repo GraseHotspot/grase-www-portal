@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Settings routes
@@ -26,14 +27,20 @@ class SettingController extends AbstractController
 
     /** @var SystemUtils */
     private $systemUtils;
+    /**
+     * @var TranslatorInterface
+     */
+    private $translator;
 
     /**
-     * @param SettingsUtils $settingsUtils
+     * @param SettingsUtils       $settingsUtils
+     * @param TranslatorInterface $translator
      */
-    public function __construct(SettingsUtils $settingsUtils)
+    public function __construct(SettingsUtils $settingsUtils, TranslatorInterface $translator)
     {
         $this->settingsUtils = $settingsUtils;
         $this->systemUtils = new SystemUtils();
+        $this->translator = $translator;
     }
 
     /**
@@ -56,13 +63,13 @@ class SettingController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // TODO Update network data
+            // Update network data
+            $networkSettingsData->save();
 
             $this->addFlash(
                 'success',
                 $this->translator->trans(
-                    'grase.user.save_success.%username%',
-                    ['%username%' => $user->getUsername()]
+                    'grase.network-settings.save_success'
                 )
             );
 

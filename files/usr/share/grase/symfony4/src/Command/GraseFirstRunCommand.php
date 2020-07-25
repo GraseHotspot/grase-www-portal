@@ -290,10 +290,8 @@ class GraseFirstRunCommand extends Command
                 $lanNetmaskSetting->getValue()
             );
 
-            if (strlen($newLanMask) < 8 && is_numeric($newLanMask) && $newLanMask < 30 && $newLanMask > 8) {
-                // We have an int CIDR hopefully
-                $newLanMask = GraseUtil::CIDRtoMask($newLanMask);
-            }
+            // Take both formats of subnet mask and give us a Mask string
+            $newLanMask = GraseUtil::transformSubnetMask($newLanMask);
 
             // IP Validations
             $validator = Validation::createValidator();

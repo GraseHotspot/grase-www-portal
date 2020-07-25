@@ -3,7 +3,9 @@
 namespace App\Form;
 
 use App\Data\NetworkSettingsData;
+use App\Util\GraseUtil;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -22,7 +24,6 @@ class NetworkSettings extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        dump($options['lan_nics']);
         $builder
             ->add('lanIpAddress', TextType::class, [
                 'label' => 'grase.form.network-settings.lan-ip-address',
@@ -39,21 +40,33 @@ class NetworkSettings extends AbstractType
                 'choices' => $options['wan_nics'],
             ])
             ->add('dnsServers', CollectionType::class, [
-                'entry_type'   => TextType::class,
-                'label'        => 'grase.form.network-settings.dns-servers',
-                'allow_add'    => true,
-                'allow_delete' => true,
-                'delete_empty' => true,
+                'entry_type'     => TextType::class,
+                'entry_options'  => ['label' => false, 'required' => false],
+                'label'          => 'grase.form.network-settings.dns-servers',
+                'allow_add'      => true,
+                'allow_delete'   => true,
+                'delete_empty'   => true,
+                'error_bubbling' => false,
             ])
             ->add('bogusNxDomains', CollectionType::class, [
-                'entry_type'   => TextType::class,
-                'label'        => 'grase.form.network-settings.bogus-nx-domains',
-                'allow_add'    => true,
-                'allow_delete' => true,
-                'delete_empty' => true,
+                'entry_type'    => TextType::class,
+                'entry_options' => ['label' => false],
+                'label'         => 'grase.form.network-settings.bogus-nx-domains',
+                'allow_add'     => true,
+                'allow_delete'  => true,
+                'delete_empty'  => true,
             ])
             ->add('submit', SubmitType::class)
             ;
+
+        // Do some magic to ensure we accept both mask formats
+        $builder->get('lanNetworkMask')
+            ->addModelTransformer(new CallbackTransformer(
+                function ($value) {
+                    return $value;
+                },
+                \Closure::fromCallable([GraseUtil::class, 'transformSubnetMask'])
+            ));
     }
 
     /**
